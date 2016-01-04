@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\mvvm">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go\mvvm.hpp">
+      <Filter>go</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\notify_property_changed.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\signal_arguments.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_object.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\object.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\command.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\command_parameters.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\signal.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\command_manager.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\relay_command.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\container_changed_arguments.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\notify_container_changed.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

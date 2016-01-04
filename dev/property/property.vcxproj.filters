@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\property">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\property\detail">
+      <UniqueIdentifier>{f5baa9ac-c0d5-4543-9124-5219281b260e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go\property\policy">
+      <UniqueIdentifier>{014abdf5-ff1e-4f55-b624-8b82dd5638b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go\property.hpp">
+      <Filter>go</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\assignment_operator.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\property_base.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\ro_property_base.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\wo_property_base.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\policy\optional.hpp">
+      <Filter>go\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\policy\proxy.hpp">
+      <Filter>go\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\policy\ref.hpp">
+      <Filter>go\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\policy\value.hpp">
+      <Filter>go\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\optional_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\ref_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\ro_optional_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\ro_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\ro_ref_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\ro_value_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\value_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\wo_optional_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\wo_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\wo_ref_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\wo_value_scalar_property.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
