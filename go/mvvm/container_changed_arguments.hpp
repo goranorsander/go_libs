@@ -12,7 +12,7 @@
 //
 
 #include <go/mvvm/notify_container_changed_action.hpp>
-#include <go/mvvm/signal_arguments.hpp>
+#include <go/mvvm/slot_arguments.hpp>
 
 namespace go
 {
@@ -20,19 +20,23 @@ namespace mvvm
 {
 
 class container_changed_arguments
-    : public signal_arguments
+    : public slot_arguments
 {
 public:
-    typedef boost::shared_ptr<container_changed_arguments> ptr;
+    typedef std::shared_ptr<container_changed_arguments> ptr;
+    typedef std::weak_ptr<container_changed_arguments> wptr;
 
 public:
     virtual ~container_changed_arguments()
     {
     }
 
+private:
+    container_changed_arguments(const container_changed_arguments&) = delete;
+
 protected:
     container_changed_arguments(const notify_container_changed_action& action)
-        : signal_arguments()
+        : slot_arguments()
         , _action(action)
     {
     }

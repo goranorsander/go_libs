@@ -9,32 +9,32 @@
 //
 
 #include <functional>
-//#include <boost/noncopyable.hpp>
-//#include <boost/test/unit_test.hpp>
 #include <string>
+
+#include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
 
-BOOST_AUTO_TEST_SUITE(observable_object_test_suite_wstring)
-
-namespace b = boost;
-namespace m = boost::mvvm;
-namespace p = boost::property;
+namespace m = go::mvvm;
+namespace p = go::property;
+namespace ph = std::placeholders;
 
 // Test observable_object
 class product_model
-    : public b::noncopyable
-    , public m::observable_object<std::wstring>
+    : public m::observable_object<std::wstring>
 {
 public:
     ~product_model()
     {
     }
 
+private:
+    product_model(const product_model&) = delete;
+
+public:
     product_model()
-        : b::noncopyable()
-        , m::observable_object<std::wstring>()
+        : m::observable_object<std::wstring>()
         , _product_id(0)
         , _product_name()
         , _unit_price(0.0)
@@ -106,7 +106,8 @@ public:
     }
 
     product_model_observer()
-        : _product_id_change_count(0)
+        : _on_property_changed_slot_key(0)
+        , _product_id_change_count(0)
         , _product_name_change_count(0)
         , _unit_price_change_count(0)
     {
@@ -114,12 +115,12 @@ public:
 
     void connect(product_model& m)
     {
-        m.property_changed.connect(std::bind(&product_model_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = m.property_changed.connect(std::bind(&product_model_observer::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(product_model& m)
     {
-        m.property_changed.disconnect(std::bind(&product_model_observer::on_property_changed, this, ph::_1, ph::_2));
+        m.property_changed.disconnect(_on_property_changed_slot_key);
     }
 
     void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments<std::wstring>::ptr& a)
@@ -137,14 +138,15 @@ public:
     int unit_price_change_count() const { return _unit_price_change_count; }
 
 private:
+    m::slot_key_type _on_property_changed_slot_key;
     int _product_id_change_count;
     int _product_name_change_count;
     int _unit_price_change_count;
 };
 
-BOOST_AUTO_TEST_CASE(test_observable_object)
+TEST(observable_object_test_suite_wstring, test_observable_object)
 {
-    b::shared_ptr<product_model> m(new product_model);
+    std::shared_ptr<product_model> m(new product_model);
     product_model_observer o;
 
     o.connect(*m);
@@ -188,5 +190,3 @@ BOOST_AUTO_TEST_CASE(test_observable_object)
     EXPECT_EQ(0, o.product_name_change_count());
     EXPECT_EQ(0, o.unit_price_change_count());
 }
-
-BOOST_AUTO_TEST_SUITE_END()

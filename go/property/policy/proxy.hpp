@@ -12,8 +12,6 @@
 //
 
 #include <functional>
-//#include <boost/serialization/access.hpp>
-//#include <boost/serialization/nvp.hpp>
 #include <mutex>
 #include <stdexcept>
 
@@ -60,25 +58,25 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _get = f;
     }
 
     void setter(const set_function_signature& f)
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _set = f;
     }
 
     value_type get() const
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _get();
     }
 
     void set(const value_type& v)
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _set(v);
     }
 
@@ -94,15 +92,6 @@ private:
     }
 
 private:
-    //friend class boost::serialization::access;
-
-    //template<class archive>
-    //void serialize(archive& a, unsigned int file_version)
-    //{
-    //    std::recursive_mutex::scoped_lock lock(_property_guard);
-    //    a & boost::serialization::make_nvp("value", get());
-    //}
-
     mutable std::recursive_mutex _property_guard;
     get_function_signature _get;
     set_function_signature _set;

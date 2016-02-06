@@ -14,7 +14,7 @@
 #include <go/mvvm/object.hpp>
 #include <go/mvvm/property_changed_arguments.hpp>
 #include <go/mvvm/signal.hpp>
-//#include <boost/signals2.hpp>
+#include <go/mvvm/slot.hpp>
 
 namespace go
 {
@@ -23,13 +23,13 @@ namespace mvvm
 
 template<class S = std::string>
 class notify_property_changed
-    : public signal
+    : public slot
 {
 public:
     typedef S string_type;
     typedef property_changed_arguments<string_type> property_changed_arguments_type;
-    typedef boost::shared_ptr<property_changed_arguments_type> property_changed_arguments_type_ptr;
-    typedef boost::signals2::signal<void(const object::ptr&, const property_changed_arguments_type_ptr&)> property_changed_signal;
+    typedef std::shared_ptr<property_changed_arguments_type> property_changed_arguments_type_ptr;
+    typedef signal<std::function<void(const object::ptr&, const property_changed_arguments_type_ptr&)>> property_changed_signal;
 
 public:
     virtual ~notify_property_changed() = 0

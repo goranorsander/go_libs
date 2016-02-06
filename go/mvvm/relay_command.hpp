@@ -24,8 +24,8 @@ class relay_command
 {
 public:
     typedef S string_type;
-    typedef boost::shared_ptr<relay_command<string_type>> ptr;
-    typedef boost::weak_ptr<relay_command<string_type>> wptr;
+    typedef std::shared_ptr<relay_command<string_type>> ptr;
+    typedef std::weak_ptr<relay_command<string_type>> wptr;
     typedef std::function<bool(const command_parameters_type_ptr&)> can_execute_command_signature;
     typedef std::function<void(const command_parameters_type_ptr&)> execute_command_signature;
 
@@ -42,6 +42,9 @@ protected:
     {
     }
 
+private:
+    relay_command(const relay_command&) = delete;
+
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
     {
@@ -51,12 +54,12 @@ public:
 private:
     virtual bool can_execute(const command_parameters_type_ptr& params)
     {
-        return _can_execute.empty() ? true : _can_execute(params);
+        return _can_execute ? _can_execute(params) : true;
     }
 
     virtual void execute(const command_parameters_type_ptr& params)
     {
-        if (!_execute.empty())
+        if (_execute)
         {
             _execute(params);
         }

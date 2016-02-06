@@ -11,11 +11,9 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-//#include <boost/enable_shared_from_this.hpp>
 #include <go/mvvm/command_parameters.hpp>
+#include <go/mvvm/signal.hpp>
 #include <go/property/ro_property.hpp>
-//#include <boost/signals2.hpp>
-//#include <boost/weak_ptr.hpp>
 
 namespace go
 {
@@ -26,28 +24,33 @@ template<class S> class command_manager;
 
 template<class S = std::string>
 class command
-    : public enable_shared_from_this<command<S>>
+    : public std::enable_shared_from_this<command<S>>
 {
     friend class command_manager<S>;
 
 public:
     typedef S string_type;
-    typedef boost::shared_ptr<command<string_type>> ptr;
-    typedef boost::weak_ptr<command<string_type>> wptr;
+    typedef command<string_type> this_type;
+    typedef std::shared_ptr<command<string_type>> ptr;
+    typedef std::weak_ptr<command<string_type>> wptr;
     typedef command_parameters command_parameters_type;
-    typedef boost::shared_ptr<command_parameters_type> command_parameters_type_ptr;
-    typedef boost::signals2::signal<void(const ptr&)> can_execute_changed_signal;
+    typedef std::shared_ptr<command_parameters_type> command_parameters_type_ptr;
+    typedef signal<std::function<void(const ptr&)>> can_execute_changed_signal;
+    typedef go::property::ro_property<string_type> command_name_type;
 
 public:
     virtual ~command() = 0
     {
     }
 
+private:
+    command(const command&) = delete;
+
 protected:
     command(const string_type& cmd_name, const command_parameters::ptr& params)
-        : enable_shared_from_this<command<string_type>>()
+        : std::enable_shared_from_this<command<string_type>>()
         , can_execute_changed()
-        , command_name("command_name", boost::bind(&command::get_command_name, this))
+        , command_name("command_name", std::bind(&this_type::get_command_name, this))
         , _command_name(cmd_name)
         , _parameters(params)
     {
@@ -55,7 +58,7 @@ protected:
     }
 
 public:
-    boost::property::ro_property<string_type> command_name;
+    command_name_type command_name;
 
 public:
     virtual command_parameters::ptr parameters() const

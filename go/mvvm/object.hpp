@@ -11,7 +11,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-//#include <boost/enable_shared_from_this.hpp>
+#include <memory>
 
 namespace go
 {
@@ -19,10 +19,11 @@ namespace mvvm
 {
 
 class object
-    : public enable_shared_from_this<object>
+    : public std::enable_shared_from_this<object>
 {
 public:
-    typedef boost::shared_ptr<object> ptr;
+    typedef std::shared_ptr<object> ptr;
+    typedef std::weak_ptr<object> wptr;
 
 public:
     virtual ~object() = 0
@@ -31,7 +32,7 @@ public:
 
 protected:
     object()
-        : enable_shared_from_this<object>()
+        : std::enable_shared_from_this<object>()
     {
     }
 };

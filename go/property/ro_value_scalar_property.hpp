@@ -14,15 +14,14 @@
 #include <go/property/detail/ro_property_base.hpp>
 #include <go/property/policy/value.hpp>
 #include <algorithm>
-//#include <boost/serialization/nvp.hpp>
-//#include <boost/serialization/access.hpp>
 
 namespace go
 {
 namespace property
 {
 
-template<class T, class S = std::string> class ro_value_scalar_property : public detail::ro_property_base<T, policy::value<T>, S>
+template<class T, class S = std::string> class ro_value_scalar_property
+    : public detail::ro_property_base<T, policy::value<T>, S>
 {
 public:
     typedef T value_type;
@@ -42,7 +41,7 @@ public:
 
 inline bool operator==(const ro_value_scalar_property<std::string, std::string>& lhs, const std::string& rhs)
 {
-    return std::equal(lhs.get(), rhs);
+    return lhs.get() == rhs;
 }
 
 inline bool operator!=(const ro_value_scalar_property<std::string, std::string>& lhs, const std::string& rhs)
@@ -52,7 +51,7 @@ inline bool operator!=(const ro_value_scalar_property<std::string, std::string>&
 
 inline bool operator==(const std::string& lhs, const ro_value_scalar_property<std::string, std::string>& rhs)
 {
-    return std::equal(lhs, rhs.get());
+    return lhs == rhs.get();
 }
 
 inline bool operator!=(const std::string& lhs, const ro_value_scalar_property<std::string, std::string>& rhs)
@@ -62,7 +61,7 @@ inline bool operator!=(const std::string& lhs, const ro_value_scalar_property<st
 
 inline bool operator==(const ro_value_scalar_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
 {
-    return std::equal(lhs.get(), rhs);
+    return lhs.get() == rhs;
 }
 
 inline bool operator!=(const ro_value_scalar_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
@@ -72,7 +71,7 @@ inline bool operator!=(const ro_value_scalar_property<std::wstring, std::string>
 
 inline bool operator==(const std::wstring& lhs, const ro_value_scalar_property<std::wstring, std::string>& rhs)
 {
-    return std::equal(lhs, rhs.get());
+    return lhs == rhs.get();
 }
 
 inline bool operator!=(const std::wstring& lhs, const ro_value_scalar_property<std::wstring, std::string>& rhs)
@@ -82,7 +81,7 @@ inline bool operator!=(const std::wstring& lhs, const ro_value_scalar_property<s
 
 inline bool operator==(const ro_value_scalar_property<std::string, std::wstring>& lhs, const std::string& rhs)
 {
-    return std::equal(lhs.get(), rhs);
+    return lhs.get() == rhs;
 }
 
 inline bool operator!=(const ro_value_scalar_property<std::string, std::wstring>& lhs, const std::string& rhs)
@@ -92,7 +91,7 @@ inline bool operator!=(const ro_value_scalar_property<std::string, std::wstring>
 
 inline bool operator==(const std::string& lhs, const ro_value_scalar_property<std::string, std::wstring>& rhs)
 {
-    return std::equal(lhs, rhs.get());
+    return lhs == rhs.get();
 }
 
 inline bool operator!=(const std::string& lhs, const ro_value_scalar_property<std::string, std::wstring>& rhs)
@@ -102,7 +101,7 @@ inline bool operator!=(const std::string& lhs, const ro_value_scalar_property<st
 
 inline bool operator==(const ro_value_scalar_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
 {
-    return std::equal(lhs.get(), rhs);
+    return lhs.get() == rhs;
 }
 
 inline bool operator!=(const ro_value_scalar_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
@@ -112,7 +111,7 @@ inline bool operator!=(const ro_value_scalar_property<std::wstring, std::wstring
 
 inline bool operator==(const std::wstring& lhs, const ro_value_scalar_property<std::wstring, std::wstring>& rhs)
 {
-    return std::equal(lhs, rhs.get());
+    return lhs == rhs.get();
 }
 
 inline bool operator!=(const std::wstring& lhs, const ro_value_scalar_property<std::wstring, std::wstring>& rhs)

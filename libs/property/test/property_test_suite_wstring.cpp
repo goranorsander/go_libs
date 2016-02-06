@@ -9,15 +9,14 @@
 //
 
 #include <functional>
-//#include <boost/test/unit_test.hpp>
 #include <string>
+
+#include <gtest/gtest.h>
 
 #include <go/property.hpp>
 
-BOOST_AUTO_TEST_SUITE(property_test_suite_wstring)
-
-namespace b = boost;
-namespace p = boost::property;
+namespace p = go::property;
+namespace ph = std::placeholders;
 
 // Test value_scalar_property
 class w_camera
@@ -49,7 +48,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE(value_scalar_properties)
+TEST(properties_test_suite_wstring, value_scalar_properties)
 {
     w_camera c;
 
@@ -120,7 +119,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE(ro_scalar_properties)
+TEST(properties_test_suite_wstring, ro_scalar_properties)
 {
     w_ro_camera c;
 
@@ -167,7 +166,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE(wo_scalar_properties)
+TEST(properties_test_suite_wstring, wo_scalar_properties)
 {
     w_wo_camera c;
 
@@ -190,336 +189,6 @@ BOOST_AUTO_TEST_CASE(wo_scalar_properties)
     w_wo_camera c2(c);
 }
 
-// Test atomic_scalar_property
-class w_atomic_camera
-{
-public:
-    p::atomic_scalar_property<int, std::wstring> width;
-    p::atomic_scalar_property<double, std::wstring> height;
-    p::atomic_scalar_property<std::string, std::wstring> name;
-
-    w_atomic_camera()
-        : width(std::wstring(L"width"), 320)
-        , height(std::wstring(L"height"), 200.0)
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-
-    w_atomic_camera& operator=(const w_atomic_camera& v)
-    {
-        width = v.width;
-        height = v.height;
-        name = v.name;
-    }
-};
-
-BOOST_AUTO_TEST_CASE(atomic_scalar_properties)
-{
-    w_atomic_camera c;
-
-    // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
-
-    // Copy construction
-    w_atomic_camera c2(c);
-    EXPECT_EQ(640, c2.width());
-    EXPECT_EQ(480.0, c2.height());
-    EXPECT_EQ(std::string("camera iv"), c2.name());
-}
-
-// Test ro_atomic_scalar_property
-class w_ro_atomic_camera
-{
-public:
-    p::ro_atomic_scalar_property<int, std::wstring> width;
-    p::ro_atomic_scalar_property<double, std::wstring> height;
-    p::ro_atomic_scalar_property<std::string, std::wstring> name;
-
-    w_ro_atomic_camera()
-        : width(std::wstring(L"width"), 320)
-        , height(std::wstring(L"height"), 200.0)
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-};
-
-BOOST_AUTO_TEST_CASE(ro_atomic_scalar_properties)
-{
-    w_ro_atomic_camera c;
-
-    // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Copy construction
-    w_ro_atomic_camera c2(c);
-    EXPECT_EQ(320, c2.width());
-    EXPECT_EQ(200.0, c2.height());
-    EXPECT_EQ(std::string("camera"), c2.name());
-}
-
-// Test wo_atomic_scalar_property
-class w_wo_atomic_camera
-{
-public:
-    p::wo_atomic_scalar_property<int, std::wstring> width;
-    p::wo_atomic_scalar_property<double, std::wstring> height;
-    p::wo_atomic_scalar_property<std::string, std::wstring> name;
-
-    w_wo_atomic_camera()
-        : width(std::wstring(L"width"), 320)
-        , height(std::wstring(L"height"), 200.0)
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-};
-
-BOOST_AUTO_TEST_CASE(wo_atomic_scalar_properties)
-{
-    w_wo_atomic_camera c;
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-
-    // Copy construction
-    w_wo_atomic_camera c2(c);
-}
-
-// Test optional_scalar_property
-class w_optional_camera
-{
-public:
-    p::optional_scalar_property<int, std::wstring> width;
-    p::optional_scalar_property<double, std::wstring> height;
-    p::optional_scalar_property<std::string, std::wstring> name;
-
-    w_optional_camera()
-        : width(std::wstring(L"width"))
-        , height(std::wstring(L"height"))
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-};
-
-BOOST_AUTO_TEST_CASE(optional_scalar_properties)
-{
-    w_optional_camera c;
-
-    // Verify default values
-    EXPECT_TRUE(c.width.empty() == true);
-    EXPECT_TRUE(c.height.empty() == true);
-    EXPECT_TRUE(c.name.empty() == false);
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Method oriented get
-    c.width.set(320);
-    c.height.set(200.0);
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
-
-    // Copy construction
-    w_optional_camera c2(c);
-    EXPECT_EQ(640, c2.width());
-    EXPECT_EQ(480.0, c2.height());
-    EXPECT_EQ(std::string("camera iv"), c2.name());
-}
-
-// Test ro_optional_scalar_property
-class w_ro_optional_camera
-{
-public:
-    p::ro_optional_scalar_property<int, std::wstring> width;
-    p::ro_optional_scalar_property<double, std::wstring> height;
-    p::ro_optional_scalar_property<std::string, std::wstring> name;
-
-    w_ro_optional_camera()
-        : width(std::wstring(L"width"))
-        , height(std::wstring(L"height"))
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-};
-
-BOOST_AUTO_TEST_CASE(ro_optional_scalar_properties)
-{
-    w_ro_optional_camera c;
-
-    // Verify default values
-    EXPECT_TRUE(c.width.empty() == true);
-    EXPECT_TRUE(c.height.empty() == true);
-    EXPECT_TRUE(c.name.empty() == false);
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Method oriented get
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Copy construction
-    w_ro_optional_camera c2(c);
-    EXPECT_EQ(std::string("camera"), c2.name());
-}
-
-// Test wo_optional_scalar_property
-class w_wo_optional_camera
-{
-public:
-    p::wo_optional_scalar_property<int, std::wstring> width;
-    p::wo_optional_scalar_property<double, std::wstring> height;
-    p::wo_optional_scalar_property<std::string, std::wstring> name;
-
-    w_wo_optional_camera()
-        : width(std::wstring(L"width"))
-        , height(std::wstring(L"height"))
-        , name(std::wstring(L"name"), std::string("camera"))
-    {
-    }
-};
-
-BOOST_AUTO_TEST_CASE(wo_optional_scalar_properties)
-{
-    w_wo_optional_camera c;
-
-    // Verify default values
-    EXPECT_TRUE(c.width.empty() == true);
-    EXPECT_TRUE(c.height.empty() == true);
-    EXPECT_TRUE(c.name.empty() == false);
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-
-    // Copy construction
-    w_wo_optional_camera c2(c);
-}
-
 // Test ref_scalar_property
 class w_ref_camera
 {
@@ -536,7 +205,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE(ref_scalar_properties)
+TEST(properties_test_suite_wstring, ref_scalar_properties)
 {
     w_ref_camera c;
 
@@ -643,7 +312,7 @@ private:
     std::string m_name;
 };
 
-BOOST_AUTO_TEST_CASE(ro_ref_scalar_properties)
+TEST(properties_test_suite_wstring, ro_ref_scalar_properties)
 {
     w_ro_ref_camera c;
 
@@ -698,7 +367,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE(wo_ref_scalar_properties)
+TEST(properties_test_suite_wstring, wo_ref_scalar_properties)
 {
     w_wo_ref_camera c;
 
@@ -768,7 +437,8 @@ private:
     int _fps;
 };
 
-class w_fps_camera : public w_camera
+class w_fps_camera
+    : public w_camera
 {
 public:
     p::property<int, std::wstring> fps;
@@ -808,7 +478,7 @@ private:
     device_driver _d;
 };
 
-BOOST_AUTO_TEST_CASE(value_properties)
+TEST(properties_test_suite_wstring, value_properties)
 {
     w_fps_camera c;
 
@@ -901,7 +571,8 @@ BOOST_AUTO_TEST_CASE(value_properties)
 }
 
 // Test ro_property
-class w_ro_fps_camera : public w_ro_camera
+class w_ro_fps_camera
+    : public w_ro_camera
 {
 public:
     p::ro_property<int, std::wstring> fps;
@@ -933,7 +604,7 @@ private:
     device_driver _d;
 };
 
-BOOST_AUTO_TEST_CASE(ro_value_properties)
+TEST(properties_test_suite_wstring, ro_value_properties)
 {
     w_ro_fps_camera c;
 
@@ -988,7 +659,8 @@ BOOST_AUTO_TEST_CASE(ro_value_properties)
 }
 
 // Test wo_property
-class w_wo_fps_camera : public w_wo_camera
+class w_wo_fps_camera
+    : public w_wo_camera
 {
 public:
     p::wo_property<int, std::wstring> fps;
@@ -1019,7 +691,7 @@ private:
     device_driver _d;
 };
 
-BOOST_AUTO_TEST_CASE(wo_value_properties)
+TEST(properties_test_suite_wstring, wo_value_properties)
 {
     w_wo_fps_camera c;
 
@@ -1057,296 +729,3 @@ BOOST_AUTO_TEST_CASE(wo_value_properties)
     // Copy construction
     w_wo_fps_camera c3(c);
 }
-
-// Test atomic_property
-class w_fps_atomic_camera : public w_atomic_camera
-{
-public:
-    p::atomic_property<int, std::wstring> fps;
-
-    w_fps_atomic_camera()
-        : w_atomic_camera()
-        , fps(std::wstring(L"fps"))
-        , _d()
-    {
-        update_bindings();
-    }
-
-    w_fps_atomic_camera(const w_fps_atomic_camera& v)
-        : w_atomic_camera(v)
-        , fps(v.fps)
-        , _d(v._d)
-    {
-        update_bindings();
-    }
-
-    w_fps_atomic_camera& operator=(const w_fps_atomic_camera& v)
-    {
-        w_atomic_camera::operator=(v);
-        fps = v.fps;
-        _d = v._d;
-        update_bindings();
-    }
-
-private:
-    void update_bindings()
-    {
-        fps.getter(std::bind(&device_driver::get_current_fps, &_d));
-        fps.setter(std::bind(&device_driver::set_target_fps, &_d, ph::_1));
-    }
-
-private:
-    device_driver _d;
-};
-
-BOOST_AUTO_TEST_CASE(atomic_value_properties)
-{
-    w_fps_atomic_camera c;
-
-    // INHERITED PROPERTIES
-
-    // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
-
-    // Copy construction
-    w_fps_atomic_camera c2(c);
-    EXPECT_EQ(640, c2.width());
-    EXPECT_EQ(480.0, c2.height());
-    EXPECT_EQ(std::string("camera iv"), c2.name());
-
-    // PROXY
-
-    c.fps(16);
-
-    // Method oriented get
-    EXPECT_EQ(16, c.fps());
-
-    // Cast operator oriented get
-    EXPECT_EQ(16, static_cast<int>(c.fps));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(16 == c.fps);
-
-    // Traditional get
-    EXPECT_EQ(16, c.fps.get());
-
-    // Method oriented set
-    c.fps(24);
-    EXPECT_EQ(24, c.fps());
-
-    // Assign operator oriented set
-    c.fps = 25;
-    EXPECT_EQ(25, c.fps);
-
-    // Traditional set
-    c.fps.set(30);
-    EXPECT_EQ(30, c.fps.get());
-
-    // Copy construction
-    w_fps_atomic_camera c3(c);
-    EXPECT_EQ(640, c3.width());
-    EXPECT_EQ(480.0, c3.height());
-    EXPECT_EQ(std::string("camera iv"), c3.name());
-    EXPECT_EQ(30, c3.fps());
-}
-
-// Test ro_atomic_property
-class w_ro_fps_atomic_camera : public w_ro_atomic_camera
-{
-public:
-    p::ro_atomic_property<int, std::wstring> fps;
-
-    w_ro_fps_atomic_camera()
-        : w_ro_atomic_camera()
-        , fps(std::wstring(L"fps"))
-        , _d()
-    {
-        _d.set_target_fps(16);
-        update_bindings();
-    }
-
-    w_ro_fps_atomic_camera(const w_ro_fps_atomic_camera& v)
-        : w_ro_atomic_camera(v)
-        , fps(v.fps)
-        , _d(v._d)
-    {
-        update_bindings();
-    }
-
-private:
-    void update_bindings()
-    {
-        fps.getter(std::bind(&device_driver::get_current_fps, &_d));
-    }
-
-private:
-    device_driver _d;
-};
-
-BOOST_AUTO_TEST_CASE(ro_atomic_value_properties)
-{
-    w_ro_fps_atomic_camera c;
-
-    // INHERITED PROPERTIES
-
-    // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
-
-    // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
-
-    // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
-
-    // Copy construction
-    w_ro_fps_atomic_camera c2(c);
-    EXPECT_EQ(320, c2.width());
-    EXPECT_EQ(200.0, c2.height());
-    EXPECT_EQ(std::string("camera"), c2.name());
-
-    // PROXY
-
-    // Method oriented get
-    EXPECT_EQ(16, c.fps());
-
-    // Cast operator oriented get
-    EXPECT_EQ(16, static_cast<int>(c.fps));
-
-    // Implicit cast oriented get
-    EXPECT_TRUE(16 == c.fps);
-
-    // Traditional get
-    EXPECT_EQ(16, c.fps.get());
-
-    // Copy construction
-    w_ro_fps_atomic_camera c3(c);
-    EXPECT_EQ(320, c3.width());
-    EXPECT_EQ(200.0, c3.height());
-    EXPECT_EQ(std::string("camera"), c3.name());
-    EXPECT_EQ(16, c3.fps());
-}
-
-// Test wo_atomic_property
-class w_wo_fps_atomic_camera : public w_wo_atomic_camera
-{
-public:
-    p::wo_atomic_property<int, std::wstring> fps;
-
-    w_wo_fps_atomic_camera()
-        : w_wo_atomic_camera()
-        , fps(std::wstring(L"fps"))
-        , _d()
-    {
-        update_bindings();
-    }
-
-    w_wo_fps_atomic_camera(const w_wo_fps_atomic_camera& v)
-        : w_wo_atomic_camera(v)
-        , fps(v.fps)
-        , _d(v._d)
-    {
-        update_bindings();
-    }
-
-private:
-    void update_bindings()
-    {
-        fps.setter(std::bind(&device_driver::set_target_fps, &_d, ph::_1));
-    }
-
-private:
-    device_driver _d;
-};
-
-BOOST_AUTO_TEST_CASE(wo_atomic_value_properties)
-{
-    w_wo_fps_atomic_camera c;
-
-    // INHERITED PROPERTIES
-
-    // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-
-    // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-
-    // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-
-    // Copy construction
-    w_wo_fps_atomic_camera c2(c);
-
-    // PROXY
-
-    // Method oriented set
-    c.fps(24);
-
-    // Assign operator oriented set
-    c.fps = 25;
-
-    // Traditional set
-    c.fps.set(30);
-
-    // Copy construction
-    w_wo_fps_atomic_camera c3(c);
-}
-
-BOOST_AUTO_TEST_SUITE_END()

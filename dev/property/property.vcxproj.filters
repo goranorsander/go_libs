@@ -34,9 +34,6 @@
     <ClInclude Include="..\..\go\property\detail\wo_property_base.hpp">
       <Filter>go\property\detail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\policy\optional.hpp">
-      <Filter>go\property\policy</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\go\property\policy\proxy.hpp">
       <Filter>go\property\policy</Filter>
     </ClInclude>
@@ -46,16 +43,10 @@
     <ClInclude Include="..\..\go\property\policy\value.hpp">
       <Filter>go\property\policy</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\optional_scalar_property.hpp">
-      <Filter>go\property</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\go\property\property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\ref_scalar_property.hpp">
-      <Filter>go\property</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\go\property\ro_optional_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\ro_property.hpp">
@@ -68,9 +59,6 @@
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\value_scalar_property.hpp">
-      <Filter>go\property</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\go\property\wo_optional_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\wo_property.hpp">

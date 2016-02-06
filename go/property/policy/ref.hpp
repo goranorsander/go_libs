@@ -11,11 +11,8 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-//#include <boost/serialization/access.hpp>
-//#include <boost/serialization/nvp.hpp>
 #include <memory>
 #include <mutex>
-//#include <boost/utility.hpp>
 
 namespace go
 {
@@ -55,43 +52,33 @@ public:
 
     value_type get() const 
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return *_v;
     }
 
     void set(const value_type& v) 
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         bind_ref(const_cast<value_type&>(v));
     }
 
     void bind_ref(value_type& v)
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = std::addressof(v);
     }
 
     bool empty() const
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _v == NULL;
     }
 
     void clear()
     {
-        std::recursive_mutex::scoped_lock lock(_property_guard);
+        std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = NULL;
     }
-
-private:
-    //friend class boost::serialization::access;
-
-    //template<class archive>
-    //void serialize(archive& a, unsigned int file_version)
-    //{
-    //    std::recursive_mutex::scoped_lock lock(_property_guard);
-    //    a & boost::serialization::make_nvp("value", *_v);
-    //}
 
 private:
     mutable std::recursive_mutex _property_guard;

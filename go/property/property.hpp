@@ -13,15 +13,14 @@
 
 #include <go/property/detail/property_base.hpp>
 #include <go/property/policy/proxy.hpp>
-//#include <boost/serialization/nvp.hpp>
-//#include <boost/serialization/access.hpp>
 
 namespace go
 {
 namespace property
 {
 
-template<class T, class S = std::string> class property : public detail::property_base<T, policy::proxy<T>, S>
+template<class T, class S = std::string> class property
+    : public detail::property_base<T, policy::proxy<T>, S>
 {
 public:
     typedef T value_type;

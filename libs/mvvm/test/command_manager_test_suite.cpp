@@ -9,32 +9,32 @@
 //
 
 #include <functional>
-//#include <boost/noncopyable.hpp>
-//#include <boost/test/unit_test.hpp>
 #include <string>
+
+#include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
 
-BOOST_AUTO_TEST_SUITE(command_manager_test_suite)
-
-namespace b = boost;
-namespace m = boost::mvvm;
-namespace p = boost::property;
+namespace m = go::mvvm;
+namespace p = go::property;
+namespace ph = std::placeholders;
 
 // Test command_manager
 class spaceship
-    : public b::noncopyable
-    , public m::observable_object<std::string>
+    : public m::observable_object<std::string>
 {
 public:
     ~spaceship()
     {
     }
 
+private:
+    spaceship(const spaceship&) = delete;
+
+public:
     spaceship(const m::command_manager<std::string>::ptr& cmd_mgr)
-        : b::noncopyable()
-        , m::observable_object<std::string>()
+        : m::observable_object<std::string>()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -48,8 +48,7 @@ public:
     }
 
     spaceship(const m::command_manager<std::string>::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
-        : b::noncopyable()
-        , m::observable_object<std::string>()
+        : m::observable_object<std::string>()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -115,7 +114,7 @@ private:
         return _impulse_speed_command;
     }
 
-    void go_to_impulse(const m::command_parameters::ptr& params)
+    void go_to_impulse(const m::command_parameters::ptr& /*params*/)
     {
         _at_impulse_speed = true;
         _at_warp_speed = false;
@@ -123,7 +122,7 @@ private:
         if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
     }
 
-    bool can_go_to_impulse(const m::command_parameters::ptr& params)
+    bool can_go_to_impulse(const m::command_parameters::ptr& /*params*/)
     {
         return _at_warp_speed;
     }
@@ -138,7 +137,7 @@ private:
         return _warp_speed_command;
     }
 
-    void go_to_warp(const m::command_parameters::ptr& params)
+    void go_to_warp(const m::command_parameters::ptr& /*params*/)
     {
         _at_impulse_speed = false;
         _at_warp_speed = true;
@@ -146,7 +145,7 @@ private:
         if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
     }
 
-    bool can_go_to_warp(const m::command_parameters::ptr& params)
+    bool can_go_to_warp(const m::command_parameters::ptr& /*params*/)
     {
         return !_at_warp_speed;
     }
@@ -169,22 +168,24 @@ public:
     }
 
     spaceship_observer()
+        : _on_property_changed_slot_key(0)
+        , _on_property_changed_count()
     {
     }
 
-    void connect(const b::shared_ptr<spaceship>& ship)
+    void connect(const std::shared_ptr<spaceship>& ship)
     {
         if(ship)
         {
-            ship->property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
+            _on_property_changed_slot_key = ship->property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
         }
     }
 
-    void disconnect(const b::shared_ptr<spaceship>& ship)
+    void disconnect(const std::shared_ptr<spaceship>& ship)
     {
         if(ship)
         {
-            ship->property_changed.disconnect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
+            ship->property_changed.disconnect(_on_property_changed_slot_key);
         }
     }
 
@@ -192,27 +193,52 @@ public:
     {
         if(o && a)
         {
-            b::shared_ptr<spaceship> ship = b::dynamic_pointer_cast<spaceship>(o);
+            std::shared_ptr<spaceship> ship = std::dynamic_pointer_cast<spaceship>(o);
             if(ship)
             {
-                std::cout << "Changed property " << a->property_name() << " on " << ship->name.get() << std::endl;
+                const ship_and_property_type ship_and_property(ship->name.get(), a->property_name());
+                const on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
+                if(it == _on_property_changed_count.end())
+                {
+                    _on_property_changed_count[ship_and_property] = 1;
+                }
+                else
+                {
+                    ++(it->second);
+                }
             }
         }
     }
 
+    unsigned int get_on_property_changed_count(const std::string& ship_name, const std::string& property_name) const
+    {
+        const ship_and_property_type ship_and_property(ship_name, property_name);
+        const on_property_changed_counter_type::const_iterator it = _on_property_changed_count.find(ship_and_property);
+        if(it == _on_property_changed_count.end())
+        {
+            return 0;
+        }
+        return it->second;
+    }
+
 private:
+    typedef std::pair<std::string, std::string> ship_and_property_type;
+    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+
+    m::slot_key_type _on_property_changed_slot_key;
+    on_property_changed_counter_type _on_property_changed_count;
 };
 
 #define TEST_CASE_SHIPYARD \
     m::command_manager<std::string>::ptr cmd_mgr = m::command_manager<std::string>::create(); \
 \
-    b::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, "USS Enterprise", "Captain James T Kirk")); \
-    b::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, "Millennium Falcon", "Han Solo")); \
-    b::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, "Executor", "Lord Darth Vader")); \
-    b::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, "Battlestar Galactica", "Admiral William Adama")); \
-    b::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
+    std::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, "USS Enterprise", "Captain James T Kirk")); \
+    std::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, "Millennium Falcon", "Han Solo")); \
+    std::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, "Executor", "Lord Darth Vader")); \
+    std::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, "Battlestar Galactica", "Admiral William Adama")); \
+    std::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
 \
-    b::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
+    std::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
 \
     observer->connect(ship1); \
     observer->connect(ship2); \
@@ -220,7 +246,7 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-BOOST_AUTO_TEST_CASE(test_command_manager)
+TEST(command_manager_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
 
@@ -286,21 +312,51 @@ BOOST_AUTO_TEST_CASE(test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-BOOST_AUTO_TEST_CASE(test_spaceship_observer)
+TEST(command_manager_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 
-    // Give Mr Spock command of USS Enterprise
-    EXPECT_EQ(true, std::equal(ship1->captain.get(), "Captain James T Kirk"));
+    // Verify first captain
+    EXPECT_EQ(true, ship1->captain.get() == std::string("Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain.get() == std::string("Han Solo"));
+    EXPECT_EQ(true, ship3->captain.get() == std::string("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain.get() == std::string("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain.get() == std::string("Captain Malcolm 'Mal' Reynolds"));
 
+    // Verify initial 'on property changed' count
+    EXPECT_EQ(0, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
+
+    // Give Mr Spock command of USS Enterprise
     ship1->captain = "Mr Spock";
 
-    EXPECT_EQ(true, std::equal(ship1->captain.get(), "Mr Spock"));
+    EXPECT_EQ(true, ship1->captain.get() == std::string("Mr Spock"));
+    EXPECT_EQ(true, ship2->captain.get() == std::string("Han Solo"));
+    EXPECT_EQ(true, ship3->captain.get() == std::string("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain.get() == std::string("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain.get() == std::string("Captain Malcolm 'Mal' Reynolds"));
+
+    EXPECT_EQ(1, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
 
     // Return command of USS Enterprise to Captain Kirk
     ship1->captain = "Captain James T Kirk";
 
-    EXPECT_EQ(true, std::equal(ship1->captain.get(), "Captain James T Kirk"));
-}
+    EXPECT_EQ(true, ship1->captain.get() == std::string("Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain.get() == std::string("Han Solo"));
+    EXPECT_EQ(true, ship3->captain.get() == std::string("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain.get() == std::string("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain.get() == std::string("Captain Malcolm 'Mal' Reynolds"));
 
-BOOST_AUTO_TEST_SUITE_END()
+    EXPECT_EQ(2, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
+}

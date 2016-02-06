@@ -11,12 +11,9 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-#include <vector>
-//#include <boost/foreach.hpp>
-#include <go/mvvm/command.hpp>
-//#include <boost/noncopyable.hpp>
-//#include <boost/thread.hpp>
 #include <mutex>
+#include <vector>
+#include <go/mvvm/command.hpp>
 
 namespace go
 {
@@ -25,17 +22,17 @@ namespace mvvm
 
 template<class S = std::string>
 class command_manager
-    : private boost::noncopyable
 {
 public:
     typedef S string_type;
-    typedef boost::shared_ptr<command_manager<string_type>> ptr;
-    typedef boost::signals2::signal<void(const string_type&)> requery_suggested_signal;
+    typedef std::shared_ptr<command_manager<string_type>> ptr;
+    typedef std::weak_ptr<command_manager<string_type>> wptr;
+    typedef signal<std::function<void(const string_type&)>> requery_suggested_signal;
 
 protected:
     typedef command<string_type> command_type;
-    typedef boost::shared_ptr<command_type> command_type_ptr;
-    typedef boost::weak_ptr<command_type> command_type_wptr;
+    typedef std::shared_ptr<command_type> command_type_ptr;
+    typedef std::weak_ptr<command_type> command_type_wptr;
     typedef std::vector<command_type_wptr> command_vector;
 
 public:
@@ -46,12 +43,14 @@ public:
 
 protected:
     command_manager()
-        : boost::noncopyable()
-        , requery_suggested()
+        : requery_suggested()
         , _commands_guard()
         , _commands()
     {
     }
+
+private:
+    command_manager(const command_manager&) = delete;
 
 public:
     requery_suggested_signal requery_suggested;
@@ -66,7 +65,7 @@ public:
     {
         if(cmd)
         {
-            std::recursive_mutex::scoped_lock lock(_commands_guard);
+            std::lock_guard<std::recursive_mutex> lock(_commands_guard);
             _commands.push_back(command_type_wptr(cmd));
         }
     }
@@ -75,10 +74,10 @@ public:
     {
         command_vector cmds;
         {
-            std::recursive_mutex::scoped_lock lock(_commands_guard);
+            std::lock_guard<std::recursive_mutex> lock(_commands_guard);
             std::swap(cmds, _commands);
         }
-        BOOST_FOREACH(command_type_wptr wcmd, cmds)
+        for(command_type_wptr wcmd: cmds)
         {
             const command_type_ptr cmd = wcmd.lock();
             if(cmd)
@@ -94,7 +93,7 @@ public:
 
     size_t commands() const
     {
-        std::recursive_mutex::scoped_lock lock(_commands_guard);
+        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         return _commands.size();
     }
 

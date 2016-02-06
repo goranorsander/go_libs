@@ -14,7 +14,7 @@
 #include <go/mvvm/container_changed_arguments.hpp>
 #include <go/mvvm/object.hpp>
 #include <go/mvvm/signal.hpp>
-//#include <boost/signals2.hpp>
+#include <go/mvvm/slot.hpp>
 
 namespace go
 {
@@ -22,12 +22,12 @@ namespace mvvm
 {
 
 class notify_container_changed
-    : public signal
+    : public slot
 {
 public:
     typedef container_changed_arguments container_changed_arguments_type;
-    typedef boost::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
-    typedef boost::signals2::signal<void(const object::ptr&, const container_changed_arguments_type_ptr&)> container_changed_signal;
+    typedef std::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
+    typedef signal<std::function<void(const object::ptr&, const container_changed_arguments_type_ptr&)>> container_changed_signal;
 
 public:
     virtual ~notify_container_changed() = 0

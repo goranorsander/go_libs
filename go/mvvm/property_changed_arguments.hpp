@@ -11,7 +11,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-#include <go/mvvm/signal_arguments.hpp>
+#include <go/mvvm/slot_arguments.hpp>
 
 namespace go
 {
@@ -20,20 +20,24 @@ namespace mvvm
 
 template<class S = std::string>
 class property_changed_arguments
-    : public signal_arguments
+    : public slot_arguments
 {
 public:
     typedef S string_type;
-    typedef boost::shared_ptr<property_changed_arguments<string_type>> ptr;
+    typedef std::shared_ptr<property_changed_arguments<string_type>> ptr;
+    typedef std::weak_ptr<property_changed_arguments<string_type>> wptr;
 
 public:
     virtual ~property_changed_arguments()
     {
     }
 
+private:
+    property_changed_arguments(const property_changed_arguments&) = delete;
+
 protected:
     property_changed_arguments(const string_type& property_name)
-        : signal_arguments()
+        : slot_arguments()
         , _property_name(property_name)
     {
     }

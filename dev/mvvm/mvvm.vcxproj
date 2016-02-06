@@ -32,7 +32,8 @@
     <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp" />
     <ClInclude Include="..\..\go\mvvm\relay_command.hpp" />
     <ClInclude Include="..\..\go\mvvm\signal.hpp" />
-    <ClInclude Include="..\..\go\mvvm\signal_arguments.hpp" />
+    <ClInclude Include="..\..\go\mvvm\slot.hpp" />
+    <ClInclude Include="..\..\go\mvvm\slot_arguments.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

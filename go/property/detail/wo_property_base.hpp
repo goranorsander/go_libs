@@ -11,9 +11,6 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-//#include <boost/serialization/nvp.hpp>
-//#include <boost/serialization/access.hpp>
-
 namespace go
 {
 namespace property
@@ -73,15 +70,6 @@ protected:
     {
         return _s;
     }
-
-private:
-    //friend class boost::serialization::access;
-
-    //template<class archive>
-    //void serialize(archive& a, unsigned int file_version)
-    //{
-    //    a & boost::serialization::make_nvp("storage", _s);
-    //}
 
 private:
     const string_type _n;

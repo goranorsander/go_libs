@@ -11,8 +11,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 //
 
-//#include <boost/noncopyable.hpp>
-//#include <boost/shared_ptr.hpp>
+#include <memory>
 
 namespace go
 {
@@ -20,10 +19,10 @@ namespace mvvm
 {
 
 class command_parameters
-    : public boost::noncopyable
 {
 public:
-    typedef boost::shared_ptr<command_parameters> ptr;
+    typedef std::shared_ptr<command_parameters> ptr;
+    typedef std::weak_ptr<command_parameters> wptr;
 
 public:
     virtual ~command_parameters()
@@ -32,9 +31,11 @@ public:
 
 protected:
     command_parameters()
-        : boost::noncopyable()
     {
     }
+
+private:
+    command_parameters(const command_parameters&) = delete;
 
 public:
     static ptr create()

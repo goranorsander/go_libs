@@ -13,15 +13,14 @@
 
 #include <go/property/detail/wo_property_base.hpp>
 #include <go/property/policy/value.hpp>
-//#include <boost/serialization/nvp.hpp>
-//#include <boost/serialization/access.hpp>
 
 namespace go
 {
 namespace property
 {
 
-template<class T, class S = std::string> class wo_value_scalar_property : public detail::wo_property_base<T, policy::value<T>, S>
+template<class T, class S = std::string> class wo_value_scalar_property
+    : public detail::wo_property_base<T, policy::value<T>, S>
 {
 public:
     typedef T value_type;

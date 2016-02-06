@@ -13,15 +13,14 @@
 
 #include <go/property/detail/wo_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
-//#include <boost/serialization/nvp.hpp>
-//#include <boost/serialization/access.hpp>
 
 namespace go
 {
 namespace property
 {
 
-template<class T, class S = std::string> class wo_property : public detail::wo_property_base<T, policy::proxy<T>, S>
+template<class T, class S = std::string> class wo_property
+    : public detail::wo_property_base<T, policy::proxy<T>, S>
 {
 public:
     typedef T value_type;
@@ -40,7 +39,7 @@ public:
     }
 
     explicit wo_property(const string_type& property_name, const set_function_signature& set_function)
-        : detail::wo_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(NULL, set_function), property_name)
+        : detail::wo_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(nullptr, set_function), property_name)
     {
     }
 
