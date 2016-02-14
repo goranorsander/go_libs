@@ -6,9 +6,9 @@
 //
 //  Copyright 2016 Göran Orsander
 //
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
+//  This file is part of the GO.libraries.
+//  Distributed under the GO Software License, Version 1.0.
+//  See accompanying file LICENSE_1_0.txt.
 //
 
 #include <functional>
@@ -65,27 +65,22 @@ public:
         return _connections.empty();
     }
 
-    template<typename... Args>
-    void operator()(Args&&... args) const
+    template<typename... A>
+    void operator()(A&&... a) const
     {
         for(auto& connection : _connections)
         {
             function_type safe_f = connection.second;
-            auto f = std::bind(std::forward<function_type>(safe_f), std::forward<Args>(args)...);
+            auto f = std::bind(std::forward<function_type>(safe_f), std::forward<A>(a)...);
             f();
         }
     }
 
-	template<typename... Args>
-	typename void call(Args&&... args) const
+	template<typename... A>
+	typename void call(A&&... a) const
 	{
-		for(auto& connection: _connections)
-		{
-            function_type safe_f = connection.second;
-            auto f = std::bind(std::forward<function_type>(safe_f), std::forward<Args>(args)...);
-            f();
-        }
-	}
+        operator()(std::forward<A>(a)...);
+    }
 
 protected:
     slot_key_type _slot_next_key;

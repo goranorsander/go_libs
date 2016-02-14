@@ -6,10 +6,12 @@
 //
 //  Copyright 2016 Göran Orsander
 //
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
+//  This file is part of the GO.libraries.
+//  Distributed under the GO Software License, Version 1.0.
+//  See accompanying file LICENSE_1_0.txt.
 //
+
+#if defined(WIN32) || defined(WINDOWS)
 
 // __LOC__ : Line Of Code (see https://support.microsoft.com/en-us/kb/155196)
 #define __STR2__(x) #x
@@ -28,5 +30,13 @@ __pragma(message("DISABLED WARNING " __STR1__(_warning_) " at " __LOC__))
 #define DISABLE_END_WARNING \
 __pragma(warning(pop)) \
 __pragma(message("RE-ENABLED WARNINGS at " __LOC__))
+
+#else
+
+#define BEGIN_DISABLE_WARNING(_warning_)
+#define DISABLE_WARNING(_warning_)
+#define DISABLE_END_WARNING
+
+#endif
 
 #endif  // #ifndef GO_UTILITY_SANITY_HPP_INCLUDED
