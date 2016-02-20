@@ -29,7 +29,7 @@ public:
 
 protected:
     typedef std::map<slot_key_type, function_type> connections_type;
-	
+
 public:
     virtual ~signal()
     {
@@ -40,7 +40,7 @@ public:
         , _connections()
     {
     }
-	
+
 public:
     template<typename F1>
 	slot_key_type connect(F1 f)
@@ -49,7 +49,7 @@ public:
 		_connections[slot_key] = f;
         return slot_key;
 	}
-	
+
 	void disconnect(const slot_key_type slot_key)
 	{
 		_connections.erase(slot_key);
@@ -77,7 +77,7 @@ public:
     }
 
 	template<typename... A>
-	typename void call(A&&... a) const
+	void call(A&&... a) const
 	{
         operator()(std::forward<A>(a)...);
     }

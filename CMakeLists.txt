@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(GO_LIBS)
 
@@ -14,6 +14,21 @@ SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
 ELSE(USE_SOLUTION_FOLDERS)
 SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS OFF)
 ENDIF(USE_SOLUTION_FOLDERS)
+
+########################################################
+#  compiler flags                                      #
+########################################################
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    # using Clang
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    # using GCC
+    SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11" )
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
+    # using Intel C++
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    # using Visual Studio C++
+endif()
 
 ########################################################
 #  external dependencies                               #
