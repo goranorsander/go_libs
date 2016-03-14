@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\signals">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go\signals.hpp">
+      <Filter>go</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\signal.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\slot.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\slot_arguments.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -22,9 +22,6 @@
     <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\slot_arguments.hpp">
-      <Filter>go\mvvm</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\go\mvvm\observable_object.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
@@ -35,9 +32,6 @@
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\command_parameters.hpp">
-      <Filter>go\mvvm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\slot.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\command_manager.hpp">
@@ -53,9 +47,6 @@
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp">
-      <Filter>go\mvvm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\signal.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <go/mvvm/slot_arguments.hpp>
+#include <go/signals/slot_arguments.hpp>
 
 namespace go
 {
@@ -20,7 +20,7 @@ namespace mvvm
 
 template<class S = std::string>
 class property_changed_arguments
-    : public slot_arguments
+    : public go::signals::slot_arguments
 {
 public:
     typedef S string_type;
@@ -37,7 +37,7 @@ private:
 
 protected:
     property_changed_arguments(const string_type& property_name)
-        : slot_arguments()
+        : go::signals::slot_arguments()
         , _property_name(property_name)
     {
     }

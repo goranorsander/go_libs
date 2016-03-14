@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_SLOT_HPP_INCLUDED
-#define GO_MVVM_SLOT_HPP_INCLUDED
+#ifndef GO_SIGNALS_SLOT_HPP_INCLUDED
+#define GO_SIGNALS_SLOT_HPP_INCLUDED
 
 //
 //  slot.hpp
@@ -15,7 +15,7 @@
 
 namespace go
 {
-namespace mvvm
+namespace signals
 {
 
 class slot
@@ -35,7 +35,7 @@ protected:
     }
 };
 
-} // namespace mvvm
+} // namespace signals
 } // namespace go
 
-#endif  // #ifndef GO_MVVM_SLOT_HPP_INCLUDED
+#endif  // #ifndef GO_SIGNALS_SLOT_HPP_INCLUDED

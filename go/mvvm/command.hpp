@@ -12,8 +12,8 @@
 //
 
 #include <go/mvvm/command_parameters.hpp>
-#include <go/mvvm/signal.hpp>
 #include <go/property/ro_property.hpp>
+#include <go/signals/signal.hpp>
 
 namespace go
 {
@@ -35,7 +35,7 @@ public:
     typedef std::weak_ptr<command<string_type>> wptr;
     typedef command_parameters command_parameters_type;
     typedef std::shared_ptr<command_parameters_type> command_parameters_type_ptr;
-    typedef signal<std::function<void(const ptr&)>> can_execute_changed_signal;
+    typedef go::signals::signal<std::function<void(const ptr&)>> can_execute_changed_signal;
     typedef go::property::ro_property<string_type> command_name_type;
 
 public:

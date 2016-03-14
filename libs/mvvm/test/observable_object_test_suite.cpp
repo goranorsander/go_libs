@@ -21,6 +21,7 @@
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
+namespace s = go::signals;
 
 // Test observable_object
 class product_model
@@ -140,7 +141,7 @@ public:
     int unit_price_change_count() const { return _unit_price_change_count; }
 
 private:
-    m::slot_key_type _on_property_changed_slot_key;
+    s::slot_key_type _on_property_changed_slot_key;
     int _product_id_change_count;
     int _product_name_change_count;
     int _unit_price_change_count;

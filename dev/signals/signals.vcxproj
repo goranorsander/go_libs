@@ -19,23 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\go\mvvm.hpp" />
-    <ClInclude Include="..\..\go\mvvm\command.hpp" />
-    <ClInclude Include="..\..\go\mvvm\command_manager.hpp" />
-    <ClInclude Include="..\..\go\mvvm\command_parameters.hpp" />
-    <ClInclude Include="..\..\go\mvvm\container_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_container_changed.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_property_changed.hpp" />
-    <ClInclude Include="..\..\go\mvvm\object.hpp" />
-    <ClInclude Include="..\..\go\mvvm\observable_object.hpp" />
-    <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go\mvvm\relay_command.hpp" />
+    <ClInclude Include="..\..\go\signals.hpp" />
+    <ClInclude Include="..\..\go\signals\signal.hpp" />
+    <ClInclude Include="..\..\go\signals\slot.hpp" />
+    <ClInclude Include="..\..\go\signals\slot_arguments.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>mvvm</RootNamespace>
-    <ProjectGuid>{FEC03570-CB02-4DAC-8D9F-55A42DDE90E2}</ProjectGuid>
+    <RootNamespace>signals</RootNamespace>
+    <ProjectGuid>{99DA5C28-BFE0-4F04-86FD-CEA6A66BAE6C}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

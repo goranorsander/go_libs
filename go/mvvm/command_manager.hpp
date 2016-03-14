@@ -27,7 +27,7 @@ public:
     typedef S string_type;
     typedef std::shared_ptr<command_manager<string_type>> ptr;
     typedef std::weak_ptr<command_manager<string_type>> wptr;
-    typedef signal<std::function<void(const string_type&)>> requery_suggested_signal;
+    typedef go::signals::signal<std::function<void(const string_type&)>> requery_suggested_signal;
 
 protected:
     typedef command<string_type> command_type;

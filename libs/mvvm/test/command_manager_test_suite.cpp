@@ -19,6 +19,7 @@
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
+namespace s = go::signals;
 
 // Test command_manager
 class spaceship
@@ -225,7 +226,7 @@ private:
     typedef std::pair<std::string, std::string> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
-    m::slot_key_type _on_property_changed_slot_key;
+    s::slot_key_type _on_property_changed_slot_key;
     on_property_changed_counter_type _on_property_changed_count;
 };
 

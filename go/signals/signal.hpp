@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_SIGNAL_HPP_INCLUDED
-#define GO_MVVM_SIGNAL_HPP_INCLUDED
+#ifndef GO_SIGNALS_SIGNAL_HPP_INCLUDED
+#define GO_SIGNALS_SIGNAL_HPP_INCLUDED
 
 //
 //  signal.hpp
@@ -16,7 +16,7 @@
 
 namespace go
 {
-namespace mvvm
+namespace signals
 {
 
 typedef unsigned int slot_key_type;
@@ -87,7 +87,7 @@ protected:
 	connections_type _connections;
 };
 
-} // namespace mvvm
+} // namespace signals
 } // namespace go
 
-#endif  // #ifndef GO_MVVM_SIGNAL_HPP_INCLUDED
+#endif  // #ifndef GO_SIGNALS_SIGNAL_HPP_INCLUDED

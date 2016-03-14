@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_SLOT_ARGUMENTS_HPP_INCLUDED
-#define GO_MVVM_SLOT_ARGUMENTS_HPP_INCLUDED
+#ifndef GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
+#define GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
 
 //
 //  slot_arguments.hpp
@@ -15,7 +15,7 @@
 
 namespace go
 {
-namespace mvvm
+namespace signals
 {
 
 class slot_arguments
@@ -38,7 +38,7 @@ private:
     slot_arguments(const slot_arguments&) = delete;
 };
 
-} // namespace mvvm
+} // namespace signals
 } // namespace go
 
-#endif  // #ifndef GO_MVVM_SLOT_ARGUMENTS_HPP_INCLUDED
+#endif  // #ifndef GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
