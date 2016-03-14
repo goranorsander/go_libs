@@ -13,6 +13,7 @@
 
 #include <functional>
 #include <map>
+#include <mutex>
 
 namespace go
 {
@@ -38,6 +39,7 @@ public:
     signal()
         : _slot_next_key(0)
         , _connections()
+        , _signal_guard()
     {
     }
 
@@ -45,6 +47,7 @@ public:
     template<typename F1>
 	slot_key_type connect(F1 f)
 	{
+        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
 		const slot_key_type slot_key = ++_slot_next_key;
 		_connections[slot_key] = f;
         return slot_key;
@@ -52,22 +55,26 @@ public:
 
 	void disconnect(const slot_key_type slot_key)
 	{
+        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
 		_connections.erase(slot_key);
 	}
 
     void disconnect_all_slots()
     {
+        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         _connections.clear();
     }
 
     bool empty() const
     {
+        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         return _connections.empty();
     }
 
     template<typename... A>
     void operator()(A&&... a) const
     {
+        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         for(auto& connection : _connections)
         {
             function_type safe_f = connection.second;
@@ -85,6 +92,9 @@ public:
 protected:
     slot_key_type _slot_next_key;
 	connections_type _connections;
+
+private:
+    mutable std::recursive_mutex _signal_guard;
 };
 
 } // namespace signals
