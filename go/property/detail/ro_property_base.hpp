@@ -51,7 +51,7 @@ public:
 private:
     this_type& operator=(const this_type& v)
     {
-        throw std::logic_error(std::string("template<class V, class P, class S> class ro_property_base : assignment operator should not be used"))
+        throw std::logic_error(std::string("template<class V, class P, class S> class ro_property_base : assignment operator should not be used"));
     }
 
 public:
