@@ -48,6 +48,7 @@ SET(GO_DIR ${GO_LIBS_SOURCE_DIR}/go)
 SET(GO_LIBS_SRC_GO_HPP
     ${GO_DIR}/mvvm.hpp
     ${GO_DIR}/property.hpp
+    ${GO_DIR}/signals.hpp
 )
 
 # *.cpp
@@ -75,9 +76,6 @@ SET(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/observable_object.hpp
     ${GO_MVVM_DIR}/property_changed_arguments.hpp
     ${GO_MVVM_DIR}/relay_command.hpp
-    ${GO_MVVM_DIR}/signal.hpp
-    ${GO_MVVM_DIR}/slot.hpp
-    ${GO_MVVM_DIR}/slot_arguments.hpp
 )
 
 # *.cpp
@@ -145,6 +143,25 @@ SET(GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP
 SET(GO_LIBS_SRC_GO_PROPERTY_POLICY_CPP)
 
 ########################################################
+#  go/signals                                             #
+########################################################
+
+SET(GO_SIGNALS_DIRNAME signals)
+SET(GO_SIGNALS_DIR ${GO_DIR}/signals)
+
+# *.hpp
+
+SET(GO_LIBS_SRC_GO_SIGNALS_HPP
+    ${GO_SIGNALS_DIR}/signal.hpp
+    ${GO_SIGNALS_DIR}/slot.hpp
+    ${GO_SIGNALS_DIR}/slot_arguments.hpp
+)
+
+# *.cpp
+
+SET(GO_LIBS_SRC_GO_SIGNALS_CPP)
+
+########################################################
 #  libs                                                #
 ########################################################
 
@@ -157,3 +174,4 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}             DESTINATION  include/${GO_D
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_HPP}         DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP}  DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}  DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
