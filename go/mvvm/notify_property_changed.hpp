@@ -32,10 +32,7 @@ public:
     typedef go::signals::signal<std::function<void(const object::ptr&, const property_changed_arguments_type_ptr&)>> property_changed_signal;
 
 public:
-    virtual ~notify_property_changed() = 0
-    {
-        property_changed.disconnect_all_slots();
-    }
+    virtual ~notify_property_changed() = 0;
 
 protected:
     notify_property_changed()
@@ -46,6 +43,12 @@ protected:
 public:
     property_changed_signal property_changed;
 };
+
+template<class S>
+inline notify_property_changed<S>::~notify_property_changed()
+{
+    property_changed.disconnect_all_slots();
+}
 
 } // namespace mvvm
 } // namespace go

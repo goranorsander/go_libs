@@ -33,15 +33,12 @@ public:
     typedef command<string_type> this_type;
     typedef std::shared_ptr<command<string_type>> ptr;
     typedef std::weak_ptr<command<string_type>> wptr;
-    typedef command_parameters command_parameters_type;
-    typedef std::shared_ptr<command_parameters_type> command_parameters_type_ptr;
+    typedef std::shared_ptr<command_parameters> command_parameters_type_ptr;
     typedef go::signals::signal<std::function<void(const ptr&)>> can_execute_changed_signal;
     typedef go::property::ro_property<string_type> command_name_type;
 
 public:
-    virtual ~command() = 0
-    {
-    }
+    virtual ~command() = 0;
 
 private:
     command(const command&) = delete;
@@ -70,7 +67,7 @@ public:
     {
         if(!can_execute_changed.empty())
         {
-            can_execute_changed(shared_from_this());
+            can_execute_changed(std::enable_shared_from_this<command<string_type>>::shared_from_this());
         }
     }
 
@@ -91,6 +88,11 @@ private:
     const string_type _command_name;
     command_parameters::ptr _parameters;
 };
+
+template<class S>
+inline command<S>::~command()
+{
+}
 
 } // namespace mvvm
 } // namespace go

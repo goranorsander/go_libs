@@ -25,6 +25,7 @@ template<class T, class S = std::string> class wo_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::proxy<T> policy_type;
     typedef wo_property<value_type, string_type> this_type;
     typedef std::function<void(const value_type&)> set_function_signature;
 
@@ -34,12 +35,12 @@ public:
     }
 
     wo_property(const string_type& property_name)
-        : detail::wo_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(), property_name)
+        : detail::wo_property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
     explicit wo_property(const string_type& property_name, const set_function_signature& set_function)
-        : detail::wo_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(nullptr, set_function), property_name)
+        : detail::wo_property_base<value_type, policy_type, string_type>(policy_type(nullptr, set_function), property_name)
     {
     }
 
@@ -47,7 +48,7 @@ public:
 
     void setter(const set_function_signature& f)
     {
-        storage().setter(f);
+        detail::wo_property_base<value_type, policy_type, string_type>::storage().setter(f);
     }
 };
 

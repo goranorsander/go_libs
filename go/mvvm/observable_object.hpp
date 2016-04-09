@@ -41,14 +41,11 @@ protected:
 protected:
     virtual void on_property_changed(const string_type& property_name)
     {
-        if(!property_changed.empty())
+        if(!notify_property_changed<string_type>::property_changed.empty())
         {
-            property_changed(shared_from_this(), property_changed_arguments<string_type>::create(property_name));
+            notify_property_changed<string_type>::property_changed(shared_from_this(), property_changed_arguments<string_type>::create(property_name));
         }
     }
-
-public:
-    property_changed_signal property_changed;
 };
 
 } // namespace mvvm

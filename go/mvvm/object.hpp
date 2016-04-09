@@ -26,9 +26,7 @@ public:
     typedef std::weak_ptr<object> wptr;
 
 public:
-    virtual ~object() = 0
-    {
-    }
+    virtual ~object() = 0;
 
 protected:
     object()
@@ -36,6 +34,10 @@ protected:
     {
     }
 };
+
+inline object::~object()
+{
+}
 
 } // namespace mvvm
 } // namespace go

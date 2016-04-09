@@ -26,9 +26,7 @@ public:
     typedef S string_type;
     typedef ro_property_base<value_type, storage_policy, string_type> this_type;
 
-    virtual ~ro_property_base() = 0
-    {
-    }
+    virtual ~ro_property_base() = 0;
 
 protected:
     explicit ro_property_base(const storage_policy& s, const string_type& n)
@@ -75,6 +73,11 @@ private:
     const string_type _n;
     storage_policy _s;
 };
+
+template<class V, class P, class S>
+inline ro_property_base<V, P, S>::~ro_property_base()
+{
+}
 
 } // namespace detail
 } // namespace property

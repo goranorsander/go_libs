@@ -25,6 +25,7 @@ template<class T, class S = std::string> class ro_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::proxy<T> policy_type;
     typedef ro_property<value_type, string_type> this_type;
     typedef std::function<value_type(void)> get_function_signature;
 
@@ -34,18 +35,18 @@ public:
     }
 
     ro_property(const string_type& property_name)
-        : detail::ro_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(), property_name)
+        : detail::ro_property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
     explicit ro_property(const string_type& property_name, const get_function_signature& get_function)
-        : detail::ro_property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(get_function, nullptr), property_name)
+        : detail::ro_property_base<value_type, policy_type, string_type>(policy_type(get_function, nullptr), property_name)
     {
     }
 
     void getter(const get_function_signature& f)
     {
-        const_cast<policy::proxy<T>&>(storage()).getter(f);
+        const_cast<policy_type&>(detail::ro_property_base<value_type, policy_type, string_type>::storage()).getter(f);
     }
 };
 

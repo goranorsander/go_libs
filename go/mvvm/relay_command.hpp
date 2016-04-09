@@ -26,8 +26,8 @@ public:
     typedef S string_type;
     typedef std::shared_ptr<relay_command<string_type>> ptr;
     typedef std::weak_ptr<relay_command<string_type>> wptr;
-    typedef std::function<bool(const command_parameters_type_ptr&)> can_execute_command_signature;
-    typedef std::function<void(const command_parameters_type_ptr&)> execute_command_signature;
+    typedef std::function<bool(const std::shared_ptr<command_parameters>&)> can_execute_command_signature;
+    typedef std::function<void(const std::shared_ptr<command_parameters>&)> execute_command_signature;
 
 public:
     virtual ~relay_command()
@@ -52,12 +52,12 @@ public:
     }
 
 private:
-    virtual bool can_execute(const command_parameters_type_ptr& params)
+    virtual bool can_execute(const std::shared_ptr<command_parameters>& params)
     {
         return _can_execute ? _can_execute(params) : true;
     }
 
-    virtual void execute(const command_parameters_type_ptr& params)
+    virtual void execute(const std::shared_ptr<command_parameters>& params)
     {
         if (_execute)
         {

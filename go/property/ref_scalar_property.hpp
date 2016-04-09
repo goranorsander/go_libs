@@ -25,6 +25,7 @@ template<class T, class S = std::string> class ref_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::ref<T> policy_type;
     typedef ref_scalar_property<value_type, string_type> this_type;
 
 public:
@@ -33,12 +34,12 @@ public:
     }
 
     explicit ref_scalar_property(const string_type& property_name)
-        : detail::property_base<value_type, policy::ref<value_type>, string_type>(policy::ref<value_type>(), property_name)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
     explicit ref_scalar_property(const string_type& property_name, const value_type& v)
-        : detail::property_base<value_type, policy::ref<value_type>, string_type>(policy::ref<value_type>(v), property_name)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
     {
     }
 
@@ -46,12 +47,12 @@ public:
 
     bool empty() const
     {
-        return storage().empty();
+        return detail::property_base<value_type, policy_type, string_type>::storage().empty();
     }
 
     void clear()
     {
-        return storage().clear();
+        return detail::property_base<value_type, policy_type, string_type>::storage().clear();
     }
 
     explicit operator bool() const

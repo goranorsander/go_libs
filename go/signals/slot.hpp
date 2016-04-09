@@ -25,15 +25,17 @@ public:
     typedef std::weak_ptr<slot> wptr;
 
 public:
-    virtual ~slot() = 0
-    {
-    }
+    virtual ~slot() = 0;
 
 protected:
     slot()
     {
     }
 };
+
+inline slot::~slot()
+{
+}
 
 } // namespace signals
 } // namespace go

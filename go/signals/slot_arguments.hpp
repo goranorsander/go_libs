@@ -25,9 +25,7 @@ public:
     typedef std::weak_ptr<slot_arguments> wptr;
 
 public:
-    virtual ~slot_arguments() = 0
-    {
-    }
+    virtual ~slot_arguments() = 0;
 
 protected:
     slot_arguments()
@@ -37,6 +35,10 @@ protected:
 private:
     slot_arguments(const slot_arguments&) = delete;
 };
+
+inline slot_arguments::~slot_arguments()
+{
+}
 
 } // namespace signals
 } // namespace go

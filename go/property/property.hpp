@@ -25,6 +25,7 @@ template<class T, class S = std::string> class property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::proxy<T> policy_type;
     typedef property<value_type, string_type> this_type;
     typedef std::function<value_type(void)> get_function_signature;
     typedef std::function<void(const value_type&)> set_function_signature;
@@ -35,12 +36,12 @@ public:
     }
 
     explicit property(const string_type& property_name)
-        : detail::property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(), property_name)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
     explicit property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
-        : detail::property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(get_function, set_function), property_name)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(get_function, set_function), property_name)
     {
     }
 
@@ -48,12 +49,12 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        storage().getter(f);
+        detail::property_base<value_type, policy_type, string_type>::storage().getter(f);
     }
 
     void setter(const set_function_signature& f)
     {
-        storage().setter(f);
+        detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
     }
 };
 
