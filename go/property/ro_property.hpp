@@ -19,7 +19,7 @@ namespace go
 namespace property
 {
 
-template<class T, class S = std::string> class ro_property
+template<class T, class S> class ro_property
     : public detail::ro_property_base<T, policy::proxy<T>, S>
 {
 public:

@@ -21,6 +21,9 @@ namespace p = go::property;
 namespace ph = std::placeholders;
 namespace s = go::signals;
 
+namespace
+{
+
 // Test observable_object
 class product_model
     : public m::observable_object<std::wstring>
@@ -190,4 +193,6 @@ TEST(observable_object_test_suite_wstring, test_observable_object)
     EXPECT_EQ(1, o.product_id_change_count());
     EXPECT_EQ(0, o.product_name_change_count());
     EXPECT_EQ(0, o.unit_price_change_count());
+}
+
 }

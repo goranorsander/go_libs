@@ -18,7 +18,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S = std::string>
+template<class S>
 class relay_command
     : public command<S>
 {

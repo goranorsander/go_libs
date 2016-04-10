@@ -18,13 +18,16 @@
 namespace p = go::property;
 namespace ph = std::placeholders;
 
+namespace
+{
+
 // Test value_scalar_property
 class spaceship
 {
 public:
-    p::value_scalar_property<int> crew_complement;
-    p::value_scalar_property<double> max_speed;
-    p::value_scalar_property<std::string> name;
+    p::value_scalar_property<int, std::string> crew_complement;
+    p::value_scalar_property<double, std::string> max_speed;
+    p::value_scalar_property<std::string, std::string> name;
 
     spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -107,9 +110,9 @@ TEST(properties_test_suite, value_scalar_properties)
 class ro_spaceship
 {
 public:
-    p::ro_value_scalar_property<int> crew_complement;
-    p::ro_value_scalar_property<double> max_speed;
-    p::ro_value_scalar_property<std::string> name;
+    p::ro_value_scalar_property<int, std::string> crew_complement;
+    p::ro_value_scalar_property<double, std::string> max_speed;
+    p::ro_value_scalar_property<std::string, std::string> name;
 
     ro_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -154,9 +157,9 @@ TEST(properties_test_suite, ro_scalar_properties)
 class wo_spaceship
 {
 public:
-    p::wo_value_scalar_property<int> crew_complement;
-    p::wo_value_scalar_property<double> max_speed;
-    p::wo_value_scalar_property<std::string> name;
+    p::wo_value_scalar_property<int, std::string> crew_complement;
+    p::wo_value_scalar_property<double, std::string> max_speed;
+    p::wo_value_scalar_property<std::string, std::string> name;
 
     wo_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -193,9 +196,9 @@ TEST(properties_test_suite, wo_scalar_properties)
 class ref_spaceship
 {
 public:
-    p::ref_scalar_property<int> crew_complement;
-    p::ref_scalar_property<double> max_speed;
-    p::ref_scalar_property<std::string> name;
+    p::ref_scalar_property<int, std::string> crew_complement;
+    p::ref_scalar_property<double, std::string> max_speed;
+    p::ref_scalar_property<std::string, std::string> name;
 
     ref_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -292,9 +295,9 @@ TEST(properties_test_suite, ref_scalar_properties)
 class ro_ref_spaceship
 {
 public:
-    p::ro_ref_scalar_property<int> crew_complement;
-    p::ro_ref_scalar_property<double> max_speed;
-    p::ro_ref_scalar_property<std::string> name;
+    p::ro_ref_scalar_property<int, std::string> crew_complement;
+    p::ro_ref_scalar_property<double, std::string> max_speed;
+    p::ro_ref_scalar_property<std::string, std::string> name;
 
     ro_ref_spaceship()
         : crew_complement(std::string("crew_complement"), m_crew_complement)
@@ -355,9 +358,9 @@ TEST(properties_test_suite, ro_ref_scalar_properties)
 class wo_ref_spaceship
 {
 public:
-    p::wo_ref_scalar_property<int> crew_complement;
-    p::wo_ref_scalar_property<double> max_speed;
-    p::wo_ref_scalar_property<std::string> name;
+    p::wo_ref_scalar_property<int, std::string> crew_complement;
+    p::wo_ref_scalar_property<double, std::string> max_speed;
+    p::wo_ref_scalar_property<std::string, std::string> name;
 
     wo_ref_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -412,7 +415,7 @@ TEST(properties_test_suite, wo_ref_scalar_properties)
 // Test property
 class armament
 {
-// Spaceship armament, not modifyable, provided by third-party
+    // Spaceship armament, not modifyable, provided by third-party
 public:
     ~armament()
     {
@@ -441,7 +444,7 @@ class armed_spaceship
     : public spaceship
 {
 public:
-    p::property<int> phaser_arrays;
+    p::property<int, std::string> phaser_arrays;
 
     armed_spaceship()
         : spaceship()
@@ -575,7 +578,7 @@ class ro_armed_spaceship
     : public ro_spaceship
 {
 public:
-    p::ro_property<int> phaser_arrays;
+    p::ro_property<int, std::string> phaser_arrays;
 
     ro_armed_spaceship()
         : ro_spaceship()
@@ -663,7 +666,7 @@ class wo_armed_spaceship
     : public wo_spaceship
 {
 public:
-    p::wo_property<int> phaser_arrays;
+    p::wo_property<int, std::string> phaser_arrays;
 
     wo_armed_spaceship()
         : wo_spaceship()
@@ -728,4 +731,6 @@ TEST(properties_test_suite, wo_value_properties)
 
     // Copy construction
     wo_armed_spaceship s3(s);
+}
+
 }

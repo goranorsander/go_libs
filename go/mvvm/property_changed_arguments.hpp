@@ -18,7 +18,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S = std::string>
+template<class S>
 class property_changed_arguments
     : public go::signals::slot_arguments
 {

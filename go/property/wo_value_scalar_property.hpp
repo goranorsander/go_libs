@@ -19,7 +19,7 @@ namespace go
 namespace property
 {
 
-template<class T, class S = std::string> class wo_value_scalar_property
+template<class T, class S> class wo_value_scalar_property
     : public detail::wo_property_base<T, policy::value<T>, S>
 {
 public:

@@ -18,7 +18,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S = std::string>
+template<class S>
 class observable_object
     : public notify_property_changed<S>
     , public object

@@ -21,7 +21,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S = std::string>
+template<class S>
 class notify_property_changed
     : public go::signals::slot
 {

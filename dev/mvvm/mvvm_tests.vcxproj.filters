@@ -20,5 +20,8 @@
     <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite_wstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

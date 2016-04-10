@@ -20,6 +20,9 @@ namespace p = go::property;
 namespace ph = std::placeholders;
 namespace s = go::signals;
 
+namespace
+{
+
 // Test signals
 class fleet_commander
 {
@@ -52,8 +55,8 @@ public:
     }
 
 public:
-    p::value_scalar_property<std::string> commander;
-    p::value_scalar_property<std::string> battle;
+    p::value_scalar_property<std::string, std::string> commander;
+    p::value_scalar_property<std::string, std::string> battle;
 
     fire_lasers_signal fire_lasers;
     fire_proton_torpedoes_signal fire_proton_torpedoes;
@@ -85,7 +88,7 @@ public:
         , _fire_lasers_slot_key(0)
         , _fire_proton_torpedoes_slot_key(0)
     {
-        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_scalar_property<bool>::set, &lasers_firing, ph::_1));
+        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_scalar_property<bool, std::string>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
 
@@ -100,10 +103,10 @@ public:
     }
 
 public:
-    p::value_scalar_property<std::string> name;
-    p::value_scalar_property<std::string> captain;
-    p::value_scalar_property<bool> lasers_firing;
-    p::value_scalar_property<int> proton_torpedoes;
+    p::value_scalar_property<std::string, std::string> name;
+    p::value_scalar_property<std::string, std::string> captain;
+    p::value_scalar_property<bool, std::string> lasers_firing;
+    p::value_scalar_property<int, std::string> proton_torpedoes;
 
 private:
     fleet_commander::wptr _fleet_commander;
@@ -127,8 +130,8 @@ TEST(signals_test_suite, test_fire_lasers)
 {
     TEST_CASE_SHIPYARD
 
-    // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
+        // After connect
+        EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
     EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
@@ -198,8 +201,8 @@ TEST(signals_test_suite, test_fire_proton_torpedoes)
 {
     TEST_CASE_SHIPYARD
 
-    // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
+        // After connect
+        EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
     EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
@@ -248,8 +251,8 @@ TEST(signals_test_suite, test_fire_all_weapons)
 {
     TEST_CASE_SHIPYARD
 
-    // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
+        // After connect
+        EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
     EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
@@ -360,4 +363,6 @@ TEST(signals_test_suite, test_fire_all_weapons)
     EXPECT_EQ(0, ship6->proton_torpedoes());
     EXPECT_EQ(13, ship7->proton_torpedoes());
     EXPECT_EQ(13, ship8->proton_torpedoes());
+}
+
 }
