@@ -77,9 +77,9 @@ public:
         std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         for(auto& connection : _connections)
         {
-            function_type safe_f = connection.second;
-            auto f = std::bind(std::forward<function_type>(safe_f), std::forward<A>(a)...);
-            f();
+            function_type f = connection.second;
+            auto s = std::bind(std::forward<function_type>(f), std::forward<A>(a)...);
+            s();
         }
     }
 

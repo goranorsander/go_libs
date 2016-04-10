@@ -19,187 +19,187 @@ namespace p = go::property;
 namespace ph = std::placeholders;
 
 // Test value_scalar_property
-class camera
+class spaceship
 {
 public:
-    p::value_scalar_property<int> width;
-    p::value_scalar_property<double> height;
+    p::value_scalar_property<int> crew_complement;
+    p::value_scalar_property<double> max_speed;
     p::value_scalar_property<std::string> name;
 
-    camera()
-        : width(std::string("width"), 320)
-        , height(std::string("height"), 200.0)
-        , name(std::string("name"), std::string("camera"))
+    spaceship()
+        : crew_complement(std::string("crew_complement"), 1012)
+        , max_speed(std::string("max_speed"), 9.8)
+        , name(std::string("name"), std::string("USS Enterprise (NCC-1701-D)"))
     {
     }
 
-    camera(const camera& v)
-        : width(v.width)
-        , height(v.height)
+    spaceship(const spaceship& v)
+        : crew_complement(v.crew_complement)
+        , max_speed(v.max_speed)
         , name(v.name)
     {
     }
 
-    camera& operator=(const camera& v)
+    spaceship& operator=(const spaceship& v)
     {
-        width = v.width;
-        height = v.height;
+        crew_complement = v.crew_complement;
+        max_speed = v.max_speed;
         name = v.name;
     }
 };
 
 TEST(properties_test_suite, value_scalar_properties)
 {
-    camera c;
+    spaceship s;
 
     // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
+    s.crew_complement(647);
+    s.max_speed(9.975);
+    s.name("USS Enterprise (NCC-1701-E)");
+    EXPECT_EQ(647, s.crew_complement());
+    EXPECT_EQ(9.975, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s.name());
 
     // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
+    s.crew_complement = 430;
+    s.max_speed = 9.0;
+    s.name = std::string("USS Enterprise (NCC-1701)");
+    EXPECT_EQ(430, s.crew_complement);
+    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
+    s.crew_complement.set(574);
+    s.max_speed.set(9.7);
+    s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
+    EXPECT_EQ(574, s.crew_complement.get());
+    EXPECT_EQ(9.7, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s.name());
 
     // Copy construction
-    camera c2(c);
-    EXPECT_EQ(640, c2.width());
-    EXPECT_EQ(480.0, c2.height());
-    EXPECT_EQ(std::string("camera iv"), c2.name());
+    spaceship s2(s);
+    EXPECT_EQ(574, s2.crew_complement());
+    EXPECT_EQ(9.7, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s2.name());
 }
 
 // Test ro_value_scalar_property
-class ro_camera
+class ro_spaceship
 {
 public:
-    p::ro_value_scalar_property<int> width;
-    p::ro_value_scalar_property<double> height;
+    p::ro_value_scalar_property<int> crew_complement;
+    p::ro_value_scalar_property<double> max_speed;
     p::ro_value_scalar_property<std::string> name;
 
-    ro_camera()
-        : width(std::string("width"), 320)
-        , height(std::string("height"), 200.0)
-        , name(std::string("name"), std::string("camera"))
+    ro_spaceship()
+        : crew_complement(std::string("crew_complement"), 1012)
+        , max_speed(std::string("max_speed"), 9.8)
+        , name(std::string("name"), std::string("USS Enterprise (NCC-1701-D)"))
     {
     }
 };
 
 TEST(properties_test_suite, ro_scalar_properties)
 {
-    ro_camera c;
+    ro_spaceship s;
 
     // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_camera c2(c);
-    EXPECT_EQ(320, c2.width());
-    EXPECT_EQ(200.0, c2.height());
-    EXPECT_EQ(std::string("camera"), c2.name());
+    ro_spaceship s2(s);
+    EXPECT_EQ(1012, s2.crew_complement());
+    EXPECT_EQ(9.8, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
 // Test wo_value_scalar_property
-class wo_camera
+class wo_spaceship
 {
 public:
-    p::wo_value_scalar_property<int> width;
-    p::wo_value_scalar_property<double> height;
+    p::wo_value_scalar_property<int> crew_complement;
+    p::wo_value_scalar_property<double> max_speed;
     p::wo_value_scalar_property<std::string> name;
 
-    wo_camera()
-        : width(std::string("width"), 320)
-        , height(std::string("height"), 200.0)
-        , name(std::string("name"), std::string("camera"))
+    wo_spaceship()
+        : crew_complement(std::string("crew_complement"), 1012)
+        , max_speed(std::string("max_speed"), 9.8)
+        , name(std::string("name"), std::string("USS Enterprise (NCC-1701-D)"))
     {
     }
 };
 
 TEST(properties_test_suite, wo_scalar_properties)
 {
-    wo_camera c;
+    wo_spaceship s;
 
     // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
+    s.crew_complement(647);
+    s.max_speed(9.975);
+    s.name("USS Enterprise (NCC-1701-E)");
 
     // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
+    s.crew_complement = 430;
+    s.max_speed = 9.0;
+    s.name = std::string("USS Enterprise (NCC-1701)");
 
     // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
+    s.crew_complement.set(574);
+    s.max_speed.set(9.7);
+    s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
 
     // Copy construction
-    wo_camera c2(c);
+    wo_spaceship s2(s);
 }
 
 // Test ref_scalar_property
-class ref_camera
+class ref_spaceship
 {
 public:
-    p::ref_scalar_property<int> width;
-    p::ref_scalar_property<double> height;
+    p::ref_scalar_property<int> crew_complement;
+    p::ref_scalar_property<double> max_speed;
     p::ref_scalar_property<std::string> name;
 
-    ref_camera()
-        : width(std::string("width"))
-        , height(std::string("height"))
+    ref_spaceship()
+        : crew_complement(std::string("crew_complement"))
+        , max_speed(std::string("max_speed"))
         , name(std::string("name"))
     {
     }
@@ -207,161 +207,161 @@ public:
 
 TEST(properties_test_suite, ref_scalar_properties)
 {
-    ref_camera c;
+    ref_spaceship s;
 
     // Verify default values
-    EXPECT_TRUE(c.width.empty() == true);
-    EXPECT_TRUE(c.height.empty() == true);
-    EXPECT_TRUE(c.name.empty() == true);
+    EXPECT_TRUE(s.crew_complement.empty() == true);
+    EXPECT_TRUE(s.max_speed.empty() == true);
+    EXPECT_TRUE(s.name.empty() == true);
 
     // Method oriented get
-    int w1 = 320;
-    double h1 = 200.0;
-    std::string n1("camera");
-    c.width.set(w1);
-    c.height.set(h1);
-    c.name.set(n1);
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    int s_cc_1 = 1012;
+    double s_ms_1 = 9.8;
+    std::string s_n_1("USS Enterprise (NCC-1701-D)");
+    s.crew_complement.set(s_cc_1);
+    s.max_speed.set(s_ms_1);
+    s.name.set(s_n_1);
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Method oriented set
-    int w2 = 480;
-    double h2 = 340.0;
-    std::string n2("Camera 2");
-    c.width(w2);
-    c.height(h2);
-    c.name(n2);
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
+    int s_cc_2 = 647;
+    double s_ms_2 = 9.975;
+    std::string s_n_2("USS Enterprise (NCC-1701-E)");
+    s.crew_complement(s_cc_2);
+    s.max_speed(s_ms_2);
+    s.name(s_n_2);
+    EXPECT_EQ(647, s.crew_complement());
+    EXPECT_EQ(9.975, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s.name());
 
     // Assign operator oriented set
-    int w3 = 560;
-    double h3 = 410.0;
-    std::string n3("CAMERA 3");
-    c.width = w3;
-    c.height = h3;
-    c.name = n3;
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
+    int s_cc_3 = 430;
+    double s_ms_3 = 9.0;
+    std::string s_n_3("USS Enterprise (NCC-1701)");
+    s.crew_complement = s_cc_3;
+    s.max_speed = s_ms_3;
+    s.name = s_n_3;
+    EXPECT_EQ(430, s.crew_complement);
+    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
-    int w4 = 640;
-    double h4 = 480.0;
-    std::string n4("camera iv");
-    c.width.set(w4);
-    c.height.set(h4);
-    c.name.set(n4);
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
+    int s_cc_4 = 574;
+    double s_ms_4 = 9.7;
+    std::string s_n_4("USS Enterprise (NCC-1701-B)");
+    s.crew_complement.set(s_cc_4);
+    s.max_speed.set(s_ms_4);
+    s.name.set(s_n_4);
+    EXPECT_EQ(574, s.crew_complement.get());
+    EXPECT_EQ(9.7, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s.name());
 
     // Assign referenced object oriented set
-    w4 = 800;
-    h4 = 600.0;
-    n4 = "CAMERA IV";
-    EXPECT_EQ(800, c.width.get());
-    EXPECT_EQ(600.0, c.height.get());
-    EXPECT_EQ(std::string("CAMERA IV"), c.name());
+    s_cc_4 = 600;
+    s_ms_4 = 9.75;
+    s_n_4 = "USS Enterprise (NCC-1701-C)";
+    EXPECT_EQ(600, s.crew_complement.get());
+    EXPECT_EQ(9.75, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s.name());
 
     // Copy construction
-    ref_camera c2(c);
-    EXPECT_EQ(800, c2.width());
-    EXPECT_EQ(600.0, c2.height());
-    EXPECT_EQ(std::string("CAMERA IV"), c2.name());
+    ref_spaceship s2(s);
+    EXPECT_EQ(600, s2.crew_complement());
+    EXPECT_EQ(9.75, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s2.name());
 }
 
 // Test ro_ref_scalar_property
-class ro_ref_camera
+class ro_ref_spaceship
 {
 public:
-    p::ro_ref_scalar_property<int> width;
-    p::ro_ref_scalar_property<double> height;
+    p::ro_ref_scalar_property<int> crew_complement;
+    p::ro_ref_scalar_property<double> max_speed;
     p::ro_ref_scalar_property<std::string> name;
 
-    ro_ref_camera()
-        : width(std::string("width"), m_width)
-        , height(std::string("height"), m_height)
+    ro_ref_spaceship()
+        : crew_complement(std::string("crew_complement"), m_crew_complement)
+        , max_speed(std::string("max_speed"), m_speed)
         , name(std::string("name"), m_name)
-        , m_width(320)
-        , m_height(200.0)
-        , m_name(std::string("camera"))
+        , m_crew_complement(1012)
+        , m_speed(9.8)
+        , m_name(std::string("USS Enterprise (NCC-1701-D)"))
     {
     }
 
 private:
-    int m_width;
-    double m_height;
+    int m_crew_complement;
+    double m_speed;
     std::string m_name;
 };
 
 TEST(properties_test_suite, ro_ref_scalar_properties)
 {
-    ro_ref_camera c;
+    ro_ref_spaceship s;
 
     // Verify default values
-    EXPECT_TRUE(c.width.empty() == false);
-    EXPECT_TRUE(c.height.empty() == false);
-    EXPECT_TRUE(c.name.empty() == false);
+    EXPECT_TRUE(s.crew_complement.empty() == false);
+    EXPECT_TRUE(s.max_speed.empty() == false);
+    EXPECT_TRUE(s.name.empty() == false);
 
     // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_ref_camera c2(c);
-    EXPECT_TRUE(c2.width.empty() == false);
-    EXPECT_TRUE(c2.height.empty() == false);
-    EXPECT_TRUE(c2.name.empty() == false);
-    EXPECT_EQ(320, c2.width());
-    EXPECT_EQ(200.0, c2.height());
-    EXPECT_EQ(std::string("camera"), c2.name());
+    ro_ref_spaceship s2(s);
+    EXPECT_TRUE(s2.crew_complement.empty() == false);
+    EXPECT_TRUE(s2.max_speed.empty() == false);
+    EXPECT_TRUE(s2.name.empty() == false);
+    EXPECT_EQ(1012, s2.crew_complement());
+    EXPECT_EQ(9.8, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
 // Test wo_ref_scalar_property
-class wo_ref_camera
+class wo_ref_spaceship
 {
 public:
-    p::wo_ref_scalar_property<int> width;
-    p::wo_ref_scalar_property<double> height;
+    p::wo_ref_scalar_property<int> crew_complement;
+    p::wo_ref_scalar_property<double> max_speed;
     p::wo_ref_scalar_property<std::string> name;
 
-    wo_ref_camera()
-        : width(std::string("width"))
-        , height(std::string("height"))
+    wo_ref_spaceship()
+        : crew_complement(std::string("crew_complement"))
+        , max_speed(std::string("max_speed"))
         , name(std::string("name"))
     {
     }
@@ -369,227 +369,227 @@ public:
 
 TEST(properties_test_suite, wo_ref_scalar_properties)
 {
-    wo_ref_camera c;
+    wo_ref_spaceship s;
 
     // Verify default values
-    EXPECT_TRUE(c.width.empty() == true);
-    EXPECT_TRUE(c.height.empty() == true);
-    EXPECT_TRUE(c.name.empty() == true);
+    EXPECT_TRUE(s.crew_complement.empty() == true);
+    EXPECT_TRUE(s.max_speed.empty() == true);
+    EXPECT_TRUE(s.name.empty() == true);
 
     // Method oriented set
-    int w2 = 480;
-    double h2 = 340.0;
-    std::string n2("Camera 2");
-    c.width(w2);
-    c.height(h2);
-    c.name(n2);
+    int s_cc_2 = 647;
+    double s_ms_2 = 9.975;
+    std::string s_n_2("USS Enterprise (NCC-1701-E)");
+    s.crew_complement(s_cc_2);
+    s.max_speed(s_ms_2);
+    s.name(s_n_2);
 
     // Assign operator oriented set
-    int w3 = 560;
-    double h3 = 410.0;
-    std::string n3("CAMERA 3");
-    c.width = w3;
-    c.height = h3;
-    c.name = n3;
+    int s_cc_3 = 430;
+    double s_ms_3 = 9.0;
+    std::string s_n_3("USS Enterprise (NCC-1701)");
+    s.crew_complement = s_cc_3;
+    s.max_speed = s_ms_3;
+    s.name = s_n_3;
 
     // Traditional set
-    int w4 = 640;
-    double h4 = 480.0;
-    std::string n4("camera iv");
-    c.width.set(w4);
-    c.height.set(h4);
-    c.name.set(n4);
+    int s_cc_4 = 574;
+    double s_ms_4 = 9.7;
+    std::string s_n_4("USS Enterprise (NCC-1701-B)");
+    s.crew_complement.set(s_cc_4);
+    s.max_speed.set(s_ms_4);
+    s.name.set(s_n_4);
 
     // Assign referenced object oriented set
-    w4 = 800;
-    h4 = 600.0;
-    n4 = "CAMERA IV";
+    s_cc_4 = 600;
+    s_ms_4 = 9.75;
+    s_n_4 = "USS Enterprise (NCC-1701-C)";
 
     // Copy construction
-    wo_ref_camera c2(c);
+    wo_ref_spaceship s2(s);
 }
 
 // Test property
-class device_driver
+class armament
 {
-// Camera driver, not modifyable, provided by third-party
+// Spaceship armament, not modifyable, provided by third-party
 public:
-    ~device_driver()
+    ~armament()
     {
     }
 
-    device_driver()
-        : _fps(0)
+    armament()
+        : _phaser_arrays(0)
     {
     }
 
-    void set_target_fps(int fps)
+    void set_phaser_arrays(int phaser_arrays)
     {
-        _fps = fps;
+        _phaser_arrays = phaser_arrays;
     }
 
-    int get_current_fps() const
+    int get_phaser_arrays() const
     {
-        return _fps;
+        return _phaser_arrays;
     }
 
 private:
-    int _fps;
+    int _phaser_arrays;
 };
 
-class fps_camera
-    : public camera
+class armed_spaceship
+    : public spaceship
 {
 public:
-    p::property<int> fps;
+    p::property<int> phaser_arrays;
 
-    fps_camera()
-        : camera()
-        , fps(std::string("fps"))
-        , _d()
+    armed_spaceship()
+        : spaceship()
+        , phaser_arrays(std::string("phaser_arrays"))
+        , _armament()
     {
         update_bindings();
     }
 
-    fps_camera(const fps_camera& v)
-        : camera(v)
-        , fps(v.fps)
-        , _d(v._d)
+    armed_spaceship(const armed_spaceship& v)
+        : spaceship(v)
+        , phaser_arrays(v.phaser_arrays)
+        , _armament(v._armament)
     {
         update_bindings();
     }
 
-    fps_camera& operator=(const fps_camera& v)
+    armed_spaceship& operator=(const armed_spaceship& v)
     {
-        camera::operator=(v);
-        fps = v.fps;
-        _d = v._d;
+        spaceship::operator=(v);
+        phaser_arrays = v.phaser_arrays;
+        _armament = v._armament;
         update_bindings();
     }
 
 private:
     void update_bindings()
     {
-        fps.getter(std::bind(&device_driver::get_current_fps, &_d));
-        fps.setter(std::bind(&device_driver::set_target_fps, &_d, ph::_1));
+        phaser_arrays.getter(std::bind(&armament::get_phaser_arrays, &_armament));
+        phaser_arrays.setter(std::bind(&armament::set_phaser_arrays, &_armament, ph::_1));
     }
 
 private:
-    device_driver _d;
+    armament _armament;
 };
 
 TEST(properties_test_suite, value_properties)
 {
-    fps_camera c;
+    armed_spaceship s;
 
     // INHERITED PROPERTIES
 
     // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
-    EXPECT_EQ(480, c.width());
-    EXPECT_EQ(340.0, c.height());
-    EXPECT_EQ(std::string("Camera 2"), c.name());
+    s.crew_complement(647);
+    s.max_speed(9.975);
+    s.name("USS Enterprise (NCC-1701-E)");
+    EXPECT_EQ(647, s.crew_complement());
+    EXPECT_EQ(9.975, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s.name());
 
     // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
-    EXPECT_EQ(560, c.width);
-    EXPECT_EQ(410.0, c.height);
-    EXPECT_EQ(std::string("CAMERA 3"), c.name());
+    s.crew_complement = 430;
+    s.max_speed = 9.0;
+    s.name = std::string("USS Enterprise (NCC-1701)");
+    EXPECT_EQ(430, s.crew_complement);
+    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
-    EXPECT_EQ(640, c.width.get());
-    EXPECT_EQ(480.0, c.height.get());
-    EXPECT_EQ(std::string("camera iv"), c.name());
+    s.crew_complement.set(574);
+    s.max_speed.set(9.7);
+    s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
+    EXPECT_EQ(574, s.crew_complement.get());
+    EXPECT_EQ(9.7, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s.name());
 
     // Copy construction
-    camera c2(c);
-    EXPECT_EQ(640, c2.width());
-    EXPECT_EQ(480.0, c2.height());
-    EXPECT_EQ(std::string("camera iv"), c2.name());
+    spaceship s2(s);
+    EXPECT_EQ(574, s2.crew_complement());
+    EXPECT_EQ(9.7, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s2.name());
 
     // PROXY
 
-    c.fps(16);
+    s.phaser_arrays(8);
 
     // Method oriented get
-    EXPECT_EQ(16, c.fps());
+    EXPECT_EQ(8, s.phaser_arrays());
 
     // Cast operator oriented get
-    EXPECT_EQ(16, static_cast<int>(c.fps));
+    EXPECT_EQ(8, static_cast<int>(s.phaser_arrays));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(16 == c.fps);
+    EXPECT_TRUE(8 == s.phaser_arrays);
 
     // Traditional get
-    EXPECT_EQ(16, c.fps.get());
+    EXPECT_EQ(8, s.phaser_arrays.get());
 
     // Method oriented set
-    c.fps(24);
-    EXPECT_EQ(24, c.fps());
+    s.phaser_arrays(10);
+    EXPECT_EQ(10, s.phaser_arrays());
 
     // Assign operator oriented set
-    c.fps = 25;
-    EXPECT_EQ(25, c.fps);
+    s.phaser_arrays = 12;
+    EXPECT_EQ(12, s.phaser_arrays);
 
     // Traditional set
-    c.fps.set(30);
-    EXPECT_EQ(30, c.fps.get());
+    s.phaser_arrays.set(14);
+    EXPECT_EQ(14, s.phaser_arrays.get());
 
     // Copy construction
-    fps_camera c3(c);
-    EXPECT_EQ(640, c3.width());
-    EXPECT_EQ(480.0, c3.height());
-    EXPECT_EQ(std::string("camera iv"), c3.name());
-    EXPECT_EQ(30, c3.fps());
+    armed_spaceship s3(s);
+    EXPECT_EQ(574, s3.crew_complement());
+    EXPECT_EQ(9.7, s3.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s3.name());
+    EXPECT_EQ(14, s3.phaser_arrays());
 }
 
 // Test ro_property
-class ro_fps_camera
-    : public ro_camera
+class ro_armed_spaceship
+    : public ro_spaceship
 {
 public:
-    p::ro_property<int> fps;
+    p::ro_property<int> phaser_arrays;
 
-    ro_fps_camera()
-        : ro_camera()
-        , fps(std::string("fps"))
-        , _d()
+    ro_armed_spaceship()
+        : ro_spaceship()
+        , phaser_arrays(std::string("phaser_arrays"))
+        , _armament()
     {
-        _d.set_target_fps(16);
+        _armament.set_phaser_arrays(8);
         update_bindings();
     }
 
-    ro_fps_camera(const ro_fps_camera& v)
-        : ro_camera(v)
-        , fps(v.fps)
-        , _d(v._d)
+    ro_armed_spaceship(const ro_armed_spaceship& v)
+        : ro_spaceship(v)
+        , phaser_arrays(v.phaser_arrays)
+        , _armament(v._armament)
     {
         update_bindings();
     }
@@ -597,86 +597,86 @@ public:
 private:
     void update_bindings()
     {
-        fps.getter(std::bind(&device_driver::get_current_fps, &_d));
+        phaser_arrays.getter(std::bind(&armament::get_phaser_arrays, &_armament));
     }
 
 private:
-    device_driver _d;
+    armament _armament;
 };
 
 TEST(properties_test_suite, ro_value_properties)
 {
-    ro_fps_camera c;
+    ro_armed_spaceship s;
 
     // INHERITED PROPERTIES
 
     // Method oriented get
-    EXPECT_EQ(320, c.width());
-    EXPECT_EQ(200.0, c.height());
-    EXPECT_EQ(std::string("camera"), c.name());
+    EXPECT_EQ(1012, s.crew_complement());
+    EXPECT_EQ(9.8, s.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
 
     // Cast operator oriented get
-    EXPECT_EQ(320, static_cast<int>(c.width));
-    EXPECT_EQ(200.0, static_cast<double>(c.height));
-    EXPECT_EQ(std::string("camera"), static_cast<std::string>(c.name));
+    EXPECT_EQ(1012, static_cast<int>(s.crew_complement));
+    EXPECT_EQ(9.8, static_cast<double>(s.max_speed));
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), static_cast<std::string>(s.name));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(320 == c.width);
-    EXPECT_TRUE(200.0 == c.height);
-    EXPECT_TRUE(std::string("camera") == c.name);
+    EXPECT_TRUE(1012 == s.crew_complement);
+    EXPECT_TRUE(9.8 == s.max_speed);
+    EXPECT_TRUE(std::string("USS Enterprise (NCC-1701-D)") == s.name);
 
     // Traditional get
-    EXPECT_EQ(320, c.width.get());
-    EXPECT_EQ(200.0, c.height.get());
-    EXPECT_EQ(std::string("camera"), c.name.get());
+    EXPECT_EQ(1012, s.crew_complement.get());
+    EXPECT_EQ(9.8, s.max_speed.get());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_camera c2(c);
-    EXPECT_EQ(320, c2.width());
-    EXPECT_EQ(200.0, c2.height());
-    EXPECT_EQ(std::string("camera"), c2.name());
+    ro_spaceship s2(s);
+    EXPECT_EQ(1012, s2.crew_complement());
+    EXPECT_EQ(9.8, s2.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 
     // PROXY
 
     // Method oriented get
-    EXPECT_EQ(16, c.fps());
+    EXPECT_EQ(8, s.phaser_arrays());
 
     // Cast operator oriented get
-    EXPECT_EQ(16, static_cast<int>(c.fps));
+    EXPECT_EQ(8, static_cast<int>(s.phaser_arrays));
 
     // Implicit cast oriented get
-    EXPECT_TRUE(16 == c.fps);
+    EXPECT_TRUE(8 == s.phaser_arrays);
 
     // Traditional get
-    EXPECT_EQ(16, c.fps.get());
+    EXPECT_EQ(8, s.phaser_arrays.get());
 
     // Copy construction
-    ro_fps_camera c3(c);
-    EXPECT_EQ(320, c3.width());
-    EXPECT_EQ(200.0, c3.height());
-    EXPECT_EQ(std::string("camera"), c3.name());
-    EXPECT_EQ(16, c3.fps());
+    ro_armed_spaceship s3(s);
+    EXPECT_EQ(1012, s3.crew_complement());
+    EXPECT_EQ(9.8, s3.max_speed());
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s3.name());
+    EXPECT_EQ(8, s3.phaser_arrays());
 }
 
 // Test wo_property
-class wo_fps_camera
-    : public wo_camera
+class wo_armed_spaceship
+    : public wo_spaceship
 {
 public:
-    p::wo_property<int> fps;
+    p::wo_property<int> phaser_arrays;
 
-    wo_fps_camera()
-        : wo_camera()
-        , fps(std::string("fps"))
-        , _d()
+    wo_armed_spaceship()
+        : wo_spaceship()
+        , phaser_arrays(std::string("phaser_arrays"))
+        , _armament()
     {
         update_bindings();
     }
 
-    wo_fps_camera(const wo_fps_camera& v)
-        : wo_camera(v)
-        , fps(v.fps)
-        , _d(v._d)
+    wo_armed_spaceship(const wo_armed_spaceship& v)
+        : wo_spaceship(v)
+        , phaser_arrays(v.phaser_arrays)
+        , _armament(v._armament)
     {
         update_bindings();
     }
@@ -684,48 +684,48 @@ public:
 private:
     void update_bindings()
     {
-        fps.setter(std::bind(&device_driver::set_target_fps, &_d, ph::_1));
+        phaser_arrays.setter(std::bind(&armament::set_phaser_arrays, &_armament, ph::_1));
     }
 
 private:
-    device_driver _d;
+    armament _armament;
 };
 
 TEST(properties_test_suite, wo_value_properties)
 {
-    wo_fps_camera c;
+    wo_armed_spaceship s;
 
     // INHERITED PROPERTIES
 
     // Method oriented set
-    c.width(480);
-    c.height(340.0);
-    c.name("Camera 2");
+    s.crew_complement(647);
+    s.max_speed(9.975);
+    s.name("USS Enterprise (NCC-1701-E)");
 
     // Assign operator oriented set
-    c.width = 560;
-    c.height = 410.0;
-    c.name = std::string("CAMERA 3");
+    s.crew_complement = 430;
+    s.max_speed = 9.0;
+    s.name = std::string("USS Enterprise (NCC-1701)");
 
     // Traditional set
-    c.width.set(640);
-    c.height.set(480.0);
-    c.name.set(std::string("camera iv"));
+    s.crew_complement.set(574);
+    s.max_speed.set(9.7);
+    s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
 
     // Copy construction
-    wo_camera c2(c);
+    wo_spaceship s2(s);
 
     // PROXY
 
     // Method oriented set
-    c.fps(24);
+    s.phaser_arrays(10);
 
     // Assign operator oriented set
-    c.fps = 25;
+    s.phaser_arrays = 12;
 
     // Traditional set
-    c.fps.set(30);
+    s.phaser_arrays.set(14);
 
     // Copy construction
-    wo_fps_camera c3(c);
+    wo_armed_spaceship s3(s);
 }

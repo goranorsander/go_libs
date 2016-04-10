@@ -26,6 +26,7 @@ template<class T, class S = std::string> class ro_value_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::value<T> policy_type;
     typedef ro_value_scalar_property<value_type, string_type> this_type;
 
 public:
@@ -34,7 +35,7 @@ public:
     }
 
     explicit ro_value_scalar_property(const string_type& property_name, const value_type& v)
-        : detail::ro_property_base<value_type, policy::value<value_type>, string_type>(policy::value<value_type>(v), property_name)
+        : detail::ro_property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
     {
     }
 };

@@ -25,6 +25,7 @@ template<class T, class S = std::string> class wo_value_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::value<T> policy_type;
     typedef wo_value_scalar_property<value_type, string_type> this_type;
 
 public:
@@ -33,12 +34,12 @@ public:
     }
 
     wo_value_scalar_property(const string_type& property_name)
-        : detail::wo_property_base<value_type, policy::value<value_type>, string_type>(policy::value<value_type>(), property_name)
+        : detail::wo_property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
     explicit wo_value_scalar_property(const string_type& property_name, const value_type& v)
-        : detail::wo_property_base<value_type, policy::value<value_type>, string_type>(policy::value<value_type>(v), property_name)
+        : detail::wo_property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
     {
     }
 

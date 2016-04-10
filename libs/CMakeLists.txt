@@ -71,4 +71,34 @@ IF(BUILD_TESTS)
 
     add_test(test_property ${PROJECT_TEST_PROPERTY_NAME})
 
+    ########################################################
+    #  libs/signals/test                                   #
+    ########################################################
+
+    set(PROJECT_TEST_SIGNALS_NAME ${PROJECT_NAME_STR}_signals_tests)
+
+    file(GLOB TEST_SIGNALS_SRC_FILES signals/test/*.cpp)
+    add_executable(${PROJECT_TEST_SIGNALS_NAME} ${TEST_SIGNALS_SRC_FILES})
+    add_dependencies(${PROJECT_TEST_SIGNALS_NAME} googletest)
+
+    if(NOT WIN32)
+        target_link_libraries(${PROJECT_TEST_SIGNALS_NAME}
+            libgtest.a
+            libgtest_main.a
+            )
+    else(NOT WIN32)
+        target_link_libraries(${PROJECT_TEST_SIGNALS_NAME}
+            debug DebugLibs/gtest
+            optimized /ReleaseLibs/gtest
+            )
+        target_link_libraries(${PROJECT_TEST_SIGNALS_NAME}
+            debug DebugLibs/gtest_main
+            optimized ReleaseLibs/gtest_main
+            )
+    endif(NOT WIN32)
+
+    target_link_libraries(${PROJECT_TEST_SIGNALS_NAME} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_signals ${PROJECT_TEST_SIGNALS_NAME})
+
 ENDIF(BUILD_TESTS)
