@@ -93,14 +93,14 @@ SET(GO_PROPERTY_DIR ${GO_DIR}/property)
 
 SET(GO_LIBS_SRC_GO_PROPERTY_HPP
     ${GO_PROPERTY_DIR}/property.hpp
+    ${GO_PROPERTY_DIR}/read_only_property.hpp
+    ${GO_PROPERTY_DIR}/read_only_ref_scalar_property.hpp
+    ${GO_PROPERTY_DIR}/read_only_value_scalar_property.hpp
     ${GO_PROPERTY_DIR}/ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/ro_property.hpp
-    ${GO_PROPERTY_DIR}/ro_ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/ro_value_scalar_property.hpp
     ${GO_PROPERTY_DIR}/value_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/wo_property.hpp
-    ${GO_PROPERTY_DIR}/wo_ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/wo_value_scalar_property.hpp
+    ${GO_PROPERTY_DIR}/write_only_property.hpp
+    ${GO_PROPERTY_DIR}/write_only_ref_scalar_property.hpp
+    ${GO_PROPERTY_DIR}/write_only_value_scalar_property.hpp
 )
 
 # *.cpp
@@ -119,8 +119,8 @@ SET(GO_PROPERTY_DETAIL_DIR ${GO_DIR}/property/detail)
 SET(GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP
     ${GO_PROPERTY_DETAIL_DIR}/assignment_operator.hpp
     ${GO_PROPERTY_DETAIL_DIR}/property_base.hpp
-    ${GO_PROPERTY_DETAIL_DIR}/ro_property_base.hpp
-    ${GO_PROPERTY_DETAIL_DIR}/wo_property_base.hpp
+    ${GO_PROPERTY_DETAIL_DIR}/read_only_property_base.hpp
+    ${GO_PROPERTY_DETAIL_DIR}/write_only_property_base.hpp
 )
 
 SET(GO_LIBS_SRC_GO_PROPERTY_DETAIL_CPP)

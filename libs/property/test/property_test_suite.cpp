@@ -9,7 +9,6 @@
 //
 
 #include <functional>
-#include <string>
 
 #include <gtest/gtest.h>
 
@@ -17,6 +16,8 @@
 
 namespace p = go::property;
 namespace ph = std::placeholders;
+namespace rop = go::property::read_only;
+namespace wop = go::property::write_only;
 
 namespace
 {
@@ -25,9 +26,9 @@ namespace
 class spaceship
 {
 public:
-    p::value_scalar_property<int, std::string> crew_complement;
-    p::value_scalar_property<double, std::string> max_speed;
-    p::value_scalar_property<std::string, std::string> name;
+    p::value_scalar_property<int> crew_complement;
+    p::value_scalar_property<double> max_speed;
+    p::value_scalar_property<std::string> name;
 
     spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -106,13 +107,13 @@ TEST(properties_test_suite, value_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s2.name());
 }
 
-// Test ro_value_scalar_property
+// Test read_only::value_scalar_property
 class ro_spaceship
 {
 public:
-    p::ro_value_scalar_property<int, std::string> crew_complement;
-    p::ro_value_scalar_property<double, std::string> max_speed;
-    p::ro_value_scalar_property<std::string, std::string> name;
+    rop::value_scalar_property<int> crew_complement;
+    rop::value_scalar_property<double> max_speed;
+    rop::value_scalar_property<std::string> name;
 
     ro_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -153,13 +154,13 @@ TEST(properties_test_suite, ro_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
-// Test wo_value_scalar_property
+// Test write_only::value_scalar_property
 class wo_spaceship
 {
 public:
-    p::wo_value_scalar_property<int, std::string> crew_complement;
-    p::wo_value_scalar_property<double, std::string> max_speed;
-    p::wo_value_scalar_property<std::string, std::string> name;
+    wop::value_scalar_property<int> crew_complement;
+    wop::value_scalar_property<double> max_speed;
+    wop::value_scalar_property<std::string> name;
 
     wo_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -196,9 +197,9 @@ TEST(properties_test_suite, wo_scalar_properties)
 class ref_spaceship
 {
 public:
-    p::ref_scalar_property<int, std::string> crew_complement;
-    p::ref_scalar_property<double, std::string> max_speed;
-    p::ref_scalar_property<std::string, std::string> name;
+    p::ref_scalar_property<int> crew_complement;
+    p::ref_scalar_property<double> max_speed;
+    p::ref_scalar_property<std::string> name;
 
     ref_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -291,13 +292,13 @@ TEST(properties_test_suite, ref_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s2.name());
 }
 
-// Test ro_ref_scalar_property
+// Test read_only::ref_scalar_property
 class ro_ref_spaceship
 {
 public:
-    p::ro_ref_scalar_property<int, std::string> crew_complement;
-    p::ro_ref_scalar_property<double, std::string> max_speed;
-    p::ro_ref_scalar_property<std::string, std::string> name;
+    rop::ref_scalar_property<int> crew_complement;
+    rop::ref_scalar_property<double> max_speed;
+    rop::ref_scalar_property<std::string> name;
 
     ro_ref_spaceship()
         : crew_complement(std::string("crew_complement"), m_crew_complement)
@@ -354,13 +355,13 @@ TEST(properties_test_suite, ro_ref_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
-// Test wo_ref_scalar_property
+// Test write_only::ref_scalar_property
 class wo_ref_spaceship
 {
 public:
-    p::wo_ref_scalar_property<int, std::string> crew_complement;
-    p::wo_ref_scalar_property<double, std::string> max_speed;
-    p::wo_ref_scalar_property<std::string, std::string> name;
+    wop::ref_scalar_property<int> crew_complement;
+    wop::ref_scalar_property<double> max_speed;
+    wop::ref_scalar_property<std::string> name;
 
     wo_ref_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -444,7 +445,7 @@ class armed_spaceship
     : public spaceship
 {
 public:
-    p::property<int, std::string> phaser_arrays;
+    p::property<int> phaser_arrays;
 
     armed_spaceship()
         : spaceship()
@@ -573,12 +574,12 @@ TEST(properties_test_suite, value_properties)
     EXPECT_EQ(14, s3.phaser_arrays());
 }
 
-// Test ro_property
+// Test read_only::property
 class ro_armed_spaceship
     : public ro_spaceship
 {
 public:
-    p::ro_property<int, std::string> phaser_arrays;
+    rop::property<int> phaser_arrays;
 
     ro_armed_spaceship()
         : ro_spaceship()
@@ -661,12 +662,12 @@ TEST(properties_test_suite, ro_value_properties)
     EXPECT_EQ(8, s3.phaser_arrays());
 }
 
-// Test wo_property
+// Test write_only::property
 class wo_armed_spaceship
     : public wo_spaceship
 {
 public:
-    p::wo_property<int, std::string> phaser_arrays;
+    wop::property<int> phaser_arrays;
 
     wo_armed_spaceship()
         : wo_spaceship()

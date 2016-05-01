@@ -10,9 +10,6 @@
 
 #define BOOST_TEST_MODULE MVVMTests
 
-#include <functional>
-#include <string>
-
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
@@ -28,7 +25,7 @@ namespace
 
 // Test observable_object
 class product_model
-    : public m::observable_object<std::string>
+    : public m::observable_object
 {
 public:
     ~product_model()
@@ -40,7 +37,7 @@ private:
 
 public:
     product_model()
-        : m::observable_object<std::string>()
+        : m::observable_object()
         , _product_id(0)
         , _product_name()
         , _unit_price(0.0)
@@ -51,9 +48,9 @@ public:
     }
 
 public:
-    p::property<int, std::string> product_id;
-    p::property<std::string, std::string> product_name;
-    p::property<double, std::string> unit_price;
+    p::property<int> product_id;
+    p::property<std::string> product_name;
+    p::property<double> unit_price;
 
 private:
     int get_product_id() const
@@ -129,7 +126,7 @@ public:
         m.property_changed.disconnect(_on_property_changed_slot_key);
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments<std::string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
     {
         if(o && a)
         {

@@ -1,8 +1,8 @@
-#ifndef GO_PROPERTY_WO_PROPERTY_BASE_HPP_INCLUDED
-#define GO_PROPERTY_WO_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_PROPERTY_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#define GO_PROPERTY_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
 
 //
-//  wo_property_base.hpp
+//  write_only_property_base.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -15,21 +15,23 @@ namespace go
 {
 namespace property
 {
+namespace write_only
+{
 namespace detail
 {
 
-template<class V, class P, class S> class wo_property_base
+template<class V, class P, class S> class property_base
 {
 public:
     typedef V value_type;
     typedef P storage_policy;
     typedef S string_type;
-    typedef wo_property_base<value_type, storage_policy, string_type> this_type;
+    typedef property_base<value_type, storage_policy, string_type> this_type;
 
-    virtual ~wo_property_base() = 0;
+    virtual ~property_base() = 0;
 
 protected:
-    explicit wo_property_base(const storage_policy& s, const string_type& n)
+    explicit property_base(const storage_policy& s, const string_type& n)
         : _s(s)
         , _n(n)
     {
@@ -44,7 +46,7 @@ public:
 private:
     this_type& operator=(const this_type& v)
     {
-        throw std::logic_error(std::string("template<class V, class P, class S> class wo_property_base : assignment operator should not be used"));
+        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
     }
 
 public:
@@ -75,12 +77,13 @@ private:
 };
 
 template<class V, class P, class S>
-inline wo_property_base<V, P, S>::~wo_property_base()
+inline property_base<V, P, S>::~property_base()
 {
 }
 
 } // namespace detail
+} // namespace write_only
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_WO_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED

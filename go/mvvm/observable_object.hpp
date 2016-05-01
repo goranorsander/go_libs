@@ -19,12 +19,41 @@ namespace mvvm
 {
 
 template<class S>
-class observable_object
-    : public notify_property_changed<S>
+class basic_observable_object
+    : public basic_notify_property_changed<S>
     , public object
 {
 public:
     typedef S string_type;
+    typedef basic_observable_object<string_type> this_type;
+
+public:
+    virtual ~basic_observable_object()
+    {
+    }
+
+protected:
+    basic_observable_object()
+        : basic_notify_property_changed<string_type>()
+        , object()
+    {
+    }
+
+protected:
+    virtual void on_property_changed(const string_type& property_name)
+    {
+        if(!basic_notify_property_changed<string_type>::property_changed.empty())
+        {
+            basic_notify_property_changed<string_type>::property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
+        }
+    }
+};
+
+class observable_object
+    : public basic_observable_object<std::string>
+{
+public:
+    typedef observable_object this_type;
 
 public:
     virtual ~observable_object()
@@ -33,18 +62,26 @@ public:
 
 protected:
     observable_object()
-        : notify_property_changed<string_type>()
-        , object()
+        : basic_observable_object<string_type>()
+    {
+    }
+};
+
+class wobservable_object
+    : public basic_observable_object<std::wstring>
+{
+public:
+    typedef wobservable_object this_type;
+
+public:
+    virtual ~wobservable_object()
     {
     }
 
 protected:
-    virtual void on_property_changed(const string_type& property_name)
+    wobservable_object()
+        : basic_observable_object<string_type>()
     {
-        if(!notify_property_changed<string_type>::property_changed.empty())
-        {
-            notify_property_changed<string_type>::property_changed(shared_from_this(), property_changed_arguments<string_type>::create(property_name));
-        }
     }
 };
 

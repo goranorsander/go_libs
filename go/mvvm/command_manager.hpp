@@ -21,28 +21,29 @@ namespace mvvm
 {
 
 template<class S>
-class command_manager
+class basic_command_manager
 {
 public:
     typedef S string_type;
-    typedef std::shared_ptr<command_manager<string_type>> ptr;
-    typedef std::weak_ptr<command_manager<string_type>> wptr;
+    typedef basic_command_manager<string_type> this_type;
+    typedef std::shared_ptr<this_type> ptr;
+    typedef std::weak_ptr<this_type> wptr;
     typedef go::signals::signal<std::function<void(const string_type&)>> requery_suggested_signal;
 
 protected:
-    typedef command<string_type> command_type;
+    typedef basic_command<string_type> command_type;
     typedef std::shared_ptr<command_type> command_type_ptr;
     typedef std::weak_ptr<command_type> command_type_wptr;
     typedef std::vector<command_type_wptr> command_vector;
 
 public:
-    virtual ~command_manager()
+    virtual ~basic_command_manager()
     {
         _commands.clear();
     }
 
 protected:
-    command_manager()
+    basic_command_manager()
         : requery_suggested()
         , _commands_guard()
         , _commands()
@@ -50,7 +51,7 @@ protected:
     }
 
 private:
-    command_manager(const command_manager&) = delete;
+    basic_command_manager(const basic_command_manager&) = delete;
 
 public:
     requery_suggested_signal requery_suggested;
@@ -58,7 +59,7 @@ public:
 public:
     static ptr create()
     {
-        return ptr(new command_manager<string_type>());
+        return ptr(new this_type());
     }
 
     void add_command(const command_type_ptr& cmd)
@@ -100,6 +101,60 @@ public:
 private:
     mutable std::recursive_mutex _commands_guard;
     command_vector _commands;
+};
+
+class command_manager
+    : public basic_command_manager<std::string>
+{
+public:
+    typedef command_manager this_type;
+
+public:
+    virtual ~command_manager()
+    {
+    }
+
+protected:
+    command_manager()
+        : basic_command_manager<string_type>()
+    {
+    }
+
+private:
+    command_manager(const command_manager&) = delete;
+
+public:
+    static ptr create()
+    {
+        return ptr(new command_manager());
+    }
+};
+
+class wcommand_manager
+    : public basic_command_manager<std::wstring>
+{
+public:
+    typedef wcommand_manager this_type;
+
+public:
+    virtual ~wcommand_manager()
+    {
+    }
+
+protected:
+    wcommand_manager()
+        : basic_command_manager<string_type>()
+    {
+    }
+
+private:
+    wcommand_manager(const wcommand_manager&) = delete;
+
+public:
+    static ptr create()
+    {
+        return ptr(new wcommand_manager());
+    }
 };
 
 } // namespace mvvm

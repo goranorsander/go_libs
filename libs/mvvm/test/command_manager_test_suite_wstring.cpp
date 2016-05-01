@@ -8,9 +8,6 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <functional>
-#include <string>
-
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
@@ -19,6 +16,7 @@
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
+namespace rop = go::property::read_only;
 namespace s = go::signals;
 
 namespace
@@ -26,7 +24,7 @@ namespace
 
 // Test command_manager
 class spaceship
-    : public m::observable_object<std::wstring>
+    : public m::wobservable_object
 {
 public:
     ~spaceship()
@@ -37,8 +35,8 @@ private:
     spaceship(const spaceship&) = delete;
 
 public:
-    spaceship(const m::command_manager<std::wstring>::ptr& cmd_mgr)
-        : m::observable_object<std::wstring>()
+    spaceship(const m::wcommand_manager::ptr& cmd_mgr)
+        : m::wobservable_object()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -51,8 +49,8 @@ public:
     {
     }
 
-    spaceship(const m::command_manager<std::wstring>::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
-        : m::observable_object<std::wstring>()
+    spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
+        : m::wobservable_object()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -68,10 +66,10 @@ public:
     }
 
 public:
-    p::property<std::wstring, std::wstring> name;
-    p::property<std::wstring, std::wstring> captain;
-    p::ro_property<m::command<std::wstring>::ptr, std::wstring> impulse_speed_command;
-    p::ro_property<m::command<std::wstring>::ptr, std::wstring> warp_speed_command;
+    p::wproperty<std::wstring> name;
+    p::wproperty<std::wstring> captain;
+    rop::wproperty<m::wcommand::ptr> impulse_speed_command;
+    rop::wproperty<m::wcommand::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }
@@ -109,11 +107,11 @@ private:
     }
 
     // impulse_speed_command property
-    m::command<std::wstring>::ptr get_impulse_speed_command()
+    m::wcommand::ptr get_impulse_speed_command()
     {
         if(!_impulse_speed_command)
         {
-            _impulse_speed_command = m::relay_command<std::wstring>::create(L"impulse_speed", std::bind(&spaceship::go_to_impulse, this, ph::_1), std::bind(&spaceship::can_go_to_impulse, this, ph::_1), m::command_parameters::create());
+            _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed", std::bind(&spaceship::go_to_impulse, this, ph::_1), std::bind(&spaceship::can_go_to_impulse, this, ph::_1), m::command_parameters::create());
         }
         return _impulse_speed_command;
     }
@@ -132,11 +130,11 @@ private:
     }
 
     // warp_speed_command property
-    m::command<std::wstring>::ptr get_warp_speed_command()
+    m::wcommand::ptr get_warp_speed_command()
     {
         if(!_warp_speed_command)
         {
-            _warp_speed_command = m::relay_command<std::wstring>::create(L"warp_speed", std::bind(&spaceship::go_to_warp, this, ph::_1), std::bind(&spaceship::can_go_to_warp, this, ph::_1), m::command_parameters::create());
+            _warp_speed_command = m::relay_wcommand::create(L"warp_speed", std::bind(&spaceship::go_to_warp, this, ph::_1), std::bind(&spaceship::can_go_to_warp, this, ph::_1), m::command_parameters::create());
         }
         return _warp_speed_command;
     }
@@ -155,13 +153,13 @@ private:
     }
 
 private:
-    m::command_manager<std::wstring>::ptr _command_manager;
+    m::wcommand_manager::ptr _command_manager;
     bool _at_impulse_speed;
     bool _at_warp_speed;
     std::wstring _name;
     std::wstring _captain;
-    m::command<std::wstring>::ptr _impulse_speed_command;
-    m::command<std::wstring>::ptr _warp_speed_command;
+    m::wcommand::ptr _impulse_speed_command;
+    m::wcommand::ptr _warp_speed_command;
 };
 
 class spaceship_observer
@@ -193,7 +191,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments<std::wstring>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
     {
         if(o && a)
         {
@@ -234,7 +232,7 @@ private:
 };
 
 #define TEST_CASE_SHIPYARD \
-    m::command_manager<std::wstring>::ptr cmd_mgr = m::command_manager<std::wstring>::create(); \
+    m::wcommand_manager::ptr cmd_mgr = m::wcommand_manager::create(); \
 \
     std::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, L"USS Enterprise", L"Captain James T Kirk")); \
     std::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, L"Millennium Falcon", L"Han Solo")); \

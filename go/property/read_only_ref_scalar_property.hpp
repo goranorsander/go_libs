@@ -1,8 +1,8 @@
-#ifndef GO_PROPERTY_REF_SCALAR_PROPERTY_HPP_INCLUDED
-#define GO_PROPERTY_REF_SCALAR_PROPERTY_HPP_INCLUDED
+#ifndef GO_PROPERTY_READ_ONLY_REF_SCALAR_PROPERTY_HPP_INCLUDED
+#define GO_PROPERTY_READ_ONLY_REF_SCALAR_PROPERTY_HPP_INCLUDED
 
 //
-//  ref_scalar_property.hpp
+//  read_only_ref_scalar_property.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -11,13 +11,16 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <algorithm>
 #include <string>
-#include <go/property/detail/property_base.hpp>
+#include <go/property/detail/read_only_property_base.hpp>
 #include <go/property/policy/ref.hpp>
 
 namespace go
 {
 namespace property
+{
+namespace read_only
 {
 
 template<class T, class S> class basic_ref_scalar_property
@@ -34,26 +37,14 @@ public:
     {
     }
 
-    explicit basic_ref_scalar_property(const string_type& property_name)
-        : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
-    {
-    }
-
     explicit basic_ref_scalar_property(const string_type& property_name, const value_type& v)
-        : detail::property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(const_cast<value_type&>(v)), property_name)
     {
     }
-
-#include <go/property/detail/assignment_operator.hpp>
 
     bool empty() const
     {
         return detail::property_base<value_type, policy_type, string_type>::storage().empty();
-    }
-
-    void clear()
-    {
-        return detail::property_base<value_type, policy_type, string_type>::storage().clear();
     }
 
     explicit operator bool() const
@@ -78,17 +69,10 @@ public:
     {
     }
 
-    explicit ref_scalar_property(const string_type& property_name)
-        : basic_ref_scalar_property<value_type, string_type>(property_name)
-    {
-    }
-
     explicit ref_scalar_property(const string_type& property_name, const value_type& v)
         : basic_ref_scalar_property<value_type, string_type>(property_name, v)
     {
     }
-
-#include <go/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class ref_scalar_wproperty
@@ -102,17 +86,10 @@ public:
     {
     }
 
-    explicit ref_scalar_wproperty(const string_type& property_name)
-        : basic_ref_scalar_property<value_type, string_type>(property_name)
-    {
-    }
-
     explicit ref_scalar_wproperty(const string_type& property_name, const value_type& v)
         : basic_ref_scalar_property<value_type, string_type>(property_name, v)
     {
     }
-
-#include <go/property/detail/assignment_operator.hpp>
 };
 
 inline bool operator==(const basic_ref_scalar_property<std::string, std::string>& lhs, const std::string& rhs)
@@ -195,7 +172,8 @@ inline bool operator!=(const std::wstring& lhs, const basic_ref_scalar_property<
     return !operator==(lhs, rhs);
 }
 
+} // namespace read_only
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_REF_SCALAR_PROPERTY_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_READ_ONLY_REF_SCALAR_PROPERTY_HPP_INCLUDED

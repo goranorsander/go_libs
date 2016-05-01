@@ -19,24 +19,25 @@ namespace mvvm
 {
 
 template<class S>
-class property_changed_arguments
+class basic_property_changed_arguments
     : public go::signals::slot_arguments
 {
 public:
     typedef S string_type;
-    typedef std::shared_ptr<property_changed_arguments<string_type>> ptr;
-    typedef std::weak_ptr<property_changed_arguments<string_type>> wptr;
+    typedef basic_property_changed_arguments<string_type> this_type;
+    typedef std::shared_ptr<this_type> ptr;
+    typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~property_changed_arguments()
+    virtual ~basic_property_changed_arguments()
     {
     }
 
 private:
-    property_changed_arguments(const property_changed_arguments&) = delete;
+    basic_property_changed_arguments(const this_type&) = delete;
 
 protected:
-    property_changed_arguments(const string_type& property_name)
+    basic_property_changed_arguments(const string_type& property_name)
         : go::signals::slot_arguments()
         , _property_name(property_name)
     {
@@ -45,7 +46,7 @@ protected:
 public:
     static ptr create(const string_type& property_name)
     {
-        return ptr(new property_changed_arguments(property_name));
+        return ptr(new this_type(property_name));
     }
 
     string_type property_name() const
@@ -55,6 +56,60 @@ public:
 
 private:
     const string_type _property_name;
+};
+
+class property_changed_arguments
+    : public basic_property_changed_arguments<std::string>
+{
+public:
+    typedef property_changed_arguments this_type;
+
+public:
+    virtual ~property_changed_arguments()
+    {
+    }
+
+private:
+    property_changed_arguments(const this_type&) = delete;
+
+protected:
+    property_changed_arguments(const string_type& property_name)
+        : basic_property_changed_arguments<string_type>(property_name)
+    {
+    }
+
+public:
+    static ptr create(const string_type& property_name)
+    {
+        return ptr(new this_type(property_name));
+    }
+};
+
+class wproperty_changed_arguments
+    : public basic_property_changed_arguments<std::wstring>
+{
+public:
+    typedef wproperty_changed_arguments this_type;
+
+public:
+    virtual ~wproperty_changed_arguments()
+    {
+    }
+
+private:
+    wproperty_changed_arguments(const this_type&) = delete;
+
+protected:
+    wproperty_changed_arguments(const string_type& property_name)
+        : basic_property_changed_arguments<string_type>(property_name)
+    {
+    }
+
+public:
+    static ptr create(const string_type& property_name)
+    {
+        return ptr(new this_type(property_name));
+    }
 };
 
 } // namespace mvvm

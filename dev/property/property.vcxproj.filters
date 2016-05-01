@@ -28,10 +28,10 @@
     <ClInclude Include="..\..\go\property\detail\property_base.hpp">
       <Filter>go\property\detail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\detail\ro_property_base.hpp">
+    <ClInclude Include="..\..\go\property\detail\read_only_property_base.hpp">
       <Filter>go\property\detail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\detail\wo_property_base.hpp">
+    <ClInclude Include="..\..\go\property\detail\write_only_property_base.hpp">
       <Filter>go\property\detail</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\policy\proxy.hpp">
@@ -49,25 +49,25 @@
     <ClInclude Include="..\..\go\property\ref_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\ro_property.hpp">
+    <ClInclude Include="..\..\go\property\read_only_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\ro_ref_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\read_only_ref_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\ro_value_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\read_only_value_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\value_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\wo_property.hpp">
+    <ClInclude Include="..\..\go\property\write_only_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\wo_ref_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\write_only_ref_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\wo_value_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\write_only_value_scalar_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
   </ItemGroup>

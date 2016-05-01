@@ -15,12 +15,12 @@
 #include <go/property/ref_scalar_property.hpp>
 #include <go/property/value_scalar_property.hpp>
 
-#include <go/property/ro_property.hpp>
-#include <go/property/ro_ref_scalar_property.hpp>
-#include <go/property/ro_value_scalar_property.hpp>
+#include <go/property/read_only_property.hpp>
+#include <go/property/read_only_ref_scalar_property.hpp>
+#include <go/property/read_only_value_scalar_property.hpp>
 
-#include <go/property/wo_property.hpp>
-#include <go/property/wo_ref_scalar_property.hpp>
-#include <go/property/wo_value_scalar_property.hpp>
+#include <go/property/write_only_property.hpp>
+#include <go/property/write_only_ref_scalar_property.hpp>
+#include <go/property/write_only_value_scalar_property.hpp>
 
 #endif  // #ifndef GO_PROPERTY_HPP_INCLUDED

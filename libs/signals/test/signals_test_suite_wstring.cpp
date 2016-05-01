@@ -37,23 +37,23 @@ public:
 private:
     fleet_commander(const fleet_commander&) = delete;
 
-    fleet_commander(const std::string& cmd, const std::string& btl)
-        : commander("commander", cmd)
-        , battle("battle", btl)
+    fleet_commander(const std::wstring& cmd, const std::wstring& btl)
+        : commander(L"commander", cmd)
+        , battle(L"battle", btl)
         , fire_lasers()
         , fire_proton_torpedoes()
     {
     }
 
 public:
-    static ptr create(const std::string& cmd, const std::string& btl)
+    static ptr create(const std::wstring& cmd, const std::wstring& btl)
     {
         return ptr(new fleet_commander(cmd, btl));
     }
 
 public:
-    p::value_scalar_property<std::string> commander;
-    p::value_scalar_property<std::string> battle;
+    p::value_scalar_wproperty<std::wstring> commander;
+    p::value_scalar_wproperty<std::wstring> battle;
 
     fire_lasers_signal fire_lasers;
     fire_proton_torpedoes_signal fire_proton_torpedoes;
@@ -76,16 +76,16 @@ private:
     spaceship(const spaceship&) = delete;
 
 public:
-    spaceship(const fleet_commander::ptr& flt_cmd, const std::string& nme, const std::string& cpt, const int trpds)
-        : name("name", nme)
-        , captain("captain", cpt)
-        , lasers_firing("lasers_firing", false)
-        , proton_torpedoes("proton_torpedoes", trpds)
+    spaceship(const fleet_commander::ptr& flt_cmd, const std::wstring& nme, const std::wstring& cpt, const int trpds)
+        : name(L"name", nme)
+        , captain(L"captain", cpt)
+        , lasers_firing(L"lasers_firing", false)
+        , proton_torpedoes(L"proton_torpedoes", trpds)
         , _fleet_commander(flt_cmd)
         , _fire_lasers_slot_key(0)
         , _fire_proton_torpedoes_slot_key(0)
     {
-        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_scalar_property<bool>::set, &lasers_firing, ph::_1));
+        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_scalar_wproperty<bool>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
 
@@ -100,10 +100,10 @@ public:
     }
 
 public:
-    p::value_scalar_property<std::string> name;
-    p::value_scalar_property<std::string> captain;
-    p::value_scalar_property<bool> lasers_firing;
-    p::value_scalar_property<int> proton_torpedoes;
+    p::value_scalar_wproperty<std::wstring> name;
+    p::value_scalar_wproperty<std::wstring> captain;
+    p::value_scalar_wproperty<bool> lasers_firing;
+    p::value_scalar_wproperty<int> proton_torpedoes;
 
 private:
     fleet_commander::wptr _fleet_commander;
@@ -112,24 +112,24 @@ private:
 };
 
 #define TEST_CASE_SHIPYARD \
-    fleet_commander::ptr flt_cmd = fleet_commander::create("General Jan Dodonna", "Battle of Yavin"); \
+    fleet_commander::ptr flt_cmd = fleet_commander::create(L"General Jan Dodonna", L"Battle of Yavin"); \
 \
-    std::shared_ptr<spaceship> ship1(new spaceship(flt_cmd, "Millennium Falcon", "Han Solo", 0)); \
-    std::shared_ptr<spaceship> ship2(new spaceship(flt_cmd, "X-Wing Red Leader", "Garven Dreis", 6)); \
-    std::shared_ptr<spaceship> ship3(new spaceship(flt_cmd, "X-Wing Red Two", "Wedge Antilles", 6)); \
-    std::shared_ptr<spaceship> ship4(new spaceship(flt_cmd, "X-Wing Red Three", "Biggs Darklighter", 6)); \
-    std::shared_ptr<spaceship> ship5(new spaceship(flt_cmd, "X-Wing Red Four", "John D. Branon", 6)); \
-    std::shared_ptr<spaceship> ship6(new spaceship(flt_cmd, "X-Wing Red Five", "Luke Skywalker", 6)); \
-    std::shared_ptr<spaceship> ship7(new spaceship(flt_cmd, "Y-Wing Gold Leader", "Jon 'Dutch' Vander", 20)); \
-    std::shared_ptr<spaceship> ship8(new spaceship(flt_cmd, "Y-Wing Gold Two", "Dex Tiree", 20));
+    std::shared_ptr<spaceship> ship1(new spaceship(flt_cmd, L"Millennium Falcon", L"Han Solo", 0)); \
+    std::shared_ptr<spaceship> ship2(new spaceship(flt_cmd, L"X-Wing Red Leader", L"Garven Dreis", 6)); \
+    std::shared_ptr<spaceship> ship3(new spaceship(flt_cmd, L"X-Wing Red Two", L"Wedge Antilles", 6)); \
+    std::shared_ptr<spaceship> ship4(new spaceship(flt_cmd, L"X-Wing Red Three", L"Biggs Darklighter", 6)); \
+    std::shared_ptr<spaceship> ship5(new spaceship(flt_cmd, L"X-Wing Red Four", L"John D. Branon", 6)); \
+    std::shared_ptr<spaceship> ship6(new spaceship(flt_cmd, L"X-Wing Red Five", L"Luke Skywalker", 6)); \
+    std::shared_ptr<spaceship> ship7(new spaceship(flt_cmd, L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", 20)); \
+    std::shared_ptr<spaceship> ship8(new spaceship(flt_cmd, L"Y-Wing Gold Two", L"Dex Tiree", 20));
 
-TEST(signals_test_suite, test_fire_lasers)
+TEST(signals_test_suite_wstring, test_fire_lasers)
 {
     TEST_CASE_SHIPYARD
 
     // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
-    EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
+    EXPECT_TRUE(std::wstring(L"General Jan Dodonna") == flt_cmd->commander);
+    EXPECT_TRUE(std::wstring(L"Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
 
@@ -194,13 +194,13 @@ TEST(signals_test_suite, test_fire_lasers)
     EXPECT_EQ(20, ship8->proton_torpedoes());
 }
 
-TEST(signals_test_suite, test_fire_proton_torpedoes)
+TEST(signals_test_suite_wstring, test_fire_proton_torpedoes)
 {
     TEST_CASE_SHIPYARD
 
     // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
-    EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
+    EXPECT_TRUE(std::wstring(L"General Jan Dodonna") == flt_cmd->commander);
+    EXPECT_TRUE(std::wstring(L"Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
 
@@ -244,13 +244,13 @@ TEST(signals_test_suite, test_fire_proton_torpedoes)
     EXPECT_EQ(19, ship8->proton_torpedoes());
 }
 
-TEST(signals_test_suite, test_fire_all_weapons)
+TEST(signals_test_suite_wstring, test_fire_all_weapons)
 {
     TEST_CASE_SHIPYARD
 
     // After connect
-    EXPECT_TRUE(std::string("General Jan Dodonna") == flt_cmd->commander);
-    EXPECT_TRUE(std::string("Battle of Yavin") == flt_cmd->battle);
+    EXPECT_TRUE(std::wstring(L"General Jan Dodonna") == flt_cmd->commander);
+    EXPECT_TRUE(std::wstring(L"Battle of Yavin") == flt_cmd->battle);
     EXPECT_EQ(false, flt_cmd->fire_lasers.empty());
     EXPECT_EQ(false, flt_cmd->fire_proton_torpedoes.empty());
 

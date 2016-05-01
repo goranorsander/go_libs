@@ -1,8 +1,8 @@
-#ifndef GO_PROPERTY_PROPERTY_HPP_INCLUDED
-#define GO_PROPERTY_PROPERTY_HPP_INCLUDED
+#ifndef GO_PROPERTY_READ_ONLY_PROPERTY_HPP_INCLUDED
+#define GO_PROPERTY_READ_ONLY_PROPERTY_HPP_INCLUDED
 
 //
-//  property.hpp
+//  read_only_property.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -12,12 +12,14 @@
 //
 
 #include <string>
-#include <go/property/detail/property_base.hpp>
+#include <go/property/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
 
 namespace go
 {
 namespace property
+{
+namespace read_only
 {
 
 template<class T, class S> class basic_property
@@ -29,33 +31,25 @@ public:
     typedef policy::proxy<T> policy_type;
     typedef basic_property<value_type, string_type> this_type;
     typedef std::function<value_type(void)> get_function_signature;
-    typedef std::function<void(const value_type&)> set_function_signature;
 
 public:
     virtual ~basic_property()
     {
     }
 
-    explicit basic_property(const string_type& property_name)
+    basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
     {
     }
 
-    explicit basic_property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
-        : detail::property_base<value_type, policy_type, string_type>(policy_type(get_function, set_function), property_name)
+    explicit basic_property(const string_type& property_name, const get_function_signature& get_function)
+        : detail::property_base<value_type, policy_type, string_type>(policy_type(get_function, nullptr), property_name)
     {
     }
-
-#include <go/property/detail/assignment_operator.hpp>
 
     void getter(const get_function_signature& f)
     {
-        detail::property_base<value_type, policy_type, string_type>::storage().getter(f);
-    }
-
-    void setter(const set_function_signature& f)
-    {
-        detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
+        const_cast<policy_type&>(detail::property_base<value_type, policy_type, string_type>::storage()).getter(f);
     }
 };
 
@@ -75,8 +69,8 @@ public:
     {
     }
 
-    explicit property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
-        : basic_property<value_type, string_type>(property_name, get_function, set_function)
+    explicit property(const string_type& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
@@ -99,15 +93,16 @@ public:
     {
     }
 
-    explicit wproperty(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
-        : basic_property<value_type, string_type>(property_name, get_function, set_function)
+    explicit wproperty(const string_type& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
 #include <go/property/detail/assignment_operator.hpp>
 };
 
+} // namespace read_only
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_PROPERTY_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_READ_ONLY_PROPERTY_HPP_INCLUDED
