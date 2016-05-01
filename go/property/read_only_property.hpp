@@ -57,7 +57,10 @@ template<class T> class property
     : public basic_property<T, std::string>
 {
 public:
+    typedef T value_type;
+    typedef std::string string_type;
     typedef property<value_type> this_type;
+    typedef std::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~property()
@@ -81,7 +84,10 @@ template<class T> class wproperty
     : public basic_property<T, std::wstring>
 {
 public:
+    typedef T value_type;
+    typedef std::wstring string_type;
     typedef wproperty<value_type> this_type;
+    typedef std::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~wproperty()
