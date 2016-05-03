@@ -1,5 +1,5 @@
 //
-//  observable_object_test_suite.cpp
+//  wobservable_object_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -7,8 +7,6 @@
 //  Distributed under the GO Software License, Version 1.0.
 //  See accompanying file LICENSE_1_0.txt.
 //
-
-#define BOOST_TEST_MODULE MVVMTests
 
 #include <gtest/gtest.h>
 
@@ -25,7 +23,7 @@ namespace
 
 // Test observable_object
 class spaceship
-    : public m::observable_object
+    : public m::wobservable_object
 {
 public:
     ~spaceship()
@@ -37,20 +35,20 @@ private:
 
 public:
     spaceship()
-        : m::observable_object()
+        : m::wobservable_object()
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-        , crew_complement("crew_complement", std::bind(&spaceship::get_crew_complement, this), std::bind(&spaceship::set_crew_complement, this, ph::_1))
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , max_speed("max_speed", std::bind(&spaceship::get_max_speed, this), std::bind(&spaceship::set_max_speed, this, ph::_1))
+        , crew_complement(L"crew_complement", std::bind(&spaceship::get_crew_complement, this), std::bind(&spaceship::set_crew_complement, this, ph::_1))
+        , name(L"name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
+        , max_speed(L"max_speed", std::bind(&spaceship::get_max_speed, this), std::bind(&spaceship::set_max_speed, this, ph::_1))
     {
     }
 
 public:
-    p::property<int> crew_complement;
-    p::property<std::string> name;
-    p::property<double> max_speed;
+    p::wproperty<int> crew_complement;
+    p::wproperty<std::wstring> name;
+    p::wproperty<double> max_speed;
 
 private:
     int get_crew_complement() const
@@ -63,21 +61,21 @@ private:
         if(v != _crew_complement)
         {
             _crew_complement = v;
-            on_property_changed("crew_complement");
+            on_property_changed(L"crew_complement");
         }
     }
 
-    std::string get_name() const
+    std::wstring get_name() const
     {
         return _name;
     }
 
-    void set_name(const std::string& v)
+    void set_name(const std::wstring& v)
     {
         if(v != _name)
         {
             _name = v;
-            on_property_changed("name");
+            on_property_changed(L"name");
         }
     }
 
@@ -91,13 +89,13 @@ private:
         if(v != _max_speed)
         {
             _max_speed = v;
-            on_property_changed("max_speed");
+            on_property_changed(L"max_speed");
         }
     }
 
 private:
     int _crew_complement;
-    std::string _name;
+    std::wstring _name;
     double _max_speed;
 };
 
@@ -126,13 +124,13 @@ public:
         m.property_changed.disconnect(_on_property_changed_slot_key);
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
     {
         if(o && a)
         {
-            if(a->property_name() == "crew_complement") { ++_crew_complement_change_count; }
-            else if(a->property_name() == "name") { ++_name_change_count; }
-            else if(a->property_name() == "max_speed") { ++_max_speed_change_count; }
+            if(a->property_name() == L"crew_complement") { ++_crew_complement_change_count; }
+            else if(a->property_name() == L"name") { ++_name_change_count; }
+            else if(a->property_name() == L"max_speed") { ++_max_speed_change_count; }
         }
     }
 
@@ -147,7 +145,7 @@ private:
     int _max_speed_change_count;
 };
 
-TEST(observable_object_test_suite, test_observable_object)
+TEST(wobservable_object_test_suite, test_observable_object)
 {
     std::shared_ptr<spaceship> m(new spaceship);
     spaceship_observer o;

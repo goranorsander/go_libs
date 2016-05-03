@@ -1,5 +1,5 @@
 //
-//  command_manager_test_suite_wstring.cpp
+//  wcommand_manager_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -42,6 +42,8 @@ public:
         , _at_warp_speed(false)
         , _name()
         , _captain()
+        , _impulse_speed_command()
+        , _warp_speed_command()
         , name(L"name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
         , captain(L"captain", std::bind(&spaceship::get_captain, this), std::bind(&spaceship::set_captain, this, ph::_1))
         , impulse_speed_command(L"impulse_speed_command", std::bind(&spaceship::get_impulse_speed_command, this))
@@ -248,12 +250,12 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-TEST(command_manager_test_suite_wstring, test_command_manager)
+TEST(wcommand_manager_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
 
-        // After connect
-        EXPECT_EQ(false, ship1->at_warp_speed());
+    // After connect
+    EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
     EXPECT_EQ(false, ship3->at_warp_speed());
     EXPECT_EQ(false, ship4->at_warp_speed());
@@ -314,12 +316,12 @@ TEST(command_manager_test_suite_wstring, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-TEST(command_manager_test_suite_wstring, test_spaceship_observer)
+TEST(wcommand_manager_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 
-        // Verify first captain
-        EXPECT_EQ(true, ship1->captain.get() == std::wstring(L"Captain James T Kirk"));
+    // Verify first captain
+    EXPECT_EQ(true, ship1->captain.get() == std::wstring(L"Captain James T Kirk"));
     EXPECT_EQ(true, ship2->captain.get() == std::wstring(L"Han Solo"));
     EXPECT_EQ(true, ship3->captain.get() == std::wstring(L"Lord Darth Vader"));
     EXPECT_EQ(true, ship4->captain.get() == std::wstring(L"Admiral William Adama"));

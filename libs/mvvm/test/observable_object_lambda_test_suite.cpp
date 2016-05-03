@@ -1,5 +1,5 @@
 //
-//  observable_object_test_suite.cpp
+//  observable_object_lambda_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -41,9 +41,9 @@ public:
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-        , crew_complement("crew_complement", std::bind(&spaceship::get_crew_complement, this), std::bind(&spaceship::set_crew_complement, this, ph::_1))
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , max_speed("max_speed", std::bind(&spaceship::get_max_speed, this), std::bind(&spaceship::set_max_speed, this, ph::_1))
+        , crew_complement("crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed("crew_complement"); } })
+        , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; on_property_changed("name"); } })
+        , max_speed("max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; on_property_changed("max_speed"); } })
     {
     }
 
@@ -51,49 +51,6 @@ public:
     p::property<int> crew_complement;
     p::property<std::string> name;
     p::property<double> max_speed;
-
-private:
-    int get_crew_complement() const
-    {
-        return _crew_complement;
-    }
-
-    void set_crew_complement(const int& v)
-    {
-        if(v != _crew_complement)
-        {
-            _crew_complement = v;
-            on_property_changed("crew_complement");
-        }
-    }
-
-    std::string get_name() const
-    {
-        return _name;
-    }
-
-    void set_name(const std::string& v)
-    {
-        if(v != _name)
-        {
-            _name = v;
-            on_property_changed("name");
-        }
-    }
-
-    double get_max_speed() const
-    {
-        return _max_speed;
-    }
-
-    void set_max_speed(const double& v)
-    {
-        if(v != _max_speed)
-        {
-            _max_speed = v;
-            on_property_changed("max_speed");
-        }
-    }
 
 private:
     int _crew_complement;
@@ -147,7 +104,7 @@ private:
     int _max_speed_change_count;
 };
 
-TEST(observable_object_test_suite, test_observable_object)
+TEST(observable_object_lambda_test_suite, test_observable_object)
 {
     std::shared_ptr<spaceship> m(new spaceship);
     spaceship_observer o;

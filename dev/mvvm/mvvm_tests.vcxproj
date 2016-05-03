@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libs\mvvm\test\command_manager_lambda_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_object_lambda_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_lambda_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_lambda_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_test_suite.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>mvvm_tests</RootNamespace>
@@ -184,12 +194,6 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite_wstring.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite_wstring.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

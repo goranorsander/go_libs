@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\signals\test\signals_test_suite.cpp" />
-    <ClCompile Include="..\..\libs\signals\test\signals_test_suite_wstring.cpp" />
+    <ClCompile Include="..\..\libs\signals\test\signals_string_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\signals\test\signals_wstring_test_suite.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

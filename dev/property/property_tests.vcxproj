@@ -194,7 +194,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\property\test\property_test_suite.cpp" />
-    <ClCompile Include="..\..\libs\property\test\property_test_suite_wstring.cpp" />
+    <ClCompile Include="..\..\libs\property\test\wproperty_test_suite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,5 @@
 //
-//  command_manager_test_suite.cpp
+//  command_manager_lambda_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -44,10 +44,16 @@ public:
         , _captain()
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , captain("captain", std::bind(&spaceship::get_captain, this), std::bind(&spaceship::set_captain, this, ph::_1))
-        , impulse_speed_command("impulse_speed_command", std::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", std::bind(&spaceship::get_warp_speed_command, this))
+        , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; on_property_changed("name"); } })
+        , captain("captain", [this]() { return _captain; }, [this](const std::string& v) { if(v != _captain) { _captain = v; on_property_changed("captain"); } })
+        , impulse_speed_command("impulse_speed_command",
+            [this]() { if(!_impulse_speed_command) { _impulse_speed_command = m::relay_command::create("impulse_speed",
+                [this](const m::command_parameters::ptr&) { _at_impulse_speed = true; _at_warp_speed = false; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
+                [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create()); } return _impulse_speed_command; })
+        , warp_speed_command("warp_speed_command",
+            [this]() { if(!_warp_speed_command) { _warp_speed_command = m::relay_command::create("warp_speed",
+                [this](const m::command_parameters::ptr&) { _at_impulse_speed = false; _at_warp_speed = true; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
+                [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create()); } return _warp_speed_command; })
     {
     }
 
@@ -60,10 +66,16 @@ public:
         , _captain(cpt)
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , captain("captain", std::bind(&spaceship::get_captain, this), std::bind(&spaceship::set_captain, this, ph::_1))
-        , impulse_speed_command("impulse_speed_command", std::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", std::bind(&spaceship::get_warp_speed_command, this))
+        , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; on_property_changed("name"); } })
+        , captain("captain", [this]() { return _captain; }, [this](const std::string& v) { if(v != _captain) { _captain = v; on_property_changed("captain"); } })
+        , impulse_speed_command("impulse_speed_command",
+            [this]() { if(!_impulse_speed_command) { _impulse_speed_command = m::relay_command::create("impulse_speed",
+                [this](const m::command_parameters::ptr&) { _at_impulse_speed = true; _at_warp_speed = false; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
+                [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create()); } return _impulse_speed_command; })
+        , warp_speed_command("warp_speed_command",
+            [this]() { if(!_warp_speed_command) { _warp_speed_command = m::relay_command::create("warp_speed",
+                [this](const m::command_parameters::ptr&) { _at_impulse_speed = false; _at_warp_speed = true; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
+                [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create()); } return _warp_speed_command; })
     {
     }
 
@@ -76,83 +88,6 @@ public:
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }
     bool at_warp_speed() const { return _at_warp_speed; }
-
-private:
-    // name property
-    std::string get_name() const
-    {
-        return _name;
-    }
-
-    void set_name(const std::string& v)
-    {
-        if(v != _name)
-        {
-            _name = v;
-            on_property_changed("name");
-        }
-    }
-
-    // captain property
-    std::string get_captain() const
-    {
-        return _captain;
-    }
-
-    void set_captain(const std::string& v)
-    {
-        if(v != _captain)
-        {
-            _captain = v;
-            on_property_changed("captain");
-        }
-    }
-
-    // impulse_speed_command property
-    m::command::ptr get_impulse_speed_command()
-    {
-        if(!_impulse_speed_command)
-        {
-            _impulse_speed_command = m::relay_command::create("impulse_speed", std::bind(&spaceship::go_to_impulse, this, ph::_1), std::bind(&spaceship::can_go_to_impulse, this, ph::_1), m::command_parameters::create());
-        }
-        return _impulse_speed_command;
-    }
-
-    void go_to_impulse(const m::command_parameters::ptr& /*params*/)
-    {
-        _at_impulse_speed = true;
-        _at_warp_speed = false;
-        if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); }
-        if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
-    }
-
-    bool can_go_to_impulse(const m::command_parameters::ptr& /*params*/)
-    {
-        return _at_warp_speed;
-    }
-
-    // warp_speed_command property
-    m::command::ptr get_warp_speed_command()
-    {
-        if(!_warp_speed_command)
-        {
-            _warp_speed_command = m::relay_command::create("warp_speed", std::bind(&spaceship::go_to_warp, this, ph::_1), std::bind(&spaceship::can_go_to_warp, this, ph::_1), m::command_parameters::create());
-        }
-        return _warp_speed_command;
-    }
-
-    void go_to_warp(const m::command_parameters::ptr& /*params*/)
-    {
-        _at_impulse_speed = false;
-        _at_warp_speed = true;
-        if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); }
-        if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
-    }
-
-    bool can_go_to_warp(const m::command_parameters::ptr& /*params*/)
-    {
-        return !_at_warp_speed;
-    }
 
 private:
     m::command_manager::ptr _command_manager;
@@ -250,7 +185,7 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-TEST(command_manager_test_suite, test_command_manager)
+TEST(command_manager_lambda_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
 
@@ -316,7 +251,7 @@ TEST(command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-TEST(command_manager_test_suite, test_spaceship_observer)
+TEST(command_manager_lambda_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 

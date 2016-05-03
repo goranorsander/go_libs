@@ -1,5 +1,5 @@
 //
-//  property_test_suite_wstring.cpp
+//  wproperty_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -52,7 +52,7 @@ public:
     }
 };
 
-TEST(properties_test_suite_wstring, value_scalar_properties)
+TEST(wproperty_test_suite, value_scalar_properties)
 {
     spaceship s;
 
@@ -123,7 +123,7 @@ public:
     }
 };
 
-TEST(properties_test_suite_wstring, ro_scalar_properties)
+TEST(wproperty_test_suite, ro_scalar_properties)
 {
     ro_spaceship s;
 
@@ -170,7 +170,7 @@ public:
     }
 };
 
-TEST(properties_test_suite_wstring, wo_scalar_properties)
+TEST(wproperty_test_suite, wo_scalar_properties)
 {
     wo_spaceship s;
 
@@ -209,7 +209,7 @@ public:
     }
 };
 
-TEST(properties_test_suite_wstring, ref_scalar_properties)
+TEST(wproperty_test_suite, ref_scalar_properties)
 {
     ref_spaceship s;
 
@@ -316,7 +316,7 @@ private:
     std::string m_name;
 };
 
-TEST(properties_test_suite_wstring, ro_ref_scalar_properties)
+TEST(wproperty_test_suite, ro_ref_scalar_properties)
 {
     ro_ref_spaceship s;
 
@@ -371,7 +371,7 @@ public:
     }
 };
 
-TEST(properties_test_suite_wstring, wo_ref_scalar_properties)
+TEST(wproperty_test_suite, wo_ref_scalar_properties)
 {
     wo_ref_spaceship s;
 
@@ -482,7 +482,7 @@ private:
     armament _armament;
 };
 
-TEST(properties_test_suite_wstring, value_properties)
+TEST(wproperty_test_suite, value_properties)
 {
     armed_spaceship s;
 
@@ -608,7 +608,7 @@ private:
     armament _armament;
 };
 
-TEST(properties_test_suite_wstring, ro_value_properties)
+TEST(wproperty_test_suite, ro_value_properties)
 {
     ro_armed_spaceship s;
 
@@ -695,7 +695,7 @@ private:
     armament _armament;
 };
 
-TEST(properties_test_suite_wstring, wo_value_properties)
+TEST(wproperty_test_suite, wo_value_properties)
 {
     wo_armed_spaceship s;
 
