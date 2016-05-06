@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go_boost">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\property">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\property\detail">
+    </Filter>
+    <Filter Include="go_boost\property\policy">
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go_boost\property.hpp">
+      <Filter>go_boost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\assignment_operator.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\property_base.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\read_only_property_base.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\write_only_property_base.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\policy\proxy.hpp">
+      <Filter>go_boost\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\policy\ref.hpp">
+      <Filter>go_boost\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\policy\value.hpp">
+      <Filter>go_boost\property\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\ref_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\read_only_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\read_only_ref_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\read_only_value_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\value_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\write_only_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\write_only_ref_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\write_only_value_scalar_property.hpp">
+      <Filter>go_boost\property</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

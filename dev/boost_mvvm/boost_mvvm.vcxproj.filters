@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go_boost">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\mvvm">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\signals">
+      <UniqueIdentifier>{1a9615de-4543-4c05-86b3-c8898216f128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go_boost\mvvm\utility">
+      <UniqueIdentifier>{5dba567e-c7af-41a4-a0b6-b3cd4279ef8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go_boost\mvvm.hpp">
+      <Filter>go_boost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\property_changed_arguments.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_object.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\object.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\command.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\command_parameters.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\command_manager.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\relay_command.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\container_changed_arguments.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_action.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp">
+      <Filter>go_boost\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\signals\slot.hpp">
+      <Filter>go_boost\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\utility.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_value_access_functor.hpp">
+      <Filter>go_boost\mvvm\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_get_relay_command_functor.hpp">
+      <Filter>go_boost\mvvm\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_set_value_notify_changed_functor.hpp">
+      <Filter>go_boost\mvvm\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\signals.hpp">
+      <Filter>go_boost</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

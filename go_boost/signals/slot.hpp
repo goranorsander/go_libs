@@ -1,5 +1,5 @@
-#ifndef GO_SIGNALS_SLOT_HPP_INCLUDED
-#define GO_SIGNALS_SLOT_HPP_INCLUDED
+#ifndef GO_BOOST_SIGNALS_SLOT_HPP_INCLUDED
+#define GO_BOOST_SIGNALS_SLOT_HPP_INCLUDED
 
 //
 //  slot.hpp
@@ -11,9 +11,14 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <memory>
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
 
-namespace go
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
+namespace go_boost
 {
 namespace signals
 {
@@ -21,9 +26,8 @@ namespace signals
 class slot
 {
 public:
-    typedef slot this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    typedef boost::shared_ptr<slot> ptr;
+    typedef boost::weak_ptr<slot> wptr;
 
 public:
     virtual ~slot() = 0;
@@ -39,6 +43,6 @@ inline slot::~slot()
 }
 
 } // namespace signals
-} // namespace go
+} // namespace go_boost
 
-#endif  // #ifndef GO_SIGNALS_SLOT_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_SIGNALS_SLOT_HPP_INCLUDED

@@ -21,8 +21,9 @@ namespace signals
 class slot_arguments
 {
 public:
-    typedef std::shared_ptr<slot_arguments> ptr;
-    typedef std::weak_ptr<slot_arguments> wptr;
+    typedef slot_arguments this_type;
+    typedef std::shared_ptr<this_type> ptr;
+    typedef std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~slot_arguments() = 0;

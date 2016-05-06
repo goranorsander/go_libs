@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED
-#define GO_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED
+#define GO_BOOST_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED
 
 //
 //  container_changed_arguments.hpp
@@ -11,29 +11,30 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <go/mvvm/notify_container_changed_action.hpp>
-#include <go/signals/slot_arguments.hpp>
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
 
-namespace go
+#include <go_boost/mvvm/notify_container_changed_action.hpp>
+#include <go_boost/signals/slot_arguments.hpp>
+
+namespace go_boost
 {
 namespace mvvm
 {
 
 class container_changed_arguments
-    : public slot_arguments
+    : public go_boost::signals::slot_arguments
 {
 public:
     typedef container_changed_arguments this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    typedef boost::shared_ptr<this_type> ptr;
+    typedef boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~container_changed_arguments()
     {
     }
-
-private:
-    container_changed_arguments(const container_changed_arguments&) = delete;
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action)
@@ -45,7 +46,7 @@ protected:
 public:
     static ptr create(const notify_container_changed_action& action)
     {
-        return ptr(new this_type(action));
+        return ptr(new container_changed_arguments(action));
     }
 
     notify_container_changed_action action() const
@@ -58,6 +59,6 @@ private:
 };
 
 } // namespace mvvm
-} // namespace go
+} // namespace go_boost
 
-#endif  // #ifndef GO_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_CONTAINER_CHANGED_ARGUMENTS_HPP_INCLUDED

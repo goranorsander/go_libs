@@ -8,8 +8,6 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#define BOOST_TEST_MODULE MVVMTests
-
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>

@@ -21,8 +21,9 @@ namespace mvvm
 class command_parameters
 {
 public:
-    typedef std::shared_ptr<command_parameters> ptr;
-    typedef std::weak_ptr<command_parameters> wptr;
+    typedef command_parameters this_type;
+    typedef std::shared_ptr<this_type> ptr;
+    typedef std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~command_parameters()
@@ -40,7 +41,7 @@ private:
 public:
     static ptr create()
     {
-        return ptr(new command_parameters());
+        return ptr(new this_type());
     }
 };
 

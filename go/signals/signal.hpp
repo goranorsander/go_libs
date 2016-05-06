@@ -27,6 +27,7 @@ class signal
 {
 public:
     typedef F function_type;
+    typedef signal<function_type> this_type;
 
 protected:
     typedef std::map<slot_key_type, function_type> connections_type;

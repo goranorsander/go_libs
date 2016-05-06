@@ -1,5 +1,5 @@
 //
-//  observable_object_test_suite.cpp
+//  observable_object_phoenix_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -10,13 +10,16 @@
 
 #include <gtest/gtest.h>
 
-#include <go/mvvm.hpp>
-#include <go/property.hpp>
+#include <go_boost/mvvm.hpp>
+#include <go_boost/mvvm/utility.hpp>
+#include <go_boost/property.hpp>
 
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+namespace bp = boost::phoenix;
+namespace bph = boost::phoenix::placeholders;
+namespace m = go_boost::mvvm;
+namespace mu = go_boost::mvvm::utility;
+namespace p = go_boost::property;
+namespace s = go_boost::signals;
 
 namespace
 {
@@ -24,14 +27,12 @@ namespace
 // Test observable_object
 class spaceship
     : public m::observable_object
+    , private boost::noncopyable
 {
 public:
     ~spaceship()
     {
     }
-
-private:
-    spaceship(const spaceship&) = delete;
 
 public:
     spaceship()
@@ -39,59 +40,22 @@ public:
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-        , crew_complement("crew_complement", std::bind(&spaceship::get_crew_complement, this), std::bind(&spaceship::set_crew_complement, this, ph::_1))
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , max_speed("max_speed", std::bind(&spaceship::get_max_speed, this), std::bind(&spaceship::set_max_speed, this, ph::_1))
+        , crew_complement("crew_complement")
+        , name("name")
+        , max_speed("max_speed")
     {
+        crew_complement.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_crew_complement)));
+        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)("crew_complement", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_crew_complement), bph::arg1));
+        name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)("name", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_name), bph::arg1));
+        max_speed.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_max_speed)));
+        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)("max_speed", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_max_speed), bph::arg1));
     }
 
 public:
     p::property<int> crew_complement;
     p::property<std::string> name;
     p::property<double> max_speed;
-
-private:
-    int get_crew_complement() const
-    {
-        return _crew_complement;
-    }
-
-    void set_crew_complement(const int& v)
-    {
-        if(v != _crew_complement)
-        {
-            _crew_complement = v;
-            on_property_changed("crew_complement");
-        }
-    }
-
-    std::string get_name() const
-    {
-        return _name;
-    }
-
-    void set_name(const std::string& v)
-    {
-        if(v != _name)
-        {
-            _name = v;
-            on_property_changed("name");
-        }
-    }
-
-    double get_max_speed() const
-    {
-        return _max_speed;
-    }
-
-    void set_max_speed(const double& v)
-    {
-        if(v != _max_speed)
-        {
-            _max_speed = v;
-            on_property_changed("max_speed");
-        }
-    }
 
 private:
     int _crew_complement;
@@ -107,8 +71,7 @@ public:
     }
 
     spaceship_observer()
-        : _on_property_changed_slot_key(0)
-        , _crew_complement_change_count(0)
+        : _crew_complement_change_count(0)
         , _name_change_count(0)
         , _max_speed_change_count(0)
     {
@@ -116,12 +79,12 @@ public:
 
     void connect(spaceship& m)
     {
-        _on_property_changed_slot_key = m.property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
+        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
     }
 
     void disconnect(spaceship& m)
     {
-        m.property_changed.disconnect(_on_property_changed_slot_key);
+        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
     }
 
     void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
@@ -139,15 +102,14 @@ public:
     int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
-    s::slot_key_type _on_property_changed_slot_key;
     int _crew_complement_change_count;
     int _name_change_count;
     int _max_speed_change_count;
 };
 
-TEST(observable_object_test_suite, test_observable_object)
+TEST(observable_object_phoenix_test_suite, test_observable_object)
 {
-    std::shared_ptr<spaceship> m(new spaceship);
+    boost::shared_ptr<spaceship> m(new spaceship);
     spaceship_observer o;
 
     o.connect(*m);
