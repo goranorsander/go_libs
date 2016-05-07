@@ -31,6 +31,7 @@ template<class T, class S> class basic_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::proxy<value_type> policy_type;
     typedef basic_property<value_type, string_type> this_type;
     typedef boost::function<value_type(void)> get_function_signature;
 
@@ -51,7 +52,7 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        const_cast<policy::proxy<T>&>(storage()).getter(f);
+        const_cast<policy_type&>(detail::property_base<value_type, policy_type, string_type>::storage()).getter(f);
     }
 };
 

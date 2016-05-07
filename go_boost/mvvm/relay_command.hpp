@@ -31,6 +31,7 @@ public:
     typedef basic_relay_command<string_type> this_type;
     typedef boost::shared_ptr<this_type> ptr;
     typedef boost::weak_ptr<this_type> wptr;
+    typedef typename basic_command<string_type>::command_parameters_type_ptr command_parameters_type_ptr;
     typedef boost::function<bool(const command_parameters_type_ptr&)> can_execute_command_signature;
     typedef boost::function<void(const command_parameters_type_ptr&)> execute_command_signature;
 

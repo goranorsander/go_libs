@@ -31,6 +31,7 @@ template<class T, class S> class basic_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::proxy<value_type> policy_type;
     typedef basic_property<value_type, string_type> this_type;
     typedef boost::function<void(const value_type&)> set_function_signature;
 
@@ -53,7 +54,7 @@ public:
 
     void setter(const set_function_signature& f)
     {
-        storage().setter(f);
+        detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
     }
 };
 

@@ -64,7 +64,7 @@ public:
     {
         if(!can_execute_changed.empty())
         {
-            can_execute_changed(shared_from_this());
+            can_execute_changed(basic_command<string_type>::shared_from_this());
         }
     }
 

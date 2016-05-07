@@ -31,6 +31,7 @@ template<class T, class S> class basic_ref_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::ref<value_type> policy_type;
     typedef basic_ref_scalar_property<value_type, string_type> this_type;
 
 public:
@@ -52,12 +53,12 @@ public:
 
     bool empty() const
     {
-        return storage().empty();
+        return detail::property_base<value_type, policy_type, string_type>::storage().empty();
     }
 
     void clear()
     {
-        return storage().clear();
+        return detail::property_base<value_type, policy_type, string_type>::storage().clear();
     }
 
     BOOST_EXPLICIT_OPERATOR_BOOL()

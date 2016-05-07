@@ -26,7 +26,7 @@ template<class T, class S> class basic_property
 public:
     typedef T value_type;
     typedef S string_type;
-    typedef policy::proxy<T> policy_type;
+    typedef policy::proxy<value_type> policy_type;
     typedef basic_property<value_type, string_type> this_type;
     typedef std::function<value_type(void)> get_function_signature;
     typedef std::function<void(const value_type&)> set_function_signature;

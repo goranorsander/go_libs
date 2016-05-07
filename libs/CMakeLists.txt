@@ -24,6 +24,7 @@ IF(BUILD_STD_TESTS)
     add_dependencies(${PROJECT_STD_TEST_MVVM_NAME} googletest)
 
     if(NOT WIN32)
+        find_package(Threads)
         target_link_libraries(${PROJECT_STD_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
@@ -54,6 +55,7 @@ IF(BUILD_STD_TESTS)
     add_dependencies(${PROJECT_STD_TEST_PROPERTY_NAME} googletest)
 
     if(NOT WIN32)
+        find_package(Threads)
         target_link_libraries(${PROJECT_STD_TEST_PROPERTY_NAME}
             libgtest.a
             libgtest_main.a
@@ -84,6 +86,7 @@ IF(BUILD_STD_TESTS)
     add_dependencies(${PROJECT_STD_TEST_SIGNALS_NAME} googletest)
 
     if(NOT WIN32)
+        find_package(Threads)
         target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
             libgtest.a
             libgtest_main.a
@@ -130,9 +133,11 @@ IF(BUILD_BOOST_TESTS)
     add_dependencies(${PROJECT_BOOST_TEST_MVVM_NAME} googletest)
 
     if(NOT WIN32)
+        find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
+            libboost_system-gcc53-mt-1_60.a
             )
     else(NOT WIN32)
 		IF((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
@@ -165,9 +170,11 @@ IF(BUILD_BOOST_TESTS)
     add_dependencies(${PROJECT_BOOST_TEST_PROPERTY_NAME} googletest)
 
     if(NOT WIN32)
+        find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
             libgtest.a
             libgtest_main.a
+            libboost_system-gcc53-mt-1_60.a
             )
     else(NOT WIN32)
 		IF((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))

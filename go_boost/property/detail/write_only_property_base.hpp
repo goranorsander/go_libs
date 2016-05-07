@@ -32,9 +32,7 @@ public:
     typedef S string_type;
     typedef property_base<value_type, storage_policy, string_type> this_type;
 
-    virtual ~property_base() = 0
-    {
-    }
+    virtual ~property_base() = 0;
 
 protected:
     explicit property_base(const storage_policy& s, const string_type& n)
@@ -44,7 +42,7 @@ protected:
     }
 
 public:
-    void operator()(const value_type& v) 
+    void operator()(const value_type& v)
     {
         set(v);
     }
@@ -52,7 +50,7 @@ public:
 private:
     this_type& operator=(const this_type& v)
     {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"))
+        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
     }
 
 public:
@@ -81,6 +79,11 @@ private:
     const string_type _n;
     storage_policy _s;
 };
+
+template<class V, class P, class S>
+inline property_base<V, P, S>::~property_base()
+{
+}
 
 } // namespace detail
 } // namespace write_only

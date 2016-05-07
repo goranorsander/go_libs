@@ -12,12 +12,12 @@
 public:
     this_type& operator=(const this_type& v)
     {
-        set(v.get());
+        this_type::set(v.get());
         return *this;
     }
 
     this_type& operator=(const value_type& v)
     {
-        set(v);
+        this_type::set(v);
         return *this;
     }

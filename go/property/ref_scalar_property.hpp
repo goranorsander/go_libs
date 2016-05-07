@@ -26,7 +26,7 @@ template<class T, class S> class basic_ref_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
-    typedef policy::ref<T> policy_type;
+    typedef policy::ref<value_type> policy_type;
     typedef basic_ref_scalar_property<value_type, string_type> this_type;
 
 public:

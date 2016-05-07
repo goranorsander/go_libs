@@ -32,6 +32,7 @@ template<class T, class S> class basic_value_scalar_property
 public:
     typedef T value_type;
     typedef S string_type;
+    typedef policy::value<value_type> policy_type;
     typedef basic_value_scalar_property<value_type, string_type> this_type;
 
 public:

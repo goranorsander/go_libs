@@ -31,9 +31,7 @@ public:
     typedef boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~object() = 0
-    {
-    }
+    virtual ~object() = 0;
 
 protected:
     object()
@@ -41,6 +39,10 @@ protected:
     {
     }
 };
+
+inline object::~object()
+{
+}
 
 } // namespace mvvm
 } // namespace go_boost
