@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/predef.h>
+
+#if (BOOST_COMP_MSVC) && (_MSC_VER <= 1700)
+#pragma message("Boost.Phoenix is not supported by this compiler")
+#else
+
 #include <gtest/gtest.h>
 
 #include <go_boost/mvvm.hpp>
@@ -50,12 +56,7 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
-        name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(L"name", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_name), bph::arg1));
-        captain.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_captain)));
-        captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(L"captain", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_captain), bph::arg1));
-        impulse_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"impulse_speed", boost::bind(&spaceship::go_to_impulse, this, _1), boost::bind(&spaceship::can_go_to_impulse, this, _1), m::command_parameters::create(), bp::ref(_impulse_speed_command)));
-        warp_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"warp_speed", boost::bind(&spaceship::go_to_warp, this, _1), boost::bind(&spaceship::can_go_to_warp, this, _1), m::command_parameters::create(), bp::ref(_warp_speed_command)));
+		bind_properties();
     }
 
     spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
@@ -72,13 +73,19 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
+		bind_properties();
+    }
+
+private:
+	void bind_properties()
+	{
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
         name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(L"name", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_name), bph::arg1));
         captain.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_captain)));
         captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(L"captain", boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_captain), bph::arg1));
         impulse_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"impulse_speed", boost::bind(&spaceship::go_to_impulse, this, _1), boost::bind(&spaceship::can_go_to_impulse, this, _1), m::command_parameters::create(), bp::ref(_impulse_speed_command)));
         warp_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"warp_speed", boost::bind(&spaceship::go_to_warp, this, _1), boost::bind(&spaceship::can_go_to_warp, this, _1), m::command_parameters::create(), bp::ref(_warp_speed_command)));
-    }
+	}
 
 public:
     p::wproperty<std::wstring> name;
@@ -213,7 +220,7 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-TEST(wcommand_manager_phoenix_test_suite, test_wcommand_manager)
+TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
 {
     TEST_CASE_SHIPYARD
 
@@ -279,7 +286,7 @@ TEST(wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-TEST(wcommand_manager_phoenix_test_suite, test_spaceship_observer)
+TEST(boost_wcommand_manager_phoenix_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 
@@ -329,3 +336,5 @@ TEST(wcommand_manager_phoenix_test_suite, test_spaceship_observer)
 }
 
 }
+
+#endif

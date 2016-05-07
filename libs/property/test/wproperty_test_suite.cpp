@@ -52,7 +52,7 @@ public:
     }
 };
 
-TEST(wproperty_test_suite, value_scalar_properties)
+TEST(std_wproperty_test_suite, value_scalar_properties)
 {
     spaceship s;
 
@@ -108,14 +108,14 @@ TEST(wproperty_test_suite, value_scalar_properties)
 }
 
 // Test read_only::value_scalar_wproperty
-class ro_spaceship
+class read_only_spaceship
 {
 public:
     rop::value_scalar_wproperty<int> crew_complement;
     rop::value_scalar_wproperty<double> max_speed;
     rop::value_scalar_wproperty<std::string> name;
 
-    ro_spaceship()
+    read_only_spaceship()
         : crew_complement(std::wstring(L"crew_complement"), 1012)
         , max_speed(std::wstring(L"max_speed"), 9.8)
         , name(std::wstring(L"name"), std::string("USS Enterprise (NCC-1701-D)"))
@@ -123,9 +123,9 @@ public:
     }
 };
 
-TEST(wproperty_test_suite, ro_scalar_properties)
+TEST(std_wproperty_test_suite, read_only_scalar_properties)
 {
-    ro_spaceship s;
+    read_only_spaceship s;
 
     // Method oriented get
     EXPECT_EQ(1012, s.crew_complement());
@@ -148,21 +148,21 @@ TEST(wproperty_test_suite, ro_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_spaceship s2(s);
+    read_only_spaceship s2(s);
     EXPECT_EQ(1012, s2.crew_complement());
     EXPECT_EQ(9.8, s2.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
 // Test write_only::value_scalar_wproperty
-class wo_spaceship
+class write_only_spaceship
 {
 public:
     wop::value_scalar_wproperty<int> crew_complement;
     wop::value_scalar_wproperty<double> max_speed;
     wop::value_scalar_wproperty<std::string> name;
 
-    wo_spaceship()
+    write_only_spaceship()
         : crew_complement(std::wstring(L"crew_complement"), 1012)
         , max_speed(std::wstring(L"max_speed"), 9.8)
         , name(std::wstring(L"name"), std::string("USS Enterprise (NCC-1701-D)"))
@@ -170,9 +170,9 @@ public:
     }
 };
 
-TEST(wproperty_test_suite, wo_scalar_properties)
+TEST(std_wproperty_test_suite, write_only_scalar_properties)
 {
-    wo_spaceship s;
+    write_only_spaceship s;
 
     // Method oriented set
     s.crew_complement(647);
@@ -190,7 +190,7 @@ TEST(wproperty_test_suite, wo_scalar_properties)
     s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
 
     // Copy construction
-    wo_spaceship s2(s);
+    write_only_spaceship s2(s);
 }
 
 // Test ref_scalar_wproperty
@@ -209,7 +209,7 @@ public:
     }
 };
 
-TEST(wproperty_test_suite, ref_scalar_properties)
+TEST(std_wproperty_test_suite, ref_scalar_properties)
 {
     ref_spaceship s;
 
@@ -293,14 +293,14 @@ TEST(wproperty_test_suite, ref_scalar_properties)
 }
 
 // Test read_only::ref_scalar_wproperty
-class ro_ref_spaceship
+class read_only_ref_spaceship
 {
 public:
     rop::ref_scalar_wproperty<int> crew_complement;
     rop::ref_scalar_wproperty<double> max_speed;
     rop::ref_scalar_wproperty<std::string> name;
 
-    ro_ref_spaceship()
+    read_only_ref_spaceship()
         : crew_complement(std::wstring(L"crew_complement"), m_crew_complement)
         , max_speed(std::wstring(L"max_speed"), m_speed)
         , name(std::wstring(L"name"), m_name)
@@ -316,9 +316,9 @@ private:
     std::string m_name;
 };
 
-TEST(wproperty_test_suite, ro_ref_scalar_properties)
+TEST(std_wproperty_test_suite, read_only_ref_scalar_properties)
 {
-    ro_ref_spaceship s;
+    read_only_ref_spaceship s;
 
     // Verify default values
     EXPECT_TRUE(s.crew_complement.empty() == false);
@@ -346,7 +346,7 @@ TEST(wproperty_test_suite, ro_ref_scalar_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_ref_spaceship s2(s);
+    read_only_ref_spaceship s2(s);
     EXPECT_TRUE(s2.crew_complement.empty() == false);
     EXPECT_TRUE(s2.max_speed.empty() == false);
     EXPECT_TRUE(s2.name.empty() == false);
@@ -356,14 +356,14 @@ TEST(wproperty_test_suite, ro_ref_scalar_properties)
 }
 
 // Test write_only::ref_scalar_wproperty
-class wo_ref_spaceship
+class write_only_ref_spaceship
 {
 public:
     wop::ref_scalar_wproperty<int> crew_complement;
     wop::ref_scalar_wproperty<double> max_speed;
     wop::ref_scalar_wproperty<std::string> name;
 
-    wo_ref_spaceship()
+    write_only_ref_spaceship()
         : crew_complement(std::wstring(L"crew_complement"))
         , max_speed(std::wstring(L"max_speed"))
         , name(std::wstring(L"name"))
@@ -371,9 +371,9 @@ public:
     }
 };
 
-TEST(wproperty_test_suite, wo_ref_scalar_properties)
+TEST(std_wproperty_test_suite, write_only_ref_scalar_properties)
 {
-    wo_ref_spaceship s;
+    write_only_ref_spaceship s;
 
     // Verify default values
     EXPECT_TRUE(s.crew_complement.empty() == true);
@@ -410,7 +410,7 @@ TEST(wproperty_test_suite, wo_ref_scalar_properties)
     s_n_4 = "USS Enterprise (NCC-1701-C)";
 
     // Copy construction
-    wo_ref_spaceship s2(s);
+    write_only_ref_spaceship s2(s);
 }
 
 // Test property
@@ -482,7 +482,7 @@ private:
     armament _armament;
 };
 
-TEST(wproperty_test_suite, value_properties)
+TEST(std_wproperty_test_suite, value_properties)
 {
     armed_spaceship s;
 
@@ -575,14 +575,14 @@ TEST(wproperty_test_suite, value_properties)
 }
 
 // Test read_only::property
-class ro_armed_spaceship
-    : public ro_spaceship
+class read_only_armed_spaceship
+    : public read_only_spaceship
 {
 public:
     rop::wproperty<int> phaser_arrays;
 
-    ro_armed_spaceship()
-        : ro_spaceship()
+    read_only_armed_spaceship()
+        : read_only_spaceship()
         , phaser_arrays(std::wstring(L"phaser_arrays"))
         , _armament()
     {
@@ -590,8 +590,8 @@ public:
         update_bindings();
     }
 
-    ro_armed_spaceship(const ro_armed_spaceship& v)
-        : ro_spaceship(v)
+    read_only_armed_spaceship(const read_only_armed_spaceship& v)
+        : read_only_spaceship(v)
         , phaser_arrays(v.phaser_arrays)
         , _armament(v._armament)
     {
@@ -608,9 +608,9 @@ private:
     armament _armament;
 };
 
-TEST(wproperty_test_suite, ro_value_properties)
+TEST(std_wproperty_test_suite, read_only_value_properties)
 {
-    ro_armed_spaceship s;
+    read_only_armed_spaceship s;
 
     // INHERITED PROPERTIES
 
@@ -635,7 +635,7 @@ TEST(wproperty_test_suite, ro_value_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name.get());
 
     // Copy construction
-    ro_armed_spaceship s2(s);
+    read_only_armed_spaceship s2(s);
     EXPECT_EQ(1012, s2.crew_complement());
     EXPECT_EQ(9.8, s2.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
@@ -655,7 +655,7 @@ TEST(wproperty_test_suite, ro_value_properties)
     EXPECT_EQ(8, s.phaser_arrays.get());
 
     // Copy construction
-    ro_armed_spaceship s3(s);
+    read_only_armed_spaceship s3(s);
     EXPECT_EQ(1012, s3.crew_complement());
     EXPECT_EQ(9.8, s3.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s3.name());
@@ -663,22 +663,22 @@ TEST(wproperty_test_suite, ro_value_properties)
 }
 
 // Test write_only::property
-class wo_armed_spaceship
-    : public wo_spaceship
+class write_only_armed_spaceship
+    : public write_only_spaceship
 {
 public:
     wop::wproperty<int> phaser_arrays;
 
-    wo_armed_spaceship()
-        : wo_spaceship()
+    write_only_armed_spaceship()
+        : write_only_spaceship()
         , phaser_arrays(std::wstring(L"phaser_arrays"))
         , _armament()
     {
         update_bindings();
     }
 
-    wo_armed_spaceship(const wo_armed_spaceship& v)
-        : wo_spaceship(v)
+    write_only_armed_spaceship(const write_only_armed_spaceship& v)
+        : write_only_spaceship(v)
         , phaser_arrays(v.phaser_arrays)
         , _armament(v._armament)
     {
@@ -695,9 +695,9 @@ private:
     armament _armament;
 };
 
-TEST(wproperty_test_suite, wo_value_properties)
+TEST(std_wproperty_test_suite, write_only_value_properties)
 {
-    wo_armed_spaceship s;
+    write_only_armed_spaceship s;
 
     // INHERITED PROPERTIES
 
@@ -717,7 +717,7 @@ TEST(wproperty_test_suite, wo_value_properties)
     s.name.set(std::string("USS Enterprise (NCC-1701-B)"));
 
     // Copy construction
-    wo_armed_spaceship s2(s);
+    write_only_armed_spaceship s2(s);
 
     // PROXY
 
@@ -731,7 +731,7 @@ TEST(wproperty_test_suite, wo_value_properties)
     s.phaser_arrays.set(14);
 
     // Copy construction
-    wo_armed_spaceship s3(s);
+    write_only_armed_spaceship s3(s);
 }
 
 }

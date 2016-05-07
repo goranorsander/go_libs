@@ -15,6 +15,8 @@
 #pragma once
 #endif
 
+#include <boost/system/config.hpp>
+
 #include <go_boost/mvvm/command_manager.hpp>
 #include <go_boost/mvvm/observable_object.hpp>
 #include <go_boost/mvvm/relay_command.hpp>

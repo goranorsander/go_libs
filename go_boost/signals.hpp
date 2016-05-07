@@ -15,6 +15,8 @@
 #pragma once
 #endif
 
+#include <boost/system/config.hpp>
+
 #include <go/signals/slot.hpp>
 #include <go/signals/slot_arguments.hpp>
 

@@ -41,11 +41,12 @@ public:
         , _captain()
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", boost::bind(&spaceship::get_name, this), boost::bind(&spaceship::set_name, this, _1))
-        , captain("captain", boost::bind(&spaceship::get_captain, this), boost::bind(&spaceship::set_captain, this, _1))
-        , impulse_speed_command("impulse_speed_command", boost::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", boost::bind(&spaceship::get_warp_speed_command, this))
+        , name("name")
+        , captain("captain")
+        , impulse_speed_command("impulse_speed_command")
+        , warp_speed_command("warp_speed_command")
     {
+		bind_properties();
     }
 
     spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
@@ -57,12 +58,24 @@ public:
         , _captain(cpt)
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", boost::bind(&spaceship::get_name, this), boost::bind(&spaceship::set_name, this, _1))
-        , captain("captain", boost::bind(&spaceship::get_captain, this), boost::bind(&spaceship::set_captain, this, _1))
-        , impulse_speed_command("impulse_speed_command", boost::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", boost::bind(&spaceship::get_warp_speed_command, this))
+        , name("name")
+        , captain("captain")
+        , impulse_speed_command("impulse_speed_command")
+        , warp_speed_command("warp_speed_command")
     {
+		bind_properties();
     }
+
+private:
+	void bind_properties()
+	{
+		name.getter(boost::bind(&spaceship::get_name, this));
+		name.setter(boost::bind(&spaceship::set_name, this, _1));
+        captain.getter(boost::bind(&spaceship::get_captain, this));
+        captain.setter(boost::bind(&spaceship::set_captain, this, _1));
+		impulse_speed_command.getter(boost::bind(&spaceship::get_impulse_speed_command, this));
+		warp_speed_command.getter(boost::bind(&spaceship::get_warp_speed_command, this));
+	}
 
 public:
     p::property<std::string> name;
@@ -245,7 +258,7 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-TEST(command_manager_test_suite, test_command_manager)
+TEST(boost_command_manager_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
 
@@ -311,7 +324,7 @@ TEST(command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-TEST(command_manager_test_suite, test_spaceship_observer)
+TEST(boost_command_manager_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 

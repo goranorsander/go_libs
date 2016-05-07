@@ -39,10 +39,22 @@ public:
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-        , crew_complement("crew_complement", std::bind(&spaceship::get_crew_complement, this), std::bind(&spaceship::set_crew_complement, this, ph::_1))
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , max_speed("max_speed", std::bind(&spaceship::get_max_speed, this), std::bind(&spaceship::set_max_speed, this, ph::_1))
+        , crew_complement("crew_complement")
+        , name("name")
+        , max_speed("max_speed")
     {
+        bind_properties();
+    }
+
+private:
+    void bind_properties()
+    {
+        crew_complement.getter(std::bind(&spaceship::get_crew_complement, this));
+        crew_complement.setter(std::bind(&spaceship::set_crew_complement, this, ph::_1));
+        name.getter(std::bind(&spaceship::get_name, this));
+        name.setter(std::bind(&spaceship::set_name, this, ph::_1));
+        max_speed.getter(std::bind(&spaceship::get_max_speed, this));
+        max_speed.setter(std::bind(&spaceship::set_max_speed, this, ph::_1));
     }
 
 public:
@@ -145,7 +157,7 @@ private:
     int _max_speed_change_count;
 };
 
-TEST(observable_object_test_suite, test_observable_object)
+TEST(std_observable_object_test_suite, test_observable_object)
 {
     std::shared_ptr<spaceship> m(new spaceship);
     spaceship_observer o;

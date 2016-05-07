@@ -44,11 +44,12 @@ public:
         , _captain()
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , captain("captain", std::bind(&spaceship::get_captain, this), std::bind(&spaceship::set_captain, this, ph::_1))
-        , impulse_speed_command("impulse_speed_command", std::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", std::bind(&spaceship::get_warp_speed_command, this))
+        , name("name")
+        , captain("captain")
+        , impulse_speed_command("impulse_speed_command")
+        , warp_speed_command("warp_speed_command")
     {
+        bind_properties();
     }
 
     spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
@@ -60,11 +61,23 @@ public:
         , _captain(cpt)
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name("name", std::bind(&spaceship::get_name, this), std::bind(&spaceship::set_name, this, ph::_1))
-        , captain("captain", std::bind(&spaceship::get_captain, this), std::bind(&spaceship::set_captain, this, ph::_1))
-        , impulse_speed_command("impulse_speed_command", std::bind(&spaceship::get_impulse_speed_command, this))
-        , warp_speed_command("warp_speed_command", std::bind(&spaceship::get_warp_speed_command, this))
+        , name("name")
+        , captain("captain")
+        , impulse_speed_command("impulse_speed_command")
+        , warp_speed_command("warp_speed_command")
     {
+        bind_properties();
+    }
+
+private:
+    void bind_properties()
+    {
+        name.getter(std::bind(&spaceship::get_name, this));
+        name.setter(std::bind(&spaceship::set_name, this, ph::_1));
+        captain.getter(std::bind(&spaceship::get_captain, this));
+        captain.setter(std::bind(&spaceship::set_captain, this, ph::_1));
+        impulse_speed_command.getter(std::bind(&spaceship::get_impulse_speed_command, this));
+        warp_speed_command.getter(std::bind(&spaceship::get_warp_speed_command, this));
     }
 
 public:
@@ -250,7 +263,7 @@ private:
     observer->connect(ship4); \
     observer->connect(ship5);
 
-TEST(command_manager_test_suite, test_command_manager)
+TEST(std_command_manager_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
 
@@ -316,7 +329,7 @@ TEST(command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 }
 
-TEST(command_manager_test_suite, test_spaceship_observer)
+TEST(std_command_manager_test_suite, test_spaceship_observer)
 {
     TEST_CASE_SHIPYARD
 

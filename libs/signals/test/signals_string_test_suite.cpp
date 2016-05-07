@@ -123,7 +123,7 @@ private:
     std::shared_ptr<spaceship> ship7(new spaceship(flt_cmd, "Y-Wing Gold Leader", "Jon 'Dutch' Vander", 20)); \
     std::shared_ptr<spaceship> ship8(new spaceship(flt_cmd, "Y-Wing Gold Two", "Dex Tiree", 20));
 
-TEST(signals_string_test_suite, test_fire_lasers)
+TEST(std_signals_string_test_suite, test_fire_lasers)
 {
     TEST_CASE_SHIPYARD
 
@@ -194,7 +194,7 @@ TEST(signals_string_test_suite, test_fire_lasers)
     EXPECT_EQ(20, ship8->proton_torpedoes());
 }
 
-TEST(signals_string_test_suite, test_fire_proton_torpedoes)
+TEST(std_signals_string_test_suite, test_fire_proton_torpedoes)
 {
     TEST_CASE_SHIPYARD
 
@@ -244,7 +244,7 @@ TEST(signals_string_test_suite, test_fire_proton_torpedoes)
     EXPECT_EQ(19, ship8->proton_torpedoes());
 }
 
-TEST(signals_string_test_suite, test_fire_all_weapons)
+TEST(std_signals_string_test_suite, test_fire_all_weapons)
 {
     TEST_CASE_SHIPYARD
 

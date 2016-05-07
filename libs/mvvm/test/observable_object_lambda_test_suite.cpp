@@ -43,6 +43,12 @@ public:
         , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; on_property_changed("name"); } })
         , max_speed("max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; on_property_changed("max_speed"); } })
     {
+        bind_properties();
+    }
+
+private:
+    void bind_properties()
+    {
     }
 
 public:
@@ -102,7 +108,7 @@ private:
     int _max_speed_change_count;
 };
 
-TEST(observable_object_lambda_test_suite, test_observable_object)
+TEST(std_observable_object_lambda_test_suite, test_observable_object)
 {
     std::shared_ptr<spaceship> m(new spaceship);
     spaceship_observer o;

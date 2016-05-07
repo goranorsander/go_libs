@@ -15,6 +15,8 @@
 #pragma once
 #endif
 
+#include <boost/system/config.hpp>
+
 #include <go_boost/property/property.hpp>
 #include <go_boost/property/ref_scalar_property.hpp>
 #include <go_boost/property/value_scalar_property.hpp>

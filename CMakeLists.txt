@@ -31,6 +31,10 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     # using Visual Studio C++
+	if(MSVC_VERSION EQUAL 1700)
+		# using Visual Studio 2012 C++
+		SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"_VARIADIC_MAX=10\"" )
+	endif(MSVC_VERSION EQUAL 1700)
 endif()
 
 ########################################################
