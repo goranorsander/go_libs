@@ -101,13 +101,13 @@ SET(GO_PROPERTY_DIR ${GO_DIR}/property)
 SET(GO_LIBS_SRC_GO_PROPERTY_HPP
     ${GO_PROPERTY_DIR}/property.hpp
     ${GO_PROPERTY_DIR}/read_only_property.hpp
-    ${GO_PROPERTY_DIR}/read_only_ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/read_only_value_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/value_scalar_property.hpp
+    ${GO_PROPERTY_DIR}/read_only_reference_property.hpp
+    ${GO_PROPERTY_DIR}/read_only_value_property.hpp
+    ${GO_PROPERTY_DIR}/reference_property.hpp
+    ${GO_PROPERTY_DIR}/value_property.hpp
     ${GO_PROPERTY_DIR}/write_only_property.hpp
-    ${GO_PROPERTY_DIR}/write_only_ref_scalar_property.hpp
-    ${GO_PROPERTY_DIR}/write_only_value_scalar_property.hpp
+    ${GO_PROPERTY_DIR}/write_only_reference_property.hpp
+    ${GO_PROPERTY_DIR}/write_only_value_property.hpp
 )
 
 # *.cpp
@@ -143,7 +143,7 @@ SET(GO_PROPERTY_POLICY_DIR ${GO_DIR}/property/policy)
 
 SET(GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP
     ${GO_PROPERTY_POLICY_DIR}/proxy.hpp
-    ${GO_PROPERTY_POLICY_DIR}/ref.hpp
+    ${GO_PROPERTY_POLICY_DIR}/reference.hpp
     ${GO_PROPERTY_POLICY_DIR}/value.hpp
 )
 
@@ -246,13 +246,13 @@ SET(GO_BOOST_PROPERTY_DIR ${GO_BOOST_DIR}/property)
 SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP
     ${GO_BOOST_PROPERTY_DIR}/property.hpp
     ${GO_BOOST_PROPERTY_DIR}/read_only_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/read_only_ref_scalar_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/read_only_value_scalar_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/ref_scalar_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/value_scalar_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/read_only_reference_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/read_only_value_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/reference_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/value_property.hpp
     ${GO_BOOST_PROPERTY_DIR}/write_only_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/write_only_ref_scalar_property.hpp
-    ${GO_BOOST_PROPERTY_DIR}/write_only_value_scalar_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/write_only_reference_property.hpp
+    ${GO_BOOST_PROPERTY_DIR}/write_only_value_property.hpp
 )
 
 # *.cpp
@@ -288,7 +288,7 @@ SET(GO_BOOST_PROPERTY_POLICY_DIR ${GO_BOOST_DIR}/property/policy)
 
 SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP
     ${GO_BOOST_PROPERTY_POLICY_DIR}/proxy.hpp
-    ${GO_BOOST_PROPERTY_POLICY_DIR}/ref.hpp
+    ${GO_BOOST_PROPERTY_POLICY_DIR}/reference.hpp
     ${GO_BOOST_PROPERTY_POLICY_DIR}/value.hpp
 )
 

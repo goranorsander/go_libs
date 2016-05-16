@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_PROPERTY_POLICY_REF_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_POLICY_REF_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_POLICY_REFERENCE_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_POLICY_REFERENCE_HPP_INCLUDED
 
 //
-//  ref.hpp
+//  reference.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -25,30 +25,30 @@ namespace property
 namespace policy
 {
 
-template<class T> class ref
+template<class T> class reference
 {
 public:
     typedef typename T value_type;
-    typedef typename ref<value_type> this_type;
+    typedef typename reference<value_type> this_type;
 
 public:
-    virtual ~ref()
+    virtual ~reference()
     {
     }
 
-    ref()
+    reference()
         : _property_guard()
         , _v(NULL)
     {
     }
 
-    explicit ref(const ref& v)
+    explicit reference(const reference& v)
         : _property_guard()
         , _v(v._v)
     {
     }
 
-    explicit ref(value_type& v) 
+    explicit reference(value_type& v) 
         : _property_guard()
         , _v(boost::addressof(v))
     {
@@ -93,4 +93,4 @@ private:
 } // namespace property
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_PROPERTY_POLICY_REF_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_POLICY_REFERENCE_HPP_INCLUDED

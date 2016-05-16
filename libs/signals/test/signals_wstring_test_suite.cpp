@@ -52,8 +52,8 @@ public:
     }
 
 public:
-    p::value_scalar_wproperty<std::wstring> commander;
-    p::value_scalar_wproperty<std::wstring> battle;
+    p::value_wproperty<std::wstring> commander;
+    p::value_wproperty<std::wstring> battle;
 
     fire_lasers_signal fire_lasers;
     fire_proton_torpedoes_signal fire_proton_torpedoes;
@@ -85,7 +85,7 @@ public:
         , _fire_lasers_slot_key(0)
         , _fire_proton_torpedoes_slot_key(0)
     {
-        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_scalar_wproperty<bool>::set, &lasers_firing, ph::_1));
+        _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_wproperty<bool>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
 
@@ -100,10 +100,10 @@ public:
     }
 
 public:
-    p::value_scalar_wproperty<std::wstring> name;
-    p::value_scalar_wproperty<std::wstring> captain;
-    p::value_scalar_wproperty<bool> lasers_firing;
-    p::value_scalar_wproperty<int> proton_torpedoes;
+    p::value_wproperty<std::wstring> name;
+    p::value_wproperty<std::wstring> captain;
+    p::value_wproperty<bool> lasers_firing;
+    p::value_wproperty<int> proton_torpedoes;
 
 private:
     fleet_commander::wptr _fleet_commander;

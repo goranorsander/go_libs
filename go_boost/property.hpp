@@ -18,15 +18,15 @@
 #include <boost/system/config.hpp>
 
 #include <go_boost/property/property.hpp>
-#include <go_boost/property/ref_scalar_property.hpp>
-#include <go_boost/property/value_scalar_property.hpp>
+#include <go_boost/property/reference_property.hpp>
+#include <go_boost/property/value_property.hpp>
 
 #include <go_boost/property/read_only_property.hpp>
-#include <go_boost/property/read_only_ref_scalar_property.hpp>
-#include <go_boost/property/read_only_value_scalar_property.hpp>
+#include <go_boost/property/read_only_reference_property.hpp>
+#include <go_boost/property/read_only_value_property.hpp>
 
 #include <go_boost/property/write_only_property.hpp>
-#include <go_boost/property/write_only_ref_scalar_property.hpp>
-#include <go_boost/property/write_only_value_scalar_property.hpp>
+#include <go_boost/property/write_only_reference_property.hpp>
+#include <go_boost/property/write_only_value_property.hpp>
 
 #endif  // #ifndef GO_BOOST_PROPERTY_HPP_INCLUDED

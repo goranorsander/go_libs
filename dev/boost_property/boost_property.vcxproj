@@ -24,18 +24,18 @@
     <ClInclude Include="..\..\go_boost\property\detail\property_base.hpp" />
     <ClInclude Include="..\..\go_boost\property\detail\read_only_property_base.hpp" />
     <ClInclude Include="..\..\go_boost\property\detail\write_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\reference_property.hpp" />
     <ClInclude Include="..\..\go_boost\property\policy\proxy.hpp" />
-    <ClInclude Include="..\..\go_boost\property\policy\ref.hpp" />
+    <ClInclude Include="..\..\go_boost\property\policy\reference.hpp" />
     <ClInclude Include="..\..\go_boost\property\policy\value.hpp" />
-    <ClInclude Include="..\..\go_boost\property\read_only_ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\read_only_reference_property.hpp" />
     <ClInclude Include="..\..\go_boost\property\read_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\read_only_value_scalar_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\read_only_value_property.hpp" />
     <ClInclude Include="..\..\go_boost\property\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\value_scalar_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\write_only_ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\value_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\write_only_reference_property.hpp" />
     <ClInclude Include="..\..\go_boost\property\write_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\write_only_value_scalar_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\write_only_value_property.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

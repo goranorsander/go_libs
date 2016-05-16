@@ -24,18 +24,18 @@
     <ClInclude Include="..\..\go\property\detail\property_base.hpp" />
     <ClInclude Include="..\..\go\property\detail\read_only_property_base.hpp" />
     <ClInclude Include="..\..\go\property\detail\write_only_property_base.hpp" />
-    <ClInclude Include="..\..\go\property\ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go\property\reference_property.hpp" />
     <ClInclude Include="..\..\go\property\policy\proxy.hpp" />
-    <ClInclude Include="..\..\go\property\policy\ref.hpp" />
+    <ClInclude Include="..\..\go\property\policy\reference.hpp" />
     <ClInclude Include="..\..\go\property\policy\value.hpp" />
-    <ClInclude Include="..\..\go\property\read_only_ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go\property\read_only_reference_property.hpp" />
     <ClInclude Include="..\..\go\property\read_only_property.hpp" />
-    <ClInclude Include="..\..\go\property\read_only_value_scalar_property.hpp" />
+    <ClInclude Include="..\..\go\property\read_only_value_property.hpp" />
     <ClInclude Include="..\..\go\property\property.hpp" />
-    <ClInclude Include="..\..\go\property\value_scalar_property.hpp" />
-    <ClInclude Include="..\..\go\property\write_only_ref_scalar_property.hpp" />
+    <ClInclude Include="..\..\go\property\value_property.hpp" />
+    <ClInclude Include="..\..\go\property\write_only_reference_property.hpp" />
     <ClInclude Include="..\..\go\property\write_only_property.hpp" />
-    <ClInclude Include="..\..\go\property\write_only_value_scalar_property.hpp" />
+    <ClInclude Include="..\..\go\property\write_only_value_property.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{26553CCB-6522-42AB-AE06-356EAFCED11F}</ProjectGuid>

@@ -37,7 +37,7 @@
     <ClInclude Include="..\..\go\property\policy\proxy.hpp">
       <Filter>go\property\policy</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\policy\ref.hpp">
+    <ClInclude Include="..\..\go\property\policy\reference.hpp">
       <Filter>go\property\policy</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\policy\value.hpp">
@@ -46,28 +46,28 @@
     <ClInclude Include="..\..\go\property\property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\ref_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\reference_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\read_only_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\read_only_ref_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\read_only_reference_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\read_only_value_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\read_only_value_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\value_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\value_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\property\write_only_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\write_only_ref_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\write_only_reference_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\property\write_only_value_scalar_property.hpp">
+    <ClInclude Include="..\..\go\property\write_only_value_property.hpp">
       <Filter>go\property</Filter>
     </ClInclude>
   </ItemGroup>
