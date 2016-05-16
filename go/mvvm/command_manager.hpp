@@ -24,17 +24,17 @@ template<class S>
 class basic_command_manager
 {
 public:
-    typedef S string_type;
-    typedef basic_command_manager<string_type> this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
-    typedef go::signals::signal<std::function<void(const string_type&)>> requery_suggested_signal;
+    typedef typename S string_type;
+    typedef typename basic_command_manager<string_type> this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename go::signals::signal<std::function<void(const string_type&)>> requery_suggested_signal;
 
 protected:
-    typedef basic_command<string_type> command_type;
-    typedef std::shared_ptr<command_type> command_type_ptr;
-    typedef std::weak_ptr<command_type> command_type_wptr;
-    typedef std::vector<command_type_wptr> command_vector;
+    typedef typename basic_command<string_type> command_type;
+    typedef typename std::shared_ptr<command_type> command_type_ptr;
+    typedef typename std::weak_ptr<command_type> command_type_wptr;
+    typedef typename std::vector<command_type_wptr> command_vector;
 
 public:
     virtual ~basic_command_manager()
@@ -107,7 +107,7 @@ class command_manager
     : public basic_command_manager<std::string>
 {
 public:
-    typedef command_manager this_type;
+    typedef typename command_manager this_type;
 
 public:
     virtual ~command_manager()
@@ -134,7 +134,7 @@ class wcommand_manager
     : public basic_command_manager<std::wstring>
 {
 public:
-    typedef wcommand_manager this_type;
+    typedef typename wcommand_manager this_type;
 
 public:
     virtual ~wcommand_manager()

@@ -28,10 +28,10 @@ template<class T, class S> class basic_value_scalar_property
     : public detail::property_base<T, policy::value<T>, S>
 {
 public:
-    typedef T value_type;
-    typedef S string_type;
-    typedef policy::value<value_type> policy_type;
-    typedef basic_value_scalar_property<value_type, string_type> this_type;
+    typedef typename T value_type;
+    typedef typename S string_type;
+    typedef typename policy::value<value_type> policy_type;
+    typedef typename basic_value_scalar_property<value_type, string_type> this_type;
 
 public:
     virtual ~basic_value_scalar_property()
@@ -55,9 +55,9 @@ template<class T> class value_scalar_property
     : public basic_value_scalar_property<T, std::string>
 {
 public:
-    typedef T value_type;
-    typedef std::string string_type;
-    typedef value_scalar_property<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename std::string string_type;
+    typedef typename value_scalar_property<value_type> this_type;
 
 public:
     virtual ~value_scalar_property()
@@ -81,9 +81,9 @@ template<class T> class value_scalar_wproperty
     : public basic_value_scalar_property<T, std::wstring>
 {
 public:
-    typedef T value_type;
-    typedef std::wstring string_type;
-    typedef value_scalar_wproperty<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename std::wstring string_type;
+    typedef typename value_scalar_wproperty<value_type> this_type;
 
 public:
     virtual ~value_scalar_wproperty()

@@ -19,10 +19,9 @@ namespace mvvm
 enum notify_container_changed_action
 {
     notify_container_changed_action_add,
-    notify_container_changed_action_move,
     notify_container_changed_action_remove,
-    notify_container_changed_action_replace,
     notify_container_changed_action_reset,
+    notify_container_changed_action_swap,
     undefined_notify_container_changed_action = ~0
 };
 

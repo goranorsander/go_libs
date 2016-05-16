@@ -36,7 +36,7 @@ class spaceship
     , private boost::noncopyable
 {
 public:
-    ~spaceship()
+    virtual ~spaceship()
     {
     }
 
@@ -78,7 +78,7 @@ private:
 class spaceship_observer
 {
 public:
-    ~spaceship_observer()
+    virtual ~spaceship_observer()
     {
     }
 

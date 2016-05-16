@@ -28,8 +28,8 @@ class basic_observable_object
     , public object
 {
 public:
-    typedef S string_type;
-    typedef basic_observable_object<string_type> this_type;
+    typedef typename S string_type;
+    typedef typename basic_observable_object<string_type> this_type;
 
 public:
     virtual ~basic_observable_object()
@@ -57,7 +57,7 @@ class observable_object
     : public basic_observable_object<std::string>
 {
 public:
-    typedef observable_object this_type;
+    typedef typename observable_object this_type;
 
 public:
     virtual ~observable_object()
@@ -75,7 +75,7 @@ class wobservable_object
     : public basic_observable_object<std::wstring>
 {
 public:
-    typedef wobservable_object this_type;
+    typedef typename wobservable_object this_type;
 
 public:
     virtual ~wobservable_object()

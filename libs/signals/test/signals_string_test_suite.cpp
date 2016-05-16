@@ -24,13 +24,13 @@ namespace
 class fleet_commander
 {
 public:
-    typedef std::shared_ptr<fleet_commander> ptr;
-    typedef std::weak_ptr<fleet_commander> wptr;
-    typedef go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
-    typedef go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef typename std::shared_ptr<fleet_commander> ptr;
+    typedef typename std::weak_ptr<fleet_commander> wptr;
+    typedef typename go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef typename go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 
 public:
-    ~fleet_commander()
+    virtual ~fleet_commander()
     {
     }
 
@@ -62,7 +62,7 @@ public:
 class spaceship
 {
 public:
-    ~spaceship()
+    virtual ~spaceship()
     {
         fleet_commander::ptr flt_cmd = _fleet_commander.lock();
         if(flt_cmd)

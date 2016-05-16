@@ -25,10 +25,10 @@ namespace detail
 template<class V, class P, class S> class property_base
 {
 public:
-    typedef V value_type;
-    typedef P storage_policy;
-    typedef S string_type;
-    typedef property_base<value_type, storage_policy, string_type> this_type;
+    typedef typename V value_type;
+    typedef typename P storage_policy;
+    typedef typename S string_type;
+    typedef typename property_base<value_type, storage_policy, string_type> this_type;
 
     virtual ~property_base() = 0;
 

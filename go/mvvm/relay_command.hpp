@@ -23,12 +23,12 @@ class basic_relay_command
     : public basic_command<S>
 {
 public:
-    typedef S string_type;
-    typedef basic_relay_command<string_type> this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
-    typedef std::function<bool(const std::shared_ptr<command_parameters>&)> can_execute_command_signature;
-    typedef std::function<void(const std::shared_ptr<command_parameters>&)> execute_command_signature;
+    typedef typename S string_type;
+    typedef typename basic_relay_command<string_type> this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename std::function<bool(const std::shared_ptr<command_parameters>&)> can_execute_command_signature;
+    typedef typename std::function<void(const std::shared_ptr<command_parameters>&)> execute_command_signature;
 
 public:
     virtual ~basic_relay_command()
@@ -75,8 +75,8 @@ class relay_command
     : public basic_relay_command<std::string>
 {
 public:
-    typedef std::string string_type;
-    typedef relay_command this_type;
+    typedef typename std::string string_type;
+    typedef typename relay_command this_type;
 
 public:
     virtual ~relay_command()
@@ -103,8 +103,8 @@ class relay_wcommand
     : public basic_relay_command<std::wstring>
 {
 public:
-    typedef std::wstring string_type;
-    typedef relay_wcommand this_type;
+    typedef typename std::wstring string_type;
+    typedef typename relay_wcommand this_type;
 
 public:
     virtual ~relay_wcommand()

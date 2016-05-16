@@ -28,7 +28,11 @@
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_property_changed.hpp" />
     <ClInclude Include="..\..\go\mvvm\object.hpp" />
+    <ClInclude Include="..\..\go\mvvm\observable_array.hpp" />
+    <ClInclude Include="..\..\go\mvvm\observable_container.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_object.hpp" />
+    <ClInclude Include="..\..\go\mvvm\observable_sequence_container.hpp" />
+    <ClInclude Include="..\..\go\mvvm\observable_vector.hpp" />
     <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp" />
     <ClInclude Include="..\..\go\mvvm\relay_command.hpp" />
   </ItemGroup>

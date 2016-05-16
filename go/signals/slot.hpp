@@ -21,9 +21,9 @@ namespace signals
 class slot
 {
 public:
-    typedef slot this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    typedef typename slot this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~slot() = 0;

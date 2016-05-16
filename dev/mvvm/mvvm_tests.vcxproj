@@ -23,10 +23,12 @@
     <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_vector_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_vector_test_suite.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

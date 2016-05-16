@@ -26,7 +26,7 @@ namespace utility
 
 struct get_property_relay_command_functor
 {
-    typedef std::string string_type;
+    typedef typename std::string string_type;
 
     template <typename Sig>
     struct result;
@@ -34,7 +34,7 @@ struct get_property_relay_command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef go_boost::mvvm::command::ptr type;
+        typedef typename go_boost::mvvm::command::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
@@ -50,7 +50,7 @@ struct get_property_relay_command_functor
 
 struct get_wproperty_relay_wcommand_functor
 {
-    typedef std::wstring string_type;
+    typedef typename std::wstring string_type;
 
     template <typename Sig>
     struct result;
@@ -58,7 +58,7 @@ struct get_wproperty_relay_wcommand_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef go_boost::mvvm::wcommand::ptr type;
+        typedef typename go_boost::mvvm::wcommand::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>

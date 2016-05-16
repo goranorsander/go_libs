@@ -12,7 +12,8 @@
 //
 
 #include <go/mvvm/command_manager.hpp>
-#include <go/mvvm/observable_object.hpp>
+#include <go/mvvm/observable_array.hpp>
+#include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
 
 #endif  // #ifndef GO_MVVM_HPP_INCLUDED

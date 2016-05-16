@@ -24,10 +24,10 @@ template<class T, class S> class basic_ref_scalar_property
     : public detail::property_base<T, policy::ref<T>, S>
 {
 public:
-    typedef T value_type;
-    typedef S string_type;
-    typedef policy::ref<value_type> policy_type;
-    typedef basic_ref_scalar_property<value_type, string_type> this_type;
+    typedef typename T value_type;
+    typedef typename S string_type;
+    typedef typename policy::ref<value_type> policy_type;
+    typedef typename basic_ref_scalar_property<value_type, string_type> this_type;
 
 public:
     virtual ~basic_ref_scalar_property()
@@ -71,9 +71,9 @@ template<class T> class ref_scalar_property
     : public basic_ref_scalar_property<T, std::string>
 {
 public:
-    typedef T value_type;
-    typedef std::string string_type;
-    typedef ref_scalar_property<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename std::string string_type;
+    typedef typename ref_scalar_property<value_type> this_type;
 
 public:
     virtual ~ref_scalar_property()
@@ -97,9 +97,9 @@ template<class T> class ref_scalar_wproperty
     : public basic_ref_scalar_property<T, std::wstring>
 {
 public:
-    typedef T value_type;
-    typedef std::wstring string_type;
-    typedef ref_scalar_wproperty<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename std::wstring string_type;
+    typedef typename ref_scalar_wproperty<value_type> this_type;
 
 public:
     virtual ~ref_scalar_wproperty()

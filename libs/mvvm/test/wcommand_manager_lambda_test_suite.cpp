@@ -27,7 +27,7 @@ class spaceship
     : public m::wobservable_object
 {
 public:
-    ~spaceship()
+    virtual ~spaceship()
     {
     }
 
@@ -109,7 +109,7 @@ private:
 class spaceship_observer
 {
 public:
-    ~spaceship_observer()
+    virtual ~spaceship_observer()
     {
     }
 
@@ -168,8 +168,8 @@ public:
     }
 
 private:
-    typedef std::pair<std::wstring, std::wstring> ship_and_property_type;
-    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+    typedef typename std::pair<std::wstring, std::wstring> ship_and_property_type;
+    typedef typename std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
     s::slot_key_type _on_property_changed_slot_key;
     on_property_changed_counter_type _on_property_changed_count;

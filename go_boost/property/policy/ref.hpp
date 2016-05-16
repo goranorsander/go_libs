@@ -28,8 +28,8 @@ namespace policy
 template<class T> class ref
 {
 public:
-    typedef T value_type;
-    typedef ref<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename ref<value_type> this_type;
 
 public:
     virtual ~ref()

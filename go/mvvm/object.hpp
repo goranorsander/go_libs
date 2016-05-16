@@ -22,9 +22,9 @@ class object
     : public std::enable_shared_from_this<object>
 {
 public:
-    typedef object this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    typedef typename object this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~object() = 0;

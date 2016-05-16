@@ -29,10 +29,10 @@ namespace policy
 template<class T> class proxy
 {
 public:
-    typedef T value_type;
-    typedef proxy<value_type> this_type;
-    typedef boost::function<value_type(void)> get_function_signature;
-    typedef boost::function<void(const value_type&)> set_function_signature;
+    typedef typename T value_type;
+    typedef typename proxy<value_type> this_type;
+    typedef typename boost::function<value_type(void)> get_function_signature;
+    typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
     virtual ~proxy()

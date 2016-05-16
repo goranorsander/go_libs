@@ -32,7 +32,7 @@ struct get_property_value_functor
     template <typename This, typename Arg>
     struct result<This(const Arg&)>
     {
-        typedef Arg type;
+        typedef typename Arg type;
     };
 
     template <typename Arg>
@@ -50,7 +50,7 @@ struct set_property_value_functor
     template <typename This, typename Arg>
     struct result<This(Arg&, const Arg&)>
     {
-        typedef void type;
+        typedef typename void type;
     };
 
     template <typename Arg>

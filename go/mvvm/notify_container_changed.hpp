@@ -25,10 +25,10 @@ class notify_container_changed
     : public go::signals::slot
 {
 public:
-    typedef notify_container_changed this_type;
-    typedef container_changed_arguments container_changed_arguments_type;
-    typedef std::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
-    typedef go::signals::signal<std::function<void(const object::ptr&, const container_changed_arguments_type_ptr&)>> container_changed_signal;
+    typedef typename notify_container_changed this_type;
+    typedef typename container_changed_arguments container_changed_arguments_type;
+    typedef typename std::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
+    typedef typename go::signals::signal<std::function<void(const object::ptr&, const container_changed_arguments_type_ptr&)>> container_changed_signal;
 
 public:
     virtual ~notify_container_changed() = 0

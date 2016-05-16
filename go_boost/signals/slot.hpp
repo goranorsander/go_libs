@@ -26,8 +26,8 @@ namespace signals
 class slot
 {
 public:
-    typedef boost::shared_ptr<slot> ptr;
-    typedef boost::weak_ptr<slot> wptr;
+    typedef typename boost::shared_ptr<slot> ptr;
+    typedef typename boost::weak_ptr<slot> wptr;
 
 public:
     virtual ~slot() = 0;

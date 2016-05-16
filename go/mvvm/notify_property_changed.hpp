@@ -26,11 +26,11 @@ class basic_notify_property_changed
     : public go::signals::slot
 {
 public:
-    typedef S string_type;
-    typedef basic_notify_property_changed<string_type> this_type;
-    typedef basic_property_changed_arguments<string_type> property_changed_arguments_type;
-    typedef std::shared_ptr<property_changed_arguments_type> property_changed_arguments_type_ptr;
-    typedef go::signals::signal<std::function<void(const object::ptr&, const property_changed_arguments_type_ptr&)>> property_changed_signal;
+    typedef typename S string_type;
+    typedef typename basic_notify_property_changed<string_type> this_type;
+    typedef typename basic_property_changed_arguments<string_type> property_changed_arguments_type;
+    typedef typename std::shared_ptr<property_changed_arguments_type> property_changed_arguments_type_ptr;
+    typedef typename go::signals::signal<std::function<void(const object::ptr&, const property_changed_arguments_type_ptr&)>> property_changed_signal;
 
 public:
     virtual ~basic_notify_property_changed() = 0;
@@ -55,7 +55,7 @@ class notify_property_changed
     : public basic_notify_property_changed<std::string>
 {
 public:
-    typedef notify_property_changed this_type;
+    typedef typename notify_property_changed this_type;
 
 public:
     virtual ~notify_property_changed() = 0;
@@ -75,7 +75,7 @@ class notify_wproperty_changed
     : public basic_notify_property_changed<std::wstring>
 {
 public:
-    typedef notify_wproperty_changed this_type;
+    typedef typename notify_wproperty_changed this_type;
 
 public:
     virtual ~notify_wproperty_changed() = 0;

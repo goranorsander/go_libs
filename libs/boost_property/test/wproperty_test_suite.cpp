@@ -417,7 +417,7 @@ class armament
 {
     // Spaceship armament, not modifyable, provided by third-party
 public:
-    ~armament()
+    virtual ~armament()
     {
     }
 

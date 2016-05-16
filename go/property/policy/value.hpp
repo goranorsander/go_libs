@@ -23,8 +23,8 @@ namespace policy
 template<class T> class value
 {
 public:
-    typedef T value_type;
-    typedef value<value_type> this_type;
+    typedef typename T value_type;
+    typedef typename value<value_type> this_type;
 
 public:
     virtual ~value()

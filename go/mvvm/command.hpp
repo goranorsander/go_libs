@@ -29,13 +29,13 @@ class basic_command
     friend class basic_command_manager<S>;
 
 public:
-    typedef S string_type;
-    typedef basic_command<string_type> this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
-    typedef std::shared_ptr<command_parameters> command_parameters_type_ptr;
-    typedef go::signals::signal<std::function<void(const ptr&)>> can_execute_changed_signal;
-    typedef go::property::read_only::basic_property<string_type, string_type> command_name_type;
+    typedef typename S string_type;
+    typedef typename basic_command<string_type> this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename std::shared_ptr<command_parameters> command_parameters_type_ptr;
+    typedef typename go::signals::signal<std::function<void(const ptr&)>> can_execute_changed_signal;
+    typedef typename go::property::read_only::basic_property<string_type, string_type> command_name_type;
 
 public:
     virtual ~basic_command() = 0;
@@ -123,7 +123,7 @@ class command
     : public basic_command<std::string>
 {
 public:
-    typedef command this_type;
+    typedef typename command this_type;
 
 public:
     virtual ~command() = 0;
@@ -147,7 +147,7 @@ class wcommand
     : public basic_command<std::wstring>
 {
 public:
-    typedef wcommand this_type;
+    typedef typename wcommand this_type;
 
 public:
     virtual ~wcommand() = 0;

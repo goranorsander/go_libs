@@ -49,5 +49,17 @@
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_container.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_sequence_container.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_array.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_vector.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

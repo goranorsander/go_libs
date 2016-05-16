@@ -32,7 +32,7 @@ struct set_property_value_notify_changed_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3>
     struct result<This(const Arg1&, Arg2, Arg3&, const Arg3&)>
     {
-        typedef void type;
+        typedef typename void type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3>

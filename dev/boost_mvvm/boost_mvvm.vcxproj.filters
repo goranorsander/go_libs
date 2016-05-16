@@ -74,5 +74,17 @@
     <ClInclude Include="..\..\go_boost\signals.hpp">
       <Filter>go_boost</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_array.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_container.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_sequence_container.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_vector.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
