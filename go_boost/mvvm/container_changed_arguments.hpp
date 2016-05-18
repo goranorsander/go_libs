@@ -36,17 +36,23 @@ public:
     {
     }
 
+private:
+    container_changed_arguments(const container_changed_arguments&) = delete;
+
 protected:
-    container_changed_arguments(const notify_container_changed_action& action)
-        : slot_arguments()
+    container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+        : go_boost::signals::slot_arguments()
         , _action(action)
+        , _added_elements(added_elements)
+        , _removed_elements(removed_elements)
+        , _new_size(new_size)
     {
     }
 
 public:
-    static ptr create(const notify_container_changed_action& action)
+    static ptr create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
-        return ptr(new container_changed_arguments(action));
+        return ptr(new this_type(action, added_elements, removed_elements, new_size));
     }
 
     notify_container_changed_action action() const
@@ -54,8 +60,26 @@ public:
         return _action;
     }
 
+    std::size_t added_elements() const
+    {
+        return _added_elements;
+    }
+
+    std::size_t removed_elements() const
+    {
+        return _removed_elements;
+    }
+
+    std::size_t new_size() const
+    {
+        return _new_size;
+    }
+
 private:
     const notify_container_changed_action _action;
+    const std::size_t _added_elements;
+    const std::size_t _removed_elements;
+    const std::size_t _new_size;
 };
 
 } // namespace mvvm

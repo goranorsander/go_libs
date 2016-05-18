@@ -48,19 +48,19 @@ public:
     {
     }
 
-    explicit reference(value_type& v) 
+    explicit reference(value_type& v)
         : _property_guard()
         , _v(boost::addressof(v))
     {
     }
 
-    value_type get() const 
+    value_type get() const
     {
         boost::recursive_mutex::scoped_lock lock(_property_guard);
         return *_v;
     }
 
-    void set(const value_type& v) 
+    void set(const value_type& v)
     {
         boost::recursive_mutex::scoped_lock lock(_property_guard);
         bind_ref(const_cast<value_type&>(v));

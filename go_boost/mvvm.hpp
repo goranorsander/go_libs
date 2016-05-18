@@ -18,7 +18,8 @@
 #include <boost/system/config.hpp>
 
 #include <go_boost/mvvm/command_manager.hpp>
-#include <go_boost/mvvm/observable_object.hpp>
+#include <go_boost/mvvm/observable_array.hpp>
+#include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
 
 #endif  // #ifndef GO_BOOST_MVVM_HPP_INCLUDED

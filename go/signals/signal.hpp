@@ -46,19 +46,19 @@ public:
 
 public:
     template<typename F1>
-	slot_key_type connect(F1 f)
-	{
+    slot_key_type connect(F1 f)
+    {
         std::lock_guard<std::recursive_mutex> lock(_signal_guard);
-		const slot_key_type slot_key = ++_slot_next_key;
-		_connections[slot_key] = f;
+        const slot_key_type slot_key = ++_slot_next_key;
+        _connections[slot_key] = f;
         return slot_key;
-	}
+    }
 
-	void disconnect(const slot_key_type slot_key)
-	{
+    void disconnect(const slot_key_type slot_key)
+    {
         std::lock_guard<std::recursive_mutex> lock(_signal_guard);
-		_connections.erase(slot_key);
-	}
+        _connections.erase(slot_key);
+    }
 
     void disconnect_all_slots()
     {
@@ -84,15 +84,15 @@ public:
         }
     }
 
-	template<typename... A>
-	void call(A&&... a) const
-	{
+    template<typename... A>
+    void call(A&&... a) const
+    {
         operator()(std::forward<A>(a)...);
     }
 
 protected:
     slot_key_type _slot_next_key;
-	connections_type _connections;
+    connections_type _connections;
 
 private:
     mutable std::recursive_mutex _signal_guard;

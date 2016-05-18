@@ -47,7 +47,7 @@ public:
     {
     }
 
-    explicit value(const value_type& v) 
+    explicit value(const value_type& v)
         : _property_guard()
         , _v(v)
     {
@@ -59,7 +59,7 @@ public:
         return _v;
     }
 
-    void set(const value_type& v) 
+    void set(const value_type& v)
     {
         boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = v;

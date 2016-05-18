@@ -54,8 +54,8 @@ public:
 
     void disconnect(wobservable_vector_ptr_type& c)
     {
-       c->container_changed.disconnect(_on_container_changed_slot_key);
-       c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(_on_container_changed_slot_key);
+        c->property_changed.disconnect(_on_property_changed_slot_key);
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

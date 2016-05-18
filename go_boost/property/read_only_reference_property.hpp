@@ -53,7 +53,7 @@ public:
 
     BOOST_EXPLICIT_OPERATOR_BOOL()
 
-    bool operator!() const
+        bool operator!() const
     {
         return empty();
     }

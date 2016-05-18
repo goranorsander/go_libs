@@ -43,7 +43,7 @@ public:
     {
     }
 
-    explicit value(const value_type& v) 
+    explicit value(const value_type& v)
         : _property_guard()
         , _v(v)
     {
@@ -55,7 +55,7 @@ public:
         return _v;
     }
 
-    void set(const value_type& v) 
+    void set(const value_type& v)
     {
         std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = v;

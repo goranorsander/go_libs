@@ -62,7 +62,7 @@ private:
 
     virtual void execute(const command_parameters_type_ptr& params)
     {
-        if (!_execute.empty())
+        if(!_execute.empty())
         {
             _execute(params);
         }

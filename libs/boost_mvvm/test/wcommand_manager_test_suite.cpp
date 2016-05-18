@@ -46,7 +46,7 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
-		bind_properties();
+        bind_properties();
     }
 
     spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
@@ -63,19 +63,19 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
-		bind_properties();
+        bind_properties();
     }
 
 private:
-	void bind_properties()
-	{
-		name.getter(boost::bind(&spaceship::get_name, this));
-		name.setter(boost::bind(&spaceship::set_name, this, _1));
+    void bind_properties()
+    {
+        name.getter(boost::bind(&spaceship::get_name, this));
+        name.setter(boost::bind(&spaceship::set_name, this, _1));
         captain.getter(boost::bind(&spaceship::get_captain, this));
         captain.setter(boost::bind(&spaceship::set_captain, this, _1));
-		impulse_speed_command.getter(boost::bind(&spaceship::get_impulse_speed_command, this));
-		warp_speed_command.getter(boost::bind(&spaceship::get_warp_speed_command, this));
-	}
+        impulse_speed_command.getter(boost::bind(&spaceship::get_impulse_speed_command, this));
+        warp_speed_command.getter(boost::bind(&spaceship::get_warp_speed_command, this));
+    }
 
 public:
     p::wproperty<std::wstring> name;

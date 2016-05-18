@@ -32,8 +32,8 @@ public:
     typedef typename S string_type;
     typedef typename std::vector<T> container_type;
     typedef typename basic_observable_vector<string_type, container_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
 
     typedef typename container_type::value_type value_type;
     typedef typename container_type::allocator_type allocator_type;
@@ -346,8 +346,8 @@ public:
     typedef typename std::string string_type;
     typedef typename std::vector<T> container_type;
     typedef typename observable_vector<T> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
 
     typedef typename container_type::value_type value_type;
     typedef typename container_type::allocator_type allocator_type;
@@ -446,8 +446,8 @@ public:
     typedef typename std::wstring string_type;
     typedef typename std::vector<T> container_type;
     typedef typename wobservable_vector<T> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
 
     typedef typename container_type::value_type value_type;
     typedef typename container_type::allocator_type allocator_type;

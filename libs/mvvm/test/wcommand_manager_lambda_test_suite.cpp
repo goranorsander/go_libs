@@ -77,13 +77,17 @@ private:
         captain.getter([this]() { return _captain; });
         captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; on_property_changed(L"captain"); } });
         impulse_speed_command.getter(
-            [this]() { if(!_impulse_speed_command) { _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed",
+            [this]() { if(!_impulse_speed_command) {
+            _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed",
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = true; _at_warp_speed = false; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
-                [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create()); } return _impulse_speed_command; });
+                [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create());
+        } return _impulse_speed_command; });
         warp_speed_command.getter(
-            [this]() { if(!_warp_speed_command) { _warp_speed_command = m::relay_wcommand::create(L"warp_speed",
+            [this]() { if(!_warp_speed_command) {
+            _warp_speed_command = m::relay_wcommand::create(L"warp_speed",
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = false; _at_warp_speed = true; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
-                [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create()); } return _warp_speed_command; });
+                [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create());
+        } return _warp_speed_command; });
     }
 
 public:

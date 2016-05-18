@@ -78,7 +78,7 @@ public:
             std::lock_guard<std::recursive_mutex> lock(_commands_guard);
             std::swap(cmds, _commands);
         }
-        for(command_type_wptr wcmd: cmds)
+        for(command_type_wptr wcmd : cmds)
         {
             const command_type_ptr cmd = wcmd.lock();
             if(cmd)

@@ -40,19 +40,19 @@ public:
         , name(L"name")
         , max_speed(L"max_speed")
     {
-		bind_properties();
+        bind_properties();
     }
 
 private:
-	void bind_properties()
-	{
-		crew_complement.getter(boost::bind(&spaceship::get_crew_complement, this));
-		crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, _1));
-		name.getter(boost::bind(&spaceship::get_name, this));
-		name.setter(boost::bind(&spaceship::set_name, this, _1));
-		max_speed.getter(boost::bind(&spaceship::get_max_speed, this));
-		max_speed.setter(boost::bind(&spaceship::set_max_speed, this, _1));
-	}
+    void bind_properties()
+    {
+        crew_complement.getter(boost::bind(&spaceship::get_crew_complement, this));
+        crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, _1));
+        name.getter(boost::bind(&spaceship::get_name, this));
+        name.setter(boost::bind(&spaceship::set_name, this, _1));
+        max_speed.getter(boost::bind(&spaceship::get_max_speed, this));
+        max_speed.setter(boost::bind(&spaceship::set_max_speed, this, _1));
+    }
 
 public:
     p::wproperty<int> crew_complement;

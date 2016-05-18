@@ -7,7 +7,7 @@ PROJECT(GO_LIBS)
 #Options-------------------------------------------------
 
 OPTION(USE_SOLUTION_FOLDERS "Organise all projects into folders in your solution." ON)
-OPTION(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++11.")
+OPTION(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
 OPTION(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 SET(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 SET(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
@@ -80,7 +80,11 @@ SET(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_MVVM_DIR}/notify_property_changed.hpp
     ${GO_MVVM_DIR}/object.hpp
+    ${GO_MVVM_DIR}/observable_array.hpp
+    ${GO_MVVM_DIR}/observable_container.hpp
     ${GO_MVVM_DIR}/observable_object.hpp
+    ${GO_MVVM_DIR}/observable_sequence_container.hpp
+    ${GO_MVVM_DIR}/observable_vector.hpp
     ${GO_MVVM_DIR}/property_changed_arguments.hpp
     ${GO_MVVM_DIR}/relay_command.hpp
 )
@@ -205,7 +209,11 @@ SET(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_BOOST_MVVM_DIR}/notify_property_changed.hpp
     ${GO_BOOST_MVVM_DIR}/object.hpp
+    ${GO_BOOST_MVVM_DIR}/observable_array.hpp
+    ${GO_BOOST_MVVM_DIR}/observable_container.hpp
     ${GO_BOOST_MVVM_DIR}/observable_object.hpp
+    ${GO_BOOST_MVVM_DIR}/observable_sequence_container.hpp
+    ${GO_BOOST_MVVM_DIR}/observable_vector.hpp
     ${GO_BOOST_MVVM_DIR}/property_changed_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/relay_command.hpp
     ${GO_BOOST_MVVM_DIR}/utility.hpp

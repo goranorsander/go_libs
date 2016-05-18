@@ -60,7 +60,7 @@ private:
 
     virtual void execute(const std::shared_ptr<command_parameters>& params)
     {
-        if (_execute)
+        if(_execute)
         {
             _execute(params);
         }

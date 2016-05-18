@@ -1,5 +1,5 @@
 //
-//  observable_vector_test_suite.cpp
+//  wobservable_vector_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -10,13 +10,12 @@
 
 #include <gtest/gtest.h>
 
-#include <go/mvvm.hpp>
-#include <go/property.hpp>
+#include <go_boost/mvvm.hpp>
+#include <go_boost/property.hpp>
 
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+namespace m = go_boost::mvvm;
+namespace p = go_boost::property;
+namespace s = go_boost::signals;
 
 namespace
 {
@@ -24,16 +23,14 @@ namespace
 template<class T> class vector_observer
 {
 public:
-    typedef typename m::observable_vector<T>::ptr observable_vector_ptr_type;
+    typedef typename m::wobservable_vector<T>::ptr wobservable_vector_ptr_type;
 
     virtual ~vector_observer()
     {
     }
 
     vector_observer()
-        : _on_container_changed_slot_key(0)
-        , _on_property_changed_slot_key(0)
-        , _last_action(m::undefined_notify_container_changed_action)
+        : _last_action(m::undefined_notify_container_changed_action)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -46,16 +43,16 @@ public:
     {
     }
 
-    void connect(observable_vector_ptr_type& c)
+    void connect(wobservable_vector_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&vector_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&vector_observer::on_property_changed, this, ph::_1, ph::_2));
+        c->container_changed.connect(boost::bind(&vector_observer::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&vector_observer::on_property_changed, this, _1, _2));
     }
 
-    void disconnect(observable_vector_ptr_type& c)
+    void disconnect(wobservable_vector_ptr_type& c)
     {
-        c->container_changed.disconnect(_on_container_changed_slot_key);
-        c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(boost::bind(&vector_observer::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&vector_observer::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
@@ -75,7 +72,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
     {
         if(o && a)
         {
@@ -133,9 +130,6 @@ public:
     }
 
 private:
-    s::slot_key_type _on_container_changed_slot_key;
-    s::slot_key_type _on_property_changed_slot_key;
-
     m::notify_container_changed_action _last_action;
     int _last_change_added;
     int _last_change_removed;
@@ -150,10 +144,10 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_observable_vector_test_suite, test_observable_vector_assign_range)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_assign_range)
 {
     // Test assign range
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -183,10 +177,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_assign_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_assign_initializer_list)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_assign_initializer_list)
 {
     // Test assign initializer list
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -217,11 +211,11 @@ TEST(std_observable_vector_test_suite, test_observable_vector_assign_initializer
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_assign_fill)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_assign_fill)
 {
     // Test assign fill
-    m::observable_vector<int>::ptr v1 = m::observable_vector<int>::create();
-    m::observable_vector<int>::ptr v2 = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v1 = m::wobservable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v2 = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v1->size());
@@ -234,7 +228,7 @@ TEST(std_observable_vector_test_suite, test_observable_vector_assign_fill)
     EXPECT_EQ(7, v1->size());
     EXPECT_EQ(0, v2->size());
 
-    m::observable_vector<int>::iterator it = v1->begin() + 1;
+    m::wobservable_vector<int>::iterator it = v1->begin() + 1;
 
     v2->assign(it, v1->end() - 1);
     EXPECT_EQ(7, v1->size());
@@ -260,10 +254,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_assign_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_push_back)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_push_back)
 {
     // Test push back
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -299,10 +293,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_push_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_pop_back)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_pop_back)
 {
     // Test pop back
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -341,10 +335,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_pop_back)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_insert_single_element)
+TEST(boost_wobservable_vector_test_suite, test_observable_insert_single_element)
 {
     // Test insert single element
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -354,7 +348,7 @@ TEST(std_observable_vector_test_suite, test_observable_insert_single_element)
 
     o.connect(v);
 
-    m::observable_vector<int>::iterator it = v->begin();
+    m::wobservable_vector<int>::iterator it = v->begin();
     v->insert(it + 2, 3);
     EXPECT_EQ(7, v->size());
 
@@ -378,10 +372,10 @@ TEST(std_observable_vector_test_suite, test_observable_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_insert_fill)
+TEST(boost_wobservable_vector_test_suite, test_observable_insert_fill)
 {
     // Test insert fill
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -391,7 +385,7 @@ TEST(std_observable_vector_test_suite, test_observable_insert_fill)
 
     o.connect(v);
 
-    m::observable_vector<int>::iterator it = v->begin();
+    m::wobservable_vector<int>::iterator it = v->begin();
     v->insert(it + 3, 3, 74);
     EXPECT_EQ(10, v->size());
 
@@ -418,11 +412,11 @@ TEST(std_observable_vector_test_suite, test_observable_insert_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_insert_range)
+TEST(boost_wobservable_vector_test_suite, test_observable_insert_range)
 {
     // Test insert range
-    m::observable_vector<int>::ptr v1 = m::observable_vector<int>::create();
-    m::observable_vector<int>::ptr v2 = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v1 = m::wobservable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v2 = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v1->size());
@@ -436,7 +430,7 @@ TEST(std_observable_vector_test_suite, test_observable_insert_range)
 
     o.connect(v2);
 
-    m::observable_vector<int>::iterator it = v2->begin();
+    m::wobservable_vector<int>::iterator it = v2->begin();
     v2->insert(it + 3, v1->begin(), v1->end());
     EXPECT_EQ(10, v2->size());
 
@@ -463,10 +457,10 @@ TEST(std_observable_vector_test_suite, test_observable_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_erase_position)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_erase_position)
 {
     // Test erase position
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -477,8 +471,8 @@ TEST(std_observable_vector_test_suite, test_observable_vector_erase_position)
 
     o.connect(v);
 
-    m::observable_vector<int>::iterator it1 = v->begin();
-    m::observable_vector<int>::iterator it2 = v->erase(it1 + 3);
+    m::wobservable_vector<int>::iterator it1 = v->begin();
+    m::wobservable_vector<int>::iterator it2 = v->erase(it1 + 3);
     EXPECT_EQ(6, v->size());
 
     v->erase(it2);
@@ -502,10 +496,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_erase_range)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_erase_range)
 {
     // Test erase range
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -534,11 +528,11 @@ TEST(std_observable_vector_test_suite, test_observable_vector_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_swap)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_swap)
 {
     // Test swap
-    m::observable_vector<int>::ptr v1 = m::observable_vector<int>::create();
-    m::observable_vector<int>::ptr v2 = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v1 = m::wobservable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v2 = m::wobservable_vector<int>::create();
     vector_observer<int> o1;
     vector_observer<int> o2;
 
@@ -596,10 +590,10 @@ TEST(std_observable_vector_test_suite, test_observable_vector_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_observable_vector_test_suite, test_observable_vector_clear)
+TEST(boost_wobservable_vector_test_suite, test_wobservable_vector_clear)
 {
     // Test clear
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
+    m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0, v->size());
@@ -623,80 +617,6 @@ TEST(std_observable_vector_test_suite, test_observable_vector_clear)
     EXPECT_EQ(7, o.last_change_removed());
     EXPECT_EQ(0, o.total_change_added());
     EXPECT_EQ(7, o.total_change_removed());
-}
-
-TEST(std_observable_vector_test_suite, test_observable_emplace)
-{
-    // Test emplace
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
-    vector_observer<int> o;
-
-    const int a[] = {1, 2, 3};
-    v->assign(a, a + 3);
-    EXPECT_EQ(3, v->size());
-
-    o.connect(v);
-
-    m::observable_vector<int>::iterator it = v->emplace(v->begin() + 1, 4);
-    EXPECT_EQ(4, *it);
-
-    v->emplace(it, 5);
-    v->emplace(v->end(), 6);
-    EXPECT_EQ(6, v->size());
-
-    EXPECT_EQ(1, (*v)[0]);
-    EXPECT_EQ(5, (*v)[1]);
-    EXPECT_EQ(4, (*v)[2]);
-    EXPECT_EQ(2, (*v)[3]);
-    EXPECT_EQ(3, (*v)[4]);
-    EXPECT_EQ(6, (*v)[5]);
-
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
-}
-
-TEST(std_observable_vector_test_suite, test_observable_emplace_back)
-{
-    // Test emplace back
-    m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
-    vector_observer<int> o;
-
-    const int a[] = {1, 2, 3};
-    v->assign(a, a + 3);
-    EXPECT_EQ(3, v->size());
-
-    o.connect(v);
-
-    v->emplace_back(4);
-    v->emplace_back(5);
-    v->emplace_back(6);
-    EXPECT_EQ(6, v->size());
-
-    EXPECT_EQ(1, (*v)[0]);
-    EXPECT_EQ(2, (*v)[1]);
-    EXPECT_EQ(3, (*v)[2]);
-    EXPECT_EQ(4, (*v)[3]);
-    EXPECT_EQ(5, (*v)[4]);
-    EXPECT_EQ(6, (*v)[5]);
-
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
 }
 
 }

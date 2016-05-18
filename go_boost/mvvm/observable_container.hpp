@@ -31,8 +31,8 @@ public:
     typedef typename S string_type;
     typedef typename C container_type;
     typedef typename basic_observable_container<string_type, container_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~basic_observable_container() = 0;
