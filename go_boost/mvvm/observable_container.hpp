@@ -28,9 +28,9 @@ template<class S, class C> class basic_observable_container
     , public basic_observable_object<S>
 {
 public:
-    typedef typename S string_type;
-    typedef typename C container_type;
-    typedef typename basic_observable_container<string_type, container_type> this_type;
+    typedef S string_type;
+    typedef C container_type;
+    typedef basic_observable_container<string_type, container_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -60,6 +60,18 @@ inline basic_observable_container<S, C>::~basic_observable_container()
 template<class S, class C>
 inline void basic_observable_container<S, C>::on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/)
 {
+}
+
+template<class S, class C>
+inline typename basic_observable_container<S, C>::container_type& basic_observable_container<S, C>::container()
+{
+    throw std::logic_error("basic_observable_container<S, C>::container() should never be called");
+}
+
+template<class S, class C>
+inline const typename basic_observable_container<S, C>::container_type& basic_observable_container<S, C>::container() const
+{
+    throw std::logic_error("basic_observable_container<S, C>::container() should never be called");
 }
 
 } // namespace mvvm

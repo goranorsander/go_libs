@@ -23,7 +23,7 @@ class container_changed_arguments
     : public go::signals::slot_arguments
 {
 public:
-    typedef typename container_changed_arguments this_type;
+    typedef container_changed_arguments this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 

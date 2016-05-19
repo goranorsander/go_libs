@@ -25,8 +25,8 @@ namespace policy
 template<class T> class proxy
 {
 public:
-    typedef typename T value_type;
-    typedef typename proxy<value_type> this_type;
+    typedef T value_type;
+    typedef proxy<value_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 

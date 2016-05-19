@@ -27,9 +27,9 @@ template<class S, class C> class basic_observable_sequence_container
     : public basic_observable_container<S, C>
 {
 public:
-    typedef typename S string_type;
-    typedef typename C container_type;
-    typedef typename basic_observable_sequence_container<string_type, container_type> this_type;
+    typedef S string_type;
+    typedef C container_type;
+    typedef basic_observable_sequence_container<string_type, container_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -58,42 +58,42 @@ protected:
 public:
     iterator begin()
     {
-        return container().begin();
+        return basic_observable_container<string_type, container_type>::container().begin();
     }
 
     const_iterator begin() const
     {
-        return container().begin();
+        return basic_observable_container<string_type, container_type>::container().begin();
     }
 
     iterator end()
     {
-        return container().end();
+        return basic_observable_container<string_type, container_type>::container().end();
     }
 
     const_iterator end() const
     {
-        return container().end();
+        return basic_observable_container<string_type, container_type>::container().end();
     }
 
     size_type max_size() const
     {
-        return container().max_size();
+        return basic_observable_container<string_type, container_type>::container().max_size();
     }
 
     bool empty() const
     {
-        return container().empty();
+        return basic_observable_container<string_type, container_type>::container().empty();
     }
 
     reference front()
     {
-        return container().front();
+        return basic_observable_container<string_type, container_type>::container().front();
     }
 
     const_reference front() const
     {
-        return container().front();
+        return basic_observable_container<string_type, container_type>::container().front();
     }
 };
 

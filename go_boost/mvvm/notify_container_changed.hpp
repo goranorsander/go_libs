@@ -29,16 +29,13 @@ class notify_container_changed
     : public go_boost::signals::slot
 {
 public:
-    typedef typename notify_container_changed this_type;
-    typedef typename container_changed_arguments container_changed_arguments_type;
+    typedef notify_container_changed this_type;
+    typedef container_changed_arguments container_changed_arguments_type;
     typedef typename boost::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
     typedef typename boost::signals2::signal<void(const object::ptr&, const container_changed_arguments_type_ptr&)> container_changed_signal;
 
 public:
-    virtual ~notify_container_changed() = 0
-    {
-        container_changed.disconnect_all_slots();
-    }
+    virtual ~notify_container_changed() = 0;
 
 protected:
     notify_container_changed()
@@ -49,6 +46,11 @@ protected:
 public:
     container_changed_signal container_changed;
 };
+
+inline notify_container_changed::~notify_container_changed()
+{
+    container_changed.disconnect_all_slots();
+}
 
 } // namespace mvvm
 } // namespace go_boost

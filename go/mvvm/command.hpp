@@ -29,8 +29,8 @@ class basic_command
     friend class basic_command_manager<S>;
 
 public:
-    typedef typename S string_type;
-    typedef typename basic_command<string_type> this_type;
+    typedef S string_type;
+    typedef basic_command<string_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
     typedef typename std::shared_ptr<command_parameters> command_parameters_type_ptr;
@@ -123,7 +123,7 @@ class command
     : public basic_command<std::string>
 {
 public:
-    typedef typename command this_type;
+    typedef command this_type;
 
 public:
     virtual ~command() = 0;
@@ -147,7 +147,7 @@ class wcommand
     : public basic_command<std::wstring>
 {
 public:
-    typedef typename wcommand this_type;
+    typedef wcommand this_type;
 
 public:
     virtual ~wcommand() = 0;

@@ -28,7 +28,7 @@ class command_parameters
     : public boost::noncopyable
 {
 public:
-    typedef typename command_parameters this_type;
+    typedef command_parameters this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 

@@ -27,7 +27,7 @@ class container_changed_arguments
     : public go_boost::signals::slot_arguments
 {
 public:
-    typedef typename container_changed_arguments this_type;
+    typedef container_changed_arguments this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 

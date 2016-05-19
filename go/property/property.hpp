@@ -24,10 +24,10 @@ template<class T, class S> class basic_property
     : public detail::property_base<T, policy::proxy<T>, S>
 {
 public:
-    typedef typename T value_type;
-    typedef typename S string_type;
+    typedef T value_type;
+    typedef S string_type;
+    typedef basic_property<value_type, string_type> this_type;
     typedef typename policy::proxy<value_type> policy_type;
-    typedef typename basic_property<value_type, string_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
@@ -63,9 +63,9 @@ template<class T> class property
     : public basic_property<T, std::string>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::string string_type;
-    typedef typename property<value_type> this_type;
+    typedef T value_type;
+    typedef std::string string_type;
+    typedef property<value_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
@@ -91,9 +91,9 @@ template<class T> class wproperty
     : public basic_property<T, std::wstring>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::wstring string_type;
-    typedef typename wproperty<value_type> this_type;
+    typedef T value_type;
+    typedef std::wstring string_type;
+    typedef wproperty<value_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 

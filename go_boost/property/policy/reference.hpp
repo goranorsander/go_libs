@@ -25,11 +25,11 @@ namespace property
 namespace policy
 {
 
-template<class T> class reference
+template<class V> class reference
 {
 public:
-    typedef typename T value_type;
-    typedef typename reference<value_type> this_type;
+    typedef V value_type;
+    typedef reference<value_type> this_type;
 
 public:
     virtual ~reference()

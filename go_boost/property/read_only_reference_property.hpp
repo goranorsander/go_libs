@@ -31,10 +31,10 @@ template<class T, class S> class basic_reference_property
     : public detail::property_base<T, policy::reference<T>, S>
 {
 public:
-    typedef typename T value_type;
-    typedef typename S string_type;
+    typedef T value_type;
+    typedef S string_type;
+    typedef basic_reference_property<value_type, string_type> this_type;
     typedef typename policy::reference<value_type> policy_type;
-    typedef typename basic_reference_property<value_type, string_type> this_type;
 
 public:
     virtual ~basic_reference_property()
@@ -63,9 +63,9 @@ template<class T> class reference_property
     : public basic_reference_property<T, std::string>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::string string_type;
-    typedef typename reference_property<value_type> this_type;
+    typedef T value_type;
+    typedef std::string string_type;
+    typedef reference_property<value_type> this_type;
 
 public:
     virtual ~reference_property()
@@ -82,9 +82,9 @@ template<class T> class reference_wproperty
     : public basic_reference_property<T, std::wstring>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::wstring string_type;
-    typedef typename reference_wproperty<value_type> this_type;
+    typedef T value_type;
+    typedef std::wstring string_type;
+    typedef reference_wproperty<value_type> this_type;
 
 public:
     virtual ~reference_wproperty()

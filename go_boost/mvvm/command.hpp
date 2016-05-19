@@ -37,11 +37,11 @@ class basic_command
     friend class basic_command_manager<S>;
 
 public:
-    typedef typename S string_type;
-    typedef typename basic_command<string_type> this_type;
+    typedef S string_type;
+    typedef basic_command<string_type> this_type;
+    typedef command_parameters command_parameters_type;
     typedef typename boost::shared_ptr<basic_command<string_type>> ptr;
     typedef typename boost::weak_ptr<basic_command<string_type>> wptr;
-    typedef typename command_parameters command_parameters_type;
     typedef typename boost::shared_ptr<command_parameters_type> command_parameters_type_ptr;
     typedef typename boost::signals2::signal<void(const ptr&)> can_execute_changed_signal;
 
@@ -119,7 +119,7 @@ class command
     : public basic_command<std::string>
 {
 public:
-    typedef typename command this_type;
+    typedef command this_type;
 
 public:
     virtual ~command() = 0;
@@ -140,7 +140,7 @@ class wcommand
     : public basic_command<std::wstring>
 {
 public:
-    typedef typename wcommand this_type;
+    typedef wcommand this_type;
 
 public:
     virtual ~wcommand() = 0;

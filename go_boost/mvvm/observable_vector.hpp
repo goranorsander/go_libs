@@ -29,9 +29,9 @@ template<class T, class S> class basic_observable_vector
     : public basic_observable_sequence_container<S, std::vector<T>>
 {
 public:
-    typedef typename S string_type;
+    typedef S string_type;
     typedef typename std::vector<T> container_type;
-    typedef typename basic_observable_vector<string_type, container_type> this_type;
+    typedef basic_observable_vector<string_type, container_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -110,7 +110,7 @@ protected:
     {
         if(!basic_observable_container<string_type, container_type>::container_changed.empty())
         {
-            basic_observable_container<string_type, container_type>::container_changed(shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
+            basic_observable_container<string_type, container_type>::container_changed(this->shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
         }
     }
 
@@ -266,8 +266,8 @@ public:
         return it;
     }
 
-    template<class T, class S>
-    void swap(basic_observable_vector<T, S>& x)
+    template<class t, class s>
+    void swap(basic_observable_vector<t, s>& x)
     {
         const std::size_t this_before = _container.size();
         const std::size_t x_before = x._container.size();
@@ -345,7 +345,7 @@ template<class T> class observable_vector
 public:
     typedef typename std::string string_type;
     typedef typename std::vector<T> container_type;
-    typedef typename observable_vector<T> this_type;
+    typedef observable_vector<T> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -432,10 +432,10 @@ public:
     }
 
 public:
-    template<class T>
-    void swap(observable_vector<T>& x)
+    template<class t>
+    void swap(observable_vector<t>& x)
     {
-        basic_observable_vector<T, string_type>::swap(dynamic_cast<basic_observable_vector<T, string_type>&>(x));
+        basic_observable_vector<t, string_type>::swap(dynamic_cast<basic_observable_vector<t, string_type>&>(x));
     }
 };
 
@@ -445,7 +445,7 @@ template<class T> class wobservable_vector
 public:
     typedef typename std::wstring string_type;
     typedef typename std::vector<T> container_type;
-    typedef typename wobservable_vector<T> this_type;
+    typedef wobservable_vector<T> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -532,10 +532,10 @@ public:
     }
 
 public:
-    template<class T>
-    void swap(wobservable_vector<T>& x)
+    template<class t>
+    void swap(wobservable_vector<t>& x)
     {
-        basic_observable_vector<T, string_type>::swap(dynamic_cast<basic_observable_vector<T, string_type>&>(x));
+        basic_observable_vector<t, string_type>::swap(dynamic_cast<basic_observable_vector<t, string_type>&>(x));
     }
 };
 

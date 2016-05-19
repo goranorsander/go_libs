@@ -24,11 +24,11 @@ namespace property
 namespace policy
 {
 
-template<class T> class value
+template<class V> class value
 {
 public:
-    typedef typename T value_type;
-    typedef typename value<value_type> this_type;
+    typedef V value_type;
+    typedef value<value_type> this_type;
 
 public:
     virtual ~value()

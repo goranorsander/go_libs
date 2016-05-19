@@ -27,8 +27,8 @@ class basic_property_changed_arguments
     : public go_boost::signals::slot_arguments
 {
 public:
-    typedef typename S string_type;
-    typedef typename basic_property_changed_arguments<string_type> this_type;
+    typedef S string_type;
+    typedef basic_property_changed_arguments<string_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -63,7 +63,7 @@ class property_changed_arguments
     : public basic_property_changed_arguments<std::string>
 {
 public:
-    typedef typename property_changed_arguments this_type;
+    typedef property_changed_arguments this_type;
 
 public:
     virtual ~property_changed_arguments()
@@ -87,7 +87,7 @@ class wproperty_changed_arguments
     : public basic_property_changed_arguments<std::wstring>
 {
 public:
-    typedef typename wproperty_changed_arguments this_type;
+    typedef wproperty_changed_arguments this_type;
 
 public:
     virtual ~wproperty_changed_arguments()

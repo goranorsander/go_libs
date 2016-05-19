@@ -20,14 +20,14 @@ namespace go
 namespace signals
 {
 
-typedef typename unsigned int slot_key_type;
+typedef unsigned int slot_key_type;
 
 template<typename F>
 class signal
 {
 public:
-    typedef typename F function_type;
-    typedef typename signal<function_type> this_type;
+    typedef F function_type;
+    typedef signal<function_type> this_type;
 
 protected:
     typedef typename std::map<slot_key_type, function_type> connections_type;

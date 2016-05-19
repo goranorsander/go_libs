@@ -23,9 +23,9 @@ template<class S, class C> class basic_observable_sequence_container
     : public basic_observable_container<S, C>
 {
 public:
-    typedef typename S string_type;
-    typedef typename C container_type;
-    typedef typename basic_observable_sequence_container<string_type, container_type> this_type;
+    typedef S string_type;
+    typedef C container_type;
+    typedef basic_observable_sequence_container<string_type, container_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 

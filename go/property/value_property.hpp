@@ -25,10 +25,10 @@ template<class T, class S> class basic_value_property
     : public detail::property_base<T, policy::value<T>, S>
 {
 public:
-    typedef typename T value_type;
-    typedef typename S string_type;
+    typedef T value_type;
+    typedef S string_type;
+    typedef basic_value_property<value_type, string_type> this_type;
     typedef typename policy::value<value_type> policy_type;
-    typedef typename basic_value_property<value_type, string_type> this_type;
 
 public:
     virtual ~basic_value_property()
@@ -52,9 +52,9 @@ template<class T> class value_property
     : public basic_value_property<T, std::string>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::string string_type;
-    typedef typename value_property<value_type> this_type;
+    typedef T value_type;
+    typedef std::string string_type;
+    typedef value_property<value_type> this_type;
 
 public:
     virtual ~value_property()
@@ -78,9 +78,9 @@ template<class T> class value_wproperty
     : public basic_value_property<T, std::wstring>
 {
 public:
-    typedef typename T value_type;
-    typedef typename std::wstring string_type;
-    typedef typename value_wproperty<value_type> this_type;
+    typedef T value_type;
+    typedef std::wstring string_type;
+    typedef value_wproperty<value_type> this_type;
 
 public:
     virtual ~value_wproperty()

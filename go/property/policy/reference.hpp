@@ -24,8 +24,8 @@ namespace policy
 template<class T> class reference
 {
 public:
-    typedef typename T value_type;
-    typedef typename reference<value_type> this_type;
+    typedef T value_type;
+    typedef reference<value_type> this_type;
 
 public:
     virtual ~reference()

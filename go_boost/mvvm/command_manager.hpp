@@ -31,14 +31,14 @@ class basic_command_manager
     : private boost::noncopyable
 {
 public:
-    typedef typename S string_type;
-    typedef typename basic_command_manager<string_type> this_type;
+    typedef S string_type;
+    typedef basic_command_manager<string_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
     typedef typename boost::signals2::signal<void(const string_type&)> requery_suggested_signal;
 
 protected:
-    typedef typename basic_command<string_type> command_type;
+    typedef basic_command<string_type> command_type;
     typedef typename boost::shared_ptr<command_type> command_type_ptr;
     typedef typename boost::weak_ptr<command_type> command_type_wptr;
     typedef typename std::vector<command_type_wptr> command_vector;
@@ -112,7 +112,7 @@ class command_manager
     : public basic_command_manager<std::string>
 {
 public:
-    typedef typename command_manager this_type;
+    typedef command_manager this_type;
 
 public:
     virtual ~command_manager()
@@ -136,7 +136,7 @@ class wcommand_manager
     : public basic_command_manager<std::wstring>
 {
 public:
-    typedef typename wcommand_manager this_type;
+    typedef wcommand_manager this_type;
 
 public:
     virtual ~wcommand_manager()
