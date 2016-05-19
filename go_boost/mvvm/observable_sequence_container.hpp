@@ -58,42 +58,42 @@ protected:
 public:
     iterator begin()
     {
-        return basic_observable_container<string_type, container_type>::container().begin();
+        return container().begin();
     }
 
     const_iterator begin() const
     {
-        return basic_observable_container<string_type, container_type>::container().begin();
+        return container().begin();
     }
 
     iterator end()
     {
-        return basic_observable_container<string_type, container_type>::container().end();
+        return container().end();
     }
 
     const_iterator end() const
     {
-        return basic_observable_container<string_type, container_type>::container().end();
+        return container().end();
     }
 
     size_type max_size() const
     {
-        return basic_observable_container<string_type, container_type>::container().max_size();
+        return container().max_size();
     }
 
     bool empty() const
     {
-        return basic_observable_container<string_type, container_type>::container().empty();
+        return container().empty();
     }
 
     reference front()
     {
-        return basic_observable_container<string_type, container_type>::container().front();
+        return container().front();
     }
 
     const_reference front() const
     {
-        return basic_observable_container<string_type, container_type>::container().front();
+        return container().front();
     }
 };
 

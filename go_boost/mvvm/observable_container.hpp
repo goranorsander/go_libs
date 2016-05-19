@@ -62,18 +62,6 @@ inline void basic_observable_container<S, C>::on_container_changed(const notify_
 {
 }
 
-template<class S, class C>
-inline typename basic_observable_container<S, C>::container_type& basic_observable_container<S, C>::container()
-{
-    throw std::logic_error("basic_observable_container<S, C>::container() should never be called");
-}
-
-template<class S, class C>
-inline const typename basic_observable_container<S, C>::container_type& basic_observable_container<S, C>::container() const
-{
-    throw std::logic_error("basic_observable_container<S, C>::container() should never be called");
-}
-
 } // namespace mvvm
 } // namespace go_boost
 
