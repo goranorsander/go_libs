@@ -30,6 +30,7 @@
     <ClInclude Include="..\..\go\mvvm\object.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_array.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_container.hpp" />
+    <ClInclude Include="..\..\go\mvvm\observable_deque.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_object.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_sequence_container.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_vector.hpp" />

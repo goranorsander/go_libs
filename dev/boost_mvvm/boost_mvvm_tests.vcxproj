@@ -21,11 +21,15 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\test\command_manager_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\command_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\observable_array_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\observable_deque_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_object_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_object_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_vector_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_manager_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_array_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_deque_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_object_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_object_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_vector_test_suite.cpp" />

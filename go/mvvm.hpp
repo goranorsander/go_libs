@@ -13,6 +13,7 @@
 
 #include <go/mvvm/command_manager.hpp>
 #include <go/mvvm/observable_array.hpp>
+#include <go/mvvm/observable_deque.hpp>
 #include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
 

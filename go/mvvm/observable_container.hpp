@@ -41,7 +41,18 @@ protected:
     }
 
 protected:
-    virtual void on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/) = 0;
+    virtual void on_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    {
+        if(!basic_observable_container<string_type, container_type>::container_changed.empty())
+        {
+            basic_observable_container<string_type, container_type>::container_changed(shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
+        }
+    }
+
+    virtual void on_property_changed(const string_type& property_name)
+    {
+        basic_observable_object<string_type>::on_property_changed(property_name);
+    }
 
     virtual container_type& container() = 0;
 
@@ -50,11 +61,6 @@ protected:
 
 template<class S, class C>
 inline basic_observable_container<S, C>::~basic_observable_container()
-{
-}
-
-template<class S, class C>
-inline void basic_observable_container<S, C>::on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/)
 {
 }
 

@@ -11,14 +11,17 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#ifndef BOOST_CONFIG_HPP
+#include <boost/config.hpp>
+#endif
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
-#include <boost/system/config.hpp>
-
 #include <go_boost/mvvm/command_manager.hpp>
 #include <go_boost/mvvm/observable_array.hpp>
+#include <go_boost/mvvm/observable_deque.hpp>
 #include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
 

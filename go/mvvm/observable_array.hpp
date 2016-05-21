@@ -171,7 +171,7 @@ public:
     typedef typename container_type::reverse_iterator reverse_iterator;
     typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
-    //typedef typename container_type::size_type size_type;
+    typedef typename container_type::size_type size_type;
 
 public:
     virtual ~observable_array()
@@ -211,7 +211,7 @@ public:
     typedef typename container_type::reverse_iterator reverse_iterator;
     typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
-    //typedef typename container_type::size_type size_type;
+    typedef typename container_type::size_type size_type;
 
 public:
     virtual ~wobservable_array()

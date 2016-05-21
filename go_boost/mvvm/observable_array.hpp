@@ -11,11 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#ifndef BOOST_CONFIG_HPP
+#include <boost/config.hpp>
+#endif
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
-#include <boost/array.hpp>
+#include <boost/container/static_vector.hpp>
 
 #include <go_boost/mvvm/notify_container_changed.hpp>
 #include <go_boost/mvvm/observable_sequence_container.hpp>
@@ -26,11 +30,11 @@ namespace mvvm
 {
 
 template<class T, class S, size_t N> class basic_observable_array
-    : public basic_observable_sequence_container<S, boost::array<T, N>>
+    : public basic_observable_sequence_container<S, boost::container::static_vector<T, N>>
 {
 public:
     typedef S string_type;
-    typedef typename boost::array<T, N> container_type;
+    typedef typename boost::container::static_vector<T, N> container_type;
     typedef basic_observable_array<string_type, container_type, N> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
@@ -57,6 +61,7 @@ protected:
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
+        initialize_array();
     }
 
 public:
@@ -151,6 +156,16 @@ public:
         return _container.data();
     }
 
+protected:
+    virtual void initialize_array()
+    {
+        const std::size_t s = _container.max_size();
+        for(size_type i = 0; i < s; i++)
+        {
+            _container[i] = value_type();
+        }
+    }
+
 private:
     container_type _container;
 };
@@ -160,7 +175,7 @@ template<class T, size_t N> class observable_array
 {
 public:
     typedef typename std::string string_type;
-    typedef typename boost::array<T, N> container_type;
+    typedef typename boost::container::static_vector<T, N> container_type;
     typedef observable_array<T, N> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
@@ -175,7 +190,7 @@ public:
     typedef typename container_type::reverse_iterator reverse_iterator;
     typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
-    //typedef typename container_type::size_type size_type;
+    typedef typename container_type::size_type size_type;
 
 public:
     virtual ~observable_array()
@@ -200,7 +215,7 @@ template<class T, size_t N> class wobservable_array
 {
 public:
     typedef typename std::wstring string_type;
-    typedef typename boost::array<T, N> container_type;
+    typedef typename boost::container::static_vector<T, N> container_type;
     typedef wobservable_array<T, N> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
@@ -215,7 +230,7 @@ public:
     typedef typename container_type::reverse_iterator reverse_iterator;
     typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
-    //typedef typename container_type::size_type size_type;
+    typedef typename container_type::size_type size_type;
 
 public:
     virtual ~wobservable_array()

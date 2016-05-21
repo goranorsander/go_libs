@@ -11,6 +11,10 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#ifndef BOOST_CONFIG_HPP
+#include <boost/config.hpp>
+#endif
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif

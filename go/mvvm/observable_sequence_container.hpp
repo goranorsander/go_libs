@@ -48,9 +48,6 @@ protected:
     {
     }
 
-protected:
-    virtual void on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/) = 0;
-
 public:
     iterator begin() noexcept
     {
@@ -101,15 +98,39 @@ public:
     {
         return container().front();
     }
+
+protected:
+    void notify_assign(const std::size_t& before, const std::size_t& after)
+    {
+        if(before > 0)
+        {
+            on_container_changed(after > 0 ? notify_container_changed_action_reset : notify_container_changed_action_remove, after, before, after);
+        }
+        else if(after > 0)
+        {
+            on_container_changed(notify_container_changed_action_add, after, 0, after);
+        }
+    }
+
+    void notify_insert(const std::size_t& before, const std::size_t& after)
+    {
+        if(after - before > 0)
+        {
+            on_container_changed(notify_container_changed_action_add, after - before, 0, after);
+        }
+    }
+
+    void notify_erase(const std::size_t& before, const std::size_t& after)
+    {
+        if(before - after > 0)
+        {
+            on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+        }
+    }
 };
 
 template<class S, class C>
 inline basic_observable_sequence_container<S, C>::~basic_observable_sequence_container()
-{
-}
-
-template<class S, class C>
-inline void basic_observable_sequence_container<S, C>::on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/)
 {
 }
 

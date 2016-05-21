@@ -86,5 +86,8 @@
     <ClInclude Include="..\..\go_boost\mvvm\observable_vector.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_deque.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

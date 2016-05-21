@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_MVVM_OBSERVABLE_VECTOR_HPP_INCLUDED
-#define GO_BOOST_MVVM_OBSERVABLE_VECTOR_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_OBSERVABLE_DEQUE_HPP_INCLUDED
+#define GO_BOOST_MVVM_OBSERVABLE_DEQUE_HPP_INCLUDED
 
 //
-//  observable_vector.hpp
+//  observable_deque.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -15,7 +15,7 @@
 #pragma once
 #endif
 
-#include <boost/container/stable_vector.hpp>
+#include <boost/container/deque.hpp>
 
 #include <go_boost/mvvm/notify_container_changed.hpp>
 #include <go_boost/mvvm/observable_sequence_container.hpp>
@@ -25,13 +25,13 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S> class basic_observable_vector
-    : public basic_observable_sequence_container<S, boost::container::stable_vector<T>>
+template<class T, class S> class basic_observable_deque
+    : public basic_observable_sequence_container<S, boost::container::deque<T>>
 {
 public:
     typedef S string_type;
-    typedef typename boost::container::stable_vector<T> container_type;
-    typedef basic_observable_vector<string_type, container_type> this_type;
+    typedef typename boost::container::deque<T> container_type;
+    typedef basic_observable_deque<string_type, container_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -49,44 +49,44 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_vector()
+    virtual ~basic_observable_deque()
     {
     }
 
 protected:
-    basic_observable_vector()
+    basic_observable_deque()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
     }
 
-    explicit basic_observable_vector(size_type n)
+    explicit basic_observable_deque(size_type n)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(n)
     {
     }
 
-    basic_observable_vector(size_type n, const value_type& val)
+    basic_observable_deque(size_type n, const value_type& val)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
-    basic_observable_vector(InputIterator first, InputIterator last)
+    basic_observable_deque(InputIterator first, InputIterator last)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(first, last)
     {
     }
 
-    basic_observable_vector(const basic_observable_vector& x)
+    basic_observable_deque(const basic_observable_deque& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
 public:
-    basic_observable_vector& operator=(const basic_observable_vector& x)
+    basic_observable_deque& operator=(const basic_observable_deque& x)
     {
         if(this != &x)
         {
@@ -173,16 +173,6 @@ public:
         _container.resize(n, val);
     }
 
-    size_type capacity() const
-    {
-        return _container.capacity();
-    }
-
-    void reserve(size_type n)
-    {
-        _container.reserve(n);
-    }
-
     void shrink_to_fit()
     {
         _container.shrink_to_fit();
@@ -211,7 +201,24 @@ public:
         on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
+    void push_front(const value_type& val)
+    {
+        _container.push_front(val);
+        on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+    }
+
     void pop_back()
+    {
+        const std::size_t before = _container.size();
+        _container.pop_back();
+        const std::size_t after = _container.size();
+        if(before > after)
+        {
+            on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
+        }
+    }
+
+    void pop_front()
     {
         const std::size_t before = _container.size();
         _container.pop_back();
@@ -269,7 +276,7 @@ public:
     }
 
     template<class t, class s>
-    void swap(basic_observable_vector<t, s>& x)
+    void swap(basic_observable_deque<t, s>& x)
     {
         const std::size_t this_before = _container.size();
         const std::size_t x_before = x._container.size();
@@ -295,30 +302,30 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_vector<T, S>::size_type basic_observable_vector<T, S>::size() const
+inline typename basic_observable_deque<T, S>::size_type basic_observable_deque<T, S>::size() const
 {
     return _container.size();
 }
 
 template<class T, class S>
-inline typename basic_observable_vector<T, S>::container_type& basic_observable_vector<T, S>::container()
+inline typename basic_observable_deque<T, S>::container_type& basic_observable_deque<T, S>::container()
 {
     return _container;
 }
 
 template<class T, class S>
-inline const typename basic_observable_vector<T, S>::container_type& basic_observable_vector<T, S>::container() const
+inline const typename basic_observable_deque<T, S>::container_type& basic_observable_deque<T, S>::container() const
 {
     return _container;
 }
 
-template<class T> class observable_vector
-    : public basic_observable_vector<T, std::string>
+template<class T> class observable_deque
+    : public basic_observable_deque<T, std::string>
 {
 public:
     typedef typename std::string string_type;
-    typedef typename boost::container::stable_vector<T> container_type;
-    typedef observable_vector<T> this_type;
+    typedef typename boost::container::deque<T> container_type;
+    typedef observable_deque<T> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -336,89 +343,89 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_vector()
+    virtual ~observable_deque()
     {
     }
 
 protected:
-    observable_vector()
-        : basic_observable_vector<value_type, string_type>()
+    observable_deque()
+        : basic_observable_deque<value_type, string_type>()
     {
     }
 
-    explicit observable_vector(size_type n)
-        : basic_observable_vector<value_type, string_type>(n)
+    explicit observable_deque(size_type n)
+        : basic_observable_deque<value_type, string_type>(n)
     {
     }
 
-    observable_vector(size_type n, const value_type& val)
-        : basic_observable_vector<value_type, string_type>(n, val)
+    observable_deque(size_type n, const value_type& val)
+        : basic_observable_deque<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    observable_vector(InputIterator first, InputIterator last)
-        : basic_observable_vector<value_type, string_type>(first, last)
+    observable_deque(InputIterator first, InputIterator last)
+        : basic_observable_deque<value_type, string_type>(first, last)
     {
     }
 
-    observable_vector(const observable_vector& x)
-        : basic_observable_vector<value_type, string_type>(x)
+    observable_deque(const observable_deque& x)
+        : basic_observable_deque<value_type, string_type>(x)
     {
     }
 
 public:
     static ptr create()
     {
-        return ptr(new observable_vector);
+        return ptr(new observable_deque);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new observable_vector(n));
+        return ptr(new observable_deque(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new observable_vector(n, val));
+        return ptr(new observable_deque(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new observable_vector(first, last));
+        return ptr(new observable_deque(first, last));
     }
 
-    static ptr create(const observable_vector& x)
+    static ptr create(const observable_deque& x)
     {
-        return ptr(new observable_vector(x));
+        return ptr(new observable_deque(x));
     }
 
 public:
-    observable_vector& operator=(const observable_vector& x)
+    observable_deque& operator=(const observable_deque& x)
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type>::operator=(x);
         }
         return *this;
     }
 
 public:
     template<class t>
-    void swap(observable_vector<t>& x)
+    void swap(observable_deque<t>& x)
     {
-        basic_observable_vector<t, string_type>::swap(dynamic_cast<basic_observable_vector<t, string_type>&>(x));
+        basic_observable_deque<t, string_type>::swap(dynamic_cast<basic_observable_deque<t, string_type>&>(x));
     }
 };
 
-template<class T> class wobservable_vector
-    : public basic_observable_vector<T, std::wstring>
+template<class T> class wobservable_deque
+    : public basic_observable_deque<T, std::wstring>
 {
 public:
     typedef typename std::wstring string_type;
-    typedef typename boost::container::stable_vector<T> container_type;
-    typedef wobservable_vector<T> this_type;
+    typedef typename boost::container::deque<T> container_type;
+    typedef wobservable_deque<T> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -436,83 +443,83 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_vector()
+    virtual ~wobservable_deque()
     {
     }
 
 protected:
-    wobservable_vector()
-        : basic_observable_vector<value_type, string_type>()
+    wobservable_deque()
+        : basic_observable_deque<value_type, string_type>()
     {
     }
 
-    explicit wobservable_vector(size_type n)
-        : basic_observable_vector<value_type, string_type>(n)
+    explicit wobservable_deque(size_type n)
+        : basic_observable_deque<value_type, string_type>(n)
     {
     }
 
-    wobservable_vector(size_type n, const value_type& val)
-        : basic_observable_vector<value_type, string_type>(n, val)
+    wobservable_deque(size_type n, const value_type& val)
+        : basic_observable_deque<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    wobservable_vector(InputIterator first, InputIterator last)
-        : basic_observable_vector<value_type, string_type>(first, last)
+    wobservable_deque(InputIterator first, InputIterator last)
+        : basic_observable_deque<value_type, string_type>(first, last)
     {
     }
 
-    wobservable_vector(const wobservable_vector& x)
-        : basic_observable_vector<value_type, string_type>(x)
+    wobservable_deque(const wobservable_deque& x)
+        : basic_observable_deque<value_type, string_type>(x)
     {
     }
 
 public:
     static ptr create()
     {
-        return ptr(new wobservable_vector);
+        return ptr(new wobservable_deque);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new wobservable_vector(n));
+        return ptr(new wobservable_deque(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new wobservable_vector(n, val));
+        return ptr(new wobservable_deque(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new wobservable_vector(first, last));
+        return ptr(new wobservable_deque(first, last));
     }
 
-    static ptr create(const wobservable_vector& x)
+    static ptr create(const wobservable_deque& x)
     {
-        return ptr(new wobservable_vector(x));
+        return ptr(new wobservable_deque(x));
     }
 
 public:
-    wobservable_vector& operator=(const wobservable_vector& x)
+    wobservable_deque& operator=(const wobservable_deque& x)
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type>::operator=(x);
         }
         return *this;
     }
 
 public:
     template<class t>
-    void swap(wobservable_vector<t>& x)
+    void swap(wobservable_deque<t>& x)
     {
-        basic_observable_vector<t, string_type>::swap(dynamic_cast<basic_observable_vector<t, string_type>&>(x));
+        basic_observable_deque<t, string_type>::swap(dynamic_cast<basic_observable_deque<t, string_type>&>(x));
     }
 };
 
 } // namespace mvvm
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_MVVM_OBSERVABLE_VECTOR_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_OBSERVABLE_DEQUE_HPP_INCLUDED
