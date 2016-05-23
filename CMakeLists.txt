@@ -82,6 +82,7 @@ SET(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/object.hpp
     ${GO_MVVM_DIR}/observable_array.hpp
     ${GO_MVVM_DIR}/observable_container.hpp
+    ${GO_MVVM_DIR}/observable_list.hpp
     ${GO_MVVM_DIR}/observable_object.hpp
     ${GO_MVVM_DIR}/observable_sequence_container.hpp
     ${GO_MVVM_DIR}/observable_vector.hpp
@@ -211,6 +212,7 @@ SET(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/object.hpp
     ${GO_BOOST_MVVM_DIR}/observable_array.hpp
     ${GO_BOOST_MVVM_DIR}/observable_container.hpp
+    ${GO_BOOST_MVVM_DIR}/observable_list.hpp
     ${GO_BOOST_MVVM_DIR}/observable_object.hpp
     ${GO_BOOST_MVVM_DIR}/observable_sequence_container.hpp
     ${GO_BOOST_MVVM_DIR}/observable_vector.hpp
