@@ -162,7 +162,7 @@ protected:
         const std::size_t s = _container.max_size();
         for(size_type i = 0; i < s; i++)
         {
-            _container[i] = value_type();
+            _container.push_back(value_type());
         }
     }
 

@@ -31,6 +31,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\observable_array.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_container.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_deque.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\observable_list.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_object.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_sequence_container.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_vector.hpp" />

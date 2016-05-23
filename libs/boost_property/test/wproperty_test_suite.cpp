@@ -122,7 +122,7 @@ public:
     }
 };
 
-TEST(boost_boost_wproperty_test_suite, read_only_scalar_properties)
+TEST(boost_boost_wproperty_test_suite, read_only_value_properties)
 {
     read_only_spaceship s;
 
@@ -169,7 +169,7 @@ public:
     }
 };
 
-TEST(boost_boost_wproperty_test_suite, write_only_scalar_properties)
+TEST(boost_boost_wproperty_test_suite, write_only_value_properties)
 {
     write_only_spaceship s;
 

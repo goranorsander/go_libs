@@ -144,7 +144,7 @@ private:
     int _action_swap_count;
 };
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_assign_range)
+TEST(boost_observable_deque_test_suite, test_assign_range)
 {
     // Test assign range
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -177,7 +177,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_assign_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_assign_initializer_list)
+TEST(boost_observable_deque_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -211,31 +211,31 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_assign_initializer
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_assign_fill)
+TEST(boost_observable_deque_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::observable_deque<int>::ptr v1 = m::observable_deque<int>::create();
-    m::observable_deque<int>::ptr v2 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d1 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d2 = m::observable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, v1->size());
-    EXPECT_EQ(0, v2->size());
+    EXPECT_EQ(0, d1->size());
+    EXPECT_EQ(0, d2->size());
 
-    o.connect(v2);
+    o.connect(d2);
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    v1->assign(a, a + 7);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(0, v2->size());
+    d1->assign(a, a + 7);
+    EXPECT_EQ(7, d1->size());
+    EXPECT_EQ(0, d2->size());
 
-    m::observable_deque<int>::iterator it = v1->begin() + 1;
+    m::observable_deque<int>::iterator it = d1->begin() + 1;
 
-    v2->assign(it, v1->end() - 1);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(5, v2->size());
+    d2->assign(it, d1->end() - 1);
+    EXPECT_EQ(7, d1->size());
+    EXPECT_EQ(5, d2->size());
 
     int count = 0;
-    for(const int& i : *v2)
+    for(const int& i : *d2)
     {
         ++count;
         EXPECT_EQ(count + 1, i);
@@ -254,7 +254,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_assign_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_push_back)
+TEST(boost_observable_deque_test_suite, test_push_back)
 {
     // Test push back
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -293,7 +293,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_push_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_push_front)
+TEST(boost_observable_deque_test_suite, test_push_front)
 {
     // Test push front
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -332,7 +332,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_push_front)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_pop_back)
+TEST(boost_observable_deque_test_suite, test_pop_back)
 {
     // Test pop back
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -374,7 +374,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_pop_back)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_pop_front)
+TEST(boost_observable_deque_test_suite, test_pop_front)
 {
     // Test pop front
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -496,35 +496,35 @@ TEST(boost_observable_deque_test_suite, test_observable_insert_fill)
 TEST(boost_observable_deque_test_suite, test_observable_insert_range)
 {
     // Test insert range
-    m::observable_deque<int>::ptr v1 = m::observable_deque<int>::create();
-    m::observable_deque<int>::ptr v2 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d1 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d2 = m::observable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, v1->size());
+    EXPECT_EQ(0, d1->size());
 
-    v1->assign(3, 74);
-    EXPECT_EQ(3, v1->size());
+    d1->assign(3, 74);
+    EXPECT_EQ(3, d1->size());
 
-    EXPECT_EQ(0, v2->size());
-    v2->assign(7, 47);
-    EXPECT_EQ(7, v2->size());
+    EXPECT_EQ(0, d2->size());
+    d2->assign(7, 47);
+    EXPECT_EQ(7, d2->size());
 
-    o.connect(v2);
+    o.connect(d2);
 
-    m::observable_deque<int>::iterator it = v2->begin();
-    v2->insert(it + 3, v1->begin(), v1->end());
-    EXPECT_EQ(10, v2->size());
+    m::observable_deque<int>::iterator it = d2->begin();
+    d2->insert(it + 3, d1->begin(), d1->end());
+    EXPECT_EQ(10, d2->size());
 
-    EXPECT_EQ(47, (*v2)[0]);
-    EXPECT_EQ(47, (*v2)[1]);
-    EXPECT_EQ(47, (*v2)[2]);
-    EXPECT_EQ(74, (*v2)[3]);
-    EXPECT_EQ(74, (*v2)[4]);
-    EXPECT_EQ(74, (*v2)[5]);
-    EXPECT_EQ(47, (*v2)[6]);
-    EXPECT_EQ(47, (*v2)[7]);
-    EXPECT_EQ(47, (*v2)[8]);
-    EXPECT_EQ(47, (*v2)[9]);
+    EXPECT_EQ(47, (*d2)[0]);
+    EXPECT_EQ(47, (*d2)[1]);
+    EXPECT_EQ(47, (*d2)[2]);
+    EXPECT_EQ(74, (*d2)[3]);
+    EXPECT_EQ(74, (*d2)[4]);
+    EXPECT_EQ(74, (*d2)[5]);
+    EXPECT_EQ(47, (*d2)[6]);
+    EXPECT_EQ(47, (*d2)[7]);
+    EXPECT_EQ(47, (*d2)[8]);
+    EXPECT_EQ(47, (*d2)[9]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
@@ -538,7 +538,7 @@ TEST(boost_observable_deque_test_suite, test_observable_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_erase_position)
+TEST(boost_observable_deque_test_suite, test_erase_position)
 {
     // Test erase position
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -577,7 +577,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_erase_range)
+TEST(boost_observable_deque_test_suite, test_erase_range)
 {
     // Test erase range
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -609,31 +609,31 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_swap)
+TEST(boost_observable_deque_test_suite, test_swap)
 {
     // Test swap
-    m::observable_deque<int>::ptr v1 = m::observable_deque<int>::create();
-    m::observable_deque<int>::ptr v2 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d1 = m::observable_deque<int>::create();
+    m::observable_deque<int>::ptr d2 = m::observable_deque<int>::create();
     deque_observer<int> o1;
     deque_observer<int> o2;
 
-    EXPECT_EQ(0, v1->size());
-    EXPECT_EQ(0, v2->size());
+    EXPECT_EQ(0, d1->size());
+    EXPECT_EQ(0, d2->size());
 
-    v1->assign(5, 1);
-    v2->assign(7, 2);
-    EXPECT_EQ(5, v1->size());
-    EXPECT_EQ(7, v2->size());
+    d1->assign(5, 1);
+    d2->assign(7, 2);
+    EXPECT_EQ(5, d1->size());
+    EXPECT_EQ(7, d2->size());
 
-    o1.connect(v1);
-    o2.connect(v2);
+    o1.connect(d1);
+    o2.connect(d2);
 
-    v1->swap(*v2);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(5, v2->size());
+    d1->swap(*d2);
+    EXPECT_EQ(7, d1->size());
+    EXPECT_EQ(5, d2->size());
 
     int count = 0;
-    for(const int& i : *v1)
+    for(const int& i : *d1)
     {
         ++count;
         EXPECT_EQ(2, i);
@@ -641,7 +641,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const int& i : *v2)
+    for(const int& i : *d2)
     {
         ++count;
         EXPECT_EQ(1, i);
@@ -671,7 +671,7 @@ TEST(boost_observable_deque_test_suite, test_observable_deque_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_deque_clear)
+TEST(boost_observable_deque_test_suite, test_clear)
 {
     // Test clear
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();

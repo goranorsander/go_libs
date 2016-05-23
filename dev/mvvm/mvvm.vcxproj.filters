@@ -64,5 +64,8 @@
     <ClInclude Include="..\..\go\mvvm\observable_deque.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_list.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

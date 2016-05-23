@@ -22,6 +22,7 @@
 #include <go_boost/mvvm/command_manager.hpp>
 #include <go_boost/mvvm/observable_array.hpp>
 #include <go_boost/mvvm/observable_deque.hpp>
+#include <go_boost/mvvm/observable_list.hpp>
 #include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
 

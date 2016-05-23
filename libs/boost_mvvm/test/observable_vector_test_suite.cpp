@@ -144,7 +144,7 @@ private:
     int _action_swap_count;
 };
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_assign_range)
+TEST(boost_observable_vector_test_suite, test_assign_range)
 {
     // Test assign range
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -177,7 +177,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_assign_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_assign_initializer_list)
+TEST(boost_observable_vector_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -211,7 +211,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_assign_initializ
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_assign_fill)
+TEST(boost_observable_vector_test_suite, test_assign_fill)
 {
     // Test assign fill
     m::observable_vector<int>::ptr v1 = m::observable_vector<int>::create();
@@ -254,7 +254,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_assign_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_push_back)
+TEST(boost_observable_vector_test_suite, test_push_back)
 {
     // Test push back
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -293,7 +293,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_push_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_pop_back)
+TEST(boost_observable_vector_test_suite, test_pop_back)
 {
     // Test pop back
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -457,7 +457,7 @@ TEST(boost_observable_vector_test_suite, test_observable_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_erase_position)
+TEST(boost_observable_vector_test_suite, test_erase_position)
 {
     // Test erase position
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -496,7 +496,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_erase_range)
+TEST(boost_observable_vector_test_suite, test_erase_range)
 {
     // Test erase range
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();
@@ -528,7 +528,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_swap)
+TEST(boost_observable_vector_test_suite, test_swap)
 {
     // Test swap
     m::observable_vector<int>::ptr v1 = m::observable_vector<int>::create();
@@ -590,7 +590,7 @@ TEST(boost_observable_vector_test_suite, test_observable_vector_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(boost_observable_vector_test_suite, test_observable_vector_clear)
+TEST(boost_observable_vector_test_suite, test_clear)
 {
     // Test clear
     m::observable_vector<int>::ptr v = m::observable_vector<int>::create();

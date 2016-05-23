@@ -150,21 +150,21 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_range)
+TEST(std_wobservable_deque_test_suite, test_assign_range)
 {
     // Test assign range
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    l->assign(7, 47);
+    EXPECT_EQ(7, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -183,22 +183,22 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_initializer_list)
+TEST(std_wobservable_deque_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    l->assign(a, a + 7);
+    EXPECT_EQ(7, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -217,31 +217,31 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_initializer
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_fill)
+TEST(std_wobservable_deque_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::wobservable_deque<int>::ptr v1 = m::wobservable_deque<int>::create();
-    m::wobservable_deque<int>::ptr v2 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l1 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l2 = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, v1->size());
-    EXPECT_EQ(0, v2->size());
+    EXPECT_EQ(0, l1->size());
+    EXPECT_EQ(0, l2->size());
 
-    o.connect(v2);
+    o.connect(l2);
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    v1->assign(a, a + 7);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(0, v2->size());
+    l1->assign(a, a + 7);
+    EXPECT_EQ(7, l1->size());
+    EXPECT_EQ(0, l2->size());
 
-    m::wobservable_deque<int>::iterator it = v1->begin() + 1;
+    m::wobservable_deque<int>::iterator it = l1->begin() + 1;
 
-    v2->assign(it, v1->end() - 1);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(5, v2->size());
+    l2->assign(it, l1->end() - 1);
+    EXPECT_EQ(7, l1->size());
+    EXPECT_EQ(5, l2->size());
 
     int count = 0;
-    for(const int& i : *v2)
+    for(const int& i : *l2)
     {
         ++count;
         EXPECT_EQ(count + 1, i);
@@ -260,27 +260,27 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_assign_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_push_back)
+TEST(std_wobservable_deque_test_suite, test_push_back)
 {
     // Test push back
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->push_back(1);
-    EXPECT_EQ(1, d->size());
+    l->push_back(1);
+    EXPECT_EQ(1, l->size());
 
-    d->push_back(2);
-    EXPECT_EQ(2, d->size());
+    l->push_back(2);
+    EXPECT_EQ(2, l->size());
 
-    d->push_back(3);
-    EXPECT_EQ(3, d->size());
+    l->push_back(3);
+    EXPECT_EQ(3, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -299,27 +299,27 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_push_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_push_front)
+TEST(std_wobservable_deque_test_suite, test_push_front)
 {
     // Test push front
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->push_front(3);
-    EXPECT_EQ(1, d->size());
+    l->push_front(3);
+    EXPECT_EQ(1, l->size());
 
-    d->push_front(2);
-    EXPECT_EQ(2, d->size());
+    l->push_front(2);
+    EXPECT_EQ(2, l->size());
 
-    d->push_front(1);
-    EXPECT_EQ(3, d->size());
+    l->push_front(1);
+    EXPECT_EQ(3, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -338,30 +338,30 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_push_front)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_pop_back)
+TEST(std_wobservable_deque_test_suite, test_pop_back)
 {
     // Test pop back
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    l->assign(7, 47);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->pop_back();
-    EXPECT_EQ(6, d->size());
+    l->pop_back();
+    EXPECT_EQ(6, l->size());
 
-    d->pop_back();
-    EXPECT_EQ(5, d->size());
+    l->pop_back();
+    EXPECT_EQ(5, l->size());
 
-    d->pop_back();
-    EXPECT_EQ(4, d->size());
+    l->pop_back();
+    EXPECT_EQ(4, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -380,30 +380,30 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_pop_back)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_pop_front)
+TEST(std_wobservable_deque_test_suite, test_pop_front)
 {
     // Test pop front
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    l->assign(7, 47);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->pop_front();
-    EXPECT_EQ(6, d->size());
+    l->pop_front();
+    EXPECT_EQ(6, l->size());
 
-    d->pop_front();
-    EXPECT_EQ(5, d->size());
+    l->pop_front();
+    EXPECT_EQ(5, l->size());
 
-    d->pop_front();
-    EXPECT_EQ(4, d->size());
+    l->pop_front();
+    EXPECT_EQ(4, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -425,22 +425,22 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_pop_front)
 TEST(std_wobservable_deque_test_suite, test_observable_insert_single_element)
 {
     // Test insert single element
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
     const int a[] = {1, 2, 4, 5, 6, 7};
-    d->assign(a, a + 6);
-    EXPECT_EQ(6, d->size());
+    l->assign(a, a + 6);
+    EXPECT_EQ(6, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    m::wobservable_deque<int>::iterator it = d->begin();
-    d->insert(it + 2, 3);
-    EXPECT_EQ(7, d->size());
+    m::wobservable_deque<int>::iterator it = l->begin();
+    l->insert(it + 2, 3);
+    EXPECT_EQ(7, l->size());
 
     int count = 0;
-    for(const int& i : *d)
+    for(const int& i : *l)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -462,30 +462,30 @@ TEST(std_wobservable_deque_test_suite, test_observable_insert_single_element)
 TEST(std_wobservable_deque_test_suite, test_observable_insert_fill)
 {
     // Test insert fill
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
-    d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    l->assign(7, 47);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    m::wobservable_deque<int>::iterator it = d->begin();
-    d->insert(it + 3, 3, 74);
-    EXPECT_EQ(10, d->size());
+    m::wobservable_deque<int>::iterator it = l->begin();
+    l->insert(it + 3, 3, 74);
+    EXPECT_EQ(10, l->size());
 
-    EXPECT_EQ(47, (*d)[0]);
-    EXPECT_EQ(47, (*d)[1]);
-    EXPECT_EQ(47, (*d)[2]);
-    EXPECT_EQ(74, (*d)[3]);
-    EXPECT_EQ(74, (*d)[4]);
-    EXPECT_EQ(74, (*d)[5]);
-    EXPECT_EQ(47, (*d)[6]);
-    EXPECT_EQ(47, (*d)[7]);
-    EXPECT_EQ(47, (*d)[8]);
-    EXPECT_EQ(47, (*d)[9]);
+    EXPECT_EQ(47, (*l)[0]);
+    EXPECT_EQ(47, (*l)[1]);
+    EXPECT_EQ(47, (*l)[2]);
+    EXPECT_EQ(74, (*l)[3]);
+    EXPECT_EQ(74, (*l)[4]);
+    EXPECT_EQ(74, (*l)[5]);
+    EXPECT_EQ(47, (*l)[6]);
+    EXPECT_EQ(47, (*l)[7]);
+    EXPECT_EQ(47, (*l)[8]);
+    EXPECT_EQ(47, (*l)[9]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
@@ -502,35 +502,35 @@ TEST(std_wobservable_deque_test_suite, test_observable_insert_fill)
 TEST(std_wobservable_deque_test_suite, test_observable_insert_range)
 {
     // Test insert range
-    m::wobservable_deque<int>::ptr v1 = m::wobservable_deque<int>::create();
-    m::wobservable_deque<int>::ptr v2 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l1 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l2 = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, v1->size());
+    EXPECT_EQ(0, l1->size());
 
-    v1->assign(3, 74);
-    EXPECT_EQ(3, v1->size());
+    l1->assign(3, 74);
+    EXPECT_EQ(3, l1->size());
 
-    EXPECT_EQ(0, v2->size());
-    v2->assign(7, 47);
-    EXPECT_EQ(7, v2->size());
+    EXPECT_EQ(0, l2->size());
+    l2->assign(7, 47);
+    EXPECT_EQ(7, l2->size());
 
-    o.connect(v2);
+    o.connect(l2);
 
-    m::wobservable_deque<int>::iterator it = v2->begin();
-    v2->insert(it + 3, v1->begin(), v1->end());
-    EXPECT_EQ(10, v2->size());
+    m::wobservable_deque<int>::iterator it = l2->begin();
+    l2->insert(it + 3, l1->begin(), l1->end());
+    EXPECT_EQ(10, l2->size());
 
-    EXPECT_EQ(47, (*v2)[0]);
-    EXPECT_EQ(47, (*v2)[1]);
-    EXPECT_EQ(47, (*v2)[2]);
-    EXPECT_EQ(74, (*v2)[3]);
-    EXPECT_EQ(74, (*v2)[4]);
-    EXPECT_EQ(74, (*v2)[5]);
-    EXPECT_EQ(47, (*v2)[6]);
-    EXPECT_EQ(47, (*v2)[7]);
-    EXPECT_EQ(47, (*v2)[8]);
-    EXPECT_EQ(47, (*v2)[9]);
+    EXPECT_EQ(47, (*l2)[0]);
+    EXPECT_EQ(47, (*l2)[1]);
+    EXPECT_EQ(47, (*l2)[2]);
+    EXPECT_EQ(74, (*l2)[3]);
+    EXPECT_EQ(74, (*l2)[4]);
+    EXPECT_EQ(74, (*l2)[5]);
+    EXPECT_EQ(47, (*l2)[6]);
+    EXPECT_EQ(47, (*l2)[7]);
+    EXPECT_EQ(47, (*l2)[8]);
+    EXPECT_EQ(47, (*l2)[9]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
@@ -544,32 +544,32 @@ TEST(std_wobservable_deque_test_suite, test_observable_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_erase_position)
+TEST(std_wobservable_deque_test_suite, test_erase_position)
 {
     // Test erase position
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    l->assign(a, a + 7);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    m::wobservable_deque<int>::iterator it1 = d->begin();
-    m::wobservable_deque<int>::iterator it2 = d->erase(it1 + 3);
-    EXPECT_EQ(6, d->size());
+    m::wobservable_deque<int>::iterator it1 = l->begin();
+    m::wobservable_deque<int>::iterator it2 = l->erase(it1 + 3);
+    EXPECT_EQ(6, l->size());
 
-    d->erase(it2);
-    EXPECT_EQ(5, d->size());
+    l->erase(it2);
+    EXPECT_EQ(5, l->size());
 
-    EXPECT_EQ(1, (*d)[0]);
-    EXPECT_EQ(2, (*d)[1]);
-    EXPECT_EQ(3, (*d)[2]);
-    EXPECT_EQ(6, (*d)[3]);
-    EXPECT_EQ(7, (*d)[4]);
+    EXPECT_EQ(1, (*l)[0]);
+    EXPECT_EQ(2, (*l)[1]);
+    EXPECT_EQ(3, (*l)[2]);
+    EXPECT_EQ(6, (*l)[3]);
+    EXPECT_EQ(7, (*l)[4]);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -583,25 +583,25 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_erase_range)
+TEST(std_wobservable_deque_test_suite, test_erase_range)
 {
     // Test erase range
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    l->assign(a, a + 7);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->erase(d->begin() + 1, d->end() - 1);
-    EXPECT_EQ(2, d->size());
+    l->erase(l->begin() + 1, l->end() - 1);
+    EXPECT_EQ(2, l->size());
 
-    EXPECT_EQ(1, (*d)[0]);
-    EXPECT_EQ(7, (*d)[1]);
+    EXPECT_EQ(1, (*l)[0]);
+    EXPECT_EQ(7, (*l)[1]);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -615,31 +615,31 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_swap)
+TEST(std_wobservable_deque_test_suite, test_swap)
 {
     // Test swap
-    m::wobservable_deque<int>::ptr v1 = m::wobservable_deque<int>::create();
-    m::wobservable_deque<int>::ptr v2 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l1 = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l2 = m::wobservable_deque<int>::create();
     deque_observer<int> o1;
     deque_observer<int> o2;
 
-    EXPECT_EQ(0, v1->size());
-    EXPECT_EQ(0, v2->size());
+    EXPECT_EQ(0, l1->size());
+    EXPECT_EQ(0, l2->size());
 
-    v1->assign(5, 1);
-    v2->assign(7, 2);
-    EXPECT_EQ(5, v1->size());
-    EXPECT_EQ(7, v2->size());
+    l1->assign(5, 1);
+    l2->assign(7, 2);
+    EXPECT_EQ(5, l1->size());
+    EXPECT_EQ(7, l2->size());
 
-    o1.connect(v1);
-    o2.connect(v2);
+    o1.connect(l1);
+    o2.connect(l2);
 
-    v1->swap(*v2);
-    EXPECT_EQ(7, v1->size());
-    EXPECT_EQ(5, v2->size());
+    l1->swap(*l2);
+    EXPECT_EQ(7, l1->size());
+    EXPECT_EQ(5, l2->size());
 
     int count = 0;
-    for(const int& i : *v1)
+    for(const int& i : *l1)
     {
         ++count;
         EXPECT_EQ(2, i);
@@ -647,7 +647,7 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const int& i : *v2)
+    for(const int& i : *l2)
     {
         ++count;
         EXPECT_EQ(1, i);
@@ -677,22 +677,22 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_wobservable_deque_test_suite, test_wobservable_deque_clear)
+TEST(std_wobservable_deque_test_suite, test_clear)
 {
     // Test clear
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0, l->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
-    d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    l->assign(a, a + 7);
+    EXPECT_EQ(7, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->clear();
-    EXPECT_EQ(0, d->size());
+    l->clear();
+    EXPECT_EQ(0, l->size());
 
     EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -709,28 +709,28 @@ TEST(std_wobservable_deque_test_suite, test_wobservable_deque_clear)
 TEST(std_wobservable_deque_test_suite, test_observable_emplace)
 {
     // Test emplace
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};
-    d->assign(a, a + 3);
-    EXPECT_EQ(3, d->size());
+    l->assign(a, a + 3);
+    EXPECT_EQ(3, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    m::wobservable_deque<int>::iterator it = d->emplace(d->begin() + 1, 4);
+    m::wobservable_deque<int>::iterator it = l->emplace(l->begin() + 1, 4);
     EXPECT_EQ(4, *it);
 
-    d->emplace(it, 5);
-    d->emplace(d->end(), 6);
-    EXPECT_EQ(6, d->size());
+    l->emplace(it, 5);
+    l->emplace(l->end(), 6);
+    EXPECT_EQ(6, l->size());
 
-    EXPECT_EQ(1, (*d)[0]);
-    EXPECT_EQ(5, (*d)[1]);
-    EXPECT_EQ(4, (*d)[2]);
-    EXPECT_EQ(2, (*d)[3]);
-    EXPECT_EQ(3, (*d)[4]);
-    EXPECT_EQ(6, (*d)[5]);
+    EXPECT_EQ(1, (*l)[0]);
+    EXPECT_EQ(5, (*l)[1]);
+    EXPECT_EQ(4, (*l)[2]);
+    EXPECT_EQ(2, (*l)[3]);
+    EXPECT_EQ(3, (*l)[4]);
+    EXPECT_EQ(6, (*l)[5]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
@@ -747,26 +747,26 @@ TEST(std_wobservable_deque_test_suite, test_observable_emplace)
 TEST(std_wobservable_deque_test_suite, test_observable_emplace_back)
 {
     // Test emplace back
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};
-    d->assign(a, a + 3);
-    EXPECT_EQ(3, d->size());
+    l->assign(a, a + 3);
+    EXPECT_EQ(3, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->emplace_back(4);
-    d->emplace_back(5);
-    d->emplace_back(6);
-    EXPECT_EQ(6, d->size());
+    l->emplace_back(4);
+    l->emplace_back(5);
+    l->emplace_back(6);
+    EXPECT_EQ(6, l->size());
 
-    EXPECT_EQ(1, (*d)[0]);
-    EXPECT_EQ(2, (*d)[1]);
-    EXPECT_EQ(3, (*d)[2]);
-    EXPECT_EQ(4, (*d)[3]);
-    EXPECT_EQ(5, (*d)[4]);
-    EXPECT_EQ(6, (*d)[5]);
+    EXPECT_EQ(1, (*l)[0]);
+    EXPECT_EQ(2, (*l)[1]);
+    EXPECT_EQ(3, (*l)[2]);
+    EXPECT_EQ(4, (*l)[3]);
+    EXPECT_EQ(5, (*l)[4]);
+    EXPECT_EQ(6, (*l)[5]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
@@ -783,26 +783,26 @@ TEST(std_wobservable_deque_test_suite, test_observable_emplace_back)
 TEST(std_wobservable_deque_test_suite, test_observable_emplace_front)
 {
     // Test emplace front
-    m::wobservable_deque<int>::ptr d = m::wobservable_deque<int>::create();
+    m::wobservable_deque<int>::ptr l = m::wobservable_deque<int>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};
-    d->assign(a, a + 3);
-    EXPECT_EQ(3, d->size());
+    l->assign(a, a + 3);
+    EXPECT_EQ(3, l->size());
 
-    o.connect(d);
+    o.connect(l);
 
-    d->emplace_front(4);
-    d->emplace_front(5);
-    d->emplace_front(6);
-    EXPECT_EQ(6, d->size());
+    l->emplace_front(4);
+    l->emplace_front(5);
+    l->emplace_front(6);
+    EXPECT_EQ(6, l->size());
 
-    EXPECT_EQ(6, (*d)[0]);
-    EXPECT_EQ(5, (*d)[1]);
-    EXPECT_EQ(4, (*d)[2]);
-    EXPECT_EQ(1, (*d)[3]);
-    EXPECT_EQ(2, (*d)[4]);
-    EXPECT_EQ(3, (*d)[5]);
+    EXPECT_EQ(6, (*l)[0]);
+    EXPECT_EQ(5, (*l)[1]);
+    EXPECT_EQ(4, (*l)[2]);
+    EXPECT_EQ(1, (*l)[3]);
+    EXPECT_EQ(2, (*l)[4]);
+    EXPECT_EQ(3, (*l)[5]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
