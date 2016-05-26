@@ -77,7 +77,7 @@ class relay_command
     : public basic_relay_command<std::string>
 {
 public:
-    typedef typename std::string string_type;
+    typedef std::string string_type;
     typedef relay_command this_type;
 
 public:
@@ -102,7 +102,7 @@ class relay_wcommand
     : public basic_relay_command<std::wstring>
 {
 public:
-    typedef typename std::wstring string_type;
+    typedef std::wstring string_type;
     typedef relay_wcommand this_type;
 
 public:

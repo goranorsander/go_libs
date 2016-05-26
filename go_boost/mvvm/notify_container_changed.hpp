@@ -35,8 +35,8 @@ class notify_container_changed
 public:
     typedef notify_container_changed this_type;
     typedef container_changed_arguments container_changed_arguments_type;
-    typedef typename boost::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
-    typedef typename boost::signals2::signal<void(const object::ptr&, const container_changed_arguments_type_ptr&)> container_changed_signal;
+    typedef boost::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
+    typedef boost::signals2::signal<void(const object::ptr&, const container_changed_arguments_type_ptr&)> container_changed_signal;
 
 public:
     virtual ~notify_container_changed() = 0;

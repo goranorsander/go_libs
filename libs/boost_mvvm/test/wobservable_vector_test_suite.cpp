@@ -10,6 +10,8 @@
 
 #include <gtest/gtest.h>
 
+#include <boost/foreach.hpp>
+
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>
 
@@ -158,7 +160,7 @@ TEST(boost_wobservable_vector_test_suite, test_assign_range)
     EXPECT_EQ(7, v->size());
 
     int count = 0;
-    for(const int& i : *v)
+    BOOST_FOREACH(const int& i, *v)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -192,7 +194,7 @@ TEST(boost_wobservable_vector_test_suite, test_assign_initializer_list)
     EXPECT_EQ(7, v->size());
 
     int count = 0;
-    for(const int& i : *v)
+    BOOST_FOREACH(const int& i, *v)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -235,7 +237,7 @@ TEST(boost_wobservable_vector_test_suite, test_assign_fill)
     EXPECT_EQ(5, v2->size());
 
     int count = 0;
-    for(const int& i : *v2)
+    BOOST_FOREACH(const int& i, *v2)
     {
         ++count;
         EXPECT_EQ(count + 1, i);
@@ -274,7 +276,7 @@ TEST(boost_wobservable_vector_test_suite, test_push_back)
     EXPECT_EQ(3, v->size());
 
     int count = 0;
-    for(const int& i : *v)
+    BOOST_FOREACH(const int& i, *v)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -316,7 +318,7 @@ TEST(boost_wobservable_vector_test_suite, test_pop_back)
     EXPECT_EQ(4, v->size());
 
     int count = 0;
-    for(const int& i : *v)
+    BOOST_FOREACH(const int& i, *v)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -353,7 +355,7 @@ TEST(boost_wobservable_vector_test_suite, test_insert_single_element)
     EXPECT_EQ(7, v->size());
 
     int count = 0;
-    for(const int& i : *v)
+    BOOST_FOREACH(const int& i, *v)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -552,7 +554,7 @@ TEST(boost_wobservable_vector_test_suite, test_swap)
     EXPECT_EQ(5, v2->size());
 
     int count = 0;
-    for(const int& i : *v1)
+    BOOST_FOREACH(const int& i, *v1)
     {
         ++count;
         EXPECT_EQ(2, i);
@@ -560,7 +562,7 @@ TEST(boost_wobservable_vector_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const int& i : *v2)
+    BOOST_FOREACH(const int& i, *v2)
     {
         ++count;
         EXPECT_EQ(1, i);

@@ -10,6 +10,8 @@
 
 #include <gtest/gtest.h>
 
+#include <boost/foreach.hpp>
+
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>
 
@@ -158,7 +160,7 @@ TEST(boost_observable_deque_test_suite, test_assign_range)
     EXPECT_EQ(7, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -192,7 +194,7 @@ TEST(boost_observable_deque_test_suite, test_assign_initializer_list)
     EXPECT_EQ(7, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -235,7 +237,7 @@ TEST(boost_observable_deque_test_suite, test_assign_fill)
     EXPECT_EQ(5, d2->size());
 
     int count = 0;
-    for(const int& i : *d2)
+    BOOST_FOREACH(const int& i, *d2)
     {
         ++count;
         EXPECT_EQ(count + 1, i);
@@ -274,7 +276,7 @@ TEST(boost_observable_deque_test_suite, test_push_back)
     EXPECT_EQ(3, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -313,7 +315,7 @@ TEST(boost_observable_deque_test_suite, test_push_front)
     EXPECT_EQ(3, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -355,7 +357,7 @@ TEST(boost_observable_deque_test_suite, test_pop_back)
     EXPECT_EQ(4, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -397,7 +399,7 @@ TEST(boost_observable_deque_test_suite, test_pop_front)
     EXPECT_EQ(4, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
@@ -434,7 +436,7 @@ TEST(boost_observable_deque_test_suite, test_insert_single_element)
     EXPECT_EQ(7, d->size());
 
     int count = 0;
-    for(const int& i : *d)
+    BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -633,7 +635,7 @@ TEST(boost_observable_deque_test_suite, test_swap)
     EXPECT_EQ(5, d2->size());
 
     int count = 0;
-    for(const int& i : *d1)
+    BOOST_FOREACH(const int& i, *d1)
     {
         ++count;
         EXPECT_EQ(2, i);
@@ -641,7 +643,7 @@ TEST(boost_observable_deque_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const int& i : *d2)
+    BOOST_FOREACH(const int& i, *d2)
     {
         ++count;
         EXPECT_EQ(1, i);

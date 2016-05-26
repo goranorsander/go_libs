@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
@@ -1391,3 +1397,5 @@ TEST(std_wobservable_forward_list_test_suite, test_merge_compare_predicate)
 }
 
 }
+
+#endif // C++11/14 is not supported by this compiler

@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <algorithm>
 #include <string>
 #include <go/property/detail/property_base.hpp>
@@ -182,5 +188,7 @@ inline bool operator!=(const std::wstring& lhs, const basic_value_property<std::
 
 } // namespace property
 } // namespace go
+
+#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_PROPERTY_VALUE_PROPERTY_HPP_INCLUDED

@@ -99,12 +99,12 @@ protected:
     virtual const container_type& container() const;
 
 public:
-    iterator before_begin() noexcept
+    iterator before_begin()
     {
         return _container.before_begin();
     }
 
-    const_iterator before_begin() const noexcept
+    const_iterator before_begin() const
     {
         return _container.before_begin();
     }
@@ -322,7 +322,7 @@ public:
         _container.sort(comp);
     }
 
-    void reverse() noexcept
+    void reverse()
     {
         _container.reverse();
     }

@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/read_only_property.hpp>
 #include <go/signals/signal.hpp>
@@ -169,5 +175,7 @@ inline wcommand::~wcommand()
 
 } // namespace mvvm
 } // namespace go
+
+#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_COMMAND_HPP_INCLUDED

@@ -11,7 +11,14 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <memory>
+#include <go/config.hpp>
 
 namespace go
 {
@@ -22,8 +29,8 @@ class command_parameters
 {
 public:
     typedef command_parameters this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    typedef std::shared_ptr<this_type> ptr;
+    typedef std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~command_parameters()
@@ -47,5 +54,7 @@ public:
 
 } // namespace mvvm
 } // namespace go
+
+#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_COMMAND_PARAMETERS_HPP_INCLUDED

@@ -371,7 +371,7 @@ public:
         _container.sort(comp);
     }
 
-    void reverse() noexcept
+    void reverse()
     {
         _container.reverse();
     }

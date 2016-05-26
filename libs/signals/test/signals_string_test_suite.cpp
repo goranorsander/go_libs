@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <gtest/gtest.h>
 
 #include <go/property.hpp>
@@ -24,10 +30,10 @@ namespace
 class fleet_commander
 {
 public:
-    typedef typename std::shared_ptr<fleet_commander> ptr;
-    typedef typename std::weak_ptr<fleet_commander> wptr;
-    typedef typename go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
-    typedef typename go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef std::shared_ptr<fleet_commander> ptr;
+    typedef std::weak_ptr<fleet_commander> wptr;
+    typedef go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 
 public:
     virtual ~fleet_commander()
@@ -363,3 +369,5 @@ TEST(std_signals_string_test_suite, test_fire_all_weapons)
 }
 
 }
+
+#endif // C++11/14 is not supported by this compiler

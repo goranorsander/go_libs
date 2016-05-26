@@ -8,9 +8,10 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
 #include <boost/predef.h>
 
-#if (BOOST_COMP_MSVC) && (_MSC_VER <= 1700)
+#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
 #pragma message("Boost.Phoenix is not supported by this compiler")
 #else
 

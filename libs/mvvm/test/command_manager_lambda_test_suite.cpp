@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
@@ -172,8 +178,8 @@ public:
     }
 
 private:
-    typedef typename std::pair<std::string, std::string> ship_and_property_type;
-    typedef typename std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+    typedef std::pair<std::string, std::string> ship_and_property_type;
+    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
     s::slot_key_type _on_property_changed_slot_key;
     on_property_changed_counter_type _on_property_changed_count;
@@ -312,3 +318,5 @@ TEST(std_command_manager_lambda_test_suite, test_spaceship_observer)
 }
 
 }
+
+#endif // C++11/14 is not supported by this compiler

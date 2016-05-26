@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
@@ -156,3 +162,5 @@ TEST(std_observable_object_lambda_test_suite, test_observable_object)
 }
 
 }
+
+#endif // C++11/14 is not supported by this compiler

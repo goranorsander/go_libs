@@ -11,9 +11,16 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <functional>
 #include <map>
 #include <mutex>
+#include <go/config.hpp>
 
 namespace go
 {
@@ -100,5 +107,7 @@ private:
 
 } // namespace signals
 } // namespace go
+
+#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_SIGNALS_SIGNAL_HPP_INCLUDED

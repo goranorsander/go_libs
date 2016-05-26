@@ -31,8 +31,8 @@ class object
 {
 public:
     typedef object this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef boost::shared_ptr<this_type> ptr;
+    typedef boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~object() = 0;

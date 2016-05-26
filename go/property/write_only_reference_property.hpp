@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <string>
 #include <go/property/detail/write_only_property_base.hpp>
 #include <go/property/policy/reference.hpp>
@@ -124,5 +130,7 @@ public:
 } // namespace write_only
 } // namespace property
 } // namespace go
+
+#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_PROPERTY_WRITE_ONLY_REFERENCE_PROPERTY_HPP_INCLUDED

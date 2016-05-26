@@ -235,8 +235,8 @@ public:
     }
 
 private:
-    typedef typename std::pair<std::wstring, std::wstring> ship_and_property_type;
-    typedef typename std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+    typedef std::pair<std::wstring, std::wstring> ship_and_property_type;
+    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
     on_property_changed_counter_type _on_property_changed_count;
 };

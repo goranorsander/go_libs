@@ -8,6 +8,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/config.hpp>
+
+#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
+#pragma message("C++11/14 is not supported by this compiler")
+#else
+
 #include <functional>
 
 #include <gtest/gtest.h>
@@ -735,3 +741,5 @@ TEST(std_property_test_suite, write_only_proxy_properties)
 }
 
 }
+
+#endif // C++11/14 is not supported by this compiler

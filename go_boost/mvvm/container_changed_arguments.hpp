@@ -28,8 +28,8 @@ class container_changed_arguments
 {
 public:
     typedef container_changed_arguments this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef boost::shared_ptr<this_type> ptr;
+    typedef boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~container_changed_arguments()
@@ -37,7 +37,7 @@ public:
     }
 
 private:
-    container_changed_arguments(const container_changed_arguments&) = delete;
+    container_changed_arguments(const container_changed_arguments&);
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)

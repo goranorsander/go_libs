@@ -32,8 +32,8 @@ class slot_arguments
     : public boost::noncopyable
 {
 public:
-    typedef typename boost::shared_ptr<slot_arguments> ptr;
-    typedef typename boost::weak_ptr<slot_arguments> wptr;
+    typedef boost::shared_ptr<slot_arguments> ptr;
+    typedef boost::weak_ptr<slot_arguments> wptr;
 
 public:
     virtual ~slot_arguments() = 0;

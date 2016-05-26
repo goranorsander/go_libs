@@ -8,9 +8,10 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
 #include <boost/predef.h>
 
-#if (BOOST_COMP_MSVC) && (_MSC_VER <= 1700)
+#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
 #pragma message("Boost.Phoenix is not supported by this compiler")
 #else
 
@@ -197,8 +198,8 @@ public:
     }
 
 private:
-    typedef typename std::pair<std::string, std::string> ship_and_property_type;
-    typedef typename std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+    typedef std::pair<std::string, std::string> ship_and_property_type;
+    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
     on_property_changed_counter_type _on_property_changed_count;
 };

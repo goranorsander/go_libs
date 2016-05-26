@@ -30,7 +30,7 @@ namespace utility
 
 struct get_property_relay_command_functor
 {
-    typedef typename std::string string_type;
+    typedef std::string string_type;
 
     template <typename Sig>
     struct result;
@@ -54,7 +54,7 @@ struct get_property_relay_command_functor
 
 struct get_wproperty_relay_wcommand_functor
 {
-    typedef typename std::wstring string_type;
+    typedef std::wstring string_type;
 
     template <typename Sig>
     struct result;

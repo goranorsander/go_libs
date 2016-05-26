@@ -10,6 +10,8 @@
 
 #include <gtest/gtest.h>
 
+#include <boost/foreach.hpp>
+
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>
 
@@ -164,7 +166,7 @@ TEST(boost_wobservable_array_test_suite, test_create)
     }
 
     int count = 0;
-    for(const int& i : *a)
+    BOOST_FOREACH(const int& i, *a)
     {
         EXPECT_EQ(count, i);
         ++count;
