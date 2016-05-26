@@ -150,7 +150,7 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_range)
+TEST(std_wobservable_list_test_suite, test_assign_range)
 {
     // Test assign range
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -183,7 +183,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_initializer_list)
+TEST(std_wobservable_list_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -217,7 +217,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_initializer_l
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_fill)
+TEST(std_wobservable_list_test_suite, test_assign_fill)
 {
     // Test assign fill
     m::wobservable_list<int>::ptr l1 = m::wobservable_list<int>::create();
@@ -263,7 +263,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_assign_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_push_back)
+TEST(std_wobservable_list_test_suite, test_push_back)
 {
     // Test push back
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -302,7 +302,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_push_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_push_front)
+TEST(std_wobservable_list_test_suite, test_push_front)
 {
     // Test push front
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -341,7 +341,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_push_front)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_pop_back)
+TEST(std_wobservable_list_test_suite, test_pop_back)
 {
     // Test pop back
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -383,7 +383,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_pop_back)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_pop_front)
+TEST(std_wobservable_list_test_suite, test_pop_front)
 {
     // Test pop front
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -425,7 +425,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_pop_front)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_insert_single_element)
+TEST(std_wobservable_list_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -463,7 +463,7 @@ TEST(std_wobservable_list_test_suite, test_observable_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_insert_fill)
+TEST(std_wobservable_list_test_suite, test_insert_fill)
 {
     // Test insert fill
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -516,7 +516,7 @@ TEST(std_wobservable_list_test_suite, test_observable_insert_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_insert_range)
+TEST(std_wobservable_list_test_suite, test_insert_range)
 {
     // Test insert range
     m::wobservable_list<int>::ptr l1 = m::wobservable_list<int>::create();
@@ -574,7 +574,7 @@ TEST(std_wobservable_list_test_suite, test_observable_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_erase_position)
+TEST(std_wobservable_list_test_suite, test_erase_position)
 {
     // Test erase position
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -621,7 +621,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_erase_range)
+TEST(std_wobservable_list_test_suite, test_erase_range)
 {
     // Test erase range
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -662,7 +662,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_swap)
+TEST(std_wobservable_list_test_suite, test_swap)
 {
     // Test swap
     m::wobservable_list<int>::ptr l1 = m::wobservable_list<int>::create();
@@ -724,7 +724,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_wobservable_list_clear)
+TEST(std_wobservable_list_test_suite, test_clear)
 {
     // Test clear
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -753,7 +753,7 @@ TEST(std_wobservable_list_test_suite, test_wobservable_list_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_emplace)
+TEST(std_wobservable_list_test_suite, test_emplace)
 {
     // Test emplace
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -801,7 +801,7 @@ TEST(std_wobservable_list_test_suite, test_observable_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_emplace_back)
+TEST(std_wobservable_list_test_suite, test_emplace_back)
 {
     // Test emplace back
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();
@@ -845,7 +845,7 @@ TEST(std_wobservable_list_test_suite, test_observable_emplace_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_list_test_suite, test_observable_emplace_front)
+TEST(std_wobservable_list_test_suite, test_emplace_front)
 {
     // Test emplace front
     m::wobservable_list<int>::ptr l = m::wobservable_list<int>::create();

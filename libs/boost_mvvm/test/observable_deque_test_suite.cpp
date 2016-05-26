@@ -416,7 +416,7 @@ TEST(boost_observable_deque_test_suite, test_pop_front)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_insert_single_element)
+TEST(boost_observable_deque_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -453,7 +453,7 @@ TEST(boost_observable_deque_test_suite, test_observable_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_insert_fill)
+TEST(boost_observable_deque_test_suite, test_insert_fill)
 {
     // Test insert fill
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -493,7 +493,7 @@ TEST(boost_observable_deque_test_suite, test_observable_insert_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_observable_deque_test_suite, test_observable_insert_range)
+TEST(boost_observable_deque_test_suite, test_insert_range)
 {
     // Test insert range
     m::observable_deque<int>::ptr d1 = m::observable_deque<int>::create();

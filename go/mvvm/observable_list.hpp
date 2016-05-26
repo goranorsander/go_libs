@@ -156,16 +156,6 @@ public:
 
     size_type size() const noexcept;
 
-    const_reference at(size_type n) const
-    {
-        return _container.at(n);
-    }
-
-    reference at(size_type n)
-    {
-        return _container.at(n);
-    }
-
     reference back()
     {
         return _container.back();
@@ -254,7 +244,7 @@ public:
     void pop_front()
     {
         const std::size_t before = _container.size();
-        _container.pop_back();
+        _container.pop_front();
         const std::size_t after = _container.size();
         if(before > after)
         {

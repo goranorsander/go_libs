@@ -59,5 +59,11 @@
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_list_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\test\observable_forward_list_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_forward_list_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

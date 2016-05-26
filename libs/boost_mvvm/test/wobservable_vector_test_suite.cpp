@@ -335,7 +335,7 @@ TEST(boost_wobservable_vector_test_suite, test_pop_back)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(boost_wobservable_vector_test_suite, test_observable_insert_single_element)
+TEST(boost_wobservable_vector_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
@@ -372,7 +372,7 @@ TEST(boost_wobservable_vector_test_suite, test_observable_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_wobservable_vector_test_suite, test_observable_insert_fill)
+TEST(boost_wobservable_vector_test_suite, test_insert_fill)
 {
     // Test insert fill
     m::wobservable_vector<int>::ptr v = m::wobservable_vector<int>::create();
@@ -412,7 +412,7 @@ TEST(boost_wobservable_vector_test_suite, test_observable_insert_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(boost_wobservable_vector_test_suite, test_observable_insert_range)
+TEST(boost_wobservable_vector_test_suite, test_insert_range)
 {
     // Test insert range
     m::wobservable_vector<int>::ptr v1 = m::wobservable_vector<int>::create();

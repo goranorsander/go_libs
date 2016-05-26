@@ -264,7 +264,7 @@ public:
     void pop_front()
     {
         const std::size_t before = _container.size();
-        _container.pop_back();
+        _container.pop_front();
         const std::size_t after = _container.size();
         if(before > after)
         {

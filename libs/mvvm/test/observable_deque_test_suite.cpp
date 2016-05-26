@@ -422,7 +422,7 @@ TEST(std_observable_deque_test_suite, test_pop_front)
     EXPECT_EQ(3, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_insert_single_element)
+TEST(std_observable_deque_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -459,7 +459,7 @@ TEST(std_observable_deque_test_suite, test_observable_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_insert_fill)
+TEST(std_observable_deque_test_suite, test_insert_fill)
 {
     // Test insert fill
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -499,7 +499,7 @@ TEST(std_observable_deque_test_suite, test_observable_insert_fill)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_insert_range)
+TEST(std_observable_deque_test_suite, test_insert_range)
 {
     // Test insert range
     m::observable_deque<int>::ptr d1 = m::observable_deque<int>::create();
@@ -706,7 +706,7 @@ TEST(std_observable_deque_test_suite, test_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_emplace)
+TEST(std_observable_deque_test_suite, test_emplace)
 {
     // Test emplace
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -744,7 +744,7 @@ TEST(std_observable_deque_test_suite, test_observable_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_emplace_back)
+TEST(std_observable_deque_test_suite, test_emplace_back)
 {
     // Test emplace back
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();
@@ -780,7 +780,7 @@ TEST(std_observable_deque_test_suite, test_observable_emplace_back)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_deque_test_suite, test_observable_emplace_front)
+TEST(std_observable_deque_test_suite, test_emplace_front)
 {
     // Test emplace front
     m::observable_deque<int>::ptr d = m::observable_deque<int>::create();

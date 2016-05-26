@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_array_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_deque_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_forward_list_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_list_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_array_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_deque_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_forward_list_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_list_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_test_suite.cpp" />
