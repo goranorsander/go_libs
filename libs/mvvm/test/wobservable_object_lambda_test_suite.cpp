@@ -8,13 +8,13 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
-#pragma message("C++11/14 is not supported by this compiler")
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
+#pragma message("Required C++11 feature is not supported by this compiler")
+TEST(std_wobservable_object_lambda_test_suite, cpp11_not_supported) {}
 #else
-
-#include <gtest/gtest.h>
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
@@ -163,4 +163,4 @@ TEST(std_wobservable_object_lambda_test_suite, test_observable_object)
 
 }
 
-#endif // C++11/14 is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler

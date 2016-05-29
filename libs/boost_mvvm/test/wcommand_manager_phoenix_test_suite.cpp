@@ -8,14 +8,14 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <gtest/gtest.h>
 #include <boost/config.hpp>
 #include <boost/predef.h>
 
 #if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
 #pragma message("Boost.Phoenix is not supported by this compiler")
+TEST(boost_wcommand_manager_phoenix_test_suite, boost_phoenix_not_supported) {}
 #else
-
-#include <gtest/gtest.h>
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/mvvm/utility.hpp>
@@ -338,4 +338,4 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_spaceship_observer)
 
 }
 
-#endif
+#endif  // Boost.Phoenix is not supported by this compiler

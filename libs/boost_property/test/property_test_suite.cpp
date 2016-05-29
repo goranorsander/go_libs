@@ -9,6 +9,7 @@
 //
 
 #include <gtest/gtest.h>
+#include <boost/config.hpp>
 
 #include <boost/bind.hpp>
 

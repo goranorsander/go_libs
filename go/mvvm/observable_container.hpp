@@ -13,8 +13,8 @@
 
 #include <go/config.hpp>
 
-#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
-#pragma message("C++11/14 is not supported by this compiler")
+#if defined(GO_NO_CXX11)
+#pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/notify_container_changed.hpp>
@@ -73,6 +73,6 @@ inline basic_observable_container<S, C>::~basic_observable_container()
 } // namespace mvvm
 } // namespace go
 
-#endif // C++11/14 is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_OBSERVABLE_CONTAINER_HPP_INCLUDED

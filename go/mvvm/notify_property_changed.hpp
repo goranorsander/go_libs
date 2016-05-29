@@ -13,8 +13,8 @@
 
 #include <go/config.hpp>
 
-#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
-#pragma message("C++11/14 is not supported by this compiler")
+#if defined(GO_NO_CXX11)
+#pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/object.hpp>
@@ -100,6 +100,6 @@ inline notify_wproperty_changed::~notify_wproperty_changed()
 } // namespace mvvm
 } // namespace go
 
-#endif // C++11/14 is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_NOTIFY_PROPERTY_CHANGED_HPP_INCLUDED

@@ -8,15 +8,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
-#pragma message("C++11/14 is not supported by this compiler")
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
+#pragma message("Required C++11 feature is not supported by this compiler")
+TEST(std_property_test_suite, cpp11_not_supported) {}
 #else
 
 #include <functional>
-
-#include <gtest/gtest.h>
 
 #include <go/property.hpp>
 
@@ -198,6 +198,10 @@ TEST(std_property_test_suite, write_only_value_properties)
     // Copy construction
     write_only_spaceship s2(s);
 }
+
+#if defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
+#pragma message("Required C++11 feature is not supported by this compiler")
+#else
 
 // Test reference_property
 class reference_spaceship
@@ -418,6 +422,8 @@ TEST(std_property_test_suite, write_only_reference_properties)
     // Copy construction
     write_only_reference_spaceship s2(s);
 }
+
+#endif  // defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
 
 // Test property
 class armament
@@ -742,4 +748,4 @@ TEST(std_property_test_suite, write_only_proxy_properties)
 
 }
 
-#endif // C++11/14 is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler

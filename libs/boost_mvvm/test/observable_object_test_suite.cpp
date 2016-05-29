@@ -9,6 +9,7 @@
 //
 
 #include <gtest/gtest.h>
+#include <boost/config.hpp>
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>

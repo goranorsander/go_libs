@@ -13,10 +13,6 @@
 
 #include <go/config.hpp>
 
-#if (GO_COMP_MSVC) && (_MSC_VER <= 1800)
-#pragma message("C++11/14 is not supported by this compiler")
-#else
-
 namespace go
 {
 namespace mvvm
@@ -33,7 +29,5 @@ enum notify_container_changed_action
 
 } // namespace mvvm
 } // namespace go
-
-#endif // C++11/14 is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_NOTIFY_CONTAINER_CHANGED_ACTION_HPP_INCLUDED

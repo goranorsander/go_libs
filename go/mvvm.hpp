@@ -16,6 +16,7 @@
 #include <go/mvvm/observable_deque.hpp>
 #include <go/mvvm/observable_forward_list.hpp>
 #include <go/mvvm/observable_list.hpp>
+#include <go/mvvm/observable_object.hpp>
 #include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
 
