@@ -16,7 +16,15 @@
 #include <go/mvvm/observable_deque.hpp>
 #include <go/mvvm/observable_forward_list.hpp>
 #include <go/mvvm/observable_list.hpp>
+#include <go/mvvm/observable_map.hpp>
+#include <go/mvvm/observable_multimap.hpp>
+#include <go/mvvm/observable_multiset.hpp>
 #include <go/mvvm/observable_object.hpp>
+#include <go/mvvm/observable_set.hpp>
+#include <go/mvvm/observable_unordered_map.hpp>
+#include <go/mvvm/observable_unordered_multimap.hpp>
+#include <go/mvvm/observable_unordered_multiset.hpp>
+#include <go/mvvm/observable_unordered_set.hpp>
 #include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
 

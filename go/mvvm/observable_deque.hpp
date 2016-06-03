@@ -81,13 +81,13 @@ protected:
     {
     }
 
-    basic_observable_deque(const basic_observable_deque& x)
+    basic_observable_deque(const this_type& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
-    basic_observable_deque(basic_observable_deque&& x)
+    basic_observable_deque(this_type&& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
@@ -100,7 +100,7 @@ protected:
     }
 
 public:
-    basic_observable_deque& operator=(const basic_observable_deque& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -109,7 +109,7 @@ public:
         return *this;
     }
 
-    basic_observable_deque& operator=(basic_observable_deque&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -118,7 +118,7 @@ public:
         return *this;
     }
 
-    basic_observable_deque& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         _container.operator=(il);
         return *this;
@@ -464,12 +464,12 @@ protected:
     {
     }
 
-    observable_deque(const observable_deque& x)
+    observable_deque(const this_type& x)
         : basic_observable_deque<value_type, string_type>(x)
     {
     }
 
-    observable_deque(observable_deque&& x)
+    observable_deque(this_type&& x)
         : basic_observable_deque<value_type, string_type>(x)
     {
     }
@@ -482,42 +482,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new observable_deque);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new observable_deque(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new observable_deque(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new observable_deque(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const observable_deque& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new observable_deque(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(observable_deque&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new observable_deque(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new observable_deque(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    observable_deque& operator=(const observable_deque& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -526,7 +526,7 @@ public:
         return *this;
     }
 
-    observable_deque& operator=(observable_deque&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -535,7 +535,7 @@ public:
         return *this;
     }
 
-    observable_deque& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_deque<value_type, string_type>::operator=(il);
         return *this;
@@ -599,12 +599,12 @@ protected:
     {
     }
 
-    wobservable_deque(const wobservable_deque& x)
+    wobservable_deque(const this_type& x)
         : basic_observable_deque<value_type, string_type>(x)
     {
     }
 
-    wobservable_deque(wobservable_deque&& x)
+    wobservable_deque(this_type&& x)
         : basic_observable_deque<value_type, string_type>(x)
     {
     }
@@ -617,42 +617,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wobservable_deque);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new wobservable_deque(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new wobservable_deque(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new wobservable_deque(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const wobservable_deque& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new wobservable_deque(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(wobservable_deque&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new wobservable_deque(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new wobservable_deque(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    wobservable_deque& operator=(const wobservable_deque& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -661,7 +661,7 @@ public:
         return *this;
     }
 
-    wobservable_deque& operator=(wobservable_deque&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -670,7 +670,7 @@ public:
         return *this;
     }
 
-    wobservable_deque& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_deque<value_type, string_type>::operator=(il);
         return *this;

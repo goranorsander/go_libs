@@ -79,13 +79,13 @@ protected:
     {
     }
 
-    basic_observable_forward_list(const basic_observable_forward_list& x)
+    basic_observable_forward_list(const this_type& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
-    basic_observable_forward_list(basic_observable_forward_list&& x)
+    basic_observable_forward_list(this_type&& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
@@ -98,7 +98,7 @@ protected:
     }
 
 public:
-    basic_observable_forward_list& operator=(const basic_observable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -107,7 +107,7 @@ public:
         return *this;
     }
 
-    basic_observable_forward_list& operator=(basic_observable_forward_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -116,7 +116,7 @@ public:
         return *this;
     }
 
-    basic_observable_forward_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         _container.operator=(il);
         return *this;
@@ -533,12 +533,12 @@ protected:
     {
     }
 
-    observable_forward_list(const observable_forward_list& x)
+    observable_forward_list(const this_type& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
 
-    observable_forward_list(observable_forward_list&& x)
+    observable_forward_list(this_type&& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
@@ -551,42 +551,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new observable_forward_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new observable_forward_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new observable_forward_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new observable_forward_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const observable_forward_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new observable_forward_list(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(observable_forward_list&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new observable_forward_list(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new observable_forward_list(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    observable_forward_list& operator=(const observable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -595,7 +595,7 @@ public:
         return *this;
     }
 
-    observable_forward_list& operator=(observable_forward_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -604,7 +604,7 @@ public:
         return *this;
     }
 
-    observable_forward_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_forward_list<value_type, string_type>::operator=(il);
         return *this;
@@ -666,12 +666,12 @@ protected:
     {
     }
 
-    wobservable_forward_list(const wobservable_forward_list& x)
+    wobservable_forward_list(const this_type& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
 
-    wobservable_forward_list(wobservable_forward_list&& x)
+    wobservable_forward_list(this_type&& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
@@ -684,42 +684,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wobservable_forward_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new wobservable_forward_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new wobservable_forward_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new wobservable_forward_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const wobservable_forward_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new wobservable_forward_list(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(wobservable_forward_list&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new wobservable_forward_list(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new wobservable_forward_list(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    wobservable_forward_list& operator=(const wobservable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -728,7 +728,7 @@ public:
         return *this;
     }
 
-    wobservable_forward_list& operator=(wobservable_forward_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -737,7 +737,7 @@ public:
         return *this;
     }
 
-    wobservable_forward_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_forward_list<value_type, string_type>::operator=(il);
         return *this;

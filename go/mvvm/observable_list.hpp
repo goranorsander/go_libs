@@ -81,13 +81,13 @@ protected:
     {
     }
 
-    basic_observable_list(const basic_observable_list& x)
+    basic_observable_list(const this_type& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
-    basic_observable_list(basic_observable_list&& x)
+    basic_observable_list(this_type&& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
@@ -100,7 +100,7 @@ protected:
     }
 
 public:
-    basic_observable_list& operator=(const basic_observable_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -109,7 +109,7 @@ public:
         return *this;
     }
 
-    basic_observable_list& operator=(basic_observable_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -118,7 +118,7 @@ public:
         return *this;
     }
 
-    basic_observable_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         _container.operator=(il);
         return *this;
@@ -593,12 +593,12 @@ protected:
     {
     }
 
-    observable_list(const observable_list& x)
+    observable_list(const this_type& x)
         : basic_observable_list<value_type, string_type>(x)
     {
     }
 
-    observable_list(observable_list&& x)
+    observable_list(this_type&& x)
         : basic_observable_list<value_type, string_type>(x)
     {
     }
@@ -611,42 +611,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new observable_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new observable_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new observable_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new observable_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const observable_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new observable_list(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(observable_list&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new observable_list(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new observable_list(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    observable_list& operator=(const observable_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -655,7 +655,7 @@ public:
         return *this;
     }
 
-    observable_list& operator=(observable_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -664,7 +664,7 @@ public:
         return *this;
     }
 
-    observable_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_list<value_type, string_type>::operator=(il);
         return *this;
@@ -728,12 +728,12 @@ protected:
     {
     }
 
-    wobservable_list(const wobservable_list& x)
+    wobservable_list(const this_type& x)
         : basic_observable_list<value_type, string_type>(x)
     {
     }
 
-    wobservable_list(wobservable_list&& x)
+    wobservable_list(this_type&& x)
         : basic_observable_list<value_type, string_type>(x)
     {
     }
@@ -746,42 +746,42 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wobservable_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new wobservable_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new wobservable_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new wobservable_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const wobservable_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new wobservable_list(x));
+        return ptr(new this_type(x));
     }
 
-    static ptr create(wobservable_list&& x)
+    static ptr create(this_type&& x)
     {
-        return ptr(new wobservable_list(x));
+        return ptr(new this_type(x));
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new wobservable_list(il));
+        return ptr(new this_type(il));
     }
 
 public:
-    wobservable_list& operator=(const wobservable_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -790,7 +790,7 @@ public:
         return *this;
     }
 
-    wobservable_list& operator=(wobservable_list&& x)
+    this_type& operator=(this_type&& x)
     {
         if(this != &x)
         {
@@ -799,7 +799,7 @@ public:
         return *this;
     }
 
-    wobservable_list& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(std::initializer_list<value_type> il)
     {
         basic_observable_list<value_type, string_type>::operator=(il);
         return *this;

@@ -70,5 +70,38 @@
     <ClInclude Include="..\..\go\mvvm\observable_forward_list.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_associative_container.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_ordered_associative_container.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_unordered_associative_container.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_set.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_map.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_multiset.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_multimap.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_unordered_map.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_unordered_multimap.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_unordered_multiset.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\observable_unordered_set.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

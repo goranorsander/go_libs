@@ -193,7 +193,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new observable_array);
+        return ptr(new this_type);
     }
 };
 
@@ -233,7 +233,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wobservable_array);
+        return ptr(new this_type);
     }
 };
 
