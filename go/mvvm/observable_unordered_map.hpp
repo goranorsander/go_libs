@@ -49,8 +49,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -110,12 +108,6 @@ public:
         return *this;
     }
 
-    this_type& operator=(std::initializer_list<value_type> il)
-    {
-        _container.operator=(il);
-        return *this;
-    }
-
     mapped_type& operator[](const key_type& k)
     {
         return _container.operator[](k);
@@ -135,6 +127,108 @@ public:
     const mapped_type& at(const key_type& k) const
     {
         return _container.at(k);
+    }
+
+    template <class... Args>
+    std::pair<iterator, bool> emplace(Args&&... args)
+    {
+        const std::size_t before = container().size();
+        const std::pair<iterator, bool> p = container().emplace(args...);
+        if(p.second)
+        {
+            const std::size_t after = container().size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    std::pair<iterator, bool> insert(const value_type& val)
+    {
+        const std::size_t before = container().size();
+        const std::pair<iterator, bool> p = container().insert(val);
+        if(p.second)
+        {
+            const std::size_t after = container().size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    template <class P> std::pair<iterator, bool> insert(P&& val)
+    {
+        const std::size_t before = container().size();
+        const std::pair<iterator, bool> p = container().insert(val);
+        if(p.second)
+        {
+            const std::size_t after = container().size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    iterator insert(const_iterator position, const value_type& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    iterator insert(const_iterator position, value_type&& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    template <class InputIterator>
+    void insert(InputIterator first, InputIterator last)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(first, last);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    void insert(std::initializer_list<value_type> il)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(il);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    iterator erase(const_iterator position)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(position);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
+    }
+
+    size_type erase(const key_type& k)
+    {
+        const std::size_t before = container().size();
+        const size_type s = container().erase(k);
+        if(s > 0)
+        {
+            const std::size_t after = container().size();
+            notify_erase(before, after);
+        }
+        return s;
+    }
+
+    iterator erase(const_iterator first, const_iterator last)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(first, last);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
     }
 
 protected:
@@ -180,8 +274,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -192,7 +284,7 @@ public:
 
 protected:
     observable_unordered_map()
-        : basic_observable_unordered_map<key_type, value_type, string_type>()
+        //: basic_observable_unordered_map<key_type, value_type, string_type>()
     {
     }
 
@@ -265,7 +357,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_map<key_type, value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 
@@ -299,8 +391,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -311,7 +401,7 @@ public:
 
 protected:
     wobservable_unordered_map()
-        : basic_observable_unordered_map<key_type, value_type, string_type>()
+        //: basic_observable_unordered_map<key_type, value_type, string_type>()
     {
     }
 
@@ -384,7 +474,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_map<key_type, value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 

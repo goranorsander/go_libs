@@ -31,6 +31,10 @@
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_object_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_set_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_map_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_multimap_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_multiset_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_set_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_vector_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_test_suite.cpp" />
@@ -44,6 +48,10 @@
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_object_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_set_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_unordered_map_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_unordered_multimap_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_unordered_multiset_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\wobservable_unordered_set_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_vector_test_suite.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

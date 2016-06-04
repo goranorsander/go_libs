@@ -17,7 +17,7 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <set>
+#include <unordered_set>
 
 #include <go/mvvm/notify_container_changed.hpp>
 #include <go/mvvm/observable_unordered_associative_container.hpp>
@@ -28,11 +28,11 @@ namespace mvvm
 {
 
 template<class K, class S> class basic_observable_unordered_set
-    : public basic_observable_unordered_associative_container<S, std::set<K>>
+    : public basic_observable_unordered_associative_container<S, std::unordered_set<K>>
 {
 public:
     typedef S string_type;
-    typedef typename std::set<K> container_type;
+    typedef typename std::unordered_set<K> container_type;
     typedef basic_observable_unordered_set<string_type, container_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -48,8 +48,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -109,10 +107,107 @@ public:
         return *this;
     }
 
-    this_type& operator=(std::initializer_list<value_type> il)
+public:
+    template <class... Args>
+    std::pair<iterator, bool> emplace(Args&&... args)
     {
-        _container.operator=(il);
-        return *this;
+        const std::size_t before = _container.size();
+        const std::pair<iterator, bool> p = _container.emplace(args...);
+        if(p.second)
+        {
+            const std::size_t after = _container.size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    std::pair<iterator, bool> insert(const value_type& val)
+    {
+        const std::size_t before = _container.size();
+        const std::pair<iterator, bool> p = _container.insert(val);
+        if(p.second)
+        {
+            const std::size_t after = _container.size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    std::pair<iterator, bool> insert(value_type&& val)
+    {
+        const std::size_t before = _container.size();
+        const std::pair<iterator, bool> p = _container.insert(val);
+        if(p.second)
+        {
+            const std::size_t after = _container.size();
+            notify_insert(before, after);
+        }
+        return p;
+    }
+
+    iterator insert(const_iterator position, const value_type& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    iterator insert(const_iterator position, value_type&& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    template <class InputIterator>
+    void insert(InputIterator first, InputIterator last)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(first, last);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    void insert(std::initializer_list<value_type> il)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(il);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    iterator erase(const_iterator position)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(position);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
+    }
+
+    size_type erase(const value_type& val)
+    {
+        const std::size_t before = _container.size();
+        const size_type s = _container.erase(val);
+        if(s > 0)
+        {
+            const std::size_t after = _container.size();
+            notify_erase(before, after);
+        }
+        return s;
+    }
+
+    iterator erase(const_iterator first, const_iterator last)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(first, last);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
     }
 
 protected:
@@ -141,7 +236,7 @@ template<class K> class observable_unordered_set
 {
 public:
     typedef std::string string_type;
-    typedef typename std::set<K> container_type;
+    typedef typename std::unordered_set<K> container_type;
     typedef observable_unordered_set<K> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -157,8 +252,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -242,7 +335,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_set<value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 
@@ -259,7 +352,7 @@ template<class K> class wobservable_unordered_set
 {
 public:
     typedef std::wstring string_type;
-    typedef typename std::set<K> container_type;
+    typedef typename std::unordered_set<K> container_type;
     typedef wobservable_unordered_set<K> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -275,8 +368,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -360,7 +451,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_set<value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 

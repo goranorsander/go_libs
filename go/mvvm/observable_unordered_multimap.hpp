@@ -17,7 +17,7 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <map>
+#include <unordered_map>
 
 #include <go/mvvm/notify_container_changed.hpp>
 #include <go/mvvm/observable_unordered_associative_container.hpp>
@@ -28,11 +28,11 @@ namespace mvvm
 {
 
 template<class K, class T, class S> class basic_observable_unordered_multimap
-    : public basic_observable_unordered_associative_container<S, std::multimap<K, T>>
+    : public basic_observable_unordered_associative_container<S, std::unordered_multimap<K, T>>
 {
 public:
     typedef S string_type;
-    typedef typename std::multimap<K, T> container_type;
+    typedef typename std::unordered_multimap<K, T> container_type;
     typedef basic_observable_unordered_multimap<K, string_type, container_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -49,8 +49,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -110,10 +108,98 @@ public:
         return *this;
     }
 
-    this_type& operator=(std::initializer_list<value_type> il)
+public:
+    template <class... Args>
+    iterator emplace(Args&&... args)
     {
-        _container.operator=(il);
-        return *this;
+        const std::size_t before = container().size();
+        const iterator it = container().emplace(args...);
+        const std::size_t after = container().size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    iterator insert(const value_type& val)
+    {
+        const std::size_t before = container().size();
+        const iterator it = container().insert(val);
+        const std::size_t after = container().size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    template <class P> iterator insert(P&& val)
+    {
+        const std::size_t before = container().size();
+        const iterator it = container().insert(val);
+        const std::size_t after = container().size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    iterator insert(const_iterator position, const value_type& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    iterator insert(const_iterator position, value_type&& val)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.insert(position, val);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+        return it;
+    }
+
+    template <class InputIterator>
+    void insert(InputIterator first, InputIterator last)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(first, last);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    void insert(std::initializer_list<value_type> il)
+    {
+        const std::size_t before = _container.size();
+        _container.insert(il);
+        const std::size_t after = _container.size();
+        notify_insert(before, after);
+    }
+
+    iterator erase(const_iterator position)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(position);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
+    }
+
+    size_type erase(const key_type& k)
+    {
+        const std::size_t before = container().size();
+        const size_type s = container().erase(k);
+        if(s > 0)
+        {
+            const std::size_t after = container().size();
+            notify_erase(before, after);
+        }
+        return s;
+    }
+
+    iterator erase(const_iterator first, const_iterator last)
+    {
+        const std::size_t before = _container.size();
+        const iterator it = _container.erase(first, last);
+        const std::size_t after = _container.size();
+        notify_erase(before, after);
+        return it;
     }
 
 protected:
@@ -142,7 +228,7 @@ template<class K, class T> class observable_unordered_multimap
 {
 public:
     typedef std::string string_type;
-    typedef typename std::multimap<K, T> container_type;
+    typedef typename std::unordered_multimap<K, T> container_type;
     typedef observable_unordered_multimap<K, T> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -159,8 +245,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -171,7 +255,7 @@ public:
 
 protected:
     observable_unordered_multimap()
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>()
+        //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
 
@@ -244,7 +328,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 
@@ -261,7 +345,7 @@ template<class K, class T> class wobservable_unordered_multimap
 {
 public:
     typedef std::wstring string_type;
-    typedef typename std::multimap<K, T> container_type;
+    typedef typename std::unordered_multimap<K, T> container_type;
     typedef wobservable_unordered_multimap<K, T> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -278,8 +362,6 @@ public:
     typedef typename container_type::const_pointer const_pointer;
     typedef typename container_type::iterator iterator;
     typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
@@ -290,7 +372,7 @@ public:
 
 protected:
     wobservable_unordered_multimap()
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>()
+        //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
 
@@ -363,7 +445,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(il);
+        container().operator=(il);
         return *this;
     }
 
