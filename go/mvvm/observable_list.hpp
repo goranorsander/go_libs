@@ -504,7 +504,6 @@ public:
         on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
-
     void sort()
     {
         _container.sort();

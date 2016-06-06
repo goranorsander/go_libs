@@ -77,14 +77,34 @@ protected:
     {
     }
 
-    basic_observable_forward_list(const basic_observable_forward_list& x)
+    basic_observable_forward_list(const this_type& x)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    basic_observable_forward_list(this_type&& x)
+        : basic_observable_sequence_container<string_type, container_type>()
+        , _container(x._container)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    basic_observable_forward_list(std::initializer_list<value_type> il)
+        : basic_observable_sequence_container<string_type, container_type>()
+        , _container(il)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 public:
-    basic_observable_forward_list& operator=(const basic_observable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -93,23 +113,46 @@ public:
         return *this;
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    this_type& operator=(this_type&& x)
+    {
+        if(this != &x)
+        {
+            _container.operator=(x._container);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    this_type& operator=(std::initializer_list<value_type> il)
+    {
+        _container.operator=(il);
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 protected:
     virtual container_type& container();
 
     virtual const container_type& container() const;
 
 public:
-    iterator before_begin()
+    iterator before_begin() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.before_begin();
     }
 
-    const_iterator before_begin() const
+    const_iterator before_begin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.before_begin();
     }
 
-    size_type size() const;
+    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
 
     void resize(size_type n)
     {
@@ -143,11 +186,33 @@ public:
         notify_assign(before, after);
     }
 
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    void assign(std::initializer_list<value_type> il)
+    {
+        const std::size_t before = size();
+        _container.assign(il);
+        const std::size_t after = size();
+        notify_assign(before, after);
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     void push_front(const value_type& val)
     {
         _container.push_front(val);
         on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    void push_front(value_type&& val)
+    {
+        _container.push_front(val);
+        on_container_changed(notify_container_changed_action_add, 1, 0, size());
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     void pop_front()
     {
@@ -170,12 +235,35 @@ public:
         on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
     }
 
-    void clear()
+    void clear() BOOST_NOEXCEPT_OR_NOTHROW
     {
         const std::size_t before = _container.size();
         _container.clear();
         on_container_changed(notify_container_changed_action_reset, 0, before, _container.size());
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
+    template <class... Args>
+    void emplace_front(Args&&... args)
+    {
+        const std::size_t before = size();
+        _container.emplace_front(args...);
+        const std::size_t after = size();
+        notify_insert(before, after);
+    }
+
+    template <class... Args>
+    iterator emplace_after(const_iterator position, Args&&... args)
+    {
+        const std::size_t before = size();
+        const iterator it = _container.emplace_after(position, args...);
+        const std::size_t after = size();
+        notify_insert(before, after);
+        return it;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
     iterator insert_after(const_iterator position, const value_type& val)
     {
@@ -185,6 +273,19 @@ public:
         notify_insert(before, after);
         return it;
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    iterator insert_after(const_iterator position, value_type&& val)
+    {
+        const std::size_t before = size();
+        const iterator it = _container.insert_after(position, val);
+        const std::size_t after = size();
+        notify_insert(before, after);
+        return it;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     iterator insert_after(const_iterator position, size_type n, const value_type& val)
     {
@@ -204,6 +305,19 @@ public:
         notify_insert(before, after);
         return it;
     }
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    iterator insert_after(const_iterator position, std::initializer_list<value_type> il)
+    {
+        const std::size_t before = size();
+        const iterator it = _container.insert_after(position, il);
+        const std::size_t after = size();
+        notify_insert(before, after);
+        return it;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     iterator erase_after(const_iterator position)
     {
@@ -237,6 +351,19 @@ public:
         on_container_changed(notify_container_changed_action_add, x_before, 0, _container.size());
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    template<class t, class s>
+    void splice_after(const_iterator position, basic_observable_forward_list<t, s>&& x)
+    {
+        const std::size_t x_before = x.size();
+        _container.splice_after(position, x._container);
+        x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
+        on_container_changed(notify_container_changed_action_add, x_before, 0, size());
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
     template<class t, class s>
     void splice_after(const_iterator position, basic_observable_forward_list<t, s>& x, const_iterator i)
     {
@@ -244,6 +371,18 @@ public:
         x.on_container_changed(notify_container_changed_action_remove, 0, 1, x._container.size());
         on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    template<class t, class s>
+    void splice_after(const_iterator position, basic_observable_forward_list<t, s>&& x, const_iterator i)
+    {
+        _container.splice_after(position, x._container, i);
+        x.on_container_changed(notify_container_changed_action_remove, 0, 1, x.size());
+        on_container_changed(notify_container_changed_action_add, 1, 0, size());
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     template<class t, class s>
     void splice_after(const_iterator position, basic_observable_forward_list<t, s>& x, const_iterator first, const_iterator last)
@@ -254,6 +393,20 @@ public:
         x.on_container_changed(notify_container_changed_action_remove, 0, transfer_count, x._container.size());
         on_container_changed(notify_container_changed_action_add, transfer_count, 0, _container.size());
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    template<class t, class s>
+    void splice_after(const_iterator position, basic_observable_forward_list<t, s>&& x, const_iterator first, const_iterator last)
+    {
+        const std::size_t this_before = size();
+        _container.splice_after(position, x._container, first, last);
+        const std::size_t transfer_count = size() - this_before;
+        x.on_container_changed(notify_container_changed_action_remove, 0, transfer_count, x.size());
+        on_container_changed(notify_container_changed_action_add, transfer_count, 0, size());
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     void remove(const value_type& val)
     {
@@ -300,6 +453,21 @@ public:
         on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    template<class t, class s>
+    void merge(basic_observable_forward_list<t, s>&& x)
+    {
+        const std::size_t this_before = size();
+        const std::size_t x_before = x.size();
+        _container.merge(x._container);
+        const std::size_t this_after = size();
+        x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
+        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
     template<class t, class s, class Compare>
     void merge(basic_observable_forward_list<t, s>& x, Compare comp)
     {
@@ -310,6 +478,21 @@ public:
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x._container.size());
         on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    template<class t, class s, class Compare>
+    void merge(basic_observable_forward_list<t, s>&& x, Compare comp)
+    {
+        const std::size_t this_before = size();
+        const std::size_t x_before = x.size();
+        _container.merge(x._container, comp);
+        const std::size_t this_after = size();
+        x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
+        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     void sort()
     {
@@ -332,7 +515,7 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const
+inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }
@@ -397,40 +580,76 @@ protected:
     {
     }
 
-    observable_forward_list(const observable_forward_list& x)
+    observable_forward_list(const this_type& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    observable_forward_list(this_type&& x)
+        : basic_observable_forward_list<value_type, string_type>(x)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    observable_forward_list(std::initializer_list<value_type> il)
+        : basic_observable_forward_list<value_type, string_type>(il)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 public:
     static ptr create()
     {
-        return ptr(new observable_forward_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new observable_forward_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new observable_forward_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new observable_forward_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const observable_forward_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new observable_forward_list(x));
+        return ptr(new this_type(x));
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    static ptr create(this_type&& x)
+    {
+        return ptr(new this_type(x));
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    static ptr create(std::initializer_list<value_type> il)
+    {
+        return ptr(new this_type(il));
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    observable_forward_list& operator=(const observable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -438,6 +657,29 @@ public:
         }
         return *this;
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    this_type& operator=(this_type&& x)
+    {
+        if(this != &x)
+        {
+            basic_observable_forward_list<value_type, string_type>::operator=(x);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    this_type& operator=(std::initializer_list<value_type> il)
+    {
+        basic_observable_forward_list<value_type, string_type>::operator=(il);
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
     template<class t>
@@ -495,40 +737,76 @@ protected:
     {
     }
 
-    wobservable_forward_list(const wobservable_forward_list& x)
+    wobservable_forward_list(const this_type& x)
         : basic_observable_forward_list<value_type, string_type>(x)
     {
     }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    wobservable_forward_list(this_type&& x)
+        : basic_observable_forward_list<value_type, string_type>(x)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    wobservable_forward_list(std::initializer_list<value_type> il)
+        : basic_observable_forward_list<value_type, string_type>(il)
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 public:
     static ptr create()
     {
-        return ptr(new wobservable_forward_list);
+        return ptr(new this_type);
     }
 
     static ptr create(size_type n)
     {
-        return ptr(new wobservable_forward_list(n));
+        return ptr(new this_type(n));
     }
 
     static ptr create(size_type n, const value_type& val)
     {
-        return ptr(new wobservable_forward_list(n, val));
+        return ptr(new this_type(n, val));
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new wobservable_forward_list(first, last));
+        return ptr(new this_type(first, last));
     }
 
-    static ptr create(const wobservable_forward_list& x)
+    static ptr create(const this_type& x)
     {
-        return ptr(new wobservable_forward_list(x));
+        return ptr(new this_type(x));
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    static ptr create(this_type&& x)
+    {
+        return ptr(new this_type(x));
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    static ptr create(std::initializer_list<value_type> il)
+    {
+        return ptr(new this_type(il));
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    wobservable_forward_list& operator=(const wobservable_forward_list& x)
+    this_type& operator=(const this_type& x)
     {
         if(this != &x)
         {
@@ -536,6 +814,29 @@ public:
         }
         return *this;
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    this_type& operator=(this_type&& x)
+    {
+        if(this != &x)
+        {
+            basic_observable_forward_list<value_type, string_type>::operator=(x);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    this_type& operator=(std::initializer_list<value_type> il)
+    {
+        basic_observable_forward_list<value_type, string_type>::operator=(il);
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
     template<class t>

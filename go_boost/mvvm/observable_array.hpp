@@ -91,37 +91,37 @@ protected:
     }
 
 public:
-    reverse_iterator rbegin()
+    reverse_iterator rbegin() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rbegin();
     }
 
-    const_reverse_iterator rbegin() const
+    const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rbegin();
     }
 
-    reverse_iterator rend()
+    reverse_iterator rend() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rend();
     }
 
-    const_reverse_iterator rend() const
+    const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rend();
     }
 
-    const_reverse_iterator crbegin() const
+    const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crbegin();
     }
 
-    const_reverse_iterator crend() const
+    const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crend();
     }
 
-    size_type size() const
+    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.size();
     }
@@ -146,12 +146,12 @@ public:
         return _container.back();
     }
 
-    pointer data()
+    pointer data() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.data();
     }
 
-    const_pointer data() const
+    const_pointer data() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.data();
     }
@@ -206,7 +206,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new observable_array);
+        return ptr(new this_type);
     }
 };
 
@@ -246,7 +246,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wobservable_array);
+        return ptr(new this_type);
     }
 };
 
