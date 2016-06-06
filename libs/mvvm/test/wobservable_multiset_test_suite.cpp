@@ -25,16 +25,16 @@ namespace s = go::signals;
 namespace
 {
 
-template<class T> class list_observer
+template<class T> class multiset_observer
 {
 public:
     typedef typename m::wobservable_multiset<T>::ptr wobservable_multiset_ptr_type;
 
-    virtual ~list_observer()
+    virtual ~multiset_observer()
     {
     }
 
-    list_observer()
+    multiset_observer()
         : _on_container_changed_slot_key(0)
         , _on_property_changed_slot_key(0)
         , _last_action(m::undefined_notify_container_changed_action)
@@ -52,8 +52,8 @@ public:
 
     void connect(wobservable_multiset_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&list_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&list_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multiset_observer::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multiset_observer::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(wobservable_multiset_ptr_type& c)
@@ -158,7 +158,7 @@ TEST(std_wobservable_multiset_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
     const std::initializer_list<int> il = {1, 2, 4, 5, 6, 7};
@@ -194,7 +194,7 @@ TEST(std_wobservable_multiset_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
     const std::initializer_list<int> il = {1, 2, 5, 7};
@@ -251,7 +251,7 @@ TEST(std_wobservable_multiset_test_suite, test_insert_range)
     // Test insert range
     m::wobservable_multiset<int>::ptr s1 = m::wobservable_multiset<int>::create();
     m::wobservable_multiset<int>::ptr s2 = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
@@ -302,7 +302,7 @@ TEST(std_wobservable_multiset_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -351,7 +351,7 @@ TEST(std_wobservable_multiset_test_suite, test_erase_position)
 {
     // Test erase position
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -398,7 +398,7 @@ TEST(std_wobservable_multiset_test_suite, test_erase_value)
 {
     // Test erase value
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -443,7 +443,7 @@ TEST(std_wobservable_multiset_test_suite, test_erase_range)
 {
     // Test erase range
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -485,8 +485,8 @@ TEST(std_wobservable_multiset_test_suite, test_swap)
     // Test swap
     m::wobservable_multiset<int>::ptr s1 = m::wobservable_multiset<int>::create();
     m::wobservable_multiset<int>::ptr s2 = m::wobservable_multiset<int>::create();
-    list_observer<int> o1;
-    list_observer<int> o2;
+    multiset_observer<int> o1;
+    multiset_observer<int> o2;
 
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
@@ -548,7 +548,7 @@ TEST(std_wobservable_multiset_test_suite, test_clear)
 {
     // Test clear
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -577,7 +577,7 @@ TEST(std_wobservable_multiset_test_suite, test_emplace)
 {
     // Test emplace
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     const std::initializer_list<int> il = {1, 2, 3};
     *s = il;
@@ -630,7 +630,7 @@ TEST(std_wobservable_multiset_test_suite, test_emplace_hint)
 {
     // Test emplace hint
     m::wobservable_multiset<int>::ptr s = m::wobservable_multiset<int>::create();
-    list_observer<int> o;
+    multiset_observer<int> o;
 
     const std::initializer_list<int> il = {1, 2, 5};
     *s = il;

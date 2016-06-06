@@ -1,5 +1,5 @@
 //
-//  wobservable_multimap_test_suite.cpp
+//  observable_multimap_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -9,18 +9,12 @@
 //
 
 #include <gtest/gtest.h>
-#include <go/config.hpp>
+#include <boost/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_NOEXCEPT)
-#pragma message("Required C++11 feature is not supported by this compiler")
-TEST(std_wobservable_multimap_test_suite, cpp11_not_supported) {}
-#else
+#include <go_boost/mvvm.hpp>
 
-#include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+namespace m = go_boost::mvvm;
+namespace s = go_boost::signals;
 
 namespace
 {
@@ -28,16 +22,14 @@ namespace
 template<class K, class T> class multimap_observer
 {
 public:
-    typedef typename m::wobservable_multimap<K, T>::ptr wobservable_multimap_ptr_type;
+    typedef typename m::observable_multimap<K, T>::ptr observable_multimap_ptr_type;
 
     virtual ~multimap_observer()
     {
     }
 
     multimap_observer()
-        : _on_container_changed_slot_key(0)
-        , _on_property_changed_slot_key(0)
-        , _last_action(m::undefined_notify_container_changed_action)
+        : _last_action(m::undefined_notify_container_changed_action)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -50,16 +42,16 @@ public:
     {
     }
 
-    void connect(wobservable_multimap_ptr_type& c)
+    void connect(observable_multimap_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multimap_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multimap_observer::on_property_changed, this, ph::_1, ph::_2));
+        c->container_changed.connect(boost::bind(&multimap_observer::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&multimap_observer::on_property_changed, this, _1, _2));
     }
 
-    void disconnect(wobservable_multimap_ptr_type& c)
+    void disconnect(observable_multimap_ptr_type& c)
     {
-        c->container_changed.disconnect(_on_container_changed_slot_key);
-        c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(boost::bind(&multimap_observer::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&multimap_observer::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
@@ -79,7 +71,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
     {
         if(o && a)
         {
@@ -137,9 +129,6 @@ public:
     }
 
 private:
-    s::slot_key_type _on_container_changed_slot_key;
-    s::slot_key_type _on_property_changed_slot_key;
-
     m::notify_container_changed_action _last_action;
     int _last_change_added;
     int _last_change_removed;
@@ -154,32 +143,29 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_wobservable_multimap_test_suite, test_insert_single_element)
+TEST(boost_observable_multimap_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
+    // TODO: Find a way to test insert without using insert to prepare the test
     EXPECT_EQ(0, m->size());
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(6, 60),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(6, 60));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(6, m->size());
 
     o.connect(m);
 
-    m->insert(m::wobservable_multimap<int, int>::value_type(3, 30));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
     EXPECT_EQ(7, m->size());
 
     int count = 0;
-    for(const m::wobservable_multimap<int, int>::value_type& i : *m)
+    for(const m::observable_multimap<int, int>::value_type& i : *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -199,35 +185,31 @@ TEST(std_wobservable_multimap_test_suite, test_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_insert_single_element_with_hint)
+TEST(boost_observable_multimap_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(4, m->size());
 
     o.connect(m);
 
-    m::wobservable_multimap<int, int>::iterator it = m->insert(m->begin(), m::wobservable_multimap<int, int>::value_type(3, 30));
+    m::observable_multimap<int, int>::iterator it = m->insert(m->begin(), m::observable_multimap<int, int>::value_type(3, 30));
     EXPECT_EQ(5, m->size());
 
-    it = m->insert(it, m::wobservable_multimap<int, int>::value_type(4, 40));
+    it = m->insert(it, m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(6, m->size());
 
-    it = m->insert(it, m::wobservable_multimap<int, int>::value_type(4, 40));
+    it = m->insert(it, m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(7, m->size());
 
-    it = m->insert(it, m::wobservable_multimap<int, int>::value_type(6, 60));
+    it = m->insert(it, m::observable_multimap<int, int>::value_type(6, 60));
     EXPECT_EQ(8, m->size());
 
     it = m->begin();
@@ -269,33 +251,25 @@ TEST(std_wobservable_multimap_test_suite, test_insert_single_element_with_hint)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_insert_range)
+TEST(boost_observable_multimap_test_suite, test_insert_range)
 {
     // Test insert range
-    m::wobservable_multimap<int, int>::ptr m1 = m::wobservable_multimap<int, int>::create();
-    m::wobservable_multimap<int, int>::ptr m2 = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m1 = m::observable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m2 = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il1 =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m1 = il1;
+    m1->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m1->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m1->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m1->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(4, m1->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il2 =
-    {
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(6, 60)
-    };
-    *m2 = il2;
+    m2->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m2->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m2->insert(m::observable_multimap<int, int>::value_type(6, 60));
     EXPECT_EQ(3, m2->size());
 
     o.connect(m2);
@@ -303,7 +277,7 @@ TEST(std_wobservable_multimap_test_suite, test_insert_range)
     m2->insert(m1->begin(), m1->end());
     EXPECT_EQ(7, m2->size());
 
-    m::wobservable_multimap<int, int>::iterator it = m2->begin();
+    m::observable_multimap<int, int>::iterator it = m2->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -339,29 +313,31 @@ TEST(std_wobservable_multimap_test_suite, test_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_insert_initializer_list)
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_observable_multimap_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il1 =
+    const std::initializer_list<m::observable_multimap<int, int>::value_type> il1 =
     {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
+        m::observable_multimap<int, int>::value_type(1, 10),
+        m::observable_multimap<int, int>::value_type(2, 20),
+        m::observable_multimap<int, int>::value_type(5, 50),
+        m::observable_multimap<int, int>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il2 =
+    const std::initializer_list<m::observable_multimap<int, int>::value_type> il2 =
     {
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(6, 60)
+        m::observable_multimap<int, int>::value_type(3, 30),
+        m::observable_multimap<int, int>::value_type(4, 40),
+        m::observable_multimap<int, int>::value_type(6, 60)
     };
     EXPECT_EQ(3, il2.size());
 
@@ -370,7 +346,7 @@ TEST(std_wobservable_multimap_test_suite, test_insert_initializer_list)
     m->insert(il2);
     EXPECT_EQ(7, m->size());
 
-    m::wobservable_multimap<int, int>::iterator it = m->begin();
+    m::observable_multimap<int, int>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -406,32 +382,30 @@ TEST(std_wobservable_multimap_test_suite, test_insert_initializer_list)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_erase_position)
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_observable_multimap_test_suite, test_erase_position)
 {
     // Test erase position
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(6, 60),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(6, 60));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(7, m->size());
 
     o.connect(m);
 
-    m::wobservable_multimap<int, int>::iterator it1 = m->begin();
+    m::observable_multimap<int, int>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::wobservable_multimap<int, int>::iterator it2 = m->erase(it1);
+    m::observable_multimap<int, int>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6, m->size());
 
     m->erase(it2);
@@ -467,25 +441,21 @@ TEST(std_wobservable_multimap_test_suite, test_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_erase_value)
+TEST(boost_observable_multimap_test_suite, test_erase_value)
 {
     // Test erase value
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(6, 60),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(6, 60));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(7, m->size());
 
     o.connect(m);
@@ -496,7 +466,7 @@ TEST(std_wobservable_multimap_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5, m->size());
 
-    m::wobservable_multimap<int, int>::iterator it = m->begin();
+    m::observable_multimap<int, int>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -526,38 +496,34 @@ TEST(std_wobservable_multimap_test_suite, test_erase_value)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_erase_range)
+TEST(boost_observable_multimap_test_suite, test_erase_range)
 {
     // Test erase range
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(6, 60),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(6, 60));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(7, m->size());
 
     o.connect(m);
 
-    m::wobservable_multimap<int, int>::iterator begin = m->begin();
+    m::observable_multimap<int, int>::iterator begin = m->begin();
     ++begin;
-    m::wobservable_multimap<int, int>::iterator end = m->end();
+    m::observable_multimap<int, int>::iterator end = m->end();
     --end;
 
     m->erase(begin, end);
     EXPECT_EQ(2, m->size());
 
-    m::wobservable_multimap<int, int>::iterator it = m->begin();
+    m::observable_multimap<int, int>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -578,38 +544,31 @@ TEST(std_wobservable_multimap_test_suite, test_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_swap)
+TEST(boost_observable_multimap_test_suite, test_swap)
 {
     // Test swap
-    m::wobservable_multimap<int, int>::ptr m1 = m::wobservable_multimap<int, int>::create();
-    m::wobservable_multimap<int, int>::ptr m2 = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m1 = m::observable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m2 = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o1;
     multimap_observer<int, int> o2;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il1 =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50)
-    };
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il2 =
-    {
-        m::wobservable_multimap<int, int>::value_type(10, 100),
-        m::wobservable_multimap<int, int>::value_type(20, 200),
-        m::wobservable_multimap<int, int>::value_type(30, 300),
-        m::wobservable_multimap<int, int>::value_type(40, 400),
-        m::wobservable_multimap<int, int>::value_type(50, 500),
-        m::wobservable_multimap<int, int>::value_type(60, 600),
-        m::wobservable_multimap<int, int>::value_type(70, 700)
-    };
-    *m1 = il1;
-    *m2 = il2;
+    m1->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m1->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m1->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m1->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m1->insert(m::observable_multimap<int, int>::value_type(5, 50));
     EXPECT_EQ(5, m1->size());
+
+    m2->insert(m::observable_multimap<int, int>::value_type(10, 100));
+    m2->insert(m::observable_multimap<int, int>::value_type(20, 200));
+    m2->insert(m::observable_multimap<int, int>::value_type(30, 300));
+    m2->insert(m::observable_multimap<int, int>::value_type(40, 400));
+    m2->insert(m::observable_multimap<int, int>::value_type(50, 500));
+    m2->insert(m::observable_multimap<int, int>::value_type(60, 600));
+    m2->insert(m::observable_multimap<int, int>::value_type(70, 700));
     EXPECT_EQ(7, m2->size());
 
     o1.connect(m1);
@@ -620,7 +579,7 @@ TEST(std_wobservable_multimap_test_suite, test_swap)
     EXPECT_EQ(5, m2->size());
 
     int count = 0;
-    for(const m::wobservable_multimap<int, int>::value_type& i : *m1)
+    for(const m::observable_multimap<int, int>::value_type& i : *m1)
     {
         ++count;
         EXPECT_EQ(count*10, i.first);
@@ -629,7 +588,7 @@ TEST(std_wobservable_multimap_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const m::wobservable_multimap<int, int>::value_type& i : *m2)
+    for(const m::observable_multimap<int, int>::value_type& i : *m2)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -660,25 +619,21 @@ TEST(std_wobservable_multimap_test_suite, test_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_clear)
+TEST(boost_observable_multimap_test_suite, test_clear)
 {
     // Test clear
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30),
-        m::wobservable_multimap<int, int>::value_type(4, 40),
-        m::wobservable_multimap<int, int>::value_type(5, 50),
-        m::wobservable_multimap<int, int>::value_type(6, 60),
-        m::wobservable_multimap<int, int>::value_type(7, 70)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
+    m->insert(m::observable_multimap<int, int>::value_type(4, 40));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
+    m->insert(m::observable_multimap<int, int>::value_type(6, 60));
+    m->insert(m::observable_multimap<int, int>::value_type(7, 70));
     EXPECT_EQ(7, m->size());
 
     o.connect(m);
@@ -698,36 +653,32 @@ TEST(std_wobservable_multimap_test_suite, test_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_emplace)
+TEST(boost_observable_multimap_test_suite, test_emplace)
 {
     // Test emplace
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(3, 30)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(3, 30));
     EXPECT_EQ(3, m->size());
 
     o.connect(m);
 
-    m::wobservable_multimap<int, int>::iterator it = m->emplace(m::wobservable_multimap<int, int>::value_type(4, 40));
+    m::observable_multimap<int, int>::iterator it = m->emplace(m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::wobservable_multimap<int, int>::value_type(5, 50));
+    it = m->emplace(m::observable_multimap<int, int>::value_type(5, 50));
     EXPECT_EQ(5, it->first);
     EXPECT_EQ(50, it->second);
 
-    it = m->emplace(m::wobservable_multimap<int, int>::value_type(4, 40));
+    it = m->emplace(m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::wobservable_multimap<int, int>::value_type(6, 60));
+    it = m->emplace(m::observable_multimap<int, int>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 
@@ -767,36 +718,32 @@ TEST(std_wobservable_multimap_test_suite, test_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_wobservable_multimap_test_suite, test_emplace_hint)
+TEST(boost_observable_multimap_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::wobservable_multimap<int, int>::ptr m = m::wobservable_multimap<int, int>::create();
+    m::observable_multimap<int, int>::ptr m = m::observable_multimap<int, int>::create();
     multimap_observer<int, int> o;
 
-    const std::initializer_list<m::wobservable_multimap<int, int>::value_type> il =
-    {
-        m::wobservable_multimap<int, int>::value_type(1, 10),
-        m::wobservable_multimap<int, int>::value_type(2, 20),
-        m::wobservable_multimap<int, int>::value_type(5, 50)
-    };
-    *m = il;
+    m->insert(m::observable_multimap<int, int>::value_type(1, 10));
+    m->insert(m::observable_multimap<int, int>::value_type(2, 20));
+    m->insert(m::observable_multimap<int, int>::value_type(5, 50));
     EXPECT_EQ(3, m->size());
 
     o.connect(m);
 
-    m::wobservable_multimap<int, int>::iterator it = m->emplace_hint(m->begin(), m::wobservable_multimap<int, int>::value_type(3, 30));
+    m::observable_multimap<int, int>::iterator it = m->emplace_hint(m->begin(), m::observable_multimap<int, int>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::wobservable_multimap<int, int>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::wobservable_multimap<int, int>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_multimap<int, int>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::wobservable_multimap<int, int>::value_type(6, 60));
+    it = m->emplace_hint(it, m::observable_multimap<int, int>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 
@@ -837,5 +784,3 @@ TEST(std_wobservable_multimap_test_suite, test_emplace_hint)
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler

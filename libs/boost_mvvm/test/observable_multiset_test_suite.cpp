@@ -9,18 +9,12 @@
 //
 
 #include <gtest/gtest.h>
-#include <go/config.hpp>
+#include <boost/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_NOEXCEPT)
-#pragma message("Required C++11 feature is not supported by this compiler")
-TEST(std_observable_multiset_test_suite, cpp11_not_supported) {}
-#else
+#include <go_boost/mvvm.hpp>
 
-#include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+namespace m = go_boost::mvvm;
+namespace s = go_boost::signals;
 
 namespace
 {
@@ -35,9 +29,7 @@ public:
     }
 
     multiset_observer()
-        : _on_container_changed_slot_key(0)
-        , _on_property_changed_slot_key(0)
-        , _last_action(m::undefined_notify_container_changed_action)
+        : _last_action(m::undefined_notify_container_changed_action)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -52,14 +44,14 @@ public:
 
     void connect(observable_multiset_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multiset_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multiset_observer::on_property_changed, this, ph::_1, ph::_2));
+        c->container_changed.connect(boost::bind(&multiset_observer::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&multiset_observer::on_property_changed, this, _1, _2));
     }
 
     void disconnect(observable_multiset_ptr_type& c)
     {
-        c->container_changed.disconnect(_on_container_changed_slot_key);
-        c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(boost::bind(&multiset_observer::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&multiset_observer::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
@@ -137,9 +129,6 @@ public:
     }
 
 private:
-    s::slot_key_type _on_container_changed_slot_key;
-    s::slot_key_type _on_property_changed_slot_key;
-
     m::notify_container_changed_action _last_action;
     int _last_change_added;
     int _last_change_removed;
@@ -154,15 +143,20 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_observable_multiset_test_suite, test_insert_single_element)
+TEST(boost_observable_multiset_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
     multiset_observer<int> o;
 
+    // TODO: Find a way to test insert without using insert to prepare the test
     EXPECT_EQ(0, s->size());
-    const std::initializer_list<int> il = {1, 2, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(6, s->size());
 
     o.connect(s);
@@ -190,15 +184,17 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_single_element_with_hint)
+TEST(boost_observable_multiset_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
-    const std::initializer_list<int> il = {1, 2, 5, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(5);
+    s->insert(7);
     EXPECT_EQ(4, s->size());
 
     o.connect(s);
@@ -246,7 +242,7 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element_with_hint)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_range)
+TEST(boost_observable_multiset_test_suite, test_insert_range)
 {
     // Test insert range
     m::observable_multiset<int>::ptr s1 = m::observable_multiset<int>::create();
@@ -256,12 +252,15 @@ TEST(std_observable_multiset_test_suite, test_insert_range)
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
 
-    const std::initializer_list<int> il1 = {1, 2, 5, 7};
-    *s1 = il1;
+    s1->insert(1);
+    s1->insert(2);
+    s1->insert(5);
+    s1->insert(7);
     EXPECT_EQ(4, s1->size());
 
-    const std::initializer_list<int> il2 = {3, 4, 6};
-    *s2 = il2;
+    s2->insert(3);
+    s2->insert(4);
+    s2->insert(6);
     EXPECT_EQ(3, s2->size());
 
     o.connect(s2);
@@ -298,7 +297,9 @@ TEST(std_observable_multiset_test_suite, test_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_initializer_list)
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_observable_multiset_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
@@ -347,7 +348,9 @@ TEST(std_observable_multiset_test_suite, test_insert_initializer_list)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_position)
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_observable_multiset_test_suite, test_erase_position)
 {
     // Test erase position
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
@@ -355,8 +358,13 @@ TEST(std_observable_multiset_test_suite, test_erase_position)
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -394,7 +402,7 @@ TEST(std_observable_multiset_test_suite, test_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_value)
+TEST(boost_observable_multiset_test_suite, test_erase_value)
 {
     // Test erase value
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
@@ -402,8 +410,13 @@ TEST(std_observable_multiset_test_suite, test_erase_value)
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -439,7 +452,7 @@ TEST(std_observable_multiset_test_suite, test_erase_value)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_range)
+TEST(boost_observable_multiset_test_suite, test_erase_range)
 {
     // Test erase range
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
@@ -447,8 +460,13 @@ TEST(std_observable_multiset_test_suite, test_erase_range)
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -480,7 +498,7 @@ TEST(std_observable_multiset_test_suite, test_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_swap)
+TEST(boost_observable_multiset_test_suite, test_swap)
 {
     // Test swap
     m::observable_multiset<int>::ptr s1 = m::observable_multiset<int>::create();
@@ -491,11 +509,20 @@ TEST(std_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
 
-    const std::initializer_list<int> il1 = {1, 2, 3, 4, 5};
-    const std::initializer_list<int> il2 = {10, 20, 30, 40, 50, 60, 70};
-    *s1 = il1;
-    *s2 = il2;
+    s1->insert(1);
+    s1->insert(2);
+    s1->insert(3);
+    s1->insert(4);
+    s1->insert(5);
     EXPECT_EQ(5, s1->size());
+
+    s2->insert(10);
+    s2->insert(20);
+    s2->insert(30);
+    s2->insert(40);
+    s2->insert(50);
+    s2->insert(60);
+    s2->insert(70);
     EXPECT_EQ(7, s2->size());
 
     o1.connect(s1);
@@ -544,7 +571,7 @@ TEST(std_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_clear)
+TEST(boost_observable_multiset_test_suite, test_clear)
 {
     // Test clear
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
@@ -552,8 +579,13 @@ TEST(std_observable_multiset_test_suite, test_clear)
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -573,14 +605,15 @@ TEST(std_observable_multiset_test_suite, test_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_emplace)
+TEST(boost_observable_multiset_test_suite, test_emplace)
 {
     // Test emplace
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
     multiset_observer<int> o;
 
-    const std::initializer_list<int> il = {1, 2, 3};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
     EXPECT_EQ(3, s->size());
 
     o.connect(s);
@@ -626,14 +659,15 @@ TEST(std_observable_multiset_test_suite, test_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_emplace_hint)
+TEST(boost_observable_multiset_test_suite, test_emplace_hint)
 {
     // Test emplace hint
     m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
     multiset_observer<int> o;
 
-    const std::initializer_list<int> il = {1, 2, 5};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(5);
     EXPECT_EQ(3, s->size());
 
     o.connect(s);
@@ -680,5 +714,3 @@ TEST(std_observable_multiset_test_suite, test_emplace_hint)
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler

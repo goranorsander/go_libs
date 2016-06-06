@@ -25,16 +25,16 @@ namespace s = go::signals;
 namespace
 {
 
-template<class K, class T> class map_observer
+template<class K, class T> class unordered_map_observer
 {
 public:
     typedef typename m::observable_unordered_map<K, T>::ptr observable_unordered_map_ptr_type;
 
-    virtual ~map_observer()
+    virtual ~unordered_map_observer()
     {
     }
 
-    map_observer()
+    unordered_map_observer()
         : _on_container_changed_slot_key(0)
         , _on_property_changed_slot_key(0)
         , _last_action(m::undefined_notify_container_changed_action)
@@ -52,8 +52,8 @@ public:
 
     void connect(observable_unordered_map_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&map_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&map_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&unordered_map_observer::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&unordered_map_observer::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(observable_unordered_map_ptr_type& c)
@@ -158,7 +158,7 @@ TEST(std_observable_unordered_map_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
     const std::initializer_list<m::observable_unordered_map<int, int>::value_type> il =
@@ -204,7 +204,7 @@ TEST(std_observable_unordered_map_test_suite, test_insert_single_element_with_hi
 {
     // Test insert single element with hint
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
     const std::initializer_list<m::observable_unordered_map<int, int>::value_type> il =
@@ -258,7 +258,7 @@ TEST(std_observable_unordered_map_test_suite, test_insert_range)
     // Test insert range
     m::observable_unordered_map<int, int>::ptr m1 = m::observable_unordered_map<int, int>::create();
     m::observable_unordered_map<int, int>::ptr m2 = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
@@ -303,7 +303,7 @@ TEST(std_observable_unordered_map_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -346,7 +346,7 @@ TEST(std_observable_unordered_map_test_suite, test_erase_position)
 {
     // Test erase position
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -373,24 +373,6 @@ TEST(std_observable_unordered_map_test_suite, test_erase_position)
     m->erase(it2);
     EXPECT_EQ(5, m->size());
 
-    it1 = m->begin();
-    EXPECT_EQ(1, it1->first);
-    EXPECT_EQ(10, it1->second);
-    ++it1;
-    EXPECT_EQ(2, it1->first);
-    EXPECT_EQ(20, it1->second);
-    ++it1;
-    EXPECT_EQ(3, it1->first);
-    EXPECT_EQ(30, it1->second);
-    ++it1;
-    EXPECT_EQ(6, it1->first);
-    EXPECT_EQ(60, it1->second);
-    ++it1;
-    EXPECT_EQ(7, it1->first);
-    EXPECT_EQ(70, it1->second);
-    ++it1;
-    EXPECT_EQ(m->end(), it1);
-
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
@@ -407,7 +389,7 @@ TEST(std_observable_unordered_map_test_suite, test_erase_value)
 {
     // Test erase value
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -432,23 +414,15 @@ TEST(std_observable_unordered_map_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5, m->size());
 
-    m::observable_unordered_map<int, int>::iterator it = m->begin();
-    EXPECT_EQ(1, it->first);
-    EXPECT_EQ(10, it->second);
-    ++it;
-    EXPECT_EQ(2, it->first);
-    EXPECT_EQ(20, it->second);
-    ++it;
-    EXPECT_EQ(3, it->first);
-    EXPECT_EQ(30, it->second);
-    ++it;
-    EXPECT_EQ(6, it->first);
-    EXPECT_EQ(60, it->second);
-    ++it;
-    EXPECT_EQ(7, it->first);
-    EXPECT_EQ(70, it->second);
-    ++it;
-    EXPECT_EQ(m->end(), it);
+    int count = 0;
+    int sum = 0;
+    for(const m::observable_unordered_map<int, int>::value_type& i : *m)
+    {
+        sum += i.second;
+        ++count;
+    }
+    EXPECT_EQ(5, count);
+    EXPECT_EQ(190, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -466,7 +440,7 @@ TEST(std_observable_unordered_map_test_suite, test_erase_range)
 {
     // Test erase range
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -493,15 +467,6 @@ TEST(std_observable_unordered_map_test_suite, test_erase_range)
     m->erase(begin, end);
     EXPECT_EQ(2, m->size());
 
-    m::observable_unordered_map<int, int>::iterator it = m->begin();
-    EXPECT_EQ(1, it->first);
-    EXPECT_EQ(10, it->second);
-    ++it;
-    EXPECT_EQ(7, it->first);
-    EXPECT_EQ(70, it->second);
-    ++it;
-    EXPECT_EQ(m->end(), it);
-
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(1, o.action_remove_count());
@@ -519,8 +484,8 @@ TEST(std_observable_unordered_map_test_suite, test_swap)
     // Test swap
     m::observable_unordered_map<int, int>::ptr m1 = m::observable_unordered_map<int, int>::create();
     m::observable_unordered_map<int, int>::ptr m2 = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o1;
-    map_observer<int, int> o2;
+    unordered_map_observer<int, int> o1;
+    unordered_map_observer<int, int> o2;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
@@ -602,7 +567,7 @@ TEST(std_observable_unordered_map_test_suite, test_clear)
 {
     // Test clear
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -640,7 +605,7 @@ TEST(std_observable_unordered_map_test_suite, test_emplace)
 {
     // Test emplace
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     const std::initializer_list<m::observable_unordered_map<int, int>::value_type> il =
     {
@@ -673,26 +638,15 @@ TEST(std_observable_unordered_map_test_suite, test_emplace)
     EXPECT_EQ(60, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    m::observable_unordered_map<int, int>::iterator it = m->begin();
-    EXPECT_EQ(1, it->first);
-    EXPECT_EQ(10, it->second);
-    ++it;
-    EXPECT_EQ(2, it->first);
-    EXPECT_EQ(20, it->second);
-    ++it;
-    EXPECT_EQ(3, it->first);
-    EXPECT_EQ(30, it->second);
-    ++it;
-    EXPECT_EQ(4, it->first);
-    EXPECT_EQ(40, it->second);
-    ++it;
-    EXPECT_EQ(5, it->first);
-    EXPECT_EQ(50, it->second);
-    ++it;
-    EXPECT_EQ(6, it->first);
-    EXPECT_EQ(60, it->second);
-    ++it;
-    EXPECT_EQ(m->end(), it);
+    int count = 0;
+    int sum = 0;
+    for(const m::observable_unordered_map<int, int>::value_type& i : *m)
+    {
+        sum += i.second;
+        ++count;
+    }
+    EXPECT_EQ(6, count);
+    EXPECT_EQ(210, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
@@ -710,7 +664,7 @@ TEST(std_observable_unordered_map_test_suite, test_emplace_hint)
 {
     // Test emplace hint
     m::observable_unordered_map<int, int>::ptr m = m::observable_unordered_map<int, int>::create();
-    map_observer<int, int> o;
+    unordered_map_observer<int, int> o;
 
     const std::initializer_list<m::observable_unordered_map<int, int>::value_type> il =
     {

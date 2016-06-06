@@ -1,5 +1,5 @@
 //
-//  observable_multiset_test_suite.cpp
+//  wobservable_unordered_multiset_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -9,35 +9,27 @@
 //
 
 #include <gtest/gtest.h>
-#include <go/config.hpp>
+#include <boost/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_NOEXCEPT)
-#pragma message("Required C++11 feature is not supported by this compiler")
-TEST(std_observable_multiset_test_suite, cpp11_not_supported) {}
-#else
+#include <go_boost/mvvm.hpp>
 
-#include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+namespace m = go_boost::mvvm;
+namespace s = go_boost::signals;
 
 namespace
 {
 
-template<class T> class multiset_observer
+template<class T> class unordered_multiset_observer
 {
 public:
-    typedef typename m::observable_multiset<T>::ptr observable_multiset_ptr_type;
+    typedef typename m::wobservable_unordered_multiset<T>::ptr wobservable_unordered_multiset_ptr_type;
 
-    virtual ~multiset_observer()
+    virtual ~unordered_multiset_observer()
     {
     }
 
-    multiset_observer()
-        : _on_container_changed_slot_key(0)
-        , _on_property_changed_slot_key(0)
-        , _last_action(m::undefined_notify_container_changed_action)
+    unordered_multiset_observer()
+        : _last_action(m::undefined_notify_container_changed_action)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -50,16 +42,16 @@ public:
     {
     }
 
-    void connect(observable_multiset_ptr_type& c)
+    void connect(wobservable_unordered_multiset_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multiset_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multiset_observer::on_property_changed, this, ph::_1, ph::_2));
+        c->container_changed.connect(boost::bind(&unordered_multiset_observer::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&unordered_multiset_observer::on_property_changed, this, _1, _2));
     }
 
-    void disconnect(observable_multiset_ptr_type& c)
+    void disconnect(wobservable_unordered_multiset_ptr_type& c)
     {
-        c->container_changed.disconnect(_on_container_changed_slot_key);
-        c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(boost::bind(&unordered_multiset_observer::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&unordered_multiset_observer::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
@@ -79,7 +71,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
     {
         if(o && a)
         {
@@ -137,9 +129,6 @@ public:
     }
 
 private:
-    s::slot_key_type _on_container_changed_slot_key;
-    s::slot_key_type _on_property_changed_slot_key;
-
     m::notify_container_changed_action _last_action;
     int _last_change_added;
     int _last_change_removed;
@@ -154,15 +143,20 @@ private:
     int _action_swap_count;
 };
 
-TEST(std_observable_multiset_test_suite, test_insert_single_element)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
+    // TODO: Find a way to test insert without using insert to prepare the test
     EXPECT_EQ(0, s->size());
-    const std::initializer_list<int> il = {1, 2, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(6, s->size());
 
     o.connect(s);
@@ -171,12 +165,14 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element)
     EXPECT_EQ(7, s->size());
 
     int count = 0;
+    int sum = 0;
     for(const int& i : *s)
     {
+        sum += i;
         ++count;
-        EXPECT_EQ(count, i);
     }
     EXPECT_EQ(7, count);
+    EXPECT_EQ(28, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
@@ -190,20 +186,22 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_single_element_with_hint)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
-    const std::initializer_list<int> il = {1, 2, 5, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(5);
+    s->insert(7);
     EXPECT_EQ(4, s->size());
 
     o.connect(s);
 
-    m::observable_multiset<int>::iterator it = s->insert(s->begin(), 3);
+    m::wobservable_unordered_multiset<int>::iterator it = s->insert(s->begin(), 3);
     EXPECT_EQ(5, s->size());
 
     it = s->insert(it, 4);
@@ -214,25 +212,6 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element_with_hint)
 
     it = s->insert(it, 6);
     EXPECT_EQ(8, s->size());
-
-    it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(5, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(7, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(4, o.action_add_count());
@@ -246,45 +225,31 @@ TEST(std_observable_multiset_test_suite, test_insert_single_element_with_hint)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_range)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_multiset<int>::ptr s1 = m::observable_multiset<int>::create();
-    m::observable_multiset<int>::ptr s2 = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s1 = m::wobservable_unordered_multiset<int>::create();
+    m::wobservable_unordered_multiset<int>::ptr s2 = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
 
-    const std::initializer_list<int> il1 = {1, 2, 5, 7};
-    *s1 = il1;
+    s1->insert(1);
+    s1->insert(2);
+    s1->insert(5);
+    s1->insert(7);
     EXPECT_EQ(4, s1->size());
 
-    const std::initializer_list<int> il2 = {3, 4, 6};
-    *s2 = il2;
+    s2->insert(3);
+    s2->insert(4);
+    s2->insert(6);
     EXPECT_EQ(3, s2->size());
 
     o.connect(s2);
 
     s2->insert(s1->begin(), s1->end());
     EXPECT_EQ(7, s2->size());
-
-    m::observable_multiset<int>::iterator it = s2->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(5, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(7, *it);
-    ++it;
-    EXPECT_EQ(s2->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
@@ -298,11 +263,13 @@ TEST(std_observable_multiset_test_suite, test_insert_range)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_insert_initializer_list)
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_wobservable_unordered_multiset_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
@@ -318,23 +285,6 @@ TEST(std_observable_multiset_test_suite, test_insert_initializer_list)
     s->insert(il2);
     EXPECT_EQ(7, s->size());
 
-    m::observable_multiset<int>::iterator it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(5, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(7, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
-
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
@@ -347,40 +297,34 @@ TEST(std_observable_multiset_test_suite, test_insert_initializer_list)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_position)
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+TEST(boost_wobservable_unordered_multiset_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
 
-    m::observable_multiset<int>::iterator it1 = s->begin();
+    m::wobservable_unordered_multiset<int>::iterator it1 = s->begin();
     std::advance(it1, 3);
-    m::observable_multiset<int>::iterator it2 = s->erase(it1);
+    m::wobservable_unordered_multiset<int>::iterator it2 = s->erase(it1);
     EXPECT_EQ(6, s->size());
 
     s->erase(it2);
     EXPECT_EQ(5, s->size());
-
-    it1 = s->begin();
-    EXPECT_EQ(1, *it1);
-    ++it1;
-    EXPECT_EQ(2, *it1);
-    ++it1;
-    EXPECT_EQ(3, *it1);
-    ++it1;
-    EXPECT_EQ(6, *it1);
-    ++it1;
-    EXPECT_EQ(7, *it1);
-    ++it1;
-    EXPECT_EQ(s->end(), it1);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -394,16 +338,21 @@ TEST(std_observable_multiset_test_suite, test_erase_position)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_value)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_erase_value)
 {
     // Test erase value
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -414,18 +363,15 @@ TEST(std_observable_multiset_test_suite, test_erase_value)
     s->erase(5);
     EXPECT_EQ(5, s->size());
 
-    m::observable_multiset<int>::iterator it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(7, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
+    int count = 0;
+    int sum = 0;
+    for(const m::wobservable_unordered_multiset<int>::value_type& i : *s)
+    {
+        sum += i;
+        ++count;
+    }
+    EXPECT_EQ(5, count);
+    EXPECT_EQ(19, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -439,34 +385,32 @@ TEST(std_observable_multiset_test_suite, test_erase_value)
     EXPECT_EQ(2, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_erase_range)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
 
-    m::observable_multiset<int>::iterator begin = s->begin();
+    m::wobservable_unordered_multiset<int>::iterator begin = s->begin();
     ++begin;
-    m::observable_multiset<int>::iterator end = s->end();
-    --end;
+    m::wobservable_unordered_multiset<int>::iterator end = begin;
+    std::advance(end, 5);
 
     s->erase(begin, end);
     EXPECT_EQ(2, s->size());
-
-    m::observable_multiset<int>::iterator it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(7, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
@@ -480,22 +424,31 @@ TEST(std_observable_multiset_test_suite, test_erase_range)
     EXPECT_EQ(5, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_swap)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_swap)
 {
     // Test swap
-    m::observable_multiset<int>::ptr s1 = m::observable_multiset<int>::create();
-    m::observable_multiset<int>::ptr s2 = m::observable_multiset<int>::create();
-    multiset_observer<int> o1;
-    multiset_observer<int> o2;
+    m::wobservable_unordered_multiset<int>::ptr s1 = m::wobservable_unordered_multiset<int>::create();
+    m::wobservable_unordered_multiset<int>::ptr s2 = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o1;
+    unordered_multiset_observer<int> o2;
 
     EXPECT_EQ(0, s1->size());
     EXPECT_EQ(0, s2->size());
 
-    const std::initializer_list<int> il1 = {1, 2, 3, 4, 5};
-    const std::initializer_list<int> il2 = {10, 20, 30, 40, 50, 60, 70};
-    *s1 = il1;
-    *s2 = il2;
+    s1->insert(1);
+    s1->insert(2);
+    s1->insert(3);
+    s1->insert(4);
+    s1->insert(5);
     EXPECT_EQ(5, s1->size());
+
+    s2->insert(10);
+    s2->insert(20);
+    s2->insert(30);
+    s2->insert(40);
+    s2->insert(50);
+    s2->insert(60);
+    s2->insert(70);
     EXPECT_EQ(7, s2->size());
 
     o1.connect(s1);
@@ -506,20 +459,24 @@ TEST(std_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(5, s2->size());
 
     int count = 0;
+    int sum = 0;
     for(const int& i : *s1)
     {
+        sum += i;
         ++count;
-        EXPECT_EQ(count*10, i);
     }
     EXPECT_EQ(7, count);
+    EXPECT_EQ(280, sum);
 
     count = 0;
+    sum = 0;
     for(const int& i : *s2)
     {
+        sum += i;
         ++count;
-        EXPECT_EQ(count, i);
     }
     EXPECT_EQ(5, count);
+    EXPECT_EQ(15, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
     EXPECT_EQ(0, o1.action_add_count());
@@ -544,16 +501,21 @@ TEST(std_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(7, o2.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_clear)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_clear)
 {
     // Test clear
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0, s->size());
 
-    const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
+    s->insert(4);
+    s->insert(5);
+    s->insert(6);
+    s->insert(7);
     EXPECT_EQ(7, s->size());
 
     o.connect(s);
@@ -573,19 +535,20 @@ TEST(std_observable_multiset_test_suite, test_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_emplace)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
-    const std::initializer_list<int> il = {1, 2, 3};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(3);
     EXPECT_EQ(3, s->size());
 
     o.connect(s);
 
-    m::observable_multiset<int>::iterator it = s->emplace(4);
+    m::wobservable_unordered_multiset<int>::iterator it = s->emplace(4);
     EXPECT_EQ(4, *it);
 
     it = s->emplace(5);
@@ -597,22 +560,15 @@ TEST(std_observable_multiset_test_suite, test_emplace)
     it = s->emplace(6);
     EXPECT_EQ(6, *it);
 
-    it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(5, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
+    int count = 0;
+    int sum = 0;
+    for(const m::wobservable_unordered_multiset<int>::value_type& i : *s)
+    {
+        sum += i;
+        ++count;
+    }
+    EXPECT_EQ(7, count);
+    EXPECT_EQ(25, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(4, o.action_add_count());
@@ -626,19 +582,20 @@ TEST(std_observable_multiset_test_suite, test_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
-TEST(std_observable_multiset_test_suite, test_emplace_hint)
+TEST(boost_wobservable_unordered_multiset_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::observable_multiset<int>::ptr s = m::observable_multiset<int>::create();
-    multiset_observer<int> o;
+    m::wobservable_unordered_multiset<int>::ptr s = m::wobservable_unordered_multiset<int>::create();
+    unordered_multiset_observer<int> o;
 
-    const std::initializer_list<int> il = {1, 2, 5};
-    *s = il;
+    s->insert(1);
+    s->insert(2);
+    s->insert(5);
     EXPECT_EQ(3, s->size());
 
     o.connect(s);
 
-    m::observable_multiset<int>::iterator it = s->emplace_hint(s->begin(), 3);
+    m::wobservable_unordered_multiset<int>::iterator it = s->emplace_hint(s->begin(), 3);
     EXPECT_EQ(3, *it);
 
     it = s->emplace_hint(it, 4);
@@ -650,22 +607,7 @@ TEST(std_observable_multiset_test_suite, test_emplace_hint)
     it = s->emplace_hint(it, 6);
     EXPECT_EQ(6, *it);
 
-    it = s->begin();
-    EXPECT_EQ(1, *it);
-    ++it;
-    EXPECT_EQ(2, *it);
-    ++it;
-    EXPECT_EQ(3, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(4, *it);
-    ++it;
-    EXPECT_EQ(5, *it);
-    ++it;
-    EXPECT_EQ(6, *it);
-    ++it;
-    EXPECT_EQ(s->end(), it);
+    EXPECT_EQ(7, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
     EXPECT_EQ(4, o.action_add_count());
@@ -680,5 +622,3 @@ TEST(std_observable_multiset_test_suite, test_emplace_hint)
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler

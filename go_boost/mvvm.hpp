@@ -24,6 +24,15 @@
 #include <go_boost/mvvm/observable_deque.hpp>
 #include <go_boost/mvvm/observable_forward_list.hpp>
 #include <go_boost/mvvm/observable_list.hpp>
+#include <go_boost/mvvm/observable_map.hpp>
+#include <go_boost/mvvm/observable_multimap.hpp>
+#include <go_boost/mvvm/observable_multiset.hpp>
+#include <go_boost/mvvm/observable_object.hpp>
+#include <go_boost/mvvm/observable_set.hpp>
+#include <go_boost/mvvm/observable_unordered_map.hpp>
+#include <go_boost/mvvm/observable_unordered_multimap.hpp>
+#include <go_boost/mvvm/observable_unordered_multiset.hpp>
+#include <go_boost/mvvm/observable_unordered_set.hpp>
 #include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
 

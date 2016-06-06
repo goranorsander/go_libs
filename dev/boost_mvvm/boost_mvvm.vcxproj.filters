@@ -95,5 +95,38 @@
     <ClInclude Include="..\..\go_boost\mvvm\observable_forward_list.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_associative_container.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_map.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_multimap.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_multiset.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_ordered_associative_container.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_set.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_associative_container.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_map.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_multimap.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_multiset.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_set.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
