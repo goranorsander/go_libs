@@ -57,7 +57,11 @@ protected:
     }
 
 private:
-    basic_command_manager(const basic_command_manager&) = delete;
+    basic_command_manager(const this_type&) = delete;
+    basic_command_manager(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     requery_suggested_signal requery_suggested;
@@ -127,7 +131,11 @@ protected:
     }
 
 private:
-    command_manager(const command_manager&) = delete;
+    command_manager(const this_type&) = delete;
+    command_manager(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create()
@@ -154,7 +162,11 @@ protected:
     }
 
 private:
-    wcommand_manager(const wcommand_manager&) = delete;
+    wcommand_manager(const this_type&) = delete;
+    wcommand_manager(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create()

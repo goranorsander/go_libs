@@ -39,6 +39,7 @@ public:
 
 private:
     spaceship(const spaceship&) = delete;
+    spaceship(spaceship&&) = delete;
 
 public:
     spaceship(const m::command_manager::ptr& cmd_mgr)
@@ -74,6 +75,10 @@ public:
     {
         bind_properties();
     }
+
+private:
+    spaceship& operator=(const spaceship&) = delete;
+    spaceship& operator=(spaceship&&) = delete;
 
 private:
     void bind_properties()

@@ -51,6 +51,10 @@ protected:
 
 private:
     basic_relay_command(const this_type&) = delete;
+    basic_relay_command(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
@@ -97,6 +101,10 @@ protected:
 
 private:
     relay_command(const this_type&) = delete;
+    relay_command(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
@@ -125,6 +133,10 @@ protected:
 
 private:
     relay_wcommand(const this_type&) = delete;
+    relay_wcommand(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)

@@ -40,7 +40,11 @@ protected:
     }
 
 private:
-    slot_arguments(const slot_arguments&) = delete;
+    slot_arguments(const this_type&) = delete;
+    slot_arguments(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 };
 
 inline slot_arguments::~slot_arguments()

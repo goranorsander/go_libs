@@ -43,7 +43,11 @@ protected:
     }
 
 private:
-    command_parameters(const command_parameters&) = delete;
+    command_parameters(const this_type&) = delete;
+    command_parameters(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create()

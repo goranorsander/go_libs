@@ -47,7 +47,11 @@ public:
     virtual ~basic_command() = 0;
 
 private:
-    basic_command(const basic_command&) = delete;
+    basic_command(const this_type&) = delete;
+    basic_command(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 protected:
     basic_command(const string_type& cmd_name, const command_parameters::ptr& params);
@@ -135,7 +139,11 @@ public:
     virtual ~command() = 0;
 
 private:
-    command(const command&) = delete;
+    command(const this_type&) = delete;
+    command(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 protected:
     command(const string_type& cmd_name, const command_parameters::ptr& params)
@@ -159,7 +167,11 @@ public:
     virtual ~wcommand() = 0;
 
 private:
-    wcommand(const wcommand&) = delete;
+    wcommand(const this_type&) = delete;
+    wcommand(this_type&&) = delete;
+
+    this_type& operator=(const this_type&) = delete;
+    this_type& operator=(this_type&&) = delete;
 
 protected:
     wcommand(const string_type& cmd_name, const command_parameters::ptr& params)

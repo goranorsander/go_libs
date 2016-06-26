@@ -42,6 +42,7 @@ public:
 
 private:
     fleet_commander(const fleet_commander&) = delete;
+    fleet_commander(fleet_commander&&) = delete;
 
     fleet_commander(const std::wstring& cmd, const std::wstring& btl)
         : commander(L"commander", cmd)
@@ -50,6 +51,10 @@ private:
         , fire_proton_torpedoes()
     {
     }
+
+private:
+    fleet_commander& operator=(const fleet_commander&) = delete;
+    fleet_commander& operator=(fleet_commander&&) = delete;
 
 public:
     static ptr create(const std::wstring& cmd, const std::wstring& btl)
@@ -80,6 +85,7 @@ public:
 
 private:
     spaceship(const spaceship&) = delete;
+    spaceship(spaceship&&) = delete;
 
 public:
     spaceship(const fleet_commander::ptr& flt_cmd, const std::wstring& nme, const std::wstring& cpt, const int trpds)
@@ -95,6 +101,11 @@ public:
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
 
+private:
+    spaceship& operator=(const spaceship&) = delete;
+    spaceship& operator=(spaceship&&) = delete;
+
+public:
     bool fire_proton_torpedo()
     {
         if(proton_torpedoes > 0)
