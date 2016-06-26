@@ -94,28 +94,29 @@ private:
 template<class S>
 inline basic_command<S>::~basic_command()
 {
+    can_execute_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_command<std::string>::basic_command(const std::string& cmd_name, const command_parameters::ptr& params)
     : std::enable_shared_from_this<basic_command<std::string>>()
     , can_execute_changed()
-    , command_name("command_name", std::bind(&this_type::get_command_name, this))
+    , command_name("command_name")
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    can_execute_changed.disconnect_all_slots();
+    command_name.getter(std::bind(&basic_command::get_command_name, this));
 }
 
 template<>
 inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, const command_parameters::ptr& params)
     : std::enable_shared_from_this<basic_command<std::wstring>>()
     , can_execute_changed()
-    , command_name(L"command_name", std::bind(&this_type::get_command_name, this))
+    , command_name(L"command_name")
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    can_execute_changed.disconnect_all_slots();
+    command_name.getter(std::bind(&basic_command::get_command_name, this));
 }
 
 template<class S>
