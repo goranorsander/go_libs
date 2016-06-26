@@ -51,9 +51,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_list()
-    {
-    }
+    virtual ~basic_observable_list() = default;
 
 protected:
     basic_observable_list()
@@ -566,9 +564,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_list()
-    {
-    }
+    virtual ~observable_list() = default;
 
 protected:
     observable_list()
@@ -701,9 +697,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_list()
-    {
-    }
+    virtual ~wobservable_list() = default;
 
 protected:
     wobservable_list()

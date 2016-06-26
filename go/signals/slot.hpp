@@ -35,9 +35,7 @@ public:
     virtual ~slot() = 0;
 
 protected:
-    slot()
-    {
-    }
+    slot() = default;
 };
 
 inline slot::~slot()

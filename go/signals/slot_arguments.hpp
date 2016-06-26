@@ -35,9 +35,7 @@ public:
     virtual ~slot_arguments() = 0;
 
 protected:
-    slot_arguments()
-    {
-    }
+    slot_arguments() = default;
 
 private:
     slot_arguments(const this_type&) = delete;

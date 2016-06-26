@@ -33,14 +33,10 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~command_parameters()
-    {
-    }
+    virtual ~command_parameters() = default;
 
 protected:
-    command_parameters()
-    {
-    }
+    command_parameters() = default;
 
 private:
     command_parameters(const this_type&) = delete;

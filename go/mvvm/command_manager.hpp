@@ -49,12 +49,7 @@ public:
     }
 
 protected:
-    basic_command_manager()
-        : requery_suggested()
-        , _commands_guard()
-        , _commands()
-    {
-    }
+    basic_command_manager() = default;
 
 private:
     basic_command_manager(const this_type&) = delete;
@@ -120,9 +115,7 @@ public:
     typedef command_manager this_type;
 
 public:
-    virtual ~command_manager()
-    {
-    }
+    virtual ~command_manager() = default;
 
 protected:
     command_manager()
@@ -151,9 +144,7 @@ public:
     typedef wcommand_manager this_type;
 
 public:
-    virtual ~wcommand_manager()
-    {
-    }
+    virtual ~wcommand_manager() = default;
 
 protected:
     wcommand_manager()

@@ -42,10 +42,7 @@ public:
     virtual ~basic_notify_property_changed() = 0;
 
 protected:
-    basic_notify_property_changed()
-        : go::signals::slot()
-    {
-    }
+    basic_notify_property_changed() = default;
 
 public:
     property_changed_signal property_changed;
@@ -64,7 +61,7 @@ public:
     typedef notify_property_changed this_type;
 
 public:
-    virtual ~notify_property_changed() = 0;
+    virtual ~notify_property_changed() = default;
 
 protected:
     notify_property_changed()
@@ -73,10 +70,6 @@ protected:
     }
 };
 
-inline notify_property_changed::~notify_property_changed()
-{
-}
-
 class notify_wproperty_changed
     : public basic_notify_property_changed<std::wstring>
 {
@@ -84,7 +77,7 @@ public:
     typedef notify_wproperty_changed this_type;
 
 public:
-    virtual ~notify_wproperty_changed() = 0;
+    virtual ~notify_wproperty_changed() = default;
 
 protected:
     notify_wproperty_changed()
@@ -92,10 +85,6 @@ protected:
     {
     }
 };
-
-inline notify_wproperty_changed::~notify_wproperty_changed()
-{
-}
 
 } // namespace mvvm
 } // namespace go

@@ -37,9 +37,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-    virtual ~basic_value_property()
-    {
-    }
+    virtual ~basic_value_property() = default;
 
     explicit basic_value_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -63,9 +61,7 @@ public:
     typedef value_property<value_type> this_type;
 
 public:
-    virtual ~value_property()
-    {
-    }
+    virtual ~value_property() = default;
 
     explicit value_property(const string_type& property_name)
         : basic_value_property<value_type, string_type>(property_name)
@@ -89,9 +85,7 @@ public:
     typedef value_wproperty<value_type> this_type;
 
 public:
-    virtual ~value_wproperty()
-    {
-    }
+    virtual ~value_wproperty() = default;
 
     explicit value_wproperty(const string_type& property_name)
         : basic_value_property<value_type, string_type>(property_name)

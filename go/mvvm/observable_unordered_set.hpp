@@ -52,9 +52,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_unordered_set()
-    {
-    }
+    virtual ~basic_observable_unordered_set() = default;
 
 protected:
     basic_observable_unordered_set()
@@ -256,9 +254,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_unordered_set()
-    {
-    }
+    virtual ~observable_unordered_set() = default;
 
 protected:
     observable_unordered_set()
@@ -372,9 +368,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_unordered_set()
-    {
-    }
+    virtual ~wobservable_unordered_set() = default;
 
 protected:
     wobservable_unordered_set()

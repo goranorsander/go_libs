@@ -35,9 +35,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~basic_property_changed_arguments()
-    {
-    }
+    virtual ~basic_property_changed_arguments() = default;
 
 private:
     basic_property_changed_arguments(const this_type&) = delete;
@@ -75,9 +73,7 @@ public:
     typedef property_changed_arguments this_type;
 
 public:
-    virtual ~property_changed_arguments()
-    {
-    }
+    virtual ~property_changed_arguments() = default;
 
 private:
     property_changed_arguments(const this_type&) = delete;
@@ -106,9 +102,7 @@ public:
     typedef wproperty_changed_arguments this_type;
 
 public:
-    virtual ~wproperty_changed_arguments()
-    {
-    }
+    virtual ~wproperty_changed_arguments() = default;
 
 private:
     wproperty_changed_arguments(const this_type&) = delete;

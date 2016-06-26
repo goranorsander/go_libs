@@ -51,9 +51,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_deque()
-    {
-    }
+    virtual ~basic_observable_deque() = default;
 
 protected:
     basic_observable_deque()
@@ -438,9 +436,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_deque()
-    {
-    }
+    virtual ~observable_deque() = default;
 
 protected:
     observable_deque()
@@ -573,9 +569,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_deque()
-    {
-    }
+    virtual ~wobservable_deque() = default;
 
 protected:
     wobservable_deque()

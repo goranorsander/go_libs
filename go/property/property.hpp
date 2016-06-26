@@ -38,9 +38,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~basic_property()
-    {
-    }
+    virtual ~basic_property() = default;
 
     explicit basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -76,9 +74,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~property()
-    {
-    }
+    virtual ~property() = default;
 
     explicit property(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -104,9 +100,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~wproperty()
-    {
-    }
+    virtual ~wproperty() = default;
 
     explicit wproperty(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)

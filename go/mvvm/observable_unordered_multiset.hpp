@@ -52,9 +52,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_unordered_multiset()
-    {
-    }
+    virtual ~basic_observable_unordered_multiset() = default;
 
 protected:
     basic_observable_unordered_multiset()
@@ -247,9 +245,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_unordered_multiset()
-    {
-    }
+    virtual ~observable_unordered_multiset() = default;
 
 protected:
     observable_unordered_multiset()
@@ -363,9 +359,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_unordered_multiset()
-    {
-    }
+    virtual ~wobservable_unordered_multiset() = default;
 
 protected:
     wobservable_unordered_multiset()

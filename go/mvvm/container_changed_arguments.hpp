@@ -34,9 +34,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~container_changed_arguments()
-    {
-    }
+    virtual ~container_changed_arguments() = default;
 
 private:
     container_changed_arguments(const this_type&) = delete;

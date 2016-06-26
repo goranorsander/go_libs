@@ -33,15 +33,9 @@ public:
     typedef value<value_type> this_type;
 
 public:
-    virtual ~value()
-    {
-    }
+    virtual ~value() = default;
 
-    value()
-        : _property_guard()
-        , _v()
-    {
-    }
+    value() = default;
 
     explicit value(const value& v)
         : _property_guard()

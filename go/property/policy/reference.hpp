@@ -34,9 +34,7 @@ public:
     typedef reference<value_type> this_type;
 
 public:
-    virtual ~reference()
-    {
-    }
+    virtual ~reference() = default;
 
     reference()
         : _property_guard()

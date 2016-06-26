@@ -37,9 +37,7 @@ public:
     typedef typename std::function<void(const std::shared_ptr<command_parameters>&)> execute_command_signature;
 
 public:
-    virtual ~basic_relay_command()
-    {
-    }
+    virtual ~basic_relay_command() = default;
 
 protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
@@ -89,9 +87,7 @@ public:
     typedef relay_command this_type;
 
 public:
-    virtual ~relay_command()
-    {
-    }
+    virtual ~relay_command() = default;
 
 protected:
     relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
@@ -121,9 +117,7 @@ public:
     typedef relay_wcommand this_type;
 
 public:
-    virtual ~relay_wcommand()
-    {
-    }
+    virtual ~relay_wcommand() = default;
 
 protected:
     relay_wcommand(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)

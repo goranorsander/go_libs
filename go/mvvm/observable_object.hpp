@@ -34,9 +34,7 @@ public:
     typedef basic_observable_object<string_type> this_type;
 
 public:
-    virtual ~basic_observable_object()
-    {
-    }
+    virtual ~basic_observable_object() = default;
 
 protected:
     basic_observable_object()
@@ -62,9 +60,7 @@ public:
     typedef observable_object this_type;
 
 public:
-    virtual ~observable_object()
-    {
-    }
+    virtual ~observable_object() = default;
 
 protected:
     observable_object()
@@ -80,9 +76,7 @@ public:
     typedef wobservable_object this_type;
 
 public:
-    virtual ~wobservable_object()
-    {
-    }
+    virtual ~wobservable_object() = default;
 
 protected:
     wobservable_object()

@@ -55,9 +55,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_map()
-    {
-    }
+    virtual ~basic_observable_map() = default;
 
 protected:
     basic_observable_map()
@@ -282,9 +280,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_map()
-    {
-    }
+    virtual ~observable_map() = default;
 
 protected:
     observable_map()
@@ -401,9 +397,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_map()
-    {
-    }
+    virtual ~wobservable_map() = default;
 
 protected:
     wobservable_map()

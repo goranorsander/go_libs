@@ -40,9 +40,7 @@ protected:
     typedef typename std::map<slot_key_type, function_type> connections_type;
 
 public:
-    virtual ~signal()
-    {
-    }
+    virtual ~signal() = default;
 
     signal()
         : _slot_next_key(0)

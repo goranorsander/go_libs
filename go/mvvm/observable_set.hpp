@@ -54,9 +54,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_set()
-    {
-    }
+    virtual ~basic_observable_set() = default;
 
 protected:
     basic_observable_set()
@@ -260,9 +258,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_set()
-    {
-    }
+    virtual ~observable_set() = default;
 
 protected:
     observable_set()
@@ -378,9 +374,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_set()
-    {
-    }
+    virtual ~wobservable_set() = default;
 
 protected:
     wobservable_set()

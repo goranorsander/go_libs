@@ -55,9 +55,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_multimap()
-    {
-    }
+    virtual ~basic_observable_multimap() = default;
 
 protected:
     basic_observable_multimap()
@@ -253,9 +251,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_multimap()
-    {
-    }
+    virtual ~observable_multimap() = default;
 
 protected:
     observable_multimap()
@@ -372,9 +368,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_multimap()
-    {
-    }
+    virtual ~wobservable_multimap() = default;
 
 protected:
     wobservable_multimap()

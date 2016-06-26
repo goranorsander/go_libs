@@ -37,9 +37,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~proxy()
-    {
-    }
+    virtual ~proxy() = default;
 
     proxy()
         : _property_guard()

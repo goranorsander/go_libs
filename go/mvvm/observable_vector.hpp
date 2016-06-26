@@ -51,9 +51,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_vector()
-    {
-    }
+    virtual ~basic_observable_vector() = default;
 
 protected:
     basic_observable_vector()
@@ -426,9 +424,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_vector()
-    {
-    }
+    virtual ~observable_vector() = default;
 
 protected:
     observable_vector()
@@ -561,9 +557,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_vector()
-    {
-    }
+    virtual ~wobservable_vector() = default;
 
 protected:
     wobservable_vector()

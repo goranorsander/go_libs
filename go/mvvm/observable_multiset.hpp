@@ -54,9 +54,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_multiset()
-    {
-    }
+    virtual ~basic_observable_multiset() = default;
 
 protected:
     basic_observable_multiset()
@@ -251,9 +249,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_multiset()
-    {
-    }
+    virtual ~observable_multiset() = default;
 
 protected:
     observable_multiset()
@@ -369,9 +365,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_multiset()
-    {
-    }
+    virtual ~wobservable_multiset() = default;
 
 protected:
     wobservable_multiset()

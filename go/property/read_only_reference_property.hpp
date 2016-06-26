@@ -39,9 +39,7 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
-    virtual ~basic_reference_property()
-    {
-    }
+    virtual ~basic_reference_property() = default;
 
     explicit basic_reference_property(const string_type& property_name, const value_type& v)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(const_cast<value_type&>(v)), property_name)
@@ -73,9 +71,7 @@ public:
     typedef reference_property<value_type> this_type;
 
 public:
-    virtual ~reference_property()
-    {
-    }
+    virtual ~reference_property() = default;
 
     explicit reference_property(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
@@ -92,9 +88,7 @@ public:
     typedef reference_wproperty<value_type> this_type;
 
 public:
-    virtual ~reference_wproperty()
-    {
-    }
+    virtual ~reference_wproperty() = default;
 
     explicit reference_wproperty(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)

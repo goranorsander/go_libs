@@ -49,9 +49,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_forward_list()
-    {
-    }
+    virtual ~basic_observable_forward_list() = default;
 
 protected:
     basic_observable_forward_list()
@@ -506,9 +504,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_forward_list()
-    {
-    }
+    virtual ~observable_forward_list() = default;
 
 protected:
     observable_forward_list()
@@ -639,9 +635,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_forward_list()
-    {
-    }
+    virtual ~wobservable_forward_list() = default;
 
 protected:
     wobservable_forward_list()

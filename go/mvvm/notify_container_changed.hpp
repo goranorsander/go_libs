@@ -40,10 +40,7 @@ public:
     virtual ~notify_container_changed() = 0;
 
 protected:
-    notify_container_changed()
-        : go::signals::slot()
-    {
-    }
+    notify_container_changed() = default;
 
 public:
     container_changed_signal container_changed;

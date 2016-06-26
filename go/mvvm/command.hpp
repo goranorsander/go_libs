@@ -137,7 +137,7 @@ public:
     typedef command this_type;
 
 public:
-    virtual ~command() = 0;
+    virtual ~command() = default;
 
 private:
     command(const this_type&) = delete;
@@ -154,10 +154,6 @@ protected:
 
 };
 
-inline command::~command()
-{
-}
-
 class wcommand
     : public basic_command<std::wstring>
 {
@@ -165,7 +161,7 @@ public:
     typedef wcommand this_type;
 
 public:
-    virtual ~wcommand() = 0;
+    virtual ~wcommand() = default;
 
 private:
     wcommand(const this_type&) = delete;
@@ -181,10 +177,6 @@ protected:
     }
 
 };
-
-inline wcommand::~wcommand()
-{
-}
 
 } // namespace mvvm
 } // namespace go

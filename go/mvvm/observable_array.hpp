@@ -50,9 +50,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_array()
-    {
-    }
+    virtual ~basic_observable_array() = default;
 
 protected:
     basic_observable_array()
@@ -180,9 +178,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_array()
-    {
-    }
+    virtual ~observable_array() = default;
 
 protected:
     observable_array()
@@ -220,9 +216,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_array()
-    {
-    }
+    virtual ~wobservable_array() = default;
 
 protected:
     wobservable_array()
