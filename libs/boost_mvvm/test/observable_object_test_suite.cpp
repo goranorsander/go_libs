@@ -155,7 +155,7 @@ private:
 
 TEST(boost_observable_object_test_suite, test_observable_object)
 {
-    boost::shared_ptr<spaceship> m(new spaceship);
+    boost::shared_ptr<spaceship> m = boost::make_shared<spaceship>();
     spaceship_observer o;
 
     o.connect(*m);

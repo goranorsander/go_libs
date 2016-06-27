@@ -207,13 +207,13 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::command_manager::ptr cmd_mgr = m::command_manager::create(); \
 \
-    boost::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, "USS Enterprise", "Captain James T Kirk")); \
-    boost::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, "Millennium Falcon", "Han Solo")); \
-    boost::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, "Executor", "Lord Darth Vader")); \
-    boost::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, "Battlestar Galactica", "Admiral William Adama")); \
-    boost::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
+    boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "USS Enterprise", "Captain James T Kirk"); \
+    boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Millennium Falcon", "Han Solo"); \
+    boost::shared_ptr<spaceship> ship3 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Executor", "Lord Darth Vader"); \
+    boost::shared_ptr<spaceship> ship4 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Battlestar Galactica", "Admiral William Adama"); \
+    boost::shared_ptr<spaceship> ship5 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
 \
-    boost::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
+    boost::shared_ptr<spaceship_observer> observer = boost::make_shared<spaceship_observer>(); \
 \
     observer->connect(ship1); \
     observer->connect(ship2); \

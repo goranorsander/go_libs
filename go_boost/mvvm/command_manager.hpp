@@ -47,6 +47,8 @@ protected:
     typedef typename boost::weak_ptr<command_type> command_type_wptr;
     typedef typename std::vector<command_type_wptr> command_vector;
 
+    friend ptr boost::make_shared<this_type>();
+
 public:
     virtual ~basic_command_manager()
     {
@@ -68,7 +70,7 @@ public:
 public:
     static ptr create()
     {
-        return ptr(new this_type());
+        return boost::make_shared<this_type>();
     }
 
     void add_command(const command_type_ptr& cmd)
@@ -117,6 +119,10 @@ class command_manager
 {
 public:
     typedef command_manager this_type;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
+
+    friend ptr boost::make_shared<this_type>();
 
 public:
     virtual ~command_manager()
@@ -132,7 +138,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new command_manager());
+        return boost::make_shared<this_type>();
     }
 };
 
@@ -141,6 +147,10 @@ class wcommand_manager
 {
 public:
     typedef wcommand_manager this_type;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
+
+    friend ptr boost::make_shared<this_type>();
 
 public:
     virtual ~wcommand_manager()
@@ -156,7 +166,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new wcommand_manager());
+        return boost::make_shared<this_type>();
     }
 };
 

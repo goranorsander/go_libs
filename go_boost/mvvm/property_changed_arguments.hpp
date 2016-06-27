@@ -15,6 +15,8 @@
 #pragma once
 #endif
 
+#include <boost/make_shared.hpp>
+
 #include <go_boost/signals/slot_arguments.hpp>
 
 namespace go_boost
@@ -47,7 +49,14 @@ protected:
 public:
     static ptr create(const string_type& property_name)
     {
-        return ptr(new basic_property_changed_arguments(property_name));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& property_name) : this_type(property_name) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&>(property_name);
     }
 
     string_type property_name() const
@@ -79,7 +88,14 @@ protected:
 public:
     static ptr create(const string_type& property_name)
     {
-        return ptr(new this_type(property_name));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& property_name) : this_type(property_name) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&>(property_name);
     }
 };
 
@@ -103,7 +119,14 @@ protected:
 public:
     static ptr create(const string_type& property_name)
     {
-        return ptr(new this_type(property_name));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& property_name) : this_type(property_name) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&>(property_name);
     }
 };
 

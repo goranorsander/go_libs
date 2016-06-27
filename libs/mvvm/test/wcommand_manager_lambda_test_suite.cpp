@@ -193,13 +193,13 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::wcommand_manager::ptr cmd_mgr = m::wcommand_manager::create(); \
 \
-    std::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, L"USS Enterprise", L"Captain James T Kirk")); \
-    std::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, L"Millennium Falcon", L"Han Solo")); \
-    std::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, L"Executor", L"Lord Darth Vader")); \
-    std::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, L"Battlestar Galactica", L"Admiral William Adama")); \
-    std::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds")); \
+    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"USS Enterprise", L"Captain James T Kirk"); \
+    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Millennium Falcon", L"Han Solo"); \
+    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Executor", L"Lord Darth Vader"); \
+    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Battlestar Galactica", L"Admiral William Adama"); \
+    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds"); \
 \
-    std::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
+    std::shared_ptr<spaceship_observer> observer = std::make_shared<spaceship_observer>(); \
 \
     observer->connect(ship1); \
     observer->connect(ship2); \

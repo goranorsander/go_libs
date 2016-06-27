@@ -192,6 +192,8 @@ public:
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
+    friend ptr boost::make_shared<this_type>();
+
 public:
     virtual ~observable_array()
     {
@@ -206,7 +208,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        return boost::make_shared<this_type>();
     }
 };
 
@@ -232,6 +234,8 @@ public:
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
+    friend ptr boost::make_shared<this_type>();
+
 public:
     virtual ~wobservable_array()
     {
@@ -246,7 +250,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        return boost::make_shared<this_type>();
     }
 };
 

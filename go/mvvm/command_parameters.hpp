@@ -48,7 +48,14 @@ private:
 public:
     static ptr create()
     {
-        return ptr(new this_type());
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 };
 

@@ -277,28 +277,75 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new this_type(first, last));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(InputIterator first, InputIterator last)
+                : this_type(first, last)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
     }
 
     static ptr create(const this_type& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(const this_type& x)
+                : this_type(x)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, const this_type&>(x);
     }
 
     static ptr create(this_type&& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(this_type&& x)
+                : this_type(x)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new this_type(il));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(std::initializer_list<value_type> il)
+                : this_type(il)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
     }
 
 public:
@@ -391,28 +438,75 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new this_type(first, last));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(InputIterator first, InputIterator last)
+                : this_type(first, last)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
     }
 
     static ptr create(const this_type& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(const this_type& x)
+                : this_type(x)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, const this_type&>(x);
     }
 
     static ptr create(this_type&& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(this_type&& x)
+                : this_type(x)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new this_type(il));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(std::initializer_list<value_type> il)
+                : this_type(il)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
     }
 
 public:

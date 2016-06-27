@@ -15,6 +15,8 @@
 #pragma once
 #endif
 
+#include <boost/make_shared.hpp>
+
 #include <go_boost/mvvm/command.hpp>
 
 namespace go_boost
@@ -51,7 +53,14 @@ protected:
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
     {
-        return ptr(new basic_relay_command(cmd_name, execute_command, can_execute_command, params));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&, const execute_command_signature&, const can_execute_command_signature&, const command_parameters::ptr&>(cmd_name, execute_command, can_execute_command, params);
     }
 
 private:
@@ -94,7 +103,14 @@ protected:
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
     {
-        return ptr(new this_type(cmd_name, execute_command, can_execute_command, params));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&, const execute_command_signature&, const can_execute_command_signature&, const command_parameters::ptr&>(cmd_name, execute_command, can_execute_command, params);
     }
 };
 
@@ -119,7 +135,14 @@ protected:
 public:
     static ptr create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params)
     {
-        return ptr(new this_type(cmd_name, execute_command, can_execute_command, params));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters::ptr& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const string_type&, const execute_command_signature&, const can_execute_command_signature&, const command_parameters::ptr&>(cmd_name, execute_command, can_execute_command, params);
     }
 };
 

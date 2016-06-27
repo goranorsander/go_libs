@@ -31,6 +31,8 @@ public:
     typedef boost::shared_ptr<this_type> ptr;
     typedef boost::weak_ptr<this_type> wptr;
 
+    friend ptr boost::make_shared<this_type, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&);
+
 public:
     virtual ~container_changed_arguments()
     {
@@ -52,7 +54,7 @@ protected:
 public:
     static ptr create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
-        return ptr(new this_type(action, added_elements, removed_elements, new_size));
+        return boost::make_shared<this_type, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);
     }
 
     notify_container_changed_action action() const

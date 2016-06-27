@@ -19,6 +19,7 @@
 #pragma once
 #endif
 
+#include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -36,6 +37,8 @@ public:
     typedef boost::shared_ptr<this_type> ptr;
     typedef boost::weak_ptr<this_type> wptr;
 
+    friend ptr boost::make_shared<this_type>();
+
 public:
     virtual ~command_parameters()
     {
@@ -50,7 +53,7 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new command_parameters());
+        return boost::make_shared<this_type>();
     }
 };
 

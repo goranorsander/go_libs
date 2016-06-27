@@ -121,7 +121,7 @@ private:
 
 TEST(std_wobservable_object_lambda_test_suite, test_observable_object)
 {
-    std::shared_ptr<spaceship> m(new spaceship);
+    std::shared_ptr<spaceship> m = std::make_shared<spaceship>();
     spaceship_observer o;
 
     o.connect(*m);

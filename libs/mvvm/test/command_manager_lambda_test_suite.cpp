@@ -193,13 +193,13 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::command_manager::ptr cmd_mgr = m::command_manager::create(); \
 \
-    std::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, "USS Enterprise", "Captain James T Kirk")); \
-    std::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, "Millennium Falcon", "Han Solo")); \
-    std::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, "Executor", "Lord Darth Vader")); \
-    std::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, "Battlestar Galactica", "Admiral William Adama")); \
-    std::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
+    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "USS Enterprise", "Captain James T Kirk"); \
+    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Millennium Falcon", "Han Solo"); \
+    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Executor", "Lord Darth Vader"); \
+    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Battlestar Galactica", "Admiral William Adama"); \
+    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
 \
-    std::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
+    std::shared_ptr<spaceship_observer> observer = std::make_shared<spaceship_observer>(); \
 \
     observer->connect(ship1); \
     observer->connect(ship2); \

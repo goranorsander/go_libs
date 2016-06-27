@@ -20,6 +20,7 @@
 #endif
 
 #include <boost/container/set.hpp>
+#include <boost/make_shared.hpp>
 
 #include <go_boost/mvvm/notify_container_changed.hpp>
 #include <go_boost/mvvm/observable_ordered_associative_container.hpp>
@@ -333,25 +334,53 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler() : this_type() {}
+        };
+
+        return boost::make_shared<make_shared_enabler>();
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new this_type(first, last));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
     }
 
     static ptr create(const this_type& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const this_type& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const this_type&>(x);
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     static ptr create(this_type&& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(this_type&& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -360,7 +389,14 @@ public:
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new this_type(il));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(std::initializer_list<value_type> il) : this_type(il) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -475,25 +511,53 @@ protected:
 public:
     static ptr create()
     {
-        return ptr(new this_type);
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler() : this_type() {}
+        };
+
+        return boost::make_shared<make_shared_enabler>();
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
-        return ptr(new this_type(first, last));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
     }
 
     static ptr create(const this_type& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const this_type& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const this_type&>(x);
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     static ptr create(this_type&& x)
     {
-        return ptr(new this_type(x));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(this_type&& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -502,7 +566,14 @@ public:
 
     static ptr create(std::initializer_list<value_type> il)
     {
-        return ptr(new this_type(il));
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(std::initializer_list<value_type> il) : this_type(il) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)

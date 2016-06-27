@@ -64,7 +64,14 @@ public:
 public:
     static ptr create()
     {
-        return ptr(new this_type());
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 
     void add_command(const command_type_ptr& cmd)
@@ -113,6 +120,8 @@ class command_manager
 {
 public:
     typedef command_manager this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~command_manager() = default;
@@ -133,7 +142,14 @@ private:
 public:
     static ptr create()
     {
-        return ptr(new command_manager());
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 };
 
@@ -142,6 +158,8 @@ class wcommand_manager
 {
 public:
     typedef wcommand_manager this_type;
+    typedef typename std::shared_ptr<this_type> ptr;
+    typedef typename std::weak_ptr<this_type> wptr;
 
 public:
     virtual ~wcommand_manager() = default;
@@ -162,7 +180,14 @@ private:
 public:
     static ptr create()
     {
-        return ptr(new wcommand_manager());
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler() = default;
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 };
 

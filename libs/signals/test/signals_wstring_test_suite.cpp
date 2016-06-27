@@ -59,7 +59,17 @@ private:
 public:
     static ptr create(const std::wstring& cmd, const std::wstring& btl)
     {
-        return ptr(new fleet_commander(cmd, btl));
+        struct make_shared_enabler
+            : public fleet_commander
+        {
+            virtual ~make_shared_enabler() = default;
+            make_shared_enabler(const std::wstring& cmd, const std::wstring& btl)
+                : fleet_commander(cmd, btl)
+            {
+            }
+        };
+
+        return std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(cmd, btl);
     }
 
 public:
@@ -131,14 +141,14 @@ private:
 #define TEST_CASE_SHIPYARD \
     fleet_commander::ptr flt_cmd = fleet_commander::create(L"General Jan Dodonna", L"Battle of Yavin"); \
 \
-    std::shared_ptr<spaceship> ship1(new spaceship(flt_cmd, L"Millennium Falcon", L"Han Solo", 0)); \
-    std::shared_ptr<spaceship> ship2(new spaceship(flt_cmd, L"X-Wing Red Leader", L"Garven Dreis", 6)); \
-    std::shared_ptr<spaceship> ship3(new spaceship(flt_cmd, L"X-Wing Red Two", L"Wedge Antilles", 6)); \
-    std::shared_ptr<spaceship> ship4(new spaceship(flt_cmd, L"X-Wing Red Three", L"Biggs Darklighter", 6)); \
-    std::shared_ptr<spaceship> ship5(new spaceship(flt_cmd, L"X-Wing Red Four", L"John D. Branon", 6)); \
-    std::shared_ptr<spaceship> ship6(new spaceship(flt_cmd, L"X-Wing Red Five", L"Luke Skywalker", 6)); \
-    std::shared_ptr<spaceship> ship7(new spaceship(flt_cmd, L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", 20)); \
-    std::shared_ptr<spaceship> ship8(new spaceship(flt_cmd, L"Y-Wing Gold Two", L"Dex Tiree", 20));
+    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"Millennium Falcon", L"Han Solo", 0); \
+    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"X-Wing Red Leader", L"Garven Dreis", 6); \
+    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"X-Wing Red Two", L"Wedge Antilles", 6); \
+    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"X-Wing Red Three", L"Biggs Darklighter", 6); \
+    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"X-Wing Red Four", L"John D. Branon", 6); \
+    std::shared_ptr<spaceship> ship6 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"X-Wing Red Five", L"Luke Skywalker", 6); \
+    std::shared_ptr<spaceship> ship7 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", 20); \
+    std::shared_ptr<spaceship> ship8 = std::make_shared<spaceship, const fleet_commander::ptr&, const std::wstring&, const std::wstring&, const int>(flt_cmd, L"Y-Wing Gold Two", L"Dex Tiree", 20);
 
 TEST(std_signals_wstring_test_suite, test_fire_lasers)
 {
