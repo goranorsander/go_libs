@@ -49,6 +49,7 @@
     <ClInclude Include="..\..\go\mvvm\observable_vector.hpp" />
     <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp" />
     <ClInclude Include="..\..\go\mvvm\relay_command.hpp" />
+    <ClInclude Include="..\..\go\mvvm\utility\mfc_dlgdata.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

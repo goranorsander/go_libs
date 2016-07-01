@@ -11,6 +11,9 @@
       <Extensions>
       </Extensions>
     </Filter>
+    <Filter Include="go\mvvm\utility">
+      <UniqueIdentifier>{23f8254f-e6d2-4505-bbc4-534d92300771}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\mvvm.hpp">
@@ -102,6 +105,9 @@
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\observable_unordered_set.hpp">
       <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\utility\mfc_dlgdata.hpp">
+      <Filter>go\mvvm\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,31 @@
 #define GO_NO_C99_PREPROCESSOR 1
 #endif
 
+// ATL support
+#if defined(_ATL_VER)
+
+#define GO_ATL 1
+
+#define GO_ATL_VER _MFX_VER
+
+#endif  // if defined(_ATL_VER)
+
+// MFC support
+#if defined(_MFC_VER)
+
+#define GO_MFC 1
+
+#define GO_MFC_VER _MFX_VER
+
+#endif  // if defined(_MFC_VER)
+
+// Unicode support
+#if defined(_UNICODE) || defined(UNICODE)
+
+#define GO_UNICODE 1
+
+#endif  // if defined(_UNICODE) || defined(UNICODE)
+
 #endif  // defined(_MSC_VER)
 
 #endif  // #ifndef GO_CONFIG_COMPILER_VISUALC_HPP_INCLUDED

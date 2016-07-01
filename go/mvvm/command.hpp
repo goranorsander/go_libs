@@ -134,6 +134,7 @@ class command
     : public basic_command<std::string>
 {
 public:
+    typedef std::string string_type;
     typedef command this_type;
 
 public:
@@ -158,6 +159,7 @@ class wcommand
     : public basic_command<std::wstring>
 {
 public:
+    typedef std::wstring string_type;
     typedef wcommand this_type;
 
 public:
