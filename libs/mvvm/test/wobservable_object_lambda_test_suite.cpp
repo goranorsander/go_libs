@@ -46,9 +46,9 @@ public:
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-        , crew_complement(L"crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(L"crew_complement"); } })
-        , name(L"name", [this]() { return _name; }, [this](const std::wstring& v) { if(v != _name) { _name = v; on_property_changed(L"name"); } })
-        , max_speed(L"max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; on_property_changed(L"max_speed"); } })
+        , crew_complement(L"crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } })
+        , name(L"name", [this]() { return _name; }, [this](const std::wstring& v) { if(v != _name) { _name = v; on_property_changed(name.name()); } })
+        , max_speed(L"max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; on_property_changed(max_speed.name()); } })
     {
         bind_properties();
     }

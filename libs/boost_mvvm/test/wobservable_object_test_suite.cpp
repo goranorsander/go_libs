@@ -71,7 +71,7 @@ private:
         if(v != _crew_complement)
         {
             _crew_complement = v;
-            on_property_changed(L"crew_complement");
+            on_property_changed(crew_complement.name());
         }
     }
 
@@ -85,7 +85,7 @@ private:
         if(v != _name)
         {
             _name = v;
-            on_property_changed(L"name");
+            on_property_changed(name.name());
         }
     }
 
@@ -99,7 +99,7 @@ private:
         if(v != _max_speed)
         {
             _max_speed = v;
-            on_property_changed(L"max_speed");
+            on_property_changed(max_speed.name());
         }
     }
 
