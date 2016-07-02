@@ -68,8 +68,6 @@ void product_view::DoDataExchange(CDataExchange* pDX)
             mu::DDX_Text(pDX, IDC_EDIT_UNIT_PRICE, m_product_view_model->current_product.get()->unit_price);
         }
     }
-    DDX_Control(pDX, IDC_BUTTON_GET_PRODUCT, m_get_product_button);
-    DDX_Control(pDX, IDC_BUTTON_SAVE_PRODUCT, m_save_product_button);
 }
 
 BEGIN_MESSAGE_MAP(product_view, CDialogEx)

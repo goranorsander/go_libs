@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED
-#define GO_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED
+#define GO_BOOST_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED
 
 //
 //  mfc_dlgdata.hpp
@@ -11,15 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <go/config.hpp>
+#include <boost/config.hpp>
 
-#if !defined(GO_MFC)
+#if !defined(_MFC_VER)
 #pragma message("Required MFC feature is not supported by this compiler or project configuration")
 #else
 
-#include <go/property.hpp>
+#include <go_boost/property.hpp>
 
-namespace go
+namespace go_boost
 {
 namespace mvvm
 {
@@ -94,9 +94,9 @@ void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double value,
 
 }
 
-// go::property::property
+// go_boost::property::property
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<BYTE>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<BYTE>& value)
 {
     int n = static_cast<int>(value);
     if(pDX->m_bSaveAndValidate)
@@ -113,7 +113,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<BYTE>&
         detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<short>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<short>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -128,7 +128,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<short>
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<int>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<int>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -143,7 +143,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<int>& 
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<UINT>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<UINT>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -158,7 +158,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<UINT>&
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<long>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<long>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -173,7 +173,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<long>&
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<DWORD>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<DWORD>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -188,7 +188,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<DWORD>
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<LONGLONG>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<LONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -203,7 +203,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<LONGLO
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<ULONGLONG>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<ULONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -218,7 +218,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<ULONGL
     }
 }
 
-inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<float>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<float>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -233,7 +233,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property
     }
 }
 
-inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<double>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<double>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -248,7 +248,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<CString>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<CString>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -266,7 +266,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<CStrin
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::string>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::string>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -275,7 +275,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::s
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+        #if defined(_UNICODE) || defined(UNICODE)
         std::string t(nLen, 0);
         ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
         value = t;
@@ -290,7 +290,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::s
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::wstring>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::wstring>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -299,7 +299,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::w
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+        #if defined(_UNICODE) || defined(UNICODE)
         value = static_cast<const TCHAR*>(v);
         #else
         std::wstring t(nLen, 0);
@@ -314,9 +314,9 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::w
     }
 }
 
-// go::property::wproperty
+// go_boost::property::wproperty
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<BYTE>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<BYTE>& value)
 {
     int n = static_cast<int>(value);
     if(pDX->m_bSaveAndValidate)
@@ -333,7 +333,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<BYTE>
         detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<short>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<short>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -348,7 +348,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<short
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<int>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<int>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -363,7 +363,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<int>&
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<UINT>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<UINT>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -378,7 +378,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<UINT>
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<long>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<long>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -393,7 +393,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<long>
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<DWORD>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<DWORD>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -408,7 +408,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<DWORD
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<LONGLONG>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<LONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -423,7 +423,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<LONGL
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<ULONGLONG>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<ULONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -438,7 +438,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<ULONG
     }
 }
 
-inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<float>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<float>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -453,7 +453,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wpropert
     }
 }
 
-inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<double>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<double>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -468,7 +468,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wpropert
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<CString>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<CString>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -486,7 +486,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<CStri
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::string>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::string>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -495,7 +495,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+        #if defined(_UNICODE) || defined(UNICODE)
         std::string t(nLen, 0);
         ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
         value = t;
@@ -510,7 +510,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::wstring>& value)
+inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::wstring>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -519,7 +519,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+        #if defined(_UNICODE) || defined(UNICODE)
         value = static_cast<const TCHAR*>(v);
         #else
         std::wstring t(nLen, 0);
@@ -536,8 +536,8 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
 
 } // namespace utility
 } // namespace mvvm
-} // namespace go
+} // namespace go_boost
 
-#endif  // #if !defined(GO_MFC)
+#endif  // #if !defined(_MFC_VER)
 
-#endif  // #ifndef GO_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED

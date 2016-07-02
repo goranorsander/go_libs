@@ -45,9 +45,6 @@ protected:
 	HICON m_hIcon;
 
 private:
-    CButton m_get_product_button;
-    CButton m_save_product_button;
-
     m::wcommand_manager::wptr m_command_manager;
     product_view_model::ptr m_product_view_model;
     s::slot_key_type m_on_property_changed_slot_key;

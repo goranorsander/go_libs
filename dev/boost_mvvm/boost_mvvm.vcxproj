@@ -50,6 +50,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\property_changed_arguments.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\relay_command.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\utility\mfc_dlgdata.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_get_relay_command_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_set_value_notify_changed_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_value_access_functor.hpp" />
