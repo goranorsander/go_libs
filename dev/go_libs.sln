@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_example_1", "boo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_example_2", "boost_mvvm\boost_mvvm_example_2.vcxproj", "{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_example_3", "mvvm\mvvm_example_3.vcxproj", "{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -171,6 +173,14 @@ Global
 		{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}.Release|Win32.Build.0 = Release|Win32
 		{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}.Release|x64.ActiveCfg = Release|x64
 		{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}.Release|x64.Build.0 = Release|x64
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Debug|Win32.Build.0 = Debug|Win32
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Debug|x64.ActiveCfg = Debug|x64
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Debug|x64.Build.0 = Debug|x64
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Release|Win32.ActiveCfg = Release|Win32
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Release|Win32.Build.0 = Release|Win32
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Release|x64.ActiveCfg = Release|x64
+		{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
