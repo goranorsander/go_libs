@@ -19,7 +19,7 @@
 
 #include <unordered_set>
 
-#include <go/mvvm/notify_container_changed.hpp>
+#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_unordered_associative_container.hpp>
 
 namespace go

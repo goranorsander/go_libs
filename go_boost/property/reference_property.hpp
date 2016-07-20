@@ -19,6 +19,7 @@
 #pragma once
 #endif
 
+#include <go_boost/property/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/detail/property_base.hpp>
 #include <go_boost/property/policy/reference.hpp>
 #include <boost/algorithm/string/predicate.hpp>
@@ -125,85 +126,10 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-inline bool operator==(const basic_reference_property<std::string, std::string>& lhs, const std::string& rhs)
-{
-    return lhs.empty() ? false : boost::equals(lhs.get(), rhs);
-}
-
-inline bool operator!=(const basic_reference_property<std::string, std::string>& lhs, const std::string& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::string& lhs, const basic_reference_property<std::string, std::string>& rhs)
-{
-    return rhs.empty() ? false : boost::equals(lhs, rhs.get());
-}
-
-inline bool operator!=(const std::string& lhs, const basic_reference_property<std::string, std::string>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
-{
-    return lhs.empty() ? false : boost::equals(lhs.get(), rhs);
-}
-
-inline bool operator!=(const basic_reference_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::wstring& lhs, const basic_reference_property<std::wstring, std::string>& rhs)
-{
-    return rhs.empty() ? false : boost::equals(lhs, rhs.get());
-}
-
-inline bool operator!=(const std::wstring& lhs, const basic_reference_property<std::wstring, std::string>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::string, std::wstring>& lhs, const std::string& rhs)
-{
-    return lhs.empty() ? false : boost::equals(lhs.get(), rhs);
-}
-
-inline bool operator!=(const basic_reference_property<std::string, std::wstring>& lhs, const std::string& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::string& lhs, const basic_reference_property<std::string, std::wstring>& rhs)
-{
-    return rhs.empty() ? false : boost::equals(lhs, rhs.get());
-}
-
-inline bool operator!=(const std::string& lhs, const basic_reference_property<std::string, std::wstring>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
-{
-    return lhs.empty() ? false : boost::equals(lhs.get(), rhs);
-}
-
-inline bool operator!=(const basic_reference_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::wstring& lhs, const basic_reference_property<std::wstring, std::wstring>& rhs)
-{
-    return rhs.empty() ? false : boost::equals(lhs, rhs.get());
-}
-
-inline bool operator!=(const std::wstring& lhs, const basic_reference_property<std::wstring, std::wstring>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::wstring)
 
 } // namespace property
 } // namespace go_boost

@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_PROPERTY_BASE_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
 
 //
 //  property_base.hpp
@@ -97,4 +97,4 @@ inline property_base<V, P, S>::~property_base()
 } // namespace property
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED

@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\go_boost\mvvm.hpp">
       <Filter>go_boost</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed.hpp">
+    <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\property_changed_arguments.hpp">
@@ -47,7 +47,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\container_changed_arguments.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed.hpp">
+    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_action.hpp">
@@ -130,6 +130,21 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\utility\mfc_dlgdata.hpp">
       <Filter>go_boost\mvvm\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\command_execution_observer_interface.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\object_observer_interface.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\data_context_changed_arguments.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\data_context_interface.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\notify_data_context_changed_interface.hpp">
+      <Filter>go_boost\mvvm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

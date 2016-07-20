@@ -17,22 +17,16 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-/////////////////////////////////////////////////////////////////////////////
-// CViewTree
+CViewTree::~CViewTree()
+{
+}
 
 CViewTree::CViewTree()
 {
 }
 
-CViewTree::~CViewTree()
-{
-}
-
 BEGIN_MESSAGE_MAP(CViewTree, CTreeCtrl)
 END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CViewTree message handlers
 
 BOOL CViewTree::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {

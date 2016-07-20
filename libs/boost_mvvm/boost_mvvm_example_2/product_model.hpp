@@ -1,5 +1,5 @@
-#ifndef GO_PRODUCT_MODEL_HPP_INCLUDED
-#define GO_PRODUCT_MODEL_HPP_INCLUDED
+#ifndef GO_BOOST_PRODUCT_MODEL_HPP_INCLUDED
+#define GO_BOOST_PRODUCT_MODEL_HPP_INCLUDED
 
 //
 //  product_model.hpp
@@ -27,6 +27,7 @@ public:
     typedef product_model this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
+    typedef int product_id_type;
 
 public:
     virtual ~product_model();
@@ -41,14 +42,14 @@ private:
     void bind_properties();
 
 public:
-    p::wproperty<int> product_id;
+    p::wproperty<product_id_type> product_id;
     p::wproperty<std::wstring> product_name;
     p::wproperty<double> unit_price;
 
 private:
-    int _product_id;
+    product_id_type _product_id;
     std::wstring _product_name;
     double _unit_price;
 };
 
-#endif  // #ifndef GO_PRODUCT_MODEL_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PRODUCT_MODEL_HPP_INCLUDED

@@ -17,33 +17,38 @@
 	#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
-#include "resource.h"       // main symbols
+#include "resource.h"
 
+#include <go/mvvm.hpp>
 
-// mvvm_example_3_app:
-// See mvvm_example_3.cpp for the implementation of this class
-//
+namespace m = go::mvvm;
 
-class mvvm_example_3_app : public CWinAppEx
+class mvvm_example_3_app
+    : public CWinAppEx
 {
 public:
+    virtual ~mvvm_example_3_app();
 	mvvm_example_3_app();
 
-
-// Overrides
 public:
 	virtual BOOL InitInstance();
 	virtual int ExitInstance();
-
-// Implementation
-	BOOL  m_bHiColorIcons;
+    virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	virtual void PreLoadState();
 	virtual void LoadCustomState();
 	virtual void SaveCustomState();
 
 	afx_msg void OnAppAbout();
+
 	DECLARE_MESSAGE_MAP()
+
+public:
+    BOOL  m_bHiColorIcons;
+
+private:
+    UINT_PTR m_timer_id;
+    m::wcommand_manager::ptr m_command_manager;
 };
 
 extern mvvm_example_3_app theApp;

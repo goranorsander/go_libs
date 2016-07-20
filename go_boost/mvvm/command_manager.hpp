@@ -30,145 +30,252 @@ namespace go_boost
 namespace mvvm
 {
 
+template<class S> class basic_command_manager;
+typedef basic_command_manager<std::string> command_manager;
+typedef basic_command_manager<std::wstring> wcommand_manager;
+
 template<class S>
 class basic_command_manager
     : private boost::noncopyable
 {
 public:
     typedef S string_type;
-    typedef basic_command_manager<string_type> this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
-    typedef typename boost::signals2::signal<void(const string_type&)> requery_suggested_signal;
+    typedef basic_command_manager<S> this_type;
+    typedef typename boost::shared_ptr<basic_command_manager<S>> ptr;
+    typedef typename boost::weak_ptr<basic_command_manager<S>> wptr;
+
+public:
+    virtual ~basic_command_manager();
 
 protected:
-    typedef basic_command<string_type> command_type;
-    typedef typename boost::shared_ptr<command_type> command_type_ptr;
-    typedef typename boost::weak_ptr<command_type> command_type_wptr;
-    typedef typename std::vector<command_type_wptr> command_vector;
-
-    friend ptr boost::make_shared<this_type>();
+    basic_command_manager();
 
 public:
-    virtual ~basic_command_manager()
-    {
-        _commands.clear();
-    }
+    static boost::shared_ptr<basic_command_manager<S>> create();
 
-protected:
-    basic_command_manager()
-        : boost::noncopyable()
-        , requery_suggested()
-        , _commands_guard()
-        , _commands()
-    {
-    }
+    void add_command(const boost::shared_ptr<basic_command<S>>& cmd);
 
-public:
-    requery_suggested_signal requery_suggested;
+    void execute_commands();
 
-public:
-    static ptr create()
-    {
-        return boost::make_shared<this_type>();
-    }
-
-    void add_command(const command_type_ptr& cmd)
-    {
-        if(cmd)
-        {
-            boost::recursive_mutex::scoped_lock lock(_commands_guard);
-            _commands.push_back(command_type_wptr(cmd));
-        }
-    }
-
-    void execute_commands()
-    {
-        command_vector cmds;
-        {
-            boost::recursive_mutex::scoped_lock lock(_commands_guard);
-            std::swap(cmds, _commands);
-        }
-        BOOST_FOREACH(command_type_wptr wcmd, cmds)
-        {
-            const command_type_ptr cmd = wcmd.lock();
-            if(cmd)
-            {
-                const command_parameters::ptr params = cmd->parameters();
-                if(cmd->can_execute(params))
-                {
-                    cmd->execute(params);
-                }
-            }
-        }
-    }
-
-    size_t commands() const
-    {
-        boost::recursive_mutex::scoped_lock lock(_commands_guard);
-        return _commands.size();
-    }
+    size_t commands() const;
 
 private:
     mutable boost::recursive_mutex _commands_guard;
-    command_vector _commands;
+    std::vector<boost::weak_ptr<basic_command<S>>> _commands;
 };
 
-class command_manager
-    : public basic_command_manager<std::string>
+template<>
+inline basic_command_manager<std::string>::~basic_command_manager()
 {
-public:
-    typedef command_manager this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    _commands.clear();
+}
 
-    friend ptr boost::make_shared<this_type>();
-
-public:
-    virtual ~command_manager()
-    {
-    }
-
-protected:
-    command_manager()
-        : basic_command_manager<string_type>()
-    {
-    }
-
-public:
-    static ptr create()
-    {
-        return boost::make_shared<this_type>();
-    }
-};
-
-class wcommand_manager
-    : public basic_command_manager<std::wstring>
+template<>
+inline basic_command_manager<std::wstring>::~basic_command_manager()
 {
-public:
-    typedef wcommand_manager this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    _commands.clear();
+}
 
-    friend ptr boost::make_shared<this_type>();
+template<class S>
+inline basic_command_manager<S>::~basic_command_manager()
+{
+    _commands.clear();
+}
 
-public:
-    virtual ~wcommand_manager()
+template<>
+inline basic_command_manager<std::string>::basic_command_manager()
+    : boost::noncopyable()
+    , _commands_guard()
+    , _commands()
+{
+    _commands.clear();
+}
+
+template<>
+inline basic_command_manager<std::wstring>::basic_command_manager()
+    : boost::noncopyable()
+    , _commands_guard()
+    , _commands()
+{
+    _commands.clear();
+}
+
+template<class S>
+inline basic_command_manager<S>::basic_command_manager()
+    : boost::noncopyable()
+    , _commands_guard()
+    , _commands()
+{
+    _commands.clear();
+}
+
+template<>
+inline boost::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<std::string>
     {
-    }
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<std::string>() {}
+    };
 
-protected:
-    wcommand_manager()
-        : basic_command_manager<string_type>()
-    {
-    }
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
 
-public:
-    static ptr create()
+template<>
+inline boost::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<std::wstring>
     {
-        return boost::make_shared<this_type>();
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<std::wstring>() {}
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<class S>
+inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<S>
+    {
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<S>() {}
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<>
+inline void basic_command_manager<std::string>::add_command(const boost::shared_ptr<basic_command<std::string>>& cmd)
+{
+    if(cmd)
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        _commands.push_back(boost::weak_ptr<basic_command<std::string>>(cmd));
     }
-};
+}
+
+template<>
+inline void basic_command_manager<std::wstring>::add_command(const boost::shared_ptr<basic_command<std::wstring>>& cmd)
+{
+    if(cmd)
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        _commands.push_back(boost::weak_ptr<basic_command<std::wstring>>(cmd));
+    }
+}
+
+template<class S>
+inline void basic_command_manager<S>::add_command(const boost::shared_ptr<basic_command<S>>& cmd)
+{
+    if(cmd)
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        _commands.push_back(boost::weak_ptr<basic_command<S>>(cmd));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::string>::execute_commands()
+{
+    std::vector<boost::weak_ptr<basic_command<std::string>>> cmds;
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        std::swap(cmds, _commands);
+    }
+    BOOST_FOREACH(boost::weak_ptr<basic_command<std::string>> wcmd, cmds)
+    {
+        const boost::shared_ptr<basic_command<std::string>> cmd = wcmd.lock();
+        if(cmd)
+        {
+            const boost::shared_ptr<command_parameters> params = cmd->parameters();
+            if(cmd->can_execute(params))
+            {
+                cmd->execute(params);
+            }
+        }
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring>::execute_commands()
+{
+    std::vector<boost::weak_ptr<basic_command<std::wstring>>> cmds;
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        std::swap(cmds, _commands);
+    }
+    BOOST_FOREACH(boost::weak_ptr<basic_command<std::wstring>> wcmd, cmds)
+    {
+        const boost::shared_ptr<basic_command<std::wstring>> cmd = wcmd.lock();
+        if(cmd)
+        {
+            const boost::shared_ptr<command_parameters> params = cmd->parameters();
+            if(cmd->can_execute(params))
+            {
+                cmd->execute(params);
+            }
+        }
+    }
+}
+
+template<class S>
+inline void basic_command_manager<S>::execute_commands()
+{
+    std::vector<boost::weak_ptr<basic_command<S>>> cmds;
+    {
+        boost::recursive_mutex::scoped_lock lock(_commands_guard);
+        std::swap(cmds, _commands);
+    }
+    BOOST_FOREACH(boost::weak_ptr<basic_command<S>> wcmd, cmds)
+    {
+        const boost::shared_ptr<basic_command<S>> cmd = wcmd.lock();
+        if(cmd)
+        {
+            const boost::shared_ptr<command_parameters> params = cmd->parameters();
+            if(cmd->can_execute(params))
+            {
+                cmd->execute(params);
+            }
+        }
+    }
+}
+
+template<>
+inline size_t basic_command_manager<std::string>::commands() const
+{
+    boost::recursive_mutex::scoped_lock lock(_commands_guard);
+    return _commands.size();
+}
+
+template<>
+inline size_t basic_command_manager<std::wstring>::commands() const
+{
+    boost::recursive_mutex::scoped_lock lock(_commands_guard);
+    return _commands.size();
+}
+
+template<class S>
+inline size_t basic_command_manager<S>::commands() const
+{
+    boost::recursive_mutex::scoped_lock lock(_commands_guard);
+    return _commands.size();
+}
 
 } // namespace mvvm
 } // namespace go_boost

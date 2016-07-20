@@ -39,7 +39,11 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_property() = default;
+#else
+    virtual ~basic_property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -69,7 +73,11 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() = default;
+#else
+    virtual ~property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     property(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -94,7 +102,11 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~wproperty() = default;
+#else
+    virtual ~wproperty() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     wproperty(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)

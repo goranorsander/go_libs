@@ -24,15 +24,15 @@ public:
 	virtual BOOL AllowShowOnList() const { return FALSE; }
 };
 
-class CPropertiesWnd : public CDockablePane
+class CPropertiesWnd
+    : public CDockablePane
 {
-// Construction
 public:
-	CPropertiesWnd();
+    virtual ~CPropertiesWnd();
+    CPropertiesWnd();
 
 	void AdjustLayout();
 
-// Attributes
 public:
 	void SetVSDotNetLook(BOOL bSet)
 	{
@@ -45,10 +45,6 @@ protected:
 	CComboBox m_wndObjectCombo;
 	CPropertiesToolBar m_wndToolBar;
 	CMFCPropertyGridCtrl m_wndPropList;
-
-// Implementation
-public:
-	virtual ~CPropertiesWnd();
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

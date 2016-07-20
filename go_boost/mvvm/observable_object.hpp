@@ -15,7 +15,7 @@
 #pragma once
 #endif
 
-#include <go_boost/mvvm/notify_property_changed.hpp>
+#include <go_boost/mvvm/notify_property_changed_interface.hpp>
 
 namespace go_boost
 {
@@ -24,7 +24,7 @@ namespace mvvm
 
 template<class S>
 class basic_observable_object
-    : public basic_notify_property_changed<S>
+    : public basic_notify_property_changed_interface<S>
     , public object
 {
 public:
@@ -38,7 +38,7 @@ public:
 
 protected:
     basic_observable_object()
-        : basic_notify_property_changed<string_type>()
+        : basic_notify_property_changed_interface<string_type>()
         , object()
     {
     }
@@ -46,9 +46,9 @@ protected:
 protected:
     virtual void on_property_changed(const string_type& property_name)
     {
-        if(!basic_notify_property_changed<string_type>::property_changed.empty())
+        if(!basic_notify_property_changed_interface<string_type>::property_changed.empty())
         {
-            basic_notify_property_changed<string_type>::property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
+            basic_notify_property_changed_interface<string_type>::property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
         }
     }
 };

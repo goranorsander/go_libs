@@ -28,6 +28,10 @@ namespace mvvm
 
 template<class S> class basic_command_manager;
 
+template<class S> class basic_command;
+typedef basic_command<std::string> command;
+typedef basic_command<std::wstring> wcommand;
+
 template<class S>
 class basic_command
     : public std::enable_shared_from_this<basic_command<S>>
@@ -36,60 +40,59 @@ class basic_command
 
 public:
     typedef S string_type;
-    typedef basic_command<string_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
-    typedef typename std::shared_ptr<command_parameters> command_parameters_type_ptr;
-    typedef typename go::signals::signal<std::function<void(const ptr&)>> can_execute_changed_signal;
-    typedef typename go::property::read_only::basic_property<string_type, string_type> command_name_type;
+    typedef basic_command<S> this_type;
+    typedef typename std::shared_ptr<basic_command<S>> ptr;
+    typedef typename std::weak_ptr<basic_command<S>> wptr;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command<S>>&)>> can_execute_changed_signal;
+    typedef typename go::property::read_only::basic_property<S, S> command_name_type;
 
 public:
     virtual ~basic_command() = 0;
 
 private:
-    basic_command(const this_type&) = delete;
-    basic_command(this_type&&) = delete;
+    basic_command(const basic_command<S>&) = delete;
+    basic_command(basic_command<S>&&) = delete;
 
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
+    basic_command<S>& operator=(const basic_command<S>&) = delete;
+    basic_command<S>& operator=(basic_command<S>&&) = delete;
 
 protected:
-    basic_command(const string_type& cmd_name, const command_parameters::ptr& params);
+    basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
 
 public:
     command_name_type command_name;
 
 public:
-    virtual command_parameters::ptr parameters() const
-    {
-        return _parameters;
-    }
+    virtual std::shared_ptr<command_parameters> parameters() const;
 
-    virtual void notify_can_execute_changed()
-    {
-        if(!can_execute_changed.empty())
-        {
-            can_execute_changed(std::enable_shared_from_this<this_type>::shared_from_this());
-        }
-    }
+    virtual void notify_can_execute_changed();
 
-    virtual string_type get_command_name() const
-    {
-        return _command_name;
-    }
+    virtual S get_command_name() const;
 
 protected:
-    virtual bool can_execute(const command_parameters_type_ptr& params) = 0;
+    virtual bool can_execute(const std::shared_ptr<command_parameters>& params) = 0;
 
-    virtual void execute(const command_parameters_type_ptr& params) = 0;
+    virtual void execute(const std::shared_ptr<command_parameters>& params) = 0;
 
 public:
     can_execute_changed_signal can_execute_changed;
 
 private:
-    const string_type _command_name;
-    command_parameters::ptr _parameters;
+    const S _command_name;
+    std::shared_ptr<command_parameters> _parameters;
 };
+
+template<>
+inline basic_command<std::string>::~basic_command()
+{
+    can_execute_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_command<std::wstring>::~basic_command()
+{
+    can_execute_changed.disconnect_all_slots();
+}
 
 template<class S>
 inline basic_command<S>::~basic_command()
@@ -98,7 +101,7 @@ inline basic_command<S>::~basic_command()
 }
 
 template<>
-inline basic_command<std::string>::basic_command(const std::string& cmd_name, const command_parameters::ptr& params)
+inline basic_command<std::string>::basic_command(const std::string& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<std::string>>()
     , can_execute_changed()
     , command_name("command_name")
@@ -109,7 +112,7 @@ inline basic_command<std::string>::basic_command(const std::string& cmd_name, co
 }
 
 template<>
-inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, const command_parameters::ptr& params)
+inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<std::wstring>>()
     , can_execute_changed()
     , command_name(L"command_name")
@@ -120,7 +123,7 @@ inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, 
 }
 
 template<class S>
-inline basic_command<S>::basic_command(const S& cmd_name, const command_parameters::ptr& params)
+inline basic_command<S>::basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<S>>()
     , can_execute_changed()
     , command_name(S(), nullptr)
@@ -130,55 +133,68 @@ inline basic_command<S>::basic_command(const S& cmd_name, const command_paramete
     throw std::exception();
 }
 
-class command
-    : public basic_command<std::string>
+template<>
+inline std::shared_ptr<command_parameters> basic_command<std::string>::parameters() const
 {
-public:
-    typedef std::string string_type;
-    typedef command this_type;
+    return _parameters;
+}
 
-public:
-    virtual ~command() = default;
-
-private:
-    command(const this_type&) = delete;
-    command(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
-protected:
-    command(const string_type& cmd_name, const command_parameters::ptr& params)
-        : basic_command<string_type>(cmd_name, params)
-    {
-    }
-
-};
-
-class wcommand
-    : public basic_command<std::wstring>
+template<>
+inline std::shared_ptr<command_parameters> basic_command<std::wstring>::parameters() const
 {
-public:
-    typedef std::wstring string_type;
-    typedef wcommand this_type;
+    return _parameters;
+}
 
-public:
-    virtual ~wcommand() = default;
+template<class S>
+inline std::shared_ptr<command_parameters> basic_command<S>::parameters() const
+{
+    return _parameters;
+}
 
-private:
-    wcommand(const this_type&) = delete;
-    wcommand(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
-protected:
-    wcommand(const string_type& cmd_name, const command_parameters::ptr& params)
-        : basic_command<string_type>(cmd_name, params)
+template<>
+inline void basic_command<std::string>::notify_can_execute_changed()
+{
+    if(!can_execute_changed.empty())
     {
+        can_execute_changed(std::enable_shared_from_this<basic_command<std::string>>::shared_from_this());
     }
+}
 
-};
+template<>
+inline void basic_command<std::wstring>::notify_can_execute_changed()
+{
+    if(!can_execute_changed.empty())
+    {
+        can_execute_changed(std::enable_shared_from_this<basic_command<std::wstring>>::shared_from_this());
+    }
+}
+
+template<class S>
+inline void basic_command<S>::notify_can_execute_changed()
+{
+    if(!can_execute_changed.empty())
+    {
+        can_execute_changed(std::enable_shared_from_this<basic_command<S>>::shared_from_this());
+    }
+}
+
+template<>
+inline std::string basic_command<std::string>::get_command_name() const
+{
+    return _command_name;
+}
+
+template<>
+inline std::wstring basic_command<std::wstring>::get_command_name() const
+{
+    return _command_name;
+}
+
+template<class S>
+inline S basic_command<S>::get_command_name() const
+{
+    return _command_name;
+}
 
 } // namespace mvvm
 } // namespace go

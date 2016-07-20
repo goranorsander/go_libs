@@ -19,7 +19,7 @@
 
 #include <forward_list>
 
-#include <go/mvvm/notify_container_changed.hpp>
+#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_sequence_container.hpp>
 
 namespace go

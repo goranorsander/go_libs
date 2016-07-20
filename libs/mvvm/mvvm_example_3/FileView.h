@@ -15,7 +15,8 @@
 
 #include "ViewTree.h"
 
-class CFileViewToolBar : public CMFCToolBar
+class CFileViewToolBar
+    : public CMFCToolBar
 {
 	virtual void OnUpdateCmdUI(CFrameWnd* /*pTarget*/, BOOL bDisableIfNoHndler)
 	{
@@ -27,26 +28,20 @@ class CFileViewToolBar : public CMFCToolBar
 
 class CFileView : public CDockablePane
 {
-// Construction
 public:
-	CFileView();
+    virtual ~CFileView();
+    CFileView();
 
 	void AdjustLayout();
 	void OnChangeVisualStyle();
 
-// Attributes
 protected:
-
 	CViewTree m_wndFileView;
 	CImageList m_FileViewImages;
 	CFileViewToolBar m_wndToolBar;
 
 protected:
 	void FillFileView();
-
-// Implementation
-public:
-	virtual ~CFileView();
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

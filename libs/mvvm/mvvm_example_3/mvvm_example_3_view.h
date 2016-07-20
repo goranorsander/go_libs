@@ -16,47 +16,49 @@
 
 #pragma once
 
+#include "mvvm_example_3_doc.h"
 
-class mvvm_example_3_view : public CView
+class mvvm_example_3_view
+    : public CFormView
 {
-protected: // create from serialization only
-	mvvm_example_3_view();
-	DECLARE_DYNCREATE(mvvm_example_3_view)
-
-// Attributes
 public:
-	mvvm_example_3_doc* GetDocument() const;
+    virtual ~mvvm_example_3_view();
 
-// Operations
-public:
-
-// Overrides
-public:
-	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
+    mvvm_example_3_view();
 
-// Implementation
+    DECLARE_DYNCREATE(mvvm_example_3_view)
+
 public:
-	virtual ~mvvm_example_3_view();
+#ifdef AFX_DESIGN_TIME
+    enum { IDD = IDD_MVVM_EXAMPLE_3_FORM };
+#endif
+
+public:
+    mvvm_example_3_doc* GetDocument() const;
+
+public:
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+
+protected:
+    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void OnInitialUpdate();
+
+public:
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const;
+    virtual void Dump(CDumpContext& dc) const;
 #endif
 
 protected:
-
-// Generated message map functions
-protected:
-	afx_msg void OnFilePrintPreview();
-	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
-#ifndef _DEBUG  // debug version in mvvm_example_3_view.cpp
+#ifndef _DEBUG  // debug version in CFormViewMDIView.cpp
 inline mvvm_example_3_doc* mvvm_example_3_view::GetDocument() const
-   { return reinterpret_cast<mvvm_example_3_doc*>(m_pDocument); }
+{
+    return reinterpret_cast<mvvm_example_3_doc*>(m_pDocument);
+}
 #endif
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_VIEW_H_INCLUDED

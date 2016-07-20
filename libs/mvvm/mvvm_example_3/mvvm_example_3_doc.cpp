@@ -9,13 +9,13 @@
 //
 
 #include "stdafx.h"
+#include "mvvm_example_3_doc.h"
+
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
 #ifndef SHARED_HANDLERS
 #include "mvvm_example_3.h"
 #endif
-
-#include "mvvm_example_3_doc.h"
 
 #include <propkey.h>
 
@@ -23,23 +23,16 @@
 #define new DEBUG_NEW
 #endif
 
-// mvvm_example_3_doc
-
 IMPLEMENT_DYNCREATE(mvvm_example_3_doc, CDocument)
 
 BEGIN_MESSAGE_MAP(mvvm_example_3_doc, CDocument)
 END_MESSAGE_MAP()
 
-
-// mvvm_example_3_doc construction/destruction
-
-mvvm_example_3_doc::mvvm_example_3_doc()
+mvvm_example_3_doc::~mvvm_example_3_doc()
 {
-	// TODO: add one-time construction code here
-
 }
 
-mvvm_example_3_doc::~mvvm_example_3_doc()
+mvvm_example_3_doc::mvvm_example_3_doc()
 {
 }
 
@@ -48,16 +41,8 @@ BOOL mvvm_example_3_doc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	// TODO: add reinitialization code here
-	// (SDI documents will reuse this document)
-
 	return TRUE;
 }
-
-
-
-
-// mvvm_example_3_doc serialization
 
 void mvvm_example_3_doc::Serialize(CArchive& ar)
 {
@@ -73,10 +58,8 @@ void mvvm_example_3_doc::Serialize(CArchive& ar)
 
 #ifdef SHARED_HANDLERS
 
-// Support for thumbnails
 void mvvm_example_3_doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
-	// Modify this code to draw the document's data
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
 
 	CString strText = _T("TODO: implement thumbnail drawing here");
@@ -94,14 +77,9 @@ void mvvm_example_3_doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 	dc.SelectObject(pOldFont);
 }
 
-// Support for Search Handlers
 void mvvm_example_3_doc::InitializeSearchContent()
 {
 	CString strSearchContent;
-	// Set search contents from document's data. 
-	// The content parts should be separated by ";"
-
-	// For example:  strSearchContent = _T("point;rectangle;circle;ole object;");
 	SetSearchContent(strSearchContent);
 }
 
@@ -125,8 +103,6 @@ void mvvm_example_3_doc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// mvvm_example_3_doc diagnostics
-
 #ifdef _DEBUG
 void mvvm_example_3_doc::AssertValid() const
 {
@@ -138,6 +114,3 @@ void mvvm_example_3_doc::Dump(CDumpContext& dc) const
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
-
-
-// mvvm_example_3_doc commands

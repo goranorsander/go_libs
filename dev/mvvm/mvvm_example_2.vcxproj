@@ -195,6 +195,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\mvvm_example_2.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\product_model.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\product_repository.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\product_repository_interface.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\product_view.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\product_view_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_example_2\Resource.h" />
@@ -204,6 +206,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\mvvm_example_2.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\product_model.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\product_repository.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\product_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\product_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_example_2\stdafx.cpp">

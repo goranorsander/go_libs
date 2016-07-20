@@ -285,7 +285,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::s
     }
     else
     {
-        const CString v(value.get().c_str());
+        const CString v(value().c_str());
         AfxSetWindowText(hWndCtrl, v);
     }
 }
@@ -309,7 +309,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::w
     }
     else
     {
-        const CString v(value.get().c_str());
+        const CString v(value().c_str());
         AfxSetWindowText(hWndCtrl, v);
     }
 }
@@ -505,7 +505,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
     }
     else
     {
-        const CString v(value.get().c_str());
+        const CString v(value().c_str());
         AfxSetWindowText(hWndCtrl, v);
     }
 }
@@ -529,7 +529,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
     }
     else
     {
-        const CString v(value.get().c_str());
+        const CString v(value().c_str());
         AfxSetWindowText(hWndCtrl, v);
     }
 }

@@ -15,5 +15,8 @@
     <ClCompile Include="..\..\libs\boost_property\test\wproperty_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\boost_property\test\anonymous_property_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

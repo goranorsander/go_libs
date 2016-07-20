@@ -1,5 +1,5 @@
-#ifndef GO_PRODUCT_VIEW_HPP_INCLUDED
-#define GO_PRODUCT_VIEW_HPP_INCLUDED
+#ifndef GO_BOOST_PRODUCT_VIEW_HPP_INCLUDED
+#define GO_BOOST_PRODUCT_VIEW_HPP_INCLUDED
 
 //
 //  product_view.h
@@ -28,9 +28,9 @@ public:
 	enum { IDD = IDD_PRODUCT_VIEW };
 #endif
 
-    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
-
 protected:
+    virtual void on_data_context_changed();
+
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
     virtual BOOL OnInitDialog();
@@ -49,4 +49,4 @@ private:
     product_view_model::ptr m_product_view_model;
 };
 
-#endif  // #ifndef GO_PRODUCT_VIEW_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PRODUCT_VIEW_HPP_INCLUDED

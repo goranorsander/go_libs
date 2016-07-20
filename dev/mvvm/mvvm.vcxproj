@@ -21,13 +21,18 @@
   <ItemGroup>
     <ClInclude Include="..\..\go\mvvm.hpp" />
     <ClInclude Include="..\..\go\mvvm\command.hpp" />
+    <ClInclude Include="..\..\go\mvvm\command_execution_observer_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\command_manager.hpp" />
     <ClInclude Include="..\..\go\mvvm\command_parameters.hpp" />
     <ClInclude Include="..\..\go\mvvm\container_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_container_changed.hpp" />
+    <ClInclude Include="..\..\go\mvvm\data_context_changed_arguments.hpp" />
+    <ClInclude Include="..\..\go\mvvm\data_context_interface.hpp" />
+    <ClInclude Include="..\..\go\mvvm\notify_container_changed_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_property_changed.hpp" />
+    <ClInclude Include="..\..\go\mvvm\notify_data_context_changed_interface.hpp" />
+    <ClInclude Include="..\..\go\mvvm\notify_property_changed_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\object.hpp" />
+    <ClInclude Include="..\..\go\mvvm\object_observer_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_array.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_associative_container.hpp" />
     <ClInclude Include="..\..\go\mvvm\observable_container.hpp" />

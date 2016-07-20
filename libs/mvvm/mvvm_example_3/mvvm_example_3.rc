@@ -338,6 +338,13 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
 
+IDD_MVVM_EXAMPLE_3_FORM    DIALOGEX  0, 0, 320, 200
+STYLE DS_SHELLFONT | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT    "TODO: Place form controls on this dialog.",IDC_STATIC,24,42,280,8
+END
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -392,6 +399,13 @@ BEGIN
         RIGHTMARGIN, 163
         TOPMARGIN, 7
         BOTTOMMARGIN, 55
+    END
+    IDD_MVVM_EXAMPLE_3_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -494,9 +508,9 @@ BEGIN
     IDS_CLASS_VIEW          "Class View"
     IDS_EXPLORER            "Explorer"
     IDS_OUTPUT_WND          "Output"
-    IDS_BUILD_TAB           "Build"
-    IDS_DEBUG_TAB           "Debug"
-    IDS_FIND_TAB            "Find"
+    IDS_ALL_MVVM_EVENTS_TAB "All MVVM Events"
+    IDS_COMMAND_EVENTS_TAB  "Command Events"
+    IDS_OBSERVABLE_OBJECT_EVENTS_TAB "Observable Object Events"
     IDS_PROPERTIES_WND      "Properties"
     IDS_EDIT_MENU           "Edit"
 END

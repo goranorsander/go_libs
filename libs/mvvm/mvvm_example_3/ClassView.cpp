@@ -14,7 +14,11 @@
 #include "Resource.h"
 #include "mvvm_example_3.h"
 
-class CClassViewMenuButton : public CMFCToolBarMenuButton
+namespace
+{
+
+class CClassViewMenuButton
+    : public CMFCToolBarMenuButton
 {
 	friend class CClassView;
 
@@ -41,17 +45,17 @@ public:
 
 IMPLEMENT_SERIAL(CClassViewMenuButton, CMFCToolBarMenuButton, 1)
 
+}
+
 //////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
+
+CClassView::~CClassView()
+{
+}
 
 CClassView::CClassView()
 {
 	m_nCurrSort = ID_SORTING_GROUPBYTYPE;
-}
-
-CClassView::~CClassView()
-{
 }
 
 BEGIN_MESSAGE_MAP(CClassView, CDockablePane)
@@ -69,9 +73,6 @@ BEGIN_MESSAGE_MAP(CClassView, CDockablePane)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_SORTING_GROUPBYTYPE, ID_SORTING_SORTBYACCESS, OnUpdateSort)
 END_MESSAGE_MAP()
 
-/////////////////////////////////////////////////////////////////////////////
-// CClassView message handlers
-
 int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
@@ -80,27 +81,22 @@ int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CRect rectDummy;
 	rectDummy.SetRectEmpty();
 
-	// Create views:
 	const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
 
 	if (!m_wndClassView.Create(dwViewStyle, rectDummy, this, 2))
 	{
 		TRACE0("Failed to create Class View\n");
-		return -1;      // fail to create
+		return -1;
 	}
 
-	// Load images:
 	m_wndToolBar.Create(this, AFX_DEFAULT_TOOLBAR_STYLE, IDR_SORT);
-	m_wndToolBar.LoadToolBar(IDR_SORT, 0, 0, TRUE /* Is locked */);
+	m_wndToolBar.LoadToolBar(IDR_SORT, 0, 0, TRUE);
 
 	OnChangeVisualStyle();
 
 	m_wndToolBar.SetPaneStyle(m_wndToolBar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
 	m_wndToolBar.SetPaneStyle(m_wndToolBar.GetPaneStyle() & ~(CBRS_GRIPPER | CBRS_SIZE_DYNAMIC | CBRS_BORDER_TOP | CBRS_BORDER_BOTTOM | CBRS_BORDER_LEFT | CBRS_BORDER_RIGHT));
-
 	m_wndToolBar.SetOwner(this);
-
-	// All commands will be routed via this control , not via the parent frame:
 	m_wndToolBar.SetRouteCommandsViaFrame(FALSE);
 
 	CMenu menuSort;
@@ -118,7 +114,6 @@ int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		pButton->SetMessageWnd(this);
 	}
 
-	// Fill in some static tree view data (dummy code, nothing magic here)
 	FillClassView();
 
 	return 0;
@@ -283,7 +278,7 @@ void CClassView::OnNewFolder()
 
 void CClassView::OnPaint()
 {
-	CPaintDC dc(this); // device context for painting
+	CPaintDC dc(this);
 
 	CRect rectTree;
 	m_wndClassView.GetWindowRect(rectTree);

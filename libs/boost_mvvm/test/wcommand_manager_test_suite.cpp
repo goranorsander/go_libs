@@ -210,7 +210,7 @@ public:
             boost::shared_ptr<spaceship> ship = boost::dynamic_pointer_cast<spaceship>(o);
             if(ship)
             {
-                const ship_and_property_type ship_and_property(ship->name.get(), a->property_name());
+                const ship_and_property_type ship_and_property(ship->name(), a->property_name());
                 const on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
                 if(it == _on_property_changed_count.end())
                 {
@@ -242,6 +242,7 @@ private:
     on_property_changed_counter_type _on_property_changed_count;
 };
 
+#if BOOST_MSVC > 1500
 #define TEST_CASE_SHIPYARD \
     m::wcommand_manager::ptr cmd_mgr = m::wcommand_manager::create(); \
 \
@@ -258,6 +259,24 @@ private:
     observer->connect(ship3); \
     observer->connect(ship4); \
     observer->connect(ship5);
+#else
+#define TEST_CASE_SHIPYARD \
+    m::wcommand_manager::ptr cmd_mgr = m::wcommand_manager::create(); \
+\
+    boost::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, L"USS Enterprise", L"Captain James T Kirk")); \
+    boost::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, L"Millennium Falcon", L"Han Solo")); \
+    boost::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, L"Executor", L"Lord Darth Vader")); \
+    boost::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, L"Battlestar Galactica", L"Admiral William Adama")); \
+    boost::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds")); \
+\
+    boost::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
+\
+    observer->connect(ship1); \
+    observer->connect(ship2); \
+    observer->connect(ship3); \
+    observer->connect(ship4); \
+    observer->connect(ship5);
+#endif  // BOOST_MSVC > 1500
 
 TEST(boost_wcommand_manager_test_suite, test_wcommand_manager)
 {
@@ -330,11 +349,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     TEST_CASE_SHIPYARD
 
     // Verify first captain
-    EXPECT_EQ(true, ship1->captain.get() == std::wstring(L"Captain James T Kirk"));
-    EXPECT_EQ(true, ship2->captain.get() == std::wstring(L"Han Solo"));
-    EXPECT_EQ(true, ship3->captain.get() == std::wstring(L"Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain.get() == std::wstring(L"Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain.get() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == std::wstring(L"Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain() == std::wstring(L"Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == std::wstring(L"Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == std::wstring(L"Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
     // Verify initial 'on property changed' count
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
@@ -346,11 +365,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     // Give Mr Spock command of USS Enterprise
     ship1->captain = L"Mr Spock";
 
-    EXPECT_EQ(true, ship1->captain.get() == std::wstring(L"Mr Spock"));
-    EXPECT_EQ(true, ship2->captain.get() == std::wstring(L"Han Solo"));
-    EXPECT_EQ(true, ship3->captain.get() == std::wstring(L"Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain.get() == std::wstring(L"Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain.get() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == std::wstring(L"Mr Spock"));
+    EXPECT_EQ(true, ship2->captain() == std::wstring(L"Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == std::wstring(L"Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == std::wstring(L"Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
     EXPECT_EQ(1, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
@@ -361,11 +380,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     // Return command of USS Enterprise to Captain Kirk
     ship1->captain = L"Captain James T Kirk";
 
-    EXPECT_EQ(true, ship1->captain.get() == std::wstring(L"Captain James T Kirk"));
-    EXPECT_EQ(true, ship2->captain.get() == std::wstring(L"Han Solo"));
-    EXPECT_EQ(true, ship3->captain.get() == std::wstring(L"Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain.get() == std::wstring(L"Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain.get() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == std::wstring(L"Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain() == std::wstring(L"Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == std::wstring(L"Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == std::wstring(L"Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
     EXPECT_EQ(2, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));

@@ -28,9 +28,9 @@ public:
 	enum { IDD = IDD_PRODUCT_VIEW };
 #endif
 
-    void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
-
 protected:
+    virtual void on_data_context_changed();
+
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
     virtual BOOL OnInitDialog();
@@ -47,7 +47,7 @@ protected:
 private:
     m::wcommand_manager::wptr m_command_manager;
     product_view_model::ptr m_product_view_model;
-    s::slot_key_type m_on_property_changed_slot_key;
+    s::slot_key_type m_on_data_context_changed_slot_key;
 };
 
 #endif  // #ifndef GO_PRODUCT_VIEW_HPP_INCLUDED

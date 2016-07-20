@@ -25,11 +25,12 @@ class CClassToolBar : public CMFCToolBar
 	virtual BOOL AllowShowOnList() const { return FALSE; }
 };
 
-class CClassView : public CDockablePane
+class CClassView
+    : public CDockablePane
 {
 public:
-	CClassView();
-	virtual ~CClassView();
+    virtual ~CClassView();
+    CClassView();
 
 	void AdjustLayout();
 	void OnChangeVisualStyle();
@@ -42,7 +43,6 @@ protected:
 
 	void FillClassView();
 
-// Overrides
 public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 

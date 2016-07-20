@@ -164,8 +164,9 @@ TEST(boost_observable_multimap_test_suite, test_insert_single_element)
     m->insert(m::observable_multimap<int, int>::value_type(3, 30));
     EXPECT_EQ(7, m->size());
 
+    typedef m::observable_multimap<int, int> observable_multimap_type;
     int count = 0;
-    for(const m::observable_multimap<int, int>::value_type& i : *m)
+    BOOST_FOREACH(const observable_multimap_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -578,8 +579,9 @@ TEST(boost_observable_multimap_test_suite, test_swap)
     EXPECT_EQ(7, m1->size());
     EXPECT_EQ(5, m2->size());
 
+    typedef m::observable_multimap<int, int> observable_multimap_type;
     int count = 0;
-    for(const m::observable_multimap<int, int>::value_type& i : *m1)
+    BOOST_FOREACH(const observable_multimap_type::value_type& i, *m1)
     {
         ++count;
         EXPECT_EQ(count*10, i.first);
@@ -588,7 +590,7 @@ TEST(boost_observable_multimap_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const m::observable_multimap<int, int>::value_type& i : *m2)
+    BOOST_FOREACH(const observable_multimap_type::value_type& i, *m2)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -652,6 +654,8 @@ TEST(boost_observable_multimap_test_suite, test_clear)
     EXPECT_EQ(0, o.total_change_added());
     EXPECT_EQ(7, o.total_change_removed());
 }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
 TEST(boost_observable_multimap_test_suite, test_emplace)
 {
@@ -718,6 +722,10 @@ TEST(boost_observable_multimap_test_suite, test_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
+#endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
 TEST(boost_observable_multimap_test_suite, test_emplace_hint)
 {
     // Test emplace hint
@@ -782,5 +790,7 @@ TEST(boost_observable_multimap_test_suite, test_emplace_hint)
     EXPECT_EQ(4, o.total_change_added());
     EXPECT_EQ(0, o.total_change_removed());
 }
+
+#endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
 }

@@ -21,7 +21,7 @@
 
 #include <boost/container/static_vector.hpp>
 
-#include <go_boost/mvvm/notify_container_changed.hpp>
+#include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_sequence_container.hpp>
 
 namespace go_boost
@@ -192,8 +192,6 @@ public:
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
-    friend ptr boost::make_shared<this_type>();
-
 public:
     virtual ~observable_array()
     {
@@ -208,7 +206,21 @@ protected:
 public:
     static ptr create()
     {
-        return boost::make_shared<this_type>();
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler()
+                : this_type()
+            {
+            }
+        };
+
+        return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 };
 
@@ -234,8 +246,6 @@ public:
     typedef typename container_type::difference_type difference_type;
     typedef typename container_type::size_type size_type;
 
-    friend ptr boost::make_shared<this_type>();
-
 public:
     virtual ~wobservable_array()
     {
@@ -250,7 +260,21 @@ protected:
 public:
     static ptr create()
     {
-        return boost::make_shared<this_type>();
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler()
+                : this_type()
+            {
+            }
+        };
+
+        return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 };
 

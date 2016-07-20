@@ -31,4 +31,16 @@
 #include <go_boost/property/write_only_reference_property.hpp>
 #include <go_boost/property/write_only_value_property.hpp>
 
+#include <go_boost/property/anonymous/property.hpp>
+#include <go_boost/property/anonymous/reference_property.hpp>
+#include <go_boost/property/anonymous/value_property.hpp>
+
+#include <go_boost/property/anonymous/read_only_property.hpp>
+#include <go_boost/property/anonymous/read_only_reference_property.hpp>
+#include <go_boost/property/anonymous/read_only_value_property.hpp>
+
+#include <go_boost/property/anonymous/write_only_property.hpp>
+#include <go_boost/property/anonymous/write_only_reference_property.hpp>
+#include <go_boost/property/anonymous/write_only_value_property.hpp>
+
 #endif  // #ifndef GO_BOOST_PROPERTY_HPP_INCLUDED

@@ -13,19 +13,20 @@
 
 #pragma once
 
-#include <map>
-
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
 
 #include "product_model.hpp"
+#include "product_repository_interface.hpp"
 
+namespace ap = go::property::anonymous;
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace rop = go::property::read_only;
 
 class product_view_model
     : public m::wobservable_object
+    , public m::data_context_interface<product_model::ptr>
 {
 public:
     typedef product_view_model this_type;
@@ -51,17 +52,26 @@ private:
     void bind_properties();
 
 public:
-    p::wproperty<int> product_id;
-    p::wproperty<product_model::ptr> current_product;
+    p::wproperty<product_model::product_id_type> product_id;
+    p::wproperty<product_model::product_id_type> current_product_id;
+    p::wproperty<std::wstring> current_product_name;
+    p::wproperty<double> current_unit_price;
+
     rop::wproperty<m::wcommand::ptr> get_product_command;
     rop::wproperty<m::wcommand::ptr> save_product_command;
 
 private:
-    int get_product_id() const;
-    void set_product_id(const int& v);
+    product_model::product_id_type get_product_id() const;
+    void set_product_id(const product_model::product_id_type& v);
 
-    product_model::ptr get_current_product() const;
-    void set_current_product(const product_model::ptr& v);
+    product_model::product_id_type get_current_product_id() const;
+    void set_current_product_id(const product_model::product_id_type& v);
+
+    std::wstring get_current_product_name() const;
+    void set_current_product_name(const std::wstring& v);
+
+    double get_current_unit_price() const;
+    void set_current_unit_price(const double& v);
 
     m::wcommand::ptr get_get_product_command();
     void get_product(const m::command_parameters::ptr& /*params*/);
@@ -72,14 +82,13 @@ private:
     bool can_save_product(const m::command_parameters::ptr& /*params*/) const;
 
 private:
-    int _product_id;
-    product_model::ptr _current_product;
+    product_model::product_id_type _product_id;
     m::wcommand::ptr _get_product_command;
     m::wcommand::ptr _save_product_command;
 
-    typedef std::map<int, product_model::ptr> products_type;
-
-    products_type _products;
+    product_repository_interface::ptr _products;
 };
+
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(ap::property, product_view_model::ptr)
 
 #endif  // #ifndef GO_PRODUCT_VIEW_MODEL_HPP_INCLUDED

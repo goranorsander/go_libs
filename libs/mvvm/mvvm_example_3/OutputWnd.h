@@ -13,18 +13,19 @@
 
 #pragma once
 
+#include <go/mvvm/command_execution_observer_interface.hpp>
+#include <go/mvvm/object_observer_interface.hpp>
+
+namespace m = go::mvvm;
+
 /////////////////////////////////////////////////////////////////////////////
-// COutputList window
 
-class COutputList : public CListBox
+class COutputList
+    : public CListBox
 {
-// Construction
 public:
-	COutputList();
-
-// Implementation
-public:
-	virtual ~COutputList();
+    virtual ~COutputList();
+    COutputList();
 
 protected:
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
@@ -35,32 +36,34 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-class COutputWnd : public CDockablePane
+/////////////////////////////////////////////////////////////////////////////
+
+class COutputWnd
+    : public CDockablePane
+    , public m::wcommand_execution_wobserver_interface
+    , public m::object_wobserver_interface
 {
-// Construction
 public:
-	COutputWnd();
+    virtual ~COutputWnd();
+    COutputWnd();
 
 	void UpdateFonts();
 
-// Attributes
+    virtual void on_command_executed(const m::wcommand::ptr& c);
+    virtual void on_command_not_executed(const m::wcommand::ptr& c);
+
+    virtual void on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a);
+    virtual void on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a);
+
 protected:
 	CMFCTabCtrl	m_wndTabs;
 
-	COutputList m_wndOutputBuild;
-	COutputList m_wndOutputDebug;
-	COutputList m_wndOutputFind;
+	COutputList m_wndOutputAllMvvmEvents;
+	COutputList m_wndOutputCommandEvents;
+	COutputList m_wndOutputObservableObjectEvents;
 
 protected:
-	void FillBuildWindow();
-	void FillDebugWindow();
-	void FillFindWindow();
-
 	void AdjustHorzScroll(CListBox& wndListBox);
-
-// Implementation
-public:
-	virtual ~COutputWnd();
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

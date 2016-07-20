@@ -3,6 +3,7 @@
 // Used by mvvm_example_3.rc
 //
 #define IDD_ABOUTBOX				100
+#define IDD_MVVM_EXAMPLE_3_FORM     101
 #define IDR_POPUP_EDIT				119
 #define ID_STATUSBAR_PANE1			120
 #define ID_STATUSBAR_PANE2			121
@@ -65,9 +66,9 @@
 #define IDR_OUTPUT_POPUP			182
 #define IDR_PROPERTIES				183
 #define IDB_PROPERTIES_HC			184
-#define IDS_BUILD_TAB				300
-#define IDS_DEBUG_TAB				301
-#define IDS_FIND_TAB				302
+#define IDS_ALL_MVVM_EVENTS_TAB		300
+#define IDS_COMMAND_EVENTS_TAB		301
+#define IDS_OBSERVABLE_OBJECT_EVENTS_TAB	302
 #define IDS_EXPLORER				305
 #define IDS_EDIT_MENU				306
 

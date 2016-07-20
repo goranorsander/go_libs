@@ -19,7 +19,7 @@
     <ClInclude Include="..\..\go\mvvm.hpp">
       <Filter>go</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\notify_property_changed.hpp">
+    <ClInclude Include="..\..\go\mvvm\notify_property_changed_interface.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\property_changed_arguments.hpp">
@@ -46,7 +46,7 @@
     <ClInclude Include="..\..\go\mvvm\container_changed_arguments.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\notify_container_changed.hpp">
+    <ClInclude Include="..\..\go\mvvm\notify_container_changed_interface.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp">
@@ -108,6 +108,21 @@
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\utility\mfc_dlgdata.hpp">
       <Filter>go\mvvm\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\object_observer_interface.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\command_execution_observer_interface.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\notify_data_context_changed_interface.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\data_context_changed_arguments.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\data_context_interface.hpp">
+      <Filter>go\mvvm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,7 +11,10 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/mvvm/command_execution_observer_interface.hpp>
 #include <go/mvvm/command_manager.hpp>
+#include <go/mvvm/data_context_interface.hpp>
+#include <go/mvvm/object_observer_interface.hpp>
 #include <go/mvvm/observable_array.hpp>
 #include <go/mvvm/observable_deque.hpp>
 #include <go/mvvm/observable_forward_list.hpp>

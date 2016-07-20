@@ -33,9 +33,17 @@ public:
     typedef value<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value() = default;
+#else
+	virtual ~value() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     value() = default;
+#else
+	value() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit value(const value& v)
         : _property_guard()

@@ -22,7 +22,7 @@
 #include <boost/make_shared.hpp>
 #include <boost/unordered_set.hpp>
 
-#include <go_boost/mvvm/notify_container_changed.hpp>
+#include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_unordered_associative_container.hpp>
 
 namespace go_boost
@@ -321,6 +321,7 @@ protected:
 public:
     static ptr create()
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -329,11 +330,15 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -342,10 +347,14 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
+#else
+        return boost::shared_ptr<this_type>(new this_type(first, last));
+#endif // BOOST_MSVC > 1500
     }
 
     static ptr create(const this_type& x)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -354,6 +363,9 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler, const this_type&>(x);
+#else
+        return boost::shared_ptr<this_type>(new this_type(x));
+#endif // BOOST_MSVC > 1500
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -496,6 +508,7 @@ protected:
 public:
     static ptr create()
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -504,11 +517,15 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 
     template <class InputIterator>
     static ptr create(InputIterator first, InputIterator last)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -517,10 +534,14 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
+#else
+        return boost::shared_ptr<this_type>(new this_type(first, last));
+#endif // BOOST_MSVC > 1500
     }
 
     static ptr create(const this_type& x)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -529,6 +550,9 @@ public:
         };
 
         return boost::make_shared<make_shared_enabler, const this_type&>(x);
+#else
+        return boost::shared_ptr<this_type>(new this_type(x));
+#endif // BOOST_MSVC > 1500
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)

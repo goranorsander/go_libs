@@ -199,6 +199,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\boost_mvvm_example_1.h" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_model.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository_interface.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view_model.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\Resource.h" />
@@ -208,6 +210,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\boost_mvvm_example_1.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_model.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view_model.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\stdafx.cpp">

@@ -17,31 +17,28 @@
 #include "OutputWnd.h"
 #include "PropertiesWnd.h"
 
-class CMainFrame : public CMDIFrameWndEx
+#include <go/mvvm.hpp>
+
+namespace m = go::mvvm;
+
+class CMainFrame
+    : public CMDIFrameWndEx
 {
 	DECLARE_DYNAMIC(CMainFrame)
 public:
-	CMainFrame();
+    virtual ~CMainFrame();
+    CMainFrame(const m::wcommand_manager::ptr& command_manager);
 
-// Attributes
-public:
-
-// Operations
-public:
-
-// Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-// Implementation
 public:
-	virtual ~CMainFrame();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
 #endif
 
-protected:  // control bar embedded members
+protected:
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;
 	CMFCStatusBar     m_wndStatusBar;
@@ -50,7 +47,6 @@ protected:  // control bar embedded members
 	COutputWnd        m_wndOutput;
 	CPropertiesWnd    m_wndProperties;
 
-// Generated message map functions
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnWindowManager();
@@ -61,6 +57,9 @@ protected:
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
+
+private:
+    m::wcommand_manager::wptr m_command_manager;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_MAINFRM_H_INCLUDED

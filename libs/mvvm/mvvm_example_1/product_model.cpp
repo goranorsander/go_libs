@@ -49,17 +49,17 @@ void product_model::bind_properties()
     unit_price.setter(std::bind(&product_model::set_unit_price, this, ph::_1));
 }
 
-int product_model::get_product_id() const
+product_model::product_id_type product_model::get_product_id() const
 {
     return _product_id;
 }
 
-void product_model::set_product_id(const int& v)
+void product_model::set_product_id(const product_model::product_id_type& v)
 {
     if(v != _product_id)
     {
         _product_id = v;
-        on_property_changed(L"product_id");
+        on_property_changed(product_id.name());
     }
 }
 
@@ -73,7 +73,7 @@ void product_model::set_product_name(const std::wstring& v)
     if(v != _product_name)
     {
         _product_name = v;
-        on_property_changed(L"product_name");
+        on_property_changed(product_name.name());
     }
 }
 
@@ -87,6 +87,6 @@ void product_model::set_unit_price(const double& v)
     if(v != _unit_price)
     {
         _unit_price = v;
-        on_property_changed(L"unit_price");
+        on_property_changed(unit_price.name());
     }
 }

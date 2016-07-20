@@ -155,7 +155,11 @@ private:
 
 TEST(boost_wobservable_object_test_suite, test_wobservable_object)
 {
+#if BOOST_MSVC > 1500
     boost::shared_ptr<spaceship> m = boost::make_shared<spaceship>();
+#else
+    boost::shared_ptr<spaceship> m(new spaceship());
+#endif   // BOOST_MSVC > 1500
     spaceship_observer o;
 
     o.connect(*m);

@@ -9,7 +9,15 @@
 //
 
 #include "stdafx.h"
+#include <boost/config.hpp>
+#include <boost/predef.h>
+
+#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
+#pragma message("Boost.Phoenix is not supported by this compiler")
+#else
+
 #include "product_view_model.hpp"
+#include "product_repository.hpp"
 
 #include <go_boost/mvvm/utility.hpp>
 
@@ -23,14 +31,16 @@ product_view_model::~product_view_model()
 
 product_view_model::product_view_model()
     : m::wobservable_object()
+    , m::data_context_interface<product_model::ptr>(product_model::create())
     , boost::noncopyable()
     , _product_id(0)
-    , _current_product(product_model::create())
     , _get_product_command()
     , _save_product_command()
-    , _products()
+    , _products(product_repository::create())
     , product_id(L"product_id")
-    , current_product(L"current_product")
+    , current_product_id(L"current_product_id")
+    , current_product_name(L"current_product_name")
+    , current_unit_price(L"current_unit_price")
     , get_product_command(L"get_product_command")
     , save_product_command(L"save_product_command")
 {
@@ -53,27 +63,73 @@ void product_view_model::bind_properties()
 {
     product_id.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_product_id)));
     product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(product_id.name(), boost::bind(&product_view_model::on_property_changed, this, _1), bp::ref(_product_id), bph::arg1));
-    current_product.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_current_product)));
-    current_product.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(current_product.name(), boost::bind(&product_view_model::on_property_changed, this, _1), bp::ref(_current_product), bph::arg1));
-    get_product_command.getter(boost::bind(&product_view_model::get_get_product_command, this));
-    save_product_command.getter(boost::bind(&product_view_model::get_save_product_command, this));
+    current_product_id.getter(boost::bind(&product_view_model::get_current_product_id, this));
+    current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, _1));
+    current_product_name.getter(boost::bind(&product_view_model::get_current_product_name, this));
+    current_product_name.setter(boost::bind(&product_view_model::set_current_product_name, this, _1));
+    current_unit_price.getter(boost::bind(&product_view_model::get_current_unit_price, this));
+    current_unit_price.setter(boost::bind(&product_view_model::set_current_unit_price, this, _1));
+    get_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"get_product", boost::bind(&product_view_model::get_product, this, _1), boost::bind(&product_view_model::can_get_product, this, _1), m::command_parameters::create(), bp::ref(_get_product_command)));
+    save_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(L"save_product", boost::bind(&product_view_model::save_product, this, _1), boost::bind(&product_view_model::can_save_product, this, _1), m::command_parameters::create(), bp::ref(_save_product_command)));
 }
 
-m::wcommand::ptr product_view_model::get_get_product_command()
+product_model::product_id_type product_view_model::get_current_product_id() const
 {
-    if(!_get_product_command)
+    if(data_context.get())
     {
-        _get_product_command = m::relay_wcommand::create(L"get_product", boost::bind(&product_view_model::get_product, this, _1), boost::bind(&product_view_model::can_get_product, this, _1), m::command_parameters::create());
+        return data_context.get()->product_id;
     }
-    return _get_product_command;
+    return 0;
+}
+
+void product_view_model::set_current_product_id(const product_model::product_id_type& v)
+{
+    if(data_context.get())
+    {
+        data_context.get()->product_id = v;
+    }
+}
+
+std::wstring product_view_model::get_current_product_name() const
+{
+    if(data_context.get())
+    {
+        return data_context.get()->product_name;
+    }
+    return std::wstring();
+}
+
+void product_view_model::set_current_product_name(const std::wstring& v)
+{
+    if(data_context.get())
+    {
+        data_context.get()->product_name = v;
+    }
+}
+
+double product_view_model::get_current_unit_price() const
+{
+    if(data_context.get())
+    {
+        return data_context.get()->unit_price;
+    }
+    return 0.0;
+}
+
+void product_view_model::set_current_unit_price(const double& v)
+{
+    if(data_context.get())
+    {
+        data_context.get()->unit_price = v;
+    }
 }
 
 void product_view_model::get_product(const m::command_parameters::ptr& /*params*/)
 {
-    products_type::const_iterator it = _products.find(product_id);
-    if(it != _products.end())
+    product_model::ptr product = _products->get(product_id);
+    if(product)
     {
-        current_product = it->second;
+        data_context = product;
     }
     else
     {
@@ -81,7 +137,7 @@ void product_view_model::get_product(const m::command_parameters::ptr& /*params*
         new_product->product_id = product_id;
         new_product->product_name = L"New product";
         new_product->unit_price = 10.0;
-        current_product = new_product;
+        data_context = new_product;
     }
 }
 
@@ -90,21 +146,18 @@ bool product_view_model::can_get_product(const m::command_parameters::ptr& /*par
     return true;
 }
 
-m::wcommand::ptr product_view_model::get_save_product_command()
-{
-    if(!_save_product_command)
-    {
-        _save_product_command = m::relay_wcommand::create(L"save_product", boost::bind(&product_view_model::save_product, this, _1), boost::bind(&product_view_model::can_save_product, this, _1), m::command_parameters::create());
-    }
-    return _save_product_command;
-}
-
 void product_view_model::save_product(const m::command_parameters::ptr& /*params*/)
 {
-    _products[product_id] = current_product;
+    product_model::ptr product = _products->get(current_product_id);
+    if(!product)
+    {
+        _products->insert(data_context);
+    }
 }
 
 bool product_view_model::can_save_product(const m::command_parameters::ptr& /*params*/) const
 {
     return true;
 }
+
+#endif  // Boost.Phoenix is not supported by this compiler

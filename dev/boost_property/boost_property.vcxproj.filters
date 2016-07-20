@@ -13,6 +13,12 @@
     </Filter>
     <Filter Include="go_boost\property\policy">
     </Filter>
+    <Filter Include="go_boost\property\anonymous">
+      <UniqueIdentifier>{46d3f065-2607-49e4-804b-7e3b9b52beb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go_boost\property\anonymous\detail">
+      <UniqueIdentifier>{76f78fbb-06f3-454d-bb4e-d63538a7571b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\property.hpp">
@@ -65,6 +71,48 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\property\write_only_value_property.hpp">
       <Filter>go_boost\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\detail\property_base.hpp">
+      <Filter>go_boost\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\detail\read_only_property_base.hpp">
+      <Filter>go_boost\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\detail\write_only_property_base.hpp">
+      <Filter>go_boost\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_reference_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_value_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\reference_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\value_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_reference_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_value_property.hpp">
+      <Filter>go_boost\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\arithmetic_comparison_operators.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\anonymous\detail\arithmetic_comparison_operators.hpp">
+      <Filter>go_boost\property\anonymous\detail</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,6 +26,7 @@ public:
     typedef product_model this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
+    typedef int product_id_type;
 
 public:
     virtual ~product_model() = default;
@@ -46,12 +47,12 @@ private:
     void bind_properties();
 
 public:
-    p::wproperty<int> product_id;
+    p::wproperty<product_id_type> product_id;
     p::wproperty<std::wstring> product_name;
     p::wproperty<double> unit_price;
 
 private:
-    int _product_id;
+    product_id_type _product_id;
     std::wstring _product_name;
     double _unit_price;
 };

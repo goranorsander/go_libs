@@ -34,7 +34,11 @@ public:
     typedef reference<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference() = default;
+#else
+    virtual ~reference() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference()
         : _property_guard()

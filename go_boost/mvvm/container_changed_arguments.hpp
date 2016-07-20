@@ -31,15 +31,10 @@ public:
     typedef boost::shared_ptr<this_type> ptr;
     typedef boost::weak_ptr<this_type> wptr;
 
-    friend ptr boost::make_shared<this_type, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&);
-
 public:
     virtual ~container_changed_arguments()
     {
     }
-
-private:
-    container_changed_arguments(const container_changed_arguments&);
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
@@ -52,9 +47,23 @@ protected:
     }
 
 public:
-    static ptr create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    static boost::shared_ptr<container_changed_arguments> create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
-        return boost::make_shared<this_type, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+                : this_type(action, added_elements, removed_elements, new_size)
+            {
+            }
+        };
+
+        return boost::make_shared<make_shared_enabler, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);
+#else
+        return boost::shared_ptr<this_type>(new this_type(action, added_elements, removed_elements, new_size));
+#endif // BOOST_MSVC > 1500
     }
 
     notify_container_changed_action action() const

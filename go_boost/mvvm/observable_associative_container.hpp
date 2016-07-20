@@ -19,7 +19,7 @@
 #pragma once
 #endif
 
-#include <go_boost/mvvm/notify_container_changed.hpp>
+#include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_container.hpp>
 
 namespace go_boost

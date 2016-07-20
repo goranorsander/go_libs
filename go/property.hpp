@@ -23,4 +23,16 @@
 #include <go/property/write_only_reference_property.hpp>
 #include <go/property/write_only_value_property.hpp>
 
+#include <go/property/anonymous/property.hpp>
+#include <go/property/anonymous/reference_property.hpp>
+#include <go/property/anonymous/value_property.hpp>
+
+#include <go/property/anonymous/read_only_property.hpp>
+#include <go/property/anonymous/read_only_reference_property.hpp>
+#include <go/property/anonymous/read_only_value_property.hpp>
+
+#include <go/property/anonymous/write_only_property.hpp>
+#include <go/property/anonymous/write_only_reference_property.hpp>
+#include <go/property/anonymous/write_only_value_property.hpp>
+
 #endif  // #ifndef GO_PROPERTY_HPP_INCLUDED

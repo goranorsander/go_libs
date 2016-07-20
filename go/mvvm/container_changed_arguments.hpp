@@ -54,7 +54,7 @@ protected:
     }
 
 public:
-    static ptr create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    static std::shared_ptr<container_changed_arguments> create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
         struct make_shared_enabler
             : public this_type

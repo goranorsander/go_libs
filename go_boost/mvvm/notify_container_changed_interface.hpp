@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_HPP_INCLUDED
-#define GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_INTERFACE_HPP_INCLUDED
 
 //
-//  notify_container_changed.hpp
+//  notify_container_changed_interface.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -29,20 +29,18 @@ namespace go_boost
 namespace mvvm
 {
 
-class notify_container_changed
+class notify_container_changed_interface
     : public go_boost::signals::slot
 {
 public:
-    typedef notify_container_changed this_type;
-    typedef container_changed_arguments container_changed_arguments_type;
-    typedef boost::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
-    typedef boost::signals2::signal<void(const object::ptr&, const container_changed_arguments_type_ptr&)> container_changed_signal;
+    typedef notify_container_changed_interface this_type;
+    typedef boost::signals2::signal<void(const boost::shared_ptr<object>&, const boost::shared_ptr<container_changed_arguments>&)> container_changed_signal;
 
 public:
-    virtual ~notify_container_changed() = 0;
+    virtual ~notify_container_changed_interface() = 0;
 
 protected:
-    notify_container_changed()
+    notify_container_changed_interface()
         : go_boost::signals::slot()
     {
     }
@@ -51,7 +49,7 @@ public:
     container_changed_signal container_changed;
 };
 
-inline notify_container_changed::~notify_container_changed()
+inline notify_container_changed_interface::~notify_container_changed_interface()
 {
     container_changed.disconnect_all_slots();
 }
@@ -59,4 +57,4 @@ inline notify_container_changed::~notify_container_changed()
 } // namespace mvvm
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_NOTIFY_CONTAINER_CHANGED_INTERFACE_HPP_INCLUDED

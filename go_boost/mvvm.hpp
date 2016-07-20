@@ -19,7 +19,10 @@
 #pragma once
 #endif
 
+#include <go_boost/mvvm/command_execution_observer_interface.hpp>
 #include <go_boost/mvvm/command_manager.hpp>
+#include <go_boost/mvvm/data_context_interface.hpp>
+#include <go_boost/mvvm/object_observer_interface.hpp>
 #include <go_boost/mvvm/observable_array.hpp>
 #include <go_boost/mvvm/observable_deque.hpp>
 #include <go_boost/mvvm/observable_forward_list.hpp>

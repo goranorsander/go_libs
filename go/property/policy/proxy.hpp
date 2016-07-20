@@ -37,7 +37,11 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~proxy() = default;
+#else
+	virtual ~proxy() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     proxy()
         : _property_guard()

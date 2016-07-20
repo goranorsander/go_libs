@@ -18,19 +18,17 @@
 #pragma once
 
 
-class mvvm_example_3_doc : public CDocument
+class mvvm_example_3_doc
+    : public CDocument
 {
-protected: // create from serialization only
-	mvvm_example_3_doc();
+public:
+    virtual ~mvvm_example_3_doc();
+
+protected:
+    mvvm_example_3_doc();
+
 	DECLARE_DYNCREATE(mvvm_example_3_doc)
 
-// Attributes
-public:
-
-// Operations
-public:
-
-// Overrides
 public:
 	virtual BOOL OnNewDocument();
 	virtual void Serialize(CArchive& ar);
@@ -39,17 +37,12 @@ public:
 	virtual void OnDrawThumbnail(CDC& dc, LPRECT lprcBounds);
 #endif // SHARED_HANDLERS
 
-// Implementation
 public:
-	virtual ~mvvm_example_3_doc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
 #endif
 
-protected:
-
-// Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
 

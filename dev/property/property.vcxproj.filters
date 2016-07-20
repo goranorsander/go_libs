@@ -17,6 +17,12 @@
     <Filter Include="go\property\policy">
       <UniqueIdentifier>{014abdf5-ff1e-4f55-b624-8b82dd5638b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\property\anonymous">
+      <UniqueIdentifier>{2b810128-31fa-4e23-972c-2ebe52880ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go\property\anonymous\detail">
+      <UniqueIdentifier>{3af6f611-620e-4c61-b6e7-f50970307cf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\property.hpp">
@@ -69,6 +75,48 @@
     </ClInclude>
     <ClInclude Include="..\..\go\property\write_only_value_property.hpp">
       <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\detail\property_base.hpp">
+      <Filter>go\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\detail\read_only_property_base.hpp">
+      <Filter>go\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\detail\write_only_property_base.hpp">
+      <Filter>go\property\anonymous\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\read_only_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\read_only_reference_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\read_only_value_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\reference_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\value_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\write_only_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\write_only_reference_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\write_only_value_property.hpp">
+      <Filter>go\property\anonymous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\arithmetic_comparison_operators.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\anonymous\detail\arithmetic_comparison_operators.hpp">
+      <Filter>go\property\anonymous\detail</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

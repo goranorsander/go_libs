@@ -165,7 +165,7 @@ TEST(boost_observable_multiset_test_suite, test_insert_single_element)
     EXPECT_EQ(7, s->size());
 
     int count = 0;
-    for(const int& i : *s)
+    BOOST_FOREACH(const int& i, *s)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -533,7 +533,7 @@ TEST(boost_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(5, s2->size());
 
     int count = 0;
-    for(const int& i : *s1)
+    BOOST_FOREACH(const int& i, *s1)
     {
         ++count;
         EXPECT_EQ(count*10, i);
@@ -541,7 +541,7 @@ TEST(boost_observable_multiset_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    for(const int& i : *s2)
+    BOOST_FOREACH(const int& i, *s2)
     {
         ++count;
         EXPECT_EQ(count, i);
@@ -605,6 +605,8 @@ TEST(boost_observable_multiset_test_suite, test_clear)
     EXPECT_EQ(7, o.total_change_removed());
 }
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
 TEST(boost_observable_multiset_test_suite, test_emplace)
 {
     // Test emplace
@@ -659,6 +661,10 @@ TEST(boost_observable_multiset_test_suite, test_emplace)
     EXPECT_EQ(0, o.total_change_removed());
 }
 
+#endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
+
 TEST(boost_observable_multiset_test_suite, test_emplace_hint)
 {
     // Test emplace hint
@@ -712,5 +718,7 @@ TEST(boost_observable_multiset_test_suite, test_emplace_hint)
     EXPECT_EQ(4, o.total_change_added());
     EXPECT_EQ(0, o.total_change_removed());
 }
+
+#endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
 }

@@ -17,7 +17,7 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/mvvm/notify_container_changed.hpp>
+#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_object.hpp>
 
 namespace go
@@ -26,7 +26,7 @@ namespace mvvm
 {
 
 template<class S, class C> class basic_observable_container
-    : public notify_container_changed
+    : public notify_container_changed_interface
     , public basic_observable_object<S>
 {
 public:
@@ -41,7 +41,7 @@ public:
 
 protected:
     basic_observable_container()
-        : notify_container_changed()
+        : notify_container_changed_interface()
         , basic_observable_object<string_type>()
     {
     }

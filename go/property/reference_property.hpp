@@ -18,6 +18,7 @@
 #else
 
 #include <string>
+#include <go/property/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/detail/property_base.hpp>
 #include <go/property/policy/reference.hpp>
 
@@ -36,7 +37,11 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_reference_property() = default;
+#else
+    virtual ~basic_reference_property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_reference_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -80,7 +85,11 @@ public:
     typedef reference_property<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_property() = default;
+#else
+    virtual ~reference_property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_property(const string_type& property_name)
         : basic_reference_property<value_type, string_type>(property_name)
@@ -104,7 +113,11 @@ public:
     typedef reference_wproperty<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_wproperty() = default;
+#else
+    virtual ~reference_wproperty() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_wproperty(const string_type& property_name)
         : basic_reference_property<value_type, string_type>(property_name)
@@ -119,85 +132,10 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-inline bool operator==(const basic_reference_property<std::string, std::string>& lhs, const std::string& rhs)
-{
-    return lhs.empty() ? false : lhs.get() == rhs;
-}
-
-inline bool operator!=(const basic_reference_property<std::string, std::string>& lhs, const std::string& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::string& lhs, const basic_reference_property<std::string, std::string>& rhs)
-{
-    return rhs.empty() ? false : lhs == rhs.get();
-}
-
-inline bool operator!=(const std::string& lhs, const basic_reference_property<std::string, std::string>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
-{
-    return lhs.empty() ? false : lhs.get() == rhs;
-}
-
-inline bool operator!=(const basic_reference_property<std::wstring, std::string>& lhs, const std::wstring& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::wstring& lhs, const basic_reference_property<std::wstring, std::string>& rhs)
-{
-    return rhs.empty() ? false : lhs == rhs.get();
-}
-
-inline bool operator!=(const std::wstring& lhs, const basic_reference_property<std::wstring, std::string>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::string, std::wstring>& lhs, const std::string& rhs)
-{
-    return lhs.empty() ? false : lhs.get() == rhs;
-}
-
-inline bool operator!=(const basic_reference_property<std::string, std::wstring>& lhs, const std::string& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::string& lhs, const basic_reference_property<std::string, std::wstring>& rhs)
-{
-    return rhs.empty() ? false : lhs == rhs.get();
-}
-
-inline bool operator!=(const std::string& lhs, const basic_reference_property<std::string, std::wstring>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const basic_reference_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
-{
-    return lhs.empty() ? false : lhs.get() == rhs;
-}
-
-inline bool operator!=(const basic_reference_property<std::wstring, std::wstring>& lhs, const std::wstring& rhs)
-{
-    return !operator==(lhs, rhs);
-}
-
-inline bool operator==(const std::wstring& lhs, const basic_reference_property<std::wstring, std::wstring>& rhs)
-{
-    return rhs.empty() ? false : lhs == rhs.get();
-}
-
-inline bool operator!=(const std::wstring& lhs, const basic_reference_property<std::wstring, std::wstring>& rhs)
-{
-    return !operator==(lhs, rhs);
-}
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::wstring)
 
 } // namespace property
 } // namespace go

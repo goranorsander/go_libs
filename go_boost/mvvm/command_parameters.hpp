@@ -37,8 +37,6 @@ public:
     typedef boost::shared_ptr<this_type> ptr;
     typedef boost::weak_ptr<this_type> wptr;
 
-    friend ptr boost::make_shared<this_type>();
-
 public:
     virtual ~command_parameters()
     {
@@ -53,7 +51,21 @@ protected:
 public:
     static ptr create()
     {
-        return boost::make_shared<this_type>();
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() {}
+            make_shared_enabler()
+                : this_type()
+            {
+            }
+        };
+
+        return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 };
 

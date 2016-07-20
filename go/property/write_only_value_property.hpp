@@ -38,7 +38,11 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_value_property() = default;
+#else
+	virtual ~basic_value_property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_value_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -62,7 +66,11 @@ public:
     typedef value_property<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_property() = default;
+#else
+	virtual ~value_property() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit value_property(const string_type& property_name)
         : basic_value_property<value_type, string_type>(property_name)
@@ -86,7 +94,11 @@ public:
     typedef value_wproperty<value_type> this_type;
 
 public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_wproperty() = default;
+#else
+    virtual ~value_wproperty() {}
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit value_wproperty(const string_type& property_name)
         : basic_value_property<value_type, string_type>(property_name)
