@@ -15,7 +15,7 @@
 
 #include <go_boost/property.hpp>
 
-namespace ap = go_boost::property::nameless;
+namespace np = go_boost::property::nameless;
 namespace roap = go_boost::property::nameless::read_only;
 namespace woap = go_boost::property::nameless::write_only;
 
@@ -26,9 +26,9 @@ namespace
 class spaceship
 {
 public:
-    ap::value_property<int> crew_complement;
-    ap::value_property<double> max_speed;
-    ap::value_property<std::string> name;
+    np::value_property<int> crew_complement;
+    np::value_property<double> max_speed;
+    np::value_property<std::string> name;
 
     spaceship()
         : crew_complement(1012)
@@ -197,9 +197,9 @@ TEST(boost_nameless_property_test_suite, write_only_value_properties)
 class reference_spaceship
 {
 public:
-    ap::reference_property<int> crew_complement;
-    ap::reference_property<double> max_speed;
-    ap::reference_property<std::string> name;
+    np::reference_property<int> crew_complement;
+    np::reference_property<double> max_speed;
+    np::reference_property<std::string> name;
 
     reference_spaceship()
         : crew_complement()
@@ -445,7 +445,7 @@ class armed_spaceship
     : public spaceship
 {
 public:
-    ap::property<int> phaser_arrays;
+    np::property<int> phaser_arrays;
 
     armed_spaceship()
         : spaceship()

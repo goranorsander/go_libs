@@ -19,7 +19,6 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace ap = go::property::nameless;
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace rop = go::property::read_only;
@@ -67,7 +66,5 @@ private:
 
     product_repository_interface::ptr _products;
 };
-
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(ap::property, product_view_model::ptr)
 
 #endif  // #ifndef GO_PRODUCT_VIEW_MODEL_HPP_INCLUDED

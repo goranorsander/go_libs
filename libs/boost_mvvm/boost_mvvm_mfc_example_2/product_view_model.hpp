@@ -19,7 +19,6 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace ap = go_boost::property::nameless;
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;

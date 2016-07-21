@@ -19,7 +19,6 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace ap = go_boost::property::nameless;
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
@@ -83,7 +82,5 @@ private:
 
     product_repository_interface::ptr _products;
 };
-
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(ap::property, product_view_model::ptr)
 
 #endif  // #ifndef GO_BOOST_PRODUCT_VIEW_MODEL_HPP_INCLUDED
