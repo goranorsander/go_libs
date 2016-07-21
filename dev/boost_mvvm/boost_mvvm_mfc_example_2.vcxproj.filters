@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="MFC Application Code">
-      <UniqueIdentifier>{0e266eae-924b-4d33-b915-b1d583cfc57f}</UniqueIdentifier>
+      <UniqueIdentifier>{6669d128-226d-43ad-ba2e-6ede633112a1}</UniqueIdentifier>
     </Filter>
     <Filter Include="MFC Application Code\Header Files">
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -14,84 +14,84 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="MVVM Example">
-      <UniqueIdentifier>{0ee37788-54e4-4644-a5f8-6a637127d526}</UniqueIdentifier>
+      <UniqueIdentifier>{7650ea35-10b5-43dc-8e58-a55b5c2e5438}</UniqueIdentifier>
     </Filter>
     <Filter Include="MVVM Example\Model">
-      <UniqueIdentifier>{5937bcb3-0f54-49d5-b0a8-e99ef140b321}</UniqueIdentifier>
+      <UniqueIdentifier>{764671b3-738e-4f03-a4cf-574d3d252e63}</UniqueIdentifier>
     </Filter>
     <Filter Include="MVVM Example\View Model">
-      <UniqueIdentifier>{a465aef6-63b1-4a97-a8a9-dafa2c600ff8}</UniqueIdentifier>
+      <UniqueIdentifier>{6d9598a2-8163-49cd-8210-36ca77e05f5a}</UniqueIdentifier>
     </Filter>
     <Filter Include="MVVM Example\View">
-      <UniqueIdentifier>{03d810c8-f6c6-41a8-b6cd-ee3cfe96c2b0}</UniqueIdentifier>
+      <UniqueIdentifier>{2db8deab-9577-4719-a775-083fdb277ef4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\boost_mvvm_example_1.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\stdafx.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\stdafx.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\targetver.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\targetver.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\Resource.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\Resource.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_model.hpp">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_model.hpp">
       <Filter>MVVM Example\Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view.hpp">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view_model.hpp">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_view_model.hpp">
       <Filter>MVVM Example\View Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository.hpp">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository.hpp">
       <Filter>MVVM Example\Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository_interface.hpp">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository_interface.hpp">
       <Filter>MVVM Example\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\boost_mvvm_example_1.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\stdafx.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\stdafx.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_model.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_model.cpp">
       <Filter>MVVM Example\Model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_view.cpp">
       <Filter>MVVM Example\View</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_view_model.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_view_model.cpp">
       <Filter>MVVM Example\View Model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\product_repository.cpp">
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository.cpp">
       <Filter>MVVM Example\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\boost_mvvm_example_1.rc">
+    <ResourceCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.rc">
       <Filter>MFC Application Code\Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\res\boost_mvvm_example_1.rc2">
+    <None Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_example_2.rc2">
       <Filter>MFC Application Code\Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\res\boost_mvvm_example_1.ico">
+    <Image Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_example_2.ico">
       <Filter>MFC Application Code\Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\libs\boost_mvvm\boost_mvvm_example_1\ReadMe.txt">
+    <Text Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\ReadMe.txt">
       <Filter>MFC Application Code</Filter>
     </Text>
   </ItemGroup>
