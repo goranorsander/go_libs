@@ -1,5 +1,5 @@
 //
-//  mvvm_example_3_doc.cpp
+//  mvvm_mfc_example_3_doc.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -9,12 +9,12 @@
 //
 
 #include "stdafx.h"
-#include "mvvm_example_3_doc.h"
+#include "mvvm_mfc_example_3_doc.h"
 
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
 #ifndef SHARED_HANDLERS
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 #endif
 
 #include <propkey.h>
@@ -23,20 +23,20 @@
 #define new DEBUG_NEW
 #endif
 
-IMPLEMENT_DYNCREATE(mvvm_example_3_doc, CDocument)
+IMPLEMENT_DYNCREATE(mvvm_mfc_example_3_doc, CDocument)
 
-BEGIN_MESSAGE_MAP(mvvm_example_3_doc, CDocument)
+BEGIN_MESSAGE_MAP(mvvm_mfc_example_3_doc, CDocument)
 END_MESSAGE_MAP()
 
-mvvm_example_3_doc::~mvvm_example_3_doc()
+mvvm_mfc_example_3_doc::~mvvm_mfc_example_3_doc()
 {
 }
 
-mvvm_example_3_doc::mvvm_example_3_doc()
+mvvm_mfc_example_3_doc::mvvm_mfc_example_3_doc()
 {
 }
 
-BOOL mvvm_example_3_doc::OnNewDocument()
+BOOL mvvm_mfc_example_3_doc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
@@ -44,7 +44,7 @@ BOOL mvvm_example_3_doc::OnNewDocument()
 	return TRUE;
 }
 
-void mvvm_example_3_doc::Serialize(CArchive& ar)
+void mvvm_mfc_example_3_doc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -58,7 +58,7 @@ void mvvm_example_3_doc::Serialize(CArchive& ar)
 
 #ifdef SHARED_HANDLERS
 
-void mvvm_example_3_doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
+void mvvm_mfc_example_3_doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
 
@@ -77,13 +77,13 @@ void mvvm_example_3_doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 	dc.SelectObject(pOldFont);
 }
 
-void mvvm_example_3_doc::InitializeSearchContent()
+void mvvm_mfc_example_3_doc::InitializeSearchContent()
 {
 	CString strSearchContent;
 	SetSearchContent(strSearchContent);
 }
 
-void mvvm_example_3_doc::SetSearchContent(const CString& value)
+void mvvm_mfc_example_3_doc::SetSearchContent(const CString& value)
 {
 	if (value.IsEmpty())
 	{
@@ -104,12 +104,12 @@ void mvvm_example_3_doc::SetSearchContent(const CString& value)
 #endif // SHARED_HANDLERS
 
 #ifdef _DEBUG
-void mvvm_example_3_doc::AssertValid() const
+void mvvm_mfc_example_3_doc::AssertValid() const
 {
 	CDocument::AssertValid();
 }
 
-void mvvm_example_3_doc::Dump(CDumpContext& dc) const
+void mvvm_mfc_example_3_doc::Dump(CDumpContext& dc) const
 {
 	CDocument::Dump(dc);
 }

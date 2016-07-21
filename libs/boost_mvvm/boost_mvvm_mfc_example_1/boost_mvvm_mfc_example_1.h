@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_MVVM_EXAMPLE_2_H_INCLUDED
-#define GO_BOOST_MVVM_EXAMPLE_2_H_INCLUDED
+#ifndef GO_BOOST_MVVM_EXAMPLE_1_H_INCLUDED
+#define GO_BOOST_MVVM_EXAMPLE_1_H_INCLUDED
 
 //
-//  boost_mvvm_example_2.h
+//  boost_mvvm_mfc_example_1.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -23,12 +23,12 @@
 
 namespace m = go_boost::mvvm;
 
-class boost_mvvm_example_2_app
+class boost_mvvm_mfc_example_1_app
     : public CWinApp
 {
 public:
-    virtual ~boost_mvvm_example_2_app();
-    boost_mvvm_example_2_app();
+    virtual ~boost_mvvm_mfc_example_1_app();
+    boost_mvvm_mfc_example_1_app();
 
 public:
 	virtual BOOL InitInstance();
@@ -41,6 +41,6 @@ private:
     m::wcommand_manager::ptr m_command_manager;
 };
 
-extern boost_mvvm_example_2_app theApp;
+extern boost_mvvm_mfc_example_1_app theApp;
 
-#endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_2_H_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_1_H_INCLUDED

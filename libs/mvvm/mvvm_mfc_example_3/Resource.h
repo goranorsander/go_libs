@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by mvvm_example_3.rc
+// Used by mvvm_mfc_example_3.rc
 //
 #define IDD_ABOUTBOX				100
 #define IDD_MVVM_EXAMPLE_3_FORM     101
@@ -14,7 +14,7 @@
 #define ID_VIEW_CUSTOMIZE			126
 #define IDR_MAINFRAME				128
 #define IDR_MAINFRAME_256			129
-#define IDR_mvvm_example_3TYPE				130
+#define IDR_mvvm_mfc_example_3TYPE				130
 #define ID_WINDOW_MANAGER			131
 #define ID_VIEW_FILEVIEW			133
 #define ID_VIEW_CLASSVIEW			134

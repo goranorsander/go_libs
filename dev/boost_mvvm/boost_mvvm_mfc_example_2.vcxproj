@@ -197,7 +197,7 @@
     <Text Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.h" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_mfc_example_2.h" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_model.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository_interface.hpp" />
@@ -208,7 +208,7 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_mfc_example_2.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_model.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_repository.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\product_view.cpp" />
@@ -221,20 +221,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.rc" />
+    <ResourceCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_mfc_example_2.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_example_2.rc2" />
+    <None Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_mfc_example_2.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_example_2.ico" />
+    <Image Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_2\res\boost_mvvm_mfc_example_2.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="\Repo\Git\go_booster\go_libs\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_example_2.rc" />
+      <UserProperties RESOURCE_FILE="\Repo\Git\go_booster\go_libs\libs\boost_mvvm\boost_mvvm_mfc_example_2\boost_mvvm_mfc_example_2.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

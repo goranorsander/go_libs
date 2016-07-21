@@ -30,7 +30,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_example_1.h">
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_mfc_example_1.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_1\stdafx.h">
@@ -59,7 +59,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_example_1.cpp">
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_mfc_example_1.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_1\stdafx.cpp">
@@ -79,17 +79,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_example_1.rc">
+    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_1\mvvm_mfc_example_1.rc">
       <Filter>MFC Application Code\Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\mvvm\mvvm_mfc_example_1\res\mvvm_example_1.rc2">
+    <None Include="..\..\libs\mvvm\mvvm_mfc_example_1\res\mvvm_mfc_example_1.rc2">
       <Filter>MFC Application Code\Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_1\res\mvvm_example_1.ico">
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_1\res\mvvm_mfc_example_1.ico">
       <Filter>MFC Application Code\Resource Files</Filter>
     </Image>
   </ItemGroup>

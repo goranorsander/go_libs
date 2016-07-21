@@ -10,7 +10,7 @@
 
 #include "stdafx.h"
 #include "ChildFrm.h"
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

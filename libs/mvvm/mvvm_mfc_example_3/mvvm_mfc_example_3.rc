@@ -46,7 +46,7 @@ BEGIN
     "\r\n"
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
     "LANGUAGE 9, 1\r\n"
-    "#include ""res\\mvvm_example_3.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""res\\mvvm_mfc_example_3.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
     "#include ""afxres.rc""      // Standard components\r\n"
     "#if !defined(_AFXDLL)\r\n"
     "#include ""afxprint.rc""        // printing/print preview resources\r\n"
@@ -69,8 +69,8 @@ END
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE 9, 1
-IDR_MAINFRAME           ICON         "res\\mvvm_example_3.ico"
-IDR_mvvm_example_3TYPE         ICON         "res\\mvvm_example_3Doc.ico"
+IDR_MAINFRAME           ICON         "res\\mvvm_mfc_example_3.ico"
+IDR_mvvm_mfc_example_3TYPE         ICON         "res\\mvvm_mfc_example_3Doc.ico"
 #endif
 IDI_FILE_VIEW           ICON         "res\\file_view.ico"
 IDI_FILE_VIEW_HC        ICON         "res\\file_view_hc.ico"
@@ -196,11 +196,11 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About mvvm_example_3...",          ID_APP_ABOUT
+        MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
     END
 END
 
-IDR_mvvm_example_3TYPE MENU
+IDR_mvvm_mfc_example_3TYPE MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -236,7 +236,7 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About mvvm_example_3...",          ID_APP_ABOUT
+        MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
     END
 END
 
@@ -294,7 +294,7 @@ END
 
 IDR_HELP_MENU MENU 
 BEGIN
-    MENUITEM "&About mvvm_example_3...",          ID_APP_ABOUT
+    MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
 END
 
 /////////////////////////////////////////////////////////////////////////////
@@ -329,11 +329,11 @@ END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About mvvm_example_3"
+CAPTION "About mvvm_mfc_example_3"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
-    LTEXT           "mvvm_example_3, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "mvvm_mfc_example_3, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
     LTEXT           "Copyright (c) Göran Orsander.  All rights reserved.",IDC_STATIC,42,26,114,8
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
@@ -370,11 +370,11 @@ BEGIN
         BLOCK "040904B0"
         BEGIN
             VALUE "CompanyName", "TODO: <Company name>"
-            VALUE "FileDescription", "mvvm_example_3"
+            VALUE "FileDescription", "mvvm_mfc_example_3"
             VALUE "FileVersion",     "1.0.0.1"
-            VALUE "InternalName",    "mvvm_example_3.exe"
+            VALUE "InternalName",    "mvvm_mfc_example_3.exe"
             VALUE "LegalCopyright", "Copyright (c) Göran Orsander.  All rights reserved."
-            VALUE "OriginalFilename","mvvm_example_3.exe"
+            VALUE "OriginalFilename","mvvm_mfc_example_3.exe"
             VALUE "ProductName", "GO.libraries"
             VALUE "ProductVersion",  "1.0.0.1"
         END
@@ -418,12 +418,12 @@ END
 STRINGTABLE
 BEGIN
 // Non-mac-targeting apps remove the two extra substrings
-    IDR_MAINFRAME           "mvvm_example_3"
-    IDR_mvvm_example_3TYPE         "\nmvvm_example_3\nmvvm_example_3\n\n\nmvvmexample3.Document\nmvvm_example_3.Document"
+    IDR_MAINFRAME           "mvvm_mfc_example_3"
+    IDR_mvvm_mfc_example_3TYPE         "\nmvvm_mfc_example_3\nmvvm_mfc_example_3\n\n\nmvvmexample3.Document\nmvvm_mfc_example_3.Document"
 END
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "mvvm_example_3"
+    AFX_IDS_APP_TITLE       "mvvm_mfc_example_3"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
 STRINGTABLE
@@ -528,7 +528,7 @@ END
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE 9, 1
-#include "res\\mvvm_example_3.rc2"  // non-Microsoft Visual C++ edited resources
+#include "res\\mvvm_mfc_example_3.rc2"  // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"      // Standard components
 #if !defined(_AFXDLL)
 #include "afxprint.rc"        // printing/print preview resources

@@ -12,7 +12,7 @@
 #include "MainFrm.h"
 #include "ClassView.h"
 #include "Resource.h"
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 
 namespace
 {

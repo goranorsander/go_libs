@@ -2,7 +2,7 @@
 #define GO_MVVM_EXAMPLE_3_DOC_H_INCLUDED
 
 //
-//  mvvm_example_3_doc.h
+//  mvvm_mfc_example_3_doc.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -11,23 +11,23 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-// mvvm_example_3_doc.h : interface of the mvvm_example_3_doc class
+// mvvm_mfc_example_3_doc.h : interface of the mvvm_mfc_example_3_doc class
 //
 
 
 #pragma once
 
 
-class mvvm_example_3_doc
+class mvvm_mfc_example_3_doc
     : public CDocument
 {
 public:
-    virtual ~mvvm_example_3_doc();
+    virtual ~mvvm_mfc_example_3_doc();
 
 protected:
-    mvvm_example_3_doc();
+    mvvm_mfc_example_3_doc();
 
-	DECLARE_DYNCREATE(mvvm_example_3_doc)
+	DECLARE_DYNCREATE(mvvm_mfc_example_3_doc)
 
 public:
 	virtual BOOL OnNewDocument();

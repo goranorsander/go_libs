@@ -1,5 +1,5 @@
 //
-//  boost_mvvm_example_1.cpp
+//  boost_mvvm_mfc_example_2.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "boost_mvvm_example_1.h"
+#include "boost_mvvm_mfc_example_2.h"
 #include "product_view.hpp"
 
 #include <memory>
@@ -18,24 +18,24 @@
 #define new DEBUG_NEW
 #endif
 
-boost_mvvm_example_1_app theApp;
+boost_mvvm_mfc_example_2_app theApp;
 
-BEGIN_MESSAGE_MAP(boost_mvvm_example_1_app, CWinApp)
+BEGIN_MESSAGE_MAP(boost_mvvm_mfc_example_2_app, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
-boost_mvvm_example_1_app::~boost_mvvm_example_1_app()
+boost_mvvm_mfc_example_2_app::~boost_mvvm_mfc_example_2_app()
 {
 }
 
-boost_mvvm_example_1_app::boost_mvvm_example_1_app()
+boost_mvvm_mfc_example_2_app::boost_mvvm_mfc_example_2_app()
     : CWinApp()
     , m_timer_id(0)
     , m_command_manager()
 {
 }
 
-BOOL boost_mvvm_example_1_app::InitInstance()
+BOOL boost_mvvm_mfc_example_2_app::InitInstance()
 {
 	CWinApp::InitInstance();
     std::unique_ptr<CShellManager> pShellManager = std::make_unique<CShellManager>();
@@ -67,7 +67,7 @@ BOOL boost_mvvm_example_1_app::InitInstance()
 	return FALSE;
 }
 
-BOOL boost_mvvm_example_1_app::PreTranslateMessage(MSG* pMsg)
+BOOL boost_mvvm_mfc_example_2_app::PreTranslateMessage(MSG* pMsg)
 {
     if(pMsg->message == WM_TIMER)
     {

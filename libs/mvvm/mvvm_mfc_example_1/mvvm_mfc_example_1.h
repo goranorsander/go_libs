@@ -2,7 +2,7 @@
 #define GO_MVVM_EXAMPLE_1_H_INCLUDED
 
 //
-//  mvvm_example_1.h
+//  mvvm_mfc_example_1.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -23,12 +23,12 @@
 
 namespace m = go::mvvm;
 
-class mvvm_example_1_app
+class mvvm_mfc_example_1_app
     : public CWinApp
 {
 public:
-    virtual ~mvvm_example_1_app();
-    mvvm_example_1_app();
+    virtual ~mvvm_mfc_example_1_app();
+    mvvm_mfc_example_1_app();
 
 public:
 	virtual BOOL InitInstance();
@@ -41,6 +41,6 @@ private:
     m::wcommand_manager::ptr m_command_manager;
 };
 
-extern mvvm_example_1_app theApp;
+extern mvvm_mfc_example_1_app theApp;
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_1_H_INCLUDED

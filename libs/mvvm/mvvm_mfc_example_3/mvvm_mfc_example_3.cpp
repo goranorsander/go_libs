@@ -1,5 +1,5 @@
 //
-//  mvvm_example_3.cpp
+//  mvvm_mfc_example_3.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -11,39 +11,39 @@
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 #include "MainFrm.h"
 
 #include "ChildFrm.h"
-#include "mvvm_example_3_doc.h"
-#include "mvvm_example_3_view.h"
+#include "mvvm_mfc_example_3_doc.h"
+#include "mvvm_mfc_example_3_view.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-mvvm_example_3_app theApp;
+mvvm_mfc_example_3_app theApp;
 
-BEGIN_MESSAGE_MAP(mvvm_example_3_app, CWinAppEx)
-	ON_COMMAND(ID_APP_ABOUT, &mvvm_example_3_app::OnAppAbout)
+BEGIN_MESSAGE_MAP(mvvm_mfc_example_3_app, CWinAppEx)
+	ON_COMMAND(ID_APP_ABOUT, &mvvm_mfc_example_3_app::OnAppAbout)
 	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
 END_MESSAGE_MAP()
 
-mvvm_example_3_app::~mvvm_example_3_app()
+mvvm_mfc_example_3_app::~mvvm_mfc_example_3_app()
 {
 }
 
-mvvm_example_3_app::mvvm_example_3_app()
+mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     : CWinAppEx()
     ,  m_bHiColorIcons(TRUE)
     , m_timer_id(0)
     , m_command_manager()
 {
-	SetAppID(_T("mvvm_example_3.AppID.NoVersion"));
+	SetAppID(_T("mvvm_mfc_example_3.AppID.NoVersion"));
 }
 
-BOOL mvvm_example_3_app::InitInstance()
+BOOL mvvm_mfc_example_3_app::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	EnableTaskbarInteraction();
@@ -60,10 +60,10 @@ BOOL mvvm_example_3_app::InitInstance()
     m_timer_id = SetTimer(NULL, 0, 100, NULL);
 
     CMultiDocTemplate* pDocTemplate;
-	pDocTemplate = new CMultiDocTemplate(IDR_mvvm_example_3TYPE,
-		RUNTIME_CLASS(mvvm_example_3_doc),
+	pDocTemplate = new CMultiDocTemplate(IDR_mvvm_mfc_example_3TYPE,
+		RUNTIME_CLASS(mvvm_mfc_example_3_doc),
 		RUNTIME_CLASS(CChildFrame),
-		RUNTIME_CLASS(mvvm_example_3_view));
+		RUNTIME_CLASS(mvvm_mfc_example_3_view));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -88,13 +88,13 @@ BOOL mvvm_example_3_app::InitInstance()
 	return TRUE;
 }
 
-int mvvm_example_3_app::ExitInstance()
+int mvvm_mfc_example_3_app::ExitInstance()
 {
     KillTimer(NULL, m_timer_id);
     return CWinAppEx::ExitInstance();
 }
 
-BOOL mvvm_example_3_app::PreTranslateMessage(MSG* pMsg)
+BOOL mvvm_mfc_example_3_app::PreTranslateMessage(MSG* pMsg)
 {
     if(pMsg->message == WM_TIMER)
     {
@@ -131,13 +131,13 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-void mvvm_example_3_app::OnAppAbout()
+void mvvm_mfc_example_3_app::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-void mvvm_example_3_app::PreLoadState()
+void mvvm_mfc_example_3_app::PreLoadState()
 {
 	BOOL bNameValid;
 	CString strName;
@@ -149,10 +149,10 @@ void mvvm_example_3_app::PreLoadState()
 	GetContextMenuManager()->AddMenu(strName, IDR_POPUP_EXPLORER);
 }
 
-void mvvm_example_3_app::LoadCustomState()
+void mvvm_mfc_example_3_app::LoadCustomState()
 {
 }
 
-void mvvm_example_3_app::SaveCustomState()
+void mvvm_mfc_example_3_app::SaveCustomState()
 {
 }

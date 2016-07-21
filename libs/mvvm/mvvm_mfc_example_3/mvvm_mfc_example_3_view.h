@@ -2,7 +2,7 @@
 #define GO_MVVM_EXAMPLE_3_VIEW_H_INCLUDED
 
 //
-//  mvvm_example_3_view.h
+//  mvvm_mfc_example_3_view.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -11,23 +11,23 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-// mvvm_example_3_view.h : interface of the mvvm_example_3_view class
+// mvvm_mfc_example_3_view.h : interface of the mvvm_mfc_example_3_view class
 //
 
 #pragma once
 
-#include "mvvm_example_3_doc.h"
+#include "mvvm_mfc_example_3_doc.h"
 
-class mvvm_example_3_view
+class mvvm_mfc_example_3_view
     : public CFormView
 {
 public:
-    virtual ~mvvm_example_3_view();
+    virtual ~mvvm_mfc_example_3_view();
 
 protected:
-    mvvm_example_3_view();
+    mvvm_mfc_example_3_view();
 
-    DECLARE_DYNCREATE(mvvm_example_3_view)
+    DECLARE_DYNCREATE(mvvm_mfc_example_3_view)
 
 public:
 #ifdef AFX_DESIGN_TIME
@@ -35,7 +35,7 @@ public:
 #endif
 
 public:
-    mvvm_example_3_doc* GetDocument() const;
+    mvvm_mfc_example_3_doc* GetDocument() const;
 
 public:
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
@@ -55,9 +55,9 @@ protected:
 };
 
 #ifndef _DEBUG  // debug version in CFormViewMDIView.cpp
-inline mvvm_example_3_doc* mvvm_example_3_view::GetDocument() const
+inline mvvm_mfc_example_3_doc* mvvm_mfc_example_3_view::GetDocument() const
 {
-    return reinterpret_cast<mvvm_example_3_doc*>(m_pDocument);
+    return reinterpret_cast<mvvm_mfc_example_3_doc*>(m_pDocument);
 }
 #endif
 

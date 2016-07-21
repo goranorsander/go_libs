@@ -13,7 +13,7 @@
 #include "PropertiesWnd.h"
 #include "Resource.h"
 #include "MainFrm.h"
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE

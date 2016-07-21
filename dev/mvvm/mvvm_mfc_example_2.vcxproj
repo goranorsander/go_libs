@@ -193,7 +193,7 @@
     <Text Include="..\..\libs\mvvm\mvvm_mfc_example_2\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_example_2.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_repository.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_repository_interface.hpp" />
@@ -204,7 +204,7 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_example_2.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_repository.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_view.cpp" />
@@ -217,20 +217,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_example_2.rc" />
+    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\mvvm\mvvm_mfc_example_2\res\mvvm_example_2.rc2" />
+    <None Include="..\..\libs\mvvm\mvvm_mfc_example_2\res\mvvm_mfc_example_2.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_2\res\mvvm_example_2.ico" />
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_2\res\mvvm_mfc_example_2.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="\Repo\Git\go_booster\go_libs\libs\mvvm\mvvm_mfc_example_2\mvvm_example_2.rc" />
+      <UserProperties RESOURCE_FILE="\Repo\Git\go_booster\go_libs\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

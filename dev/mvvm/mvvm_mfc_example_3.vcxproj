@@ -199,9 +199,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\ClassView.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\FileView.h" />
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.h" />
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_doc.h" />
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_view.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\OutputWnd.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\PropertiesWnd.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\Resource.h" />
@@ -214,9 +214,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ClassView.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\FileView.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_doc.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_view.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\OutputWnd.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\PropertiesWnd.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ChildFrm.cpp" />
@@ -230,7 +230,7 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ViewTree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.rc" />
+    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\classview.bmp" />
@@ -245,8 +245,8 @@
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\file_view_hc.ico" />
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\menuimages.bmp" />
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\menuimages_hc.bmp" />
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3.ico" />
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3Doc.ico" />
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3.ico" />
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3Doc.ico" />
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\output_wnd.ico" />
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\output_wnd_hc.ico" />
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\properties.bmp" />
@@ -260,7 +260,7 @@
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3.rc2" />
+    <None Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3.rc2" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

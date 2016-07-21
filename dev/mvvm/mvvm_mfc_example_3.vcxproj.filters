@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.h">
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\stdafx.h">
@@ -42,10 +42,10 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\ChildFrm.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_doc.h">
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_view.h">
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\Resource.h">
@@ -68,7 +68,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.cpp">
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\stdafx.cpp">
@@ -80,10 +80,10 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ChildFrm.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_doc.cpp">
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3_view.cpp">
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\FileView.cpp">
@@ -103,7 +103,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_example_3.rc">
+    <ResourceCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.rc">
       <Filter>MFC Application Code\Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -171,10 +171,10 @@
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\UserImages.bmp">
       <Filter>MFC Application Code\Resource Files</Filter>
     </Image>
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3Doc.ico">
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3Doc.ico">
       <Filter>MFC Application Code\Resource Files</Filter>
     </Image>
-    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3.ico">
+    <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3.ico">
       <Filter>MFC Application Code\Resource Files</Filter>
     </Image>
     <Image Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\Toolbar.bmp">
@@ -185,7 +185,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_example_3.rc2">
+    <None Include="..\..\libs\mvvm\mvvm_mfc_example_3\res\mvvm_mfc_example_3.rc2">
       <Filter>MFC Application Code\Resource Files</Filter>
     </None>
   </ItemGroup>

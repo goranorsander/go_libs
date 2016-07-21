@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "mvvm_example_3.h"
+#include "mvvm_mfc_example_3.h"
 
 #include "MainFrm.h"
 
