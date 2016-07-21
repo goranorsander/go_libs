@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_PROPERTY_ANONYMOUS_WRITE_ONLY_VALUE_PROPERTY_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_ANONYMOUS_WRITE_ONLY_VALUE_PROPERTY_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_ANONYMOUS_READ_ONLY_VALUE_PROPERTY_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_ANONYMOUS_READ_ONLY_VALUE_PROPERTY_HPP_INCLUDED
 
 //
-//  write_only_value_property.hpp
+//  read_only_value_property.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -11,20 +11,25 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#ifndef BOOST_CONFIG_HPP
+#include <boost/config.hpp>
+#endif
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
-#include <go_boost/property/anonymous/detail/write_only_property_base.hpp>
+#include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
+#include <go_boost/property/nameless/detail/read_only_property_base.hpp>
 #include <go_boost/property/policy/value.hpp>
 
 namespace go_boost
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
-namespace write_only
+namespace read_only
 {
 
 template<class T> class value_property
@@ -40,22 +45,18 @@ public:
     {
     }
 
-    value_property()
-        : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>())
-    {
-    }
-
     explicit value_property(const value_type& v)
         : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>(v))
     {
     }
-
-#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
-} // namespace write_only
-} // namespace anonymous
+GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)
+GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::wstring)
+
+} // namespace read_only
+} // namespace nameless
 } // namespace property
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_PROPERTY_ANONYMOUS_WRITE_ONLY_VALUE_PROPERTY_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_ANONYMOUS_READ_ONLY_VALUE_PROPERTY_HPP_INCLUDED

@@ -1,5 +1,5 @@
 //
-//  anonymous_property_test_suite.cpp
+//  nameless_property_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -13,22 +13,22 @@
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
 #pragma message("Required C++11 feature is not supported by this compiler")
-TEST(std_anonymous_property_test_suite, cpp11_not_supported) {}
+TEST(std_nameless_property_test_suite, cpp11_not_supported) {}
 #else
 
 #include <functional>
 
 #include <go/property.hpp>
 
-namespace ap = go::property::anonymous;
+namespace ap = go::property::nameless;
 namespace ph = std::placeholders;
-namespace roap = go::property::anonymous::read_only;
-namespace woap = go::property::anonymous::write_only;
+namespace roap = go::property::nameless::read_only;
+namespace woap = go::property::nameless::write_only;
 
 namespace
 {
 
-// Test anonymous::value_property
+// Test nameless::value_property
 class spaceship
 {
 public:
@@ -58,7 +58,7 @@ public:
     }
 };
 
-TEST(std_anonymous_property_test_suite, value_properties)
+TEST(std_nameless_property_test_suite, value_properties)
 {
     spaceship s;
 
@@ -113,7 +113,7 @@ TEST(std_anonymous_property_test_suite, value_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s2.name());
 }
 
-// Test anonymous::read_only::value_property
+// Test nameless::read_only::value_property
 class read_only_spaceship
 {
 public:
@@ -129,7 +129,7 @@ public:
     }
 };
 
-TEST(std_anonymous_property_test_suite, read_only_value_properties)
+TEST(std_nameless_property_test_suite, read_only_value_properties)
 {
     read_only_spaceship s;
 
@@ -160,7 +160,7 @@ TEST(std_anonymous_property_test_suite, read_only_value_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
-// Test anonymous::write_only::value_property
+// Test nameless::write_only::value_property
 class write_only_spaceship
 {
 public:
@@ -176,7 +176,7 @@ public:
     }
 };
 
-TEST(std_anonymous_property_test_suite, write_only_value_properties)
+TEST(std_nameless_property_test_suite, write_only_value_properties)
 {
     write_only_spaceship s;
 
@@ -203,7 +203,7 @@ TEST(std_anonymous_property_test_suite, write_only_value_properties)
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-// Test anonymous::reference_property
+// Test nameless::reference_property
 class reference_spaceship
 {
 public:
@@ -219,7 +219,7 @@ public:
     }
 };
 
-TEST(std_anonymous_property_test_suite, reference_properties)
+TEST(std_nameless_property_test_suite, reference_properties)
 {
     reference_spaceship s;
 
@@ -302,7 +302,7 @@ TEST(std_anonymous_property_test_suite, reference_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s2.name());
 }
 
-// Test anonymous::read_only::reference_property
+// Test nameless::read_only::reference_property
 class read_only_reference_spaceship
 {
 public:
@@ -326,7 +326,7 @@ private:
     std::string m_name;
 };
 
-TEST(std_anonymous_property_test_suite, read_only_reference_properties)
+TEST(std_nameless_property_test_suite, read_only_reference_properties)
 {
     read_only_reference_spaceship s;
 
@@ -365,7 +365,7 @@ TEST(std_anonymous_property_test_suite, read_only_reference_properties)
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s2.name());
 }
 
-// Test anonymous::write_only::reference_property
+// Test nameless::write_only::reference_property
 class write_only_reference_spaceship
 {
 public:
@@ -381,7 +381,7 @@ public:
     }
 };
 
-TEST(std_anonymous_property_test_suite, write_only_reference_properties)
+TEST(std_nameless_property_test_suite, write_only_reference_properties)
 {
     write_only_reference_spaceship s;
 
@@ -425,7 +425,7 @@ TEST(std_anonymous_property_test_suite, write_only_reference_properties)
 
 #endif  // defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
 
-// Test anonymous::property
+// Test nameless::property
 class armament
 {
     // Spaceship armament, not modifyable, provided by third-party
@@ -494,7 +494,7 @@ private:
     armament _armament;
 };
 
-TEST(std_anonymous_property_test_suite, proxy_properties)
+TEST(std_nameless_property_test_suite, proxy_properties)
 {
     armed_spaceship s;
 
@@ -586,7 +586,7 @@ TEST(std_anonymous_property_test_suite, proxy_properties)
     EXPECT_EQ(14, s3.phaser_arrays());
 }
 
-// Test anonymous::read_only::property
+// Test nameless::read_only::property
 class read_only_armed_spaceship
     : public read_only_spaceship
 {
@@ -620,7 +620,7 @@ private:
     armament _armament;
 };
 
-TEST(std_anonymous_property_test_suite, read_only_proxy_properties)
+TEST(std_nameless_property_test_suite, read_only_proxy_properties)
 {
     read_only_armed_spaceship s;
 
@@ -674,7 +674,7 @@ TEST(std_anonymous_property_test_suite, read_only_proxy_properties)
     EXPECT_EQ(8, s3.phaser_arrays());
 }
 
-// Test anonymous::write_only::property
+// Test nameless::write_only::property
 class write_only_armed_spaceship
     : public write_only_spaceship
 {
@@ -707,7 +707,7 @@ private:
     armament _armament;
 };
 
-TEST(std_anonymous_property_test_suite, write_only_proxy_properties)
+TEST(std_nameless_property_test_suite, write_only_proxy_properties)
 {
     write_only_armed_spaceship s;
 

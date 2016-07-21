@@ -16,7 +16,7 @@
 #endif
 
 #include <go_boost/mvvm/notify_data_context_changed_interface.hpp>
-#include <go_boost/property/anonymous/property.hpp>
+#include <go_boost/property/nameless/property.hpp>
 
 namespace go_boost
 {
@@ -29,7 +29,7 @@ template<class T> class data_context_interface
 public:
     typedef T data_type;
     typedef data_context_interface<data_type> this_type;
-    typedef go_boost::property::anonymous::property<data_type> data_context_type;
+    typedef go_boost::property::nameless::property<data_type> data_context_type;
 
 public:
     virtual ~data_context_interface() = 0;

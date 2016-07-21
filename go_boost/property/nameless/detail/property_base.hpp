@@ -1,8 +1,8 @@
-#ifndef GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED
 
 //
-//  write_only_property_base.hpp
+//  property_base.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -11,15 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <go/config.hpp>
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
 
-namespace go
+namespace go_boost
 {
 namespace property
 {
-namespace anonymous
-{
-namespace write_only
+namespace nameless
 {
 namespace detail
 {
@@ -40,18 +40,28 @@ protected:
     }
 
 public:
+    operator value_type() const
+    {
+        return get();
+    }
+
+    value_type operator()() const
+    {
+        return get();
+    }
+
     void operator()(const value_type& v)
     {
         set(v);
     }
 
-private:
-    this_type& operator=(const this_type& v)
+#include <go_boost/property/detail/assignment_operator.hpp>
+
+    value_type get() const
     {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
+        return _s.get();
     }
 
-public:
     void set(const value_type& v)
     {
         _s.set(v);
@@ -78,9 +88,8 @@ inline property_base<V, P>::~property_base()
 }
 
 } // namespace detail
-} // namespace write_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
-} // namespace go
+} // namespace go_boost
 
-#endif  // #ifndef GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED

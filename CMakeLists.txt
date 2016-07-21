@@ -191,45 +191,45 @@ SET(GO_LIBS_SRC_GO_PROPERTY_HPP
 SET(GO_LIBS_SRC_GO_PROPERTY_CPP)
 
 ########################################################
-#  go/property/anonymous                               #
+#  go/property/nameless                                #
 ########################################################
 
-SET(GO_PROPERTY_ANONYMOUS_DIRNAME property/anonymous)
-SET(GO_PROPERTY_ANONYMOUS_DIR ${GO_DIR}/property/anonymous)
+SET(GO_PROPERTY_NAMELESS_DIRNAME property/nameless)
+SET(GO_PROPERTY_NAMELESS_DIR ${GO_DIR}/property/nameless)
 
 # *.hpp
 
-SET(GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_HPP
-    ${GO_PROPERTY_ANONYMOUS_DIR}/property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/read_only_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/read_only_reference_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/read_only_value_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/reference_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/value_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/write_only_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/write_only_reference_property.hpp
-    ${GO_PROPERTY_ANONYMOUS_DIR}/write_only_value_property.hpp
+SET(GO_LIBS_SRC_GO_PROPERTY_NAMELESS_HPP
+    ${GO_PROPERTY_NAMELESS_DIR}/property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/read_only_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/read_only_reference_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/read_only_value_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/reference_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/value_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/write_only_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/write_only_reference_property.hpp
+    ${GO_PROPERTY_NAMELESS_DIR}/write_only_value_property.hpp
 )
 
-SET(GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_CPP)
+SET(GO_LIBS_SRC_GO_PROPERTY_NAMELESS_CPP)
 
 ########################################################
-#  go/property/anonymous/detail                        #
+#  go/property/nameless/detail                         #
 ########################################################
 
-SET(GO_PROPERTY_ANONYMOUS_DETAIL_DIRNAME property/anonymous/detail)
-SET(GO_PROPERTY_ANONYMOUS_DETAIL_DIR ${GO_DIR}/property/anonymous/detail)
+SET(GO_PROPERTY_NAMELESS_DETAIL_DIRNAME property/nameless/detail)
+SET(GO_PROPERTY_NAMELESS_DETAIL_DIR ${GO_DIR}/property/nameless/detail)
 
 # *.hpp
 
-SET(GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_DETAIL_HPP
-    ${GO_PROPERTY_ANONYMOUS_DETAIL_DIR}/arithmetic_comparison_operators.hpp
-    ${GO_PROPERTY_ANONYMOUS_DETAIL_DIR}/property_base.hpp
-    ${GO_PROPERTY_ANONYMOUS_DETAIL_DIR}/read_only_property_base.hpp
-    ${GO_PROPERTY_ANONYMOUS_DETAIL_DIR}/write_only_property_base.hpp
+SET(GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP
+    ${GO_PROPERTY_NAMELESS_DETAIL_DIR}/arithmetic_comparison_operators.hpp
+    ${GO_PROPERTY_NAMELESS_DETAIL_DIR}/property_base.hpp
+    ${GO_PROPERTY_NAMELESS_DETAIL_DIR}/read_only_property_base.hpp
+    ${GO_PROPERTY_NAMELESS_DETAIL_DIR}/write_only_property_base.hpp
 )
 
-SET(GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_DETAIL_CPP)
+SET(GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_CPP)
 
 ########################################################
 #  go/property/detail                                  #
@@ -402,45 +402,45 @@ SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP
 SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_CPP)
 
 ########################################################
-#  go_boost/property/anonymous                         #
+#  go_boost/property/nameless                          #
 ########################################################
 
-SET(GO_BOOST_PROPERTY_ANONYMOUS_DIRNAME property/anonymous)
-SET(GO_BOOST_PROPERTY_ANONYMOUS_DIR ${GO_DIR}/property/anonymous)
+SET(GO_BOOST_PROPERTY_NAMELESS_DIRNAME property/nameless)
+SET(GO_BOOST_PROPERTY_NAMELESS_DIR ${GO_DIR}/property/nameless)
 
 # *.hpp
 
-SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_HPP
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/read_only_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/read_only_reference_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/read_only_value_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/reference_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/value_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/write_only_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/write_only_reference_property.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DIR}/write_only_value_property.hpp
+SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_HPP
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/read_only_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/read_only_reference_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/read_only_value_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/reference_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/value_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/write_only_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/write_only_reference_property.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DIR}/write_only_value_property.hpp
 )
 
-SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_CPP)
+SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_CPP)
 
 ########################################################
-#  go_boost/property/anonymous/detail                  #
+#  go_boost/property/nameless/detail                   #
 ########################################################
 
-SET(GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIRNAME property/anonymous/detail)
-SET(GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIR ${GO_DIR}/property/anonymous/detail)
+SET(GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME property/nameless/detail)
+SET(GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR ${GO_DIR}/property/nameless/detail)
 
 # *.hpp
 
-SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_HPP
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIR}/arithmetic_comparison_operators.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIR}/property_base.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIR}/read_only_property_base.hpp
-    ${GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIR}/write_only_property_base.hpp
+SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP
+    ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR}/arithmetic_comparison_operators.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR}/property_base.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR}/read_only_property_base.hpp
+    ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR}/write_only_property_base.hpp
 )
 
-SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_CPP)
+SET(GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_CPP)
 
 ########################################################
 #  go_boost/property/detail                            #
@@ -506,8 +506,8 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_HPP}                   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_HPP}         DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_ANONYMOUS_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_ANONYMOUS_DETAIL_HPP}  DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_ANONYMOUS_DETAIL_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_NAMELESS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
@@ -516,8 +516,8 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_HPP}                       DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP}                   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_HPP}         DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_ANONYMOUS_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_HPP}  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_ANONYMOUS_DETAIL_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_NAMELESS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_DETAIL_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})

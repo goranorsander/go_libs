@@ -17,14 +17,14 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/property/anonymous/detail/write_only_property_base.hpp>
+#include <go/property/nameless/detail/write_only_property_base.hpp>
 #include <go/property/policy/reference.hpp>
 
 namespace go
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 namespace write_only
 {
@@ -78,7 +78,7 @@ public:
 };
 
 } // namespace write_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go
 

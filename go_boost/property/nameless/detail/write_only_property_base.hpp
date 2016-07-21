@@ -19,7 +19,7 @@ namespace go_boost
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 namespace write_only
 {
@@ -81,7 +81,7 @@ inline property_base<V, P>::~property_base()
 
 } // namespace detail
 } // namespace write_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go_boost
 

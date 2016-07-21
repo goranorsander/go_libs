@@ -19,7 +19,7 @@
 #pragma once
 #endif
 
-#include <go_boost/property/anonymous/detail/write_only_property_base.hpp>
+#include <go_boost/property/nameless/detail/write_only_property_base.hpp>
 #include <go_boost/property/policy/reference.hpp>
 #include <boost/utility/explicit_operator_bool.hpp>
 
@@ -27,7 +27,7 @@ namespace go_boost
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 namespace write_only
 {
@@ -76,7 +76,7 @@ public:
 };
 
 } // namespace write_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go_boost
 

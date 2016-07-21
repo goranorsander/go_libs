@@ -19,7 +19,7 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace ap = go::property::anonymous;
+namespace ap = go::property::nameless;
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace rop = go::property::read_only;

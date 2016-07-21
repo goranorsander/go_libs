@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#define GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED
 
 //
-//  read_only_property_base.hpp
+//  write_only_property_base.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -11,17 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
+#include <go/config.hpp>
 
-namespace go_boost
+namespace go
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
-namespace read_only
+namespace write_only
 {
 namespace detail
 {
@@ -42,14 +40,9 @@ protected:
     }
 
 public:
-    operator value_type() const
+    void operator()(const value_type& v)
     {
-        return get();
-    }
-
-    value_type operator()() const
-    {
-        return get();
+        set(v);
     }
 
 private:
@@ -59,12 +52,17 @@ private:
     }
 
 public:
-    value_type get() const
+    void set(const value_type& v)
     {
-        return _s.get();
+        _s.set(v);
     }
 
 protected:
+    storage_policy& storage()
+    {
+        return _s;
+    }
+
     const storage_policy& storage() const
     {
         return _s;
@@ -80,9 +78,9 @@ inline property_base<V, P>::~property_base()
 }
 
 } // namespace detail
-} // namespace read_only
-} // namespace anonymous
+} // namespace write_only
+} // namespace nameless
 } // namespace property
-} // namespace go_boost
+} // namespace go
 
-#endif  // #ifndef GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_ANONYMOUS_WRITE_ONLY_PROPERTY_BASE_HPP_INCLUDED

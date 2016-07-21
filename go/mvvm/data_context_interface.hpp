@@ -18,7 +18,7 @@
 #else
 
 #include <go/mvvm/notify_data_context_changed_interface.hpp>
-#include <go/property/anonymous/property.hpp>
+#include <go/property/nameless/property.hpp>
 
 namespace go
 {
@@ -31,7 +31,7 @@ template<class T> class data_context_interface
 public:
     typedef T data_type;
     typedef data_context_interface<data_type> this_type;
-    typedef go::property::anonymous::property<data_type> data_context_type;
+    typedef go::property::nameless::property<data_type> data_context_type;
 
 public:
     virtual ~data_context_interface() = 0;

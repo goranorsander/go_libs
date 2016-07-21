@@ -1,8 +1,8 @@
-#ifndef GO_PROPERTY_ANONYMOUS_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_PROPERTY_ANONYMOUS_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED
+#define GO_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED
 
 //
-//  read_only_property_base.hpp
+//  property_base.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -17,9 +17,7 @@ namespace go
 {
 namespace property
 {
-namespace anonymous
-{
-namespace read_only
+namespace nameless
 {
 namespace detail
 {
@@ -50,19 +48,29 @@ public:
         return get();
     }
 
-private:
-    this_type& operator=(const this_type& v)
+    void operator()(const value_type& v)
     {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
+        set(v);
     }
 
-public:
+#include <go/property/detail/assignment_operator.hpp>
+
     value_type get() const
     {
         return _s.get();
     }
 
+    void set(const value_type& v)
+    {
+        _s.set(v);
+    }
+
 protected:
+    storage_policy& storage()
+    {
+        return _s;
+    }
+
     const storage_policy& storage() const
     {
         return _s;
@@ -78,9 +86,8 @@ inline property_base<V, P>::~property_base()
 }
 
 } // namespace detail
-} // namespace read_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_ANONYMOUS_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_ANONYMOUS_PROPERTY_BASE_HPP_INCLUDED

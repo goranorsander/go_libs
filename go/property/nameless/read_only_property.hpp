@@ -17,14 +17,14 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/property/anonymous/detail/read_only_property_base.hpp>
+#include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
 
 namespace go
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 namespace read_only
 {
@@ -62,7 +62,7 @@ public:
 };
 
 } // namespace read_only
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go
 

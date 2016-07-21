@@ -19,8 +19,8 @@
 #pragma once
 #endif
 
-#include <go_boost/property/anonymous/detail/arithmetic_comparison_operators.hpp>
-#include <go_boost/property/anonymous/detail/property_base.hpp>
+#include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
+#include <go_boost/property/nameless/detail/property_base.hpp>
 #include <go_boost/property/policy/reference.hpp>
 #include <boost/utility/explicit_operator_bool.hpp>
 
@@ -28,7 +28,7 @@ namespace go_boost
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 
 template<class T> class reference_property
@@ -77,7 +77,7 @@ public:
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::string)
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::wstring)
 
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go_boost
 

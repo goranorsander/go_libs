@@ -17,15 +17,15 @@
 #pragma message("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/property/anonymous/detail/arithmetic_comparison_operators.hpp>
-#include <go/property/anonymous/detail/property_base.hpp>
+#include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
+#include <go/property/nameless/detail/property_base.hpp>
 #include <go/property/policy/reference.hpp>
 
 namespace go
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 
 template<class T> class reference_property
@@ -79,7 +79,7 @@ public:
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::string)
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::wstring)
 
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go
 

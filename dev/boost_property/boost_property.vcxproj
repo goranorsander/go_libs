@@ -20,19 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\detail\arithmetic_comparison_operators.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\detail\property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\detail\read_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\detail\write_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\read_only_value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\anonymous\write_only_value_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\detail\arithmetic_comparison_operators.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\detail\property_base.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\detail\read_only_property_base.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\detail\write_only_property_base.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\read_only_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\read_only_reference_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\read_only_value_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\reference_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\value_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\write_only_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\write_only_reference_property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\nameless\write_only_value_property.hpp" />
     <ClInclude Include="..\..\go_boost\property\detail\arithmetic_comparison_operators.hpp" />
     <ClInclude Include="..\..\go_boost\property\detail\assignment_operator.hpp" />
     <ClInclude Include="..\..\go_boost\property\detail\property_base.hpp" />

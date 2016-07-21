@@ -19,15 +19,15 @@
 #pragma once
 #endif
 
-#include <go_boost/property/anonymous/detail/arithmetic_comparison_operators.hpp>
-#include <go_boost/property/anonymous/detail/property_base.hpp>
+#include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
+#include <go_boost/property/nameless/detail/property_base.hpp>
 #include <go_boost/property/policy/value.hpp>
 
 namespace go_boost
 {
 namespace property
 {
-namespace anonymous
+namespace nameless
 {
 
 template<class T> class value_property
@@ -59,7 +59,7 @@ public:
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::wstring)
 
-} // namespace anonymous
+} // namespace nameless
 } // namespace property
 } // namespace go_boost
 

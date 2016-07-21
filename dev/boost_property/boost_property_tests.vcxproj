@@ -193,7 +193,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\boost_property\test\anonymous_property_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_property\test\nameless_property_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_property\test\property_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_property\test\wproperty_test_suite.cpp" />
   </ItemGroup>

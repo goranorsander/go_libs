@@ -1,5 +1,5 @@
 //
-//  anonymous_property_test_suite.cpp
+//  nameless_property_test_suite.cpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -15,9 +15,9 @@
 
 #include <go_boost/property.hpp>
 
-namespace ap = go_boost::property::anonymous;
-namespace roap = go_boost::property::anonymous::read_only;
-namespace woap = go_boost::property::anonymous::write_only;
+namespace ap = go_boost::property::nameless;
+namespace roap = go_boost::property::nameless::read_only;
+namespace woap = go_boost::property::nameless::write_only;
 
 namespace
 {
@@ -52,7 +52,7 @@ public:
     }
 };
 
-TEST(boost_anonymous_property_test_suite, value_properties)
+TEST(boost_nameless_property_test_suite, value_properties)
 {
     spaceship s;
 
@@ -123,7 +123,7 @@ public:
     }
 };
 
-TEST(boost_anonymous_property_test_suite, read_only_value_properties)
+TEST(boost_nameless_property_test_suite, read_only_value_properties)
 {
     read_only_spaceship s;
 
@@ -170,7 +170,7 @@ public:
     }
 };
 
-TEST(boost_anonymous_property_test_suite, write_only_value_properties)
+TEST(boost_nameless_property_test_suite, write_only_value_properties)
 {
     write_only_spaceship s;
 
@@ -209,7 +209,7 @@ public:
     }
 };
 
-TEST(boost_anonymous_property_test_suite, reference_properties)
+TEST(boost_nameless_property_test_suite, reference_properties)
 {
     reference_spaceship s;
 
@@ -316,7 +316,7 @@ private:
     std::string m_name;
 };
 
-TEST(boost_anonymous_property_test_suite, read_only_reference_properties)
+TEST(boost_nameless_property_test_suite, read_only_reference_properties)
 {
     read_only_reference_spaceship s;
 
@@ -371,7 +371,7 @@ public:
     }
 };
 
-TEST(boost_anonymous_property_test_suite, write_only_reference_properties)
+TEST(boost_nameless_property_test_suite, write_only_reference_properties)
 {
     write_only_reference_spaceship s;
 
@@ -482,7 +482,7 @@ private:
     armament _armament;
 };
 
-TEST(boost_anonymous_property_test_suite, proxy_properties)
+TEST(boost_nameless_property_test_suite, proxy_properties)
 {
     armed_spaceship s;
 
@@ -608,7 +608,7 @@ private:
     armament _armament;
 };
 
-TEST(boost_anonymous_property_test_suite, read_only_proxy_properties)
+TEST(boost_nameless_property_test_suite, read_only_proxy_properties)
 {
     read_only_armed_spaceship s;
 
@@ -695,7 +695,7 @@ private:
     armament _armament;
 };
 
-TEST(boost_anonymous_property_test_suite, write_only_proxy_properties)
+TEST(boost_nameless_property_test_suite, write_only_proxy_properties)
 {
     write_only_armed_spaceship s;
 
