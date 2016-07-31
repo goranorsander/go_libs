@@ -17,7 +17,9 @@ TEST(std_observable_unordered_multimap_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/utility/iterator/forward_iterator.hpp>
 
+namespace i = go::utility::iterator;
 namespace m = go::mvvm;
 namespace ph = std::placeholders;
 namespace s = go::signals;
@@ -28,6 +30,7 @@ namespace
 template<class K, class T> class unordered_multimap_observer
 {
 public:
+    typedef unordered_multimap_observer<K, T> this_type;
     typedef typename m::observable_unordered_multimap<K, T>::ptr observable_unordered_multimap_ptr_type;
 
     virtual ~unordered_multimap_observer()
@@ -52,8 +55,8 @@ public:
 
     void connect(observable_unordered_multimap_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&unordered_multimap_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&unordered_multimap_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(observable_unordered_multimap_ptr_type& c)
@@ -452,7 +455,8 @@ TEST(std_observable_unordered_multimap_test_suite, test_erase_range)
     m::observable_unordered_multimap<int, int>::iterator begin = m->begin();
     ++begin;
     m::observable_unordered_multimap<int, int>::iterator end = m->end();
-    --end;
+    const bool moved_backward = i::try_move_iterator_backward<m::observable_unordered_multimap<int, int>::iterator>(m, end);
+    EXPECT_EQ(moved_backward, true);
 
     m->erase(begin, end);
     EXPECT_EQ(2, m->size());

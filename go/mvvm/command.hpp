@@ -108,7 +108,7 @@ inline basic_command<std::string>::basic_command(const std::string& cmd_name, co
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    command_name.getter(std::bind(&basic_command::get_command_name, this));
+    command_name.getter(std::bind(&this_type::get_command_name, this));
 }
 
 template<>
@@ -119,7 +119,7 @@ inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, 
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    command_name.getter(std::bind(&basic_command::get_command_name, this));
+    command_name.getter(std::bind(&this_type::get_command_name, this));
 }
 
 template<class S>
@@ -156,7 +156,7 @@ inline void basic_command<std::string>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(std::enable_shared_from_this<basic_command<std::string>>::shared_from_this());
+        can_execute_changed(this_type::shared_from_this());
     }
 }
 
@@ -165,7 +165,7 @@ inline void basic_command<std::wstring>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(std::enable_shared_from_this<basic_command<std::wstring>>::shared_from_this());
+        can_execute_changed(this_type::shared_from_this());
     }
 }
 
@@ -174,21 +174,25 @@ inline void basic_command<S>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(std::enable_shared_from_this<basic_command<S>>::shared_from_this());
+        can_execute_changed(this_type::shared_from_this());
     }
 }
 
+#if defined(GO_COMP_MSVC)
 template<>
 inline std::string basic_command<std::string>::get_command_name() const
 {
     return _command_name;
 }
+#endif  // defined(GO_COMP_MSVC)
 
+#if defined(GO_COMP_MSVC)
 template<>
 inline std::wstring basic_command<std::wstring>::get_command_name() const
 {
     return _command_name;
 }
+#endif  // defined(GO_COMP_MSVC)
 
 template<class S>
 inline S basic_command<S>::get_command_name() const

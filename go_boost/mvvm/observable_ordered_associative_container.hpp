@@ -11,9 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -65,62 +63,62 @@ protected:
 public:
     reverse_iterator rbegin() BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.rbegin();
+        return this->container().rbegin();
     }
 
     const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.rbegin();
+        return this->container().rbegin();
     }
 
     reverse_iterator rend() BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.rend();
+        return this->container().rend();
     }
 
     const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.rend();
+        return this->container().rend();
     }
 
     const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.crbegin();
+        return this->container().crbegin();
     }
 
     const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.crend();
+        return this->container().crend();
     }
-	
+
     iterator lower_bound(const value_type& val)
     {
-        return container().lower_bound(val);
+        return this->container().lower_bound(val);
     }
 
     const_iterator lower_bound(const value_type& val) const
     {
-        return container().lower_bound(val);
+        return this->container().lower_bound(val);
     }
 
     iterator upper_bound(const value_type& val)
     {
-        return container().upper_bound(val);
+        return this->container().upper_bound(val);
     }
 
     const_iterator upper_bound(const value_type& val) const
     {
-        return container().upper_bound(val);
+        return this->container().upper_bound(val);
     }
 
     key_compare key_comp() const
     {
-        return _container.key_comp();
+        return this->container().key_comp();
     }
 
     value_compare value_comp() const
     {
-        return _container.key_comp();
+        return this->container().key_comp();
     }
 };
 

@@ -28,6 +28,7 @@ namespace
 template<class K, class T> class multimap_observer
 {
 public:
+    typedef multimap_observer<K, T> this_type;
     typedef typename m::wobservable_multimap<K, T>::ptr wobservable_multimap_ptr_type;
 
     virtual ~multimap_observer()
@@ -52,8 +53,8 @@ public:
 
     void connect(wobservable_multimap_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multimap_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multimap_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(wobservable_multimap_ptr_type& c)

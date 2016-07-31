@@ -26,6 +26,7 @@ namespace
 template<class T> class deque_observer
 {
 public:
+    typedef deque_observer<T> this_type;
     typedef typename m::observable_deque<T>::ptr observable_deque_ptr_type;
 
     virtual ~deque_observer()
@@ -48,14 +49,14 @@ public:
 
     void connect(observable_deque_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&deque_observer::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&deque_observer::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void disconnect(observable_deque_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&deque_observer::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&deque_observer::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

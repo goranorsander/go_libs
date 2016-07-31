@@ -57,8 +57,8 @@ public:
 protected:
     virtual void bind_data_context_properties()
     {
-        data_context.getter(boost::bind(&data_context_interface::get_data_context, this));
-        data_context.setter(boost::bind(&data_context_interface::set_data_context, this, _1));
+        data_context.getter(boost::bind(&this_type::get_data_context, this));
+        data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
     }
 
     virtual void on_data_context_changed()

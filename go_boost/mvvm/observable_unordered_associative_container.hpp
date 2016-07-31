@@ -11,9 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -63,52 +61,52 @@ protected:
 public:
     key_equal key_eq() const
     {
-        return _container.key_eq();
+        return this->container().key_eq();
     }
 
     hasher hash_function() const
     {
-        return _container.hash_function();
+        return this->container().hash_function();
     }
 
     size_type bucket(const key_type& k) const
     {
-        return _container.bucket(k);
+        return this->container().bucket(k);
     }
 
     size_type bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.bucket_count();
+        return this->container().bucket_count();
     }
 
     size_type bucket_size(size_type n) const
     {
-        return _container.bucket_size(n);
+        return this->container().bucket_size(n);
     }
 
     size_type max_bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.max_bucket_count();
+        return this->container().max_bucket_count();
     }
 
     void rehash(size_type n)
     {
-        _container.rehash(n);
+        this->container().rehash(n);
     }
 
     float load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.load_factor();
+        return this->container().load_factor();
     }
 
     float max_load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return _container.max_load_factor();
+        return this->container().max_load_factor();
     }
 
     void max_load_factor(float z)
     {
-        _container.max_load_factor(z);
+        this->container().max_load_factor(z);
     }
 };
 

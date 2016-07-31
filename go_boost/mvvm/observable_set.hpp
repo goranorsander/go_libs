@@ -11,9 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -136,7 +134,7 @@ public:
         if(p.second)
         {
             const std::size_t after = _container.size();
-            notify_insert(before, after);
+            this->notify_insert(before, after);
         }
         return p;
     }
@@ -150,7 +148,7 @@ public:
         if(p.second)
         {
             const std::size_t after = _container.size();
-            notify_insert(before, after);
+            this->notify_insert(before, after);
         }
         return p;
     }
@@ -164,7 +162,7 @@ public:
         if(p.second)
         {
             const std::size_t after = _container.size();
-            notify_insert(before, after);
+            this->notify_insert(before, after);
         }
         return p;
     }
@@ -176,7 +174,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -187,7 +185,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -199,7 +197,7 @@ public:
         const std::size_t before = _container.size();
         _container.insert(first, last);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -209,7 +207,7 @@ public:
         const std::size_t before = _container.size();
         _container.insert(il);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -219,7 +217,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(position);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -230,7 +228,7 @@ public:
         if(s > 0)
         {
             const std::size_t after = _container.size();
-            notify_erase(before, after);
+            this->notify_erase(before, after);
         }
         return s;
     }
@@ -240,7 +238,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(first, last);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -440,7 +438,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        container().operator=(il);
+        this->container().operator=(il);
         return *this;
     }
 
@@ -629,7 +627,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        container().operator=(il);
+        this->container().operator=(il);
         return *this;
     }
 

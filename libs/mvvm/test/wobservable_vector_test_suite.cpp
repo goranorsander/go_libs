@@ -28,6 +28,7 @@ namespace
 template<class T> class vector_observer
 {
 public:
+    typedef vector_observer<T> this_type;
     typedef typename m::wobservable_vector<T>::ptr wobservable_vector_ptr_type;
 
     virtual ~vector_observer()
@@ -52,8 +53,8 @@ public:
 
     void connect(wobservable_vector_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&vector_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&vector_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(wobservable_vector_ptr_type& c)

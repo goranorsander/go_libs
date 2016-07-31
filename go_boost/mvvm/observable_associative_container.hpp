@@ -11,9 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
+#include <boost/predef.h>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -61,47 +60,47 @@ protected:
 public:
     iterator begin() BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     const_iterator begin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     iterator end() BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator end() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator cbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().cbegin();
+        return this->container().cbegin();
     }
 
     const_iterator cend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().cend();
+        return this->container().cend();
     }
 
     size_type size() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().size();
+        return this->container().size();
     }
 
     size_type max_size() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().max_size();
+        return this->container().max_size();
     }
 
     bool empty() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().empty();
+        return this->container().empty();
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -109,10 +108,10 @@ public:
     template <class... Args>
     iterator emplace_hint(const_iterator position, Args&&... args)
     {
-        const std::size_t before = container().size();
-        const iterator it = container().emplace_hint(position, args...);
-        const std::size_t after = container().size();
-        notify_insert(before, after);
+        const std::size_t before = this->container().size();
+        const iterator it = this->container().emplace_hint(position, args...);
+        const std::size_t after = this->container().size();
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -120,49 +119,49 @@ public:
 
     void clear() BOOST_NOEXCEPT_OR_NOTHROW
     {
-        const std::size_t before = container().size();
-        container().clear();
-        on_container_changed(notify_container_changed_action_reset, 0, before, container().size());
+        const std::size_t before = this->container().size();
+        this->container().clear();
+        this->on_container_changed(notify_container_changed_action_reset, 0, before, this->container().size());
     }
 
     template<class t, class s>
     void swap(basic_observable_associative_container<t, s>& x)
     {
-        const std::size_t this_before = container().size();
+        const std::size_t this_before = this->container().size();
         const std::size_t x_before = x.container().size();
-        container().swap(x.container());
+        this->container().swap(x.container());
         x.on_container_changed(notify_container_changed_action_swap, this_before, x_before, x.container().size());
-        on_container_changed(notify_container_changed_action_swap, x_before, this_before, container().size());
+        this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, this->container().size());
     }
 
     size_type count(const value_type& val) const
     {
-        return container().count(val);
+        return this->container().count(val);
     }
-	
+
     const_iterator find(const value_type& val) const
     {
-        return container().find(val);
+        return this->container().find(val);
     }
 
     iterator find(const value_type& val)
     {
-        return container().find(val);
+        return this->container().find(val);
     }
 
     std::pair<const_iterator, const_iterator> equal_range(const value_type& val) const
     {
-        return container().equal_range(val);
+        return this->container().equal_range(val);
     }
 
     std::pair<iterator, iterator> equal_range(const value_type& val)
     {
-        return container().equal_range(val);
+        return this->container().equal_range(val);
     }
 
     allocator_type get_allocator() const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return container().get_allocator();
+        return this->container().get_allocator();
     }
 
 protected:
@@ -170,7 +169,7 @@ protected:
     {
         if(after - before > 0)
         {
-            on_container_changed(notify_container_changed_action_add, after - before, 0, after);
+            this->on_container_changed(notify_container_changed_action_add, after - before, 0, after);
         }
     }
 
@@ -178,7 +177,7 @@ protected:
     {
         if(before - after > 0)
         {
-            on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
         }
     }
 };

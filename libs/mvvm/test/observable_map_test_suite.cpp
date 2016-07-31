@@ -25,16 +25,17 @@ namespace s = go::signals;
 namespace
 {
 
-template<class K, class T> class multimap_observer
+template<class K, class T> class map_observer
 {
 public:
+    typedef map_observer<K, T> this_type;
     typedef typename m::observable_map<K, T>::ptr observable_map_ptr_type;
 
-    virtual ~multimap_observer()
+    virtual ~map_observer()
     {
     }
 
-    multimap_observer()
+    map_observer()
         : _on_container_changed_slot_key(0)
         , _on_property_changed_slot_key(0)
         , _last_action(m::undefined_notify_container_changed_action)
@@ -52,8 +53,8 @@ public:
 
     void connect(observable_map_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multimap_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multimap_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(observable_map_ptr_type& c)
@@ -158,7 +159,7 @@ TEST(std_observable_map_test_suite, test_insert_single_element)
 {
     // Test insert single element
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
     const std::initializer_list<m::observable_map<int, int>::value_type> il =
@@ -203,7 +204,7 @@ TEST(std_observable_map_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
     const std::initializer_list<m::observable_map<int, int>::value_type> il =
@@ -256,7 +257,7 @@ TEST(std_observable_map_test_suite, test_insert_range)
     // Test insert range
     m::observable_map<int, int>::ptr m1 = m::observable_map<int, int>::create();
     m::observable_map<int, int>::ptr m2 = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
@@ -325,7 +326,7 @@ TEST(std_observable_map_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -392,7 +393,7 @@ TEST(std_observable_map_test_suite, test_erase_position)
 {
     // Test erase position
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -453,7 +454,7 @@ TEST(std_observable_map_test_suite, test_erase_value)
 {
     // Test erase value
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -512,7 +513,7 @@ TEST(std_observable_map_test_suite, test_erase_range)
 {
     // Test erase range
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -565,8 +566,8 @@ TEST(std_observable_map_test_suite, test_swap)
     // Test swap
     m::observable_map<int, int>::ptr m1 = m::observable_map<int, int>::create();
     m::observable_map<int, int>::ptr m2 = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o1;
-    multimap_observer<int, int> o2;
+    map_observer<int, int> o1;
+    map_observer<int, int> o2;
 
     EXPECT_EQ(0, m1->size());
     EXPECT_EQ(0, m2->size());
@@ -646,7 +647,7 @@ TEST(std_observable_map_test_suite, test_clear)
 {
     // Test clear
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     EXPECT_EQ(0, m->size());
 
@@ -684,7 +685,7 @@ TEST(std_observable_map_test_suite, test_emplace)
 {
     // Test emplace
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     const std::initializer_list<m::observable_map<int, int>::value_type> il =
     {
@@ -754,7 +755,7 @@ TEST(std_observable_map_test_suite, test_emplace_hint)
 {
     // Test emplace hint
     m::observable_map<int, int>::ptr m = m::observable_map<int, int>::create();
-    multimap_observer<int, int> o;
+    map_observer<int, int> o;
 
     const std::initializer_list<m::observable_map<int, int>::value_type> il =
     {
