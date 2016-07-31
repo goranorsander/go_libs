@@ -55,52 +55,52 @@ protected:
 public:
     iterator begin()
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     const_iterator begin() const
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     iterator end()
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator end() const
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator cbegin() const
     {
-        return container().cbegin();
+        return this->container().cbegin();
     }
 
     const_iterator cend() const
     {
-        return container().cend();
+        return this->container().cend();
     }
 
     size_type max_size() const
     {
-        return container().max_size();
+        return this->container().max_size();
     }
 
     bool empty() const
     {
-        return container().empty();
+        return this->container().empty();
     }
 
     reference front()
     {
-        return container().front();
+        return this->container().front();
     }
 
     const_reference front() const
     {
-        return container().front();
+        return this->container().front();
     }
 
 protected:
@@ -108,11 +108,11 @@ protected:
     {
         if(before > 0)
         {
-            on_container_changed(after > 0 ? notify_container_changed_action_reset : notify_container_changed_action_remove, after, before, after);
+            this->on_container_changed(after > 0 ? notify_container_changed_action_reset : notify_container_changed_action_remove, after, before, after);
         }
         else if(after > 0)
         {
-            on_container_changed(notify_container_changed_action_add, after, 0, after);
+            this->on_container_changed(notify_container_changed_action_add, after, 0, after);
         }
     }
 
@@ -120,7 +120,7 @@ protected:
     {
         if(after - before > 0)
         {
-            on_container_changed(notify_container_changed_action_add, after - before, 0, after);
+            this->on_container_changed(notify_container_changed_action_add, after - before, 0, after);
         }
     }
 
@@ -128,7 +128,7 @@ protected:
     {
         if(before - after > 0)
         {
-            on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
         }
     }
 };

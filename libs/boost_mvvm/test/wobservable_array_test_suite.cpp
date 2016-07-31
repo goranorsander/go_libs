@@ -26,6 +26,7 @@ namespace
 template<class T, size_t N> class array_observer
 {
 public:
+    typedef array_observer<T, N> this_type;
     typedef typename m::wobservable_array<T, N>::ptr wobservable_array_ptr_type;
 
     virtual ~array_observer()
@@ -48,14 +49,14 @@ public:
 
     void connect(wobservable_array_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&array_observer::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&array_observer::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void disconnect(wobservable_array_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&array_observer::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&array_observer::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

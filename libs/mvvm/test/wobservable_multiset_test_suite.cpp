@@ -28,6 +28,7 @@ namespace
 template<class T> class multiset_observer
 {
 public:
+    typedef multiset_observer<T> this_type;
     typedef typename m::wobservable_multiset<T>::ptr wobservable_multiset_ptr_type;
 
     virtual ~multiset_observer()
@@ -52,8 +53,8 @@ public:
 
     void connect(wobservable_multiset_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&multiset_observer::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&multiset_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(wobservable_multiset_ptr_type& c)

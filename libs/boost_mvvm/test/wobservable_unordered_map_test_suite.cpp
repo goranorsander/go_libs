@@ -22,6 +22,7 @@ namespace
 template<class K, class T> class unordered_map_observer
 {
 public:
+    typedef unordered_map_observer<K, T> this_type;
     typedef typename m::wobservable_unordered_map<K, T>::ptr wobservable_unordered_map_ptr_type;
 
     virtual ~unordered_map_observer()
@@ -44,14 +45,14 @@ public:
 
     void connect(wobservable_unordered_map_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&unordered_map_observer::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&unordered_map_observer::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void disconnect(wobservable_unordered_map_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&unordered_map_observer::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&unordered_map_observer::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

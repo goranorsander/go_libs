@@ -26,6 +26,7 @@ namespace
 template<class T> class forward_list_observer
 {
 public:
+    typedef forward_list_observer<T> this_type;
     typedef typename m::observable_forward_list<T>::ptr observable_forward_list_ptr_type;
 
     virtual ~forward_list_observer()
@@ -48,14 +49,14 @@ public:
 
     void connect(observable_forward_list_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&forward_list_observer::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&forward_list_observer::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void disconnect(observable_forward_list_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&forward_list_observer::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&forward_list_observer::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

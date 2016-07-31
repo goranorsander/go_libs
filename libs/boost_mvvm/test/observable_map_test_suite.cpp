@@ -22,6 +22,7 @@ namespace
 template<class K, class T> class map_observer
 {
 public:
+    typedef map_observer<K, T> this_type;
     typedef typename m::observable_map<K, T>::ptr observable_map_ptr_type;
 
     virtual ~map_observer()
@@ -44,14 +45,14 @@ public:
 
     void connect(observable_map_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&map_observer::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&map_observer::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void disconnect(observable_map_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&map_observer::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&map_observer::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

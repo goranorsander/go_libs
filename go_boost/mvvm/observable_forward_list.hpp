@@ -176,7 +176,7 @@ public:
         const std::size_t before = _container.size();
         _container.assign(first, last);
         const std::size_t after = _container.size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
     void assign(size_type n, const value_type& val)
@@ -184,7 +184,7 @@ public:
         const std::size_t before = _container.size();
         _container.assign(n, val);
         const std::size_t after = _container.size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -194,7 +194,7 @@ public:
         const std::size_t before = size();
         _container.assign(il);
         const std::size_t after = size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -202,7 +202,7 @@ public:
     void push_front(const value_type& val)
     {
         _container.push_front(val);
-        on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -210,7 +210,7 @@ public:
     void push_front(value_type&& val)
     {
         _container.push_front(val);
-        on_container_changed(notify_container_changed_action_add, 1, 0, size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, size());
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -222,7 +222,7 @@ public:
         const std::size_t after = _container.size();
         if(before > after)
         {
-            on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
+            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
         }
     }
 
@@ -233,14 +233,14 @@ public:
         const std::size_t x_before = x._container.size();
         _container.swap(x._container);
         x.on_container_changed(notify_container_changed_action_swap, this_before, x_before, x._container.size());
-        on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
+        this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
     }
 
     void clear() BOOST_NOEXCEPT_OR_NOTHROW
     {
         const std::size_t before = _container.size();
         _container.clear();
-        on_container_changed(notify_container_changed_action_reset, 0, before, _container.size());
+        this->on_container_changed(notify_container_changed_action_reset, 0, before, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -251,7 +251,7 @@ public:
         const std::size_t before = size();
         _container.emplace_front(args...);
         const std::size_t after = size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
     template <class... Args>
@@ -260,7 +260,7 @@ public:
         const std::size_t before = size();
         const iterator it = _container.emplace_after(position, args...);
         const std::size_t after = size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -271,7 +271,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert_after(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -282,7 +282,7 @@ public:
         const std::size_t before = size();
         const iterator it = _container.insert_after(position, val);
         const std::size_t after = size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -293,7 +293,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert_after(position, n, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -303,7 +303,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert_after(position, first, last);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -314,7 +314,7 @@ public:
         const std::size_t before = size();
         const iterator it = _container.insert_after(position, il);
         const std::size_t after = size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -325,7 +325,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase_after(position);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -334,7 +334,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase_after(position, last);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -349,7 +349,7 @@ public:
         const std::size_t x_before = x._container.size();
         _container.splice_after(position, x._container);
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x._container.size());
-        on_container_changed(notify_container_changed_action_add, x_before, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, x_before, 0, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -360,7 +360,7 @@ public:
         const std::size_t x_before = x.size();
         _container.splice_after(position, x._container);
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        on_container_changed(notify_container_changed_action_add, x_before, 0, size());
+        this->on_container_changed(notify_container_changed_action_add, x_before, 0, size());
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -370,7 +370,7 @@ public:
     {
         _container.splice_after(position, x._container, i);
         x.on_container_changed(notify_container_changed_action_remove, 0, 1, x._container.size());
-        on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -380,7 +380,7 @@ public:
     {
         _container.splice_after(position, x._container, i);
         x.on_container_changed(notify_container_changed_action_remove, 0, 1, x.size());
-        on_container_changed(notify_container_changed_action_add, 1, 0, size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, size());
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -392,7 +392,7 @@ public:
         _container.splice_after(position, x._container, first, last);
         const std::size_t transfer_count = _container.size() - this_before;
         x.on_container_changed(notify_container_changed_action_remove, 0, transfer_count, x._container.size());
-        on_container_changed(notify_container_changed_action_add, transfer_count, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, transfer_count, 0, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -404,7 +404,7 @@ public:
         _container.splice_after(position, x._container, first, last);
         const std::size_t transfer_count = size() - this_before;
         x.on_container_changed(notify_container_changed_action_remove, 0, transfer_count, x.size());
-        on_container_changed(notify_container_changed_action_add, transfer_count, 0, size());
+        this->on_container_changed(notify_container_changed_action_add, transfer_count, 0, size());
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -414,7 +414,7 @@ public:
         const std::size_t before = _container.size();
         _container.remove(val);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
     }
 
     template <class Predicate>
@@ -423,7 +423,7 @@ public:
         const std::size_t before = _container.size();
         _container.remove_if(pred);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
     }
 
     void unique()
@@ -431,7 +431,7 @@ public:
         const std::size_t before = _container.size();
         _container.unique();
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
     }
 
     template <class BinaryPredicate>
@@ -440,7 +440,7 @@ public:
         const std::size_t before = _container.size();
         _container.unique(binary_pred);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
     }
 
     template<class t, class s>
@@ -451,7 +451,7 @@ public:
         _container.merge(x._container);
         const std::size_t this_after = _container.size();
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x._container.size());
-        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        this->on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -464,7 +464,7 @@ public:
         _container.merge(x._container);
         const std::size_t this_after = size();
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        this->on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -477,7 +477,7 @@ public:
         _container.merge(x._container, comp);
         const std::size_t this_after = _container.size();
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x._container.size());
-        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        this->on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -490,7 +490,7 @@ public:
         _container.merge(x._container, comp);
         const std::size_t this_after = size();
         x.on_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        this->on_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)

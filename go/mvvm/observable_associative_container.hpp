@@ -59,104 +59,104 @@ protected:
 public:
     iterator begin() noexcept
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     const_iterator begin() const noexcept
     {
-        return container().begin();
+        return this->container().begin();
     }
 
     iterator end() noexcept
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator end() const noexcept
     {
-        return container().end();
+        return this->container().end();
     }
 
     const_iterator cbegin() const noexcept
     {
-        return container().cbegin();
+        return this->container().cbegin();
     }
 
     const_iterator cend() const noexcept
     {
-        return container().cend();
+        return this->container().cend();
     }
 
     size_type size() const noexcept
     {
-        return container().size();
+        return this->container().size();
     }
 
     size_type max_size() const noexcept
     {
-        return container().max_size();
+        return this->container().max_size();
     }
 
     bool empty() const noexcept
     {
-        return container().empty();
+        return this->container().empty();
     }
 
     template <class... Args>
     iterator emplace_hint(const_iterator position, Args&&... args)
     {
-        const std::size_t before = container().size();
-        const iterator it = container().emplace_hint(position, args...);
-        const std::size_t after = container().size();
+        const std::size_t before = this->container().size();
+        const iterator it = this->container().emplace_hint(position, args...);
+        const std::size_t after = this->container().size();
         notify_insert(before, after);
         return it;
     }
 
     void clear() noexcept
     {
-        const std::size_t before = container().size();
-        container().clear();
-        on_container_changed(notify_container_changed_action_reset, 0, before, container().size());
+        const std::size_t before = this->container().size();
+        this->container().clear();
+        this->on_container_changed(notify_container_changed_action_reset, 0, before, this->container().size());
     }
 
     template<class t, class s>
     void swap(basic_observable_associative_container<t, s>& x)
     {
-        const std::size_t this_before = container().size();
-        const std::size_t x_before = x.container().size();
-        container().swap(x.container());
+        const std::size_t this_before = this->container().size();
+        const std::size_t x_before = x.size();
+        this->container().swap(x.container());
         x.on_container_changed(notify_container_changed_action_swap, this_before, x_before, x.container().size());
-        on_container_changed(notify_container_changed_action_swap, x_before, this_before, container().size());
+        this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, this->container().size());
     }
 
     size_type count(const value_type& val) const
     {
-        return container().count(val);
+        return this->container().count(val);
     }
-	
+
     const_iterator find(const value_type& val) const
     {
-        return container().find(val);
+        return this->container().find(val);
     }
 
     iterator find(const value_type& val)
     {
-        return container().find(val);
+        return this->container().find(val);
     }
 
     std::pair<const_iterator, const_iterator> equal_range(const value_type& val) const
     {
-        return container().equal_range(val);
+        return this->container().equal_range(val);
     }
 
     std::pair<iterator, iterator> equal_range(const value_type& val)
     {
-        return container().equal_range(val);
+        return this->container().equal_range(val);
     }
 
     allocator_type get_allocator() const noexcept
     {
-        return container().get_allocator();
+        return this->container().get_allocator();
     }
 
 protected:
@@ -164,7 +164,7 @@ protected:
     {
         if(after - before > 0)
         {
-            on_container_changed(notify_container_changed_action_add, after - before, 0, after);
+            this->on_container_changed(notify_container_changed_action_add, after - before, 0, after);
         }
     }
 
@@ -172,7 +172,7 @@ protected:
     {
         if(before - after > 0)
         {
-            on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
         }
     }
 };

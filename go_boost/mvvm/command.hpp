@@ -11,9 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
+#include <boost/predef.h>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -108,7 +107,7 @@ inline basic_command<std::string>::basic_command(const std::string& cmd_name, co
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    command_name.getter(boost::bind(&basic_command::get_command_name, this));
+    command_name.getter(boost::bind(&this_type::get_command_name, this));
 }
 
 template<>
@@ -120,7 +119,7 @@ inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, 
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    command_name.getter(boost::bind(&basic_command::get_command_name, this));
+    command_name.getter(boost::bind(&this_type::get_command_name, this));
 }
 
 template<class S>
@@ -180,17 +179,21 @@ inline void basic_command<S>::notify_can_execute_changed()
     }
 }
 
-template<>
-inline std::string basic_command<std::string>::get_command_name() const
-{
-    return _command_name;
-}
-
-template<>
-inline std::wstring basic_command<std::wstring>::get_command_name() const
-{
-    return _command_name;
-}
+//#if defined(BOOST_COMP_MSVC)
+//template<>
+//inline std::string basic_command<std::string>::get_command_name() const
+//{
+//    return _command_name;
+//}
+//#endif  // defined(BOOST_COMP_MSVC)
+//
+//#if defined(BOOST_COMP_MSVC)
+//template<>
+//inline std::wstring basic_command<std::wstring>::get_command_name() const
+//{
+//    return _command_name;
+//}
+//#endif  // defined(BOOST_COMP_MSVC)
 
 template<class S>
 inline S basic_command<S>::get_command_name() const

@@ -231,7 +231,7 @@ public:
         const std::size_t before = _container.size();
         _container.assign(first, last);
         const std::size_t after = _container.size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
     void assign(size_type n, const value_type& val)
@@ -239,7 +239,7 @@ public:
         const std::size_t before = _container.size();
         _container.assign(n, val);
         const std::size_t after = _container.size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
     void assign(std::initializer_list<value_type> il)
@@ -247,19 +247,19 @@ public:
         const std::size_t before = _container.size();
         _container.assign(il);
         const std::size_t after = _container.size();
-        notify_assign(before, after);
+        this->notify_assign(before, after);
     }
 
     void push_back(const value_type& val)
     {
         _container.push_back(val);
-        on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
     void push_back(value_type&& val)
     {
         _container.push_back(val);
-        on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
     void pop_back()
@@ -269,7 +269,7 @@ public:
         const std::size_t after = _container.size();
         if(before > after)
         {
-            on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
+            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
         }
     }
 
@@ -278,7 +278,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -287,7 +287,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, n, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -297,7 +297,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, first, last);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -306,7 +306,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -315,7 +315,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, il);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -324,7 +324,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(position);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -333,7 +333,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(first, last);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -344,14 +344,14 @@ public:
         const std::size_t x_before = x._container.size();
         _container.swap(x._container);
         x.on_container_changed(notify_container_changed_action_swap, this_before, x_before, x._container.size());
-        on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
+        this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
     }
 
     void clear() noexcept
     {
         const std::size_t before = _container.size();
         _container.clear();
-        on_container_changed(notify_container_changed_action_reset, 0, before, _container.size());
+        this->on_container_changed(notify_container_changed_action_reset, 0, before, _container.size());
     }
 
     template <class... Args>
@@ -360,7 +360,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.emplace(position, args...);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -370,7 +370,7 @@ public:
         const std::size_t before = _container.size();
         _container.emplace_back(args...);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
     allocator_type get_allocator() const noexcept

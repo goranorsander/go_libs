@@ -11,9 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
-#endif
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -130,10 +128,10 @@ public:
     template <class... Args>
     iterator emplace(Args&&... args)
     {
-        const std::size_t before = container().size();
-        const iterator it = container().emplace(args...);
-        const std::size_t after = container().size();
-        notify_insert(before, after);
+        const std::size_t before = this->container().size();
+        const iterator it = this->container().emplace(args...);
+        const std::size_t after = this->container().size();
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -141,10 +139,10 @@ public:
 
     iterator insert(const value_type& val)
     {
-        const std::size_t before = container().size();
-        const iterator it = container().insert(val);
-        const std::size_t after = container().size();
-        notify_insert(before, after);
+        const std::size_t before = this->container().size();
+        const iterator it = this->container().insert(val);
+        const std::size_t after = this->container().size();
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -152,10 +150,10 @@ public:
 
     template <class P> iterator insert(P&& val)
     {
-        const std::size_t before = container().size();
-        const iterator it = container().insert(val);
-        const std::size_t after = container().size();
-        notify_insert(before, after);
+        const std::size_t before = this->container().size();
+        const iterator it = this->container().insert(val);
+        const std::size_t after = this->container().size();
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -166,7 +164,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -177,7 +175,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.insert(position, val);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
         return it;
     }
 
@@ -189,7 +187,7 @@ public:
         const std::size_t before = _container.size();
         _container.insert(first, last);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -199,7 +197,7 @@ public:
         const std::size_t before = _container.size();
         _container.insert(il);
         const std::size_t after = _container.size();
-        notify_insert(before, after);
+        this->notify_insert(before, after);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -209,18 +207,18 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(position);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
     size_type erase(const key_type& k)
     {
-        const std::size_t before = container().size();
-        const size_type s = container().erase(k);
+        const std::size_t before = this->container().size();
+        const size_type s = this->container().erase(k);
         if(s > 0)
         {
-            const std::size_t after = container().size();
-            notify_erase(before, after);
+            const std::size_t after = this->container().size();
+            this->notify_erase(before, after);
         }
         return s;
     }
@@ -230,7 +228,7 @@ public:
         const std::size_t before = _container.size();
         const iterator it = _container.erase(first, last);
         const std::size_t after = _container.size();
-        notify_erase(before, after);
+        this->notify_erase(before, after);
         return it;
     }
 
@@ -429,7 +427,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        container().operator=(il);
+        this->container().operator=(il);
         return *this;
     }
 
@@ -617,7 +615,7 @@ public:
 
     this_type& operator=(std::initializer_list<value_type> il)
     {
-        container().operator=(il);
+        this->container().operator=(il);
         return *this;
     }
 

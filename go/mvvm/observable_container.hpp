@@ -49,9 +49,9 @@ protected:
 protected:
     virtual void on_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
-        if(!basic_observable_container<string_type, container_type>::container_changed.empty())
+        if(!this_type::container_changed.empty())
         {
-            basic_observable_container<string_type, container_type>::container_changed(shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
+            this_type::container_changed(this_type::shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
         }
     }
 
