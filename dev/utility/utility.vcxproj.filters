@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\utility">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go\utility\iterator">
+      <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go\utility.hpp">
+      <Filter>go</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\sanity.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\iterator\forward_iterator.hpp">
+      <Filter>go\utility\iterator</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
