@@ -67,13 +67,13 @@ if(BUILD_BOOST_TESTS)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
 
-    if((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION EQUAL 1500))
+    if(MSVC AND (MSVC_VERSION EQUAL 1500))
         set(MSVC_90_GMOCK_LIBS_DIR ${CMAKE_BINARY_DIR}/libs/${GMOCK_LIBS_DIR})
         set(MSVC_90_GTEST_LIBS_DIR ${CMAKE_BINARY_DIR}/libs/${GTEST_LIBS_DIR})
         link_directories(${MSVC_90_GMOCK_LIBS_DIR} ${MSVC_90_GTEST_LIBS_DIR} ${BOOST_LIBRARYDIR})
-    else((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION EQUAL 1500))
+    else(MSVC AND (MSVC_VERSION EQUAL 1500))
         link_directories(${GMOCK_LIBS_DIR} ${GTEST_LIBS_DIR} ${BOOST_LIBRARYDIR})
-    endif((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION EQUAL 1500))
+    endif(MSVC AND (MSVC_VERSION EQUAL 1500))
 
     ########################################################
     #  libs/boost_mvvm/test                                #
@@ -89,22 +89,31 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
-            libboost_system-gcc61-mt-1_61.a
+            ${LIBBOOST_SYSTEM}
             )
     else(NOT WIN32)
-        if((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
-            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
-            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)
-        else((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
+        if(MSYS OR MINGW)
+            find_package(Threads)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                debug Debug/gtest
-                optimized Release/gtest
+                libgtest.a
+                libgtest_main.a
+                ${LIBBOOST_SYSTEM}
                 )
-            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                debug Debug/gtest_main
-                optimized Release/gtest_main
-                )
-        endif((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
+        else(MSYS OR MINGW)
+            if(MSVC AND (MSVC_VERSION LESS 1800))
+                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
+                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)
+            else(MSVC AND (MSVC_VERSION LESS 1800))
+                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
+                    debug Debug/gtest
+                    optimized Release/gtest
+                    )
+                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
+                    debug Debug/gtest_main
+                    optimized Release/gtest_main
+                    )
+            endif(MSVC AND (MSVC_VERSION LESS 1800))
+        endif(MSYS OR MINGW)
     endif(NOT WIN32)
 
     target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} ${CMAKE_THREAD_LIBS_INIT})

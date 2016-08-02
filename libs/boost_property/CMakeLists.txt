@@ -20,19 +20,28 @@ if(BUILD_BOOST_TESTS)
             libboost_system-gcc61-mt-1_61.a
             )
     else(NOT WIN32)
-        if((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
-            target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME} gtest)
-            target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME} gtest_main)
-        else((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
+        if(MSYS OR MINGW)
+            find_package(Threads)
             target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
-                debug Debug/gtest
-                optimized /Release/gtest
+                libgtest.a
+                libgtest_main.a
+                libboost_system-mgw53-mt-1_61.a
                 )
-            target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
-                debug Debug/gtest_main
-                optimized Release/gtest_main
-                )
-        endif((${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC") AND (MSVC_VERSION LESS 1800))
+        else(MSYS OR MINGW)
+            if(MSVC AND (MSVC_VERSION LESS 1800))
+                target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME} gtest)
+                target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME} gtest_main)
+            else(MSVC AND (MSVC_VERSION LESS 1800))
+                target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
+                    debug Debug/gtest
+                    optimized /Release/gtest
+                    )
+                target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
+                    debug Debug/gtest_main
+                    optimized Release/gtest_main
+                    )
+            endif(MSVC AND (MSVC_VERSION LESS 1800))
+        endif(MSYS OR MINGW)
     endif(NOT WIN32)
 
     target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME} ${CMAKE_THREAD_LIBS_INIT})

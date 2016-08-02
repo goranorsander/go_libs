@@ -11,6 +11,8 @@ option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-imple
 option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires the Boost libraries.")
 option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
+set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
+set(BOOST_MINOR_VERSION "61" CACHE STRING "Boost libraries minor version.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
 
@@ -24,14 +26,15 @@ endif(USE_SOLUTION_FOLDERS)
 #  compiler flags                                      #
 ########################################################
 
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     # using Clang
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-    # using GCC
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+    # using gcc/g++
     set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -fpermissive  -ftemplate-backtrace-limit=0" )
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
+	
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+elseif(MSVC)
     # using Visual Studio C++
     if(MSVC_VERSION EQUAL 1700)
         # using Visual Studio 2012 C++
@@ -40,8 +43,28 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 endif()
 
 ########################################################
+#  compiler version                                    #
+########################################################
+
+if(CMAKE_COMPILER_IS_GNUCC)
+    execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+    string(REGEX MATCHALL "[0-9]+" GCC_VERSION_COMPONENTS ${GCC_VERSION})
+    list(GET GCC_VERSION_COMPONENTS 0 GCC_MAJOR)
+    list(GET GCC_VERSION_COMPONENTS 1 GCC_MINOR)
+endif(CMAKE_COMPILER_IS_GNUCC)
+
+########################################################
 #  external dependencies                               #
 ########################################################
+
+if(CMAKE_COMPILER_IS_GNUCC)
+	set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
+    if(MSYS OR MINGW)
+	    set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+	else(MSYS OR MINGW)
+	    set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+	endif(MSYS OR MINGW)
+endif(CMAKE_COMPILER_IS_GNUCC)
 
 if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
@@ -50,9 +73,18 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
     execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
     execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
 
-    # Prevent GoogleTest from overriding our compiler/linker options
-    # when building with Visual Studio
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    # Prevent GoogleTest from overriding our
+    # compiler/linker options when building with
+    # Visual Studio
+    if(MSVC)
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    endif(MSVC)
+
+    # Properly disable phtreads when compiling with
+    # MSYS/MinGW on Windows
+    if(MSYS OR MINGW)
+        set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
+    endif(MSYS OR MINGW)
 
     # Add googletest directly to our build. This adds
     # the following targets: gtest, gtest_main, gmock
