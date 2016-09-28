@@ -13,26 +13,44 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1 ${BOOST_PROJECT_NAME_STR}_MFC_example_1)
 
-    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
+	set(BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.ico
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.rc2
         ./boost_mvvm_mfc_example_1/boost_mvvm_mfc_example_1.cpp
         ./boost_mvvm_mfc_example_1/boost_mvvm_mfc_example_1.h
         ./boost_mvvm_mfc_example_1/boost_mvvm_mfc_example_1.rc
+        ./boost_mvvm_mfc_example_1/Resource.h
+        ./boost_mvvm_mfc_example_1/stdafx.cpp
+        ./boost_mvvm_mfc_example_1/stdafx.h
+        ./boost_mvvm_mfc_example_1/targetver.h
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_model.cpp
         ./boost_mvvm_mfc_example_1/product_model.hpp
         ./boost_mvvm_mfc_example_1/product_repository.cpp
         ./boost_mvvm_mfc_example_1/product_repository.hpp
         ./boost_mvvm_mfc_example_1/product_repository_interface.hpp
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_1/product_view.cpp
         ./boost_mvvm_mfc_example_1/product_view.hpp
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_view_model.cpp
         ./boost_mvvm_mfc_example_1/product_view_model.hpp
-        ./boost_mvvm_mfc_example_1/Resource.h
-        ./boost_mvvm_mfc_example_1/stdafx.cpp
-        ./boost_mvvm_mfc_example_1/stdafx.h
-        ./boost_mvvm_mfc_example_1/targetver.h
+	)
+	
+    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
+		${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
+
+	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
+	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
+	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
+	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/boost_mvvm/boost_mvvm_mfc_example_2            #
@@ -40,26 +58,44 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2 ${BOOST_PROJECT_NAME_STR}_MFC_example_2)
 
-    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2} WIN32
+	set(BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_2/res/boost_mvvm_mfc_example_2.ico
         ./boost_mvvm_mfc_example_2/res/boost_mvvm_mfc_example_2.rc2
         ./boost_mvvm_mfc_example_2/boost_mvvm_mfc_example_2.cpp
         ./boost_mvvm_mfc_example_2/boost_mvvm_mfc_example_2.h
         ./boost_mvvm_mfc_example_2/boost_mvvm_mfc_example_2.rc
+        ./boost_mvvm_mfc_example_2/Resource.h
+        ./boost_mvvm_mfc_example_2/stdafx.cpp
+        ./boost_mvvm_mfc_example_2/stdafx.h
+        ./boost_mvvm_mfc_example_2/targetver.h
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_2/product_model.cpp
         ./boost_mvvm_mfc_example_2/product_model.hpp
         ./boost_mvvm_mfc_example_2/product_repository.cpp
         ./boost_mvvm_mfc_example_2/product_repository.hpp
         ./boost_mvvm_mfc_example_2/product_repository_interface.hpp
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_2/product_view.cpp
         ./boost_mvvm_mfc_example_2/product_view.hpp
+	)
+	set(BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_2/product_view_model.cpp
         ./boost_mvvm_mfc_example_2/product_view_model.hpp
-        ./boost_mvvm_mfc_example_2/Resource.h
-        ./boost_mvvm_mfc_example_2/stdafx.cpp
-        ./boost_mvvm_mfc_example_2/stdafx.h
-        ./boost_mvvm_mfc_example_2/targetver.h
+	)
+	
+    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2} WIN32
+		${BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
+		${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
     )
+
+	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
+	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
+	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE})
+	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE})
 
 endif(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 

@@ -51,12 +51,6 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\Resource.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\FileView.h">
-      <Filter>MFC Application Code\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\ClassView.h">
-      <Filter>MFC Application Code\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\ViewTree.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
@@ -65,6 +59,39 @@
     </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\PropertiesWnd.h">
       <Filter>MFC Application Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.hpp">
+      <Filter>MVVM Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view.h">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,12 +113,6 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\FileView.cpp">
-      <Filter>MFC Application Code\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ClassView.cpp">
-      <Filter>MFC Application Code\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\ViewTree.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
@@ -100,6 +121,27 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\PropertiesWnd.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.cpp">
+      <Filter>MVVM Example</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

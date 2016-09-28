@@ -39,6 +39,7 @@ mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     ,  m_bHiColorIcons(TRUE)
     , m_timer_id(0)
     , m_command_manager()
+    , m_fleet_repository()
 {
 	SetAppID(_T("mvvm_mfc_example_3.AppID.NoVersion"));
 }
@@ -57,6 +58,7 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
 	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL, RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
 
     m_command_manager = m::wcommand_manager::create();
+    m_fleet_repository = fleet_repository::create();
     m_timer_id = SetTimer(NULL, 0, 100, NULL);
 
     CMultiDocTemplate* pDocTemplate;
@@ -68,7 +70,7 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
 
-	CMainFrame* pMainFrame = new CMainFrame(m_command_manager);
+	CMainFrame* pMainFrame = new CMainFrame(m_command_manager, m_fleet_repository);
 	if (!pMainFrame || !pMainFrame->LoadFrame(IDR_MAINFRAME))
 	{
 		delete pMainFrame;
@@ -103,7 +105,8 @@ BOOL mvvm_mfc_example_3_app::PreTranslateMessage(MSG* pMsg)
     return CWinAppEx::PreTranslateMessage(pMsg);
 }
 
-class CAboutDlg : public CDialogEx
+class CAboutDlg
+    : public CDialogEx
 {
 public:
 	CAboutDlg();

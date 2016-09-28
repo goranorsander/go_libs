@@ -37,6 +37,77 @@ std::wstring current_date_and_time()
     return dt;
 }
 
+std::wstring string_format(const std::wstring fmt_str, ...)
+{
+    int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
+    int final_n = 0;
+    std::wstring str;
+    std::unique_ptr<wchar_t[]> formatted;
+    va_list ap;
+    while(true)
+    {
+        formatted.reset(new wchar_t[n]); //* Wrap the plain char array into the unique_ptr
+        wcscpy_s(&formatted[0], n, fmt_str.c_str());
+        va_start(ap, fmt_str);
+        final_n = vswprintf(&formatted[0], n, fmt_str.c_str(), ap);
+        va_end(ap);
+        if(final_n < 0 || final_n >= n)
+        {
+            n += abs(final_n - n + 1);
+        }
+        else
+        {
+            break;
+        }
+    }
+    return std::wstring(formatted.get());
+}
+
+std::wstring object_information(const m::object::ptr& o)
+{
+    equipment_interface::ptr e = std::dynamic_pointer_cast<equipment_interface>(o);
+    if(e)
+    {
+        return string_format(L"class equipment_model[category=%s, name=%s, quantity=%d]",
+            (*e->category).c_str(),
+            (*e->name).c_str(),
+            *e->quantity);
+    }
+    m::wobservable_list<equipment_interface::ptr>::ptr el = std::dynamic_pointer_cast<m::wobservable_list<equipment_interface::ptr>>(o);
+    if(el)
+    {
+        return string_format(L"class go::mvvm::wobservable_list<equipment_model>[size=%d]",
+            el->size());
+    }
+    fleet_organization_interface::ptr f = std::dynamic_pointer_cast<fleet_organization_interface>(o);
+    if(f)
+    {
+        return string_format(L"class fleet_organization_model[name=%s, spaceship_model.name=%s, parent.name=%s, first_child.name=%s, previous_sibling.name=%s, next_sibling.name=%s]",
+            (*f->name).c_str(),
+            *f->spaceship_model ? (*(*f->spaceship_model)->name).c_str() : L"<null>",
+            *f->parent ? (*(*f->parent)->name).c_str() : L"<null>",
+            *f->first_child ? (*(*f->first_child)->name).c_str() : L"<null>",
+            *f->previous_sibling ? (*(*f->previous_sibling)->name).c_str() : L"<null>",
+            *f->next_sibling ? (*(*f->next_sibling)->name).c_str() : L"<null>");
+    }
+    spaceship_interface::ptr s = std::dynamic_pointer_cast<spaceship_interface>(o);
+    if(s)
+    {
+        return string_format(L"class fleet_organization_model[spaceship_class=%s, name=%s, equipment_model={size=%d}, captain=%s, crew_complement=%d]",
+            (*s->spaceship_class).c_str(),
+            (*s->name).c_str(),
+            *s->equipment ? (*s->equipment)->size() : 0,
+            (*s->captain).c_str(),
+            *s->crew_complement);
+    }
+    fleet_organization_view_model::ptr fvm = std::dynamic_pointer_cast<fleet_organization_view_model>(o);
+    if(fvm)
+    {
+        return L"class fleet_organization_view_model";
+    }
+    return L"class go::mvvm::object";
+}
+
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -141,7 +212,7 @@ void COutputWnd::on_command_executed(const m::wcommand::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = current_date_and_time() + _T(": Executed command ") + c->command_name();
+        const std::wstring msg = string_format(L"%s: Executed command %s", current_date_and_time().c_str(), c->command_name().c_str());
         m_wndOutputAllMvvmEvents.AddString(msg.c_str());
         m_wndOutputCommandEvents.AddString(msg.c_str());
     }
@@ -151,7 +222,7 @@ void COutputWnd::on_command_not_executed(const m::wcommand::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = current_date_and_time() + _T(": Command ") + c->command_name() + _T(" was not executed");
+        const std::wstring msg = string_format(L"%s: Command %s was not executed", current_date_and_time().c_str(), c->command_name().c_str());
         m_wndOutputAllMvvmEvents.AddString(msg.c_str());
         m_wndOutputCommandEvents.AddString(msg.c_str());
     }
@@ -161,23 +232,23 @@ void COutputWnd::on_container_changed(const m::object::ptr& o, const std::shared
 {
     if(o && a)
     {
-        std::wstring msg(1000, 0);
+        std::wstring msg;
         switch(a->action())
         {
         case m::notify_container_changed_action_add:
-            swprintf_s(&(msg[0]), 1000, _T("%s: Added %zu elements to container"), current_date_and_time().c_str(), a->added_elements());
+            msg = string_format(L"%s: Added %zu elements to container, %s", current_date_and_time().c_str(), a->added_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action_remove:
-            swprintf_s(&(msg[0]), 1000, _T("%s: Removed %zu elements from container"), current_date_and_time().c_str(), a->removed_elements());
+            msg = string_format(L"%s: Removed %zu elements from container, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action_reset:
-            swprintf_s(&(msg[0]), 1000, _T("%s: Reset container, removed all %zu elements"), current_date_and_time().c_str(), a->removed_elements());
+            msg = string_format(L"%s: Reset container, removed all %zu elements, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action_swap:
-            swprintf_s(&(msg[0]), 1000, _T("%s: Swapped container elements, had %zu, now got %zu"), current_date_and_time().c_str(), a->removed_elements(), a->added_elements());
+            msg = string_format(L"%s: Swapped container elements, had %zu, now got %zu, %s", current_date_and_time().c_str(), a->removed_elements(), a->added_elements(), object_information(o).c_str());
             break;
         default:
-            swprintf_s(&(msg[0]), 1000, _T("%s: Unknown container action"), current_date_and_time().c_str());
+            msg = string_format(L"%s: Unknown container action, %s", current_date_and_time().c_str(), object_information(o).c_str());
             break;
         }
         m_wndOutputAllMvvmEvents.AddString(msg.c_str());
@@ -189,7 +260,7 @@ void COutputWnd::on_property_changed(const m::object::ptr& o, const std::shared_
 {
     if(o && a)
     {
-        const std::wstring msg = current_date_and_time() + _T(": Changed property ") + a->property_name();
+        const std::wstring msg = string_format(L"%s: Changed property %s, %s", current_date_and_time().c_str(), a->property_name().c_str(), object_information(o).c_str());
         m_wndOutputAllMvvmEvents.AddString(msg.c_str());
         m_wndOutputObservableObjectEvents.AddString(msg.c_str());
     }

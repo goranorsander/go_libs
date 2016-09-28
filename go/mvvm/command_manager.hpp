@@ -19,7 +19,7 @@
 
 #include <mutex>
 #include <vector>
-#include <go/mvvm/command.hpp>
+#include <go/mvvm/notify_command_execution_interface.hpp>
 
 namespace go
 {
@@ -32,6 +32,7 @@ typedef basic_command_manager<std::wstring> wcommand_manager;
 
 template<class S>
 class basic_command_manager
+    : public basic_notify_command_execution_interface<S>
 {
 public:
     typedef S string_type;
@@ -55,7 +56,7 @@ private:
 public:
     static std::shared_ptr<basic_command_manager<S>> create();
 
-    void add_command(const std::shared_ptr<basic_command<S>>& cmd);
+    void issue_command(const std::shared_ptr<basic_command<S>>& cmd);
 
     void execute_commands();
 
@@ -124,7 +125,7 @@ inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::creat
 }
 
 template<>
-inline void basic_command_manager<std::string>::add_command(const std::shared_ptr<basic_command<std::string>>& cmd)
+inline void basic_command_manager<std::string>::issue_command(const std::shared_ptr<basic_command<std::string>>& cmd)
 {
     if(cmd)
     {
@@ -134,7 +135,7 @@ inline void basic_command_manager<std::string>::add_command(const std::shared_pt
 }
 
 template<>
-inline void basic_command_manager<std::wstring>::add_command(const std::shared_ptr<basic_command<std::wstring>>& cmd)
+inline void basic_command_manager<std::wstring>::issue_command(const std::shared_ptr<basic_command<std::wstring>>& cmd)
 {
     if(cmd)
     {
@@ -144,7 +145,7 @@ inline void basic_command_manager<std::wstring>::add_command(const std::shared_p
 }
 
 template<class S>
-inline void basic_command_manager<S>::add_command(const std::shared_ptr<basic_command<S>>& cmd)
+inline void basic_command_manager<S>::issue_command(const std::shared_ptr<basic_command<S>>& cmd)
 {
     if(cmd)
     {
@@ -170,6 +171,11 @@ inline void basic_command_manager<std::string>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed.call(cmd);
+            }
+            else
+            {
+                command_not_executed.call(cmd);
             }
         }
     }
@@ -192,6 +198,11 @@ inline void basic_command_manager<std::wstring>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed.call(cmd);
+            }
+            else
+            {
+                command_not_executed.call(cmd);
             }
         }
     }
@@ -214,6 +225,11 @@ inline void basic_command_manager<S>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed.call(cmd);
+            }
+            else
+            {
+                command_not_executed.call(cmd);
             }
         }
     }

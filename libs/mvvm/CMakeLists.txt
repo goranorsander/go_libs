@@ -11,26 +11,44 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1 ${STD_PROJECT_NAME_STR}_MFC_example_1)
 
-    add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
+	set(MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
         ./mvvm_mfc_example_1/res/mvvm_mfc_example_1.ico
         ./mvvm_mfc_example_1/res/mvvm_mfc_example_1.rc2
         ./mvvm_mfc_example_1/mvvm_mfc_example_1.cpp
         ./mvvm_mfc_example_1/mvvm_mfc_example_1.h
         ./mvvm_mfc_example_1/mvvm_mfc_example_1.rc
+        ./mvvm_mfc_example_1/Resource.h
+        ./mvvm_mfc_example_1/stdafx.cpp
+        ./mvvm_mfc_example_1/stdafx.h
+        ./mvvm_mfc_example_1/targetver.h
+	)
+	set(MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
         ./mvvm_mfc_example_1/product_model.cpp
         ./mvvm_mfc_example_1/product_model.hpp
         ./mvvm_mfc_example_1/product_repository.cpp
         ./mvvm_mfc_example_1/product_repository.hpp
         ./mvvm_mfc_example_1/product_repository_interface.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
         ./mvvm_mfc_example_1/product_view.cpp
         ./mvvm_mfc_example_1/product_view.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
         ./mvvm_mfc_example_1/product_view_model.cpp
         ./mvvm_mfc_example_1/product_view_model.hpp
-        ./mvvm_mfc_example_1/Resource.h
-        ./mvvm_mfc_example_1/stdafx.cpp
-        ./mvvm_mfc_example_1/stdafx.h
-        ./mvvm_mfc_example_1/targetver.h
+	)
+	
+    add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
+		${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
+		${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
+		${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
+		${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
+
+	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
+	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
+	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
+	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/mvvm/mvvm_mfc_example_2                        #
@@ -38,26 +56,44 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2 ${STD_PROJECT_NAME_STR}_MFC_example_2)
 
-    add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2} WIN32
+	set(MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE
         ./mvvm_mfc_example_2/res/mvvm_mfc_example_2.ico
         ./mvvm_mfc_example_2/res/mvvm_mfc_example_2.rc2
         ./mvvm_mfc_example_2/mvvm_mfc_example_2.cpp
         ./mvvm_mfc_example_2/mvvm_mfc_example_2.h
         ./mvvm_mfc_example_2/mvvm_mfc_example_2.rc
+        ./mvvm_mfc_example_2/Resource.h
+        ./mvvm_mfc_example_2/stdafx.cpp
+        ./mvvm_mfc_example_2/stdafx.h
+        ./mvvm_mfc_example_2/targetver.h
+	)
+	set(MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE
         ./mvvm_mfc_example_2/product_model.cpp
         ./mvvm_mfc_example_2/product_model.hpp
         ./mvvm_mfc_example_2/product_repository.cpp
         ./mvvm_mfc_example_2/product_repository.hpp
         ./mvvm_mfc_example_2/product_repository_interface.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE
         ./mvvm_mfc_example_2/product_view.cpp
         ./mvvm_mfc_example_2/product_view.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE
         ./mvvm_mfc_example_2/product_view_model.cpp
         ./mvvm_mfc_example_2/product_view_model.hpp
-        ./mvvm_mfc_example_2/Resource.h
-        ./mvvm_mfc_example_2/stdafx.cpp
-        ./mvvm_mfc_example_2/stdafx.h
-        ./mvvm_mfc_example_2/targetver.h
+	)
+	
+    add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2} WIN32
+		${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE}
+		${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE}
+		${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
+		${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
     )
+
+	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
+	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
+	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE})
+	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE})
 
 endif(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 

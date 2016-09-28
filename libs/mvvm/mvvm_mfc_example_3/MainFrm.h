@@ -12,10 +12,12 @@
 //
 
 #pragma once
-#include "FileView.h"
-#include "ClassView.h"
+
+#include "fleet_organization_view.h"
 #include "OutputWnd.h"
 #include "PropertiesWnd.h"
+
+#include "fleet_repository.hpp"
 
 #include <go/mvvm.hpp>
 
@@ -27,7 +29,7 @@ class CMainFrame
 	DECLARE_DYNAMIC(CMainFrame)
 public:
     virtual ~CMainFrame();
-    CMainFrame(const m::wcommand_manager::ptr& command_manager);
+    CMainFrame(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
@@ -42,8 +44,7 @@ protected:
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;
 	CMFCStatusBar     m_wndStatusBar;
-	CFileView         m_wndFileView;
-	CClassView        m_wndClassView;
+	fleet_organization_view m_wndFleetOrganizationView;
 	COutputWnd        m_wndOutput;
 	CPropertiesWnd    m_wndProperties;
 
@@ -60,6 +61,7 @@ protected:
 
 private:
     m::wcommand_manager::wptr m_command_manager;
+    fleet_repository::wptr m_fleet_repository;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_MAINFRM_H_INCLUDED

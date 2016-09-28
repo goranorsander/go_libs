@@ -11,32 +11,34 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#if defined(WIN32) || defined(WINDOWS)
+#include <go/config.hpp>
+
+#if defined(GO_COMP_MSVC)
 
 // __LOC__ : Line Of Code (see https://support.microsoft.com/en-us/kb/155196)
 #define __STR2__(x) #x
 #define __STR1__(x) __STR2__(x)
 #define __LOC__ __FILE__ "("__STR1__(__LINE__)")"
 
-#define BEGIN_DISABLE_WARNING(_warning_) \
+#define GO_BEGIN_DISABLE_WARNING(_warning_) \
 __pragma(warning(push)) \
 __pragma(warning(disable: _warning_)) \
 __pragma(message("DISABLED WARNING " __STR1__(_warning_) " at " __LOC__))
 
-#define DISABLE_WARNING(_warning_) \
+#define GO_DISABLE_WARNING(_warning_) \
 __pragma(warning(disable: _warning_)) \
 __pragma(message("DISABLED WARNING " __STR1__(_warning_) " at " __LOC__))
 
-#define DISABLE_END_WARNING \
+#define GO_DISABLE_END_WARNING \
 __pragma(warning(pop)) \
 __pragma(message("RE-ENABLED WARNINGS at " __LOC__))
 
 #else
 
-#define BEGIN_DISABLE_WARNING(_warning_)
-#define DISABLE_WARNING(_warning_)
-#define DISABLE_END_WARNING
+#define GO_BEGIN_DISABLE_WARNING(_warning_)
+#define GO_DISABLE_WARNING(_warning_)
+#define GO_DISABLE_END_WARNING
 
-#endif
+#endif  // #if defined(GO_COMP_MSVC)
 
 #endif  // #ifndef GO_UTILITY_SANITY_HPP_INCLUDED

@@ -13,18 +13,54 @@
 
 #pragma once
 
+enum MouseButton
+{
+    mb_left = 0,
+    mb_middle,
+    mb_right,
+    MouseButton_undefined = ~0
+};
+
+class view_tree_observer
+{
+public:
+    virtual ~view_tree_observer() = 0;
+
+protected:
+    view_tree_observer()
+    {
+    }
+
+public:
+    virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData) = 0;
+    virtual void on_deselect(const HTREEITEM hItem, DWORD_PTR pItemData) = 0;
+    virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) = 0;
+    virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) = 0;
+};
+
 class CViewTree
     : public CTreeCtrl
 {
 public:
     virtual ~CViewTree();
-    CViewTree();
+    CViewTree(view_tree_observer* observer);
 
 protected:
 	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+    afx_msg void OnClick(NMHDR* pNMHDR, LRESULT* pResult);
+    afx_msg void OnDblclk(NMHDR* pNMHDR, LRESULT* pResult);
+    afx_msg void OnRclick(NMHDR* pNMHDR, LRESULT* pResult);
+    afx_msg void OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult);
+    afx_msg void OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult);
+
+    CPoint GetClickPos() const;
 
 protected:
 	DECLARE_MESSAGE_MAP()
+
+private:
+    view_tree_observer* m_observer;
+    HTREEITEM m_hSelectedItem;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_VIEWTREE_H_INCLUDED

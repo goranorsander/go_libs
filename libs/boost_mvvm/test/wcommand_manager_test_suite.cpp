@@ -290,7 +290,7 @@ TEST(boost_wcommand_manager_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command to USS Enterprise
-    cmd_mgr->add_command(ship1->warp_speed_command);
+    cmd_mgr->issue_command(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -307,8 +307,8 @@ TEST(boost_wcommand_manager_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->add_command(ship2->warp_speed_command);
-    cmd_mgr->add_command(ship4->warp_speed_command);
+    cmd_mgr->issue_command(ship2->warp_speed_command);
+    cmd_mgr->issue_command(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -325,7 +325,7 @@ TEST(boost_wcommand_manager_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give impulse speed command to USS Enterprise
-    cmd_mgr->add_command(ship1->impulse_speed_command);
+    cmd_mgr->issue_command(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());

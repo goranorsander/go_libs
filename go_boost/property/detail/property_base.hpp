@@ -55,6 +55,11 @@ public:
         set(v);
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 #include <go_boost/property/detail/assignment_operator.hpp>
 
     value_type get() const

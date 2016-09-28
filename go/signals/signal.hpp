@@ -78,21 +78,21 @@ public:
     }
 
     template<typename... A>
-    void operator()(A&&... a) const
+    void operator()(A... a) const
     {
         std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         for(auto& connection : _connections)
         {
             function_type f = connection.second;
-            auto s = std::bind(std::forward<function_type>(f), std::forward<A>(a)...);
+            auto s = std::bind(std::forward<function_type>(f), a...);
             s();
         }
     }
 
     template<typename... A>
-    void call(A&&... a) const
+    void call(A... a) const
     {
-        operator()(std::forward<A>(a)...);
+        operator()(a...);
     }
 
 protected:

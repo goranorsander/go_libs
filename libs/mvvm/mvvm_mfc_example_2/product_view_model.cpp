@@ -49,12 +49,12 @@ void product_view_model::bind_properties()
 {
     product_id.getter([this]() { return _product_id; });
     product_id.setter([this](const product_model::product_id_type& v) { if(v != _product_id) { _product_id = v; on_property_changed(product_id.name()); } });
-    current_product_id.getter([this]() -> product_model::product_id_type { if(data_context.get()) { return data_context.get()->product_id; } return 0; });
-    current_product_id.setter([this](const product_model::product_id_type& v) { if(data_context.get()) { data_context.get()->product_id = v; } });
-    current_product_name.getter([this]() -> std::wstring { if(data_context.get()) { return data_context.get()->product_name; } return std::wstring(); });
-    current_product_name.setter([this](const std::wstring& v) { if(data_context.get()) { data_context.get()->product_name = v; } });
-    current_unit_price.getter([this]() -> double { if(data_context.get()) { return data_context.get()->unit_price; } return 0.0; });
-    current_unit_price.setter([this](const double& v) { if(data_context.get()) { data_context.get()->unit_price = v; } });
+    current_product_id.getter([this]() -> product_model::product_id_type { if(*data_context) { return data_context.get()->product_id; } return 0; });
+    current_product_id.setter([this](const product_model::product_id_type& v) { if(*data_context) { data_context.get()->product_id = v; } });
+    current_product_name.getter([this]() -> std::wstring { if(*data_context) { return data_context.get()->product_name; } return std::wstring(); });
+    current_product_name.setter([this](const std::wstring& v) { if(*data_context) { data_context.get()->product_name = v; } });
+    current_unit_price.getter([this]() -> double { if(*data_context) { return data_context.get()->unit_price; } return 0.0; });
+    current_unit_price.setter([this](const double& v) { if(*data_context) { data_context.get()->unit_price = v; } });
     get_product_command.getter(
         [this]()
         {

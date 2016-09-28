@@ -21,7 +21,7 @@
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/recursive_mutex.hpp>
-#include <go_boost/mvvm/command.hpp>
+#include <go_boost/mvvm/notify_command_execution_interface.hpp>
 
 namespace go_boost
 {
@@ -34,7 +34,8 @@ typedef basic_command_manager<std::wstring> wcommand_manager;
 
 template<class S>
 class basic_command_manager
-    : private boost::noncopyable
+    : public basic_notify_command_execution_interface<S>
+    , private boost::noncopyable
 {
 public:
     typedef S string_type;
@@ -51,7 +52,7 @@ protected:
 public:
     static boost::shared_ptr<basic_command_manager<S>> create();
 
-    void add_command(const boost::shared_ptr<basic_command<S>>& cmd);
+    void issue_command(const boost::shared_ptr<basic_command<S>>& cmd);
 
     void execute_commands();
 
@@ -82,7 +83,8 @@ inline basic_command_manager<S>::~basic_command_manager()
 
 template<>
 inline basic_command_manager<std::string>::basic_command_manager()
-    : boost::noncopyable()
+    : basic_notify_command_execution_interface<std::string>()
+    , boost::noncopyable()
     , _commands_guard()
     , _commands()
 {
@@ -91,7 +93,8 @@ inline basic_command_manager<std::string>::basic_command_manager()
 
 template<>
 inline basic_command_manager<std::wstring>::basic_command_manager()
-    : boost::noncopyable()
+    : basic_notify_command_execution_interface<std::wstring>()
+    , boost::noncopyable()
     , _commands_guard()
     , _commands()
 {
@@ -100,7 +103,8 @@ inline basic_command_manager<std::wstring>::basic_command_manager()
 
 template<class S>
 inline basic_command_manager<S>::basic_command_manager()
-    : boost::noncopyable()
+    : basic_notify_command_execution_interface<S>()
+    , boost::noncopyable()
     , _commands_guard()
     , _commands()
 {
@@ -159,7 +163,7 @@ inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::cre
 }
 
 template<>
-inline void basic_command_manager<std::string>::add_command(const boost::shared_ptr<basic_command<std::string>>& cmd)
+inline void basic_command_manager<std::string>::issue_command(const boost::shared_ptr<basic_command<std::string>>& cmd)
 {
     if(cmd)
     {
@@ -169,7 +173,7 @@ inline void basic_command_manager<std::string>::add_command(const boost::shared_
 }
 
 template<>
-inline void basic_command_manager<std::wstring>::add_command(const boost::shared_ptr<basic_command<std::wstring>>& cmd)
+inline void basic_command_manager<std::wstring>::issue_command(const boost::shared_ptr<basic_command<std::wstring>>& cmd)
 {
     if(cmd)
     {
@@ -179,7 +183,7 @@ inline void basic_command_manager<std::wstring>::add_command(const boost::shared
 }
 
 template<class S>
-inline void basic_command_manager<S>::add_command(const boost::shared_ptr<basic_command<S>>& cmd)
+inline void basic_command_manager<S>::issue_command(const boost::shared_ptr<basic_command<S>>& cmd)
 {
     if(cmd)
     {
@@ -205,6 +209,11 @@ inline void basic_command_manager<std::string>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed(cmd);
+            }
+            else
+            {
+                command_not_executed(cmd);
             }
         }
     }
@@ -227,6 +236,11 @@ inline void basic_command_manager<std::wstring>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed(cmd);
+            }
+            else
+            {
+                command_not_executed(cmd);
             }
         }
     }
@@ -249,6 +263,11 @@ inline void basic_command_manager<S>::execute_commands()
             if(cmd->can_execute(params))
             {
                 cmd->execute(params);
+                command_executed(cmd);
+            }
+            else
+            {
+                command_not_executed(cmd);
             }
         }
     }

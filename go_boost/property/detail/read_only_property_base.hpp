@@ -52,6 +52,11 @@ public:
         return get();
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 private:
     this_type& operator=(const this_type& v)
     {

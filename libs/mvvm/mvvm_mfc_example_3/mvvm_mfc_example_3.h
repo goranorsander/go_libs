@@ -17,6 +17,7 @@
 	#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
+#include "fleet_repository.hpp"
 #include "resource.h"
 
 #include <go/mvvm.hpp>
@@ -49,6 +50,7 @@ public:
 private:
     UINT_PTR m_timer_id;
     m::wcommand_manager::ptr m_command_manager;
+    fleet_repository::ptr m_fleet_repository;
 };
 
 extern mvvm_mfc_example_3_app theApp;

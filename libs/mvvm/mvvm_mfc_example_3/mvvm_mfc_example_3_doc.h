@@ -14,9 +14,7 @@
 // mvvm_mfc_example_3_doc.h : interface of the mvvm_mfc_example_3_doc class
 //
 
-
 #pragma once
-
 
 class mvvm_mfc_example_3_doc
     : public CDocument

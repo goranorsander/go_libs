@@ -10,12 +10,14 @@
 
 #include "stdafx.h"
 #include "mvvm_mfc_example_3.h"
-
 #include "MainFrm.h"
+#include "fleet_repository_populator.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
+namespace ph = std::placeholders;
 
 IMPLEMENT_DYNAMIC(CMainFrame, CMDIFrameWndEx)
 
@@ -39,16 +41,16 @@ CMainFrame::~CMainFrame()
 {
 }
 
-CMainFrame::CMainFrame(const m::wcommand_manager::ptr& command_manager)
+CMainFrame::CMainFrame(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo)
     : CMDIFrameWndEx()
     , m_wndMenuBar()
     , m_wndToolBar()
     , m_wndStatusBar()
-    , m_wndFileView()
-    , m_wndClassView()
+    , m_wndFleetOrganizationView(command_manager)
     , m_wndOutput()
     , m_wndProperties()
     , m_command_manager(command_manager)
+    , m_fleet_repository(fleet_repo)
 {
 }
 
@@ -118,11 +120,9 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
-	m_wndFileView.EnableDocking(CBRS_ALIGN_ANY);
-	m_wndClassView.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndFileView);
+	m_wndFleetOrganizationView.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_wndFleetOrganizationView);
 	CDockablePane* pTabbedBar = NULL;
-	m_wndClassView.AttachToTabWnd(&m_wndFileView, DM_SHOW, TRUE, &pTabbedBar);
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	DockPane(&m_wndOutput);
 	m_wndProperties.EnableDocking(CBRS_ALIGN_ANY);
@@ -137,6 +137,20 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CMFCToolBar::EnableQuickCustomization();
 
 	ModifyStyle(0, FWS_PREFIXTITLE);
+
+    fleet_repository::ptr fleet_repo = m_fleet_repository.lock();
+    if(fleet_repo)
+    {
+        fleet_repository_populator::ptr populator = fleet_repository_populator::create();
+        if(populator)
+        {
+            populator->populate(fleet_repo, &m_wndOutput);
+            fleet_organization_view_model::ptr view_model = fleet_organization_view_model::create();
+            view_model->property_changed.connect(std::bind(&COutputWnd::on_property_changed, &m_wndOutput, ph::_1, ph::_2));
+            m_wndFleetOrganizationView.view_model(view_model);
+            view_model->data_context.set(std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
+        }
+    }
 
 	return 0;
 }
@@ -156,19 +170,10 @@ BOOL CMainFrame::CreateDockingWindows()
 {
 	BOOL bNameValid;
 
-	CString strClassView;
-	bNameValid = strClassView.LoadString(IDS_CLASS_VIEW);
-	ASSERT(bNameValid);
-	if (!m_wndClassView.Create(strClassView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_CLASSVIEW, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
-	{
-		TRACE0("Failed to create Class View window\n");
-		return FALSE;
-	}
-
 	CString strFileView;
-	bNameValid = strFileView.LoadString(IDS_FILE_VIEW);
+	bNameValid = strFileView.LoadString(IDS_FLEET_ORGANIZATION);
 	ASSERT(bNameValid);
-	if (!m_wndFileView.Create(strFileView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_FILEVIEW, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT| CBRS_FLOAT_MULTI))
+	if (!m_wndFleetOrganizationView.Create(strFileView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_FILEVIEW, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT| CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create File View window\n");
 		return FALSE;
@@ -182,6 +187,13 @@ BOOL CMainFrame::CreateDockingWindows()
 		TRACE0("Failed to create Output window\n");
 		return FALSE;
 	}
+
+    m::wcommand_manager::ptr command_manager = m_command_manager.lock();
+    if (command_manager)
+    {
+        command_manager->command_executed.connect(std::bind(&COutputWnd::on_command_executed, &m_wndOutput, ph::_1));
+        command_manager->command_not_executed.connect(std::bind(&COutputWnd::on_command_not_executed, &m_wndOutput, ph::_1));
+    }
 
 	CString strPropertiesWnd;
 	bNameValid = strPropertiesWnd.LoadString(IDS_PROPERTIES_WND);
@@ -198,11 +210,8 @@ BOOL CMainFrame::CreateDockingWindows()
 
 void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
 {
-	HICON hFileViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_FILE_VIEW_HC : IDI_FILE_VIEW), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndFileView.SetIcon(hFileViewIcon, FALSE);
-
-	HICON hClassViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_CLASS_VIEW_HC : IDI_CLASS_VIEW), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndClassView.SetIcon(hClassViewIcon, FALSE);
+	HICON hFileViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_FLEET_ORGANIZATION_HC : IDI_FLEET_ORGANIZATION), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
+	m_wndFleetOrganizationView.SetIcon(hFileViewIcon, FALSE);
 
 	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
 	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);

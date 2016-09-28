@@ -75,7 +75,7 @@ void product_view_model::set_product_id(const product_model::product_id_type& v)
 
 product_model::product_id_type product_view_model::get_current_product_id() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->product_id;
     }
@@ -84,7 +84,7 @@ product_model::product_id_type product_view_model::get_current_product_id() cons
 
 void product_view_model::set_current_product_id(const product_model::product_id_type& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->product_id = v;
     }
@@ -92,7 +92,7 @@ void product_view_model::set_current_product_id(const product_model::product_id_
 
 std::wstring product_view_model::get_current_product_name() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->product_name;
     }
@@ -101,7 +101,7 @@ std::wstring product_view_model::get_current_product_name() const
 
 void product_view_model::set_current_product_name(const std::wstring& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->product_name = v;
     }
@@ -109,7 +109,7 @@ void product_view_model::set_current_product_name(const std::wstring& v)
 
 double product_view_model::get_current_unit_price() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->unit_price;
     }
@@ -118,7 +118,7 @@ double product_view_model::get_current_unit_price() const
 
 void product_view_model::set_current_unit_price(const double& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->unit_price = v;
     }

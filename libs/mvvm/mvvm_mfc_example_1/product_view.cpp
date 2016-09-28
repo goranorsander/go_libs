@@ -29,11 +29,10 @@ product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd
 	: CDialogEx(IDD_PRODUCT_VIEW, pParent)
     , m_hIcon(0)
     , m_command_manager(command_manager)
-    , m_product_view_model()
+    , m_product_view_model(product_view_model::create())
     , m_on_data_context_changed_slot_key(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-    m_product_view_model = product_view_model::create();
     m_on_data_context_changed_slot_key = m_product_view_model->data_context_changed.connect(std::bind(&product_view::on_data_context_changed, this));
 }
 
@@ -52,13 +51,10 @@ void product_view::DoDataExchange(CDataExchange* pDX)
     {
         mu::DDX_Text(pDX, IDC_EDIT_PRODUCT_ID, m_product_view_model->product_id);
         DDV_MinMaxInt(pDX, m_product_view_model->product_id, 0, 10000);
-        if(m_product_view_model)
-        {
-            mu::DDX_Text(pDX, IDC_EDIT_ID, m_product_view_model->current_product_id);
-            DDV_MinMaxInt(pDX, m_product_view_model->current_product_id, 0, 10000);
-            mu::DDX_Text(pDX, IDC_EDIT_NAME, m_product_view_model->current_product_name);
-            mu::DDX_Text(pDX, IDC_EDIT_UNIT_PRICE, m_product_view_model->current_unit_price);
-        }
+        mu::DDX_Text(pDX, IDC_EDIT_ID, m_product_view_model->current_product_id);
+        DDV_MinMaxInt(pDX, m_product_view_model->current_product_id, 0, 10000);
+        mu::DDX_Text(pDX, IDC_EDIT_NAME, m_product_view_model->current_product_name);
+        mu::DDX_Text(pDX, IDC_EDIT_UNIT_PRICE, m_product_view_model->current_unit_price);
     }
 }
 
@@ -79,7 +75,7 @@ void product_view::OnBnClickedButtonGetProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->add_command(m_product_view_model->get_product_command);
+        command_manager->issue_command(m_product_view_model->get_product_command);
     }
 }
 
@@ -89,6 +85,6 @@ void product_view::OnBnClickedButtonSaveProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->add_command(m_product_view_model->save_product_command);
+        command_manager->issue_command(m_product_view_model->save_product_command);
     }
 }

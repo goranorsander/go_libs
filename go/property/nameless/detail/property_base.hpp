@@ -53,6 +53,11 @@ public:
         set(v);
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 #include <go/property/detail/assignment_operator.hpp>
 
     value_type get() const
