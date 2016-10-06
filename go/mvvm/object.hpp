@@ -36,10 +36,7 @@ public:
     virtual ~object() = 0;
 
 protected:
-    object()
-        : std::enable_shared_from_this<object>()
-    {
-    }
+    object() = default;
 };
 
 inline object::~object()
