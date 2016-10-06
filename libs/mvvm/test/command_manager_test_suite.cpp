@@ -18,12 +18,14 @@ TEST(std_command_manager_test_suite, cpp11_not_supported) {}
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
+#include <go/utility.hpp>
 
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
 namespace rop = go::property::read_only;
 namespace s = go::signals;
+namespace u = go::utility;
 
 namespace
 {
@@ -31,19 +33,17 @@ namespace
 // Test command_manager
 class spaceship
     : public m::observable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
     {
     }
 
-private:
-    spaceship(const spaceship&) = delete;
-    spaceship(spaceship&&) = delete;
-
 public:
     spaceship(const m::command_manager::ptr& cmd_mgr)
         : m::observable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -61,6 +61,7 @@ public:
 
     spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
         : m::observable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -75,10 +76,6 @@ public:
     {
         bind_properties();
     }
-
-private:
-    spaceship& operator=(const spaceship&) = delete;
-    spaceship& operator=(spaceship&&) = delete;
 
 private:
     void bind_properties()

@@ -18,16 +18,19 @@ TEST(std_signals_string_test_suite, cpp11_not_supported) {}
 
 #include <go/property.hpp>
 #include <go/signals.hpp>
+#include <go/utility.hpp>
 
 namespace p = go::property;
 namespace ph = std::placeholders;
 namespace s = go::signals;
+namespace u = go::utility;
 
 namespace
 {
 
 // Test signals
 class fleet_commander
+    : public u::noncopyable_nonmovable
 {
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
@@ -41,20 +44,14 @@ public:
     }
 
 private:
-    fleet_commander(const fleet_commander&) = delete;
-    fleet_commander(fleet_commander&&) = delete;
-
     fleet_commander(const std::string& cmd, const std::string& btl)
-        : commander("commander", cmd)
+        : u::noncopyable_nonmovable()
+        , commander("commander", cmd)
         , battle("battle", btl)
         , fire_lasers()
         , fire_proton_torpedoes()
     {
     }
-
-private:
-    fleet_commander& operator=(const fleet_commander&) = delete;
-    fleet_commander& operator=(fleet_commander&&) = delete;
 
 public:
     static ptr create(const std::string& cmd, const std::string& btl)
@@ -81,6 +78,7 @@ public:
 };
 
 class spaceship
+    : public u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
@@ -93,13 +91,10 @@ public:
         }
     }
 
-private:
-    spaceship(const spaceship&) = delete;
-    spaceship(spaceship&&) = delete;
-
 public:
     spaceship(const fleet_commander::ptr& flt_cmd, const std::string& nme, const std::string& cpt, const int trpds)
-        : name("name", nme)
+        : u::noncopyable_nonmovable()
+        , name("name", nme)
         , captain("captain", cpt)
         , lasers_firing("lasers_firing", false)
         , proton_torpedoes("proton_torpedoes", trpds)
@@ -110,10 +105,6 @@ public:
         _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_property<bool>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
-
-private:
-    spaceship& operator=(const spaceship&) = delete;
-    spaceship& operator=(spaceship&&) = delete;
 
 public:
     bool fire_proton_torpedo()

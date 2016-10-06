@@ -20,6 +20,7 @@
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/read_only_property.hpp>
 #include <go/signals/signal.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -35,6 +36,7 @@ typedef basic_command<std::wstring> wcommand;
 template<class S>
 class basic_command
     : public std::enable_shared_from_this<basic_command<S>>
+    , public go::utility::noncopyable_nonmovable
 {
     friend class basic_command_manager<S>;
 
@@ -48,13 +50,6 @@ public:
 
 public:
     virtual ~basic_command() = 0;
-
-private:
-    basic_command(const basic_command<S>&) = delete;
-    basic_command(basic_command<S>&&) = delete;
-
-    basic_command<S>& operator=(const basic_command<S>&) = delete;
-    basic_command<S>& operator=(basic_command<S>&&) = delete;
 
 protected:
     basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
@@ -103,6 +98,7 @@ inline basic_command<S>::~basic_command()
 template<>
 inline basic_command<std::string>::basic_command(const std::string& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<std::string>>()
+    , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name("command_name")
     , _command_name(cmd_name)
@@ -114,6 +110,7 @@ inline basic_command<std::string>::basic_command(const std::string& cmd_name, co
 template<>
 inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<std::wstring>>()
+    , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name(L"command_name")
     , _command_name(cmd_name)
@@ -125,6 +122,7 @@ inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, 
 template<class S>
 inline basic_command<S>::basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command<S>>()
+    , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name(S(), nullptr)
     , _command_name(cmd_name)

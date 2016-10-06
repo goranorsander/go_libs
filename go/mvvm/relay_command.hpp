@@ -46,13 +46,6 @@ public:
 protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params);
 
-private:
-    basic_relay_command(const this_type&) = delete;
-    basic_relay_command(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
 public:
     static std::shared_ptr<basic_relay_command<S>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params);
 

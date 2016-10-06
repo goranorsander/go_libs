@@ -36,13 +36,6 @@ public:
 public:
     virtual ~container_changed_arguments() = default;
 
-private:
-    container_changed_arguments(const this_type&) = delete;
-    container_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
 protected:
     container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
         : go::signals::slot_arguments()

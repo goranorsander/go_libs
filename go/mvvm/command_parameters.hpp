@@ -18,7 +18,7 @@
 #else
 
 #include <memory>
-#include <go/config.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -26,6 +26,7 @@ namespace mvvm
 {
 
 class command_parameters
+    : public go::utility::noncopyable_nonmovable
 {
 public:
     typedef command_parameters this_type;
@@ -37,13 +38,6 @@ public:
 
 protected:
     command_parameters() = default;
-
-private:
-    command_parameters(const this_type&) = delete;
-    command_parameters(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create()

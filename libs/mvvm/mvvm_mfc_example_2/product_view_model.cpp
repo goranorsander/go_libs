@@ -19,6 +19,7 @@ namespace ph = std::placeholders;
 product_view_model::product_view_model()
     : m::wobservable_object()
     , m::data_context_interface<product_model::ptr>(product_model::create())
+    , u::noncopyable_nonmovable()
     , _product_id(0)
     , _get_product_command()
     , _save_product_command()

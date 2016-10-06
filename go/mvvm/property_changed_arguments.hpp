@@ -41,13 +41,6 @@ public:
 public:
     virtual ~basic_property_changed_arguments() = default;
 
-private:
-    basic_property_changed_arguments(const this_type&) = delete;
-    basic_property_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
 protected:
     basic_property_changed_arguments(const string_type& property_name)
         : go::signals::slot_arguments()

@@ -17,6 +17,7 @@ namespace ph = std::placeholders;
 
 product_model::product_model()
     : m::wobservable_object()
+    , u::noncopyable_nonmovable()
     , _product_id(0)
     , _product_name()
     , _unit_price(0.0)

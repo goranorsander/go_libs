@@ -20,6 +20,7 @@
 #include <mutex>
 #include <vector>
 #include <go/mvvm/notify_command_execution_interface.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -33,6 +34,7 @@ typedef basic_command_manager<std::wstring> wcommand_manager;
 template<class S>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S>
+    , public go::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -45,13 +47,6 @@ public:
 
 protected:
     basic_command_manager() = default;
-
-private:
-    basic_command_manager(const basic_command_manager<S>&) = delete;
-    basic_command_manager(basic_command_manager<S>&&) = delete;
-
-    basic_command_manager<S>& operator=(const basic_command_manager<S>&) = delete;
-    basic_command_manager<S>& operator=(basic_command_manager<S>&&) = delete;
 
 public:
     static std::shared_ptr<basic_command_manager<S>> create();

@@ -18,9 +18,11 @@
 
 namespace m = go::mvvm;
 namespace p = go::property;
+namespace u = go::utility;
 
 class product_model
     : public m::wobservable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef product_model this_type;
@@ -33,15 +35,9 @@ public:
 
 private:
     product_model();
-    product_model(const product_model&) = delete;
-    product_model(product_model&&) = delete;
 
 public:
     static ptr create();
-
-private:
-    product_model& operator=(const product_model&) = delete;
-    product_model& operator=(product_model&&) = delete;
 
 private:
     void bind_properties();

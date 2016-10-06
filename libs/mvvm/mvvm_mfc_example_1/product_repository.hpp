@@ -18,6 +18,7 @@
 class product_repository
     : public product_repository_interface
     , public std::enable_shared_from_this<product_repository>
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef product_repository this_type;
@@ -29,13 +30,6 @@ public:
 
 protected:
     product_repository() = default;
-
-private:
-    product_repository(const product_repository&) = delete;
-    product_repository(product_repository&&) = delete;
-
-    product_repository& operator=(const product_repository&) = delete;
-    product_repository& operator=(product_repository&&) = delete;
 
 public:
     static ptr create();

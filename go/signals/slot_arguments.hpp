@@ -18,6 +18,7 @@
 #else
 
 #include <memory>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -25,6 +26,7 @@ namespace signals
 {
 
 class slot_arguments
+    : public go::utility::noncopyable_nonmovable
 {
 public:
     typedef slot_arguments this_type;
@@ -36,13 +38,6 @@ public:
 
 protected:
     slot_arguments() = default;
-
-private:
-    slot_arguments(const this_type&) = delete;
-    slot_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
 };
 
 inline slot_arguments::~slot_arguments()

@@ -35,18 +35,8 @@ public:
 public:
     virtual ~data_context_changed_arguments() = default;
 
-private:
-    data_context_changed_arguments(const this_type&) = delete;
-    data_context_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
-
 protected:
-    data_context_changed_arguments()
-        : go::signals::slot_arguments()
-    {
-    }
+    data_context_changed_arguments() = default;
 
 public:
     static std::shared_ptr<data_context_changed_arguments> create();
