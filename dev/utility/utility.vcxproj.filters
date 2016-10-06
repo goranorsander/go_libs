@@ -23,5 +23,20 @@
     <ClInclude Include="..\..\go\utility\iterator\forward_iterator.hpp">
       <Filter>go\utility\iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\noncopyable.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\nonmovable.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\noncopyable_nonmovable.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\scope_guard.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\scope_guard_new.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

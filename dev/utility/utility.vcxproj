@@ -21,7 +21,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp" />
     <ClInclude Include="..\..\go\utility\iterator\forward_iterator.hpp" />
+    <ClInclude Include="..\..\go\utility\noncopyable.hpp" />
+    <ClInclude Include="..\..\go\utility\noncopyable_nonmovable.hpp" />
+    <ClInclude Include="..\..\go\utility\nonmovable.hpp" />
     <ClInclude Include="..\..\go\utility\sanity.hpp" />
+    <ClInclude Include="..\..\go\utility\scope_guard.hpp" />
+    <ClInclude Include="..\..\go\utility\scope_guard_new.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
