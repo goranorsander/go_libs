@@ -11,7 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go/utility/noncopyable.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/utility/nonmovable.hpp>
 #include <go/utility/sanity.hpp>
+#include <go/utility/scope_guard.hpp>
+#include <go/utility/scope_guard_new.hpp>
 
 #include <go/utility/iterator/forward_iterator.hpp>
 
