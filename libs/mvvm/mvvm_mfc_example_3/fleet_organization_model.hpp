@@ -15,11 +15,14 @@
 
 #include "fleet_organization_interface.hpp"
 
+namespace u = go::utility;
+
 typedef unsigned long fleet_organization_id_type;
 
 class fleet_organization_model
     : public fleet_organization_interface
     , public m::wobservable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef fleet_organization_model this_type;
@@ -34,16 +37,10 @@ protected:
 
 private:
     fleet_organization_model() = delete;
-    fleet_organization_model(const fleet_organization_model&) = delete;
-    fleet_organization_model(fleet_organization_model&&) = delete;
 
 public:
     static ptr create();
     static ptr create(const std::wstring& name_, const spaceship_interface::ptr& spaceship_);
-
-private:
-    fleet_organization_model& operator=(const fleet_organization_model&) = delete;
-    fleet_organization_model& operator=(fleet_organization_model&&) = delete;
 
 public:
     rop::wproperty<fleet_organization_id_type> id;

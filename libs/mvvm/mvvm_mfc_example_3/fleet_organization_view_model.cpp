@@ -18,11 +18,9 @@ namespace ph = std::placeholders;
 fleet_organization_view_model::fleet_organization_view_model()
     : m::wobservable_object()
     , m::data_context_interface<fleet_organization_model::ptr>(fleet_organization_model::create())
-    , fleet_organization_root(L"fleet_organization_root")
-    , selected_fleet_organization_id(L"selected_fleet_organization_id")
-    //, get_fleet_organization_selected_command(L"get_fleet_organization_selected_command")
+    , fleet_organization_root(L"fleet_organization_view_model::fleet_organization_root")
+    , selected_fleet_organization_id(L"fleet_organization_view_model::selected_fleet_organization_id")
     , _selected_fleet_organization_id(0)
-    //, _get_fleet_organization_selected_command()
 {
     bind_properties();
 }

@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_EXAMPLE_3_VIEWTREE_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_VIEWTREE_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_TREE_CONTROL_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_TREE_CONTROL_H_INCLUDED
 
 //
-//  ViewTree.h
+//  tree_control.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -21,13 +21,13 @@ enum MouseButton
     MouseButton_undefined = ~0
 };
 
-class view_tree_observer
+class tree_control_observer
 {
 public:
-    virtual ~view_tree_observer() = 0;
+    virtual ~tree_control_observer() = 0;
 
 protected:
-    view_tree_observer()
+    tree_control_observer()
     {
     }
 
@@ -38,12 +38,12 @@ public:
     virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) = 0;
 };
 
-class CViewTree
+class tree_control
     : public CTreeCtrl
 {
 public:
-    virtual ~CViewTree();
-    CViewTree(view_tree_observer* observer);
+    virtual ~tree_control();
+    tree_control(tree_control_observer* observer);
 
 protected:
 	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
@@ -59,8 +59,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-    view_tree_observer* m_observer;
+    tree_control_observer* m_observer;
     HTREEITEM m_hSelectedItem;
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_VIEWTREE_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_TREE_CONTROL_H_INCLUDED

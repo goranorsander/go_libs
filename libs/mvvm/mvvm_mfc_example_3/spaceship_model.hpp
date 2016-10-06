@@ -16,10 +16,12 @@
 #include "spaceship_interface.hpp"
 
 namespace s = go::signals;
+namespace u = go::utility;
 
 class spaceship_model
     : public spaceship_interface
     , public m::wobservable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef spaceship_model this_type;
@@ -34,15 +36,9 @@ protected:
 
 private:
     spaceship_model() = delete;
-    spaceship_model(const spaceship_model&) = delete;
-    spaceship_model(spaceship_model&&) = delete;
 
 public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);
-
-private:
-    spaceship_model& operator=(const spaceship_model&) = delete;
-    spaceship_model& operator=(spaceship_model&&) = delete;
 
 protected:
     virtual void bind_properties();

@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "MainFrm.h"
+#include "main_frame_view.h"
 #include "fleet_organization_view.h"
 #include "Resource.h"
 #include "mvvm_mfc_example_3.h"
@@ -37,7 +37,7 @@ fleet_organization_view::fleet_organization_view(const m::wcommand_manager::ptr&
     , m_fleet_organization_view_model()
     , m_on_data_context_changed_slot_key(0)
 {
-    m_wndFileView.reset(new CViewTree(this));
+    m_wndFileView.reset(new tree_control(this));
 }
 
 void fleet_organization_view::view_model(const fleet_organization_view_model::ptr view_model)
@@ -45,7 +45,7 @@ void fleet_organization_view::view_model(const fleet_organization_view_model::pt
     if(m_fleet_organization_view_model == view_model) { return; }
     if(m_on_data_context_changed_slot_key != 0 && m_fleet_organization_view_model)
     {
-        m_fleet_organization_view_model->property_changed.disconnect(m_on_data_context_changed_slot_key);
+        m_fleet_organization_view_model->data_context_changed.disconnect(m_on_data_context_changed_slot_key);
         m_on_data_context_changed_slot_key = 0;
     }
     m_fleet_organization_view_model = view_model;

@@ -14,7 +14,7 @@
 #pragma once
 
 #include "fleet_organization_view_model.hpp"
-#include "ViewTree.h"
+#include "tree_control.h"
 
 namespace s = go::signals;
 
@@ -31,7 +31,7 @@ class fleet_organization_view_tool_bar
 
 class fleet_organization_view
     : public CDockablePane
-    , public view_tree_observer
+    , public tree_control_observer
 {
 public:
     virtual ~fleet_organization_view();
@@ -72,7 +72,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 protected:
-    std::unique_ptr<CViewTree> m_wndFileView;
+    std::unique_ptr<tree_control> m_wndFileView;
     CImageList m_FileViewImages;
     fleet_organization_view_tool_bar m_wndToolBar;
 

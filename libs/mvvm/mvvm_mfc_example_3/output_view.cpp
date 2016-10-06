@@ -1,5 +1,5 @@
 //
-//  OutputWnd.cpp
+//  output_view.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -14,9 +14,9 @@
 #include <locale>
 #include  <time.h>
 
-#include "OutputWnd.h"
+#include "output_view.h"
 #include "Resource.h"
-#include "MainFrm.h"
+#include "main_frame_view.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -113,11 +113,11 @@ std::wstring object_information(const m::object::ptr& o)
 /////////////////////////////////////////////////////////////////////////////
 // COutputBar
 
-COutputWnd::~COutputWnd()
+output_view::~output_view()
 {
 }
 
-COutputWnd::COutputWnd()
+output_view::output_view()
     : CDockablePane()
     , m::wcommand_execution_wobserver_interface()
     , m::object_wobserver_interface()
@@ -128,12 +128,12 @@ COutputWnd::COutputWnd()
 {
 }
 
-BEGIN_MESSAGE_MAP(COutputWnd, CDockablePane)
+BEGIN_MESSAGE_MAP(output_view, CDockablePane)
 	ON_WM_CREATE()
 	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
-int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
 		return -1;
@@ -175,14 +175,14 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void COutputWnd::OnSize(UINT nType, int cx, int cy)
+void output_view::OnSize(UINT nType, int cx, int cy)
 {
 	CDockablePane::OnSize(nType, cx, cy);
 
 	m_wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
-void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
+void output_view::AdjustHorzScroll(CListBox& wndListBox)
 {
 	CClientDC dc(this);
 	CFont* pOldFont = dc.SelectObject(&afxGlobalData.fontRegular);
@@ -201,14 +201,14 @@ void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
 	dc.SelectObject(pOldFont);
 }
 
-void COutputWnd::UpdateFonts()
+void output_view::UpdateFonts()
 {
 	m_wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
 	m_wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
 	m_wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
-void COutputWnd::on_command_executed(const m::wcommand::ptr& c)
+void output_view::on_command_executed(const m::wcommand::ptr& c)
 {
     if(c)
     {
@@ -218,7 +218,7 @@ void COutputWnd::on_command_executed(const m::wcommand::ptr& c)
     }
 }
 
-void COutputWnd::on_command_not_executed(const m::wcommand::ptr& c)
+void output_view::on_command_not_executed(const m::wcommand::ptr& c)
 {
     if(c)
     {
@@ -228,7 +228,7 @@ void COutputWnd::on_command_not_executed(const m::wcommand::ptr& c)
     }
 }
 
-void COutputWnd::on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a)
+void output_view::on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a)
 {
     if(o && a)
     {
@@ -256,7 +256,7 @@ void COutputWnd::on_container_changed(const m::object::ptr& o, const std::shared
     }
 }
 
-void COutputWnd::on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a)
+void output_view::on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a)
 {
     if(o && a)
     {

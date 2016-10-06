@@ -16,10 +16,12 @@
 #include "fleet_repository_interface.hpp"
 
 namespace m = go::mvvm;
+namespace u = go::utility;
 
-class COutputWnd;
+class output_view;
 
 class fleet_repository_populator
+    : public u::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository_populator this_type;
@@ -27,24 +29,16 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~fleet_repository_populator();
+    virtual ~fleet_repository_populator() = default;
 
 protected:
-    fleet_repository_populator();
-
-private:
-    fleet_repository_populator(const fleet_repository_populator&) = delete;
-    fleet_repository_populator(fleet_repository_populator&&) = delete;
+    fleet_repository_populator() = default;
 
 public:
     static ptr create();
 
-private:
-    fleet_repository_populator& operator=(const fleet_repository_populator&) = delete;
-    fleet_repository_populator& operator=(fleet_repository_populator&&) = delete;
-
 public:
-    void populate(const fleet_repository_interface::ptr& fleet_repo, COutputWnd* object_observer) const;
+    void populate(const fleet_repository_interface::ptr& fleet_repo, output_view* object_observer) const;
 };
 
 #endif  // #ifndef GO_FLEET_REPOSITORY_POPULATOR_HPP_INCLUDED

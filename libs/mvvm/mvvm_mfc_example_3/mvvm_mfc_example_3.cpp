@@ -12,9 +12,9 @@
 #include "afxwinappex.h"
 #include "afxdialogex.h"
 #include "mvvm_mfc_example_3.h"
-#include "MainFrm.h"
+#include "main_frame_view.h"
 
-#include "ChildFrm.h"
+#include "child_frame_view.h"
 #include "mvvm_mfc_example_3_doc.h"
 #include "mvvm_mfc_example_3_view.h"
 
@@ -64,13 +64,13 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
     CMultiDocTemplate* pDocTemplate;
 	pDocTemplate = new CMultiDocTemplate(IDR_mvvm_mfc_example_3TYPE,
 		RUNTIME_CLASS(mvvm_mfc_example_3_doc),
-		RUNTIME_CLASS(CChildFrame),
+		RUNTIME_CLASS(child_frame_view),
 		RUNTIME_CLASS(mvvm_mfc_example_3_view));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
 
-	CMainFrame* pMainFrame = new CMainFrame(m_command_manager, m_fleet_repository);
+	main_frame_view* pMainFrame = new main_frame_view(m_command_manager, m_fleet_repository);
 	if (!pMainFrame || !pMainFrame->LoadFrame(IDR_MAINFRAME))
 	{
 		delete pMainFrame;

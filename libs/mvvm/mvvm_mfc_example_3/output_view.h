@@ -2,7 +2,7 @@
 #define GO_MVVM_EXAMPLE_3_OUTPUTWND_H_INCLUDED
 
 //
-//  OutputWnd.h
+//  output_view.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -38,14 +38,14 @@ protected:
 
 /////////////////////////////////////////////////////////////////////////////
 
-class COutputWnd
+class output_view
     : public CDockablePane
     , public m::wcommand_execution_wobserver_interface
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~COutputWnd();
-    COutputWnd();
+    virtual ~output_view();
+    output_view();
 
 	void UpdateFonts();
 

@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_EXAMPLE_3_CHILDFRM_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_CHILDFRM_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_CHILD_FRAME_VIEW_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_CHILD_FRAME_VIEW_H_INCLUDED
 
 //
-//  ChildFrm.h
+//  child_frame_view.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -11,18 +11,18 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-// ChildFrame.h : interface of the CChildFrame class
+// child_frame_view.h : interface of the child_frame_view class
 //
 
 #pragma once
 
-class CChildFrame
+class child_frame_view
     : public CMDIChildWndEx
 {
-	DECLARE_DYNCREATE(CChildFrame)
+	DECLARE_DYNCREATE(child_frame_view)
 public:
-    virtual ~CChildFrame();
-    CChildFrame();
+    virtual ~child_frame_view();
+    child_frame_view();
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
@@ -37,4 +37,4 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_CHILDFRM_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_CHILD_FRAME_VIEW_H_INCLUDED

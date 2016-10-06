@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_EXAMPLE_3_MAINFRM_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_MAINFRM_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_H_INCLUDED
 
 //
-//  MainFrm.h
+//  main_frame_view.h
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -14,22 +14,21 @@
 #pragma once
 
 #include "fleet_organization_view.h"
-#include "OutputWnd.h"
-#include "PropertiesWnd.h"
-
-#include "fleet_repository.hpp"
+#include "main_frame_view_model.hpp"
+#include "output_view.h"
+#include "properties_view.h"
 
 #include <go/mvvm.hpp>
 
 namespace m = go::mvvm;
 
-class CMainFrame
+class main_frame_view
     : public CMDIFrameWndEx
 {
-	DECLARE_DYNAMIC(CMainFrame)
+	DECLARE_DYNAMIC(main_frame_view)
 public:
-    virtual ~CMainFrame();
-    CMainFrame(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo);
+    virtual ~main_frame_view();
+    main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
@@ -44,9 +43,9 @@ protected:
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;
 	CMFCStatusBar     m_wndStatusBar;
-	fleet_organization_view m_wndFleetOrganizationView;
-	COutputWnd        m_wndOutput;
-	CPropertiesWnd    m_wndProperties;
+	fleet_organization_view m_fleet_organization_view;
+	output_view        m_output_view;
+	properties_view    m_properties_view;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -62,6 +61,7 @@ protected:
 private:
     m::wcommand_manager::wptr m_command_manager;
     fleet_repository::wptr m_fleet_repository;
+    main_frame_view_model::ptr m_main_frame_view_model;
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_MAINFRM_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_H_INCLUDED

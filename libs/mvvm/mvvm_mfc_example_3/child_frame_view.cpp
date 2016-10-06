@@ -1,5 +1,5 @@
 //
-//  ChildFrm.cpp
+//  child_frame_view.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -9,28 +9,28 @@
 //
 
 #include "stdafx.h"
-#include "ChildFrm.h"
+#include "child_frame_view.h"
 #include "mvvm_mfc_example_3.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWndEx)
+IMPLEMENT_DYNCREATE(child_frame_view, CMDIChildWndEx)
 
-BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWndEx)
+BEGIN_MESSAGE_MAP(child_frame_view, CMDIChildWndEx)
 END_MESSAGE_MAP()
 
-CChildFrame::~CChildFrame()
+child_frame_view::~child_frame_view()
 {
 }
 
-CChildFrame::CChildFrame()
+child_frame_view::child_frame_view()
 {
 }
 
 
-BOOL CChildFrame::PreCreateWindow(CREATESTRUCT& cs)
+BOOL child_frame_view::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CMDIChildWndEx::PreCreateWindow(cs) )
 		return FALSE;
@@ -39,12 +39,12 @@ BOOL CChildFrame::PreCreateWindow(CREATESTRUCT& cs)
 }
 
 #ifdef _DEBUG
-void CChildFrame::AssertValid() const
+void child_frame_view::AssertValid() const
 {
 	CMDIChildWndEx::AssertValid();
 }
 
-void CChildFrame::Dump(CDumpContext& dc) const
+void child_frame_view::Dump(CDumpContext& dc) const
 {
 	CMDIChildWndEx::Dump(dc);
 }

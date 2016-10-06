@@ -500,7 +500,7 @@ BEGIN
     IDS_TOOLBAR_STANDARD    "Standard"
     IDS_TOOLBAR_CUSTOMIZE   "Customize..."
     ID_WINDOW_MANAGER       "&Windows..."
-    IDS_FLEET_ORGANIZATION  "Fleet Organization View"
+    IDS_FLEET_ORGANIZATION  "Fleet Organization"
     IDS_EXPLORER            "Explorer"
     IDS_OUTPUT_WND          "Output"
     IDS_ALL_MVVM_EVENTS_TAB "All MVVM Events"

@@ -1,5 +1,5 @@
 //
-//  MainFrm.cpp
+//  main_frame_view.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -9,9 +9,9 @@
 //
 
 #include "stdafx.h"
-#include "mvvm_mfc_example_3.h"
-#include "MainFrm.h"
+#include "main_frame_view.h"
 #include "fleet_repository_populator.hpp"
+#include "mvvm_mfc_example_3.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -19,13 +19,13 @@
 
 namespace ph = std::placeholders;
 
-IMPLEMENT_DYNAMIC(CMainFrame, CMDIFrameWndEx)
+IMPLEMENT_DYNAMIC(main_frame_view, CMDIFrameWndEx)
 
-BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
+BEGIN_MESSAGE_MAP(main_frame_view, CMDIFrameWndEx)
 	ON_WM_CREATE()
-	ON_COMMAND(ID_WINDOW_MANAGER, &CMainFrame::OnWindowManager)
-	ON_COMMAND(ID_VIEW_CUSTOMIZE, &CMainFrame::OnViewCustomize)
-	ON_REGISTERED_MESSAGE(AFX_WM_CREATETOOLBAR, &CMainFrame::OnToolbarCreateNew)
+	ON_COMMAND(ID_WINDOW_MANAGER, &main_frame_view::OnWindowManager)
+	ON_COMMAND(ID_VIEW_CUSTOMIZE, &main_frame_view::OnViewCustomize)
+	ON_REGISTERED_MESSAGE(AFX_WM_CREATETOOLBAR, &main_frame_view::OnToolbarCreateNew)
 	ON_WM_SETTINGCHANGE()
 END_MESSAGE_MAP()
 
@@ -37,24 +37,25 @@ static UINT indicators[] =
 	ID_INDICATOR_SCRL,
 };
 
-CMainFrame::~CMainFrame()
+main_frame_view::~main_frame_view()
 {
 }
 
-CMainFrame::CMainFrame(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo)
+main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo)
     : CMDIFrameWndEx()
     , m_wndMenuBar()
     , m_wndToolBar()
     , m_wndStatusBar()
-    , m_wndFleetOrganizationView(command_manager)
-    , m_wndOutput()
-    , m_wndProperties()
+    , m_fleet_organization_view(command_manager)
+    , m_output_view()
+    , m_properties_view()
     , m_command_manager(command_manager)
     , m_fleet_repository(fleet_repo)
+    , m_main_frame_view_model()
 {
 }
 
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int main_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CMDIFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
@@ -120,13 +121,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
-	m_wndFleetOrganizationView.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndFleetOrganizationView);
+	m_fleet_organization_view.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_fleet_organization_view);
 	CDockablePane* pTabbedBar = NULL;
-	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndOutput);
-	m_wndProperties.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndProperties);
+	m_output_view.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_output_view);
+	m_properties_view.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_properties_view);
 
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
@@ -144,18 +145,22 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
         fleet_repository_populator::ptr populator = fleet_repository_populator::create();
         if(populator)
         {
-            populator->populate(fleet_repo, &m_wndOutput);
-            fleet_organization_view_model::ptr view_model = fleet_organization_view_model::create();
-            view_model->property_changed.connect(std::bind(&COutputWnd::on_property_changed, &m_wndOutput, ph::_1, ph::_2));
-            m_wndFleetOrganizationView.view_model(view_model);
-            view_model->data_context.set(std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
+            populator->populate(fleet_repo, &m_output_view);
+            fleet_organization_view_model::ptr fleet_org_view_model = fleet_organization_view_model::create();
+            properties_view_model::ptr prop_view_model = properties_view_model::create(fleet_repo);
+            m_main_frame_view_model = main_frame_view_model::create(fleet_repo, prop_view_model);
+            fleet_org_view_model->property_changed.connect(std::bind(&output_view::on_property_changed, &m_output_view, ph::_1, ph::_2));
+            fleet_org_view_model->property_changed.connect(std::bind(&main_frame_view_model::on_property_changed, m_main_frame_view_model, ph::_1, ph::_2));
+            m_fleet_organization_view.view_model(fleet_org_view_model);
+            m_properties_view.view_model(prop_view_model);
+            fleet_org_view_model->data_context.set(std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
         }
     }
 
 	return 0;
 }
 
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
+BOOL main_frame_view::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CMDIFrameWndEx::PreCreateWindow(cs) )
 		return FALSE;
@@ -166,14 +171,14 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-BOOL CMainFrame::CreateDockingWindows()
+BOOL main_frame_view::CreateDockingWindows()
 {
 	BOOL bNameValid;
 
 	CString strFileView;
 	bNameValid = strFileView.LoadString(IDS_FLEET_ORGANIZATION);
 	ASSERT(bNameValid);
-	if (!m_wndFleetOrganizationView.Create(strFileView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_FILEVIEW, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT| CBRS_FLOAT_MULTI))
+	if (!m_fleet_organization_view.Create(strFileView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_FILEVIEW, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT| CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create File View window\n");
 		return FALSE;
@@ -182,7 +187,7 @@ BOOL CMainFrame::CreateDockingWindows()
 	CString strOutputWnd;
 	bNameValid = strOutputWnd.LoadString(IDS_OUTPUT_WND);
 	ASSERT(bNameValid);
-	if (!m_wndOutput.Create(strOutputWnd, this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_OUTPUTWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
+	if (!m_output_view.Create(strOutputWnd, this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_OUTPUTWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Output window\n");
 		return FALSE;
@@ -191,14 +196,14 @@ BOOL CMainFrame::CreateDockingWindows()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if (command_manager)
     {
-        command_manager->command_executed.connect(std::bind(&COutputWnd::on_command_executed, &m_wndOutput, ph::_1));
-        command_manager->command_not_executed.connect(std::bind(&COutputWnd::on_command_not_executed, &m_wndOutput, ph::_1));
+        command_manager->command_executed.connect(std::bind(&output_view::on_command_executed, &m_output_view, ph::_1));
+        command_manager->command_not_executed.connect(std::bind(&output_view::on_command_not_executed, &m_output_view, ph::_1));
     }
 
 	CString strPropertiesWnd;
 	bNameValid = strPropertiesWnd.LoadString(IDS_PROPERTIES_WND);
 	ASSERT(bNameValid);
-	if (!m_wndProperties.Create(strPropertiesWnd, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_PROPERTIESWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	if (!m_properties_view.Create(strPropertiesWnd, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_PROPERTIESWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Properties window\n");
 		return FALSE;
@@ -208,44 +213,44 @@ BOOL CMainFrame::CreateDockingWindows()
 	return TRUE;
 }
 
-void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
+void main_frame_view::SetDockingWindowIcons(BOOL bHiColorIcons)
 {
 	HICON hFileViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_FLEET_ORGANIZATION_HC : IDI_FLEET_ORGANIZATION), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndFleetOrganizationView.SetIcon(hFileViewIcon, FALSE);
+	m_fleet_organization_view.SetIcon(hFileViewIcon, FALSE);
 
 	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);
+	m_output_view.SetIcon(hOutputBarIcon, FALSE);
 
 	HICON hPropertiesBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_PROPERTIES_WND_HC : IDI_PROPERTIES_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndProperties.SetIcon(hPropertiesBarIcon, FALSE);
+	m_properties_view.SetIcon(hPropertiesBarIcon, FALSE);
 
 	UpdateMDITabbedBarsIcons();
 }
 
 #ifdef _DEBUG
-void CMainFrame::AssertValid() const
+void main_frame_view::AssertValid() const
 {
 	CMDIFrameWndEx::AssertValid();
 }
 
-void CMainFrame::Dump(CDumpContext& dc) const
+void main_frame_view::Dump(CDumpContext& dc) const
 {
 	CMDIFrameWndEx::Dump(dc);
 }
 #endif //_DEBUG
 
-void CMainFrame::OnWindowManager()
+void main_frame_view::OnWindowManager()
 {
 	ShowWindowsDialog();
 }
 
-void CMainFrame::OnViewCustomize()
+void main_frame_view::OnViewCustomize()
 {
 	CMFCToolBarsCustomizeDialog* pDlgCust = new CMFCToolBarsCustomizeDialog(this, TRUE /* scan menus */);
 	pDlgCust->Create();
 }
 
-LRESULT CMainFrame::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
+LRESULT main_frame_view::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 {
 	LRESULT lres = CMDIFrameWndEx::OnToolbarCreateNew(wp,lp);
 	if (lres == 0)
@@ -266,8 +271,8 @@ LRESULT CMainFrame::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 }
 
 
-void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
+void main_frame_view::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 {
 	CMDIFrameWndEx::OnSettingChange(uFlags, lpszSection);
-	m_wndOutput.UpdateFonts();
+	m_output_view.UpdateFonts();
 }

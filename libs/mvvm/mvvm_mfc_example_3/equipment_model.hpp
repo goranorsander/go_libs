@@ -17,10 +17,12 @@
 #include "equipment_interface.hpp"
 
 namespace m = go::mvvm;
+namespace u = go::utility;
 
 class equipment_model
     : public equipment_interface
     , public m::wobservable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef equipment_model this_type;
@@ -35,15 +37,9 @@ protected:
 
 private:
     equipment_model() = delete;
-    equipment_model(const equipment_model&) = delete;
-    equipment_model(equipment_model&&) = delete;
 
 public:
     static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
-
-private:
-    equipment_model& operator=(const equipment_model&) = delete;
-    equipment_model& operator=(equipment_model&&) = delete;
 
 protected:
     virtual void bind_properties();

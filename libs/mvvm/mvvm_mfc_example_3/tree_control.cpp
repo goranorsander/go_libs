@@ -1,5 +1,5 @@
 //
-//  ViewTree.cpp
+//  tree_control.cpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "ViewTree.h"
+#include "tree_control.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -17,22 +17,22 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-view_tree_observer::~view_tree_observer()
+tree_control_observer::~tree_control_observer()
 {
 }
 
-CViewTree::~CViewTree()
+tree_control::~tree_control()
 {
 }
 
-CViewTree::CViewTree(view_tree_observer* observer)
+tree_control::tree_control(tree_control_observer* observer)
     : CTreeCtrl()
     , m_observer(observer)
     , m_hSelectedItem(NULL)
 {
 }
 
-BEGIN_MESSAGE_MAP(CViewTree, CTreeCtrl)
+BEGIN_MESSAGE_MAP(tree_control, CTreeCtrl)
     ON_NOTIFY_REFLECT(NM_CLICK, OnClick)
     ON_NOTIFY_REFLECT(NM_DBLCLK, OnDblclk)
     ON_NOTIFY_REFLECT(NM_RCLICK, OnRclick)
@@ -40,7 +40,7 @@ BEGIN_MESSAGE_MAP(CViewTree, CTreeCtrl)
     ON_NOTIFY_REFLECT(TVN_SELCHANGED, OnSelchanged)
 END_MESSAGE_MAP()
 
-BOOL CViewTree::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+BOOL tree_control::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {
 	BOOL bRes = CTreeCtrl::OnNotify(wParam, lParam, pResult);
 
@@ -55,7 +55,7 @@ BOOL CViewTree::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 	return bRes;
 }
 
-void CViewTree::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
 {
     if(m_observer == NULL)
     {
@@ -68,7 +68,7 @@ void CViewTree::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void CViewTree::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
 {
     if(m_observer == NULL)
     {
@@ -81,7 +81,7 @@ void CViewTree::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void CViewTree::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
 {
     if(m_observer == NULL)
     {
@@ -95,7 +95,7 @@ void CViewTree::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void CViewTree::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
 {
     if(m_observer == NULL)
     {
@@ -108,7 +108,7 @@ void CViewTree::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void CViewTree::OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
 {
     if(m_observer == NULL)
     {
@@ -125,7 +125,7 @@ void CViewTree::OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-CPoint CViewTree::GetClickPos() const
+CPoint tree_control::GetClickPos() const
 {
     const DWORD messagePos = GetMessagePos();
     return CPoint(GET_X_LPARAM(messagePos), GET_Y_LPARAM(messagePos));

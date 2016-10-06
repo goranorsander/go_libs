@@ -15,10 +15,13 @@
 
 #include "fleet_repository_interface.hpp"
 
+namespace u = go::utility;
+
 typedef unsigned long fleet_organization_id_type;
 
 class fleet_repository
     : public fleet_repository_interface
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository this_type;
@@ -31,16 +34,8 @@ public:
 protected:
     fleet_repository();
 
-private:
-    fleet_repository(const fleet_repository&) = delete;
-    fleet_repository(fleet_repository&&) = delete;
-
 public:
     static ptr create();
-
-private:
-    fleet_repository& operator=(const fleet_repository&) = delete;
-    fleet_repository& operator=(fleet_repository&&) = delete;
 
 public:
     virtual fleet_organization_interface::ptr fleet_organization_model() const;
