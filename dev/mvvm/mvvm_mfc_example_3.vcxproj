@@ -197,6 +197,7 @@
     <Text Include="..\..\libs\mvvm\mvvm_mfc_example_3\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_interface.hpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\tree_control.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_model.cpp" />

@@ -10,37 +10,108 @@
 
 #include "stdafx.h"
 #include "fleet_organization_view_model.hpp"
+#include "fleet_organization_command_parameters.hpp"
+#include "fleet_organization_model.hpp"
 
 #include <functional>
 
 namespace ph = std::placeholders;
 
-fleet_organization_view_model::fleet_organization_view_model()
+namespace
+{
+
+bool is_spaceship(const fleet_organization_interface::ptr fleet_org, const fleet_organization_id_type id)
+{
+    fleet_organization_model::ptr fleet_org_ = std::dynamic_pointer_cast<fleet_organization_model>(fleet_org);
+    if(fleet_org_)
+    {
+        if(fleet_org_->id == id)
+        {
+            return fleet_org_->spaceship_model.get() != nullptr;
+        }
+        bool is_spaceship_ = is_spaceship(fleet_org->first_child.get(), id);
+        if(is_spaceship_) { return true; }
+        is_spaceship_ = is_spaceship(fleet_org->next_sibling.get(), id);
+        if(is_spaceship_) { return true; }
+    }
+    return false;
+}
+
+}
+
+fleet_organization_view_model::fleet_organization_view_model(const m::wcommand_manager::ptr& command_manager)
     : m::wobservable_object()
-    , m::data_context_interface<fleet_organization_model::ptr>(fleet_organization_model::create())
+    , m::data_context_interface<fleet_organization_interface::ptr>(fleet_organization_model::create())
+    , _command_manager(command_manager)
+    , _on_left_double_click_command()
     , fleet_organization_root(L"fleet_organization_view_model::fleet_organization_root")
     , selected_fleet_organization_id(L"fleet_organization_view_model::selected_fleet_organization_id")
+    , on_left_double_click_command(L"fleet_organization_view_model::on_left_double_click_command")
+    , _main_frame_view_model()
     , _selected_fleet_organization_id(0)
 {
     bind_properties();
 }
 
-fleet_organization_view_model::ptr fleet_organization_view_model::create()
+fleet_organization_view_model::ptr fleet_organization_view_model::create(const m::wcommand_manager::ptr& command_manager)
 {
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() = default;
-        make_shared_enabler() : this_type() {}
+        make_shared_enabler(const m::wcommand_manager::ptr& command_manager) : this_type(command_manager) {}
     };
 
-    return std::make_shared<make_shared_enabler>();
+    return std::make_shared<make_shared_enabler, const m::wcommand_manager::ptr&>(command_manager);
+}
+
+void fleet_organization_view_model::main_frame_view_model(const main_frame_view_model::ptr& main_frame_view_model_)
+{
+    _main_frame_view_model = main_frame_view_model_;
 }
 
 void fleet_organization_view_model::bind_properties()
 {
-    fleet_organization_root.getter([this]() -> fleet_organization_model::ptr { if(*data_context) { return data_context; } return 0; });
-    fleet_organization_root.setter([this](const fleet_organization_model::ptr& v) { if(*data_context) { data_context.set(v); on_property_changed(fleet_organization_root.name()); } });
+    fleet_organization_root.getter([this]() -> fleet_organization_interface::ptr { if(*data_context) { return data_context; } return nullptr; });
+    fleet_organization_root.setter([this](const fleet_organization_interface::ptr& v) { if(*data_context) { data_context.set(v); on_property_changed(fleet_organization_root.name()); } });
     selected_fleet_organization_id.getter([this]() -> fleet_organization_id_type { return _selected_fleet_organization_id; });
     selected_fleet_organization_id.setter([this](const fleet_organization_id_type& v) { if(_selected_fleet_organization_id != v) { _selected_fleet_organization_id = v; on_property_changed(selected_fleet_organization_id.name()); } });
+    on_left_double_click_command.getter(
+        [this]()
+        {
+            _on_left_double_click_command = m::relay_wcommand::create(L"fleet_organization_view_model::on_left_double_click",
+                [this](const m::command_parameters::ptr& p)
+                {
+                    if(is_spaceship(*data_context, _selected_fleet_organization_id))
+                    {
+                        m::wcommand_manager::ptr command_manager = _command_manager.lock();
+                        main_frame_view_model::ptr main_frame_view_model = _main_frame_view_model.lock();
+                        if(command_manager && main_frame_view_model)
+                        {
+                            m::wcommand::ptr show_spaceship = main_frame_view_model->show_spaceship_command;
+                            if(show_spaceship)
+                            {
+                                fleet_organization_command_parameters::ptr this_cmd_params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
+                                fleet_organization_command_parameters::ptr show_spaceship_params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(show_spaceship->parameters());
+                                if(this_cmd_params && show_spaceship_params)
+                                {
+                                    show_spaceship_params->id = this_cmd_params->id;
+                                    command_manager->issue_command(show_spaceship);
+                                }
+                            }
+                        }
+                    }
+                },
+                [this](const m::command_parameters::ptr& p)
+                {
+                    fleet_organization_command_parameters::ptr params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
+                    if(params)
+                    {
+                        return params->id > 0;
+                    }
+                    return false;
+                },
+                fleet_organization_command_parameters::create(_selected_fleet_organization_id));
+            return _on_left_double_click_command;
+        });
 }

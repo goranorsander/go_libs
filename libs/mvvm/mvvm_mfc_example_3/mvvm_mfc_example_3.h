@@ -24,6 +24,8 @@
 
 namespace m = go::mvvm;
 
+class main_frame_view;
+
 class mvvm_mfc_example_3_app
     : public CWinAppEx
 {
@@ -42,15 +44,20 @@ public:
 
 	afx_msg void OnAppAbout();
 
-	DECLARE_MESSAGE_MAP()
-
-public:
-    BOOL  m_bHiColorIcons;
+    DECLARE_MESSAGE_MAP()
 
 private:
-    UINT_PTR m_timer_id;
-    m::wcommand_manager::ptr m_command_manager;
-    fleet_repository::ptr m_fleet_repository;
+    void on_show_spaceship(const fleet_organization_id_type id);
+
+    main_frame_view* get_main_frame_view();
+
+public:
+    BOOL  _bHiColorIcons;
+
+private:
+    UINT_PTR _timer_id;
+    m::wcommand_manager::ptr _command_manager;
+    fleet_repository::ptr _fleet_repository;
 };
 
 extern mvvm_mfc_example_3_app theApp;

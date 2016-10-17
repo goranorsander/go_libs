@@ -42,12 +42,19 @@ public:
     static ptr create(const fleet_repository::ptr& fleet_repository_, const properties_view_model::ptr& properties_view_model_);
 
 public:
-    virtual void on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a);
-    virtual void on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a);
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+
+private:
+    void bind_properties();
+
+public:
+    rop::wproperty<m::wcommand::ptr> show_spaceship_command;
 
 private:
     fleet_repository::wptr _fleet_repository;
-    properties_view_model::ptr _properties_view_model;
+    m::wcommand::ptr _show_spaceship_command;
+    properties_view_model::wptr _properties_view_model;
 };
 
 #endif  // #ifndef GO_APPLICATION_VIEW_MODEL_HPP_INCLUDED

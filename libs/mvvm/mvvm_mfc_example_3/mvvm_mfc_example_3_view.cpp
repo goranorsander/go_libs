@@ -51,7 +51,6 @@ void mvvm_mfc_example_3_view::OnInitialUpdate()
 {
     CFormView::OnInitialUpdate();
     ResizeParentToFit();
-
 }
 
 #ifdef _DEBUG

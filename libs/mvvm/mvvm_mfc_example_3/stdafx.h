@@ -40,4 +40,6 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
+#define WM_USER_SHOW_SPACESHIP WM_USER + 1
+
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_STDAFX_H_INCLUDED

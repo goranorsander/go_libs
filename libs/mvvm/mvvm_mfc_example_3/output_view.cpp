@@ -121,10 +121,10 @@ output_view::output_view()
     : CDockablePane()
     , m::wcommand_execution_wobserver_interface()
     , m::object_wobserver_interface()
-    , m_wndTabs()
-    , m_wndOutputAllMvvmEvents()
-    , m_wndOutputCommandEvents()
-    , m_wndOutputObservableObjectEvents()
+    , _wndTabs()
+    , _wndOutputAllMvvmEvents()
+    , _wndOutputCommandEvents()
+    , _wndOutputObservableObjectEvents()
 {
 }
 
@@ -141,7 +141,7 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CRect rectDummy;
 	rectDummy.SetRectEmpty();
 
-	if (!m_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectDummy, this, 1))
+	if (!_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectDummy, this, 1))
 	{
 		TRACE0("Failed to create output tab window\n");
 		return -1;
@@ -149,9 +149,9 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	const DWORD dwStyle = LBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL;
 
-	if (!m_wndOutputAllMvvmEvents.Create(dwStyle, rectDummy, &m_wndTabs, 2) ||
-		!m_wndOutputCommandEvents.Create(dwStyle, rectDummy, &m_wndTabs, 3) ||
-		!m_wndOutputObservableObjectEvents.Create(dwStyle, rectDummy, &m_wndTabs, 4))
+	if (!_wndOutputAllMvvmEvents.Create(dwStyle, rectDummy, &_wndTabs, 2) ||
+		!_wndOutputCommandEvents.Create(dwStyle, rectDummy, &_wndTabs, 3) ||
+		!_wndOutputObservableObjectEvents.Create(dwStyle, rectDummy, &_wndTabs, 4))
 	{
 		TRACE0("Failed to create output windows\n");
 		return -1;
@@ -164,13 +164,13 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	bNameValid = strTabName.LoadString(IDS_ALL_MVVM_EVENTS_TAB);
 	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputAllMvvmEvents, strTabName, (UINT)0);
+	_wndTabs.AddTab(&_wndOutputAllMvvmEvents, strTabName, (UINT)0);
 	bNameValid = strTabName.LoadString(IDS_COMMAND_EVENTS_TAB);
 	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputCommandEvents, strTabName, (UINT)1);
+	_wndTabs.AddTab(&_wndOutputCommandEvents, strTabName, (UINT)1);
 	bNameValid = strTabName.LoadString(IDS_OBSERVABLE_OBJECT_EVENTS_TAB);
 	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputObservableObjectEvents, strTabName, (UINT)2);
+	_wndTabs.AddTab(&_wndOutputObservableObjectEvents, strTabName, (UINT)2);
 
 	return 0;
 }
@@ -179,7 +179,7 @@ void output_view::OnSize(UINT nType, int cx, int cy)
 {
 	CDockablePane::OnSize(nType, cx, cy);
 
-	m_wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
+	_wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void output_view::AdjustHorzScroll(CListBox& wndListBox)
@@ -203,9 +203,9 @@ void output_view::AdjustHorzScroll(CListBox& wndListBox)
 
 void output_view::UpdateFonts()
 {
-	m_wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
-	m_wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
-	m_wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
+	_wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
+	_wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
+	_wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
 void output_view::on_command_executed(const m::wcommand::ptr& c)
@@ -213,8 +213,8 @@ void output_view::on_command_executed(const m::wcommand::ptr& c)
     if(c)
     {
         const std::wstring msg = string_format(L"%s: Executed command %s", current_date_and_time().c_str(), c->command_name().c_str());
-        m_wndOutputAllMvvmEvents.AddString(msg.c_str());
-        m_wndOutputCommandEvents.AddString(msg.c_str());
+        _wndOutputAllMvvmEvents.AddString(msg.c_str());
+        _wndOutputCommandEvents.AddString(msg.c_str());
     }
 }
 
@@ -223,12 +223,12 @@ void output_view::on_command_not_executed(const m::wcommand::ptr& c)
     if(c)
     {
         const std::wstring msg = string_format(L"%s: Command %s was not executed", current_date_and_time().c_str(), c->command_name().c_str());
-        m_wndOutputAllMvvmEvents.AddString(msg.c_str());
-        m_wndOutputCommandEvents.AddString(msg.c_str());
+        _wndOutputAllMvvmEvents.AddString(msg.c_str());
+        _wndOutputCommandEvents.AddString(msg.c_str());
     }
 }
 
-void output_view::on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a)
+void output_view::on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
 {
     if(o && a)
     {
@@ -251,18 +251,18 @@ void output_view::on_container_changed(const m::object::ptr& o, const std::share
             msg = string_format(L"%s: Unknown container action, %s", current_date_and_time().c_str(), object_information(o).c_str());
             break;
         }
-        m_wndOutputAllMvvmEvents.AddString(msg.c_str());
-        m_wndOutputObservableObjectEvents.AddString(msg.c_str());
+        _wndOutputAllMvvmEvents.AddString(msg.c_str());
+        _wndOutputObservableObjectEvents.AddString(msg.c_str());
     }
 }
 
-void output_view::on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a)
+void output_view::on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
 {
     if(o && a)
     {
         const std::wstring msg = string_format(L"%s: Changed property %s, %s", current_date_and_time().c_str(), a->property_name().c_str(), object_information(o).c_str());
-        m_wndOutputAllMvvmEvents.AddString(msg.c_str());
-        m_wndOutputObservableObjectEvents.AddString(msg.c_str());
+        _wndOutputAllMvvmEvents.AddString(msg.c_str());
+        _wndOutputObservableObjectEvents.AddString(msg.c_str());
     }
 }
 

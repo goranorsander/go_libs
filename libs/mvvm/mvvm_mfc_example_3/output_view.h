@@ -52,15 +52,15 @@ public:
     virtual void on_command_executed(const m::wcommand::ptr& c);
     virtual void on_command_not_executed(const m::wcommand::ptr& c);
 
-    virtual void on_container_changed(const m::object::ptr& o, const std::shared_ptr<m::container_changed_arguments>& a);
-    virtual void on_property_changed(const m::object::ptr& o, const std::shared_ptr<m::wproperty_changed_arguments>& a);
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
 
 protected:
-	CMFCTabCtrl	m_wndTabs;
+	CMFCTabCtrl	_wndTabs;
 
-	COutputList m_wndOutputAllMvvmEvents;
-	COutputList m_wndOutputCommandEvents;
-	COutputList m_wndOutputObservableObjectEvents;
+	COutputList _wndOutputAllMvvmEvents;
+	COutputList _wndOutputCommandEvents;
+	COutputList _wndOutputObservableObjectEvents;
 
 protected:
 	void AdjustHorzScroll(CListBox& wndListBox);

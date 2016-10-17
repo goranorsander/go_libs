@@ -58,28 +58,20 @@ protected:
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-	//afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	//afx_msg void OnProperties();
-	//afx_msg void OnFileOpen();
-	//afx_msg void OnFileOpenWith();
-	//afx_msg void OnDummyCompile();
-	//afx_msg void OnEditCut();
-	//afx_msg void OnEditCopy();
-	//afx_msg void OnEditClear();
 	afx_msg void OnPaint();
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 
 	DECLARE_MESSAGE_MAP()
 
 protected:
-    std::unique_ptr<tree_control> m_wndFileView;
-    CImageList m_FileViewImages;
-    fleet_organization_view_tool_bar m_wndToolBar;
+    std::unique_ptr<tree_control> _wndFileView;
+    CImageList _fileViewImages;
+    fleet_organization_view_tool_bar _wndToolBar;
 
 private:
-    m::wcommand_manager::wptr m_command_manager;
-    fleet_organization_view_model::ptr m_fleet_organization_view_model;
-    s::slot_key_type m_on_data_context_changed_slot_key;
+    m::wcommand_manager::wptr _command_manager;
+    fleet_organization_view_model::ptr _fleet_organization_view_model;
+    s::slot_key_type _on_data_context_changed_slot_key;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_FILEVIEW_H_INCLUDED

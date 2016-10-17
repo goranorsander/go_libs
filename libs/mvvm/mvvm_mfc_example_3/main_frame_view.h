@@ -22,6 +22,8 @@
 
 namespace m = go::mvvm;
 
+class mvvm_mfc_example_3_doc;
+
 class main_frame_view
     : public CMDIFrameWndEx
 {
@@ -31,7 +33,9 @@ public:
     main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    void on_show_spaceship(const fleet_organization_id_type id);
+
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
 public:
 #ifdef _DEBUG
@@ -40,12 +44,12 @@ public:
 #endif
 
 protected:
-	CMFCMenuBar       m_wndMenuBar;
-	CMFCToolBar       m_wndToolBar;
-	CMFCStatusBar     m_wndStatusBar;
-	fleet_organization_view m_fleet_organization_view;
-	output_view        m_output_view;
-	properties_view    m_properties_view;
+	CMFCMenuBar _wndMenuBar;
+	CMFCToolBar _wndToolBar;
+	CMFCStatusBar _wndStatusBar;
+	fleet_organization_view _fleet_organization_view;
+	output_view _output_view;
+	properties_view _properties_view;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -53,15 +57,19 @@ protected:
 	afx_msg void OnViewCustomize();
 	afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
 	afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+
 	DECLARE_MESSAGE_MAP()
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
 
 private:
-    m::wcommand_manager::wptr m_command_manager;
-    fleet_repository::wptr m_fleet_repository;
-    main_frame_view_model::ptr m_main_frame_view_model;
+    typedef std::map<fleet_organization_id_type, mvvm_mfc_example_3_doc*> fleet_organization_document_type;
+
+    m::wcommand_manager::wptr _command_manager;
+    fleet_repository::wptr _fleet_repository;
+    main_frame_view_model::ptr _main_frame_view_model;
+    fleet_organization_document_type _fleet_org_doc;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_H_INCLUDED

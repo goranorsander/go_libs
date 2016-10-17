@@ -59,8 +59,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-    tree_control_observer* m_observer;
-    HTREEITEM m_hSelectedItem;
+    tree_control_observer* _observer;
+    HTREEITEM _hSelectedItem;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_TREE_CONTROL_H_INCLUDED

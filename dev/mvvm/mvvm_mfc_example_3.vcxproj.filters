@@ -28,6 +28,9 @@
     <Filter Include="MVVM Example\View\Control">
       <UniqueIdentifier>{4f0b7615-39c7-41ed-88ee-fd8563981f2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MVVM Example\View Model\Command">
+      <UniqueIdentifier>{b4ab173b-7e0c-427d-8c1d-cc708234e50b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.h">
@@ -102,6 +105,9 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_model.hpp">
       <Filter>MVVM Example\View Model</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp">
@@ -157,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_model.cpp">
       <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

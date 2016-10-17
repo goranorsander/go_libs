@@ -29,7 +29,6 @@ child_frame_view::child_frame_view()
 {
 }
 
-
 BOOL child_frame_view::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CMDIChildWndEx::PreCreateWindow(cs) )

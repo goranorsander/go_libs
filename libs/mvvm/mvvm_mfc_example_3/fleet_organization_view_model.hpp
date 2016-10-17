@@ -16,7 +16,8 @@
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
 
-#include "fleet_organization_model.hpp"
+#include "fleet_organization_interface.hpp"
+#include "main_frame_view_model.hpp"
 
 namespace m = go::mvvm;
 namespace p = go::property;
@@ -24,7 +25,7 @@ namespace rop = go::property::read_only;
 
 class fleet_organization_view_model
     : public m::wobservable_object
-    , public m::data_context_interface<fleet_organization_model::ptr>
+    , public m::data_context_interface<fleet_organization_interface::ptr>
     , public u::noncopyable_nonmovable
 {
 public:
@@ -36,19 +37,26 @@ public:
     virtual ~fleet_organization_view_model() = default;
 
 private:
-    fleet_organization_view_model();
+    fleet_organization_view_model(const m::wcommand_manager::ptr& command_manager);
 
 public:
-    static ptr create();
+    static ptr create(const m::wcommand_manager::ptr& command_manager);
+
+    void main_frame_view_model(const main_frame_view_model::ptr& main_frame_view_model_);
 
 private:
     void bind_properties();
 
 public:
-    p::wproperty<fleet_organization_model::ptr> fleet_organization_root;
+    p::wproperty<fleet_organization_interface::ptr> fleet_organization_root;
     p::wproperty<fleet_organization_id_type> selected_fleet_organization_id;
 
+    rop::wproperty<m::wcommand::ptr> on_left_double_click_command;
+
 private:
+    m::wcommand_manager::wptr _command_manager;
+    m::wcommand::ptr _on_left_double_click_command;
+    main_frame_view_model::wptr _main_frame_view_model;
     fleet_organization_id_type _selected_fleet_organization_id;
 };
 
