@@ -3,6 +3,7 @@
 // Used by mvvm_mfc_example_3.rc
 //
 #define IDD_ABOUTBOX				100
+#define IDP_OLE_INIT_FAILED			100
 #define IDD_MVVM_EXAMPLE_3_FORM     101
 #define IDR_POPUP_EDIT				119
 #define ID_STATUSBAR_PANE1			120

@@ -209,8 +209,7 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_interface.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.h" />
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.h" />
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_model.hpp" />
@@ -233,8 +232,7 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.cpp" />
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\child_frame_view.cpp" />

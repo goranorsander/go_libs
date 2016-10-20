@@ -389,6 +389,10 @@ END
 
 STRINGTABLE
 BEGIN
+IDP_OLE_INIT_FAILED       "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+STRINGTABLE
+BEGIN
     IDR_MAINFRAME           "mvvm_mfc_example_3"
     IDR_MVVM_MFC_EXAMPLE_3TYPE 
                             "\nmvvm_mfc_example_3\nmvvm_mfc_example_3\n\n\nmvvmexample3.Document\nmvvm_mfc_example_3.Document"

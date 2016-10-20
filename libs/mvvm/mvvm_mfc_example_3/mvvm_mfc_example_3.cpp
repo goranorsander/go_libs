@@ -15,8 +15,7 @@
 #include "main_frame_view.h"
 
 #include "child_frame_view.h"
-#include "mvvm_mfc_example_3_doc.h"
-#include "mvvm_mfc_example_3_view.h"
+#include "spaceship_view.h"
 
 #include <go/utility.hpp>
 
@@ -62,38 +61,44 @@ mvvm_mfc_example_3_app::~mvvm_mfc_example_3_app()
 mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     : CWinAppEx()
     , _bHiColorIcons(TRUE)
+    , _hMDIMenu(0)
+    , _hMDIAccel(0)
     , _timer_id(0)
     , _command_manager()
     , _fleet_repository()
 {
+    m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 	SetAppID(_T("mvvm_mfc_example_3.AppID.NoVersion"));
 }
 
 BOOL mvvm_mfc_example_3_app::InitInstance()
 {
-	CWinAppEx::InitInstance();
-	EnableTaskbarInteraction();
-	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
-	LoadStdProfileSettings(4);
-	InitContextMenuManager();
-	InitKeyboardManager();
-	InitTooltipManager();
-	CMFCToolTipInfo ttParams;
-	ttParams.m_bVislManagerTheme = TRUE;
-	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL, RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
+    INITCOMMONCONTROLSEX InitCtrls;
+    InitCtrls.dwSize = sizeof(InitCtrls);
+    InitCtrls.dwICC = ICC_WIN95_CLASSES;
+    InitCommonControlsEx(&InitCtrls);
+
+    CWinAppEx::InitInstance();
+
+    if(!AfxOleInit())
+    {
+        AfxMessageBox(IDP_OLE_INIT_FAILED);
+        return FALSE;
+    }
+
+    AfxEnableControlContainer();
+    EnableTaskbarInteraction();
+    SetRegistryKey(_T("Local AppWizard-Generated Applications"));
+    InitContextMenuManager();
+    InitKeyboardManager();
+    InitTooltipManager();
+    CMFCToolTipInfo ttParams;
+    ttParams.m_bVislManagerTheme = TRUE;
+    theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL, RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
 
     _command_manager = m::wcommand_manager::create();
     _fleet_repository = fleet_repository::create();
     _timer_id = SetTimer(NULL, 0, 100, NULL);
-
-    CMultiDocTemplate* pDocTemplate;
-	pDocTemplate = new CMultiDocTemplate(IDR_MVVM_MFC_EXAMPLE_3TYPE,
-		RUNTIME_CLASS(mvvm_mfc_example_3_doc),
-		RUNTIME_CLASS(child_frame_view),
-		RUNTIME_CLASS(mvvm_mfc_example_3_view));
-	if (!pDocTemplate)
-		return FALSE;
-	AddDocTemplate(pDocTemplate);
 
     {
         u::scope_guard_new<main_frame_view> pMainFrame(new main_frame_view(_command_manager, _fleet_repository));
@@ -104,25 +109,27 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
         m_pMainWnd = pMainFrame.detach();
     }
 
-	CCommandLineInfo cmdInfo;
-    if(cmdInfo.m_nShellCommand == CCommandLineInfo::FileNew)
-    {
-        cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing;
-    }
-	ParseCommandLine(cmdInfo);
-
-	if (!ProcessShellCommand(cmdInfo))
-		return FALSE;
+    HINSTANCE hInst = AfxGetResourceHandle();
+    _hMDIMenu = ::LoadMenu(hInst, MAKEINTRESOURCE(IDR_MVVM_MFC_EXAMPLE_3TYPE));
+    _hMDIAccel = ::LoadAccelerators(hInst, MAKEINTRESOURCE(IDR_MVVM_MFC_EXAMPLE_3TYPE));
 
     m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
     m_pMainWnd->UpdateWindow();
 
-	return TRUE;
+    return TRUE;
 }
 
 int mvvm_mfc_example_3_app::ExitInstance()
 {
     KillTimer(NULL, _timer_id);
+
+    if(_hMDIMenu != NULL)
+        FreeResource(_hMDIMenu);
+    if(_hMDIAccel != NULL)
+        FreeResource(_hMDIAccel);
+
+    AfxOleTerm(FALSE);
+
     return CWinAppEx::ExitInstance();
 }
 
@@ -170,9 +177,18 @@ void mvvm_mfc_example_3_app::OnAppAbout()
 	aboutDlg.DoModal();
 }
 
+void mvvm_mfc_example_3_app::OnFileNew()
+{
+    main_frame_view* pFrame = STATIC_DOWNCAST(main_frame_view, m_pMainWnd);
+    pFrame->LockWindowUpdate();
+    // create a new MDI child window
+    pFrame->CreateNewChild(RUNTIME_CLASS(child_frame_view), IDR_MVVM_MFC_EXAMPLE_3TYPE, _hMDIMenu, _hMDIAccel);
+    pFrame->UnlockWindowUpdate();
+}
+
 BEGIN_MESSAGE_MAP(mvvm_mfc_example_3_app, CWinAppEx)
     ON_COMMAND(ID_APP_ABOUT, &mvvm_mfc_example_3_app::OnAppAbout)
-    ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
+    ON_COMMAND(ID_FILE_NEW, &mvvm_mfc_example_3_app::OnFileNew)
     ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
 END_MESSAGE_MAP()
 

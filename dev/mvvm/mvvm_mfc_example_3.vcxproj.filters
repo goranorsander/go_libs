@@ -42,12 +42,6 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\targetver.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.h">
-      <Filter>MFC Application Code\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.h">
-      <Filter>MFC Application Code\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\Resource.h">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
@@ -108,18 +102,15 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.hpp">
       <Filter>MVVM Example\View Model\Command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.h">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\stdafx.cpp">
-      <Filter>MFC Application Code\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_doc.cpp">
-      <Filter>MFC Application Code\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_view.cpp">
       <Filter>MFC Application Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.cpp">
@@ -166,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.cpp">
       <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.cpp">
+      <Filter>MVVM Example\View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

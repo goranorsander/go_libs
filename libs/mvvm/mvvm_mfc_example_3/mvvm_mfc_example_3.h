@@ -43,6 +43,7 @@ public:
 	virtual void SaveCustomState();
 
 	afx_msg void OnAppAbout();
+    afx_msg void OnFileNew();
 
     DECLARE_MESSAGE_MAP()
 
@@ -53,6 +54,10 @@ private:
 
 public:
     BOOL  _bHiColorIcons;
+
+protected:
+    HMENU  _hMDIMenu;
+    HACCEL _hMDIAccel;
 
 private:
     UINT_PTR _timer_id;

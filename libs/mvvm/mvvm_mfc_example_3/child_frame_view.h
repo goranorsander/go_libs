@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include "spaceship_view.h"
+
 class child_frame_view
     : public CMDIChildWndEx
 {
@@ -26,6 +28,7 @@ public:
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
 
 public:
 #ifdef _DEBUG
@@ -34,7 +37,14 @@ public:
 #endif
 
 protected:
-	DECLARE_MESSAGE_MAP()
+    afx_msg void OnFileClose();
+    afx_msg void OnSetFocus(CWnd* pOldWnd);
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+
+    DECLARE_MESSAGE_MAP()
+
+public:
+    spaceship_view _wndView;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_CHILD_FRAME_VIEW_H_INCLUDED
