@@ -13,8 +13,7 @@
 #include "close_spaceship_command_parameters.hpp"
 #include "fleet_organization_command_parameters.hpp"
 #include "fleet_organization_view_model.hpp"
-
-#include <go/utility.hpp>
+#include "mvvm_mfc_example_3.h"
 
 #include <functional>
 
@@ -108,8 +107,7 @@ void main_frame_view_model::bind_properties()
                     fleet_organization_command_parameters::ptr params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
                     if(params)
                     {
-                        u::scope_guard_new<std::wstring> show_id(new std::wstring(std::to_wstring(params->id)));
-                        AfxGetMainWnd()->PostMessage(WM_USER_SHOW_SPACESHIP, static_cast<LPARAM>(params->id), static_cast<WPARAM>(0));
+                        dynamic_cast<mvvm_mfc_example_3_app*>(AfxGetMainWnd())->on_show_spaceship(params->id);
                     }
                 },
                 [this](const m::command_parameters::ptr& p)
@@ -133,8 +131,7 @@ void main_frame_view_model::bind_properties()
                     close_spaceship_command_parameters::ptr params = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
                     if(params && params->spaceship_view_model())
                     {
-                        u::scope_guard_new<std::wstring> close_id(new std::wstring(std::to_wstring(params->spaceship_view_model()->spaceship_id)));
-                        AfxGetMainWnd()->PostMessage(WM_USER_CLOSE_SPACESHIP, static_cast<LPARAM>(params->spaceship_view_model()->spaceship_id), static_cast<WPARAM>(0));
+                        dynamic_cast<mvvm_mfc_example_3_app*>(AfxGetMainWnd())->on_close_spaceship(params->spaceship_view_model()->spaceship_id);
                     }
                 },
                 [this](const m::command_parameters::ptr& p)

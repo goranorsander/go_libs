@@ -43,7 +43,4 @@
 
 #include "mvvm_mfc_example_3_namespace_alias.hpp"
 
-#define WM_USER_SHOW_SPACESHIP WM_USER + 1
-#define WM_USER_CLOSE_SPACESHIP WM_USER + 2
-
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_STDAFX_H_INCLUDED

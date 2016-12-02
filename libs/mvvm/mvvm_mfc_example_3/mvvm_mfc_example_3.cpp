@@ -53,6 +53,8 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
+main_frame_view* mvvm_mfc_example_3_app::_main_frame_view = nullptr;
+
 mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     : CWinAppEx()
     , _bHiColorIcons(TRUE)
@@ -101,7 +103,7 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
         {
             return FALSE;
         }
-        m_pMainWnd = pMainFrame.detach();
+        m_pMainWnd = _main_frame_view = pMainFrame.detach();
     }
 
     HINSTANCE hInst = AfxGetResourceHandle();
@@ -135,20 +137,6 @@ BOOL mvvm_mfc_example_3_app::PreTranslateMessage(MSG* pMsg)
     case WM_TIMER:
         _command_manager->execute_commands();
         break;
-    case WM_USER_SHOW_SPACESHIP:
-        {
-            const fleet_organization_id_type id = static_cast<fleet_organization_id_type>(pMsg->wParam);
-            on_show_spaceship(id);
-            return TRUE;
-        }
-        break;
-    case WM_USER_CLOSE_SPACESHIP:
-    {
-        const fleet_organization_id_type id = static_cast<fleet_organization_id_type>(pMsg->wParam);
-        on_close_spaceship(id);
-        return TRUE;
-    }
-    break;
     }
     return CWinAppEx::PreTranslateMessage(pMsg);
 }
@@ -235,5 +223,5 @@ void mvvm_mfc_example_3_app::on_close_spaceship(const fleet_organization_id_type
 
 main_frame_view* mvvm_mfc_example_3_app::get_main_frame_view()
 {
-    return dynamic_cast<main_frame_view*>(m_pMainWnd);
+    return _main_frame_view;
 }
