@@ -100,10 +100,15 @@ std::wstring object_information(const m::object::ptr& o)
             (*s->captain).c_str(),
             *s->crew_complement);
     }
-    fleet_organization_view_model::ptr fvm = std::dynamic_pointer_cast<fleet_organization_view_model>(o);
-    if(fvm)
+    fleet_organization_view_model::ptr fleet_org_vm = std::dynamic_pointer_cast<fleet_organization_view_model>(o);
+    if(fleet_org_vm)
     {
         return L"class fleet_organization_view_model";
+    }
+    main_frame_view_model::ptr main_frame_vm = std::dynamic_pointer_cast<main_frame_view_model>(o);
+    if(main_frame_vm)
+    {
+        return L"class main_frame_view_model";
     }
     return L"class go::mvvm::object";
 }
@@ -264,68 +269,4 @@ void output_view::on_property_changed(const m::object::ptr& o, const m::wpropert
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputObservableObjectEvents.AddString(msg.c_str());
     }
-}
-
-/////////////////////////////////////////////////////////////////////////////
-
-COutputList::~COutputList()
-{
-}
-
-COutputList::COutputList()
-    : CListBox()
-{
-}
-
-BEGIN_MESSAGE_MAP(COutputList, CListBox)
-	ON_WM_CONTEXTMENU()
-	ON_COMMAND(ID_EDIT_COPY, OnEditCopy)
-	ON_COMMAND(ID_EDIT_CLEAR, OnEditClear)
-	ON_COMMAND(ID_VIEW_OUTPUTWND, OnViewOutput)
-	ON_WM_WINDOWPOSCHANGING()
-END_MESSAGE_MAP()
-
-void COutputList::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
-{
-	CMenu menu;
-	menu.LoadMenu(IDR_OUTPUT_POPUP);
-
-	CMenu* pSumMenu = menu.GetSubMenu(0);
-
-	if (AfxGetMainWnd()->IsKindOf(RUNTIME_CLASS(CMDIFrameWndEx)))
-	{
-		CMFCPopupMenu* pPopupMenu = new CMFCPopupMenu;
-
-		if (!pPopupMenu->Create(this, point.x, point.y, (HMENU)pSumMenu->m_hMenu, FALSE, TRUE))
-			return;
-
-		((CMDIFrameWndEx*)AfxGetMainWnd())->OnShowPopupMenu(pPopupMenu);
-		UpdateDialogControls(this, FALSE);
-	}
-
-	SetFocus();
-}
-
-void COutputList::OnEditCopy()
-{
-	MessageBox(_T("Copy output"));
-}
-
-void COutputList::OnEditClear()
-{
-	MessageBox(_T("Clear output"));
-}
-
-void COutputList::OnViewOutput()
-{
-	CDockablePane* pParentBar = DYNAMIC_DOWNCAST(CDockablePane, GetOwner());
-	CMDIFrameWndEx* pMainFrame = DYNAMIC_DOWNCAST(CMDIFrameWndEx, GetTopLevelFrame());
-
-	if (pMainFrame != NULL && pParentBar != NULL)
-	{
-		pMainFrame->SetFocus();
-		pMainFrame->ShowPane(pParentBar, FALSE, FALSE, FALSE);
-		pMainFrame->RecalcLayout();
-
-	}
 }

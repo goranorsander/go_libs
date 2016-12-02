@@ -17,6 +17,7 @@
 
 #include <boost/signals2.hpp>
 #include <go_boost/mvvm/data_context_changed_arguments.hpp>
+#include <go_boost/mvvm/data_context_changing_arguments.hpp>
 #include <go_boost/signals/slot.hpp>
 
 namespace go_boost
@@ -30,6 +31,7 @@ class notify_data_context_changed_interface
 public:
     typedef notify_data_context_changed_interface this_type;
     typedef boost::signals2::signal<void(const boost::shared_ptr<data_context_changed_arguments>&)> data_context_changed_signal;
+    typedef boost::signals2::signal<void(const boost::shared_ptr<data_context_changing_arguments>&)> data_context_changing_signal;
 
 public:
     virtual ~notify_data_context_changed_interface() = 0;
@@ -40,11 +42,13 @@ protected:
     }
 
 public:
+    data_context_changing_signal data_context_changing;
     data_context_changed_signal data_context_changed;
 };
 
 inline notify_data_context_changed_interface::~notify_data_context_changed_interface()
 {
+    data_context_changing.disconnect_all_slots();
     data_context_changed.disconnect_all_slots();
 }
 

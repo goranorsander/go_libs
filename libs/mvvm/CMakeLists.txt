@@ -95,6 +95,123 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE})
 	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE})
 
+    ########################################################
+    #  libs/mvvm/mvvm_mfc_example_3                        #
+    ########################################################
+
+    set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_3 ${STD_PROJECT_NAME_STR}_MFC_example_3)
+
+	set(MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
+        ./mvvm_mfc_example_3/res/classview.bmp
+        ./mvvm_mfc_example_3/res/classview_hc.bmp
+        ./mvvm_mfc_example_3/res/class_view.ico
+        ./mvvm_mfc_example_3/res/class_view_hc.ico
+        ./mvvm_mfc_example_3/res/explorer.bmp
+        ./mvvm_mfc_example_3/res/explorer_hc.bmp
+        ./mvvm_mfc_example_3/res/fileview.bmp
+        ./mvvm_mfc_example_3/res/fileview_hc.bmp
+        ./mvvm_mfc_example_3/res/file_view.ico
+        ./mvvm_mfc_example_3/res/file_view_hc.ico
+        ./mvvm_mfc_example_3/res/menuimages.bmp
+        ./mvvm_mfc_example_3/res/menuimages_hc.bmp
+        ./mvvm_mfc_example_3/res/mvvm_mfc_example_3.ico
+        ./mvvm_mfc_example_3/res/mvvm_mfc_example_3.rc2
+        ./mvvm_mfc_example_3/res/mvvm_mfc_example_3Doc.ico
+        ./mvvm_mfc_example_3/res/output_wnd.ico
+        ./mvvm_mfc_example_3/res/output_wnd_hc.ico
+        ./mvvm_mfc_example_3/res/properties.bmp
+        ./mvvm_mfc_example_3/res/properties_hc.bmp
+        ./mvvm_mfc_example_3/res/properties_wnd.ico
+        ./mvvm_mfc_example_3/res/properties_wnd_hc.ico
+        ./mvvm_mfc_example_3/res/sort.bmp
+        ./mvvm_mfc_example_3/res/sort_hc.bmp
+        ./mvvm_mfc_example_3/res/Toolbar.bmp
+        ./mvvm_mfc_example_3/res/Toolbar256.bmp
+        ./mvvm_mfc_example_3/mvvm_mfc_example_3.cpp
+        ./mvvm_mfc_example_3/mvvm_mfc_example_3.h
+        ./mvvm_mfc_example_3/mvvm_mfc_example_3.rc
+        ./mvvm_mfc_example_3/Resource.h
+        ./mvvm_mfc_example_3/stdafx.cpp
+        ./mvvm_mfc_example_3/stdafx.h
+        ./mvvm_mfc_example_3/targetver.h
+	)
+	set(MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
+        ./mvvm_mfc_example_3/equipment_interface.hpp
+        ./mvvm_mfc_example_3/equipment_model.cpp
+        ./mvvm_mfc_example_3/equipment_model.hpp
+        ./mvvm_mfc_example_3/fleet_organization_interface.hpp
+        ./mvvm_mfc_example_3/fleet_organization_model.cpp
+        ./mvvm_mfc_example_3/fleet_organization_model.hpp
+        ./mvvm_mfc_example_3/fleet_repository.cpp
+        ./mvvm_mfc_example_3/fleet_repository.hpp
+        ./mvvm_mfc_example_3/fleet_repository_interface.hpp
+        ./mvvm_mfc_example_3/spaceship_interface.hpp
+        ./mvvm_mfc_example_3/spaceship_model.cpp
+        ./mvvm_mfc_example_3/spaceship_model.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+        ./mvvm_mfc_example_3/child_frame_view.cpp
+        ./mvvm_mfc_example_3/child_frame_view.hpp
+        ./mvvm_mfc_example_3/fleet_organization_view.cpp
+        ./mvvm_mfc_example_3/fleet_organization_view.hpp
+        ./mvvm_mfc_example_3/main_frame_view.cpp
+        ./mvvm_mfc_example_3/main_frame_view.hpp
+        ./mvvm_mfc_example_3/output_view.cpp
+        ./mvvm_mfc_example_3/output_view.hpp
+        ./mvvm_mfc_example_3/properties_view.cpp
+        ./mvvm_mfc_example_3/properties_view.hpp
+        ./mvvm_mfc_example_3/spaceship_view.cpp
+        ./mvvm_mfc_example_3/spaceship_view.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+        ./mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
+        ./mvvm_mfc_example_3/fleet_organization_view_tool_bar.hpp
+        ./mvvm_mfc_example_3/main_frame_view_menu_bar.cpp
+        ./mvvm_mfc_example_3/main_frame_view_menu_bar.hpp
+        ./mvvm_mfc_example_3/main_frame_view_tool_bar.cpp
+        ./mvvm_mfc_example_3/main_frame_view_tool_bar.hpp
+        ./mvvm_mfc_example_3/output_view_list.cpp
+        ./mvvm_mfc_example_3/output_view_list.hpp
+        ./mvvm_mfc_example_3/properties_view_grid.cpp
+        ./mvvm_mfc_example_3/properties_view_grid.hpp
+        ./mvvm_mfc_example_3/properties_view_tool_bar.cpp
+        ./mvvm_mfc_example_3/properties_view_tool_bar.hpp
+        ./mvvm_mfc_example_3/tree_control.cpp
+        ./mvvm_mfc_example_3/tree_control.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+        ./mvvm_mfc_example_3/fleet_organization_view_model.cpp
+        ./mvvm_mfc_example_3/fleet_organization_view_model.hpp
+        ./mvvm_mfc_example_3/main_frame_view_model.cpp
+        ./mvvm_mfc_example_3/main_frame_view_model.hpp
+        ./mvvm_mfc_example_3/properties_view_model.cpp
+        ./mvvm_mfc_example_3/properties_view_model.hpp
+        ./mvvm_mfc_example_3/spaceship_view_model.cpp
+        ./mvvm_mfc_example_3/spaceship_view_model.hpp
+	)
+	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
+        ./mvvm_mfc_example_3/close_spaceship_command_parameters.cpp
+        ./mvvm_mfc_example_3/close_spaceship_command_parameters.hpp
+        ./mvvm_mfc_example_3/fleet_organization_command_parameters.cpp
+        ./mvvm_mfc_example_3/fleet_organization_command_parameters.hpp
+	)
+	
+    add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_3} WIN32
+		${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
+		${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
+		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
+		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
+		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
+		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
+    )
+
+	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
+	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
+	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
+	source_group(MVVM_Example\\View\\Control FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
+	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
+	source_group(MVVM_Example\\View_Model\\Command FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
+
 endif(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
 if(BUILD_STD_TESTS)

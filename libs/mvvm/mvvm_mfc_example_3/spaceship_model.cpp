@@ -11,8 +11,6 @@
 #include "stdafx.h"
 #include "spaceship_model.hpp"
 
-namespace ph = std::placeholders;
-
 spaceship_model::~spaceship_model()
 {
     _equipment->container_changed.disconnect(_on_equipment_list_changed_slot_key);
@@ -49,11 +47,12 @@ void spaceship_model::bind_properties()
 {
     spaceship_class.getter([this]() { return _spaceship_class; });
     name.getter([this]() { return _name; });
-    equipment.getter([this]() { return _equipment; });
     captain.getter([this]() { return _captain; });
     captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; on_property_changed(captain.name()); } });
     crew_complement.getter([this]() { return _crew_complement; });
     crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } });
+    equipment.getter([this]() { return _equipment; });
+    equipment.setter([this](const m::wobservable_list<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; on_property_changed(equipment.name()); } });
 }
 
 void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)

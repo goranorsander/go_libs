@@ -15,13 +15,10 @@
 
 #include "spaceship_interface.hpp"
 
-namespace s = go::signals;
-namespace u = go::utility;
-
 class spaceship_model
     : public spaceship_interface
     , public m::wobservable_object
-    , public u::noncopyable_nonmovable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef spaceship_model this_type;

@@ -15,9 +15,6 @@
 
 #include <go/property.hpp>
 
-namespace p = go::property;
-namespace rop = go::property::read_only;
-
 class equipment_interface
 {
 public:

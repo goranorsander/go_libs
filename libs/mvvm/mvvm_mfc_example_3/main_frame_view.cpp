@@ -10,14 +10,15 @@
 
 #include "stdafx.h"
 #include "main_frame_view.h"
+#include "child_frame_view.h"
 #include "fleet_repository_populator.hpp"
 #include "mvvm_mfc_example_3.h"
+
+#include <go/utility/scope_guard.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
-namespace ph = std::placeholders;
 
 static UINT indicators[] =
 {
@@ -29,35 +30,53 @@ static UINT indicators[] =
 
 IMPLEMENT_DYNAMIC(main_frame_view, CMDIFrameWndEx)
 
-main_frame_view::~main_frame_view()
-{
-}
-
 main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo)
     : CMDIFrameWndEx()
+    , m::data_context_interface<main_frame_view_model::ptr>()
     , _wndMenuBar()
     , _wndToolBar()
     , _wndStatusBar()
-    , _fleet_organization_view(command_manager)
+    , _fleet_organization_view()
     , _output_view()
     , _properties_view()
     , _command_manager(command_manager)
     , _fleet_repository(fleet_repo)
-    , _main_frame_view_model()
-    , _fleet_org_doc()
+    , _fleet_org_child_view()
 {
 }
 
 void main_frame_view::on_show_spaceship(const fleet_organization_id_type id)
 {
-    fleet_organization_document_type::iterator it = _fleet_org_doc.find(id);
-    if(it != _fleet_org_doc.end())
+    fleet_organization_child_frame_view_type::iterator it = _fleet_org_child_view.find(id);
+    if(it != _fleet_org_child_view.end())
     {
-        // Show
+        it->second->MDIActivate();
     }
     else
     {
-        // Open
+        fleet_repository::ptr fleet_repo = _fleet_repository.lock();
+        if(fleet_repo)
+        {
+            fleet_organization_interface::ptr fleet_org = fleet_repo->fleet_organization_model(id);
+            if(fleet_org && fleet_org->spaceship_model())
+            {
+                spaceship_view_model::ptr spaceship_vm = spaceship_view_model::create(std::dynamic_pointer_cast<spaceship_model>(fleet_org->spaceship_model()), id, data_context());
+                LockWindowUpdate();
+                const u::scope_guard unlock(std::bind(&main_frame_view::UnlockWindowUpdate, this));
+                child_frame_view* newChild = dynamic_cast<child_frame_view*>(CreateNewChild(RUNTIME_CLASS(child_frame_view), IDR_MVVM_MFC_EXAMPLE_3TYPE, theApp.mdiMenu(), theApp.mdiAccel()));
+                _fleet_org_child_view[id] = newChild;
+                newChild->spaceship_view_model(spaceship_vm);
+            }
+        }
+    }
+}
+
+void main_frame_view::on_close_spaceship(const fleet_organization_id_type id)
+{
+    fleet_organization_child_frame_view_type::iterator it = _fleet_org_child_view.find(id);
+    if(it != _fleet_org_child_view.end())
+    {
+        _fleet_org_child_view.erase(it);
     }
 }
 
@@ -168,25 +187,7 @@ int main_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	ModifyStyle(0, FWS_PREFIXTITLE);
 
-    m::wcommand_manager::ptr command_manager = _command_manager.lock();
-    fleet_repository::ptr fleet_repo = _fleet_repository.lock();
-    if(command_manager && fleet_repo)
-    {
-        fleet_repository_populator::ptr populator = fleet_repository_populator::create();
-        if(populator)
-        {
-            populator->populate(fleet_repo, &_output_view);
-            fleet_organization_view_model::ptr fleet_org_view_model = fleet_organization_view_model::create(command_manager);
-            properties_view_model::ptr prop_view_model = properties_view_model::create(fleet_repo);
-            _main_frame_view_model = main_frame_view_model::create(fleet_repo, prop_view_model);
-            fleet_org_view_model->main_frame_view_model(_main_frame_view_model);
-            fleet_org_view_model->property_changed.connect(std::bind(&output_view::on_property_changed, &_output_view, ph::_1, ph::_2));
-            fleet_org_view_model->property_changed.connect(std::bind(&main_frame_view_model::on_property_changed, _main_frame_view_model, ph::_1, ph::_2));
-            _fleet_organization_view.view_model(fleet_org_view_model);
-            _properties_view.view_model(prop_view_model);
-            fleet_org_view_model->data_context.set(std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
-        }
-    }
+    initialize();
 
 	return 0;
 }
@@ -222,11 +223,25 @@ LRESULT main_frame_view::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 	return lres;
 }
 
-
 void main_frame_view::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 {
 	CMDIFrameWndEx::OnSettingChange(uFlags, lpszSection);
 	_output_view.UpdateFonts();
+}
+
+void main_frame_view::OnUpdateControlBarMenu(CCmdUI* pCmdUI)
+{
+    CMDIFrameWndEx::OnUpdateControlBarMenu(pCmdUI);
+    if(pCmdUI == NULL) { return; }
+    switch(pCmdUI->m_nID)
+    {
+    case ID_FILE_NEW:
+    case ID_FILE_OPEN:
+        pCmdUI->Enable(FALSE);
+        break;
+    default:
+        break;
+    }
 }
 
 BEGIN_MESSAGE_MAP(main_frame_view, CMDIFrameWndEx)
@@ -291,4 +306,37 @@ void main_frame_view::SetDockingWindowIcons(BOOL bHiColorIcons)
     _properties_view.SetIcon(hPropertiesBarIcon, FALSE);
 
     UpdateMDITabbedBarsIcons();
+}
+
+void main_frame_view::initialize()
+{
+    m::wcommand_manager::ptr command_manager = _command_manager.lock();
+    fleet_repository::ptr fleet_repo = _fleet_repository.lock();
+    if(command_manager && fleet_repo)
+    {
+        fleet_repository_populator::ptr populator = fleet_repository_populator::create();
+        if(populator)
+        {
+            populator->populate(fleet_repo, &_output_view);
+
+            fleet_organization_view_model::ptr fleet_org_vm = fleet_organization_view_model::create();
+            fleet_org_vm->property_changed.connect(std::bind(&output_view::on_property_changed, &_output_view, ph::_1, ph::_2));
+            fleet_org_vm->view_model_changing.connect(std::bind(&fleet_organization_view::on_view_model_changing, &_fleet_organization_view, ph::_1));
+            fleet_org_vm->view_model_changed.connect(std::bind(&fleet_organization_view::on_view_model_changed, &_fleet_organization_view, ph::_1));
+
+            properties_view_model::ptr prop_vm = properties_view_model::create();
+            prop_vm->property_changed.connect(std::bind(&output_view::on_property_changed, &_output_view, ph::_1, ph::_2));
+            prop_vm->view_model_changing.connect(std::bind(&properties_view::on_view_model_changing, &_properties_view, ph::_1));
+            prop_vm->view_model_changed.connect(std::bind(&properties_view::on_view_model_changed, &_properties_view, ph::_1));
+            _properties_view.data_context = prop_vm;
+
+            data_context = main_frame_view_model::create(command_manager, fleet_repo, prop_vm);
+            data_context()->property_changed.connect(std::bind(&output_view::on_property_changed, &_output_view, ph::_1, ph::_2));
+
+            fleet_org_vm->property_changed.connect(std::bind(&main_frame_view_model::on_property_changed, data_context(), ph::_1, ph::_2));
+            fleet_org_vm->main_frame_view_model = data_context();
+            _fleet_organization_view.data_context = fleet_org_vm;
+            fleet_org_vm->set_data_context(std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
+        }
+    }
 }

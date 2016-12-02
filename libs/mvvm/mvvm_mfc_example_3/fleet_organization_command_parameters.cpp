@@ -11,10 +11,6 @@
 #include "stdafx.h"
 #include "fleet_organization_command_parameters.hpp"
 
-fleet_organization_command_parameters::~fleet_organization_command_parameters()
-{
-}
-
 fleet_organization_command_parameters::fleet_organization_command_parameters(const fleet_organization_id_type& id_)
     : m::command_parameters()
     , id(id_)

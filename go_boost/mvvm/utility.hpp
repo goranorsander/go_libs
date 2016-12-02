@@ -15,6 +15,7 @@
 #pragma once
 #endif
 
+#include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
 #include <go_boost/mvvm/utility/phoenix_property_get_relay_command_functor.hpp>
 #include <go_boost/mvvm/utility/phoenix_property_set_value_notify_changed_functor.hpp>
 #include <go_boost/mvvm/utility/phoenix_property_value_access_functor.hpp>

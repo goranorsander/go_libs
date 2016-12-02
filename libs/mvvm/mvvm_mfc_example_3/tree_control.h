@@ -27,9 +27,7 @@ public:
     virtual ~tree_control_observer() = 0;
 
 protected:
-    tree_control_observer()
-    {
-    }
+    tree_control_observer() = default;
 
 public:
     virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData) = 0;
@@ -42,7 +40,7 @@ class tree_control
     : public CTreeCtrl
 {
 public:
-    virtual ~tree_control();
+    virtual ~tree_control() = default;
     tree_control(tree_control_observer* observer);
 
 protected:

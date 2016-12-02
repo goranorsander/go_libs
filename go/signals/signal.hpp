@@ -81,6 +81,10 @@ public:
     void operator()(A... a) const
     {
         std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        if(_connections.empty())
+        {
+            return;
+        }
         for(auto& connection : _connections)
         {
             function_type f = connection.second;

@@ -22,15 +22,13 @@
 
 #include <go/mvvm.hpp>
 
-namespace m = go::mvvm;
-
 class main_frame_view;
 
 class mvvm_mfc_example_3_app
     : public CWinAppEx
 {
 public:
-    virtual ~mvvm_mfc_example_3_app();
+    virtual ~mvvm_mfc_example_3_app() = default;
 	mvvm_mfc_example_3_app();
 
 public:
@@ -44,11 +42,19 @@ public:
 
 	afx_msg void OnAppAbout();
     afx_msg void OnFileNew();
+    afx_msg void OnFileOpen();
+    afx_msg void OnUpdateFileNew(CCmdUI* pCmdUI);
+    afx_msg void OnUpdateFileOpen(CCmdUI* pCmdUI);
 
     DECLARE_MESSAGE_MAP()
 
+public:
+    HMENU mdiMenu() const;
+    HACCEL mdiAccel() const;
+
 private:
     void on_show_spaceship(const fleet_organization_id_type id);
+    void on_close_spaceship(const fleet_organization_id_type id);
 
     main_frame_view* get_main_frame_view();
 

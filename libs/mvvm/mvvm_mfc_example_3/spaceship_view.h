@@ -1,5 +1,6 @@
 #ifndef GO_SPACESHIP_VIEW_H_INCLUDED
 #define GO_SPACESHIP_VIEW_H_INCLUDED
+#include "afxwin.h"
 
 //
 //  spaceship_view.h
@@ -16,11 +17,14 @@
 
 #pragma once
 
+#include "spaceship_view_model.hpp"
+
 class spaceship_view
     : public CFormView
+    , public m::data_context_interface<spaceship_view_model::ptr>
 {
 public:
-    virtual ~spaceship_view();
+    virtual ~spaceship_view() = default;
 
     spaceship_view();
 
@@ -29,13 +33,14 @@ protected:
 
 public:
 #ifdef AFX_DESIGN_TIME
-    enum { IDD = IDD_MVVM_EXAMPLE_3_FORM };
+    enum { IDD = IDD_SPACESHIP_VIEW };
 #endif
 
 public:
     virtual BOOL DestroyWindow();
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
     virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
+    virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 protected:
     virtual void DoDataExchange(CDataExchange* pDX);
@@ -51,6 +56,25 @@ protected:
     virtual void PostNcDestroy();
 
     DECLARE_MESSAGE_MAP()
+
+public:
+    void on_close() const;
+    void on_activate() const;
+    void on_deactivate() const;
+
+    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
+
+protected:
+    virtual void on_data_context_changing();
+    virtual void on_data_context_changed();
+
+private:
+    void on_view_model_changed();
+
+private:
+    CStatic _spaceship_class_static;
+    CStatic _spaceship_name_static;
 };
 
 #endif  // #ifndef GO_SPACESHIP_VIEW_H_INCLUDED

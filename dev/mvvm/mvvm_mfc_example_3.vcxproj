@@ -197,7 +197,10 @@
     <Text Include="..\..\libs\mvvm\mvvm_mfc_example_3\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\close_spaceship_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view_tool_bar.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_menu_bar.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_interface.hpp" />
@@ -208,7 +211,12 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_interface.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_tool_bar.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3_namespace_alias.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view_list.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_grid.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_tool_bar.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view.h" />
@@ -218,12 +226,16 @@
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_interface.hpp" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\stdafx.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\targetver.h" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_3\tree_control.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\close_spaceship_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_command_parameters.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view_tool_bar.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_menu_bar.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\equipment_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_model.cpp" />
@@ -231,7 +243,11 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_organization_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\fleet_repository_populator.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view_tool_bar.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view_list.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_grid.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_tool_bar.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\output_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view.cpp" />
@@ -239,6 +255,7 @@
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\main_frame_view.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\properties_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_model.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\spaceship_view_model.cpp" />
     <ClCompile Include="..\..\libs\mvvm\mvvm_mfc_example_3\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -283,4 +300,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="\Repo\Git\go_booster\go_libs\libs\mvvm\mvvm_mfc_example_3\mvvm_mfc_example_3.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

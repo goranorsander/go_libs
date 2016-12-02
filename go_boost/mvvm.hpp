@@ -36,5 +36,6 @@
 #include <go_boost/mvvm/observable_unordered_set.hpp>
 #include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
+#include <go_boost/mvvm/view_model_interface.hpp>
 
 #endif  // #ifndef GO_BOOST_MVVM_HPP_INCLUDED

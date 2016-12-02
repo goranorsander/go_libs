@@ -30,5 +30,6 @@
 #include <go/mvvm/observable_unordered_set.hpp>
 #include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
+#include <go/mvvm/view_model_interface.hpp>
 
 #endif  // #ifndef GO_MVVM_HPP_INCLUDED

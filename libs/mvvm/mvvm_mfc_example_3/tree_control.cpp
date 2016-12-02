@@ -21,10 +21,6 @@ tree_control_observer::~tree_control_observer()
 {
 }
 
-tree_control::~tree_control()
-{
-}
-
 tree_control::tree_control(tree_control_observer* observer)
     : CTreeCtrl()
     , _observer(observer)

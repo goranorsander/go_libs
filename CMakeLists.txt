@@ -168,11 +168,14 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/command_parameters.hpp
     ${GO_MVVM_DIR}/container_changed_arguments.hpp
     ${GO_MVVM_DIR}/data_context_changed_arguments.hpp
+    ${GO_MVVM_DIR}/data_context_changing_arguments.hpp
     ${GO_MVVM_DIR}/data_context_interface.hpp
+    ${GO_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_MVVM_DIR}/notify_container_changed_interface.hpp
     ${GO_MVVM_DIR}/notify_data_context_changed_interface.hpp
     ${GO_MVVM_DIR}/notify_property_changed_interface.hpp
+    ${GO_MVVM_DIR}/notify_view_model_changed_interface.hpp
     ${GO_MVVM_DIR}/object.hpp
     ${GO_MVVM_DIR}/object_observer_interface.hpp
     ${GO_MVVM_DIR}/observable_array.hpp
@@ -196,6 +199,10 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/observable_vector.hpp
     ${GO_MVVM_DIR}/property_changed_arguments.hpp
     ${GO_MVVM_DIR}/relay_command.hpp
+    ${GO_MVVM_DIR}/utility.hpp
+    ${GO_MVVM_DIR}/view_model_changed_arguments.hpp
+    ${GO_MVVM_DIR}/view_model_changing_arguments.hpp
+    ${GO_MVVM_DIR}/view_model_interface.hpp
 )
 
 # *.cpp
@@ -350,7 +357,12 @@ set(GO_UTILITY_DIR ${GO_DIR}/utility)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_HPP
+    ${GO_UTILITY_DIR}/noncopyable.hpp
+    ${GO_UTILITY_DIR}/noncopyable_nonmovable.hpp
+    ${GO_UTILITY_DIR}/nonmovable.hpp
     ${GO_UTILITY_DIR}/sanity.hpp
+    ${GO_UTILITY_DIR}/scope_guard.hpp
+    ${GO_UTILITY_DIR}/scope_guard_new.hpp
 )
 
 # *.cpp
@@ -409,11 +421,14 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/command_parameters.hpp
     ${GO_BOOST_MVVM_DIR}/container_changed_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/data_context_changed_arguments.hpp
+    ${GO_BOOST_MVVM_DIR}/data_context_changing_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/data_context_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_data_context_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_property_changed_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/notify_view_model_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/object.hpp
     ${GO_BOOST_MVVM_DIR}/object_observer_interface.hpp
     ${GO_BOOST_MVVM_DIR}/observable_array.hpp
@@ -438,6 +453,9 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/property_changed_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/relay_command.hpp
     ${GO_BOOST_MVVM_DIR}/utility.hpp
+    ${GO_BOOST_MVVM_DIR}/view_model_changed_arguments.hpp
+    ${GO_BOOST_MVVM_DIR}/view_model_changing_arguments.hpp
+    ${GO_BOOST_MVVM_DIR}/view_model_interface.hpp
 )
 
 # *.cpp

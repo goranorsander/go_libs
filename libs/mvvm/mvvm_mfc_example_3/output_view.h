@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_EXAMPLE_3_OUTPUTWND_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_OUTPUTWND_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_OUTPUT_VIEW_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_OUTPUT_VIEW_H_INCLUDED
 
 //
 //  output_view.h
@@ -15,28 +15,7 @@
 
 #include <go/mvvm/command_execution_observer_interface.hpp>
 #include <go/mvvm/object_observer_interface.hpp>
-
-namespace m = go::mvvm;
-
-/////////////////////////////////////////////////////////////////////////////
-
-class COutputList
-    : public CListBox
-{
-public:
-    virtual ~COutputList();
-    COutputList();
-
-protected:
-	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnEditCopy();
-	afx_msg void OnEditClear();
-	afx_msg void OnViewOutput();
-
-	DECLARE_MESSAGE_MAP()
-};
-
-/////////////////////////////////////////////////////////////////////////////
+#include "output_view_list.h"
 
 class output_view
     : public CDockablePane
@@ -58,9 +37,9 @@ public:
 protected:
 	CMFCTabCtrl	_wndTabs;
 
-	COutputList _wndOutputAllMvvmEvents;
-	COutputList _wndOutputCommandEvents;
-	COutputList _wndOutputObservableObjectEvents;
+	output_view_list _wndOutputAllMvvmEvents;
+	output_view_list _wndOutputCommandEvents;
+	output_view_list _wndOutputObservableObjectEvents;
 
 protected:
 	void AdjustHorzScroll(CListBox& wndListBox);
@@ -72,4 +51,4 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_OUTPUTWND_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_OUTPUT_VIEW_H_INCLUDED

@@ -16,9 +16,6 @@
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/nameless/value_property.hpp>
 
-namespace m = go::mvvm;
-namespace np = go::property::nameless;
-
 typedef unsigned long fleet_organization_id_type;
 
 class fleet_organization_command_parameters
@@ -30,7 +27,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~fleet_organization_command_parameters();
+    virtual ~fleet_organization_command_parameters() = default;
 
 protected:
     fleet_organization_command_parameters(const fleet_organization_id_type& id_);
@@ -39,10 +36,10 @@ private:
     fleet_organization_command_parameters() = delete;
 
 public:
-    static ptr create(const fleet_organization_id_type& id_);
+    np::value_property<fleet_organization_id_type> id;
 
 public:
-    np::value_property<fleet_organization_id_type> id;
+    static ptr create(const fleet_organization_id_type& id_);
 };
 
 #endif  // #ifndef GO_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED

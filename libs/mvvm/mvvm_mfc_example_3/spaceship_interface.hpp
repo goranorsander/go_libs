@@ -16,8 +16,6 @@
 #include <go/mvvm.hpp>
 #include "equipment_interface.hpp"
 
-namespace m = go::mvvm;
-
 class spaceship_interface
 {
 public:

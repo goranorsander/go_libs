@@ -16,13 +16,10 @@
 #include <go/mvvm.hpp>
 #include "equipment_interface.hpp"
 
-namespace m = go::mvvm;
-namespace u = go::utility;
-
 class equipment_model
     : public equipment_interface
     , public m::wobservable_object
-    , public u::noncopyable_nonmovable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef equipment_model this_type;

@@ -15,13 +15,10 @@
 
 #include "fleet_repository_interface.hpp"
 
-namespace m = go::mvvm;
-namespace u = go::utility;
-
 class output_view;
 
 class fleet_repository_populator
-    : public u::noncopyable_nonmovable
+    : private u::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository_populator this_type;

@@ -23,12 +23,13 @@ class child_frame_view
 {
 	DECLARE_DYNCREATE(child_frame_view)
 public:
-    virtual ~child_frame_view();
+    virtual ~child_frame_view() = default;
     child_frame_view();
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
     virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
+    virtual CString GetFrameText() const;
 
 public:
 #ifdef _DEBUG
@@ -40,10 +41,15 @@ protected:
     afx_msg void OnFileClose();
     afx_msg void OnSetFocus(CWnd* pOldWnd);
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnClose();
+    afx_msg BOOL OnNcActivate(BOOL bActive);
 
     DECLARE_MESSAGE_MAP()
 
 public:
+    void spaceship_view_model(const spaceship_view_model::ptr& vm);
+
+private:
     spaceship_view _wndView;
 };
 

@@ -61,6 +61,14 @@ protected:
         data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
     }
 
+    virtual void on_data_context_changing()
+    {
+        if(!notify_data_context_changed_interface::data_context_changing.empty())
+        {
+            notify_data_context_changed_interface::data_context_changing(data_context_changing_arguments::create());
+        }
+    }
+
     virtual void on_data_context_changed()
     {
         if(!notify_data_context_changed_interface::data_context_changed.empty())
@@ -79,6 +87,7 @@ private:
     {
         if(v != _data_context)
         {
+            on_data_context_changing();
             _data_context = v;
             on_data_context_changed();
         }

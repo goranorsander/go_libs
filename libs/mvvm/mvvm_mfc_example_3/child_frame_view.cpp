@@ -18,10 +18,6 @@
 
 IMPLEMENT_DYNCREATE(child_frame_view, CMDIChildWndEx)
 
-child_frame_view::~child_frame_view()
-{
-}
-
 child_frame_view::child_frame_view()
     : CMDIChildWndEx()
     , _wndView()
@@ -46,6 +42,16 @@ BOOL child_frame_view::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLE
 
     // otherwise, do default handling
     return CMDIChildWndEx::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+}
+
+CString child_frame_view::GetFrameText() const
+{
+    spaceship_view_model::ptr vm = _wndView.data_context();
+    if(vm)
+    {
+        return vm->name().c_str();
+    }
+    return CMDIChildWndEx::GetFrameText();
 }
 
 #ifdef _DEBUG
@@ -90,8 +96,35 @@ int child_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
     return 0;
 }
 
+void child_frame_view::OnClose()
+{
+    _wndView.on_close();
+    CMDIChildWndEx::OnClose();
+}
+
+BOOL child_frame_view::OnNcActivate(BOOL bActive)
+{
+    if(bActive != FALSE)
+    {
+        _wndView.on_activate();
+    }
+    else
+    {
+        _wndView.on_deactivate();
+    }
+    return CMDIChildWndEx::OnNcActivate(bActive);
+}
+
 BEGIN_MESSAGE_MAP(child_frame_view, CMDIChildWndEx)
     ON_COMMAND(ID_FILE_CLOSE, &child_frame_view::OnFileClose)
     ON_WM_SETFOCUS()
     ON_WM_CREATE()
+    ON_WM_CLOSE()
+    ON_WM_NCACTIVATE()
 END_MESSAGE_MAP()
+
+void child_frame_view::spaceship_view_model(const spaceship_view_model::ptr& vm)
+{
+    _wndView.data_context = vm;
+    CMDIChildWndEx::OnUpdateFrameTitle(FALSE);
+}

@@ -16,13 +16,13 @@
 #include <go/mvvm.hpp>
 
 #include "fleet_organization_model.hpp"
-#include "fleet_repository_interface.hpp"
-
-namespace m = go::mvvm;
 
 class properties_view_model
-    : public m::data_context_interface<fleet_organization_model::ptr>
-    , public u::noncopyable_nonmovable
+    : public m::view_model_interface
+    , public m::wobservable_object
+    , public m::object_wobserver_interface
+    , private m::data_context_interface<fleet_organization_model::ptr>
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef properties_view_model this_type;
@@ -33,13 +33,27 @@ public:
     virtual ~properties_view_model() = default;
 
 private:
-    properties_view_model(const fleet_repository_interface::ptr& fleet_repository_);
+    properties_view_model();
 
 public:
-    static ptr create(const fleet_repository_interface::ptr& fleet_repository_);
+    rop::wproperty<fleet_organization_interface::ptr> fleet_organization;
+
+public:
+    static ptr create();
+
+    void set_data_context(const fleet_organization_model::ptr& context);
+
+protected:
+    virtual void on_data_context_changing();
+    virtual void on_data_context_changed();
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
 
 private:
-    fleet_repository_interface::wptr _fleet_repository;
+    void bind_properties();
+
+private:
+    s::slot_key_type _on_data_context_property_changed_slot_key;
 };
 
 #endif  // #ifndef GO_PROPERTIES_VIEW_MODEL_HPP_INCLUDED

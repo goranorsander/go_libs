@@ -13,8 +13,6 @@
 #include "afxdialogex.h"
 #include "mvvm_mfc_example_3.h"
 #include "main_frame_view.h"
-
-#include "child_frame_view.h"
 #include "spaceship_view.h"
 
 #include <go/utility.hpp>
@@ -42,7 +40,8 @@ protected:
     DECLARE_MESSAGE_MAP()
 };
 
-CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
+CAboutDlg::CAboutDlg()
+    : CDialogEx(IDD_ABOUTBOX)
 {
 }
 
@@ -53,10 +52,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
-
-mvvm_mfc_example_3_app::~mvvm_mfc_example_3_app()
-{
-}
 
 mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     : CWinAppEx()
@@ -147,6 +142,13 @@ BOOL mvvm_mfc_example_3_app::PreTranslateMessage(MSG* pMsg)
             return TRUE;
         }
         break;
+    case WM_USER_CLOSE_SPACESHIP:
+    {
+        const fleet_organization_id_type id = static_cast<fleet_organization_id_type>(pMsg->wParam);
+        on_close_spaceship(id);
+        return TRUE;
+    }
+    break;
     }
     return CWinAppEx::PreTranslateMessage(pMsg);
 }
@@ -179,18 +181,39 @@ void mvvm_mfc_example_3_app::OnAppAbout()
 
 void mvvm_mfc_example_3_app::OnFileNew()
 {
-    main_frame_view* pFrame = STATIC_DOWNCAST(main_frame_view, m_pMainWnd);
-    pFrame->LockWindowUpdate();
-    // create a new MDI child window
-    pFrame->CreateNewChild(RUNTIME_CLASS(child_frame_view), IDR_MVVM_MFC_EXAMPLE_3TYPE, _hMDIMenu, _hMDIAccel);
-    pFrame->UnlockWindowUpdate();
+}
+
+void mvvm_mfc_example_3_app::OnFileOpen()
+{
+}
+
+void mvvm_mfc_example_3_app::OnUpdateFileNew(CCmdUI* pCmdUI)
+{
+    pCmdUI->Enable(FALSE);
+}
+
+void mvvm_mfc_example_3_app::OnUpdateFileOpen(CCmdUI* pCmdUI)
+{
+    pCmdUI->Enable(FALSE);
 }
 
 BEGIN_MESSAGE_MAP(mvvm_mfc_example_3_app, CWinAppEx)
     ON_COMMAND(ID_APP_ABOUT, &mvvm_mfc_example_3_app::OnAppAbout)
     ON_COMMAND(ID_FILE_NEW, &mvvm_mfc_example_3_app::OnFileNew)
-    ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
+    ON_COMMAND(ID_FILE_OPEN, &mvvm_mfc_example_3_app::OnFileOpen)
+    ON_UPDATE_COMMAND_UI(ID_FILE_NEW, &mvvm_mfc_example_3_app::OnUpdateFileNew)
+    ON_UPDATE_COMMAND_UI(ID_FILE_OPEN, &mvvm_mfc_example_3_app::OnUpdateFileOpen)
 END_MESSAGE_MAP()
+
+HMENU mvvm_mfc_example_3_app::mdiMenu() const
+{
+    return _hMDIMenu;
+}
+
+HACCEL mvvm_mfc_example_3_app::mdiAccel() const
+{
+    return _hMDIAccel;
+}
 
 void mvvm_mfc_example_3_app::on_show_spaceship(const fleet_organization_id_type id)
 {
@@ -198,6 +221,15 @@ void mvvm_mfc_example_3_app::on_show_spaceship(const fleet_organization_id_type 
     if(main_frame != nullptr)
     {
         main_frame->on_show_spaceship(id);
+    }
+}
+
+void mvvm_mfc_example_3_app::on_close_spaceship(const fleet_organization_id_type id)
+{
+    main_frame_view* main_frame = get_main_frame_view();
+    if(main_frame != nullptr)
+    {
+        main_frame->on_close_spaceship(id);
     }
 }
 

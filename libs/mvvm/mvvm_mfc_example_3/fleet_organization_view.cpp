@@ -22,37 +22,17 @@ static char THIS_FILE[]=__FILE__;
 
 fleet_organization_view::~fleet_organization_view()
 {
-    if(_on_data_context_changed_slot_key != 0 && _fleet_organization_view_model)
-    {
-        _fleet_organization_view_model->property_changed.disconnect(_on_data_context_changed_slot_key);
-    }
 }
 
-fleet_organization_view::fleet_organization_view(const m::wcommand_manager::ptr& command_manager)
+fleet_organization_view::fleet_organization_view()
     : CDockablePane()
+    , m::data_context_interface<fleet_organization_view_model::ptr>()
+    , tree_control_observer()
     , _wndFileView()
     , _fileViewImages()
     , _wndToolBar()
-    , _command_manager(command_manager)
-    , _fleet_organization_view_model()
-    , _on_data_context_changed_slot_key(0)
 {
     _wndFileView.reset(new tree_control(this));
-}
-
-void fleet_organization_view::view_model(const fleet_organization_view_model::ptr view_model)
-{
-    if(_fleet_organization_view_model == view_model) { return; }
-    if(_on_data_context_changed_slot_key != 0 && _fleet_organization_view_model)
-    {
-        _fleet_organization_view_model->data_context_changed.disconnect(_on_data_context_changed_slot_key);
-        _on_data_context_changed_slot_key = 0;
-    }
-    _fleet_organization_view_model = view_model;
-    if(_fleet_organization_view_model)
-    {
-        _on_data_context_changed_slot_key = _fleet_organization_view_model->data_context_changed.connect(std::bind(&fleet_organization_view::on_data_context_changed, this));
-    }
 }
 
 BEGIN_MESSAGE_MAP(fleet_organization_view, CDockablePane)
@@ -169,17 +149,17 @@ void fleet_organization_view::OnChangeVisualStyle()
 
 void fleet_organization_view::on_selected(const HTREEITEM hItem, DWORD_PTR pItemData)
 {
-    if(_fleet_organization_view_model)
+    if(data_context())
     {
-        _fleet_organization_view_model->selected_fleet_organization_id = static_cast<fleet_organization_id_type>(pItemData);
+        data_context()->selected_fleet_organization_id = static_cast<fleet_organization_id_type>(pItemData);
     }
 }
 
 void fleet_organization_view::on_deselect(const HTREEITEM hItem, DWORD_PTR pItemData)
 {
-    if(_fleet_organization_view_model)
+    if(data_context())
     {
-        _fleet_organization_view_model->selected_fleet_organization_id = 0;
+        data_context()->selected_fleet_organization_id = 0;
     }
 }
 
@@ -189,19 +169,43 @@ void fleet_organization_view::on_click(const HTREEITEM hItem, DWORD_PTR pItemDat
 
 void fleet_organization_view::on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton)
 {
-    if(_fleet_organization_view_model && mouseButton == mb_left)
+    if(data_context() && mouseButton == mb_left)
     {
-        m::wcommand_manager::ptr command_manager = _command_manager.lock();
-        if(command_manager)
+        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
+        if(main_frame_vm)
         {
-            command_manager->issue_command(_fleet_organization_view_model->on_left_double_click_command);
+            m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
+            if(command_manager)
+            {
+                command_manager->issue_command(data_context()->on_left_double_click_command);
+            }
         }
     }
 }
 
+void fleet_organization_view::on_view_model_changing(const m::view_model_changing_arguments::ptr& /*a*/)
+{
+    on_data_context_changing();
+}
+
+void fleet_organization_view::on_view_model_changed(const m::view_model_changed_arguments::ptr& /*a*/)
+{
+    on_data_context_changed();
+}
+
+void fleet_organization_view::on_data_context_changing()
+{
+    if(data_context())
+    {
+        UpdateData();
+    }
+    m::data_context_interface<fleet_organization_view_model::ptr>::on_data_context_changing();
+}
+
 void fleet_organization_view::on_data_context_changed()
 {
-    if(_fleet_organization_view_model && _fleet_organization_view_model->fleet_organization_root.get())
+    m::data_context_interface<fleet_organization_view_model::ptr>::on_data_context_changed();
+    if(data_context() && data_context()->fleet_organization_root())
     {
         populate();
     }
@@ -209,16 +213,17 @@ void fleet_organization_view::on_data_context_changed()
 
 void fleet_organization_view::populate()
 {
-    const HTREEITEM hRoot = _wndFileView->InsertItem(_fleet_organization_view_model->fleet_organization_root.get()->name.get().c_str(), 0, 0, TVI_ROOT, TVI_LAST);
-    add_fleet_organization(hRoot, _fleet_organization_view_model->fleet_organization_root.get()->first_child);
+    _wndFileView->DeleteAllItems();
+    const HTREEITEM hRoot = _wndFileView->InsertItem(data_context()->fleet_organization_root()->name().c_str(), 0, 0, TVI_ROOT, TVI_LAST);
+    add_fleet_organization(hRoot, data_context()->fleet_organization_root()->first_child);
     _wndFileView->Expand(hRoot, TVE_EXPAND);
 }
 
 void fleet_organization_view::add_fleet_organization(HTREEITEM parent, const fleet_organization_interface::ptr& child)
 {
     if(parent == 0 || !child) { return; }
-    const int image = child->spaceship_model.get() ? 1 : 0;
-    const HTREEITEM item = _wndFileView->InsertItem(child->name.get().c_str(), image, image, parent, TVI_LAST);
+    const int image = child->spaceship_model() ? 1 : 0;
+    const HTREEITEM item = _wndFileView->InsertItem(child->name().c_str(), image, image, parent, TVI_LAST);
     const fleet_organization_id_type id = std::dynamic_pointer_cast<fleet_organization_model>(child)->id;
     _wndFileView->SetItemData(item, static_cast<DWORD_PTR>(id));
     add_fleet_organization(item, child->first_child);

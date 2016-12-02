@@ -26,12 +26,14 @@
     <ClInclude Include="..\..\go_boost\mvvm\command_parameters.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\container_changed_arguments.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\data_context_changed_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\data_context_changing_arguments.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\data_context_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_command_execution_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_action.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_data_context_changed_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\notify_view_model_changed_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\object.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\object_observer_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_array.hpp" />
@@ -60,6 +62,9 @@
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_get_relay_command_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_set_value_notify_changed_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_value_access_functor.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_changed_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_changing_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_interface.hpp" />
     <ClInclude Include="..\..\go_boost\signals.hpp" />
     <ClInclude Include="..\..\go_boost\signals\slot.hpp" />
     <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp" />

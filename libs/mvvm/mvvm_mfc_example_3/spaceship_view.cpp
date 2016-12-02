@@ -10,6 +10,8 @@
 
 #include "stdafx.h"
 #include "spaceship_view.h"
+#include <go/mvvm/utility/mfc_dlgdata.hpp>
+#include <go/utility/scope_guard_new.hpp>
 
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
@@ -23,18 +25,23 @@
 
 IMPLEMENT_DYNCREATE(spaceship_view, CFormView)
 
-spaceship_view::~spaceship_view()
-{
-}
-
 spaceship_view::spaceship_view()
-    : CFormView(IDD_MVVM_EXAMPLE_3_FORM)
+    : CFormView(IDD_SPACESHIP_VIEW)
+    , m::data_context_interface<spaceship_view_model::ptr>()
+    , _spaceship_class_static()
+    , _spaceship_name_static()
 {
 }
 
 void spaceship_view::DoDataExchange(CDataExchange* pDX)
 {
     CFormView::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_STATIC_SPACESHIP_CLASS, _spaceship_class_static);
+    DDX_Control(pDX, IDC_STATIC_SPACESHIP_NAME, _spaceship_name_static);
+    if(data_context())
+    {
+        mu::DDX_Text(pDX, IDC_EDIT_CAPTAIN, data_context()->captain);
+    }
 }
 
 BOOL spaceship_view::DestroyWindow()
@@ -52,10 +59,28 @@ BOOL spaceship_view::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD
     return CFormView::Create(lpszClassName, lpszWindowName, dwStyle, rect, pParentWnd, nID, pContext);
 }
 
+BOOL spaceship_view::PreTranslateMessage(MSG* pMsg)
+{
+    if(pMsg->message == WM_KEYUP)
+    {
+        UpdateData();
+    }
+    return CFormView::PreTranslateMessage(pMsg);
+}
+
 void spaceship_view::OnInitialUpdate()
 {
     CFormView::OnInitialUpdate();
     ResizeParentToFit();
+
+    u::scope_guard_new<CFont> font(new CFont());
+    LOGFONT lf;
+    memset(&lf, 0, sizeof(LOGFONT));
+    lf.lfHeight = 36;
+    lf.lfWeight = FW_BOLD;
+    wcscpy_s(lf.lfFaceName, _T("Segeo UI"));
+    font->CreateFontIndirect(&lf);
+    _spaceship_name_static.SetFont(font.detach());
 }
 
 #ifdef _DEBUG
@@ -77,3 +102,75 @@ void spaceship_view::PostNcDestroy()
 
 BEGIN_MESSAGE_MAP(spaceship_view, CFormView)
 END_MESSAGE_MAP()
+
+void spaceship_view::on_close() const
+{
+    if(data_context())
+    {
+        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
+        if(main_frame_vm)
+        {
+            m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
+            if(command_manager)
+            {
+                command_manager->issue_command(data_context()->on_close_spaceship_view_command);
+            }
+        }
+    }
+}
+
+void spaceship_view::on_activate() const
+{
+    if(data_context())
+    {
+        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
+        if(main_frame_vm)
+        {
+            main_frame_vm->active_spaceship_view_id = data_context()->spaceship_id;
+        }
+    }
+}
+
+void spaceship_view::on_deactivate() const
+{
+}
+
+void spaceship_view::on_view_model_changing(const m::view_model_changing_arguments::ptr& /*a*/)
+{
+    on_data_context_changing();
+}
+
+void spaceship_view::on_view_model_changed(const m::view_model_changed_arguments::ptr& /*a*/)
+{
+    on_data_context_changed();
+}
+
+void spaceship_view::on_data_context_changing()
+{
+    if(data_context())
+    {
+        UpdateData();
+    }
+    m::data_context_interface<spaceship_view_model::ptr>::on_data_context_changing();
+}
+
+void spaceship_view::on_data_context_changed()
+{
+    m::data_context_interface<spaceship_view_model::ptr>::on_data_context_changed();
+    on_view_model_changed();
+}
+
+void spaceship_view::on_view_model_changed()
+{
+    if(data_context())
+    {
+        _spaceship_class_static.SetWindowText(data_context()->spaceship_class().c_str());
+        _spaceship_name_static.SetWindowText(data_context()->name().c_str());
+    }
+    else
+    {
+        _spaceship_class_static.SetWindowText(_T("-"));
+        _spaceship_name_static.SetWindowText(_T("-"));
+    }
+    UpdateData(false);
+}

@@ -178,11 +178,11 @@ IDR_MVVM_MFC_EXAMPLE_3TYPE MENU
 BEGIN
     POPUP "&File"
     BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW, INACTIVE
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN, INACTIVE
         MENUITEM "&Close",                      ID_FILE_CLOSE
-        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
-        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE, INACTIVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS, INACTIVE
         MENUITEM SEPARATOR
         MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
         MENUITEM SEPARATOR
@@ -239,8 +239,8 @@ IDR_POPUP_EXPLORER MENU
 BEGIN
     POPUP "Explorer"
     BEGIN
-        MENUITEM "&Open",                       ID_OPEN
-        MENUITEM "Open &With....",              ID_OPEN_WITH
+        MENUITEM "&Open",                       ID_OPEN, INACTIVE
+        MENUITEM "Open &With....",              ID_OPEN_WITH, INACTIVE
         MENUITEM SEPARATOR
         MENUITEM "&Compile",                    ID_DUMMY_COMPILE
         MENUITEM SEPARATOR
@@ -308,11 +308,15 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
 
-IDD_MVVM_EXAMPLE_3_FORM DIALOGEX 0, 0, 320, 200
+IDD_SPACESHIP_VIEW DIALOGEX 0, 0, 625, 314
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT           "TODO: Place form controls on this dialog.",IDC_STATIC,24,42,280,8
+    LTEXT           "<spaceship name>",IDC_STATIC_SPACESHIP_NAME,7,7,611,23,SS_SUNKEN
+    LTEXT           "Spaceship class",IDC_STATIC,7,36,64,14
+    EDITTEXT        IDC_EDIT_CAPTAIN,77,56,200,14,ES_AUTOHSCROLL
+    LTEXT           "<spaceship class>",IDC_STATIC_SPACESHIP_CLASS,77,36,200,14,SS_SUNKEN
+    LTEXT           "Captain",IDC_STATIC,7,56,64,14
 END
 
 
@@ -371,15 +375,36 @@ BEGIN
         BOTTOMMARGIN, 55
     END
 
-    IDD_MVVM_EXAMPLE_3_FORM, DIALOG
+    IDD_SPACESHIP_VIEW, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 618
+        VERTGUIDE, 71
+        VERTGUIDE, 77
+        VERTGUIDE, 277
+        VERTGUIDE, 283
         TOPMARGIN, 7
-        BOTTOMMARGIN, 193
+        BOTTOMMARGIN, 307
+        HORZGUIDE, 30
+        HORZGUIDE, 36
+        HORZGUIDE, 50
+        HORZGUIDE, 56
+        HORZGUIDE, 70
+        HORZGUIDE, 76
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_SPACESHIP_VIEW AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -389,8 +414,9 @@ END
 
 STRINGTABLE
 BEGIN
-IDP_OLE_INIT_FAILED       "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
 END
+
 STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "mvvm_mfc_example_3"

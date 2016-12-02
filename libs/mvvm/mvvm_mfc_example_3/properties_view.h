@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_EXAMPLE_3_PROPERTIESWND_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_PROPERTIESWND_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_PROPERTIES_VIEW_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_PROPERTIES_VIEW_H_INCLUDED
 
 //
 //  properties_view.h
@@ -14,26 +14,16 @@
 #pragma once
 
 #include "properties_view_model.hpp"
-
-namespace s = go::signals;
-
-class CPropertiesToolBar
-    : public CMFCToolBar
-{
-public:
-	virtual void OnUpdateCmdUI(CFrameWnd* /*pTarget*/, BOOL bDisableIfNoHndler)
-	{
-		CMFCToolBar::OnUpdateCmdUI((CFrameWnd*) GetOwner(), bDisableIfNoHndler);
-	}
-
-	virtual BOOL AllowShowOnList() const { return FALSE; }
-};
+#include "properties_view_grid.h"
+#include "properties_view_tool_bar.h"
 
 class properties_view
     : public CDockablePane
+    , public m::data_context_interface<properties_view_model::ptr>
+    , public m::object_wobserver_interface
 {
 public:
-    virtual ~properties_view();
+    virtual ~properties_view() = default;
     properties_view();
 
 	void AdjustLayout();
@@ -45,10 +35,14 @@ public:
 		_wndPropList.SetGroupNameFullWidth(bSet);
 	}
 
-    void view_model(const properties_view_model::ptr view_model);
+    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
+    virtual void on_data_context_changing();
     virtual void on_data_context_changed();
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
 
     void populate();
 
@@ -58,8 +52,8 @@ private:
     void populate_with(const m::wobservable_list<equipment_interface::ptr>::ptr& equipment);
 
 protected:
-	CPropertiesToolBar _wndToolBar;
-	CMFCPropertyGridCtrl _wndPropList;
+    properties_view_tool_bar _wndToolBar;
+    properties_view_grid _wndPropList;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -75,8 +69,7 @@ protected:
 	void InitPropList();
 
 private:
-    properties_view_model::ptr _properties_view_model;
-    s::slot_key_type _on_data_context_changed_slot_key;
+    s::slot_key_type _on_data_context_property_changed_slot_key;
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_PROPERTIESWND_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_PROPERTIES_VIEW_H_INCLUDED

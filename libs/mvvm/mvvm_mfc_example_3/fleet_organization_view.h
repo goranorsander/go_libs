@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_EXAMPLE_3_FILEVIEW_H_INCLUDED
-#define GO_MVVM_EXAMPLE_3_FILEVIEW_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_3_FLEET_ORGANIZATION_VIEW_H_INCLUDED
+#define GO_MVVM_EXAMPLE_3_FLEET_ORGANIZATION_VIEW_H_INCLUDED
 
 //
 //  fleet_organization_view.h
@@ -14,33 +14,20 @@
 #pragma once
 
 #include "fleet_organization_view_model.hpp"
+#include "fleet_organization_view_tool_bar.h"
 #include "tree_control.h"
-
-namespace s = go::signals;
-
-class fleet_organization_view_tool_bar
-    : public CMFCToolBar
-{
-	virtual void OnUpdateCmdUI(CFrameWnd* /*pTarget*/, BOOL bDisableIfNoHndler)
-	{
-		CMFCToolBar::OnUpdateCmdUI((CFrameWnd*) GetOwner(), bDisableIfNoHndler);
-	}
-
-	virtual BOOL AllowShowOnList() const { return FALSE; }
-};
 
 class fleet_organization_view
     : public CDockablePane
+    , public m::data_context_interface<fleet_organization_view_model::ptr>
     , public tree_control_observer
 {
 public:
     virtual ~fleet_organization_view();
-    fleet_organization_view(const m::wcommand_manager::ptr& command_manager);
+    fleet_organization_view();
 
 	void AdjustLayout();
 	void OnChangeVisualStyle();
-
-    void view_model(const fleet_organization_view_model::ptr view_model);
 
 public:
     virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData);
@@ -48,7 +35,11 @@ public:
     virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
     virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
 
+    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
+
 protected:
+    virtual void on_data_context_changing();
     virtual void on_data_context_changed();
 
     void populate();
@@ -67,11 +58,6 @@ protected:
     std::unique_ptr<tree_control> _wndFileView;
     CImageList _fileViewImages;
     fleet_organization_view_tool_bar _wndToolBar;
-
-private:
-    m::wcommand_manager::wptr _command_manager;
-    fleet_organization_view_model::ptr _fleet_organization_view_model;
-    s::slot_key_type _on_data_context_changed_slot_key;
 };
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_3_FILEVIEW_H_INCLUDED
+#endif  // #ifndef GO_MVVM_EXAMPLE_3_FLEET_ORGANIZATION_VIEW_H_INCLUDED

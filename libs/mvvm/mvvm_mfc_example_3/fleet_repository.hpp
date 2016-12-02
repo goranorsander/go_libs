@@ -15,13 +15,11 @@
 
 #include "fleet_repository_interface.hpp"
 
-namespace u = go::utility;
-
 typedef unsigned long fleet_organization_id_type;
 
 class fleet_repository
     : public fleet_repository_interface
-    , public u::noncopyable_nonmovable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository this_type;
@@ -47,5 +45,8 @@ public:
 private:
     fleet_organization_interface::ptr _fleet_organization;
 };
+
+bool operator==(const fleet_repository::wptr& lhs, const fleet_repository::wptr& rhs);
+bool operator!=(const fleet_repository::wptr& lhs, const fleet_repository::wptr& rhs);
 
 #endif  // #ifndef GO_FLEET_REPOSITORY_HPP_INCLUDED
