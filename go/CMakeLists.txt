@@ -13,6 +13,7 @@ file(GLOB GO_PROPERTY_POLICY_DIR_FILES ./property/policy/*.hpp)
 file(GLOB GO_DIR_SIGNALS_FILES ./signals/*.hpp)
 file(GLOB GO_DIR_UTILITY_FILES ./utility/*.hpp)
 file(GLOB GO_DIR_UTILITY_ITERATOR_FILES ./utility/iterator/*.hpp)
+file(GLOB GO_DIR_UTILITY_STRING_FILES ./utility/string/*.hpp)
 
 add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
     ${GO_DIR_FILES}
@@ -28,6 +29,7 @@ add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
     ${GO_DIR_SIGNALS_FILES}
     ${GO_DIR_UTILITY_FILES}
     ${GO_DIR_UTILITY_ITERATOR_FILES}
+	${GO_DIR_UTILITY_STRING_FILES}
 )
 
 set_target_properties(${PROJECT_GO_LIBS_STD_NAME} PROPERTIES LINKER_LANGUAGE CXX)
@@ -45,3 +47,4 @@ source_group(go\\property\\policy FILES ${GO_PROPERTY_POLICY_DIR_FILES})
 source_group(go\\signals FILES ${GO_DIR_SIGNALS_FILES})
 source_group(go\\utility FILES ${GO_DIR_UTILITY_FILES})
 source_group(go\\utility\\iterator FILES ${GO_DIR_UTILITY_ITERATOR_FILES})
+source_group(go\\utility\\string FILES ${GO_DIR_UTILITY_STRING_FILES})

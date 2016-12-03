@@ -27,6 +27,7 @@
     <ClInclude Include="..\..\go\utility\sanity.hpp" />
     <ClInclude Include="..\..\go\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go\utility\scope_guard_new.hpp" />
+    <ClInclude Include="..\..\go\utility\string\format.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

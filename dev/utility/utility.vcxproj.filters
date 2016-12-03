@@ -12,6 +12,9 @@
     <Filter Include="go\utility\iterator">
       <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\utility\string">
+      <UniqueIdentifier>{a91e823d-1e38-4086-8869-af726a8b2468}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp">
@@ -37,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="..\..\go\utility\scope_guard_new.hpp">
       <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\format.hpp">
+      <Filter>go\utility\string</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

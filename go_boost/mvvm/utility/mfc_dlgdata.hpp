@@ -28,7 +28,7 @@ namespace utility
 namespace detail
 {
 
-void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFormat, UINT nIDPrompt, ...)
+inline void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFormat, UINT nIDPrompt, ...)
 {
     va_list pData;
     va_start(pData, nIDPrompt);
@@ -61,7 +61,7 @@ void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFormat, U
     va_end(pData);
 }
 
-void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double value, int nSizeGcvt)
+inline void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double value, int nSizeGcvt)
 {
     ASSERT(pData != NULL);
 

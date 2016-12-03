@@ -387,6 +387,23 @@ set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP
 set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_CPP)
 
 ########################################################
+#  go/utility/string                                   #
+########################################################
+
+set(GO_UTILITY_STRING_DIRNAME utility/string)
+set(GO_UTILITY_STRING_DIR ${GO_DIR}/utility/string)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
+    ${GO_UTILITY_STRING_DIR}/format.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_CPP)
+
+########################################################
 #  go_boost                                            #
 ########################################################
 
@@ -603,6 +620,42 @@ set(GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP
 set(GO_LIBS_SRC_GO_BOOST_SIGNALS_CPP)
 
 ########################################################
+#  go_boost/utility                                    #
+########################################################
+
+set(GO_BOOST_UTILITY_DIRNAME utility)
+set(GO_BOOST_UTILITY_DIR ${GO_DIR}/utility)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
+    ${GO_UTILITY_DIR}/sanity.hpp
+    ${GO_UTILITY_DIR}/scope_guard.hpp
+    ${GO_UTILITY_DIR}/scope_guard_new.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_CPP)
+
+########################################################
+#  go_boost/utility/iterator                           #
+########################################################
+
+set(GO_BOOST_UTILITY_ITERATOR_DIRNAME utility/iterator)
+set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP
+    ${GO_UTILITY_ITERATOR_DIR}/forward_iterator.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_CPP)
+
+########################################################
 #  libs                                                #
 ########################################################
 
@@ -626,6 +679,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_HPP}                       DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_DIRNAME})
@@ -636,3 +690,5 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_HPP}          DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})

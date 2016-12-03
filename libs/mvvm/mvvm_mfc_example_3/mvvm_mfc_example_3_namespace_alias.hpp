@@ -25,7 +25,10 @@ namespace nameless {}
 namespace read_only {}
 }
 namespace signals {}
-namespace utility {}
+namespace utility 
+{
+namespace string {}
+}
 }
 
 namespace m = go::mvvm;
@@ -35,6 +38,7 @@ namespace np = go::property::nameless;
 namespace rop = go::property::read_only;
 namespace s = go::signals;
 namespace u = go::utility;
+namespace us = go::utility::string;
 
 namespace std
 {

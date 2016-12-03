@@ -38,6 +38,14 @@ protected:
     }
 
 protected:
+    virtual void on_view_model_changing()
+    {
+        if(!notify_view_model_changed_interface::view_model_changing.empty())
+        {
+            notify_view_model_changed_interface::view_model_changing(view_model_changing_arguments::create());
+        }
+    }
+
     virtual void on_view_model_changed()
     {
         if(!notify_view_model_changed_interface::view_model_changed.empty())
@@ -47,8 +55,7 @@ protected:
     }
 };
 
-template<class T>
-inline view_model_interface<T>::~view_model_interface()
+inline view_model_interface::~view_model_interface()
 {
 }
 

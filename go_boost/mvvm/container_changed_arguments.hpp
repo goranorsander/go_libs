@@ -15,6 +15,7 @@
 #pragma once
 #endif
 
+#include <boost/make_shared.hpp>
 #include <go_boost/mvvm/notify_container_changed_action.hpp>
 #include <go_boost/signals/slot_arguments.hpp>
 
