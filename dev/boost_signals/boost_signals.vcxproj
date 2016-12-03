@@ -19,57 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\go_boost\mvvm.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\command.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\command_execution_observer_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\command_manager.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\command_parameters.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\container_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\data_context_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\data_context_changing_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\data_context_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_command_execution_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_action.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_data_context_changed_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\notify_view_model_changed_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\object.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\object_observer_interface.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_array.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_associative_container.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_container.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_deque.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_forward_list.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_list.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_map.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_multimap.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_multiset.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_object.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_ordered_associative_container.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_sequence_container.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_set.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_associative_container.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_map.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_multimap.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_multiset.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_unordered_set.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\observable_vector.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\property_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\relay_command.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\utility.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\utility\mfc_dlgdata.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_get_relay_command_functor.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_set_value_notify_changed_functor.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_value_access_functor.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\view_model_changed_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\view_model_changing_arguments.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\view_model_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\signals.hpp" />
+    <ClInclude Include="..\..\go_boost\signals\slot.hpp" />
+    <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>mvvm</RootNamespace>
-    <ProjectGuid>{AAFC5379-94AF-4B21-A4A9-7A867F5A07D9}</ProjectGuid>
+    <RootNamespace>boost_signals</RootNamespace>
+    <ProjectGuid>{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

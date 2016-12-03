@@ -43,6 +43,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility_tests", "utility\ut
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_mfc_example_3", "boost_mvvm\boost_mvvm_mfc_example_3.vcxproj", "{C4DCE310-256B-4DCD-A024-1A2D347D99BF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_signals", "boost_signals\boost_signals.vcxproj", "{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility", "boost_utility\boost_utility.vcxproj", "{EF398B6B-2025-411F-9479-5FB666A7A245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -211,6 +215,22 @@ Global
 		{C4DCE310-256B-4DCD-A024-1A2D347D99BF}.Release|Win32.Build.0 = Release|Win32
 		{C4DCE310-256B-4DCD-A024-1A2D347D99BF}.Release|x64.ActiveCfg = Release|x64
 		{C4DCE310-256B-4DCD-A024-1A2D347D99BF}.Release|x64.Build.0 = Release|x64
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Debug|Win32.Build.0 = Debug|Win32
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Debug|x64.ActiveCfg = Debug|x64
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Debug|x64.Build.0 = Debug|x64
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Release|Win32.ActiveCfg = Release|Win32
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Release|Win32.Build.0 = Release|Win32
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Release|x64.ActiveCfg = Release|x64
+		{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}.Release|x64.Build.0 = Release|x64
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Debug|Win32.Build.0 = Debug|Win32
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Debug|x64.ActiveCfg = Debug|x64
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Debug|x64.Build.0 = Debug|x64
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|Win32.ActiveCfg = Release|Win32
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|Win32.Build.0 = Release|Win32
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|x64.ActiveCfg = Release|x64
+		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
