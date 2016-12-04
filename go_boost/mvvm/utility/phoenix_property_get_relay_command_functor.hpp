@@ -36,11 +36,11 @@ struct get_property_relay_command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::command::ptr type;
+        typedef typename go_boost::mvvm::command_interface::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::command::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::command_interface::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {
@@ -60,11 +60,11 @@ struct get_wproperty_relay_wcommand_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::wcommand::ptr type;
+        typedef typename go_boost::mvvm::wcommand_interface::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::wcommand::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::wcommand_interface::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {

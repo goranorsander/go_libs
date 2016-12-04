@@ -19,7 +19,7 @@
 
 #include <string>
 #include <boost/signals2.hpp>
-#include <go_boost/mvvm/command.hpp>
+#include <go_boost/mvvm/command_interface.hpp>
 #include <go_boost/signals/slot.hpp>
 
 namespace go_boost
@@ -38,8 +38,8 @@ class basic_notify_command_execution_interface
 public:
     typedef S string_type;
     typedef basic_notify_command_execution_interface<S> this_type;
-    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command<S>>&)> command_executed_signal;
-    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command<S>>&)> command_not_executed_signal;
+    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S>>&)> command_executed_signal;
+    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S>>&)> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

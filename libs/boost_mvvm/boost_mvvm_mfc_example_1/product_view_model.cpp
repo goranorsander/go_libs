@@ -125,7 +125,7 @@ void product_view_model::set_current_unit_price(const double& v)
     }
 }
 
-m::wcommand::ptr product_view_model::get_get_product_command()
+m::wcommand_interface::ptr product_view_model::get_get_product_command()
 {
     if(!_get_product_command)
     {
@@ -156,7 +156,7 @@ bool product_view_model::can_get_product(const m::command_parameters::ptr& /*par
     return true;
 }
 
-m::wcommand::ptr product_view_model::get_save_product_command()
+m::wcommand_interface::ptr product_view_model::get_save_product_command()
 {
     if(!_save_product_command)
     {

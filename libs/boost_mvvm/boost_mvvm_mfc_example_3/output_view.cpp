@@ -189,17 +189,17 @@ void output_view::UpdateFonts()
 	_wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
-void output_view::on_command_executed(const m::wcommand::ptr& c)
+void output_view::on_command_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = (boost::wformat(L"%s: Executed command %s") % current_date_and_time().c_str() % c->command_name().c_str()).str();
+        const std::wstring msg = (boost::wformat(L"%s: Executed command_interface %s") % current_date_and_time().c_str() % c->command_name().c_str()).str();
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
     }
 }
 
-void output_view::on_command_not_executed(const m::wcommand::ptr& c)
+void output_view::on_command_not_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {

@@ -20,8 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\mvvm.hpp" />
-    <ClInclude Include="..\..\go\mvvm\command.hpp" />
     <ClInclude Include="..\..\go\mvvm\command_execution_observer_interface.hpp" />
+    <ClInclude Include="..\..\go\mvvm\command_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\command_manager.hpp" />
     <ClInclude Include="..\..\go\mvvm\command_parameters.hpp" />
     <ClInclude Include="..\..\go\mvvm\container_changed_arguments.hpp" />

@@ -41,7 +41,7 @@ public:
     p::wproperty<fleet_organization_interface::ptr> fleet_organization_root;
     p::wproperty<fleet_organization_id_type> selected_fleet_organization_id;
 
-    rop::wproperty<m::wcommand::ptr> on_left_double_click_command;
+    rop::wproperty<m::wcommand_interface::ptr> on_left_double_click_command;
 
 public:
     static ptr create();
@@ -58,7 +58,7 @@ private:
 private:
     main_frame_view_model::wptr _main_frame_view_model;
     fleet_organization_id_type _selected_fleet_organization_id;
-    m::wcommand::ptr _on_left_double_click_command;
+    m::wcommand_interface::ptr _on_left_double_click_command;
 };
 
 #endif  // #ifndef GO_FLEET_ORGANIZATION_VIEW_MODEL_HPP_INCLUDED

@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\object.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\mvvm\command.hpp">
+    <ClInclude Include="..\..\go_boost\mvvm\command_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\command_parameters.hpp">

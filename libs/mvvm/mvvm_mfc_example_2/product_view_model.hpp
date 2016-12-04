@@ -51,13 +51,13 @@ public:
     p::wproperty<std::wstring> current_product_name;
     p::wproperty<double> current_unit_price;
 
-    rop::wproperty<m::wcommand::ptr> get_product_command;
-    rop::wproperty<m::wcommand::ptr> save_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> get_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
     product_model::product_id_type _product_id;
-    m::wcommand::ptr _get_product_command;
-    m::wcommand::ptr _save_product_command;
+    m::wcommand_interface::ptr _get_product_command;
+    m::wcommand_interface::ptr _save_product_command;
 
     product_repository_interface::ptr _products;
 };

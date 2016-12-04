@@ -19,7 +19,7 @@
 
 #include <string>
 
-#include <go/mvvm/command.hpp>
+#include <go/mvvm/command_interface.hpp>
 
 namespace go
 {
@@ -44,8 +44,8 @@ protected:
     basic_command_execution_observer_interface() = default;
 
 public:
-    virtual void on_command_executed(const std::shared_ptr<basic_command<S>>& /*c*/) = 0;
-    virtual void on_command_not_executed(const std::shared_ptr<basic_command<S>>& /*c*/) = 0;
+    virtual void on_command_executed(const std::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
+    virtual void on_command_not_executed(const std::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
 };
 
 template<>

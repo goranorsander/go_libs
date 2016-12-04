@@ -162,8 +162,8 @@ set(GO_MVVM_DIR ${GO_DIR}/mvvm)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_MVVM_HPP
-    ${GO_MVVM_DIR}/command.hpp
     ${GO_MVVM_DIR}/command_execution_observer_interface.hpp
+    ${GO_MVVM_DIR}/command_interface.hpp
     ${GO_MVVM_DIR}/command_manager.hpp
     ${GO_MVVM_DIR}/command_parameters.hpp
     ${GO_MVVM_DIR}/container_changed_arguments.hpp
@@ -432,8 +432,8 @@ set(GO_BOOST_MVVM_DIR ${GO_BOOST_DIR}/mvvm)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
-    ${GO_BOOST_MVVM_DIR}/command.hpp
     ${GO_BOOST_MVVM_DIR}/command_execution_observer_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/command_interface.hpp
     ${GO_BOOST_MVVM_DIR}/command_manager.hpp
     ${GO_BOOST_MVVM_DIR}/command_parameters.hpp
     ${GO_BOOST_MVVM_DIR}/container_changed_arguments.hpp

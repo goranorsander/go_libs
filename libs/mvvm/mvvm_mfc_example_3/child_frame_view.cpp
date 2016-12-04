@@ -36,7 +36,7 @@ BOOL child_frame_view::PreCreateWindow(CREATESTRUCT& cs)
 
 BOOL child_frame_view::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
-    // let the view have first crack at the command
+    // let the view have first crack at the command_interface
     if(_wndView.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
         return TRUE;
 

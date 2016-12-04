@@ -52,7 +52,7 @@ protected:
 public:
     static boost::shared_ptr<basic_command_manager<S>> create();
 
-    void issue_command(const boost::shared_ptr<basic_command<S>>& cmd, const bool keep_cmd_alive = false);
+    void issue_command(const boost::shared_ptr<basic_command_interface<S>>& cmd, const bool keep_cmd_alive = false);
 
     void execute_commands();
 
@@ -60,7 +60,7 @@ public:
 
 private:
     mutable boost::recursive_mutex _commands_guard;
-    std::vector<std::pair<boost::weak_ptr<basic_command<S>>, boost::shared_ptr<basic_command<S>>>> _commands;
+    std::vector<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> _commands;
 };
 
 template<>
@@ -163,39 +163,39 @@ inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::cre
 }
 
 template<>
-inline void basic_command_manager<std::string>::issue_command(const boost::shared_ptr<basic_command<std::string>>& cmd, const bool keep_cmd_alive)
+inline void basic_command_manager<std::string>::issue_command(const boost::shared_ptr<basic_command_interface<std::string>>& cmd, const bool keep_cmd_alive)
 {
     if(cmd)
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
-        _commands.push_back(std::pair<boost::weak_ptr<basic_command<std::string>>, boost::shared_ptr<basic_command<std::string>>>(boost::weak_ptr<basic_command<std::string>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command<std::string>>()));
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>(boost::weak_ptr<basic_command_interface<std::string>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command_interface<std::string>>()));
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring>::issue_command(const boost::shared_ptr<basic_command<std::wstring>>& cmd, const bool keep_cmd_alive)
+inline void basic_command_manager<std::wstring>::issue_command(const boost::shared_ptr<basic_command_interface<std::wstring>>& cmd, const bool keep_cmd_alive)
 {
     if(cmd)
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
-        _commands.push_back(std::pair<boost::weak_ptr<basic_command<std::wstring>>, boost::shared_ptr<basic_command<std::wstring>>>(boost::weak_ptr<basic_command<std::wstring>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command<std::wstring>>()));
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>(boost::weak_ptr<basic_command_interface<std::wstring>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command_interface<std::wstring>>()));
     }
 }
 
 template<class S>
-inline void basic_command_manager<S>::issue_command(const boost::shared_ptr<basic_command<S>>& cmd, const bool keep_cmd_alive)
+inline void basic_command_manager<S>::issue_command(const boost::shared_ptr<basic_command_interface<S>>& cmd, const bool keep_cmd_alive)
 {
     if(cmd)
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
-        _commands.push_back(std::pair<boost::weak_ptr<basic_command<S>>, boost::shared_ptr<basic_command<S>>>(boost::weak_ptr<basic_command<S>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command<S>>()));
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>(boost::weak_ptr<basic_command_interface<S>>(cmd), keep_cmd_alive ? cmd : boost::shared_ptr<basic_command_interface<S>>()));
     }
 }
 
 template<>
 inline void basic_command_manager<std::string>::execute_commands()
 {
-    typedef std::vector<std::pair<boost::weak_ptr<basic_command<std::string>>, boost::shared_ptr<basic_command<std::string>>>> cmd_vector_type;
+    typedef std::vector<std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>> cmd_vector_type;
     cmd_vector_type cmds;
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
@@ -203,7 +203,7 @@ inline void basic_command_manager<std::string>::execute_commands()
     }
     BOOST_FOREACH(cmd_vector_type::value_type wcmd, cmds)
     {
-        const boost::shared_ptr<basic_command<std::string>> cmd = wcmd.first.lock();
+        const boost::shared_ptr<basic_command_interface<std::string>> cmd = wcmd.first.lock();
         if(cmd)
         {
             const boost::shared_ptr<command_parameters> params = cmd->parameters();
@@ -223,7 +223,7 @@ inline void basic_command_manager<std::string>::execute_commands()
 template<>
 inline void basic_command_manager<std::wstring>::execute_commands()
 {
-    typedef std::vector<std::pair<boost::weak_ptr<basic_command<std::wstring>>, boost::shared_ptr<basic_command<std::wstring>>>> cmd_vector_type;
+    typedef std::vector<std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>> cmd_vector_type;
     cmd_vector_type cmds;
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
@@ -231,7 +231,7 @@ inline void basic_command_manager<std::wstring>::execute_commands()
     }
     BOOST_FOREACH(cmd_vector_type::value_type wcmd, cmds)
     {
-        const boost::shared_ptr<basic_command<std::wstring>> cmd = wcmd.first.lock();
+        const boost::shared_ptr<basic_command_interface<std::wstring>> cmd = wcmd.first.lock();
         if(cmd)
         {
             const boost::shared_ptr<command_parameters> params = cmd->parameters();
@@ -251,7 +251,7 @@ inline void basic_command_manager<std::wstring>::execute_commands()
 template<class S>
 inline void basic_command_manager<S>::execute_commands()
 {
-    typedef std::vector<std::pair<boost::weak_ptr<basic_command<S>>, boost::shared_ptr<basic_command<S>>>> cmd_vector_type;
+    typedef std::vector<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> cmd_vector_type;
     cmd_vector_type cmds;
     {
         boost::recursive_mutex::scoped_lock lock(_commands_guard);
@@ -259,7 +259,7 @@ inline void basic_command_manager<S>::execute_commands()
     }
     BOOST_FOREACH(cmd_vector_type::value_type wcmd, cmds)
     {
-        const boost::shared_ptr<basic_command<S>> cmd = wcmd.first.lock();
+        const boost::shared_ptr<basic_command_interface<S>> cmd = wcmd.first.lock();
         if(cmd)
         {
             const boost::shared_ptr<command_parameters> params = cmd->parameters();

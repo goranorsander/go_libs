@@ -41,8 +41,8 @@ public:
     p::wproperty<fleet_organization_id_type> active_spaceship_view_id;
 
     rop::wproperty<m::wcommand_manager::ptr> command_manager;
-    rop::wproperty<m::wcommand::ptr> show_spaceship_command;
-    rop::wproperty<m::wcommand::ptr> close_spaceship_command;
+    rop::wproperty<m::wcommand_interface::ptr> show_spaceship_command;
+    rop::wproperty<m::wcommand_interface::ptr> close_spaceship_command;
 
 public:
     static ptr create(const m::wcommand_manager::ptr& command_mgr, const fleet_repository::ptr& fleet_repo, const properties_view_model::ptr& prop_vm);
@@ -60,8 +60,8 @@ private:
 private:
     fleet_organization_id_type _active_spaceship_view_id;
     m::wcommand_manager::wptr _command_manager;
-    m::wcommand::ptr _show_spaceship_command;
-    m::wcommand::ptr _close_spaceship_command;
+    m::wcommand_interface::ptr _show_spaceship_command;
+    m::wcommand_interface::ptr _close_spaceship_command;
     properties_view_model::wptr _properties_view_model;
 };
 

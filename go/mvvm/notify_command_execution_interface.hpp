@@ -18,7 +18,7 @@
 #else
 
 #include <string>
-#include <go/mvvm/command.hpp>
+#include <go/mvvm/command_interface.hpp>
 #include <go/signals/signal.hpp>
 #include <go/signals/slot.hpp>
 
@@ -38,8 +38,8 @@ class basic_notify_command_execution_interface
 public:
     typedef S string_type;
     typedef basic_notify_command_execution_interface<S> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command<string_type>>&)>> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command<string_type>>&)>> command_not_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type>>&)>> command_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type>>&)>> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

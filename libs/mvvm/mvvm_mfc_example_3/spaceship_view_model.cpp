@@ -82,7 +82,7 @@ void spaceship_view_model::bind_properties()
                         m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
                         if(command_manager)
                         {
-                            m::wcommand::ptr close_spaceship = main_frame_vm->close_spaceship_command;
+                            m::wcommand_interface::ptr close_spaceship = main_frame_vm->close_spaceship_command;
                             if(close_spaceship)
                             {
                                 close_spaceship_command_parameters::ptr this_cmd_params = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);

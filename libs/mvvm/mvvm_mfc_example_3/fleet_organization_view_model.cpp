@@ -104,7 +104,7 @@ void fleet_organization_view_model::bind_properties()
                             m::wcommand_manager::ptr command_manager = main_frame_view_model->command_manager();
                             if(command_manager)
                             {
-                                m::wcommand::ptr show_spaceship = main_frame_view_model->show_spaceship_command;
+                                m::wcommand_interface::ptr show_spaceship = main_frame_view_model->show_spaceship_command;
                                 if(show_spaceship)
                                 {
                                     fleet_organization_command_parameters::ptr this_cmd_params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);

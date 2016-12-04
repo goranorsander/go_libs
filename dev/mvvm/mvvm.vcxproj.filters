@@ -31,7 +31,7 @@
     <ClInclude Include="..\..\go\mvvm\object.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\mvvm\command.hpp">
+    <ClInclude Include="..\..\go\mvvm\command_interface.hpp">
       <Filter>go\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\command_parameters.hpp">

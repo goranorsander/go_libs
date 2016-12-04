@@ -91,8 +91,8 @@ private:
 public:
     p::wproperty<std::wstring> name;
     p::wproperty<std::wstring> captain;
-    rop::wproperty<m::wcommand::ptr> impulse_speed_command;
-    rop::wproperty<m::wcommand::ptr> warp_speed_command;
+    rop::wproperty<m::wcommand_interface::ptr> impulse_speed_command;
+    rop::wproperty<m::wcommand_interface::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }
@@ -130,7 +130,7 @@ private:
     }
 
     // impulse_speed_command property
-    m::wcommand::ptr get_impulse_speed_command()
+    m::wcommand_interface::ptr get_impulse_speed_command()
     {
         if(!_impulse_speed_command)
         {
@@ -153,7 +153,7 @@ private:
     }
 
     // warp_speed_command property
-    m::wcommand::ptr get_warp_speed_command()
+    m::wcommand_interface::ptr get_warp_speed_command()
     {
         if(!_warp_speed_command)
         {
@@ -181,8 +181,8 @@ private:
     bool _at_warp_speed;
     std::wstring _name;
     std::wstring _captain;
-    m::wcommand::ptr _impulse_speed_command;
-    m::wcommand::ptr _warp_speed_command;
+    m::wcommand_interface::ptr _impulse_speed_command;
+    m::wcommand_interface::ptr _warp_speed_command;
 };
 
 class spaceship_observer
@@ -282,7 +282,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command to USS Enterprise
+    // Give warp speed command_interface to USS Enterprise
     cmd_mgr->issue_command(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
@@ -299,7 +299,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command to Millennium Falcon and Battlestar Galactica
+    // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
     cmd_mgr->issue_command(ship2->warp_speed_command);
     cmd_mgr->issue_command(ship4->warp_speed_command);
 
@@ -317,7 +317,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give impulse speed command to USS Enterprise
+    // Give impulse speed command_interface to USS Enterprise
     cmd_mgr->issue_command(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
@@ -355,7 +355,7 @@ TEST(std_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Give Mr Spock command of USS Enterprise
+    // Give Mr Spock command_interface of USS Enterprise
     ship1->captain = L"Mr Spock";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Mr Spock"));
@@ -370,7 +370,7 @@ TEST(std_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Return command of USS Enterprise to Captain Kirk
+    // Return command_interface of USS Enterprise to Captain Kirk
     ship1->captain = L"Captain James T Kirk";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Captain James T Kirk"));

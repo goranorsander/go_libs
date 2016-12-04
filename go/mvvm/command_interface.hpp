@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_COMMAND_HPP_INCLUDED
-#define GO_MVVM_COMMAND_HPP_INCLUDED
+#ifndef GO_MVVM_COMMAND_INTERFACE_HPP_INCLUDED
+#define GO_MVVM_COMMAND_INTERFACE_HPP_INCLUDED
 
 //
-//  command.hpp
+//  command_interface.hpp
 //
 //  Copyright 2015-2016 Göran Orsander
 //
@@ -29,30 +29,30 @@ namespace mvvm
 
 template<class S> class basic_command_manager;
 
-template<class S> class basic_command;
-typedef basic_command<std::string> command;
-typedef basic_command<std::wstring> wcommand;
+template<class S> class basic_command_interface;
+typedef basic_command_interface<std::string> command_interface;
+typedef basic_command_interface<std::wstring> wcommand_interface;
 
 template<class S>
-class basic_command
-    : public std::enable_shared_from_this<basic_command<S>>
+class basic_command_interface
+    : public std::enable_shared_from_this<basic_command_interface<S>>
     , public go::utility::noncopyable_nonmovable
 {
     friend class basic_command_manager<S>;
 
 public:
     typedef S string_type;
-    typedef basic_command<S> this_type;
-    typedef typename std::shared_ptr<basic_command<S>> ptr;
-    typedef typename std::weak_ptr<basic_command<S>> wptr;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command<S>>&)>> can_execute_changed_signal;
+    typedef basic_command_interface<S> this_type;
+    typedef typename std::shared_ptr<basic_command_interface<S>> ptr;
+    typedef typename std::weak_ptr<basic_command_interface<S>> wptr;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<S>>&)>> can_execute_changed_signal;
     typedef typename go::property::read_only::basic_property<S, S> command_name_type;
 
 public:
-    virtual ~basic_command() = 0;
+    virtual ~basic_command_interface() = 0;
 
 protected:
-    basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
+    basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
 
 public:
     command_name_type command_name;
@@ -78,26 +78,26 @@ private:
 };
 
 template<>
-inline basic_command<std::string>::~basic_command()
+inline basic_command_interface<std::string>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_command<std::wstring>::~basic_command()
+inline basic_command_interface<std::wstring>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
 template<class S>
-inline basic_command<S>::~basic_command()
+inline basic_command_interface<S>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_command<std::string>::basic_command(const std::string& cmd_name, const std::shared_ptr<command_parameters>& params)
-    : std::enable_shared_from_this<basic_command<std::string>>()
+inline basic_command_interface<std::string>::basic_command_interface(const std::string& cmd_name, const std::shared_ptr<command_parameters>& params)
+    : std::enable_shared_from_this<basic_command_interface<std::string>>()
     , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name("command_name")
@@ -108,8 +108,8 @@ inline basic_command<std::string>::basic_command(const std::string& cmd_name, co
 }
 
 template<>
-inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, const std::shared_ptr<command_parameters>& params)
-    : std::enable_shared_from_this<basic_command<std::wstring>>()
+inline basic_command_interface<std::wstring>::basic_command_interface(const std::wstring& cmd_name, const std::shared_ptr<command_parameters>& params)
+    : std::enable_shared_from_this<basic_command_interface<std::wstring>>()
     , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name(L"command_name")
@@ -120,8 +120,8 @@ inline basic_command<std::wstring>::basic_command(const std::wstring& cmd_name, 
 }
 
 template<class S>
-inline basic_command<S>::basic_command(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
-    : std::enable_shared_from_this<basic_command<S>>()
+inline basic_command_interface<S>::basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
+    : std::enable_shared_from_this<basic_command_interface<S>>()
     , go::utility::noncopyable_nonmovable()
     , can_execute_changed()
     , command_name(S(), nullptr)
@@ -132,25 +132,25 @@ inline basic_command<S>::basic_command(const S& cmd_name, const std::shared_ptr<
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command<std::string>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::string>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command<std::wstring>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring>::parameters() const
 {
     return _parameters;
 }
 
 template<class S>
-inline std::shared_ptr<command_parameters> basic_command<S>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<S>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline void basic_command<std::string>::notify_can_execute_changed()
+inline void basic_command_interface<std::string>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
@@ -159,7 +159,7 @@ inline void basic_command<std::string>::notify_can_execute_changed()
 }
 
 template<>
-inline void basic_command<std::wstring>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
@@ -168,7 +168,7 @@ inline void basic_command<std::wstring>::notify_can_execute_changed()
 }
 
 template<class S>
-inline void basic_command<S>::notify_can_execute_changed()
+inline void basic_command_interface<S>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
@@ -178,7 +178,7 @@ inline void basic_command<S>::notify_can_execute_changed()
 
 #if defined(GO_COMP_MSVC)
 template<>
-inline std::string basic_command<std::string>::get_command_name() const
+inline std::string basic_command_interface<std::string>::get_command_name() const
 {
     return _command_name;
 }
@@ -186,14 +186,14 @@ inline std::string basic_command<std::string>::get_command_name() const
 
 #if defined(GO_COMP_MSVC)
 template<>
-inline std::wstring basic_command<std::wstring>::get_command_name() const
+inline std::wstring basic_command_interface<std::wstring>::get_command_name() const
 {
     return _command_name;
 }
 #endif  // defined(GO_COMP_MSVC)
 
 template<class S>
-inline S basic_command<S>::get_command_name() const
+inline S basic_command_interface<S>::get_command_name() const
 {
     return _command_name;
 }
@@ -203,4 +203,4 @@ inline S basic_command<S>::get_command_name() const
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_MVVM_COMMAND_HPP_INCLUDED
+#endif  // #ifndef GO_MVVM_COMMAND_INTERFACE_HPP_INCLUDED
