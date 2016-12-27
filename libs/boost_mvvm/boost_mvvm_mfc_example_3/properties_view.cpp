@@ -14,10 +14,10 @@
 
 #include <go_boost/utility.hpp>
 
-#include "properties_view.h"
+#include "properties_view.hpp"
 #include "Resource.h"
-#include "main_frame_view.h"
-#include "boost_mvvm_mfc_example_3.h"
+#include "main_frame_view.hpp"
+#include "boost_mvvm_mfc_example_3.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE

@@ -10,7 +10,7 @@
 
 #include "stdafx.h"
 
-#include "output_view_list.h"
+#include "output_view_list.hpp"
 #include "Resource.h"
 
 #ifdef _DEBUG

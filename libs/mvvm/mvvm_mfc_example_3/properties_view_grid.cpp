@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "properties_view_grid.h"
+#include "properties_view_grid.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE

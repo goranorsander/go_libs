@@ -9,14 +9,14 @@
 //
 
 #include "stdafx.h"
-#include "spaceship_view.h"
+#include "spaceship_view.hpp"
 #include <go/mvvm/utility/mfc_dlgdata.hpp>
 #include <go/utility/scope_guard_new.hpp>
 
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
 #ifndef SHARED_HANDLERS
-#include "mvvm_mfc_example_3.h"
+#include "mvvm_mfc_example_3.hpp"
 #endif
 
 #ifdef _DEBUG

@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "main_frame_view_menu_bar.h"
+#include "main_frame_view_menu_bar.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE

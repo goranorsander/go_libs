@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "mvvm_mfc_example_2.h"
+#include "mvvm_mfc_example_2.hpp"
 #include "product_view.hpp"
 
 #include <go/mvvm/utility/mfc_dlgdata.hpp>

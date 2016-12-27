@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "tree_control.h"
+#include "tree_control.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

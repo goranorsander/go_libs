@@ -11,9 +11,9 @@
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "mvvm_mfc_example_3.h"
-#include "main_frame_view.h"
-#include "spaceship_view.h"
+#include "mvvm_mfc_example_3.hpp"
+#include "main_frame_view.hpp"
+#include "spaceship_view.hpp"
 
 #include <go/utility.hpp>
 

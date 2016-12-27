@@ -12,7 +12,7 @@
 #include "fleet_repository_populator.hpp"
 #include "equipment_model.hpp"
 #include "fleet_organization_model.hpp"
-#include "output_view.h"
+#include "output_view.hpp"
 #include "spaceship_model.hpp"
 
 namespace

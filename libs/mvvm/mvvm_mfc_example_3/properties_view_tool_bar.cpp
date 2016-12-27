@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "properties_view_tool_bar.h"
+#include "properties_view_tool_bar.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE

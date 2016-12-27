@@ -11,9 +11,9 @@
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "boost_mvvm_mfc_example_3.h"
-#include "main_frame_view.h"
-#include "spaceship_view.h"
+#include "boost_mvvm_mfc_example_3.hpp"
+#include "main_frame_view.hpp"
+#include "spaceship_view.hpp"
 
 #include <go_boost/utility.hpp>
 

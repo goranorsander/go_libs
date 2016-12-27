@@ -12,7 +12,7 @@ option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-i
 option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "61" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "62" CACHE STRING "Boost libraries minor version.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
 
@@ -97,6 +97,22 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
 ########################################################
+#  .                                                   #
+########################################################
+
+set(ROOT_DIRNAME go_libs_root)
+set(ROOT_DIR ${GO_LIBS_SOURCE_DIR})
+
+# *.txt
+
+set(GO_LIBS_TXT
+    ${ROOT_DIR}/ACKNOWLEDGEMENTS.txt
+    ${ROOT_DIR}/COPYING.LESSER.txt
+    ${ROOT_DIR}/COPYING.txt
+    ${ROOT_DIR}/LICENSE_1_0.txt
+)
+
+########################################################
 #  go                                                  #
 ########################################################
 
@@ -168,12 +184,16 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/command_parameters.hpp
     ${GO_MVVM_DIR}/container_changed_arguments.hpp
     ${GO_MVVM_DIR}/data_context_changed_arguments.hpp
-    ${GO_MVVM_DIR}/data_context_changing_arguments.hpp
     ${GO_MVVM_DIR}/data_context_interface.hpp
+    ${GO_MVVM_DIR}/data_context_will_change_arguments.hpp
+    ${GO_MVVM_DIR}/event.hpp
+    ${GO_MVVM_DIR}/event_firing_observer_interface.hpp
+    ${GO_MVVM_DIR}/event_manager.hpp
     ${GO_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_MVVM_DIR}/notify_container_changed_interface.hpp
     ${GO_MVVM_DIR}/notify_data_context_changed_interface.hpp
+    ${GO_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_MVVM_DIR}/notify_property_changed_interface.hpp
     ${GO_MVVM_DIR}/notify_view_model_changed_interface.hpp
     ${GO_MVVM_DIR}/object.hpp
@@ -201,8 +221,8 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/relay_command.hpp
     ${GO_MVVM_DIR}/utility.hpp
     ${GO_MVVM_DIR}/view_model_changed_arguments.hpp
-    ${GO_MVVM_DIR}/view_model_changing_arguments.hpp
     ${GO_MVVM_DIR}/view_model_interface.hpp
+    ${GO_MVVM_DIR}/view_model_will_change_arguments.hpp
 )
 
 # *.cpp
@@ -416,6 +436,7 @@ set(GO_LIBS_SRC_GO_BOOST_HPP
     ${GO_BOOST_DIR}/mvvm.hpp
     ${GO_BOOST_DIR}/property.hpp
     ${GO_BOOST_DIR}/signals.hpp
+    ${GO_BOOST_DIR}/utility.hpp
 )
 
 # *.cpp
@@ -438,12 +459,16 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/command_parameters.hpp
     ${GO_BOOST_MVVM_DIR}/container_changed_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/data_context_changed_arguments.hpp
-    ${GO_BOOST_MVVM_DIR}/data_context_changing_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/data_context_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/data_context_will_change_arguments.hpp
+    ${GO_BOOST_MVVM_DIR}/event.hpp
+    ${GO_BOOST_MVVM_DIR}/event_firing_observer_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/event_manager.hpp
     ${GO_BOOST_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_data_context_changed_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_property_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_view_model_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/object.hpp
@@ -471,8 +496,8 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/relay_command.hpp
     ${GO_BOOST_MVVM_DIR}/utility.hpp
     ${GO_BOOST_MVVM_DIR}/view_model_changed_arguments.hpp
-    ${GO_BOOST_MVVM_DIR}/view_model_changing_arguments.hpp
     ${GO_BOOST_MVVM_DIR}/view_model_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/view_model_will_change_arguments.hpp
 )
 
 # *.cpp
@@ -548,7 +573,7 @@ set(GO_LIBS_SRC_GO_BOOST_PROPERTY_DETAIL_CPP)
 ########################################################
 
 set(GO_BOOST_PROPERTY_NAMELESS_DIRNAME property/nameless)
-set(GO_BOOST_PROPERTY_NAMELESS_DIR ${GO_DIR}/property/nameless)
+set(GO_BOOST_PROPERTY_NAMELESS_DIR ${GO_BOOST_DIR}/property/nameless)
 
 # *.hpp
 
@@ -571,7 +596,7 @@ set(GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_CPP)
 ########################################################
 
 set(GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME property/nameless/detail)
-set(GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR ${GO_DIR}/property/nameless/detail)
+set(GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR ${GO_BOOST_DIR}/property/nameless/detail)
 
 # *.hpp
 
@@ -624,14 +649,16 @@ set(GO_LIBS_SRC_GO_BOOST_SIGNALS_CPP)
 ########################################################
 
 set(GO_BOOST_UTILITY_DIRNAME utility)
-set(GO_BOOST_UTILITY_DIR ${GO_DIR}/utility)
+set(GO_BOOST_UTILITY_DIR ${GO_BOOST_DIR}/utility)
 
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
-    ${GO_UTILITY_DIR}/sanity.hpp
-    ${GO_UTILITY_DIR}/scope_guard.hpp
-    ${GO_UTILITY_DIR}/scope_guard_new.hpp
+    ${GO_BOOST_UTILITY_DIR}/noncopyable_nonmovable.hpp
+    ${GO_BOOST_UTILITY_DIR}/nonmovable.hpp
+    ${GO_BOOST_UTILITY_DIR}/sanity.hpp
+    ${GO_BOOST_UTILITY_DIR}/scope_guard.hpp
+    ${GO_BOOST_UTILITY_DIR}/scope_guard_new.hpp
 )
 
 # *.cpp
@@ -643,7 +670,7 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_CPP)
 ########################################################
 
 set(GO_BOOST_UTILITY_ITERATOR_DIRNAME utility/iterator)
-set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
+set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_BOOST_DIR}/utility/iterator)
 
 # *.hpp
 
@@ -665,6 +692,8 @@ set(STD_PROJECT_NAME_STR GO_libraries_std)
 ADD_SUBDIRECTORY(go)
 ADD_SUBDIRECTORY(go_boost)
 ADD_SUBDIRECTORY(libs)
+
+INSTALL(FILES ${GO_LIBS_TXT}    DESTINATION  .})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})

@@ -9,10 +9,10 @@
 //
 
 #include "stdafx.h"
-#include "main_frame_view.h"
-#include "child_frame_view.h"
+#include "main_frame_view.hpp"
+#include "child_frame_view.hpp"
 #include "fleet_repository_populator.hpp"
-#include "boost_mvvm_mfc_example_3.h"
+#include "boost_mvvm_mfc_example_3.hpp"
 
 #include <go_boost/utility/scope_guard.hpp>
 

@@ -9,8 +9,8 @@
 //
 
 #include "stdafx.h"
-#include "child_frame_view.h"
-#include "boost_mvvm_mfc_example_3.h"
+#include "child_frame_view.hpp"
+#include "boost_mvvm_mfc_example_3.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

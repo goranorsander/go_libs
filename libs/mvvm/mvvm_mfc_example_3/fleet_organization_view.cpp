@@ -9,10 +9,10 @@
 //
 
 #include "stdafx.h"
-#include "main_frame_view.h"
-#include "fleet_organization_view.h"
+#include "main_frame_view.hpp"
+#include "fleet_organization_view.hpp"
 #include "Resource.h"
-#include "mvvm_mfc_example_3.h"
+#include "mvvm_mfc_example_3.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE

@@ -16,9 +16,9 @@
 
 #include <boost/format.hpp>
 
-#include "output_view.h"
+#include "output_view.hpp"
 #include "Resource.h"
-#include "main_frame_view.h"
+#include "main_frame_view.hpp"
 
 #include "activate_spaceship_command_parameters.hpp"
 #include "close_spaceship_command_parameters.hpp"

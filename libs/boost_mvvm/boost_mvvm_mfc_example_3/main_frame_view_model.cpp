@@ -12,8 +12,8 @@
 #include "main_frame_view_model.hpp"
 #include "close_spaceship_event.hpp"
 #include "fleet_organization_view_model.hpp"
-#include "main_frame_view.h"
-#include "boost_mvvm_mfc_example_3.h"
+#include "main_frame_view.hpp"
+#include "boost_mvvm_mfc_example_3.hpp"
 #include "show_spaceship_event.hpp"
 
 main_frame_view_model::~main_frame_view_model()

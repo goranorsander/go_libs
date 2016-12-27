@@ -36,7 +36,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.hpp">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\stdafx.h">
@@ -72,7 +72,7 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_repository_populator.hpp">
       <Filter>MVVM Example</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view_model.hpp">
@@ -84,19 +84,19 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_model.hpp">
       <Filter>MVVM Example\View Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\child_frame_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\child_frame_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\tree_control.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\tree_control.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_model.hpp">
@@ -105,25 +105,25 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_command_parameters.hpp">
       <Filter>MVVM Example\View Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\spaceship_view.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\spaceship_view.hpp">
       <Filter>MVVM Example\View</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view_tool_bar.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view_tool_bar.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_tool_bar.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_tool_bar.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_tool_bar.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_tool_bar.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_menu_bar.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_menu_bar.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view_list.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view_list.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_grid.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_grid.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\spaceship_view_model.hpp">
@@ -141,7 +141,7 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\mdi_frame_interface.hpp">
       <Filter>MVVM Example</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\tree_control_observer.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\tree_control_observer.hpp">
       <Filter>MVVM Example\View\Control</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\activate_spaceship_command_parameters.hpp">

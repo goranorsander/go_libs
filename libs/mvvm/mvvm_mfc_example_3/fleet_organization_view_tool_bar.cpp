@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "fleet_organization_view_tool_bar.h"
+#include "fleet_organization_view_tool_bar.hpp"
 
 #ifdef _DEBUG
 #undef THIS_FILE
