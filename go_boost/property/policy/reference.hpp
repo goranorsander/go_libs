@@ -58,31 +58,31 @@ public:
 
     value_type get() const
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         return *_v;
     }
 
     void set(const value_type& v)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         bind_ref(const_cast<value_type&>(v));
     }
 
     void bind_ref(value_type& v)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = boost::addressof(v);
     }
 
     bool empty() const
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         return _v == NULL;
     }
 
     void clear()
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = NULL;
     }
 

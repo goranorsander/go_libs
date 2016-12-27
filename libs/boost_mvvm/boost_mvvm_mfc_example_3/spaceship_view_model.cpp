@@ -10,46 +10,53 @@
 
 #include "stdafx.h"
 #include "spaceship_view_model.hpp"
+#include "activate_spaceship_command_parameters.hpp"
 #include "close_spaceship_command_parameters.hpp"
+#include "close_spaceship_event.hpp"
+#include "select_fleet_organization_event.hpp"
 
-#include <functional>
+spaceship_view_model::~spaceship_view_model()
+{
+}
 
-spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& main_frame_vm)
+spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
     : m::view_model_interface()
     , m::wobservable_object()
     , m::data_context_interface<spaceship_model::ptr>(model)
-    , boost::noncopyable()
-    , main_frame_view_model(L"spaceship_view_model::main_frame_view_model")
+    , u::noncopyable_nonmovable()
+    , main_frame_vm(L"spaceship_view_model::main_frame_vm")
     , spaceship_id(L"spaceship_view_model::spaceship_id")
     , spaceship_class(L"spaceship_view_model::spaceship_class")
     , name(L"spaceship_view_model::name")
     , captain(L"spaceship_view_model::captain")
     , crew_complement(L"spaceship_view_model::crew_complement")
     , equipment(L"spaceship_view_model::equipment")
+    , on_activate_spaceship_view_command(L"spaceship_view_model::on_activate_spaceship_view_command")
     , on_close_spaceship_view_command(L"spaceship_view_model::on_close_spaceship_view_command")
-    , _main_frame_view_model(main_frame_vm)
+    , _main_frame_vm(vm)
     , _spaceship_id(id)
+    , _on_activate_spaceship_view_command()
     , _on_close_spaceship_view_command()
 {
     bind_properties();
 }
 
-spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& main_frame_vm)
+spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
 {
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler(const spaceship_model::ptr& model, const fleet_organization_id_type& id, const main_frame_view_model::ptr& main_frame_vm) : this_type(model, id, main_frame_vm) {}
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler(const spaceship_model::ptr& model, const fleet_organization_id_type& id, const main_frame_view_model::ptr& vm) : this_type(model, id, vm) {}
     };
 
-    return boost::make_shared<make_shared_enabler, const spaceship_model::ptr&, const fleet_organization_id_type&, const main_frame_view_model::ptr&>(model, id, main_frame_vm);
+    return boost::make_shared<make_shared_enabler, const spaceship_model::ptr&, const fleet_organization_id_type&, const main_frame_view_model::ptr&>(model, id, vm);
 }
 
-void spaceship_view_model::on_data_context_changing()
+void spaceship_view_model::on_data_context_will_change()
 {
-    m::data_context_interface<spaceship_model::ptr>::on_data_context_changing();
-    on_view_model_changing();
+    m::data_context_interface<spaceship_model::ptr>::on_data_context_will_change();
+    on_view_model_will_change();
 }
 
 void spaceship_view_model::on_data_context_changed()
@@ -60,52 +67,171 @@ void spaceship_view_model::on_data_context_changed()
 
 void spaceship_view_model::bind_properties()
 {
-    main_frame_view_model.getter([this]() -> main_frame_view_model::ptr { return _main_frame_view_model.lock(); });
-    spaceship_id.getter([this]() -> fleet_organization_id_type { return _spaceship_id; });
-    spaceship_class.getter([this]() -> std::wstring { if(data_context()) { return data_context()->spaceship_class; } return std::wstring(); });
-    name.getter([this]() -> std::wstring { if(data_context()) { return data_context()->name; } return std::wstring(); });
-    captain.getter([this]() -> std::wstring { if(data_context()) { return data_context()->captain; } return std::wstring(); });
-    captain.setter([this](const std::wstring& v) { if(data_context() && v != data_context()->captain()) { data_context()->captain = v; on_property_changed(captain.name()); } });
-    crew_complement.getter([this]() -> unsigned int { if(data_context()) { return data_context()->crew_complement; } return 0; });
-    crew_complement.setter([this](const unsigned int& v) { if(data_context() && v != data_context()->crew_complement()) { data_context()->crew_complement = v; on_property_changed(crew_complement.name()); } });
-    equipment.getter([this]() -> m::wobservable_list<equipment_interface::ptr>::ptr { if(data_context()) { return data_context()->equipment; } return NULL; });
-    equipment.setter([this](const m::wobservable_list<equipment_interface::ptr>::ptr& v) { if(data_context() && v != data_context()->equipment()) { data_context()->equipment = v; on_property_changed(equipment.name()); } });
-    on_close_spaceship_view_command.getter(
-        [this]()
+    main_frame_vm.getter(boost::bind(&this_type::get_main_frame_vm, this));
+    spaceship_id.getter(boost::bind(&this_type::get_spaceship_id, this));
+    spaceship_class.getter(boost::bind(&this_type::get_spaceship_class, this));
+    name.getter(boost::bind(&this_type::get_name, this));
+    captain.getter(boost::bind(&this_type::get_captain, this));
+    captain.setter(boost::bind(&this_type::set_captain, this, _1));
+    crew_complement.getter(boost::bind(&this_type::get_crew_complement, this));
+    crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, _1));
+    equipment.getter(boost::bind(&this_type::get_equipment, this));
+    equipment.setter(boost::bind(&this_type::set_equipment, this, _1));
+    on_activate_spaceship_view_command.getter(boost::bind(&this_type::get_activate_spaceship_view_command, this));
+    on_close_spaceship_view_command.getter(boost::bind(&this_type::get_close_spaceship_view_command, this));
+}
+
+main_frame_view_model::ptr spaceship_view_model::get_main_frame_vm() const
+{
+    return _main_frame_vm.lock();
+}
+
+fleet_organization_id_type spaceship_view_model::get_spaceship_id() const
+{
+    return _spaceship_id;
+}
+
+std::wstring spaceship_view_model::get_spaceship_class() const
+{
+    if(data_context())
+    {
+        return data_context()->spaceship_class;
+    }
+    return std::wstring();
+}
+
+std::wstring spaceship_view_model::get_name() const
+{
+    if(data_context())
+    {
+        return data_context()->name;
+    }
+    return std::wstring();
+}
+
+std::wstring spaceship_view_model::get_captain() const
+{
+    if(data_context())
+    {
+        return data_context()->captain;
+    }
+    return std::wstring();
+}
+
+void spaceship_view_model::set_captain(const std::wstring& v)
+{
+    if(data_context() && v != data_context()->captain())
+    {
+        data_context()->captain = v;
+        on_property_changed(captain.name());
+    }
+}
+
+unsigned int spaceship_view_model::get_crew_complement() const
+{
+    if(data_context())
+    {
+        return data_context()->crew_complement;
+    }
+    return 0;
+}
+
+void spaceship_view_model::set_crew_complement(const unsigned int& v)
+{
+    if(data_context() && v != data_context()->crew_complement())
+    {
+        data_context()->crew_complement = v;
+        on_property_changed(crew_complement.name());
+    }
+}
+
+m::wobservable_list<equipment_interface::ptr>::ptr spaceship_view_model::get_equipment() const
+{
+    if(data_context())
+    {
+        return data_context()->equipment;
+    }
+    return m::wobservable_list<equipment_interface::ptr>::ptr();
+}
+
+void spaceship_view_model::set_equipment(const m::wobservable_list<equipment_interface::ptr>::ptr& v)
+{
+    if(data_context() && v != data_context()->equipment())
+    {
+        data_context()->equipment = v;
+        on_property_changed(equipment.name());
+    }
+}
+
+m::wcommand_interface::ptr spaceship_view_model::get_activate_spaceship_view_command()
+{
+    _on_activate_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_activate_spaceship_view",
+        boost::bind(&this_type::execute_activate_spaceship_view_command, this, _1),
+        boost::bind(&this_type::can_execute_activate_spaceship_view_command, this, _1),
+        activate_spaceship_command_parameters::create(_spaceship_id));
+    return _on_activate_spaceship_view_command;
+}
+
+bool spaceship_view_model::can_execute_activate_spaceship_view_command(const m::command_parameters::ptr& p)
+{
+    activate_spaceship_command_parameters::ptr params = boost::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
+    if(params)
+    {
+        return params->id == _spaceship_id;
+    }
+    return false;
+}
+
+void spaceship_view_model::execute_activate_spaceship_view_command(const m::command_parameters::ptr& p)
+{
+    activate_spaceship_command_parameters::ptr cmd_params = boost::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
+    if(cmd_params)
+    {
+        main_frame_view_model::ptr vm = _main_frame_vm.lock();
+        if(vm)
         {
-            _on_close_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-                [this](const m::command_parameters::ptr& p)
-                {
-                    main_frame_view_model::ptr main_frame_vm = _main_frame_view_model.lock();
-                    if(main_frame_vm)
-                    {
-                        m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
-                        if(command_manager)
-                        {
-                            m::wcommand_interface::ptr close_spaceship = main_frame_vm->close_spaceship_command;
-                            if(close_spaceship)
-                            {
-                                close_spaceship_command_parameters::ptr this_cmd_params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
-                                close_spaceship_command_parameters::ptr close_spaceship_params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(close_spaceship->parameters());
-                                if(this_cmd_params && close_spaceship_params)
-                                {
-                                    close_spaceship_params->spaceship_view_model = this_cmd_params->spaceship_view_model;
-                                    command_manager->issue_command(close_spaceship);
-                                }
-                            }
-                        }
-                    }
-                },
-                [this](const m::command_parameters::ptr& p)
-                {
-                    close_spaceship_command_parameters::ptr params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
-                    if(params)
-                    {
-                        return static_cast<bool>(params->spaceship_view_model());
-                    }
-                    return false;
-                },
-                close_spaceship_command_parameters::create(boost::dynamic_pointer_cast<spaceship_view_model>(shared_from_this())));
-            return _on_close_spaceship_view_command;
-        });
+            m::wevent_manager::ptr event_mgr = vm->event_manager();
+            if(event_mgr)
+            {
+                event_mgr->post(select_fleet_organization_event::create(cmd_params->id, L"spaceship_view_model"));
+            }
+        }
+    }
+}
+
+m::wcommand_interface::ptr spaceship_view_model::get_close_spaceship_view_command()
+{
+    ptr spaceship_vm = boost::dynamic_pointer_cast<this_type, m::object>(shared_from_this());
+    _on_close_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
+        boost::bind(&this_type::execute_close_spaceship_view_command, this, _1),
+        boost::bind(&this_type::can_execute_close_spaceship_view_command, this, _1),
+        close_spaceship_command_parameters::create(spaceship_vm));
+    return _on_close_spaceship_view_command;
+}
+
+bool spaceship_view_model::can_execute_close_spaceship_view_command(const m::command_parameters::ptr& p)
+{
+    close_spaceship_command_parameters::ptr params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
+    if(params)
+    {
+        return params->spaceship_vm()->spaceship_id == _spaceship_id;
+    }
+    return false;
+}
+
+void spaceship_view_model::execute_close_spaceship_view_command(const m::command_parameters::ptr& p)
+{
+    close_spaceship_command_parameters::ptr cmd_params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
+    if(cmd_params)
+    {
+        main_frame_view_model::ptr vm = _main_frame_vm.lock();
+        if(vm)
+        {
+            m::wevent_manager::ptr event_mgr = vm->event_manager();
+            if(event_mgr)
+            {
+                event_mgr->post(close_spaceship_event::create(cmd_params->spaceship_vm));
+            }
+        }
+    }
 }

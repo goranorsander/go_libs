@@ -1,5 +1,5 @@
-#ifndef GO_EQUIPMENT_INTERFACE_HPP_INCLUDED
-#define GO_EQUIPMENT_INTERFACE_HPP_INCLUDED
+#ifndef GO_BOOST_EQUIPMENT_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_EQUIPMENT_INTERFACE_HPP_INCLUDED
 
 //
 //  equipment_interface.hpp
@@ -48,4 +48,4 @@ inline equipment_interface::equipment_interface()
 {
 }
 
-#endif  // #ifndef GO_EQUIPMENT_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_EQUIPMENT_INTERFACE_HPP_INCLUDED

@@ -27,6 +27,15 @@ BEGIN_MESSAGE_MAP(output_view_list, CListBox)
 	ON_WM_WINDOWPOSCHANGING()
 END_MESSAGE_MAP()
 
+output_view_list::~output_view_list()
+{
+}
+
+output_view_list::output_view_list()
+    : CListBox()
+{
+}
+
 void output_view_list::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 {
 	CMenu menu;

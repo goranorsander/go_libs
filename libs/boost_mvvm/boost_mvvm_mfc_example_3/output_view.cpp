@@ -12,13 +12,20 @@
 
 #include <cstdio>
 #include <locale>
-#include  <time.h>
+#include <time.h>
 
-#include  <boost/format.hpp>
+#include <boost/format.hpp>
 
 #include "output_view.h"
 #include "Resource.h"
 #include "main_frame_view.h"
+
+#include "activate_spaceship_command_parameters.hpp"
+#include "close_spaceship_command_parameters.hpp"
+#include "close_spaceship_event.hpp"
+#include "fleet_organization_command_parameters.hpp"
+#include "select_fleet_organization_event.hpp"
+#include "show_spaceship_event.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -37,6 +44,59 @@ std::wstring current_date_and_time()
     std::wstring dt(100, 0);
     std::wcsftime(&(dt[0]), 100, _T("%F %T"), &lt);
     return dt;
+}
+
+std::wstring command_information(const m::wcommand_interface::ptr& c)
+{
+    const m::relay_wcommand::ptr r = boost::dynamic_pointer_cast<m::relay_wcommand>(c);
+    if(r)
+    {
+        const m::command_parameters::ptr p = c->parameters();
+        const activate_spaceship_command_parameters::ptr asp = boost::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
+        if(asp)
+        {
+            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]")
+                % (*asp->id)).str();
+        }
+        const close_spaceship_command_parameters::ptr csp = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
+        if(csp)
+        {
+            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]")
+                % (csp->spaceship_vm() ? *csp->spaceship_vm()->spaceship_id : 0)).str();
+        }
+        const fleet_organization_command_parameters::ptr fop = boost::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
+        if(fop)
+        {
+            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]")
+                % (*fop->id)).str();
+        }
+    }
+    return L"class go::mvvm::wcommand_interface";
+}
+
+std::wstring event_information(const m::wevent::ptr& e)
+{
+    const close_spaceship_event::ptr cs = boost::dynamic_pointer_cast<close_spaceship_event>(e);
+    if(cs)
+    {
+        return (boost::wformat(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]")
+            % (cs->spaceship_vm() ? reinterpret_cast<__int3264>(cs->spaceship_vm().get()) : 0)
+            % (cs->spaceship_vm() ? *cs->spaceship_vm()->spaceship_id : 0)).str();
+    }
+    const select_fleet_organization_event::ptr sfo = boost::dynamic_pointer_cast<select_fleet_organization_event>(e);
+    if(sfo)
+    {
+        return (boost::wformat(L"class select_fleet_organization_event[id=%d, selected_by=%s]")
+            % (*sfo->id)
+            % (*sfo->selected_by).c_str()).str();
+    }
+    const show_spaceship_event::ptr ss = boost::dynamic_pointer_cast<show_spaceship_event>(e);
+    if(ss)
+    {
+        return (boost::wformat(L"class show_spaceship_event[id=%d]")
+            % (*ss->id)).str();
+    }
+    return L"class go::mvvm::wevent";
 }
 
 std::wstring object_information(const m::object::ptr& o)
@@ -105,6 +165,7 @@ output_view::output_view()
     , _wndTabs()
     , _wndOutputAllMvvmEvents()
     , _wndOutputCommandEvents()
+    , _wndOutputEventEvents()
     , _wndOutputObservableObjectEvents()
 {
 }
@@ -132,7 +193,8 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	if (!_wndOutputAllMvvmEvents.Create(dwStyle, rectDummy, &_wndTabs, 2) ||
 		!_wndOutputCommandEvents.Create(dwStyle, rectDummy, &_wndTabs, 3) ||
-		!_wndOutputObservableObjectEvents.Create(dwStyle, rectDummy, &_wndTabs, 4))
+        !_wndOutputEventEvents.Create(dwStyle, rectDummy, &_wndTabs, 4) ||
+        !_wndOutputObservableObjectEvents.Create(dwStyle, rectDummy, &_wndTabs, 5))
 	{
 		TRACE0("Failed to create output windows\n");
 		return -1;
@@ -149,9 +211,12 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	bNameValid = strTabName.LoadString(IDS_COMMAND_EVENTS_TAB);
 	ASSERT(bNameValid);
 	_wndTabs.AddTab(&_wndOutputCommandEvents, strTabName, (UINT)1);
-	bNameValid = strTabName.LoadString(IDS_OBSERVABLE_OBJECT_EVENTS_TAB);
+    bNameValid = strTabName.LoadString(IDS_EVENT_EVENTS_TAB);
+    ASSERT(bNameValid);
+    _wndTabs.AddTab(&_wndOutputEventEvents, strTabName, (UINT)2);
+    bNameValid = strTabName.LoadString(IDS_OBSERVABLE_OBJECT_EVENTS_TAB);
 	ASSERT(bNameValid);
-	_wndTabs.AddTab(&_wndOutputObservableObjectEvents, strTabName, (UINT)2);
+	_wndTabs.AddTab(&_wndOutputObservableObjectEvents, strTabName, (UINT)3);
 
 	return 0;
 }
@@ -186,14 +251,15 @@ void output_view::UpdateFonts()
 {
 	_wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
 	_wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
-	_wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
+    _wndOutputEventEvents.SetFont(&afxGlobalData.fontRegular);
+    _wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
 void output_view::on_command_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = (boost::wformat(L"%s: Executed command_interface %s") % current_date_and_time().c_str() % c->command_name().c_str()).str();
+        const std::wstring msg = (boost::wformat(L"%s: Executed command_interface %s, %s") % current_date_and_time().c_str() % c->command_name().c_str() % command_information(c).c_str()).str();
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
     }
@@ -203,9 +269,19 @@ void output_view::on_command_not_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = (boost::wformat(L"%s: Command %s was not executed") % current_date_and_time().c_str() % c->command_name().c_str()).str();
+        const std::wstring msg = (boost::wformat(L"%s: Command %s was not executed, %s") % current_date_and_time().c_str() % c->command_name().c_str() % command_information(c).c_str()).str();
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
+    }
+}
+
+void output_view::on_event_fired(const m::wevent::ptr& e)
+{
+    if(e)
+    {
+        const std::wstring msg = (boost::wformat(L"%s: Fired event %s, %s") % current_date_and_time().c_str() % e->event_type().c_str() % event_information(e).c_str()).str();
+        _wndOutputAllMvvmEvents.AddString(msg.c_str());
+        _wndOutputEventEvents.AddString(msg.c_str());
     }
 }
 

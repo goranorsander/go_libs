@@ -24,8 +24,8 @@ public:
     virtual ~noncopyable() = 0;
 
 private:
-    noncopyable(noncopyable const&) = delete;
-    auto operator=(noncopyable const&)->noncopyable& = delete;
+    noncopyable(const noncopyable&) = delete;
+    auto operator=(const noncopyable&)->noncopyable& = delete;
 
 protected:
     noncopyable() = default;

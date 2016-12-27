@@ -1,5 +1,5 @@
-#ifndef GO_SPACESHIP_VIEW_H_INCLUDED
-#define GO_SPACESHIP_VIEW_H_INCLUDED
+#ifndef GO_BOOST_SPACESHIP_VIEW_H_INCLUDED
+#define GO_BOOST_SPACESHIP_VIEW_H_INCLUDED
 #include "afxwin.h"
 
 //
@@ -24,7 +24,7 @@ class spaceship_view
     , public m::data_context_interface<spaceship_view_model::ptr>
 {
 public:
-    virtual ~spaceship_view() = default;
+    virtual ~spaceship_view();
 
     spaceship_view();
 
@@ -58,23 +58,26 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 public:
+    void initialization_complete();
+
     void on_close() const;
     void on_activate() const;
     void on_deactivate() const;
 
-    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_will_change(const m::view_model_will_change_arguments::ptr& a);
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_changing();
+    virtual void on_data_context_will_change();
     virtual void on_data_context_changed();
 
 private:
     void on_view_model_changed();
 
 private:
+    bool _initialization_complete;
     CStatic _spaceship_class_static;
     CStatic _spaceship_name_static;
 };
 
-#endif  // #ifndef GO_SPACESHIP_VIEW_H_INCLUDED
+#endif  // #ifndef GO_BOOST_SPACESHIP_VIEW_H_INCLUDED

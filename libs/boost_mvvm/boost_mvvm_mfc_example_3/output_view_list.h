@@ -17,8 +17,8 @@ class output_view_list
     : public CListBox
 {
 public:
-    virtual ~output_view_list() = default;
-    output_view_list() = default;
+    virtual ~output_view_list();
+    output_view_list();
 
 protected:
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);

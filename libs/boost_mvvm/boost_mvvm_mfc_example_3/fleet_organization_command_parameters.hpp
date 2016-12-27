@@ -1,5 +1,5 @@
-#ifndef GO_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED
-#define GO_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED
+#ifndef GO_BOOST_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED
+#define GO_BOOST_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED
 
 //
 //  fleet_organization_command_parameters.hpp
@@ -27,13 +27,13 @@ public:
     typedef typename boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~fleet_organization_command_parameters() = default;
+    virtual ~fleet_organization_command_parameters();
 
 protected:
     fleet_organization_command_parameters(const fleet_organization_id_type& id_);
 
 private:
-    fleet_organization_command_parameters() = delete;
+    fleet_organization_command_parameters();
 
 public:
     np::value_property<fleet_organization_id_type> id;
@@ -42,4 +42,4 @@ public:
     static ptr create(const fleet_organization_id_type& id_);
 };
 
-#endif  // #ifndef GO_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_COMMAND_PARAMETERS_HPP_INCLUDED

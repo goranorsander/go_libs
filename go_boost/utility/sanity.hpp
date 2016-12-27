@@ -13,6 +13,10 @@
 
 #include <boost/config.hpp>
 
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
+
 #if defined(BOOST_COMP_MSVC)
 
 // __LOC__ : Line Of Code (see https://support.microsoft.com/en-us/kb/155196)

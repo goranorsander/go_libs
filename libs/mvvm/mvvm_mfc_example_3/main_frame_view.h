@@ -17,6 +17,7 @@
 #include "main_frame_view_menu_bar.h"
 #include "main_frame_view_model.hpp"
 #include "main_frame_view_tool_bar.h"
+#include "mdi_frame_interface.hpp"
 #include "output_view.h"
 #include "properties_view.h"
 #include "spaceship_view.h"
@@ -27,6 +28,7 @@ class child_frame_view;
 
 class main_frame_view
     : public CMDIFrameWndEx
+    , public mdi_frame_interface
     , public m::data_context_interface<main_frame_view_model::ptr>
 {
 	DECLARE_DYNAMIC(main_frame_view)
@@ -36,11 +38,11 @@ private:
 
 public:
     virtual ~main_frame_view() = default;
-    main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo);
+    main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
-    void on_show_spaceship(const fleet_organization_id_type id);
-    void on_close_spaceship(const fleet_organization_id_type id);
+    virtual void on_show_spaceship(const fleet_organization_id_type id);
+    virtual void on_close_spaceship(const fleet_organization_id_type id);
 
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
@@ -75,6 +77,7 @@ protected:
 
 private:
     m::wcommand_manager::wptr _command_manager;
+    m::wevent_manager::wptr _event_manager;
     fleet_repository::wptr _fleet_repository;
     fleet_organization_child_frame_view_type _fleet_org_child_view;
 };

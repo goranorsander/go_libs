@@ -1,5 +1,5 @@
-#ifndef GO_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED
-#define GO_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED
+#ifndef GO_BOOST_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED
 
 //
 //  fleet_organization_interface.hpp
@@ -59,4 +59,4 @@ inline fleet_organization_interface::fleet_organization_interface()
 {
 }
 
-#endif  // #ifndef GO_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_INTERFACE_HPP_INCLUDED

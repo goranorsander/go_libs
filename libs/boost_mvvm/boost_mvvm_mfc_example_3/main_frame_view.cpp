@@ -30,7 +30,11 @@ static UINT indicators[] =
 
 IMPLEMENT_DYNAMIC(main_frame_view, CMDIFrameWndEx)
 
-main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager, const fleet_repository::ptr& fleet_repo)
+main_frame_view::~main_frame_view()
+{
+}
+
+main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo)
     : CMDIFrameWndEx()
     , m::data_context_interface<main_frame_view_model::ptr>()
     , _wndMenuBar()
@@ -40,6 +44,7 @@ main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager
     , _output_view()
     , _properties_view()
     , _command_manager(command_manager)
+    , _event_manager(event_manager)
     , _fleet_repository(fleet_repo)
     , _fleet_org_child_view()
 {
@@ -66,6 +71,7 @@ void main_frame_view::on_show_spaceship(const fleet_organization_id_type id)
                 child_frame_view* newChild = dynamic_cast<child_frame_view*>(CreateNewChild(RUNTIME_CLASS(child_frame_view), IDR_MVVM_MFC_EXAMPLE_3TYPE, theApp.mdiMenu(), theApp.mdiAccel()));
                 _fleet_org_child_view[id] = newChild;
                 newChild->spaceship_view_model(spaceship_vm);
+                newChild->initialization_complete();
             }
         }
     }
@@ -281,6 +287,12 @@ BOOL main_frame_view::CreateDockingWindows()
         command_manager->command_not_executed.connect(boost::bind(&output_view::on_command_not_executed, &_output_view, _1));
     }
 
+    m::wevent_manager::ptr event_manager = _event_manager.lock();
+    if(event_manager)
+    {
+        event_manager->event_fired.connect(boost::bind(&output_view::on_event_fired, &_output_view, _1));
+    }
+
     CString strPropertiesWnd;
     bNameValid = strPropertiesWnd.LoadString(IDS_PROPERTIES_WND);
     ASSERT(bNameValid);
@@ -311,30 +323,31 @@ void main_frame_view::SetDockingWindowIcons(BOOL bHiColorIcons)
 void main_frame_view::initialize()
 {
     m::wcommand_manager::ptr command_manager = _command_manager.lock();
+    m::wevent_manager::ptr event_manager = _event_manager.lock();
     fleet_repository::ptr fleet_repo = _fleet_repository.lock();
-    if(command_manager && fleet_repo)
+    if(command_manager && event_manager && fleet_repo)
     {
         fleet_repository_populator::ptr populator = fleet_repository_populator::create();
         if(populator)
         {
             populator->populate(fleet_repo, &_output_view);
 
+            data_context = main_frame_view_model::create(this, command_manager, event_manager, fleet_repo);
+            data_context()->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
+
             fleet_organization_view_model::ptr fleet_org_vm = fleet_organization_view_model::create();
             fleet_org_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
-            fleet_org_vm->view_model_changing.connect(boost::bind(&fleet_organization_view::on_view_model_changing, &_fleet_organization_view, _1));
+            fleet_org_vm->view_model_will_change.connect(boost::bind(&fleet_organization_view::on_view_model_will_change, &_fleet_organization_view, _1));
             fleet_org_vm->view_model_changed.connect(boost::bind(&fleet_organization_view::on_view_model_changed, &_fleet_organization_view, _1));
 
             properties_view_model::ptr prop_vm = properties_view_model::create();
             prop_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
-            prop_vm->view_model_changing.connect(boost::bind(&properties_view::on_view_model_changing, &_properties_view, _1));
+            prop_vm->view_model_will_change.connect(boost::bind(&properties_view::on_view_model_will_change, &_properties_view, _1));
             prop_vm->view_model_changed.connect(boost::bind(&properties_view::on_view_model_changed, &_properties_view, _1));
+            prop_vm->main_frame_vm = data_context();
             _properties_view.data_context = prop_vm;
 
-            data_context = main_frame_view_model::create(command_manager, fleet_repo, prop_vm);
-            data_context()->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
-
-            fleet_org_vm->property_changed.connect(boost::bind(&main_frame_view_model::on_property_changed, data_context(), _1, _2));
-            fleet_org_vm->main_frame_view_model = data_context();
+            fleet_org_vm->main_frame_vm = data_context();
             _fleet_organization_view.data_context = fleet_org_vm;
             fleet_org_vm->set_data_context(boost::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model()));
         }

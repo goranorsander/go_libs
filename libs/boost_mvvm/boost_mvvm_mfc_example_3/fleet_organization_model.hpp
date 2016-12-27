@@ -1,5 +1,5 @@
-#ifndef GO_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED
-#define GO_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED
+#ifndef GO_BOOST_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED
+#define GO_BOOST_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED
 
 //
 //  fleet_organization_model.hpp
@@ -21,7 +21,7 @@ class fleet_organization_model
     : public fleet_organization_interface
     , public m::wobservable_object
     , public m::object_wobserver_interface
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef fleet_organization_model this_type;
@@ -35,7 +35,7 @@ protected:
     fleet_organization_model(const std::wstring& name_, const spaceship_interface::ptr& spaceship_);
 
 private:
-    fleet_organization_model() = delete;
+    fleet_organization_model();
 
 public:
     rop::wproperty<fleet_organization_id_type> id;
@@ -55,9 +55,20 @@ protected:
 private:
     void bind_properties();
 
-private:
     bool is_parent_to(const fleet_organization_interface::ptr& child) const;
     fleet_organization_interface::ptr last_child() const;
+
+    fleet_organization_id_type get_id() const;
+    std::wstring get_name() const;
+    spaceship_interface::ptr get_spaceship() const;
+    fleet_organization_interface::ptr get_parent() const;
+    void set_parent(const fleet_organization_interface::ptr& v);
+    fleet_organization_interface::ptr get_first_child() const;
+    void set_first_child(const fleet_organization_interface::ptr& v);
+    fleet_organization_interface::ptr get_previous_sibling() const;
+    void set_previous_sibling(const fleet_organization_interface::ptr& v);
+    fleet_organization_interface::ptr get_next_sibling() const;
+    void set_next_sibling(const fleet_organization_interface::ptr& v);
 
 private:
     static fleet_organization_id_type _next_id;
@@ -72,4 +83,4 @@ private:
     ptr _next_sibling;
 };
 
-#endif  // #ifndef GO_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED

@@ -20,7 +20,6 @@
 #include <functional>
 #include <map>
 #include <mutex>
-#include <go/config.hpp>
 
 namespace go
 {
@@ -51,9 +50,9 @@ public:
 
 public:
     template<typename F1>
-    slot_key_type connect(F1 f)
+    slot_key_type connect(F1&& f)
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         const slot_key_type slot_key = ++_slot_next_key;
         _connections[slot_key] = f;
         return slot_key;
@@ -61,26 +60,26 @@ public:
 
     void disconnect(const slot_key_type slot_key)
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         _connections.erase(slot_key);
     }
 
     void disconnect_all_slots()
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         _connections.clear();
     }
 
     bool empty() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         return _connections.empty();
     }
 
     template<typename... A>
     void operator()(A... a) const
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         if(_connections.empty())
         {
             return;

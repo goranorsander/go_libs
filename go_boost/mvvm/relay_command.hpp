@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
@@ -25,8 +27,8 @@ namespace mvvm
 {
 
 template<class S> class basic_relay_command;
-typedef basic_relay_command<std::string> relay_command;
-typedef basic_relay_command<std::wstring> relay_wcommand;
+typedef typename basic_relay_command<std::string> relay_command;
+typedef typename basic_relay_command<std::wstring> relay_wcommand;
 
 template<class S>
 class basic_relay_command

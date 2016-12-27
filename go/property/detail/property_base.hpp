@@ -1,5 +1,5 @@
-#ifndef GO_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED
+#define GO_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED
 
 //
 //  property_base.hpp
@@ -70,7 +70,7 @@ public:
         _s.set(v);
     }
 
-    string_type const& name() const
+    const string_type& name() const
     {
         return _n;
     }
@@ -100,4 +100,4 @@ inline property_base<V, P, S>::~property_base()
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED

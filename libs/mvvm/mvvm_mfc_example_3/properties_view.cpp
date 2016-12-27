@@ -60,9 +60,9 @@ void properties_view::AdjustLayout()
 	_wndPropList.SetWindowPos(NULL, rectClient.left, rectClient.top + cyTlb, rectClient.Width(), rectClient.Height() - cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
-void properties_view::on_view_model_changing(const m::view_model_changing_arguments::ptr& /*a*/)
+void properties_view::on_view_model_will_change(const m::view_model_will_change_arguments::ptr& /*a*/)
 {
-    on_data_context_changing();
+    on_data_context_will_change();
 }
 
 void properties_view::on_view_model_changed(const m::view_model_changed_arguments::ptr& /*a*/)
@@ -70,14 +70,14 @@ void properties_view::on_view_model_changed(const m::view_model_changed_argument
     on_data_context_changed();
 }
 
-void properties_view::on_data_context_changing()
+void properties_view::on_data_context_will_change()
 {
     if(data_context())
     {
         data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
         _on_data_context_property_changed_slot_key = 0;
     }
-    m::data_context_interface<properties_view_model::ptr>::on_data_context_changing();
+    m::data_context_interface<properties_view_model::ptr>::on_data_context_will_change();
 }
 
 void properties_view::on_data_context_changed()

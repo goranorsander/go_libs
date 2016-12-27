@@ -1,5 +1,5 @@
-#ifndef GO_SPACESHIP_INTERFACE_HPP_INCLUDED
-#define GO_SPACESHIP_INTERFACE_HPP_INCLUDED
+#ifndef GO_BOOST_SPACESHIP_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_SPACESHIP_INTERFACE_HPP_INCLUDED
 
 //
 //  spaceship_interface.hpp
@@ -54,4 +54,4 @@ inline spaceship_interface::spaceship_interface()
 {
 }
 
-#endif  // #ifndef GO_SPACESHIP_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_SPACESHIP_INTERFACE_HPP_INCLUDED

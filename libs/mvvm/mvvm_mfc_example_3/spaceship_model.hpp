@@ -41,9 +41,6 @@ protected:
     virtual void bind_properties();
 
 private:
-    void on_equipment_list_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-
-private:
     const std::wstring _spaceship_class;
     const std::wstring _name;
     m::wobservable_list<equipment_interface::ptr>::ptr _equipment;

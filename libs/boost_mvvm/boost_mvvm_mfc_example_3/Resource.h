@@ -66,6 +66,7 @@
 #define IDS_OBSERVABLE_OBJECT_EVENTS_TAB 302
 #define IDS_EXPLORER                    305
 #define IDS_EDIT_MENU                   306
+#define IDS_EVENT_EVENTS_TAB            307
 #define IDC_STATIC_SPACESHIP_NAME       1000
 #define IDC_EDIT_CAPTAIN                1001
 #define IDC_STATIC_SPACESHIP_CLASS      1002

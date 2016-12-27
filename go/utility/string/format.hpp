@@ -24,9 +24,6 @@ namespace string
 
 inline std::string format(const std::string fmt_str, ...)
 {
-    // Implementation from StackOverflow, see
-    // http://stackoverflow.com/questions/2342162/stdstring-formatting-like-sprintf
-
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     int final_n = 0;
     std::string str;
@@ -53,9 +50,6 @@ inline std::string format(const std::string fmt_str, ...)
 
 inline std::wstring format(const std::wstring fmt_str, ...)
 {
-    // Implementation from StackOverflow modified for std::wstring, see
-    // http://stackoverflow.com/questions/2342162/stdstring-formatting-like-sprintf
-
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     int final_n = 0;
     std::wstring str;

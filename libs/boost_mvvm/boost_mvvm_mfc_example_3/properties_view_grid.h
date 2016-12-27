@@ -17,9 +17,9 @@ class properties_view_grid
     : public CMFCPropertyGridCtrl
 {
 public:
-    virtual ~properties_view_grid() = default;
+    virtual ~properties_view_grid();
 
-    properties_view_grid() = default;
+    properties_view_grid();
 };
 
 #endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_3_PROPERTIES_VIEW_GRID_H_INCLUDED

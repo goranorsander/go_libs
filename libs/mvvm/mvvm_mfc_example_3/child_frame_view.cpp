@@ -102,17 +102,19 @@ void child_frame_view::OnClose()
     CMDIChildWndEx::OnClose();
 }
 
-BOOL child_frame_view::OnNcActivate(BOOL bActive)
+void child_frame_view::OnMDIActivate(BOOL bActivate, CWnd* pActivateWnd, CWnd* pDeactivateWnd)
 {
-    if(bActive != FALSE)
-    {
-        _wndView.on_activate();
-    }
-    else
+    CMDIChildWndEx::OnMDIActivate(bActivate, pActivateWnd, pDeactivateWnd);
+    if(bActivate == FALSE && pDeactivateWnd == this)
     {
         _wndView.on_deactivate();
     }
-    return CMDIChildWndEx::OnNcActivate(bActive);
+}
+
+int child_frame_view::OnMouseActivate(CWnd* pDesktopWnd, UINT nHitTest, UINT message)
+{
+    _wndView.on_activate();
+    return CMDIChildWndEx::OnMouseActivate(pDesktopWnd, nHitTest, message);
 }
 
 BEGIN_MESSAGE_MAP(child_frame_view, CMDIChildWndEx)
@@ -120,8 +122,14 @@ BEGIN_MESSAGE_MAP(child_frame_view, CMDIChildWndEx)
     ON_WM_SETFOCUS()
     ON_WM_CREATE()
     ON_WM_CLOSE()
-    ON_WM_NCACTIVATE()
+    ON_WM_MDIACTIVATE()
+    ON_WM_MOUSEACTIVATE()
 END_MESSAGE_MAP()
+
+void child_frame_view::initialization_complete()
+{
+    _wndView.initialization_complete();
+}
 
 void child_frame_view::spaceship_view_model(const spaceship_view_model::ptr& vm)
 {

@@ -17,12 +17,11 @@
 #include <go/mvvm/object_observer_interface.hpp>
 
 #include "fleet_repository.hpp"
-#include "properties_view_model.hpp"
+#include "mdi_frame_interface.hpp"
 
 class main_frame_view_model
     : public m::view_model_interface
     , public m::wobservable_object
-    , public m::object_wobserver_interface
     , private m::data_context_interface<fleet_repository::wptr>
     , private u::noncopyable_nonmovable
 {
@@ -32,37 +31,31 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~main_frame_view_model() = default;
+    virtual ~main_frame_view_model();
 
 private:
-    main_frame_view_model(const m::wcommand_manager::ptr& command_mgr, const fleet_repository::ptr& fleet_repo, const properties_view_model::ptr& prop_vm);
+    main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 public:
-    p::wproperty<fleet_organization_id_type> active_spaceship_view_id;
-
-    rop::wproperty<m::wcommand_manager::ptr> command_manager;
-    rop::wproperty<m::wcommand_interface::ptr> show_spaceship_command;
-    rop::wproperty<m::wcommand_interface::ptr> close_spaceship_command;
+    nrop::value_property<mdi_frame_interface::pointer> mdi_frame_manager;
+    nrop::value_property<m::wcommand_manager::ptr> command_manager;
+    nrop::value_property<m::wevent_manager::ptr> event_manager;
+    nrop::value_property<fleet_repository_interface::ptr> fleet_repository;
 
 public:
-    static ptr create(const m::wcommand_manager::ptr& command_mgr, const fleet_repository::ptr& fleet_repo, const properties_view_model::ptr& prop_vm);
-
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    static ptr create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 protected:
-    virtual void on_data_context_changing();
+    virtual void on_data_context_will_change();
     virtual void on_data_context_changed();
 
 private:
-    void bind_properties();
+    void subscribe_events();
+    void unsubscribe_events();
 
 private:
-    fleet_organization_id_type _active_spaceship_view_id;
-    m::wcommand_manager::wptr _command_manager;
-    m::wcommand_interface::ptr _show_spaceship_command;
-    m::wcommand_interface::ptr _close_spaceship_command;
-    properties_view_model::wptr _properties_view_model;
+    m::event_subscription_key_type _close_spaceship_event_key;
+    m::event_subscription_key_type _show_spaceship_event_key;
 };
 
 #endif  // #ifndef GO_APPLICATION_VIEW_MODEL_HPP_INCLUDED

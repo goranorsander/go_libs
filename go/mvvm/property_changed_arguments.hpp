@@ -25,8 +25,8 @@ namespace mvvm
 {
 
 template<class S> class basic_property_changed_arguments;
-typedef basic_property_changed_arguments<std::string> property_changed_arguments;
-typedef basic_property_changed_arguments<std::wstring> wproperty_changed_arguments;
+typedef typename basic_property_changed_arguments<std::string> property_changed_arguments;
+typedef typename basic_property_changed_arguments<std::wstring> wproperty_changed_arguments;
 
 template<class S>
 class basic_property_changed_arguments

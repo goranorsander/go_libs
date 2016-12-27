@@ -216,7 +216,7 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to USS Enterprise
-    cmd_mgr->issue_command(ship1->warp_speed_command);
+    cmd_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -233,8 +233,8 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->issue_command(ship2->warp_speed_command);
-    cmd_mgr->issue_command(ship4->warp_speed_command);
+    cmd_mgr->post(ship2->warp_speed_command);
+    cmd_mgr->post(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -251,7 +251,7 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give impulse speed command_interface to USS Enterprise
-    cmd_mgr->issue_command(ship1->impulse_speed_command);
+    cmd_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());

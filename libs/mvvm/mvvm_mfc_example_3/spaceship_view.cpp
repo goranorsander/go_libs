@@ -28,6 +28,7 @@ IMPLEMENT_DYNCREATE(spaceship_view, CFormView)
 spaceship_view::spaceship_view()
     : CFormView(IDD_SPACESHIP_VIEW)
     , m::data_context_interface<spaceship_view_model::ptr>()
+    , _initialization_complete(false)
     , _spaceship_class_static()
     , _spaceship_name_static()
 {
@@ -103,17 +104,22 @@ void spaceship_view::PostNcDestroy()
 BEGIN_MESSAGE_MAP(spaceship_view, CFormView)
 END_MESSAGE_MAP()
 
+void spaceship_view::initialization_complete()
+{
+    _initialization_complete = true;
+}
+
 void spaceship_view::on_close() const
 {
     if(data_context())
     {
-        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
-        if(main_frame_vm)
+        main_frame_view_model::ptr vm = data_context()->main_frame_vm();
+        if(vm)
         {
-            m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
+            m::wcommand_manager::ptr command_manager = vm->command_manager();
             if(command_manager)
             {
-                command_manager->issue_command(data_context()->on_close_spaceship_view_command);
+                command_manager->post(data_context()->on_close_spaceship_view_command);
             }
         }
     }
@@ -121,12 +127,16 @@ void spaceship_view::on_close() const
 
 void spaceship_view::on_activate() const
 {
-    if(data_context())
+    if(_initialization_complete && data_context())
     {
-        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
-        if(main_frame_vm)
+        main_frame_view_model::ptr vm = data_context()->main_frame_vm();
+        if(vm)
         {
-            main_frame_vm->active_spaceship_view_id = data_context()->spaceship_id;
+            m::wcommand_manager::ptr command_manager = vm->command_manager();
+            if(command_manager)
+            {
+                command_manager->post(data_context()->on_activate_spaceship_view_command);
+            }
         }
     }
 }
@@ -135,9 +145,9 @@ void spaceship_view::on_deactivate() const
 {
 }
 
-void spaceship_view::on_view_model_changing(const m::view_model_changing_arguments::ptr& /*a*/)
+void spaceship_view::on_view_model_will_change(const m::view_model_will_change_arguments::ptr& /*a*/)
 {
-    on_data_context_changing();
+    on_data_context_will_change();
 }
 
 void spaceship_view::on_view_model_changed(const m::view_model_changed_arguments::ptr& /*a*/)
@@ -145,13 +155,13 @@ void spaceship_view::on_view_model_changed(const m::view_model_changed_arguments
     on_data_context_changed();
 }
 
-void spaceship_view::on_data_context_changing()
+void spaceship_view::on_data_context_will_change()
 {
     if(data_context())
     {
         UpdateData();
     }
-    m::data_context_interface<spaceship_view_model::ptr>::on_data_context_changing();
+    m::data_context_interface<spaceship_view_model::ptr>::on_data_context_will_change();
 }
 
 void spaceship_view::on_data_context_changed()

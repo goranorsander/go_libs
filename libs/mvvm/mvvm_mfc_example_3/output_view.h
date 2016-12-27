@@ -14,6 +14,7 @@
 #pragma once
 
 #include <go/mvvm/command_execution_observer_interface.hpp>
+#include <go/mvvm/event_firing_observer_interface.hpp>
 #include <go/mvvm/object_observer_interface.hpp>
 #include "output_view_list.h"
 
@@ -31,6 +32,8 @@ public:
     virtual void on_command_executed(const m::wcommand_interface::ptr& c);
     virtual void on_command_not_executed(const m::wcommand_interface::ptr& c);
 
+    virtual void on_event_fired(const m::wevent::ptr& e);
+
     virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
     virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
 
@@ -39,7 +42,8 @@ protected:
 
 	output_view_list _wndOutputAllMvvmEvents;
 	output_view_list _wndOutputCommandEvents;
-	output_view_list _wndOutputObservableObjectEvents;
+    output_view_list _wndOutputEventEvents;
+    output_view_list _wndOutputObservableObjectEvents;
 
 protected:
 	void AdjustHorzScroll(CListBox& wndListBox);

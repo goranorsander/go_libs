@@ -21,7 +21,10 @@ namespace utility {}
 }
 namespace property
 {
-namespace nameless {}
+namespace nameless
+{
+namespace read_only {}
+}
 namespace read_only {}
 }
 namespace signals {}
@@ -33,6 +36,7 @@ namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
 namespace np = go_boost::property::nameless;
 namespace rop = go_boost::property::read_only;
+namespace nrop = go_boost::property::nameless::read_only;
 namespace s = go_boost::signals;
 namespace u = go_boost::utility;
 

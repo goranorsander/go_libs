@@ -25,8 +25,8 @@ namespace mvvm
 {
 
 template<class S> class basic_relay_command;
-typedef basic_relay_command<std::string> relay_command;
-typedef basic_relay_command<std::wstring> relay_wcommand;
+typedef typename basic_relay_command<std::string> relay_command;
+typedef typename basic_relay_command<std::wstring> relay_wcommand;
 
 template<class S>
 class basic_relay_command

@@ -37,11 +37,11 @@ public:
     virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
     virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
 
-    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_will_change(const m::view_model_will_change_arguments::ptr& a);
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_changing();
+    virtual void on_data_context_will_change();
     virtual void on_data_context_changed();
 
     void populate();

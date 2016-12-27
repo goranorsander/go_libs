@@ -23,7 +23,7 @@ class child_frame_view
 {
 	DECLARE_DYNCREATE(child_frame_view)
 public:
-    virtual ~child_frame_view() = default;
+    virtual ~child_frame_view();
     child_frame_view();
 
 public:
@@ -42,11 +42,13 @@ protected:
     afx_msg void OnSetFocus(CWnd* pOldWnd);
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnClose();
-    afx_msg BOOL OnNcActivate(BOOL bActive);
+    afx_msg void OnMDIActivate(BOOL bActivate, CWnd* pActivateWnd, CWnd* pDeactivateWnd);
+    afx_msg int OnMouseActivate(CWnd* pDesktopWnd, UINT nHitTest, UINT message);
 
     DECLARE_MESSAGE_MAP()
 
 public:
+    void initialization_complete();
     void spaceship_view_model(const spaceship_view_model::ptr& vm);
 
 private:

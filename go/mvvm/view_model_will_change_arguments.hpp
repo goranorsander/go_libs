@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_VIEW_MODEL_CHANGING_ARGUMENTS_HPP_INCLUDED
-#define GO_MVVM_VIEW_MODEL_CHANGING_ARGUMENTS_HPP_INCLUDED
+#ifndef GO_MVVM_VIEW_MODEL_WILL_CHANGE_ARGUMENTS_HPP_INCLUDED
+#define GO_MVVM_VIEW_MODEL_WILL_CHANGE_ARGUMENTS_HPP_INCLUDED
 
 //
-//  view_model_changing_arguments.hpp
+//  view_model_will_change_arguments.hpp
 //
 //  Copyright 2016 Göran Orsander
 //
@@ -24,25 +24,25 @@ namespace go
 namespace mvvm
 {
 
-class view_model_changing_arguments
+class view_model_will_change_arguments
     : public go::signals::slot_arguments
 {
 public:
-    typedef view_model_changing_arguments this_type;
+    typedef view_model_will_change_arguments this_type;
     typedef std::shared_ptr<this_type> ptr;
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~view_model_changing_arguments() = default;
+    virtual ~view_model_will_change_arguments() = default;
 
 protected:
-    view_model_changing_arguments() = default;
+    view_model_will_change_arguments() = default;
 
 public:
-    static std::shared_ptr<view_model_changing_arguments> create();
+    static std::shared_ptr<view_model_will_change_arguments> create();
 };
 
-inline std::shared_ptr<view_model_changing_arguments> view_model_changing_arguments::create()
+inline std::shared_ptr<view_model_will_change_arguments> view_model_will_change_arguments::create()
 {
     struct make_shared_enabler
         : public this_type
@@ -62,4 +62,4 @@ inline std::shared_ptr<view_model_changing_arguments> view_model_changing_argume
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_MVVM_VIEW_MODEL_CHANGING_ARGUMENTS_HPP_INCLUDED
+#endif  // #ifndef GO_MVVM_VIEW_MODEL_WILL_CHANGE_ARGUMENTS_HPP_INCLUDED

@@ -16,3 +16,12 @@
 static char THIS_FILE[]=__FILE__;
 #define new DEBUG_NEW
 #endif
+
+fleet_organization_view_tool_bar::~fleet_organization_view_tool_bar()
+{
+}
+
+fleet_organization_view_tool_bar::fleet_organization_view_tool_bar()
+    : CMFCToolBar()
+{
+}

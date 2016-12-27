@@ -11,8 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
+
 #include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -20,7 +27,7 @@ namespace utility
 {
 
 class scope_guard
-    : public boost::noncopyable
+    : private noncopyable_nonmovable
 {
 public:
     typedef boost::function<void()> on_scope_exit_function_type;
@@ -35,7 +42,7 @@ public:
     }
 
     explicit scope_guard(const on_scope_exit_function_type& on_scope_exit)
-        : boost::noncopyable()
+        : noncopyable_nonmovable()
         , _on_scope_exit(NULL)
     {
         set_on_scope_exit_function(on_scope_exit);

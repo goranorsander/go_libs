@@ -18,9 +18,9 @@
 #endif
 
 #include <boost/make_shared.hpp>
-#include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -28,7 +28,7 @@ namespace mvvm
 {
 
 class command_parameters
-    : public boost::noncopyable
+    : private go_boost::utility::noncopyable_nonmovable
 {
 public:
     typedef command_parameters this_type;
@@ -42,7 +42,7 @@ public:
 
 protected:
     command_parameters()
-        : boost::noncopyable()
+        : go_boost::utility::noncopyable_nonmovable()
     {
     }
 

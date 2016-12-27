@@ -47,6 +47,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_signals", "boost_sign
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility", "boost_utility\boost_utility.vcxproj", "{EF398B6B-2025-411F-9479-5FB666A7A245}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "go_libs", "go_libs\go_libs.vcxproj", "{9AB76A50-100E-464C-865F-1048072CC5E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -231,6 +233,14 @@ Global
 		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|Win32.Build.0 = Release|Win32
 		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|x64.ActiveCfg = Release|x64
 		{EF398B6B-2025-411F-9479-5FB666A7A245}.Release|x64.Build.0 = Release|x64
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Debug|Win32.Build.0 = Debug|Win32
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Debug|x64.ActiveCfg = Debug|x64
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Debug|x64.Build.0 = Debug|x64
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Release|Win32.ActiveCfg = Release|Win32
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Release|Win32.Build.0 = Release|Win32
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Release|x64.ActiveCfg = Release|x64
+		{9AB76A50-100E-464C-865F-1048072CC5E2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

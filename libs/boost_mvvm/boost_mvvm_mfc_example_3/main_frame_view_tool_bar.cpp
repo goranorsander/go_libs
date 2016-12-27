@@ -16,3 +16,12 @@
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif
+
+main_frame_view_tool_bar::~main_frame_view_tool_bar()
+{
+}
+
+main_frame_view_tool_bar::main_frame_view_tool_bar()
+    : CMFCToolBar()
+{
+}

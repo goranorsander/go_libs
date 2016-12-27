@@ -34,14 +34,10 @@ public:
     typedef basic_observable_object<string_type> this_type;
 
 public:
-    virtual ~basic_observable_object() = default;
+    virtual ~basic_observable_object() = 0;
 
 protected:
-    basic_observable_object()
-        : basic_notify_property_changed_interface<string_type>()
-        , object()
-    {
-    }
+    basic_observable_object() = default;
 
 protected:
     virtual void on_property_changed(const string_type& property_name)
@@ -53,6 +49,11 @@ protected:
     }
 };
 
+template<class S>
+inline basic_observable_object<S>::~basic_observable_object()
+{
+}
+
 class observable_object
     : public basic_observable_object<std::string>
 {
@@ -60,14 +61,15 @@ public:
     typedef observable_object this_type;
 
 public:
-    virtual ~observable_object() = default;
+    virtual ~observable_object() = 0;
 
 protected:
-    observable_object()
-        : basic_observable_object<string_type>()
-    {
-    }
+    observable_object() = default;
 };
+
+inline observable_object::~observable_object()
+{
+}
 
 class wobservable_object
     : public basic_observable_object<std::wstring>
@@ -76,14 +78,15 @@ public:
     typedef wobservable_object this_type;
 
 public:
-    virtual ~wobservable_object() = default;
+    virtual ~wobservable_object() = 0;
 
 protected:
-    wobservable_object()
-        : basic_observable_object<string_type>()
-    {
-    }
+    wobservable_object() = default;
 };
+
+inline wobservable_object::~wobservable_object()
+{
+}
 
 } // namespace mvvm
 } // namespace go

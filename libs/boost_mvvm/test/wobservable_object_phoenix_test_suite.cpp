@@ -27,6 +27,7 @@ namespace m = go_boost::mvvm;
 namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
 namespace s = go_boost::signals;
+namespace u = go_boost::utility;
 
 namespace
 {
@@ -34,7 +35,7 @@ namespace
 // Test observable_object
 class spaceship
     : public m::wobservable_object
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()

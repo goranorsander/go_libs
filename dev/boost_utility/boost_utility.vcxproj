@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\utility.hpp" />
     <ClInclude Include="..\..\go_boost\utility\iterator\forward_iterator.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />

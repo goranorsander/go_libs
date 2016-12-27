@@ -1,5 +1,5 @@
-#ifndef GO_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED
-#define GO_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED
+#ifndef GO_BOOST_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED
+#define GO_BOOST_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED
 
 //
 //  close_spaceship_command_parameters.hpp
@@ -17,8 +17,6 @@
 #include <go_boost/property/nameless/value_property.hpp>
 #include "spaceship_view_model.hpp"
 
-typedef unsigned long fleet_organization_id_type;
-
 class close_spaceship_command_parameters
     : public m::command_parameters
 {
@@ -28,19 +26,19 @@ public:
     typedef typename boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~close_spaceship_command_parameters() = default;
+    virtual ~close_spaceship_command_parameters();
 
 protected:
-    close_spaceship_command_parameters(const spaceship_view_model::ptr& spaceship_vm);
+    close_spaceship_command_parameters(const spaceship_view_model::ptr& vm);
 
 private:
-    close_spaceship_command_parameters() = delete;
+    close_spaceship_command_parameters();
 
 public:
-    np::value_property<spaceship_view_model::ptr> spaceship_view_model;
+    np::value_property<spaceship_view_model::ptr> spaceship_vm;
 
 public:
-    static ptr create(const spaceship_view_model::ptr& spaceship_vm);
+    static ptr create(const spaceship_view_model::ptr& vm);
 };
 
-#endif  // #ifndef GO_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED

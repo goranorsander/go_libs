@@ -28,6 +28,7 @@ namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
 namespace s = go_boost::signals;
+namespace u = go_boost::utility;
 
 namespace
 {
@@ -35,7 +36,7 @@ namespace
 // Test command_manager
 class spaceship
     : public m::wobservable_object
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
@@ -233,7 +234,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to USS Enterprise
-    cmd_mgr->issue_command(ship1->warp_speed_command);
+    cmd_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -250,8 +251,8 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->issue_command(ship2->warp_speed_command);
-    cmd_mgr->issue_command(ship4->warp_speed_command);
+    cmd_mgr->post(ship2->warp_speed_command);
+    cmd_mgr->post(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -268,7 +269,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give impulse speed command_interface to USS Enterprise
-    cmd_mgr->issue_command(ship1->impulse_speed_command);
+    cmd_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());

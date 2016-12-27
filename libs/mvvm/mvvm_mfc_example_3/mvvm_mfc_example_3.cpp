@@ -53,8 +53,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-main_frame_view* mvvm_mfc_example_3_app::_main_frame_view = nullptr;
-
 mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     : CWinAppEx()
     , _bHiColorIcons(TRUE)
@@ -62,6 +60,7 @@ mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     , _hMDIAccel(0)
     , _timer_id(0)
     , _command_manager()
+    , _event_manager()
     , _fleet_repository()
 {
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
@@ -94,16 +93,17 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
     theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL, RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
 
     _command_manager = m::wcommand_manager::create();
+    _event_manager = m::wevent_manager::create();
     _fleet_repository = fleet_repository::create();
     _timer_id = SetTimer(NULL, 0, 100, NULL);
 
     {
-        u::scope_guard_new<main_frame_view> pMainFrame(new main_frame_view(_command_manager, _fleet_repository));
+        u::scope_guard_new<main_frame_view> pMainFrame(new main_frame_view(_command_manager, _event_manager, _fleet_repository));
         if(!pMainFrame || !pMainFrame->LoadFrame(IDR_MAINFRAME))
         {
             return FALSE;
         }
-        m_pMainWnd = _main_frame_view = pMainFrame.detach();
+        m_pMainWnd = pMainFrame.detach();
     }
 
     HINSTANCE hInst = AfxGetResourceHandle();
@@ -136,6 +136,7 @@ BOOL mvvm_mfc_example_3_app::PreTranslateMessage(MSG* pMsg)
     {
     case WM_TIMER:
         _command_manager->execute_commands();
+        _event_manager->fire_events();
         break;
     }
     return CWinAppEx::PreTranslateMessage(pMsg);
@@ -201,27 +202,4 @@ HMENU mvvm_mfc_example_3_app::mdiMenu() const
 HACCEL mvvm_mfc_example_3_app::mdiAccel() const
 {
     return _hMDIAccel;
-}
-
-void mvvm_mfc_example_3_app::on_show_spaceship(const fleet_organization_id_type id)
-{
-    main_frame_view* main_frame = get_main_frame_view();
-    if(main_frame != nullptr)
-    {
-        main_frame->on_show_spaceship(id);
-    }
-}
-
-void mvvm_mfc_example_3_app::on_close_spaceship(const fleet_organization_id_type id)
-{
-    main_frame_view* main_frame = get_main_frame_view();
-    if(main_frame != nullptr)
-    {
-        main_frame->on_close_spaceship(id);
-    }
-}
-
-main_frame_view* mvvm_mfc_example_3_app::get_main_frame_view()
-{
-    return _main_frame_view;
 }

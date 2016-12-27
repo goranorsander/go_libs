@@ -64,25 +64,25 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _get = f;
     }
 
     void setter(const set_function_signature& f)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _set = f;
     }
 
     value_type get() const
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         return _get();
     }
 
     void set(const value_type& v)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _set(v);
     }
 

@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
@@ -61,11 +63,11 @@ protected:
         data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
     }
 
-    virtual void on_data_context_changing()
+    virtual void on_data_context_will_change()
     {
-        if(!notify_data_context_changed_interface::data_context_changing.empty())
+        if(!notify_data_context_changed_interface::data_context_will_change.empty())
         {
-            notify_data_context_changed_interface::data_context_changing(data_context_changing_arguments::create());
+            notify_data_context_changed_interface::data_context_will_change(data_context_will_change_arguments::create());
         }
     }
 
@@ -87,7 +89,7 @@ private:
     {
         if(v != _data_context)
         {
-            on_data_context_changing();
+            on_data_context_will_change();
             _data_context = v;
             on_data_context_changed();
         }

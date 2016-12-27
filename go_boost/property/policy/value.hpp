@@ -57,13 +57,13 @@ public:
 
     value_type get() const
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         return _v;
     }
 
     void set(const value_type& v)
     {
-        boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = v;
     }
 

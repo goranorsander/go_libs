@@ -85,7 +85,7 @@ fleet_repository::ptr fleet_repository::create()
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() {}
         make_shared_enabler() : this_type() {}
     };
 

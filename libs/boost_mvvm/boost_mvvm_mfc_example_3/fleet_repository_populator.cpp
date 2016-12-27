@@ -250,12 +250,21 @@ void add_evil_menace(const fleet_repository_interface::ptr& fleet_repo, output_v
 
 }
 
+fleet_repository_populator::~fleet_repository_populator()
+{
+}
+
+fleet_repository_populator::fleet_repository_populator()
+    : u::noncopyable_nonmovable()
+{
+}
+
 fleet_repository_populator::ptr fleet_repository_populator::create()
 {
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() {}
         make_shared_enabler() : this_type() {}
     };
 

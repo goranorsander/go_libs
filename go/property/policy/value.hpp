@@ -59,13 +59,13 @@ public:
 
     value_type get() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _v;
     }
 
     void set(const value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = v;
     }
 

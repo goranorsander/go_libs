@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
@@ -38,11 +40,11 @@ protected:
     }
 
 protected:
-    virtual void on_view_model_changing()
+    virtual void on_view_model_will_change()
     {
-        if(!notify_view_model_changed_interface::view_model_changing.empty())
+        if(!notify_view_model_changed_interface::view_model_will_change.empty())
         {
-            notify_view_model_changed_interface::view_model_changing(view_model_changing_arguments::create());
+            notify_view_model_changed_interface::view_model_will_change(view_model_will_change_arguments::create());
         }
     }
 

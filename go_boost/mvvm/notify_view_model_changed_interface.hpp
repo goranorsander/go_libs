@@ -11,13 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
 #include <boost/signals2.hpp>
 #include <go_boost/mvvm/view_model_changed_arguments.hpp>
-#include <go_boost/mvvm/view_model_changing_arguments.hpp>
+#include <go_boost/mvvm/view_model_will_change_arguments.hpp>
 #include <go_boost/signals/slot.hpp>
 
 namespace go_boost
@@ -31,7 +33,7 @@ class notify_view_model_changed_interface
 public:
     typedef notify_view_model_changed_interface this_type;
     typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_changed_arguments>&)> view_model_changed_signal;
-    typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_changing_arguments>&)> view_model_changing_signal;
+    typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_will_change_arguments>&)> view_model_will_change_signal;
 
 public:
     virtual ~notify_view_model_changed_interface() = 0;
@@ -42,13 +44,13 @@ protected:
     }
 
 public:
-    view_model_changing_signal view_model_changing;
+    view_model_will_change_signal view_model_will_change;
     view_model_changed_signal view_model_changed;
 };
 
 inline notify_view_model_changed_interface::~notify_view_model_changed_interface()
 {
-    view_model_changing.disconnect_all_slots();
+    view_model_will_change.disconnect_all_slots();
     view_model_changed.disconnect_all_slots();
 }
 

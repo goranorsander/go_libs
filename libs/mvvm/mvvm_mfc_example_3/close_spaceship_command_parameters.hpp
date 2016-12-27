@@ -17,8 +17,6 @@
 #include <go/property/nameless/value_property.hpp>
 #include "spaceship_view_model.hpp"
 
-typedef unsigned long fleet_organization_id_type;
-
 class close_spaceship_command_parameters
     : public m::command_parameters
 {
@@ -31,16 +29,16 @@ public:
     virtual ~close_spaceship_command_parameters() = default;
 
 protected:
-    close_spaceship_command_parameters(const spaceship_view_model::ptr& spaceship_vm);
+    close_spaceship_command_parameters(const spaceship_view_model::ptr& vm);
 
 private:
     close_spaceship_command_parameters() = delete;
 
 public:
-    np::value_property<spaceship_view_model::ptr> spaceship_view_model;
+    np::value_property<spaceship_view_model::ptr> spaceship_vm;
 
 public:
-    static ptr create(const spaceship_view_model::ptr& spaceship_vm);
+    static ptr create(const spaceship_view_model::ptr& vm);
 };
 
 #endif  // #ifndef GO_CLOSE_SPACESHIP_COMMAND_PARAMETERS_HPP_INCLUDED

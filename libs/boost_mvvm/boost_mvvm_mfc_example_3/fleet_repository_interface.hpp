@@ -1,5 +1,5 @@
-#ifndef GO_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED
-#define GO_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED
+#ifndef GO_BOOST_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED
 
 //
 //  fleet_repository_interface.hpp
@@ -26,7 +26,7 @@ public:
     virtual ~fleet_repository_interface() = 0;
 
 protected:
-    fleet_repository_interface() = default;
+    fleet_repository_interface();
 
 public:
     virtual fleet_organization_interface::ptr fleet_organization_model() const = 0;
@@ -39,4 +39,8 @@ inline fleet_repository_interface::~fleet_repository_interface()
 {
 }
 
-#endif  // #ifndef GO_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED
+inline fleet_repository_interface::fleet_repository_interface()
+{
+}
+
+#endif  // #ifndef GO_BOOST_FLEET_REPOSITORY_INTERFACE_HPP_INCLUDED

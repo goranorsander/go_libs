@@ -24,9 +24,9 @@ public:
     virtual ~noncopyable_nonmovable() = 0;
 
 private:
-    noncopyable_nonmovable(noncopyable_nonmovable const&) = delete;
+    noncopyable_nonmovable(const noncopyable_nonmovable&) = delete;
     noncopyable_nonmovable(noncopyable_nonmovable&&) = delete;
-    auto operator=(noncopyable_nonmovable const&)->noncopyable_nonmovable& = delete;
+    auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& = delete;
     auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& = delete;
 
 protected:

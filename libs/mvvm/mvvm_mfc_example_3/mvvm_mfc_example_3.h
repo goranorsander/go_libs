@@ -52,12 +52,6 @@ public:
     HMENU mdiMenu() const;
     HACCEL mdiAccel() const;
 
-    void on_show_spaceship(const fleet_organization_id_type id);
-    void on_close_spaceship(const fleet_organization_id_type id);
-
-private:
-    static main_frame_view* get_main_frame_view();
-
 public:
     BOOL  _bHiColorIcons;
 
@@ -66,10 +60,9 @@ protected:
     HACCEL _hMDIAccel;
 
 private:
-    static main_frame_view* _main_frame_view;
-
     UINT_PTR _timer_id;
     m::wcommand_manager::ptr _command_manager;
+    m::wevent_manager::ptr _event_manager;
     fleet_repository::ptr _fleet_repository;
 };
 

@@ -1,5 +1,5 @@
-#ifndef GO_FLEET_REPOSITORY_HPP_INCLUDED
-#define GO_FLEET_REPOSITORY_HPP_INCLUDED
+#ifndef GO_BOOST_FLEET_REPOSITORY_HPP_INCLUDED
+#define GO_BOOST_FLEET_REPOSITORY_HPP_INCLUDED
 
 //
 //  fleet_repository.hpp
@@ -19,7 +19,7 @@ typedef unsigned long fleet_organization_id_type;
 
 class fleet_repository
     : public fleet_repository_interface
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository this_type;
@@ -49,4 +49,4 @@ private:
 bool operator==(const fleet_repository::wptr& lhs, const fleet_repository::wptr& rhs);
 bool operator!=(const fleet_repository::wptr& lhs, const fleet_repository::wptr& rhs);
 
-#endif  // #ifndef GO_FLEET_REPOSITORY_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_FLEET_REPOSITORY_HPP_INCLUDED

@@ -29,8 +29,8 @@ private:
 
 protected:
     nonmovable() = default;
-    nonmovable(nonmovable const&) = default;
-    auto operator=(nonmovable const&)->nonmovable& = default;
+    nonmovable(const nonmovable&) = default;
+    auto operator=(const nonmovable&)->nonmovable& = default;
 };
 
 inline nonmovable::~nonmovable()

@@ -17,9 +17,9 @@ class properties_view_tool_bar
     : public CMFCToolBar
 {
 public:
-    virtual ~properties_view_tool_bar() = default;
+    virtual ~properties_view_tool_bar();
 
-    properties_view_tool_bar() = default;
+    properties_view_tool_bar();
 };
 
 #endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_3_PROPERTIES_VIEW_TOOL_BAR_H_INCLUDED

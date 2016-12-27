@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
+
 #include <go_boost/utility/sanity.hpp>
 #include <go_boost/utility/scope_guard.hpp>
 #include <go_boost/utility/scope_guard_new.hpp>

@@ -60,14 +60,14 @@ protected:
     virtual void bind_data_context_properties()
     {
         data_context.getter([this]() { return _data_context; });
-        data_context.setter([this](const data_type& v) { if(v != _data_context) { on_data_context_changing(); _data_context = v; on_data_context_changed(); } });
+        data_context.setter([this](const data_type& v) { if(v != _data_context) { on_data_context_will_change(); _data_context = v; on_data_context_changed(); } });
     }
 
-    virtual void on_data_context_changing()
+    virtual void on_data_context_will_change()
     {
-        if(!notify_data_context_changed_interface::data_context_changing.empty())
+        if(!notify_data_context_changed_interface::data_context_will_change.empty())
         {
-            notify_data_context_changed_interface::data_context_changing(data_context_changing_arguments::create());
+            notify_data_context_changed_interface::data_context_will_change(data_context_will_change_arguments::create());
         }
     }
 

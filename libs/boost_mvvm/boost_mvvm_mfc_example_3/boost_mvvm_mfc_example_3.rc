@@ -556,7 +556,8 @@ BEGIN
     IDS_ALL_MVVM_EVENTS_TAB "All MVVM Events"
     IDS_COMMAND_EVENTS_TAB  "Command Events"
     IDS_OBSERVABLE_OBJECT_EVENTS_TAB "Observable Object Events"
-END
+    IDS_EVENT_EVENTS_TAB  "Event Events"
+    END
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////

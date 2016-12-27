@@ -15,10 +15,12 @@
 
 #include "product_repository_interface.hpp"
 
+namespace u = go_boost::utility;
+
 class product_repository
     : public product_repository_interface
     , public boost::enable_shared_from_this<product_repository>
-    , boost::noncopyable
+    , u::noncopyable_nonmovable
 {
 public:
     typedef product_repository this_type;

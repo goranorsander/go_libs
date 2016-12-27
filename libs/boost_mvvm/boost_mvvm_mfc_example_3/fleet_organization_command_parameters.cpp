@@ -11,9 +11,19 @@
 #include "stdafx.h"
 #include "fleet_organization_command_parameters.hpp"
 
+fleet_organization_command_parameters::~fleet_organization_command_parameters()
+{
+}
+
 fleet_organization_command_parameters::fleet_organization_command_parameters(const fleet_organization_id_type& id_)
     : m::command_parameters()
     , id(id_)
+{
+}
+
+fleet_organization_command_parameters::fleet_organization_command_parameters()
+    : m::command_parameters()
+    , id(0)
 {
 }
 
@@ -22,7 +32,7 @@ fleet_organization_command_parameters::ptr fleet_organization_command_parameters
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() {}
         make_shared_enabler(const fleet_organization_id_type& id_) : this_type(id_) {}
     };
 

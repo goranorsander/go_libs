@@ -17,7 +17,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-tree_control_observer::~tree_control_observer()
+tree_control::~tree_control()
 {
 }
 

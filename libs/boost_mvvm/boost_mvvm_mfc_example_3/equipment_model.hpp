@@ -1,5 +1,5 @@
-#ifndef GO_EQUIPMENT_MODEL_HPP_INCLUDED
-#define GO_EQUIPMENT_MODEL_HPP_INCLUDED
+#ifndef GO_BOOST_EQUIPMENT_MODEL_HPP_INCLUDED
+#define GO_BOOST_EQUIPMENT_MODEL_HPP_INCLUDED
 
 //
 //  equipment_model.hpp
@@ -19,7 +19,7 @@
 class equipment_model
     : public equipment_interface
     , public m::wobservable_object
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     typedef equipment_model this_type;
@@ -33,7 +33,7 @@ protected:
     equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
 
 private:
-    equipment_model() = delete;
+    equipment_model();
 
 public:
     static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
@@ -42,9 +42,15 @@ protected:
     virtual void bind_properties();
 
 private:
+    std::wstring get_category() const;
+    std::wstring get_name() const;
+    unsigned int get_quantity() const;
+    void set_quantity(const unsigned int& v);
+
+private:
     const std::wstring _category;
     const std::wstring _name;
     unsigned int _quantity;
 };
 
-#endif  // #ifndef GO_EQUIPMENT_MODEL_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_EQUIPMENT_MODEL_HPP_INCLUDED

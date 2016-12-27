@@ -18,10 +18,11 @@
 
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
+namespace u = go_boost::utility;
 
 class product_model
     : public m::wobservable_object
-    , boost::noncopyable
+    , u::noncopyable_nonmovable
 {
 public:
     typedef product_model this_type;

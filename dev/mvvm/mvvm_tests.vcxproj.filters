@@ -113,5 +113,11 @@
     <ClCompile Include="..\..\libs\mvvm\test\wobservable_unordered_set_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\test\event_manager_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\mvvm\test\wevent_manager_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

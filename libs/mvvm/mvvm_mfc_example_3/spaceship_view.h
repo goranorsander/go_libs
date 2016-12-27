@@ -58,21 +58,24 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 public:
+    void initialization_complete();
+
     void on_close() const;
     void on_activate() const;
     void on_deactivate() const;
 
-    virtual void on_view_model_changing(const m::view_model_changing_arguments::ptr& a);
+    virtual void on_view_model_will_change(const m::view_model_will_change_arguments::ptr& a);
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_changing();
+    virtual void on_data_context_will_change();
     virtual void on_data_context_changed();
 
 private:
     void on_view_model_changed();
 
 private:
+    bool _initialization_complete;
     CStatic _spaceship_class_static;
     CStatic _spaceship_name_static;
 };

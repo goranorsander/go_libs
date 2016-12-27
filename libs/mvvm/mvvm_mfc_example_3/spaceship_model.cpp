@@ -27,7 +27,6 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
     , _crew_complement(0)
     , _on_equipment_list_changed_slot_key(0)
 {
-    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect(std::bind(&this_type::on_equipment_list_changed, this, ph::_1, ph::_2));
     bind_properties();
 }
 
@@ -53,9 +52,5 @@ void spaceship_model::bind_properties()
     crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } });
     equipment.getter([this]() { return _equipment; });
     equipment.setter([this](const m::wobservable_list<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; on_property_changed(equipment.name()); } });
-}
-
-void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)
-{
-    on_property_changed(equipment.name());
+    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { on_property_changed(equipment.name()); });
 }

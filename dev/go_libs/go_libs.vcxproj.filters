@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="..\..\..\ACKNOWLEDGEMENTS.txt" />
+    <Text Include="..\..\..\COPYING.LESSER.txt" />
+    <Text Include="..\..\..\COPYING.txt" />
+    <Text Include="..\..\..\LICENSE_1_0.txt" />
+    <Text Include="..\..\..\CMakeLists.txt">
+      <Filter>CMake Configuration</Filter>
+    </Text>
+    <Text Include="..\..\..\go\CMakeLists.txt">
+      <Filter>CMake Configuration\go</Filter>
+    </Text>
+    <Text Include="..\..\..\go_boost\CMakeLists.txt">
+      <Filter>CMake Configuration\go_boost</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\CMakeLists.txt">
+      <Filter>CMake Configuration\libs</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\boost_mvvm\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_mvvm</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\boost_property\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_property</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\mvvm\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\mvvm</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\property\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\signals</Filter>
+    </Text>
+    <Text Include="..\..\..\libs\signals\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\property</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Configuration">
+      <UniqueIdentifier>{e9133545-e179-4822-b4b5-c9a5856fe929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\go">
+      <UniqueIdentifier>{1c84cbc0-6955-41ca-bc2b-23f2ff435ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\go_boost">
+      <UniqueIdentifier>{2f19081c-827a-4dc2-97ad-0b94566c7a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs">
+      <UniqueIdentifier>{cffb3d7e-519e-4d50-a850-a306d13d7f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_mvvm">
+      <UniqueIdentifier>{4f278204-e101-4ca9-b67d-766513a76192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_property">
+      <UniqueIdentifier>{d634e6e0-e25d-4f35-810d-f9882420ef89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\mvvm">
+      <UniqueIdentifier>{eaf5c956-0ad0-4c15-8d94-8f526232d9f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\property">
+      <UniqueIdentifier>{e3ab0756-e106-4497-a840-08c82acf1060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\signals">
+      <UniqueIdentifier>{cde75cba-8f46-4ad0-9239-beee6248c06d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\CMakeLists.googletest.txt.in">
+      <Filter>CMake Configuration</Filter>
+    </None>
+  </ItemGroup>
+</Project>

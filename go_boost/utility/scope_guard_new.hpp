@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <boost/config.hpp>
+
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
+
 #include <boost/bind.hpp>
 #include <boost/utility/explicit_operator_bool.hpp>
 #include <go_boost/utility/scope_guard.hpp>

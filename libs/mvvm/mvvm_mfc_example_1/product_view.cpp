@@ -75,7 +75,7 @@ void product_view::OnBnClickedButtonGetProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->issue_command(m_product_view_model->get_product_command);
+        command_manager->post(m_product_view_model->get_product_command);
     }
 }
 
@@ -85,6 +85,6 @@ void product_view::OnBnClickedButtonSaveProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->issue_command(m_product_view_model->save_product_command);
+        command_manager->post(m_product_view_model->save_product_command);
     }
 }

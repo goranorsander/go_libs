@@ -60,31 +60,31 @@ public:
 
     value_type get() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return *_v;
     }
 
     void set(const value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         bind_ref(const_cast<value_type&>(v));
     }
 
     void bind_ref(value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = std::addressof(v);
     }
 
     bool empty() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _v == NULL;
     }
 
     void clear()
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = NULL;
     }
 

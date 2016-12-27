@@ -171,21 +171,21 @@ void fleet_organization_view::on_double_click(const HTREEITEM hItem, DWORD_PTR p
 {
     if(data_context() && mouseButton == mb_left)
     {
-        main_frame_view_model::ptr main_frame_vm = data_context()->main_frame_view_model();
-        if(main_frame_vm)
+        main_frame_view_model::ptr vm = data_context()->main_frame_vm();
+        if(vm)
         {
-            m::wcommand_manager::ptr command_manager = main_frame_vm->command_manager();
+            m::wcommand_manager::ptr command_manager = vm->command_manager();
             if(command_manager)
             {
-                command_manager->issue_command(data_context()->on_left_double_click_command);
+                command_manager->post(data_context()->on_left_double_click_command);
             }
         }
     }
 }
 
-void fleet_organization_view::on_view_model_changing(const m::view_model_changing_arguments::ptr& /*a*/)
+void fleet_organization_view::on_view_model_will_change(const m::view_model_will_change_arguments::ptr& /*a*/)
 {
-    on_data_context_changing();
+    on_data_context_will_change();
 }
 
 void fleet_organization_view::on_view_model_changed(const m::view_model_changed_arguments::ptr& /*a*/)
@@ -193,13 +193,13 @@ void fleet_organization_view::on_view_model_changed(const m::view_model_changed_
     on_data_context_changed();
 }
 
-void fleet_organization_view::on_data_context_changing()
+void fleet_organization_view::on_data_context_will_change()
 {
     if(data_context())
     {
         UpdateData();
     }
-    m::data_context_interface<fleet_organization_view_model::ptr>::on_data_context_changing();
+    m::data_context_interface<fleet_organization_view_model::ptr>::on_data_context_will_change();
 }
 
 void fleet_organization_view::on_data_context_changed()

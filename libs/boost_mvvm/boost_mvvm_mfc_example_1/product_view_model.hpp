@@ -19,14 +19,12 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
 
 class product_view_model
     : public m::wobservable_object
     , public m::data_context_interface<product_model::ptr>
-    , boost::noncopyable
+    , u::noncopyable_nonmovable
 {
 public:
     typedef product_view_model this_type;

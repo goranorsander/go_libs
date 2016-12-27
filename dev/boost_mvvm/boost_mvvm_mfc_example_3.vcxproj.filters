@@ -31,6 +31,9 @@
     <Filter Include="MVVM Example\View Model\Command">
       <UniqueIdentifier>{b4ab173b-7e0c-427d-8c1d-cc708234e50b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MVVM Example\View Model\Event">
+      <UniqueIdentifier>{08f4be4c-78a6-4c8b-a094-0aac7466a78c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.h">
@@ -132,6 +135,24 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3_namespace_alias.hpp">
       <Filter>MVVM Example</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\select_fleet_organization_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\mdi_frame_interface.hpp">
+      <Filter>MVVM Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\tree_control_observer.h">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\activate_spaceship_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.cpp">
@@ -211,6 +232,18 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_command_parameters.cpp">
       <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\select_fleet_organization_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\activate_spaceship_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

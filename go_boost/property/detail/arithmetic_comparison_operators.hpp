@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_PROPERTY_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_DETAIL_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_DETAIL_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
 
 //
 //  arithmetic_comparison_operators.hpp
@@ -10,6 +10,12 @@
 //  Distributed under the GO Software License, Version 1.0.
 //  See accompanying file LICENSE_1_0.txt.
 //
+
+#include <boost/config.hpp>
+
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif
 
 #define GO_BOOST_IMPLEMENT_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _property_name_type_, _value_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_, _property_name_type_>& lhs, const _value_type_& rhs) \
@@ -83,4 +89,4 @@ GO_BOOST_IMPLEMENT_PROPERTY_GREATER_THAN_OR_EQUAL_TO_OPERATOR(_basic_property_ty
 GO_BOOST_IMPLEMENT_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _property_name_type_, _value_type_) \
 GO_BOOST_IMPLEMENT_PROPERTY_NOT_EQUAL_TO_OPERATOR(_basic_property_type_, _property_name_type_, _value_type_)
 
-#endif  // #ifndef GO_BOOST_PROPERTY_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_DETAIL_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED
