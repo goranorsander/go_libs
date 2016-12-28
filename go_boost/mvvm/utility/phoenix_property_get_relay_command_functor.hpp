@@ -17,6 +17,7 @@
 #pragma once
 #endif
 
+#include <string>
 #include <boost/phoenix/phoenix.hpp>
 
 namespace go_boost

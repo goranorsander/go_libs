@@ -165,4 +165,7 @@
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
 </Project>

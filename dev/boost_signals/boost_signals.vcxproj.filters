@@ -23,4 +23,7 @@
       <Filter>go_boost\signals</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
 </Project>

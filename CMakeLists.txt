@@ -12,7 +12,7 @@ option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-i
 option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "62" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "63" CACHE STRING "Boost libraries minor version.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
 
