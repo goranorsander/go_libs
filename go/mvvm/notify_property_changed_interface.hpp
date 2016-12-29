@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/object.hpp>
@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S> class basic_notify_property_changed_interface;
-typedef typename basic_notify_property_changed_interface<std::string> notify_property_changed_interface;
-typedef typename basic_notify_property_changed_interface<std::wstring> notify_wproperty_changed_interface;
+typedef basic_notify_property_changed_interface<std::string> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring> notify_wproperty_changed_interface;
 
 template<class S>
 class basic_notify_property_changed_interface

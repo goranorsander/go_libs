@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <functional>
@@ -31,8 +31,8 @@ namespace mvvm
 typedef unsigned int event_subscription_key_type;
 
 template<class S> class basic_event_manager;
-typedef typename basic_event_manager<std::string> event_manager;
-typedef typename basic_event_manager<std::wstring> wevent_manager;
+typedef basic_event_manager<std::string> event_manager;
+typedef basic_event_manager<std::wstring> wevent_manager;
 
 template<class S>
 class basic_event_manager

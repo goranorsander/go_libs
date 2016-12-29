@@ -11,10 +11,10 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
-#if !defined(_MFC_VER)
-#pragma message("Required MFC feature is not supported by this compiler or project configuration")
+#if !defined(GO_BOOST_MSVC_MFC)
+GO_BOOST_MESSAGE("Required MFC feature is not supported by this compiler or project configuration")
 #else
 
 #include <go_boost/property.hpp>

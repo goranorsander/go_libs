@@ -9,7 +9,7 @@
 //
 
 #include <gtest/gtest.h>
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #include <go_boost/mvvm.hpp>
 
@@ -167,7 +167,7 @@ TEST(boost_wobservable_unordered_map_test_suite, test_insert_single_element)
     typedef m::wobservable_unordered_map<int, int> wobservable_unordered_map_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_map_type::value_type& i, *m)
+    BOOST_FOREACH(const typename wobservable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
@@ -217,7 +217,7 @@ TEST(boost_wobservable_unordered_map_test_suite, test_insert_single_element_with
     typedef m::wobservable_unordered_map<int, int> wobservable_unordered_map_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_map_type::value_type& i, *m)
+    BOOST_FOREACH(const typename wobservable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
@@ -389,7 +389,7 @@ TEST(boost_wobservable_unordered_map_test_suite, test_erase_value)
     typedef m::wobservable_unordered_map<int, int> wobservable_unordered_map_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_map_type::value_type& i, *m)
+    BOOST_FOREACH(const typename wobservable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
@@ -485,7 +485,7 @@ TEST(boost_wobservable_unordered_map_test_suite, test_swap)
     typedef m::wobservable_unordered_map<int, int> wobservable_unordered_map_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_map_type::value_type& i, *m1)
+    BOOST_FOREACH(const typename wobservable_unordered_map_type::value_type& i, *m1)
     {
         sum += i.second;
         ++count;
@@ -598,7 +598,7 @@ TEST(boost_wobservable_unordered_map_test_suite, test_emplace)
     typedef m::wobservable_unordered_map<int, int> wobservable_unordered_map_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_map_type::value_type& i, *m)
+    BOOST_FOREACH(const typename wobservable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;

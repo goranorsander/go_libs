@@ -11,8 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
-#include <boost/predef.h>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -35,8 +34,8 @@ namespace mvvm
 typedef unsigned int event_subscription_key_type;
 
 template<class S> class basic_event_manager;
-typedef typename basic_event_manager<std::string> event_manager;
-typedef typename basic_event_manager<std::wstring> wevent_manager;
+typedef basic_event_manager<std::string> event_manager;
+typedef basic_event_manager<std::wstring> wevent_manager;
 
 template<class S>
 class basic_event_manager
@@ -114,7 +113,7 @@ inline event_subscription_key_type basic_event_manager<std::string>::subscribe(c
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         std::string key = event_type;
@@ -134,7 +133,7 @@ inline event_subscription_key_type basic_event_manager<std::wstring>::subscribe(
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         std::wstring key = event_type;
@@ -154,7 +153,7 @@ inline event_subscription_key_type basic_event_manager<S>::subscribe(const S& ev
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         S key = event_type;
@@ -174,7 +173,7 @@ inline void basic_event_manager<std::string>::unsubscribe(const std::string& eve
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         event_type_subscriptions->second.erase(event_subscription_key);
@@ -188,7 +187,7 @@ inline void basic_event_manager<std::wstring>::unsubscribe(const std::wstring& e
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         event_type_subscriptions->second.erase(event_subscription_key);
@@ -202,7 +201,7 @@ inline void basic_event_manager<S>::unsubscribe(const S& event_type, const event
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         event_type_subscriptions->second.erase(event_subscription_key);
@@ -216,7 +215,7 @@ inline void basic_event_manager<std::string>::unsubscribe_all(const std::string&
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
@@ -230,7 +229,7 @@ inline void basic_event_manager<std::wstring>::unsubscribe_all(const std::wstrin
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
@@ -244,7 +243,7 @@ inline void basic_event_manager<S>::unsubscribe_all(const S& event_type)
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
+    typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
@@ -267,10 +266,10 @@ inline void basic_event_manager<std::string>::fire(const boost::shared_ptr<basic
     if(e)
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
-        subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
+        typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
-            BOOST_FOREACH(event_subscription_type::value_type subscription, event_type_subscriptions->second)
+            BOOST_FOREACH(const typename event_subscription_type::value_type& subscription, event_type_subscriptions->second)
             {
                 subscription.second(e);
             }
@@ -288,10 +287,10 @@ inline void basic_event_manager<std::wstring>::fire(const boost::shared_ptr<basi
     if(e)
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
-        subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
+        typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
-            BOOST_FOREACH(event_subscription_type::value_type subscription, event_type_subscriptions->second)
+            BOOST_FOREACH(const typename event_subscription_type::value_type& subscription, event_type_subscriptions->second)
             {
                 subscription.second(e);
             }
@@ -309,10 +308,10 @@ inline void basic_event_manager<S>::fire(const boost::shared_ptr<basic_event<S>>
     if(e)
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
-        subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
+        typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
-            BOOST_FOREACH(event_subscription_type::value_type subscription, event_type_subscriptions->second)
+            BOOST_FOREACH(const typename event_subscription_type::value_type& subscription, event_type_subscriptions->second)
             {
                 subscription.second(e);
             }
@@ -360,7 +359,7 @@ inline void basic_event_manager<std::string>::fire_events()
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(events_type::value_type e, events)
+    BOOST_FOREACH(const typename events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }
@@ -375,7 +374,7 @@ inline void basic_event_manager<std::wstring>::fire_events()
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(events_type::value_type e, events)
+    BOOST_FOREACH(const typename events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }
@@ -384,13 +383,13 @@ inline void basic_event_manager<std::wstring>::fire_events()
 template<class S>
 inline void basic_event_manager<S>::fire_events()
 {
-    typedef typename std::list<std::pair<boost::weak_ptr<basic_event<Sg>>, boost::shared_ptr<basic_event<S>>>> events_type;
+    typedef typename std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
     std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(events_type::value_type e, events)
+    BOOST_FOREACH(const typename events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }

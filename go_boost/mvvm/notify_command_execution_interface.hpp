@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S> class basic_notify_command_execution_interface;
-typedef typename basic_notify_command_execution_interface<std::string> notify_command_execution_interface;
-typedef typename basic_notify_command_execution_interface<std::wstring> notify_wcommand_execution_interface;
+typedef basic_notify_command_execution_interface<std::string> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring> notify_wcommand_execution_interface;
 
 template<class S>
 class basic_notify_command_execution_interface

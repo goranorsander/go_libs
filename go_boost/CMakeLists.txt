@@ -1,6 +1,9 @@
 set(PROJECT_GO_LIBS_BOOST_NAME GO_libraries_boost)
 
 file(GLOB GO_BOOST_DIR_FILES ./*.hpp)
+file(GLOB GO_BOOST_CONFIG_DIR_FILES ./config/*.hpp)
+file(GLOB GO_BOOST_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
+file(GLOB GO_BOOST_EXCEPTION_DIR_FILES ./exception/*.hpp)
 file(GLOB GO_BOOST_MVVM_DIR_FILES ./mvvm/*.hpp)
 file(GLOB GO_BOOST_MVVM_UTILITY_DIR_FILES ./mvvm/utility/*.hpp)
 file(GLOB GO_BOOST_PROPERTY_DIR_FILES ./property/*.hpp)
@@ -14,6 +17,9 @@ file(GLOB GO_BOOST_DIR_UTILITY_ITERATOR_FILES ./utility/iterator/*.hpp)
 
 add_library(${PROJECT_GO_LIBS_BOOST_NAME} STATIC
     ${GO_BOOST_DIR_FILES}
+    ${GO_BOOST_CONFIG_DIR_FILES}
+    ${GO_BOOST_CONFIG_COMPILER_DIR_FILES}
+    ${GO_BOOST_EXCEPTION_DIR_FILES}
     ${GO_BOOST_MVVM_DIR_FILES}
     ${GO_BOOST_MVVM_UTILITY_DIR_FILES}
     ${GO_BOOST_PROPERTY_DIR_FILES}
@@ -29,6 +35,9 @@ add_library(${PROJECT_GO_LIBS_BOOST_NAME} STATIC
 set_target_properties(${PROJECT_GO_LIBS_BOOST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 source_group(go_boost FILES ${GO_BOOST_DIR_FILES})
+source_group(go_boost\\config FILES ${GO_BOOST_CONFIG_DIR_FILES})
+source_group(go_boost\\config\\compiler FILES ${GO_BOOST_CONFIG_COMPILER_DIR_FILES})
+source_group(go_boost\\exception FILES ${GO_BOOST_EXCEPTION_DIR_FILES})
 source_group(go_boost\\mvvm FILES ${GO_BOOST_MVVM_DIR_FILES})
 source_group(go_boost\\mvvm\\utility FILES ${GO_BOOST_MVVM_UTILITY_DIR_FILES})
 source_group(go_boost\\property FILES ${GO_BOOST_PROPERTY_DIR_FILES})

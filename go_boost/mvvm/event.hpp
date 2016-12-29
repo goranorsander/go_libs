@@ -11,8 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
-#include <boost/predef.h>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -31,8 +30,8 @@ namespace mvvm
 {
 
 template<class S> class basic_event;
-typedef typename basic_event<std::string> event;
-typedef typename basic_event<std::wstring> wevent;
+typedef basic_event<std::string> event;
+typedef basic_event<std::wstring> wevent;
 
 template<class S>
 class basic_event

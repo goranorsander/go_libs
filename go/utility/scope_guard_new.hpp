@@ -23,9 +23,9 @@ template<class T> class scope_guard_new
 {
 public:
     typedef scope_guard_new<T> this_type;
-    typedef typename T value_type;
-    typedef typename T& reference;
-    typedef typename T* pointer;
+    typedef T value_type;
+    typedef T& reference;
+    typedef T* pointer;
 
 public:
     virtual ~scope_guard_new()

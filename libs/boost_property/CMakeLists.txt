@@ -17,7 +17,7 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
             libgtest.a
             libgtest_main.a
-            libboost_system-gcc61-mt-1_61.a
+            libboost_system-gcc61-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a
             )
     else(NOT WIN32)
         if(MSYS OR MINGW)
@@ -25,7 +25,7 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
                 libgtest.a
                 libgtest_main.a
-                libboost_system-mgw53-mt-1_61.a
+                libboost_system-mgw53-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a
                 )
         else(MSYS OR MINGW)
             if(MSVC AND (MSVC_VERSION LESS 1800))

@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -31,9 +31,9 @@ template<class T> class scope_guard_new
 {
 public:
     typedef scope_guard_new<T> this_type;
-    typedef typename T value_type;
-    typedef typename T& reference;
-    typedef typename T* pointer;
+    typedef T value_type;
+    typedef T& reference;
+    typedef T* pointer;
 
 public:
     virtual ~scope_guard_new()

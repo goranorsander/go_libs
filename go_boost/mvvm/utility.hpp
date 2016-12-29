@@ -11,13 +11,16 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
+#if defined(GO_BOOST_MSVC_MFC)
 #include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
+#endif  // #if defined(GO_BOOST_MSVC_MFC)
+
 #include <go_boost/mvvm/utility/phoenix_property_get_relay_command_functor.hpp>
 #include <go_boost/mvvm/utility/phoenix_property_set_value_notify_changed_functor.hpp>
 #include <go_boost/mvvm/utility/phoenix_property_value_access_functor.hpp>

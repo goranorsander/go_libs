@@ -14,11 +14,12 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <list>
 #include <mutex>
+#include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 
@@ -28,8 +29,8 @@ namespace mvvm
 {
 
 template<class S> class basic_command_manager;
-typedef typename basic_command_manager<std::string> command_manager;
-typedef typename basic_command_manager<std::wstring> wcommand_manager;
+typedef basic_command_manager<std::string> command_manager;
+typedef basic_command_manager<std::wstring> wcommand_manager;
 
 template<class S>
 class basic_command_manager
@@ -158,6 +159,9 @@ inline void basic_command_manager<std::wstring>::execute(const std::shared_ptr<b
 template<class S>
 inline void basic_command_manager<S>::execute(const std::shared_ptr<basic_command_interface<S>>& cmd) const
 {
+#if defined(GO_COMP_GCC) && (GO_GCC_VERSION < 60000)
+    throw go::exception::exception("Unsupported string class used by basic_command_manager<S>::execute(...)");
+#else
     if(cmd)
     {
         const auto params = cmd->parameters();
@@ -171,6 +175,7 @@ inline void basic_command_manager<S>::execute(const std::shared_ptr<basic_comman
             command_not_executed.call(cmd);
         }
     }
+#endif  // #if defined(GO_COMP_GCC) && defined(GO_GCC_VERSION < 60000)
 }
 
 template<>

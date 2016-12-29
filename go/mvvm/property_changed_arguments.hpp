@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/signals/slot_arguments.hpp>
@@ -25,8 +25,8 @@ namespace mvvm
 {
 
 template<class S> class basic_property_changed_arguments;
-typedef typename basic_property_changed_arguments<std::string> property_changed_arguments;
-typedef typename basic_property_changed_arguments<std::wstring> wproperty_changed_arguments;
+typedef basic_property_changed_arguments<std::string> property_changed_arguments;
+typedef basic_property_changed_arguments<std::wstring> wproperty_changed_arguments;
 
 template<class S>
 class basic_property_changed_arguments

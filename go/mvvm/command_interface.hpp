@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/command_parameters.hpp>
@@ -30,8 +30,8 @@ namespace mvvm
 template<class S> class basic_command_manager;
 
 template<class S> class basic_command_interface;
-typedef typename basic_command_interface<std::string> command_interface;
-typedef typename basic_command_interface<std::wstring> wcommand_interface;
+typedef basic_command_interface<std::string> command_interface;
+typedef basic_command_interface<std::wstring> wcommand_interface;
 
 template<class S>
 class basic_command_interface

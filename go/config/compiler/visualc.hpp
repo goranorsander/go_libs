@@ -40,6 +40,10 @@
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
 #endif
 
+// Compiler message
+#define GO_BOOST_MESSAGE(_message_) \
+__pragma message ( _message_ )
+
 // C++11 support
 #if (_MSC_VER)
 #define GO_NO_CXX11_CONSTEXPR 1
@@ -144,18 +148,18 @@
 // ATL support
 #if defined(_ATL_VER)
 
-#define GO_ATL 1
+#define GO_MSVC_ATL 1
 
-#define GO_ATL_VER _MFX_VER
+#define GO_MSVC_ATL_VER _MFX_VER
 
 #endif  // if defined(_ATL_VER)
 
 // MFC support
 #if defined(_MFC_VER)
 
-#define GO_MFC 1
+#define GO_MSVC_MFC 1
 
-#define GO_MFC_VER _MFX_VER
+#define GO_MSVC_MFC_VER _MFX_VER
 
 #endif  // if defined(_MFC_VER)
 

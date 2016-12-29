@@ -22,6 +22,10 @@
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
 #endif
 
+// Compiler message
+#define GO_MESSAGE(_message_) \
+__warning _message_
+
 // C++11 support
 #if (GO_GCC_VERSION < 40801)
 #define GO_NO_CXX11_REF_QUALIFIERS 1

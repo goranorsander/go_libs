@@ -11,8 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
-#include <boost/predef.h>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -33,8 +32,8 @@ namespace mvvm
 template<class S> class basic_command_manager;
 
 template<class S> class basic_command_interface;
-typedef typename basic_command_interface<std::string> command_interface;
-typedef typename basic_command_interface<std::wstring> wcommand_interface;
+typedef basic_command_interface<std::string> command_interface;
+typedef basic_command_interface<std::wstring> wcommand_interface;
 
 template<class S>
 class basic_command_interface

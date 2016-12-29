@@ -3,6 +3,7 @@ set(PROJECT_GO_LIBS_STD_NAME GO_libraries_std)
 file(GLOB GO_DIR_FILES ./*.hpp)
 file(GLOB GO_CONFIG_DIR_FILES ./config/*.hpp)
 file(GLOB GO_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
+file(GLOB GO_EXCEPTION_DIR_FILES ./exception/*.hpp)
 file(GLOB GO_MVVM_DIR_FILES ./mvvm/*.hpp)
 file(GLOB GO_MVVM_UTILITY_DIR_FILES ./mvvm/utility/*.hpp)
 file(GLOB GO_PROPERTY_DIR_FILES ./property/*.hpp)
@@ -19,6 +20,7 @@ add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
     ${GO_DIR_FILES}
     ${GO_CONFIG_DIR_FILES}
     ${GO_CONFIG_COMPILER_DIR_FILES}
+    ${GO_EXCEPTION_DIR_FILES}
     ${GO_MVVM_DIR_FILES}
     ${GO_MVVM_UTILITY_DIR_FILES}
     ${GO_PROPERTY_DIR_FILES}
@@ -37,6 +39,7 @@ set_target_properties(${PROJECT_GO_LIBS_STD_NAME} PROPERTIES LINKER_LANGUAGE CXX
 source_group(go FILES ${GO_DIR_FILES})
 source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})
 source_group(go\\config\\compiler FILES ${GO_CONFIG_COMPILER_DIR_FILES})
+source_group(go\\exception FILES ${GO_EXCEPTION_DIR_FILES})
 source_group(go\\mvvm FILES ${GO_MVVM_DIR_FILES})
 source_group(go\\mvvm\\utility FILES ${GO_MVVM_UTILITY_DIR_FILES})
 source_group(go\\property FILES ${GO_PROPERTY_DIR_FILES})

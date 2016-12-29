@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
@@ -27,8 +27,8 @@ namespace mvvm
 {
 
 template<class S> class basic_event;
-typedef typename basic_event<std::string> event;
-typedef typename basic_event<std::wstring> wevent;
+typedef basic_event<std::string> event;
+typedef basic_event<std::wstring> wevent;
 
 template<class S>
 class basic_event

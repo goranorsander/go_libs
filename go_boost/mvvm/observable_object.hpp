@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -26,8 +26,8 @@ namespace mvvm
 
 template<class S>
 class basic_observable_object;
-typedef typename basic_observable_object<std::string> observable_object;
-typedef typename basic_observable_object<std::wstring> wobservable_object;
+typedef basic_observable_object<std::string> observable_object;
+typedef basic_observable_object<std::wstring> wobservable_object;
 
 template<class S>
 class basic_observable_object

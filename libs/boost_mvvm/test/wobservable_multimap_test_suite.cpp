@@ -9,7 +9,7 @@
 //
 
 #include <gtest/gtest.h>
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #include <go_boost/mvvm.hpp>
 
@@ -167,7 +167,7 @@ TEST(boost_wobservable_multimap_test_suite, test_insert_single_element)
 
     typedef m::wobservable_multimap<int, int> wobservable_multimap_type;
     int count = 0;
-    BOOST_FOREACH(const wobservable_multimap_type::value_type& i, *m)
+    BOOST_FOREACH(const typename wobservable_multimap_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -582,7 +582,7 @@ TEST(boost_wobservable_multimap_test_suite, test_swap)
 
     typedef m::wobservable_multimap<int, int> wobservable_multimap_type;
     int count = 0;
-    BOOST_FOREACH(const wobservable_multimap_type::value_type& i, *m1)
+    BOOST_FOREACH(const typename wobservable_multimap_type::value_type& i, *m1)
     {
         ++count;
         EXPECT_EQ(count*10, i.first);
@@ -591,7 +591,7 @@ TEST(boost_wobservable_multimap_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    BOOST_FOREACH(const wobservable_multimap_type::value_type& i, *m2)
+    BOOST_FOREACH(const typename wobservable_multimap_type::value_type& i, *m2)
     {
         ++count;
         EXPECT_EQ(count, i.first);

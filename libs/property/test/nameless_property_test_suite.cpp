@@ -12,7 +12,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_nameless_property_test_suite, cpp11_not_supported) {}
 #else
 
@@ -200,7 +200,7 @@ TEST(std_nameless_property_test_suite, write_only_value_properties)
 }
 
 #if defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 // Test nameless::reference_property

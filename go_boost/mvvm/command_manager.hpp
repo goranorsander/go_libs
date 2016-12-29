@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -29,8 +29,8 @@ namespace mvvm
 {
 
 template<class S> class basic_command_manager;
-typedef typename basic_command_manager<std::string> command_manager;
-typedef typename basic_command_manager<std::wstring> wcommand_manager;
+typedef basic_command_manager<std::string> command_manager;
+typedef basic_command_manager<std::wstring> wcommand_manager;
 
 template<class S>
 class basic_command_manager
@@ -249,13 +249,13 @@ inline void basic_command_manager<S>::post(const boost::shared_ptr<basic_command
 template<>
 inline void basic_command_manager<std::string>::execute_commands()
 {
-    typedef std::list<std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>> cmd_list_type;
+    typedef typename std::list<std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    BOOST_FOREACH(const cmd_list_type::value_type& wcmd, cmds)
+    BOOST_FOREACH(const typename cmd_list_type::value_type& wcmd, cmds)
     {
         const boost::shared_ptr<basic_command_interface<std::string>> cmd = wcmd.first.lock();
         execute(cmd);
@@ -265,13 +265,13 @@ inline void basic_command_manager<std::string>::execute_commands()
 template<>
 inline void basic_command_manager<std::wstring>::execute_commands()
 {
-    typedef std::list<std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>> cmd_list_type;
+    typedef typename std::list<std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    BOOST_FOREACH(const cmd_list_type::value_type& wcmd, cmds)
+    BOOST_FOREACH(const typename cmd_list_type::value_type& wcmd, cmds)
     {
         const boost::shared_ptr<basic_command_interface<std::wstring>> cmd = wcmd.first.lock();
         execute(cmd);
@@ -281,13 +281,13 @@ inline void basic_command_manager<std::wstring>::execute_commands()
 template<class S>
 inline void basic_command_manager<S>::execute_commands()
 {
-    typedef std::list<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> cmd_list_type;
+    typedef typename std::list<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    BOOST_FOREACH(const cmd_list_type::value_type& wcmd, cmds)
+    BOOST_FOREACH(const typename cmd_list_type::value_type& wcmd, cmds)
     {
         const boost::shared_ptr<basic_command_interface<S>> cmd = wcmd.first.lock();
         execute(cmd);

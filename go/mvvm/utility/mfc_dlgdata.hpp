@@ -13,8 +13,8 @@
 
 #include <go/config.hpp>
 
-#if !defined(GO_MFC)
-#pragma message("Required MFC feature is not supported by this compiler or project configuration")
+#if !defined(GO_MSVC_MFC)
+GO_MESSAGE("Required MFC feature is not supported by this compiler or project configuration")
 #else
 
 #include <go/property.hpp>
@@ -538,6 +538,6 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
 } // namespace mvvm
 } // namespace go
 
-#endif  // #if !defined(GO_MFC)
+#endif  // #if !defined(GO_MSVC_MFC)
 
 #endif  // #ifndef GO_MVVM_UTILITY_MFC_DLGDATA_HPP_INCLUDED

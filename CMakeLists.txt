@@ -123,6 +123,7 @@ set(GO_DIR ${GO_LIBS_SOURCE_DIR}/go)
 
 set(GO_LIBS_SRC_GO_HPP
     ${GO_DIR}/config.hpp
+    ${GO_DIR}/exception.hpp
     ${GO_DIR}/mvvm.hpp
     ${GO_DIR}/property.hpp
     ${GO_DIR}/signals.hpp
@@ -167,6 +168,23 @@ set(GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP
 # *.cpp
 
 set(GO_LIBS_SRC_GO_CONFIG_COMPILER_CPP)
+
+########################################################
+#  go/exception                                        #
+########################################################
+
+set(GO_EXCEPTION_DIRNAME exception)
+set(GO_EXCEPTION_DIR ${GO_DIR}/exception)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_EXCEPTION_HPP
+    ${GO_SIGNALS_DIR}/exception.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_EXCEPTION_CPP)
 
 ########################################################
 #  go/mvvm                                             #
@@ -433,6 +451,8 @@ set(GO_BOOST_DIR ${GO_LIBS_SOURCE_DIR}/go_boost)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_HPP
+    ${GO_BOOST_DIR}/config.hpp
+    ${GO_BOOST_DIR}/exception.hpp
     ${GO_BOOST_DIR}/mvvm.hpp
     ${GO_BOOST_DIR}/property.hpp
     ${GO_BOOST_DIR}/signals.hpp
@@ -442,6 +462,58 @@ set(GO_LIBS_SRC_GO_BOOST_HPP
 # *.cpp
 
 set(GO_LIBS_SRC_GO_BOOST_CPP)
+
+########################################################
+#  go_boost/config                                     #
+########################################################
+
+set(GO_CONFIG_CONFIG_DIRNAME config)
+set(GO_CONFIG_CONFIG_DIR ${GO_DIR}/config)
+
+# *.hpp
+
+set(GO_CONFIG_LIBS_SRC_GO_CONFIG_HPP
+    ${GO_CONFIG_CONFIG_DIR}/select_compiler_config.hpp
+)
+
+# *.cpp
+
+set(GO_CONFIG_LIBS_SRC_GO_CONFIG_CPP)
+
+########################################################
+#  go_boost/config/compiler                            #
+########################################################
+
+set(GO_CONFIG_CONFIG_COMPILER_DIRNAME config/compiler)
+set(GO_CONFIG_CONFIG_COMPILER_DIR ${GO_CONFIG_DIR}/compiler)
+
+# *.hpp
+
+set(GO_CONFIG_LIBS_SRC_GO_CONFIG_COMPILER_HPP
+    ${GO_CONFIG_CONFIG_COMPILER_DIR}/gcc.hpp
+    ${GO_CONFIG_CONFIG_COMPILER_DIR}/visualc.hpp
+)
+
+# *.cpp
+
+set(GO_CONFIG_LIBS_SRC_GO_CONFIG_COMPILER_CPP)
+
+########################################################
+#  go_boost/exception                                  #
+########################################################
+
+set(GO_BOOST_EXCEPTION_DIRNAME exception)
+set(GO_BOOST_EXCEPTION_DIR ${GO_BOOST_DIR}/exception)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_EXCEPTION_HPP
+    ${GO_BOOST_SIGNALS_DIR}/exception.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_EXCEPTION_CPP)
 
 ########################################################
 #  go_boost/mvvm                                       #
@@ -698,6 +770,7 @@ INSTALL(FILES ${GO_LIBS_TXT}    DESTINATION  .})
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_EXCEPTION_HPP}                  DESTINATION  include/${GO_DIRNAME}/${GO_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_HPP}                   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DIRNAME})
@@ -711,6 +784,9 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_COMPILER_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_EXCEPTION_HPP}                  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_HPP}                       DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP}                   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_DIRNAME})

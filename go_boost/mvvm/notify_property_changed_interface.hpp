@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S> class basic_notify_property_changed_interface;
-typedef typename basic_notify_property_changed_interface<std::string> notify_property_changed_interface;
-typedef typename basic_notify_property_changed_interface<std::wstring> notify_wproperty_changed_interface;
+typedef basic_notify_property_changed_interface<std::string> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring> notify_wproperty_changed_interface;
 
 template<class S>
 class basic_notify_property_changed_interface
