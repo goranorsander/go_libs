@@ -176,7 +176,7 @@ TEST(boost_observable_map_test_suite, test_insert_single_element)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const typename observable_map_type::value_type& i, *m)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -225,7 +225,7 @@ TEST(boost_observable_map_test_suite, test_insert_single_element_with_hint)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const typename observable_map_type::value_type& i, *m)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -574,7 +574,7 @@ TEST(boost_observable_map_test_suite, test_swap)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const typename observable_map_type::value_type& i, *m1)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m1)
     {
         ++count;
         EXPECT_EQ(count*10, i.first);
@@ -583,7 +583,7 @@ TEST(boost_observable_map_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    BOOST_FOREACH(const typename observable_map_type::value_type& i, *m2)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m2)
     {
         ++count;
         EXPECT_EQ(count, i.first);

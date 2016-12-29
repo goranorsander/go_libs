@@ -109,11 +109,11 @@ inline boost::shared_ptr<basic_event_manager<S>> basic_event_manager<S>::create(
 template<>
 inline event_subscription_key_type basic_event_manager<std::string>::subscribe(const std::string& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)>& fire_event_function)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         std::string key = event_type;
@@ -129,11 +129,11 @@ inline event_subscription_key_type basic_event_manager<std::string>::subscribe(c
 template<>
 inline event_subscription_key_type basic_event_manager<std::wstring>::subscribe(const std::wstring& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)>& fire_event_function)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         std::wstring key = event_type;
@@ -169,11 +169,11 @@ inline event_subscription_key_type basic_event_manager<S>::subscribe(const S& ev
 template<>
 inline void basic_event_manager<std::string>::unsubscribe(const std::string& event_type, const event_subscription_key_type& event_subscription_key)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         event_type_subscriptions->second.erase(event_subscription_key);
@@ -183,11 +183,11 @@ inline void basic_event_manager<std::string>::unsubscribe(const std::string& eve
 template<>
 inline void basic_event_manager<std::wstring>::unsubscribe(const std::wstring& event_type, const event_subscription_key_type& event_subscription_key)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         event_type_subscriptions->second.erase(event_subscription_key);
@@ -211,11 +211,11 @@ inline void basic_event_manager<S>::unsubscribe(const S& event_type, const event
 template<>
 inline void basic_event_manager<std::string>::unsubscribe_all(const std::string& event_type)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
@@ -225,11 +225,11 @@ inline void basic_event_manager<std::string>::unsubscribe_all(const std::string&
 template<>
 inline void basic_event_manager<std::wstring>::unsubscribe_all(const std::wstring& event_type)
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
     const boost::recursive_mutex::scoped_lock lock(_events_guard);
-    typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
+    GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
@@ -260,16 +260,16 @@ inline void basic_event_manager<S>::unsubscribe_all()
 template<>
 inline void basic_event_manager<std::string>::fire(const boost::shared_ptr<basic_event<std::string>>& e) const
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::string, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
     if(e)
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
-        typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
+        GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
-            BOOST_FOREACH(const typename event_subscription_type::value_type& subscription, event_type_subscriptions->second)
+            BOOST_FOREACH(const GO_BOOST_TYPENAME event_subscription_type::value_type& subscription, event_type_subscriptions->second)
             {
                 subscription.second(e);
             }
@@ -281,16 +281,16 @@ inline void basic_event_manager<std::string>::fire(const boost::shared_ptr<basic
 template<>
 inline void basic_event_manager<std::wstring>::fire(const boost::shared_ptr<basic_event<std::wstring>>& e) const
 {
-    typedef typename boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
-    typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
-    typedef typename std::map<std::wstring, event_subscription_type> subscriptions_type;
+    typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
+    typedef GO_BOOST_TYPENAME std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
+    typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
     if(e)
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
-        typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
+        GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
-            BOOST_FOREACH(const typename event_subscription_type::value_type& subscription, event_type_subscriptions->second)
+            BOOST_FOREACH(const GO_BOOST_TYPENAME event_subscription_type::value_type& subscription, event_type_subscriptions->second)
             {
                 subscription.second(e);
             }
@@ -353,13 +353,13 @@ inline void basic_event_manager<S>::post(const boost::shared_ptr<basic_event<S>>
 template<>
 inline void basic_event_manager<std::string>::fire_events()
 {
-    typedef typename std::list<std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>> events_type;
+    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>> events_type;
     events_type events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(const typename events_type::value_type& e, events)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }
@@ -368,13 +368,13 @@ inline void basic_event_manager<std::string>::fire_events()
 template<>
 inline void basic_event_manager<std::wstring>::fire_events()
 {
-    typedef typename std::list<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events_type;
+    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events_type;
     std::list<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(const typename events_type::value_type& e, events)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }
@@ -383,13 +383,13 @@ inline void basic_event_manager<std::wstring>::fire_events()
 template<class S>
 inline void basic_event_manager<S>::fire_events()
 {
-    typedef typename std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
+    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
     std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
-    BOOST_FOREACH(const typename events_type::value_type& e, events)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
     {
         fire(e.first.lock());
     }

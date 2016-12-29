@@ -35,14 +35,25 @@
 #define GO_COMP_MSVC_VC14 1
 #endif
 
+// Compiler message
+#define GO_MESSAGE(_message_) \
+__pragma ( message ( _message_ ) )
+
+// C++ keyword typename support
+#if (_MSC_VER < 1900)
+
+#define GO_TYPENAME
+
+#else
+
+#define GO_TYPENAME typename
+
+#endif  // #if (_MSC_VER < 1900)
+
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
 #endif
-
-// Compiler message
-#define GO_BOOST_MESSAGE(_message_) \
-__pragma message ( _message_ )
 
 // C++11 support
 #if (_MSC_VER)
@@ -91,6 +102,18 @@ __pragma message ( _message_ )
 #define GO_NO_CXX11_R_VALUE_REFERENCES 1
 #define GO_NO_CXX11_STATIC_ASSERT 1
 #define GO_NO_CXX11 1
+#endif
+
+#if defined(GO_NO_CXX11_NOEXCEPT)
+#define GO_NOEXCEPT
+#define GO_NOEXCEPT_OR_NOTHROW throw()
+#define GO_NOEXCEPT_IF(_predicate_)
+#define GO_NOEXCEPT_EXPR(_expression_) false
+#else
+#define GO_NOEXCEPT noexcept
+#define GO_NOEXCEPT_OR_NOTHROW noexcept
+#define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
+#define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif
 
 // C++14 support

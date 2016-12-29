@@ -32,7 +32,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() noexcept = default;
+    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW;
 
     exception(const exception& other);
     explicit exception(const char* message);
@@ -42,13 +42,18 @@ public:
     exception& operator=(const exception& other);
 
 public:
-    virtual const char* what() const noexcept;
 
-    virtual std::string message() const noexcept;
+    virtual const char* what() const GO_NOEXCEPT_OR_NOTHROW;
+
+    virtual std::string message() const GO_NOEXCEPT_OR_NOTHROW;
 
 private:
     std::string _message;
 };
+
+inline exception::~exception() GO_NOEXCEPT_OR_NOTHROW
+{
+}
 
 inline exception::exception(const exception& other)
     : std::exception(other)
@@ -78,12 +83,12 @@ inline exception& exception::operator=(const exception& other)
     return *this;
 }
 
-inline const char* exception::what() const noexcept
+inline const char* exception::what() const GO_NOEXCEPT_OR_NOTHROW
 {
     return _message.c_str();
 }
 
-inline std::string exception::message() const noexcept
+inline std::string exception::message() const GO_NOEXCEPT_OR_NOTHROW
 {
     return _message;
 }

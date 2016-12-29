@@ -31,8 +31,8 @@ class fleet_commander_changed_event
 {
 public:
     typedef fleet_commander_changed_event this_type;
-    typedef typename boost::shared_ptr<fleet_commander_changed_event> ptr;
-    typedef typename boost::weak_ptr<fleet_commander_changed_event> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<fleet_commander_changed_event> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
     virtual ~fleet_commander_changed_event()

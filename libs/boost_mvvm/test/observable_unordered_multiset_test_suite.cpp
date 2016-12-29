@@ -367,7 +367,7 @@ TEST(boost_observable_unordered_multiset_test_suite, test_erase_value)
     typedef m::observable_unordered_multiset<int> observable_unordered_multiset_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const typename observable_unordered_multiset_type::value_type& i, *s)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multiset_type::value_type& i, *s)
     {
         sum += i;
         ++count;
@@ -567,7 +567,7 @@ TEST(boost_observable_unordered_multiset_test_suite, test_emplace)
     typedef m::observable_unordered_multiset<int> observable_unordered_multiset_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const typename observable_unordered_multiset_type::value_type& i, *s)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multiset_type::value_type& i, *s)
     {
         sum += i;
         ++count;

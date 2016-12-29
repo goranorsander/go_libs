@@ -23,6 +23,9 @@
 #define GO_BOOST_MESSAGE(_message_) \
 __warning _message_
 
+// C++ keyword typename support
+#define GO_BOOST_TYPENAME typename
+
 #endif  // #if defined(BOOST_GCC)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_GCC_HPP_INCLUDED

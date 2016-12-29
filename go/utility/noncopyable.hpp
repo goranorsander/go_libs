@@ -29,8 +29,14 @@ private:
 
 protected:
     noncopyable() = default;
+
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
     noncopyable(noncopyable&&) = default;
     auto operator=(noncopyable&&)->noncopyable& = default;
+
+#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
 };
 
 inline noncopyable::~noncopyable()

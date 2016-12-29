@@ -48,6 +48,17 @@ __pragma message ( _message_ )
 
 #endif  // if defined(_UNICODE) || defined(UNICODE)
 
+// C++ keyword typename support
+#if (_MSC_VER < 1900)
+
+#define GO_BOOST_TYPENAME
+
+#else
+
+#define GO_BOOST_TYPENAME typename
+
+#endif  // #if (_MSC_VER < 1900)
+
 #endif  // #if defined(BOOST_MSVC)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_VISUALC_HPP_INCLUDED

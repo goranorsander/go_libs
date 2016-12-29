@@ -38,8 +38,8 @@ class fleet_commander_changed_event
 {
 public:
     typedef fleet_commander_changed_event this_type;
-    typedef typename std::shared_ptr<fleet_commander_changed_event> ptr;
-    typedef typename std::weak_ptr<fleet_commander_changed_event> wptr;
+    typedef GO_TYPENAME std::shared_ptr<fleet_commander_changed_event> ptr;
+    typedef GO_TYPENAME std::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
     virtual ~fleet_commander_changed_event() = default;

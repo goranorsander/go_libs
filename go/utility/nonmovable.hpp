@@ -24,8 +24,13 @@ public:
     virtual ~nonmovable() = 0;
 
 private:
+
+#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
     nonmovable(nonmovable&&) = delete;
     auto operator=(nonmovable&&)->nonmovable& = delete;
+
+#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 protected:
     nonmovable() = default;
