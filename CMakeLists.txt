@@ -179,7 +179,7 @@ set(GO_EXCEPTION_DIR ${GO_DIR}/exception)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_EXCEPTION_HPP
-    ${GO_SIGNALS_DIR}/exception.hpp
+    ${GO_EXCEPTION_DIR}/exception.hpp
 )
 
 # *.cpp
@@ -508,7 +508,7 @@ set(GO_BOOST_EXCEPTION_DIR ${GO_BOOST_DIR}/exception)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_EXCEPTION_HPP
-    ${GO_BOOST_SIGNALS_DIR}/exception.hpp
+    ${GO_BOOST_EXCEPTION_DIR}/exception.hpp
 )
 
 # *.cpp
@@ -765,7 +765,7 @@ ADD_SUBDIRECTORY(go)
 ADD_SUBDIRECTORY(go_boost)
 ADD_SUBDIRECTORY(libs)
 
-INSTALL(FILES ${GO_LIBS_TXT}    DESTINATION  .})
+INSTALL(FILES ${GO_LIBS_TXT}    DESTINATION  .)
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
