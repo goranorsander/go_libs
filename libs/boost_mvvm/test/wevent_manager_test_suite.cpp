@@ -52,6 +52,7 @@ public:
 public:
     static ptr create(const std::wstring& flt_cmd)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
@@ -63,8 +64,10 @@ public:
             {
             }
         };
-
         return boost::make_shared<make_shared_enabler, const std::wstring&>(flt_cmd);
+#else
+		return boost::shared_ptr<this_type>(new this_type(flt_cmd));
+#endif // BOOST_MSVC > 1500
     }
 };
 
@@ -72,6 +75,7 @@ class fleet_commander
     : private u::noncopyable_nonmovable
 {
 public:
+	typedef fleet_commander this_type;
     typedef boost::shared_ptr<fleet_commander> ptr;
     typedef boost::weak_ptr<fleet_commander> wptr;
 
@@ -94,19 +98,22 @@ private:
 public:
     static ptr create(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
     {
+#if BOOST_MSVC > 1500
         struct make_shared_enabler
-            : public fleet_commander
+            : public this_type
         {
             virtual ~make_shared_enabler()
             {
             }
             make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
-                : fleet_commander(event_mgr, cmd, btl)
+                : this_type(event_mgr, cmd, btl)
             {
             }
         };
-
         return boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_mgr, cmd, btl);
+#else
+		return boost::shared_ptr<this_type>(new this_type(event_mgr, cmd, btl));
+#endif // BOOST_MSVC > 1500
     }
 
 public:
