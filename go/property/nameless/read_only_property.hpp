@@ -40,9 +40,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~property() = default;
+    virtual ~property() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~property() {}
+	virtual ~property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     property()

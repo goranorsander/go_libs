@@ -49,7 +49,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_forward_list() = default;
+    virtual ~basic_observable_forward_list() GO_DEFAULT_DESTRUCTOR
 
 protected:
     basic_observable_forward_list()
@@ -504,7 +504,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_forward_list() = default;
+    virtual ~observable_forward_list() GO_DEFAULT_DESTRUCTOR
 
 protected:
     observable_forward_list()
@@ -549,8 +549,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -561,7 +561,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n)
                 : this_type(n)
             {
@@ -576,7 +576,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n, const value_type& val)
                 : this_type(n, val)
             {
@@ -592,7 +592,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(InputIterator first, InputIterator last)
                 : this_type(first, last)
             {
@@ -607,7 +607,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const this_type& x)
                 : this_type(x)
             {
@@ -622,7 +622,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(this_type&& x)
                 : this_type(x)
             {
@@ -637,7 +637,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(std::initializer_list<value_type> il)
                 : this_type(il)
             {
@@ -702,7 +702,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_forward_list() = default;
+    virtual ~wobservable_forward_list() GO_DEFAULT_DESTRUCTOR
 
 protected:
     wobservable_forward_list()
@@ -747,8 +747,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -759,7 +759,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n)
                 : this_type(n)
             {
@@ -774,7 +774,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n, const value_type& val)
                 : this_type(n, val)
             {
@@ -790,7 +790,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(InputIterator first, InputIterator last)
                 : this_type(first, last)
             {
@@ -805,7 +805,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const this_type& x)
                 : this_type(x)
             {
@@ -820,7 +820,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(this_type&& x)
                 : this_type(x)
             {
@@ -835,7 +835,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(std::initializer_list<value_type> il)
                 : this_type(il)
             {

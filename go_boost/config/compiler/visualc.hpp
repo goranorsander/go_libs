@@ -21,7 +21,7 @@
 
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
-__pragma message ( _message_ )
+__pragma(message(_message_))
 
 // ATL support
 #if defined(_ATL_VER)

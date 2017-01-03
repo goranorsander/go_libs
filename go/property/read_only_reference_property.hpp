@@ -41,9 +41,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~basic_reference_property() = default;
+    virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~basic_reference_property() {}
+    virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_reference_property(const string_type& property_name, const value_type& v)
@@ -77,9 +77,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference_property() = default;
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference_property() {}
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_property(const string_type& property_name, const value_type& v)
@@ -98,9 +98,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference_wproperty() = default;
+    virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference_wproperty() {}
+    virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_wproperty(const string_type& property_name, const value_type& v)

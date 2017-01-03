@@ -143,7 +143,7 @@ class spaceship
     : private u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() = default;
+    virtual ~spaceship() {}
 
 public:
     spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)

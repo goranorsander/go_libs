@@ -42,7 +42,7 @@ public:
     typedef std::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
-    virtual ~fleet_commander_changed_event() = default;
+    virtual ~fleet_commander_changed_event() {}
 
 protected:
     fleet_commander_changed_event(const std::string& flt_cmd)
@@ -60,7 +60,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() {}
             make_shared_enabler(const std::string& flt_cmd)
                 : this_type(flt_cmd)
             {
@@ -79,7 +79,7 @@ public:
     typedef std::weak_ptr<fleet_commander> wptr;
 
 public:
-    virtual ~fleet_commander() = default;
+    virtual ~fleet_commander() {}
 
 private:
     fleet_commander(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
@@ -98,7 +98,7 @@ public:
         struct make_shared_enabler
             : public fleet_commander
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() {}
             make_shared_enabler(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
                 : fleet_commander(event_mgr, cmd, btl)
             {
@@ -136,7 +136,7 @@ class spaceship
     : public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() = default;
+    virtual ~spaceship() {}
 
 public:
     spaceship(const std::string& nme, const std::string& cpt, const std::string& flt_cmd)

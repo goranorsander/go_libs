@@ -35,9 +35,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference() = default;
+    virtual ~reference() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference() {}
+    virtual ~reference() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference()

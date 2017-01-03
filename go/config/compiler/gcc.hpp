@@ -86,6 +86,11 @@ __warning _message_
 #define GO_NO_CXX11 1
 #endif
 
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#define GO_DEFAULT_DESTRUCTOR {}
+#else
+#define GO_DEFAULT_DESTRUCTOR = default;
+#endif
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()

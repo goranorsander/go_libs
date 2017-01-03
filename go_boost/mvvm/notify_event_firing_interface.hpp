@@ -43,7 +43,7 @@ public:
     virtual ~basic_notify_event_firing_interface() = 0;
 
 protected:
-    basic_notify_event_firing_interface() = default;
+    basic_notify_event_firing_interface();
 
 public:
     event_fired_signal event_fired;
@@ -65,6 +65,27 @@ template<class S>
 inline basic_notify_event_firing_interface<S>::~basic_notify_event_firing_interface()
 {
     event_fired.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::string>::basic_notify_event_firing_interface()
+	: go_boost::signals::slot()
+	, event_fired()
+{
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::wstring>::basic_notify_event_firing_interface()
+	: go_boost::signals::slot()
+	, event_fired()
+{
+}
+
+template<class S>
+inline basic_notify_event_firing_interface<S>::basic_notify_event_firing_interface()
+	: go_boost::signals::slot()
+	, event_fired()
+{
 }
 
 } // namespace mvvm

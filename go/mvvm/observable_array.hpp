@@ -50,7 +50,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_array() = default;
+    virtual ~basic_observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
     basic_observable_array()
@@ -178,7 +178,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_array() = default;
+    virtual ~observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
     observable_array()
@@ -192,8 +192,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -223,7 +223,7 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_array() = default;
+    virtual ~wobservable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
     wobservable_array()
@@ -237,8 +237,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();

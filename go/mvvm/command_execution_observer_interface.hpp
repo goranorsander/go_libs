@@ -41,7 +41,16 @@ public:
     virtual ~basic_command_execution_observer_interface() = 0;
 
 protected:
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    basic_command_execution_observer_interface();
+
+#else
+
     basic_command_execution_observer_interface() = default;
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 public:
     virtual void on_command_executed(const std::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
@@ -62,6 +71,25 @@ template<class S>
 inline basic_command_execution_observer_interface<S>::~basic_command_execution_observer_interface()
 {
 }
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+template<>
+inline basic_command_execution_observer_interface<std::string>::basic_command_execution_observer_interface()
+{
+}
+
+template<>
+inline basic_command_execution_observer_interface<std::wstring>::basic_command_execution_observer_interface()
+{
+}
+
+template<class S>
+inline basic_command_execution_observer_interface<S>::basic_command_execution_observer_interface()
+{
+}
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 } // namespace mvvm
 } // namespace go

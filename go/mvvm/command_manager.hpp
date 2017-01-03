@@ -47,7 +47,16 @@ public:
     virtual ~basic_command_manager();
 
 protected:
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    basic_command_manager();
+
+#else
+
     basic_command_manager() = default;
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 public:
     static std::shared_ptr<basic_command_manager<S>> create();
@@ -81,14 +90,45 @@ inline basic_command_manager<S>::~basic_command_manager()
     _commands.clear();
 }
 
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+template<>
+inline basic_command_manager<std::string>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::string>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+template<>
+inline basic_command_manager<std::wstring>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::wstring>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+template<class S>
+inline basic_command_manager<S>::basic_command_manager()
+    : basic_notify_command_execution_interface<S>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 template<>
 inline std::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
 {
     struct make_shared_enabler
         : public basic_command_manager<std::string>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();
@@ -100,8 +140,8 @@ inline std::shared_ptr<basic_command_manager<std::wstring>> basic_command_manage
     struct make_shared_enabler
         : public basic_command_manager<std::wstring>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();
@@ -113,8 +153,8 @@ inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::creat
     struct make_shared_enabler
         : public basic_command_manager<S>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();

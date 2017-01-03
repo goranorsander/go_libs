@@ -34,7 +34,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~command_parameters() = default;
+    virtual ~command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     command_parameters() = default;
@@ -45,8 +45,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();

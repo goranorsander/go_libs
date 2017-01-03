@@ -33,7 +33,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~data_context_will_change_arguments() = default;
+    virtual ~data_context_will_change_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
     data_context_will_change_arguments() = default;
@@ -47,7 +47,7 @@ inline std::shared_ptr<data_context_will_change_arguments> data_context_will_cha
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler()
             : this_type()
         {

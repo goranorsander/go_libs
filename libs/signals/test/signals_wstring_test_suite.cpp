@@ -59,7 +59,7 @@ public:
         struct make_shared_enabler
             : public fleet_commander
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() {}
             make_shared_enabler(const std::wstring& cmd, const std::wstring& btl)
                 : fleet_commander(cmd, btl)
             {

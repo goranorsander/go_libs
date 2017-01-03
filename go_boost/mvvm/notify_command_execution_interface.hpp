@@ -45,7 +45,7 @@ public:
     virtual ~basic_notify_command_execution_interface() = 0;
 
 protected:
-    basic_notify_command_execution_interface() = default;
+    basic_notify_command_execution_interface();
 
 public:
     command_executed_signal command_executed;
@@ -71,6 +71,30 @@ inline basic_notify_command_execution_interface<S>::~basic_notify_command_execut
 {
     command_executed.disconnect_all_slots();
     command_not_executed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_command_execution_interface<std::string>::basic_notify_command_execution_interface()
+	: go_boost::signals::slot()
+	, command_executed()
+	, command_not_executed()
+{
+}
+
+template<>
+inline basic_notify_command_execution_interface<std::wstring>::basic_notify_command_execution_interface()
+	: go_boost::signals::slot()
+	, command_executed()
+	, command_not_executed()
+{
+}
+
+template<class S>
+inline basic_notify_command_execution_interface<S>::basic_notify_command_execution_interface()
+	: go_boost::signals::slot()
+	, command_executed()
+	, command_not_executed()
+{
 }
 
 } // namespace mvvm

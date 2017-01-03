@@ -40,9 +40,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference_property() = default;
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference_property() {}
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_property(const value_type& v)

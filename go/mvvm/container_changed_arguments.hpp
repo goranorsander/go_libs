@@ -34,7 +34,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~container_changed_arguments() = default;
+    virtual ~container_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
@@ -52,7 +52,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
                 : this_type(action, added_elements, removed_elements, new_size)
             {

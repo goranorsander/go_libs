@@ -43,7 +43,7 @@ public:
     typedef typename go::property::nameless::read_only::property<S> event_type_type;
 
 public:
-    virtual ~basic_event() = default;
+    virtual ~basic_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
     basic_event(const S& event_type_);
@@ -74,7 +74,7 @@ inline std::shared_ptr<basic_event<S>> basic_event<S>::create(const S& event_typ
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const S& event_type_)
             : this_type(event_type_)
         {

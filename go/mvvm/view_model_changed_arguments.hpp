@@ -33,7 +33,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~view_model_changed_arguments() = default;
+    virtual ~view_model_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
     view_model_changed_arguments() = default;
@@ -47,7 +47,7 @@ inline std::shared_ptr<view_model_changed_arguments> view_model_changed_argument
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler()
             : this_type()
         {
