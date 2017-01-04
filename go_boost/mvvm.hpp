@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -20,6 +20,7 @@
 #include <go_boost/mvvm/command_execution_observer_interface.hpp>
 #include <go_boost/mvvm/command_manager.hpp>
 #include <go_boost/mvvm/data_context_interface.hpp>
+#include <go_boost/mvvm/event_manager.hpp>
 #include <go_boost/mvvm/object_observer_interface.hpp>
 #include <go_boost/mvvm/observable_array.hpp>
 #include <go_boost/mvvm/observable_deque.hpp>
@@ -36,5 +37,6 @@
 #include <go_boost/mvvm/observable_unordered_set.hpp>
 #include <go_boost/mvvm/observable_vector.hpp>
 #include <go_boost/mvvm/relay_command.hpp>
+#include <go_boost/mvvm/view_model_interface.hpp>
 
 #endif  // #ifndef GO_BOOST_MVVM_HPP_INCLUDED

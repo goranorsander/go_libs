@@ -14,6 +14,7 @@
 #include <go/mvvm/command_execution_observer_interface.hpp>
 #include <go/mvvm/command_manager.hpp>
 #include <go/mvvm/data_context_interface.hpp>
+#include <go/mvvm/event_manager.hpp>
 #include <go/mvvm/object_observer_interface.hpp>
 #include <go/mvvm/observable_array.hpp>
 #include <go/mvvm/observable_deque.hpp>
@@ -30,5 +31,6 @@
 #include <go/mvvm/observable_unordered_set.hpp>
 #include <go/mvvm/observable_vector.hpp>
 #include <go/mvvm/relay_command.hpp>
+#include <go/mvvm/view_model_interface.hpp>
 
 #endif  // #ifndef GO_MVVM_HPP_INCLUDED

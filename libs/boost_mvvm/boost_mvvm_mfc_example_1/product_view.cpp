@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "boost_mvvm_mfc_example_1.h"
+#include "boost_mvvm_mfc_example_1.hpp"
 #include "product_view.hpp"
 
 #include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
@@ -29,10 +29,9 @@ product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd
 	: CDialogEx(IDD_PRODUCT_VIEW, pParent)
     , m_hIcon(0)
     , m_command_manager(command_manager)
-    , m_product_view_model()
+    , m_product_view_model(product_view_model::create())
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-    m_product_view_model = product_view_model::create();
     m_product_view_model->data_context_changed.connect(boost::bind(&product_view::on_data_context_changed, this));
 }
 
@@ -78,7 +77,7 @@ void product_view::OnBnClickedButtonGetProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->add_command(m_product_view_model->get_product_command);
+        command_manager->post(m_product_view_model->get_product_command);
     }
 }
 
@@ -88,6 +87,6 @@ void product_view::OnBnClickedButtonSaveProduct()
     m::wcommand_manager::ptr command_manager = m_command_manager.lock();
     if(command_manager && m_product_view_model)
     {
-        command_manager->add_command(m_product_view_model->save_product_command);
+        command_manager->post(m_product_view_model->save_product_command);
     }
 }

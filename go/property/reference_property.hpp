@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
@@ -38,9 +38,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~basic_reference_property() = default;
+    virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~basic_reference_property() {}
+    virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_reference_property(const string_type& property_name)
@@ -86,9 +86,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference_property() = default;
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference_property() {}
+    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_property(const string_type& property_name)
@@ -114,9 +114,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference_wproperty() = default;
+    virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference_wproperty() {}
+    virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit reference_wproperty(const string_type& property_name)

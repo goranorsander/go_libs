@@ -12,17 +12,19 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_observable_object_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
+#include <go/utility.hpp>
 
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
 namespace s = go::signals;
+namespace u = go::utility;
 
 namespace
 {
@@ -30,19 +32,17 @@ namespace
 // Test observable_object
 class spaceship
     : public m::observable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
     {
     }
 
-private:
-    spaceship(const spaceship&) = delete;
-    spaceship(spaceship&&) = delete;
-
 public:
     spaceship()
         : m::observable_object()
+        , u::noncopyable_nonmovable()
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
@@ -52,10 +52,6 @@ public:
     {
         bind_properties();
     }
-
-private:
-    spaceship& operator=(const spaceship&) = delete;
-    spaceship& operator=(spaceship&&) = delete;
 
 private:
     void bind_properties()

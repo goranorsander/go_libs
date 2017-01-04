@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/signals/slot_arguments.hpp>
@@ -39,14 +39,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~basic_property_changed_arguments() = default;
-
-private:
-    basic_property_changed_arguments(const this_type&) = delete;
-    basic_property_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
+    virtual ~basic_property_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
     basic_property_changed_arguments(const string_type& property_name)
@@ -70,7 +63,7 @@ inline std::shared_ptr<basic_property_changed_arguments<std::string>> basic_prop
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::string& property_name)
             : this_type(property_name)
         {
@@ -86,7 +79,7 @@ inline std::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_pro
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::wstring& property_name)
             : this_type(property_name)
         {
@@ -102,7 +95,7 @@ inline std::shared_ptr<basic_property_changed_arguments<S>> basic_property_chang
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const S& property_name)
             : this_type(property_name)
         {

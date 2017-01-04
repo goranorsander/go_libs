@@ -19,14 +19,12 @@
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
 
 class product_view_model
     : public m::wobservable_object
     , public m::data_context_interface<product_model::ptr>
-    , boost::noncopyable
+    , u::noncopyable_nonmovable
 {
 public:
     typedef product_view_model this_type;
@@ -51,8 +49,8 @@ public:
     p::wproperty<std::wstring> current_product_name;
     p::wproperty<double> current_unit_price;
 
-    rop::wproperty<m::wcommand::ptr> get_product_command;
-    rop::wproperty<m::wcommand::ptr> save_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> get_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
     product_model::product_id_type get_current_product_id() const;
@@ -72,8 +70,8 @@ private:
 
 private:
     product_model::product_id_type _product_id;
-    m::wcommand::ptr _get_product_command;
-    m::wcommand::ptr _save_product_command;
+    m::wcommand_interface::ptr _get_product_command;
+    m::wcommand_interface::ptr _save_product_command;
 
     product_repository_interface::ptr _products;
 };

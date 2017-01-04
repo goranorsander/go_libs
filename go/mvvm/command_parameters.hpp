@@ -14,11 +14,11 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <memory>
-#include <go/config.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -26,6 +26,7 @@ namespace mvvm
 {
 
 class command_parameters
+    : public go::utility::noncopyable_nonmovable
 {
 public:
     typedef command_parameters this_type;
@@ -33,17 +34,10 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~command_parameters() = default;
+    virtual ~command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     command_parameters() = default;
-
-private:
-    command_parameters(const this_type&) = delete;
-    command_parameters(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
 
 public:
     static ptr create()
@@ -51,8 +45,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
-            make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
         };
 
         return std::make_shared<make_shared_enabler>();

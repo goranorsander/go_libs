@@ -22,6 +22,13 @@
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
 #endif
 
+// Compiler message
+#define GO_MESSAGE(_message_) \
+__warning _message_
+
+// C++ keyword typename support
+#define GO_TYPENAME typename
+
 // C++11 support
 #if (GO_GCC_VERSION < 40801)
 #define GO_NO_CXX11_REF_QUALIFIERS 1
@@ -77,6 +84,23 @@
 #if (GO_GCC_VERSION < 30300)
 #define GO_NO_CXX11_EXTERN_TEMPLATE 1
 #define GO_NO_CXX11 1
+#endif
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#define GO_DEFAULT_DESTRUCTOR {}
+#else
+#define GO_DEFAULT_DESTRUCTOR = default;
+#endif
+#if defined(GO_NO_CXX11_NOEXCEPT)
+#define GO_NOEXCEPT
+#define GO_NOEXCEPT_OR_NOTHROW throw()
+#define GO_NOEXCEPT_IF(_predicate_)
+#define GO_NOEXCEPT_EXPR(_expression_) false
+#else
+#define GO_NOEXCEPT noexcept
+#define GO_NOEXCEPT_OR_NOTHROW noexcept
+#define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
+#define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif
 
 // C++14 support

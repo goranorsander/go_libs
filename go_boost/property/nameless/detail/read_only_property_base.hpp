@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_NAMELESS_DETAIL_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_NAMELESS_DETAIL_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
 
 //
 //  read_only_property_base.hpp
@@ -10,6 +10,8 @@
 //  Distributed under the GO Software License, Version 1.0.
 //  See accompanying file LICENSE_1_0.txt.
 //
+
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -52,6 +54,11 @@ public:
         return get();
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 private:
     this_type& operator=(const this_type& v)
     {
@@ -85,4 +92,4 @@ inline property_base<V, P>::~property_base()
 } // namespace property
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_PROPERTY_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_NAMELESS_DETAIL_READ_ONLY_PROPERTY_BASE_HPP_INCLUDED

@@ -9,11 +9,10 @@
 //
 
 #include <gtest/gtest.h>
-#include <boost/config.hpp>
-#include <boost/predef.h>
+#include <go_boost/config.hpp>
 
 #if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
-#pragma message("Boost.Phoenix is not supported by this compiler")
+GO_BOOST_MESSAGE("Boost.Phoenix is not supported by this compiler")
 TEST(boost_wobservable_object_phoenix_test_suite, boost_phoenix_not_supported) {}
 #else
 
@@ -27,6 +26,7 @@ namespace m = go_boost::mvvm;
 namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
 namespace s = go_boost::signals;
+namespace u = go_boost::utility;
 
 namespace
 {
@@ -34,7 +34,7 @@ namespace
 // Test observable_object
 class spaceship
     : public m::wobservable_object
-    , private boost::noncopyable
+    , private u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()

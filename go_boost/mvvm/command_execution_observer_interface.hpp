@@ -11,13 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go_boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
 #include <string>
 
-#include <go_boost/mvvm/command.hpp>
+#include <go_boost/mvvm/command_interface.hpp>
 
 namespace go_boost
 {
@@ -42,8 +44,8 @@ protected:
     basic_command_execution_observer_interface();
 
 public:
-    virtual void on_command_executed(const boost::shared_ptr<basic_command<S>>& /*c*/) = 0;
-    virtual void on_command_not_executed(const boost::shared_ptr<basic_command<S>>& /*c*/) = 0;
+    virtual void on_command_executed(const boost::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
+    virtual void on_command_not_executed(const boost::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
 };
 
 template<>

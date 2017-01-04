@@ -11,15 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
-#include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -27,7 +27,7 @@ namespace signals
 {
 
 class slot_arguments
-    : public boost::noncopyable
+    : private boost::noncopyable
 {
 public:
     typedef boost::shared_ptr<slot_arguments> ptr;

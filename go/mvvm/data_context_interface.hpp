@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/notify_data_context_changed_interface.hpp>
@@ -60,7 +60,15 @@ protected:
     virtual void bind_data_context_properties()
     {
         data_context.getter([this]() { return _data_context; });
-        data_context.setter([this](const data_type& v) { if(v != _data_context) { _data_context = v; on_data_context_changed(); } });
+        data_context.setter([this](const data_type& v) { if(v != _data_context) { on_data_context_will_change(); _data_context = v; on_data_context_changed(); } });
+    }
+
+    virtual void on_data_context_will_change()
+    {
+        if(!notify_data_context_changed_interface::data_context_will_change.empty())
+        {
+            notify_data_context_changed_interface::data_context_will_change(data_context_will_change_arguments::create());
+        }
     }
 
     virtual void on_data_context_changed()

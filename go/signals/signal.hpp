@@ -14,13 +14,12 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <functional>
 #include <map>
 #include <mutex>
-#include <go/config.hpp>
 
 namespace go
 {
@@ -40,7 +39,7 @@ protected:
     typedef typename std::map<slot_key_type, function_type> connections_type;
 
 public:
-    virtual ~signal() = default;
+    virtual ~signal() GO_DEFAULT_DESTRUCTOR
 
     signal()
         : _slot_next_key(0)
@@ -51,9 +50,9 @@ public:
 
 public:
     template<typename F1>
-    slot_key_type connect(F1 f)
+    slot_key_type connect(F1&& f)
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         const slot_key_type slot_key = ++_slot_next_key;
         _connections[slot_key] = f;
         return slot_key;
@@ -61,38 +60,42 @@ public:
 
     void disconnect(const slot_key_type slot_key)
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         _connections.erase(slot_key);
     }
 
     void disconnect_all_slots()
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         _connections.clear();
     }
 
     bool empty() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
         return _connections.empty();
     }
 
     template<typename... A>
-    void operator()(A&&... a) const
+    void operator()(A... a) const
     {
-        std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_signal_guard);
+        if(_connections.empty())
+        {
+            return;
+        }
         for(auto& connection : _connections)
         {
             function_type f = connection.second;
-            auto s = std::bind(std::forward<function_type>(f), std::forward<A>(a)...);
+            auto s = std::bind(std::forward<function_type>(f), a...);
             s();
         }
     }
 
     template<typename... A>
-    void call(A&&... a) const
+    void call(A... a) const
     {
-        operator()(std::forward<A>(a)...);
+        operator()(a...);
     }
 
 protected:

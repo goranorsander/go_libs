@@ -14,12 +14,12 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
 
-#include <go/mvvm/command.hpp>
+#include <go/mvvm/command_interface.hpp>
 
 namespace go
 {
@@ -41,11 +41,20 @@ public:
     virtual ~basic_command_execution_observer_interface() = 0;
 
 protected:
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    basic_command_execution_observer_interface();
+
+#else
+
     basic_command_execution_observer_interface() = default;
 
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 public:
-    virtual void on_command_executed(const std::shared_ptr<basic_command<S>>& /*c*/) = 0;
-    virtual void on_command_not_executed(const std::shared_ptr<basic_command<S>>& /*c*/) = 0;
+    virtual void on_command_executed(const std::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
+    virtual void on_command_not_executed(const std::shared_ptr<basic_command_interface<S>>& /*c*/) = 0;
 };
 
 template<>
@@ -62,6 +71,25 @@ template<class S>
 inline basic_command_execution_observer_interface<S>::~basic_command_execution_observer_interface()
 {
 }
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+template<>
+inline basic_command_execution_observer_interface<std::string>::basic_command_execution_observer_interface()
+{
+}
+
+template<>
+inline basic_command_execution_observer_interface<std::wstring>::basic_command_execution_observer_interface()
+{
+}
+
+template<class S>
+inline basic_command_execution_observer_interface<S>::basic_command_execution_observer_interface()
+{
+}
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 } // namespace mvvm
 } // namespace go

@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
-#define GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_BOOST_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED
+#define GO_BOOST_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED
 
 //
 //  property_base.hpp
@@ -10,6 +10,8 @@
 //  Distributed under the GO Software License, Version 1.0.
 //  See accompanying file LICENSE_1_0.txt.
 //
+
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -55,6 +57,11 @@ public:
         set(v);
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 #include <go_boost/property/detail/assignment_operator.hpp>
 
     value_type get() const
@@ -67,7 +74,7 @@ public:
         _s.set(v);
     }
 
-    string_type const& name() const
+    const string_type& name() const
     {
         return _n;
     }
@@ -97,4 +104,4 @@ inline property_base<V, P, S>::~property_base()
 } // namespace property
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_PROPERTY_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_PROPERTY_DETAIL_PROPERTY_BASE_HPP_INCLUDED

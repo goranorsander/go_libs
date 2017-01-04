@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/signals/slot_arguments.hpp>
@@ -33,20 +33,10 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~data_context_changed_arguments() = default;
-
-private:
-    data_context_changed_arguments(const this_type&) = delete;
-    data_context_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
+    virtual ~data_context_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    data_context_changed_arguments()
-        : go::signals::slot_arguments()
-    {
-    }
+    data_context_changed_arguments() = default;
 
 public:
     static std::shared_ptr<data_context_changed_arguments> create();
@@ -57,7 +47,7 @@ inline std::shared_ptr<data_context_changed_arguments> data_context_changed_argu
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler()
             : this_type()
         {

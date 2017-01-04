@@ -9,7 +9,7 @@
 //
 
 #include <gtest/gtest.h>
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #include <go_boost/mvvm.hpp>
 
@@ -56,7 +56,7 @@ public:
 
     void disconnect(observable_map_ptr_type& c)
     {
-        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) and (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
+        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,2,0))
         c->container_changed.disconnect(boost::bind(&map_observer<K, T>::on_container_changed, this, _1, _2));
         c->property_changed.disconnect(boost::bind(&map_observer<K, T>::on_property_changed, this, _1, _2));
         #else
@@ -176,7 +176,7 @@ TEST(boost_observable_map_test_suite, test_insert_single_element)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const observable_map_type::value_type& i, *m)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -225,7 +225,7 @@ TEST(boost_observable_map_test_suite, test_insert_single_element_with_hint)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const observable_map_type::value_type& i, *m)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m)
     {
         ++count;
         EXPECT_EQ(count, i.first);
@@ -574,7 +574,7 @@ TEST(boost_observable_map_test_suite, test_swap)
 
     typedef m::observable_map<int, int> observable_map_type;
     int count = 0;
-    BOOST_FOREACH(const observable_map_type::value_type& i, *m1)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m1)
     {
         ++count;
         EXPECT_EQ(count*10, i.first);
@@ -583,7 +583,7 @@ TEST(boost_observable_map_test_suite, test_swap)
     EXPECT_EQ(7, count);
 
     count = 0;
-    BOOST_FOREACH(const observable_map_type::value_type& i, *m2)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME observable_map_type::value_type& i, *m2)
     {
         ++count;
         EXPECT_EQ(count, i.first);

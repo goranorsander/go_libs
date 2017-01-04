@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go_boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
@@ -23,6 +25,11 @@ namespace mvvm
 {
 
 template<class S>
+class basic_observable_object;
+typedef basic_observable_object<std::string> observable_object;
+typedef basic_observable_object<std::wstring> wobservable_object;
+
+template<class S>
 class basic_observable_object
     : public basic_notify_property_changed_interface<S>
     , public object
@@ -32,9 +39,7 @@ public:
     typedef basic_observable_object<string_type> this_type;
 
 public:
-    virtual ~basic_observable_object()
-    {
-    }
+    virtual ~basic_observable_object() = 0;
 
 protected:
     basic_observable_object()
@@ -53,41 +58,10 @@ protected:
     }
 };
 
-class observable_object
-    : public basic_observable_object<std::string>
+template<class S>
+inline basic_observable_object<S>::~basic_observable_object()
 {
-public:
-    typedef observable_object this_type;
-
-public:
-    virtual ~observable_object()
-    {
-    }
-
-protected:
-    observable_object()
-        : basic_observable_object<string_type>()
-    {
-    }
-};
-
-class wobservable_object
-    : public basic_observable_object<std::wstring>
-{
-public:
-    typedef wobservable_object this_type;
-
-public:
-    virtual ~wobservable_object()
-    {
-    }
-
-protected:
-    wobservable_object()
-        : basic_observable_object<string_type>()
-    {
-    }
-};
+}
 
 } // namespace mvvm
 } // namespace go_boost

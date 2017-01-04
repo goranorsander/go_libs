@@ -12,18 +12,20 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_command_manager_lambda_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
+#include <go/utility.hpp>
 
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace ph = std::placeholders;
 namespace rop = go::property::read_only;
 namespace s = go::signals;
+namespace u = go::utility;
 
 namespace
 {
@@ -31,19 +33,17 @@ namespace
 // Test command_manager
 class spaceship
     : public m::observable_object
+    , public u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
     {
     }
 
-private:
-    spaceship(const spaceship&) = delete;
-    spaceship(spaceship&&) = delete;
-
 public:
     spaceship(const m::command_manager::ptr& cmd_mgr)
         : m::observable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -61,6 +61,7 @@ public:
 
     spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
         : m::observable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -75,10 +76,6 @@ public:
     {
         bind_properties();
     }
-
-private:
-    spaceship& operator=(const spaceship&) = delete;
-    spaceship& operator=(spaceship&&) = delete;
 
 private:
     void bind_properties()
@@ -104,8 +101,8 @@ private:
 public:
     p::property<std::string> name;
     p::property<std::string> captain;
-    rop::property<m::command::ptr> impulse_speed_command;
-    rop::property<m::command::ptr> warp_speed_command;
+    rop::property<m::command_interface::ptr> impulse_speed_command;
+    rop::property<m::command_interface::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }
@@ -117,8 +114,8 @@ private:
     bool _at_warp_speed;
     std::string _name;
     std::string _captain;
-    m::command::ptr _impulse_speed_command;
-    m::command::ptr _warp_speed_command;
+    m::command_interface::ptr _impulse_speed_command;
+    m::command_interface::ptr _warp_speed_command;
 };
 
 class spaceship_observer
@@ -218,8 +215,8 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command to USS Enterprise
-    cmd_mgr->add_command(ship1->warp_speed_command);
+    // Give warp speed command_interface to USS Enterprise
+    cmd_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -235,9 +232,9 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->add_command(ship2->warp_speed_command);
-    cmd_mgr->add_command(ship4->warp_speed_command);
+    // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
+    cmd_mgr->post(ship2->warp_speed_command);
+    cmd_mgr->post(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -253,8 +250,8 @@ TEST(std_command_manager_lambda_test_suite, test_command_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give impulse speed command to USS Enterprise
-    cmd_mgr->add_command(ship1->impulse_speed_command);
+    // Give impulse speed command_interface to USS Enterprise
+    cmd_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());
@@ -291,7 +288,7 @@ TEST(std_command_manager_lambda_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
 
-    // Give Mr Spock command of USS Enterprise
+    // Give Mr Spock command_interface of USS Enterprise
     ship1->captain = "Mr Spock";
 
     EXPECT_EQ(true, ship1->captain() == std::string("Mr Spock"));
@@ -306,7 +303,7 @@ TEST(std_command_manager_lambda_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
 
-    // Return command of USS Enterprise to Captain Kirk
+    // Return command_interface of USS Enterprise to Captain Kirk
     ship1->captain = "Captain James T Kirk";
 
     EXPECT_EQ(true, ship1->captain() == std::string("Captain James T Kirk"));

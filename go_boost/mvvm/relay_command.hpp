@@ -11,13 +11,15 @@
 //  See accompanying file LICENSE_1_0.txt.
 //
 
+#include <go_boost/config.hpp>
+
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif
 
 #include <boost/make_shared.hpp>
 
-#include <go_boost/mvvm/command.hpp>
+#include <go_boost/mvvm/command_interface.hpp>
 
 namespace go_boost
 {
@@ -30,7 +32,7 @@ typedef basic_relay_command<std::wstring> relay_wcommand;
 
 template<class S>
 class basic_relay_command
-    : public basic_command<S>
+    : public basic_command_interface<S>
 {
 public:
     typedef S string_type;
@@ -76,7 +78,7 @@ inline basic_relay_command<S>::~basic_relay_command()
 
 template<>
 inline basic_relay_command<std::string>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params)
-    : basic_command<std::string>(cmd_name, params)
+    : basic_command_interface<std::string>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
@@ -84,7 +86,7 @@ inline basic_relay_command<std::string>::basic_relay_command(const std::string& 
 
 template<>
 inline basic_relay_command<std::wstring>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params)
-    : basic_command<std::wstring>(cmd_name, params)
+    : basic_command_interface<std::wstring>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
@@ -92,7 +94,7 @@ inline basic_relay_command<std::wstring>::basic_relay_command(const std::wstring
 
 template<class S>
 inline basic_relay_command<S>::basic_relay_command(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params)
-    : basic_command<S>(cmd_name, params)
+    : basic_command_interface<S>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {

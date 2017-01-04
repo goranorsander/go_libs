@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <memory>
@@ -35,9 +35,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~reference() = default;
+    virtual ~reference() GO_DEFAULT_DESTRUCTOR
 #else
-    virtual ~reference() {}
+    virtual ~reference() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference()
@@ -60,31 +60,31 @@ public:
 
     value_type get() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return *_v;
     }
 
     void set(const value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         bind_ref(const_cast<value_type&>(v));
     }
 
     void bind_ref(value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = std::addressof(v);
     }
 
     bool empty() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _v == NULL;
     }
 
     void clear()
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = NULL;
     }
 

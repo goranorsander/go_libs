@@ -19,6 +19,7 @@ namespace ph = std::placeholders;
 product_view_model::product_view_model()
     : m::wobservable_object()
     , m::data_context_interface<product_model::ptr>(product_model::create())
+    , u::noncopyable_nonmovable()
     , _product_id(0)
     , _get_product_command()
     , _save_product_command()
@@ -75,7 +76,7 @@ void product_view_model::set_product_id(const product_model::product_id_type& v)
 
 product_model::product_id_type product_view_model::get_current_product_id() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->product_id;
     }
@@ -84,7 +85,7 @@ product_model::product_id_type product_view_model::get_current_product_id() cons
 
 void product_view_model::set_current_product_id(const product_model::product_id_type& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->product_id = v;
     }
@@ -92,7 +93,7 @@ void product_view_model::set_current_product_id(const product_model::product_id_
 
 std::wstring product_view_model::get_current_product_name() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->product_name;
     }
@@ -101,7 +102,7 @@ std::wstring product_view_model::get_current_product_name() const
 
 void product_view_model::set_current_product_name(const std::wstring& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->product_name = v;
     }
@@ -109,7 +110,7 @@ void product_view_model::set_current_product_name(const std::wstring& v)
 
 double product_view_model::get_current_unit_price() const
 {
-    if(data_context.get())
+    if(*data_context)
     {
         return data_context.get()->unit_price;
     }
@@ -118,13 +119,13 @@ double product_view_model::get_current_unit_price() const
 
 void product_view_model::set_current_unit_price(const double& v)
 {
-    if(data_context.get())
+    if(*data_context)
     {
         data_context.get()->unit_price = v;
     }
 }
 
-m::wcommand::ptr product_view_model::get_get_product_command()
+m::wcommand_interface::ptr product_view_model::get_get_product_command()
 {
     if(!_get_product_command)
     {
@@ -155,7 +156,7 @@ bool product_view_model::can_get_product(const m::command_parameters::ptr& /*par
     return true;
 }
 
-m::wcommand::ptr product_view_model::get_save_product_command()
+m::wcommand_interface::ptr product_view_model::get_save_product_command()
 {
     if(!_save_product_command)
     {

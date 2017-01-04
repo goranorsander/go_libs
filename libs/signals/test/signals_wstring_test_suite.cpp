@@ -12,22 +12,25 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_signals_wstring_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/property.hpp>
 #include <go/signals.hpp>
+#include <go/utility.hpp>
 
 namespace p = go::property;
 namespace ph = std::placeholders;
 namespace s = go::signals;
+namespace u = go::utility;
 
 namespace
 {
 
 // Test signals
 class fleet_commander
+    : public u::noncopyable_nonmovable
 {
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
@@ -41,20 +44,14 @@ public:
     }
 
 private:
-    fleet_commander(const fleet_commander&) = delete;
-    fleet_commander(fleet_commander&&) = delete;
-
     fleet_commander(const std::wstring& cmd, const std::wstring& btl)
-        : commander(L"commander", cmd)
+        : u::noncopyable_nonmovable()
+        , commander(L"commander", cmd)
         , battle(L"battle", btl)
         , fire_lasers()
         , fire_proton_torpedoes()
     {
     }
-
-private:
-    fleet_commander& operator=(const fleet_commander&) = delete;
-    fleet_commander& operator=(fleet_commander&&) = delete;
 
 public:
     static ptr create(const std::wstring& cmd, const std::wstring& btl)
@@ -62,7 +59,7 @@ public:
         struct make_shared_enabler
             : public fleet_commander
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() {}
             make_shared_enabler(const std::wstring& cmd, const std::wstring& btl)
                 : fleet_commander(cmd, btl)
             {
@@ -81,6 +78,7 @@ public:
 };
 
 class spaceship
+    : public u::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
@@ -93,13 +91,10 @@ public:
         }
     }
 
-private:
-    spaceship(const spaceship&) = delete;
-    spaceship(spaceship&&) = delete;
-
 public:
     spaceship(const fleet_commander::ptr& flt_cmd, const std::wstring& nme, const std::wstring& cpt, const int trpds)
-        : name(L"name", nme)
+        : u::noncopyable_nonmovable()
+        , name(L"name", nme)
         , captain(L"captain", cpt)
         , lasers_firing(L"lasers_firing", false)
         , proton_torpedoes(L"proton_torpedoes", trpds)
@@ -110,10 +105,6 @@ public:
         _fire_lasers_slot_key = flt_cmd->fire_lasers.connect(std::bind(&p::value_wproperty<bool>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = flt_cmd->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
-
-private:
-    spaceship& operator=(const spaceship&) = delete;
-    spaceship& operator=(spaceship&&) = delete;
 
 public:
     bool fire_proton_torpedo()

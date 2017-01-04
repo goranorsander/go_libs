@@ -1,4 +1,4 @@
-//Microsoft Visual C++ generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -16,48 +16,12 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
-#ifdef APSTUDIO_INVOKED
-
 /////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
+// English (United States) resources
 
-1 TEXTINCLUDE
-BEGIN
-    "resource.h\0"
-END
-
-2 TEXTINCLUDE
-BEGIN
-    "#ifndef APSTUDIO_INVOKED\r\n"
-    "#include ""targetver.h""\r\n"
-    "#endif\r\n"
-    "#include ""afxres.h""\r\n"
-    "#include ""verrsrc.h""\r\n"
-    "\0"
-END
-
-3 TEXTINCLUDE
-BEGIN
-    "#define _AFX_NO_OLE_RESOURCES\r\n"
-    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
-    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
-    "\r\n"
-    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
-    "LANGUAGE 9, 1\r\n"
-    "#include ""res\\mvvm_mfc_example_3.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
-    "#include ""afxres.rc""      // Standard components\r\n"
-    "#if !defined(_AFXDLL)\r\n"
-    "#include ""afxprint.rc""        // printing/print preview resources\r\n"
-    "#include ""afxribbon.rc""        // MFC ribbon and control bar resources\r\n"
-    "#endif\r\n"
-    "#endif\r\n"
-    "\0"
-END
-
-#endif    // APSTUDIO_INVOKED
-
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -66,20 +30,22 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\mvvm_mfc_example_3.ico"
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-LANGUAGE 9, 1
-IDR_MAINFRAME           ICON         "res\\mvvm_mfc_example_3.ico"
-IDR_mvvm_mfc_example_3TYPE         ICON         "res\\mvvm_mfc_example_3Doc.ico"
-#endif
-IDI_FILE_VIEW           ICON         "res\\file_view.ico"
-IDI_FILE_VIEW_HC        ICON         "res\\file_view_hc.ico"
-IDI_CLASS_VIEW          ICON         "res\\class_view.ico"
-IDI_CLASS_VIEW_HC       ICON         "res\\class_view_hc.ico"
-IDI_OUTPUT_WND          ICON         "res\\output_wnd.ico"
-IDI_OUTPUT_WND_HC       ICON         "res\\output_wnd_hc.ico"
-IDI_PROPERTIES_WND      ICON         "res\\properties_wnd.ico"
-IDI_PROPERTIES_WND_HC   ICON         "res\\properties_wnd_hc.ico"
+IDR_MVVM_MFC_EXAMPLE_3TYPE ICON                    "res\\mvvm_mfc_example_3Doc.ico"
+
+IDI_FLEET_ORGANIZATION  ICON                    "res\\file_view.ico"
+
+IDI_FLEET_ORGANIZATION_HC ICON                    "res\\file_view_hc.ico"
+
+IDI_OUTPUT_WND          ICON                    "res\\output_wnd.ico"
+
+IDI_OUTPUT_WND_HC       ICON                    "res\\output_wnd_hc.ico"
+
+IDI_PROPERTIES_WND      ICON                    "res\\properties_wnd.ico"
+
+IDI_PROPERTIES_WND_HC   ICON                    "res\\properties_wnd_hc.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -87,19 +53,29 @@ IDI_PROPERTIES_WND_HC   ICON         "res\\properties_wnd_hc.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDR_MAINFRAME_256       BITMAP                  "res\\Toolbar256.bmp"
+
 IDR_SORT                BITMAP                  "res\\sort.bmp"
+
 IDB_SORT_24             BITMAP                  "res\\sort_hc.bmp"
-IDB_FILE_VIEW           BITMAP                  "res\\fileview.bmp"
-IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
-IDB_CLASS_VIEW          BITMAP                  "res\\classview.bmp"
-IDB_CLASS_VIEW_24       BITMAP                  "res\\classview_hc.bmp"
+
+IDB_FLEET_ORGANIZATION  BITMAP                  "res\\fileview.bmp"
+
+IDB_FLEET_ORGANIZATION_24 BITMAP                  "res\\fileview_hc.bmp"
+
 IDR_EXPLORER            BITMAP                  "res\\explorer.bmp"
+
 IDB_EXPLORER_24         BITMAP                  "res\\explorer_hc.bmp"
+
 IDR_MENU_IMAGES         BITMAP                  "res\\menuimages.bmp"
+
 IDB_MENU_IMAGES_24      BITMAP                  "res\\menuimages_hc.bmp"
+
 IDR_PROPERTIES          BITMAP                  "res\\properties.bmp"
+
 IDB_PROPERTIES_HC       BITMAP                  "res\\properties_hc.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -134,7 +110,6 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
-
 IDR_SORT TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_SORT_MENU
@@ -166,8 +141,7 @@ BEGIN
     BUTTON      ID_PROPERTIES1
     BUTTON      ID_PROPERTIES2
 END
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-LANGUAGE 9, 1
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -178,11 +152,11 @@ IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW, INACTIVE
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN, INACTIVE
         MENUITEM "&Close",                      ID_FILE_CLOSE
         MENUITEM SEPARATOR
-        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1,GRAYED
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
         MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_APP_EXIT
     END
@@ -190,27 +164,27 @@ BEGIN
     BEGIN
         POPUP "&Toolbars and Docking Windows"
         BEGIN
-            MENUITEM "<placeholder>",           ID_VIEW_TOOLBAR
+            MENUITEM "<placeholder>",               ID_VIEW_TOOLBAR
         END
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
+        MENUITEM "&About mvvm_mfc_example_3...", ID_APP_ABOUT
     END
 END
 
-IDR_mvvm_mfc_example_3TYPE MENU
+IDR_MVVM_MFC_EXAMPLE_3TYPE MENU
 BEGIN
     POPUP "&File"
     BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW, INACTIVE
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN, INACTIVE
         MENUITEM "&Close",                      ID_FILE_CLOSE
-        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
-        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE, INACTIVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS, INACTIVE
         MENUITEM SEPARATOR
-        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1,GRAYED
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
         MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_APP_EXIT
     END
@@ -226,7 +200,7 @@ BEGIN
     BEGIN
         POPUP "&Toolbars and Docking Windows"
         BEGIN
-            MENUITEM "<placeholder>",           ID_VIEW_TOOLBAR
+            MENUITEM "<placeholder>",               ID_VIEW_TOOLBAR
         END
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
     END
@@ -236,20 +210,17 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
+        MENUITEM "&About mvvm_mfc_example_3...", ID_APP_ABOUT
     END
 END
 
-
-
-
 IDR_POPUP_EDIT MENU
 BEGIN
-	POPUP "Edit"
-	BEGIN
-		MENUITEM "Cu&t\tCtrl+X",            ID_EDIT_CUT
-		MENUITEM "&Copy\tCtrl+C",           ID_EDIT_COPY
-		MENUITEM "&Paste\tCtrl+V",          ID_EDIT_PASTE
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
     END
 END
 
@@ -268,8 +239,8 @@ IDR_POPUP_EXPLORER MENU
 BEGIN
     POPUP "Explorer"
     BEGIN
-        MENUITEM "&Open",                       ID_OPEN
-        MENUITEM "Open &With....",              ID_OPEN_WITH
+        MENUITEM "&Open",                       ID_OPEN, INACTIVE
+        MENUITEM "Open &With....",              ID_OPEN_WITH, INACTIVE
         MENUITEM SEPARATOR
         MENUITEM "&Compile",                    ID_DUMMY_COMPILE
         MENUITEM SEPARATOR
@@ -292,10 +263,11 @@ BEGIN
     END
 END
 
-IDR_HELP_MENU MENU 
+IDR_HELP_MENU MENU
 BEGIN
-    MENUITEM "&About mvvm_mfc_example_3...",          ID_APP_ABOUT
+    MENUITEM "&About mvvm_mfc_example_3...", ID_APP_ABOUT
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -304,22 +276,20 @@ END
 
 IDR_MAINFRAME ACCELERATORS
 BEGIN
-    "N",            ID_FILE_NEW,            VIRTKEY,CONTROL
-    "O",            ID_FILE_OPEN,           VIRTKEY,CONTROL
-    "S",            ID_FILE_SAVE,           VIRTKEY,CONTROL
-	"Z",            ID_EDIT_UNDO,           VIRTKEY,CONTROL
-	"X",            ID_EDIT_CUT,            VIRTKEY,CONTROL
-	"C",            ID_EDIT_COPY,           VIRTKEY,CONTROL
-	"V",            ID_EDIT_PASTE,          VIRTKEY,CONTROL
-    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY,ALT
-    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY,SHIFT
-    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY,CONTROL
-    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY,SHIFT
-    VK_F6,          ID_NEXT_PANE,           VIRTKEY
-    VK_F6,          ID_PREV_PANE,           VIRTKEY,SHIFT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
 END
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -330,7 +300,7 @@ END
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About mvvm_mfc_example_3"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
     LTEXT           "mvvm_mfc_example_3, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
@@ -338,13 +308,16 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
 
-IDD_MVVM_EXAMPLE_3_FORM    DIALOGEX  0, 0, 320, 200
-STYLE DS_SHELLFONT | WS_CHILD
-FONT 8, "MS Shell Dlg"
+IDD_SPACESHIP_VIEW DIALOGEX 0, 0, 625, 314
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT    "TODO: Place form controls on this dialog.",IDC_STATIC,24,42,280,8
+    LTEXT           "<spaceship name>",IDC_STATIC_SPACESHIP_NAME,7,7,611,23,SS_SUNKEN
+    LTEXT           "Spaceship class",IDC_STATIC,7,36,64,14
+    EDITTEXT        IDC_EDIT_CAPTAIN,77,56,200,14,ES_AUTOHSCROLL
+    LTEXT           "<spaceship class>",IDC_STATIC_SPACESHIP_CLASS,77,36,200,14,SS_SUNKEN
+    LTEXT           "Captain",IDC_STATIC,7,56,64,14
 END
-
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -352,18 +325,18 @@ END
 // Version
 //
 
-VS_VERSION_INFO     VERSIONINFO
-  FILEVERSION       1,0,0,1
-  PRODUCTVERSION    1,0,0,1
- FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
- FILEFLAGS VS_FF_DEBUG
+ FILEFLAGS 0x1L
 #else
  FILEFLAGS 0x0L
 #endif
- FILEOS VOS_NT_WINDOWS32
- FILETYPE VFT_APP
- FILESUBTYPE VFT2_UNKNOWN
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
@@ -371,19 +344,20 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "TODO: <Company name>"
             VALUE "FileDescription", "mvvm_mfc_example_3"
-            VALUE "FileVersion",     "1.0.0.1"
-            VALUE "InternalName",    "mvvm_mfc_example_3.exe"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "mvvm_mfc_example_3.exe"
             VALUE "LegalCopyright", "Copyright (c) Göran Orsander.  All rights reserved."
-            VALUE "OriginalFilename","mvvm_mfc_example_3.exe"
+            VALUE "OriginalFilename", "mvvm_mfc_example_3.exe"
             VALUE "ProductName", "GO.libraries"
-            VALUE "ProductVersion",  "1.0.0.1"
+            VALUE "ProductVersion", "1.0.0.1"
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x0409, 1200
+        VALUE "Translation", 0x409, 1200
     END
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -400,15 +374,38 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 55
     END
-    IDD_MVVM_EXAMPLE_3_FORM, DIALOG
+
+    IDD_SPACESHIP_VIEW, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 618
+        VERTGUIDE, 71
+        VERTGUIDE, 77
+        VERTGUIDE, 277
+        VERTGUIDE, 283
         TOPMARGIN, 7
-        BOTTOMMARGIN, 193
+        BOTTOMMARGIN, 307
+        HORZGUIDE, 30
+        HORZGUIDE, 36
+        HORZGUIDE, 50
+        HORZGUIDE, 56
+        HORZGUIDE, 70
+        HORZGUIDE, 76
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_SPACESHIP_VIEW AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -417,15 +414,23 @@ END
 
 STRINGTABLE
 BEGIN
-// Non-mac-targeting apps remove the two extra substrings
-    IDR_MAINFRAME           "mvvm_mfc_example_3"
-    IDR_mvvm_mfc_example_3TYPE         "\nmvvm_mfc_example_3\nmvvm_mfc_example_3\n\n\nmvvmexample3.Document\nmvvm_mfc_example_3.Document"
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
 END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "mvvm_mfc_example_3"
+    IDR_MVVM_MFC_EXAMPLE_3TYPE 
+                            "\nmvvm_mfc_example_3\nmvvm_mfc_example_3\n\n\nmvvmexample3.Document\nmvvm_mfc_example_3.Document"
+    ID_WINDOW_MANAGER       "&Windows..."
+END
+
 STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "mvvm_mfc_example_3"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
+
 STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
@@ -435,6 +440,7 @@ BEGIN
     ID_INDICATOR_OVR        "OVR"
     ID_INDICATOR_REC        "REC"
 END
+
 STRINGTABLE
 BEGIN
     ID_FILE_NEW             "Create a new document\nNew"
@@ -442,8 +448,16 @@ BEGIN
     ID_FILE_CLOSE           "Close the active document\nClose"
     ID_FILE_SAVE            "Save the active document\nSave"
     ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE
+BEGIN
     ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
     ID_FILE_MRU_FILE1       "Open this document"
     ID_FILE_MRU_FILE2       "Open this document"
     ID_FILE_MRU_FILE3       "Open this document"
@@ -460,14 +474,26 @@ BEGIN
     ID_FILE_MRU_FILE14      "Open this document"
     ID_FILE_MRU_FILE15      "Open this document"
     ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
     ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
     ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
     ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
     ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
     ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
     ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
@@ -479,6 +505,10 @@ BEGIN
     ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
     ID_EDIT_UNDO            "Undo the last action\nUndo"
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle Status Bar"
 END
 
@@ -491,11 +521,14 @@ BEGIN
     AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
     AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
     AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
     AFX_IDS_SCRESTORE       "Restore the window to normal size"
     AFX_IDS_SCTASKLIST      "Activate Task List"
     AFX_IDS_MDICHILD        "Activate this window"
 END
-
 
 STRINGTABLE
 BEGIN
@@ -503,36 +536,105 @@ BEGIN
     IDS_STATUS_PANE2        "Pane 2"
     IDS_TOOLBAR_STANDARD    "Standard"
     IDS_TOOLBAR_CUSTOMIZE   "Customize..."
-    ID_WINDOW_MANAGER       "&Windows..."
-    IDS_FILE_VIEW           "File View"
-    IDS_CLASS_VIEW          "Class View"
-    IDS_EXPLORER            "Explorer"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_FLEET_ORGANIZATION  "Fleet Organization"
     IDS_OUTPUT_WND          "Output"
+    IDS_PROPERTIES_WND      "Properties"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EXPLORER            "Explorer"
+    IDS_EDIT_MENU           "Edit"
+END
+
+STRINGTABLE
+BEGIN
     IDS_ALL_MVVM_EVENTS_TAB "All MVVM Events"
     IDS_COMMAND_EVENTS_TAB  "Command Events"
     IDS_OBSERVABLE_OBJECT_EVENTS_TAB "Observable Object Events"
-    IDS_PROPERTIES_WND      "Properties"
-    IDS_EDIT_MENU           "Edit"
+    IDS_EVENT_EVENTS_TAB  "Event Events"
+    END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Swedish (Sweden) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
+LANGUAGE LANG_SWEDISH, SUBLANG_SWEDISH
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
 END
-#endif
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#include ""res\\mvvm_mfc_example_3.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""      // Standard components\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""afxprint.rc""        // printing/print preview resources\r\n"
+    "#include ""afxribbon.rc""        // MFC ribbon and control bar resources\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Swedish (Sweden) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
 
 #ifndef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-
 #define _AFX_NO_OLE_RESOURCES
 #define _AFX_NO_TRACKER_RESOURCES
 #define _AFX_NO_PROPERTY_RESOURCES
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE 9, 1
-#include "res\\mvvm_mfc_example_3.rc2"  // non-Microsoft Visual C++ edited resources
+#include "res\mvvm_mfc_example_3.rc2"  // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"      // Standard components
 #if !defined(_AFXDLL)
 #include "afxprint.rc"        // printing/print preview resources
 #include "afxribbon.rc"        // MFC ribbon and control bar resources
 #endif
 #endif
+
+/////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
+

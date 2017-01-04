@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_1\boost_mvvm_mfc_example_1.h">
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_1\boost_mvvm_mfc_example_1.hpp">
       <Filter>MFC Application Code\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_1\stdafx.h">

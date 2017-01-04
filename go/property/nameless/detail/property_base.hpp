@@ -1,5 +1,5 @@
-#ifndef GO_PROPERTY_NAMELESS_PROPERTY_BASE_HPP_INCLUDED
-#define GO_PROPERTY_NAMELESS_PROPERTY_BASE_HPP_INCLUDED
+#ifndef GO_PROPERTY_NAMELESS_DETAIL_PROPERTY_BASE_HPP_INCLUDED
+#define GO_PROPERTY_NAMELESS_DETAIL_PROPERTY_BASE_HPP_INCLUDED
 
 //
 //  property_base.hpp
@@ -53,6 +53,11 @@ public:
         set(v);
     }
 
+    value_type operator*() const
+    {
+        return get();
+    }
+
 #include <go/property/detail/assignment_operator.hpp>
 
     value_type get() const
@@ -90,4 +95,4 @@ inline property_base<V, P>::~property_base()
 } // namespace property
 } // namespace go
 
-#endif  // #ifndef GO_PROPERTY_NAMELESS_PROPERTY_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_PROPERTY_NAMELESS_DETAIL_PROPERTY_BASE_HPP_INCLUDED

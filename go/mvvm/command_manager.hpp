@@ -14,12 +14,14 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <list>
 #include <mutex>
-#include <vector>
-#include <go/mvvm/command.hpp>
+#include <go/exception.hpp>
+#include <go/mvvm/notify_command_execution_interface.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -32,6 +34,8 @@ typedef basic_command_manager<std::wstring> wcommand_manager;
 
 template<class S>
 class basic_command_manager
+    : public basic_notify_command_execution_interface<S>
+    , public go::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -43,27 +47,29 @@ public:
     virtual ~basic_command_manager();
 
 protected:
+
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    basic_command_manager();
+
+#else
+
     basic_command_manager() = default;
 
-private:
-    basic_command_manager(const basic_command_manager<S>&) = delete;
-    basic_command_manager(basic_command_manager<S>&&) = delete;
-
-    basic_command_manager<S>& operator=(const basic_command_manager<S>&) = delete;
-    basic_command_manager<S>& operator=(basic_command_manager<S>&&) = delete;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 public:
     static std::shared_ptr<basic_command_manager<S>> create();
 
-    void add_command(const std::shared_ptr<basic_command<S>>& cmd);
-
+    void execute(const std::shared_ptr<basic_command_interface<S>>& cmd) const;
+    void post(const std::shared_ptr<basic_command_interface<S>>& cmd, const bool keep_cmd_alive = false);
     void execute_commands();
 
     size_t commands() const;
 
 private:
     mutable std::recursive_mutex _commands_guard;
-    std::vector<std::weak_ptr<basic_command<S>>> _commands;
+    std::list<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> _commands;
 };
 
 template<>
@@ -84,14 +90,45 @@ inline basic_command_manager<S>::~basic_command_manager()
     _commands.clear();
 }
 
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+template<>
+inline basic_command_manager<std::string>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::string>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+template<>
+inline basic_command_manager<std::wstring>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::wstring>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+template<class S>
+inline basic_command_manager<S>::basic_command_manager()
+    : basic_notify_command_execution_interface<S>()
+    , go::utility::noncopyable_nonmovable()
+	, _commands_guard()
+	, _commands()
+{
+}
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 template<>
 inline std::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
 {
     struct make_shared_enabler
         : public basic_command_manager<std::string>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();
@@ -103,8 +140,8 @@ inline std::shared_ptr<basic_command_manager<std::wstring>> basic_command_manage
     struct make_shared_enabler
         : public basic_command_manager<std::wstring>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();
@@ -116,127 +153,164 @@ inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::creat
     struct make_shared_enabler
         : public basic_command_manager<S>
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() : this_type() {}
     };
 
     return std::make_shared<make_shared_enabler>();
 }
 
 template<>
-inline void basic_command_manager<std::string>::add_command(const std::shared_ptr<basic_command<std::string>>& cmd)
+inline void basic_command_manager<std::string>::execute(const std::shared_ptr<basic_command_interface<std::string>>& cmd) const
 {
     if(cmd)
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
-        _commands.push_back(std::weak_ptr<basic_command<std::string>>(cmd));
+        const auto params = cmd->parameters();
+        if(cmd->can_execute(params))
+        {
+            cmd->execute(params);
+            command_executed.call(cmd);
+        }
+        else
+        {
+            command_not_executed.call(cmd);
+        }
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring>::add_command(const std::shared_ptr<basic_command<std::wstring>>& cmd)
+inline void basic_command_manager<std::wstring>::execute(const std::shared_ptr<basic_command_interface<std::wstring>>& cmd) const
 {
     if(cmd)
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
-        _commands.push_back(std::weak_ptr<basic_command<std::wstring>>(cmd));
+        const auto params = cmd->parameters();
+        if(cmd->can_execute(params))
+        {
+            cmd->execute(params);
+            command_executed.call(cmd);
+        }
+        else
+        {
+            command_not_executed.call(cmd);
+        }
     }
 }
 
 template<class S>
-inline void basic_command_manager<S>::add_command(const std::shared_ptr<basic_command<S>>& cmd)
+inline void basic_command_manager<S>::execute(const std::shared_ptr<basic_command_interface<S>>& cmd) const
+{
+#if defined(GO_COMP_GCC) && (GO_GCC_VERSION < 60000)
+    throw go::exception::exception("Unsupported string class used by basic_command_manager<S>::execute(...)");
+#else
+    if(cmd)
+    {
+        const auto params = cmd->parameters();
+        if(cmd->can_execute(params))
+        {
+            cmd->execute(params);
+            command_executed.call(cmd);
+        }
+        else
+        {
+            command_not_executed.call(cmd);
+        }
+    }
+#endif  // #if defined(GO_COMP_GCC) && defined(GO_GCC_VERSION < 60000)
+}
+
+template<>
+inline void basic_command_manager<std::string>::post(const std::shared_ptr<basic_command_interface<std::string>>& cmd, const bool keep_cmd_alive)
 {
     if(cmd)
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
-        _commands.push_back(std::weak_ptr<basic_command<S>>(cmd));
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string>>, std::shared_ptr<basic_command_interface<std::string>>>(std::weak_ptr<basic_command_interface<std::string>>(cmd), keep_cmd_alive ? cmd : nullptr));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring>::post(const std::shared_ptr<basic_command_interface<std::wstring>>& cmd, const bool keep_cmd_alive)
+{
+    if(cmd)
+    {
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring>>, std::shared_ptr<basic_command_interface<std::wstring>>>(std::weak_ptr<basic_command_interface<std::wstring>>(cmd), keep_cmd_alive ? cmd : nullptr));
+    }
+}
+
+template<class S>
+inline void basic_command_manager<S>::post(const std::shared_ptr<basic_command_interface<S>>& cmd, const bool keep_cmd_alive)
+{
+    if(cmd)
+    {
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>(std::weak_ptr<basic_command_interface<S>>(cmd), keep_cmd_alive ? cmd : nullptr));
     }
 }
 
 template<>
 inline void basic_command_manager<std::string>::execute_commands()
 {
-    std::vector<std::weak_ptr<basic_command<std::string>>> cmds;
+    std::list<std::pair<std::weak_ptr<basic_command_interface<std::string>>, std::shared_ptr<basic_command_interface<std::string>>>> cmds;
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    for(std::weak_ptr<basic_command<std::string>> wcmd : cmds)
+    for(const auto& wcmd : cmds)
     {
-        const std::shared_ptr<basic_command<std::string>> cmd = wcmd.lock();
-        if(cmd)
-        {
-            const std::shared_ptr<command_parameters> params = cmd->parameters();
-            if(cmd->can_execute(params))
-            {
-                cmd->execute(params);
-            }
-        }
+        const auto cmd = wcmd.first.lock();
+        execute(cmd);
     }
 }
 
 template<>
 inline void basic_command_manager<std::wstring>::execute_commands()
 {
-    std::vector<std::weak_ptr<basic_command<std::wstring>>> cmds;
+    std::list<std::pair<std::weak_ptr<basic_command_interface<std::wstring>>, std::shared_ptr<basic_command_interface<std::wstring>>>> cmds;
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    for(std::weak_ptr<basic_command<std::wstring>> wcmd : cmds)
+    for(const auto& wcmd : cmds)
     {
-        const std::shared_ptr<basic_command<std::wstring>> cmd = wcmd.lock();
-        if(cmd)
-        {
-            const std::shared_ptr<command_parameters> params = cmd->parameters();
-            if(cmd->can_execute(params))
-            {
-                cmd->execute(params);
-            }
-        }
+        const auto cmd = wcmd.first.lock();
+        execute(cmd);
     }
 }
 
 template<class S>
 inline void basic_command_manager<S>::execute_commands()
 {
-    std::vector<std::weak_ptr<basic_command<S>>> cmds;
+    std::list<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> cmds;
     {
-        std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);
     }
-    for(std::weak_ptr<basic_command<S>> wcmd : cmds)
+    for(const auto& wcmd : cmds)
     {
-        const std::shared_ptr<basic_command<S>> cmd = wcmd.lock();
-        if(cmd)
-        {
-            const std::shared_ptr<command_parameters> params = cmd->parameters();
-            if(cmd->can_execute(params))
-            {
-                cmd->execute(params);
-            }
-        }
+        const auto cmd = wcmd.first.lock();
+        execute(cmd);
     }
 }
 
 template<>
 inline size_t basic_command_manager<std::string>::commands() const
 {
-    std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+    const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
     return _commands.size();
 }
 
 template<>
 inline size_t basic_command_manager<std::wstring>::commands() const
 {
-    std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+    const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
     return _commands.size();
 }
 
 template<class S>
 inline size_t basic_command_manager<S>::commands() const
 {
-    std::lock_guard<std::recursive_mutex> lock(_commands_guard);
+    const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
     return _commands.size();
 }
 

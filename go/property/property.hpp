@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
@@ -39,9 +39,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~basic_property() = default;
+    virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~basic_property() {}
+	virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_property(const string_type& property_name)
@@ -79,9 +79,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~property() = default;
+    virtual ~property() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~property() {}
+	virtual ~property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit property(const string_type& property_name)
@@ -109,9 +109,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~wproperty() = default;
+    virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~wproperty() {}
+	virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit wproperty(const string_type& property_name)

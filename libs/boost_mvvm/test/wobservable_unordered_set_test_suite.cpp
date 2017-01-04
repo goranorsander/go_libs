@@ -9,7 +9,7 @@
 //
 
 #include <gtest/gtest.h>
-#include <boost/config.hpp>
+#include <go_boost/config.hpp>
 
 #include <go_boost/mvvm.hpp>
 
@@ -377,7 +377,7 @@ TEST(boost_wobservable_unordered_set_test_suite, test_erase_value)
     typedef m::wobservable_unordered_set<int> wobservable_unordered_set_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_set_type::value_type& i, *s)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME wobservable_unordered_set_type::value_type& i, *s)
     {
         sum += i;
         ++count;
@@ -581,7 +581,7 @@ TEST(boost_wobservable_unordered_set_test_suite, test_emplace)
     typedef m::wobservable_unordered_set<int> wobservable_unordered_set_type;
     int count = 0;
     int sum = 0;
-    BOOST_FOREACH(const wobservable_unordered_set_type::value_type& i, *s)
+    BOOST_FOREACH(const GO_BOOST_TYPENAME wobservable_unordered_set_type::value_type& i, *s)
     {
         sum += i;
         ++count;

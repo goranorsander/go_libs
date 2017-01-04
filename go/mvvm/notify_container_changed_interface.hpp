@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/container_changed_arguments.hpp>
@@ -33,8 +33,7 @@ class notify_container_changed_interface
 public:
     typedef notify_container_changed_interface this_type;
     typedef container_changed_arguments container_changed_arguments_type;
-    typedef std::shared_ptr<container_changed_arguments_type> container_changed_arguments_type_ptr;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<object>&, const container_changed_arguments_type_ptr&)>> container_changed_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)>> container_changed_signal;
 
 public:
     virtual ~notify_container_changed_interface() = 0;

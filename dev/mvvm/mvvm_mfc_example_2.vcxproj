@@ -193,7 +193,7 @@
     <Text Include="..\..\libs\mvvm\mvvm_mfc_example_2\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.h" />
+    <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\mvvm_mfc_example_2.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_model.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_repository.hpp" />
     <ClInclude Include="..\..\libs\mvvm\mvvm_mfc_example_2\product_repository_interface.hpp" />

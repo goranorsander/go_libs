@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <mutex>
@@ -34,9 +34,9 @@ public:
 
 public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    virtual ~value() = default;
+    virtual ~value() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~value() {}
+	virtual ~value() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
@@ -59,13 +59,13 @@ public:
 
     value_type get() const
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return _v;
     }
 
     void set(const value_type& v)
     {
-        std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = v;
     }
 

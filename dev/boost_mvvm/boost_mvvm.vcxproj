@@ -20,17 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\mvvm.hpp" />
-    <ClInclude Include="..\..\go_boost\mvvm\command.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\command_execution_observer_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\command_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\command_manager.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\command_parameters.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\container_changed_arguments.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\data_context_changed_arguments.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\data_context_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\data_context_will_change_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\event.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\event_firing_observer_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\event_manager.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\notify_command_execution_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_container_changed_action.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_data_context_changed_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\notify_event_firing_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_property_changed_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\notify_view_model_changed_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\object.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\object_observer_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\observable_array.hpp" />
@@ -59,9 +66,12 @@
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_get_relay_command_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_set_value_notify_changed_functor.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\utility\phoenix_property_value_access_functor.hpp" />
-    <ClInclude Include="..\..\go_boost\signals.hpp" />
-    <ClInclude Include="..\..\go_boost\signals\slot.hpp" />
-    <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_changed_arguments.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_interface.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\view_model_will_change_arguments.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
@@ -135,6 +145,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +160,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -165,6 +177,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -183,6 +196,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

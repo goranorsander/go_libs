@@ -14,7 +14,7 @@
 #include <go/config.hpp>
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#pragma message("Required C++11 feature is not supported by this compiler")
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/mvvm/notify_container_changed_action.hpp>
@@ -34,14 +34,7 @@ public:
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~container_changed_arguments() = default;
-
-private:
-    container_changed_arguments(const this_type&) = delete;
-    container_changed_arguments(this_type&&) = delete;
-
-    this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = delete;
+    virtual ~container_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
@@ -59,7 +52,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() = default;
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
                 : this_type(action, added_elements, removed_elements, new_size)
             {

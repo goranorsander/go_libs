@@ -9,7 +9,7 @@
 //
 
 #include "stdafx.h"
-#include "boost_mvvm_mfc_example_1.h"
+#include "boost_mvvm_mfc_example_1.hpp"
 #include "product_view.hpp"
 
 #include <memory>

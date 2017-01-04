@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go_boost">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\utility">
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\utility\iterator">
+      <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go_boost\utility.hpp">
+      <Filter>go_boost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\sanity.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\iterator\forward_iterator.hpp">
+      <Filter>go_boost\utility\iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
+</Project>

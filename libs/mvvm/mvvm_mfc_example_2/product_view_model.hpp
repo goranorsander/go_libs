@@ -26,6 +26,7 @@ namespace rop = go::property::read_only;
 class product_view_model
     : public m::wobservable_object
     , public m::data_context_interface<product_model::ptr>
+    , public u::noncopyable_nonmovable
 {
 public:
     typedef product_view_model this_type;
@@ -37,15 +38,9 @@ public:
 
 private:
     product_view_model();
-    product_view_model(const product_view_model&) = delete;
-    product_view_model(product_view_model&&) = delete;
 
 public:
     static ptr create();
-
-private:
-    product_view_model& operator=(const product_view_model&) = delete;
-    product_view_model& operator=(product_view_model&&) = delete;
 
 private:
     void bind_properties();
@@ -56,13 +51,13 @@ public:
     p::wproperty<std::wstring> current_product_name;
     p::wproperty<double> current_unit_price;
 
-    rop::wproperty<m::wcommand::ptr> get_product_command;
-    rop::wproperty<m::wcommand::ptr> save_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> get_product_command;
+    rop::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
     product_model::product_id_type _product_id;
-    m::wcommand::ptr _get_product_command;
-    m::wcommand::ptr _save_product_command;
+    m::wcommand_interface::ptr _get_product_command;
+    m::wcommand_interface::ptr _save_product_command;
 
     product_repository_interface::ptr _products;
 };

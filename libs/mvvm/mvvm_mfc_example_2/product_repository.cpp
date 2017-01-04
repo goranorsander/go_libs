@@ -30,7 +30,7 @@ product_model::ptr product_repository::get(const product_model::product_id_type&
     {
         return it->second;
     }
-    return product_model::ptr();
+    return nullptr;
 }
 
 bool product_repository::insert(const product_model::ptr& product)
