@@ -199,7 +199,7 @@ inline void basic_command_manager<std::wstring>::execute(const std::shared_ptr<b
 template<class S>
 inline void basic_command_manager<S>::execute(const std::shared_ptr<basic_command_interface<S>>& cmd) const
 {
-#if defined(GO_COMP_GCC) && (GO_GCC_VERSION < 60000)
+#if defined(GO_COMP_GCC)
     throw go::exception::exception("Unsupported string class used by basic_command_manager<S>::execute(...)");
 #else
     if(cmd)
