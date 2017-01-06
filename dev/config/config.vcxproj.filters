@@ -26,5 +26,8 @@
     <ClInclude Include="..\..\go\config\compiler\visualc.hpp">
       <Filter>go\config\compiler</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\config\compiler\clang.hpp">
+      <Filter>go\config\compiler</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

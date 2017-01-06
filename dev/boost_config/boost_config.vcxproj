@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\config.hpp" />
+    <ClInclude Include="..\..\go_boost\config\compiler\clang.hpp" />
     <ClInclude Include="..\..\go_boost\config\compiler\gcc.hpp" />
     <ClInclude Include="..\..\go_boost\config\compiler\visualc.hpp" />
     <ClInclude Include="..\..\go_boost\config\select_compiler_config.hpp" />

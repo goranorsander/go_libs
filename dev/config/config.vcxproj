@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\config.hpp" />
+    <ClInclude Include="..\..\go\config\compiler\clang.hpp" />
     <ClInclude Include="..\..\go\config\compiler\gcc.hpp" />
     <ClInclude Include="..\..\go\config\compiler\visualc.hpp" />
     <ClInclude Include="..\..\go\config\select_compiler_config.hpp" />
