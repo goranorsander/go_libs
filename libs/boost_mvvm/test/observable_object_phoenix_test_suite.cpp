@@ -1,7 +1,7 @@
 //
 //  observable_object_phoenix_test_suite.cpp
 //
-//  Copyright 2015-2016 Göran Orsander
+//  Copyright 2015-2017 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 1.0.

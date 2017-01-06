@@ -4,7 +4,7 @@
 //
 //  main_frame_view_menu_bar.hpp
 //
-//  Copyright 2016 Göran Orsander
+//  Copyright 2016-2017 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 1.0.
