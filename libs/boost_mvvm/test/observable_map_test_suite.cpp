@@ -45,7 +45,7 @@ public:
 
     void connect(observable_map_ptr_type& c)
     {
-        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) and (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
+        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
         c->container_changed.connect(boost::bind(&map_observer<K, T>::on_container_changed, this, _1, _2));
         c->property_changed.connect(boost::bind(&map_observer<K, T>::on_property_changed, this, _1, _2));
         #else
