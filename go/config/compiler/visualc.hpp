@@ -58,6 +58,7 @@ __pragma(message(_message_))
 // C++11 support
 #if (_MSC_VER)
 #define GO_NO_CXX11_CONSTEXPR 1
+#define GO_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
 #endif
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX11_ALIGNAS 1
@@ -97,6 +98,7 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_AUTO 1
 #define GO_NO_CXX11_DECLTYPE 1
 #define GO_NO_CXX11_LAMBDA_EXPRESSIONS 1
+#define GO_NO_CXX11_LONG_LONG 1
 #define GO_NO_CXX11_TRAILING_FUNCTION_RETURN_TYPES 1
 #define GO_NO_CXX11_NULLPTR 1
 #define GO_NO_CXX11_R_VALUE_REFERENCES 1

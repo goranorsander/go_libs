@@ -12,27 +12,49 @@ if(BUILD_STD_TESTS)
     file(GLOB STD_TEST_SIGNALS_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_SIGNALS_NAME} ${STD_TEST_SIGNALS_SRC_FILES})
 
-    if((NOT WIN32) OR (WIN32 AND (MSYS OR MINGW)))
+    if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
         target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
             libgtest.a
             libgtest_main.a
             )
-    else((NOT WIN32) OR (WIN32 AND (MSYS OR MINGW)))
-        if(MSVC AND (MSVC_VERSION LESS 1800))
+    elseif(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                find_package(Threads)
+                target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
+                    libgtest.a
+                    libgtest_main.a
+                    )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        else(WIN32)
+            find_package(Threads)
+            target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
+                libgtest.a
+                libgtest_main.a
+                )
+        endif(WIN32)
+    elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME} gtest)
             target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME} gtest_main)
-        else(MSVC AND (MSVC_VERSION LESS 1800))
+        else(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
                 debug Debug/gtest
-                optimized /Release/gtest
+                optimized Release/gtest
                 )
             target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME}
                 debug Debug/gtest_main
                 optimized Release/gtest_main
                 )
-        endif(MSVC AND (MSVC_VERSION LESS 1800))
-    endif((NOT WIN32) OR (WIN32 AND (MSYS OR MINGW)))
+        endif(MSVC_VERSION LESS 1800)
+    else(CMAKE_COMPILER_IS_CLANG)
+        # Unsupported compiler
+        message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
+    endif(CMAKE_COMPILER_IS_CLANG)
 
     target_link_libraries(${PROJECT_STD_TEST_SIGNALS_NAME} ${CMAKE_THREAD_LIBS_INIT})
 

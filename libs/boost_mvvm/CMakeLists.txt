@@ -258,37 +258,52 @@ if(BUILD_BOOST_TESTS)
     file(GLOB BOOST_TEST_MVVM_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_BOOST_TEST_MVVM_NAME} ${BOOST_TEST_MVVM_SRC_FILES})
 
-    if(NOT WIN32)
+    if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
             ${LIBBOOST_SYSTEM}
             )
-    else(NOT WIN32)
-        if(MSYS OR MINGW)
+    elseif(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                find_package(Threads)
+                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
+                    libgtest.a
+                    libgtest_main.a
+                    ${LIBBOOST_SYSTEM}
+                    )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        else(WIN32)
             find_package(Threads)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                 libgtest.a
                 libgtest_main.a
                 ${LIBBOOST_SYSTEM}
                 )
-        else(MSYS OR MINGW)
-            if(MSVC AND (MSVC_VERSION LESS 1800))
-                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
-                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)
-            else(MSVC AND (MSVC_VERSION LESS 1800))
-                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                    debug Debug/gtest
-                    optimized Release/gtest
-                    )
-                target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                    debug Debug/gtest_main
-                    optimized Release/gtest_main
-                    )
-            endif(MSVC AND (MSVC_VERSION LESS 1800))
-        endif(MSYS OR MINGW)
-    endif(NOT WIN32)
+        endif(WIN32)
+    elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION LESS 1800)
+            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
+            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)
+        else(MSVC_VERSION LESS 1800)
+            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
+                debug Debug/gtest
+                optimized Release/gtest
+                )
+            target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
+                debug Debug/gtest_main
+                optimized Release/gtest_main
+                )
+        endif(MSVC_VERSION LESS 1800)
+    else(CMAKE_COMPILER_IS_CLANG)
+        # Unsupported compiler
+        message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
+    endif(CMAKE_COMPILER_IS_CLANG)
 
     target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} ${CMAKE_THREAD_LIBS_INIT})
 

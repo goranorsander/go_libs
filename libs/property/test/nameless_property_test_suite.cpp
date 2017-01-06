@@ -17,6 +17,7 @@ TEST(std_nameless_property_test_suite, cpp11_not_supported) {}
 #else
 
 #include <functional>
+#include <string>
 
 #include <go/property.hpp>
 
@@ -55,6 +56,7 @@ public:
         crew_complement = v.crew_complement;
         max_speed = v.max_speed;
         name = v.name;
+        return *this;
     }
 };
 
@@ -481,6 +483,7 @@ public:
         phaser_arrays = v.phaser_arrays;
         _armament = v._armament;
         update_bindings();
+        return *this;
     }
 
 private:

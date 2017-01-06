@@ -17,7 +17,9 @@
 #pragma once
 #endif
 
-#if defined(BOOST_GCC)
+#if defined(BOOST_CLANG)
+#define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/clang.hpp"
+#elif defined(BOOST_GCC)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/gcc.hpp"
 #elif defined(BOOST_MSVC)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/visualc.hpp"

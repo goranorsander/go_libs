@@ -84,6 +84,51 @@ inline basic_relay_command<S>::basic_relay_command(const S& cmd_name, const exec
 }
 
 template<>
+inline bool basic_relay_command<std::string>::can_execute(const std::shared_ptr<command_parameters>& params)
+{
+    return _can_execute ? _can_execute(params) : true;
+}
+
+template<>
+inline bool basic_relay_command<std::wstring>::can_execute(const std::shared_ptr<command_parameters>& params)
+{
+    return _can_execute ? _can_execute(params) : true;
+}
+
+template<class S>
+inline bool basic_relay_command<S>::can_execute(const std::shared_ptr<command_parameters>& params)
+{
+    return _can_execute ? _can_execute(params) : true;
+}
+
+template<>
+inline void basic_relay_command<std::string>::execute(const std::shared_ptr<command_parameters>& params)
+{
+    if(_execute)
+    {
+        _execute(params);
+    }
+}
+
+template<>
+inline void basic_relay_command<std::wstring>::execute(const std::shared_ptr<command_parameters>& params)
+{
+    if(_execute)
+    {
+        _execute(params);
+    }
+}
+
+template<class S>
+inline void basic_relay_command<S>::execute(const std::shared_ptr<command_parameters>& params)
+{
+    if(_execute)
+    {
+        _execute(params);
+    }
+}
+
+template<>
 inline std::shared_ptr<basic_relay_command<std::string>> basic_relay_command<std::string>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
 {
     struct make_shared_enabler
@@ -129,51 +174,6 @@ inline std::shared_ptr<basic_relay_command<S>> basic_relay_command<S>::create(co
     };
 
     return std::make_shared<make_shared_enabler, const S&, const execute_command_signature&, const can_execute_command_signature&, const std::shared_ptr<command_parameters>&>(cmd_name, execute_command, can_execute_command, params);
-}
-
-template<>
-inline bool basic_relay_command<std::string>::can_execute(const std::shared_ptr<command_parameters>& params)
-{
-    return _can_execute ? _can_execute(params) : true;
-}
-
-template<>
-inline bool basic_relay_command<std::wstring>::can_execute(const std::shared_ptr<command_parameters>& params)
-{
-    return _can_execute ? _can_execute(params) : true;
-}
-
-template<class S>
-inline bool basic_relay_command<S>::can_execute(const std::shared_ptr<command_parameters>& params)
-{
-    return _can_execute ? _can_execute(params) : true;
-}
-
-template<>
-inline void basic_relay_command<std::string>::execute(const std::shared_ptr<command_parameters>& params)
-{
-    if(_execute)
-    {
-        _execute(params);
-    }
-}
-
-template<>
-inline void basic_relay_command<std::wstring>::execute(const std::shared_ptr<command_parameters>& params)
-{
-    if(_execute)
-    {
-        _execute(params);
-    }
-}
-
-template<class S>
-inline void basic_relay_command<S>::execute(const std::shared_ptr<command_parameters>& params)
-{
-    if(_execute)
-    {
-        _execute(params);
-    }
 }
 
 } // namespace mvvm

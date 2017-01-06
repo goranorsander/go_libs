@@ -55,6 +55,7 @@ public:
         crew_complement = v.crew_complement;
         max_speed = v.max_speed;
         name = v.name;
+        return *this;
     }
 };
 
@@ -481,6 +482,7 @@ public:
         phaser_arrays = v.phaser_arrays;
         _armament = v._armament;
         update_bindings();
+        return *this;
     }
 
 private:

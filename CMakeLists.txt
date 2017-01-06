@@ -26,16 +26,23 @@ endif(USE_SOLUTION_FOLDERS)
 #  compiler flags                                      #
 ########################################################
 
+set( CMAKE_COMPILER_IS_CLANG FALSE )
+set( CMAKE_COMPILER_IS_INTEL FALSE )
+set( CMAKE_COMPILER_IS_MSVC FALSE )
+
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     # using Clang
+    set( CMAKE_COMPILER_IS_CLANG TRUE )
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # using gcc/g++
-    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -fpermissive  -ftemplate-backtrace-limit=0" )
-	
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -fpermissive -ftemplate-backtrace-limit=0" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
+    set( CMAKE_COMPILER_IS_INTEL TRUE )
 elseif(MSVC)
     # using Visual Studio C++
+    set( CMAKE_COMPILER_IS_MSVC TRUE )
     if(MSVC_VERSION EQUAL 1700)
         # using Visual Studio 2012 C++
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"_VARIADIC_MAX=10\"" )
@@ -46,25 +53,34 @@ endif()
 #  compiler version                                    #
 ########################################################
 
-if(CMAKE_COMPILER_IS_GNUCC)
+if(CMAKE_COMPILER_IS_CLANG)
+    execute_process(COMMAND ${CMAKE_CXX_COMPILER} --version OUTPUT_VARIABLE CLANG_VERSION_OUTPUT)
+    string(REGEX REPLACE ".*clang version ([0-9]+\\.[0-9]+).*" "\\1" CLANG_VERSION ${CLANG_VERSION_OUTPUT})
+    string(REGEX MATCHALL "[0-9]+" CLANG_VERSION_COMPONENTS ${CLANG_VERSION})
+    list(GET CLANG_VERSION_COMPONENTS 0 CLANG_MAJOR)
+    list(GET CLANG_VERSION_COMPONENTS 1 CLANG_MINOR)
+elseif(CMAKE_COMPILER_IS_GNUCC)
     execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     string(REGEX MATCHALL "[0-9]+" GCC_VERSION_COMPONENTS ${GCC_VERSION})
     list(GET GCC_VERSION_COMPONENTS 0 GCC_MAJOR)
     list(GET GCC_VERSION_COMPONENTS 1 GCC_MINOR)
-endif(CMAKE_COMPILER_IS_GNUCC)
+endif(CMAKE_COMPILER_IS_CLANG)
 
 ########################################################
 #  external dependencies                               #
 ########################################################
 
-if(CMAKE_COMPILER_IS_GNUCC)
-	set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
+if(CMAKE_COMPILER_IS_CLANG)
+    set(BOOST_CLANG_VERSION "${CLANG_MAJOR}${CLANG_MINOR}")
+    set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+elseif(CMAKE_COMPILER_IS_GNUCC)
+    set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
     if(MSYS OR MINGW)
-	    set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-	else(MSYS OR MINGW)
-	    set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-	endif(MSYS OR MINGW)
-endif(CMAKE_COMPILER_IS_GNUCC)
+        set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+    else(MSYS OR MINGW)
+        set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+    endif(MSYS OR MINGW)
+endif(CMAKE_COMPILER_IS_CLANG)
 
 if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
@@ -161,6 +177,7 @@ set(GO_CONFIG_COMPILER_DIR ${GO_CONFIG_DIR}/compiler)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP
+    ${GO_CONFIG_COMPILER_DIR}/clang.hpp
     ${GO_CONFIG_COMPILER_DIR}/gcc.hpp
     ${GO_CONFIG_COMPILER_DIR}/visualc.hpp
 )
@@ -490,6 +507,7 @@ set(GO_CONFIG_CONFIG_COMPILER_DIR ${GO_CONFIG_DIR}/compiler)
 # *.hpp
 
 set(GO_CONFIG_LIBS_SRC_GO_CONFIG_COMPILER_HPP
+    ${GO_CONFIG_CONFIG_COMPILER_DIR}/clang.hpp
     ${GO_CONFIG_CONFIG_COMPILER_DIR}/gcc.hpp
     ${GO_CONFIG_CONFIG_COMPILER_DIR}/visualc.hpp
 )

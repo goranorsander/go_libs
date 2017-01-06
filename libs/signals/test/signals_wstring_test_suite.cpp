@@ -16,6 +16,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_signals_wstring_test_suite, cpp11_not_supported) {}
 #else
 
+#include <string>
 #include <go/property.hpp>
 #include <go/signals.hpp>
 #include <go/utility.hpp>
