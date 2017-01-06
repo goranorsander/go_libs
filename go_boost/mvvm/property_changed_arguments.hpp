@@ -92,6 +92,24 @@ inline basic_property_changed_arguments<S>::basic_property_changed_arguments(con
 }
 
 template<>
+inline std::string basic_property_changed_arguments<std::string>::property_name() const
+{
+    return _property_name;
+}
+
+template<>
+inline std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
+{
+    return _property_name;
+}
+
+template<class S>
+inline S basic_property_changed_arguments<S>::property_name() const
+{
+    return _property_name;
+}
+
+template<>
 inline boost::shared_ptr<basic_property_changed_arguments<std::string>> basic_property_changed_arguments<std::string>::create(const std::string& property_name)
 {
 #if BOOST_MSVC > 1500
@@ -149,24 +167,6 @@ inline boost::shared_ptr<basic_property_changed_arguments<S>> basic_property_cha
 #else
     return boost::shared_ptr<this_type>(new this_type(property_name));
 #endif // BOOST_MSVC > 1500
-}
-
-template<>
-inline std::string basic_property_changed_arguments<std::string>::property_name() const
-{
-    return _property_name;
-}
-
-template<>
-inline std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
-{
-    return _property_name;
-}
-
-template<class S>
-inline S basic_property_changed_arguments<S>::property_name() const
-{
-    return _property_name;
 }
 
 } // namespace mvvm

@@ -80,6 +80,12 @@ inline basic_event<S>::basic_event(const S& event_type_)
 }
 
 template<class S>
+inline S basic_event<S>::get_event_type() const
+{
+    return _event_type;
+}
+
+template<class S>
 inline boost::shared_ptr<basic_event<S>> basic_event<S>::create(const S& event_type_)
 {
 #if BOOST_MSVC > 1500
@@ -94,12 +100,6 @@ inline boost::shared_ptr<basic_event<S>> basic_event<S>::create(const S& event_t
 #else
     return boost::shared_ptr<this_type>(new this_type(event_type_));
 #endif // BOOST_MSVC > 1500
-}
-
-template<class S>
-inline S basic_event<S>::get_event_type() const
-{
-    return _event_type;
 }
 
 } // namespace mvvm

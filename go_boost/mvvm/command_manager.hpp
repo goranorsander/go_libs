@@ -112,57 +112,6 @@ inline basic_command_manager<S>::basic_command_manager()
 }
 
 template<>
-inline boost::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
-{
-#if BOOST_MSVC > 1500
-    struct make_shared_enabler
-        : public basic_command_manager<std::string>
-    {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<std::string>() {}
-    };
-
-    return boost::make_shared<make_shared_enabler>();
-#else
-    return boost::shared_ptr<this_type>(new this_type());
-#endif // BOOST_MSVC > 1500
-}
-
-template<>
-inline boost::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
-{
-#if BOOST_MSVC > 1500
-    struct make_shared_enabler
-        : public basic_command_manager<std::wstring>
-    {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<std::wstring>() {}
-    };
-
-    return boost::make_shared<make_shared_enabler>();
-#else
-    return boost::shared_ptr<this_type>(new this_type());
-#endif // BOOST_MSVC > 1500
-}
-
-template<class S>
-inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
-{
-#if BOOST_MSVC > 1500
-    struct make_shared_enabler
-        : public basic_command_manager<S>
-    {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<S>() {}
-    };
-
-    return boost::make_shared<make_shared_enabler>();
-#else
-    return boost::shared_ptr<this_type>(new this_type());
-#endif // BOOST_MSVC > 1500
-}
-
-template<>
 inline void basic_command_manager<std::string>::execute(const boost::shared_ptr<basic_command_interface<std::string>>& cmd) const
 {
     if(cmd)
@@ -313,6 +262,57 @@ inline size_t basic_command_manager<S>::commands() const
 {
     const boost::recursive_mutex::scoped_lock lock(_commands_guard);
     return _commands.size();
+}
+
+template<>
+inline boost::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<std::string>
+    {
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<std::string>() {}
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<>
+inline boost::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<std::wstring>
+    {
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<std::wstring>() {}
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<class S>
+inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public basic_command_manager<S>
+    {
+        virtual ~make_shared_enabler() {}
+        make_shared_enabler() : basic_command_manager<S>() {}
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
 }
 
 } // namespace mvvm

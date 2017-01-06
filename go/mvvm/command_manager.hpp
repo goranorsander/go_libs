@@ -122,45 +122,6 @@ inline basic_command_manager<S>::basic_command_manager()
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 template<>
-inline std::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
-{
-    struct make_shared_enabler
-        : public basic_command_manager<std::string>
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
-    };
-
-    return std::make_shared<make_shared_enabler>();
-}
-
-template<>
-inline std::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
-{
-    struct make_shared_enabler
-        : public basic_command_manager<std::wstring>
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
-    };
-
-    return std::make_shared<make_shared_enabler>();
-}
-
-template<class S>
-inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
-{
-    struct make_shared_enabler
-        : public basic_command_manager<S>
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
-    };
-
-    return std::make_shared<make_shared_enabler>();
-}
-
-template<>
 inline void basic_command_manager<std::string>::execute(const std::shared_ptr<basic_command_interface<std::string>>& cmd) const
 {
     if(cmd)
@@ -312,6 +273,45 @@ inline size_t basic_command_manager<S>::commands() const
 {
     const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
     return _commands.size();
+}
+
+template<>
+inline std::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
+{
+    struct make_shared_enabler
+        : public basic_command_manager<std::string>
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
+    };
+
+    return std::make_shared<make_shared_enabler>();
+}
+
+template<>
+inline std::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
+{
+    struct make_shared_enabler
+        : public basic_command_manager<std::wstring>
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
+    };
+
+    return std::make_shared<make_shared_enabler>();
+}
+
+template<class S>
+inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
+{
+    struct make_shared_enabler
+        : public basic_command_manager<S>
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() : this_type() {}
+    };
+
+    return std::make_shared<make_shared_enabler>();
 }
 
 } // namespace mvvm

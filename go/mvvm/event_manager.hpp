@@ -87,22 +87,6 @@ inline basic_event_manager<S>::basic_event_manager()
 {
 }
 
-template<class S>
-inline std::shared_ptr<basic_event_manager<S>> basic_event_manager<S>::create()
-{
-    struct make_shared_enabler
-        : public this_type
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler()
-            : this_type()
-        {
-        }
-    };
-
-    return std::make_shared<make_shared_enabler>();
-}
-
 template<>
 inline event_subscription_key_type basic_event_manager<std::string>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
 {
@@ -357,6 +341,22 @@ inline void basic_event_manager<S>::fire_events()
     {
         fire(e.first.lock());
     }
+}
+
+template<class S>
+inline std::shared_ptr<basic_event_manager<S>> basic_event_manager<S>::create()
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler()
+            : this_type()
+        {
+        }
+    };
+
+    return std::make_shared<make_shared_enabler>();
 }
 
 } // namespace mvvm

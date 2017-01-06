@@ -58,54 +58,6 @@ private:
 };
 
 template<>
-inline std::shared_ptr<basic_property_changed_arguments<std::string>> basic_property_changed_arguments<std::string>::create(const std::string& property_name)
-{
-    struct make_shared_enabler
-        : public this_type
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler(const std::string& property_name)
-            : this_type(property_name)
-        {
-        }
-    };
-
-    return std::make_shared<make_shared_enabler, const std::string&>(property_name);
-}
-
-template<>
-inline std::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_property_changed_arguments<std::wstring>::create(const std::wstring& property_name)
-{
-    struct make_shared_enabler
-        : public this_type
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler(const std::wstring& property_name)
-            : this_type(property_name)
-        {
-        }
-    };
-
-    return std::make_shared<make_shared_enabler, const std::wstring&>(property_name);
-}
-
-template<class S>
-inline std::shared_ptr<basic_property_changed_arguments<S>> basic_property_changed_arguments<S>::create(const S& property_name)
-{
-    struct make_shared_enabler
-        : public this_type
-    {
-        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler(const S& property_name)
-            : this_type(property_name)
-        {
-        }
-    };
-
-    return std::make_shared<make_shared_enabler, const S&>(property_name);
-}
-
-template<>
 inline std::string basic_property_changed_arguments<std::string>::property_name() const
 {
     return _property_name;
@@ -121,6 +73,54 @@ template<class S>
 inline S basic_property_changed_arguments<S>::property_name() const
 {
     return _property_name;
+}
+
+template<>
+inline std::shared_ptr<basic_property_changed_arguments<std::string>> basic_property_changed_arguments<std::string>::create(const std::string& property_name)
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const std::string& property_name)
+            : this_type(property_name)
+        {
+        }
+    };
+
+    return std::make_shared<make_shared_enabler, const std::string&>(property_name);
+}
+
+template<>
+inline std::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_property_changed_arguments<std::wstring>::create(const std::wstring& property_name)
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const std::wstring& property_name)
+            : this_type(property_name)
+        {
+        }
+    };
+
+    return std::make_shared<make_shared_enabler, const std::wstring&>(property_name);
+}
+
+template<class S>
+inline std::shared_ptr<basic_property_changed_arguments<S>> basic_property_changed_arguments<S>::create(const S& property_name)
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const S& property_name)
+            : this_type(property_name)
+        {
+        }
+    };
+
+    return std::make_shared<make_shared_enabler, const S&>(property_name);
 }
 
 } // namespace mvvm
