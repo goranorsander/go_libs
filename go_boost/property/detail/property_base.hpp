@@ -36,8 +36,8 @@ public:
 
 protected:
     explicit property_base(const storage_policy& s, const string_type& n)
-        : _s(s)
-        , _n(n)
+        : _n(n)
+        , _s(s)
     {
     }
 

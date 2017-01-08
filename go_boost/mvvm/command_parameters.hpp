@@ -54,10 +54,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler()
-                : this_type()
-            {
-            }
+            make_shared_enabler() : this_type() {}
         };
 
         return boost::make_shared<make_shared_enabler>();

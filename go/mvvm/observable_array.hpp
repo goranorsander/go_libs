@@ -53,7 +53,7 @@ public:
     virtual ~basic_observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    basic_observable_array()
+    explicit basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -181,7 +181,7 @@ public:
     virtual ~observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    observable_array()
+    explicit observable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -226,7 +226,7 @@ public:
     virtual ~wobservable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    wobservable_array()
+    explicit wobservable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }

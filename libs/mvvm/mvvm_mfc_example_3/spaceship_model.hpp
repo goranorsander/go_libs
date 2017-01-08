@@ -29,10 +29,10 @@ public:
     virtual ~spaceship_model();
 
 protected:
-    spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
+    explicit spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 private:
-    spaceship_model() = delete;
+    explicit spaceship_model() = delete;
 
 public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);

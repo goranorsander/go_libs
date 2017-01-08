@@ -74,7 +74,7 @@ public:
     {
     }
 
-    property(const string_type& property_name)
+    explicit property(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
@@ -101,7 +101,7 @@ public:
     {
     }
 
-    wproperty(const string_type& property_name)
+    explicit wproperty(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }

@@ -45,7 +45,7 @@ public:
     virtual ~fleet_commander_changed_event() {}
 
 protected:
-    fleet_commander_changed_event(const std::wstring& flt_cmd)
+    explicit fleet_commander_changed_event(const std::wstring& flt_cmd)
         : m::wevent(fleet_commander_changed_event_type)
         , fleet_commander(L"fleet_commander", flt_cmd)
     {
@@ -61,10 +61,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(const std::wstring& flt_cmd)
-                : this_type(flt_cmd)
-            {
-            }
+            explicit make_shared_enabler(const std::wstring& flt_cmd) : this_type(flt_cmd) {}
         };
 
         return std::make_shared<make_shared_enabler, const std::wstring&>(flt_cmd);
@@ -82,7 +79,7 @@ public:
     virtual ~fleet_commander() {}
 
 private:
-    fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    explicit fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
         : u::noncopyable_nonmovable()
         , commander(L"commander")
         , battle(L"battle", btl)
@@ -99,10 +96,7 @@ public:
             : public fleet_commander
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
-                : fleet_commander(event_mgr, cmd, btl)
-            {
-            }
+            explicit make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : fleet_commander(event_mgr, cmd, btl) {}
         };
 
         return std::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_mgr, cmd, btl);
@@ -139,7 +133,7 @@ public:
     virtual ~spaceship() {}
 
 public:
-    spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
+    explicit spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
         : u::noncopyable_nonmovable()
         , fleet_commander(L"fleet_commander")
         , name(L"name", nme)

@@ -23,7 +23,7 @@ close_spaceship_event::ptr close_spaceship_event::create(const spaceship_view_mo
         : public this_type
     {
         virtual ~make_shared_enabler() = default;
-        make_shared_enabler(const spaceship_view_model::ptr& vm) : this_type(vm) {}
+        explicit make_shared_enabler(const spaceship_view_model::ptr& vm) : this_type(vm) {}
     };
 
     return std::make_shared<make_shared_enabler, const spaceship_view_model::ptr&>(vm);

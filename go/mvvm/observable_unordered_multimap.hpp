@@ -56,32 +56,32 @@ public:
     virtual ~basic_observable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    basic_observable_unordered_multimap()
+    explicit basic_observable_unordered_multimap()
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
-    basic_observable_unordered_multimap(InputIterator first, InputIterator last)
+    explicit basic_observable_unordered_multimap(InputIterator first, InputIterator last)
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container(first, last)
     {
     }
 
-    basic_observable_unordered_multimap(const this_type& x)
+    explicit basic_observable_unordered_multimap(const this_type& x)
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
-    basic_observable_unordered_multimap(this_type&& x)
+    explicit basic_observable_unordered_multimap(this_type&& x)
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container(x._container)
     {
     }
 
-    basic_observable_unordered_multimap(std::initializer_list<value_type> il)
+    explicit basic_observable_unordered_multimap(const std::initializer_list<value_type>& il)
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container(il)
     {
@@ -162,7 +162,7 @@ public:
         this->notify_insert(before, after);
     }
 
-    void insert(std::initializer_list<value_type> il)
+    void insert(const std::initializer_list<value_type>& il)
     {
         const std::size_t before = _container.size();
         _container.insert(il);
@@ -250,28 +250,28 @@ public:
     virtual ~observable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    observable_unordered_multimap()
+    explicit observable_unordered_multimap()
         //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
 
     template <class InputIterator>
-    observable_unordered_multimap(InputIterator first, InputIterator last)
+    explicit observable_unordered_multimap(InputIterator first, InputIterator last)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(first, last)
     {
     }
 
-    observable_unordered_multimap(const this_type& x)
+    explicit observable_unordered_multimap(const this_type& x)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
     {
     }
 
-    observable_unordered_multimap(this_type&& x)
+    explicit observable_unordered_multimap(this_type&& x)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
     {
     }
 
-    observable_unordered_multimap(std::initializer_list<value_type> il)
+    explicit observable_unordered_multimap(const std::initializer_list<value_type>& il)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(il)
     {
     }
@@ -296,10 +296,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(InputIterator first, InputIterator last)
-                : this_type(first, last)
-            {
-            }
+            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -311,10 +308,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const this_type& x)
-                : this_type(x)
-            {
-            }
+            explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
         return std::make_shared<make_shared_enabler, const this_type&>(x);
@@ -326,25 +320,19 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(this_type&& x)
-                : this_type(x)
-            {
-            }
+            explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
         return std::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
-    static ptr create(std::initializer_list<value_type> il)
+    static ptr create(const std::initializer_list<value_type>& il)
     {
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(std::initializer_list<value_type> il)
-                : this_type(il)
-            {
-            }
+            explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 
         return std::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
@@ -369,7 +357,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(const std::initializer_list<value_type>& il)
     {
         this->container().operator=(il);
         return *this;
@@ -412,28 +400,28 @@ public:
     virtual ~wobservable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    wobservable_unordered_multimap()
+    explicit wobservable_unordered_multimap()
         //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
 
     template <class InputIterator>
-    wobservable_unordered_multimap(InputIterator first, InputIterator last)
+    explicit wobservable_unordered_multimap(InputIterator first, InputIterator last)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(first, last)
     {
     }
 
-    wobservable_unordered_multimap(const this_type& x)
+    explicit wobservable_unordered_multimap(const this_type& x)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
     {
     }
 
-    wobservable_unordered_multimap(this_type&& x)
+    explicit wobservable_unordered_multimap(this_type&& x)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
     {
     }
 
-    wobservable_unordered_multimap(std::initializer_list<value_type> il)
+    explicit wobservable_unordered_multimap(const std::initializer_list<value_type>& il)
         : basic_observable_unordered_multimap<key_type, value_type, string_type>(il)
     {
     }
@@ -458,10 +446,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(InputIterator first, InputIterator last)
-                : this_type(first, last)
-            {
-            }
+            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -473,10 +458,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const this_type& x)
-                : this_type(x)
-            {
-            }
+            explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
         return std::make_shared<make_shared_enabler, const this_type&>(x);
@@ -488,25 +470,19 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(this_type&& x)
-                : this_type(x)
-            {
-            }
+            explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
         return std::make_shared<make_shared_enabler, this_type&&>(x);
     }
 
-    static ptr create(std::initializer_list<value_type> il)
+    static ptr create(const std::initializer_list<value_type>& il)
     {
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(std::initializer_list<value_type> il)
-                : this_type(il)
-            {
-            }
+            explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 
         return std::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
@@ -531,7 +507,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(const std::initializer_list<value_type>& il)
     {
         this->container().operator=(il);
         return *this;

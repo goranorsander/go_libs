@@ -49,7 +49,7 @@ public:
     virtual ~basic_event();
 
 protected:
-    basic_event(const S& event_type_);
+    explicit basic_event(const S& event_type_);
 
 public:
     event_type_type event_type;
@@ -93,7 +93,7 @@ inline boost::shared_ptr<basic_event<S>> basic_event<S>::create(const S& event_t
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler(const S& event_type_) : this_type(event_type_) {}
+        explicit make_shared_enabler(const S& event_type_) : this_type(event_type_) {}
     };
 
     return boost::make_shared<make_shared_enabler, const S&>(event_type_);

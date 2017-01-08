@@ -45,7 +45,7 @@ public:
     }
 
 private:
-    fleet_commander(const std::wstring& cmd, const std::wstring& btl)
+    explicit fleet_commander(const std::wstring& cmd, const std::wstring& btl)
         : u::noncopyable_nonmovable()
         , commander(L"commander", cmd)
         , battle(L"battle", btl)
@@ -61,10 +61,7 @@ public:
             : public fleet_commander
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(const std::wstring& cmd, const std::wstring& btl)
-                : fleet_commander(cmd, btl)
-            {
-            }
+            explicit make_shared_enabler(const std::wstring& cmd, const std::wstring& btl) : fleet_commander(cmd, btl) {}
         };
 
         return std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(cmd, btl);
@@ -93,7 +90,7 @@ public:
     }
 
 public:
-    spaceship(const fleet_commander::ptr& flt_cmd, const std::wstring& nme, const std::wstring& cpt, const int trpds)
+    explicit spaceship(const fleet_commander::ptr& flt_cmd, const std::wstring& nme, const std::wstring& cpt, const int trpds)
         : u::noncopyable_nonmovable()
         , name(L"name", nme)
         , captain(L"captain", cpt)

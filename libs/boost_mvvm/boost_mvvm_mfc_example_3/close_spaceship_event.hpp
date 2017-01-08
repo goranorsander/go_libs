@@ -29,7 +29,7 @@ public:
     virtual ~close_spaceship_event();
 
 protected:
-    close_spaceship_event(const spaceship_view_model::ptr& vm);
+    explicit close_spaceship_event(const spaceship_view_model::ptr& vm);
 
 private:
     close_spaceship_event();

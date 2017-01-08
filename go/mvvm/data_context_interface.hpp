@@ -39,16 +39,16 @@ public:
 protected:
     data_context_interface()
         : notify_data_context_changed_interface()
-        , _data_context()
         , data_context()
+        , _data_context()
     {
         bind_data_context_properties();
     }
 
     explicit data_context_interface(const data_type& t)
         : notify_data_context_changed_interface()
-        , _data_context(t)
         , data_context()
+        , _data_context(t)
     {
         bind_data_context_properties();
     }

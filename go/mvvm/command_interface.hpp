@@ -55,9 +55,6 @@ protected:
     basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
 
 public:
-    command_name_type command_name;
-
-public:
     virtual std::shared_ptr<command_parameters> parameters() const;
 
     virtual void notify_can_execute_changed();
@@ -68,6 +65,7 @@ protected:
     virtual void execute(const std::shared_ptr<command_parameters>& params) = 0;
 
 public:
+    command_name_type command_name;
     can_execute_changed_signal can_execute_changed;
 
 private:
@@ -97,8 +95,8 @@ template<class S>
 inline basic_command_interface<S>::basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
     : std::enable_shared_from_this<basic_command_interface<S>>()
     , go::utility::noncopyable_nonmovable()
-    , can_execute_changed()
     , command_name(nullptr)
+    , can_execute_changed()
     , _command_name(cmd_name)
     , _parameters(params)
 {

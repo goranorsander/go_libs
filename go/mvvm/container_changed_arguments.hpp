@@ -53,10 +53,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
-                : this_type(action, added_elements, removed_elements, new_size)
-            {
-            }
+            explicit make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size) : this_type(action, added_elements, removed_elements, new_size) {}
         };
 
         return std::make_shared<make_shared_enabler, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);

@@ -30,7 +30,7 @@ public:
     virtual ~activate_spaceship_command_parameters();
 
 protected:
-    activate_spaceship_command_parameters(const fleet_organization_id_type& id_);
+    explicit activate_spaceship_command_parameters(const fleet_organization_id_type& id_);
 
 private:
     activate_spaceship_command_parameters();

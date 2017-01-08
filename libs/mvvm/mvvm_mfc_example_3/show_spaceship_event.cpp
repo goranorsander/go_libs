@@ -23,7 +23,7 @@ show_spaceship_event::ptr show_spaceship_event::create(const fleet_organization_
         : public this_type
     {
         virtual ~make_shared_enabler() = default;
-        make_shared_enabler(const fleet_organization_id_type& id_) : this_type(id_) {}
+        explicit make_shared_enabler(const fleet_organization_id_type& id_) : this_type(id_) {}
     };
 
     return std::make_shared<make_shared_enabler, const fleet_organization_id_type&>(id_);

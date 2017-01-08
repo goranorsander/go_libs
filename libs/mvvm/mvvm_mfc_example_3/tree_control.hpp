@@ -20,7 +20,7 @@ class tree_control
 {
 public:
     virtual ~tree_control() = default;
-    tree_control(tree_control_observer* observer);
+    explicit tree_control(tree_control_observer* observer);
 
 protected:
 	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);

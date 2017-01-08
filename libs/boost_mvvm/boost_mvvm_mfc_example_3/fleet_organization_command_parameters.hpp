@@ -30,7 +30,7 @@ public:
     virtual ~fleet_organization_command_parameters();
 
 protected:
-    fleet_organization_command_parameters(const fleet_organization_id_type& id_);
+    explicit fleet_organization_command_parameters(const fleet_organization_id_type& id_);
 
 private:
     fleet_organization_command_parameters();

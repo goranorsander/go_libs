@@ -51,7 +51,7 @@ public:
     virtual ~basic_observable_associative_container() = 0;
 
 protected:
-    basic_observable_associative_container()
+    explicit basic_observable_associative_container()
         : basic_observable_container<string_type, container_type>()
     {
     }
@@ -120,7 +120,7 @@ public:
     {
         const std::size_t before = this->container().size();
         this->container().clear();
-        this->on_container_changed(notify_container_changed_action_reset, 0, before, this->container().size());
+        this->on_container_changed(notify_container_changed_action_reset, 0, before, 0);
     }
 
     template<class t, class s>

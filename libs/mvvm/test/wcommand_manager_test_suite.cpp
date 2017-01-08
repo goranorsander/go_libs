@@ -41,9 +41,13 @@ public:
     }
 
 public:
-    spaceship(const m::wcommand_manager::ptr& cmd_mgr)
+    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
+        , name(L"name")
+        , captain(L"captain")
+        , impulse_speed_command(L"impulse_speed_command")
+        , warp_speed_command(L"warp_speed_command")
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -51,17 +55,17 @@ public:
         , _captain()
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name(L"name")
-        , captain(L"captain")
-        , impulse_speed_command(L"impulse_speed_command")
-        , warp_speed_command(L"warp_speed_command")
     {
         bind_properties();
     }
 
-    spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
+    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
+        , name(L"name")
+        , captain(L"captain")
+        , impulse_speed_command(L"impulse_speed_command")
+        , warp_speed_command(L"warp_speed_command")
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -69,10 +73,6 @@ public:
         , _captain(cpt)
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name(L"name")
-        , captain(L"captain")
-        , impulse_speed_command(L"impulse_speed_command")
-        , warp_speed_command(L"warp_speed_command")
     {
         bind_properties();
     }
@@ -192,7 +192,7 @@ public:
     {
     }
 
-    spaceship_observer()
+    explicit spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _on_property_changed_count()
     {

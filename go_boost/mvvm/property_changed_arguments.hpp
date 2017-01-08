@@ -44,7 +44,7 @@ public:
     virtual ~basic_property_changed_arguments();
 
 protected:
-    basic_property_changed_arguments(const string_type& property_name);
+    explicit basic_property_changed_arguments(const string_type& property_name);
 
 public:
     static boost::shared_ptr<basic_property_changed_arguments<S>> create(const string_type& property_name);
@@ -117,10 +117,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<std::string>> basic_pr
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler(const std::string& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const std::string& property_name) : this_type(property_name) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::string&>(property_name);
@@ -137,10 +134,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_p
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler(const std::wstring& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const std::wstring& property_name) : this_type(property_name) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&>(property_name);
@@ -157,10 +151,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<S>> basic_property_cha
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler(const S& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const S& property_name) : this_type(property_name) {}
     };
 
     return boost::make_shared<make_shared_enabler, const S&>(property_name);

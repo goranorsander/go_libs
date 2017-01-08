@@ -42,7 +42,7 @@ public:
     virtual ~basic_observable_object() = 0;
 
 protected:
-    basic_observable_object()
+    explicit basic_observable_object()
         : basic_notify_property_changed_interface<string_type>()
         , object()
     {

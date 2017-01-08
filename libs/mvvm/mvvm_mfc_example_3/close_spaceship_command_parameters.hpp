@@ -29,7 +29,7 @@ public:
     virtual ~close_spaceship_command_parameters() = default;
 
 protected:
-    close_spaceship_command_parameters(const spaceship_view_model::ptr& vm);
+    explicit close_spaceship_command_parameters(const spaceship_view_model::ptr& vm);
 
 private:
     close_spaceship_command_parameters() = delete;

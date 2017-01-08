@@ -69,7 +69,7 @@ fleet_organization_model::ptr fleet_organization_model::create(const std::wstrin
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler(const std::wstring& name_, const spaceship_interface::ptr& spaceship_) : this_type(name_, spaceship_) {}
+        explicit make_shared_enabler(const std::wstring& name_, const spaceship_interface::ptr& spaceship_) : this_type(name_, spaceship_) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const spaceship_interface::ptr&>(name_, spaceship_);

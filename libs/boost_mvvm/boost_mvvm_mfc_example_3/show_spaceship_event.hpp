@@ -31,7 +31,7 @@ public:
     virtual ~show_spaceship_event();
 
 protected:
-    show_spaceship_event(const fleet_organization_id_type& id_);
+    explicit show_spaceship_event(const fleet_organization_id_type& id_);
 
 private:
     show_spaceship_event();

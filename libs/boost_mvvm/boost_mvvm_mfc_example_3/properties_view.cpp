@@ -219,8 +219,6 @@ int properties_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CRect rectDummy;
 	rectDummy.SetRectEmpty();
 
-	const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_BORDER | CBS_SORT | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
-
 	if (!_wndPropList.Create(WS_VISIBLE | WS_CHILD, rectDummy, this, 2))
 	{
 		TRACE0("Failed to create Properties Grid \n");

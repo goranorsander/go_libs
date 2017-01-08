@@ -42,7 +42,7 @@ public:
     virtual ~basic_property_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    basic_property_changed_arguments(const string_type& property_name)
+    explicit basic_property_changed_arguments(const string_type& property_name)
         : go::signals::slot_arguments()
         , _property_name(property_name)
     {
@@ -82,10 +82,7 @@ inline std::shared_ptr<basic_property_changed_arguments<std::string>> basic_prop
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const std::string& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const std::string& property_name) : this_type(property_name) {}
     };
 
     return std::make_shared<make_shared_enabler, const std::string&>(property_name);
@@ -98,10 +95,7 @@ inline std::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_pro
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const std::wstring& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const std::wstring& property_name) : this_type(property_name) {}
     };
 
     return std::make_shared<make_shared_enabler, const std::wstring&>(property_name);
@@ -114,10 +108,7 @@ inline std::shared_ptr<basic_property_changed_arguments<S>> basic_property_chang
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const S& property_name)
-            : this_type(property_name)
-        {
-        }
+        explicit make_shared_enabler(const S& property_name) : this_type(property_name) {}
     };
 
     return std::make_shared<make_shared_enabler, const S&>(property_name);

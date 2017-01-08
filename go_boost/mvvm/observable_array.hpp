@@ -55,7 +55,7 @@ public:
     }
 
 protected:
-    basic_observable_array()
+    explicit basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -196,7 +196,7 @@ public:
     }
 
 protected:
-    observable_array()
+    explicit observable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -209,10 +209,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler()
-                : this_type()
-            {
-            }
+            make_shared_enabler() : this_type() {}
         };
 
         return boost::make_shared<make_shared_enabler>();
@@ -250,7 +247,7 @@ public:
     }
 
 protected:
-    wobservable_array()
+    explicit wobservable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -263,10 +260,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler()
-                : this_type()
-            {
-            }
+            make_shared_enabler() : this_type() {}
         };
 
         return boost::make_shared<make_shared_enabler>();

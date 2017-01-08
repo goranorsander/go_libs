@@ -79,7 +79,7 @@ public:
     virtual ~property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    property(const string_type& property_name)
+    explicit property(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
@@ -108,7 +108,7 @@ public:
     virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    wproperty(const string_type& property_name)
+    explicit wproperty(const string_type& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }

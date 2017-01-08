@@ -43,8 +43,9 @@ public:
     }
 
 public:
-    spaceship(const m::wcommand_manager::ptr& cmd_mgr)
+    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr)
         : m::wobservable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -60,8 +61,9 @@ public:
         bind_properties();
     }
 
-    spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
+    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
         : m::wobservable_object()
+        , u::noncopyable_nonmovable()
         , _command_manager(cmd_mgr)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -144,7 +146,7 @@ public:
     {
     }
 
-    spaceship_observer()
+    explicit spaceship_observer()
         : _on_property_changed_count()
     {
     }

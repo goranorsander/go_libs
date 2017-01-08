@@ -34,7 +34,7 @@ public:
     virtual ~spaceship_view_model();
 
 private:
-    spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);
+    explicit spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);
 
 public:
     rop::wproperty<main_frame_view_model::ptr> main_frame_vm;

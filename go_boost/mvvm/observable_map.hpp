@@ -60,20 +60,20 @@ public:
     }
 
 protected:
-    basic_observable_map()
+    explicit basic_observable_map()
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
-    basic_observable_map(InputIterator first, InputIterator last)
+    explicit basic_observable_map(InputIterator first, InputIterator last)
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container(first, last)
     {
     }
 
-    basic_observable_map(const this_type& x)
+    explicit basic_observable_map(const this_type& x)
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container(x._container)
     {
@@ -81,7 +81,7 @@ protected:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    basic_observable_map(this_type&& x)
+    explicit basic_observable_map(this_type&& x)
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container(x._container)
     {
@@ -91,7 +91,7 @@ protected:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    basic_observable_map(std::initializer_list<value_type> il)
+    explicit basic_observable_map(const std::initializer_list<value_type>& il)
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container(il)
     {
@@ -225,7 +225,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    void insert(std::initializer_list<value_type> il)
+    void insert(const std::initializer_list<value_type>& il)
     {
         const std::size_t before = _container.size();
         _container.insert(il);
@@ -319,25 +319,25 @@ public:
     }
 
 protected:
-    observable_map()
+    explicit observable_map()
         //: basic_observable_map<key_type, value_type, string_type>()
     {
     }
 
     template <class InputIterator>
-    observable_map(InputIterator first, InputIterator last)
+    explicit observable_map(InputIterator first, InputIterator last)
         : basic_observable_map<key_type, value_type, string_type>(first, last)
     {
     }
 
-    observable_map(const this_type& x)
+    explicit observable_map(const this_type& x)
         : basic_observable_map<key_type, value_type, string_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    observable_map(this_type&& x)
+    explicit observable_map(this_type&& x)
         : basic_observable_map<key_type, value_type, string_type>(x)
     {
     }
@@ -346,7 +346,7 @@ protected:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    observable_map(std::initializer_list<value_type> il)
+    explicit observable_map(const std::initializer_list<value_type>& il)
         : basic_observable_map<key_type, value_type, string_type>(il)
     {
     }
@@ -378,7 +378,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -394,7 +394,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(const this_type& x) : this_type(x) {}
+            explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
         return boost::make_shared<make_shared_enabler, const this_type&>(x);
@@ -411,7 +411,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(this_type&& x) : this_type(x) {}
+            explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
         return boost::make_shared<make_shared_enabler, this_type&&>(x);
@@ -421,13 +421,13 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    static ptr create(std::initializer_list<value_type> il)
+    static ptr create(const std::initializer_list<value_type>& il)
     {
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(std::initializer_list<value_type> il) : this_type(il) {}
+            explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 
         return boost::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
@@ -460,7 +460,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    this_type& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(const std::initializer_list<value_type>& il)
     {
         this->container().operator=(il);
         return *this;
@@ -509,25 +509,25 @@ public:
     }
 
 protected:
-    wobservable_map()
+    explicit wobservable_map()
         //: basic_observable_map<key_type, value_type, string_type>()
     {
     }
 
     template <class InputIterator>
-    wobservable_map(InputIterator first, InputIterator last)
+    explicit wobservable_map(InputIterator first, InputIterator last)
         : basic_observable_map<key_type, value_type, string_type>(first, last)
     {
     }
 
-    wobservable_map(const this_type& x)
+    explicit wobservable_map(const this_type& x)
         : basic_observable_map<key_type, value_type, string_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    wobservable_map(this_type&& x)
+    explicit wobservable_map(this_type&& x)
         : basic_observable_map<key_type, value_type, string_type>(x)
     {
     }
@@ -536,7 +536,7 @@ protected:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    wobservable_map(std::initializer_list<value_type> il)
+    explicit wobservable_map(const std::initializer_list<value_type>& il)
         : basic_observable_map<key_type, value_type, string_type>(il)
     {
     }
@@ -568,7 +568,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -584,7 +584,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(const this_type& x) : this_type(x) {}
+            explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
         return boost::make_shared<make_shared_enabler, const this_type&>(x);
@@ -601,7 +601,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(this_type&& x) : this_type(x) {}
+            explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
         return boost::make_shared<make_shared_enabler, this_type&&>(x);
@@ -611,13 +611,13 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    static ptr create(std::initializer_list<value_type> il)
+    static ptr create(const std::initializer_list<value_type>& il)
     {
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            make_shared_enabler(std::initializer_list<value_type> il) : this_type(il) {}
+            explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 
         return boost::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
@@ -650,7 +650,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    this_type& operator=(std::initializer_list<value_type> il)
+    this_type& operator=(const std::initializer_list<value_type>& il)
     {
         this->container().operator=(il);
         return *this;

@@ -33,14 +33,15 @@ public:
     }
 
 public:
-    spaceship()
+    explicit spaceship()
         : m::observable_object()
-        , _crew_complement(0)
-        , _name()
-        , _max_speed(0.0)
+        , u::noncopyable_nonmovable()
         , crew_complement("crew_complement")
         , name("name")
         , max_speed("max_speed")
+        , _crew_complement(0)
+        , _name()
+        , _max_speed(0.0)
     {
         bind_properties();
     }
@@ -117,7 +118,7 @@ public:
     {
     }
 
-    spaceship_observer()
+    explicit spaceship_observer()
         : _crew_complement_change_count(0)
         , _name_change_count(0)
         , _max_speed_change_count(0)

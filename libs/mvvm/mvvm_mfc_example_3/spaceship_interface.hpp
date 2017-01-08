@@ -27,7 +27,7 @@ public:
     virtual ~spaceship_interface() = 0;
 
 protected:
-    spaceship_interface();
+    explicit spaceship_interface();
 
 public:
     rop::wproperty<std::wstring> spaceship_class;

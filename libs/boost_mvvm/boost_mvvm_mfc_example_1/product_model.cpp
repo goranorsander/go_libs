@@ -18,12 +18,12 @@ product_model::~product_model()
 product_model::product_model()
     : m::wobservable_object()
     , u::noncopyable_nonmovable()
-    , _product_id(0)
-    , _product_name()
-    , _unit_price(0.0)
     , product_id(L"product_id")
     , product_name(L"product_name")
     , unit_price(L"unit_price")
+    , _product_id(0)
+    , _product_name()
+    , _unit_price(0.0)
 {
     bind_properties();
 }

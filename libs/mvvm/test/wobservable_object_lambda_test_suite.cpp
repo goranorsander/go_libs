@@ -40,15 +40,15 @@ public:
     }
 
 public:
-    spaceship()
+    explicit spaceship()
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
-        , _crew_complement(0)
-        , _name()
-        , _max_speed(0.0)
         , crew_complement(L"crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } })
         , name(L"name", [this]() { return _name; }, [this](const std::wstring& v) { if(v != _name) { _name = v; on_property_changed(name.name()); } })
         , max_speed(L"max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; on_property_changed(max_speed.name()); } })
+        , _crew_complement(0)
+        , _name()
+        , _max_speed(0.0)
     {
         bind_properties();
     }
@@ -76,7 +76,7 @@ public:
     {
     }
 
-    spaceship_observer()
+    explicit spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _crew_complement_change_count(0)
         , _name_change_count(0)

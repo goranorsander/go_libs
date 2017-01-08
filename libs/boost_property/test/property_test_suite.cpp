@@ -30,14 +30,14 @@ public:
     p::value_property<double> max_speed;
     p::value_property<std::string> name;
 
-    spaceship()
+    explicit spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
         , max_speed(std::string("max_speed"), 9.8)
         , name(std::string("name"), std::string("USS Enterprise (NCC-1701-D)"))
     {
     }
 
-    spaceship(const spaceship& v)
+    explicit spaceship(const spaceship& v)
         : crew_complement(v.crew_complement)
         , max_speed(v.max_speed)
         , name(v.name)
@@ -282,6 +282,9 @@ TEST(boost_property_test_suite, reference_properties)
     s_cc_4 = 600;
     s_ms_4 = 9.75;
     s_n_4 = "USS Enterprise (NCC-1701-C)";
+    EXPECT_EQ(600, s_cc_4);
+    EXPECT_EQ(9.75, s_ms_4);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s_n_4);
     EXPECT_EQ(600, s.crew_complement.get());
     EXPECT_EQ(9.75, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s.name());
@@ -388,6 +391,12 @@ TEST(boost_property_test_suite, write_only_reference_properties)
     s.crew_complement(s_cc_2);
     s.max_speed(s_ms_2);
     s.name(s_n_2);
+    EXPECT_TRUE(s.crew_complement.empty() == false);
+    EXPECT_TRUE(s.max_speed.empty() == false);
+    EXPECT_TRUE(s.name.empty() == false);
+    EXPECT_EQ(647, s_cc_2);
+    EXPECT_EQ(9.975, s_ms_2);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s_n_2);
 
     // Assign operator oriented set
     int s_cc_3 = 430;
@@ -396,6 +405,15 @@ TEST(boost_property_test_suite, write_only_reference_properties)
     s.crew_complement = s_cc_3;
     s.max_speed = s_ms_3;
     s.name = s_n_3;
+    EXPECT_TRUE(s.crew_complement.empty() == false);
+    EXPECT_TRUE(s.max_speed.empty() == false);
+    EXPECT_TRUE(s.name.empty() == false);
+    EXPECT_EQ(647, s_cc_2);
+    EXPECT_EQ(9.975, s_ms_2);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s_n_2);
+    EXPECT_EQ(430, s_cc_3);
+    EXPECT_EQ(9.0, s_ms_3);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s_n_3);
 
     // Traditional set
     int s_cc_4 = 574;
@@ -404,11 +422,35 @@ TEST(boost_property_test_suite, write_only_reference_properties)
     s.crew_complement.set(s_cc_4);
     s.max_speed.set(s_ms_4);
     s.name.set(s_n_4);
+    EXPECT_TRUE(s.crew_complement.empty() == false);
+    EXPECT_TRUE(s.max_speed.empty() == false);
+    EXPECT_TRUE(s.name.empty() == false);
+    EXPECT_EQ(647, s_cc_2);
+    EXPECT_EQ(9.975, s_ms_2);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s_n_2);
+    EXPECT_EQ(430, s_cc_3);
+    EXPECT_EQ(9.0, s_ms_3);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s_n_3);
+    EXPECT_EQ(574, s_cc_4);
+    EXPECT_EQ(9.7, s_ms_4);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-B)"), s_n_4);
 
     // Assign referenced object oriented set
     s_cc_4 = 600;
     s_ms_4 = 9.75;
     s_n_4 = "USS Enterprise (NCC-1701-C)";
+    EXPECT_TRUE(s.crew_complement.empty() == false);
+    EXPECT_TRUE(s.max_speed.empty() == false);
+    EXPECT_TRUE(s.name.empty() == false);
+    EXPECT_EQ(647, s_cc_2);
+    EXPECT_EQ(9.975, s_ms_2);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-E)"), s_n_2);
+    EXPECT_EQ(430, s_cc_3);
+    EXPECT_EQ(9.0, s_ms_3);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s_n_3);
+    EXPECT_EQ(600, s_cc_4);
+    EXPECT_EQ(9.75, s_ms_4);
+    EXPECT_EQ(std::string("USS Enterprise (NCC-1701-C)"), s_n_4);
 
     // Copy construction
     write_only_reference_spaceship s2(s);
