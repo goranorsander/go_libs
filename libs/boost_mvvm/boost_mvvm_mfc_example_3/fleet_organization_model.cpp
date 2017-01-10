@@ -60,11 +60,12 @@ fleet_organization_model::fleet_organization_model()
 
 fleet_organization_model::ptr fleet_organization_model::create()
 {
-    return create(L"", NULL);
+    return create(L"", spaceship_interface::ptr());
 }
 
 fleet_organization_model::ptr fleet_organization_model::create(const std::wstring& name_, const spaceship_interface::ptr& spaceship_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -73,6 +74,9 @@ fleet_organization_model::ptr fleet_organization_model::create(const std::wstrin
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const spaceship_interface::ptr&>(name_, spaceship_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(name_, spaceship_));
+#endif // BOOST_MSVC > 1500
 }
 
 bool fleet_organization_model::add_child(const fleet_organization_interface::ptr& child)
@@ -102,8 +106,8 @@ bool fleet_organization_model::remove_child(const fleet_organization_interface::
     {
         fleet_organization_interface::ptr next_child = child->next_sibling();
         first_child.set(next_child);
-        child->parent.set(NULL);
-        child->next_sibling.set(NULL);
+        child->parent.set(fleet_organization_interface::ptr());
+        child->next_sibling.set(fleet_organization_interface::ptr());
     }
     else
     {
@@ -111,9 +115,9 @@ bool fleet_organization_model::remove_child(const fleet_organization_interface::
         fleet_organization_interface::ptr next_child = child->next_sibling();
         if(previous_child) { previous_child->next_sibling(next_child); }
         if(next_child) { next_child->previous_sibling(previous_child); }
-        child->parent.set(NULL);
-        child->previous_sibling.set(NULL);
-        child->next_sibling.set(NULL);
+        child->parent.set(fleet_organization_interface::ptr());
+        child->previous_sibling.set(fleet_organization_interface::ptr());
+        child->next_sibling.set(fleet_organization_interface::ptr());
     }
     return false;
 }
@@ -159,7 +163,7 @@ bool fleet_organization_model::is_parent_to(const fleet_organization_interface::
 fleet_organization_interface::ptr fleet_organization_model::last_child() const
 {
     fleet_organization_interface::ptr child = first_child();
-    if(!child) { return NULL; }
+    if(!child) { return fleet_organization_interface::ptr(); }
     while(child->next_sibling())
     {
         child = child->next_sibling();

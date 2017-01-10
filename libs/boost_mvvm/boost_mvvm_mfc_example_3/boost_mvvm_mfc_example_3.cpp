@@ -67,8 +67,10 @@ boost_mvvm_mfc_example_3::boost_mvvm_mfc_example_3()
     , _event_manager()
     , _fleet_repository()
 {
+#if BOOST_MSVC > 1500
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 	SetAppID(_T("boost_mvvm_mfc_example_3.AppID.NoVersion"));
+#endif // BOOST_MSVC > 1500
 }
 
 BOOL boost_mvvm_mfc_example_3::InitInstance()
@@ -87,7 +89,9 @@ BOOL boost_mvvm_mfc_example_3::InitInstance()
     }
 
     AfxEnableControlContainer();
+#if BOOST_MSVC > 1500
     EnableTaskbarInteraction();
+#endif // BOOST_MSVC > 1500
     SetRegistryKey(_T("Local AppWizard-Generated Applications"));
     InitContextMenuManager();
     InitKeyboardManager();

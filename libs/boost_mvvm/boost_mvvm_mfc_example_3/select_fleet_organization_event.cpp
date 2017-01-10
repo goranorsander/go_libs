@@ -32,6 +32,7 @@ select_fleet_organization_event::select_fleet_organization_event()
 
 select_fleet_organization_event::ptr select_fleet_organization_event::create(const fleet_organization_id_type& id_, const std::wstring& selected_by_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -40,4 +41,7 @@ select_fleet_organization_event::ptr select_fleet_organization_event::create(con
     };
 
     return boost::make_shared<make_shared_enabler, const fleet_organization_id_type&, const std::wstring&>(id_, selected_by_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(id_, selected_by_));
+#endif // BOOST_MSVC > 1500
 }

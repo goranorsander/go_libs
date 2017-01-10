@@ -29,6 +29,7 @@ close_spaceship_command_parameters::close_spaceship_command_parameters()
 
 close_spaceship_command_parameters::ptr close_spaceship_command_parameters::create(const spaceship_view_model::ptr& vm)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -37,4 +38,7 @@ close_spaceship_command_parameters::ptr close_spaceship_command_parameters::crea
     };
 
     return boost::make_shared<make_shared_enabler, const spaceship_view_model::ptr&>(vm);
+#else
+    return boost::shared_ptr<this_type>(new this_type(vm));
+#endif // BOOST_MSVC > 1500
 }

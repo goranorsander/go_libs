@@ -20,8 +20,8 @@ class spaceship_interface
 {
 public:
     typedef spaceship_interface this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~spaceship_interface() = 0;

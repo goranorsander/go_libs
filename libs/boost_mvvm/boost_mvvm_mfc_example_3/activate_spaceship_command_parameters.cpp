@@ -29,6 +29,7 @@ activate_spaceship_command_parameters::activate_spaceship_command_parameters()
 
 activate_spaceship_command_parameters::ptr activate_spaceship_command_parameters::create(const fleet_organization_id_type& id_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -37,4 +38,7 @@ activate_spaceship_command_parameters::ptr activate_spaceship_command_parameters
     };
 
     return boost::make_shared<make_shared_enabler, const fleet_organization_id_type&>(id_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(id_));
+#endif // BOOST_MSVC > 1500
 }

@@ -45,6 +45,7 @@ spaceship_model::spaceship_model()
 
 spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class_, const std::wstring& name_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -53,6 +54,9 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(spaceship_class_, name_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(spaceship_class_, name_));
+#endif // BOOST_MSVC > 1500
 }
 
 void spaceship_model::bind_properties()

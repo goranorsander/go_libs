@@ -42,7 +42,7 @@ protected:
     basic_event_firing_observer_interface();
 
 public:
-    virtual void on_event_fired(const std::shared_ptr<basic_event<S>>& /*e*/) = 0;
+    virtual void on_event_fired(const boost::shared_ptr<basic_event<S>>& /*e*/) = 0;
 };
 
 template<>

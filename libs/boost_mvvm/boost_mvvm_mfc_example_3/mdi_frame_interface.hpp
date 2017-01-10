@@ -19,7 +19,7 @@ class mdi_frame_interface
 {
 public:
     typedef mdi_frame_interface this_type;
-    typedef typename mdi_frame_interface* pointer;
+    typedef GO_BOOST_TYPENAME mdi_frame_interface* pointer;
 
 public:
     virtual ~mdi_frame_interface() = 0;

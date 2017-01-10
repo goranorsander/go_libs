@@ -12,7 +12,7 @@
 #include "boost_mvvm_mfc_example_2.hpp"
 #include "product_view.hpp"
 
-#include <memory>
+#include <boost/scoped_ptr.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -38,7 +38,7 @@ boost_mvvm_mfc_example_2_app::boost_mvvm_mfc_example_2_app()
 BOOL boost_mvvm_mfc_example_2_app::InitInstance()
 {
 	CWinApp::InitInstance();
-    std::unique_ptr<CShellManager> pShellManager = std::make_unique<CShellManager>();
+    boost::scoped_ptr<CShellManager> pShellManager(new CShellManager());
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 

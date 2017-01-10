@@ -42,7 +42,7 @@ std::wstring current_date_and_time()
     std::tm lt;
     localtime_s(&lt, &t);
     std::wstring dt(100, 0);
-    std::wcsftime(&(dt[0]), 100, _T("%F %T"), &lt);
+    std::wcsftime(&(dt[0]), 100, _T("%Y-%m-%d %H:%M:%S"), &lt);
     return dt;
 }
 

@@ -38,6 +38,7 @@ main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_fr
 
 main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -45,7 +46,10 @@ main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::po
         explicit make_shared_enabler(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo) : this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo) {}
     };
 
-    return boost::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const m::wcommand_manager::ptr&, const m::wevent_manager::ptr&, const fleet_repository::ptr&>(std::forward<mdi_frame_interface::pointer>(mdi_frame_mgr), command_mgr, event_mgr, fleet_repo);
+    return boost::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const m::wcommand_manager::ptr&, const m::wevent_manager::ptr&, const fleet_repository::ptr&>(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo);
+#else
+    return boost::shared_ptr<this_type>(new this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo));
+#endif // BOOST_MSVC > 1500
 }
 
 void main_frame_view_model::on_data_context_will_change()

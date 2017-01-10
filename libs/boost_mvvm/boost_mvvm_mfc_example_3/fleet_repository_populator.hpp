@@ -22,8 +22,8 @@ class fleet_repository_populator
 {
 public:
     typedef fleet_repository_populator this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~fleet_repository_populator();

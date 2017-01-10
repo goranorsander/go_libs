@@ -40,6 +40,7 @@ equipment_model::equipment_model()
 
 equipment_model::ptr equipment_model::create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -48,6 +49,9 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(category_, name_, quantity_));
+#endif // BOOST_MSVC > 1500
 }
 
 void equipment_model::bind_properties()

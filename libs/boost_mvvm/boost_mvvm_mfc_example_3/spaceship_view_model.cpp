@@ -43,6 +43,7 @@ spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, co
 
 spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -51,6 +52,9 @@ spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::pt
     };
 
     return boost::make_shared<make_shared_enabler, const spaceship_model::ptr&, const fleet_organization_id_type&, const main_frame_view_model::ptr&>(model, id, vm);
+#else
+    return boost::shared_ptr<this_type>(new this_type(model, id, vm));
+#endif // BOOST_MSVC > 1500
 }
 
 void spaceship_view_model::on_data_context_will_change()

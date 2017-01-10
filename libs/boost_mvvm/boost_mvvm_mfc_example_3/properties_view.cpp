@@ -10,6 +10,7 @@
 
 #include "stdafx.h"
 
+#include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 
 #include <go_boost/utility.hpp>
@@ -170,7 +171,7 @@ void properties_view::populate_with(const m::wobservable_list<equipment_interfac
 {
     typedef std::map<std::wstring, std::list<equipment_interface::ptr>> equipment_category_map_type;
     equipment_category_map_type equipment_category;
-    for(const m::wobservable_list<equipment_interface::ptr>::value_type& e : *equipment)
+    BOOST_FOREACH(const m::wobservable_list<equipment_interface::ptr>::value_type& e, *equipment)
     {
         if(e != NULL)
         {
@@ -190,11 +191,11 @@ void properties_view::populate_with(const m::wobservable_list<equipment_interfac
 
     u::scope_guard_new<CMFCPropertyGridProperty> equipment_group(new CMFCPropertyGridProperty(_T("Equipment")));
 
-    for(const equipment_category_map_type::value_type& ec : equipment_category)
+    BOOST_FOREACH(const equipment_category_map_type::value_type& ec, equipment_category)
     {
         u::scope_guard_new<CMFCPropertyGridProperty> category_group(new CMFCPropertyGridProperty(ec.first.c_str()));
 
-        for(const equipment_interface::ptr& e : ec.second)
+        BOOST_FOREACH(const equipment_interface::ptr& e, ec.second)
         {
             u::scope_guard_new<CMFCPropertyGridProperty> name_prop(new CMFCPropertyGridProperty(_T("Name"), e->name().c_str(), _T("Equipment name")));
             name_prop->AllowEdit(FALSE);

@@ -69,7 +69,7 @@ public:
     pointer detach() BOOST_NOEXCEPT
     {
         pointer px = _px;
-        _px = nullptr;
+        _px = NULL;
         return px;
     }
 
@@ -81,10 +81,10 @@ public:
 private:
     void on_destroy()
     {
-        if(_px != nullptr)
+        if(_px != NULL)
         {
             delete _px;
-            _px = nullptr;
+            _px = NULL;
         }
     }
 

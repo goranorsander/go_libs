@@ -25,7 +25,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
         found_org = find_fleet_organization(fleet_org->next_sibling(), name);
         if(found_org) { return found_org; }
     }
-    return NULL;
+    return fleet_organization_interface::ptr();
 }
 
 fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr fleet_org, const spaceship_interface::ptr& spaceship_model)
@@ -38,7 +38,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
         found_org = find_fleet_organization(fleet_org->next_sibling(), spaceship_model);
         if(found_org) { return found_org; }
     }
-    return NULL;
+    return fleet_organization_interface::ptr();
 }
 
 fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr fleet_org, const fleet_organization_id_type id)
@@ -52,7 +52,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
         found_org = find_fleet_organization(fleet_org->next_sibling(), id);
         if(found_org) { return found_org; }
     }
-    return NULL;
+    return fleet_organization_interface::ptr();
 }
 
 spaceship_interface::ptr find_spaceship(const fleet_organization_interface::ptr fleet_org, const std::wstring& name)
@@ -65,7 +65,7 @@ spaceship_interface::ptr find_spaceship(const fleet_organization_interface::ptr 
         found_spaceship = find_spaceship(fleet_org->next_sibling(), name);
         if(found_spaceship) { return found_spaceship; }
     }
-    return NULL;
+    return spaceship_interface::ptr();
 }
 
 }
@@ -76,7 +76,7 @@ fleet_repository::~fleet_repository()
 
 fleet_repository::fleet_repository()
     : fleet_repository_interface()
-    , _fleet_organization(fleet_organization_model::create(L"The Fleets", NULL))
+    , _fleet_organization(fleet_organization_model::create(L"The Fleets", spaceship_interface::ptr()))
 {
 }
 
