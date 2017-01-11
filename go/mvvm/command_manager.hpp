@@ -279,7 +279,7 @@ template<>
 inline std::shared_ptr<basic_command_manager<std::string>> basic_command_manager<std::string>::create()
 {
     struct make_shared_enabler
-        : public basic_command_manager<std::string>
+        : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler() : this_type() {}
@@ -292,7 +292,7 @@ template<>
 inline std::shared_ptr<basic_command_manager<std::wstring>> basic_command_manager<std::wstring>::create()
 {
     struct make_shared_enabler
-        : public basic_command_manager<std::wstring>
+        : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler() : this_type() {}
@@ -305,7 +305,7 @@ template<class S>
 inline std::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::create()
 {
     struct make_shared_enabler
-        : public basic_command_manager<S>
+        : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler() : this_type() {}

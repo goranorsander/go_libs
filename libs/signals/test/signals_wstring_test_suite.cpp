@@ -34,6 +34,7 @@ class fleet_commander
     : public u::noncopyable_nonmovable
 {
 public:
+    typedef fleet_commander this_type;
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
     typedef go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
@@ -58,10 +59,10 @@ public:
     static ptr create(const std::wstring& cmd, const std::wstring& btl)
     {
         struct make_shared_enabler
-            : public fleet_commander
+            : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(const std::wstring& cmd, const std::wstring& btl) : fleet_commander(cmd, btl) {}
+            explicit make_shared_enabler(const std::wstring& cmd, const std::wstring& btl) : this_type(cmd, btl) {}
         };
 
         return std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(cmd, btl);

@@ -269,10 +269,10 @@ inline boost::shared_ptr<basic_command_manager<std::string>> basic_command_manag
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
-        : public basic_command_manager<std::string>
+        : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<std::string>() {}
+        make_shared_enabler() : this_type() {}
     };
 
     return boost::make_shared<make_shared_enabler>();
@@ -286,10 +286,10 @@ inline boost::shared_ptr<basic_command_manager<std::wstring>> basic_command_mana
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
-        : public basic_command_manager<std::wstring>
+        : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<std::wstring>() {}
+        make_shared_enabler() : this_type() {}
     };
 
     return boost::make_shared<make_shared_enabler>();
@@ -303,10 +303,10 @@ inline boost::shared_ptr<basic_command_manager<S>> basic_command_manager<S>::cre
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
-        : public basic_command_manager<S>
+        : public this_type
     {
         virtual ~make_shared_enabler() {}
-        make_shared_enabler() : basic_command_manager<S>() {}
+        make_shared_enabler() : this_type() {}
     };
 
     return boost::make_shared<make_shared_enabler>();

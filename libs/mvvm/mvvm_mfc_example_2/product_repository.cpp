@@ -14,7 +14,7 @@
 product_repository::ptr product_repository::create()
 {
     struct make_shared_enabler
-        : public product_repository
+        : public this_type
     {
         virtual ~make_shared_enabler() = default;
         make_shared_enabler() = default;
