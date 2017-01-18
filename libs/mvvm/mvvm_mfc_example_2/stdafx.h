@@ -1,5 +1,5 @@
-#ifndef GO_MVVM_EXAMPLE_1_STDAFX_H_INCLUDED
-#define GO_MVVM_EXAMPLE_1_STDAFX_H_INCLUDED
+#ifndef GO_MVVM_EXAMPLE_2_STDAFX_H_INCLUDED
+#define GO_MVVM_EXAMPLE_2_STDAFX_H_INCLUDED
 
 //
 //  stdafx.h
@@ -36,4 +36,10 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
-#endif  // #ifndef GO_MVVM_EXAMPLE_1_STDAFX_H_INCLUDED
+#include <go/config.hpp>
+
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
+#error Required C++11 feature is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler
+
+#endif  // #ifndef GO_MVVM_EXAMPLE_2_STDAFX_H_INCLUDED

@@ -41,6 +41,12 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
+#include <go/config.hpp>
+
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
+#error Required C++11 feature is not supported by this compiler
+#endif  // Required C++11 feature is not supported by this compiler
+
 #include "mvvm_mfc_example_3_namespace_alias.hpp"
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_STDAFX_H_INCLUDED

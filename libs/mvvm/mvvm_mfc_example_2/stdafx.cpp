@@ -9,9 +9,3 @@
 //
 
 #include "stdafx.h"
-
-#include <go/config.hpp>
-
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
-#error Required C++11 feature is not supported by this compiler
-#endif  // Required C++11 feature is not supported by this compiler

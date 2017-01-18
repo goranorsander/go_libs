@@ -9,9 +9,3 @@
 //
 
 #include "stdafx.h"
-
-#include <go/config.hpp>
-
-#if defined(GO_NO_CXX11)
-#error Required C++11 feature is not supported by this compiler
-#endif  // Required C++11 feature is not supported by this compiler

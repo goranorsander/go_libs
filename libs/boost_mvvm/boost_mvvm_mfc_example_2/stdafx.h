@@ -36,4 +36,10 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
+#include <go_boost/config.hpp>
+
+#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
+#error Boost.Phoenix is not supported by this compiler
+#endif  // Boost.Phoenix is not supported by this compiler
+
 #endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_1_STDAFX_H_INCLUDED

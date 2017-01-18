@@ -9,9 +9,3 @@
 //
 
 #include "stdafx.h"
-
-#include <go_boost/config.hpp>
-
-#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
-#error Boost.Phoenix is not supported by this compiler
-#endif  // Boost.Phoenix is not supported by this compiler
