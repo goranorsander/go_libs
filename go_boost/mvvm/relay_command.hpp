@@ -153,7 +153,7 @@ inline boost::shared_ptr<basic_relay_command<std::string>> basic_relay_command<s
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        explicit make_shared_enabler(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        make_shared_enabler(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::string&, const execute_command_signature&, const can_execute_command_signature&, const boost::shared_ptr<command_parameters>&>(cmd_name, execute_command, can_execute_command, params);
@@ -170,7 +170,7 @@ inline boost::shared_ptr<basic_relay_command<std::wstring>> basic_relay_command<
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        explicit make_shared_enabler(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        make_shared_enabler(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const execute_command_signature&, const can_execute_command_signature&, const boost::shared_ptr<command_parameters>&>(cmd_name, execute_command, can_execute_command, params);
@@ -187,7 +187,7 @@ inline boost::shared_ptr<basic_relay_command<S>> basic_relay_command<S>::create(
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        explicit make_shared_enabler(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
+        make_shared_enabler(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 
     return boost::make_shared<make_shared_enabler, const S&, const execute_command_signature&, const can_execute_command_signature&, const boost::shared_ptr<command_parameters>&>(cmd_name, execute_command, can_execute_command, params);

@@ -49,7 +49,7 @@ public:
     {
     }
 
-    explicit basic_value_property(const string_type& property_name, const value_type& v)
+    basic_value_property(const string_type& property_name, const value_type& v)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
     {
     }
@@ -77,7 +77,7 @@ public:
     {
     }
 
-    explicit value_property(const string_type& property_name, const value_type& v)
+    value_property(const string_type& property_name, const value_type& v)
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
@@ -105,7 +105,7 @@ public:
     {
     }
 
-    explicit value_wproperty(const string_type& property_name, const value_type& v)
+    value_wproperty(const string_type& property_name, const value_type& v)
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }

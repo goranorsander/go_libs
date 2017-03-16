@@ -46,7 +46,7 @@ public:
     {
     }
 
-    explicit basic_property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    basic_property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : detail::property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(get_function, set_function), property_name)
     {
     }
@@ -84,7 +84,7 @@ public:
     {
     }
 
-    explicit property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }
@@ -112,7 +112,7 @@ public:
     {
     }
 
-    explicit wproperty(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    wproperty(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }

@@ -30,7 +30,7 @@ public:
     virtual ~select_fleet_organization_event();
 
 protected:
-    explicit select_fleet_organization_event(const fleet_organization_id_type& id_, const std::wstring& selected_by_);
+    select_fleet_organization_event(const fleet_organization_id_type& id_, const std::wstring& selected_by_);
 
 private:
     select_fleet_organization_event();

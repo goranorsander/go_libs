@@ -45,7 +45,7 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        explicit make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_) : this_type(category_, name_, quantity_) {}
+        make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_) : this_type(category_, name_, quantity_) {}
     };
 
     return boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);

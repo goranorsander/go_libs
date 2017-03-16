@@ -63,7 +63,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit basic_observable_unordered_map(InputIterator first, InputIterator last)
+    basic_observable_unordered_map(InputIterator first, InputIterator last)
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container(first, last)
     {
@@ -285,7 +285,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit observable_unordered_map(InputIterator first, InputIterator last)
+    observable_unordered_map(InputIterator first, InputIterator last)
         : basic_observable_unordered_map<key_type, value_type, string_type>(first, last)
     {
     }
@@ -325,7 +325,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -435,7 +435,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit wobservable_unordered_map(InputIterator first, InputIterator last)
+    wobservable_unordered_map(InputIterator first, InputIterator last)
         : basic_observable_unordered_map<key_type, value_type, string_type>(first, last)
     {
     }
@@ -475,7 +475,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);

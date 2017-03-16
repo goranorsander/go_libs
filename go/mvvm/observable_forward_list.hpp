@@ -64,14 +64,14 @@ protected:
     {
     }
 
-    explicit basic_observable_forward_list(size_type n, const value_type& val)
+    basic_observable_forward_list(size_type n, const value_type& val)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit basic_observable_forward_list(InputIterator first, InputIterator last)
+    basic_observable_forward_list(InputIterator first, InputIterator last)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(first, last)
     {
@@ -517,13 +517,13 @@ protected:
     {
     }
 
-    explicit observable_forward_list(size_type n, const value_type& val)
+    observable_forward_list(size_type n, const value_type& val)
         : basic_observable_forward_list<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit observable_forward_list(InputIterator first, InputIterator last)
+    observable_forward_list(InputIterator first, InputIterator last)
         : basic_observable_forward_list<value_type, string_type>(first, last)
     {
     }
@@ -574,7 +574,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
+            make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
         return std::make_shared<make_shared_enabler, size_type, const value_type&>(n, val);
@@ -587,7 +587,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -697,13 +697,13 @@ protected:
     {
     }
 
-    explicit wobservable_forward_list(size_type n, const value_type& val)
+    wobservable_forward_list(size_type n, const value_type& val)
         : basic_observable_forward_list<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit wobservable_forward_list(InputIterator first, InputIterator last)
+    wobservable_forward_list(InputIterator first, InputIterator last)
         : basic_observable_forward_list<value_type, string_type>(first, last)
     {
     }
@@ -754,7 +754,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
+            make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
         return std::make_shared<make_shared_enabler, size_type, const value_type&>(n, val);
@@ -767,7 +767,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return std::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);

@@ -59,7 +59,7 @@ public:
         bind_properties();
     }
 
-    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
+    spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
         , name(L"name")

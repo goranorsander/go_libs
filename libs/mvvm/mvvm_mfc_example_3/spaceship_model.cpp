@@ -36,7 +36,7 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
         : public this_type
     {
         virtual ~make_shared_enabler() = default;
-        explicit make_shared_enabler(const std::wstring& spaceship_class_, const std::wstring& name_) : this_type(spaceship_class_, name_) {}
+        make_shared_enabler(const std::wstring& spaceship_class_, const std::wstring& name_) : this_type(spaceship_class_, name_) {}
     };
 
     return std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(spaceship_class_, name_);

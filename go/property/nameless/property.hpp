@@ -49,7 +49,7 @@ public:
     {
     }
 
-    explicit property(const get_function_signature& get_function, const set_function_signature& set_function)
+    property(const get_function_signature& get_function, const set_function_signature& set_function)
         : detail::property_base<value_type, policy_type>(policy_type(get_function, set_function))
     {
     }

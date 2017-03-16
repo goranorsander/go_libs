@@ -29,7 +29,7 @@ public:
     virtual ~spaceship_model();
 
 protected:
-    explicit spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
+    spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 private:
     explicit spaceship_model() = delete;

@@ -35,7 +35,7 @@ public:
     virtual ~property_base() = 0;
 
 protected:
-    explicit property_base(const storage_policy& s, const string_type& n)
+    property_base(const storage_policy& s, const string_type& n)
         : _n(n)
         , _s(s)
     {

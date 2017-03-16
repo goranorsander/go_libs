@@ -55,7 +55,7 @@ public:
     {
     }
 
-    explicit proxy(const get_function_signature& get_function, const set_function_signature& set_function)
+    proxy(const get_function_signature& get_function, const set_function_signature& set_function)
         : _property_guard()
         , _get(get_function)
         , _set(set_function)

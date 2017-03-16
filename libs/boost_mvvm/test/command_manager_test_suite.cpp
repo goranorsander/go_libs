@@ -52,7 +52,7 @@ public:
         bind_properties();
     }
 
-    explicit spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
+    spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , name("name")

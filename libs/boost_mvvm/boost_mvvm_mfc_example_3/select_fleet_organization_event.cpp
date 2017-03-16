@@ -37,7 +37,7 @@ select_fleet_organization_event::ptr select_fleet_organization_event::create(con
         : public this_type
     {
         virtual ~make_shared_enabler() {}
-        explicit make_shared_enabler(const fleet_organization_id_type& id_, const std::wstring& selected_by_) : this_type(id_, selected_by_) {}
+        make_shared_enabler(const fleet_organization_id_type& id_, const std::wstring& selected_by_) : this_type(id_, selected_by_) {}
     };
 
     return boost::make_shared<make_shared_enabler, const fleet_organization_id_type&, const std::wstring&>(id_, selected_by_);

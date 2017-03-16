@@ -50,7 +50,7 @@ public:
     {
     }
 
-    explicit basic_property(const string_type& property_name, const set_function_signature& set_function)
+    basic_property(const string_type& property_name, const set_function_signature& set_function)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(nullptr, set_function), property_name)
     {
     }
@@ -84,7 +84,7 @@ public:
     {
     }
 
-    explicit property(const string_type& property_name, const set_function_signature& set_function)
+    property(const string_type& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }
@@ -113,7 +113,7 @@ public:
     {
     }
 
-    explicit wproperty(const string_type& property_name, const set_function_signature& set_function)
+    wproperty(const string_type& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }

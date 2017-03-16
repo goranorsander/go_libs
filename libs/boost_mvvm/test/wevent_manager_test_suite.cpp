@@ -80,7 +80,7 @@ public:
     }
 
 private:
-    explicit fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
         : u::noncopyable_nonmovable()
         , commander(L"commander")
         , battle(L"battle", btl)
@@ -98,7 +98,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : this_type(event_mgr, cmd, btl) {}
+            make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : this_type(event_mgr, cmd, btl) {}
         };
         return boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_mgr, cmd, btl);
 #else
@@ -143,7 +143,7 @@ public:
     virtual ~spaceship() {}
 
 public:
-    explicit spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
+    spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
         : u::noncopyable_nonmovable()
         , fleet_commander(L"fleet_commander")
         , name(L"name", nme)

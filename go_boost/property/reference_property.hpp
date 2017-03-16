@@ -47,7 +47,7 @@ public:
     {
     }
 
-    explicit basic_reference_property(const string_type& property_name, const value_type& v)
+    basic_reference_property(const string_type& property_name, const value_type& v)
         : detail::property_base<value_type, policy::reference<value_type>, string_type>(policy::reference<value_type>(v), property_name)
     {
     }
@@ -90,7 +90,7 @@ public:
     {
     }
 
-    explicit reference_property(const string_type& property_name, const value_type& v)
+    reference_property(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
@@ -116,7 +116,7 @@ public:
     {
     }
 
-    explicit reference_wproperty(const string_type& property_name, const value_type& v)
+    reference_wproperty(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }

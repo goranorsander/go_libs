@@ -46,7 +46,7 @@ public:
     virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit basic_reference_property(const string_type& property_name, const value_type& v)
+    basic_reference_property(const string_type& property_name, const value_type& v)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(const_cast<value_type&>(v)), property_name)
     {
     }
@@ -82,7 +82,7 @@ public:
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit reference_property(const string_type& property_name, const value_type& v)
+    reference_property(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
@@ -103,7 +103,7 @@ public:
     virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit reference_wproperty(const string_type& property_name, const value_type& v)
+    reference_wproperty(const string_type& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }

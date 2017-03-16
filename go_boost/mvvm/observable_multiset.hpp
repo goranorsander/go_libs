@@ -67,7 +67,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit basic_observable_multiset(InputIterator first, InputIterator last)
+    basic_observable_multiset(InputIterator first, InputIterator last)
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container(first, last)
     {
@@ -292,7 +292,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit observable_multiset(InputIterator first, InputIterator last)
+    observable_multiset(InputIterator first, InputIterator last)
         : basic_observable_multiset<value_type, string_type>(first, last)
     {
     }
@@ -345,7 +345,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -481,7 +481,7 @@ protected:
     }
 
     template <class InputIterator>
-    explicit wobservable_multiset(InputIterator first, InputIterator last)
+    wobservable_multiset(InputIterator first, InputIterator last)
         : basic_observable_multiset<value_type, string_type>(first, last)
     {
     }
@@ -534,7 +534,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);

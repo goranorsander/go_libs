@@ -69,14 +69,14 @@ protected:
     {
     }
 
-    explicit basic_observable_list(size_type n, const value_type& val)
+    basic_observable_list(size_type n, const value_type& val)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit basic_observable_list(InputIterator first, InputIterator last)
+    basic_observable_list(InputIterator first, InputIterator last)
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(first, last)
     {
@@ -642,13 +642,13 @@ protected:
     {
     }
 
-    explicit observable_list(size_type n, const value_type& val)
+    observable_list(size_type n, const value_type& val)
         : basic_observable_list<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit observable_list(InputIterator first, InputIterator last)
+    observable_list(InputIterator first, InputIterator last)
         : basic_observable_list<value_type, string_type>(first, last)
     {
     }
@@ -716,7 +716,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
+            make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
         return boost::make_shared<make_shared_enabler, size_type, const value_type&>(n, val);
@@ -733,7 +733,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
@@ -870,13 +870,13 @@ protected:
     {
     }
 
-    explicit wobservable_list(size_type n, const value_type& val)
+    wobservable_list(size_type n, const value_type& val)
         : basic_observable_list<value_type, string_type>(n, val)
     {
     }
 
     template <class InputIterator>
-    explicit wobservable_list(InputIterator first, InputIterator last)
+    wobservable_list(InputIterator first, InputIterator last)
         : basic_observable_list<value_type, string_type>(first, last)
     {
     }
@@ -944,7 +944,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
+            make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
         return boost::make_shared<make_shared_enabler, size_type, const value_type&>(n, val);
@@ -961,7 +961,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+            make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
         return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
