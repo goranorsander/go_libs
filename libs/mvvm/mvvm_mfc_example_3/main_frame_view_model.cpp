@@ -10,10 +10,13 @@
 
 #include "stdafx.h"
 #include "main_frame_view_model.hpp"
+#include "add_equipment_view.hpp"
 #include "close_spaceship_event.hpp"
+#include "delete_dialog_view_command_parameters.hpp"
 #include "fleet_organization_view_model.hpp"
 #include "main_frame_view.hpp"
 #include "mvvm_mfc_example_3.hpp"
+#include "open_add_equipment_view_command_parameters.hpp"
 #include "show_spaceship_event.hpp"
 
 #include <functional>
@@ -32,9 +35,15 @@ main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_fr
     , command_manager(command_mgr)
     , event_manager(event_mgr)
     , fleet_repository(fleet_repo)
+    , dialogs(dialog_view_container_type::create())
+    , open_add_equipment_view_command(L"main_frame_view_model::open_add_equipment_view_command")
+    , delete_dialog_view_command(L"main_frame_view_model::delete_dialog_view_command")
+    , _open_add_equipment_view_command()
+    , _delete_dialog_view_command()
     , _close_spaceship_event_key(0)
     , _show_spaceship_event_key(0)
 {
+    bind_properties();
     subscribe_events();
 }
 
@@ -60,6 +69,71 @@ void main_frame_view_model::on_data_context_changed()
 {
     m::data_context_interface<fleet_repository::wptr>::on_data_context_changed();
     on_view_model_changed();
+}
+
+void main_frame_view_model::bind_properties()
+{
+    open_add_equipment_view_command.getter(
+        [this]()
+        {
+            _open_add_equipment_view_command = m::relay_wcommand::create(L"main_frame_view_model::open_add_equipment_view_command",
+                [this](const m::command_parameters::ptr& p)
+                {
+                    mdi_frame_interface::pointer mdi_frame_mgr = mdi_frame_manager;
+                    if(mdi_frame_mgr != nullptr)
+                    {
+                        open_add_equipment_view_command_parameters::ptr cmd_params = std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
+                        if(cmd_params && cmd_params->spaceship() && cmd_params->spaceship()->equipment())
+                        {
+                            dialog_view::ptr add_equipment(new add_equipment_view(add_equipment_view_model::create(cmd_params->spaceship()->equipment())));
+                            mdi_frame_mgr->on_show_dialog(add_equipment, IDD_ADD_EQUIPMENT);
+                        }
+                    }
+                },
+                [this](const m::command_parameters::ptr& p)
+                {
+                    open_add_equipment_view_command_parameters::ptr params = std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
+                    if(params)
+                    {
+                        return params->spaceship() != nullptr;
+                    }
+                    return false;
+                },
+                open_add_equipment_view_command_parameters::create(nullptr));
+            return _open_add_equipment_view_command;
+        });
+    delete_dialog_view_command.getter(
+        [this]()
+        {
+            _delete_dialog_view_command = m::relay_wcommand::create(L"main_frame_view_model::delete_dialog_view_command",
+                [this](const m::command_parameters::ptr& p)
+                {
+                    mdi_frame_interface::pointer mdi_frame_mgr = mdi_frame_manager;
+                    if(dialogs() && mdi_frame_mgr != nullptr)
+                    {
+                        delete_dialog_view_command_parameters::ptr cmd_params = std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
+                        if(cmd_params && cmd_params->dialog())
+                        {
+                            dialog_view_container_type::iterator it = dialogs()->find(cmd_params->dialog());
+                            if (it != dialogs()->end())
+                            {
+                                dialogs()->erase(it);
+                            }
+                        }
+                    }
+                },
+                [this](const m::command_parameters::ptr& p)
+                {
+                    delete_dialog_view_command_parameters::ptr params = std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
+                    if(params)
+                    {
+                        return params->dialog() != nullptr;
+                    }
+                    return false;
+                },
+                delete_dialog_view_command_parameters::create(nullptr));
+            return _delete_dialog_view_command;
+        });
 }
 
 void main_frame_view_model::subscribe_events()

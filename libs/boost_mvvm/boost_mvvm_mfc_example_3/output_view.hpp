@@ -27,7 +27,7 @@ public:
     virtual ~output_view();
     output_view();
 
-	void UpdateFonts();
+    void UpdateFonts();
 
     virtual void on_command_executed(const m::wcommand_interface::ptr& c);
     virtual void on_command_not_executed(const m::wcommand_interface::ptr& c);
@@ -38,21 +38,21 @@ public:
     virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
 
 protected:
-	CMFCTabCtrl	_wndTabs;
+    CMFCTabCtrl _wndTabs;
 
-	output_view_list _wndOutputAllMvvmEvents;
-	output_view_list _wndOutputCommandEvents;
+    output_view_list _wndOutputAllMvvmEvents;
+    output_view_list _wndOutputCommandEvents;
     output_view_list _wndOutputEventEvents;
     output_view_list _wndOutputObservableObjectEvents;
 
 protected:
-	void AdjustHorzScroll(CListBox& wndListBox);
+    void AdjustHorzScroll(CListBox& wndListBox);
 
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 #endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_3_OUTPUT_VIEW_HPP_INCLUDED

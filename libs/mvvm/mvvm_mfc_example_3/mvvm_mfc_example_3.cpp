@@ -64,7 +64,7 @@ mvvm_mfc_example_3_app::mvvm_mfc_example_3_app()
     , _fleet_repository()
 {
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
-	SetAppID(_T("mvvm_mfc_example_3.AppID.NoVersion"));
+    SetAppID(_T("mvvm_mfc_example_3.AppID.NoVersion"));
 }
 
 BOOL mvvm_mfc_example_3_app::InitInstance()
@@ -164,8 +164,8 @@ void mvvm_mfc_example_3_app::SaveCustomState()
 
 void mvvm_mfc_example_3_app::OnAppAbout()
 {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+    CAboutDlg aboutDlg;
+    aboutDlg.DoModal();
 }
 
 void mvvm_mfc_example_3_app::OnFileNew()

@@ -40,30 +40,30 @@ properties_view::properties_view()
 }
 
 BEGIN_MESSAGE_MAP(properties_view, CDockablePane)
-	ON_WM_CREATE()
-	ON_WM_SIZE()
-	ON_COMMAND(ID_EXPAND_ALL, OnExpandAllProperties)
-	ON_UPDATE_COMMAND_UI(ID_EXPAND_ALL, OnUpdateExpandAllProperties)
-	ON_COMMAND(ID_SORTPROPERTIES, OnSortProperties)
-	ON_UPDATE_COMMAND_UI(ID_SORTPROPERTIES, OnUpdateSortProperties)
-	ON_WM_SETFOCUS()
-	ON_WM_SETTINGCHANGE()
+    ON_WM_CREATE()
+    ON_WM_SIZE()
+    ON_COMMAND(ID_EXPAND_ALL, OnExpandAllProperties)
+    ON_UPDATE_COMMAND_UI(ID_EXPAND_ALL, OnUpdateExpandAllProperties)
+    ON_COMMAND(ID_SORTPROPERTIES, OnSortProperties)
+    ON_UPDATE_COMMAND_UI(ID_SORTPROPERTIES, OnUpdateSortProperties)
+    ON_WM_SETFOCUS()
+    ON_WM_SETTINGCHANGE()
 END_MESSAGE_MAP()
 
 void properties_view::AdjustLayout()
 {
-	if (GetSafeHwnd () == NULL || (AfxGetMainWnd() != NULL && AfxGetMainWnd()->IsIconic()))
-	{
-		return;
-	}
+    if (GetSafeHwnd () == NULL || (AfxGetMainWnd() != NULL && AfxGetMainWnd()->IsIconic()))
+    {
+        return;
+    }
 
-	CRect rectClient;
-	GetClientRect(rectClient);
+    CRect rectClient;
+    GetClientRect(rectClient);
 
-	int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
+    int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
 
-	_wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
-	_wndPropList.SetWindowPos(NULL, rectClient.left, rectClient.top + cyTlb, rectClient.Width(), rectClient.Height() - cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndPropList.SetWindowPos(NULL, rectClient.left, rectClient.top + cyTlb, rectClient.Width(), rectClient.Height() - cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void properties_view::on_view_model_will_change(const m::view_model_will_change_arguments::ptr& /*a*/)
@@ -80,6 +80,10 @@ void properties_view::on_data_context_will_change()
 {
     if(data_context())
     {
+        if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
+        {
+            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(boost::bind(&properties_view::on_container_changed, this, _1, _2));
+        }
         data_context()->property_changed.disconnect(boost::bind(&properties_view::on_property_changed, this, _1, _2));
     }
     m::data_context_interface<properties_view_model::ptr>::on_data_context_will_change();
@@ -89,6 +93,10 @@ void properties_view::on_data_context_changed()
 {
     if(data_context())
     {
+        if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
+        {
+            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.connect(boost::bind(&properties_view::on_container_changed, this, _1, _2));
+        }
         data_context()->property_changed.connect(boost::bind(&properties_view::on_property_changed, this, _1, _2));
     }
     _wndPropList.RemoveAll();
@@ -167,11 +175,11 @@ void properties_view::populate_with(const spaceship_interface::ptr& spaceship)
     }
 }
 
-void properties_view::populate_with(const m::wobservable_list<equipment_interface::ptr>::ptr& equipment)
+void properties_view::populate_with(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
 {
     typedef std::map<std::wstring, std::list<equipment_interface::ptr>> equipment_category_map_type;
     equipment_category_map_type equipment_category;
-    BOOST_FOREACH(const m::wobservable_list<equipment_interface::ptr>::value_type& e, *equipment)
+    BOOST_FOREACH(const m::wobservable_deque<equipment_interface::ptr>::value_type& e, *equipment)
     {
         if(e != NULL)
         {
@@ -214,43 +222,43 @@ void properties_view::populate_with(const m::wobservable_list<equipment_interfac
 
 int properties_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CDockablePane::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
-	CRect rectDummy;
-	rectDummy.SetRectEmpty();
+    CRect rectDummy;
+    rectDummy.SetRectEmpty();
 
-	if (!_wndPropList.Create(WS_VISIBLE | WS_CHILD, rectDummy, this, 2))
-	{
-		TRACE0("Failed to create Properties Grid \n");
-		return -1;
-	}
+    if (!_wndPropList.Create(WS_VISIBLE | WS_CHILD, rectDummy, this, 2))
+    {
+        TRACE0("Failed to create Properties Grid \n");
+        return -1;
+    }
 
-	InitPropList();
+    InitPropList();
 
-	_wndToolBar.Create(this, AFX_DEFAULT_TOOLBAR_STYLE, IDR_PROPERTIES);
-	_wndToolBar.LoadToolBar(IDR_PROPERTIES, 0, 0, TRUE);
-	_wndToolBar.CleanUpLockedImages();
-	_wndToolBar.LoadBitmap(theApp._bHiColorIcons ? IDB_PROPERTIES_HC : IDR_PROPERTIES, 0, 0, TRUE);
+    _wndToolBar.Create(this, AFX_DEFAULT_TOOLBAR_STYLE, IDR_PROPERTIES);
+    _wndToolBar.LoadToolBar(IDR_PROPERTIES, 0, 0, TRUE);
+    _wndToolBar.CleanUpLockedImages();
+    _wndToolBar.LoadBitmap(theApp._bHiColorIcons ? IDB_PROPERTIES_HC : IDR_PROPERTIES, 0, 0, TRUE);
 
-	_wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
-	_wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() & ~(CBRS_GRIPPER | CBRS_SIZE_DYNAMIC | CBRS_BORDER_TOP | CBRS_BORDER_BOTTOM | CBRS_BORDER_LEFT | CBRS_BORDER_RIGHT));
-	_wndToolBar.SetOwner(this);
-	_wndToolBar.SetRouteCommandsViaFrame(FALSE);
+    _wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
+    _wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() & ~(CBRS_GRIPPER | CBRS_SIZE_DYNAMIC | CBRS_BORDER_TOP | CBRS_BORDER_BOTTOM | CBRS_BORDER_LEFT | CBRS_BORDER_RIGHT));
+    _wndToolBar.SetOwner(this);
+    _wndToolBar.SetRouteCommandsViaFrame(FALSE);
 
-	AdjustLayout();
-	return 0;
+    AdjustLayout();
+    return 0;
 }
 
 void properties_view::OnSize(UINT nType, int cx, int cy)
 {
-	CDockablePane::OnSize(nType, cx, cy);
-	AdjustLayout();
+    CDockablePane::OnSize(nType, cx, cy);
+    AdjustLayout();
 }
 
 void properties_view::OnExpandAllProperties()
 {
-	_wndPropList.ExpandAll();
+    _wndPropList.ExpandAll();
 }
 
 void properties_view::OnUpdateExpandAllProperties(CCmdUI* /* pCmdUI */)
@@ -259,24 +267,24 @@ void properties_view::OnUpdateExpandAllProperties(CCmdUI* /* pCmdUI */)
 
 void properties_view::OnSortProperties()
 {
-	_wndPropList.SetAlphabeticMode(!_wndPropList.IsAlphabeticMode());
+    _wndPropList.SetAlphabeticMode(!_wndPropList.IsAlphabeticMode());
 }
 
 void properties_view::OnUpdateSortProperties(CCmdUI* pCmdUI)
 {
-	pCmdUI->SetCheck(_wndPropList.IsAlphabeticMode());
+    pCmdUI->SetCheck(_wndPropList.IsAlphabeticMode());
 }
 
 void properties_view::InitPropList()
 {
-	_wndPropList.EnableHeaderCtrl(FALSE);
-	_wndPropList.EnableDescriptionArea();
-	_wndPropList.SetVSDotNetLook();
-	_wndPropList.MarkModifiedProperties();
+    _wndPropList.EnableHeaderCtrl(FALSE);
+    _wndPropList.EnableDescriptionArea();
+    _wndPropList.SetVSDotNetLook();
+    _wndPropList.MarkModifiedProperties();
 }
 
 void properties_view::OnSetFocus(CWnd* pOldWnd)
 {
-	CDockablePane::OnSetFocus(pOldWnd);
-	_wndPropList.SetFocus();
+    CDockablePane::OnSetFocus(pOldWnd);
+    _wndPropList.SetFocus();
 }

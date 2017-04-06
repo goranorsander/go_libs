@@ -198,8 +198,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\activate_spaceship_command_parameters.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_command_parameters.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view_model.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_event.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\delete_dialog_view_command_parameters.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\dialog_view.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view_tool_bar.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_menu_bar.hpp" />
@@ -217,9 +222,11 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3_namespace_alias.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\mdi_frame_interface.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\open_add_equipment_view_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view_list.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_grid.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_tool_bar.hpp" />
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\remove_equipment_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\select_fleet_organization_event.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.hpp" />
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\spaceship_view.hpp" />
@@ -239,8 +246,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\activate_spaceship_command_parameters.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_command_parameters.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view_model.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\close_spaceship_event.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\delete_dialog_view_command_parameters.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\dialog_view.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_organization_view_tool_bar.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_menu_bar.cpp" />
@@ -253,9 +265,11 @@
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\fleet_repository_populator.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\main_frame_view_tool_bar.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\open_add_equipment_view_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\output_view_list.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_grid.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\properties_view_tool_bar.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\remove_equipment_command_parameters.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\select_fleet_organization_event.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\spaceship_view.cpp" />

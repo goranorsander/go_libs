@@ -27,7 +27,7 @@ public:
     virtual ~spaceship_interface() = 0;
 
 protected:
-    explicit spaceship_interface();
+    spaceship_interface();
 
 public:
     rop::wproperty<std::wstring> spaceship_class;
@@ -35,7 +35,7 @@ public:
 
     p::wproperty<std::wstring> captain;
     p::wproperty<unsigned int> crew_complement;
-    p::wproperty<m::wobservable_list<equipment_interface::ptr>::ptr> equipment;
+    p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr> equipment;
 
 protected:
     virtual void bind_properties() = 0;

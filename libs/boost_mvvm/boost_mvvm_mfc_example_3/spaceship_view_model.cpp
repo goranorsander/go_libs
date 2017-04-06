@@ -11,9 +11,41 @@
 #include "stdafx.h"
 #include "spaceship_view_model.hpp"
 #include "activate_spaceship_command_parameters.hpp"
+#include "add_equipment_command_parameters.hpp"
 #include "close_spaceship_command_parameters.hpp"
 #include "close_spaceship_event.hpp"
+#include "equipment_model.hpp"
+#include "open_add_equipment_view_command_parameters.hpp"
+#include "remove_equipment_command_parameters.hpp"
 #include "select_fleet_organization_event.hpp"
+
+namespace
+{
+
+class matches_equipment_id
+    : std::unary_function<equipment_interface::ptr, bool>
+{
+public:
+    virtual ~matches_equipment_id()
+    {
+    }
+
+    matches_equipment_id(const equipment_id_type id)
+        : std::unary_function<equipment_interface::ptr, bool>()
+        , _id(id)
+    {
+    }
+
+    bool operator()(const equipment_interface::ptr& v) const
+    {
+        return boost::dynamic_pointer_cast<equipment_model>(v)->id == _id;
+    }
+
+private:
+    const equipment_id_type _id;
+};
+
+}
 
 spaceship_view_model::~spaceship_view_model()
 {
@@ -31,12 +63,18 @@ spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, co
     , captain(L"spaceship_view_model::captain")
     , crew_complement(L"spaceship_view_model::crew_complement")
     , equipment(L"spaceship_view_model::equipment")
+    , selected_equipment(L"spaceship_view_model::selected_equipment")
     , on_activate_spaceship_view_command(L"spaceship_view_model::on_activate_spaceship_view_command")
     , on_close_spaceship_view_command(L"spaceship_view_model::on_close_spaceship_view_command")
+    , on_add_equipment_command(L"spaceship_view_model::on_add_equipment_command")
+    , on_remove_equipment_command(L"spaceship_view_model::on_remove_equipment_command")
     , _main_frame_vm(vm)
     , _spaceship_id(id)
+    , _selected_equipment()
     , _on_activate_spaceship_view_command()
     , _on_close_spaceship_view_command()
+    , _on_add_equipment_command()
+    , _on_remove_equipment_command()
 {
     bind_properties();
 }
@@ -81,8 +119,12 @@ void spaceship_view_model::bind_properties()
     crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, _1));
     equipment.getter(boost::bind(&this_type::get_equipment, this));
     equipment.setter(boost::bind(&this_type::set_equipment, this, _1));
+    selected_equipment.getter(boost::bind(&this_type::get_selected_equipment, this));
+    selected_equipment.setter(boost::bind(&this_type::set_selected_equipment, this, _1));
     on_activate_spaceship_view_command.getter(boost::bind(&this_type::get_activate_spaceship_view_command, this));
     on_close_spaceship_view_command.getter(boost::bind(&this_type::get_close_spaceship_view_command, this));
+    on_add_equipment_command.getter(boost::bind(&this_type::get_add_equipment_command, this));
+    on_remove_equipment_command.getter(boost::bind(&this_type::get_remove_equipment_command, this));
 }
 
 main_frame_view_model::ptr spaceship_view_model::get_main_frame_vm() const
@@ -149,21 +191,35 @@ void spaceship_view_model::set_crew_complement(const unsigned int& v)
     }
 }
 
-m::wobservable_list<equipment_interface::ptr>::ptr spaceship_view_model::get_equipment() const
+m::wobservable_deque<equipment_interface::ptr>::ptr spaceship_view_model::get_equipment() const
 {
     if(data_context())
     {
         return data_context()->equipment;
     }
-    return m::wobservable_list<equipment_interface::ptr>::ptr();
+    return m::wobservable_deque<equipment_interface::ptr>::ptr();
 }
 
-void spaceship_view_model::set_equipment(const m::wobservable_list<equipment_interface::ptr>::ptr& v)
+void spaceship_view_model::set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v)
 {
     if(data_context() && v != data_context()->equipment())
     {
         data_context()->equipment = v;
         on_property_changed(equipment.name());
+    }
+}
+
+equipment_interface::ptr spaceship_view_model::get_selected_equipment() const
+{
+    return _selected_equipment;
+}
+
+void spaceship_view_model::set_selected_equipment(const equipment_interface::ptr& v)
+{
+    if (_selected_equipment != v)
+    {
+        _selected_equipment = v;
+        on_property_changed(selected_equipment.name());
     }
 }
 
@@ -205,11 +261,11 @@ void spaceship_view_model::execute_activate_spaceship_view_command(const m::comm
 
 m::wcommand_interface::ptr spaceship_view_model::get_close_spaceship_view_command()
 {
-    ptr spaceship_vm = boost::dynamic_pointer_cast<this_type, m::object>(shared_from_this());
+    ptr this_vm = boost::dynamic_pointer_cast<this_type, m::object>(shared_from_this());
     _on_close_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
         boost::bind(&this_type::execute_close_spaceship_view_command, this, _1),
         boost::bind(&this_type::can_execute_close_spaceship_view_command, this, _1),
-        close_spaceship_command_parameters::create(spaceship_vm));
+        close_spaceship_command_parameters::create(this_vm));
     return _on_close_spaceship_view_command;
 }
 
@@ -236,6 +292,77 @@ void spaceship_view_model::execute_close_spaceship_view_command(const m::command
             {
                 event_mgr->post(close_spaceship_event::create(cmd_params->spaceship_vm));
             }
+        }
+    }
+}
+
+m::wcommand_interface::ptr spaceship_view_model::get_add_equipment_command()
+{
+    _on_add_equipment_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
+        boost::bind(&this_type::execute_add_equipment_command, this, _1),
+        boost::bind(&this_type::can_execute_add_equipment_command, this, _1),
+        add_equipment_command_parameters::create(_spaceship_id));
+    return _on_add_equipment_command;
+}
+
+bool spaceship_view_model::can_execute_add_equipment_command(const m::command_parameters::ptr& p)
+{
+    add_equipment_command_parameters::ptr params = boost::dynamic_pointer_cast<add_equipment_command_parameters>(p);
+    if (params)
+    {
+        return params->spaceship_id == _spaceship_id;
+    }
+    return false;
+}
+
+void spaceship_view_model::execute_add_equipment_command(const m::command_parameters::ptr& p)
+{
+    main_frame_view_model::ptr vm = _main_frame_vm.lock();
+    if (vm)
+    {
+        m::wcommand_manager::ptr cmd_mgr = vm->command_manager();
+        if (cmd_mgr)
+        {
+            m::wcommand_interface::ptr cmd = vm->open_add_equipment_view_command;
+            boost::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(cmd->parameters())->spaceship = data_context();
+            cmd_mgr->post(cmd);
+        }
+    }
+}
+
+m::wcommand_interface::ptr spaceship_view_model::get_remove_equipment_command()
+{
+    _on_remove_equipment_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
+        boost::bind(&this_type::execute_remove_equipment_command, this, _1),
+        boost::bind(&this_type::can_execute_remove_equipment_command, this, _1),
+        remove_equipment_command_parameters::create(_spaceship_id, boost::dynamic_pointer_cast<equipment_model>(selected_equipment())->id));
+    return _on_remove_equipment_command;
+}
+
+bool spaceship_view_model::can_execute_remove_equipment_command(const m::command_parameters::ptr& p)
+{
+    remove_equipment_command_parameters::ptr params = boost::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
+    if (params)
+    {
+        return params->spaceship_id == _spaceship_id;
+    }
+    return false;
+}
+
+void spaceship_view_model::execute_remove_equipment_command(const m::command_parameters::ptr& p)
+{
+    remove_equipment_command_parameters::ptr cmd_params = boost::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
+    if (cmd_params)
+    {
+        const equipment_id_type equipment_id = cmd_params->equipment_id;
+        if (boost::dynamic_pointer_cast<equipment_model>(selected_equipment())->id == equipment_id)
+        {
+            selected_equipment = equipment_interface::ptr();
+        }
+        m::wobservable_deque<equipment_interface::ptr>::iterator it = std::find_if(equipment()->begin(), equipment()->end(), matches_equipment_id(equipment_id));
+        if (it != equipment()->end())
+        {
+            equipment()->erase(it);
         }
     }
 }

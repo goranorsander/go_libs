@@ -13,6 +13,8 @@
 
 #include <boost/bind.hpp>
 
+equipment_id_type equipment_model::_next_id = 0;
+
 equipment_model::~equipment_model()
 {
 }
@@ -21,6 +23,8 @@ equipment_model::equipment_model(const std::wstring& category_, const std::wstri
     : equipment_interface()
     , m::wobservable_object()
     , u::noncopyable_nonmovable()
+    , id(L"equipment_model::id")
+    , _id(_next_id++)
     , _category(category_)
     , _name(name_)
     , _quantity(quantity_)
@@ -32,6 +36,8 @@ equipment_model::equipment_model()
     : equipment_interface()
     , m::wobservable_object()
     , u::noncopyable_nonmovable()
+    , id(L"equipment_model::id")
+    , _id(_next_id++)
     , _category(L"")
     , _name(L"")
     , _quantity(0)
@@ -56,10 +62,16 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
 
 void equipment_model::bind_properties()
 {
+    id.getter(boost::bind(&this_type::get_id, this));
     category.getter(boost::bind(&this_type::get_category, this));
     name.getter(boost::bind(&this_type::get_name, this));
     quantity.getter(boost::bind(&this_type::get_quantity, this));
     quantity.setter(boost::bind(&this_type::set_quantity, this, _1));
+}
+
+equipment_id_type equipment_model::get_id() const
+{
+    return _id;
 }
 
 std::wstring equipment_model::get_category() const

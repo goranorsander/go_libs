@@ -70,10 +70,6 @@ spaceship_interface::ptr find_spaceship(const fleet_organization_interface::ptr 
 
 }
 
-fleet_repository::~fleet_repository()
-{
-}
-
 fleet_repository::fleet_repository()
     : fleet_repository_interface()
     , _fleet_organization(fleet_organization_model::create(L"The Fleets", nullptr))

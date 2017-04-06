@@ -20,10 +20,6 @@ static char THIS_FILE[]=__FILE__;
 #define new DEBUG_NEW
 #endif
 
-fleet_organization_view::~fleet_organization_view()
-{
-}
-
 fleet_organization_view::fleet_organization_view()
     : CDockablePane()
     , m::data_context_interface<fleet_organization_view_model::ptr>()
@@ -36,115 +32,115 @@ fleet_organization_view::fleet_organization_view()
 }
 
 BEGIN_MESSAGE_MAP(fleet_organization_view, CDockablePane)
-	ON_WM_CREATE()
-	ON_WM_SIZE()
-	ON_WM_PAINT()
-	ON_WM_SETFOCUS()
+    ON_WM_CREATE()
+    ON_WM_SIZE()
+    ON_WM_PAINT()
+    ON_WM_SETFOCUS()
 END_MESSAGE_MAP()
 
 int fleet_organization_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CDockablePane::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
-	CRect rectDummy;
-	rectDummy.SetRectEmpty();
+    CRect rectDummy;
+    rectDummy.SetRectEmpty();
 
-	const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS;
+    const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS;
 
-	if (!_wndFileView->Create(dwViewStyle, rectDummy, this, 4))
-	{
-		TRACE0("Failed to create file view\n");
-		return -1;
-	}
+    if (!_wndFileView->Create(dwViewStyle, rectDummy, this, 4))
+    {
+        TRACE0("Failed to create file view\n");
+        return -1;
+    }
 
-	_fileViewImages.Create(IDB_FLEET_ORGANIZATION, 16, 0, RGB(255, 0, 255));
-	_wndFileView->SetImageList(&_fileViewImages, TVSIL_NORMAL);
+    _fileViewImages.Create(IDB_FLEET_ORGANIZATION, 16, 0, RGB(255, 0, 255));
+    _wndFileView->SetImageList(&_fileViewImages, TVSIL_NORMAL);
 
-	_wndToolBar.Create(this, AFX_DEFAULT_TOOLBAR_STYLE, IDR_EXPLORER);
-	_wndToolBar.LoadToolBar(IDR_EXPLORER, 0, 0, TRUE /* Is locked */);
+    _wndToolBar.Create(this, AFX_DEFAULT_TOOLBAR_STYLE, IDR_EXPLORER);
+    _wndToolBar.LoadToolBar(IDR_EXPLORER, 0, 0, TRUE /* Is locked */);
 
-	OnChangeVisualStyle();
+    OnChangeVisualStyle();
 
-	_wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
-	_wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() & ~(CBRS_GRIPPER | CBRS_SIZE_DYNAMIC | CBRS_BORDER_TOP | CBRS_BORDER_BOTTOM | CBRS_BORDER_LEFT | CBRS_BORDER_RIGHT));
-	_wndToolBar.SetOwner(this);
-	_wndToolBar.SetRouteCommandsViaFrame(FALSE);
+    _wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY);
+    _wndToolBar.SetPaneStyle(_wndToolBar.GetPaneStyle() & ~(CBRS_GRIPPER | CBRS_SIZE_DYNAMIC | CBRS_BORDER_TOP | CBRS_BORDER_BOTTOM | CBRS_BORDER_LEFT | CBRS_BORDER_RIGHT));
+    _wndToolBar.SetOwner(this);
+    _wndToolBar.SetRouteCommandsViaFrame(FALSE);
 
-	AdjustLayout();
+    AdjustLayout();
 
-	return 0;
+    return 0;
 }
 
 void fleet_organization_view::OnSize(UINT nType, int cx, int cy)
 {
-	CDockablePane::OnSize(nType, cx, cy);
-	AdjustLayout();
+    CDockablePane::OnSize(nType, cx, cy);
+    AdjustLayout();
 }
 
 void fleet_organization_view::AdjustLayout()
 {
-	if (GetSafeHwnd() == NULL)
-	{
-		return;
-	}
+    if (GetSafeHwnd() == NULL)
+    {
+        return;
+    }
 
-	CRect rectClient;
-	GetClientRect(rectClient);
+    CRect rectClient;
+    GetClientRect(rectClient);
 
-	int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
+    int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
 
-	_wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
-	_wndFileView->SetWindowPos(NULL, rectClient.left + 1, rectClient.top + cyTlb + 1, rectClient.Width() - 2, rectClient.Height() - cyTlb - 2, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndFileView->SetWindowPos(NULL, rectClient.left + 1, rectClient.top + cyTlb + 1, rectClient.Width() - 2, rectClient.Height() - cyTlb - 2, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void fleet_organization_view::OnPaint()
 {
-	CPaintDC dc(this);
+    CPaintDC dc(this);
 
-	CRect rectTree;
-	_wndFileView->GetWindowRect(rectTree);
-	ScreenToClient(rectTree);
+    CRect rectTree;
+    _wndFileView->GetWindowRect(rectTree);
+    ScreenToClient(rectTree);
 
-	rectTree.InflateRect(1, 1);
-	dc.Draw3dRect(rectTree, ::GetSysColor(COLOR_3DSHADOW), ::GetSysColor(COLOR_3DSHADOW));
+    rectTree.InflateRect(1, 1);
+    dc.Draw3dRect(rectTree, ::GetSysColor(COLOR_3DSHADOW), ::GetSysColor(COLOR_3DSHADOW));
 }
 
 void fleet_organization_view::OnSetFocus(CWnd* pOldWnd)
 {
-	CDockablePane::OnSetFocus(pOldWnd);
+    CDockablePane::OnSetFocus(pOldWnd);
 
-	_wndFileView->SetFocus();
+    _wndFileView->SetFocus();
 }
 
 void fleet_organization_view::OnChangeVisualStyle()
 {
-	_wndToolBar.CleanUpLockedImages();
-	_wndToolBar.LoadBitmap(theApp._bHiColorIcons ? IDB_EXPLORER_24 : IDR_EXPLORER, 0, 0, TRUE /* Locked */);
+    _wndToolBar.CleanUpLockedImages();
+    _wndToolBar.LoadBitmap(theApp._bHiColorIcons ? IDB_EXPLORER_24 : IDR_EXPLORER, 0, 0, TRUE /* Locked */);
 
-	_fileViewImages.DeleteImageList();
+    _fileViewImages.DeleteImageList();
 
-	UINT uiBmpId = theApp._bHiColorIcons ? IDB_FLEET_ORGANIZATION_24 : IDB_FLEET_ORGANIZATION;
+    UINT uiBmpId = theApp._bHiColorIcons ? IDB_FLEET_ORGANIZATION_24 : IDB_FLEET_ORGANIZATION;
 
-	CBitmap bmp;
-	if (!bmp.LoadBitmap(uiBmpId))
-	{
-		TRACE(_T("Can't load bitmap: %x\n"), uiBmpId);
-		ASSERT(FALSE);
-		return;
-	}
+    CBitmap bmp;
+    if (!bmp.LoadBitmap(uiBmpId))
+    {
+        TRACE(_T("Can't load bitmap: %x\n"), uiBmpId);
+        ASSERT(FALSE);
+        return;
+    }
 
-	BITMAP bmpObj;
-	bmp.GetBitmap(&bmpObj);
+    BITMAP bmpObj;
+    bmp.GetBitmap(&bmpObj);
 
-	UINT nFlags = ILC_MASK;
+    UINT nFlags = ILC_MASK;
 
-	nFlags |= (theApp._bHiColorIcons) ? ILC_COLOR24 : ILC_COLOR4;
+    nFlags |= (theApp._bHiColorIcons) ? ILC_COLOR24 : ILC_COLOR4;
 
-	_fileViewImages.Create(16, bmpObj.bmHeight, nFlags, 0, 0);
-	_fileViewImages.Add(&bmp, RGB(255, 0, 255));
+    _fileViewImages.Create(16, bmpObj.bmHeight, nFlags, 0, 0);
+    _fileViewImages.Add(&bmp, RGB(255, 0, 255));
 
-	_wndFileView->SetImageList(&_fileViewImages, TVSIL_NORMAL);
+    _wndFileView->SetImageList(&_fileViewImages, TVSIL_NORMAL);
 }
 
 void fleet_organization_view::on_selected(const HTREEITEM hItem, DWORD_PTR pItemData)

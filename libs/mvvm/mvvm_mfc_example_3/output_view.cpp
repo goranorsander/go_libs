@@ -21,9 +21,13 @@
 #include "main_frame_view.hpp"
 
 #include "activate_spaceship_command_parameters.hpp"
+#include "add_equipment_command_parameters.hpp"
 #include "close_spaceship_command_parameters.hpp"
 #include "close_spaceship_event.hpp"
+#include "delete_dialog_view_command_parameters.hpp"
 #include "fleet_organization_command_parameters.hpp"
+#include "open_add_equipment_view_command_parameters.hpp"
+#include "remove_equipment_command_parameters.hpp"
 #include "select_fleet_organization_event.hpp"
 #include "show_spaceship_event.hpp"
 
@@ -58,17 +62,41 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
             return us::format(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]",
                 *asp->id);
         }
+        const add_equipment_command_parameters::ptr aep = std::dynamic_pointer_cast<add_equipment_command_parameters>(p);
+        if (aep)
+        {
+            return us::format(L"class go::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]",
+                *aep->spaceship_id);
+        }
         const close_spaceship_command_parameters::ptr csp = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
         if(csp)
         {
             return us::format(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]",
                 (csp->spaceship_vm() ? *csp->spaceship_vm()->spaceship_id : 0));
         }
+        const delete_dialog_view_command_parameters::ptr dvp = std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
+        if (dvp)
+        {
+            return us::format(L"class go::mvvm::relay_wcommand[parameters={class delete_dialog_view_command_parameters[dialog=0x%X]}]",
+                reinterpret_cast<unsigned __int3264>(dvp->dialog().get()));
+        }
         const fleet_organization_command_parameters::ptr fop = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
         if(fop)
         {
             return us::format(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]",
                 *fop->id);
+        }
+        const open_add_equipment_view_command_parameters::ptr oep = std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
+        if (oep)
+        {
+            return us::format(L"class go::mvvm::relay_wcommand[parameters={class open_add_equipment_view_command_parameters[spaceship=0x%X]}]",
+                reinterpret_cast<unsigned __int3264>(oep->spaceship().get()));
+        }
+        const remove_equipment_command_parameters::ptr rep = std::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
+        if (rep)
+        {
+            return us::format(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]",
+                rep->spaceship_id, rep->equipment_id);
         }
     }
     return L"class go::mvvm::wcommand_interface";
@@ -80,7 +108,7 @@ std::wstring event_information(const m::wevent::ptr& e)
     if(cs)
     {
         return us::format(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]",
-            (cs->spaceship_vm() ? reinterpret_cast<__int3264>(cs->spaceship_vm().get()) : 0),
+            (cs->spaceship_vm() ? reinterpret_cast<unsigned __int3264>(cs->spaceship_vm().get()) : 0),
             (cs->spaceship_vm() ? *cs->spaceship_vm()->spaceship_id : 0));
     }
     const select_fleet_organization_event::ptr sfo = std::dynamic_pointer_cast<select_fleet_organization_event>(e);
@@ -109,10 +137,10 @@ std::wstring object_information(const m::object::ptr& o)
             (*e->name).c_str(),
             *e->quantity);
     }
-    const m::wobservable_list<equipment_interface::ptr>::ptr el = std::dynamic_pointer_cast<m::wobservable_list<equipment_interface::ptr>>(o);
+    const m::wobservable_deque<equipment_interface::ptr>::ptr el = std::dynamic_pointer_cast<m::wobservable_deque<equipment_interface::ptr>>(o);
     if(el)
     {
-        return us::format(L"class go::mvvm::wobservable_list<equipment_model>[size=%d]",
+        return us::format(L"class go::mvvm::wobservable_deque<equipment_model>[size=%d]",
             el->size());
     }
     const fleet_organization_interface::ptr f = std::dynamic_pointer_cast<fleet_organization_interface>(o);
@@ -154,10 +182,6 @@ std::wstring object_information(const m::object::ptr& o)
 /////////////////////////////////////////////////////////////////////////////
 // COutputBar
 
-output_view::~output_view()
-{
-}
-
 output_view::output_view()
     : CDockablePane()
     , m::wcommand_execution_wobserver_interface()
@@ -171,46 +195,46 @@ output_view::output_view()
 }
 
 BEGIN_MESSAGE_MAP(output_view, CDockablePane)
-	ON_WM_CREATE()
-	ON_WM_SIZE()
+    ON_WM_CREATE()
+    ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CDockablePane::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
-	CRect rectDummy;
-	rectDummy.SetRectEmpty();
+    CRect rectDummy;
+    rectDummy.SetRectEmpty();
 
-	if (!_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectDummy, this, 1))
-	{
-		TRACE0("Failed to create output tab window\n");
-		return -1;
-	}
+    if (!_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectDummy, this, 1))
+    {
+        TRACE0("Failed to create output tab window\n");
+        return -1;
+    }
 
-	const DWORD dwStyle = LBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL;
+    const DWORD dwStyle = LBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL;
 
-	if (!_wndOutputAllMvvmEvents.Create(dwStyle, rectDummy, &_wndTabs, 2) ||
-		!_wndOutputCommandEvents.Create(dwStyle, rectDummy, &_wndTabs, 3) ||
+    if (!_wndOutputAllMvvmEvents.Create(dwStyle, rectDummy, &_wndTabs, 2) ||
+        !_wndOutputCommandEvents.Create(dwStyle, rectDummy, &_wndTabs, 3) ||
         !_wndOutputEventEvents.Create(dwStyle, rectDummy, &_wndTabs, 4) ||
         !_wndOutputObservableObjectEvents.Create(dwStyle, rectDummy, &_wndTabs, 5))
     {
-		TRACE0("Failed to create output windows\n");
-		return -1;
-	}
+        TRACE0("Failed to create output windows\n");
+        return -1;
+    }
 
-	UpdateFonts();
+    UpdateFonts();
 
-	CString strTabName;
-	BOOL bNameValid;
+    CString strTabName;
+    BOOL bNameValid;
 
-	bNameValid = strTabName.LoadString(IDS_ALL_MVVM_EVENTS_TAB);
-	ASSERT(bNameValid);
-	_wndTabs.AddTab(&_wndOutputAllMvvmEvents, strTabName, (UINT)0);
-	bNameValid = strTabName.LoadString(IDS_COMMAND_EVENTS_TAB);
-	ASSERT(bNameValid);
-	_wndTabs.AddTab(&_wndOutputCommandEvents, strTabName, (UINT)1);
+    bNameValid = strTabName.LoadString(IDS_ALL_MVVM_EVENTS_TAB);
+    ASSERT(bNameValid);
+    _wndTabs.AddTab(&_wndOutputAllMvvmEvents, strTabName, (UINT)0);
+    bNameValid = strTabName.LoadString(IDS_COMMAND_EVENTS_TAB);
+    ASSERT(bNameValid);
+    _wndTabs.AddTab(&_wndOutputCommandEvents, strTabName, (UINT)1);
     bNameValid = strTabName.LoadString(IDS_EVENT_EVENTS_TAB);
     ASSERT(bNameValid);
     _wndTabs.AddTab(&_wndOutputEventEvents, strTabName, (UINT)2);
@@ -218,39 +242,39 @@ int output_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
     ASSERT(bNameValid);
     _wndTabs.AddTab(&_wndOutputObservableObjectEvents, strTabName, (UINT)3);
 
-	return 0;
+    return 0;
 }
 
 void output_view::OnSize(UINT nType, int cx, int cy)
 {
-	CDockablePane::OnSize(nType, cx, cy);
+    CDockablePane::OnSize(nType, cx, cy);
 
-	_wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void output_view::AdjustHorzScroll(CListBox& wndListBox)
 {
-	CClientDC dc(this);
-	CFont* pOldFont = dc.SelectObject(&afxGlobalData.fontRegular);
+    CClientDC dc(this);
+    CFont* pOldFont = dc.SelectObject(&afxGlobalData.fontRegular);
 
-	int cxExtentMax = 0;
+    int cxExtentMax = 0;
 
-	for (int i = 0; i < wndListBox.GetCount(); i ++)
-	{
-		CString strItem;
-		wndListBox.GetText(i, strItem);
+    for (int i = 0; i < wndListBox.GetCount(); i ++)
+    {
+        CString strItem;
+        wndListBox.GetText(i, strItem);
 
-		cxExtentMax = max(cxExtentMax, (int)dc.GetTextExtent(strItem).cx);
-	}
+        cxExtentMax = max(cxExtentMax, (int)dc.GetTextExtent(strItem).cx);
+    }
 
-	wndListBox.SetHorizontalExtent(cxExtentMax);
-	dc.SelectObject(pOldFont);
+    wndListBox.SetHorizontalExtent(cxExtentMax);
+    dc.SelectObject(pOldFont);
 }
 
 void output_view::UpdateFonts()
 {
-	_wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
-	_wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
+    _wndOutputAllMvvmEvents.SetFont(&afxGlobalData.fontRegular);
+    _wndOutputCommandEvents.SetFont(&afxGlobalData.fontRegular);
     _wndOutputEventEvents.SetFont(&afxGlobalData.fontRegular);
     _wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }

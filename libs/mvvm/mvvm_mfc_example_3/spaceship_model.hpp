@@ -43,7 +43,7 @@ protected:
 private:
     const std::wstring _spaceship_class;
     const std::wstring _name;
-    m::wobservable_list<equipment_interface::ptr>::ptr _equipment;
+    m::wobservable_deque<equipment_interface::ptr>::ptr _equipment;
     std::wstring _captain;
     unsigned int _crew_complement;
     s::slot_key_type _on_equipment_list_changed_slot_key;

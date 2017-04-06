@@ -27,7 +27,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~fleet_repository();
+    virtual ~fleet_repository() = default;
 
 protected:
     fleet_repository();

@@ -31,6 +31,11 @@ spaceship_view::spaceship_view()
     , _initialization_complete(false)
     , _spaceship_class_static()
     , _spaceship_name_static()
+    , _equipment_list_ctrl()
+    , _selected_equipment_id(0)
+    , _equipment_list_data()
+    , _on_data_context_container_changed_slot_key(0)
+    , _on_data_context_property_changed_slot_key(0)
 {
 }
 
@@ -39,10 +44,11 @@ void spaceship_view::DoDataExchange(CDataExchange* pDX)
     CFormView::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_STATIC_SPACESHIP_CLASS, _spaceship_class_static);
     DDX_Control(pDX, IDC_STATIC_SPACESHIP_NAME, _spaceship_name_static);
-    if(data_context())
+    if (data_context())
     {
         mu::DDX_Text(pDX, IDC_EDIT_CAPTAIN, data_context()->captain);
     }
+    DDX_Control(pDX, IDC_LIST_EQUIPMENT, _equipment_list_ctrl);
 }
 
 BOOL spaceship_view::DestroyWindow()
@@ -73,15 +79,8 @@ void spaceship_view::OnInitialUpdate()
 {
     CFormView::OnInitialUpdate();
     ResizeParentToFit();
-
-    u::scope_guard_new<CFont> font(new CFont());
-    LOGFONT lf;
-    memset(&lf, 0, sizeof(LOGFONT));
-    lf.lfHeight = 36;
-    lf.lfWeight = FW_BOLD;
-    wcscpy_s(lf.lfFaceName, _T("Segeo UI"));
-    font->CreateFontIndirect(&lf);
-    _spaceship_name_static.SetFont(font.detach());
+    on_initial_update_spaceship_name();
+    on_initial_update_equipment_list();
 }
 
 #ifdef _DEBUG
@@ -102,7 +101,42 @@ void spaceship_view::PostNcDestroy()
 }
 
 BEGIN_MESSAGE_MAP(spaceship_view, CFormView)
+    ON_BN_CLICKED(IDC_BUTTON_ADD, &spaceship_view::OnBnClickedButtonAdd)
+    ON_BN_CLICKED(IDC_BUTTON_REMOVE, &spaceship_view::OnBnClickedButtonRemove)
+    ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST_EQUIPMENT, OnLvnItemchangedListEquipment)
 END_MESSAGE_MAP()
+
+void spaceship_view::OnBnClickedButtonAdd()
+{
+    UpdateData();
+    m::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
+    if (command_manager)
+    {
+        command_manager->post(data_context()->on_add_equipment_command);
+    }
+}
+
+void spaceship_view::OnBnClickedButtonRemove()
+{
+    UpdateData();
+    m::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
+    if (command_manager)
+    {
+        command_manager->post(data_context()->on_remove_equipment_command);
+    }
+}
+
+void spaceship_view::OnLvnItemchangedListEquipment(NMHDR *pNMHDR, LRESULT *pResult)
+{
+    LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
+    if ((pNMLV != NULL) && (pNMLV->uChanged & LVIF_STATE) && (pNMLV->uNewState & LVIS_SELECTED))
+    {
+        _selected_equipment_id = static_cast<equipment_id_type>(_equipment_list_ctrl.GetItemData(pNMLV->iItem));
+        equipment_list_item_data_type::const_iterator it = _equipment_list_data.find(_selected_equipment_id);
+        data_context()->selected_equipment(it != _equipment_list_data.end() ? it->second : nullptr);
+    }
+    *pResult = 0;
+}
 
 void spaceship_view::initialization_complete()
 {
@@ -159,15 +193,68 @@ void spaceship_view::on_data_context_will_change()
 {
     if(data_context())
     {
-        UpdateData();
+        data_context()->equipment()->container_changed.disconnect(_on_data_context_container_changed_slot_key);
+        _on_data_context_container_changed_slot_key = 0;
+        data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
+        _on_data_context_property_changed_slot_key = 0;
     }
     m::data_context_interface<spaceship_view_model::ptr>::on_data_context_will_change();
 }
 
 void spaceship_view::on_data_context_changed()
 {
+    if (data_context())
+    {
+        _on_data_context_container_changed_slot_key = data_context()->equipment()->container_changed.connect(std::bind(&spaceship_view::on_container_changed, this, ph::_1, ph::_2));
+        _on_data_context_property_changed_slot_key = data_context()->property_changed.connect(std::bind(&spaceship_view::on_property_changed, this, ph::_1, ph::_2));
+    }
     m::data_context_interface<spaceship_view_model::ptr>::on_data_context_changed();
     on_view_model_changed();
+    UpdateData(false);
+}
+
+void spaceship_view::on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
+{
+    if (o && a)
+    {
+        // Not a pretty solution
+        on_view_model_changed();
+    }
+}
+
+void spaceship_view::on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
+{
+    if (o && a)
+    {
+        if (a->property_name() != L"spaceship_view_model::selected_equipment")
+        {
+            // Not a pretty solution
+            on_view_model_changed();
+        }
+    }
+}
+
+void spaceship_view::on_initial_update_spaceship_name()
+{
+    u::scope_guard_new<CFont> font(new CFont());
+    LOGFONT lf;
+    memset(&lf, 0, sizeof(LOGFONT));
+    lf.lfHeight = 36;
+    lf.lfWeight = FW_BOLD;
+    wcscpy_s(lf.lfFaceName, _T("Segeo UI"));
+    font->CreateFontIndirect(&lf);
+    _spaceship_name_static.SetFont(font.detach());
+}
+
+void spaceship_view::on_initial_update_equipment_list()
+{
+    CRect rect;
+    _equipment_list_ctrl.GetClientRect(&rect);
+    _equipment_list_ctrl.SetExtendedStyle(_equipment_list_ctrl.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
+    const int column_width = rect.Width()/3;
+    _equipment_list_ctrl.InsertColumn(0, _T("Category"), LVCFMT_LEFT, column_width);
+    _equipment_list_ctrl.InsertColumn(1, _T("Name"), LVCFMT_LEFT, column_width);
+    _equipment_list_ctrl.InsertColumn(2, _T("Quantity"), LVCFMT_LEFT, column_width);
 }
 
 void spaceship_view::on_view_model_changed()
@@ -176,11 +263,82 @@ void spaceship_view::on_view_model_changed()
     {
         _spaceship_class_static.SetWindowText(data_context()->spaceship_class().c_str());
         _spaceship_name_static.SetWindowText(data_context()->name().c_str());
+        populate_equipment_list();
     }
     else
     {
         _spaceship_class_static.SetWindowText(_T("-"));
         _spaceship_name_static.SetWindowText(_T("-"));
+        clear_equipment_list();
     }
-    UpdateData(false);
+}
+
+void spaceship_view::clear_equipment_list()
+{
+    _equipment_list_ctrl.DeleteAllItems();
+    _equipment_list_data.clear();
+    _selected_equipment_id = 0;
+}
+
+void spaceship_view::populate_equipment_list()
+{
+    clear_equipment_list();
+    if (!data_context()) { return; }
+
+    m::wobservable_deque<equipment_interface::ptr>::ptr equipment = data_context()->equipment();
+    if (!equipment) { return; }
+
+    typedef std::map<std::wstring, std::list<equipment_interface::ptr>> equipment_category_map_type;
+    equipment_category_map_type equipment_category;
+    for (const m::wobservable_deque<equipment_interface::ptr>::value_type& e : *equipment)
+    {
+        if (e != nullptr)
+        {
+            equipment_category_map_type::iterator it = equipment_category.find(e->category().c_str());
+            if (it != equipment_category.end())
+            {
+                it->second.push_back(e);
+            }
+            else
+            {
+                std::list<equipment_interface::ptr> c;
+                c.push_back(e);
+                equipment_category[e->category().c_str()] = c;
+            }
+        }
+    }
+
+    int item_number = 0;
+    for (const equipment_category_map_type::value_type& ec : equipment_category)
+    {
+        for (const equipment_interface::ptr& e : ec.second)
+        {
+            LVITEM lvi;
+            memset(&lvi, 0, sizeof(lvi));
+
+            std::wstring text = ec.first;
+            lvi.mask = LVIF_TEXT;
+            lvi.iItem = item_number;
+            lvi.iSubItem = 0;
+            lvi.pszText = const_cast<wchar_t*>(text.c_str());
+            const int item_index = _equipment_list_ctrl.InsertItem(&lvi);
+            if(item_index > -1)
+            {
+                const equipment_id_type equipment_id = std::dynamic_pointer_cast<equipment_model>(e)->id;
+                _equipment_list_data[equipment_id] = e;
+
+                text = e->name();
+                lvi.iSubItem = 1;
+                lvi.pszText = const_cast<wchar_t*>(text.c_str());
+                _equipment_list_ctrl.SetItem(&lvi);
+
+                text = std::to_wstring(e->quantity());
+                lvi.iSubItem = 2;
+                lvi.pszText = const_cast<wchar_t*>(text.c_str());
+                _equipment_list_ctrl.SetItem(&lvi);
+
+                _equipment_list_ctrl.SetItemData(item_number++, equipment_id);
+            }
+        }
+    }
 }

@@ -38,17 +38,17 @@ END_MESSAGE_MAP()
 
 BOOL tree_control::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {
-	BOOL bRes = CTreeCtrl::OnNotify(wParam, lParam, pResult);
+    BOOL bRes = CTreeCtrl::OnNotify(wParam, lParam, pResult);
 
-	NMHDR* pNMHDR = (NMHDR*)lParam;
-	ASSERT(pNMHDR != NULL);
+    NMHDR* pNMHDR = (NMHDR*)lParam;
+    ASSERT(pNMHDR != NULL);
 
-	if(pNMHDR && pNMHDR->code == TTN_SHOW && GetToolTips() != NULL)
-	{
-		GetToolTips()->SetWindowPos(&wndTop, -1, -1, -1, -1, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOSIZE);
-	}
+    if(pNMHDR && pNMHDR->code == TTN_SHOW && GetToolTips() != NULL)
+    {
+        GetToolTips()->SetWindowPos(&wndTop, -1, -1, -1, -1, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOSIZE);
+    }
 
-	return bRes;
+    return bRes;
 }
 
 void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)

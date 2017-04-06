@@ -11,14 +11,14 @@
 #include "stdafx.h"
 #include "equipment_model.hpp"
 
-equipment_model::~equipment_model()
-{
-}
+equipment_id_type equipment_model::_next_id = 0;
 
 equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
     : equipment_interface()
     , m::wobservable_object()
     , u::noncopyable_nonmovable()
+    , id(L"equipment_model::id")
+    , _id(_next_id++)
     , _category(category_)
     , _name(name_)
     , _quantity(quantity_)
@@ -40,6 +40,7 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
 
 void equipment_model::bind_properties()
 {
+    id.getter([this]() { return _id; });
     category.getter([this]() { return _category; });
     name.getter([this]() { return _name; });
     quantity.getter([this]() { return _quantity; });

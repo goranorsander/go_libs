@@ -69,7 +69,7 @@ boost_mvvm_mfc_example_3::boost_mvvm_mfc_example_3()
 {
 #if BOOST_MSVC > 1500
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
-	SetAppID(_T("boost_mvvm_mfc_example_3.AppID.NoVersion"));
+    SetAppID(_T("boost_mvvm_mfc_example_3.AppID.NoVersion"));
 #endif // BOOST_MSVC > 1500
 }
 
@@ -172,8 +172,8 @@ void boost_mvvm_mfc_example_3::SaveCustomState()
 
 void boost_mvvm_mfc_example_3::OnAppAbout()
 {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+    CAboutDlg aboutDlg;
+    aboutDlg.DoModal();
 }
 
 void boost_mvvm_mfc_example_3::OnFileNew()

@@ -21,20 +21,20 @@
 class child_frame_view
     : public CMDIChildWndEx
 {
-	DECLARE_DYNCREATE(child_frame_view)
+    DECLARE_DYNCREATE(child_frame_view)
 public:
     virtual ~child_frame_view() = default;
     child_frame_view();
 
 public:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
     virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
     virtual CString GetFrameText() const;
 
 public:
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const;
+    virtual void Dump(CDumpContext& dc) const;
 #endif
 
 protected:

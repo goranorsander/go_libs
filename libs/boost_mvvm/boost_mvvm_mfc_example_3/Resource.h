@@ -67,9 +67,16 @@
 #define IDS_EXPLORER                    305
 #define IDS_EDIT_MENU                   306
 #define IDS_EVENT_EVENTS_TAB            307
+#define IDD_ADD_EQUIPMENT               311
 #define IDC_STATIC_SPACESHIP_NAME       1000
 #define IDC_EDIT_CAPTAIN                1001
 #define IDC_STATIC_SPACESHIP_CLASS      1002
+#define IDC_LIST_EQUIPMENT              1003
+#define IDC_BUTTON_REMOVE               1004
+#define IDC_BUTTON_ADD                  1005
+#define IDC_EDIT_CATEGORY               1006
+#define IDC_EDIT_NAME                   1007
+#define IDC_EDIT_QUANTITY               1008
 
 // Next default values for new objects
 // 

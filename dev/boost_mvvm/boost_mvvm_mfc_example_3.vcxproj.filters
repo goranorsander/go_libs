@@ -153,6 +153,27 @@
     <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.hpp">
       <Filter>MVVM Example\View Model\Event</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\dialog_view.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\delete_dialog_view_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\open_add_equipment_view_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\remove_equipment_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\boost_mvvm_mfc_example_3.cpp">
@@ -244,6 +265,27 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\show_spaceship_event.cpp">
       <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\dialog_view.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\add_equipment_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\delete_dialog_view_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\open_add_equipment_view_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\boost_mvvm_mfc_example_3\remove_equipment_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

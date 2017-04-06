@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include "dialog_view.hpp"
+
 typedef unsigned long fleet_organization_id_type;
 
 class mdi_frame_interface
@@ -28,6 +30,8 @@ protected:
     mdi_frame_interface();
 
 public:
+    virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id) = 0;
+    virtual void on_close_dialog(const dialog_view::pointer dialog) = 0;
     virtual void on_show_spaceship(const fleet_organization_id_type id) = 0;
     virtual void on_close_spaceship(const fleet_organization_id_type id) = 0;
 };

@@ -31,7 +31,7 @@ class main_frame_view
     , public mdi_frame_interface
     , public m::data_context_interface<main_frame_view_model::ptr>
 {
-	DECLARE_DYNAMIC(main_frame_view)
+    DECLARE_DYNAMIC(main_frame_view)
 
 private:
     typedef std::map<fleet_organization_id_type, child_frame_view*> fleet_organization_child_frame_view_type;
@@ -41,28 +41,30 @@ public:
     main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
+    virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id);
+    virtual void on_close_dialog(const dialog_view::pointer dialog);
     virtual void on_show_spaceship(const fleet_organization_id_type id);
     virtual void on_close_spaceship(const fleet_organization_id_type id);
 
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const;
+    virtual void Dump(CDumpContext& dc) const;
 #endif
 
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnWindowManager();
-	afx_msg void OnViewCustomize();
-	afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
-	afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnWindowManager();
+    afx_msg void OnViewCustomize();
+    afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
+    afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
     afx_msg void OnUpdateControlBarMenu(CCmdUI* pCmdUI);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
-	BOOL CreateDockingWindows();
-	void SetDockingWindowIcons(BOOL bHiColorIcons);
+    BOOL CreateDockingWindows();
+    void SetDockingWindowIcons(BOOL bHiColorIcons);
 
 private:
     void initialize();

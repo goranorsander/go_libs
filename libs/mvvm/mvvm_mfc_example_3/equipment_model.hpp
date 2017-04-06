@@ -16,6 +16,8 @@
 #include <go/mvvm.hpp>
 #include "equipment_interface.hpp"
 
+typedef unsigned long equipment_id_type;
+
 class equipment_model
     : public equipment_interface
     , public m::wobservable_object
@@ -27,7 +29,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~equipment_model();
+    virtual ~equipment_model() = default;
 
 protected:
     equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
@@ -36,12 +38,18 @@ private:
     equipment_model() = delete;
 
 public:
+    rop::wproperty<equipment_id_type> id;
+
+public:
     static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
 
 protected:
     virtual void bind_properties();
 
 private:
+    static equipment_id_type _next_id;
+    const equipment_id_type _id;
+
     const std::wstring _category;
     const std::wstring _name;
     unsigned int _quantity;

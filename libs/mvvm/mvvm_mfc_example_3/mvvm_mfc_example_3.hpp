@@ -14,11 +14,11 @@
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "include 'stdafx.h' before including this file for PCH"
+    #error "include 'stdafx.h' before including this file for PCH"
 #endif
 
 #include "fleet_repository.hpp"
-#include "resource.h"
+#include "Resource.h"
 
 #include <go/mvvm.hpp>
 
@@ -29,18 +29,18 @@ class mvvm_mfc_example_3_app
 {
 public:
     virtual ~mvvm_mfc_example_3_app() = default;
-	mvvm_mfc_example_3_app();
+    mvvm_mfc_example_3_app();
 
 public:
-	virtual BOOL InitInstance();
-	virtual int ExitInstance();
+    virtual BOOL InitInstance();
+    virtual int ExitInstance();
     virtual BOOL PreTranslateMessage(MSG* pMsg);
 
-	virtual void PreLoadState();
-	virtual void LoadCustomState();
-	virtual void SaveCustomState();
+    virtual void PreLoadState();
+    virtual void LoadCustomState();
+    virtual void SaveCustomState();
 
-	afx_msg void OnAppAbout();
+    afx_msg void OnAppAbout();
     afx_msg void OnFileNew();
     afx_msg void OnFileOpen();
     afx_msg void OnUpdateFileNew(CCmdUI* pCmdUI);

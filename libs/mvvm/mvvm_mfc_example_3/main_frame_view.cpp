@@ -11,6 +11,7 @@
 #include "stdafx.h"
 #include "main_frame_view.hpp"
 #include "child_frame_view.hpp"
+#include "delete_dialog_view_command_parameters.hpp"
 #include "fleet_repository_populator.hpp"
 #include "mvvm_mfc_example_3.hpp"
 
@@ -44,6 +45,33 @@ main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager
     , _fleet_repository(fleet_repo)
     , _fleet_org_child_view()
 {
+}
+
+void main_frame_view::on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id)
+{
+    if (data_context() && data_context()->dialogs() && dialog)
+    {
+        if (dialog->Create(template_id, this) != FALSE)
+        {
+            data_context()->dialogs()->insert(dialog);
+            dialog->on_close.connect(std::bind(&main_frame_view::on_close_dialog, this, ph::_1));
+            dialog->ShowWindow(SW_SHOW);
+        }
+    }
+}
+
+void main_frame_view::on_close_dialog(const dialog_view::pointer dialog)
+{
+    if (data_context() && data_context()->dialogs() && data_context()->command_manager())
+    {
+        dialog_view_container_type::iterator it = std::find_if(data_context()->dialogs()->begin(), data_context()->dialogs()->end(), [dialog](const dialog_view::ptr& d) { return d.get() == dialog; });
+        if (it != data_context()->dialogs()->end())
+        {
+            m::wcommand_interface::ptr cmd = data_context()->delete_dialog_view_command;
+            std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(cmd->parameters())->dialog = *it;
+            data_context()->command_manager()->post(cmd);
+        }
+    }
 }
 
 void main_frame_view::on_show_spaceship(const fleet_organization_id_type id)
@@ -107,128 +135,128 @@ void main_frame_view::Dump(CDumpContext& dc) const
 
 int main_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (CMDIFrameWndEx::OnCreate(lpCreateStruct) == -1)
-		return -1;
+    if (CMDIFrameWndEx::OnCreate(lpCreateStruct) == -1)
+        return -1;
 
-	BOOL bNameValid;
+    BOOL bNameValid;
 
-	CMDITabInfo mdiTabParams;
-	mdiTabParams.m_style = CMFCTabCtrl::STYLE_3D_ONENOTE;
-	mdiTabParams.m_bActiveTabCloseButton = TRUE;
-	mdiTabParams.m_bTabIcons = FALSE;
-	mdiTabParams.m_bAutoColor = TRUE;
-	mdiTabParams.m_bDocumentMenu = TRUE;
-	EnableMDITabbedGroups(TRUE, mdiTabParams);
+    CMDITabInfo mdiTabParams;
+    mdiTabParams.m_style = CMFCTabCtrl::STYLE_3D_ONENOTE;
+    mdiTabParams.m_bActiveTabCloseButton = TRUE;
+    mdiTabParams.m_bTabIcons = FALSE;
+    mdiTabParams.m_bAutoColor = TRUE;
+    mdiTabParams.m_bDocumentMenu = TRUE;
+    EnableMDITabbedGroups(TRUE, mdiTabParams);
 
-	if (!_wndMenuBar.Create(this))
-	{
-		TRACE0("Failed to create menubar\n");
-		return -1;
-	}
+    if (!_wndMenuBar.Create(this))
+    {
+        TRACE0("Failed to create menubar\n");
+        return -1;
+    }
 
-	_wndMenuBar.SetPaneStyle(_wndMenuBar.GetPaneStyle() | CBRS_SIZE_DYNAMIC | CBRS_TOOLTIPS | CBRS_FLYBY);
+    _wndMenuBar.SetPaneStyle(_wndMenuBar.GetPaneStyle() | CBRS_SIZE_DYNAMIC | CBRS_TOOLTIPS | CBRS_FLYBY);
 
-	CMFCPopupMenu::SetForceMenuFocus(FALSE);
+    CMFCPopupMenu::SetForceMenuFocus(FALSE);
 
-	if (!_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!_wndToolBar.LoadToolBar(theApp._bHiColorIcons ? IDR_MAINFRAME_256 : IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;
-	}
+    if (!_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+        !_wndToolBar.LoadToolBar(theApp._bHiColorIcons ? IDR_MAINFRAME_256 : IDR_MAINFRAME))
+    {
+        TRACE0("Failed to create toolbar\n");
+        return -1;
+    }
 
-	CString strToolBarName;
-	bNameValid = strToolBarName.LoadString(IDS_TOOLBAR_STANDARD);
-	ASSERT(bNameValid);
-	_wndToolBar.SetWindowText(strToolBarName);
+    CString strToolBarName;
+    bNameValid = strToolBarName.LoadString(IDS_TOOLBAR_STANDARD);
+    ASSERT(bNameValid);
+    _wndToolBar.SetWindowText(strToolBarName);
 
-	CString strCustomize;
-	bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
-	ASSERT(bNameValid);
-	_wndToolBar.EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
+    CString strCustomize;
+    bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
+    ASSERT(bNameValid);
+    _wndToolBar.EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
 
-	if (!_wndStatusBar.Create(this))
-	{
-		TRACE0("Failed to create status bar\n");
-		return -1;
-	}
-	_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
+    if (!_wndStatusBar.Create(this))
+    {
+        TRACE0("Failed to create status bar\n");
+        return -1;
+    }
+    _wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
-	_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
-	_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
-	EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&_wndMenuBar);
-	DockPane(&_wndToolBar);
+    _wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
+    _wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
+    EnableDocking(CBRS_ALIGN_ANY);
+    DockPane(&_wndMenuBar);
+    DockPane(&_wndToolBar);
 
-	CDockingManager::SetDockingMode(DT_SMART);
-	EnableAutoHidePanes(CBRS_ALIGN_ANY);
+    CDockingManager::SetDockingMode(DT_SMART);
+    EnableAutoHidePanes(CBRS_ALIGN_ANY);
 
-	CMFCToolBar::AddToolBarForImageCollection(IDR_MENU_IMAGES, theApp._bHiColorIcons ? IDB_MENU_IMAGES_24 : 0);
+    CMFCToolBar::AddToolBarForImageCollection(IDR_MENU_IMAGES, theApp._bHiColorIcons ? IDB_MENU_IMAGES_24 : 0);
 
-	if (!CreateDockingWindows())
-	{
-		TRACE0("Failed to create docking windows\n");
-		return -1;
-	}
+    if (!CreateDockingWindows())
+    {
+        TRACE0("Failed to create docking windows\n");
+        return -1;
+    }
 
-	_fleet_organization_view.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&_fleet_organization_view);
-	CDockablePane* pTabbedBar = NULL;
-	_output_view.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&_output_view);
-	_properties_view.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&_properties_view);
+    _fleet_organization_view.EnableDocking(CBRS_ALIGN_ANY);
+    DockPane(&_fleet_organization_view);
+    CDockablePane* pTabbedBar = NULL;
+    _output_view.EnableDocking(CBRS_ALIGN_ANY);
+    DockPane(&_output_view);
+    _properties_view.EnableDocking(CBRS_ALIGN_ANY);
+    DockPane(&_properties_view);
 
-	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
+    CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
-	EnableWindowsDialog(ID_WINDOW_MANAGER, ID_WINDOW_MANAGER, TRUE);
+    EnableWindowsDialog(ID_WINDOW_MANAGER, ID_WINDOW_MANAGER, TRUE);
 
-	EnablePaneMenu(TRUE, ID_VIEW_CUSTOMIZE, strCustomize, ID_VIEW_TOOLBAR);
+    EnablePaneMenu(TRUE, ID_VIEW_CUSTOMIZE, strCustomize, ID_VIEW_TOOLBAR);
 
-	CMFCToolBar::EnableQuickCustomization();
+    CMFCToolBar::EnableQuickCustomization();
 
-	ModifyStyle(0, FWS_PREFIXTITLE);
+    ModifyStyle(0, FWS_PREFIXTITLE);
 
     initialize();
 
-	return 0;
+    return 0;
 }
 
 void main_frame_view::OnWindowManager()
 {
-	ShowWindowsDialog();
+    ShowWindowsDialog();
 }
 
 void main_frame_view::OnViewCustomize()
 {
-	CMFCToolBarsCustomizeDialog* pDlgCust = new CMFCToolBarsCustomizeDialog(this, TRUE /* scan menus */);
-	pDlgCust->Create();
+    CMFCToolBarsCustomizeDialog* pDlgCust = new CMFCToolBarsCustomizeDialog(this, TRUE /* scan menus */);
+    pDlgCust->Create();
 }
 
 LRESULT main_frame_view::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 {
-	LRESULT lres = CMDIFrameWndEx::OnToolbarCreateNew(wp,lp);
-	if (lres == 0)
-	{
-		return 0;
-	}
+    LRESULT lres = CMDIFrameWndEx::OnToolbarCreateNew(wp,lp);
+    if (lres == 0)
+    {
+        return 0;
+    }
 
-	CMFCToolBar* pUserToolbar = (CMFCToolBar*)lres;
-	ASSERT_VALID(pUserToolbar);
+    CMFCToolBar* pUserToolbar = (CMFCToolBar*)lres;
+    ASSERT_VALID(pUserToolbar);
 
-	BOOL bNameValid;
-	CString strCustomize;
-	bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
-	ASSERT(bNameValid);
+    BOOL bNameValid;
+    CString strCustomize;
+    bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
+    ASSERT(bNameValid);
 
-	pUserToolbar->EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
-	return lres;
+    pUserToolbar->EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
+    return lres;
 }
 
 void main_frame_view::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 {
-	CMDIFrameWndEx::OnSettingChange(uFlags, lpszSection);
-	_output_view.UpdateFonts();
+    CMDIFrameWndEx::OnSettingChange(uFlags, lpszSection);
+    _output_view.UpdateFonts();
 }
 
 void main_frame_view::OnUpdateControlBarMenu(CCmdUI* pCmdUI)

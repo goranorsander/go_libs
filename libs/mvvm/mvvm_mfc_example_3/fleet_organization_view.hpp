@@ -23,11 +23,12 @@ class fleet_organization_view
     , public tree_control_observer
 {
 public:
-    virtual ~fleet_organization_view();
+    virtual ~fleet_organization_view() = default;
+
     fleet_organization_view();
 
-	void AdjustLayout();
-	void OnChangeVisualStyle();
+    void AdjustLayout();
+    void OnChangeVisualStyle();
 
 public:
     virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData);
@@ -47,12 +48,12 @@ protected:
     void add_fleet_organization(HTREEITEM parent, const fleet_organization_interface::ptr& child);
 
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnPaint();
-	afx_msg void OnSetFocus(CWnd* pOldWnd);
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnPaint();
+    afx_msg void OnSetFocus(CWnd* pOldWnd);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
 protected:
     std::unique_ptr<tree_control> _wndFileView;

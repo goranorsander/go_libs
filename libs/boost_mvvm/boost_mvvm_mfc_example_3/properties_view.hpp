@@ -26,14 +26,14 @@ public:
     virtual ~properties_view();
     properties_view();
 
-	void AdjustLayout();
+    void AdjustLayout();
 
 public:
-	void SetVSDotNetLook(BOOL bSet)
-	{
-		_wndPropList.SetVSDotNetLook(bSet);
-		_wndPropList.SetGroupNameFullWidth(bSet);
-	}
+    void SetVSDotNetLook(BOOL bSet)
+    {
+        _wndPropList.SetVSDotNetLook(bSet);
+        _wndPropList.SetGroupNameFullWidth(bSet);
+    }
 
     virtual void on_view_model_will_change(const m::view_model_will_change_arguments::ptr& a);
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
@@ -49,24 +49,24 @@ protected:
 private:
     void populate_with(const fleet_organization_interface::ptr& fleet_organization);
     void populate_with(const spaceship_interface::ptr& spaceship);
-    void populate_with(const m::wobservable_list<equipment_interface::ptr>::ptr& equipment);
+    void populate_with(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment);
 
 protected:
     properties_view_tool_bar _wndToolBar;
     properties_view_grid _wndPropList;
 
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnExpandAllProperties();
-	afx_msg void OnUpdateExpandAllProperties(CCmdUI* pCmdUI);
-	afx_msg void OnSortProperties();
-	afx_msg void OnUpdateSortProperties(CCmdUI* pCmdUI);
-	afx_msg void OnSetFocus(CWnd* pOldWnd);
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnExpandAllProperties();
+    afx_msg void OnUpdateExpandAllProperties(CCmdUI* pCmdUI);
+    afx_msg void OnSortProperties();
+    afx_msg void OnUpdateSortProperties(CCmdUI* pCmdUI);
+    afx_msg void OnSetFocus(CWnd* pOldWnd);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
-	void InitPropList();
+    void InitPropList();
 };
 
 #endif  // #ifndef GO_BOOST_MVVM_EXAMPLE_3_PROPERTIES_VIEW_HPP_INCLUDED

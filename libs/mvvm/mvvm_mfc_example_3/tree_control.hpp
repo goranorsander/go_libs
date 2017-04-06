@@ -23,7 +23,7 @@ public:
     explicit tree_control(tree_control_observer* observer);
 
 protected:
-	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+    virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
     afx_msg void OnClick(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnDblclk(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnRclick(NMHDR* pNMHDR, LRESULT* pResult);
@@ -33,7 +33,7 @@ protected:
     CPoint GetClickPos() const;
 
 protected:
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
 private:
     tree_control_observer* _observer;

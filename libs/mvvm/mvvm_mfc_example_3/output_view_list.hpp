@@ -21,12 +21,12 @@ public:
     output_view_list() = default;
 
 protected:
-	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnEditCopy();
-	afx_msg void OnEditClear();
-	afx_msg void OnViewOutput();
+    afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
+    afx_msg void OnEditCopy();
+    afx_msg void OnEditClear();
+    afx_msg void OnViewOutput();
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_OUTPUT_VIEW_LIST_HPP_INCLUDED

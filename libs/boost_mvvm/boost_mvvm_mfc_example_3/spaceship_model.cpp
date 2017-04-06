@@ -24,7 +24,7 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
     , u::noncopyable_nonmovable()
     , _spaceship_class(spaceship_class_)
     , _name(name_)
-    , _equipment(m::wobservable_list<equipment_interface::ptr>::create())
+    , _equipment(m::wobservable_deque<equipment_interface::ptr>::create())
     , _captain()
     , _crew_complement(0)
 {
@@ -87,12 +87,12 @@ std::wstring spaceship_model::get_name() const
     return _name;
 }
 
-m::wobservable_list<equipment_interface::ptr>::ptr spaceship_model::get_equipment() const
+m::wobservable_deque<equipment_interface::ptr>::ptr spaceship_model::get_equipment() const
 {
     return _equipment;
 }
 
-void spaceship_model::set_equipment(const m::wobservable_list<equipment_interface::ptr>::ptr& v)
+void spaceship_model::set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v)
 {
     if(v != _equipment)
     {

@@ -61,12 +61,12 @@ CString child_frame_view::GetFrameText() const
 #ifdef _DEBUG
 void child_frame_view::AssertValid() const
 {
-	CMDIChildWndEx::AssertValid();
+    CMDIChildWndEx::AssertValid();
 }
 
 void child_frame_view::Dump(CDumpContext& dc) const
 {
-	CMDIChildWndEx::Dump(dc);
+    CMDIChildWndEx::Dump(dc);
 }
 #endif //_DEBUG
 
