@@ -156,6 +156,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/spaceship_model.hpp
 	)
 	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+        ./mvvm_mfc_example_3/add_equipment_view.cpp
+        ./mvvm_mfc_example_3/add_equipment_view.hpp
         ./mvvm_mfc_example_3/child_frame_view.cpp
         ./mvvm_mfc_example_3/child_frame_view.hpp
         ./mvvm_mfc_example_3/fleet_organization_view.cpp
@@ -170,6 +172,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/spaceship_view.hpp
 	)
 	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+        ./mvvm_mfc_example_3/dialog_view.cpp
+        ./mvvm_mfc_example_3/dialog_view.hpp
         ./mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
         ./mvvm_mfc_example_3/fleet_organization_view_tool_bar.hpp
         ./mvvm_mfc_example_3/main_frame_view_menu_bar.cpp
@@ -187,6 +191,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/tree_control_observer.hpp
 	)
 	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+        ./mvvm_mfc_example_3/add_equipment_view_model.cpp
+        ./mvvm_mfc_example_3/add_equipment_view_model.hpp
         ./mvvm_mfc_example_3/fleet_organization_view_model.cpp
         ./mvvm_mfc_example_3/fleet_organization_view_model.hpp
         ./mvvm_mfc_example_3/main_frame_view_model.cpp
@@ -199,10 +205,18 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
         ./mvvm_mfc_example_3/activate_spaceship_command_parameters.cpp
         ./mvvm_mfc_example_3/activate_spaceship_command_parameters.hpp
+        ./mvvm_mfc_example_3/add_equipment_command_parameters.cpp
+        ./mvvm_mfc_example_3/add_equipment_command_parameters.hpp
         ./mvvm_mfc_example_3/close_spaceship_command_parameters.cpp
         ./mvvm_mfc_example_3/close_spaceship_command_parameters.hpp
+        ./mvvm_mfc_example_3/delete_dialog_view_command_parameters.cpp
+        ./mvvm_mfc_example_3/delete_dialog_view_command_parameters.hpp
         ./mvvm_mfc_example_3/fleet_organization_command_parameters.cpp
         ./mvvm_mfc_example_3/fleet_organization_command_parameters.hpp
+        ./mvvm_mfc_example_3/open_add_equipment_view_command_parameters.cpp
+        ./mvvm_mfc_example_3/open_add_equipment_view_command_parameters.hpp
+        ./mvvm_mfc_example_3/remove_equipment_command_parameters.cpp
+        ./mvvm_mfc_example_3/remove_equipment_command_parameters.hpp
 	)
 	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
         ./mvvm_mfc_example_3/close_spaceship_event.cpp

@@ -158,6 +158,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/spaceship_model.hpp
 	)
 	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+        ./boost_mvvm_mfc_example_3/add_equipment_view.cpp
+        ./boost_mvvm_mfc_example_3/add_equipment_view.hpp
         ./boost_mvvm_mfc_example_3/child_frame_view.cpp
         ./boost_mvvm_mfc_example_3/child_frame_view.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view.cpp
@@ -172,6 +174,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/spaceship_view.hpp
 	)
 	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+        ./boost_mvvm_mfc_example_3/dialog_view.cpp
+        ./boost_mvvm_mfc_example_3/dialog_view.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_tool_bar.hpp
         ./boost_mvvm_mfc_example_3/main_frame_view_menu_bar.cpp
@@ -189,6 +193,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/tree_control_observer.hpp
 	)
 	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+        ./boost_mvvm_mfc_example_3/add_equipment_view_model.cpp
+        ./boost_mvvm_mfc_example_3/add_equipment_view_model.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_model.cpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_model.hpp
         ./boost_mvvm_mfc_example_3/main_frame_view_model.cpp
@@ -201,10 +207,18 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.hpp
+        ./boost_mvvm_mfc_example_3/add_equipment_command_parameters.cpp
+        ./boost_mvvm_mfc_example_3/add_equipment_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/close_spaceship_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/close_spaceship_command_parameters.hpp
+        ./boost_mvvm_mfc_example_3/delete_dialog_view_command_parameters.cpp
+        ./boost_mvvm_mfc_example_3/delete_dialog_view_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/fleet_organization_command_parameters.hpp
+        ./boost_mvvm_mfc_example_3/open_add_equipment_view_command_parameters.cpp
+        ./boost_mvvm_mfc_example_3/open_add_equipment_view_command_parameters.hpp
+        ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.cpp
+        ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.hpp
 	)
 	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
         ./boost_mvvm_mfc_example_3/close_spaceship_event.cpp
