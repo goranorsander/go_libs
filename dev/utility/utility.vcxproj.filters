@@ -44,5 +44,8 @@
     <ClInclude Include="..\..\go\utility\string\format.hpp">
       <Filter>go\utility\string</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\value_guard.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\value_guard.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

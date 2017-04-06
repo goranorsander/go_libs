@@ -17,9 +17,12 @@
 #pragma once
 #endif
 
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/utility/nonmovable.hpp>
 #include <go_boost/utility/sanity.hpp>
 #include <go_boost/utility/scope_guard.hpp>
 #include <go_boost/utility/scope_guard_new.hpp>
+#include <go_boost/utility/value_guard.hpp>
 
 #include <go_boost/utility/iterator/forward_iterator.hpp>
 

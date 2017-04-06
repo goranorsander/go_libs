@@ -418,6 +418,7 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
     ${GO_UTILITY_DIR}/sanity.hpp
     ${GO_UTILITY_DIR}/scope_guard.hpp
     ${GO_UTILITY_DIR}/scope_guard_new.hpp
+	${GO_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp
@@ -749,6 +750,7 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
     ${GO_BOOST_UTILITY_DIR}/sanity.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard_new.hpp
+	${GO_BOOST_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp
