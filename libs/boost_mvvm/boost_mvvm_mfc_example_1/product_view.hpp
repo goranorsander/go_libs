@@ -22,16 +22,16 @@ class product_view
 {
 public:
     virtual ~product_view();
-	product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent = NULL);
+    product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent = NULL);
 
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_PRODUCT_VIEW };
+    enum { IDD = IDD_PRODUCT_VIEW };
 #endif
 
 protected:
     virtual void on_data_context_changed();
 
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
     virtual BOOL OnInitDialog();
 
@@ -42,7 +42,7 @@ public:
     afx_msg void OnBnClickedButtonSaveProduct();
 
 protected:
-	HICON m_hIcon;
+    HICON m_hIcon;
 
 private:
     m::wcommand_manager::wptr m_command_manager;

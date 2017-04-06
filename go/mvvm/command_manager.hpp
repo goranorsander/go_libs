@@ -96,8 +96,8 @@ template<>
 inline basic_command_manager<std::string>::basic_command_manager()
     : basic_notify_command_execution_interface<std::string>()
     , go::utility::noncopyable_nonmovable()
-	, _commands_guard()
-	, _commands()
+    , _commands_guard()
+    , _commands()
 {
 }
 
@@ -105,8 +105,8 @@ template<>
 inline basic_command_manager<std::wstring>::basic_command_manager()
     : basic_notify_command_execution_interface<std::wstring>()
     , go::utility::noncopyable_nonmovable()
-	, _commands_guard()
-	, _commands()
+    , _commands_guard()
+    , _commands()
 {
 }
 
@@ -114,8 +114,8 @@ template<class S>
 inline basic_command_manager<S>::basic_command_manager()
     : basic_notify_command_execution_interface<S>()
     , go::utility::noncopyable_nonmovable()
-	, _commands_guard()
-	, _commands()
+    , _commands_guard()
+    , _commands()
 {
 }
 

@@ -40,7 +40,7 @@ public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~proxy() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~proxy() GO_DEFAULT_DESTRUCTOR
+    virtual ~proxy() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     proxy()

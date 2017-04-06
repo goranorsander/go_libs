@@ -41,7 +41,7 @@ public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_value_property() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~basic_value_property() GO_DEFAULT_DESTRUCTOR
+    virtual ~basic_value_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_value_property(const string_type& property_name)
@@ -69,7 +69,7 @@ public:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
 #else
-	virtual ~value_property() GO_DEFAULT_DESTRUCTOR
+    virtual ~value_property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit value_property(const string_type& property_name)

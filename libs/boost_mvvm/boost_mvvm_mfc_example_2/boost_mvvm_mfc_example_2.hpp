@@ -14,7 +14,7 @@
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "include 'stdafx.h' before including this file for PCH"
+    #error "include 'stdafx.h' before including this file for PCH"
 #endif
 
 #include "resource.h"
@@ -31,10 +31,10 @@ public:
     boost_mvvm_mfc_example_2_app();
 
 public:
-	virtual BOOL InitInstance();
+    virtual BOOL InitInstance();
     virtual BOOL PreTranslateMessage(MSG* pMsg);
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
 private:
     UINT_PTR m_timer_id;

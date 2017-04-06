@@ -26,12 +26,12 @@ product_view::~product_view()
 }
 
 product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent)
-	: CDialogEx(IDD_PRODUCT_VIEW, pParent)
+    : CDialogEx(IDD_PRODUCT_VIEW, pParent)
     , m_hIcon(0)
     , m_command_manager(command_manager)
     , m_product_view_model(product_view_model::create())
 {
-	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+    m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
     m_product_view_model->data_context_changed.connect(boost::bind(&product_view::on_data_context_changed, this));
 }
 
@@ -67,8 +67,8 @@ END_MESSAGE_MAP()
 
 BOOL product_view::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();
-	return TRUE;  // return TRUE  unless you set the focus to a control
+    CDialogEx::OnInitDialog();
+    return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
 void product_view::OnBnClickedButtonGetProduct()

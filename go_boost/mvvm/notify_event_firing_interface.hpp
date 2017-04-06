@@ -69,22 +69,22 @@ inline basic_notify_event_firing_interface<S>::~basic_notify_event_firing_interf
 
 template<>
 inline basic_notify_event_firing_interface<std::string>::basic_notify_event_firing_interface()
-	: go_boost::signals::slot()
-	, event_fired()
+    : go_boost::signals::slot()
+    , event_fired()
 {
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring>::basic_notify_event_firing_interface()
-	: go_boost::signals::slot()
-	, event_fired()
+    : go_boost::signals::slot()
+    , event_fired()
 {
 }
 
 template<class S>
 inline basic_notify_event_firing_interface<S>::basic_notify_event_firing_interface()
-	: go_boost::signals::slot()
-	, event_fired()
+    : go_boost::signals::slot()
+    , event_fired()
 {
 }
 
