@@ -10,6 +10,7 @@
 
 #include "stdafx.h"
 #include "spaceship_view.hpp"
+#include <boost/format.hpp>
 #include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
 #include <go_boost/utility/scope_guard_new.hpp>
 
@@ -288,35 +289,39 @@ void spaceship_view::populate_equipment_list()
     m::wobservable_deque<equipment_interface::ptr>::ptr equipment = data_context()->equipment();
     if (!equipment) { return; }
 
-    typedef std::map<std::wstring, std::list<equipment_interface::ptr>> equipment_category_map_type;
+    typedef std::map<std::wstring, std::deque<equipment_interface::ptr>> equipment_category_map_type;
     equipment_category_map_type equipment_category;
-    for (const m::wobservable_deque<equipment_interface::ptr>::value_type& e : *equipment)
+    m::wobservable_deque<equipment_interface::ptr>::const_iterator e = equipment->begin();
+    while (e != equipment->end())
     {
-        if (e)
+        if (*e)
         {
-            equipment_category_map_type::iterator it = equipment_category.find(e->category().c_str());
+            equipment_category_map_type::iterator it = equipment_category.find((*e)->category().c_str());
             if (it != equipment_category.end())
             {
-                it->second.push_back(e);
+                it->second.push_back(*e);
             }
             else
             {
-                std::list<equipment_interface::ptr> c;
-                c.push_back(e);
-                equipment_category[e->category().c_str()] = c;
+                std::deque<equipment_interface::ptr> c;
+                c.push_back(*e);
+                equipment_category[(*e)->category().c_str()] = c;
             }
         }
+        ++e;
     }
 
     int item_number = 0;
-    for (const equipment_category_map_type::value_type& ec : equipment_category)
+    equipment_category_map_type::const_iterator ec = equipment_category.begin();
+    while (ec != equipment_category.end())
     {
-        for (const equipment_interface::ptr& e : ec.second)
+        std::deque<equipment_interface::ptr>::const_iterator ei = ec->second.begin();
+        while (ei != ec->second.end())
         {
             LVITEM lvi;
             memset(&lvi, 0, sizeof(lvi));
 
-            std::wstring text = ec.first;
+            std::wstring text = ec->first;
             lvi.mask = LVIF_TEXT;
             lvi.iItem = item_number;
             lvi.iSubItem = 0;
@@ -324,21 +329,23 @@ void spaceship_view::populate_equipment_list()
             const int item_index = _equipment_list_ctrl.InsertItem(&lvi);
             if (item_index > -1)
             {
-                const equipment_id_type equipment_id = boost::dynamic_pointer_cast<equipment_model>(e)->id;
-                _equipment_list_data[equipment_id] = e;
+                const equipment_id_type equipment_id = boost::dynamic_pointer_cast<equipment_model>(*ei)->id;
+                _equipment_list_data[equipment_id] = *ei;
 
-                text = e->name();
+                text = (*ei)->name();
                 lvi.iSubItem = 1;
                 lvi.pszText = const_cast<wchar_t*>(text.c_str());
                 _equipment_list_ctrl.SetItem(&lvi);
 
-                text = std::to_wstring(e->quantity());
+                text = (boost::wformat(L"%1%") % ((*ei)->quantity())).str();
                 lvi.iSubItem = 2;
                 lvi.pszText = const_cast<wchar_t*>(text.c_str());
                 _equipment_list_ctrl.SetItem(&lvi);
 
                 _equipment_list_ctrl.SetItemData(item_number++, equipment_id);
             }
+            ++ei;
         }
+        ++ec;
     }
 }

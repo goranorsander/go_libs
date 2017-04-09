@@ -22,8 +22,8 @@ class open_add_equipment_view_command_parameters
 {
 public:
     typedef open_add_equipment_view_command_parameters this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~open_add_equipment_view_command_parameters();
@@ -32,7 +32,7 @@ protected:
     explicit open_add_equipment_view_command_parameters(const spaceship_interface::ptr& spaceship_);
 
 private:
-    open_add_equipment_view_command_parameters() = delete;
+    open_add_equipment_view_command_parameters();
 
 public:
     np::value_property<spaceship_interface::ptr> spaceship;

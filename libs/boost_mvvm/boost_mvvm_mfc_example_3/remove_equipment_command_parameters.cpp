@@ -22,8 +22,16 @@ remove_equipment_command_parameters::remove_equipment_command_parameters(const f
 {
 }
 
+remove_equipment_command_parameters::remove_equipment_command_parameters()
+    : m::command_parameters()
+    , spaceship_id(0)
+    , equipment_id(0)
+{
+}
+
 remove_equipment_command_parameters::ptr remove_equipment_command_parameters::create(const fleet_organization_id_type& spaceship_id_, const equipment_id_type& equipment_id_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -32,4 +40,7 @@ remove_equipment_command_parameters::ptr remove_equipment_command_parameters::cr
     };
 
     return boost::make_shared<make_shared_enabler, const fleet_organization_id_type&>(spaceship_id_, equipment_id_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(spaceship_id_, equipment_id_));
+#endif // BOOST_MSVC > 1500
 }

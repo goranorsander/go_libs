@@ -23,8 +23,8 @@ class add_equipment_command_parameters
 {
 public:
     typedef add_equipment_command_parameters this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~add_equipment_command_parameters();
@@ -33,7 +33,7 @@ protected:
     explicit add_equipment_command_parameters(const fleet_organization_id_type& spaceship_id_);
 
 private:
-    add_equipment_command_parameters() = delete;
+    add_equipment_command_parameters();
 
 public:
     np::value_property<fleet_organization_id_type> spaceship_id;

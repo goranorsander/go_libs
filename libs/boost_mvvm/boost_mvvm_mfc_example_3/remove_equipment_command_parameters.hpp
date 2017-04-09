@@ -24,8 +24,8 @@ class remove_equipment_command_parameters
 {
 public:
     typedef remove_equipment_command_parameters this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~remove_equipment_command_parameters();
@@ -34,7 +34,7 @@ protected:
     remove_equipment_command_parameters(const fleet_organization_id_type& spaceship_id_, const equipment_id_type& equipment_id_);
 
 private:
-    remove_equipment_command_parameters() = delete;
+    remove_equipment_command_parameters();
 
 public:
     np::value_property<fleet_organization_id_type> spaceship_id;

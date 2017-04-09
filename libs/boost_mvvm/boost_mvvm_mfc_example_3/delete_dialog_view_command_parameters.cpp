@@ -21,8 +21,15 @@ delete_dialog_view_command_parameters::delete_dialog_view_command_parameters(con
 {
 }
 
+delete_dialog_view_command_parameters::delete_dialog_view_command_parameters()
+    : m::command_parameters()
+    , dialog()
+{
+}
+
 delete_dialog_view_command_parameters::ptr delete_dialog_view_command_parameters::create(const dialog_view::ptr& dialog_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -31,4 +38,7 @@ delete_dialog_view_command_parameters::ptr delete_dialog_view_command_parameters
     };
 
     return boost::make_shared<make_shared_enabler, const dialog_view::ptr&>(dialog_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(dialog_));
+#endif // BOOST_MSVC > 1500
 }
