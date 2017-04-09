@@ -18,7 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <functional>
-#include <list>
+#include <deque>
 #include <map>
 #include <mutex>
 #include <go/mvvm/notify_event_firing_interface.hpp>
@@ -67,7 +67,7 @@ private:
     mutable std::recursive_mutex _events_guard;
     event_subscription_key_type _next_event_subscription_key;
     std::map<S, std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>>> _subscriptions;
-    std::list<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> _events;
+    std::deque<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> _events;
 };
 
 template<class S>
@@ -304,7 +304,7 @@ inline void basic_event_manager<S>::post(const std::shared_ptr<basic_event<S>>& 
 template<>
 inline void basic_event_manager<std::string>::fire_events()
 {
-    std::list<std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>> events;
+    std::deque<std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>> events;
     {
         const std::lock_guard<std::recursive_mutex> lock(_events_guard);
         std::swap(events, _events);
@@ -318,7 +318,7 @@ inline void basic_event_manager<std::string>::fire_events()
 template<>
 inline void basic_event_manager<std::wstring>::fire_events()
 {
-    std::list<std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>> events;
+    std::deque<std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>> events;
     {
         const std::lock_guard<std::recursive_mutex> lock(_events_guard);
         std::swap(events, _events);
@@ -332,7 +332,7 @@ inline void basic_event_manager<std::wstring>::fire_events()
 template<class S>
 inline void basic_event_manager<S>::fire_events()
 {
-    std::list<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> events;
+    std::deque<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> events;
     {
         const std::lock_guard<std::recursive_mutex> lock(_events_guard);
         std::swap(events, _events);

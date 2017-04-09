@@ -21,8 +21,15 @@ open_add_equipment_view_command_parameters::open_add_equipment_view_command_para
 {
 }
 
+open_add_equipment_view_command_parameters::open_add_equipment_view_command_parameters()
+    : m::command_parameters()
+    , spaceship()
+{
+}
+
 open_add_equipment_view_command_parameters::ptr open_add_equipment_view_command_parameters::create(const spaceship_interface::ptr& spaceship_)
 {
+#if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
@@ -31,4 +38,7 @@ open_add_equipment_view_command_parameters::ptr open_add_equipment_view_command_
     };
 
     return boost::make_shared<make_shared_enabler, const spaceship_interface::ptr&>(spaceship_);
+#else
+    return boost::shared_ptr<this_type>(new this_type(spaceship_));
+#endif // BOOST_MSVC > 1500
 }

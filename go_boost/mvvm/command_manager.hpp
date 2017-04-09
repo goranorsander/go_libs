@@ -17,7 +17,7 @@
 #pragma once
 #endif
 
-#include <list>
+#include <deque>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/recursive_mutex.hpp>
@@ -60,7 +60,7 @@ public:
 
 private:
     mutable boost::recursive_mutex _commands_guard;
-    std::list<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> _commands;
+    std::deque<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> _commands;
 };
 
 template<>
@@ -198,7 +198,7 @@ inline void basic_command_manager<S>::post(const boost::shared_ptr<basic_command
 template<>
 inline void basic_command_manager<std::string>::execute_commands()
 {
-    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>> cmd_list_type;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::string>>, boost::shared_ptr<basic_command_interface<std::string>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
@@ -214,7 +214,7 @@ inline void basic_command_manager<std::string>::execute_commands()
 template<>
 inline void basic_command_manager<std::wstring>::execute_commands()
 {
-    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>> cmd_list_type;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::wstring>>, boost::shared_ptr<basic_command_interface<std::wstring>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
@@ -230,7 +230,7 @@ inline void basic_command_manager<std::wstring>::execute_commands()
 template<class S>
 inline void basic_command_manager<S>::execute_commands()
 {
-    typedef typename std::list<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> cmd_list_type;
+    typedef typename std::deque<std::pair<boost::weak_ptr<basic_command_interface<S>>, boost::shared_ptr<basic_command_interface<S>>>> cmd_list_type;
     cmd_list_type cmds;
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);

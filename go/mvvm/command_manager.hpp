@@ -17,7 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <list>
+#include <deque>
 #include <mutex>
 #include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
@@ -69,7 +69,7 @@ public:
 
 private:
     mutable std::recursive_mutex _commands_guard;
-    std::list<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> _commands;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> _commands;
 };
 
 template<>
@@ -212,7 +212,7 @@ inline void basic_command_manager<S>::post(const std::shared_ptr<basic_command_i
 template<>
 inline void basic_command_manager<std::string>::execute_commands()
 {
-    std::list<std::pair<std::weak_ptr<basic_command_interface<std::string>>, std::shared_ptr<basic_command_interface<std::string>>>> cmds;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string>>, std::shared_ptr<basic_command_interface<std::string>>>> cmds;
     {
         const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);
@@ -227,7 +227,7 @@ inline void basic_command_manager<std::string>::execute_commands()
 template<>
 inline void basic_command_manager<std::wstring>::execute_commands()
 {
-    std::list<std::pair<std::weak_ptr<basic_command_interface<std::wstring>>, std::shared_ptr<basic_command_interface<std::wstring>>>> cmds;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring>>, std::shared_ptr<basic_command_interface<std::wstring>>>> cmds;
     {
         const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);
@@ -242,7 +242,7 @@ inline void basic_command_manager<std::wstring>::execute_commands()
 template<class S>
 inline void basic_command_manager<S>::execute_commands()
 {
-    std::list<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> cmds;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<S>>, std::shared_ptr<basic_command_interface<S>>>> cmds;
     {
         const std::lock_guard<std::recursive_mutex> lock(_commands_guard);
         std::swap(cmds, _commands);

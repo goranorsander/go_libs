@@ -177,7 +177,7 @@ void properties_view::populate_with(const spaceship_interface::ptr& spaceship)
 
 void properties_view::populate_with(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
 {
-    typedef std::map<std::wstring, std::list<equipment_interface::ptr>> equipment_category_map_type;
+    typedef std::map<std::wstring, std::deque<equipment_interface::ptr>> equipment_category_map_type;
     equipment_category_map_type equipment_category;
     BOOST_FOREACH(const m::wobservable_deque<equipment_interface::ptr>::value_type& e, *equipment)
     {
@@ -190,7 +190,7 @@ void properties_view::populate_with(const m::wobservable_deque<equipment_interfa
             }
             else
             {
-                std::list<equipment_interface::ptr> c;
+                std::deque<equipment_interface::ptr> c;
                 c.push_back(e);
                 equipment_category[e->category().c_str()] = c;
             }

@@ -22,8 +22,8 @@ class delete_dialog_view_command_parameters
 {
 public:
     typedef delete_dialog_view_command_parameters this_type;
-    typedef typename boost::shared_ptr<this_type> ptr;
-    typedef typename boost::weak_ptr<this_type> wptr;
+    typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
+    typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~delete_dialog_view_command_parameters();
@@ -32,7 +32,7 @@ protected:
     explicit delete_dialog_view_command_parameters(const dialog_view::ptr& dialog_);
 
 private:
-    delete_dialog_view_command_parameters() = delete;
+    delete_dialog_view_command_parameters();
 
 public:
     np::value_property<dialog_view::ptr> dialog;

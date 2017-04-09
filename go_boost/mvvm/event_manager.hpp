@@ -17,7 +17,7 @@
 #pragma once
 #endif
 
-#include <list>
+#include <deque>
 #include <map>
 #include <boost/foreach.hpp>
 #include <boost/function.hpp>
@@ -70,7 +70,7 @@ private:
     mutable boost::recursive_mutex _events_guard;
     event_subscription_key_type _next_event_subscription_key;
     std::map<S, std::map<event_subscription_key_type, boost::function<void(const boost::shared_ptr<basic_event<S>>&)>>> _subscriptions;
-    std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> _events;
+    std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> _events;
 };
 
 template<class S>
@@ -337,7 +337,7 @@ inline void basic_event_manager<S>::post(const boost::shared_ptr<basic_event<S>>
 template<>
 inline void basic_event_manager<std::string>::fire_events()
 {
-    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>> events_type;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>> events_type;
     events_type events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
@@ -352,8 +352,8 @@ inline void basic_event_manager<std::string>::fire_events()
 template<>
 inline void basic_event_manager<std::wstring>::fire_events()
 {
-    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events_type;
-    std::list<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events_type;
+    std::deque<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
@@ -367,8 +367,8 @@ inline void basic_event_manager<std::wstring>::fire_events()
 template<class S>
 inline void basic_event_manager<S>::fire_events()
 {
-    typedef GO_BOOST_TYPENAME std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
-    std::list<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
+    std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events;
     {
         const boost::recursive_mutex::scoped_lock lock(_events_guard);
         std::swap(events, _events);
