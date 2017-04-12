@@ -32,7 +32,7 @@ public:
     {
     }
 
-    matches_dialog_view(const dialog_view::pointer dialog)
+    explicit matches_dialog_view(const dialog_view::pointer dialog)
         : std::unary_function<dialog_view::ptr, bool>()
         , _dialog(dialog)
     {

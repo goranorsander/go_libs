@@ -34,7 +34,7 @@ add_equipment_view_model::ptr add_equipment_view_model::create(const m::wobserva
         : public this_type
     {
         virtual ~make_shared_enabler() = default;
-        make_shared_enabler(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment) : this_type(equipment) {}
+        explicit make_shared_enabler(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment) : this_type(equipment) {}
     };
 
     return std::make_shared<make_shared_enabler>(equipment);

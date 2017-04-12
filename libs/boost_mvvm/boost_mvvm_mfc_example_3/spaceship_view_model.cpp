@@ -30,7 +30,7 @@ public:
     {
     }
 
-    matches_equipment_id(const equipment_id_type id)
+    explicit matches_equipment_id(const equipment_id_type id)
         : std::unary_function<equipment_interface::ptr, bool>()
         , _id(id)
     {

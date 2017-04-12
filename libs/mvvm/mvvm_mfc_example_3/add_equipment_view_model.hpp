@@ -31,7 +31,7 @@ public:
     virtual ~add_equipment_view_model() = default;
 
 private:
-    add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment);
+    explicit add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment);
 
 public:
     static ptr create(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment);
