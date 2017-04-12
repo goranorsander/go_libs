@@ -1,0 +1,23 @@
+# use glob syntax.
+syntax: glob
+
+*.7z
+*.bak
+*.exe
+*.idb
+*.ilk
+*.lastbuildstate
+*.log
+*.obj
+*.opensdf
+*.orig
+*.pdb
+*.sdf
+*.suo
+*.tlog
+*~
+
+unsuccessfulbuild
+
+# switch to regexp syntax.
+syntax: regexp
