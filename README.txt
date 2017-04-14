@@ -33,13 +33,12 @@ Boost Libraries. This is a short how-to.
      - bootstrap.bat (on Windows)
  5. Build boost by calling b2 with appropriate options,
     properties, and target, e.g.
-     - b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete
+     > b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete
        address-model=64 -j 3 stage --layout=versioned
        (on Linux, using gcc, debug build, 64 bits, 3 cores)
-     - b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static
+     > b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static
        --build-type=complete address-model=32 -j 6 stage --layout=versioned
-       (on Windows, using Visual Studio 2017 C++, release 
-       build, 32 bits, 6 cores)
+       (on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)
 
 For more information see the Boost.Build Tutorial at
 http://www.boost.org/build/tutorial.html
