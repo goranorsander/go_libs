@@ -20,7 +20,7 @@ broaden my knowledge of the **Boost Libraries**.
 If you want to use the boost-based implementation of the **GO C++ Libraries** you need to build the
 **Boost Libraries**. This is a short how-to.
 
-1. Download the **Boost Libraries** source code from http://www.boost.org/
+1. Download the **Boost Libraries** source code from [www.boost.org](http://www.boost.org/)
 1. Extract the boost source code archive
 1. Open a command prompt or terminal and cd to the boost source code root directory
 1. Bootstrap, i.e. build the Boost.Build tools, by calling
@@ -32,14 +32,14 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
    * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned__
      _(on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)_
 
-For more information see the Boost.Build Tutorial at http://www.boost.org/build/tutorial.html
+For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
 I currently use **Boost Libraries** version **1.63.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
 The **GO C++ Libraries** use CMake to manage the build process. CMake can be downloaded from
-https://cmake.org/download/
+[cmake.org/download](https://cmake.org/download/).
 
 CMake configuration:
 
@@ -115,7 +115,7 @@ My development environment and toolset details:
 
 # GOOGLE TEST
 
-I use the Google Test framework for unit testing. See https://github.com/google/googletest for more information.
+I use the Google Test framework for unit testing. See [github.com/google/googletest](https://github.com/google/googletest) for more information.
 
 # CODESCENE ANALYSIS
 
