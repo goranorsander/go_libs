@@ -125,3 +125,8 @@ My development environment and toolset details:
  * Windows 7 Enterprise, 64 bit
     - cmake version 3.8.0
     - Visual Studio 2008 Professional Edition
+
+CODESCENE ANALYSIS
+##################
+
+[![](https://codescene.io/projects/1082/status.svg) Get more details at **codescene.io**.](https://codescene.io/projects/1082/jobs/latest-successful/results)
