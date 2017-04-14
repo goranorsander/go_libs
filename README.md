@@ -7,11 +7,11 @@ a reasonably challenging idea for a hobby project and decided to try implement a
 application using the **MVVM** (Model–View–ViewModel) architecture pattern. This was the start of the
 **GO C++ Libraries**.
 
-The **GO C++ Libraries** have two main implementations. The first uses C++11/14/17 and the **C++ Standard Library**
-libraries. The second uses C++98/03 and the **Boost Libraries**. I find it interesting to do both
-implementations. Doing the first std-based implementation gives me the opportunety to learn about
-new C++11/14/17 features. The second boost-based implementation broaden my knowledge of the Boost
-Libraries.
+The **GO C++ Libraries** have two main implementations. The first uses **C++11/14/17** and the
+**C++ Standard Library**. The second uses **C++98/03** and the **Boost Libraries**. I find it
+interesting to do both implementations. Doing the first std-based implementation gives me the
+opportunety to learn about new **C++11/14/17** features. The second boost-based implementation
+broaden my knowledge of the **Boost Libraries**.
 
 # HOW-TO BUILD
 
@@ -33,6 +33,8 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
      _(on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)_
 
 For more information see the Boost.Build Tutorial at http://www.boost.org/build/tutorial.html
+
+I currently use **Boost Libraries** version **1.63.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -66,7 +68,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING / TOOLSET**      |clang 3.9.1|gcc 6.3.1|MSYS2/MinGW gcc 5.3.0|Visual Studio 2008 Express|Visual Studio 2008 Professional|Visual Studio 2010 Express|Visual Studio 2012 Express|Visual Studio 2013 Express|Visual Studio 2015 Community|Visual Studio 2017 Community
+**SETTING \ TOOLSET**      |clang 3.9.1|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2008 Express|Visual Studio 2008 Professional|Visual Studio 2010 Express|Visual Studio 2012 Express|Visual Studio 2013 Express|Visual Studio 2015 Community|Visual Studio 2017 Community
 ---------------------------|-----------|---------|---------------------|--------------------------|-------------------------------|--------------------------|--------------------------|--------------------------|----------------------------|----------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1
 **BOOST_MINOR_VERSION** | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63
@@ -110,6 +112,10 @@ My development environment and toolset details:
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.8.0
   * Visual Studio 2008 Professional Edition
+
+# GOOGLE TEST
+
+I use the Google Test framework for unit testing. See https://github.com/google/googletest for more information.
 
 # CODESCENE ANALYSIS
 
