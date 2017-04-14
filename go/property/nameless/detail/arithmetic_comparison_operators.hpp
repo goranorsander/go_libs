@@ -7,8 +7,8 @@
 //  Copyright 2015-2017 Göran Orsander
 //
 //  This file is part of the GO.libraries.
-//  Distributed under the GO Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt.
+//  Distributed under the GO Software License, Version 2.0.
+//  See accompanying file LICENSE.md.
 //
 
 #define GO_IMPLEMENT_ANONYMOUS_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _value_type_) \

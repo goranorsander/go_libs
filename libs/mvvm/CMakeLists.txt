@@ -1,3 +1,13 @@
+#
+#  CMakeLists.txt
+#
+#  Copyright 2016-2017 Göran Orsander
+#
+#  This file is part of the GO.libraries.
+#  Distributed under the GO Software License, Version 2.0.
+#  See accompanying file LICENSE.md.
+#
+
 if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})

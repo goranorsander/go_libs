@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Text Include="..\..\..\ACKNOWLEDGEMENTS.txt" />
-    <Text Include="..\..\..\COPYING.LESSER.txt" />
-    <Text Include="..\..\..\COPYING.txt" />
-    <Text Include="..\..\..\LICENSE_1_0.txt" />
-    <Text Include="..\..\..\CMakeLists.txt">
+    <Text Include="..\..\ACKNOWLEDGMENT.md" />
+    <Text Include="..\..\COPYING.LESSER.md" />
+    <Text Include="..\..\COPYING.md" />
+    <Text Include="..\..\LICENSE.md" />
+    <Text Include="..\..\CMakeLists.txt">
       <Filter>CMake Configuration</Filter>
     </Text>
-    <Text Include="..\..\..\go\CMakeLists.txt">
+    <Text Include="..\..\go\CMakeLists.txt">
       <Filter>CMake Configuration\go</Filter>
     </Text>
-    <Text Include="..\..\..\go_boost\CMakeLists.txt">
+    <Text Include="..\..\go_boost\CMakeLists.txt">
       <Filter>CMake Configuration\go_boost</Filter>
     </Text>
-    <Text Include="..\..\..\libs\CMakeLists.txt">
+    <Text Include="..\..\libs\CMakeLists.txt">
       <Filter>CMake Configuration\libs</Filter>
     </Text>
-    <Text Include="..\..\..\libs\boost_mvvm\CMakeLists.txt">
+    <Text Include="..\..\libs\boost_mvvm\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_mvvm</Filter>
     </Text>
-    <Text Include="..\..\..\libs\boost_property\CMakeLists.txt">
+    <Text Include="..\..\libs\boost_property\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_property</Filter>
     </Text>
-    <Text Include="..\..\..\libs\mvvm\CMakeLists.txt">
+    <Text Include="..\..\libs\mvvm\CMakeLists.txt">
       <Filter>CMake Configuration\libs\mvvm</Filter>
     </Text>
-    <Text Include="..\..\..\libs\property\CMakeLists.txt">
+    <Text Include="..\..\libs\property\CMakeLists.txt">
       <Filter>CMake Configuration\libs\signals</Filter>
     </Text>
-    <Text Include="..\..\..\libs\signals\CMakeLists.txt">
+    <Text Include="..\..\libs\signals\CMakeLists.txt">
       <Filter>CMake Configuration\libs\property</Filter>
     </Text>
   </ItemGroup>
@@ -63,8 +63,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\CMakeLists.googletest.txt.in">
+    <None Include="..\..\CMakeLists.googletest.txt.in">
       <Filter>CMake Configuration</Filter>
     </None>
+    <None Include="..\..\README.md" />
   </ItemGroup>
 </Project>

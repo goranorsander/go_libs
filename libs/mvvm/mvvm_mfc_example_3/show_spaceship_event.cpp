@@ -4,8 +4,8 @@
 //  Copyright 2016-2017 Göran Orsander
 //
 //  This file is part of the GO.libraries.
-//  Distributed under the GO Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt.
+//  Distributed under the GO Software License, Version 2.0.
+//  See accompanying file LICENSE.md.
 //
 
 #include "stdafx.h"

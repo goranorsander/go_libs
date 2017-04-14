@@ -1,3 +1,13 @@
+#
+#  CMakeLists.txt
+#
+#  Copyright 2016-2017 Göran Orsander
+#
+#  This file is part of the GO.libraries.
+#  Distributed under the GO Software License, Version 2.0.
+#  See accompanying file LICENSE.md.
+#
+
 set(PROJECT_GO_LIBS_BOOST_NAME GO_libraries_boost)
 
 file(GLOB GO_BOOST_DIR_FILES ./*.hpp)

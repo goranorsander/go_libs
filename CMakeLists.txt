@@ -1,3 +1,13 @@
+#
+#  CMakeLists.txt
+#
+#  Copyright 2016-2017 Göran Orsander
+#
+#  This file is part of the GO.libraries.
+#  Distributed under the GO Software License, Version 2.0.
+#  See accompanying file LICENSE.md.
+#
+
 cmake_minimum_required(VERSION 3.0)
 
 project(GO_LIBS)
@@ -119,13 +129,13 @@ endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 set(ROOT_DIRNAME go_libs_root)
 set(ROOT_DIR ${GO_LIBS_SOURCE_DIR})
 
-# *.txt
+# *.md
 
-set(GO_LIBS_TXT
-    ${ROOT_DIR}/ACKNOWLEDGEMENTS.txt
-    ${ROOT_DIR}/COPYING.LESSER.txt
-    ${ROOT_DIR}/COPYING.txt
-    ${ROOT_DIR}/LICENSE_1_0.txt
+set(GO_LIBS_MD
+    ${ROOT_DIR}/ACKNOWLEDGEMENTS.md
+    ${ROOT_DIR}/COPYING.LESSER.md
+    ${ROOT_DIR}/COPYING.md
+    ${ROOT_DIR}/LICENSE.md
 )
 
 ########################################################
@@ -785,7 +795,7 @@ ADD_SUBDIRECTORY(go)
 ADD_SUBDIRECTORY(go_boost)
 ADD_SUBDIRECTORY(libs)
 
-INSTALL(FILES ${GO_LIBS_TXT}    DESTINATION  .)
+INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
