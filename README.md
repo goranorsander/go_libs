@@ -3,8 +3,8 @@
 When **C++11** was released I wanted to learn the new features introduced. I soon realized that it was
 unlikely to happen at work. Migrating the company C++ source code, projects, solutions, etc. was
 simply to big a task (and it still is, a least when the managers consider pros and cons). I wanted
-a reasonably challenging idea for a hobby project and decided to try implement an MFC-based
-application using the MVVM (Model–View–ViewModel) architecture pattern. This was the start of the
+a reasonably challenging idea for a hobby project and decided to try implement an **MFC**-based
+application using the **MVVM** (Model–View–ViewModel) architecture pattern. This was the start of the
 **GO C++ Libraries**.
 
 The **GO C++ Libraries** have two main implementations. The first uses C++11/14/17 and the **C++ Standard Library**
@@ -24,12 +24,12 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 1. Extract the boost source code archive
 1. Open a command prompt or terminal and cd to the boost source code root directory
 1. Bootstrap, i.e. build the Boost.Build tools, by calling
-   * bootstrap.sh (on Linux)
-   * bootstrap.bat (on Windows)
-1. Build boost by calling b2 with appropriate options, properties, and target, e.g.
-   * b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 -j 3 stage --layout=versioned
+   * bootstrap.sh _(on Linux)_
+   * bootstrap.bat _(on Windows)_
+1. Build boost by calling **b2** with appropriate options, properties, and target, e.g.
+   * __b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 -j 3 stage --layout=versioned__
      _(on Linux, using gcc, debug build, 64 bits, 3 cores)_
-   * b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned
+   * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned__
      _(on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)_
 
 For more information see the Boost.Build Tutorial at http://www.boost.org/build/tutorial.html
@@ -41,49 +41,49 @@ https://cmake.org/download/
 
 CMake configuration:
 
- * BOOST_INCLUDEDIR = path to boost, e.g. C:\path\to\boost_1_63_0
- * BOOST_LIBRARYDIR = path to boost link libraries, e.g. C:\path\to\boost_1_63_0\stage\lib
- * BOOST_MAJOR_VERSION = 1
- * BOOST_MINOR_VERSION = 63
- * BUILD_BOOST_MFC_EXAMPLES = TRUE|FALSE
- * BUILD_BOOST_TESTS = TRUE|FALSE
- * BUILD_STD_MFC_EXAMPLES = TRUE|FALSE
- * BUILD_STD_TESTS = TRUE|FALSE
- * CMAKE_CONFIGURATION_TYPES = Debug;Release
- * CMAKE_INSTALL_PREFIX = path to install directory
- * USE_SOLUTION_FOLDERS = TRUE|FALSE
- * BUILD_GMOCK = TRUE|FALSE
- * BUILD_GTEST = TRUE|FALSE
- * BUILD_SHARED_LIBS = TRUE|FALSE
- * gmock_build_tests = TRUE|FALSE
- * gtest_build_samples = TRUE|FALSE
- * gtest_build_tests = TRUE|FALSE
- * gtest_disable_pthreads = TRUE|FALSE
- * gtest_force_shared_crt = TRUE|FALSE
- * gtest_hide_internal_symbols = TRUE|FALSE
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_63_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_63_0\stage\lib)*
+ * **BOOST_MAJOR_VERSION** = 1
+ * **BOOST_MINOR_VERSION** = 63
+ * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
+ * **BUILD_BOOST_TESTS** = TRUE|FALSE
+ * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
+ * **BUILD_STD_TESTS** = TRUE|FALSE
+ * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
+ * **CMAKE_INSTALL_PREFIX** = path to install directory
+ * **USE_SOLUTION_FOLDERS** = TRUE|FALSE
+ * **BUILD_GMOCK** = TRUE|FALSE
+ * **BUILD_GTEST** = TRUE|FALSE
+ * **BUILD_SHARED_LIBS** = TRUE|FALSE
+ * **gmock_build_tests** = TRUE|FALSE
+ * **gtest_build_samples** = TRUE|FALSE
+ * **gtest_build_tests** = TRUE|FALSE
+ * **gtest_disable_pthreads** = TRUE|FALSE
+ * **gtest_force_shared_crt** = TRUE|FALSE
+ * **gtest_hide_internal_symbols** = TRUE|FALSE
 
 Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING / TOOLSET**      |clang 3.9.1|gcc 6.3.1|MSYS2/MinGW gcc 5.3.0|VS 2008 Express|VS 2008 Professional|VS 2010 Express|VS 2012 Express|VS 2013 Express|VS 2015 Community|VS 2017 Community
----------------------------|-----------|---------|---------------------|---------------|--------------------|---------------|---------------|---------------|-----------------|-----------------
-BOOST_MAJOR_VERSION | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1
-BOOST_MINOR_VERSION | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63
-BUILD_BOOST_MFC_EXAMPLES | | | | | X | | | | X | X
-BUILD_BOOST_TESTS | X | X | X | X | X | X | X | X | X | X
-BUILD_STD_MFC_EXAMPLES | | | | | | | | | X | X
-BUILD_STD_TESTS | X | X | X | | | X | X | X | X | X
-USE_SOLUTION_FOLDERS | X | X | X | | | | X | X | X | X
-BUILD_GMOCK | X | X | X | X | X | X | X | X | X | X
-BUILD_GTEST | X | X | X | X | X | X | X | X | X | X
-BUILD_SHARED_LIBS | | | | | | | | | |
-gmock_build_tests | | | | | | | | | |
-gtest_build_samples | | | | | | | | | |
-gtest_build_tests | | | | | | | | | |
-gtest_disable_pthreads | | | X | | | | | | |
-gtest_force_shared_crt | | | | X | X | X | X | X | X | X
-gtest_hide_internal_symbols | | | | | | | | | |
+**SETTING / TOOLSET**      |clang 3.9.1|gcc 6.3.1|MSYS2/MinGW gcc 5.3.0|Visual Studio 2008 Express|Visual Studio 2008 Professional|Visual Studio 2010 Express|Visual Studio 2012 Express|Visual Studio 2013 Express|Visual Studio 2015 Community|Visual Studio 2017 Community
+---------------------------|-----------|---------|---------------------|--------------------------|-------------------------------|--------------------------|--------------------------|--------------------------|----------------------------|----------------------------
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1
+**BOOST_MINOR_VERSION** | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63 | 63
+**BUILD_BOOST_MFC_EXAMPLES** | | | | | X | | | | X | X
+**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X
+**BUILD_STD_MFC_EXAMPLES** | | | | | | | | | X | X
+**BUILD_STD_TESTS** | X | X | X | | | X | X | X | X | X
+**USE_SOLUTION_FOLDERS** | X | X | X | | | | X | X | X | X
+**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X
+**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X
+**BUILD_SHARED_LIBS** | | | | | | | | | |
+**gmock_build_tests** | | | | | | | | | |
+**gtest_build_samples** | | | | | | | | | |
+**gtest_build_tests** | | | | | | | | | |
+**gtest_disable_pthreads** | | | X | | | | | | |
+**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X
+**gtest_hide_internal_symbols** | | | | | | | | | |
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
 CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
