@@ -29,8 +29,8 @@ Boost Libraries. This is a short how-to.
  3. Open a command prompt or terminal and cd to the boost
     source code root directory
  4. Bootstrap, i.e. build the Boost.Build tools, by calling
-     - bootstrap.sh (on Linux)
-     - bootstrap.bat (on Windows)
+     > bootstrap.sh (on Linux)
+     > bootstrap.bat (on Windows)
  5. Build boost by calling b2 with appropriate options,
     properties, and target, e.g.
      > b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete
