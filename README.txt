@@ -1,23 +1,18 @@
 INTRODUCTION
 ############
 
-When C++11 was released I wanted to learn the new features
-introduced. I soon realized that it was unlikely to happen
-at work. Migrating the company C++ source code, projects,
-solutions, etc. was simply to big a task (and it still is,
-a least when the managers consider pros and cons). I wanted
-a reasonably challenging idea for a hobby project and
-decided to try implement an MFC-based application using the
-MVVM (Model–View–ViewModel) architecture pattern. This was
-the start of the GO C++ Libraries.
+When C++11 was released I wanted to learn the new features introduced. I soon realized that it was
+unlikely to happen at work. Migrating the company C++ source code, projects, solutions, etc. was
+simply to big a task (and it still is, a least when the managers consider pros and cons). I wanted
+a reasonably challenging idea for a hobby project and decided to try implement an MFC-based
+application using the MVVM (Model–View–ViewModel) architecture pattern. This was the start of the
+GO C++ Libraries.
 
-The GO C++ Libraries have two main implementations. The
-first uses C++11/14/17 and the std libraries. The second
-uses C++98/03 and the Boost Libraries. I find it
-interesting to do both implementations. Doing the first
-std-based implementation gives me the opportunety to learn
-about new C++11/14/17 features. The second boost-based
-implementation broaden my knowledge of the Boost Libraries.
+The GO C++ Libraries have two main implementations. The first uses C++11/14/17 and the std
+libraries. The second uses C++98/03 and the Boost Libraries. I find it interesting to do both
+implementations. Doing the first std-based implementation gives me the opportunety to learn about
+new C++11/14/17 features. The second boost-based implementation broaden my knowledge of the Boost
+Libraries.
 
 HOW-TO BUILD
 ############
@@ -25,9 +20,8 @@ HOW-TO BUILD
 Boost Libraries
 ---------------
 
-If you want to use the boost-based implementation of the GO
-C++ Libraries you need to build the Boost Libraries. This
-is a short how-to.
+If you want to use the boost-based implementation of the GO C++ Libraries you need to build the
+Boost Libraries. This is a short how-to.
 
  1. Download the Boost Libraries source code from
     http://www.boost.org/
@@ -39,9 +33,11 @@ is a short how-to.
      - bootstrap.bat (on Windows)
  5. Build boost by calling b2 with appropriate options,
     properties, and target, e.g.
-     - b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 -j 3 stage --layout=versioned
+     - b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete
+       address-model=64 -j 3 stage --layout=versioned
        (on Linux, using gcc, debug build, 64 bits, 3 cores)
-     - b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned
+     - b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static
+       --build-type=complete address-model=32 -j 6 stage --layout=versioned
        (on Windows, using Visual Studio 2017 C++, release 
        build, 32 bits, 6 cores)
 
@@ -51,8 +47,8 @@ http://www.boost.org/build/tutorial.html
 GO C++ Libraries
 ----------------
 
-The GO C++ Libraries use CMake to manage the build process.
-CMake can be downloaded from https://cmake.org/download/
+The GO C++ Libraries use CMake to manage the build process. CMake can be downloaded from
+https://cmake.org/download/
 
 CMake configuration:
 
@@ -77,36 +73,36 @@ CMake configuration:
  * gtest_force_shared_crt = TRUE|FALSE
  * gtest_hide_internal_symbols = TRUE|FALSE
 
-Use CMake to configure and generate a build solution for
-your toolset.
+Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-----------------------------+-------+-------+-------------+---------+--------------+---------+---------+---------+-----------+----------
-SETTING                     | clang | gcc   | MinGW/MSYS2 | VS 2008 | VS 2008      | VS 2010 | VS 2012 | VS 2013 | VS 2015   | VS 2017
-                            | 3.9.1 | 6.3.1 | gcc 5.3.0   | Express | Professional | Express | Express | Express | Community | Community
-----------------------------+-------+-------+-------------+---------+--------------+---------+---------+---------+-----------+----------
-BOOST_MAJOR_VERSION         | 1     | 1     | 1           | 1       | 1            | 1       | 1       | 1       | 1         | 1
-BOOST_MINOR_VERSION         | 63    | 63    | 63          | 63      | 63           | 63      | 63      | 63      | 63        | 63
-BUILD_BOOST_MFC_EXAMPLES    |       |       |             |         | X            |         |         |         | X         | X
-BUILD_BOOST_TESTS           | X     | X     | X           | X       | X            | X       | X       | X       | X         | X
-BUILD_STD_MFC_EXAMPLES      |       |       |             |         |              |         |         |         | X         | X
-BUILD_STD_TESTS             | X     | X     | X           |         |              | X       | X       | X       | X         | X
-USE_SOLUTION_FOLDERS        | X     | X     | X           |         |              |         | X       | X       | X         | X
-BUILD_GMOCK                 | X     | X     | X           | X       | X            | X       | X       | X       | X         | X
-BUILD_GTEST                 | X     | X     | X           | X       | X            | X       | X       | X       | X         | X
-BUILD_SHARED_LIBS           |       |       |             |         |              |         |         |         |           | 
-gmock_build_tests           |       |       |             |         |              |         |         |         |           | 
-gtest_build_samples         |       |       |             |         |              |         |         |         |           | 
-gtest_build_tests           |       |       |             |         |              |         |         |         |           | 
-gtest_disable_pthreads      |       |       | X           |         |              |         |         |         |           | 
-gtest_force_shared_crt      |       |       |             | X       | X            | X       | X       | X       | X         | X
-gtest_hide_internal_symbols |       |       |             |         |              |         |         |         |           | 
-----------------------------+-------+-------+-------------+---------+--------------+---------+---------+---------+-----------+----------
+---------------------------+-----+-----+-----+------+------+------+------+------+------+------
+SETTING                    |clang|gcc  |MSYS2|VS2008|VS2008|VS2010|VS2012|VS2013|VS2015|VS2017
+                           |     |     |MinGW|ExprEd|ProEd |ExprEd|ExprEd|ExprEd|CommEd|CommEd
+                           |     |     |gcc  |      |      |      |      |      |      |
+                           |3.9.1|6.3.1|5.3.0|      |      |      |      |      |      |
+---------------------------+-----+-----+-----+------+------+------+------+------+------+------
+BOOST_MAJOR_VERSION        |1    |1    |1    |1     |1     |1     |1     |1     |1     |1
+BOOST_MINOR_VERSION        |63   |63   |63   |63    |63    |63    |63    |63    |63    |63
+BUILD_BOOST_MFC_EXAMPLES   |     |     |     |      |X     |      |      |      |X     |X
+BUILD_BOOST_TESTS          |X    |X    |X    |X     |X     |X     |X     |X     |X     |X
+BUILD_STD_MFC_EXAMPLES     |     |     |     |      |      |      |      |      |X     |X
+BUILD_STD_TESTS            |X    |X    |X    |      |      |X     |X     |X     |X     |X
+USE_SOLUTION_FOLDERS       |X    |X    |X    |      |      |      |X     |X     |X     |X
+BUILD_GMOCK                |X    |X    |X    |X     |X     |X     |X     |X     |X     |X
+BUILD_GTEST                |X    |X    |X    |X     |X     |X     |X     |X     |X     |X
+BUILD_SHARED_LIBS          |     |     |     |      |      |      |      |      |      |
+gmock_build_tests          |     |     |     |      |      |      |      |      |      |
+gtest_build_samples        |     |     |     |      |      |      |      |      |      |
+gtest_build_tests          |     |     |     |      |      |      |      |      |      |
+gtest_disable_pthreads     |     |     |X    |      |      |      |      |      |      |
+gtest_force_shared_crt     |     |     |     |X     |X     |X     |X     |X     |X     |X
+gtest_hide_internal_symbols|     |     |     |      |      |      |      |      |      |
+---------------------------+-----+-----+-----+------+------+------+------+------+------+------
 
-The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR,
-CMAKE_CONFIGURATION_TYPES, and CMAKE_INSTALL_PREFIX must be
-set to match your development environment and toolset.
+The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
+CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
 
 My development environment and toolset details:
 
