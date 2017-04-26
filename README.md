@@ -68,7 +68,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 3.9.1|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 4.0.0|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 64 | 64 | 64 | 63| 64 | 64 | 64 | 64 | 64 | 64 
@@ -94,7 +94,7 @@ My development environment and toolset details:
 
 * Manjaro Linux 17.0 Xfce, 64 bits
   * cmake version 3.7.2
-  * clang version 3.9.1 (tags/RELEASE_391/final)
+  * clang version 4.0.0 (tags/RELEASE_400/final)
   * gcc (GCC) 6.3.1 20170306
   * Code::Blocks 16.01
   * GNU Make 4.2.1
