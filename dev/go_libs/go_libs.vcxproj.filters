@@ -61,11 +61,218 @@
     <Filter Include="CMake Configuration\libs\signals">
       <UniqueIdentifier>{cde75cba-8f46-4ad0-9239-beee6248c06d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{934ed46d-45c7-4ab5-8bb3-24ea54f97e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go">
+      <UniqueIdentifier>{0aac0830-b77c-4e94-9ced-5c4793e13372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost">
+      <UniqueIdentifier>{eee658da-811b-45e6-8041-d12e4d41a36a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\config">
+      <UniqueIdentifier>{f03b8134-1a6d-40f5-86d7-52222aad5dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\exception">
+      <UniqueIdentifier>{caa98417-c84d-4f3f-adec-8453e36ad80d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\mvvm">
+      <UniqueIdentifier>{0c9c03a1-e7b3-4539-86ed-6480d92f199b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\property">
+      <UniqueIdentifier>{3664bc88-9ee1-4e31-86fb-06bf05184b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\signals">
+      <UniqueIdentifier>{b8ab37a6-ca8c-4285-9f9b-64fd52c2c5ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go\utility">
+      <UniqueIdentifier>{76a469bc-188c-4e52-affe-649f6bc6fc7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\config">
+      <UniqueIdentifier>{13e7c51c-0a8a-4f18-a225-97e6bd996af1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\exception">
+      <UniqueIdentifier>{f33f25dd-23fb-4caa-aaff-c173e9c5a835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\mvvm">
+      <UniqueIdentifier>{540ee376-fdce-461e-ad5b-39559b4688df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\property">
+      <UniqueIdentifier>{d23bf0d6-6dec-4912-b550-af599c3e9088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\signals">
+      <UniqueIdentifier>{f694496e-4e30-4df3-91e0-2755db992735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\go_boost\utility">
+      <UniqueIdentifier>{25224db6-c3ad-4632-97e0-fa7d959f821c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
       <Filter>CMake Configuration</Filter>
     </None>
     <None Include="..\..\README.md" />
+    <None Include="..\..\libs\property\doc\property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\config\doc\config.md">
+      <Filter>Documentation\go\config</Filter>
+    </None>
+    <None Include="..\..\libs\mvvm\doc\mvvm.md">
+      <Filter>Documentation\go\mvvm</Filter>
+    </None>
+    <None Include="..\..\libs\signals\doc\signals.md">
+      <Filter>Documentation\go\signals</Filter>
+    </None>
+    <None Include="..\..\libs\boost_property\doc\property.md">
+      <Filter>Documentation\go_boost\property</Filter>
+    </None>
+    <None Include="..\..\libs\boost_mvvm\doc\mvvm.md">
+      <Filter>Documentation\go_boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\libs\exception\doc\exception.md">
+      <Filter>Documentation\go\exception</Filter>
+    </None>
+    <None Include="..\..\libs\utility\doc\utility.md">
+      <Filter>Documentation\go\utility</Filter>
+    </None>
+    <None Include="..\..\libs\exception\doc\class_exception.md">
+      <Filter>Documentation\go\exception</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_basic_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_basic_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_reference_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_basic_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_value_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_reference_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_reference_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_value_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_value_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_basic_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_basic_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_basic_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_reference_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_reference_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_reference_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_value_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_value_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_value_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_read_only_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_basic_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_basic_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_basic_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_reference_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_reference_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_reference_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_reference_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_value_property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_value_u16property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_value_u32property.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_value_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
+    <None Include="..\..\libs\property\doc\class_template_write_only_wproperty.md">
+      <Filter>Documentation\go\property</Filter>
+    </None>
   </ItemGroup>
 </Project>

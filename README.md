@@ -2,7 +2,7 @@
 
 When **C++11** was released I wanted to learn the new features introduced. I soon realized that it was
 unlikely to happen at work. Migrating the company C++ source code, projects, solutions, etc. was
-simply to big a task (and it still is, a least when the managers consider pros and cons). I wanted
+simply to big a task (and it still is, at least when the managers consider pros and cons). I wanted
 a reasonably challenging idea for a hobby project and decided to try implement an **MFC**-based
 application using the **MVVM** (Model–View–ViewModel) architecture pattern. This was the start of the
 **GO C++ Libraries**.
@@ -69,7 +69,7 @@ Use CMake to configure and generate a build solution for your toolset.
 The CMake configurations I use:
 
 **SETTING \ TOOLSET**      |clang 4.0.0|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
----------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
+-|-|-|-|-|-|-|-|-|-|-
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 64 | 64 | 64 | 63| 64 | 64 | 64 | 64 | 64 | 64 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
