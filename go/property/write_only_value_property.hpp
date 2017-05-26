@@ -113,6 +113,62 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
+template<class T> class value_u16property
+    : public basic_value_property<T, std::u16string>
+{
+public:
+    typedef T value_type;
+    typedef std::u16string string_type;
+    typedef value_u16property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~value_u16property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~value_u16property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit value_u16property(const string_type& property_name)
+        : basic_value_property<value_type, string_type>(property_name)
+    {
+    }
+
+    value_u16property(const string_type& property_name, const value_type& v)
+        : basic_value_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class value_u32property
+    : public basic_value_property<T, std::u32string>
+{
+public:
+    typedef T value_type;
+    typedef std::u32string string_type;
+    typedef value_u32property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~value_u32property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~value_u32property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit value_u32property(const string_type& property_name)
+        : basic_value_property<value_type, string_type>(property_name)
+    {
+    }
+
+    value_u32property(const string_type& property_name, const value_type& v)
+        : basic_value_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
 } // namespace write_only
 } // namespace property
 } // namespace go

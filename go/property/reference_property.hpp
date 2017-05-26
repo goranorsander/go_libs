@@ -132,10 +132,81 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
+template<class T> class reference_u16property
+    : public basic_reference_property<T, std::u16string>
+{
+public:
+    typedef T value_type;
+    typedef std::u16string string_type;
+    typedef reference_u16property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit reference_u16property(const string_type& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u16property(const string_type& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class reference_u32property
+    : public basic_reference_property<T, std::u32string>
+{
+public:
+    typedef T value_type;
+    typedef std::u32string string_type;
+    typedef reference_u32property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit reference_u32property(const string_type& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u32property(const string_type& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::string)
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::u32string)
+
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::string)
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u16string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u16string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u16string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u16string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u32string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u32string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u32string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::u32string, std::u32string)
 
 } // namespace property
 } // namespace go

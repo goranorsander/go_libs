@@ -133,6 +133,62 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
+template<class T> class reference_u16property
+    : public basic_reference_property<T, std::u16string>
+{
+public:
+    typedef T value_type;
+    typedef std::u16string string_type;
+    typedef reference_u16property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit reference_u16property(const string_type& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u16property(const string_type& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class reference_u32property
+    : public basic_reference_property<T, std::u32string>
+{
+public:
+    typedef T value_type;
+    typedef std::u32string string_type;
+    typedef reference_u32property<value_type> this_type;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit reference_u32property(const string_type& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u32property(const string_type& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
 } // namespace write_only
 } // namespace property
 } // namespace go
