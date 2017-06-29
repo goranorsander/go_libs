@@ -14,13 +14,16 @@
 #include <go/utility/noncopyable.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/nonmovable.hpp>
+#include <go/utility/primitive_type_specializer.hpp>
 #include <go/utility/sanity.hpp>
 #include <go/utility/scope_guard.hpp>
 #include <go/utility/scope_guard_new.hpp>
+#include <go/utility/string_cast.hpp>
 #include <go/utility/value_guard.hpp>
 
 #include <go/utility/iterator/forward_iterator.hpp>
 
+#include <go/utility/string/algorithm.hpp>
 #include <go/utility/string/format.hpp>
 
 #endif  // #ifndef GO_UTILITY_HPP_INCLUDED

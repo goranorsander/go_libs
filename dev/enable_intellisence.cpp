@@ -12,5 +12,5 @@
 // Header only library need a cpp-file to enable the
 // "Additional Include Directories" setting for C/C++
 // compilers. Without this setting the Visual Studio
-// IntelliSence will not find boost includes.
+// IntelliSence will not find all includes.
 //

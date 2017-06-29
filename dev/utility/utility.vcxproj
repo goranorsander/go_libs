@@ -24,11 +24,27 @@
     <ClInclude Include="..\..\go\utility\noncopyable.hpp" />
     <ClInclude Include="..\..\go\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go\utility\nonmovable.hpp" />
+    <ClInclude Include="..\..\go\utility\primitive_type_specializer.hpp" />
     <ClInclude Include="..\..\go\utility\sanity.hpp" />
     <ClInclude Include="..\..\go\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go\utility\scope_guard_new.hpp" />
+    <ClInclude Include="..\..\go\utility\string\algorithm.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\deletable_facet.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\string_cast.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\string_cast_fwd.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert_linux.hpp" />
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert_windows.hpp" />
     <ClInclude Include="..\..\go\utility\string\format.hpp" />
+    <ClInclude Include="..\..\go\utility\string\string_cast.hpp" />
+    <ClInclude Include="..\..\go\utility\string_cast.hpp" />
+    <ClInclude Include="..\..\go\utility\string_cast_exception.hpp" />
+    <ClInclude Include="..\..\go\utility\u2string.hpp" />
+    <ClInclude Include="..\..\go\utility\u8string.hpp" />
     <ClInclude Include="..\..\go\utility\value_guard.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
@@ -102,6 +118,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,6 +133,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,6 +150,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -150,6 +169,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

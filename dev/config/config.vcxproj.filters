@@ -12,6 +12,9 @@
     <Filter Include="go\config\compiler">
       <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\config\platform">
+      <UniqueIdentifier>{a8cc506d-9e79-4fb1-99be-6a1dc075fd22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\config.hpp">
@@ -29,5 +32,17 @@
     <ClInclude Include="..\..\go\config\compiler\clang.hpp">
       <Filter>go\config\compiler</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\config\select_platform_config.hpp">
+      <Filter>go\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\config\platform\linux.hpp">
+      <Filter>go\config\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\config\platform\windows.hpp">
+      <Filter>go\config\platform</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
 </Project>

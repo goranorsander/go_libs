@@ -20,4 +20,7 @@
       <Filter>go\exception</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
 </Project>

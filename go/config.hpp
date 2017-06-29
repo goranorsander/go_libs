@@ -19,4 +19,12 @@
 #include GO_COMPILER_CONFIG
 #endif
 
+#if !defined(GO_PLATFORM_CONFIG) && !defined(GO_NO_PLATFORM_CONFIG) && !defined(GO_NO_CONFIG)
+#include "go/config/select_platform_config.hpp"
+#endif
+
+#ifdef GO_PLATFORM_CONFIG
+#include GO_PLATFORM_CONFIG
+#endif
+
 #endif  // #ifndef GO_CONFIG_HPP_INCLUDED

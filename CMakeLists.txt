@@ -171,6 +171,7 @@ set(GO_CONFIG_DIR ${GO_DIR}/config)
 
 set(GO_LIBS_SRC_GO_CONFIG_HPP
     ${GO_CONFIG_DIR}/select_compiler_config.hpp
+    ${GO_CONFIG_DIR}/select_platform_config.hpp
 )
 
 # *.cpp
@@ -195,6 +196,24 @@ set(GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP
 # *.cpp
 
 set(GO_LIBS_SRC_GO_CONFIG_COMPILER_CPP)
+
+########################################################
+#  go/config/platform                                  #
+########################################################
+
+set(GO_CONFIG_PLATFORM_DIRNAME config/platform)
+set(GO_CONFIG_PLATFORM_DIR ${GO_CONFIG_DIR}/platform)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP
+    ${GO_CONFIG_PLATFORM_DIR}/linux.hpp
+    ${GO_CONFIG_PLATFORM_DIR}/windows.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_CONFIG_PLATFORM_CPP)
 
 ########################################################
 #  go/exception                                        #
@@ -425,9 +444,14 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
     ${GO_UTILITY_DIR}/noncopyable.hpp
     ${GO_UTILITY_DIR}/noncopyable_nonmovable.hpp
     ${GO_UTILITY_DIR}/nonmovable.hpp
+    ${GO_UTILITY_DIR}/primitive_type_specializer.hpp
     ${GO_UTILITY_DIR}/sanity.hpp
     ${GO_UTILITY_DIR}/scope_guard.hpp
     ${GO_UTILITY_DIR}/scope_guard_new.hpp
+	${GO_UTILITY_DIR}/string_cast.hpp
+	${GO_UTILITY_DIR}/string_cast_exception.hpp
+	${GO_UTILITY_DIR}/u2string.hpp
+	${GO_UTILITY_DIR}/u8string.hpp
 	${GO_UTILITY_DIR}/value_guard.hpp
 )
 
@@ -462,7 +486,31 @@ set(GO_UTILITY_STRING_DIR ${GO_DIR}/utility/string)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
+    ${GO_UTILITY_STRING_DIR}/algorithm.hpp
     ${GO_UTILITY_STRING_DIR}/format.hpp
+    ${GO_UTILITY_STRING_DIR}/string_cast.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_CPP)
+
+########################################################
+#  go/utility/string/detail                            #
+########################################################
+
+set(GO_UTILITY_STRING_DETAIL_DIRNAME utility/string/detail)
+set(GO_UTILITY_STRING_DETAIL_DIR ${GO_DIR}/utility/string/detail)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP
+    ${GO_UTILITY_STRING_DETAIL_DIR}/deletable_facet.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_cast.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_cast_fwd.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert_linux.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert_windows.hpp
 )
 
 # *.cpp
@@ -800,6 +848,7 @@ INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_EXCEPTION_HPP}                  DESTINATION  include/${GO_DIRNAME}/${GO_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_UTILITY_DIRNAME})
@@ -812,6 +861,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DETAIL_DIRNAME})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_DIRNAME})
