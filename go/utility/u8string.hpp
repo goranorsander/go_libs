@@ -26,6 +26,23 @@ class u8string
 {
 public:
     typedef typename u8string this_type;
+    typedef std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>> base_type;
+    typedef std::char_traits<char8_t> traits_type;
+    typedef std::allocator<char8_t> allocator_type;
+
+    typedef typename base_type::value_type value_type;
+    typedef typename base_type::size_type size_type;
+    typedef typename base_type::difference_type difference_type;
+    typedef typename base_type::pointer pointer;
+    typedef typename base_type::const_pointer const_pointer;
+    typedef typename base_type::reference reference;
+    typedef typename base_type::const_reference const_reference;
+
+    typedef typename base_type::iterator iterator;
+    typedef typename base_type::const_iterator const_iterator;
+
+    typedef base_type::reverse_iterator reverse_iterator;
+    typedef base_type::const_reverse_iterator const_reverse_iterator;
 
 public:
     virtual ~u8string();
@@ -36,9 +53,13 @@ public:
 
     u8string(size_type count, value_type ch, const allocator_type& alloc = allocator_type());
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
     u8string(const u8string& other, size_type pos, size_type count = this_type::npos, const allocator_type& alloc = allocator_type());
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
     u8string(const u8string& other, size_type pos, const allocator_type& alloc = allocator_type());
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
     u8string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
 
@@ -81,15 +102,19 @@ inline u8string::u8string(size_type count, value_type ch, const allocator_type& 
 {
 }
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 inline u8string::u8string(const u8string& other, size_type pos, size_type count, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, pos, count, alloc)
 {
 }
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 inline u8string::u8string(const u8string& other, size_type pos, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, pos, alloc)
 {
 }
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u8string::u8string(const value_type* s, size_type count, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(s, count, alloc)

@@ -22,16 +22,16 @@ namespace utility
 namespace string
 {
 
-inline std::string format(const std::string& fmt_str, ...)
+inline std::string format(const std::string fmt_str, ...)
 {
-    int n = (static_cast<int>(fmt_str.size()))*2; // Reserve two times as much as the length of the fmt_str
+    int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<char[]> formatted;
     va_list ap;
     while(true)
     {
         formatted.reset(new char[n]); // Wrap the plain char array into the unique_ptr
         strcpy_s(&formatted[0], n, fmt_str.c_str());
-        va_start(ap, fmt_str.c_str());
+        va_start(ap, fmt_str);
         const int final_n = vsnprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
         if(final_n < 0 || final_n >= n)
@@ -46,16 +46,16 @@ inline std::string format(const std::string& fmt_str, ...)
     return std::string(formatted.get());
 }
 
-inline std::wstring format(const std::wstring& fmt_str, ...)
+inline std::wstring format(const std::wstring fmt_str, ...)
 {
-    int n = (static_cast<int>(fmt_str.size()))*2; // Reserve two times as much as the length of the fmt_str
+    int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<wchar_t[]> formatted;
     va_list ap;
     while(true)
     {
         formatted.reset(new wchar_t[n]); // Wrap the plain char array into the unique_ptr
         wcscpy_s(&formatted[0], n, fmt_str.c_str());
-        va_start(ap, fmt_str.c_str());
+        va_start(ap, fmt_str);
         const int final_n = vswprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
         if(final_n < 0 || final_n >= n)
