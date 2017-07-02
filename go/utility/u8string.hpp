@@ -51,7 +51,11 @@ public:
 
     explicit u8string(const allocator_type& alloc);
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
     u8string(size_type count, value_type ch, const allocator_type& alloc = allocator_type());
+
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
     u8string(const u8string& other, size_type pos, size_type count = this_type::npos, const allocator_type& alloc = allocator_type());
@@ -72,9 +76,17 @@ public:
 
     u8string(const u8string& other, const allocator_type& alloc);
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
     u8string(u8string&& other) GO_NOEXCEPT_OR_NOTHROW;
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
     u8string(u8string&& other, const allocator_type& alloc);
+
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
@@ -101,23 +113,31 @@ inline u8string::u8string(const allocator_type& alloc)
 {
 }
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
 inline u8string::u8string(size_type count, value_type ch, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(count, ch, alloc)
 {
 }
 
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
 inline u8string::u8string(const u8string& other, size_type pos, size_type count, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, pos, count, alloc)
 {
 }
+
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
 inline u8string::u8string(const u8string& other, size_type pos, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, pos, alloc)
 {
 }
+
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u8string::u8string(const value_type* s, size_type count, const allocator_type& alloc)
@@ -141,20 +161,32 @@ inline u8string::u8string(const u8string& other)
 {
 }
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
 inline u8string::u8string(const u8string& other, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, alloc)
 {
 }
+
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 inline u8string::u8string(u8string&& other) GO_NOEXCEPT_OR_NOTHROW
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other)
 {
 }
 
+#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
 inline u8string::u8string(u8string&& other, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, alloc)
 {
 }
+
+#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
