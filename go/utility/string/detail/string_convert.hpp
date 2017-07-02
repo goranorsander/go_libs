@@ -119,12 +119,14 @@ inline u2string convert_u8string_to_u2string(const u8string& s)
     if (little_endian)
     {
         std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t, 0x10ffffU, std::little_endian>>, char16_t> converter;
-        return converter.from_bytes(mbs);
+        auto xs = converter.from_bytes(mbs);
+        return u2string(xs.begin(), xs.end());
     }
     else
     {
         std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter;
-        return converter.from_bytes(mbs);
+        auto xs = converter.from_bytes(mbs);
+        return u2string(xs.begin(), xs.end());
     }
     #endif
 }

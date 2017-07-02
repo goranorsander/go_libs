@@ -25,21 +25,21 @@ class u2string
     : public std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>
 {
 public:
-    typedef typename u2string this_type;
+    typedef GO_TYPENAME u2string this_type;
     typedef std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>> base_type;
     typedef std::char_traits<char2_t> traits_type;
     typedef std::allocator<char2_t> allocator_type;
 
-    typedef typename base_type::value_type value_type;
-    typedef typename base_type::size_type size_type;
-    typedef typename base_type::difference_type difference_type;
-    typedef typename base_type::pointer pointer;
-    typedef typename base_type::const_pointer const_pointer;
-    typedef typename base_type::reference reference;
-    typedef typename base_type::const_reference const_reference;
+    typedef GO_TYPENAME base_type::value_type value_type;
+    typedef GO_TYPENAME base_type::size_type size_type;
+    typedef GO_TYPENAME base_type::difference_type difference_type;
+    typedef GO_TYPENAME base_type::pointer pointer;
+    typedef GO_TYPENAME base_type::const_pointer const_pointer;
+    typedef GO_TYPENAME base_type::reference reference;
+    typedef GO_TYPENAME base_type::const_reference const_reference;
 
-    typedef typename base_type::iterator iterator;
-    typedef typename base_type::const_iterator const_iterator;
+    typedef GO_TYPENAME base_type::iterator iterator;
+    typedef GO_TYPENAME base_type::const_iterator const_iterator;
 
     typedef base_type::reverse_iterator reverse_iterator;
     typedef base_type::const_reverse_iterator const_reverse_iterator;
@@ -72,7 +72,7 @@ public:
 
     u2string(const u2string& other, const allocator_type& alloc);
 
-    u2string(u2string&& other) noexcept;
+    u2string(u2string&& other) GO_NOEXCEPT_OR_NOTHROW;
 
     u2string(u2string&& other, const allocator_type& alloc);
 
@@ -142,7 +142,7 @@ inline u2string::u2string(const u2string& other, const allocator_type& alloc)
 {
 }
 
-inline u2string::u2string(u2string&& other) noexcept
+inline u2string::u2string(u2string&& other) GO_NOEXCEPT_OR_NOTHROW
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(other)
 {
 }
