@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/nameless/detail/property_base.hpp>

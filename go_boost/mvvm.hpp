@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/mvvm/command_execution_observer_interface.hpp>
 #include <go_boost/mvvm/command_manager.hpp>

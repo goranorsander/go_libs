@@ -15,11 +15,11 @@
 #define GO_PLATFORM_CONFIG "go/config/platform/linux.hpp"
 #elif defined(_WIN32) || defined(WIN32)
 #define GO_PLATFORM_CONFIG "go/config/platform/windows.hpp"
-#endif
+#endif  // #if defined(linux)
 
 #if 0
 #include "go/config/platform/linux.hpp"
 #include "go/config/platform/windows.hpp"
-#endif
+#endif  // #if 0
 
 #endif  // #ifndef GO_CONFIG_SELECT_PLATFORM_CONFIG_HPP_INCLUDED

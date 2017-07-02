@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #define GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _value_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_>& lhs, const _value_type_& rhs) \

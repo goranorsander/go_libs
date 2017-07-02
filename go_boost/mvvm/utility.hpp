@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #if defined(GO_BOOST_MSVC_MFC)
 #include <go_boost/mvvm/utility/mfc_dlgdata.hpp>

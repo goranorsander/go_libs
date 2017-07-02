@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #if defined(BOOST_CLANG)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/clang.hpp"
@@ -23,11 +23,11 @@
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/gcc.hpp"
 #elif defined(BOOST_MSVC)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/visualc.hpp"
-#endif
+#endif  // #if defined(BOOST_CLANG)
 
 #if 0
 #include "go_boost/config/compiler/gcc.hpp"
 #include "go_boost/config/compiler/visualc.hpp"
-#endif
+#endif  // #if 0
 
 #endif  // #ifndef GO_BOOST_CONFIG_SELECT_COMPILER_CONFIG_HPP_INCLUDED

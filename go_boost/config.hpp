@@ -17,14 +17,14 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #if !defined(GO_BOOST_COMPILER_CONFIG) && !defined(GO_BOOST_NO_COMPILER_CONFIG) && !defined(GO_BOOST_NO_CONFIG)
 #include "go_boost/config/select_compiler_config.hpp"
-#endif
+#endif  // #if !defined(GO_BOOST_COMPILER_CONFIG) && !defined(GO_BOOST_NO_COMPILER_CONFIG) && !defined(GO_BOOST_NO_CONFIG)
 
 #ifdef GO_BOOST_COMPILER_CONFIG
 #include GO_BOOST_COMPILER_CONFIG
-#endif
+#endif  // #ifdef GO_BOOST_COMPILER_CONFIG
 
 #endif  // #ifndef GO_BOOST_CONFIG_HPP_INCLUDED

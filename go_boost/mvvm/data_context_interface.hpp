@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/mvvm/notify_data_context_changed_interface.hpp>
 #include <go_boost/property/nameless/property.hpp>

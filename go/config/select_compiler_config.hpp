@@ -17,11 +17,11 @@
 #define GO_COMPILER_CONFIG "go/config/compiler/gcc.hpp"
 #elif defined(_MSC_VER)
 #define GO_COMPILER_CONFIG "go/config/compiler/visualc.hpp"
-#endif
+#endif  // #if defined(__clang__)
 
 #if 0
 #include "go/config/compiler/gcc.hpp"
 #include "go/config/compiler/visualc.hpp"
-#endif
+#endif  // #if 0
 
 #endif  // #ifndef GO_CONFIG_SELECT_COMPILER_CONFIG_HPP_INCLUDED

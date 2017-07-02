@@ -21,7 +21,7 @@
 #define GO_MSVC_FULL_VER _MSC_FULL_VER
 #else
 #define GO_MSVC_FULL_VER (_MSC_FULL_VER * 10)
-#endif
+#endif  // #if _MSC_FULL_VER > 100000000
 
 #if (_MSC_VER == 1500)
 #define GO_COMP_MSVC_VC90 1
@@ -41,7 +41,7 @@
 #elif (_MSC_VER == 1910)
 #define GO_COMP_MSVC_VC141 1
 #define GO_IDE_MS_VS2017 1
-#endif
+#endif  // #if (_MSC_VER == 1500)
 
 // Compiler message
 #define GO_MESSAGE(_message_) \
@@ -49,25 +49,21 @@ __pragma(message(_message_))
 
 // C++ keyword typename support
 #if (_MSC_VER < 1900)
-
 #define GO_TYPENAME
-
 #else
-
 #define GO_TYPENAME typename
-
 #endif  // #if (_MSC_VER < 1900)
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
-#endif
+#endif  // #if (_MSC_VER < 1600)
 
 // C++11 support
 #if (_MSC_VER)
 #define GO_NO_CXX11_CONSTEXPR 1
 #define GO_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
-#endif
+#endif  // #if (_MSC_VER)
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX11_ALIGNAS 1
 #define GO_NO_CXX11_ALIGNOF 1
@@ -83,7 +79,7 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_MAGIC_STATICS 1
 #define GO_NO_CXX11_NOEXCEPT 1
 #define GO_NO_CXX11_MONEY_TIME_AND_HEXFLOAT_IO_MANIPULATORS 1
-#endif
+#endif  // #if (_MSC_VER < 1900)
 #if (_MSC_VER < 1800)
 #define GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS 1
 #define GO_NO_CXX11_DELEGATING_CONSTRUCTORS 1
@@ -94,7 +90,7 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_TEMPLATE_ALIASES 1
 #define GO_NO_CXX11_VARIADIC_TEMPLATES 1
 #define GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS 1
-#endif
+#endif  // #if (_MSC_VER < 1800)
 #if (_MSC_VER < 1700)
 #define GO_NO_CXX11_ATOMIC_OPERATIONS 1
 #define GO_NO_CXX11_FORWARD_ENUM_DECLARATIONS 1
@@ -102,7 +98,7 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_RANGE_FOR_LOOP 1
 #define GO_NO_CXX11_OVERRIDE_AND_FINAL 1
 #define GO_NO_CXX11_CONCURRENCY_SUPPORT 1
-#endif
+#endif  // #if (_MSC_VER < 1700)
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX11_AUTO 1
 #define GO_NO_CXX11_DECLTYPE 1
@@ -113,13 +109,13 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_R_VALUE_REFERENCES 1
 #define GO_NO_CXX11_STATIC_ASSERT 1
 #define GO_NO_CXX11 1
-#endif
+#endif  // #if (_MSC_VER < 1600)
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #define GO_DEFAULT_DESTRUCTOR {}
 #else
 #define GO_DEFAULT_DESTRUCTOR = default;
-#endif
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()
@@ -130,14 +126,14 @@ __pragma(message(_message_))
 #define GO_NOEXCEPT_OR_NOTHROW noexcept
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
-#endif
+#endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
 
 // C++14 support
 #if (_MSC_VER)
 #define GO_NO_CXX14_EXTENDED_CONSTEXPR 1
 #define GO_NO_CXX14_MEMBER_INITIALIZERS_AND_AGGREGATES 1
 #define GO_NO_CXX14_CLARIFYING_MEMORY_ALLOCATION 1
-#endif
+#endif  // #if (_MSC_VER)
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX14_BINARY_LITERALS 1
 #define GO_NO_CXX14_DECLTYPE_AUTO 1
@@ -163,18 +159,18 @@ __pragma(message(_message_))
 #define GO_NO_CXX14_FIXING_CONSTEXPR_MEMBER_FUNCTIONS_WITHOUT_CONST 1
 #define GO_NO_CXX14_STD_GET_T 1
 #define GO_NO_CXX14_DUAL_RANGE_STD_EQUAL_STD_IS_PERMUTATION_STD_MISMATCH 1
-#endif
+#endif  // #if (_MSC_VER < 1900)
 #if (_MSC_VER < 1800)
 #define GO_NO_CXX14_TWEAKED_WORDING_FOR_CONTEXTUAL_CONVERSIONS 1
 #define GO_NO_CXX14 1
-#endif
+#endif  // #if (_MSC_VER < 1800)
 
 // C++17 support
 #if (_MSC_VER < 1910)
 #define GO_NO_CXX17_STATIC_ASSERT_WITH_NO_MESSAGE 1
 #define GO_NO_CXX17_DIFFERING_BEGIN_AND_END_TYPES_IN_RANGE_BASED_FOR 1
 #define GO_NO_CXX17_FALLTHROUGH_ATTRIBUTE 1
-#endif
+#endif  // #if (_MSC_VER < 1910)
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX17_NEW_AUTO_RULES_FOR_DIRECT_LIST_INITIALIZATION 1
 #define GO_NO_CXX17_TYPENAME_IN_A_TEMPLATE_TEMPLATE_PARAMETER 1
@@ -185,11 +181,11 @@ __pragma(message(_message_))
 #define GO_NO_CXX17_IMPROVING_STD_PAIR_AND_STD_TUPLE 1
 #define GO_NO_CXX17_STD_SHARED_MUTEX_UNTIMED 1
 #define GO_NO_CXX17 1
-#endif
+#endif  // #if (_MSC_VER < 1900)
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX17_REMOVING_TRIGRAPHS 1
 #define GO_NO_CXX17 1
-#endif
+#endif  // #if (_MSC_VER < 1600)
 #if (_MSC_VER)
 #define GO_NO_CXX17_ALLOW_CONSTANT_EVALUATION_FOR_ALL_NONTYPE_TEMPLATE_ARGUMENTS 1
 #define GO_NO_CXX17_FOLD_EXPRESSIONS 1
@@ -221,36 +217,28 @@ __pragma(message(_message_))
 #define GO_NO_CXX17_INLINE_VARIABLES 1
 #define GO_NO_CXX17_MATCHING_OF_TEMPLATE_TEMPLATE_ARGUMENTS_EXCLUDES_COMPATIBLE_TEMPLATES 1
 #define GO_NO_CXX17_SPLICING_MAPS_AND_SETS 1
-#endif
+#endif  // #if (_MSC_VER)
 
 // C99 support
 #if (_MSC_VER)
 #define GO_NO_C99_PREPROCESSOR 1
-#endif
+#endif  // #if (_MSC_VER)
 
 // ATL support
 #if defined(_ATL_VER)
-
 #define GO_MSVC_ATL 1
-
 #define GO_MSVC_ATL_VER _MFX_VER
-
 #endif  // if defined(_ATL_VER)
 
 // MFC support
 #if defined(_MFC_VER)
-
 #define GO_MSVC_MFC 1
-
 #define GO_MSVC_MFC_VER _MFX_VER
-
 #endif  // if defined(_MFC_VER)
 
 // Unicode support
 #if defined(_UNICODE) || defined(UNICODE)
-
 #define GO_UNICODE 1
-
 #endif  // if defined(_UNICODE) || defined(UNICODE)
 
 #endif  // defined(_MSC_VER)

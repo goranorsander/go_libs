@@ -32,9 +32,9 @@ template<typename F> struct deletable_facet
     typedef F facet_type;
     typedef deletable_facet<facet_type> this_type;
 
-    #if !defined(GO_PLATFORM_WINDOWS)
+#if !defined(GO_PLATFORM_WINDOWS)
     using F::Facet;
-    #endif  // #if !defined(GO_PLATFORM_WINDOWS)
+#endif  // #if !defined(GO_PLATFORM_WINDOWS)
 };
 
 }

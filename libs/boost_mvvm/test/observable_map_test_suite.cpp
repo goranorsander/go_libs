@@ -45,24 +45,24 @@ public:
 
     void connect(observable_map_ptr_type& c)
     {
-        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
+#if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
         c->container_changed.connect(boost::bind(&map_observer<K, T>::on_container_changed, this, _1, _2));
         c->property_changed.connect(boost::bind(&map_observer<K, T>::on_property_changed, this, _1, _2));
-        #else
+#else
         c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
         c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
-        #endif
+#endif  // #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,3,0))
     }
 
     void disconnect(observable_map_ptr_type& c)
     {
-        #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,2,0))
+#if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,2,0))
         c->container_changed.disconnect(boost::bind(&map_observer<K, T>::on_container_changed, this, _1, _2));
         c->property_changed.disconnect(boost::bind(&map_observer<K, T>::on_property_changed, this, _1, _2));
-        #else
+#else
         c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
         c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
-        #endif
+#endif  // #if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,1,0)) && (BOOST_COMP_GNUC < BOOST_VERSION_NUMBER(6,2,0))
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
