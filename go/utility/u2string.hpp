@@ -54,11 +54,15 @@ public:
     u2string(size_type count, value_type ch, const allocator_type& alloc = allocator_type());
 
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
     u2string(const u2string& other, size_type pos, size_type count = this_type::npos, const allocator_type& alloc = allocator_type());
+
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
     u2string(const u2string& other, size_type pos, const allocator_type& alloc = allocator_type());
+
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
     u2string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
@@ -76,7 +80,11 @@ public:
 
     u2string(u2string&& other, const allocator_type& alloc);
 
+#if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
+
     u2string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
+
+#endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
     template<class T>
     u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
@@ -152,10 +160,14 @@ inline u2string::u2string(u2string&& other, const allocator_type& alloc)
 {
 }
 
+#if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
+
 inline u2string::u2string(std::initializer_list<value_type> init, const allocator_type& alloc)
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(init, alloc)
 {
 }
+
+#endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
 template<class T>
 inline u2string::u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc)

@@ -76,7 +76,11 @@ public:
 
     u8string(u8string&& other, const allocator_type& alloc);
 
+#if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
+
     u8string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
+
+#endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
     template<class T>
     u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
@@ -152,10 +156,14 @@ inline u8string::u8string(u8string&& other, const allocator_type& alloc)
 {
 }
 
+#if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
+
 inline u8string::u8string(std::initializer_list<value_type> init, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(init, alloc)
 {
 }
+
+#endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
 template<class T>
 inline u8string::u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc)
