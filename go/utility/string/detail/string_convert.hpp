@@ -19,12 +19,12 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <locale>
 
-#if defined(GO_PLATFORM_LINUX)
+#if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
 #include <go/utility/string/detail/string_convert_linux.hpp>
-#endif  // #if defined(GO_PLATFORM_LINUX)
-#if defined(GO_PLATFORM_WINDOWS)
+#endif  // #if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
+#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
 #include <go/utility/string/detail/string_convert_windows.hpp>
-#endif  // #if defined(GO_PLATFORM_WINDOWS)
+#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
 
 #include <go/utility/string/detail/string_cast_fwd.hpp>
 
@@ -47,6 +47,12 @@ namespace detail
 
 // to std::string
 
+inline std::string convert_wstring_to_string(const std::wstring& s)
+{
+    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>>> converter;
+    return converter.to_bytes(s);
+}
+
 inline std::string convert_u8string_to_string(const u8string& s)
 {
     std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>> converter;
@@ -55,31 +61,21 @@ inline std::string convert_u8string_to_string(const u8string& s)
 
 inline std::string convert_u16string_to_string(const std::u16string& s)
 {
-#if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<int16_t>>, int16_t> converter;
-    auto p = reinterpret_cast<const int16_t*>(s.data());
-    const std::string mbs = converter.to_bytes(p, p + s.size());
-#else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter;
-    const std::string mbs = converter.to_bytes(s);
-#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
-    return convert_u8string_to_string(u8string(mbs.begin(), mbs.end()));
+    return convert_u8string_to_string(convert_u16string_to_u8string(s));
 }
 
 inline std::string convert_u32string_to_string(const std::u32string& s)
 {
-#if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<int32_t>>, int32_t> converter;
-    auto p = reinterpret_cast<const int32_t*>(s.data());
-    const std::string mbs = converter.to_bytes(p, p + s.size());
-#else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char32_t>>, char32_t> converter;
-    const std::string mbs = converter.to_bytes(s);
-#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
-    return convert_u8string_to_string(u8string(mbs.begin(), mbs.end()));
+    return convert_u8string_to_string(convert_u32string_to_u8string(s));
 }
 
 // to std::wstring
+
+inline std::wstring convert_string_to_wstring(const std::string& s)
+{
+    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>> converter;
+    return converter.from_bytes(s);
+}
 
 inline std::wstring convert_u8string_to_wstring(const u8string& s)
 {
@@ -91,11 +87,6 @@ inline std::wstring convert_u8string_to_wstring(const u8string& s)
 inline u2string convert_string_to_u2string(const std::string& s)
 {
     return convert_u8string_to_u2string(convert_string_to_u8string(s));
-}
-
-inline u2string convert_wstring_to_u2string(const std::wstring& s)
-{
-    return convert_u16string_to_u2string(convert_wstring_to_u16string(s));
 }
 
 inline u2string convert_u8string_to_u2string(const u8string& s)
@@ -188,9 +179,16 @@ inline u8string convert_wstring_to_u8string(const std::wstring& s)
 
 inline u8string convert_u2string_to_u8string(const u2string& s)
 {
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     std::wstring_convert<deletable_facet<std::codecvt_utf8<char2_t>>, char2_t> converter;
     const std::string mbs = converter.to_bytes(s);
     return u8string(mbs.begin(), mbs.end());
+#else
+    const std::u16string u16s(s.begin(), s.end());
+    std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter;
+    const auto xs = converter.to_bytes(u16s);
+    return u8string(xs.begin(), xs.end());
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
 }
 
 inline u8string convert_u16string_to_u8string(const std::u16string& s)
@@ -228,22 +226,25 @@ inline std::u16string convert_string_to_u16string(const std::string& s)
 
 inline std::u16string convert_u2string_to_u16string(const u2string& s)
 {
-    std::string bytes;
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<std::codecvt_utf16<int16_t>, int16_t> converter;
+    std::string bytes;
+    std::wstring_convert<deletable_facet<std::codecvt_utf16<int16_t>>, int16_t> converter;
     auto p = reinterpret_cast<const int16_t*>(s.data());
     bytes = converter.to_bytes(p, p + s.size());
-#else
-    std::wstring_convert<std::codecvt_utf16<char16_t>, char16_t> converter;
-    bytes = converter.to_bytes(s);
-#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     std::u16string result;
-    result.reserve(bytes.size()/2);
+    result.reserve(bytes.size() / 2);
     for (size_t i = 0; i < bytes.size(); i += 2)
     {
-        result.push_back(static_cast<char16_t>(static_cast<unsigned char>(bytes[i])*256+static_cast<unsigned char>(bytes[i+1])));
+        result.push_back(static_cast<char16_t>(static_cast<unsigned char>(bytes[i]) * 256 + static_cast<unsigned char>(bytes[i + 1])));
     }
     return result;
+#else
+    const std::u16string u16s(s.begin(), s.end());
+    std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter1;
+    const auto xs = converter1.to_bytes(u16s);
+    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter2;
+    return converter2.from_bytes(xs);
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
 }
 
 inline std::u16string convert_u8string_to_u16string(const u8string& s)
@@ -341,11 +342,11 @@ inline std::u32string convert_u16string_to_u32string(const std::u16string& s)
 	}
 #endif  // #if !defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<std::codecvt_utf16<int32_t>, int32_t> converter;
+    std::wstring_convert<deletable_facet<std::codecvt_utf16<int32_t>>, int32_t> converter;
     const auto xs = converter.from_bytes(bytes);
     return std::u32string(xs.begin(), xs.end());
 #else
-    std::wstring_convert<std::codecvt_utf16<char32_t>, char32_t> converter;
+    std::wstring_convert<deletable_facet<std::codecvt_utf16<char32_t>>, char32_t> converter;
     return converter.from_bytes(bytes);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
 }

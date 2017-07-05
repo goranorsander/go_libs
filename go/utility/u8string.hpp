@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+#include <go/utility/string/algorithm.hpp>
 #include <string>
 
 namespace go
@@ -19,13 +20,13 @@ namespace go
 namespace utility
 {
 
-typedef GO_TYPENAME unsigned char char8_t;
+typedef unsigned char char8_t;
 
 class u8string
     : public std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>
 {
 public:
-    typedef GO_TYPENAME u8string this_type;
+    typedef u8string this_type;
     typedef std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>> base_type;
     typedef std::char_traits<char8_t> traits_type;
     typedef std::allocator<char8_t> allocator_type;
@@ -58,12 +59,16 @@ public:
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
 #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
     u8string(const u8string& other, size_type pos, size_type count = this_type::npos, const allocator_type& alloc = allocator_type());
+
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
-#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
     u8string(const u8string& other, size_type pos, const allocator_type& alloc = allocator_type());
-#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+
+#endif  // #if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
     u8string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
 
@@ -97,6 +102,10 @@ public:
     template<class T>
     u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
+public:
+    bool operator==(const u8string& other) const;
+
+    bool operator!=(const u8string& other) const;
 };
 
 inline u8string::~u8string()
@@ -131,14 +140,14 @@ inline u8string::u8string(const u8string& other, size_type pos, size_type count,
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
-#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u8string::u8string(const u8string& other, size_type pos, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other, pos, alloc)
 {
 }
 
-#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#endif  // #if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u8string::u8string(const value_type* s, size_type count, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(s, count, alloc)
@@ -201,6 +210,20 @@ template<class T>
 inline u8string::u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(t, pos, n, alloc)
 {
+}
+
+inline bool u8string::operator==(const u8string& other) const
+{
+    if (&other != this)
+    {
+        return string::equals(*this, other);
+    }
+    return true;
+}
+
+inline bool u8string::operator!=(const u8string& other) const
+{
+    return !operator==(other);
 }
 
 }

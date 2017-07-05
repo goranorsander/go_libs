@@ -45,9 +45,7 @@ public:
     typedef primitive_type_specializer<T> this_type;
     typedef T value_type;
 
-    virtual ~primitive_type_specializer() = 0
-    {
-    }
+    virtual ~primitive_type_specializer() = 0;
 
 protected:
     primitive_type_specializer(const primitive_type_specializer& t)
@@ -98,6 +96,11 @@ public:
 private:
     value_type _t;
 };
+
+template<typename T>
+inline primitive_type_specializer<T>::~primitive_type_specializer()
+{
+}
 
 }
 }

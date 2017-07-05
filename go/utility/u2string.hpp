@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+#include <go/utility/string/algorithm.hpp>
 #include <string>
 
 namespace go
@@ -19,13 +20,13 @@ namespace go
 namespace utility
 {
 
-typedef GO_TYPENAME unsigned short char2_t;
+typedef unsigned short char2_t;
 
 class u2string
     : public std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>
 {
 public:
-    typedef GO_TYPENAME u2string this_type;
+    typedef u2string this_type;
     typedef std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>> base_type;
     typedef std::char_traits<char2_t> traits_type;
     typedef std::allocator<char2_t> allocator_type;
@@ -63,11 +64,11 @@ public:
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
-#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
     u2string(const u2string& other, size_type pos, const allocator_type& alloc = allocator_type());
 
-#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#endif  // #if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
     u2string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
 
@@ -101,6 +102,10 @@ public:
     template<class T>
     u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
+public:
+    bool operator==(const u2string& other) const;
+
+    bool operator!=(const u2string& other) const;
 };
 
 inline u2string::~u2string()
@@ -135,14 +140,14 @@ inline u2string::u2string(const u2string& other, size_type pos, size_type count,
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
-#if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u2string::u2string(const u2string& other, size_type pos, const allocator_type& alloc)
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(other, pos, alloc)
 {
 }
 
-#endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
+#endif  // #if (!defined(GO_COMP_GCC) && !defined(GO_COMP_MSVC)) || (defined(GO_COMP_GCC) && (GO_GCC_VER > 50300)) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1900))
 
 inline u2string::u2string(const value_type* s, size_type count, const allocator_type& alloc)
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(s, count, alloc)
@@ -205,6 +210,20 @@ template<class T>
 inline u2string::u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc)
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(t, pos, n, alloc)
 {
+}
+
+inline bool u2string::operator==(const u2string& other) const
+{
+    if (&other != this)
+    {
+        return string::equals(*this, other);
+    }
+    return true;
+}
+
+inline bool u2string::operator!=(const u2string& other) const
+{
+    return !operator==(other);
 }
 
 }

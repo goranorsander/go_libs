@@ -17,6 +17,8 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+
 #include <go/utility/string/detail/deletable_facet.hpp>
 #include <go/utility/string/detail/string_cast_fwd.hpp>
 #include <codecvt>
@@ -33,12 +35,6 @@ namespace detail
 
 // to std::string
 
-inline std::string convert_wstring_to_string(const std::wstring& s)
-{
-    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>>> converter;
-    return converter.to_bytes(s);
-}
-
 inline std::string convert_u2string_to_string(const u2string& s)
 {
     // Windows VC++ wide strings are UCS-2
@@ -46,12 +42,6 @@ inline std::string convert_u2string_to_string(const u2string& s)
 }
 
 // to std::wstring
-
-inline std::wstring convert_string_to_wstring(const std::string& s)
-{
-    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>> converter;
-    return converter.from_bytes(s);
-}
 
 inline std::wstring convert_u2string_to_wstring(const u2string& s)
 {
@@ -69,6 +59,14 @@ inline std::wstring convert_u16string_to_wstring(const std::u16string& s)
 inline std::wstring convert_u32string_to_wstring(const std::u32string& s)
 {
     return convert_u16string_to_wstring(convert_u32string_to_u16string(s));
+}
+
+// to go::utility::u2string
+
+inline u2string convert_wstring_to_u2string(const std::wstring& s)
+{
+    // Windows VC++ wide strings are UCS-2
+    return u2string(s.begin(), s.end());
 }
 
 // to std::u16string
@@ -94,6 +92,8 @@ inline std::u32string convert_wstring_to_u32string(const std::wstring& s)
 }
 }
 }
+
+#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
 
 #endif  // Required C++11 feature is not supported by this compiler
 

@@ -17,6 +17,11 @@
 
 #define GO_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
+// MinGW
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#define GO_COMP_GCC_MINGW 1
+#endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
+
 // Compiler message
 #define GO_MESSAGE(_message_) \
 __warning _message_
@@ -28,6 +33,12 @@ __warning _message_
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
+
+// C++ issue workarounds
+#if (GO_GCC_VERSION < 60000)
+#define GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#endif  // #if (GO_GCC_VERSION < 60000)
 
 // C++11 support
 #if (GO_GCC_VERSION)

@@ -88,6 +88,7 @@ const wchar_t* ascii_printable_characters =
     L"pqrstuvwxyz{|}~";
 
 // ISO/IEC 8859-1
+#if !defined(GO_COMP_GCC)
 const wchar_t* iso_8859_1_printable_characters =
     L" !\"#$%&'()*+,-./" \
     L"0123456789:;<=>?" \
@@ -101,9 +102,36 @@ const wchar_t* iso_8859_1_printable_characters =
     L"ÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß" \
     L"àáâãäåæçèéêëìíîï" \
     L"ðñòóôõö÷øùúûüýþÿ";
+#else
+const wchar_t iso_8859_1_printable_characters[] =
+    { 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F
+    , 0x30, 0x31, 0x32, 0x0033, 0x34, 0x0035, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F
+    , 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0x4C, 0x4D, 0x4E, 0x4F
+    , 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x5B, 0x5C, 0x5D, 0x5E, 0x5F
+    , 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D, 0x6E, 0x6F
+    , 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x7B, 0x7C, 0x7D, 0x7E
+    , 0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF
+    , 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xBB, 0xBC, 0xBD, 0xBE, 0xBF
+    , 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF
+    , 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8, 0xD9, 0xDA, 0xDB, 0xDC, 0xDD, 0xDE, 0xDF
+    , 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF
+    , 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF
+    , 0x00 };
+#endif  // #if !defined(GO_COMP_GCC)
 
-// Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_COMP_GCC)
 const wchar_t* swedish = L"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
+#else
+const wchar_t swedish[] =
+    { 0x53, 0x6A, 0x75, 0x20, 0x73, 0x6A, 0xF6, 0x73, 0x6A, 0x75, 0x6B, 0x61, 0x20                      // Sju sjösjuka
+    , 0x73, 0x6A, 0xF6, 0x6D, 0xE4, 0x6E, 0x20, 0x70, 0xE5, 0x20                                        // sjömän på
+    , 0x73, 0x6A, 0x75, 0x6E, 0x6B, 0x61, 0x6E, 0x64, 0x65, 0x20                                        // sjunkande
+    , 0x73, 0x6B, 0x65, 0x70, 0x70, 0x65, 0x74, 0x20                                                    // skeppet
+    , 0x53, 0x68, 0x61, 0x6E, 0x67, 0x68, 0x61, 0x69, 0x20                                              // Shanghai
+    , 0x73, 0x6B, 0xF6, 0x74, 0x74, 0x65, 0x73, 0x20, 0x61, 0x76, 0x20                                  // sköttes av
+    , 0x73, 0x6A, 0x75, 0x20, 0x73, 0x6B, 0xF6, 0x6E, 0x61, 0x20                                        // sju sköna
+    , 0x73, 0x6A, 0x75, 0x6B, 0x73, 0x6B, 0xF6, 0x74, 0x65, 0x72, 0x73, 0x6B, 0x6F, 0x72, 0x2E, 0x00 }; // sjuksköterskor.
+#endif  // #if !defined(GO_COMP_GCC)
 
 }
 namespace ucs_2
@@ -230,7 +258,7 @@ const char16_t ascii_printable_characters[] =
 #endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
 
 // ISO/IEC 8859-1
-#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char16_t* iso_8859_1_printable_characters =
     u" !\"#$%&'()*+,-./" \
     u"0123456789:;<=>?" \
@@ -259,10 +287,10 @@ const char16_t iso_8859_1_printable_characters[] =
     , 0x00E0, 0x00E1, 0x00E2, 0x00E3, 0x00E4, 0x00E5, 0x00E6, 0x00E7, 0x00E8, 0x00E9, 0x00EA, 0x00EB, 0x00EC, 0x00ED, 0x00EE, 0x00EF
     , 0x00F0, 0x00F1, 0x00F2, 0x00F3, 0x00F4, 0x00F5, 0x00F6, 0x00F7, 0x00F8, 0x00F9, 0x00FA, 0x00FB, 0x00FC, 0x00FD, 0x00FE, 0x00FF
     , 0x0000 };
-#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
-#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char16_t* swedish = u"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
 const char16_t swedish[] =
@@ -274,7 +302,7 @@ const char16_t swedish[] =
     , 0x0073, 0x006B, 0x00F6, 0x0074, 0x0074, 0x0065, 0x0073, 0x0020, 0x0061, 0x0076, 0x0020                                            // sköttes av
     , 0x0073, 0x006A, 0x0075, 0x0020, 0x0073, 0x006B, 0x00F6, 0x006E, 0x0061, 0x0020                                                    // sju sköna
     , 0x0073, 0x006A, 0x0075, 0x006B, 0x0073, 0x006B, 0x00F6, 0x0074, 0x0065, 0x0072, 0x0073, 0x006B, 0x006F, 0x0072, 0x002E, 0x0000 }; // sjuksköterskor.
-#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 }
 namespace utf_32
@@ -300,7 +328,7 @@ const char32_t ascii_printable_characters[] =
 #endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
 
 // ISO/IEC 8859-1
-#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char32_t* iso_8859_1_printable_characters =
     U" !\"#$%&'()*+,-./" \
     U"0123456789:;<=>?" \
@@ -329,10 +357,10 @@ const char32_t iso_8859_1_printable_characters[] =
     , 0x000000E0, 0x000000E1, 0x000000E2, 0x000000E3, 0x000000E4, 0x000000E5, 0x000000E6, 0x000000E7, 0x000000E8, 0x000000E9, 0x000000EA, 0x000000EB, 0x000000EC, 0x000000ED, 0x000000EE, 0x000000EF
     , 0x000000F0, 0x000000F1, 0x000000F2, 0x000000F3, 0x000000F4, 0x000000F5, 0x000000F6, 0x000000F7, 0x000000F8, 0x000000F9, 0x000000FA, 0x000000FB, 0x000000FC, 0x000000FD, 0x000000FE, 0x000000FF
     , 0x00000000 };
-#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
-#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char32_t* swedish = U"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
 const char32_t swedish[] =
@@ -344,8 +372,54 @@ const char32_t swedish[] =
     , 0x00000073, 0x0000006B, 0x000000F6, 0x00000074, 0x00000074, 0x00000065, 0x00000073, 0x00000020, 0x00000061, 0x00000076, 0x00000020                                                                // sköttes av
     , 0x00000073, 0x0000006A, 0x00000075, 0x00000020, 0x00000073, 0x0000006B, 0x000000F6, 0x0000006E, 0x00000061, 0x00000020                                                                            // sju sköna
     , 0x00000073, 0x0000006A, 0x00000075, 0x0000006B, 0x00000073, 0x0000006B, 0x000000F6, 0x00000074, 0x00000065, 0x00000072, 0x00000073, 0x0000006B, 0x0000006F, 0x00000072, 0x0000002E, 0x00000000 }; // sjuksköterskor.
-#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
+#endif  // #if !defined(GO_NO_CXX11_UNICODE_STRING_LITERALS) && !defined(GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
+}
+
+TEST(std_string_cast_test_suite, test_char_size)
+{
+    const std::size_t type_size = sizeof(char);
+    const std::size_t expected_size = 1;
+    EXPECT_EQ(type_size, expected_size);
+}
+
+TEST(std_string_cast_test_suite, test_wchar_t_size)
+{
+    const std::size_t type_size = sizeof(wchar_t);
+#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+    const std::size_t expected_size = 2;
+#else
+    const std::size_t expected_size = 4;
+#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+    EXPECT_EQ(type_size, expected_size);
+}
+
+TEST(std_string_cast_test_suite, test_char2_t_size)
+{
+    const std::size_t type_size = sizeof(u::char2_t);
+    const std::size_t expected_size = 2;
+    EXPECT_EQ(type_size, expected_size);
+}
+
+TEST(std_string_cast_test_suite, test_char8_t_size)
+{
+    const std::size_t type_size = sizeof(u::char8_t);
+    const std::size_t expected_size = 1;
+    EXPECT_EQ(type_size, expected_size);
+}
+
+TEST(std_string_cast_test_suite, test_char16_t_size)
+{
+    const std::size_t type_size = sizeof(char16_t);
+    const std::size_t expected_size = 2;
+    EXPECT_EQ(type_size, expected_size);
+}
+
+TEST(std_string_cast_test_suite, test_char32_t_size)
+{
+    const std::size_t type_size = sizeof(char32_t);
+    const std::size_t expected_size = 4;
+    EXPECT_EQ(type_size, expected_size);
 }
 
 TEST(std_string_cast_test_suite, test_multibyte_ascii_printable_characters)
