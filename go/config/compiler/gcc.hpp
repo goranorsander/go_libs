@@ -23,8 +23,9 @@
 #endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
 
 // Compiler message
-#define GO_MESSAGE(_message_) \
-__warning _message_
+#define GO_MESSAGE_HELPER_0(_message_) #_message_
+#define GO_MESSAGE_HELPER_1(_message_) GO_MESSAGE_HELPER_0(GCC warning _message_)
+#define GO_MESSAGE(_message_) _Pragma(GO_MESSAGE_HELPER_1(_message_))
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (GO_GCC_VERSION < 40500)
@@ -35,10 +36,9 @@ __warning _message_
 #define GO_TYPENAME typename
 
 // C++ issue workarounds
-#if (GO_GCC_VERSION < 60000)
+#define GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 #define GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 #define GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
-#endif  // #if (GO_GCC_VERSION < 60000)
 
 // C++11 support
 #if (GO_GCC_VERSION)

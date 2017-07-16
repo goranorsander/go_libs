@@ -68,7 +68,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 4.0.0|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 4.0.1|gcc 7.1.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 64 | 64 | 64 | 63| 64 | 64 | 64 | 64 | 64 | 64 
@@ -81,7 +81,7 @@ The CMake configurations I use:
 **BUILD_GTEST** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_SHARED_LIBS** | | | | | | | | | |
 **gmock_build_tests** | | | | | | | | | |
-**gtest_build_samples** | | | | | | | | | |
+**gtest_build_samples** | X | X | | | | | | | |
 **gtest_build_tests** | | | | | | | | | |
 **gtest_disable_pthreads** | | | X | | | | | | |
 **gtest_force_shared_crt** | | | | X| X | X | X | X | X | X 
@@ -92,14 +92,14 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 17.0 Xfce, 64 bits
-  * cmake version 3.7.2
-  * clang version 4.0.0 (tags/RELEASE_400/final)
-  * gcc (GCC) 6.3.1 20170306
+* Manjaro Linux 17.0.2 Gellivara, Xfce, 64 bits
+  * cmake version 3.8.2
+  * clang version 4.0.1 (tags/RELEASE_401/final)
+  * gcc (GCC) 7.1.1 20170621
   * Code::Blocks 16.01
   * GNU Make 4.2.1
 * Windows 10 Professional, 64 bit
-  * cmake version 3.8.0
+  * cmake version 3.8.2
   * MSYS2 64bit 20160205
   * gcc.exe (Rev5, Built by MSYS2 project) 5.3.0
   * GNU Make 4.1
@@ -110,7 +110,7 @@ My development environment and toolset details:
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition
 * Windows 7 Enterprise, 64 bit
-  * cmake version 3.8.0
+  * cmake version 3.8.2
   * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST

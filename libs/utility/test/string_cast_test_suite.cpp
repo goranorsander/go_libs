@@ -43,6 +43,7 @@ const char* ascii_printable_characters_from_hex_codes =
     "\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7A\x7B\x7C\x7D\x7E";
 
 // ISO/IEC 8859-1, see https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+#if !defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char* iso_8859_1_printable_characters =
     " !\"#$%&'()*+,-./" \
     "0123456789:;<=>?" \
@@ -56,6 +57,21 @@ const char* iso_8859_1_printable_characters =
     "ÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß" \
     "àáâãäåæçèéêëìíîï" \
     "ðñòóôõö÷øùúûüýþÿ";
+#else
+const char* iso_8859_1_printable_characters =
+    "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
+    "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
+    "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
+    "\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5A\x5B\x5C\x5D\x5E\x5F" \
+    "\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6A\x6B\x6C\x6D\x6E\x6F" \
+    "\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7A\x7B\x7C\x7D\x7E" \
+    "\xA0\xA1\xA2\xA3\xA4\xA5\xA6\xA7\xA8\xA9\xAA\xAB\xAC\xAD\xAE\xAF" \
+    "\xB0\xB1\xB2\xB3\xB4\xB5\xB6\xB7\xB8\xB9\xBA\xBB\xBC\xBD\xBE\xBF" \
+    "\xC0\xC1\xC2\xC3\xC4\xC5\xC6\xC7\xC8\xC9\xCA\xCB\xCC\xCD\xCE\xCF" \
+    "\xD0\xD1\xD2\xD3\xD4\xD5\xD6\xD7\xD8\xD9\xDA\xDB\xDC\xDD\xDE\xDF" \
+    "\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF" \
+    "\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
+#endif  // #if !defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 const char* iso_8859_1_printable_characters_from_hex_codes =
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
@@ -72,7 +88,11 @@ const char* iso_8859_1_printable_characters_from_hex_codes =
     "\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char* swedish = "Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
+#else
+const char* swedish = "Sju sj\xF6sjuka sj\xF6m\xE4n p\xE5 sjunkande skeppet Shanghai sk\xF6ttes av sju sk\xF6na sjuksk\xF6terskor.";
+#endif  // #if !defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 }
 namespace system_wide
@@ -88,7 +108,7 @@ const wchar_t* ascii_printable_characters =
     L"pqrstuvwxyz{|}~";
 
 // ISO/IEC 8859-1
-#if !defined(GO_COMP_GCC)
+#if !defined(GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const wchar_t* iso_8859_1_printable_characters =
     L" !\"#$%&'()*+,-./" \
     L"0123456789:;<=>?" \
@@ -117,9 +137,9 @@ const wchar_t iso_8859_1_printable_characters[] =
     , 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF
     , 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF
     , 0x00 };
-#endif  // #if !defined(GO_COMP_GCC)
+#endif  // #if !defined(GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
-#if !defined(GO_COMP_GCC)
+#if !defined(GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const wchar_t* swedish = L"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
 const wchar_t swedish[] =
@@ -131,7 +151,7 @@ const wchar_t swedish[] =
     , 0x73, 0x6B, 0xF6, 0x74, 0x74, 0x65, 0x73, 0x20, 0x61, 0x76, 0x20                                  // sköttes av
     , 0x73, 0x6A, 0x75, 0x20, 0x73, 0x6B, 0xF6, 0x6E, 0x61, 0x20                                        // sju sköna
     , 0x73, 0x6A, 0x75, 0x6B, 0x73, 0x6B, 0xF6, 0x74, 0x65, 0x72, 0x73, 0x6B, 0x6F, 0x72, 0x2E, 0x00 }; // sjuksköterskor.
-#endif  // #if !defined(GO_COMP_GCC)
+#endif  // #if !defined(GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 }
 namespace ucs_2
@@ -197,7 +217,7 @@ const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t
 #endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
 
 // ISO/IEC 8859-1
-#if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
+#if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
 const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
     u8" !\"#$%&'()*+,-./" \
     u8"0123456789:;<=>?" \
@@ -225,14 +245,14 @@ const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::ch
     "\xC3\x90\xC3\x91\xC3\x92\xC3\x93\xC3\x94\xC3\x95\xC3\x96\xC3\x97\xC3\x98\xC3\x99\xC3\x9A\xC3\x9B\xC3\x9C\xC3\x9D\xC3\x9E\xC3\x9F" \
     "\xC3\xA0\xC3\xA1\xC3\xA2\xC3\xA3\xC3\xA4\xC3\xA5\xC3\xA6\xC3\xA7\xC3\xA8\xC3\xA9\xC3\xAA\xC3\xAB\xC3\xAC\xC3\xAD\xC3\xAE\xC3\xAF" \
     "\xC3\xB0\xC3\xB1\xC3\xB2\xC3\xB3\xC3\xB4\xC3\xB5\xC3\xB6\xC3\xB7\xC3\xB8\xC3\xB9\xC3\xBA\xC3\xBB\xC3\xBC\xC3\xBD\xC3\xBE\xC3\xBF");
-#endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
+#endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
-#if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
+#if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>(u8"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.");
 #else
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sj\xC3\xB6sjuka sj\xC3\xB6m\xC3\xA4n p\xC3\xA5 sjunkande skeppet Shanghai sk\xC3\xB6ttes av sju sk\xC3\xB6na sjuksk\xC3\xB6terskor.");
-#endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
+#endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
 
 }
 namespace utf_16
@@ -386,11 +406,11 @@ TEST(std_string_cast_test_suite, test_char_size)
 TEST(std_string_cast_test_suite, test_wchar_t_size)
 {
     const std::size_t type_size = sizeof(wchar_t);
-#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#if defined(GO_PLATFORM_WINDOWS)
     const std::size_t expected_size = 2;
 #else
     const std::size_t expected_size = 4;
-#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_PLATFORM_WINDOWS)
     EXPECT_EQ(type_size, expected_size);
 }
 
@@ -436,580 +456,608 @@ TEST(std_string_cast_test_suite, test_multibyte_iso_8859_1_printable_characters)
     EXPECT_EQ(iso_8859_1_printable_characters, iso_8859_1_printable_characters_from_hex_codes);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_string)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_string)
+TEST(std_string_cast_test_suite, test_cast_iso_8859_1_from_string_to_string)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::iso_8859_1_printable_characters);
+    const std::string expected_result(multibyte::iso_8859_1_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_string)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_string)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_string)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_string)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const std::string expected_result(multibyte::ascii_printable_characters);
-        const std::string cast_result = u::string_cast<std::string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const std::string expected_result(multibyte::swedish);
-        const std::string cast_result = u::string_cast<std::string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_wstring)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_string)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_wstring)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_string)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_wstring)
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_string)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_string)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_wstring)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_string)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u16string from_string(utf_16::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_wstring)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_string)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const std::string expected_result(multibyte::ascii_printable_characters);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_wstring)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_string)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const std::wstring expected_result(system_wide::ascii_printable_characters);
-        const std::wstring cast_result = u::string_cast<std::wstring>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const std::wstring expected_result(system_wide::swedish);
-        const std::wstring cast_result = u::string_cast<std::wstring>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::swedish);
+    const std::string expected_result(multibyte::swedish);
+    const std::string cast_result = u::string_cast<std::string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_wstring)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_wstring)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_wstring)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_wstring)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_wstring)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_u2string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_wstring)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const u::u2string expected_result(ucs_2::ascii_printable_characters);
-        const u::u2string cast_result = u::string_cast<u::u2string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const u::u2string expected_result(ucs_2::swedish);
-        const u::u2string cast_result = u::string_cast<u::u2string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_u8string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_wstring)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_u8string)
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_wstring)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_wstring)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_u8string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_wstring)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u16string from_string(utf_16::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_u8string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_wstring)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const std::wstring expected_result(system_wide::ascii_printable_characters);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_u8string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_wstring)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::swedish);
+    const std::wstring expected_result(system_wide::swedish);
+    const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_u8string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u2string)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const u::u8string expected_result(utf_8::ascii_printable_characters);
-        const u::u8string cast_result = u::string_cast<u::u8string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const u::u8string expected_result(utf_8::swedish);
-        const u::u8string cast_result = u::string_cast<u::u8string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u2string)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u2string)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u2string)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::wstring from_string(system_wide::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u2string)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u2string)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u2string from_string(ucs_2::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_u16string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u2string)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const std::u16string expected_result(utf_16::ascii_printable_characters);
-        const std::u16string cast_result = u::string_cast<std::u16string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const std::u16string expected_result(utf_16::swedish);
-        const std::u16string cast_result = u::string_cast<std::u16string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_string_to_u32string)
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u2string)
 {
-    {
-        const std::string ascii_printable_characters(multibyte::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::string swedish(multibyte::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const u::u8string from_string(utf_8::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u2string)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_wstring_to_u32string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u2string)
 {
-    {
-        const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::wstring swedish(system_wide::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u16string from_string(utf_16::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u2string_to_u32string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u2string)
 {
-    {
-        const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u2string swedish(ucs_2::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const u::u2string expected_result(ucs_2::ascii_printable_characters);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u8string_to_u32string)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u2string)
 {
-    {
-        const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const u::u8string swedish(utf_8::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::u32string from_string(utf_32::swedish);
+    const u::u2string expected_result(ucs_2::swedish);
+    const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u16string_to_u32string)
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u8string)
 {
-    {
-        const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u16string swedish(utf_16::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
-TEST(std_string_cast_test_suite, test_cast_from_u32string_to_u32string)
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u8string)
 {
-    {
-        const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters);
-        const std::u32string expected_result(utf_32::ascii_printable_characters);
-        const std::u32string cast_result = u::string_cast<std::u32string>(ascii_printable_characters);
-        EXPECT_EQ(expected_result, cast_result);
-    }
-    {
-        const std::u32string swedish(utf_32::swedish);
-        const std::u32string expected_result(utf_32::swedish);
-        const std::u32string cast_result = u::string_cast<std::u32string>(swedish);
-        EXPECT_EQ(expected_result, cast_result);
-    }
+    const std::string from_string(multibyte::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u8string)
+{
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u8string)
+{
+    const std::wstring from_string(system_wide::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u8string)
+{
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u8string)
+{
+    const u::u2string from_string(ucs_2::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u8string)
+{
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u8string)
+{
+    const u::u8string from_string(utf_8::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u8string)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u8string)
+{
+    const std::u16string from_string(utf_16::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u8string)
+{
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const u::u8string expected_result(utf_8::ascii_printable_characters);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u8string)
+{
+    const std::u32string from_string(utf_32::swedish);
+    const u::u8string expected_result(utf_8::swedish);
+    const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u16string)
+{
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u16string)
+{
+    const std::string from_string(multibyte::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u16string)
+{
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u16string)
+{
+    const std::wstring from_string(system_wide::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u16string)
+{
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u16string)
+{
+    const u::u2string from_string(ucs_2::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u16string)
+{
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u16string)
+{
+    const u::u8string from_string(utf_8::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u16string)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u16string)
+{
+    const std::u16string from_string(utf_16::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u16string)
+{
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const std::u16string expected_result(utf_16::ascii_printable_characters);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u16string)
+{
+    const std::u32string from_string(utf_32::swedish);
+    const std::u16string expected_result(utf_16::swedish);
+    const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u32string)
+{
+    const std::string from_string(multibyte::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u32string)
+{
+    const std::string from_string(multibyte::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u32string)
+{
+    const std::wstring from_string(system_wide::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u32string)
+{
+    const std::wstring from_string(system_wide::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u32string)
+{
+    const u::u2string from_string(ucs_2::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u32string)
+{
+    const u::u2string from_string(ucs_2::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u32string)
+{
+    const u::u8string from_string(utf_8::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+#if !defined(GO_COMP_GCC)
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u32string)
+{
+    const u::u8string from_string(utf_8::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+#endif  // #if !defined(GO_COMP_GCC)
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u32string)
+{
+    const std::u16string from_string(utf_16::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u32string)
+{
+    const std::u16string from_string(utf_16::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u32string)
+{
+    const std::u32string from_string(utf_32::ascii_printable_characters);
+    const std::u32string expected_result(utf_32::ascii_printable_characters);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
+}
+
+TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u32string)
+{
+    const std::u32string from_string(utf_32::swedish);
+    const std::u32string expected_result(utf_32::swedish);
+    const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
+    EXPECT_EQ(expected_result, cast_result);
 }
 
 }

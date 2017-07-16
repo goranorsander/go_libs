@@ -17,9 +17,9 @@ project(GO_LIBS)
 #Options-------------------------------------------------
 
 option(USE_SOLUTION_FOLDERS "Organise all projects into folders in your solution." ON)
-option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires C++14.")
+option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires C++14/17.")
 option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires the Boost libraries.")
-option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
+option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14/17.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
 set(BOOST_MINOR_VERSION "64" CACHE STRING "Boost libraries minor version.")
@@ -46,7 +46,7 @@ if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # using gcc/g++
-    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -fpermissive -ftemplate-backtrace-limit=0" )
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17 -fpermissive -ftemplate-backtrace-limit=0" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
     set( CMAKE_COMPILER_IS_INTEL TRUE )

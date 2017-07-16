@@ -11,7 +11,9 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
 #include <cstdarg>
+#include <cstring>
 #include <memory>
 #include <string>
 
@@ -30,7 +32,11 @@ inline std::string format(const std::string fmt_str, ...)
     while(true)
     {
         formatted.reset(new char[n]); // Wrap the plain char array into the unique_ptr
+#if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         strcpy_s(&formatted[0], n, fmt_str.c_str());
+#else
+        strcpy(&formatted[0], fmt_str.c_str());
+#endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         va_start(ap, fmt_str);
         const int final_n = vsnprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
@@ -54,7 +60,11 @@ inline std::wstring format(const std::wstring fmt_str, ...)
     while(true)
     {
         formatted.reset(new wchar_t[n]); // Wrap the plain char array into the unique_ptr
+#if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         wcscpy_s(&formatted[0], n, fmt_str.c_str());
+#else
+        wcscpy(&formatted[0], fmt_str.c_str());
+#endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         va_start(ap, fmt_str);
         const int final_n = vswprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);

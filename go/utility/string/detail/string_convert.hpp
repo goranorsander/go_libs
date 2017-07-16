@@ -17,15 +17,17 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <codecvt>
 #include <locale>
 
-#if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
+#if defined(GO_PLATFORM_LINUX)
 #include <go/utility/string/detail/string_convert_linux.hpp>
-#endif  // #if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
-#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_PLATFORM_LINUX)
+#if defined(GO_PLATFORM_WINDOWS)
 #include <go/utility/string/detail/string_convert_windows.hpp>
-#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_PLATFORM_WINDOWS)
 
+#include <go/utility/string/detail/deletable_facet.hpp>
 #include <go/utility/string/detail/string_cast_fwd.hpp>
 
 //
@@ -47,35 +49,7 @@ namespace detail
 
 // to std::string
 
-inline std::string convert_wstring_to_string(const std::wstring& s)
-{
-    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>>> converter;
-    return converter.to_bytes(s);
-}
-
-inline std::string convert_u8string_to_string(const u8string& s)
-{
-    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>> converter;
-    return converter.to_bytes(convert_u8string_to_wstring(s));
-}
-
-inline std::string convert_u16string_to_string(const std::u16string& s)
-{
-    return convert_u8string_to_string(convert_u16string_to_u8string(s));
-}
-
-inline std::string convert_u32string_to_string(const std::u32string& s)
-{
-    return convert_u8string_to_string(convert_u32string_to_u8string(s));
-}
-
 // to std::wstring
-
-inline std::wstring convert_string_to_wstring(const std::string& s)
-{
-    std::wstring_convert<deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>> converter;
-    return converter.from_bytes(s);
-}
 
 inline std::wstring convert_u8string_to_wstring(const u8string& s)
 {
@@ -96,26 +70,30 @@ inline u2string convert_u8string_to_u2string(const u8string& s)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
     if(little_endian)
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8<char2_t, 0x10ffffU, std::little_endian>>, char2_t> converter;
+        typedef deletable_facet<std::codecvt_utf8<char2_t, 0x10ffffU, std::little_endian>> facet_type;
+        std::wstring_convert<facet_type, char2_t> converter;
         auto xs = converter.from_bytes(mbs);
         return u2string(xs.begin(), xs.end());
     }
     else
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8<char2_t>>, char2_t> converter;
+        typedef deletable_facet<std::codecvt_utf8<char2_t>> facet_type;
+        std::wstring_convert<facet_type, char2_t> converter;
         auto xs = converter.from_bytes(mbs);
         return u2string(xs.begin(), xs.end());
     }
 #else
     if (little_endian)
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t, 0x10ffffU, std::little_endian>>, char16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8<char16_t, 0x10ffffU, std::little_endian>> facet_type;
+        std::wstring_convert<facet_type, char16_t> converter;
         auto xs = converter.from_bytes(mbs);
         return u2string(xs.begin(), xs.end());
     }
     else
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8<char16_t>> facet_type;
+        std::wstring_convert<facet_type, char16_t> converter;
         auto xs = converter.from_bytes(mbs);
         return u2string(xs.begin(), xs.end());
     }
@@ -141,11 +119,13 @@ inline u2string convert_u16string_to_u2string(const std::u16string& s)
 	}
 #endif  // #if !defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<int16_t>>, int16_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<int16_t>> facet_type;
+    std::wstring_convert<facet_type, int16_t> converter;
     const auto u16s = converter.from_bytes(bytes);
     return u2string(u16s.begin(), u16s.end());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<char16_t>>, char16_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<char16_t>> facet_type;
+    std::wstring_convert<facet_type, char16_t> converter;
     const std::u16string u16s = converter.from_bytes(bytes);
     return u2string(u16s.begin(), u16s.end());
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
@@ -167,11 +147,13 @@ inline u8string convert_wstring_to_u8string(const std::wstring& s)
 {
     const std::u16string u16s = convert_wstring_to_u16string(s);
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<int16_t>>, int16_t> converter;
+    typedef deletable_facet<std::codecvt_utf8_utf16<int16_t>> facet_type;
+    std::wstring_convert<facet_type, int16_t> converter;
     auto p = reinterpret_cast<const int16_t*>(u16s.data());
     const std::string mbs = converter.to_bytes(p, p + u16s.size());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter;
+    typedef deletable_facet<std::codecvt_utf8_utf16<char16_t>> facet_type;
+    std::wstring_convert<facet_type, char16_t> converter;
     const std::string mbs = converter.to_bytes(u16s);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     return u8string(mbs.begin(), mbs.end());
@@ -180,12 +162,14 @@ inline u8string convert_wstring_to_u8string(const std::wstring& s)
 inline u8string convert_u2string_to_u8string(const u2string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char2_t>>, char2_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<char2_t>> facet_type;
+    std::wstring_convert<facet_type, char2_t> converter;
     const std::string mbs = converter.to_bytes(s);
     return u8string(mbs.begin(), mbs.end());
 #else
     const std::u16string u16s(s.begin(), s.end());
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<char16_t>> facet_type;
+    std::wstring_convert<facet_type, char16_t> converter;
     const auto xs = converter.to_bytes(u16s);
     return u8string(xs.begin(), xs.end());
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
@@ -194,11 +178,13 @@ inline u8string convert_u2string_to_u8string(const u2string& s)
 inline u8string convert_u16string_to_u8string(const std::u16string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<int16_t>>, int16_t> converter;
+    typedef deletable_facet<std::codecvt_utf8_utf16<int16_t>> facet_type;
+    std::wstring_convert<facet_type, int16_t> converter;
     auto p = reinterpret_cast<const int16_t*>(s.data());
     const std::string mbs = converter.to_bytes(p, p + s.size());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter;
+    typedef deletable_facet<std::codecvt_utf8_utf16<char16_t>> facet_type;
+    std::wstring_convert<facet_type, char16_t> converter;
     const std::string mbs = converter.to_bytes(s);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     return u8string(mbs.begin(), mbs.end());
@@ -207,11 +193,13 @@ inline u8string convert_u16string_to_u8string(const std::u16string& s)
 inline u8string convert_u32string_to_u8string(const std::u32string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<int32_t>>, int32_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<int32_t>> facet_type;
+    std::wstring_convert<facet_type, int32_t> converter;
     auto p = reinterpret_cast<const int32_t*>(s.data());
     const std::string mbs = converter.to_bytes(p, p + s.size());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char32_t>>, char32_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<char32_t>> facet_type;
+    std::wstring_convert<facet_type, char32_t> converter;
     const std::string mbs = converter.to_bytes(s);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     return u8string(mbs.begin(), mbs.end());
@@ -228,7 +216,8 @@ inline std::u16string convert_u2string_to_u16string(const u2string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
     std::string bytes;
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<int16_t>>, int16_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<int16_t>> facet_type;
+    std::wstring_convert<facet_type, int16_t> converter;
     auto p = reinterpret_cast<const int16_t*>(s.data());
     bytes = converter.to_bytes(p, p + s.size());
     std::u16string result;
@@ -240,9 +229,11 @@ inline std::u16string convert_u2string_to_u16string(const u2string& s)
     return result;
 #else
     const std::u16string u16s(s.begin(), s.end());
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char16_t>>, char16_t> converter1;
+    typedef deletable_facet<std::codecvt_utf8<char16_t>> facet_1_type;
+    std::wstring_convert<facet_1_type, char16_t> converter1;
     const auto xs = converter1.to_bytes(u16s);
-    std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter2;
+    typedef deletable_facet<std::codecvt_utf8_utf16<char16_t>> facet_2_type;
+    std::wstring_convert<facet_2_type, char16_t> converter2;
     return converter2.from_bytes(xs);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
 }
@@ -254,25 +245,29 @@ inline std::u16string convert_u8string_to_u16string(const u8string& s)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
     if(little_endian)
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<int16_t, 0x10ffffU, std::little_endian>>, int16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8_utf16<int16_t, 0x10ffffU, std::little_endian>> facet_type;
+        std::wstring_convert<facet_type, int16_t> converter;
         auto xs = converter.from_bytes(mbs);
         return std::u16string(xs.begin(), xs.end());
     }
     else
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<int16_t>>, int16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8_utf16<int16_t>> facet_type;
+        std::wstring_convert<facet_type, int16_t> converter;
         auto xs = converter.from_bytes(mbs);
         return std::u16string(xs.begin(), xs.end());
     }
 #else
     if (little_endian)
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t, 0x10ffffU, std::little_endian>>, char16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8_utf16<char16_t, 0x10ffffU, std::little_endian>> facet_type;
+        std::wstring_convert<facet_type, char16_t> converter;
         return converter.from_bytes(mbs);
     }
     else
     {
-        std::wstring_convert<deletable_facet<std::codecvt_utf8_utf16<char16_t>>, char16_t> converter;
+        typedef deletable_facet<std::codecvt_utf8_utf16<char16_t>> facet_type;
+        std::wstring_convert<facet_type, char16_t> converter;
         return converter.from_bytes(mbs);
     }
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
@@ -281,11 +276,13 @@ inline std::u16string convert_u8string_to_u16string(const u8string& s)
 inline std::u16string convert_u32string_to_u16string(const std::u32string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<int32_t>>, int32_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<int32_t>> facet_type;
+    std::wstring_convert<facet_type, int32_t> converter;
     auto p = reinterpret_cast<const int32_t*>(s.data());
     const std::string bytes = converter.to_bytes(p, p + s.size());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<char32_t>>, char32_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<char32_t>> facet_type;
+    std::wstring_convert<facet_type, char32_t> converter;
     const std::string bytes = converter.to_bytes(s);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
     std::u16string u16s;
@@ -312,12 +309,14 @@ inline std::u32string convert_u2string_to_u32string(const u2string& s)
 inline std::u32string convert_u8string_to_u32string(const u8string& s)
 {
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<int32_t>>, int32_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<int32_t>> facet_type;
+    std::wstring_convert<facet_type, int32_t> converter;
     const std::string mbs(s.begin(), s.end());
     const auto xs = converter.from_bytes(mbs);
     return std::u32string(xs.begin(), xs.end());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf8<char32_t>>, char32_t> converter;
+    typedef deletable_facet<std::codecvt_utf8<char32_t>> facet_type;
+    std::wstring_convert<facet_type, char32_t> converter;
     const std::string mbs(s.begin(), s.end());
     return converter.from_bytes(mbs);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
@@ -342,11 +341,13 @@ inline std::u32string convert_u16string_to_u32string(const std::u16string& s)
 	}
 #endif  // #if !defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<int32_t>>, int32_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<int32_t>> facet_type;
+    std::wstring_convert<facet_type, int32_t> converter;
     const auto xs = converter.from_bytes(bytes);
     return std::u32string(xs.begin(), xs.end());
 #else
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<char32_t>>, char32_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<char32_t>> facet_type;
+    std::wstring_convert<facet_type, char32_t> converter;
     return converter.from_bytes(bytes);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)
 }

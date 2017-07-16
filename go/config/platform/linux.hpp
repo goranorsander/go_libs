@@ -11,10 +11,10 @@
 //  See accompanying file LICENSE.md.
 //
 
-#if defined(linux)
+#if defined(__linux__)
 
 #define GO_PLATFORM_LINUX 1
 
-#endif  // defined(linux)
+#endif  // defined(__linux__)
 
 #endif  // #ifndef GO_CONFIG_PLATFORM_LINUX_HPP_INCLUDED

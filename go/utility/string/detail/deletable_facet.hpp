@@ -26,15 +26,15 @@ namespace string
 namespace detail
 {
 
-template<typename F> struct deletable_facet
-    : F
+template<class Facet> struct deletable_facet
+    : Facet
 {
-    typedef F facet_type;
+    typedef Facet facet_type;
     typedef deletable_facet<facet_type> this_type;
 
-#if !defined(GO_PLATFORM_WINDOWS)
-    using F::Facet;
-#endif  // #if !defined(GO_PLATFORM_WINDOWS)
+    using Facet::Facet; // inherit constructors
+
+    ~deletable_facet() = default;
 };
 
 }

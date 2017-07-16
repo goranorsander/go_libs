@@ -35,13 +35,44 @@ namespace detail
 
 // to std::string
 
+inline std::string convert_wstring_to_string(const std::wstring& s)
+{
+    typedef deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>> facet_type;
+    std::wstring_convert<facet_type> converter;
+    return converter.to_bytes(s);
+}
+
 inline std::string convert_u2string_to_string(const u2string& s)
 {
     // Windows VC++ wide strings are UCS-2
     return convert_wstring_to_string(convert_u2string_to_wstring(s));
 }
 
+inline std::string convert_u8string_to_string(const u8string& s)
+{
+    typedef deletable_facet<std::codecvt<wchar_t, char, mbstate_t>> facet_type;
+    std::wstring_convert<facet_type> converter;
+    return converter.to_bytes(convert_u8string_to_wstring(s));
+}
+
+inline std::string convert_u16string_to_string(const std::u16string& s)
+{
+    return convert_u8string_to_string(convert_u16string_to_u8string(s));
+}
+
+inline std::string convert_u32string_to_string(const std::u32string& s)
+{
+    return convert_u8string_to_string(convert_u32string_to_u8string(s));
+}
+
 // to std::wstring
+
+inline std::wstring convert_string_to_wstring(const std::string& s)
+{
+    typedef deletable_facet<std::codecvt<wchar_t, char, mbstate_t>> facet_type;
+    std::wstring_convert<facet_type> converter;
+    return converter.from_bytes(s);
+}
 
 inline std::wstring convert_u2string_to_wstring(const u2string& s)
 {
@@ -52,7 +83,8 @@ inline std::wstring convert_u2string_to_wstring(const u2string& s)
 inline std::wstring convert_u16string_to_wstring(const std::u16string& s)
 {
     // Windows VC++ wide strings are UCS-2
-    std::wstring_convert<deletable_facet<std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>>, wchar_t> converter;
+    typedef deletable_facet<std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>> facet_type;
+    std::wstring_convert<facet_type, wchar_t> converter;
     return converter.from_bytes(reinterpret_cast<const char*> (&s[0]), reinterpret_cast<const char*>(&s[0] + s.size()));
 }
 

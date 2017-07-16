@@ -19,7 +19,7 @@
 
 // Compiler message
 #define GO_MESSAGE(_message_) \
-__warning _message_
+_Pragma message _message_
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (GO_CLANG_VERSION < 20900)
@@ -28,6 +28,12 @@ __warning _message_
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
+
+// C++ issue workarounds
+#define GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 
 // C++11 support
 #if (GO_CLANG_VERSION)

@@ -11,11 +11,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#if defined(linux)
+#if defined(__linux__)
 #define GO_PLATFORM_CONFIG "go/config/platform/linux.hpp"
 #elif defined(_WIN32) || defined(WIN32)
 #define GO_PLATFORM_CONFIG "go/config/platform/windows.hpp"
-#endif  // #if defined(linux)
+#endif  // #if defined(__linux__)
 
 #if 0
 #include "go/config/platform/linux.hpp"
