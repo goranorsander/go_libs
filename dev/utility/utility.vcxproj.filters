@@ -26,7 +26,7 @@
     <ClInclude Include="..\..\go\utility\sanity.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\utility\iterator\forward_iterator.hpp">
+    <ClInclude Include="..\..\go\utility\iterator\try_move_iterator_backward.hpp">
       <Filter>go\utility\iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\utility\noncopyable.hpp">
@@ -87,6 +87,9 @@
       <Filter>go\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\utility\string\algorithm.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\ascii.hpp">
       <Filter>go\utility\string</Filter>
     </ClInclude>
   </ItemGroup>

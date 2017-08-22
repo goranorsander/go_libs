@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_UTILITY_ITERATOR_ITERATOR_HPP_INCLUDED
-#define GO_BOOST_UTILITY_ITERATOR_ITERATOR_HPP_INCLUDED
+#ifndef GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED
+#define GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED
 
 //
-//  iterator.hpp
+//  try_move_iterator_backward.hpp
 //
 //  Copyright 2016-2017 Göran Orsander
 //
@@ -71,4 +71,4 @@ inline bool try_move_iterator_backward(const boost::shared_ptr<C>& container, I&
 }
 }
 
-#endif  // #ifndef GO_BOOST_UTILITY_ITERATOR_ITERATOR_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED

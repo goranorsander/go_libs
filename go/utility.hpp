@@ -21,7 +21,7 @@
 #include <go/utility/string_cast.hpp>
 #include <go/utility/value_guard.hpp>
 
-#include <go/utility/iterator/forward_iterator.hpp>
+#include <go/utility/iterator/try_move_iterator_backward.hpp>
 
 #include <go/utility/string/algorithm.hpp>
 #include <go/utility/string/format.hpp>

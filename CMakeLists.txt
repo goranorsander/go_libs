@@ -469,7 +469,7 @@ set(GO_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP
-    ${GO_UTILITY_ITERATOR_DIR}/forward_iterator.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
 # *.cpp
@@ -487,6 +487,7 @@ set(GO_UTILITY_STRING_DIR ${GO_DIR}/utility/string)
 
 set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
     ${GO_UTILITY_STRING_DIR}/algorithm.hpp
+    ${GO_UTILITY_STRING_DIR}/ascii.hpp
     ${GO_UTILITY_STRING_DIR}/format.hpp
     ${GO_UTILITY_STRING_DIR}/string_cast.hpp
 )
@@ -825,7 +826,7 @@ set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_BOOST_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP
-    ${GO_UTILITY_ITERATOR_DIR}/forward_iterator.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
 # *.cpp

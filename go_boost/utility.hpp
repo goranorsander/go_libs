@@ -24,6 +24,6 @@
 #include <go_boost/utility/scope_guard_new.hpp>
 #include <go_boost/utility/value_guard.hpp>
 
-#include <go_boost/utility/iterator/forward_iterator.hpp>
+#include <go_boost/utility/iterator/try_move_iterator_backward.hpp>
 
 #endif  // #ifndef GO_BOOST_UTILITY_HPP_INCLUDED

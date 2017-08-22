@@ -32,7 +32,7 @@ template<class Facet> struct deletable_facet
     typedef Facet facet_type;
     typedef deletable_facet<facet_type> this_type;
 
-    using Facet::Facet; // inherit constructors
+    using Facet::Facet; // Inherit constructors
 
     ~deletable_facet() = default;
 };
