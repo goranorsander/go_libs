@@ -36,7 +36,7 @@ template<class Facet> struct deletable_facet
     using Facet::Facet; // inherit constructors
 #endif  // #if !defined(GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE)
 
-    ~deletable_facet() = default;
+    ~deletable_facet() GO_DEFAULT_DESTRUCTOR
 };
 
 }
