@@ -32,7 +32,9 @@ template<class Facet> struct deletable_facet
     typedef Facet facet_type;
     typedef deletable_facet<facet_type> this_type;
 
+#if !defined(GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE)
     using Facet::Facet; // inherit constructors
+#endif  // #if !defined(GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE)
 
     ~deletable_facet() = default;
 };
