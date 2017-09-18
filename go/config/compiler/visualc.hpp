@@ -54,6 +54,11 @@ __pragma(message(_message_))
 #define GO_TYPENAME typename
 #endif  // #if (_MSC_VER < 1900)
 
+// C++ issue workarounds
+#if (_MSC_VER < 1900)
+#define GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE 1
+#endif  // #if (_MSC_VER < 1900)
+
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1

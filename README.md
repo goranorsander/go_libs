@@ -34,7 +34,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.64.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.65.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -43,10 +43,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_64_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_64_0\stage\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_65_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_65_0\stage\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 64
+ * **BOOST_MINOR_VERSION** = 65
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
@@ -71,7 +71,7 @@ The CMake configurations I use:
 **SETTING \ TOOLSET**      |clang 4.0.1|gcc 7.1.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 64 | 64 | 64 | 63| 64 | 64 | 64 | 64 | 64 | 64 
+**BOOST_MINOR_VERSION** | 65 | 65 | 65 | 65| 65 | 65 | 65 | 65 | 65 | 65 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
 **BUILD_BOOST_TESTS** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X| X | | | | | 
