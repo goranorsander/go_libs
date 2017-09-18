@@ -20,10 +20,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <codecvt>
 #include <locale>
 
-#if defined(GO_PLATFORM_LINUX)
+#if defined(GO_PLATFORM_LINUX) || defined(GO_COMP_GCC_MINGW)
 #include <go/utility/string/detail/string_convert_linux.hpp>
 #endif  // #if defined(GO_PLATFORM_LINUX)
-#if defined(GO_PLATFORM_WINDOWS)
+#if defined(GO_PLATFORM_WINDOWS) && !defined(GO_COMP_GCC_MINGW)
 #include <go/utility/string/detail/string_convert_windows.hpp>
 #endif  // #if defined(GO_PLATFORM_WINDOWS)
 

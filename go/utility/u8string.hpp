@@ -13,6 +13,7 @@
 
 #include <go/config.hpp>
 #include <go/utility/string/algorithm.hpp>
+#include <algorithm>
 #include <string>
 
 namespace go
@@ -106,6 +107,8 @@ public:
     bool operator==(const u8string& other) const;
 
     bool operator!=(const u8string& other) const;
+
+    std::size_t characters() const;
 };
 
 inline u8string::~u8string()
@@ -224,6 +227,41 @@ inline bool u8string::operator==(const u8string& other) const
 inline bool u8string::operator!=(const u8string& other) const
 {
     return !operator==(other);
+}
+
+inline std::size_t u8string::characters() const
+{
+    std::size_t count = 0;
+    const_iterator it = begin();
+    const const_iterator endit = end();
+    while (it != endit)
+    {
+        const unsigned char c = static_cast<unsigned char>(*it);
+        if (c < 0x80)
+        {
+            ++count;
+        }
+        else if ((c >= 0xC2) && (c <= 0xDF))
+        {
+            ++count;
+            ++it;
+        }
+        else if ((c >= 0xE0) && (c <= 0xEF))
+        {
+            ++count;
+            ++it;
+            ++it;
+        }
+        else if (c >= 0xF0)
+        {
+            ++count;
+            ++it;
+            ++it;
+            ++it;
+        }
+        ++it;
+    }
+    return count;
 }
 
 }

@@ -17,8 +17,9 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
+#if defined(GO_PLATFORM_LINUX) || defined(GO_COMP_GCC_MINGW)
 
+#include <go/utility/string/ascii.hpp>
 #include <go/utility/string/detail/deletable_facet.hpp>
 #include <go/utility/string/detail/string_cast_fwd.hpp>
 #include <clocale>
@@ -44,7 +45,12 @@ inline std::string convert_wstring_to_string(const std::wstring& s)
         return std::string();
     }
     std::string mbs;
+#if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
+    const std::wstring sws = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
+    std::transform(sws.begin(), sws.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#else
     std::transform(s.begin(), s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#endif  // #if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
     return mbs;
 }
 
@@ -55,7 +61,12 @@ inline std::string convert_u2string_to_string(const u2string& s)
         return std::string();
     }
     std::string mbs;
+#if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
+    const u2string u2s = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
+    std::transform(u2s.begin(), u2s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#else
     std::transform(s.begin(), s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#endif  // #if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
     return mbs;
 }
 
@@ -72,7 +83,12 @@ inline std::string convert_u16string_to_string(const std::u16string& s)
         return std::string();
     }
     std::string mbs;
+#if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
+    const std::u16string u16s = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
+    std::transform(u16s.begin(), u16s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#else
     std::transform(s.begin(), s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#endif  // #if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
     return mbs;
 }
 
@@ -83,7 +99,12 @@ inline std::string convert_u32string_to_string(const std::u32string& s)
         return std::string();
     }
     std::string mbs;
+#if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
+    const std::u32string u32s = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
+    std::transform(u32s.begin(), u32s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#else
     std::transform(s.begin(), s.end(), std::back_inserter(mbs), [](const std::wstring::value_type c) -> std::string::value_type { return static_cast<std::string::value_type>(c & 0xFF); });
+#endif  // #if defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
     return mbs;
 }
 
@@ -150,7 +171,7 @@ inline std::u32string convert_wstring_to_u32string(const std::wstring& s)
 }
 }
 
-#endif  // #if defined(GO_PLATFORM_LINUX) && !defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_PLATFORM_LINUX) || defined(GO_COMP_GCC_MINGW)
 
 #endif  // Required C++11 feature is not supported by this compiler
 
