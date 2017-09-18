@@ -17,7 +17,7 @@ TEST(std_observable_unordered_map_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-#include <go/utility/iterator/forward_iterator.hpp>
+#include <go/utility/iterator/try_move_iterator_backward.hpp>
 
 namespace i = go::utility::iterator;
 namespace m = go::mvvm;

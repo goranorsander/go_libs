@@ -17,7 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#if defined(GO_PLATFORM_WINDOWS) && !defined(GO_COMP_GCC_MINGW)
 
 #include <go/utility/string/detail/deletable_facet.hpp>
 #include <go/utility/string/detail/string_cast_fwd.hpp>
@@ -125,7 +125,7 @@ inline std::u32string convert_wstring_to_u32string(const std::wstring& s)
 }
 }
 
-#endif  // #if defined(GO_PLATFORM_WINDOWS) || defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_PLATFORM_WINDOWS) && !defined(GO_COMP_GCC_MINGW)
 
 #endif  // Required C++11 feature is not supported by this compiler
 
