@@ -53,11 +53,11 @@ if(BUILD_STD_TESTS)
             target_link_libraries(${PROJECT_STD_TEST_PROPERTY_NAME} gtest_main)
         else(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_STD_TEST_PROPERTY_NAME}
-                debug Debug/gtest
+                debug Debug/gtestd
                 optimized Release/gtest
                 )
             target_link_libraries(${PROJECT_STD_TEST_PROPERTY_NAME}
-                debug Debug/gtest_main
+                debug Debug/gtest_maind
                 optimized Release/gtest_main
                 )
         endif(MSVC_VERSION LESS 1800)
