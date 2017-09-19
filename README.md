@@ -96,19 +96,20 @@ My development environment and toolset details:
   * cmake version 3.8.2
   * clang version 4.0.1 (tags/RELEASE_401/final)
   * gcc (GCC) 7.1.1 20170621
-  * Code::Blocks 16.01
   * GNU Make 4.2.1
+  * Code::Blocks 16.01
 * Windows 10 Professional, 64 bit
-  * cmake version 3.8.2
+  * cmake version 3.9.2
   * MSYS2 64bit 20160205
   * gcc.exe (Rev5, Built by MSYS2 project) 5.3.0
   * GNU Make 4.1
+  * Code::Blocks 16.01
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition
+  * Visual Studio 2017, Community Edition, version 15.3.4
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.8.2
   * Visual Studio 2008 Professional Edition
