@@ -92,10 +92,10 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 17.0.2 Gellivara, Xfce, 64 bits
-  * cmake version 3.8.2
+* Manjaro Linux 17.0.5 Gellivara, Xfce, 64 bits
+  * cmake version 3.9.2
   * clang version 4.0.1 (tags/RELEASE_401/final)
-  * gcc (GCC) 7.1.1 20170621
+  * gcc (GCC) 7.2.0
   * GNU Make 4.2.1
   * Code::Blocks 16.01
 * Windows 10 Professional, 64 bit
