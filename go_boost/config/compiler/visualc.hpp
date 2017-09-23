@@ -19,6 +19,26 @@
 
 #if defined(BOOST_MSVC)
 
+#if (_MSC_VER == 1500)
+#define GO_BOOST_COMP_MSVC_VC90 1
+#define GO_BOOST_IDE_MS_VS2008 1
+#elif (_MSC_VER == 1600)
+#define GO_BOOST_COMP_MSVC_VC100 1
+#define GO_BOOST_IDE_MS_VS2010 1
+#elif (_MSC_VER == 1700)
+#define GO_BOOST_COMP_MSVC_VC110 1
+#define GO_BOOST_IDE_MS_VS2012 1
+#elif (_MSC_VER == 1800)
+#define GO_BOOST_COMP_MSVC_VC120 1
+#define GO_BOOST_IDE_MS_VS2013 1
+#elif (_MSC_VER == 1900)
+#define GO_BOOST_COMP_MSVC_VC140 1
+#define GO_BOOST_IDE_MS_VS2015 1
+#elif (_MSC_VER == 1910)
+#define GO_BOOST_COMP_MSVC_VC141 1
+#define GO_BOOST_IDE_MS_VS2017 1
+#endif  // #if (_MSC_VER == 1500)
+
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
 __pragma(message(_message_))

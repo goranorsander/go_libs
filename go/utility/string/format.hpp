@@ -38,7 +38,7 @@ inline std::string format(const std::string fmt_str, ...)
         strcpy(&formatted[0], fmt_str.c_str());
 #endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         va_start(ap, fmt_str);
-        const int final_n = vsnprintf(&formatted[0], n, fmt_str.c_str(), ap);
+        const int final_n = vsnprintf_s(&formatted[0], n, n, fmt_str.c_str(), ap);
         va_end(ap);
         if(final_n < 0 || final_n >= n)
         {
@@ -66,7 +66,7 @@ inline std::wstring format(const std::wstring fmt_str, ...)
         wcscpy(&formatted[0], fmt_str.c_str());
 #endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         va_start(ap, fmt_str);
-        const int final_n = vswprintf(&formatted[0], n, fmt_str.c_str(), ap);
+        const int final_n = vswprintf_s(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
         if(final_n < 0 || final_n >= n)
         {

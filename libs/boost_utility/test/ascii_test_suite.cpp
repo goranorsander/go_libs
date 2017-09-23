@@ -521,7 +521,7 @@ const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 24
 
 }
 
-TEST(std_ascii_test_suite, test_multibyte_character_count)
+TEST(boost_ascii_test_suite, test_multibyte_character_count)
 {
     const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
     const std::string iso_8859_1_printable_characters(multibyte::iso_8859_1_printable_characters_from_hex_codes);
@@ -531,7 +531,7 @@ TEST(std_ascii_test_suite, test_multibyte_character_count)
     EXPECT_EQ(multibyte::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
-TEST(std_ascii_test_suite, test_system_wide_character_count)
+TEST(boost_ascii_test_suite, test_system_wide_character_count)
 {
     const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters_from_hex_codes);
     const std::wstring iso_8859_1_printable_characters(system_wide::iso_8859_1_printable_characters_from_hex_codes);
@@ -541,7 +541,7 @@ TEST(std_ascii_test_suite, test_system_wide_character_count)
     EXPECT_EQ(system_wide::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
-TEST(std_ascii_test_suite, test_ucs_2_character_count)
+TEST(boost_ascii_test_suite, test_ucs_2_character_count)
 {
     const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters_from_hex_codes);
     const u::u2string iso_8859_1_printable_characters(ucs_2::iso_8859_1_printable_characters_from_hex_codes);
@@ -551,7 +551,7 @@ TEST(std_ascii_test_suite, test_ucs_2_character_count)
     EXPECT_EQ(ucs_2::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
-TEST(std_ascii_test_suite, test_utf_8_character_count)
+TEST(boost_ascii_test_suite, test_utf_8_character_count)
 {
     const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters_from_hex_codes);
     const u::u8string iso_8859_1_printable_characters(utf_8::iso_8859_1_printable_characters_from_hex_codes);
@@ -563,7 +563,7 @@ TEST(std_ascii_test_suite, test_utf_8_character_count)
     EXPECT_EQ(utf_8::iso_8859_1_printable_characters_size, iso_8859_1_printable_characters_size);
 }
 
-TEST(std_ascii_test_suite, test_utf_16_character_count)
+TEST(boost_ascii_test_suite, test_utf_16_character_count)
 {
     const u::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
     const u::u16string iso_8859_1_printable_characters(utf_16::iso_8859_1_printable_characters_from_hex_codes);
@@ -573,7 +573,7 @@ TEST(std_ascii_test_suite, test_utf_16_character_count)
     EXPECT_EQ(utf_16::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
-TEST(std_ascii_test_suite, test_utf_32_character_count)
+TEST(boost_ascii_test_suite, test_utf_32_character_count)
 {
     const u::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
     const u::u32string iso_8859_1_printable_characters(utf_32::iso_8859_1_printable_characters_from_hex_codes);
@@ -583,7 +583,7 @@ TEST(std_ascii_test_suite, test_utf_32_character_count)
     EXPECT_EQ(utf_32::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
-TEST(std_ascii_test_suite, test_char_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_char_is_7_bit_ascii_character)
 {
     {
         char c = -1;
@@ -605,7 +605,7 @@ TEST(std_ascii_test_suite, test_char_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_char8_t_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_char8_t_is_7_bit_ascii_character)
 {
     {
         u::char8_t c = 0;
@@ -631,7 +631,7 @@ TEST(std_ascii_test_suite, test_char8_t_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_wchar_t_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_wchar_t_is_7_bit_ascii_character)
 {
     {
         wchar_t c = 0;
@@ -666,7 +666,7 @@ TEST(std_ascii_test_suite, test_wchar_t_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_char2_t_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_char2_t_is_7_bit_ascii_character)
 {
     {
         u::char2_t c = 0;
@@ -692,7 +692,7 @@ TEST(std_ascii_test_suite, test_char2_t_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_char16_t_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_char16_t_is_7_bit_ascii_character)
 {
     {
         char16_t c = 0;
@@ -723,7 +723,7 @@ TEST(std_ascii_test_suite, test_char16_t_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_char32_t_is_7_bit_ascii_character)
+TEST(boost_ascii_test_suite, test_char32_t_is_7_bit_ascii_character)
 {
     {
         char32_t c = 0;
@@ -754,7 +754,7 @@ TEST(std_ascii_test_suite, test_char32_t_is_7_bit_ascii_character)
     }
 }
 
-TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
     const std::string iso_8859_1_printable_characters(multibyte::iso_8859_1_printable_characters_from_hex_codes);
@@ -762,7 +762,7 @@ TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_chara
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters_from_hex_codes);
     const std::wstring iso_8859_1_printable_characters(system_wide::iso_8859_1_printable_characters_from_hex_codes);
@@ -770,7 +770,7 @@ TEST(std_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_cha
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters_from_hex_codes);
     const u::u2string iso_8859_1_printable_characters(ucs_2::iso_8859_1_printable_characters_from_hex_codes);
@@ -778,7 +778,7 @@ TEST(std_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_character
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters_from_hex_codes);
     const u::u8string iso_8859_1_printable_characters(utf_8::iso_8859_1_printable_characters_from_hex_codes);
@@ -786,7 +786,7 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_character
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const u::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
     const u::u16string iso_8859_1_printable_characters(utf_16::iso_8859_1_printable_characters_from_hex_codes);
@@ -794,7 +794,7 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characte
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const u::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
     const u::u32string iso_8859_1_printable_characters(utf_32::iso_8859_1_printable_characters_from_hex_codes);
@@ -802,7 +802,7 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characte
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const std::string ascii_printable_characters(multibyte::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const std::string iso_8859_1_printable_characters(multibyte::iso_8859_1_printable_characters_from_hex_codes);
@@ -810,7 +810,7 @@ TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_s
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const std::wstring ascii_printable_characters(system_wide::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const std::wstring iso_8859_1_printable_characters(system_wide::iso_8859_1_printable_characters_from_hex_codes);
@@ -818,7 +818,7 @@ TEST(std_ascii_test_suite, test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_non
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const u::u2string ascii_printable_characters(ucs_2::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u2string iso_8859_1_printable_characters(ucs_2::iso_8859_1_printable_characters_from_hex_codes);
@@ -826,7 +826,7 @@ TEST(std_ascii_test_suite, test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_non_stric
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const u::u8string ascii_printable_characters(utf_8::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u8string iso_8859_1_printable_characters(utf_8::iso_8859_1_printable_characters_from_hex_codes);
@@ -834,7 +834,7 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_non_stric
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const u::u16string ascii_printable_characters(utf_16::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u16string iso_8859_1_printable_characters(utf_16::iso_8859_1_printable_characters_from_hex_codes);
@@ -842,7 +842,7 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_stri
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const u::u32string ascii_printable_characters(utf_32::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u32string iso_8859_1_printable_characters(utf_32::iso_8859_1_printable_characters_from_hex_codes);
@@ -850,7 +850,7 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_stri
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
     const std::string windows_1252_printable_characters(multibyte::windows_1252_printable_characters_from_hex_codes);
@@ -858,7 +858,7 @@ TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_cha
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters_from_hex_codes);
     const std::wstring windows_1252_printable_characters(system_wide::windows_1252_printable_characters_from_hex_codes);
@@ -866,7 +866,7 @@ TEST(std_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_c
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const u::u2string ascii_printable_characters(ucs_2::ascii_printable_characters_from_hex_codes);
     const u::u2string windows_1252_printable_characters(ucs_2::windows_1252_printable_characters_from_hex_codes);
@@ -874,7 +874,7 @@ TEST(std_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_charact
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const u::u8string ascii_printable_characters(utf_8::ascii_printable_characters_from_hex_codes);
     const u::u8string windows_1252_printable_characters(utf_8::windows_1252_printable_characters_from_hex_codes);
@@ -882,7 +882,7 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_charact
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const u::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
     const u::u16string windows_1252_printable_characters(utf_16::windows_1252_printable_characters_from_hex_codes);
@@ -890,7 +890,7 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_charac
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters)
+TEST(boost_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const u::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
     const u::u32string windows_1252_printable_characters(utf_32::windows_1252_printable_characters_from_hex_codes);
@@ -898,7 +898,7 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_charac
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const std::string ascii_printable_characters(multibyte::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const std::string windows_1252_printable_characters(multibyte::windows_1252_printable_characters_from_hex_codes);
@@ -906,7 +906,7 @@ TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_non
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const std::wstring ascii_printable_characters(system_wide::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const std::wstring windows_1252_printable_characters(system_wide::windows_1252_printable_characters_from_hex_codes);
@@ -914,7 +914,7 @@ TEST(std_ascii_test_suite, test_system_wide_reduce_windows_1252_to_7_bit_ascii_n
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const u::u2string ascii_printable_characters(ucs_2::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u2string windows_1252_printable_characters(ucs_2::windows_1252_printable_characters_from_hex_codes);
@@ -922,7 +922,7 @@ TEST(std_ascii_test_suite, test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_str
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const u::u8string ascii_printable_characters(utf_8::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u8string windows_1252_printable_characters(utf_8::windows_1252_printable_characters_from_hex_codes);
@@ -935,7 +935,7 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_str
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const u::u16string ascii_printable_characters(utf_16::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u16string windows_1252_printable_characters(utf_16::windows_1252_printable_characters_from_hex_codes);
@@ -943,7 +943,7 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_st
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
-TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
+TEST(boost_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const u::u32string ascii_printable_characters(utf_32::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
     const u::u32string windows_1252_printable_characters(utf_32::windows_1252_printable_characters_from_hex_codes);

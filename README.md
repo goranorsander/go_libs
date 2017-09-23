@@ -34,7 +34,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.65.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.65.1** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -43,10 +43,11 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_65_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_65_0\stage\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_65_1)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_65_1\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
  * **BOOST_MINOR_VERSION** = 65
+ * **BOOST_PATCH_LEVEL** = 1
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
@@ -72,6 +73,7 @@ The CMake configurations I use:
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 65 | 65 | 65 | 65| 65 | 65 | 65 | 65 | 65 | 65 
+**BOOST_PATCH_LEVEL** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
 **BUILD_BOOST_TESTS** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X| X | | | | | 
@@ -100,18 +102,18 @@ My development environment and toolset details:
   * Code::Blocks 16.01
 * Windows 10 Professional, 64 bit
   * cmake version 3.9.2
-  * MSYS2 64bit 20160205
-  * gcc.exe (Rev5, Built by MSYS2 project) 5.3.0
-  * GNU Make 4.1
+  * MSYS2 64bit 20161025
+  * gcc.exe (Rev1, Built by MSYS2 project) 7.2.0
+  * GNU Make 4.2.1
   * Code::Blocks 16.01
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.3.4
+  * Visual Studio 2017, Community Edition, version 15.3.5
 * Windows 7 Enterprise, 64 bit
-  * cmake version 3.8.2
+  * cmake version 3.9.2
   * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST

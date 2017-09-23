@@ -20,9 +20,9 @@
 #include <go_boost/utility/string/algorithm_fwd.hpp>
 #include <string>
 
-#if defined(BOOST_NO_CXX11_CHAR32_T)
+#if defined(BOOST_NO_CXX11_CHAR32_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
 typedef unsigned long char32_t;
-#endif  // #if defined(BOOST_NO_CXX11_CHAR32_T)
+#endif  // #if defined(BOOST_NO_CXX11_CHAR32_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
 
 namespace go_boost
 {

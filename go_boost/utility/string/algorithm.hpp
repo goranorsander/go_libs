@@ -56,8 +56,8 @@ inline std::string copy_to_multibyte_string(const std::wstring& sws)
         const unsigned short ch = static_cast<unsigned short>(*it);
         const unsigned char ch0 = static_cast<unsigned char>(ch & 0x00FF);
         const unsigned char ch1 = static_cast<unsigned char>(ch >> 8);
-        mbs += static_cast<typename std::string::value_type>(ch0);
-        mbs += static_cast<typename std::string::value_type>(ch1);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch0);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch1);
 #else
         const unsigned long ch = static_cast<unsigned long>(*it);
         const unsigned char ch0 = static_cast<unsigned char>(ch & 0x00FF);
@@ -81,8 +81,8 @@ inline std::string copy_to_multibyte_string(const u2string& u2s)
         const unsigned short ch = static_cast<unsigned short>(*it);
         const unsigned char ch0 = static_cast<unsigned char>(ch & 0x00FF);
         const unsigned char ch1 = static_cast<unsigned char>(ch >> 8);
-        mbs += static_cast<typename std::string::value_type>(ch0);
-        mbs += static_cast<typename std::string::value_type>(ch1);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch0);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch1);
     }
     return mbs;
 }
@@ -101,8 +101,8 @@ inline std::string copy_to_multibyte_string(const u16string& u16s)
         const unsigned short ch = static_cast<unsigned short>(*it);
         const unsigned char ch0 = static_cast<unsigned char>(ch & 0x00FF);
         const unsigned char ch1 = static_cast<unsigned char>(ch >> 8);
-        mbs += static_cast<typename std::string::value_type>(ch0);
-        mbs += static_cast<typename std::string::value_type>(ch1);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch0);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch1);
     }
     return mbs;
 }
@@ -117,10 +117,10 @@ inline std::string copy_to_multibyte_string(const u32string& u32s)
         const unsigned char ch1 = static_cast<unsigned char>((ch >> 8) & 0x00FF);
         const unsigned char ch2 = static_cast<unsigned char>((ch >> 16) & 0x00FF);
         const unsigned char ch3 = static_cast<unsigned char>(ch >> 24);
-        mbs += static_cast<typename std::string::value_type>(ch0);
-        mbs += static_cast<typename std::string::value_type>(ch1);
-        mbs += static_cast<typename std::string::value_type>(ch2);
-        mbs += static_cast<typename std::string::value_type>(ch3);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch0);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch1);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch2);
+        mbs += static_cast<GO_BOOST_TYPENAME std::string::value_type>(ch3);
     }
     return mbs;
 }
@@ -146,7 +146,7 @@ inline bool try_copy_from_multibyte_string(const std::string& mbs, std::wstring&
             unsigned short c = static_cast<unsigned short>(c0);
             c <<= 8;
             c += static_cast<unsigned short>(c1);
-            sws += static_cast<typename std::wstring::value_type>(c);
+            sws += static_cast<GO_BOOST_TYPENAME std::wstring::value_type>(c);
         }
         return true;
     }
@@ -200,7 +200,7 @@ inline bool try_copy_from_multibyte_string(const std::string& mbs, u2string& u2s
             unsigned short c = static_cast<unsigned short>(c0);
             c <<= 8;
             c += static_cast<unsigned short>(c1);
-            u2s += static_cast<typename std::wstring::value_type>(c);
+            u2s += static_cast<GO_BOOST_TYPENAME std::wstring::value_type>(c);
         }
         return true;
     }
@@ -220,7 +220,7 @@ inline bool try_copy_from_multibyte_string(const std::string& mbs, u8string& u8s
     {
         const unsigned char c0 = *it;
         ++it;
-        u8s += static_cast<typename u8string::value_type>(c0);
+        u8s += static_cast<GO_BOOST_TYPENAME u8string::value_type>(c0);
     }
     return true;
 }
@@ -245,7 +245,7 @@ inline bool try_copy_from_multibyte_string(const std::string& mbs, u16string& u1
             unsigned short c = static_cast<unsigned short>(c0);
             c <<= 8;
             c += static_cast<unsigned short>(c1);
-            u16s += static_cast<typename u16string::value_type>(c);
+            u16s += static_cast<GO_BOOST_TYPENAME u16string::value_type>(c);
         }
         return true;
     }
@@ -280,7 +280,7 @@ inline bool try_copy_from_multibyte_string(const std::string& mbs, u32string& u3
             c += static_cast<unsigned long>(c2);
             c <<= 8;
             c += static_cast<unsigned long>(c3);
-            u32s += static_cast<typename u32string::value_type>(c);
+            u32s += static_cast<GO_BOOST_TYPENAME u32string::value_type>(c);
         }
         return true;
     }
