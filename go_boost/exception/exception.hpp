@@ -42,7 +42,7 @@ public:
     exception& operator=(const exception& other);
 
 public:
-    virtual const char* what() const;
+    virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW;
 
     virtual std::string message() const;
 
@@ -82,7 +82,7 @@ inline exception& exception::operator=(const exception& other)
     return *this;
 }
 
-inline const char* exception::what() const
+inline const char* exception::what() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _message.c_str();
 }

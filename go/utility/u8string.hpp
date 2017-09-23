@@ -14,6 +14,8 @@
 #include <go/config.hpp>
 #include <go/utility/string/algorithm.hpp>
 #include <algorithm>
+#include <deque>
+#include <map>
 #include <string>
 
 namespace go
@@ -22,6 +24,8 @@ namespace utility
 {
 
 typedef unsigned char char8_t;
+typedef std::deque<char8_t> uft8_character_type;
+typedef std::map<std::size_t, uft8_character_type> uft8_string_type;
 
 class u8string
     : public std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>
@@ -109,6 +113,10 @@ public:
     bool operator!=(const u8string& other) const;
 
     std::size_t characters() const;
+
+    uft8_character_type character(const size_type pos) const;
+
+    uft8_string_type string() const;
 };
 
 inline u8string::~u8string()
@@ -241,27 +249,91 @@ inline std::size_t u8string::characters() const
         {
             ++count;
         }
-        else if ((c >= 0xC2) && (c <= 0xDF))
+        else if ((c >= 0xC2) && (c < 0xE0))
         {
             ++count;
             ++it;
         }
-        else if ((c >= 0xE0) && (c <= 0xEF))
+        else if ((c >= 0xE0) && (c < 0xF0))
         {
             ++count;
-            ++it;
-            ++it;
+            std::advance(it, 2);
         }
-        else if (c >= 0xF0)
+        else if ((c >= 0xF0) && (c < 0xFC))
         {
             ++count;
-            ++it;
-            ++it;
-            ++it;
+            std::advance(it, 3);
+        }
+        else if ((c >= 0xFC) && (c < 0xFE))
+        {
+            ++count;
+            std::advance(it, 4);
+        }
+        else if (c >= 0xFE)
+        {
+            ++count;
+            std::advance(it, 5);
         }
         ++it;
     }
     return count;
+}
+
+inline uft8_character_type u8string::character(const size_type pos) const
+{
+    const uft8_string_type u8s = string();
+    uft8_string_type::const_iterator it = u8s.find(pos);
+    if (it != u8s.end())
+    {
+        return it->second;
+    }
+    return uft8_character_type();
+}
+
+inline uft8_string_type u8string::string() const
+{
+    uft8_string_type u8s;
+    std::size_t count = 0;
+    const_iterator it = begin();
+    const const_iterator endit = end();
+    while (it != endit)
+    {
+        uft8_character_type u8ch;
+        const unsigned char c = static_cast<unsigned char>(*it);
+        if (c < 0x80)
+        {
+            ++count;
+        }
+        else if ((c >= 0xC2) && (c < 0xE0))
+        {
+            ++count;
+            u8ch.push_back(*it); ++it;
+        }
+        else if ((c >= 0xE0) && (c < 0xF0))
+        {
+            ++count;
+            u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it;
+        }
+        else if ((c >= 0xF0) && (c < 0xFC))
+        {
+            ++count;
+            u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it;
+        }
+        else if ((c >= 0xFC) && (c < 0xFE))
+        {
+            ++count;
+            u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it;
+        }
+        else if (c >= 0xFE)
+        {
+            ++count;
+            u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it; u8ch.push_back(*it); ++it;
+        }
+        u8ch.push_back(*it);
+        ++it;
+        u8s[count] = u8ch;
+    }
+    return u8s;
 }
 
 }

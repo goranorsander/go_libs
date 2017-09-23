@@ -10,8 +10,7 @@
 
 if(BUILD_STD_TESTS)
 
-    include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${COMMON_INCLUDES})
-    link_directories(${BOOST_LIBRARYDIR})
+    include_directories(${GO_LIBS_SOURCE_DIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
 
     ########################################################
     #  libs/property/test                                  #

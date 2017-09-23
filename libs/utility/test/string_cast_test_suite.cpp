@@ -520,7 +520,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_string)
 {
     const u::u8string from_string(utf_8::swedish);
@@ -528,7 +527,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_string)
     const std::string cast_result = u::string_cast<std::string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_string)
 {
@@ -618,7 +616,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_wstring)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_wstring)
 {
     const u::u8string from_string(utf_8::swedish);
@@ -626,7 +623,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_wstring)
     const std::wstring cast_result = u::string_cast<std::wstring>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_wstring)
 {
@@ -716,7 +712,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u2string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u2string)
 {
     const u::u8string from_string(utf_8::swedish);
@@ -724,7 +719,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u2string)
     const u::u2string cast_result = u::string_cast<u::u2string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u2string)
 {
@@ -766,7 +760,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u8string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u8string)
 {
     const std::string from_string(multibyte::swedish);
@@ -774,7 +767,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_string_to_u8string)
     const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u8string)
 {
@@ -784,7 +776,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_wstring_to_u8string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u8string)
 {
     const std::wstring from_string(system_wide::swedish);
@@ -792,7 +783,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_wstring_to_u8string)
     const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u8string)
 {
@@ -802,7 +792,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u2string_to_u8string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u8string)
 {
     const u::u2string from_string(ucs_2::swedish);
@@ -810,7 +799,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u2string_to_u8string)
     const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u8string)
 {
@@ -836,7 +824,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u8string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u8string)
 {
     const std::u16string from_string(utf_16::swedish);
@@ -844,7 +831,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u16string_to_u8string)
     const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u8string)
 {
@@ -854,7 +840,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u32string_to_u8string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u8string)
 {
     const std::u32string from_string(utf_32::swedish);
@@ -862,7 +847,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u32string_to_u8string)
     const u::u8string cast_result = u::string_cast<u::u8string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_string_to_u16string)
 {
@@ -920,7 +904,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u16string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u16string)
 {
     const u::u8string from_string(utf_8::swedish);
@@ -928,7 +911,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u16string)
     const std::u16string cast_result = u::string_cast<std::u16string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u16string)
 {
@@ -1018,7 +1000,6 @@ TEST(std_string_cast_test_suite, test_cast_ascii_from_u8string_to_u32string)
     EXPECT_EQ(expected_result, cast_result);
 }
 
-#if !defined(GO_COMP_GCC)
 TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u32string)
 {
     const u::u8string from_string(utf_8::swedish);
@@ -1026,7 +1007,6 @@ TEST(std_string_cast_test_suite, test_cast_swedish_from_u8string_to_u32string)
     const std::u32string cast_result = u::string_cast<std::u32string>(from_string);
     EXPECT_EQ(expected_result, cast_result);
 }
-#endif  // #if !defined(GO_COMP_GCC)
 
 TEST(std_string_cast_test_suite, test_cast_ascii_from_u16string_to_u32string)
 {

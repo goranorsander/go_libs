@@ -12,6 +12,12 @@
     <Filter Include="go_boost\utility\iterator">
       <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go_boost\utility\string">
+      <UniqueIdentifier>{b82ea86b-f551-4965-b8fe-1cfc9caded0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go_boost\utility\string\detail">
+      <UniqueIdentifier>{a1bfda61-7b94-47d3-b3b7-d87a74c28615}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\utility.hpp">
@@ -37,6 +43,57 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\utility\value_guard.hpp">
       <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string_cast.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string_cast_exception.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\u2string.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\u8string.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\algorithm.hpp">
+      <Filter>go_boost\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\ascii.hpp">
+      <Filter>go_boost\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\string_cast.hpp">
+      <Filter>go_boost\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast.hpp">
+      <Filter>go_boost\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast_fwd.hpp">
+      <Filter>go_boost\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert.hpp">
+      <Filter>go_boost\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_linux.hpp">
+      <Filter>go_boost\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_windows.hpp">
+      <Filter>go_boost\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\u16string.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\u32string.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\ucs2.hpp">
+      <Filter>go_boost\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\string\algorithm_fwd.hpp">
+      <Filter>go_boost\utility\string</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

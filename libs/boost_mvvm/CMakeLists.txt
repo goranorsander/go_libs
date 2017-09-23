@@ -289,6 +289,7 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
+			${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -298,6 +299,7 @@ if(BUILD_BOOST_TESTS)
                 target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                     libgtest.a
                     libgtest_main.a
+					${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     )
             else(MSYS OR MINGW)
@@ -309,6 +311,7 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                 libgtest.a
                 libgtest_main.a
+				${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 )
         endif(WIN32)

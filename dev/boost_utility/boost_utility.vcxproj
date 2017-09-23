@@ -23,9 +23,26 @@
     <ClInclude Include="..\..\go_boost\utility\iterator\try_move_iterator_backward.hpp" />
     <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\algorithm.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\algorithm_fwd.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\ascii.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast_fwd.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_linux.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_windows.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\string_cast.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\ucs2.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string_cast.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string_cast_exception.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\u16string.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\u2string.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\u32string.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\u8string.hpp" />
     <ClInclude Include="..\..\go_boost\utility\value_guard.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +120,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,7 +135,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -135,7 +152,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,7 +171,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

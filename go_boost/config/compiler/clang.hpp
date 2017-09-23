@@ -26,6 +26,12 @@ __warning _message_
 // C++ keyword typename support
 #define GO_BOOST_TYPENAME typename
 
+// C++ issue workarounds
+#define GO_BOOST_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_BOOST_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+
 #endif  // #if defined(BOOST_CLANG)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_CLANG_HPP_INCLUDED

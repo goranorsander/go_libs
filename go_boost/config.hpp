@@ -27,4 +27,12 @@
 #include GO_BOOST_COMPILER_CONFIG
 #endif  // #ifdef GO_BOOST_COMPILER_CONFIG
 
+#if !defined(GO_BOOST_PLATFORM_CONFIG) && !defined(GO_BOOST_NO_PLATFORM_CONFIG) && !defined(GO_BOOST_NO_CONFIG)
+#include "go_boost/config/select_platform_config.hpp"
+#endif  // #if !defined(GO_BOOST_PLATFORM_CONFIG) && !defined(GO_BOOST_NO_PLATFORM_CONFIG) && !defined(GO_BOOST_NO_CONFIG)
+
+#ifdef GO_BOOST_PLATFORM_CONFIG
+#include GO_BOOST_PLATFORM_CONFIG
+#endif  // #ifdef GO_BOOST_PLATFORM_CONFIG
+
 #endif  // #ifndef GO_BOOST_CONFIG_HPP_INCLUDED

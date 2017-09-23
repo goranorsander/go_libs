@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property", "property\property.vcxproj", "{26553CCB-6522-42AB-AE06-356EAFCED11F}"
 EndProject
@@ -54,6 +54,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception", "boost_exception\boost_exception.vcxproj", "{B6DB2899-5BDA-4ABE-A2B9-C664376B8004}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception", "exception\exception.vcxproj", "{CC49C15B-9830-497E-B151-04CCEA0EDE79}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility_tests", "boost_utility\boost_utility_tests.vcxproj", "{D14B0B9F-8E8E-4230-9051-C4310769F632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -271,8 +273,19 @@ Global
 		{CC49C15B-9830-497E-B151-04CCEA0EDE79}.Release|Win32.Build.0 = Release|Win32
 		{CC49C15B-9830-497E-B151-04CCEA0EDE79}.Release|x64.ActiveCfg = Release|x64
 		{CC49C15B-9830-497E-B151-04CCEA0EDE79}.Release|x64.Build.0 = Release|x64
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Debug|Win32.Build.0 = Debug|Win32
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Debug|x64.ActiveCfg = Debug|x64
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Debug|x64.Build.0 = Debug|x64
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Release|Win32.ActiveCfg = Release|Win32
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Release|Win32.Build.0 = Release|Win32
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Release|x64.ActiveCfg = Release|x64
+		{D14B0B9F-8E8E-4230-9051-C4310769F632}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {314278FE-C3E4-4B26-8801-E3D86961A835}
 	EndGlobalSection
 EndGlobal

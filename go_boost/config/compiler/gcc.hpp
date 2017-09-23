@@ -17,6 +17,11 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+// MinGW
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#define GO_BOOST_COMP_GCC_MINGW 1
+#endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
+
 #if defined(BOOST_GCC)
 
 // Compiler message
@@ -25,6 +30,14 @@ __warning _message_
 
 // C++ keyword typename support
 #define GO_BOOST_TYPENAME typename
+
+// C++ issue workarounds
+#define GO_BOOST_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+
+// C++ restrictions
+#define GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7 1
 
 #endif  // #if defined(BOOST_GCC)
 

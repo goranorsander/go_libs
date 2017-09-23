@@ -32,6 +32,12 @@
     <Text Include="..\..\libs\signals\CMakeLists.txt">
       <Filter>CMake Configuration\libs\property</Filter>
     </Text>
+    <Text Include="..\..\libs\boost_utility\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_utility</Filter>
+    </Text>
+    <Text Include="..\..\libs\utility\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\utility</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Configuration">
@@ -60,6 +66,12 @@
     </Filter>
     <Filter Include="CMake Configuration\libs\signals">
       <UniqueIdentifier>{cde75cba-8f46-4ad0-9239-beee6248c06d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_utility">
+      <UniqueIdentifier>{fab96319-d37c-4f85-b453-298c88942a20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\utility">
+      <UniqueIdentifier>{af6fd419-bd69-4bf7-9ed0-5c59f9b33655}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 
 if(BUILD_BOOST_TESTS)
 
-    include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${COMMON_INCLUDES})
+    include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
     link_directories(${BOOST_LIBRARYDIR})
 
     ########################################################
@@ -27,6 +27,7 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
             libgtest.a
             libgtest_main.a
+			${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -36,6 +37,7 @@ if(BUILD_BOOST_TESTS)
                 target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
                     libgtest.a
                     libgtest_main.a
+					${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     )
             else(MSYS OR MINGW)
@@ -47,6 +49,7 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_PROPERTY_NAME}
                 libgtest.a
                 libgtest_main.a
+				${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 )
         endif(WIN32)
