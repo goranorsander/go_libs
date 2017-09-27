@@ -11,11 +11,6 @@
 #include <gtest/gtest.h>
 #include <go_boost/config.hpp>
 
-#if defined(GO_BOOST_COMP_GCC_MINGW)
-// TODO: Require GCC/MinGW to link libiconv. How to do that?
-TEST(boost_string_cast_test_suite, libiconv_not_found) {}
-#else
-
 #include <go_boost/utility/string_cast.hpp>
 
 namespace u = go_boost::utility;
@@ -92,11 +87,15 @@ const char* iso_8859_1_printable_characters_from_hex_codes =
     "\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(GO_BOOST_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char* swedish = "Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
 const char* swedish = "Sju sj\xF6sjuka sj\xF6m\xE4n p\xE5 sjunkande skeppet Shanghai sk\xF6ttes av sju sk\xF6na sjuksk\xF6terskor.";
 #endif  // #if !defined(GO_BOOST_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
+#else
+const char* swedish = "Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.";
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 namespace system_wide
@@ -143,6 +142,7 @@ const wchar_t iso_8859_1_printable_characters[] =
     , 0x00 };
 #endif  // #if !defined(GO_BOOST_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(GO_BOOST_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const wchar_t* swedish = L"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
@@ -156,6 +156,9 @@ const wchar_t swedish[] =
     , 0x73, 0x6A, 0x75, 0x20, 0x73, 0x6B, 0xF6, 0x6E, 0x61, 0x20                                        // sju sköna
     , 0x73, 0x6A, 0x75, 0x6B, 0x73, 0x6B, 0xF6, 0x74, 0x65, 0x72, 0x73, 0x6B, 0x6F, 0x72, 0x2E, 0x00 }; // sjuksköterskor.
 #endif  // #if !defined(GO_BOOST_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
+#else
+const wchar_t* swedish = L"Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.";
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 namespace ucs_2
@@ -187,6 +190,7 @@ const u::char2_t iso_8859_1_printable_characters[] =
     , 0x0000 };
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 const u::char2_t swedish[] =
     { 0x0053, 0x006A, 0x0075, 0x0020, 0x0073, 0x006A, 0x00F6, 0x0073, 0x006A, 0x0075, 0x006B, 0x0061, 0x0020                            // Sju sjösjuka
     , 0x0073, 0x006A, 0x00F6, 0x006D, 0x00E4, 0x006E, 0x0020, 0x0070, 0x00E5, 0x0020                                                    // sjömän på
@@ -196,6 +200,17 @@ const u::char2_t swedish[] =
     , 0x0073, 0x006B, 0x00F6, 0x0074, 0x0074, 0x0065, 0x0073, 0x0020, 0x0061, 0x0076, 0x0020                                            // sköttes av
     , 0x0073, 0x006A, 0x0075, 0x0020, 0x0073, 0x006B, 0x00F6, 0x006E, 0x0061, 0x0020                                                    // sju sköna
     , 0x0073, 0x006A, 0x0075, 0x006B, 0x0073, 0x006B, 0x00F6, 0x0074, 0x0065, 0x0072, 0x0073, 0x006B, 0x006F, 0x0072, 0x002E, 0x0000 }; // sjuksköterskor.
+#else
+const u::char2_t swedish[] =
+    { 0x0053, 0x006A, 0x0075, 0x0020, 0x0073, 0x006A, 0x006F, 0x0073, 0x006A, 0x0075, 0x006B, 0x0061, 0x0020                            // Sju sjosjuka
+    , 0x0073, 0x006A, 0x006F, 0x006D, 0x0061, 0x006E, 0x0020, 0x0070, 0x0061, 0x0020                                                    // sjoman pa
+    , 0x0073, 0x006A, 0x0075, 0x006E, 0x006B, 0x0061, 0x006E, 0x0064, 0x0065, 0x0020                                                    // sjunkande
+    , 0x0073, 0x006B, 0x0065, 0x0070, 0x0070, 0x0065, 0x0074, 0x0020                                                                    // skeppet
+    , 0x0053, 0x0068, 0x0061, 0x006E, 0x0067, 0x0068, 0x0061, 0x0069, 0x0020                                                            // Shanghai
+    , 0x0073, 0x006B, 0x006F, 0x0074, 0x0074, 0x0065, 0x0073, 0x0020, 0x0061, 0x0076, 0x0020                                            // skottes av
+    , 0x0073, 0x006A, 0x0075, 0x0020, 0x0073, 0x006B, 0x006F, 0x006E, 0x0061, 0x0020                                                    // sju skona
+    , 0x0073, 0x006A, 0x0075, 0x006B, 0x0073, 0x006B, 0x006F, 0x0074, 0x0065, 0x0072, 0x0073, 0x006B, 0x006F, 0x0072, 0x002E, 0x0000 }; // sjukskoterskor.
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 namespace utf_8
@@ -252,11 +267,15 @@ const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::ch
 #endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>(u8"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.");
 #else
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sj\xC3\xB6sjuka sj\xC3\xB6m\xC3\xA4n p\xC3\xA5 sjunkande skeppet Shanghai sk\xC3\xB6ttes av sju sk\xC3\xB6na sjuksk\xC3\xB6terskor.");
 #endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
+#else
+const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.");
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 namespace utf_16
@@ -314,6 +333,7 @@ const char16_t iso_8859_1_printable_characters[] =
 #endif  // #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char16_t* swedish = u"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
@@ -327,6 +347,17 @@ const char16_t swedish[] =
     , 0x0073, 0x006A, 0x0075, 0x0020, 0x0073, 0x006B, 0x00F6, 0x006E, 0x0061, 0x0020                                                    // sju sköna
     , 0x0073, 0x006A, 0x0075, 0x006B, 0x0073, 0x006B, 0x00F6, 0x0074, 0x0065, 0x0072, 0x0073, 0x006B, 0x006F, 0x0072, 0x002E, 0x0000 }; // sjuksköterskor.
 #endif  // #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
+#else
+const char16_t swedish[] =
+    { 0x0053, 0x006A, 0x0075, 0x0020, 0x0073, 0x006A, 0x006F, 0x0073, 0x006A, 0x0075, 0x006B, 0x0061, 0x0020                            // Sju sjosjuka
+    , 0x0073, 0x006A, 0x006F, 0x006D, 0x0061, 0x006E, 0x0020, 0x0070, 0x0061, 0x0020                                                    // sjoman pa
+    , 0x0073, 0x006A, 0x0075, 0x006E, 0x006B, 0x0061, 0x006E, 0x0064, 0x0065, 0x0020                                                    // sjunkande
+    , 0x0073, 0x006B, 0x0065, 0x0070, 0x0070, 0x0065, 0x0074, 0x0020                                                                    // skeppet
+    , 0x0053, 0x0068, 0x0061, 0x006E, 0x0067, 0x0068, 0x0061, 0x0069, 0x0020                                                            // Shanghai
+    , 0x0073, 0x006B, 0x006F, 0x0074, 0x0074, 0x0065, 0x0073, 0x0020, 0x0061, 0x0076, 0x0020                                            // skottes av
+    , 0x0073, 0x006A, 0x0075, 0x0020, 0x0073, 0x006B, 0x006F, 0x006E, 0x0061, 0x0020                                                    // sju skona
+    , 0x0073, 0x006A, 0x0075, 0x006B, 0x0073, 0x006B, 0x006F, 0x0074, 0x0065, 0x0072, 0x0073, 0x006B, 0x006F, 0x0072, 0x002E, 0x0000 }; // sjukskoterskor.
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 namespace utf_32
@@ -384,6 +415,7 @@ const char32_t iso_8859_1_printable_characters[] =
 #endif  // #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 const char32_t* swedish = U"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
 #else
@@ -397,6 +429,17 @@ const char32_t swedish[] =
     , 0x00000073, 0x0000006A, 0x00000075, 0x00000020, 0x00000073, 0x0000006B, 0x000000F6, 0x0000006E, 0x00000061, 0x00000020                                                                            // sju sköna
     , 0x00000073, 0x0000006A, 0x00000075, 0x0000006B, 0x00000073, 0x0000006B, 0x000000F6, 0x00000074, 0x00000065, 0x00000072, 0x00000073, 0x0000006B, 0x0000006F, 0x00000072, 0x0000002E, 0x00000000 }; // sjuksköterskor.
 #endif  // #if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE)
+#else
+const char32_t swedish[] =
+    { 0x00000053, 0x0000006A, 0x00000075, 0x00000020, 0x00000073, 0x0000006A, 0x0000006F, 0x00000073, 0x0000006A, 0x00000075, 0x0000006B, 0x00000061, 0x00000020                                        // Sju sjosjuka
+    , 0x00000073, 0x0000006A, 0x0000006F, 0x0000006D, 0x00000061, 0x0000006E, 0x00000020, 0x00000070, 0x00000061, 0x00000020                                                                            // sjoman pa
+    , 0x00000073, 0x0000006A, 0x00000075, 0x0000006E, 0x0000006B, 0x00000061, 0x0000006E, 0x00000064, 0x00000065, 0x00000020                                                                            // sjunkande
+    , 0x00000073, 0x0000006B, 0x00000065, 0x00000070, 0x00000070, 0x00000065, 0x00000074, 0x00000020                                                                                                    // skeppet
+    , 0x00000053, 0x00000068, 0x00000061, 0x0000006E, 0x00000067, 0x00000068, 0x00000061, 0x00000069, 0x00000020                                                                                        // Shanghai
+    , 0x00000073, 0x0000006B, 0x0000006F, 0x00000074, 0x00000074, 0x00000065, 0x00000073, 0x00000020, 0x00000061, 0x00000076, 0x00000020                                                                // skottes av
+    , 0x00000073, 0x0000006A, 0x00000075, 0x00000020, 0x00000073, 0x0000006B, 0x0000006F, 0x0000006E, 0x00000061, 0x00000020                                                                            // sju skona
+    , 0x00000073, 0x0000006A, 0x00000075, 0x0000006B, 0x00000073, 0x0000006B, 0x0000006F, 0x00000074, 0x00000065, 0x00000072, 0x00000073, 0x0000006B, 0x0000006F, 0x00000072, 0x0000002E, 0x00000000 }; // sjukskoterskor.
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
 
@@ -1045,5 +1088,3 @@ TEST(boost_string_cast_test_suite, test_cast_swedish_from_u32string_to_u32string
 }
 
 }
-
-#endif  // #if defined(GO_BOOST_COMP_GCC_MINGW)

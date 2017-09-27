@@ -63,16 +63,6 @@ inline std::string convert_u2string_to_string(const u2string& s)
     return convert_u8string_to_string(convert_u2string_to_u8string(s));
 }
 
-inline std::string convert_u8string_to_string(const u8string& s)
-{
-    const std::string u8s(s.begin(), s.end());
-    boost::locale::generator g;
-    g.locale_cache_enabled(true);
-    std::locale loc = g(boost::locale::util::get_system_locale());
-    const std::string mbs = boost::locale::conv::from_utf<char>(u8s, loc);
-    return mbs;
-}
-
 inline std::string convert_u16string_to_string(const u16string& s)
 {
     return convert_u8string_to_string(convert_u16string_to_u8string(s));
@@ -94,16 +84,6 @@ inline std::wstring convert_string_to_wstring(const std::string& s)
     std::wstring sws;
     std::transform(s.begin(), s.end(), std::back_inserter(sws), boost::bind(to_wchar_t, _1));
     return sws;
-}
-
-inline std::wstring convert_u8string_to_wstring(const u8string& s)
-{
-    return convert_u16string_to_wstring(convert_u8string_to_u16string(s));
-}
-
-inline std::wstring convert_u32string_to_wstring(const u32string& s)
-{
-    return convert_u16string_to_wstring(convert_u32string_to_u16string(s));
 }
 
 // to go::utility::u2string
@@ -142,16 +122,6 @@ inline u2string convert_u32string_to_u2string(const u32string& s)
 }
 
 // to go::utility::u8string
-
-inline u8string convert_string_to_u8string(const std::string& s)
-{
-    boost::locale::generator g;
-    g.locale_cache_enabled(true);
-    std::locale loc = g(boost::locale::util::get_system_locale());
-    const std::string utf8s = boost::locale::conv::to_utf<char>(s, loc);
-    const u8string u8s(utf8s.begin(), utf8s.end());
-    return u8s;
-}
 
 inline u8string convert_wstring_to_u8string(const std::wstring& s)
 {

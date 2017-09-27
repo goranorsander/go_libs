@@ -31,12 +31,29 @@ namespace string
 namespace detail
 {
 
+// to std::string
+
+inline std::string convert_u8string_to_string(const u8string& s)
+{
+    const std::string u8s(s.begin(), s.end());
+    boost::locale::generator g;
+    g.locale_cache_enabled(true);
+    std::locale loc = g(boost::locale::util::get_system_locale());
+    const std::string mbs = boost::locale::conv::from_utf<char>(u8s, loc);
+    return mbs;
+}
+
 // to std::wstring
 
 inline std::wstring convert_u2string_to_wstring(const u2string& s)
 {
     // Windows VC++ wide strings are UCS-2
     return std::wstring(s.begin(), s.end());
+}
+
+inline std::wstring convert_u8string_to_wstring(const u8string& s)
+{
+    return convert_u16string_to_wstring(convert_u8string_to_u16string(s));
 }
 
 inline std::wstring convert_u16string_to_wstring(const u16string& s)
@@ -46,12 +63,29 @@ inline std::wstring convert_u16string_to_wstring(const u16string& s)
     return sws;
 }
 
+inline std::wstring convert_u32string_to_wstring(const u32string& s)
+{
+    return convert_u16string_to_wstring(convert_u32string_to_u16string(s));
+}
+
 // to go::utility::u2string
 
 inline u2string convert_wstring_to_u2string(const std::wstring& s)
 {
     // Windows VC++ wide strings are UCS-2
     return u2string(s.begin(), s.end());
+}
+
+// to go::utility::u8string
+
+inline u8string convert_string_to_u8string(const std::string& s)
+{
+    boost::locale::generator g;
+    g.locale_cache_enabled(true);
+    std::locale loc = g(boost::locale::util::get_system_locale());
+    const std::string utf8s = boost::locale::conv::to_utf<char>(s, loc);
+    const u8string u8s(utf8s.begin(), utf8s.end());
+    return u8s;
 }
 
 // to u16string
