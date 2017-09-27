@@ -17,6 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <boost/cstdint.hpp>
 #include <go_boost/utility/string/algorithm_fwd.hpp>
 #include <string>
 
@@ -25,7 +26,7 @@ namespace go_boost
 namespace utility
 {
 
-typedef unsigned short char2_t;
+typedef boost::uint16_t char2_t;
 
 class u2string
     : public std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>

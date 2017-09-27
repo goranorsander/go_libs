@@ -23,7 +23,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1 ${BOOST_PROJECT_NAME_STR}_MFC_example_1)
 
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.ico
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.rc2
         ./boost_mvvm_mfc_example_1/boost_mvvm_mfc_example_1.cpp
@@ -33,34 +33,34 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_1/stdafx.cpp
         ./boost_mvvm_mfc_example_1/stdafx.h
         ./boost_mvvm_mfc_example_1/targetver.h
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_model.cpp
         ./boost_mvvm_mfc_example_1/product_model.hpp
         ./boost_mvvm_mfc_example_1/product_repository.cpp
         ./boost_mvvm_mfc_example_1/product_repository.hpp
         ./boost_mvvm_mfc_example_1/product_repository_interface.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_1/product_view.cpp
         ./boost_mvvm_mfc_example_1/product_view.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_view_model.cpp
         ./boost_mvvm_mfc_example_1/product_view_model.hpp
-	)
-	
+    )
+    
     add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
-		${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
 
-	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
+    source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/boost_mvvm/boost_mvvm_mfc_example_2            #
@@ -115,7 +115,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3 ${BOOST_PROJECT_NAME_STR}_MFC_example_3)
 
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3.ico
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3.rc2
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3Doc.ico
@@ -148,14 +148,14 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/stdafx.cpp
         ./boost_mvvm_mfc_example_3/stdafx.h
         ./boost_mvvm_mfc_example_3/targetver.h
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE
         ./boost_mvvm_mfc_example_3/boost_mvvm_mfc_example_3_namespace_alias.hpp
         ./boost_mvvm_mfc_example_3/fleet_repository_populator.cpp
         ./boost_mvvm_mfc_example_3/fleet_repository_populator.hpp
         ./boost_mvvm_mfc_example_3/mdi_frame_interface.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_3/equipment_interface.hpp
         ./boost_mvvm_mfc_example_3/equipment_model.cpp
         ./boost_mvvm_mfc_example_3/equipment_model.hpp
@@ -168,8 +168,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/spaceship_interface.hpp
         ./boost_mvvm_mfc_example_3/spaceship_model.cpp
         ./boost_mvvm_mfc_example_3/spaceship_model.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_3/add_equipment_view.cpp
         ./boost_mvvm_mfc_example_3/add_equipment_view.hpp
         ./boost_mvvm_mfc_example_3/child_frame_view.cpp
@@ -184,8 +184,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/properties_view.hpp
         ./boost_mvvm_mfc_example_3/spaceship_view.cpp
         ./boost_mvvm_mfc_example_3/spaceship_view.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
         ./boost_mvvm_mfc_example_3/dialog_view.cpp
         ./boost_mvvm_mfc_example_3/dialog_view.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
@@ -203,8 +203,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/tree_control.cpp
         ./boost_mvvm_mfc_example_3/tree_control.hpp
         ./boost_mvvm_mfc_example_3/tree_control_observer.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_3/add_equipment_view_model.cpp
         ./boost_mvvm_mfc_example_3/add_equipment_view_model.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_model.cpp
@@ -215,8 +215,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/properties_view_model.hpp
         ./boost_mvvm_mfc_example_3/spaceship_view_model.cpp
         ./boost_mvvm_mfc_example_3/spaceship_view_model.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/add_equipment_command_parameters.cpp
@@ -231,35 +231,35 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/open_add_equipment_view_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
         ./boost_mvvm_mfc_example_3/close_spaceship_event.cpp
         ./boost_mvvm_mfc_example_3/close_spaceship_event.hpp
         ./boost_mvvm_mfc_example_3/select_fleet_organization_event.cpp
         ./boost_mvvm_mfc_example_3/select_fleet_organization_event.hpp
         ./boost_mvvm_mfc_example_3/show_spaceship_event.cpp
         ./boost_mvvm_mfc_example_3/show_spaceship_event.hpp
-	)
-	
+    )
+    
     add_executable(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} WIN32
-		${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
     )
 
-	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
-	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View\\Control FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
-	source_group(MVVM_Example\\View_Model\\Command FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
-	source_group(MVVM_Example\\View_Model\\Event FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
+    source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
+    source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View\\Control FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
+    source_group(MVVM_Example\\View_Model\\Command FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
+    source_group(MVVM_Example\\View_Model\\Event FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
 
 endif(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
@@ -289,7 +289,7 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
-			${LIBBOOST_LOCALE}
+            ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -299,7 +299,7 @@ if(BUILD_BOOST_TESTS)
                 target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                     libgtest.a
                     libgtest_main.a
-					${LIBBOOST_LOCALE}
+                    ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     )
             else(MSYS OR MINGW)
@@ -311,7 +311,7 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                 libgtest.a
                 libgtest_main.a
-				${LIBBOOST_LOCALE}
+                ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 )
         endif(WIN32)

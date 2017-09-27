@@ -21,7 +21,8 @@
 #include <string>
 
 #if defined(BOOST_NO_CXX11_CHAR16_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
-typedef unsigned short char16_t;
+#include <boost/cstdint.hpp>
+typedef boost::uint16_t char16_t;
 #endif  // #if defined(BOOST_NO_CXX11_CHAR16_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
 
 namespace go_boost

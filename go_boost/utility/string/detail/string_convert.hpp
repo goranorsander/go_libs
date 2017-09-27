@@ -178,8 +178,8 @@ inline u8string convert_u16string_to_u8string(const u16string& s)
 
 inline u8string convert_u32string_to_u8string(const u32string& s)
 {
-    const std::basic_string<long> xs(s.begin(), s.end());
-    const std::string utf8s = boost::locale::conv::utf_to_utf<char, long>(xs); // boost::locale::conv::from_utf<long>(xs, "UTF-8");
+    const std::basic_string<boost::int32_t> xs(s.begin(), s.end());
+    const std::string utf8s = boost::locale::conv::utf_to_utf<char, boost::int32_t>(xs); // boost::locale::conv::from_utf<boost::int32_t>(xs, "UTF-8");
     const u8string u8s(utf8s.begin(), utf8s.end());
     return u8s;
 }
@@ -229,7 +229,7 @@ inline u32string convert_u2string_to_u32string(const u2string& s)
 inline u32string convert_u8string_to_u32string(const u8string& s)
 {
     const std::string uft8s(s.begin(), s.end());
-    const std::basic_string<long> xs = boost::locale::conv::utf_to_utf<long, char>(uft8s);
+    const std::basic_string<boost::int32_t> xs = boost::locale::conv::utf_to_utf<boost::int32_t, char>(uft8s);
     const u32string u32s(xs.begin(), xs.end());
     return u32s;
 }
