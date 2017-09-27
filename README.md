@@ -27,10 +27,12 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
    * bootstrap.sh _(on Linux)_
    * bootstrap.bat _(on Windows)_
 1. Build boost by calling **b2** with appropriate options, properties, and target, e.g.
-   * __b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 -j 3 stage --layout=versioned__
-     _(on Linux, using gcc, debug build, 64 bits, 3 cores)_
-   * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned__
+   * __b2 boost.locale.icu=off --build-dir=build --toolset=clang debug threading=multi link=static --build-type=complete address-model=64 --layout=versioned -j 3 stage__
+     _(on Linux, using clang, debug build, 64 bits, 3 cores)_
+   * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 --layout=versioned -j 6 stage__
      _(on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)_
+   * __b2.exe boost.locale.iconv=off --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 --layout=versioned -j 6 stage__
+     _(on Windows, using MinGW/GCC, debug build, 64 bits, 6 cores)_
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
