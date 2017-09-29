@@ -66,6 +66,48 @@ inline bool is_7_bit_ascii_string(const S& s)
 }
 
 template<class S>
+S& reduce_to_7_bit_ascii(S& s);
+
+template<>
+inline u8string& reduce_to_7_bit_ascii(u8string& s)
+{
+    u8string::iterator it = s.begin();
+    while (it != s.end())
+    {
+        const unsigned char c = static_cast<unsigned char>(*it);
+        if (c < 0x80)
+        {
+            ++it;
+        }
+        else if ((c >= 0x7F) && (c < 0xC2))
+        {
+            it = s.erase(it);
+        }
+        else if ((c >= 0xC2) && (c < 0xE0))
+        {
+            it = s.erase(it); it = s.erase(it);
+        }
+        else if ((c >= 0xE0) && (c < 0xF0))
+        {
+            it = s.erase(it); it = s.erase(it); it = s.erase(it);
+        }
+        else if ((c >= 0xF0) && (c < 0xFC))
+        {
+            it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it);
+        }
+        else if ((c >= 0xFC) && (c < 0xFE))
+        {
+            it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it);
+        }
+        else
+        {
+            it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it); it = s.erase(it);
+        }
+    }
+    return s;
+}
+
+template<class S>
 inline S& reduce_to_7_bit_ascii(S& s)
 {
     typename S::iterator it = s.begin();

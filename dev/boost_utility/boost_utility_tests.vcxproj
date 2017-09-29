@@ -194,6 +194,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_utility\test\ascii_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_utility\test\iso_8859_1_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\string_cast_test_suite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
