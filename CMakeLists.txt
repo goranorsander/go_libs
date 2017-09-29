@@ -508,6 +508,7 @@ set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
     ${GO_UTILITY_STRING_DIR}/algorithm.hpp
     ${GO_UTILITY_STRING_DIR}/ascii.hpp
     ${GO_UTILITY_STRING_DIR}/format.hpp
+    ${GO_UTILITY_STRING_DIR}/iso_8859_1.hpp
     ${GO_UTILITY_STRING_DIR}/string_cast.hpp
 )
 
@@ -891,6 +892,7 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP
     ${GO_BOOST_UTILITY_STRING_DIR}/algorithm.hpp
     ${GO_BOOST_UTILITY_STRING_DIR}/ascii.hpp
     ${GO_BOOST_UTILITY_STRING_DIR}/string_cast.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/iso_8859_1.hpp
     ${GO_BOOST_UTILITY_STRING_DIR}/ucs2.hpp
 )
 
