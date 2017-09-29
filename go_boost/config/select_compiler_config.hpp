@@ -17,13 +17,13 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#if defined(BOOST_CLANG)
+#if defined(__clang__)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/clang.hpp"
 #elif defined(BOOST_GCC)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/gcc.hpp"
 #elif defined(BOOST_MSVC)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/visualc.hpp"
-#endif  // #if defined(BOOST_CLANG)
+#endif  // #if defined(__clang__)
 
 #if 0
 #include "go_boost/config/compiler/gcc.hpp"

@@ -29,6 +29,7 @@
 
 #include <go_boost/utility/string/algorithm.hpp>
 #include <go_boost/utility/string/detail/string_cast_fwd.hpp>
+#include <go_boost/utility/string/iso_8859_1.hpp>
 #include <go_boost/utility/string/ucs2.hpp>
 
 namespace go_boost
@@ -55,7 +56,14 @@ inline std::string convert_wstring_to_string(const std::wstring& s)
     g.locale_cache_enabled(true);
     std::locale loc = g(boost::locale::util::get_system_locale());
     const std::string mbs = boost::locale::conv::from_utf(s, loc);
+#if defined(GO_BOOST_COMP_CLANG)
+    const u8string u8s(mbs.begin(), mbs.end());
+    std::string mbs_reduced;
+    reduce_to_iso_8859_1(u8s, mbs_reduced);
+    return mbs_reduced;
+#else
     return mbs;
+#endif  // #if defined(GO_BOOST_COMP_CLANG)
 }
 
 inline std::string convert_u2string_to_string(const u2string& s)

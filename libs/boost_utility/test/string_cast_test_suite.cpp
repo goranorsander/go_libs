@@ -236,7 +236,7 @@ const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t
 #endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS)
 
 // ISO/IEC 8859-1
-#if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
+#if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_COMP_CLANG)
 const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
     u8" !\"#$%&'()*+,-./" \
     u8"0123456789:;<=>?" \
@@ -264,15 +264,15 @@ const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::ch
     "\xC3\x90\xC3\x91\xC3\x92\xC3\x93\xC3\x94\xC3\x95\xC3\x96\xC3\x97\xC3\x98\xC3\x99\xC3\x9A\xC3\x9B\xC3\x9C\xC3\x9D\xC3\x9E\xC3\x9F" \
     "\xC3\xA0\xC3\xA1\xC3\xA2\xC3\xA3\xC3\xA4\xC3\xA5\xC3\xA6\xC3\xA7\xC3\xA8\xC3\xA9\xC3\xAA\xC3\xAB\xC3\xAC\xC3\xAD\xC3\xAE\xC3\xAF" \
     "\xC3\xB0\xC3\xB1\xC3\xB2\xC3\xB3\xC3\xB4\xC3\xB5\xC3\xB6\xC3\xB7\xC3\xB8\xC3\xB9\xC3\xBA\xC3\xBB\xC3\xBC\xC3\xBD\xC3\xBE\xC3\xBF");
-#endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
+#endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_COMP_CLANG)
 
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
 #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
-#if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
+#if !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_COMP_CLANG)
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>(u8"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.");
 #else
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sj\xC3\xB6sjuka sj\xC3\xB6m\xC3\xA4n p\xC3\xA5 sjunkande skeppet Shanghai sk\xC3\xB6ttes av sju sk\xC3\xB6na sjuksk\xC3\xB6terskor.");
-#endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(BOOST_CLANG)
+#endif  // !defined(BOOST_NO_CXX11_UNICODE_LITERALS) && !defined(GO_BOOST_COMP_CLANG)
 #else
 const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.");
 #endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)

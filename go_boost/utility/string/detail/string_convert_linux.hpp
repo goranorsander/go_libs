@@ -21,6 +21,7 @@
 
 #include <go_boost/utility/string/ascii.hpp>
 #include <go_boost/utility/string/detail/string_cast_fwd.hpp>
+#include <go_boost/utility/string/iso_8859_1.hpp>
 
 namespace go_boost
 {
@@ -39,8 +40,13 @@ inline std::string convert_u8string_to_string(const u8string& s)
     {
         return std::string();
     }
+#if defined(GO_BOOST_COMP_CLANG)
+    std::string mbs;
+    reduce_to_iso_8859_1(s, mbs);
+#else
     const u8string u8s = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
     const std::string mbs(s.begin(), s.end());
+#endif  // #if defined(GO_BOOST_COMP_CLANG)
     return mbs;
 }
 
