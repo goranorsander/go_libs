@@ -488,6 +488,7 @@ set(GO_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP
+    ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
     ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
@@ -872,6 +873,7 @@ set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_BOOST_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP
+    ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
     ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
