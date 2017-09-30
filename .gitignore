@@ -17,6 +17,7 @@ syntax: glob
 *.tlog
 *~
 
+dev/.vs/**
 unsuccessfulbuild
 
 # switch to regexp syntax.
