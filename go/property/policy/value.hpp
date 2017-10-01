@@ -57,6 +57,15 @@ public:
     {
     }
 
+    value& operator=(const value& v)
+    {
+        if (&v != this)
+        {
+            _v = v._v;
+        }
+        return *this;
+    }
+
     value_type get() const
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);

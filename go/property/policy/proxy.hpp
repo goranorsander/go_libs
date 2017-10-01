@@ -64,6 +64,16 @@ public:
     {
     }
 
+    proxy& operator=(const proxy& v)
+    {
+        if (&v != this)
+        {
+            _get = v._get;
+            _set = v._set;
+        }
+        return *this;
+    }
+
     void getter(const get_function_signature& f)
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);

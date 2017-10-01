@@ -34,6 +34,11 @@ public:
     virtual ~property_base() = 0;
 
 protected:
+    property_base(const property_base& v)
+        : _s(v._s)
+    {
+    }
+
     explicit property_base(const storage_policy& s)
         : _s(s)
     {
