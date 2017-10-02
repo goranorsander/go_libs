@@ -655,6 +655,8 @@ public:
         update_bindings();
     }
 
+    read_only_armed_spaceship& operator=(const read_only_armed_spaceship&) = delete;
+
 private:
     void update_bindings()
     {
@@ -741,6 +743,8 @@ public:
     {
         update_bindings();
     }
+
+    write_only_armed_spaceship& operator=(const write_only_armed_spaceship&) = delete;
 
 private:
     void update_bindings()

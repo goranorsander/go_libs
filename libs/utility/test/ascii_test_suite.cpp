@@ -931,10 +931,6 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_str
     const u::u8string windows_1252_printable_characters(utf_8::windows_1252_printable_characters_from_hex_codes);
     const u::u8string windows_1252_reduced_to_7_bit_ascii = us::reduce_windows_1252_to_7_bit_ascii_copy(windows_1252_printable_characters, false);
 
-    const std::string s1(ascii_printable_characters.begin(), ascii_printable_characters.end());
-    const std::string s2(windows_1252_printable_characters.begin(), windows_1252_printable_characters.end());
-    const std::string s3(windows_1252_reduced_to_7_bit_ascii.begin(), windows_1252_reduced_to_7_bit_ascii.end());
-
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
