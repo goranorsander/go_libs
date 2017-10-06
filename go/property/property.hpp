@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <string>
 #include <go/property/detail/property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -84,12 +85,12 @@ public:
     virtual ~property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit property(const string_type& property_name)
+    explicit property(const std::string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    property(const std::string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }
@@ -114,12 +115,42 @@ public:
     virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit wproperty(const string_type& property_name)
+    explicit wproperty(const std::wstring& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    wproperty(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    wproperty(const std::wstring& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+        : basic_property<value_type, string_type>(property_name, get_function, set_function)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class u8property
+    : public basic_property<T, utility::u8string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u8string string_type;
+    typedef u8property<value_type> this_type;
+    typedef typename std::function<value_type(void)> get_function_signature;
+    typedef typename std::function<void(const value_type&)> set_function_signature;
+
+public:
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    virtual ~u8property() GO_DEFAULT_DESTRUCTOR
+#else
+    virtual ~u8property() GO_DEFAULT_DESTRUCTOR
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+        explicit u8property(const utility::u8string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u8property(const utility::u8string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }
@@ -144,12 +175,12 @@ public:
     virtual ~u16property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u16property(const string_type& property_name)
+        explicit u16property(const std::u16string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u16property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    u16property(const std::u16string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }
@@ -174,12 +205,12 @@ public:
     virtual ~u32property() GO_DEFAULT_DESTRUCTOR
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u32property(const string_type& property_name)
+        explicit u32property(const std::u32string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u32property(const string_type& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    u32property(const std::u32string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, get_function, set_function)
     {
     }
