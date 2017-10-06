@@ -41,7 +41,7 @@ public:
 public:
     virtual BOOL DestroyWindow();
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
+    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = nullptr);
     virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 protected:

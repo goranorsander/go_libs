@@ -42,7 +42,7 @@ namespace
 
 std::wstring current_date_and_time()
 {
-    const std::time_t t = std::time(NULL);
+    const std::time_t t = std::time(nullptr);
     std::tm lt;
     localtime_s(&lt, &t);
     std::wstring dt(100, 0);
@@ -249,7 +249,7 @@ void output_view::OnSize(UINT nType, int cx, int cy)
 {
     CDockablePane::OnSize(nType, cx, cy);
 
-    _wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndTabs.SetWindowPos (nullptr, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void output_view::AdjustHorzScroll(CListBox& wndListBox)

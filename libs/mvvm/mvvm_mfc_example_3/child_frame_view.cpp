@@ -86,8 +86,8 @@ int child_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
         return -1;
 
     // create a view to occupy the client area of the frame
-    if(!_wndView.Create(NULL, NULL, AFX_WS_DEFAULT_VIEW,
-        CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, NULL))
+    if(!_wndView.Create(nullptr, nullptr, AFX_WS_DEFAULT_VIEW,
+        CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, nullptr))
     {
         TRACE0("Failed to create view window\n");
         return -1;

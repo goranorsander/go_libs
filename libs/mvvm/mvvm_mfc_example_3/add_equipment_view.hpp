@@ -24,7 +24,7 @@ class add_equipment_view
 public:
     virtual ~add_equipment_view() = default;
 
-    add_equipment_view(const add_equipment_view_model::ptr& vm, CWnd* pParent = NULL);
+    add_equipment_view(const add_equipment_view_model::ptr& vm, CWnd* pParent = nullptr);
 
 #ifdef AFX_DESIGN_TIME
     enum { IDD = IDD_ADD_EQUIPMENT };

@@ -22,7 +22,7 @@ class product_view
 {
 public:
     virtual ~product_view();
-    product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent = NULL);
+    product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent = nullptr);
 
 #ifdef AFX_DESIGN_TIME
     enum { IDD = IDD_PRODUCT_VIEW };

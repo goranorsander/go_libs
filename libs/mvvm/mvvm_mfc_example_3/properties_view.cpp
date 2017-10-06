@@ -47,7 +47,7 @@ END_MESSAGE_MAP()
 
 void properties_view::AdjustLayout()
 {
-    if (GetSafeHwnd () == NULL || (AfxGetMainWnd() != NULL && AfxGetMainWnd()->IsIconic()))
+    if (GetSafeHwnd () == nullptr || (AfxGetMainWnd() != nullptr && AfxGetMainWnd()->IsIconic()))
     {
         return;
     }
@@ -57,8 +57,8 @@ void properties_view::AdjustLayout()
 
     int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
 
-    _wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
-    _wndPropList.SetWindowPos(NULL, rectClient.left, rectClient.top + cyTlb, rectClient.Width(), rectClient.Height() - cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndToolBar.SetWindowPos(nullptr, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndPropList.SetWindowPos(nullptr, rectClient.left, rectClient.top + cyTlb, rectClient.Width(), rectClient.Height() - cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void properties_view::on_view_model_will_change(const m::view_model_will_change_arguments::ptr& /*a*/)

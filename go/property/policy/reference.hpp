@@ -42,7 +42,7 @@ public:
 
     reference()
         : _property_guard()
-        , _v(NULL)
+        , _v(nullptr)
     {
     }
 
@@ -88,13 +88,13 @@ public:
     bool empty() const
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
-        return _v == NULL;
+        return _v == nullptr;
     }
 
     void clear()
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
-        _v = NULL;
+        _v = nullptr;
     }
 
 private:

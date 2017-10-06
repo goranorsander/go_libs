@@ -201,7 +201,7 @@ int main_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
     _fleet_organization_view.EnableDocking(CBRS_ALIGN_ANY);
     DockPane(&_fleet_organization_view);
-    CDockablePane* pTabbedBar = NULL;
+    CDockablePane* pTabbedBar = nullptr;
     _output_view.EnableDocking(CBRS_ALIGN_ANY);
     DockPane(&_output_view);
     _properties_view.EnableDocking(CBRS_ALIGN_ANY);
@@ -262,7 +262,7 @@ void main_frame_view::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 void main_frame_view::OnUpdateControlBarMenu(CCmdUI* pCmdUI)
 {
     CMDIFrameWndEx::OnUpdateControlBarMenu(pCmdUI);
-    if(pCmdUI == NULL) { return; }
+    if(pCmdUI == nullptr) { return; }
     switch(pCmdUI->m_nID)
     {
     case ID_FILE_NEW:

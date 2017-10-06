@@ -34,7 +34,7 @@ inline void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFo
     va_start(pData, nIDPrompt);
 
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    ASSERT(hWndCtrl != NULL);
+    ASSERT(hWndCtrl != nullptr);
 
     const int SZT_SIZE = 64;
     TCHAR szT[SZT_SIZE];
@@ -63,7 +63,7 @@ inline void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFo
 
 inline void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double value, int nSizeGcvt)
 {
-    ASSERT(pData != NULL);
+    ASSERT(pData != nullptr);
 
     pDX->PrepareEditCtrl(nIDC);
     HWND hWndCtrl;
@@ -277,7 +277,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::s
         v.ReleaseBuffer();
 #ifdef GO_UNICODE
         std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
+        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, nullptr);
         value = t;
 #else
         value = static_cast<const TCHAR*>(v);
@@ -497,7 +497,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
         v.ReleaseBuffer();
 #ifdef GO_UNICODE
         std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
+        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, nullptr);
         value = t;
 #else
         value = static_cast<const TCHAR*>(v);

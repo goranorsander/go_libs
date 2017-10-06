@@ -63,7 +63,7 @@ void output_view_list::OnViewOutput()
     CDockablePane* pParentBar = DYNAMIC_DOWNCAST(CDockablePane, GetOwner());
     CMDIFrameWndEx* pMainFrame = DYNAMIC_DOWNCAST(CMDIFrameWndEx, GetTopLevelFrame());
 
-    if (pMainFrame != NULL && pParentBar != NULL)
+    if (pMainFrame != nullptr && pParentBar != nullptr)
     {
         pMainFrame->SetFocus();
         pMainFrame->ShowPane(pParentBar, FALSE, FALSE, FALSE);

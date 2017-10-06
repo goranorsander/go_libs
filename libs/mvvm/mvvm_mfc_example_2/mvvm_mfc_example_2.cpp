@@ -43,7 +43,7 @@ BOOL mvvm_mfc_example_2_app::InitInstance()
     SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
     m_command_manager = m::wcommand_manager::create();
-    m_timer_id = SetTimer(NULL, 0, 100, NULL);
+    m_timer_id = SetTimer(nullptr, 0, 100, nullptr);
 
     product_view dlg(m_command_manager);
     m_pMainWnd = &dlg;
@@ -60,7 +60,7 @@ BOOL mvvm_mfc_example_2_app::InitInstance()
         TRACE(traceAppMsg, 0, "Warning: if you are using MFC controls on the dialog, you cannot #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS.\n");
     }
 
-    KillTimer(NULL, m_timer_id);
+    KillTimer(nullptr, m_timer_id);
 
     pShellManager.reset();
 

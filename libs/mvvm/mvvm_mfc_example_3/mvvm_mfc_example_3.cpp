@@ -95,7 +95,7 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
     _command_manager = m::wcommand_manager::create();
     _event_manager = m::wevent_manager::create();
     _fleet_repository = fleet_repository::create();
-    _timer_id = SetTimer(NULL, 0, 100, NULL);
+    _timer_id = SetTimer(nullptr, 0, 100, nullptr);
 
     {
         u::scope_guard_new<main_frame_view> pMainFrame(new main_frame_view(_command_manager, _event_manager, _fleet_repository));
@@ -118,11 +118,11 @@ BOOL mvvm_mfc_example_3_app::InitInstance()
 
 int mvvm_mfc_example_3_app::ExitInstance()
 {
-    KillTimer(NULL, _timer_id);
+    KillTimer(nullptr, _timer_id);
 
-    if(_hMDIMenu != NULL)
+    if(_hMDIMenu != nullptr)
         FreeResource(_hMDIMenu);
-    if(_hMDIAccel != NULL)
+    if(_hMDIAccel != nullptr)
         FreeResource(_hMDIAccel);
 
     AfxOleTerm(FALSE);

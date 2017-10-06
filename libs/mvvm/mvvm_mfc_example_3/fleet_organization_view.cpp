@@ -80,7 +80,7 @@ void fleet_organization_view::OnSize(UINT nType, int cx, int cy)
 
 void fleet_organization_view::AdjustLayout()
 {
-    if (GetSafeHwnd() == NULL)
+    if (GetSafeHwnd() == nullptr)
     {
         return;
     }
@@ -90,8 +90,8 @@ void fleet_organization_view::AdjustLayout()
 
     int cyTlb = _wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
 
-    _wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
-    _wndFileView->SetWindowPos(NULL, rectClient.left + 1, rectClient.top + cyTlb + 1, rectClient.Width() - 2, rectClient.Height() - cyTlb - 2, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndToolBar.SetWindowPos(nullptr, rectClient.left, rectClient.top, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
+    _wndFileView->SetWindowPos(nullptr, rectClient.left + 1, rectClient.top + cyTlb + 1, rectClient.Width() - 2, rectClient.Height() - cyTlb - 2, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
 void fleet_organization_view::OnPaint()
