@@ -19,8 +19,10 @@ TEST(std_nameless_property_test_suite, cpp11_not_supported) {}
 #include <functional>
 #include <string>
 
+#include <go/exception.hpp>
 #include <go/property.hpp>
 
+namespace e = go::exception;
 namespace np = go::property::nameless;
 namespace ph = std::placeholders;
 namespace roap = go::property::nameless::read_only;
@@ -655,7 +657,19 @@ public:
         update_bindings();
     }
 
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+private:
+    read_only_armed_spaceship& operator=(const read_only_armed_spaceship&)
+    {
+        throw e::exception("read_only_armed_spaceship: operator= is deleted");
+    }
+
+#else
+
     read_only_armed_spaceship& operator=(const read_only_armed_spaceship&) = delete;
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 private:
     void update_bindings()
@@ -744,7 +758,19 @@ public:
         update_bindings();
     }
 
+#if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+private:
+    write_only_armed_spaceship& operator=(const write_only_armed_spaceship&)
+    {
+        throw e::exception("write_only_armed_spaceship: operator= is deleted");
+    }
+
+#else
+
     write_only_armed_spaceship& operator=(const write_only_armed_spaceship&) = delete;
+
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 private:
     void update_bindings()
