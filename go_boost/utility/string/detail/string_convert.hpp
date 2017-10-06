@@ -43,7 +43,7 @@ namespace detail
 
 // conversions
 
-wchar_t to_wchar_t(const char c)
+inline wchar_t to_wchar_t(const char c)
 {
     return static_cast<wchar_t>(c) & 0xFF;
 }

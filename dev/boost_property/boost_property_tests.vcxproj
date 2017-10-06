@@ -195,6 +195,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_property\test\nameless_property_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_property\test\property_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_property\test\u16property_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_property\test\u32property_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_property\test\u8property_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_property\test\wproperty_test_suite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

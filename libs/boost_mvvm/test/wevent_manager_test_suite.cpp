@@ -82,8 +82,8 @@ public:
 private:
     fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
         : u::noncopyable_nonmovable()
-        , commander(L"commander")
-        , battle(L"battle", btl)
+        , commander(std::wstring(L"commander"))
+        , battle(std::wstring(L"battle"), btl)
         , _event_manager(event_mgr)
         , _commander(cmd)
     {
@@ -145,9 +145,9 @@ public:
 public:
     spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
         : u::noncopyable_nonmovable()
-        , fleet_commander(L"fleet_commander")
-        , name(L"name", nme)
-        , captain(L"captain", cpt)
+        , fleet_commander(std::wstring(L"fleet_commander"))
+        , name(std::wstring(L"name"), nme)
+        , captain(std::wstring(L"captain"), cpt)
         , _fleet_commander(flt_cmd)
     {
         bind_properties();

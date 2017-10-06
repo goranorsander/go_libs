@@ -19,6 +19,9 @@
 
 #include <go_boost/property/detail/read_only_property_base.hpp>
 #include <go_boost/property/policy/proxy.hpp>
+#include <go_boost/utility/u8string.hpp>
+#include <go_boost/utility/u16string.hpp>
+#include <go_boost/utility/u32string.hpp>
 
 namespace go_boost
 {
@@ -72,12 +75,12 @@ public:
     {
     }
 
-    explicit property(const string_type& property_name)
+    explicit property(const std::string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    property(const string_type& property_name, const get_function_signature& get_function)
+    property(const std::string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
@@ -99,12 +102,93 @@ public:
     {
     }
 
-    explicit wproperty(const string_type& property_name)
+    explicit wproperty(const std::wstring& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    wproperty(const string_type& property_name, const get_function_signature& get_function)
+    wproperty(const std::wstring& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class u8property
+    : public basic_property<T, utility::u8string>
+{
+public:
+    typedef T value_type;
+    typedef u8property<value_type> this_type;
+    typedef typename utility::u8string string_type;
+    typedef typename boost::function<value_type(void)> get_function_signature;
+
+public:
+    virtual ~u8property()
+    {
+    }
+
+    explicit u8property(const utility::u8string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u8property(const utility::u8string& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class u16property
+    : public basic_property<T, utility::u16string>
+{
+public:
+    typedef T value_type;
+    typedef u16property<value_type> this_type;
+    typedef typename utility::u16string string_type;
+    typedef typename boost::function<value_type(void)> get_function_signature;
+
+public:
+    virtual ~u16property()
+    {
+    }
+
+    explicit u16property(const utility::u16string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u16property(const utility::u16string& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class u32property
+    : public basic_property<T, utility::u32string>
+{
+public:
+    typedef T value_type;
+    typedef u32property<value_type> this_type;
+    typedef typename utility::u32string string_type;
+    typedef typename boost::function<value_type(void)> get_function_signature;
+
+public:
+    virtual ~u32property()
+    {
+    }
+
+    explicit u32property(const utility::u32string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u32property(const utility::u32string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
