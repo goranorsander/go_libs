@@ -13,9 +13,11 @@
 
 #include <boost/bind.hpp>
 
+#include <go_boost/exception.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility/string_cast.hpp>
 
+namespace e = go_boost::exception;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
 namespace wop = go_boost::property::write_only;
@@ -656,7 +658,11 @@ public:
         update_bindings();
     }
 
-    read_only_armed_spaceship& operator=(const read_only_armed_spaceship&) = delete;
+private:
+    read_only_armed_spaceship& operator=(const read_only_armed_spaceship&)
+    {
+        throw e::exception("read_only_armed_spaceship: operator= is deleted");
+    }
 
 private:
     void update_bindings()
@@ -745,7 +751,11 @@ public:
         update_bindings();
     }
 
-    write_only_armed_spaceship& operator=(const write_only_armed_spaceship&) = delete;
+private:
+    write_only_armed_spaceship& operator=(const write_only_armed_spaceship&)
+    {
+        throw e::exception("write_only_armed_spaceship: operator= is deleted");
+    }
 
 private:
     void update_bindings()
