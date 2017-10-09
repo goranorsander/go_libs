@@ -33,11 +33,7 @@ public:
     typedef value<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~value() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     value() = default;

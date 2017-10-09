@@ -39,11 +39,7 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     property()
         : detail::property_base<value_type, policy_type>(policy_type())

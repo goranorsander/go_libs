@@ -41,11 +41,7 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     basic_reference_property(const string_type& property_name, const value_type& v)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(const_cast<value_type&>(v)), property_name)
@@ -77,11 +73,7 @@ public:
     typedef reference_property<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference_property(const std::string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
@@ -98,11 +90,7 @@ public:
     typedef reference_wproperty<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference_wproperty(const std::wstring& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
@@ -119,13 +107,9 @@ public:
     typedef reference_u8property<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_u8property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference_u8property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        reference_u8property(const utility::u8string& property_name, const value_type& v)
+    reference_u8property(const utility::u8string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
@@ -140,13 +124,9 @@ public:
     typedef reference_u16property<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        reference_u16property(const std::u16string& property_name, const value_type& v)
+    reference_u16property(const std::u16string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
@@ -161,13 +141,9 @@ public:
     typedef reference_u32property<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        reference_u32property(const std::u32string& property_name, const value_type& v)
+    reference_u32property(const std::u32string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }

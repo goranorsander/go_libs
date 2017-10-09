@@ -37,11 +37,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     value_property()
         : detail::property_base<value_type, policy_type>(policy_type())
