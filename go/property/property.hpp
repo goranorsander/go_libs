@@ -18,6 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
+#include <go/property/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/detail/property_base.hpp>
 #include <go/property/policy/proxy.hpp>
 #include <go/utility/u8string.hpp>

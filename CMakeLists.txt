@@ -339,6 +339,7 @@ set(GO_PROPERTY_DIR ${GO_DIR}/property)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_PROPERTY_HPP
+    ${GO_PROPERTY_DIR}/exception.hpp
     ${GO_PROPERTY_DIR}/property.hpp
     ${GO_PROPERTY_DIR}/read_only_property.hpp
     ${GO_PROPERTY_DIR}/read_only_reference_property.hpp
@@ -724,6 +725,7 @@ set(GO_BOOST_PROPERTY_DIR ${GO_BOOST_DIR}/property)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP
+    ${GO_BOOST_PROPERTY_DIR}/exception.hpp
     ${GO_BOOST_PROPERTY_DIR}/property.hpp
     ${GO_BOOST_PROPERTY_DIR}/read_only_property.hpp
     ${GO_BOOST_PROPERTY_DIR}/read_only_reference_property.hpp

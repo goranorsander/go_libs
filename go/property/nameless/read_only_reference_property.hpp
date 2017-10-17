@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/reference.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -46,9 +47,19 @@ public:
     {
     }
 
+    void bind(value_type& v)
+    {
+        detail::property_base<value_type, policy_type>::storage().bind(v);
+    }
+
     bool empty() const
     {
         return detail::property_base<value_type, policy_type>::storage().empty();
+    }
+
+    void reset()
+    {
+        detail::property_base<value_type, policy_type>::storage().reset();
     }
 
     explicit operator bool() const
@@ -64,6 +75,9 @@ public:
 
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::string)
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::wstring)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, utility::u8string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::u16string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::u32string)
 
 } // namespace read_only
 } // namespace nameless

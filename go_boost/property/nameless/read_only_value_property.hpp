@@ -20,6 +20,9 @@
 #include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/nameless/detail/read_only_property_base.hpp>
 #include <go_boost/property/policy/value.hpp>
+#include <go_boost/utility/u8string.hpp>
+#include <go_boost/utility/u16string.hpp>
+#include <go_boost/utility/u32string.hpp>
 
 namespace go_boost
 {
@@ -51,6 +54,9 @@ public:
 
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::wstring)
+GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u8string)
+GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u16string)
+GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u32string)
 
 } // namespace read_only
 } // namespace nameless

@@ -18,6 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
+#include <go/property/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
 #include <go/utility/u8string.hpp>
@@ -182,6 +183,36 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 };
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::u32string)
 
 } // namespace read_only
 } // namespace property

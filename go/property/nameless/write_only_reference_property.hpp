@@ -52,14 +52,19 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 
+    void bind(value_type& v)
+    {
+        detail::property_base<value_type, policy_type>::storage().bind(v);
+    }
+
     bool empty() const
     {
         return detail::property_base<value_type, policy_type>::storage().empty();
     }
 
-    void clear()
+    void reset()
     {
-        return detail::property_base<value_type, policy_type>::storage().clear();
+        detail::property_base<value_type, policy_type>::storage().reset();
     }
 
     explicit operator bool() const

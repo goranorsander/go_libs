@@ -73,6 +73,11 @@ public:
     }
 
 protected:
+    storage_policy& storage()
+    {
+        return _s;
+    }
+
     const storage_policy& storage() const
     {
         return _s;

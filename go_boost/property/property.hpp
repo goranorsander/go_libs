@@ -17,6 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/property/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/detail/property_base.hpp>
 #include <go_boost/property/policy/proxy.hpp>
 #include <go_boost/utility/u8string.hpp>
@@ -206,6 +207,36 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 };
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u16string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u16string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u16string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u16string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u16string, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u32string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u32string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u32string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u32string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u32string, utility::u32string)
 
 } // namespace property
 } // namespace go_boost

@@ -113,7 +113,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.3.5
+  * Visual Studio 2017, Community Edition, version 15.4.0
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.9.2
   * Visual Studio 2008 Professional Edition

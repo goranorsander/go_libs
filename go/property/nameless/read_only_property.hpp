@@ -17,8 +17,10 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -56,6 +58,12 @@ public:
         const_cast<policy_type&>(detail::property_base<value_type, policy_type>::storage()).getter(f);
     }
 };
+
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::wstring)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, utility::u8string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u16string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u32string)
 
 } // namespace read_only
 } // namespace nameless

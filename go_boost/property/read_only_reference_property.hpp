@@ -52,9 +52,19 @@ public:
     {
     }
 
+    void bind(value_type& v)
+    {
+        detail::property_base<value_type, policy_type, string_type>::storage().bind(v);
+    }
+
     bool empty() const
     {
         return detail::property_base<value_type, policy_type, string_type>::storage().empty();
+    }
+
+    void reset()
+    {
+        detail::property_base<value_type, policy_type, string_type>::storage().reset();
     }
 
     BOOST_EXPLICIT_OPERATOR_BOOL()
