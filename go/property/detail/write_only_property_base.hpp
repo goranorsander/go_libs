@@ -51,11 +51,7 @@ public:
         set(v);
     }
 
-private:
-    this_type& operator=(const this_type& v)
-    {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
-    }
+#include <go/property/detail/assignment_operator.hpp>
 
 public:
     void set(const value_type& v)

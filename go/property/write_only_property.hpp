@@ -54,6 +54,7 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
