@@ -367,6 +367,7 @@ set(GO_PROPERTY_DETAIL_DIR ${GO_DIR}/property/detail)
 set(GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP
     ${GO_PROPERTY_DETAIL_DIR}/arithmetic_comparison_operators.hpp
     ${GO_PROPERTY_DETAIL_DIR}/assignment_operator.hpp
+    ${GO_PROPERTY_DETAIL_DIR}/deleted_assignment_operator.hpp
     ${GO_PROPERTY_DETAIL_DIR}/property_base.hpp
     ${GO_PROPERTY_DETAIL_DIR}/read_only_property_base.hpp
     ${GO_PROPERTY_DETAIL_DIR}/write_only_property_base.hpp
@@ -753,6 +754,7 @@ set(GO_BOOST_PROPERTY_DETAIL_DIR ${GO_BOOST_DIR}/property/detail)
 set(GO_LIBS_SRC_GO_BOOST_PROPERTY_DETAIL_HPP
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/arithmetic_comparison_operators.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/assignment_operator.hpp
+    ${GO_BOOST_PROPERTY_DETAIL_DIR}/deleted_assignment_operator.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/property_base.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/read_only_property_base.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/write_only_property_base.hpp
