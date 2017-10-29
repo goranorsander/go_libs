@@ -42,14 +42,14 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-    virtual ~value_property()
-    {
-    }
+    virtual ~value_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit value_property(const value_type& v)
         : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>(v))
     {
     }
+
+#include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
 GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)

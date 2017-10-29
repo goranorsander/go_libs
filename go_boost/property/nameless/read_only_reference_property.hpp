@@ -43,15 +43,16 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
-    virtual ~reference_property()
-    {
-    }
+    virtual ~reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_property(const value_type& v)
         : detail::property_base<value_type, policy::reference<value_type>>(policy::reference<value_type>(const_cast<value_type&>(v)))
     {
     }
 
+#include <go_boost/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void bind(value_type& v)
     {
         detail::property_base<value_type, policy_type>::storage().bind(v);
