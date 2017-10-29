@@ -64,6 +64,7 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
     value_type get() const
     {
         return _s.get();

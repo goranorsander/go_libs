@@ -41,9 +41,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~basic_property()
-    {
-    }
+    virtual ~basic_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy::proxy<value_type>, string_type>(policy::proxy<value_type>(), property_name)
@@ -57,6 +55,7 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
@@ -73,9 +72,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~property()
-    {
-    }
+    virtual ~property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit property(const std::string& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -87,7 +84,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class wproperty
@@ -100,9 +97,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~wproperty()
-    {
-    }
+    virtual ~wproperty() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit wproperty(const std::wstring& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -114,7 +109,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class u8property
@@ -127,9 +122,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~u8property()
-    {
-    }
+    virtual ~u8property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit u8property(const utility::u8string& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -141,7 +134,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class u16property
@@ -154,9 +147,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~u16property()
-    {
-    }
+    virtual ~u16property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit u16property(const utility::u16string& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -168,7 +159,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class u32property
@@ -181,9 +172,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~u32property()
-    {
-    }
+    virtual ~u32property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit u32property(const utility::u32string& property_name)
         : basic_property<value_type, string_type>(property_name)
@@ -195,7 +184,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 } // namespace write_only

@@ -39,9 +39,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~property()
-    {
-    }
+    virtual ~property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     property()
         : detail::property_base<value_type, policy::proxy<value_type>>(policy::proxy<value_type>())
@@ -55,6 +53,7 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type>::storage().setter(f);
