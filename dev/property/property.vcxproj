@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\property.hpp" />
+    <ClInclude Include="..\..\go\property\detail\deleted_assignment_operator.hpp" />
     <ClInclude Include="..\..\go\property\exception.hpp" />
     <ClInclude Include="..\..\go\property\nameless\detail\arithmetic_comparison_operators.hpp" />
     <ClInclude Include="..\..\go\property\nameless\detail\property_base.hpp" />

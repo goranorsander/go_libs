@@ -117,6 +117,9 @@
     <ClInclude Include="..\..\go_boost\property\exception.hpp">
       <Filter>go_boost\property</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\property\detail\deleted_assignment_operator.hpp">
+      <Filter>go_boost\property\detail</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
