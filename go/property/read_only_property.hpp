@@ -53,6 +53,9 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void getter(const get_function_signature& f)
     {
         const_cast<policy_type&>(detail::property_base<value_type, policy_type, string_type>::storage()).getter(f);
@@ -81,7 +84,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class wproperty
@@ -106,7 +109,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class u8property
@@ -131,7 +134,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class u16property
@@ -156,7 +159,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class u32property
@@ -181,7 +184,7 @@ public:
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::string)

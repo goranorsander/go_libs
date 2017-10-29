@@ -47,6 +47,9 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void bind(value_type& v)
     {
         detail::property_base<value_type, policy_type>::storage().bind(v);

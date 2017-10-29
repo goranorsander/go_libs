@@ -53,6 +53,9 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void getter(const get_function_signature& f)
     {
         const_cast<policy_type&>(detail::property_base<value_type, policy_type>::storage()).getter(f);

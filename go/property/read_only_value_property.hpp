@@ -47,6 +47,8 @@ public:
         : detail::property_base<value_type, policy_type, string_type>(policy_type(v), property_name)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class value_property
@@ -64,6 +66,8 @@ public:
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class value_wproperty
@@ -81,6 +85,8 @@ public:
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class value_u8property
@@ -98,6 +104,8 @@ public:
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class value_u16property
@@ -115,6 +123,8 @@ public:
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class value_u32property
@@ -132,6 +142,8 @@ public:
         : basic_value_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_value_property, std::string, std::string)

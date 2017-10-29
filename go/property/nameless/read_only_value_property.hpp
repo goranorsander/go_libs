@@ -46,6 +46,8 @@ public:
         : detail::property_base<value_type, policy_type>(policy_type(v))
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)

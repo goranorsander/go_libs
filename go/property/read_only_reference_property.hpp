@@ -48,6 +48,9 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void bind(value_type& v)
     {
         detail::property_base<value_type, policy_type, string_type>::storage().bind(v);
@@ -89,6 +92,8 @@ public:
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class reference_wproperty
@@ -106,6 +111,8 @@ public:
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class reference_u8property
@@ -123,6 +130,8 @@ public:
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class reference_u16property
@@ -140,6 +149,8 @@ public:
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class reference_u32property
@@ -157,6 +168,8 @@ public:
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::string)
