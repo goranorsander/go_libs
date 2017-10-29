@@ -22,7 +22,7 @@ show_spaceship_event::ptr show_spaceship_event::create(const fleet_organization_
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const fleet_organization_id_type& id_) : this_type(id_) {}
     };
 

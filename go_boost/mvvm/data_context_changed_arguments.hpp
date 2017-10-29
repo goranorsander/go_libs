@@ -33,9 +33,7 @@ public:
     typedef boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~data_context_changed_arguments()
-    {
-    }
+    virtual ~data_context_changed_arguments() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     data_context_changed_arguments()
@@ -53,8 +51,8 @@ inline boost::shared_ptr<data_context_changed_arguments> data_context_changed_ar
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : this_type() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+        make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
     return boost::make_shared<make_shared_enabler>();

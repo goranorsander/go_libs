@@ -26,7 +26,7 @@ class spaceship_view
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~spaceship_view() = default;
+    virtual ~spaceship_view() GO_DEFAULT_DESTRUCTOR
 
     spaceship_view();
 

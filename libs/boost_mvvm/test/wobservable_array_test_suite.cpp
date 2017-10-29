@@ -29,9 +29,7 @@ public:
     typedef array_observer<T, N> this_type;
     typedef typename m::wobservable_array<T, N>::ptr wobservable_array_ptr_type;
 
-    virtual ~array_observer()
-    {
-    }
+    virtual ~array_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     array_observer()
         : _last_action(m::undefined_notify_container_changed_action)

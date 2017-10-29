@@ -31,9 +31,7 @@ public:
     typedef map_observer<K, T> this_type;
     typedef typename m::observable_map<K, T>::ptr observable_map_ptr_type;
 
-    virtual ~map_observer()
-    {
-    }
+    virtual ~map_observer() GO_DEFAULT_DESTRUCTOR
 
     map_observer()
         : _on_container_changed_slot_key(0)

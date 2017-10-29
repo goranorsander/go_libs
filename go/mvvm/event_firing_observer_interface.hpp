@@ -39,7 +39,7 @@ public:
     virtual ~basic_event_firing_observer_interface() = 0;
 
 protected:
-    basic_event_firing_observer_interface() = default;
+    basic_event_firing_observer_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual void on_event_fired(const std::shared_ptr<basic_event<S>>& /*e*/) = 0;

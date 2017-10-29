@@ -24,7 +24,7 @@ class output_view
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~output_view() = default;
+    virtual ~output_view() GO_DEFAULT_DESTRUCTOR
 
     output_view();
 

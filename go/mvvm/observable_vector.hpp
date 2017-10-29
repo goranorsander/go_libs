@@ -54,7 +54,7 @@ public:
     virtual ~basic_observable_vector() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_vector()
+     basic_observable_vector()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -427,7 +427,7 @@ public:
     virtual ~observable_vector() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_vector()
+     observable_vector()
         : basic_observable_vector<value_type, string_type>()
     {
     }
@@ -470,7 +470,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -609,7 +609,7 @@ public:
     virtual ~wobservable_vector() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_vector()
+     wobservable_vector()
         : basic_observable_vector<value_type, string_type>()
     {
     }
@@ -652,7 +652,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

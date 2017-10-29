@@ -26,7 +26,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~close_spaceship_command_parameters() = default;
+    virtual ~close_spaceship_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit close_spaceship_command_parameters(const spaceship_view_model::ptr& vm);

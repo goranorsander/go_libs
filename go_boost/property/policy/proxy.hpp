@@ -37,9 +37,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~proxy()
-    {
-    }
+    virtual ~proxy() GO_BOOST_DEFAULT_DESTRUCTOR
 
     proxy()
         : _property_guard()

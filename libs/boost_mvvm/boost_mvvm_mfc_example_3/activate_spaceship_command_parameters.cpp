@@ -33,7 +33,7 @@ activate_spaceship_command_parameters::ptr activate_spaceship_command_parameters
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const fleet_organization_id_type& id_) : this_type(id_) {}
     };
 

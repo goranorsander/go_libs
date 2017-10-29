@@ -31,7 +31,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~spaceship_view_model() = default;
+    virtual ~spaceship_view_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);

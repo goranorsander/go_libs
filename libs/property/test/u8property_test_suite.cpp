@@ -44,7 +44,7 @@ public:
     p::value_u8property<double> max_speed;
     p::value_u8property<std::string> name;
 
-    explicit spaceship()
+     spaceship()
         : crew_complement(create_u8string("crew_complement"), 1012)
         , max_speed(create_u8string("max_speed"), 9.8)
         , name(create_u8string("name"), std::string("USS Enterprise (NCC-1701-D)"))
@@ -547,9 +547,7 @@ class armament
 {
     // Spaceship armament, not modifyable, provided by third-party
 public:
-    virtual ~armament()
-    {
-    }
+    virtual ~armament() GO_DEFAULT_DESTRUCTOR
 
     armament()
         : _phaser_arrays(0)

@@ -17,9 +17,9 @@ class main_frame_view_tool_bar
     : public CMFCToolBar
 {
 public:
-    virtual ~main_frame_view_tool_bar() = default;
+    virtual ~main_frame_view_tool_bar() GO_DEFAULT_DESTRUCTOR
 
-    main_frame_view_tool_bar() = default;
+    main_frame_view_tool_bar() GO_DEFAULT_CONSTRUCTOR
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_TOOL_BAR_HPP_INCLUDED

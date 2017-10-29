@@ -58,7 +58,7 @@ public:
     virtual ~basic_observable_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_map()
+     basic_observable_map()
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container()
     {
@@ -283,7 +283,7 @@ public:
     virtual ~observable_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_map()
+     observable_map()
         //: basic_observable_map<key_type, value_type, string_type>()
     {
     }
@@ -316,7 +316,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -435,7 +435,7 @@ public:
     virtual ~wobservable_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_map()
+     wobservable_map()
         //: basic_observable_map<key_type, value_type, string_type>()
     {
     }
@@ -468,7 +468,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

@@ -33,7 +33,7 @@ open_add_equipment_view_command_parameters::ptr open_add_equipment_view_command_
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const spaceship_interface::ptr& spaceship_) : this_type(spaceship_) {}
     };
 

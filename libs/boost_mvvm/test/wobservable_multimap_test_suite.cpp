@@ -25,9 +25,7 @@ public:
     typedef multimap_observer<K, T> this_type;
     typedef typename m::wobservable_multimap<K, T>::ptr wobservable_multimap_ptr_type;
 
-    virtual ~multimap_observer()
-    {
-    }
+    virtual ~multimap_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     multimap_observer()
         : _last_action(m::undefined_notify_container_changed_action)

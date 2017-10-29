@@ -36,9 +36,7 @@ public:
     typedef boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~command_parameters()
-    {
-    }
+    virtual ~command_parameters() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     command_parameters()
@@ -53,8 +51,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler() : this_type() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
         };
 
         return boost::make_shared<make_shared_enabler>();

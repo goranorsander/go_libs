@@ -27,7 +27,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~activate_spaceship_command_parameters() = default;
+    virtual ~activate_spaceship_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit activate_spaceship_command_parameters(const fleet_organization_id_type& id_);

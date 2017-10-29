@@ -37,7 +37,7 @@ add_equipment_view_model::ptr add_equipment_view_model::create(const m::wobserva
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment) : this_type(equipment) {}
     };
 

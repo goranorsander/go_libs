@@ -94,8 +94,10 @@ _Pragma message _message_
 #endif  // #if (GO_CLANG_VERSION < 20800)
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}
 #else
+#define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #if defined(GO_NO_CXX11_NOEXCEPT)

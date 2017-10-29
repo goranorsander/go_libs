@@ -31,9 +31,7 @@ public:
     typedef set_observer<T> this_type;
     typedef typename m::wobservable_set<T>::ptr wobservable_set_ptr_type;
 
-    virtual ~set_observer()
-    {
-    }
+    virtual ~set_observer() GO_DEFAULT_DESTRUCTOR
 
     set_observer()
         : _on_container_changed_slot_key(0)

@@ -34,7 +34,7 @@ public:
     virtual ~view_model_interface() = 0;
 
 protected:
-    view_model_interface() = default;
+    view_model_interface() GO_DEFAULT_CONSTRUCTOR
 
 protected:
     virtual void on_view_model_will_change()

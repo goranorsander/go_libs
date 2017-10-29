@@ -42,7 +42,7 @@ public:
     typedef GO_TYPENAME std::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
-    virtual ~fleet_commander_changed_event() {}
+    virtual ~fleet_commander_changed_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit fleet_commander_changed_event(const std::wstring& flt_cmd)
@@ -60,7 +60,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(const std::wstring& flt_cmd) : this_type(flt_cmd) {}
         };
 
@@ -76,7 +76,7 @@ public:
     typedef std::weak_ptr<fleet_commander> wptr;
 
 public:
-    virtual ~fleet_commander() {}
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
 private:
     fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
@@ -95,7 +95,7 @@ public:
         struct make_shared_enabler
             : public fleet_commander
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : fleet_commander(event_mgr, cmd, btl) {}
         };
 
@@ -130,7 +130,7 @@ class spaceship
     : public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() {}
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
     spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)

@@ -16,8 +16,8 @@ product_repository::ptr product_repository::create()
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

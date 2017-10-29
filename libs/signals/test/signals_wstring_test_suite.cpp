@@ -41,9 +41,7 @@ public:
     typedef go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 
 public:
-    virtual ~fleet_commander()
-    {
-    }
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
 private:
     fleet_commander(const std::wstring& cmd, const std::wstring& btl)
@@ -61,7 +59,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const std::wstring& cmd, const std::wstring& btl) : this_type(cmd, btl) {}
         };
 

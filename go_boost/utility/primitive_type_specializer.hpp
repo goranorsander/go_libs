@@ -27,7 +27,7 @@ class _class_name_ \
     : public go::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() {} \
+    virtual ~_class_name_() GO_BOOST_DEFAULT_DESTRUCTOR \
     _class_name_() : go::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
     _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \

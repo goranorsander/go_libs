@@ -31,9 +31,7 @@ public:
     typedef deque_observer<T> this_type;
     typedef typename m::wobservable_deque<T>::ptr wobservable_deque_ptr_type;
 
-    virtual ~deque_observer()
-    {
-    }
+    virtual ~deque_observer() GO_DEFAULT_DESTRUCTOR
 
     deque_observer()
         : _on_container_changed_slot_key(0)

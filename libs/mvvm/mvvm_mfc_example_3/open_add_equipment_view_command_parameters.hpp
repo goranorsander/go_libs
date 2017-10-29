@@ -26,7 +26,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~open_add_equipment_view_command_parameters() = default;
+    virtual ~open_add_equipment_view_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit open_add_equipment_view_command_parameters(const spaceship_interface::ptr& spaceship_);

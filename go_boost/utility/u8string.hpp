@@ -55,7 +55,7 @@ public:
     typedef base_type::const_reverse_iterator const_reverse_iterator;
 
 public:
-    virtual ~u8string();
+    virtual ~u8string() GO_BOOST_DEFAULT_DESTRUCTOR
 
     u8string();
 
@@ -124,10 +124,6 @@ public:
 
     uft8_string_type string() const;
 };
-
-inline u8string::~u8string()
-{
-}
 
 inline u8string::u8string()
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(allocator_type())

@@ -31,7 +31,7 @@ public:
     np::value_property<double> max_speed;
     np::value_property<std::string> name;
 
-    explicit spaceship()
+     spaceship()
         : crew_complement(1012)
         , max_speed(9.8)
         , name(std::string("USS Enterprise (NCC-1701-D)"))
@@ -528,9 +528,7 @@ class armament
 {
     // Spaceship armament, not modifyable, provided by third-party
 public:
-    virtual ~armament()
-    {
-    }
+    virtual ~armament() GO_BOOST_DEFAULT_DESTRUCTOR
 
     armament()
         : _phaser_arrays(0)

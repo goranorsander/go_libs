@@ -44,7 +44,7 @@ public:
     virtual ~basic_notify_property_changed_interface() = 0;
 
 protected:
-    basic_notify_property_changed_interface() = default;
+    basic_notify_property_changed_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     property_changed_signal property_changed;

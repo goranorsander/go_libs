@@ -43,7 +43,7 @@ public:
     typedef typename boost::function<void(const boost::shared_ptr<command_parameters>&)> execute_command_signature;
 
 public:
-    virtual ~basic_relay_command();
+    virtual ~basic_relay_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params);
@@ -60,21 +60,6 @@ private:
     can_execute_command_signature _can_execute;
     execute_command_signature _execute;
 };
-
-template<>
-inline basic_relay_command<std::string>::~basic_relay_command()
-{
-}
-
-template<>
-inline basic_relay_command<std::wstring>::~basic_relay_command()
-{
-}
-
-template<class S>
-inline basic_relay_command<S>::~basic_relay_command()
-{
-}
 
 template<>
 inline basic_relay_command<std::string>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params)
@@ -152,7 +137,7 @@ inline boost::shared_ptr<basic_relay_command<std::string>> basic_relay_command<s
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 
@@ -169,7 +154,7 @@ inline boost::shared_ptr<basic_relay_command<std::wstring>> basic_relay_command<
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 
@@ -186,7 +171,7 @@ inline boost::shared_ptr<basic_relay_command<S>> basic_relay_command<S>::create(
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params) : this_type(cmd_name, execute_command, can_execute_command, params) {}
     };
 

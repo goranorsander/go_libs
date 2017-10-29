@@ -39,7 +39,7 @@ public:
     virtual ~notify_data_context_changed_interface() = 0;
 
 protected:
-    notify_data_context_changed_interface() = default;
+    notify_data_context_changed_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     data_context_will_change_signal data_context_will_change;

@@ -244,8 +244,8 @@ fleet_repository_populator::ptr fleet_repository_populator::create()
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
-        make_shared_enabler() : this_type() {}
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+        make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

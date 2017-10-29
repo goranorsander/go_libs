@@ -27,7 +27,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~select_fleet_organization_event() = default;
+    virtual ~select_fleet_organization_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
     select_fleet_organization_event(const fleet_organization_id_type& id_, const std::wstring& selected_by_);

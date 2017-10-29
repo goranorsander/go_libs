@@ -31,9 +31,7 @@ public:
     typedef array_observer<T, N> this_type;
     typedef typename m::wobservable_array<T, N>::ptr wobservable_array_ptr_type;
 
-    virtual ~array_observer()
-    {
-    }
+    virtual ~array_observer() GO_DEFAULT_DESTRUCTOR
 
     array_observer()
         : _on_container_changed_slot_key(0)

@@ -37,13 +37,11 @@ public:
     typedef fleet_commander this_type;
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
-    typedef go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef s::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef s::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 
 public:
-    virtual ~fleet_commander()
-    {
-    }
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
 private:
     fleet_commander(const std::string& cmd, const std::string& btl)
@@ -61,7 +59,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
             make_shared_enabler(const std::string& cmd, const std::string& btl) : this_type(cmd, btl) {}
         };
 

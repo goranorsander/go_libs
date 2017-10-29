@@ -33,9 +33,7 @@ public:
     typedef unordered_multiset_observer<T> this_type;
     typedef typename m::wobservable_unordered_multiset<T>::ptr wobservable_unordered_multiset_ptr_type;
 
-    virtual ~unordered_multiset_observer()
-    {
-    }
+    virtual ~unordered_multiset_observer() GO_DEFAULT_DESTRUCTOR
 
     unordered_multiset_observer()
         : _on_container_changed_slot_key(0)

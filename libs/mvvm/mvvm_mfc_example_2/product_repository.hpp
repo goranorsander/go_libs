@@ -26,10 +26,10 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~product_repository() = default;
+    virtual ~product_repository() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    product_repository() = default;
+    product_repository() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static ptr create();

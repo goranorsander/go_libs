@@ -32,7 +32,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception();
+    virtual ~exception() GO_BOOST_DEFAULT_DESTRUCTOR
 
     exception(const exception& other);
     explicit exception(const char* message);
@@ -49,10 +49,6 @@ public:
 private:
     std::string _message;
 };
-
-inline exception::~exception()
-{
-}
 
 inline exception::exception(const exception& other)
     : std::exception(other)

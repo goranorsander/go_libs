@@ -35,9 +35,7 @@ public:
     typedef reference<value_type> this_type;
 
 public:
-    virtual ~reference()
-    {
-    }
+    virtual ~reference() GO_BOOST_DEFAULT_DESTRUCTOR
 
     reference()
         : _property_guard()

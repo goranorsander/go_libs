@@ -37,7 +37,7 @@ public:
     virtual ~command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    command_parameters() = default;
+    command_parameters() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static ptr create()
@@ -46,7 +46,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

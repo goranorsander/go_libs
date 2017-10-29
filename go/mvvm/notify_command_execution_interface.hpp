@@ -45,7 +45,7 @@ public:
     virtual ~basic_notify_command_execution_interface() = 0;
 
 protected:
-    basic_notify_command_execution_interface() = default;
+    basic_notify_command_execution_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     command_executed_signal command_executed;

@@ -30,20 +30,21 @@ namespace mvvm
 
 typedef unsigned int event_subscription_key_type;
 
-template<class S> class basic_event_manager;
-typedef basic_event_manager<std::string> event_manager;
-typedef basic_event_manager<std::wstring> wevent_manager;
+template<class S, typename M> class basic_event_manager;
+typedef basic_event_manager<std::string, std::recursive_mutex> event_manager;
+typedef basic_event_manager<std::wstring, std::recursive_mutex> wevent_manager;
 
-template<class S>
+template<class S, typename M = std::recursive_mutex>
 class basic_event_manager
     : public basic_notify_event_firing_interface<S>
     , public go::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
-    typedef basic_event_manager<S> this_type;
-    typedef typename std::shared_ptr<basic_event_manager<S>> ptr;
-    typedef typename std::weak_ptr<basic_event_manager<S>> wptr;
+    typedef M mutex_type;
+    typedef basic_event_manager<S, M> this_type;
+    typedef typename std::shared_ptr<basic_event_manager<S, M>> ptr;
+    typedef typename std::weak_ptr<basic_event_manager<S, M>> wptr;
 
 public:
     virtual ~basic_event_manager();
@@ -64,20 +65,20 @@ public:
     void fire_events();
 
 private:
-    mutable std::recursive_mutex _events_guard;
+    mutable mutex_type _events_guard;
     event_subscription_key_type _next_event_subscription_key;
     std::map<S, std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>>> _subscriptions;
     std::deque<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> _events;
 };
 
-template<class S>
-inline basic_event_manager<S>::~basic_event_manager()
+template<class S, typename M>
+inline basic_event_manager<S, M>::~basic_event_manager()
 {
     unsubscribe_all();
 }
 
-template<class S>
-inline basic_event_manager<S>::basic_event_manager()
+template<class S, typename M>
+inline basic_event_manager<S, M>::basic_event_manager()
     : basic_notify_event_firing_interface<S>()
     , go::utility::noncopyable_nonmovable()
     , _events_guard()
@@ -88,9 +89,9 @@ inline basic_event_manager<S>::basic_event_manager()
 }
 
 template<>
-inline event_subscription_key_type basic_event_manager<std::string>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
+inline event_subscription_key_type basic_event_manager<std::string, std::recursive_mutex>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
@@ -105,9 +106,9 @@ inline event_subscription_key_type basic_event_manager<std::string>::subscribe(c
 }
 
 template<>
-inline event_subscription_key_type basic_event_manager<std::wstring>::subscribe(const std::wstring& event_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>&& fire_event_function)
+inline event_subscription_key_type basic_event_manager<std::wstring, std::recursive_mutex>::subscribe(const std::wstring& event_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>&& fire_event_function)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
@@ -121,10 +122,10 @@ inline event_subscription_key_type basic_event_manager<std::wstring>::subscribe(
     return event_subscription_key;
 }
 
-template<class S>
-inline event_subscription_key_type basic_event_manager<S>::subscribe(const S& event_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>&& fire_event_function)
+template<class S, typename M>
+inline event_subscription_key_type basic_event_manager<S, M>::subscribe(const S& event_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>&& fire_event_function)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
@@ -139,9 +140,9 @@ inline event_subscription_key_type basic_event_manager<S>::subscribe(const S& ev
 }
 
 template<>
-inline void basic_event_manager<std::string>::unsubscribe(const std::string& event_type, const event_subscription_key_type& event_subscription_key)
+inline void basic_event_manager<std::string, std::recursive_mutex>::unsubscribe(const std::string& event_type, const event_subscription_key_type& event_subscription_key)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -150,9 +151,9 @@ inline void basic_event_manager<std::string>::unsubscribe(const std::string& eve
 }
 
 template<>
-inline void basic_event_manager<std::wstring>::unsubscribe(const std::wstring& event_type, const event_subscription_key_type& event_subscription_key)
+inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe(const std::wstring& event_type, const event_subscription_key_type& event_subscription_key)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -160,10 +161,10 @@ inline void basic_event_manager<std::wstring>::unsubscribe(const std::wstring& e
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key)
+template<class S, typename M>
+inline void basic_event_manager<S, M>::unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -172,9 +173,9 @@ inline void basic_event_manager<S>::unsubscribe(const S& event_type, const event
 }
 
 template<>
-inline void basic_event_manager<std::string>::unsubscribe_all(const std::string& event_type)
+inline void basic_event_manager<std::string, std::recursive_mutex>::unsubscribe_all(const std::string& event_type)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -183,9 +184,9 @@ inline void basic_event_manager<std::string>::unsubscribe_all(const std::string&
 }
 
 template<>
-inline void basic_event_manager<std::wstring>::unsubscribe_all(const std::wstring& event_type)
+inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe_all(const std::wstring& event_type)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -193,10 +194,10 @@ inline void basic_event_manager<std::wstring>::unsubscribe_all(const std::wstrin
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::unsubscribe_all(const S& event_type)
+template<class S, typename M>
+inline void basic_event_manager<S, M>::unsubscribe_all(const S& event_type)
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -204,19 +205,19 @@ inline void basic_event_manager<S>::unsubscribe_all(const S& event_type)
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::unsubscribe_all()
+template<class S, typename M>
+inline void basic_event_manager<S, M>::unsubscribe_all()
 {
-    const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+    const std::lock_guard<mutex_type> lock(_events_guard);
     _subscriptions.clear();
 }
 
 template<>
-inline void basic_event_manager<std::string>::fire(const std::shared_ptr<basic_event<std::string>>& e) const
+inline void basic_event_manager<std::string, std::recursive_mutex>::fire(const std::shared_ptr<basic_event<std::string>>& e) const
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         auto event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
@@ -232,11 +233,11 @@ inline void basic_event_manager<std::string>::fire(const std::shared_ptr<basic_e
 }
 
 template<>
-inline void basic_event_manager<std::wstring>::fire(const std::shared_ptr<basic_event<std::wstring>>& e) const
+inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire(const std::shared_ptr<basic_event<std::wstring>>& e) const
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         auto event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
@@ -251,12 +252,12 @@ inline void basic_event_manager<std::wstring>::fire(const std::shared_ptr<basic_
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::fire(const std::shared_ptr<basic_event<S>>& e) const
+template<class S, typename M>
+inline void basic_event_manager<S, M>::fire(const std::shared_ptr<basic_event<S>>& e) const
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         auto event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
@@ -272,41 +273,41 @@ inline void basic_event_manager<S>::fire(const std::shared_ptr<basic_event<S>>& 
 }
 
 template<>
-inline void basic_event_manager<std::string>::post(const std::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::string, std::recursive_mutex>::post(const std::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         _events.push_back(std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>(std::weak_ptr<basic_event<std::string>>(e), keep_event_alive ? e : nullptr));
     }
 }
 
 template<>
-inline void basic_event_manager<std::wstring>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::wstring, std::recursive_mutex>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         _events.push_back(std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>(std::weak_ptr<basic_event<std::wstring>>(e), keep_event_alive ? e : nullptr));
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::post(const std::shared_ptr<basic_event<S>>& e, const bool keep_event_alive)
+template<class S, typename M>
+inline void basic_event_manager<S, M>::post(const std::shared_ptr<basic_event<S>>& e, const bool keep_event_alive)
 {
     if(e)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         _events.push_back(std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>(std::weak_ptr<basic_event<S>>(e), keep_event_alive ? e : nullptr));
     }
 }
 
 template<>
-inline void basic_event_manager<std::string>::fire_events()
+inline void basic_event_manager<std::string, std::recursive_mutex>::fire_events()
 {
     std::deque<std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>> events;
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         std::swap(events, _events);
     }
     for(const auto& e : events)
@@ -316,11 +317,11 @@ inline void basic_event_manager<std::string>::fire_events()
 }
 
 template<>
-inline void basic_event_manager<std::wstring>::fire_events()
+inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire_events()
 {
     std::deque<std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>> events;
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         std::swap(events, _events);
     }
     for(const auto& e : events)
@@ -329,12 +330,12 @@ inline void basic_event_manager<std::wstring>::fire_events()
     }
 }
 
-template<class S>
-inline void basic_event_manager<S>::fire_events()
+template<class S, typename M>
+inline void basic_event_manager<S, M>::fire_events()
 {
     std::deque<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> events;
     {
-        const std::lock_guard<std::recursive_mutex> lock(_events_guard);
+        const std::lock_guard<mutex_type> lock(_events_guard);
         std::swap(events, _events);
     }
     for(const auto& e : events)
@@ -343,14 +344,14 @@ inline void basic_event_manager<S>::fire_events()
     }
 }
 
-template<class S>
-inline std::shared_ptr<basic_event_manager<S>> basic_event_manager<S>::create()
+template<class S, typename M>
+inline std::shared_ptr<basic_event_manager<S, M>> basic_event_manager<S, M>::create()
 {
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
+        make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

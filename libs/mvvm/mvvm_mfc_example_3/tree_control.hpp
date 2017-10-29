@@ -19,7 +19,7 @@ class tree_control
     : public CTreeCtrl
 {
 public:
-    virtual ~tree_control() = default;
+    virtual ~tree_control() GO_DEFAULT_DESTRUCTOR
     explicit tree_control(tree_control_observer* observer);
 
 protected:

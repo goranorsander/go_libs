@@ -25,9 +25,7 @@ public:
     typedef unordered_map_observer<K, T> this_type;
     typedef typename m::wobservable_unordered_map<K, T>::ptr wobservable_unordered_map_ptr_type;
 
-    virtual ~unordered_map_observer()
-    {
-    }
+    virtual ~unordered_map_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     unordered_map_observer()
         : _last_action(m::undefined_notify_container_changed_action)

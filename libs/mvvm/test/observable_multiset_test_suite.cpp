@@ -31,9 +31,7 @@ public:
     typedef multiset_observer<T> this_type;
     typedef typename m::observable_multiset<T>::ptr observable_multiset_ptr_type;
 
-    virtual ~multiset_observer()
-    {
-    }
+    virtual ~multiset_observer() GO_DEFAULT_DESTRUCTOR
 
     multiset_observer()
         : _on_container_changed_slot_key(0)

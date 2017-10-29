@@ -51,7 +51,7 @@ public:
     virtual ~basic_observable_associative_container() = 0;
 
 protected:
-    explicit basic_observable_associative_container()
+     basic_observable_associative_container()
         : basic_observable_container<string_type, container_type>()
     {
     }

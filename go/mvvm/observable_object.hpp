@@ -37,7 +37,7 @@ public:
     virtual ~basic_observable_object() = 0;
 
 protected:
-    explicit basic_observable_object() = default;
+    basic_observable_object() GO_DEFAULT_CONSTRUCTOR
 
 protected:
     virtual void on_property_changed(const string_type& property_name)
@@ -64,7 +64,7 @@ public:
     virtual ~observable_object() = 0;
 
 protected:
-    explicit observable_object() = default;
+    observable_object() GO_DEFAULT_CONSTRUCTOR
 };
 
 inline observable_object::~observable_object()
@@ -81,7 +81,7 @@ public:
     virtual ~wobservable_object() = 0;
 
 protected:
-    explicit wobservable_object() = default;
+    wobservable_object() GO_DEFAULT_CONSTRUCTOR
 };
 
 inline wobservable_object::~wobservable_object()

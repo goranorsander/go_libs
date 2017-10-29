@@ -36,7 +36,7 @@ public:
     virtual ~object() = 0;
 
 protected:
-    object() = default;
+    object() GO_DEFAULT_CONSTRUCTOR
 };
 
 inline object::~object()

@@ -43,7 +43,7 @@ public:
     virtual ~basic_notify_event_firing_interface() = 0;
 
 protected:
-    basic_notify_event_firing_interface() = default;
+    basic_notify_event_firing_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     event_fired_signal event_fired;

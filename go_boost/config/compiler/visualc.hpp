@@ -45,39 +45,36 @@ __pragma(message(_message_))
 
 // ATL support
 #if defined(_ATL_VER)
-
 #define GO_BOOST_MSVC_ATL 1
-
 #define GO_BOOST_MSVC_ATL_VER _MFX_VER
-
 #endif  // if defined(_ATL_VER)
 
 // MFC support
 #if defined(_MFC_VER)
-
 #define GO_BOOST_MSVC_MFC 1
-
 #define GO_BOOST_MSVC_MFC_VER _MFX_VER
-
 #endif  // if defined(_MFC_VER)
 
 // Unicode support
 #if defined(_UNICODE) || defined(UNICODE)
-
 #define GO_BOOST_UNICODE 1
-
 #endif  // if defined(_UNICODE) || defined(UNICODE)
 
 // C++ keyword typename support
 #if (_MSC_VER < 1900)
-
 #define GO_BOOST_TYPENAME
-
 #else
-
 #define GO_BOOST_TYPENAME typename
-
 #endif  // #if (_MSC_VER < 1900)
+
+// C++11 support
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#define GO_BOOST_DEFAULT_CONSTRUCTOR {}
+#define GO_BOOST_DEFAULT_DESTRUCTOR {}
+#else
+#define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
+#define GO_BOOST_DEFAULT_DESTRUCTOR = default;
+#endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
 #endif  // #if defined(BOOST_MSVC)
 

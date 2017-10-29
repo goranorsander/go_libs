@@ -51,7 +51,7 @@ main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::po
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo) : this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo) {}
     };
 

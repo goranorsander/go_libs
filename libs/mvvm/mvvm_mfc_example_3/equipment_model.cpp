@@ -31,7 +31,7 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_) : this_type(category_, name_, quantity_) {}
     };
 

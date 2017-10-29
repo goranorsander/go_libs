@@ -31,7 +31,7 @@ public:
     typedef int product_id_type;
 
 public:
-    virtual ~product_model() = default;
+    virtual ~product_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     product_model();

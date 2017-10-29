@@ -54,7 +54,7 @@ public:
     typedef base_type::const_reverse_iterator const_reverse_iterator;
 
 public:
-    virtual ~u32string();
+    virtual ~u32string() GO_BOOST_DEFAULT_DESTRUCTOR
 
     u32string();
 
@@ -117,10 +117,6 @@ public:
 
     bool operator!=(const u32string& other) const;
 };
-
-inline u32string::~u32string()
-{
-}
 
 inline u32string::u32string()
     : std::basic_string<char32_t, std::char_traits<char32_t>, std::allocator<char32_t>>(allocator_type())

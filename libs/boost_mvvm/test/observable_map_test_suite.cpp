@@ -25,9 +25,7 @@ public:
     typedef map_observer<K, T> this_type;
     typedef typename m::observable_map<K, T>::ptr observable_map_ptr_type;
 
-    virtual ~map_observer()
-    {
-    }
+    virtual ~map_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     map_observer()
         : _last_action(m::undefined_notify_container_changed_action)

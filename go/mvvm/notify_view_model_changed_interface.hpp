@@ -39,7 +39,7 @@ public:
     virtual ~notify_view_model_changed_interface() = 0;
 
 protected:
-    notify_view_model_changed_interface() = default;
+    notify_view_model_changed_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     view_model_will_change_signal view_model_will_change;

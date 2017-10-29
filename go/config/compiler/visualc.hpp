@@ -117,8 +117,10 @@ __pragma(message(_message_))
 #endif  // #if (_MSC_VER < 1600)
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}
 #else
+#define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #if defined(GO_NO_CXX11_NOEXCEPT)

@@ -54,7 +54,7 @@ spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::pt
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const spaceship_model::ptr& model, const fleet_organization_id_type& id, const main_frame_view_model::ptr& vm) : this_type(model, id, vm) {}
     };
 

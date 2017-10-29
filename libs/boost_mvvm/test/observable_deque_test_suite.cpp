@@ -29,9 +29,7 @@ public:
     typedef deque_observer<T> this_type;
     typedef typename m::observable_deque<T>::ptr observable_deque_ptr_type;
 
-    virtual ~deque_observer()
-    {
-    }
+    virtual ~deque_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     deque_observer()
         : _last_action(m::undefined_notify_container_changed_action)

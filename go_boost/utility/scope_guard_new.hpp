@@ -36,9 +36,7 @@ public:
     typedef T* pointer;
 
 public:
-    virtual ~scope_guard_new()
-    {
-    }
+    virtual ~scope_guard_new() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit scope_guard_new(pointer px)
         : scope_guard(NULL)

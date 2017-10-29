@@ -50,12 +50,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_array()
-    {
-    }
+    virtual ~basic_observable_array() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_array()
+     basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -191,12 +189,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_array()
-    {
-    }
+    virtual ~observable_array() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_array()
+     observable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -208,8 +204,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler() : this_type() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
         };
 
         return boost::make_shared<make_shared_enabler>();
@@ -242,12 +238,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_array()
-    {
-    }
+    virtual ~wobservable_array() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_array()
+     wobservable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -259,8 +253,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler() : this_type() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
         };
 
         return boost::make_shared<make_shared_enabler>();

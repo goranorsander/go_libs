@@ -23,7 +23,7 @@ class fleet_organization_view
     , public tree_control_observer
 {
 public:
-    virtual ~fleet_organization_view() = default;
+    virtual ~fleet_organization_view() GO_DEFAULT_DESTRUCTOR
 
     fleet_organization_view();
 

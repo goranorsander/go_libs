@@ -37,7 +37,7 @@ private:
     typedef std::map<fleet_organization_id_type, child_frame_view*> fleet_organization_child_frame_view_type;
 
 public:
-    virtual ~main_frame_view() = default;
+    virtual ~main_frame_view() GO_DEFAULT_DESTRUCTOR
     main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
 
 public:

@@ -35,12 +35,10 @@ class spaceship
     , public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship()
-    {
-    }
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
-    explicit spaceship()
+     spaceship()
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , crew_complement("crew_complement")
@@ -121,11 +119,9 @@ private:
 class spaceship_observer
 {
 public:
-    virtual ~spaceship_observer()
-    {
-    }
+    virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
-    explicit spaceship_observer()
+     spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _crew_complement_change_count(0)
         , _name_change_count(0)

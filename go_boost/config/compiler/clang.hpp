@@ -36,6 +36,15 @@ __warning _message_
 #define GO_BOOST_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 #define GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 
+// C++11 support
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#define GO_BOOST_DEFAULT_CONSTRUCTOR {}
+#define GO_BOOST_DEFAULT_DESTRUCTOR {}
+#else
+#define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
+#define GO_BOOST_DEFAULT_DESTRUCTOR = default;
+#endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
 #endif  // #if defined(__clang__)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_CLANG_HPP_INCLUDED

@@ -25,9 +25,7 @@ public:
     typedef set_observer<T> this_type;
     typedef typename m::wobservable_set<T>::ptr wobservable_set_ptr_type;
 
-    virtual ~set_observer()
-    {
-    }
+    virtual ~set_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     set_observer()
         : _last_action(m::undefined_notify_container_changed_action)

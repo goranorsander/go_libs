@@ -33,9 +33,7 @@ public:
     typedef value<value_type> this_type;
 
 public:
-    virtual ~value()
-    {
-    }
+    virtual ~value() GO_BOOST_DEFAULT_DESTRUCTOR
 
     value()
         : _property_guard()

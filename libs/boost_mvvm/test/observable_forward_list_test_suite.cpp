@@ -29,9 +29,7 @@ public:
     typedef forward_list_observer<T> this_type;
     typedef typename m::observable_forward_list<T>::ptr observable_forward_list_ptr_type;
 
-    virtual ~forward_list_observer()
-    {
-    }
+    virtual ~forward_list_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     forward_list_observer()
         : _last_action(m::undefined_notify_container_changed_action)

@@ -34,7 +34,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~product_view_model() = default;
+    virtual ~product_view_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     product_view_model();

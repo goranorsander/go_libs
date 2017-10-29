@@ -26,7 +26,7 @@ public:
     virtual ~fleet_repository_interface() = 0;
 
 protected:
-    fleet_repository_interface() = default;
+    fleet_repository_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual fleet_organization_interface::ptr fleet_organization_model() const = 0;

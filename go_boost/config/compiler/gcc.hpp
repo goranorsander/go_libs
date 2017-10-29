@@ -39,6 +39,15 @@ __warning _message_
 // C++ restrictions
 #define GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7 1
 
+// C++11 support
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#define GO_BOOST_DEFAULT_CONSTRUCTOR {}
+#define GO_BOOST_DEFAULT_DESTRUCTOR {}
+#else
+#define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
+#define GO_BOOST_DEFAULT_DESTRUCTOR = default;
+#endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
 #endif  // #if defined(BOOST_GCC)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_GCC_HPP_INCLUDED

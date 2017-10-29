@@ -40,9 +40,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-    virtual ~value_property()
-    {
-    }
+    virtual ~value_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     value_property()
         : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>())

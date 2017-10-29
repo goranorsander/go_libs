@@ -22,7 +22,7 @@ class add_equipment_view
     DECLARE_DYNAMIC(add_equipment_view)
 
 public:
-    virtual ~add_equipment_view() = default;
+    virtual ~add_equipment_view() GO_DEFAULT_DESTRUCTOR
 
     add_equipment_view(const add_equipment_view_model::ptr& vm, CWnd* pParent = nullptr);
 

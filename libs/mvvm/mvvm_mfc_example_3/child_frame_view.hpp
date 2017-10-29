@@ -23,7 +23,7 @@ class child_frame_view
 {
     DECLARE_DYNCREATE(child_frame_view)
 public:
-    virtual ~child_frame_view() = default;
+    virtual ~child_frame_view() GO_DEFAULT_DESTRUCTOR
     child_frame_view();
 
 public:

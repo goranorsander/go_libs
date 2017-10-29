@@ -39,7 +39,7 @@ public:
     virtual ~notify_container_changed_interface() = 0;
 
 protected:
-    notify_container_changed_interface() = default;
+    notify_container_changed_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     container_changed_signal container_changed;

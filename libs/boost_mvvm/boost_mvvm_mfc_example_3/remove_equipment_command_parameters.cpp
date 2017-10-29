@@ -35,7 +35,7 @@ remove_equipment_command_parameters::ptr remove_equipment_command_parameters::cr
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler(const fleet_organization_id_type& spaceship_id_, const equipment_id_type& equipment_id_) : this_type(spaceship_id_, equipment_id_) {}
     };
 

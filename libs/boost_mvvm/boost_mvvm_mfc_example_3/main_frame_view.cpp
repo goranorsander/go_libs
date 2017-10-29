@@ -28,9 +28,7 @@ class matches_dialog_view
     : std::unary_function<dialog_view::ptr, bool>
 {
 public:
-    virtual ~matches_dialog_view()
-    {
-    }
+    virtual ~matches_dialog_view() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit matches_dialog_view(const dialog_view::pointer dialog)
         : std::unary_function<dialog_view::ptr, bool>()

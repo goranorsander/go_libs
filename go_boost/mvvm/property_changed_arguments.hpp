@@ -41,7 +41,7 @@ public:
     typedef typename boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~basic_property_changed_arguments();
+    virtual ~basic_property_changed_arguments() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     explicit basic_property_changed_arguments(const string_type& property_name);
@@ -54,21 +54,6 @@ public:
 private:
     const string_type _property_name;
 };
-
-template<>
-inline basic_property_changed_arguments<std::string>::~basic_property_changed_arguments()
-{
-}
-
-template<>
-inline basic_property_changed_arguments<std::wstring>::~basic_property_changed_arguments()
-{
-}
-
-template<class S>
-inline basic_property_changed_arguments<S>::~basic_property_changed_arguments()
-{
-}
 
 template<>
 inline basic_property_changed_arguments<std::string>::basic_property_changed_arguments(const std::string& property_name)
@@ -116,7 +101,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<std::string>> basic_pr
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const std::string& property_name) : this_type(property_name) {}
     };
 
@@ -133,7 +118,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_p
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const std::wstring& property_name) : this_type(property_name) {}
     };
 
@@ -150,7 +135,7 @@ inline boost::shared_ptr<basic_property_changed_arguments<S>> basic_property_cha
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const S& property_name) : this_type(property_name) {}
     };
 

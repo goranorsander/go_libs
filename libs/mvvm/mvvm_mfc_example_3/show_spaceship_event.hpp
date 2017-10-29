@@ -28,7 +28,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~show_spaceship_event() = default;
+    virtual ~show_spaceship_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit show_spaceship_event(const fleet_organization_id_type& id_);

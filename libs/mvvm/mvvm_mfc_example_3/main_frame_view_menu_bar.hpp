@@ -17,9 +17,9 @@ class main_frame_view_menu_bar
     : public CMFCMenuBar
 {
 public:
-    virtual ~main_frame_view_menu_bar() = default;
+    virtual ~main_frame_view_menu_bar() GO_DEFAULT_DESTRUCTOR
 
-    main_frame_view_menu_bar() = default;
+    main_frame_view_menu_bar() GO_DEFAULT_CONSTRUCTOR
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_MAIN_FRAME_VIEW_MENU_BAR_HPP_INCLUDED

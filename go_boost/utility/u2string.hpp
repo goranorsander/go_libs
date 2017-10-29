@@ -52,7 +52,7 @@ public:
     typedef base_type::const_reverse_iterator const_reverse_iterator;
 
 public:
-    virtual ~u2string();
+    virtual ~u2string() GO_BOOST_DEFAULT_DESTRUCTOR
 
     u2string();
 
@@ -115,10 +115,6 @@ public:
 
     bool operator!=(const u2string& other) const;
 };
-
-inline u2string::~u2string()
-{
-}
 
 inline u2string::u2string()
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(allocator_type())

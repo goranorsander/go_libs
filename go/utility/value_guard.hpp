@@ -26,9 +26,7 @@ public:
     typedef T value_type;
 
 public:
-    virtual ~value_guard()
-    {
-    }
+    virtual ~value_guard() GO_DEFAULT_DESTRUCTOR
 
     value_guard(value_type& value, const value_type& new_value)
         : scope_guard(nullptr)

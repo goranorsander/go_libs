@@ -36,7 +36,7 @@ public:
     virtual ~data_context_changed_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    data_context_changed_arguments() = default;
+    data_context_changed_arguments() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static std::shared_ptr<data_context_changed_arguments> create();
@@ -48,7 +48,7 @@ inline std::shared_ptr<data_context_changed_arguments> data_context_changed_argu
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
+        make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

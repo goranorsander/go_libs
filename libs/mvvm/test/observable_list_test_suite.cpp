@@ -31,9 +31,7 @@ public:
     typedef list_observer<T> this_type;
     typedef typename m::observable_list<T>::ptr observable_list_ptr_type;
 
-    virtual ~list_observer()
-    {
-    }
+    virtual ~list_observer() GO_DEFAULT_DESTRUCTOR
 
     list_observer()
         : _on_container_changed_slot_key(0)

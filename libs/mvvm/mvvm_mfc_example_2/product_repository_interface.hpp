@@ -26,7 +26,7 @@ public:
     virtual ~product_repository_interface() = 0;
 
 protected:
-    product_repository_interface() = default;
+    product_repository_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual product_model::ptr get(const product_model::product_id_type& product_id) const = 0;

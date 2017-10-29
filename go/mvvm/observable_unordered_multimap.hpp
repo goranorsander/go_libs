@@ -56,7 +56,7 @@ public:
     virtual ~basic_observable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_unordered_multimap()
+     basic_observable_unordered_multimap()
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container()
     {
@@ -250,7 +250,7 @@ public:
     virtual ~observable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_unordered_multimap()
+     observable_unordered_multimap()
         //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
@@ -283,7 +283,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -400,7 +400,7 @@ public:
     virtual ~wobservable_unordered_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_unordered_multimap()
+     wobservable_unordered_multimap()
         //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
     {
     }
@@ -433,7 +433,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

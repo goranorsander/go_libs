@@ -29,9 +29,7 @@ public:
     typedef list_observer<T> this_type;
     typedef typename m::wobservable_list<T>::ptr wobservable_list_ptr_type;
 
-    virtual ~list_observer()
-    {
-    }
+    virtual ~list_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     list_observer()
         : _last_action(m::undefined_notify_container_changed_action)

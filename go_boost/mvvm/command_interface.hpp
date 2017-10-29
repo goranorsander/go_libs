@@ -29,25 +29,26 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S> class basic_command_manager;
+template<class S, typename M> class basic_command_manager;
 
-template<class S> class basic_command_interface;
-typedef basic_command_interface<std::string> command_interface;
-typedef basic_command_interface<std::wstring> wcommand_interface;
+template<class S, typename M> class basic_command_interface;
+typedef basic_command_interface<std::string, boost::recursive_mutex> command_interface;
+typedef basic_command_interface<std::wstring, boost::recursive_mutex> wcommand_interface;
 
-template<class S>
+template<class S, typename M = boost::recursive_mutex>
 class basic_command_interface
-    : public boost::enable_shared_from_this<basic_command_interface<S>>
+    : public boost::enable_shared_from_this<basic_command_interface<S, M>>
     , private go_boost::utility::noncopyable_nonmovable
 {
-    friend class basic_command_manager<S>;
+    friend class basic_command_manager<S, M>;
 
 public:
     typedef S string_type;
-    typedef basic_command_interface<S> this_type;
-    typedef typename boost::shared_ptr<basic_command_interface<S>> ptr;
-    typedef typename boost::weak_ptr<basic_command_interface<S>> wptr;
-    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S>>&)> can_execute_changed_signal;
+    typedef M mutex_type;
+    typedef basic_command_interface<S, M> this_type;
+    typedef typename boost::shared_ptr<basic_command_interface<S, M>> ptr;
+    typedef typename boost::weak_ptr<basic_command_interface<S, M>> wptr;
+    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, M>>&)> can_execute_changed_signal;
     typedef typename go_boost::property::nameless::read_only::property<S> command_name_type;
 
 public:
@@ -78,26 +79,26 @@ private:
 };
 
 template<>
-inline basic_command_interface<std::string>::~basic_command_interface()
+inline basic_command_interface<std::string, boost::recursive_mutex>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_command_interface<std::wstring>::~basic_command_interface()
+inline basic_command_interface<std::wstring, boost::recursive_mutex>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
-template<class S>
-inline basic_command_interface<S>::~basic_command_interface()
+template<class S, typename M>
+inline basic_command_interface<S, M>::~basic_command_interface()
 {
     can_execute_changed.disconnect_all_slots();
 }
 
-template<class S>
-inline basic_command_interface<S>::basic_command_interface(const S& cmd_name, const boost::shared_ptr<command_parameters>& params)
-    : boost::enable_shared_from_this<basic_command_interface<S>>()
+template<class S, typename M>
+inline basic_command_interface<S, M>::basic_command_interface(const S& cmd_name, const boost::shared_ptr<command_parameters>& params)
+    : boost::enable_shared_from_this<basic_command_interface<S, M>>()
     , go_boost::utility::noncopyable_nonmovable()
     , command_name()
     , can_execute_changed()
@@ -108,52 +109,52 @@ inline basic_command_interface<S>::basic_command_interface(const S& cmd_name, co
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::string>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, boost::recursive_mutex>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, boost::recursive_mutex>::parameters() const
 {
     return _parameters;
 }
 
-template<class S>
-inline boost::shared_ptr<command_parameters> basic_command_interface<S>::parameters() const
+template<class S, typename M>
+inline boost::shared_ptr<command_parameters> basic_command_interface<S, M>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline void basic_command_interface<std::string>::notify_can_execute_changed()
+inline void basic_command_interface<std::string, boost::recursive_mutex>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::string>>::shared_from_this());
+        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::string, boost::recursive_mutex>>::shared_from_this());
     }
 }
 
 template<>
-inline void basic_command_interface<std::wstring>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring, boost::recursive_mutex>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::wstring>>::shared_from_this());
+        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::wstring, boost::recursive_mutex>>::shared_from_this());
     }
 }
 
-template<class S>
-inline void basic_command_interface<S>::notify_can_execute_changed()
+template<class S, typename M>
+inline void basic_command_interface<S, M>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<S>>::shared_from_this());
+        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<S, M>>::shared_from_this());
     }
 }
 
-template<class S>
-inline S basic_command_interface<S>::get_command_name() const
+template<class S, typename M>
+inline S basic_command_interface<S, M>::get_command_name() const
 {
     return _command_name;
 }

@@ -28,7 +28,7 @@ class mvvm_mfc_example_3_app
     : public CWinAppEx
 {
 public:
-    virtual ~mvvm_mfc_example_3_app() = default;
+    virtual ~mvvm_mfc_example_3_app() GO_DEFAULT_DESTRUCTOR
     mvvm_mfc_example_3_app();
 
 public:

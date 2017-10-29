@@ -29,7 +29,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~equipment_model() = default;
+    virtual ~equipment_model() GO_DEFAULT_DESTRUCTOR
 
 protected:
     equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);

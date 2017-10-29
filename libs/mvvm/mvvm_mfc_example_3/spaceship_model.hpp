@@ -32,7 +32,7 @@ protected:
     spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 private:
-    explicit spaceship_model() = delete;
+     spaceship_model() = delete;
 
 public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);

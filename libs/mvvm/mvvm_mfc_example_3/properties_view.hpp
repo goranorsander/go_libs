@@ -23,7 +23,7 @@ class properties_view
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~properties_view() = default;
+    virtual ~properties_view() GO_DEFAULT_DESTRUCTOR
     properties_view();
 
     void AdjustLayout();

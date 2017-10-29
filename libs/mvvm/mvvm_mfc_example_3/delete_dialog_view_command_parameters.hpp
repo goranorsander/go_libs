@@ -26,7 +26,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~delete_dialog_view_command_parameters() = default;
+    virtual ~delete_dialog_view_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit delete_dialog_view_command_parameters(const dialog_view::ptr& dialog_);

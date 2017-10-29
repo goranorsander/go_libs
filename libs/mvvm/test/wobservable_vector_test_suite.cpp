@@ -31,9 +31,7 @@ public:
     typedef vector_observer<T> this_type;
     typedef typename m::wobservable_vector<T>::ptr wobservable_vector_ptr_type;
 
-    virtual ~vector_observer()
-    {
-    }
+    virtual ~vector_observer() GO_DEFAULT_DESTRUCTOR
 
     vector_observer()
         : _on_container_changed_slot_key(0)

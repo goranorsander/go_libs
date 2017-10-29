@@ -36,9 +36,7 @@ class spaceship
     , public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship()
-    {
-    }
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
     explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr)
@@ -188,11 +186,9 @@ private:
 class spaceship_observer
 {
 public:
-    virtual ~spaceship_observer()
-    {
-    }
+    virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
-    explicit spaceship_observer()
+     spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _on_property_changed_count()
     {

@@ -31,9 +31,7 @@ public:
     typedef forward_list_observer<T> this_type;
     typedef typename m::wobservable_forward_list<T>::ptr wobservable_forward_list_ptr_type;
 
-    virtual ~forward_list_observer()
-    {
-    }
+    virtual ~forward_list_observer() GO_DEFAULT_DESTRUCTOR
 
     forward_list_observer()
         : _on_container_changed_slot_key(0)

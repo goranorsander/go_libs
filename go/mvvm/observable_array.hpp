@@ -53,7 +53,7 @@ public:
     virtual ~basic_observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_array()
+     basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -181,7 +181,7 @@ public:
     virtual ~observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_array()
+     observable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -193,7 +193,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -226,7 +226,7 @@ public:
     virtual ~wobservable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_array()
+     wobservable_array()
         : basic_observable_array<T, string_type, N>()
     {
     }
@@ -238,7 +238,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

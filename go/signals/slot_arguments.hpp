@@ -37,7 +37,7 @@ public:
     virtual ~slot_arguments() = 0;
 
 protected:
-    slot_arguments() = default;
+    slot_arguments() GO_DEFAULT_CONSTRUCTOR
 };
 
 inline slot_arguments::~slot_arguments()

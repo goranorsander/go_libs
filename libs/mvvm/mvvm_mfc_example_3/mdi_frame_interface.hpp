@@ -27,7 +27,7 @@ public:
     virtual ~mdi_frame_interface() = 0;
 
 protected:
-    mdi_frame_interface() = default;
+    mdi_frame_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id) = 0;

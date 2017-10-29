@@ -33,9 +33,7 @@ public:
     typedef unordered_set_observer<T> this_type;
     typedef typename m::observable_unordered_set<T>::ptr observable_unordered_set_ptr_type;
 
-    virtual ~unordered_set_observer()
-    {
-    }
+    virtual ~unordered_set_observer() GO_DEFAULT_DESTRUCTOR
 
     unordered_set_observer()
         : _on_container_changed_slot_key(0)
