@@ -83,32 +83,32 @@ endif(CMAKE_COMPILER_IS_CLANG)
 
 if(CMAKE_COMPILER_IS_CLANG)
     set(BOOST_CLANG_VERSION "${CLANG_MAJOR}${CLANG_MINOR}")
-	if(${BOOST_PATCH_LEVEL} STREQUAL "0")
-		set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-		set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-	else(${BOOST_PATCH_LEVEL} STREQUAL "0")
-		set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-		set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-	endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
+    if(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+    else(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+    endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 elseif(CMAKE_COMPILER_IS_GNUCC)
     set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
-	if(${BOOST_PATCH_LEVEL} STREQUAL "0")
-		if(MSYS OR MINGW)
-			set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-			set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-		else(MSYS OR MINGW)
-			set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-			set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-		endif(MSYS OR MINGW)
-	else(${BOOST_PATCH_LEVEL} STREQUAL "0")
-		if(MSYS OR MINGW)
-			set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-			set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-		else(MSYS OR MINGW)
-			set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-			set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-		endif(MSYS OR MINGW)
-	endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
+    if(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        if(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        else(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        endif(MSYS OR MINGW)
+    else(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        if(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        else(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        endif(MSYS OR MINGW)
+    endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 endif(CMAKE_COMPILER_IS_CLANG)
 
 if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
@@ -469,11 +469,11 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
     ${GO_UTILITY_DIR}/sanity.hpp
     ${GO_UTILITY_DIR}/scope_guard.hpp
     ${GO_UTILITY_DIR}/scope_guard_new.hpp
-	${GO_UTILITY_DIR}/string_cast.hpp
-	${GO_UTILITY_DIR}/string_cast_exception.hpp
-	${GO_UTILITY_DIR}/u2string.hpp
-	${GO_UTILITY_DIR}/u8string.hpp
-	${GO_UTILITY_DIR}/value_guard.hpp
+    ${GO_UTILITY_DIR}/string_cast.hpp
+    ${GO_UTILITY_DIR}/string_cast_exception.hpp
+    ${GO_UTILITY_DIR}/u2string.hpp
+    ${GO_UTILITY_DIR}/u8string.hpp
+    ${GO_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp
@@ -854,13 +854,13 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
     ${GO_BOOST_UTILITY_DIR}/sanity.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard_new.hpp
-	${GO_BOOST_UTILITY_DIR}/string_cast.hpp
-	${GO_BOOST_UTILITY_DIR}/string_cast_exception.hpp
-	${GO_BOOST_UTILITY_DIR}/u16string.hpp
-	${GO_BOOST_UTILITY_DIR}/u2string.hpp
-	${GO_BOOST_UTILITY_DIR}/u32string.hpp
-	${GO_BOOST_UTILITY_DIR}/u8string.hpp
-	${GO_BOOST_UTILITY_DIR}/value_guard.hpp
+    ${GO_BOOST_UTILITY_DIR}/string_cast.hpp
+    ${GO_BOOST_UTILITY_DIR}/string_cast_exception.hpp
+    ${GO_BOOST_UTILITY_DIR}/u16string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u2string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u32string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u8string.hpp
+    ${GO_BOOST_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp

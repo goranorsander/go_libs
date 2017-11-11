@@ -21,7 +21,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1 ${STD_PROJECT_NAME_STR}_MFC_example_1)
 
-	set(MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
+    set(MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
         ./mvvm_mfc_example_1/res/mvvm_mfc_example_1.ico
         ./mvvm_mfc_example_1/res/mvvm_mfc_example_1.rc2
         ./mvvm_mfc_example_1/mvvm_mfc_example_1.cpp
@@ -31,34 +31,34 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_1/stdafx.cpp
         ./mvvm_mfc_example_1/stdafx.h
         ./mvvm_mfc_example_1/targetver.h
-	)
-	set(MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
         ./mvvm_mfc_example_1/product_model.cpp
         ./mvvm_mfc_example_1/product_model.hpp
         ./mvvm_mfc_example_1/product_repository.cpp
         ./mvvm_mfc_example_1/product_repository.hpp
         ./mvvm_mfc_example_1/product_repository_interface.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
         ./mvvm_mfc_example_1/product_view.cpp
         ./mvvm_mfc_example_1/product_view.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
         ./mvvm_mfc_example_1/product_view_model.cpp
         ./mvvm_mfc_example_1/product_view_model.hpp
-	)
-	
+    )
+    
     add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
-		${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
-		${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
-		${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
-		${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
+        ${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
+        ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
 
-	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
+    source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/mvvm/mvvm_mfc_example_2                        #
@@ -66,7 +66,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2 ${STD_PROJECT_NAME_STR}_MFC_example_2)
 
-	set(MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE
+    set(MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE
         ./mvvm_mfc_example_2/res/mvvm_mfc_example_2.ico
         ./mvvm_mfc_example_2/res/mvvm_mfc_example_2.rc2
         ./mvvm_mfc_example_2/mvvm_mfc_example_2.cpp
@@ -76,34 +76,34 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_2/stdafx.cpp
         ./mvvm_mfc_example_2/stdafx.h
         ./mvvm_mfc_example_2/targetver.h
-	)
-	set(MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE
         ./mvvm_mfc_example_2/product_model.cpp
         ./mvvm_mfc_example_2/product_model.hpp
         ./mvvm_mfc_example_2/product_repository.cpp
         ./mvvm_mfc_example_2/product_repository.hpp
         ./mvvm_mfc_example_2/product_repository_interface.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE
         ./mvvm_mfc_example_2/product_view.cpp
         ./mvvm_mfc_example_2/product_view.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE
         ./mvvm_mfc_example_2/product_view_model.cpp
         ./mvvm_mfc_example_2/product_view_model.hpp
-	)
-	
+    )
+    
     add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2} WIN32
-		${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE}
-		${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE}
-		${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
-		${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE}
+        ${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
+        ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
     )
 
-	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE})
+    source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/mvvm/mvvm_mfc_example_3                        #
@@ -111,7 +111,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 
     set(PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_3 ${STD_PROJECT_NAME_STR}_MFC_example_3)
 
-	set(MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
+    set(MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
         ./mvvm_mfc_example_3/res/classview.bmp
         ./mvvm_mfc_example_3/res/classview_hc.bmp
         ./mvvm_mfc_example_3/res/class_view.ico
@@ -144,14 +144,14 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/stdafx.cpp
         ./mvvm_mfc_example_3/stdafx.h
         ./mvvm_mfc_example_3/targetver.h
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_CODE
         ./mvvm_mfc_example_3/fleet_repository_populator.cpp
         ./mvvm_mfc_example_3/fleet_repository_populator.hpp
         ./mvvm_mfc_example_3/mdi_frame_interface.hpp
         ./mvvm_mfc_example_3/mvvm_mfc_example_3_namespace_alias.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
         ./mvvm_mfc_example_3/equipment_interface.hpp
         ./mvvm_mfc_example_3/equipment_model.cpp
         ./mvvm_mfc_example_3/equipment_model.hpp
@@ -164,8 +164,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/spaceship_interface.hpp
         ./mvvm_mfc_example_3/spaceship_model.cpp
         ./mvvm_mfc_example_3/spaceship_model.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
         ./mvvm_mfc_example_3/add_equipment_view.cpp
         ./mvvm_mfc_example_3/add_equipment_view.hpp
         ./mvvm_mfc_example_3/child_frame_view.cpp
@@ -180,8 +180,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/properties_view.hpp
         ./mvvm_mfc_example_3/spaceship_view.cpp
         ./mvvm_mfc_example_3/spaceship_view.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
         ./mvvm_mfc_example_3/dialog_view.cpp
         ./mvvm_mfc_example_3/dialog_view.hpp
         ./mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
@@ -199,8 +199,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/tree_control.cpp
         ./mvvm_mfc_example_3/tree_control.hpp
         ./mvvm_mfc_example_3/tree_control_observer.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
         ./mvvm_mfc_example_3/add_equipment_view_model.cpp
         ./mvvm_mfc_example_3/add_equipment_view_model.hpp
         ./mvvm_mfc_example_3/fleet_organization_view_model.cpp
@@ -211,8 +211,8 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/properties_view_model.hpp
         ./mvvm_mfc_example_3/spaceship_view_model.cpp
         ./mvvm_mfc_example_3/spaceship_view_model.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
         ./mvvm_mfc_example_3/activate_spaceship_command_parameters.cpp
         ./mvvm_mfc_example_3/activate_spaceship_command_parameters.hpp
         ./mvvm_mfc_example_3/add_equipment_command_parameters.cpp
@@ -227,35 +227,35 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_example_3/open_add_equipment_view_command_parameters.hpp
         ./mvvm_mfc_example_3/remove_equipment_command_parameters.cpp
         ./mvvm_mfc_example_3/remove_equipment_command_parameters.hpp
-	)
-	set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
+    )
+    set(MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
         ./mvvm_mfc_example_3/close_spaceship_event.cpp
         ./mvvm_mfc_example_3/close_spaceship_event.hpp
         ./mvvm_mfc_example_3/select_fleet_organization_event.cpp
         ./mvvm_mfc_example_3/select_fleet_organization_event.hpp
         ./mvvm_mfc_example_3/show_spaceship_event.cpp
         ./mvvm_mfc_example_3/show_spaceship_event.hpp
-	)
-	
+    )
+    
     add_executable(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_3} WIN32
-		${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
-		${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
+        ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
     )
 
-	source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example FILES ${MVVM_MFC_EXAMPLE_3_MVVM_CODE})
-	source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View\\Control FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
-	source_group(MVVM_Example\\View_Model\\Command FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
-	source_group(MVVM_Example\\View_Model\\Event FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
+    source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example FILES ${MVVM_MFC_EXAMPLE_3_MVVM_CODE})
+    source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View\\Control FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
+    source_group(MVVM_Example\\View_Model\\Command FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
+    source_group(MVVM_Example\\View_Model\\Event FILES ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
 
 endif(WIN32 AND BUILD_STD_MFC_EXAMPLES)
 

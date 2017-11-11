@@ -111,12 +111,12 @@ inline u2string convert_u16string_to_u2string(const std::u16string& s)
         bytes.push_back(static_cast<char>(c%256));
     }
 #else
-	for (std::u16string::const_iterator i = s.begin(); i != s.end(); ++i)
-	{
-		const char2_t c = *i;
+    for (std::u16string::const_iterator i = s.begin(); i != s.end(); ++i)
+    {
+        const char2_t c = *i;
         bytes.push_back(static_cast<char>(c/256));
         bytes.push_back(static_cast<char>(c%256));
-	}
+    }
 #endif  // #if !defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
     typedef deletable_facet<std::codecvt_utf16<int16_t>> facet_type;
@@ -333,12 +333,12 @@ inline std::u32string convert_u16string_to_u32string(const std::u16string& s)
         bytes.push_back(static_cast<char>(c%256));
     }
 #else
-	for (std::u16string::const_iterator i = s.begin(); i != s.end(); ++i)
-	{
-		const char16_t c = *i;
+    for (std::u16string::const_iterator i = s.begin(); i != s.end(); ++i)
+    {
+        const char16_t c = *i;
         bytes.push_back(static_cast<char>(c/256));
         bytes.push_back(static_cast<char>(c%256));
-	}
+    }
 #endif  // #if !defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1800)  // See implementation note #1
     typedef deletable_facet<std::codecvt_utf16<int32_t>> facet_type;
