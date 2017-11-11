@@ -32,14 +32,14 @@ public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 public:
-    explicit spaceship(const m::command_manager::ptr& cmd_mgr)
+    explicit spaceship(const m::command_manager::ptr& command_manager_)
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , name("name")
         , captain("captain")
         , impulse_speed_command("impulse_speed_command")
         , warp_speed_command("warp_speed_command")
-        , _command_manager(cmd_mgr)
+        , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
         , _name()
@@ -50,18 +50,18 @@ public:
         bind_properties();
     }
 
-    spaceship(const m::command_manager::ptr& cmd_mgr, const std::string& nme, const std::string& cpt)
+    spaceship(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , name("name")
         , captain("captain")
         , impulse_speed_command("impulse_speed_command")
         , warp_speed_command("warp_speed_command")
-        , _command_manager(cmd_mgr)
+        , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
-        , _name(nme)
-        , _captain(cpt)
+        , _name(name_)
+        , _captain(captain_)
         , _impulse_speed_command()
         , _warp_speed_command()
     {
@@ -243,13 +243,13 @@ private:
 
 #if BOOST_MSVC > 1500
 #define TEST_CASE_SHIPYARD \
-    m::command_manager::ptr cmd_mgr = m::command_manager::create(); \
+    m::command_manager::ptr command_mgr = m::command_manager::create(); \
 \
-    boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "USS Enterprise", "Captain James T Kirk"); \
-    boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Millennium Falcon", "Han Solo"); \
-    boost::shared_ptr<spaceship> ship3 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Executor", "Lord Darth Vader"); \
-    boost::shared_ptr<spaceship> ship4 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Battlestar Galactica", "Admiral William Adama"); \
-    boost::shared_ptr<spaceship> ship5 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
+    boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "USS Enterprise", "Captain James T Kirk"); \
+    boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Millennium Falcon", "Han Solo"); \
+    boost::shared_ptr<spaceship> ship3 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Executor", "Lord Darth Vader"); \
+    boost::shared_ptr<spaceship> ship4 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Battlestar Galactica", "Admiral William Adama"); \
+    boost::shared_ptr<spaceship> ship5 = boost::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
 \
     boost::shared_ptr<spaceship_observer> observer = boost::make_shared<spaceship_observer>(); \
 \
@@ -260,13 +260,13 @@ private:
     observer->connect(ship5);
 #else
 #define TEST_CASE_SHIPYARD \
-    m::command_manager::ptr cmd_mgr = m::command_manager::create(); \
+    m::command_manager::ptr command_mgr = m::command_manager::create(); \
 \
-    boost::shared_ptr<spaceship> ship1(new spaceship(cmd_mgr, "USS Enterprise", "Captain James T Kirk")); \
-    boost::shared_ptr<spaceship> ship2(new spaceship(cmd_mgr, "Millennium Falcon", "Han Solo")); \
-    boost::shared_ptr<spaceship> ship3(new spaceship(cmd_mgr, "Executor", "Lord Darth Vader")); \
-    boost::shared_ptr<spaceship> ship4(new spaceship(cmd_mgr, "Battlestar Galactica", "Admiral William Adama")); \
-    boost::shared_ptr<spaceship> ship5(new spaceship(cmd_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
+    boost::shared_ptr<spaceship> ship1(new spaceship(command_mgr, "USS Enterprise", "Captain James T Kirk")); \
+    boost::shared_ptr<spaceship> ship2(new spaceship(command_mgr, "Millennium Falcon", "Han Solo")); \
+    boost::shared_ptr<spaceship> ship3(new spaceship(command_mgr, "Executor", "Lord Darth Vader")); \
+    boost::shared_ptr<spaceship> ship4(new spaceship(command_mgr, "Battlestar Galactica", "Admiral William Adama")); \
+    boost::shared_ptr<spaceship> ship5(new spaceship(command_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds")); \
 \
     boost::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
 \
@@ -289,7 +289,7 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to USS Enterprise
-    cmd_mgr->post(ship1->warp_speed_command);
+    command_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -297,7 +297,7 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -306,8 +306,8 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->post(ship2->warp_speed_command);
-    cmd_mgr->post(ship4->warp_speed_command);
+    command_mgr->post(ship2->warp_speed_command);
+    command_mgr->post(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -315,7 +315,7 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(true, ship2->at_warp_speed());
@@ -324,7 +324,7 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship5->at_warp_speed());
 
     // Give impulse speed command_interface to USS Enterprise
-    cmd_mgr->post(ship1->impulse_speed_command);
+    command_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());
@@ -333,7 +333,7 @@ TEST(boost_command_manager_test_suite, test_command_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(true, ship1->at_impulse_speed());

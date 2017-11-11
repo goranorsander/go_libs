@@ -45,9 +45,9 @@ public:
     virtual ~fleet_commander_changed_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit fleet_commander_changed_event(const std::string& flt_cmd)
+    explicit fleet_commander_changed_event(const std::string& fleet_commander_)
         : m::event(fleet_commander_changed_event_type)
-        , fleet_commander("fleet_commander", flt_cmd)
+        , fleet_commander("fleet_commander", fleet_commander_)
     {
     }
 
@@ -55,16 +55,16 @@ public:
     rop::value_property<std::string> fleet_commander;
 
 public:
-    static ptr create(const std::string& flt_cmd)
+    static ptr create(const std::string& fleet_commander_)
     {
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            explicit make_shared_enabler(const std::string& flt_cmd) : this_type(flt_cmd) {}
+            explicit make_shared_enabler(const std::string& fleet_commander_) : this_type(fleet_commander_) {}
         };
 
-        return std::make_shared<make_shared_enabler, const std::string&>(flt_cmd);
+        return std::make_shared<make_shared_enabler, const std::string&>(fleet_commander_);
     }
 };
 
@@ -79,27 +79,27 @@ public:
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
 private:
-    fleet_commander(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
+    fleet_commander(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_)
         : u::noncopyable_nonmovable()
         , commander("commander")
-        , battle("battle", btl)
-        , _event_manager(event_mgr)
-        , _commander(cmd)
+        , battle("battle", battle_)
+        , _event_manager(event_manager_)
+        , _commander(commander_)
     {
         bind_properties();
     }
 
 public:
-    static ptr create(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
+    static ptr create(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_)
     {
         struct make_shared_enabler
             : public fleet_commander
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl) : fleet_commander(event_mgr, cmd, btl) {}
+            make_shared_enabler(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_) : fleet_commander(event_manager_, commander_, battle_) {}
         };
 
-        return std::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_mgr, cmd, btl);
+        return std::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_manager_, commander_, battle_);
     }
 
 private:
@@ -107,12 +107,12 @@ private:
     {
         commander.getter([this]() { return _commander; });
         commander.setter(
-            [this](const std::string& cmd)
+            [this](const std::string& commander_)
             {
-                if(cmd != _commander)
+                if(commander_ != _commander)
                 {
-                    _commander = cmd;
-                    _event_manager->post(fleet_commander_changed_event::create(cmd));
+                    _commander = commander_;
+                    _event_manager->post(fleet_commander_changed_event::create(commander_));
                 }
             });
     }
@@ -133,12 +133,12 @@ public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
-    spaceship(const std::string& nme, const std::string& cpt, const std::string& flt_cmd)
+    spaceship(const std::string& name_, const std::string& captain_, const std::string& fleet_commander_)
         : u::noncopyable_nonmovable()
         , fleet_commander("fleet_commander")
-        , name("name", nme)
-        , captain("captain", cpt)
-        , _fleet_commander(flt_cmd)
+        , name("name", name_)
+        , captain("captain", captain_)
+        , _fleet_commander(fleet_commander_)
     {
         bind_properties();
     }
@@ -171,7 +171,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::event_manager::ptr event_mgr = m::event_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
 \
     std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const std::string&, const std::string&, const std::string&>("Millennium Falcon", "Han Solo", "General Jan Dodonna"); \
     std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const std::string&, const std::string&, const std::string&>("X-Wing Red Leader", "Garven Dreis", "General Jan Dodonna"); \
@@ -206,7 +206,7 @@ TEST(std_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::string("General Jan Dodonna"), ship8->fleet_commander());
 
     // Change fleet commander
-    flt_cmd->commander("Admiral Gial Ackbar");
+    fleet_cmdr->commander("Admiral Gial Ackbar");
 
     EXPECT_EQ(std::string("General Jan Dodonna"), ship1->fleet_commander());
     EXPECT_EQ(std::string("General Jan Dodonna"), ship2->fleet_commander());

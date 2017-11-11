@@ -67,9 +67,9 @@ void main_frame_view::on_close_dialog(const dialog_view::pointer dialog)
         dialog_view_container_type::iterator it = std::find_if(data_context()->dialogs()->begin(), data_context()->dialogs()->end(), [dialog](const dialog_view::ptr& d) { return d.get() == dialog; });
         if (it != data_context()->dialogs()->end())
         {
-            m::wcommand_interface::ptr cmd = data_context()->delete_dialog_view_command;
-            std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(cmd->parameters())->dialog = *it;
-            data_context()->command_manager()->post(cmd);
+            m::wcommand_interface::ptr command = data_context()->delete_dialog_view_command;
+            std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(command->parameters())->dialog = *it;
+            data_context()->command_manager()->post(command);
         }
     }
 }

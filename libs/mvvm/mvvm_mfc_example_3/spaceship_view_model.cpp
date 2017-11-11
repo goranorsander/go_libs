@@ -168,12 +168,12 @@ void spaceship_view_model::bind_properties()
                     main_frame_view_model::ptr vm = _main_frame_vm.lock();
                     if(vm)
                     {
-                        m::wcommand_manager::ptr cmd_mgr = vm->command_manager();
-                        if(cmd_mgr)
+                        m::wcommand_manager::ptr command_mgr = vm->command_manager();
+                        if(command_mgr)
                         {
-                            m::wcommand_interface::ptr cmd = vm->open_add_equipment_view_command;
-                            std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(cmd->parameters())->spaceship = data_context();
-                            cmd_mgr->post(cmd);
+                            m::wcommand_interface::ptr commander_ = vm->open_add_equipment_view_command;
+                            std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(commander_->parameters())->spaceship = data_context();
+                            command_mgr->post(commander_);
                         }
                     }
                 },
