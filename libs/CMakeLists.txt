@@ -10,6 +10,7 @@
 
 add_subdirectory(boost_mvvm)
 add_subdirectory(boost_property)
+add_subdirectory(boost_signals)
 add_subdirectory(boost_utility)
 add_subdirectory(mvvm)
 add_subdirectory(property)

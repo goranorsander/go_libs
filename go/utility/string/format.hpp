@@ -17,6 +17,12 @@
 #include <memory>
 #include <string>
 
+//
+// IMPLEMENTATION NOTE #1
+//
+// error C2338: va_start argument must not have reference type and must not be parenthesized
+//
+
 namespace go
 {
 namespace utility
@@ -24,7 +30,7 @@ namespace utility
 namespace string
 {
 
-inline std::string format(const std::string fmt_str, ...)
+inline std::string format(const std::string fmt_str, ...)  // See implementation note #1
 {
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<char[]> formatted;
@@ -56,7 +62,7 @@ inline std::string format(const std::string fmt_str, ...)
     return std::string(formatted.get());
 }
 
-inline std::wstring format(const std::wstring fmt_str, ...)
+inline std::wstring format(const std::wstring fmt_str, ...)  // See implementation note #1
 {
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<wchar_t[]> formatted;

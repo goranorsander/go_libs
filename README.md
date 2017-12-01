@@ -50,8 +50,10 @@ CMake configuration:
  * **BOOST_MAJOR_VERSION** = 1
  * **BOOST_MINOR_VERSION** = 65
  * **BOOST_PATCH_LEVEL** = 1
+ * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
+ * **BUILD_STD_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_TESTS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
@@ -76,8 +78,10 @@ The CMake configurations I use:
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 65 | 65 | 65 | 65| 65 | 65 | 65 | 65 | 65 | 65 
 **BOOST_PATCH_LEVEL** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
 **BUILD_BOOST_TESTS** | X | X | X | X| X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X| X | | | | | 
 **BUILD_STD_TESTS** | X | X | X | X| X | X | X | X | | 
 **USE_SOLUTION_FOLDERS** | X | X | X | X| X | X | X | | | 
@@ -113,7 +117,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.4.3
+  * Visual Studio 2017, Community Edition, version 15.4.4
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.9.2
   * Visual Studio 2008 Professional Edition

@@ -8,6 +8,26 @@
 #  See accompanying file LICENSE.md.
 #
 
+if(BUILD_STD_EXAMPLES)
+
+    include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
+
+    ########################################################
+    #  libs/mvvm/std_signals_example                       #
+    ########################################################
+
+    set(PROJECT_STD_SIGNALS_EXAMPLE ${STD_PROJECT_NAME_STR}_signals_example)
+
+    file(GLOB STD_SIGNALS_EXAMPLE_SRC_FILES std_signals_example/*.cpp)
+    add_executable(${PROJECT_STD_SIGNALS_EXAMPLE} ${STD_SIGNALS_EXAMPLE_SRC_FILES})
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_SIGNALS_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_SIGNALS_EXAMPLE})
+
+endif(BUILD_STD_EXAMPLES)
+
 if(BUILD_STD_TESTS)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})

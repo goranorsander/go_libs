@@ -45,6 +45,8 @@ public:
     typedef basic_event_manager<S, M> this_type;
     typedef typename std::shared_ptr<basic_event_manager<S, M>> ptr;
     typedef typename std::weak_ptr<basic_event_manager<S, M>> wptr;
+    typedef typename std::shared_ptr<basic_event<S>> basic_event_ptr;
+    typedef typename std::function<void(const std::shared_ptr<basic_event<S>>&)> basic_event_function_type;
 
 public:
     virtual ~basic_event_manager();
@@ -55,7 +57,7 @@ protected:
 public:
     static ptr create();
 
-    event_subscription_key_type subscribe(const S& event_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>&& fire_event_function);
+    event_subscription_key_type subscribe(const S& event_type, basic_event_function_type&& fire_event_function);
     void unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key);
     void unsubscribe_all(const S& event_type);
     void unsubscribe_all();
@@ -67,7 +69,7 @@ public:
 private:
     mutable mutex_type _events_guard;
     event_subscription_key_type _next_event_subscription_key;
-    std::map<S, std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>>> _subscriptions;
+    std::map<S, std::map<event_subscription_key_type, basic_event_function_type>> _subscriptions;
     std::deque<std::pair<std::weak_ptr<basic_event<S>>, std::shared_ptr<basic_event<S>>>> _events;
 };
 
@@ -123,14 +125,14 @@ inline event_subscription_key_type basic_event_manager<std::wstring, std::recurs
 }
 
 template<class S, typename M>
-inline event_subscription_key_type basic_event_manager<S, M>::subscribe(const S& event_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>&& fire_event_function)
+inline event_subscription_key_type basic_event_manager<S, M>::subscribe(const S& event_type, basic_event_function_type&& fire_event_function)
 {
     const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
         S key = event_type;
-        auto value = std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<S>>&)>>();
+        auto value = std::map<event_subscription_key_type, basic_event_function_type>();
         _subscriptions[key] = value;
         event_type_subscriptions = _subscriptions.find(event_type);
     }
@@ -264,7 +266,7 @@ inline void basic_event_manager<S, M>::fire(const std::shared_ptr<basic_event<S>
             for(auto& subscription : event_type_subscriptions->second)
             {
                 auto f = subscription.second;
-                auto s = std::bind(std::forward<std::function<void(const std::shared_ptr<basic_event<S>>&)>>(f), e);
+                auto s = std::bind(std::forward<basic_event_function_type>(f), e);
                 s();
             }
             event_fired(e);

@@ -26,17 +26,20 @@
     <Text Include="..\..\libs\mvvm\CMakeLists.txt">
       <Filter>CMake Configuration\libs\mvvm</Filter>
     </Text>
-    <Text Include="..\..\libs\property\CMakeLists.txt">
-      <Filter>CMake Configuration\libs\signals</Filter>
-    </Text>
-    <Text Include="..\..\libs\signals\CMakeLists.txt">
-      <Filter>CMake Configuration\libs\property</Filter>
-    </Text>
     <Text Include="..\..\libs\boost_utility\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_utility</Filter>
     </Text>
     <Text Include="..\..\libs\utility\CMakeLists.txt">
       <Filter>CMake Configuration\libs\utility</Filter>
+    </Text>
+    <Text Include="..\..\libs\boost_signals\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_signals</Filter>
+    </Text>
+    <Text Include="..\..\libs\property\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\property</Filter>
+    </Text>
+    <Text Include="..\..\libs\signals\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\signals</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +75,9 @@
     </Filter>
     <Filter Include="CMake Configuration\libs\utility">
       <UniqueIdentifier>{af6fd419-bd69-4bf7-9ed0-5c59f9b33655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_signals">
+      <UniqueIdentifier>{81b9630f-32bc-4865-b8fd-dc3681884fbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
