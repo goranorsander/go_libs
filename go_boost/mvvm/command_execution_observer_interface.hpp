@@ -50,12 +50,12 @@ public:
 };
 
 template<>
-inline basic_command_execution_observer_interface<std::string>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, boost::recursive_mutex>::~basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex>::~basic_command_execution_observer_interface()
 {
 }
 
@@ -65,12 +65,12 @@ inline basic_command_execution_observer_interface<S, M>::~basic_command_executio
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::string>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, boost::recursive_mutex>::basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex>::basic_command_execution_observer_interface()
 {
 }
 

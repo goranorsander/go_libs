@@ -38,7 +38,7 @@ class basic_notify_command_execution_interface
 public:
     typedef S string_type;
     typedef M mutex_type;
-    typedef basic_notify_command_execution_interface<S> this_type;
+    typedef basic_notify_command_execution_interface<S, M> this_type;
     typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, M>>&)> command_executed_signal;
     typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, M>>&)> command_not_executed_signal;
 

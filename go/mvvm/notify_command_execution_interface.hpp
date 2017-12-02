@@ -38,7 +38,7 @@ class basic_notify_command_execution_interface
 public:
     typedef S string_type;
     typedef M mutex_type;
-    typedef basic_notify_command_execution_interface<S> this_type;
+    typedef basic_notify_command_execution_interface<S, M> this_type;
     typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_executed_signal;
     typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_not_executed_signal;
 

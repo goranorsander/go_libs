@@ -51,12 +51,12 @@ public:
 };
 
 template<>
-inline basic_command_execution_observer_interface<std::string>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, std::recursive_mutex>::~basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, std::recursive_mutex>::~basic_command_execution_observer_interface()
 {
 }
 
