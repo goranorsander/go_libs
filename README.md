@@ -100,8 +100,8 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 17.0.5 Gellivara, Xfce, 64 bits
-  * cmake version 3.9.2
+* Manjaro Linux 17.1pre3 Hakoila, Xfce, 64 bits
+  * cmake version 3.9.6
   * clang version 5.0.0 (tags/RELEASE_500/final)
   * gcc (GCC) 7.2.0
   * GNU Make 4.2.1
@@ -117,7 +117,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.4.4
+  * Visual Studio 2017, Community Edition, version 15.4.5
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.9.2
   * Visual Studio 2008 Professional Edition
