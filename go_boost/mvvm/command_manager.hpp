@@ -34,7 +34,7 @@ typedef basic_command_manager<std::wstring, boost::recursive_mutex> wcommand_man
 
 template<class S, typename M>
 class basic_command_manager
-    : public basic_notify_command_execution_interface<S>
+    : public basic_notify_command_execution_interface<S, M>
     , private go_boost::utility::noncopyable_nonmovable
 {
 public:
@@ -83,7 +83,7 @@ inline basic_command_manager<S, M>::~basic_command_manager()
 
 template<>
 inline basic_command_manager<std::string, boost::recursive_mutex>::basic_command_manager()
-    : basic_notify_command_execution_interface<std::string>()
+    : basic_notify_command_execution_interface<std::string, boost::recursive_mutex>()
     , go_boost::utility::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
@@ -93,7 +93,7 @@ inline basic_command_manager<std::string, boost::recursive_mutex>::basic_command
 
 template<>
 inline basic_command_manager<std::wstring, boost::recursive_mutex>::basic_command_manager()
-    : basic_notify_command_execution_interface<std::wstring>()
+    : basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>()
     , go_boost::utility::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
@@ -103,7 +103,7 @@ inline basic_command_manager<std::wstring, boost::recursive_mutex>::basic_comman
 
 template<class S, typename M>
 inline basic_command_manager<S, M>::basic_command_manager()
-    : basic_notify_command_execution_interface<S>()
+    : basic_notify_command_execution_interface<S, M>()
     , go_boost::utility::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()

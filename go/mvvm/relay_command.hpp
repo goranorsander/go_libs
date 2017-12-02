@@ -24,16 +24,17 @@ namespace go
 namespace mvvm
 {
 
-template<class S> class basic_relay_command;
-typedef basic_relay_command<std::string> relay_command;
-typedef basic_relay_command<std::wstring> relay_wcommand;
+template<class S, typename M> class basic_relay_command;
+typedef basic_relay_command<std::string, std::recursive_mutex> relay_command;
+typedef basic_relay_command<std::wstring, std::recursive_mutex> relay_wcommand;
 
-template<class S>
+template<class S, typename M = std::recursive_mutex>
 class basic_relay_command
-    : public basic_command_interface<S>
+    : public basic_command_interface<S, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef basic_relay_command<string_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
@@ -47,7 +48,7 @@ protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params);
 
 public:
-    static std::shared_ptr<basic_relay_command<S>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params);
+    static std::shared_ptr<basic_relay_command<S, M>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params);
 
 private:
     virtual bool can_execute(const std::shared_ptr<command_parameters>& params);
@@ -60,49 +61,49 @@ private:
 };
 
 template<>
-inline basic_relay_command<std::string>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
-    : basic_command_interface<std::string>(cmd_name, params)
+inline basic_relay_command<std::string, std::recursive_mutex>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+    : basic_command_interface<std::string, std::recursive_mutex>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
 }
 
 template<>
-inline basic_relay_command<std::wstring>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
-    : basic_command_interface<std::wstring>(cmd_name, params)
+inline basic_relay_command<std::wstring, std::recursive_mutex>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+    : basic_command_interface<std::wstring, std::recursive_mutex>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
 }
 
-template<class S>
-inline basic_relay_command<S>::basic_relay_command(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
-    : basic_command_interface<S>(cmd_name, params)
+template<class S, typename M>
+inline basic_relay_command<S, M>::basic_relay_command(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+    : basic_command_interface<S, M>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
 }
 
 template<>
-inline bool basic_relay_command<std::string>::can_execute(const std::shared_ptr<command_parameters>& params)
+inline bool basic_relay_command<std::string, std::recursive_mutex>::can_execute(const std::shared_ptr<command_parameters>& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
 
 template<>
-inline bool basic_relay_command<std::wstring>::can_execute(const std::shared_ptr<command_parameters>& params)
+inline bool basic_relay_command<std::wstring, std::recursive_mutex>::can_execute(const std::shared_ptr<command_parameters>& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
 
-template<class S>
-inline bool basic_relay_command<S>::can_execute(const std::shared_ptr<command_parameters>& params)
+template<class S, typename M>
+inline bool basic_relay_command<S, M>::can_execute(const std::shared_ptr<command_parameters>& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
 
 template<>
-inline void basic_relay_command<std::string>::execute(const std::shared_ptr<command_parameters>& params)
+inline void basic_relay_command<std::string, std::recursive_mutex>::execute(const std::shared_ptr<command_parameters>& params)
 {
     if(_execute)
     {
@@ -111,7 +112,7 @@ inline void basic_relay_command<std::string>::execute(const std::shared_ptr<comm
 }
 
 template<>
-inline void basic_relay_command<std::wstring>::execute(const std::shared_ptr<command_parameters>& params)
+inline void basic_relay_command<std::wstring, std::recursive_mutex>::execute(const std::shared_ptr<command_parameters>& params)
 {
     if(_execute)
     {
@@ -119,8 +120,8 @@ inline void basic_relay_command<std::wstring>::execute(const std::shared_ptr<com
     }
 }
 
-template<class S>
-inline void basic_relay_command<S>::execute(const std::shared_ptr<command_parameters>& params)
+template<class S, typename M>
+inline void basic_relay_command<S, M>::execute(const std::shared_ptr<command_parameters>& params)
 {
     if(_execute)
     {
@@ -129,7 +130,7 @@ inline void basic_relay_command<S>::execute(const std::shared_ptr<command_parame
 }
 
 template<>
-inline std::shared_ptr<basic_relay_command<std::string>> basic_relay_command<std::string>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+inline std::shared_ptr<basic_relay_command<std::string, std::recursive_mutex>> basic_relay_command<std::string, std::recursive_mutex>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
 {
     struct make_shared_enabler
         : public this_type
@@ -142,7 +143,7 @@ inline std::shared_ptr<basic_relay_command<std::string>> basic_relay_command<std
 }
 
 template<>
-inline std::shared_ptr<basic_relay_command<std::wstring>> basic_relay_command<std::wstring>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+inline std::shared_ptr<basic_relay_command<std::wstring, std::recursive_mutex>> basic_relay_command<std::wstring, std::recursive_mutex>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
 {
     struct make_shared_enabler
         : public this_type
@@ -154,8 +155,8 @@ inline std::shared_ptr<basic_relay_command<std::wstring>> basic_relay_command<st
     return std::make_shared<make_shared_enabler, const std::wstring&, const execute_command_signature&, const can_execute_command_signature&, const std::shared_ptr<command_parameters>&>(cmd_name, execute_command, can_execute_command, params);
 }
 
-template<class S>
-inline std::shared_ptr<basic_relay_command<S>> basic_relay_command<S>::create(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
+template<class S, typename M>
+inline std::shared_ptr<basic_relay_command<S, M>> basic_relay_command<S, M>::create(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const std::shared_ptr<command_parameters>& params)
 {
     struct make_shared_enabler
         : public this_type

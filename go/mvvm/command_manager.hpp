@@ -34,7 +34,7 @@ typedef basic_command_manager<std::wstring, std::recursive_mutex> wcommand_manag
 
 template<class S, typename M = std::recursive_mutex>
 class basic_command_manager
-    : public basic_notify_command_execution_interface<S>
+    : public basic_notify_command_execution_interface<S, M>
     , public go::utility::noncopyable_nonmovable
 {
 public:
