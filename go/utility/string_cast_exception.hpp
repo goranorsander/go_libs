@@ -4,7 +4,7 @@
 //
 //  string_cast_exception.hpp
 //
-//  Copyright 2017 GÃ¶ran Orsander
+//  Copyright 2017 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -25,14 +25,10 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~string_cast_exception() GO_NOEXCEPT_OR_NOTHROW;
+    virtual ~string_cast_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
 
     explicit string_cast_exception(const std::string& message);
 };
-
-inline string_cast_exception::~string_cast_exception() GO_NOEXCEPT_OR_NOTHROW
-{
-}
 
 inline string_cast_exception::string_cast_exception(const std::string& message)
     : go::exception::exception(message)
