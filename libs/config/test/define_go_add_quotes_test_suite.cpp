@@ -18,9 +18,9 @@ namespace
 
 TEST(std_define_go_add_quotes_test_suite, test_define_go_add_quotes)
 {
-    #if defined(GO_ADD_QUOTES)
+    #if defined(GO_TO_STRING)
     const std::string expected_define("abc123");
-    const std::string go_test_define_value(GO_ADD_QUOTES(GO_TEST_DEFINE_VALUE));
+    const std::string go_test_define_value(GO_TO_STRING(GO_TEST_DEFINE_VALUE));
     EXPECT_EQ(expected_define, go_test_define_value);
     #else
     EXPECT_TRUE(false);

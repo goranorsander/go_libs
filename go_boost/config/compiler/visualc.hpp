@@ -69,7 +69,7 @@ __pragma(message(_message_))
 #endif  // #if (_MSC_VER < 1900)
 
 // C++11 support
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120)
 #define GO_BOOST_DEFAULT_CONSTRUCTOR {}
 #define GO_BOOST_DEFAULT_DESTRUCTOR {}
 #else
