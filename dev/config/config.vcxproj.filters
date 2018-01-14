@@ -41,6 +41,9 @@
     <ClInclude Include="..\..\go\config\platform\windows.hpp">
       <Filter>go\config\platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\config\preprocessor.hpp">
+      <Filter>go\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

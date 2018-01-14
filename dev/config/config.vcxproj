@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\go\config\compiler\visualc.hpp" />
     <ClInclude Include="..\..\go\config\platform\linux.hpp" />
     <ClInclude Include="..\..\go\config\platform\windows.hpp" />
+    <ClInclude Include="..\..\go\config\preprocessor.hpp" />
     <ClInclude Include="..\..\go\config\select_compiler_config.hpp" />
     <ClInclude Include="..\..\go\config\select_platform_config.hpp" />
   </ItemGroup>

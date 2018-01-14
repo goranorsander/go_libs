@@ -191,6 +191,7 @@ set(GO_CONFIG_DIR ${GO_DIR}/config)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_CONFIG_HPP
+    ${GO_CONFIG_DIR}/preprocessor.hpp
     ${GO_CONFIG_DIR}/select_compiler_config.hpp
     ${GO_CONFIG_DIR}/select_platform_config.hpp
 )
