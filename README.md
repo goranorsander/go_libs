@@ -36,7 +36,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.65.1** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.66.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -45,11 +45,11 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_65_1)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_65_1\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_66_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_66_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 65
- * **BOOST_PATCH_LEVEL** = 1
+ * **BOOST_MINOR_VERSION** = 66
+ * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
@@ -75,24 +75,24 @@ The CMake configurations I use:
 
 **SETTING \ TOOLSET**      |clang 5.0.0|gcc 7.2.0|MSYS2 MinGW gcc 7.2.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
-**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 65 | 65 | 65 | 65| 65 | 65 | 65 | 65 | 65 | 65 
-**BOOST_PATCH_LEVEL** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
-**BUILD_BOOST_EXAMPLES** | X | X | X | X| X | X | X | X | X | X 
-**BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
-**BUILD_BOOST_TESTS** | X | X | X | X| X | X | X | X | X | X 
-**BUILD_STD_EXAMPLES** | X | X | X | X| X | X | X | X | X | X 
-**BUILD_STD_MFC_EXAMPLES** | | | | X| X | | | | | 
-**BUILD_STD_TESTS** | X | X | X | X| X | X | X | X | | 
-**USE_SOLUTION_FOLDERS** | X | X | X | X| X | X | X | | | 
-**BUILD_GMOCK** | X | X | X | X| X | X | X | X | X | X 
-**BUILD_GTEST** | X | X | X | X| X | X | X | X | X | X 
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
+**BOOST_MINOR_VERSION** | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | | | | X | 
+**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_MFC_EXAMPLES** | | | | X | X | | | | | 
+**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | | 
+**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | | | 
+**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X 
+**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_SHARED_LIBS** | | | | | | | | | |
 **gmock_build_tests** | | | | | | | | | |
 **gtest_build_samples** | X | X | | | | | | | |
 **gtest_build_tests** | | | | | | | | | |
 **gtest_disable_pthreads** | | | X | | | | | | |
-**gtest_force_shared_crt** | | | | X| X | X | X | X | X | X 
+**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X 
 **gtest_hide_internal_symbols** | | | | | | | | | |
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
@@ -100,14 +100,14 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 17.1pre3 Hakoila, Xfce, 64 bits
-  * cmake version 3.9.6
-  * clang version 5.0.0 (tags/RELEASE_500/final)
-  * gcc (GCC) 7.2.0
+* Manjaro Linux 17.1.1 Hakoila, Xfce, 64 bits
+  * cmake version 3.10.1
+  * clang version 5.0.1 (tags/RELEASE_501/final)
+  * gcc (GCC) 7.2.1 20171224
   * GNU Make 4.2.1
   * Code::Blocks 16.01
 * Windows 10 Professional, 64 bit
-  * cmake version 3.9.2
+  * cmake version 3.10.1
   * MSYS2 64bit 20161025
   * gcc.exe (Rev1, Built by MSYS2 project) 7.2.0
   * GNU Make 4.2.1
@@ -117,9 +117,9 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.4.5
+  * Visual Studio 2017, Community Edition, version 15.5.3
 * Windows 7 Enterprise, 64 bit
-  * cmake version 3.9.2
+  * cmake version 3.10.1
   * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST
