@@ -52,7 +52,7 @@ protected:
 public:
     static boost::shared_ptr<basic_relay_command<S, M>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const boost::shared_ptr<command_parameters>& params);
 
-private:
+protected:
     virtual bool can_execute(const boost::shared_ptr<command_parameters>& params);
 
     virtual void execute(const boost::shared_ptr<command_parameters>& params);
