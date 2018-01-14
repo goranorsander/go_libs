@@ -11,7 +11,7 @@
 //  See accompanying file LICENSE.md.
 //
 
-#define GO_ADD_QUOTES_HELPER(s) #s
-#define GO_ADD_QUOTES(s) GO_ADD_QUOTES_HELPER(s)
+#define GO_TO_STRING_HELPER(s) #s
+#define GO_TO_STRING(s) GO_TO_STRING_HELPER(s)
 
 #endif  // #ifndef GO_CONFIG_PREPROCESSOR_HPP_INCLUDED

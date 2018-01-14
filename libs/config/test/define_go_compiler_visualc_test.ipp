@@ -177,8 +177,8 @@ TEST(std_define_go_compiler_test_suite, test_define_go_msvc_atl_ver)
 {
     #if defined(GO_MSVC_ATL_VER)
     #if defined(_ATL_VER)
-    const std::string expected_version(GO_ADD_QUOTES(_MFX_VER));
-    const std::string go_msvc_atl_ver(GO_ADD_QUOTES(GO_MSVC_ATL_VER));
+    const std::string expected_version(GO_TO_STRING(_MFX_VER));
+    const std::string go_msvc_atl_ver(GO_TO_STRING(GO_MSVC_ATL_VER));
     EXPECT_EQ(expected_version, go_msvc_atl_ver);
     #else
     EXPECT_TRUE(false);
@@ -216,8 +216,8 @@ TEST(std_define_go_compiler_test_suite, test_define_go_msvc_mfc_ver)
 {
     #if defined(GO_MSVC_MFC_VER)
     #if defined(_MFC_VER)
-    const std::string expected_version(GO_ADD_QUOTES(_MFX_VER));
-    const std::string go_msvc_mfc_ver(GO_ADD_QUOTES(GO_MSVC_MFC_VER));
+    const std::string expected_version(GO_TO_STRING(_MFX_VER));
+    const std::string go_msvc_mfc_ver(GO_TO_STRING(GO_MSVC_MFC_VER));
     EXPECT_EQ(expected_version, go_msvc_mfc_ver);
     #else
     EXPECT_TRUE(false);
