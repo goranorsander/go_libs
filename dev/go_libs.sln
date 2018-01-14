@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property", "property\property.vcxproj", "{26553CCB-6522-42AB-AE06-356EAFCED11F}"
 EndProject
@@ -92,6 +92,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{60DF1746-E866-4178-8FE1-CC39C66E8D57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E2D5652A-FF4C-4301-B3BF-73C8EC650F8C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception_tests", "exception\exception_tests.vcxproj", "{F427A655-42DF-48CD-A6A4-DC79440773CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -397,6 +399,14 @@ Global
 		{599DE86A-15E0-4715-9B46-FAC84B541C4A}.Release|Win32.Build.0 = Release|Win32
 		{599DE86A-15E0-4715-9B46-FAC84B541C4A}.Release|x64.ActiveCfg = Release|x64
 		{599DE86A-15E0-4715-9B46-FAC84B541C4A}.Release|x64.Build.0 = Release|x64
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Debug|Win32.Build.0 = Debug|Win32
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Debug|x64.ActiveCfg = Debug|x64
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Debug|x64.Build.0 = Debug|x64
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Release|Win32.ActiveCfg = Release|Win32
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Release|Win32.Build.0 = Release|Win32
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Release|x64.ActiveCfg = Release|x64
+		{F427A655-42DF-48CD-A6A4-DC79440773CA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -444,6 +454,7 @@ Global
 		{04DAA2E1-F5BC-49C6-811B-E295FF683261} = {C7C40CB5-D9A5-4184-A1A5-39B0C3A7F1A5}
 		{60DF1746-E866-4178-8FE1-CC39C66E8D57} = {330E9A6B-0EBA-4902-B9B6-67C0A33AF2C7}
 		{E2D5652A-FF4C-4301-B3BF-73C8EC650F8C} = {C7C40CB5-D9A5-4184-A1A5-39B0C3A7F1A5}
+		{F427A655-42DF-48CD-A6A4-DC79440773CA} = {E2D5652A-FF4C-4301-B3BF-73C8EC650F8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {314278FE-C3E4-4B26-8801-E3D86961A835}
