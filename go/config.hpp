@@ -27,4 +27,6 @@
 #include GO_PLATFORM_CONFIG
 #endif  // #ifdef GO_PLATFORM_CONFIG
 
+#include "go/config/preprocessor.hpp"
+
 #endif  // #ifndef GO_CONFIG_HPP_INCLUDED

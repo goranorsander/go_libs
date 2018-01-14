@@ -52,6 +52,7 @@ __pragma(message(_message_))
 #define GO_TYPENAME
 #else
 #define GO_TYPENAME typename
+#define GO_TYPENAME_REQUIRED 1
 #endif  // #if (_MSC_VER < 1900)
 
 // C++ issue workarounds

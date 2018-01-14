@@ -65,6 +65,7 @@ __pragma(message(_message_))
 #define GO_BOOST_TYPENAME
 #else
 #define GO_BOOST_TYPENAME typename
+#define GO_BOOST_TYPENAME_REQUIRED 1
 #endif  // #if (_MSC_VER < 1900)
 
 // C++11 support

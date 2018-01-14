@@ -28,6 +28,7 @@ _Pragma message _message_
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
+#define GO_TYPENAME_REQUIRED 1
 
 // C++ issue workarounds
 #define GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE 1

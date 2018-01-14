@@ -34,6 +34,7 @@
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
+#define GO_TYPENAME_REQUIRED 1
 
 // C++ issue workarounds
 #define GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
