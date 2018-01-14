@@ -32,7 +32,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW;
+    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
 
     exception(const exception& other);
     explicit exception(const char* message);
@@ -50,10 +50,6 @@ public:
 private:
     std::string _message;
 };
-
-inline exception::~exception() GO_NOEXCEPT_OR_NOTHROW
-{
-}
 
 inline exception::exception(const exception& other)
     : std::exception(other)

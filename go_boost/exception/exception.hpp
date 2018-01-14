@@ -32,7 +32,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() GO_BOOST_DEFAULT_DESTRUCTOR
+    virtual ~exception() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_DESTRUCTOR
 
     exception(const exception& other);
     explicit exception(const char* message);
