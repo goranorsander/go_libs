@@ -230,7 +230,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command_interface to USS Enterprise
+    // Give warp speed command to USS Enterprise
     command_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
@@ -247,7 +247,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
+    // Give warp speed command to Millennium Falcon and Battlestar Galactica
     command_mgr->post(ship2->warp_speed_command);
     command_mgr->post(ship4->warp_speed_command);
 
@@ -265,7 +265,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_wcommand_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give impulse speed command_interface to USS Enterprise
+    // Give impulse speed command to USS Enterprise
     command_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
@@ -303,7 +303,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Give Mr Spock command_interface of USS Enterprise
+    // Give Mr Spock command of USS Enterprise
     ship1->captain = L"Mr Spock";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Mr Spock"));
@@ -318,7 +318,7 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Return command_interface of USS Enterprise to Captain Kirk
+    // Return command of USS Enterprise to Captain Kirk
     ship1->captain = L"Captain James T Kirk";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Captain James T Kirk"));

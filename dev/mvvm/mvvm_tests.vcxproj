@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\libs\mvvm\test\command_execution_observer_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\command_manager_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\command_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\command_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\event_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_array_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_deque_test_suite.cpp" />
@@ -37,6 +39,7 @@
     <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_multiset_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_unordered_set_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\observable_vector_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\mvvm\test\relay_command_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_lambda_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wcommand_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\mvvm\test\wevent_manager_test_suite.cpp" />
