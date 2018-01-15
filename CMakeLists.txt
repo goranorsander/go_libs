@@ -63,6 +63,18 @@ elseif(MSVC)
 endif()
 
 ########################################################
+#  architecture                                        #
+########################################################
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    # 64 bits
+    set(LIBBOOST_ARCHITECTURE "x64")
+elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    # 32 bits
+    set(LIBBOOST_ARCHITECTURE "x32")
+endif()
+
+########################################################
 #  compiler version                                    #
 ########################################################
 
@@ -86,29 +98,29 @@ endif(CMAKE_COMPILER_IS_CLANG)
 if(CMAKE_COMPILER_IS_CLANG)
     set(BOOST_CLANG_VERSION "${CLANG_MAJOR}${CLANG_MINOR}")
     if(${BOOST_PATCH_LEVEL} STREQUAL "0")
-        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
     else(${BOOST_PATCH_LEVEL} STREQUAL "0")
-        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
     endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 elseif(CMAKE_COMPILER_IS_GNUCC)
     set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
     if(${BOOST_PATCH_LEVEL} STREQUAL "0")
         if(MSYS OR MINGW)
-            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
         else(MSYS OR MINGW)
-            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
         endif(MSYS OR MINGW)
     else(${BOOST_PATCH_LEVEL} STREQUAL "0")
         if(MSYS OR MINGW)
-            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
         else(MSYS OR MINGW)
-            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
-            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
         endif(MSYS OR MINGW)
     endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 endif(CMAKE_COMPILER_IS_CLANG)
