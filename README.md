@@ -73,7 +73,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 5.0.0|gcc 7.2.0|MSYS2 MinGW gcc 7.2.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 5.0.1|gcc 7.2.1|MSYS2 MinGW gcc 7.2.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 
@@ -106,6 +106,12 @@ My development environment and toolset details:
   * gcc (GCC) 7.2.1 20171224
   * GNU Make 4.2.1
   * Code::Blocks 16.01
+  * Visual Studio Code 1.19.2 - with extensions:
+    * C/C++ 0.14.5 (C/C++ IntelliSense, debugging, and code browsing)
+    * CMake 0.0.17 (CMake language support)
+    * CMake Tools 0.10.4 (Extended CMake support)
+    * Git Lens 7.5.3 (Supercharge VSC's Git capabilities)
+    * Markdown All in One 1.0.2 (All you need to write Markdown)
 * Windows 10 Professional, 64 bit
   * cmake version 3.10.1
   * MSYS2 64bit 20161025
@@ -118,6 +124,7 @@ My development environment and toolset details:
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.5.3
+  * Visual Studio Code 1.19.2 - with same extensions as in Linux environment
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.10.1
   * Visual Studio 2008 Professional Edition
