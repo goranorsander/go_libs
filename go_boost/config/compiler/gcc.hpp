@@ -24,6 +24,10 @@
 
 #if defined(BOOST_GCC)
 
+#if !defined(GO_BOOST_COMP_GCC_MINGW)
+#define GO_BOOST_COMP_GCC 1
+#endif  // #if !defined(GO_BOOST_COMP_GCC_MINGW)
+
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
 __warning _message_
