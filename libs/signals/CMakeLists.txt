@@ -20,6 +20,7 @@ if(BUILD_STD_EXAMPLES)
 
     file(GLOB STD_SIGNALS_EXAMPLE_SRC_FILES std_signals_example/*.cpp)
     add_executable(${PROJECT_STD_SIGNALS_EXAMPLE} ${STD_SIGNALS_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_SIGNALS_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_SIGNALS_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
@@ -40,6 +41,7 @@ if(BUILD_STD_TESTS)
 
     file(GLOB STD_TEST_SIGNALS_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_SIGNALS_NAME} ${STD_TEST_SIGNALS_SRC_FILES})
+    set_target_properties(${PROJECT_STD_TEST_SIGNALS_NAME} PROPERTIES FOLDER go_libs/std/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

@@ -20,6 +20,7 @@ if(BUILD_STD_TESTS)
 
     file(GLOB STD_TEST_UTILITY_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_UTILITY_NAME} ${STD_TEST_UTILITY_SRC_FILES})
+    set_target_properties(${PROJECT_STD_TEST_UTILITY_NAME} PROPERTIES FOLDER go_libs/std/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

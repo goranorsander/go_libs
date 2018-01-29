@@ -20,6 +20,7 @@ if(BUILD_STD_EXAMPLES)
 
     file(GLOB STD_EVENT_MANAGER_EXAMPLE_SRC_FILES std_event_manager_example/*.cpp)
     add_executable(${PROJECT_STD_EVENT_MANAGER_EXAMPLE} ${STD_EVENT_MANAGER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_EVENT_MANAGER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_EVENT_MANAGER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
@@ -74,6 +75,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
         ${MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
+    set_target_properties(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_1} PROPERTIES FOLDER go_libs/std/examples)
 
     source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
     source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
@@ -119,6 +121,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
         ${MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
     )
+    set_target_properties(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_2} PROPERTIES FOLDER go_libs/std/examples)
 
     source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
     source_group(MVVM_Example\\Model FILES ${MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
@@ -267,6 +270,7 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
         ${MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
     )
+    set_target_properties(${PROJECT_STD_EXAMPLE_MVVM_MFC_EXAMPLE_3} PROPERTIES FOLDER go_libs/std/examples)
 
     source_group(MFC_Application_Code FILES ${MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
     source_group(MVVM_Example FILES ${MVVM_MFC_EXAMPLE_3_MVVM_CODE})
@@ -291,6 +295,7 @@ if(BUILD_STD_TESTS)
 
     file(GLOB STD_TEST_MVVM_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_MVVM_NAME} ${STD_TEST_MVVM_SRC_FILES})
+    set_target_properties(${PROJECT_STD_TEST_MVVM_NAME} PROPERTIES FOLDER go_libs/std/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

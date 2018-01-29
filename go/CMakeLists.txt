@@ -48,7 +48,7 @@ add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
     ${GO_DIR_UTILITY_STRING_DETAIL_FILES}
 )
 
-set_target_properties(${PROJECT_GO_LIBS_STD_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(${PROJECT_GO_LIBS_STD_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/std/libs)
 
 source_group(go FILES ${GO_DIR_FILES})
 source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})

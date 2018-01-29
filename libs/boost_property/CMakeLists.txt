@@ -17,10 +17,11 @@ if(BUILD_BOOST_EXAMPLES)
     #  libs/mvvm/boost_proxy_property_example              #
     ########################################################
 
-    set(PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE  ${BOOST_PROJECT_NAME_STR}_proxy_property_example)
+    set(PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE ${BOOST_PROJECT_NAME_STR}_proxy_property_example)
 
     file(GLOB BOOST_PROXY_PROPERTY_EXAMPLE_SRC_FILES boost_proxy_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE} ${BOOST_PROXY_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties (${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
@@ -68,6 +69,7 @@ if(BUILD_BOOST_EXAMPLES)
 
     file(GLOB BOOST_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES boost_reference_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE} ${BOOST_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
@@ -115,6 +117,7 @@ if(BUILD_BOOST_EXAMPLES)
 
     file(GLOB BOOST_VALUE_PROPERTY_EXAMPLE_SRC_FILES boost_value_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE} ${BOOST_VALUE_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
@@ -169,6 +172,7 @@ if(BUILD_BOOST_TESTS)
 
     file(GLOB BOOST_TEST_PROPERTY_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_BOOST_TEST_PROPERTY_NAME} ${BOOST_TEST_PROPERTY_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_TEST_PROPERTY_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

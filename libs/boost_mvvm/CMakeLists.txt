@@ -21,6 +21,7 @@ if(BUILD_BOOST_EXAMPLES)
 
     file(GLOB BOOST_EVENT_MANAGER_EXAMPLE_SRC_FILES boost_event_manager_example/*.cpp)
     add_executable(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} ${BOOST_EVENT_MANAGER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
@@ -110,6 +111,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
         ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
+    set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} PROPERTIES FOLDER go_libs/boost/examples)
 
     source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
     source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
@@ -156,6 +158,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
             ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
             ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
         )
+        set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2} PROPERTIES FOLDER go_libs/boost/examples)
 
         source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
         source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
@@ -305,6 +308,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
         ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
     )
+    set_target_properties(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} PROPERTIES FOLDER go_libs/boost/examples)
 
     source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
     source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
@@ -337,6 +341,7 @@ if(BUILD_BOOST_TESTS)
 
     file(GLOB BOOST_TEST_MVVM_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_BOOST_TEST_MVVM_NAME} ${BOOST_TEST_MVVM_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_TEST_MVVM_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

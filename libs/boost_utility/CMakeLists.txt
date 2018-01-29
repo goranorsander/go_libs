@@ -21,6 +21,7 @@ if(BUILD_BOOST_TESTS)
 
     file(GLOB BOOST_TEST_UTILITY_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_BOOST_TEST_UTILITY_NAME} ${BOOST_TEST_UTILITY_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_TEST_UTILITY_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

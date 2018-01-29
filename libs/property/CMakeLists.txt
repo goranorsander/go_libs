@@ -16,10 +16,11 @@ if(BUILD_STD_EXAMPLES)
     #  libs/mvvm/std_proxy_property_example                #
     ########################################################
 
-    set(PROJECT_STD_PROXY_PROPERTY_EXAMPLE  ${STD_PROJECT_NAME_STR}_proxy_property_example)
+    set(PROJECT_STD_PROXY_PROPERTY_EXAMPLE ${STD_PROJECT_NAME_STR}_proxy_property_example)
 
     file(GLOB STD_PROXY_PROPERTY_EXAMPLE_SRC_FILES std_proxy_property_example/*.cpp)
     add_executable(${PROJECT_STD_PROXY_PROPERTY_EXAMPLE} ${STD_PROXY_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_PROXY_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_PROXY_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
@@ -34,6 +35,7 @@ if(BUILD_STD_EXAMPLES)
 
     file(GLOB STD_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES std_reference_property_example/*.cpp)
     add_executable(${PROJECT_STD_REFERENCE_PROPERTY_EXAMPLE} ${STD_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_REFERENCE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_REFERENCE_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
@@ -48,6 +50,7 @@ if(BUILD_STD_EXAMPLES)
 
     file(GLOB STD_VALUE_PROPERTY_EXAMPLE_SRC_FILES std_value_property_example/*.cpp)
     add_executable(${PROJECT_STD_VALUE_PROPERTY_EXAMPLE} ${STD_VALUE_PROPERTY_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_VALUE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_VALUE_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
@@ -68,6 +71,7 @@ if(BUILD_STD_TESTS)
 
     file(GLOB STD_TEST_PROPERTY_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_PROPERTY_NAME} ${STD_TEST_PROPERTY_SRC_FILES})
+    set_target_properties(${PROJECT_STD_TEST_PROPERTY_NAME} PROPERTIES FOLDER go_libs/std/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)

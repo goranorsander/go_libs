@@ -21,6 +21,7 @@ if(BUILD_BOOST_EXAMPLES)
 
     file(GLOB BOOST_SIGNALS_EXAMPLE_SRC_FILES boost_signals_example/*.cpp)
     add_executable(${PROJECT_BOOST_SIGNALS_EXAMPLE} ${BOOST_SIGNALS_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_SIGNALS_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
