@@ -52,6 +52,11 @@ if(BUILD_BOOST_EXAMPLES)
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
         find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
     else(CMAKE_COMPILER_IS_CLANG)
@@ -113,6 +118,12 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
     )
     set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} PROPERTIES FOLDER go_libs/boost/examples)
 
+    if(MSVC_VERSION GREATER 1900)
+        # using Visual Studio 2017 C++
+        # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+    endif(MSVC_VERSION GREATER 1900)
+
     source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
     source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
     source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
@@ -159,6 +170,12 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
             ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
         )
         set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2} PROPERTIES FOLDER go_libs/boost/examples)
+
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
 
         source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
         source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
@@ -310,6 +327,12 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
     )
     set_target_properties(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} PROPERTIES FOLDER go_libs/boost/examples)
 
+    if(MSVC_VERSION GREATER 1900)
+        # using Visual Studio 2017 C++
+        # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+    endif(MSVC_VERSION GREATER 1900)
+
     source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
     source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
     source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
@@ -375,6 +398,11 @@ if(BUILD_BOOST_TESTS)
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
         if(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)

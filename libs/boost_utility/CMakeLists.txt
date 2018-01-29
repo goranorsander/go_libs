@@ -55,6 +55,11 @@ if(BUILD_BOOST_TESTS)
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
         if(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_BOOST_TEST_UTILITY_NAME} gtest)
             target_link_libraries(${PROJECT_BOOST_TEST_UTILITY_NAME} gtest_main)

@@ -52,6 +52,11 @@ if(BUILD_BOOST_EXAMPLES)
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
         find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_SIGNALS_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
     else(CMAKE_COMPILER_IS_CLANG)
