@@ -32,7 +32,7 @@ public:
 
     virtual ~fleet_commander() = default;
 
-    fleet_commander(const std::string& commander_)
+    explicit fleet_commander(const std::string& commander_)
         : commander("commander", commander_)
         , fire_lasers()
     {
