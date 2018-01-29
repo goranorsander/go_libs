@@ -19,6 +19,8 @@
 
 #if defined(BOOST_MSVC)
 
+#define GO_BOOST_COMP_MSVC 1
+
 #if (_MSC_VER == 1500)
 #define GO_BOOST_COMP_MSVC_VC90 1
 #define GO_BOOST_IDE_MS_VS2008 1
