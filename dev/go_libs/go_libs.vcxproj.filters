@@ -41,6 +41,18 @@
     <Text Include="..\..\libs\signals\CMakeLists.txt">
       <Filter>CMake Configuration\libs\signals</Filter>
     </Text>
+    <Text Include="..\..\libs\boost_config\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_config</Filter>
+    </Text>
+    <Text Include="..\..\libs\boost_exception\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_exception</Filter>
+    </Text>
+    <Text Include="..\..\libs\config\CMakeLists.txt">
+      <Filter>CMake Configuration\config</Filter>
+    </Text>
+    <Text Include="..\..\libs\exception\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\exception</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Configuration">
@@ -78,6 +90,18 @@
     </Filter>
     <Filter Include="CMake Configuration\libs\boost_signals">
       <UniqueIdentifier>{81b9630f-32bc-4865-b8fd-dc3681884fbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_config">
+      <UniqueIdentifier>{93425676-99be-413e-8bb5-c58b6e44554a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_exception">
+      <UniqueIdentifier>{80439aae-6b7d-41fc-9f80-5780bc467752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\config">
+      <UniqueIdentifier>{f1929e3e-fe2f-435a-bca3-3e1d62200f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\exception">
+      <UniqueIdentifier>{b139fa5f-c088-4bb6-812c-25c9253ea1ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
