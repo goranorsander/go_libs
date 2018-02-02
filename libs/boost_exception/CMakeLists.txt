@@ -11,6 +11,7 @@
 if(BUILD_BOOST_TESTS)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
+    link_directories(${BOOST_LIBRARYDIR})
 
     ########################################################
     #  libs/boost_exception/test                           #

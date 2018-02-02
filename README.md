@@ -101,9 +101,10 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 My development environment and toolset details:
 
 * Manjaro Linux 17.1.1 Hakoila, Xfce, 64 bits
-  * cmake version 3.10.1
+  * cmake version 3.10.2
   * clang version 5.0.1 (tags/RELEASE_501/final)
-  * gcc (GCC) 7.2.1 20171224
+  * gcc (GCC) 7.2.1 20180116
+  * git 2.16.1
   * GNU Make 4.2.1
   * Code::Blocks 16.01
   * Visual Studio Code 1.19.2 - with extensions:
@@ -113,11 +114,13 @@ My development environment and toolset details:
     * Git Lens 7.5.3 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 1.0.2 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.10.1
+  * cmake version 3.10.2
   * MSYS2 64bit 20161025
   * gcc (Rev1, Built by MSYS2 project) 7.2.0
+  * git 2.14.1.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 16.01
+  * TortoiseGit 2.5.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
@@ -126,7 +129,7 @@ My development environment and toolset details:
   * Visual Studio 2017, Community Edition, version 15.5.5
   * Visual Studio Code 1.19.2 - with same extensions as in Linux environment
 * Windows 7 Enterprise, 64 bit
-  * cmake version 3.10.1
+  * cmake version 3.10.2
   * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST
