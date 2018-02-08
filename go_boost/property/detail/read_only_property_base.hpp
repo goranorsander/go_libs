@@ -4,7 +4,7 @@
 //
 //  read_only_property_base.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 namespace go_boost
 {
@@ -59,11 +59,7 @@ public:
         return get();
     }
 
-private:
-    this_type& operator=(const this_type& v)
-    {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
-    }
+#include <go_boost/property/detail/deleted_assignment_operator.hpp>
 
 public:
     value_type get() const
@@ -77,6 +73,11 @@ public:
     }
 
 protected:
+    storage_policy& storage()
+    {
+        return _s;
+    }
+
     const storage_policy& storage() const
     {
         return _s;

@@ -4,7 +4,7 @@
 //
 //  spaceship_model.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -32,7 +32,7 @@ protected:
     spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 private:
-    explicit spaceship_model() = delete;
+     spaceship_model() = delete;
 
 public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);

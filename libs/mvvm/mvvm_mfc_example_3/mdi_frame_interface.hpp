@@ -4,7 +4,7 @@
 //
 //  mdi_frame_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -27,7 +27,7 @@ public:
     virtual ~mdi_frame_interface() = 0;
 
 protected:
-    mdi_frame_interface() = default;
+    mdi_frame_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id) = 0;

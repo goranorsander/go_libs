@@ -4,7 +4,7 @@
 //
 //  child_frame_view.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -23,7 +23,7 @@ class child_frame_view
 {
     DECLARE_DYNCREATE(child_frame_view)
 public:
-    virtual ~child_frame_view() = default;
+    virtual ~child_frame_view() GO_DEFAULT_DESTRUCTOR
     child_frame_view();
 
 public:

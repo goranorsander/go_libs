@@ -1,7 +1,7 @@
 //
 //  observable_deque_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -31,9 +31,7 @@ public:
     typedef deque_observer<T> this_type;
     typedef typename m::observable_deque<T>::ptr observable_deque_ptr_type;
 
-    virtual ~deque_observer()
-    {
-    }
+    virtual ~deque_observer() GO_DEFAULT_DESTRUCTOR
 
     deque_observer()
         : _on_container_changed_slot_key(0)

@@ -1,7 +1,7 @@
 //
 //  wobservable_unordered_multimap_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -17,7 +17,7 @@ TEST(std_wobservable_unordered_multimap_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-#include <go/utility/iterator/forward_iterator.hpp>
+#include <go/utility/iterator/try_move_iterator_backward.hpp>
 
 namespace i = go::utility::iterator;
 namespace m = go::mvvm;
@@ -33,9 +33,7 @@ public:
     typedef unordered_multimap_observer<K, T> this_type;
     typedef typename m::wobservable_unordered_multimap<K, T>::ptr wobservable_unordered_multimap_ptr_type;
 
-    virtual ~unordered_multimap_observer()
-    {
-    }
+    virtual ~unordered_multimap_observer() GO_DEFAULT_DESTRUCTOR
 
     unordered_multimap_observer()
         : _on_container_changed_slot_key(0)

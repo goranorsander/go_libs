@@ -1,7 +1,7 @@
 //
 //  observable_unordered_multiset_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -17,7 +17,7 @@ TEST(std_observable_unordered_multiset_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-#include <go/utility/iterator/forward_iterator.hpp>
+#include <go/utility/iterator/try_move_iterator_backward.hpp>
 
 namespace i = go::utility::iterator;
 namespace m = go::mvvm;
@@ -33,9 +33,7 @@ public:
     typedef unordered_multiset_observer<T> this_type;
     typedef typename m::observable_unordered_multiset<T>::ptr observable_unordered_multiset_ptr_type;
 
-    virtual ~unordered_multiset_observer()
-    {
-    }
+    virtual ~unordered_multiset_observer() GO_DEFAULT_DESTRUCTOR
 
     unordered_multiset_observer()
         : _on_container_changed_slot_key(0)

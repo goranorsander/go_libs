@@ -4,7 +4,7 @@
 //
 //  mvvm_mfc_example_3.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -28,7 +28,7 @@ class mvvm_mfc_example_3_app
     : public CWinAppEx
 {
 public:
-    virtual ~mvvm_mfc_example_3_app() = default;
+    virtual ~mvvm_mfc_example_3_app() GO_DEFAULT_DESTRUCTOR
     mvvm_mfc_example_3_app();
 
 public:

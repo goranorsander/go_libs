@@ -1,7 +1,7 @@
 //
 //  wevent_manager_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -42,12 +42,12 @@ public:
     typedef GO_TYPENAME std::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
-    virtual ~fleet_commander_changed_event() {}
+    virtual ~fleet_commander_changed_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit fleet_commander_changed_event(const std::wstring& flt_cmd)
+    explicit fleet_commander_changed_event(const std::wstring& fleet_commander_)
         : m::wevent(fleet_commander_changed_event_type)
-        , fleet_commander(L"fleet_commander", flt_cmd)
+        , fleet_commander(L"fleet_commander", fleet_commander_)
     {
     }
 
@@ -55,16 +55,16 @@ public:
     rop::value_wproperty<std::wstring> fleet_commander;
 
 public:
-    static ptr create(const std::wstring& flt_cmd)
+    static ptr create(const std::wstring& fleet_commander_)
     {
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(const std::wstring& flt_cmd) : this_type(flt_cmd) {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            explicit make_shared_enabler(const std::wstring& fleet_commander_) : this_type(fleet_commander_) {}
         };
 
-        return std::make_shared<make_shared_enabler, const std::wstring&>(flt_cmd);
+        return std::make_shared<make_shared_enabler, const std::wstring&>(fleet_commander_);
     }
 };
 
@@ -76,30 +76,30 @@ public:
     typedef std::weak_ptr<fleet_commander> wptr;
 
 public:
-    virtual ~fleet_commander() {}
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
 private:
-    fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    fleet_commander(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_)
         : u::noncopyable_nonmovable()
         , commander(L"commander")
-        , battle(L"battle", btl)
-        , _event_manager(event_mgr)
-        , _commander(cmd)
+        , battle(L"battle", battle_)
+        , _event_manager(event_manager_)
+        , _commander(commander_)
     {
         bind_properties();
     }
 
 public:
-    static ptr create(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    static ptr create(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_)
     {
         struct make_shared_enabler
             : public fleet_commander
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : fleet_commander(event_mgr, cmd, btl) {}
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_) : fleet_commander(event_manager_, commander_, battle_) {}
         };
 
-        return std::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_mgr, cmd, btl);
+        return std::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_manager_, commander_, battle_);
     }
 
 private:
@@ -107,12 +107,12 @@ private:
     {
         commander.getter([this]() { return _commander; });
         commander.setter(
-            [this](const std::wstring& cmd)
+            [this](const std::wstring& commander_)
         {
-            if(cmd != _commander)
+            if(commander_ != _commander)
             {
-                _commander = cmd;
-                _event_manager->post(fleet_commander_changed_event::create(cmd));
+                _commander = commander_;
+                _event_manager->post(fleet_commander_changed_event::create(commander_));
             }
         });
     }
@@ -130,15 +130,15 @@ class spaceship
     : public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() {}
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
-    spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
+    spaceship(const std::wstring& name_, const std::wstring& captain_, const std::wstring& fleet_commander_)
         : u::noncopyable_nonmovable()
         , fleet_commander(L"fleet_commander")
-        , name(L"name", nme)
-        , captain(L"captain", cpt)
-        , _fleet_commander(flt_cmd)
+        , name(L"name", name_)
+        , captain(L"captain", captain_)
+        , _fleet_commander(fleet_commander_)
     {
         bind_properties();
     }
@@ -171,7 +171,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::wevent_manager::ptr event_mgr = m::wevent_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
 \
     std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna"); \
     std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna"); \
@@ -206,7 +206,7 @@ TEST(std_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship8->fleet_commander());
 
     // Change fleet commander
-    flt_cmd->commander(L"Admiral Gial Ackbar");
+    fleet_cmdr->commander(L"Admiral Gial Ackbar");
 
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship1->fleet_commander());
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship2->fleet_commander());

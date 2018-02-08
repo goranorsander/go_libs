@@ -15,6 +15,9 @@
     <Filter Include="go\utility\string">
       <UniqueIdentifier>{a91e823d-1e38-4086-8869-af726a8b2468}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\utility\string\detail">
+      <UniqueIdentifier>{1367001a-85f9-440b-bccd-c2ea167294da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp">
@@ -23,7 +26,7 @@
     <ClInclude Include="..\..\go\utility\sanity.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\utility\iterator\forward_iterator.hpp">
+    <ClInclude Include="..\..\go\utility\iterator\try_move_iterator_backward.hpp">
       <Filter>go\utility\iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\utility\noncopyable.hpp">
@@ -47,5 +50,53 @@
     <ClInclude Include="..\..\go\utility\value_guard.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\string_cast.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\string_cast.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\string_cast.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert_linux.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\string_convert_windows.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\deletable_facet.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\u8string.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string_cast_exception.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\detail\string_cast_fwd.hpp">
+      <Filter>go\utility\string\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\primitive_type_specializer.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\u2string.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\algorithm.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\ascii.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\iterator\erase.hpp">
+      <Filter>go\utility\iterator</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
 </Project>

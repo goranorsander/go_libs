@@ -4,7 +4,7 @@
 //
 //  slot.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

@@ -4,7 +4,7 @@
 //
 //  exception.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <exception>
 #include <string>
@@ -32,7 +32,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception();
+    virtual ~exception() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_DESTRUCTOR
 
     exception(const exception& other);
     explicit exception(const char* message);
@@ -42,17 +42,13 @@ public:
     exception& operator=(const exception& other);
 
 public:
-    virtual const char* what() const;
+    virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW;
 
     virtual std::string message() const;
 
 private:
     std::string _message;
 };
-
-inline exception::~exception()
-{
-}
 
 inline exception::exception(const exception& other)
     : std::exception(other)
@@ -82,7 +78,7 @@ inline exception& exception::operator=(const exception& other)
     return *this;
 }
 
-inline const char* exception::what() const
+inline const char* exception::what() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _message.c_str();
 }

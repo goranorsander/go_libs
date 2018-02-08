@@ -1,7 +1,7 @@
 //
 //  open_add_equipment_view_command_parameters.cpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -22,7 +22,7 @@ open_add_equipment_view_command_parameters::ptr open_add_equipment_view_command_
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const spaceship_interface::ptr& spaceship_) : this_type(spaceship_) {}
     };
 

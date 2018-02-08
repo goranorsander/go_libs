@@ -1,7 +1,7 @@
 //
 //  main_frame_view.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -28,9 +28,7 @@ class matches_dialog_view
     : std::unary_function<dialog_view::ptr, bool>
 {
 public:
-    virtual ~matches_dialog_view()
-    {
-    }
+    virtual ~matches_dialog_view() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit matches_dialog_view(const dialog_view::pointer dialog)
         : std::unary_function<dialog_view::ptr, bool>()
@@ -99,9 +97,9 @@ void main_frame_view::on_close_dialog(const dialog_view::pointer dialog)
         dialog_view_container_type::iterator it = std::find_if(data_context()->dialogs()->begin(), data_context()->dialogs()->end(), matches_dialog_view(dialog));
         if (it != data_context()->dialogs()->end())
         {
-            m::wcommand_interface::ptr cmd = data_context()->delete_dialog_view_command;
-            boost::dynamic_pointer_cast<delete_dialog_view_command_parameters>(cmd->parameters())->dialog = *it;
-            data_context()->command_manager()->post(cmd);
+            m::wcommand_interface::ptr command = data_context()->delete_dialog_view_command;
+            boost::dynamic_pointer_cast<delete_dialog_view_command_parameters>(command->parameters())->dialog = *it;
+            data_context()->command_manager()->post(command);
         }
     }
 }

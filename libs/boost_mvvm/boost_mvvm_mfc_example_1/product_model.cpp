@@ -1,7 +1,7 @@
 //
 //  product_model.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -33,8 +33,8 @@ product_model::ptr product_model::create()
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : this_type() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+        make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
     return boost::make_shared<make_shared_enabler>();

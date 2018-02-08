@@ -4,7 +4,7 @@
 //
 //  product_view_model.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -34,7 +34,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~product_view_model() = default;
+    virtual ~product_view_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     product_view_model();

@@ -1,7 +1,7 @@
 //
 //  wobservable_multimap_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -25,9 +25,7 @@ public:
     typedef multimap_observer<K, T> this_type;
     typedef typename m::wobservable_multimap<K, T>::ptr wobservable_multimap_ptr_type;
 
-    virtual ~multimap_observer()
-    {
-    }
+    virtual ~multimap_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     multimap_observer()
         : _last_action(m::undefined_notify_container_changed_action)

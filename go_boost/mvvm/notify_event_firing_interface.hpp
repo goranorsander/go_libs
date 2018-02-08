@@ -4,7 +4,7 @@
 //
 //  notify_event_firing_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/signals2.hpp>
 #include <go_boost/mvvm/event.hpp>

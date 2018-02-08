@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "./../dev"
+		},
+		{
+			"path": "./../go"
+		},
+		{
+			"path": "./../go_boost"
+		},
+		{
+			"path": "./../libs"
+		}
+	],
+	"settings": {
+		"[cpp]":  {
+			"files.encoding": "iso88591"
+		},
+		"files.associations": {
+			"*.ipp": "cpp"
+		},
+		"files.exclude": {
+			"*.code-workspace": true,
+			"*.cppcheck": true,
+			"*.sln": true,
+			"**/*.vcxproj": true,
+			"**/*.vcxproj.filters": true,
+			"**/.vscode/**": true
+		}
+	}
+}

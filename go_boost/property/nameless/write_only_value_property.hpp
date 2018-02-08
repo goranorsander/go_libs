@@ -4,7 +4,7 @@
 //
 //  write_only_value_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/property/nameless/detail/write_only_property_base.hpp>
 #include <go_boost/property/policy/value.hpp>
@@ -38,9 +38,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-    virtual ~value_property()
-    {
-    }
+    virtual ~value_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     value_property()
         : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>())

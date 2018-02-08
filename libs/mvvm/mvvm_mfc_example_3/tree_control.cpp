@@ -1,7 +1,7 @@
 //
 //  tree_control.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -20,7 +20,7 @@ static char THIS_FILE[] = __FILE__;
 tree_control::tree_control(tree_control_observer* observer)
     : CTreeCtrl()
     , _observer(observer)
-    , _hSelectedItem(NULL)
+    , _hSelectedItem(nullptr)
 {
 }
 
@@ -37,9 +37,9 @@ BOOL tree_control::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
     BOOL bRes = CTreeCtrl::OnNotify(wParam, lParam, pResult);
 
     NMHDR* pNMHDR = (NMHDR*)lParam;
-    ASSERT(pNMHDR != NULL);
+    ASSERT(pNMHDR != nullptr);
 
-    if(pNMHDR && pNMHDR->code == TTN_SHOW && GetToolTips() != NULL)
+    if(pNMHDR && pNMHDR->code == TTN_SHOW && GetToolTips() != nullptr)
     {
         GetToolTips()->SetWindowPos(&wndTop, -1, -1, -1, -1, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOSIZE);
     }
@@ -49,12 +49,12 @@ BOOL tree_control::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 
 void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
 {
-    if(_observer == NULL)
+    if(_observer == nullptr)
     {
         return;
     }
     const HTREEITEM hItem = GetSelectedItem();
-    if(hItem != NULL)
+    if(hItem != nullptr)
     {
         _observer->on_click(hItem, GetItemData(hItem), GetClickPos(), mb_left);
     }
@@ -62,12 +62,12 @@ void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
 
 void tree_control::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
 {
-    if(_observer == NULL)
+    if(_observer == nullptr)
     {
         return;
     }
     const HTREEITEM hItem = GetSelectedItem();
-    if(hItem != NULL)
+    if(hItem != nullptr)
     {
         _observer->on_double_click(hItem, GetItemData(hItem), GetClickPos(), mb_left);
     }
@@ -75,12 +75,12 @@ void tree_control::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
 
 void tree_control::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
 {
-    if(_observer == NULL)
+    if(_observer == nullptr)
     {
         return;
     }
     const HTREEITEM hItem = GetSelectedItem();
-    if(hItem != NULL)
+    if(hItem != nullptr)
     {
         SelectItem(hItem);
         _observer->on_click(hItem, GetItemData(hItem), GetClickPos(), mb_right);
@@ -89,12 +89,12 @@ void tree_control::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
 
 void tree_control::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
 {
-    if(_observer == NULL)
+    if(_observer == nullptr)
     {
         return;
     }
     const HTREEITEM hItem = GetSelectedItem();
-    if(hItem != NULL)
+    if(hItem != nullptr)
     {
         _observer->on_double_click(hItem, GetItemData(hItem), GetClickPos(), mb_right);
     }
@@ -102,16 +102,16 @@ void tree_control::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
 
 void tree_control::OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
 {
-    if(_observer == NULL)
+    if(_observer == nullptr)
     {
         return;
     }
-    if(_hSelectedItem != NULL)
+    if(_hSelectedItem != nullptr)
     {
         _observer->on_deselect(_hSelectedItem, GetItemData(_hSelectedItem));
     }
     _hSelectedItem = GetSelectedItem();
-    if(_hSelectedItem != NULL)
+    if(_hSelectedItem != nullptr)
     {
         _observer->on_selected(_hSelectedItem, GetItemData(_hSelectedItem));
     }

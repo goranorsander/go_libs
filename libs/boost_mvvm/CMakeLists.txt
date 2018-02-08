@@ -1,12 +1,72 @@
 #
 #  CMakeLists.txt
 #
-#  Copyright 2016-2017 Göran Orsander
+#  Copyright 2016-2018 Göran Orsander
 #
 #  This file is part of the GO.libraries.
 #  Distributed under the GO Software License, Version 2.0.
 #  See accompanying file LICENSE.md.
 #
+
+if(BUILD_BOOST_EXAMPLES)
+
+    include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${COMMON_INCLUDES})
+    link_directories(${BOOST_LIBRARYDIR})
+
+    ########################################################
+    #  libs/boost_mvvm/boost_event_manager_example         #
+    ########################################################
+
+    set(PROJECT_BOOST_EVENT_MANAGER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_event_manager_example)
+
+    file(GLOB BOOST_EVENT_MANAGER_EXAMPLE_SRC_FILES boost_event_manager_example/*.cpp)
+    add_executable(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} ${BOOST_EVENT_MANAGER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
+
+    if(CMAKE_COMPILER_IS_CLANG)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE}
+            ${LIBBOOST_LOCALE}
+            ${LIBBOOST_SYSTEM}
+            ${CMAKE_THREAD_LIBS_INIT}
+            )
+    elseif(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                find_package(Threads)
+                target_link_libraries(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE}
+                    ${LIBBOOST_LOCALE}
+                    ${LIBBOOST_SYSTEM}
+                    ${CMAKE_THREAD_LIBS_INIT}
+                    )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        else(WIN32)
+            find_package(Threads)
+            target_link_libraries(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE}
+                ${LIBBOOST_LOCALE}
+                ${LIBBOOST_SYSTEM}
+                ${CMAKE_THREAD_LIBS_INIT}
+                )
+        endif(WIN32)
+    elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+    else(CMAKE_COMPILER_IS_CLANG)
+        # Unsupported compiler
+        message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
+    endif(CMAKE_COMPILER_IS_CLANG)
+
+    add_test(test_mvvm ${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE})
+
+endif(BUILD_BOOST_EXAMPLES)
 
 if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
@@ -23,7 +83,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1 ${BOOST_PROJECT_NAME_STR}_MFC_example_1)
 
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.ico
         ./boost_mvvm_mfc_example_1/res/boost_mvvm_mfc_example_1.rc2
         ./boost_mvvm_mfc_example_1/boost_mvvm_mfc_example_1.cpp
@@ -33,34 +93,41 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_1/stdafx.cpp
         ./boost_mvvm_mfc_example_1/stdafx.h
         ./boost_mvvm_mfc_example_1/targetver.h
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_model.cpp
         ./boost_mvvm_mfc_example_1/product_model.hpp
         ./boost_mvvm_mfc_example_1/product_repository.cpp
         ./boost_mvvm_mfc_example_1/product_repository.hpp
         ./boost_mvvm_mfc_example_1/product_repository_interface.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_1/product_view.cpp
         ./boost_mvvm_mfc_example_1/product_view.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_1/product_view_model.cpp
         ./boost_mvvm_mfc_example_1/product_view_model.hpp
-	)
-	
-    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
-		${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
     )
+    
+    add_executable(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} WIN32
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE}
+    )
+    set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_1} PROPERTIES FOLDER go_libs/boost/examples)
 
-	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
+    if(MSVC_VERSION GREATER 1900)
+        # using Visual Studio 2017 C++
+        # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+    endif(MSVC_VERSION GREATER 1900)
+
+    source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_1_MVVM_VIEW_MODEL_CODE})
 
     ########################################################
     #  libs/boost_mvvm/boost_mvvm_mfc_example_2            #
@@ -102,6 +169,13 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
             ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_CODE}
             ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_VIEW_MODEL_CODE}
         )
+        set_target_properties(${PROJECT_BOOST_EXAMPLE_MVVM_MFC_EXAMPLE_2} PROPERTIES FOLDER go_libs/boost/examples)
+
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
 
         source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MFC_APPLICATION_CODE})
         source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_2_MVVM_MODEL_CODE})
@@ -115,7 +189,7 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
     set(PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3 ${BOOST_PROJECT_NAME_STR}_MFC_example_3)
 
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3.ico
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3.rc2
         ./boost_mvvm_mfc_example_3/res/boost_mvvm_mfc_example_3Doc.ico
@@ -148,14 +222,14 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/stdafx.cpp
         ./boost_mvvm_mfc_example_3/stdafx.h
         ./boost_mvvm_mfc_example_3/targetver.h
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE
         ./boost_mvvm_mfc_example_3/boost_mvvm_mfc_example_3_namespace_alias.hpp
         ./boost_mvvm_mfc_example_3/fleet_repository_populator.cpp
         ./boost_mvvm_mfc_example_3/fleet_repository_populator.hpp
         ./boost_mvvm_mfc_example_3/mdi_frame_interface.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE
         ./boost_mvvm_mfc_example_3/equipment_interface.hpp
         ./boost_mvvm_mfc_example_3/equipment_model.cpp
         ./boost_mvvm_mfc_example_3/equipment_model.hpp
@@ -168,8 +242,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/spaceship_interface.hpp
         ./boost_mvvm_mfc_example_3/spaceship_model.cpp
         ./boost_mvvm_mfc_example_3/spaceship_model.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE
         ./boost_mvvm_mfc_example_3/add_equipment_view.cpp
         ./boost_mvvm_mfc_example_3/add_equipment_view.hpp
         ./boost_mvvm_mfc_example_3/child_frame_view.cpp
@@ -184,8 +258,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/properties_view.hpp
         ./boost_mvvm_mfc_example_3/spaceship_view.cpp
         ./boost_mvvm_mfc_example_3/spaceship_view.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE
         ./boost_mvvm_mfc_example_3/dialog_view.cpp
         ./boost_mvvm_mfc_example_3/dialog_view.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_tool_bar.cpp
@@ -203,8 +277,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/tree_control.cpp
         ./boost_mvvm_mfc_example_3/tree_control.hpp
         ./boost_mvvm_mfc_example_3/tree_control_observer.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE
         ./boost_mvvm_mfc_example_3/add_equipment_view_model.cpp
         ./boost_mvvm_mfc_example_3/add_equipment_view_model.hpp
         ./boost_mvvm_mfc_example_3/fleet_organization_view_model.cpp
@@ -215,8 +289,8 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/properties_view_model.hpp
         ./boost_mvvm_mfc_example_3/spaceship_view_model.cpp
         ./boost_mvvm_mfc_example_3/spaceship_view_model.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/activate_spaceship_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/add_equipment_command_parameters.cpp
@@ -231,35 +305,42 @@ if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
         ./boost_mvvm_mfc_example_3/open_add_equipment_view_command_parameters.hpp
         ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.cpp
         ./boost_mvvm_mfc_example_3/remove_equipment_command_parameters.hpp
-	)
-	set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
+    )
+    set(BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE
         ./boost_mvvm_mfc_example_3/close_spaceship_event.cpp
         ./boost_mvvm_mfc_example_3/close_spaceship_event.hpp
         ./boost_mvvm_mfc_example_3/select_fleet_organization_event.cpp
         ./boost_mvvm_mfc_example_3/select_fleet_organization_event.hpp
         ./boost_mvvm_mfc_example_3/show_spaceship_event.cpp
         ./boost_mvvm_mfc_example_3/show_spaceship_event.hpp
-	)
-	
-    add_executable(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} WIN32
-		${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
-		${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
     )
+    
+    add_executable(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} WIN32
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE}
+        ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE}
+    )
+    set_target_properties(${PROJECT_BOOST_EXAMPLE_BOOST_MVVM_MFC_EXAMPLE_3} PROPERTIES FOLDER go_libs/boost/examples)
 
-	source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
-	source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
-	source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
-	source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
-	source_group(MVVM_Example\\View\\Control FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
-	source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
-	source_group(MVVM_Example\\View_Model\\Command FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
-	source_group(MVVM_Example\\View_Model\\Event FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
+    if(MSVC_VERSION GREATER 1900)
+        # using Visual Studio 2017 C++
+        # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+    endif(MSVC_VERSION GREATER 1900)
+
+    source_group(MFC_Application_Code FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MFC_APPLICATION_CODE})
+    source_group(MVVM_Example FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_CODE})
+    source_group(MVVM_Example\\Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_MODEL_CODE})
+    source_group(MVVM_Example\\View FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CODE})
+    source_group(MVVM_Example\\View\\Control FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_CONTROL_CODE})
+    source_group(MVVM_Example\\View_Model FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_CODE})
+    source_group(MVVM_Example\\View_Model\\Command FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_COMMAND_CODE})
+    source_group(MVVM_Example\\View_Model\\Event FILES ${BOOST_MVVM_MFC_EXAMPLE_3_MVVM_VIEW_MODEL_EVENT_CODE})
 
 endif(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)
 
@@ -283,12 +364,14 @@ if(BUILD_BOOST_TESTS)
 
     file(GLOB BOOST_TEST_MVVM_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_BOOST_TEST_MVVM_NAME} ${BOOST_TEST_MVVM_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_TEST_MVVM_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
             libgtest.a
             libgtest_main.a
+            ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -298,6 +381,7 @@ if(BUILD_BOOST_TESTS)
                 target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                     libgtest.a
                     libgtest_main.a
+                    ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     )
             else(MSYS OR MINGW)
@@ -309,20 +393,26 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
                 libgtest.a
                 libgtest_main.a
+                ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
         if(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME} gtest_main)
         else(MSVC_VERSION LESS 1800)
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                debug Debug/gtest
+                debug Debug/gtestd
                 optimized Release/gtest
                 )
             target_link_libraries(${PROJECT_BOOST_TEST_MVVM_NAME}
-                debug Debug/gtest_main
+                debug Debug/gtest_maind
                 optimized Release/gtest_main
                 )
         endif(MSVC_VERSION LESS 1800)

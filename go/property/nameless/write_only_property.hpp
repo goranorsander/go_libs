@@ -4,7 +4,7 @@
 //
 //  write_only_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -39,11 +39,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     property()
         : detail::property_base<value_type, policy_type>(policy_type())
@@ -57,6 +53,7 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type>::storage().setter(f);

@@ -4,7 +4,7 @@
 //
 //  proxy.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -37,11 +37,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~proxy() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~proxy() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     proxy()
         : _property_guard()
@@ -62,6 +58,16 @@ public:
         , _get(get_function)
         , _set(set_function)
     {
+    }
+
+    proxy& operator=(const proxy& v)
+    {
+        if (&v != this)
+        {
+            _get = v._get;
+            _set = v._set;
+        }
+        return *this;
     }
 
     void getter(const get_function_signature& f)

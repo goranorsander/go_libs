@@ -1,7 +1,7 @@
 //
 //  observable_object_lambda_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -35,12 +35,10 @@ class spaceship
     , public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship()
-    {
-    }
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
-    explicit spaceship()
+     spaceship()
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , crew_complement("crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } })
@@ -72,11 +70,9 @@ private:
 class spaceship_observer
 {
 public:
-    virtual ~spaceship_observer()
-    {
-    }
+    virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
-    explicit spaceship_observer()
+     spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _crew_complement_change_count(0)
         , _name_change_count(0)

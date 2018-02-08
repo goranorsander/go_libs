@@ -4,7 +4,7 @@
 //
 //  notify_command_execution_interface.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -27,25 +27,26 @@ namespace go
 namespace mvvm
 {
 
-template<class S> class basic_notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::string> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring> notify_wcommand_execution_interface;
+template<class S, typename M> class basic_notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::string, std::recursive_mutex> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mutex> notify_wcommand_execution_interface;
 
-template<class S>
+template<class S, typename M = std::recursive_mutex>
 class basic_notify_command_execution_interface
     : public go::signals::slot
 {
 public:
     typedef S string_type;
-    typedef basic_notify_command_execution_interface<S> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type>>&)>> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type>>&)>> command_not_executed_signal;
+    typedef M mutex_type;
+    typedef basic_notify_command_execution_interface<S, M> this_type;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;
 
 protected:
-    basic_notify_command_execution_interface() = default;
+    basic_notify_command_execution_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     command_executed_signal command_executed;
@@ -53,21 +54,21 @@ public:
 };
 
 template<>
-inline basic_notify_command_execution_interface<std::string>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, std::recursive_mutex>::~basic_notify_command_execution_interface()
 {
     command_executed.disconnect_all_slots();
     command_not_executed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, std::recursive_mutex>::~basic_notify_command_execution_interface()
 {
     command_executed.disconnect_all_slots();
     command_not_executed.disconnect_all_slots();
 }
 
-template<class S>
-inline basic_notify_command_execution_interface<S>::~basic_notify_command_execution_interface()
+template<class S, typename M>
+inline basic_notify_command_execution_interface<S, M>::~basic_notify_command_execution_interface()
 {
     command_executed.disconnect_all_slots();
     command_not_executed.disconnect_all_slots();

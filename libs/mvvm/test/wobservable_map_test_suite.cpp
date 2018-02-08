@@ -1,7 +1,7 @@
 //
 //  wobservable_map_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -31,9 +31,7 @@ public:
     typedef map_observer<K, T> this_type;
     typedef typename m::wobservable_map<K, T>::ptr wobservable_map_ptr_type;
 
-    virtual ~map_observer()
-    {
-    }
+    virtual ~map_observer() GO_DEFAULT_DESTRUCTOR
 
     map_observer()
         : _on_container_changed_slot_key(0)

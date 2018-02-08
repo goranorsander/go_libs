@@ -4,7 +4,7 @@
 //
 //  product_model.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -32,7 +32,7 @@ public:
     typedef int product_id_type;
 
 public:
-    virtual ~product_model() = default;
+    virtual ~product_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     product_model();

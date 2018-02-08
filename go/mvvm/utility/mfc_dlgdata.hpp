@@ -4,7 +4,7 @@
 //
 //  mfc_dlgdata.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -34,7 +34,7 @@ inline void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFo
     va_start(pData, nIDPrompt);
 
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    ASSERT(hWndCtrl != NULL);
+    ASSERT(hWndCtrl != nullptr);
 
     const int SZT_SIZE = 64;
     TCHAR szT[SZT_SIZE];
@@ -63,7 +63,7 @@ inline void _Afx_DDX_TextWithFormat(CDataExchange* pDX, int nIDC, LPCTSTR lpszFo
 
 inline void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double value, int nSizeGcvt)
 {
-    ASSERT(pData != NULL);
+    ASSERT(pData != nullptr);
 
     pDX->PrepareEditCtrl(nIDC);
     HWND hWndCtrl;
@@ -275,13 +275,13 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::s
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+#ifdef GO_UNICODE
         std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
+        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, nullptr);
         value = t;
-        #else
+#else
         value = static_cast<const TCHAR*>(v);
-        #endif
+#endif  // #ifdef GO_UNICODE
     }
     else
     {
@@ -299,13 +299,13 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::w
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+#ifdef GO_UNICODE
         value = static_cast<const TCHAR*>(v);
-        #else
+#else
         std::wstring t(nLen, 0);
         ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
         value = t;
-        #endif
+#endif  // #ifdef GO_UNICODE
     }
     else
     {
@@ -495,13 +495,13 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+#ifdef GO_UNICODE
         std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
+        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, nullptr);
         value = t;
-        #else
+#else
         value = static_cast<const TCHAR*>(v);
-        #endif
+#endif  // #ifdef GO_UNICODE
     }
     else
     {
@@ -519,13 +519,13 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-        #ifdef GO_UNICODE
+#ifdef GO_UNICODE
         value = static_cast<const TCHAR*>(v);
-        #else
+#else
         std::wstring t(nLen, 0);
         ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
         value = t;
-        #endif
+#endif  // #ifdef GO_UNICODE
     }
     else
     {

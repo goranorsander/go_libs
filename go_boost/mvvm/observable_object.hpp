@@ -4,7 +4,7 @@
 //
 //  observable_object.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/mvvm/notify_property_changed_interface.hpp>
 
@@ -42,7 +42,7 @@ public:
     virtual ~basic_observable_object() = 0;
 
 protected:
-    explicit basic_observable_object()
+     basic_observable_object()
         : basic_notify_property_changed_interface<string_type>()
         , object()
     {

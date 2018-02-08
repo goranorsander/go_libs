@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\property.hpp" />
+    <ClInclude Include="..\..\go_boost\property\detail\deleted_assignment_operator.hpp" />
+    <ClInclude Include="..\..\go_boost\property\exception.hpp" />
     <ClInclude Include="..\..\go_boost\property\nameless\detail\arithmetic_comparison_operators.hpp" />
     <ClInclude Include="..\..\go_boost\property\nameless\detail\property_base.hpp" />
     <ClInclude Include="..\..\go_boost\property\nameless\detail\read_only_property_base.hpp" />
@@ -126,7 +128,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -141,7 +143,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,7 +160,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -177,7 +179,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

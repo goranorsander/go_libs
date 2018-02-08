@@ -4,7 +4,7 @@
 //
 //  value_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/property_base.hpp>
 #include <go/property/policy/value.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -37,11 +38,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     value_property()
         : detail::property_base<value_type, policy_type>(policy_type())
@@ -58,6 +55,9 @@ public:
 
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)
 GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::wstring)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u8string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::u16string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::u32string)
 
 } // namespace nameless
 } // namespace property

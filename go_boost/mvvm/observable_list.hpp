@@ -4,7 +4,7 @@
 //
 //  observable_list.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/container/list.hpp>
 #include <boost/make_shared.hpp>
@@ -52,12 +52,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~basic_observable_list()
-    {
-    }
+    virtual ~basic_observable_list() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_list()
+     basic_observable_list()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -627,12 +625,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~observable_list()
-    {
-    }
+    virtual ~observable_list() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_list()
+     observable_list()
         : basic_observable_list<value_type, string_type>()
     {
     }
@@ -683,8 +679,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler() : this_type() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
         };
 
         return boost::make_shared<make_shared_enabler>();
@@ -699,7 +695,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(size_type n) : this_type(n) {}
         };
 
@@ -715,7 +711,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
@@ -732,7 +728,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
@@ -748,7 +744,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
@@ -765,7 +761,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
@@ -781,7 +777,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 
@@ -855,12 +851,10 @@ public:
     typedef typename container_type::size_type size_type;
 
 public:
-    virtual ~wobservable_list()
-    {
-    }
+    virtual ~wobservable_list() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_list()
+     wobservable_list()
         : basic_observable_list<value_type, string_type>()
     {
     }
@@ -911,8 +905,8 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler() : this_type() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
         };
 
         return boost::make_shared<make_shared_enabler>();
@@ -927,7 +921,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(size_type n) : this_type(n) {}
         };
 
@@ -943,7 +937,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
         };
 
@@ -960,7 +954,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
         };
 
@@ -976,7 +970,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(const this_type& x) : this_type(x) {}
         };
 
@@ -993,7 +987,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(this_type&& x) : this_type(x) {}
         };
 
@@ -1009,7 +1003,7 @@ public:
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
         };
 

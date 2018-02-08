@@ -4,7 +4,7 @@
 //
 //  write_only_value_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -38,11 +38,7 @@ public:
     typedef typename policy::value<value_type> policy_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~value_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     value_property()
         : detail::property_base<value_type, policy_type>(policy_type())

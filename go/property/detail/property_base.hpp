@@ -4,7 +4,7 @@
 //
 //  property_base.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -31,6 +31,12 @@ public:
     virtual ~property_base() = 0;
 
 protected:
+    property_base(const property_base& v)
+        : _n(v._n)
+        , _s(v._s)
+    {
+    }
+
     property_base(const storage_policy& s, const string_type& n)
         : _n(n)
         , _s(s)
@@ -60,6 +66,7 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 
+public:
     value_type get() const
     {
         return _s.get();

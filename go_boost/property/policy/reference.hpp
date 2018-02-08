@@ -4,7 +4,7 @@
 //
 //  reference.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,10 +15,11 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/thread/recursive_mutex.hpp>
 #include <boost/utility.hpp>
+#include <go_boost/property/exception.hpp>
 
 namespace go_boost
 {
@@ -34,9 +35,7 @@ public:
     typedef reference<value_type> this_type;
 
 public:
-    virtual ~reference()
-    {
-    }
+    virtual ~reference() GO_BOOST_DEFAULT_DESTRUCTOR
 
     reference()
         : _property_guard()
@@ -56,19 +55,42 @@ public:
     {
     }
 
+    reference& operator=(const reference& v)
+    {
+        if (&v != this)
+        {
+            _v = v._v;
+        }
+        return *this;
+    }
+
+    reference& operator=(const value_type& v)
+    {
+        set(v);
+        return *this;
+    }
+
     value_type get() const
     {
         const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        if (_v == NULL)
+        {
+            throw exception("Cannot get value to unbound reference property");
+        }
         return *_v;
     }
 
     void set(const value_type& v)
     {
+        if (_v == NULL)
+        {
+            throw exception("Cannot set value to unbound reference property");
+        }
         const boost::recursive_mutex::scoped_lock lock(_property_guard);
-        bind_ref(const_cast<value_type&>(v));
+        *_v = v;
     }
 
-    void bind_ref(value_type& v)
+    void bind(value_type& v)
     {
         const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = boost::addressof(v);
@@ -80,7 +102,7 @@ public:
         return _v == NULL;
     }
 
-    void clear()
+    void reset()
     {
         const boost::recursive_mutex::scoped_lock lock(_property_guard);
         _v = NULL;

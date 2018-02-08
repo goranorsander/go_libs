@@ -4,7 +4,7 @@
 //
 //  write_only_reference_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/property/nameless/detail/write_only_property_base.hpp>
 #include <go_boost/property/policy/reference.hpp>
@@ -39,9 +39,7 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
-    virtual ~reference_property()
-    {
-    }
+    virtual ~reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     reference_property()
         : detail::property_base<value_type, policy::reference<value_type>>(policy::reference<value_type>())
@@ -55,14 +53,20 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
+    void bind(value_type& v)
+    {
+        detail::property_base<value_type, policy_type>::storage().bind(v);
+    }
+
     bool empty() const
     {
         return detail::property_base<value_type, policy_type>::storage().empty();
     }
 
-    void clear()
+    void reset()
     {
-        return detail::property_base<value_type, policy_type>::storage().clear();
+        detail::property_base<value_type, policy_type>::storage().reset();
     }
 
     BOOST_EXPLICIT_OPERATOR_BOOL()

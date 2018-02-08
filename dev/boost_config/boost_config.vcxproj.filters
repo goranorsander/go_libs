@@ -12,6 +12,9 @@
     <Filter Include="go_boost\config\compiler">
       <UniqueIdentifier>{25f583ca-084c-4944-9905-0053d99ddcfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go_boost\config\platform">
+      <UniqueIdentifier>{cadca868-31d3-483b-8a57-a83d529029b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\config.hpp">
@@ -28,6 +31,15 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\config\compiler\clang.hpp">
       <Filter>go_boost\config\compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\config\platform\linux.hpp">
+      <Filter>go_boost\config\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\config\platform\windows.hpp">
+      <Filter>go_boost\config\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\config\select_platform_config.hpp">
+      <Filter>go_boost\config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

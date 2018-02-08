@@ -130,7 +130,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -139,8 +139,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_WIN32)\$(Configuration);$(BOOST_LIBS_STATIC_LINK_WIN32)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_WIN32);$(BOOST_LIBS_STATIC_LINK_WIN32)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <ProjectReference>
@@ -153,7 +153,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -162,8 +162,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_X64)\$(Configuration);$(BOOST_LIBS_STATIC_LINK_X64)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_X64);$(BOOST_LIBS_STATIC_LINK_X64)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <ProjectReference>
@@ -177,7 +177,7 @@
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
@@ -186,7 +186,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_WIN32)\$(Configuration);$(BOOST_LIBS_STATIC_LINK_WIN32)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_WIN32);$(BOOST_LIBS_STATIC_LINK_WIN32)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtest.lib;gtest_main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -201,7 +201,7 @@
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;$(GOOGLE_TEST_INCLUDE);$(BOOST_LIBS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
@@ -210,7 +210,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_X64)\$(Configuration);$(BOOST_LIBS_STATIC_LINK_X64)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GOOGLE_TEST_STATIC_LINK_X64);$(BOOST_LIBS_STATIC_LINK_X64)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtest.lib;gtest_main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>

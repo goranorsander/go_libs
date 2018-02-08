@@ -4,7 +4,7 @@
 //
 //  remove_equipment_command_parameters.hpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -28,7 +28,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~remove_equipment_command_parameters() = default;
+    virtual ~remove_equipment_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     remove_equipment_command_parameters(const fleet_organization_id_type& spaceship_id_, const equipment_id_type& equipment_id_);

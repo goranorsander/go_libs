@@ -27,14 +27,16 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
    * bootstrap.sh _(on Linux)_
    * bootstrap.bat _(on Windows)_
 1. Build boost by calling **b2** with appropriate options, properties, and target, e.g.
-   * __b2 --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 -j 3 stage --layout=versioned__
-     _(on Linux, using gcc, debug build, 64 bits, 3 cores)_
-   * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 -j 6 stage --layout=versioned__
+   * __b2 boost.locale.icu=off --build-dir=build --toolset=clang debug threading=multi link=static --build-type=complete address-model=64 --layout=versioned -j 3 stage__
+     _(on Linux, using clang, debug build, 64 bits, 3 cores)_
+   * __b2.exe --build-dir=build --toolset=msvc-14.1 release threading=multi link=static --build-type=complete address-model=32 --layout=versioned -j 6 stage__
      _(on Windows, using Visual Studio 2017 C++, release build, 32 bits, 6 cores)_
+   * __b2.exe boost.locale.iconv=off --build-dir=build --toolset=gcc debug threading=multi link=static --build-type=complete address-model=64 --layout=versioned -j 6 stage__
+     _(on Windows, using MinGW/GCC, debug build, 64 bits, 6 cores)_
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.64.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.66.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -43,12 +45,15 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_64_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_64_0\stage\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_66_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_66_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 64
+ * **BOOST_MINOR_VERSION** = 66
+ * **BOOST_PATCH_LEVEL** = 0
+ * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
+ * **BUILD_STD_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_TESTS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
@@ -68,12 +73,15 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 4.0.0|gcc 6.3.1|MSYS2 MinGW gcc 5.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 5.0.1|gcc 7.2.1|MSYS2 MinGW gcc 7.2.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 -|-|-|-|-|-|-|-|-|-|-
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1| 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 64 | 64 | 64 | 63| 64 | 64 | 64 | 64 | 64 | 64 
+**BOOST_MINOR_VERSION** | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X| X | | | | X | 
 **BUILD_BOOST_TESTS** | X | X | X | X| X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X| X | | | | | 
 **BUILD_STD_TESTS** | X | X | X | X| X | X | X | X | | 
 **USE_SOLUTION_FOLDERS** | X | X | X | X| X | X | X | | | 
@@ -81,7 +89,7 @@ The CMake configurations I use:
 **BUILD_GTEST** | X | X | X | X| X | X | X | X | X | X 
 **BUILD_SHARED_LIBS** | | | | | | | | | |
 **gmock_build_tests** | | | | | | | | | |
-**gtest_build_samples** | | | | | | | | | |
+**gtest_build_samples** | X | X | | | | | | | |
 **gtest_build_tests** | | | | | | | | | |
 **gtest_disable_pthreads** | | | X | | | | | | |
 **gtest_force_shared_crt** | | | | X| X | X | X | X | X | X 
@@ -92,25 +100,36 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 17.0 Xfce, 64 bits
-  * cmake version 3.7.2
-  * clang version 4.0.0 (tags/RELEASE_400/final)
-  * gcc (GCC) 6.3.1 20170306
-  * Code::Blocks 16.01
+* Manjaro Linux 17.1.1 Hakoila, Xfce, 64 bits
+  * cmake version 3.10.2
+  * clang version 5.0.1 (tags/RELEASE_501/final)
+  * gcc (GCC) 7.2.1 20180116
+  * git 2.16.1
   * GNU Make 4.2.1
+  * Code::Blocks 16.01
+  * Visual Studio Code 1.19.2 - with extensions:
+    * C/C++ 0.14.5 _(C/C++ IntelliSense, debugging, and code browsing)_
+    * CMake 0.0.17 _(CMake language support)_
+    * CMake Tools 0.10.4 _(Extended CMake support)_
+    * Git Lens 7.5.3 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 1.0.2 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.8.0
-  * MSYS2 64bit 20160205
-  * gcc.exe (Rev5, Built by MSYS2 project) 5.3.0
-  * GNU Make 4.1
+  * cmake version 3.10.2
+  * MSYS2 64bit 20161025
+  * gcc (Rev1, Built by MSYS2 project) 7.2.0
+  * git 2.14.1.windows.1
+  * GNU Make 4.2.1
+  * Code::Blocks 16.01
+  * TortoiseGit 2.5.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition
+  * Visual Studio 2017, Community Edition, version 15.5.5
+  * Visual Studio Code 1.19.2 - with same extensions as in Linux environment
 * Windows 7 Enterprise, 64 bit
-  * cmake version 3.8.0
+  * cmake version 3.10.2
   * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST

@@ -1,7 +1,7 @@
 //
 //  wcommand_manager_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -36,19 +36,17 @@ class spaceship
     , public u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship()
-    {
-    }
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 public:
-    explicit spaceship(const m::wcommand_manager::ptr& cmd_mgr)
+    explicit spaceship(const m::wcommand_manager::ptr& command_manager_)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
         , name(L"name")
         , captain(L"captain")
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
-        , _command_manager(cmd_mgr)
+        , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
         , _name()
@@ -59,18 +57,18 @@ public:
         bind_properties();
     }
 
-    spaceship(const m::wcommand_manager::ptr& cmd_mgr, const std::wstring& nme, const std::wstring& cpt)
+    spaceship(const m::wcommand_manager::ptr& command_manager_, const std::wstring& name_, const std::wstring& captain_)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
         , name(L"name")
         , captain(L"captain")
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
-        , _command_manager(cmd_mgr)
+        , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
-        , _name(nme)
-        , _captain(cpt)
+        , _name(name_)
+        , _captain(captain_)
         , _impulse_speed_command()
         , _warp_speed_command()
     {
@@ -188,11 +186,9 @@ private:
 class spaceship_observer
 {
 public:
-    virtual ~spaceship_observer()
-    {
-    }
+    virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
-    explicit spaceship_observer()
+     spaceship_observer()
         : _on_property_changed_slot_key(0)
         , _on_property_changed_count()
     {
@@ -255,13 +251,13 @@ private:
 };
 
 #define TEST_CASE_SHIPYARD \
-    m::wcommand_manager::ptr cmd_mgr = m::wcommand_manager::create(); \
+    m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create(); \
 \
-    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"USS Enterprise", L"Captain James T Kirk"); \
-    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Millennium Falcon", L"Han Solo"); \
-    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Executor", L"Lord Darth Vader"); \
-    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Battlestar Galactica", L"Admiral William Adama"); \
-    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(cmd_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds"); \
+    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"USS Enterprise", L"Captain James T Kirk"); \
+    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Millennium Falcon", L"Han Solo"); \
+    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Executor", L"Lord Darth Vader"); \
+    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Battlestar Galactica", L"Admiral William Adama"); \
+    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds"); \
 \
     std::shared_ptr<spaceship_observer> observer = std::make_shared<spaceship_observer>(); \
 \
@@ -282,8 +278,8 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command_interface to USS Enterprise
-    cmd_mgr->post(ship1->warp_speed_command);
+    // Give warp speed command to USS Enterprise
+    command_mgr->post(ship1->warp_speed_command);
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -291,7 +287,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -299,9 +295,9 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give warp speed command_interface to Millennium Falcon and Battlestar Galactica
-    cmd_mgr->post(ship2->warp_speed_command);
-    cmd_mgr->post(ship4->warp_speed_command);
+    // Give warp speed command to Millennium Falcon and Battlestar Galactica
+    command_mgr->post(ship2->warp_speed_command);
+    command_mgr->post(ship4->warp_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship2->at_warp_speed());
@@ -309,7 +305,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(false, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(true, ship2->at_warp_speed());
@@ -317,8 +313,8 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    // Give impulse speed command_interface to USS Enterprise
-    cmd_mgr->post(ship1->impulse_speed_command);
+    // Give impulse speed command to USS Enterprise
+    command_mgr->post(ship1->impulse_speed_command);
 
     EXPECT_EQ(true, ship1->at_warp_speed());
     EXPECT_EQ(false, ship1->at_impulse_speed());
@@ -327,7 +323,7 @@ TEST(std_wcommand_manager_test_suite, test_command_manager)
     EXPECT_EQ(true, ship4->at_warp_speed());
     EXPECT_EQ(false, ship5->at_warp_speed());
 
-    cmd_mgr->execute_commands();
+    command_mgr->execute_commands();
 
     EXPECT_EQ(false, ship1->at_warp_speed());
     EXPECT_EQ(true, ship1->at_impulse_speed());
@@ -355,7 +351,7 @@ TEST(std_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Give Mr Spock command_interface of USS Enterprise
+    // Give Mr Spock command of USS Enterprise
     ship1->captain = L"Mr Spock";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Mr Spock"));
@@ -370,7 +366,7 @@ TEST(std_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
     EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
-    // Return command_interface of USS Enterprise to Captain Kirk
+    // Return command of USS Enterprise to Captain Kirk
     ship1->captain = L"Captain James T Kirk";
 
     EXPECT_EQ(true, ship1->captain() == std::wstring(L"Captain James T Kirk"));

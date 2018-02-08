@@ -4,7 +4,7 @@
 //
 //  add_equipment_view.h
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -22,9 +22,9 @@ class add_equipment_view
     DECLARE_DYNAMIC(add_equipment_view)
 
 public:
-    virtual ~add_equipment_view() = default;
+    virtual ~add_equipment_view() GO_DEFAULT_DESTRUCTOR
 
-    add_equipment_view(const add_equipment_view_model::ptr& vm, CWnd* pParent = NULL);
+    add_equipment_view(const add_equipment_view_model::ptr& vm, CWnd* pParent = nullptr);
 
 #ifdef AFX_DESIGN_TIME
     enum { IDD = IDD_ADD_EQUIPMENT };

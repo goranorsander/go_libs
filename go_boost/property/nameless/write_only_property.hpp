@@ -4,7 +4,7 @@
 //
 //  write_only_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/property/nameless/detail/write_only_property_base.hpp>
 #include <go_boost/property/policy/proxy.hpp>
@@ -39,9 +39,7 @@ public:
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
 public:
-    virtual ~property()
-    {
-    }
+    virtual ~property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     property()
         : detail::property_base<value_type, policy::proxy<value_type>>(policy::proxy<value_type>())
@@ -55,6 +53,7 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type>::storage().setter(f);

@@ -4,7 +4,7 @@
 //
 //  notify_event_firing_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -43,7 +43,7 @@ public:
     virtual ~basic_notify_event_firing_interface() = 0;
 
 protected:
-    basic_notify_event_firing_interface() = default;
+    basic_notify_event_firing_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     event_fired_signal event_fired;

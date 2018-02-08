@@ -4,7 +4,7 @@
 //
 //  product_repository_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,7 +26,7 @@ public:
     virtual ~product_repository_interface() = 0;
 
 protected:
-    product_repository_interface() = default;
+    product_repository_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual product_model::ptr get(const product_model::product_id_type& product_id) const = 0;

@@ -4,7 +4,7 @@
 //
 //  reference_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,11 +15,14 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/property/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/detail/property_base.hpp>
 #include <go_boost/property/policy/reference.hpp>
+#include <go_boost/utility/u8string.hpp>
+#include <go_boost/utility/u16string.hpp>
+#include <go_boost/utility/u32string.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/utility/explicit_operator_bool.hpp>
 
@@ -38,9 +41,7 @@ public:
     typedef typename policy::reference<value_type> policy_type;
 
 public:
-    virtual ~basic_reference_property()
-    {
-    }
+    virtual ~basic_reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit basic_reference_property(const string_type& property_name)
         : detail::property_base<value_type, policy::reference<value_type>, string_type>(policy::reference<value_type>(), property_name)
@@ -54,14 +55,20 @@ public:
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 
+public:
+    void bind(value_type& v)
+    {
+        detail::property_base<value_type, policy_type, string_type>::storage().bind(v);
+    }
+
     bool empty() const
     {
         return detail::property_base<value_type, policy_type, string_type>::storage().empty();
     }
 
-    void clear()
+    void reset()
     {
-        return detail::property_base<value_type, policy_type, string_type>::storage().clear();
+        detail::property_base<value_type, policy_type, string_type>::storage().reset();
     }
 
     BOOST_EXPLICIT_OPERATOR_BOOL()
@@ -81,21 +88,19 @@ public:
     typedef reference_property<value_type> this_type;
 
 public:
-    virtual ~reference_property()
-    {
-    }
+    virtual ~reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit reference_property(const string_type& property_name)
+    explicit reference_property(const std::string& property_name)
         : basic_reference_property<value_type, string_type>(property_name)
     {
     }
 
-    reference_property(const string_type& property_name, const value_type& v)
+    reference_property(const std::string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 template<class T> class reference_wproperty
@@ -107,27 +112,122 @@ public:
     typedef reference_wproperty<value_type> this_type;
 
 public:
-    virtual ~reference_wproperty()
-    {
-    }
+    virtual ~reference_wproperty() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit reference_wproperty(const string_type& property_name)
+    explicit reference_wproperty(const std::wstring& property_name)
         : basic_reference_property<value_type, string_type>(property_name)
     {
     }
 
-    reference_wproperty(const string_type& property_name, const value_type& v)
+    reference_wproperty(const std::wstring& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type>(property_name, v)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go_boost/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class reference_u8property
+    : public basic_reference_property<T, utility::u8string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u8string string_type;
+    typedef reference_u8property<value_type> this_type;
+
+public:
+    virtual ~reference_u8property() GO_BOOST_DEFAULT_DESTRUCTOR
+
+    explicit reference_u8property(const utility::u8string& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u8property(const utility::u8string& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go_boost/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class reference_u16property
+    : public basic_reference_property<T, utility::u16string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u16string string_type;
+    typedef reference_u16property<value_type> this_type;
+
+public:
+    virtual ~reference_u16property() GO_BOOST_DEFAULT_DESTRUCTOR
+
+    explicit reference_u16property(const utility::u16string& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u16property(const utility::u16string& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go_boost/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class reference_u32property
+    : public basic_reference_property<T, utility::u32string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u32string string_type;
+    typedef reference_u32property<value_type> this_type;
+
+public:
+    virtual ~reference_u32property() GO_BOOST_DEFAULT_DESTRUCTOR
+
+    explicit reference_u32property(const utility::u32string& property_name)
+        : basic_reference_property<value_type, string_type>(property_name)
+    {
+    }
+
+    reference_u32property(const utility::u32string& property_name, const value_type& v)
+        : basic_reference_property<value_type, string_type>(property_name, v)
+    {
+    }
+
+#include <go_boost/property/detail/assignment_operator.hpp>
 };
 
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::string)
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::string, utility::u32string)
+
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::string)
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, std::wstring, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u8string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u8string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u8string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u8string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u8string, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u16string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u16string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u16string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u16string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u16string, utility::u32string)
+
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u32string, std::string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u32string, std::wstring)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u32string, utility::u8string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u32string, utility::u16string)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_reference_property, utility::u32string, utility::u32string)
 
 } // namespace property
 } // namespace go_boost

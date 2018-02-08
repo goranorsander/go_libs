@@ -4,7 +4,7 @@
 //
 //  observable_sequence_container.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_container.hpp>
@@ -49,7 +49,7 @@ public:
     virtual ~basic_observable_sequence_container() = 0;
 
 protected:
-    explicit basic_observable_sequence_container()
+     basic_observable_sequence_container()
         : basic_observable_container<string_type, container_type>()
     {
     }

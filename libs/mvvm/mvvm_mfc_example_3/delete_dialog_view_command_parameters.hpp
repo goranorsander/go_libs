@@ -4,7 +4,7 @@
 //
 //  delete_dialog_view_command_parameters.hpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,7 +26,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~delete_dialog_view_command_parameters() = default;
+    virtual ~delete_dialog_view_command_parameters() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit delete_dialog_view_command_parameters(const dialog_view::ptr& dialog_);

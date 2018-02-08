@@ -4,7 +4,7 @@
 //
 //  read_only_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -18,8 +18,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
+#include <go/property/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -39,11 +41,7 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -55,6 +53,9 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void getter(const get_function_signature& f)
     {
         const_cast<policy_type&>(detail::property_base<value_type, policy_type, string_type>::storage()).getter(f);
@@ -71,23 +72,19 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit property(const string_type& property_name)
+    explicit property(const std::string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    property(const string_type& property_name, const get_function_signature& get_function)
+    property(const std::string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class wproperty
@@ -100,23 +97,44 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit wproperty(const string_type& property_name)
+    explicit wproperty(const std::wstring& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    wproperty(const string_type& property_name, const get_function_signature& get_function)
+    wproperty(const std::wstring& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
+};
+
+template<class T> class u8property
+    : public basic_property<T, utility::u8string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u8string string_type;
+    typedef u8property<value_type> this_type;
+    typedef typename std::function<value_type(void)> get_function_signature;
+
+public:
+    virtual ~u8property() GO_DEFAULT_DESTRUCTOR
+
+    explicit u8property(const utility::u8string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u8property(const utility::u8string& property_name, const get_function_signature& get_function)
+        : basic_property<value_type, string_type>(property_name, get_function)
+    {
+    }
+
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class u16property
@@ -129,23 +147,19 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~u16property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~u16property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u16property(const string_type& property_name)
+    explicit u16property(const std::u16string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u16property(const string_type& property_name, const get_function_signature& get_function)
+    u16property(const std::u16string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
 template<class T> class u32property
@@ -158,24 +172,50 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~u32property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~u32property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u32property(const string_type& property_name)
+    explicit u32property(const std::u32string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u32property(const string_type& property_name, const get_function_signature& get_function)
+    u32property(const std::u32string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type>(property_name, get_function)
     {
     }
 
-#include <go/property/detail/assignment_operator.hpp>
+#include <go/property/detail/deleted_assignment_operator.hpp>
 };
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::wstring, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, utility::u8string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u16string, std::u32string)
+
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::wstring)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, utility::u8string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::u16string)
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(basic_property, std::u32string, std::u32string)
 
 } // namespace read_only
 } // namespace property

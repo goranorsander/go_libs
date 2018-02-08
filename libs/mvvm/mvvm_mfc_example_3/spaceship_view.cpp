@@ -1,7 +1,7 @@
 //
 //  spaceship_view.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -129,7 +129,7 @@ void spaceship_view::OnBnClickedButtonRemove()
 void spaceship_view::OnLvnItemchangedListEquipment(NMHDR *pNMHDR, LRESULT *pResult)
 {
     LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
-    if ((pNMLV != NULL) && (pNMLV->uChanged & LVIF_STATE) && (pNMLV->uNewState & LVIS_SELECTED))
+    if ((pNMLV != nullptr) && (pNMLV->uChanged & LVIF_STATE) && (pNMLV->uNewState & LVIS_SELECTED))
     {
         _selected_equipment_id = static_cast<equipment_id_type>(_equipment_list_ctrl.GetItemData(pNMLV->iItem));
         equipment_list_item_data_type::const_iterator it = _equipment_list_data.find(_selected_equipment_id);

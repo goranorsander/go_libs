@@ -118,5 +118,14 @@
     <ClInclude Include="..\..\go\property\nameless\detail\arithmetic_comparison_operators.hpp">
       <Filter>go\property\nameless\detail</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\property\exception.hpp">
+      <Filter>go\property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\property\detail\deleted_assignment_operator.hpp">
+      <Filter>go\property\detail</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
 </Project>

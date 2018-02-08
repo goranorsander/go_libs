@@ -4,7 +4,7 @@
 //
 //  product_repository.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,10 +26,10 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~product_repository() = default;
+    virtual ~product_repository() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    product_repository() = default;
+    product_repository() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static ptr create();

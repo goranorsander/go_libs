@@ -4,7 +4,7 @@
 //
 //  observable_associative_container.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -51,7 +51,7 @@ public:
     virtual ~basic_observable_associative_container() = 0;
 
 protected:
-    explicit basic_observable_associative_container()
+     basic_observable_associative_container()
         : basic_observable_container<string_type, container_type>()
     {
     }

@@ -4,7 +4,7 @@
 //
 //  scope_guard_new.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -28,9 +28,7 @@ public:
     typedef T* pointer;
 
 public:
-    virtual ~scope_guard_new()
-    {
-    }
+    virtual ~scope_guard_new() GO_DEFAULT_DESTRUCTOR
 
     explicit scope_guard_new(pointer px)
         : scope_guard(nullptr)

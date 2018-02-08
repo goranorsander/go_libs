@@ -5,7 +5,7 @@
 //
 //  spaceship_view.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,7 +26,7 @@ class spaceship_view
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~spaceship_view() = default;
+    virtual ~spaceship_view() GO_DEFAULT_DESTRUCTOR
 
     spaceship_view();
 
@@ -41,7 +41,7 @@ public:
 public:
     virtual BOOL DestroyWindow();
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
+    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = nullptr);
     virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 protected:

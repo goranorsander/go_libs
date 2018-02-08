@@ -1,7 +1,7 @@
 //
 //  enable_intellisence.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -12,5 +12,5 @@
 // Header only library need a cpp-file to enable the
 // "Additional Include Directories" setting for C/C++
 // compilers. Without this setting the Visual Studio
-// IntelliSence will not find boost includes.
+// IntelliSence will not find all includes.
 //

@@ -1,7 +1,7 @@
 //
 //  wobservable_array_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -29,9 +29,7 @@ public:
     typedef array_observer<T, N> this_type;
     typedef typename m::wobservable_array<T, N>::ptr wobservable_array_ptr_type;
 
-    virtual ~array_observer()
-    {
-    }
+    virtual ~array_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     array_observer()
         : _last_action(m::undefined_notify_container_changed_action)

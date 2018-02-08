@@ -1,7 +1,7 @@
 //
 //  wobservable_object_phoenix_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -37,12 +37,10 @@ class spaceship
     , private u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship()
-    {
-    }
+    virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 public:
-    explicit spaceship()
+     spaceship()
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
         , crew_complement(L"crew_complement")
@@ -80,11 +78,9 @@ private:
 class spaceship_observer
 {
 public:
-    virtual ~spaceship_observer()
-    {
-    }
+    virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit spaceship_observer()
+     spaceship_observer()
         : _crew_complement_change_count(0)
         , _name_change_count(0)
         , _max_speed_change_count(0)

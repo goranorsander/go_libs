@@ -4,7 +4,7 @@
 //
 //  scope_guard_new.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/bind.hpp>
 #include <boost/utility/explicit_operator_bool.hpp>
@@ -36,9 +36,7 @@ public:
     typedef T* pointer;
 
 public:
-    virtual ~scope_guard_new()
-    {
-    }
+    virtual ~scope_guard_new() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit scope_guard_new(pointer px)
         : scope_guard(NULL)

@@ -4,7 +4,7 @@
 //
 //  add_equipment_view_model.hpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -28,7 +28,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~add_equipment_view_model() = default;
+    virtual ~add_equipment_view_model() GO_DEFAULT_DESTRUCTOR
 
 private:
     explicit add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment);

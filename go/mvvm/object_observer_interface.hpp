@@ -4,7 +4,7 @@
 //
 //  object_observer_interface.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -43,7 +43,7 @@ public:
     virtual ~basic_object_observer_interface() = 0;
 
 protected:
-    basic_object_observer_interface() = default;
+    basic_object_observer_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual void on_container_changed(const std::shared_ptr<object>& /*o*/, const std::shared_ptr<container_changed_arguments>& /*a*/) = 0;

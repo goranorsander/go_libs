@@ -1,7 +1,7 @@
 //
 //  observable_forward_list_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -31,9 +31,7 @@ public:
     typedef forward_list_observer<T> this_type;
     typedef typename m::observable_forward_list<T>::ptr observable_forward_list_ptr_type;
 
-    virtual ~forward_list_observer()
-    {
-    }
+    virtual ~forward_list_observer() GO_DEFAULT_DESTRUCTOR
 
     forward_list_observer()
         : _on_container_changed_slot_key(0)

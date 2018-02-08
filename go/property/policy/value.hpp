@@ -4,7 +4,7 @@
 //
 //  value.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -33,17 +33,9 @@ public:
     typedef value<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~value() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~value() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-    value() = default;
-#else
-    value() {}
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+    value() GO_DEFAULT_CONSTRUCTOR
 
     explicit value(const value& v)
         : _property_guard()
@@ -55,6 +47,15 @@ public:
         : _property_guard()
         , _v(v)
     {
+    }
+
+    value& operator=(const value& v)
+    {
+        if (&v != this)
+        {
+            _v = v._v;
+        }
+        return *this;
     }
 
     value_type get() const

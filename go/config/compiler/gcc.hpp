@@ -4,7 +4,7 @@
 //
 //  gcc.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -17,34 +17,49 @@
 
 #define GO_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
+// MinGW
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#define GO_COMP_GCC_MINGW 1
+#endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
+
 // Compiler message
-#define GO_MESSAGE(_message_) \
-__warning _message_
+#define GO_MESSAGE_HELPER_0(_message_) #_message_
+#define GO_MESSAGE_HELPER_1(_message_) GO_MESSAGE_HELPER_0(GCC warning _message_)
+#define GO_MESSAGE(_message_) _Pragma(GO_MESSAGE_HELPER_1(_message_))
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (GO_GCC_VERSION < 40500)
 #define GO_NO_CXX_LOCAL_AND_UNNAMED_TYPES_AS_TEMPLATE_PARAMETERS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40500)
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
+#define GO_TYPENAME_REQUIRED 1
+
+// C++ issue workarounds
+#define GO_WCHAR_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+#define GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
+
+// C++ restrictions
+#define GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7 1
 
 // C++11 support
 #if (GO_GCC_VERSION)
 #define GO_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
-#endif
+#endif  // #if (GO_GCC_VERSION)
 #if (GO_GCC_VERSION < 50100)
 #define GO_NO_CXX11_MONEY_TIME_AND_HEXFLOAT_IO_MANIPULATORS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 50100)
 #if (GO_GCC_VERSION < 40801)
 #define GO_NO_CXX11_REF_QUALIFIERS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40801)
 #if (GO_GCC_VERSION < 40800)
 #define GO_NO_CXX11_ALIGNAS 1
 #define GO_NO_CXX11_INHERITING_CONSTRUCTORS 1
 #define GO_NO_CXX11_THREAD_LOCAL_STORAGE 1
 #define GO_NO_CXX11_ATTRIBUTES 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40800)
 #if (GO_GCC_VERSION < 40700)
 #define GO_NO_CXX11_DELEGATING_CONSTRUCTORS 1
 #define GO_NO_CXX11_EXTENDED_FRIEND_DECLARATIONS 1
@@ -52,7 +67,7 @@ __warning _message_
 #define GO_NO_CXX11_TEMPLATE_ALIASES 1
 #define GO_NO_CXX11_OVERRIDE_AND_FINAL 1
 #define GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40700)
 #if (GO_GCC_VERSION < 40600)
 #define GO_NO_CXX11_CONSTEXPR 1
 #define GO_NO_CXX11_FORWARD_ENUM_DECLARATIONS 1
@@ -60,13 +75,13 @@ __warning _message_
 #define GO_NO_CXX11_UNRESTRICTED_UNIONS 1
 #define GO_NO_CXX11_RANGE_FOR_LOOP 1
 #define GO_NO_CXX11_NOEXCEPT 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40600)
 #if (GO_GCC_VERSION < 40500)
 #define GO_NO_CXX11_ALIGNOF 1
 #define GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS 1
 #define GO_NO_CXX11_LAMBDA_EXPRESSIONS 1
 #define GO_NO_CXX11_RAW_STRING_LITERALS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40500)
 #if (GO_GCC_VERSION < 40400)
 #define GO_NO_CXX11_ATOMIC_OPERATIONS 1
 #define GO_NO_CXX11_AUTO 1
@@ -78,7 +93,7 @@ __warning _message_
 #define GO_NO_CXX11_UNICODE_STRING_LITERALS 1
 #define GO_NO_CXX11_STRONGLY_TYPED_ENUM 1
 #define GO_NO_CXX11_VARIADIC_TEMPLATES 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40400)
 #if (GO_GCC_VERSION < 40300)
 #define GO_NO_CXX11_DECLTYPE 1
 #define GO_NO_CXX11_RIGHT_ANGLE_BRACKETS 1
@@ -86,18 +101,20 @@ __warning _message_
 #define GO_NO_CXX11_STATIC_ASSERT 1
 #define GO_NO_CXX11_TYPE_TRAITS 1
 #define GO_NO_CXX11_MAGIC_STATICS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40300)
 #if (GO_GCC_VERSION < 30300)
 #define GO_NO_CXX11_EXTERN_TEMPLATE 1
 #define GO_NO_CXX11_LONG_LONG 1
 #define GO_NO_CXX11 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 30300)
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}
 #else
+#define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
-#endif
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()
@@ -108,13 +125,13 @@ __warning _message_
 #define GO_NOEXCEPT_OR_NOTHROW noexcept
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
-#endif
+#endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
 
 // C++14 support
 #if (GO_GCC_VERSION)
 #define GO_NO_CXX14_CLARIFYING_MEMORY_ALLOCATION 1
 #define GO_NO_CXX14_NULL_FORWARD_ITERATORS 1
-#endif
+#endif  // #if (GO_GCC_VERSION)
 #if (GO_GCC_VERSION < 50000)
 #define GO_NO_CXX14_VARIABLE_TEMPLATES 1
 #define GO_NO_CXX14_EXTENDED_CONSTEXPR 1
@@ -135,7 +152,7 @@ __warning _message_
 #define GO_NO_CXX14_FIXING_CONSTEXPR_MEMBER_FUNCTIONS_WITHOUT_CONST 1
 #define GO_NO_CXX14_STD_GET_T 1
 #define GO_NO_CXX14_DUAL_RANGE_STD_EQUAL_STD_IS_PERMUTATION_STD_MISMATCH 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 50000)
 #if (GO_GCC_VERSION < 40900)
 #define GO_NO_CXX14_TWEAKED_WORDING_FOR_CONTEXTUAL_CONVERSIONS 1
 #define GO_NO_CXX14_BINARY_LITERALS 1
@@ -145,7 +162,7 @@ __warning _message_
 #define GO_NO_CXX14_DEPRECATED_ATTRIBUTE 1
 #define GO_NO_CXX14_SINGLE_QUOTE_AS_DIGIT_SEPARATOR 1
 #define GO_NO_CXX14 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40900)
 
 // C++17 support
 #if (GO_GCC_VERSION < 70000)
@@ -174,7 +191,7 @@ __warning _message_
 #define GO_NO_CXX17_INLINE_VARIABLES 1
 #define GO_NO_CXX17_MATCHING_OF_TEMPLATE_TEMPLATE_ARGUMENTS_EXCLUDES_COMPATIBLE_TEMPLATES 1
 #define GO_NO_CXX17_SPLICING_MAPS_AND_SETS 1
-#endif
+#endif // #if (GO_GCC_VERSION < 70000)
 #if (GO_GCC_VERSION < 60000)
 #define GO_NO_CXX17_STATIC_ASSERT_WITH_NO_MESSAGE 1
 #define GO_NO_CXX17_NESTED_NAMESPACE_DEFINITION 1
@@ -186,27 +203,27 @@ __warning _message_
 #define GO_NO_CXX17_DIFFERING_BEGIN_AND_END_TYPES_IN_RANGE_BASED_FOR 1
 #define GO_NO_CXX17_STD_UNCAUGHT_EXCEPTIONS 1
 #define GO_NO_CXX17_STD_SHARED_MUTEX_UNTIMED 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 60000)
 #if (GO_GCC_VERSION < 50100)
 #define GO_NO_CXX17_REMOVING_TRIGRAPHS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 50100)
 #if (GO_GCC_VERSION < 50000)
 #define GO_NO_CXX17_NEW_AUTO_RULES_FOR_DIRECT_LIST_INITIALIZATION 1
 #define GO_NO_CXX17_TYPENAME_IN_A_TEMPLATE_TEMPLATE_PARAMETER 1
 #define GO_NO_CXX17_HAS_INCLUDE_IN_PREPROCESSOR_CONDITIONALS 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 50000)
 #if (GO_GCC_VERSION < 30000)
 #define GO_NO_CXX17_HEXADECIMAL_FLOATING_POINT_LITERALS 1
 #define GO_NO_CXX17 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 30000)
 #if (GO_GCC_VERSION)
 #define GO_NO_CXX17_IMPROVING_STD_PAIR_AND_STD_TUPLE 1
-#endif
+#endif  // #if (GO_GCC_VERSION)
 
 // C99 support
 #if (GO_GCC_VERSION < 40300)
 #define GO_NO_C99_PREPROCESSOR 1
-#endif
+#endif  // #if (GO_GCC_VERSION < 40300)
 
 #endif  // defined(__GNUC__)
 

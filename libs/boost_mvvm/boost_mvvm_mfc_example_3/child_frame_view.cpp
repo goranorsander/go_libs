@@ -1,7 +1,7 @@
 //
 //  child_frame_view.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -40,7 +40,7 @@ BOOL child_frame_view::PreCreateWindow(CREATESTRUCT& cs)
 
 BOOL child_frame_view::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
-    // let the view have first crack at the command_interface
+    // let the view have first crack at the command
     if(_wndView.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
         return TRUE;
 

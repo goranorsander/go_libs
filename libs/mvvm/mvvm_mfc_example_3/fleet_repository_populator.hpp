@@ -4,7 +4,7 @@
 //
 //  fleet_repository_populator.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,10 +26,10 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~fleet_repository_populator() = default;
+    virtual ~fleet_repository_populator() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    fleet_repository_populator() = default;
+    fleet_repository_populator() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static ptr create();

@@ -4,7 +4,7 @@
 //
 //  spaceship_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -27,7 +27,7 @@ public:
     virtual ~spaceship_interface() = 0;
 
 protected:
-    explicit spaceship_interface();
+     spaceship_interface();
 
 public:
     rop::wproperty<std::wstring> spaceship_class;

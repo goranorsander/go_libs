@@ -1,7 +1,7 @@
 //
 //  output_view.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -287,7 +287,7 @@ void output_view::on_command_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = (boost::wformat(L"%s: Executed command_interface %s, %s") % current_date_and_time().c_str() % c->command_name().c_str() % command_information(c).c_str()).str();
+        const std::wstring msg = (boost::wformat(L"%s: Executed command %s, %s") % current_date_and_time().c_str() % c->command_name().c_str() % command_information(c).c_str()).str();
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
     }

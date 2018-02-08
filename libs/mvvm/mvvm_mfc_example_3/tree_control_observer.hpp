@@ -4,7 +4,7 @@
 //
 //  tree_control_observer.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -24,10 +24,10 @@ enum MouseButton
 class tree_control_observer
 {
 public:
-    virtual ~tree_control_observer() = 0;
+    virtual ~tree_control_observer() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    tree_control_observer() = default;
+    tree_control_observer() GO_DEFAULT_CONSTRUCTOR
 
 public:
     virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData) = 0;
@@ -35,9 +35,5 @@ public:
     virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) = 0;
     virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) = 0;
 };
-
-inline tree_control_observer::~tree_control_observer()
-{
-}
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_TREE_CONTROL_OBSERVER_HPP_INCLUDED

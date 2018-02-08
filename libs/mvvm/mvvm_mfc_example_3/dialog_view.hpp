@@ -4,7 +4,7 @@
 //
 //  dialog_view.hpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -31,8 +31,8 @@ public:
 
 protected:
     dialog_view();
-    dialog_view(UINT nIDTemplate, CWnd* pParent = NULL);
-    dialog_view(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
+    dialog_view(UINT nIDTemplate, CWnd* pParent = nullptr);
+    dialog_view(LPCTSTR lpszTemplateName, CWnd* pParentWnd = nullptr);
 
 protected:
     virtual void OnOK();

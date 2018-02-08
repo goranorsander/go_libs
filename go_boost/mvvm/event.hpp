@@ -4,7 +4,7 @@
 //
 //  event.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <string>
 #include <boost/bind.hpp>
@@ -46,7 +46,7 @@ public:
     typedef typename go_boost::property::nameless::read_only::property<S> event_type_type;
 
 public:
-    virtual ~basic_event();
+    virtual ~basic_event() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     explicit basic_event(const S& event_type_);
@@ -63,11 +63,6 @@ protected:
 private:
     const S _event_type;
 };
-
-template<class S>
-inline basic_event<S>::~basic_event()
-{
-}
 
 template<class S>
 inline basic_event<S>::basic_event(const S& event_type_)
@@ -92,7 +87,7 @@ inline boost::shared_ptr<basic_event<S>> basic_event<S>::create(const S& event_t
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         explicit make_shared_enabler(const S& event_type_) : this_type(event_type_) {}
     };
 

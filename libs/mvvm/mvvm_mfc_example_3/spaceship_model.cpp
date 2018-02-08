@@ -1,7 +1,7 @@
 //
 //  spaceship_model.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -35,7 +35,7 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const std::wstring& spaceship_class_, const std::wstring& name_) : this_type(spaceship_class_, name_) {}
     };
 

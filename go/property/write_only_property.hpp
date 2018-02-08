@@ -4,7 +4,7 @@
 //
 //  write_only_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <string>
 #include <go/property/detail/write_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -39,11 +40,7 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     explicit basic_property(const string_type& property_name)
         : detail::property_base<value_type, policy_type, string_type>(policy_type(), property_name)
@@ -57,6 +54,7 @@ public:
 
 #include <go/property/detail/assignment_operator.hpp>
 
+public:
     void setter(const set_function_signature& f)
     {
         detail::property_base<value_type, policy_type, string_type>::storage().setter(f);
@@ -73,18 +71,14 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit property(const string_type& property_name)
+    explicit property(const std::string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    property(const string_type& property_name, const set_function_signature& set_function)
+    property(const std::string& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }
@@ -102,18 +96,39 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    explicit wproperty(const string_type& property_name)
+    explicit wproperty(const std::wstring& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    wproperty(const string_type& property_name, const set_function_signature& set_function)
+    wproperty(const std::wstring& property_name, const set_function_signature& set_function)
+        : basic_property<value_type, string_type>(property_name, set_function)
+    {
+    }
+
+#include <go/property/detail/assignment_operator.hpp>
+};
+
+template<class T> class u8property
+    : public basic_property<T, utility::u8string>
+{
+public:
+    typedef T value_type;
+    typedef utility::u8string string_type;
+    typedef u8property<value_type> this_type;
+    typedef typename std::function<void(const value_type&)> set_function_signature;
+
+public:
+    virtual ~u8property() GO_DEFAULT_DESTRUCTOR
+
+    explicit u8property(const utility::u8string& property_name)
+        : basic_property<value_type, string_type>(property_name)
+    {
+    }
+
+    u8property(const utility::u8string& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }
@@ -131,18 +146,14 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~u16property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~u16property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u16property(const string_type& property_name)
+    explicit u16property(const std::u16string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u16property(const string_type& property_name, const set_function_signature& set_function)
+    u16property(const std::u16string& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }
@@ -160,18 +171,14 @@ public:
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~u32property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~u32property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-        explicit u32property(const string_type& property_name)
+    explicit u32property(const std::u32string& property_name)
         : basic_property<value_type, string_type>(property_name)
     {
     }
 
-    u32property(const string_type& property_name, const set_function_signature& set_function)
+    u32property(const std::u32string& property_name, const set_function_signature& set_function)
         : basic_property<value_type, string_type>(property_name, set_function)
     {
     }

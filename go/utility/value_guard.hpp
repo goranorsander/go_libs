@@ -4,7 +4,7 @@
 //
 //  value_guard.hpp
 //
-//  Copyright 2017 Göran Orsander
+//  Copyright 2017-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,9 +26,7 @@ public:
     typedef T value_type;
 
 public:
-    virtual ~value_guard()
-    {
-    }
+    virtual ~value_guard() GO_DEFAULT_DESTRUCTOR
 
     value_guard(value_type& value, const value_type& new_value)
         : scope_guard(nullptr)

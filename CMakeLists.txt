@@ -1,7 +1,7 @@
 #
 #  CMakeLists.txt
 #
-#  Copyright 2016-2017 Göran Orsander
+#  Copyright 2016-2018 Göran Orsander
 #
 #  This file is part of the GO.libraries.
 #  Distributed under the GO Software License, Version 2.0.
@@ -17,12 +17,15 @@ project(GO_LIBS)
 #Options-------------------------------------------------
 
 option(USE_SOLUTION_FOLDERS "Organise all projects into folders in your solution." ON)
-option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires C++14.")
-option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires the Boost libraries.")
-option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14.")
+option(BUILD_STD_EXAMPLES "Build the GO libraries examples for std-implementation. Requires C++14/17.")
+option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires MFC and C++14/17.")
+option(BUILD_BOOST_EXAMPLES "Build the GO libraries examples for boost-implementation. Requires the Boost libraries.")
+option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires MFC and the Boost libraries.")
+option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14/17.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "64" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "65" CACHE STRING "Boost libraries minor version.")
+set(BOOST_PATCH_LEVEL "1" CACHE STRING "Boost libraries patch level.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
 
@@ -46,7 +49,7 @@ if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # using gcc/g++
-    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -fpermissive -ftemplate-backtrace-limit=0" )
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17 -fpermissive -ftemplate-backtrace-limit=0" )
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
     set( CMAKE_COMPILER_IS_INTEL TRUE )
@@ -57,6 +60,18 @@ elseif(MSVC)
         # using Visual Studio 2012 C++
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"_VARIADIC_MAX=10\"" )
     endif(MSVC_VERSION EQUAL 1700)
+endif()
+
+########################################################
+#  architecture                                        #
+########################################################
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    # 64 bits
+    set(LIBBOOST_ARCHITECTURE "x64")
+elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    # 32 bits
+    set(LIBBOOST_ARCHITECTURE "x32")
 endif()
 
 ########################################################
@@ -82,14 +97,32 @@ endif(CMAKE_COMPILER_IS_CLANG)
 
 if(CMAKE_COMPILER_IS_CLANG)
     set(BOOST_CLANG_VERSION "${CLANG_MAJOR}${CLANG_MINOR}")
-    set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+    if(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+    else(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        set(LIBBOOST_LOCALE "libboost_locale-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        set(LIBBOOST_SYSTEM "libboost_system-clang${BOOST_CLANG_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+    endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 elseif(CMAKE_COMPILER_IS_GNUCC)
     set(BOOST_GCC_VERSION "${GCC_MAJOR}${GCC_MINOR}")
-    if(MSYS OR MINGW)
-        set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-    else(MSYS OR MINGW)
-        set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
-    endif(MSYS OR MINGW)
+    if(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        if(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        else(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}.a")
+        endif(MSYS OR MINGW)
+    else(${BOOST_PATCH_LEVEL} STREQUAL "0")
+        if(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-mgw${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        else(MSYS OR MINGW)
+            set(LIBBOOST_LOCALE "libboost_locale-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+            set(LIBBOOST_SYSTEM "libboost_system-gcc${BOOST_GCC_VERSION}-mt-${LIBBOOST_ARCHITECTURE}-${BOOST_MAJOR_VERSION}_${BOOST_MINOR_VERSION}_${BOOST_PATCH_LEVEL}.a")
+        endif(MSYS OR MINGW)
+    endif(${BOOST_PATCH_LEVEL} STREQUAL "0")
 endif(CMAKE_COMPILER_IS_CLANG)
 
 if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
@@ -170,7 +203,9 @@ set(GO_CONFIG_DIR ${GO_DIR}/config)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_CONFIG_HPP
+    ${GO_CONFIG_DIR}/preprocessor.hpp
     ${GO_CONFIG_DIR}/select_compiler_config.hpp
+    ${GO_CONFIG_DIR}/select_platform_config.hpp
 )
 
 # *.cpp
@@ -195,6 +230,24 @@ set(GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP
 # *.cpp
 
 set(GO_LIBS_SRC_GO_CONFIG_COMPILER_CPP)
+
+########################################################
+#  go/config/platform                                  #
+########################################################
+
+set(GO_CONFIG_PLATFORM_DIRNAME config/platform)
+set(GO_CONFIG_PLATFORM_DIR ${GO_CONFIG_DIR}/platform)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP
+    ${GO_CONFIG_PLATFORM_DIR}/linux.hpp
+    ${GO_CONFIG_PLATFORM_DIR}/windows.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_CONFIG_PLATFORM_CPP)
 
 ########################################################
 #  go/exception                                        #
@@ -301,6 +354,7 @@ set(GO_PROPERTY_DIR ${GO_DIR}/property)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_PROPERTY_HPP
+    ${GO_PROPERTY_DIR}/exception.hpp
     ${GO_PROPERTY_DIR}/property.hpp
     ${GO_PROPERTY_DIR}/read_only_property.hpp
     ${GO_PROPERTY_DIR}/read_only_reference_property.hpp
@@ -328,6 +382,7 @@ set(GO_PROPERTY_DETAIL_DIR ${GO_DIR}/property/detail)
 set(GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP
     ${GO_PROPERTY_DETAIL_DIR}/arithmetic_comparison_operators.hpp
     ${GO_PROPERTY_DETAIL_DIR}/assignment_operator.hpp
+    ${GO_PROPERTY_DETAIL_DIR}/deleted_assignment_operator.hpp
     ${GO_PROPERTY_DETAIL_DIR}/property_base.hpp
     ${GO_PROPERTY_DETAIL_DIR}/read_only_property_base.hpp
     ${GO_PROPERTY_DETAIL_DIR}/write_only_property_base.hpp
@@ -425,10 +480,15 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
     ${GO_UTILITY_DIR}/noncopyable.hpp
     ${GO_UTILITY_DIR}/noncopyable_nonmovable.hpp
     ${GO_UTILITY_DIR}/nonmovable.hpp
+    ${GO_UTILITY_DIR}/primitive_type_specializer.hpp
     ${GO_UTILITY_DIR}/sanity.hpp
     ${GO_UTILITY_DIR}/scope_guard.hpp
     ${GO_UTILITY_DIR}/scope_guard_new.hpp
-	${GO_UTILITY_DIR}/value_guard.hpp
+    ${GO_UTILITY_DIR}/string_cast.hpp
+    ${GO_UTILITY_DIR}/string_cast_exception.hpp
+    ${GO_UTILITY_DIR}/u2string.hpp
+    ${GO_UTILITY_DIR}/u8string.hpp
+    ${GO_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp
@@ -445,7 +505,8 @@ set(GO_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP
-    ${GO_UTILITY_ITERATOR_DIR}/forward_iterator.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
 # *.cpp
@@ -462,7 +523,33 @@ set(GO_UTILITY_STRING_DIR ${GO_DIR}/utility/string)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
+    ${GO_UTILITY_STRING_DIR}/algorithm.hpp
+    ${GO_UTILITY_STRING_DIR}/ascii.hpp
     ${GO_UTILITY_STRING_DIR}/format.hpp
+    ${GO_UTILITY_STRING_DIR}/iso_8859_1.hpp
+    ${GO_UTILITY_STRING_DIR}/string_cast.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_CPP)
+
+########################################################
+#  go/utility/string/detail                            #
+########################################################
+
+set(GO_UTILITY_STRING_DETAIL_DIRNAME utility/string/detail)
+set(GO_UTILITY_STRING_DETAIL_DIR ${GO_DIR}/utility/string/detail)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP
+    ${GO_UTILITY_STRING_DETAIL_DIR}/deletable_facet.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_cast.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_cast_fwd.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert_linux.hpp
+    ${GO_UTILITY_STRING_DETAIL_DIR}/string_convert_windows.hpp
 )
 
 # *.cpp
@@ -495,37 +582,56 @@ set(GO_LIBS_SRC_GO_BOOST_CPP)
 #  go_boost/config                                     #
 ########################################################
 
-set(GO_CONFIG_CONFIG_DIRNAME config)
-set(GO_CONFIG_CONFIG_DIR ${GO_DIR}/config)
+set(GO_BOOST_CONFIG_DIRNAME config)
+set(GO_BOOST_CONFIG_DIR ${GO_DIR}/config)
 
 # *.hpp
 
-set(GO_CONFIG_LIBS_SRC_GO_CONFIG_HPP
-    ${GO_CONFIG_CONFIG_DIR}/select_compiler_config.hpp
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_HPP
+    ${GO_BOOST_CONFIG_DIR}/select_compiler_config.hpp
+    ${GO_BOOST_CONFIG_DIR}/select_platform_config.hpp
 )
 
 # *.cpp
 
-set(GO_CONFIG_LIBS_SRC_GO_CONFIG_CPP)
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_CPP)
 
 ########################################################
 #  go_boost/config/compiler                            #
 ########################################################
 
-set(GO_CONFIG_CONFIG_COMPILER_DIRNAME config/compiler)
-set(GO_CONFIG_CONFIG_COMPILER_DIR ${GO_CONFIG_DIR}/compiler)
+set(GO_BOOST_CONFIG_COMPILER_DIRNAME config/compiler)
+set(GO_BOOST_CONFIG_COMPILER_DIR ${GO_CONFIG_DIR}/compiler)
 
 # *.hpp
 
-set(GO_CONFIG_LIBS_SRC_GO_CONFIG_COMPILER_HPP
-    ${GO_CONFIG_CONFIG_COMPILER_DIR}/clang.hpp
-    ${GO_CONFIG_CONFIG_COMPILER_DIR}/gcc.hpp
-    ${GO_CONFIG_CONFIG_COMPILER_DIR}/visualc.hpp
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP
+    ${GO_BOOST_CONFIG_COMPILER_DIR}/clang.hpp
+    ${GO_BOOST_CONFIG_COMPILER_DIR}/gcc.hpp
+    ${GO_BOOST_CONFIG_COMPILER_DIR}/visualc.hpp
 )
 
 # *.cpp
 
-set(GO_CONFIG_LIBS_SRC_GO_CONFIG_COMPILER_CPP)
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_CPP)
+
+########################################################
+#  go_boost/config/platform                            #
+########################################################
+
+set(GO_BOOST_CONFIG_PLATFORM_DIRNAME config/platform)
+set(GO_BOOST_CONFIG_PLATFORM_DIR ${GO_BOOST_CONFIG_DIR}/platform)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP
+    ${GO_BOOST_CONFIG_PLATFORM_DIR}/linux.hpp
+    ${GO_BOOST_CONFIG_PLATFORM_DIR}/windows.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_CPP)
 
 ########################################################
 #  go_boost/exception                                  #
@@ -635,6 +741,7 @@ set(GO_BOOST_PROPERTY_DIR ${GO_BOOST_DIR}/property)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP
+    ${GO_BOOST_PROPERTY_DIR}/exception.hpp
     ${GO_BOOST_PROPERTY_DIR}/property.hpp
     ${GO_BOOST_PROPERTY_DIR}/read_only_property.hpp
     ${GO_BOOST_PROPERTY_DIR}/read_only_reference_property.hpp
@@ -662,6 +769,7 @@ set(GO_BOOST_PROPERTY_DETAIL_DIR ${GO_BOOST_DIR}/property/detail)
 set(GO_LIBS_SRC_GO_BOOST_PROPERTY_DETAIL_HPP
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/arithmetic_comparison_operators.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/assignment_operator.hpp
+    ${GO_BOOST_PROPERTY_DETAIL_DIR}/deleted_assignment_operator.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/property_base.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/read_only_property_base.hpp
     ${GO_BOOST_PROPERTY_DETAIL_DIR}/write_only_property_base.hpp
@@ -757,10 +865,17 @@ set(GO_BOOST_UTILITY_DIR ${GO_BOOST_DIR}/utility)
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
     ${GO_BOOST_UTILITY_DIR}/noncopyable_nonmovable.hpp
     ${GO_BOOST_UTILITY_DIR}/nonmovable.hpp
+    ${GO_BOOST_UTILITY_DIR}/primitive_type_specializer.hpp
     ${GO_BOOST_UTILITY_DIR}/sanity.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard_new.hpp
-	${GO_BOOST_UTILITY_DIR}/value_guard.hpp
+    ${GO_BOOST_UTILITY_DIR}/string_cast.hpp
+    ${GO_BOOST_UTILITY_DIR}/string_cast_exception.hpp
+    ${GO_BOOST_UTILITY_DIR}/u16string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u2string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u32string.hpp
+    ${GO_BOOST_UTILITY_DIR}/u8string.hpp
+    ${GO_BOOST_UTILITY_DIR}/value_guard.hpp
 )
 
 # *.cpp
@@ -777,12 +892,55 @@ set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_BOOST_DIR}/utility/iterator)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP
-    ${GO_UTILITY_ITERATOR_DIR}/forward_iterator.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
 )
 
 # *.cpp
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_CPP)
+
+########################################################
+#  go_boost/utility/string                             #
+########################################################
+
+set(GO_BOOST_UTILITY_STRING_DIRNAME utility/string)
+set(GO_BOOST_UTILITY_STRING_DIR ${GO_BOOST_DIR}/utility/string)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP
+    ${GO_BOOST_UTILITY_STRING_DIR}/algorithm.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/ascii.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/string_cast.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/iso_8859_1.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/ucs2.hpp
+)
+
+# *.cpp
+
+set(GO_BOOST_LIBS_SRC_GO_BOOST_UTILITY_STRING_CPP)
+
+########################################################
+#  go_boost/utility/string/detail                      #
+########################################################
+
+set(GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME utility/string/detail)
+set(GO_BOOST_UTILITY_STRING_DETAIL_DIR ${GO_BOOST_DIR}/utility/string/detail)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP
+    ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/string_cast.hpp
+    ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/string_cast_fwd.hpp
+    ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/string_convert.hpp
+    ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/string_convert_linux.hpp
+    ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/string_convert_windows.hpp
+)
+
+# *.cpp
+
+set(GO_BOOST_LIBS_SRC_GO_BOOST_UTILITY_STRING_CPP)
 
 ########################################################
 #  libs                                                #
@@ -800,6 +958,7 @@ INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_EXCEPTION_HPP}                  DESTINATION  include/${GO_DIRNAME}/${GO_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_UTILITY_DIRNAME})
@@ -812,10 +971,12 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DETAIL_DIRNAME})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_COMPILER_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_EXCEPTION_HPP}                  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_HPP}                       DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_UTILITY_DIRNAME})
@@ -827,3 +988,5 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP}             DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME})

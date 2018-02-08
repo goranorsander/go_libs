@@ -4,7 +4,7 @@
 //
 //  read_only_property.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -17,8 +17,10 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -39,11 +41,7 @@ public:
     typedef typename std::function<value_type(void)> get_function_signature;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~property() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~property() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     property()
         : detail::property_base<value_type, policy_type>(policy_type())
@@ -55,11 +53,20 @@ public:
     {
     }
 
+#include <go/property/detail/deleted_assignment_operator.hpp>
+
+public:
     void getter(const get_function_signature& f)
     {
         const_cast<policy_type&>(detail::property_base<value_type, policy_type>::storage()).getter(f);
     }
 };
+
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::wstring)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, utility::u8string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u16string)
+GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u32string)
 
 } // namespace read_only
 } // namespace nameless

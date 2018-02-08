@@ -1,7 +1,7 @@
 //
 //  observable_unordered_multimap_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -25,9 +25,7 @@ public:
     typedef unordered_multimap_observer<K, T> this_type;
     typedef typename m::observable_unordered_multimap<K, T>::ptr observable_unordered_multimap_ptr_type;
 
-    virtual ~unordered_multimap_observer()
-    {
-    }
+    virtual ~unordered_multimap_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     unordered_multimap_observer()
         : _last_action(m::undefined_notify_container_changed_action)

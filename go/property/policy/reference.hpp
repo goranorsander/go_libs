@@ -4,7 +4,7 @@
 //
 //  reference.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <memory>
 #include <mutex>
+#include <go/property/exception.hpp>
 
 namespace go
 {
@@ -34,15 +35,11 @@ public:
     typedef reference<value_type> this_type;
 
 public:
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
     virtual ~reference() GO_DEFAULT_DESTRUCTOR
-#else
-    virtual ~reference() GO_DEFAULT_DESTRUCTOR
-#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     reference()
         : _property_guard()
-        , _v(NULL)
+        , _v(nullptr)
     {
     }
 
@@ -58,19 +55,42 @@ public:
     {
     }
 
+    reference& operator=(const reference& v)
+    {
+        if (&v != this)
+        {
+            _v = v._v;
+        }
+        return *this;
+    }
+
+    reference& operator=(const value_type& v)
+    {
+        set(v);
+        return *this;
+    }
+
     value_type get() const
     {
+        if (_v == nullptr)
+        {
+            throw exception("Cannot get value to unbound reference property");
+        }
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         return *_v;
     }
 
     void set(const value_type& v)
     {
+        if (_v == nullptr)
+        {
+            throw exception("Cannot set value to unbound reference property");
+        }
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
-        bind_ref(const_cast<value_type&>(v));
+        *_v = v;
     }
 
-    void bind_ref(value_type& v)
+    void bind(value_type& v)
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
         _v = std::addressof(v);
@@ -79,13 +99,13 @@ public:
     bool empty() const
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
-        return _v == NULL;
+        return _v == nullptr;
     }
 
-    void clear()
+    void reset()
     {
         const std::lock_guard<std::recursive_mutex> lock(_property_guard);
-        _v = NULL;
+        _v = nullptr;
     }
 
 private:

@@ -1,15 +1,22 @@
 #
 #  CMakeLists.txt
 #
-#  Copyright 2016-2017 Göran Orsander
+#  Copyright 2016-2018 Göran Orsander
 #
 #  This file is part of the GO.libraries.
 #  Distributed under the GO Software License, Version 2.0.
 #  See accompanying file LICENSE.md.
 #
 
+add_subdirectory(boost_config)
+add_subdirectory(boost_exception)
 add_subdirectory(boost_mvvm)
 add_subdirectory(boost_property)
+add_subdirectory(boost_signals)
+add_subdirectory(boost_utility)
+add_subdirectory(config)
+add_subdirectory(exception)
 add_subdirectory(mvvm)
 add_subdirectory(property)
 add_subdirectory(signals)
+add_subdirectory(utility)

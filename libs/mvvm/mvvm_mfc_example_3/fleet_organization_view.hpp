@@ -4,7 +4,7 @@
 //
 //  fleet_organization_view.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -23,7 +23,7 @@ class fleet_organization_view
     , public tree_control_observer
 {
 public:
-    virtual ~fleet_organization_view() = default;
+    virtual ~fleet_organization_view() GO_DEFAULT_DESTRUCTOR
 
     fleet_organization_view();
 

@@ -4,7 +4,7 @@
 //
 //  view_model_will_change_arguments.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -36,7 +36,7 @@ public:
     virtual ~view_model_will_change_arguments() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    view_model_will_change_arguments() = default;
+    view_model_will_change_arguments() GO_DEFAULT_CONSTRUCTOR
 
 public:
     static std::shared_ptr<view_model_will_change_arguments> create();
@@ -48,7 +48,7 @@ inline std::shared_ptr<view_model_will_change_arguments> view_model_will_change_
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler() : this_type() {}
+        make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

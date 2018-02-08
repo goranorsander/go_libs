@@ -4,7 +4,7 @@
 //
 //  observable_multimap.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -58,7 +58,7 @@ public:
     virtual ~basic_observable_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_multimap()
+     basic_observable_multimap()
         : basic_observable_ordered_associative_container<string_type, container_type>()
         , _container()
     {
@@ -254,7 +254,7 @@ public:
     virtual ~observable_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_multimap()
+     observable_multimap()
         //: basic_observable_multimap<key_type, value_type, string_type>()
     {
     }
@@ -287,7 +287,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -406,7 +406,7 @@ public:
     virtual ~wobservable_multimap() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_multimap()
+     wobservable_multimap()
         //: basic_observable_multimap<key_type, value_type, string_type>()
     {
     }
@@ -439,7 +439,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

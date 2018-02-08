@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libs\boost_config\test\define_go_boost_compiler_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_config\test\define_go_boost_message_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_config\test\define_go_boost_platform_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_config\test\define_go_boost_typename_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_compiler_clang_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_compiler_gcc_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_compiler_mingw_gcc_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_compiler_visualc_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_platform_linux_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\libs\boost_config\test\define_go_boost_platform_windows_test.ipp">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\property.hpp" />
+    <ClInclude Include="..\..\go\property\detail\deleted_assignment_operator.hpp" />
+    <ClInclude Include="..\..\go\property\exception.hpp" />
     <ClInclude Include="..\..\go\property\nameless\detail\arithmetic_comparison_operators.hpp" />
     <ClInclude Include="..\..\go\property\nameless\detail\property_base.hpp" />
     <ClInclude Include="..\..\go\property\nameless\detail\read_only_property_base.hpp" />
@@ -50,6 +52,9 @@
     <ClInclude Include="..\..\go\property\write_only_reference_property.hpp" />
     <ClInclude Include="..\..\go\property\write_only_property.hpp" />
     <ClInclude Include="..\..\go\property\write_only_value_property.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{26553CCB-6522-42AB-AE06-356EAFCED11F}</ProjectGuid>
@@ -123,6 +128,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -137,6 +143,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,6 +160,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,6 +179,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

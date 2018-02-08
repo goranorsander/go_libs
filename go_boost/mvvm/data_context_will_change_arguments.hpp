@@ -4,7 +4,7 @@
 //
 //  data_context_will_change_arguments.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -15,7 +15,7 @@
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
-#endif
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/signals/slot_arguments.hpp>
 
@@ -33,9 +33,7 @@ public:
     typedef boost::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~data_context_will_change_arguments()
-    {
-    }
+    virtual ~data_context_will_change_arguments() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
     data_context_will_change_arguments()
@@ -53,8 +51,8 @@ inline boost::shared_ptr<data_context_will_change_arguments> data_context_will_c
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() {}
-        make_shared_enabler() : this_type() {}
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+        make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
     return boost::make_shared<make_shared_enabler>();

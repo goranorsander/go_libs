@@ -4,7 +4,7 @@
 //
 //  observable_unordered_map.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -56,7 +56,7 @@ public:
     virtual ~basic_observable_unordered_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_observable_unordered_map()
+     basic_observable_unordered_map()
         : basic_observable_unordered_associative_container<string_type, container_type>()
         , _container()
     {
@@ -279,7 +279,7 @@ public:
     virtual ~observable_unordered_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit observable_unordered_map()
+     observable_unordered_map()
         //: basic_observable_unordered_map<key_type, value_type, string_type>()
     {
     }
@@ -312,7 +312,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();
@@ -429,7 +429,7 @@ public:
     virtual ~wobservable_unordered_map() GO_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit wobservable_unordered_map()
+     wobservable_unordered_map()
         //: basic_observable_unordered_map<key_type, value_type, string_type>()
     {
     }
@@ -462,7 +462,7 @@ public:
             : public this_type
         {
             virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-            make_shared_enabler() : this_type() {}
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
         };
 
         return std::make_shared<make_shared_enabler>();

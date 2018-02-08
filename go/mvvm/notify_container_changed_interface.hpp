@@ -4,7 +4,7 @@
 //
 //  notify_container_changed_interface.hpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -39,7 +39,7 @@ public:
     virtual ~notify_container_changed_interface() = 0;
 
 protected:
-    notify_container_changed_interface() = default;
+    notify_container_changed_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     container_changed_signal container_changed;

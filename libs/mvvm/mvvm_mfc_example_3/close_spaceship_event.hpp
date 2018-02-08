@@ -4,7 +4,7 @@
 //
 //  close_spaceship_event.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -26,7 +26,7 @@ public:
     typedef typename std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~close_spaceship_event() = default;
+    virtual ~close_spaceship_event() GO_DEFAULT_DESTRUCTOR
 
 protected:
     explicit close_spaceship_event(const spaceship_view_model::ptr& vm);

@@ -1,7 +1,7 @@
 //
 //  event_manager_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -35,14 +35,12 @@ public:
     typedef GO_BOOST_TYPENAME boost::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
-    virtual ~fleet_commander_changed_event()
-    {
-    }
+    virtual ~fleet_commander_changed_event() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit fleet_commander_changed_event(const std::string& flt_cmd)
+    explicit fleet_commander_changed_event(const std::string& fleet_commander_)
         : m::event(fleet_commander_changed_event_type)
-        , fleet_commander("fleet_commander", flt_cmd)
+        , fleet_commander("fleet_commander", fleet_commander_)
     {
     }
 
@@ -50,18 +48,18 @@ public:
     rop::value_property<std::string> fleet_commander;
 
 public:
-    static ptr create(const std::string& flt_cmd)
+    static ptr create(const std::string& fleet_commander_)
     {
 #if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(const std::string& flt_cmd) : this_type(flt_cmd) {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            explicit make_shared_enabler(const std::string& fleet_commander_) : this_type(fleet_commander_) {}
         };
-        return boost::make_shared<make_shared_enabler, const std::string&>(flt_cmd);
+        return boost::make_shared<make_shared_enabler, const std::string&>(fleet_commander_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(flt_cmd));
+        return boost::shared_ptr<this_type>(new this_type(fleet_commander_));
 #endif // BOOST_MSVC > 1500
     }
 };
@@ -75,34 +73,32 @@ public:
     typedef boost::weak_ptr<fleet_commander> wptr;
 
 public:
-    virtual ~fleet_commander()
-    {
-    }
+    virtual ~fleet_commander() GO_BOOST_DEFAULT_DESTRUCTOR
 
 private:
-    fleet_commander(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
+    fleet_commander(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_)
         : u::noncopyable_nonmovable()
         , commander("commander")
-        , battle("battle", btl)
-        , _event_manager(event_mgr)
-        , _commander(cmd)
+        , battle("battle", battle_)
+        , _event_manager(event_manager_)
+        , _commander(commander_)
     {
         bind_properties();
     }
 
 public:
-    static ptr create(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl)
+    static ptr create(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_)
     {
 #if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler(const m::event_manager::ptr& event_mgr, const std::string& cmd, const std::string& btl) : this_type(event_mgr, cmd, btl) {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_) : this_type(event_manager_, commander_, battle_) {}
         };
-        return boost::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_mgr, cmd, btl);
+        return boost::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_manager_, commander_, battle_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(event_mgr, cmd, btl));
+        return boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
 #endif // BOOST_MSVC > 1500
     }
 
@@ -140,15 +136,15 @@ class spaceship
     : private u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() {}
+    virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 public:
-    spaceship(const std::string& nme, const std::string& cpt, const std::string& flt_cmd)
+    spaceship(const std::string& name_, const std::string& captain_, const std::string& fleet_commander_)
         : u::noncopyable_nonmovable()
         , fleet_commander("fleet_commander")
-        , name("name", nme)
-        , captain("captain", cpt)
-        , _fleet_commander(flt_cmd)
+        , name("name", name_)
+        , captain("captain", captain_)
+        , _fleet_commander(fleet_commander_)
     {
         bind_properties();
     }
@@ -187,7 +183,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::event_manager::ptr event_mgr = m::event_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
 \
     boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const std::string&, const std::string&, const std::string&>("Millennium Falcon", "Han Solo", "General Jan Dodonna"); \
     boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const std::string&, const std::string&, const std::string&>("X-Wing Red Leader", "Garven Dreis", "General Jan Dodonna"); \
@@ -210,7 +206,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::event_manager::ptr event_mgr = m::event_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, "General Jan Dodonna", "Battle of Yavin"); \
 \
     boost::shared_ptr<spaceship> ship1(new spaceship("Millennium Falcon", "Han Solo", "General Jan Dodonna")); \
     boost::shared_ptr<spaceship> ship2(new spaceship("X-Wing Red Leader", "Garven Dreis", "General Jan Dodonna")); \
@@ -246,7 +242,7 @@ TEST(boost_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::string("General Jan Dodonna"), ship8->fleet_commander());
 
     // Change fleet commander
-    flt_cmd->commander("Admiral Gial Ackbar");
+    fleet_cmdr->commander("Admiral Gial Ackbar");
 
     EXPECT_EQ(std::string("General Jan Dodonna"), ship1->fleet_commander());
     EXPECT_EQ(std::string("General Jan Dodonna"), ship2->fleet_commander());

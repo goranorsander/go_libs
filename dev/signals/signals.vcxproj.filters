@@ -26,4 +26,7 @@
       <Filter>go\signals</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
 </Project>

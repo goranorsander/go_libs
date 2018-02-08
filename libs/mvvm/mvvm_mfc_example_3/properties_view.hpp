@@ -4,7 +4,7 @@
 //
 //  properties_view.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -23,7 +23,7 @@ class properties_view
     , public m::object_wobserver_interface
 {
 public:
-    virtual ~properties_view() = default;
+    virtual ~properties_view() GO_DEFAULT_DESTRUCTOR
     properties_view();
 
     void AdjustLayout();

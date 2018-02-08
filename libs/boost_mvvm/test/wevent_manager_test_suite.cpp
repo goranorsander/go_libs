@@ -1,7 +1,7 @@
 //
 //  wevent_manager_test_suite.cpp
 //
-//  Copyright 2015-2017 Göran Orsander
+//  Copyright 2015-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -35,14 +35,12 @@ public:
     typedef GO_BOOST_TYPENAME boost::weak_ptr<fleet_commander_changed_event> wptr;
 
 public:
-    virtual ~fleet_commander_changed_event()
-    {
-    }
+    virtual ~fleet_commander_changed_event() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit fleet_commander_changed_event(const std::wstring& flt_cmd)
+    explicit fleet_commander_changed_event(const std::wstring& fleet_commander_)
         : m::wevent(fleet_commander_changed_event_type)
-        , fleet_commander(L"fleet_commander", flt_cmd)
+        , fleet_commander(L"fleet_commander", fleet_commander_)
     {
     }
 
@@ -50,18 +48,18 @@ public:
     rop::value_wproperty<std::wstring> fleet_commander;
 
 public:
-    static ptr create(const std::wstring& flt_cmd)
+    static ptr create(const std::wstring& fleet_commander_)
     {
 #if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            explicit make_shared_enabler(const std::wstring& flt_cmd) : this_type(flt_cmd) {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            explicit make_shared_enabler(const std::wstring& fleet_commander_) : this_type(fleet_commander_) {}
         };
-        return boost::make_shared<make_shared_enabler, const std::wstring&>(flt_cmd);
+        return boost::make_shared<make_shared_enabler, const std::wstring&>(fleet_commander_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(flt_cmd));
+        return boost::shared_ptr<this_type>(new this_type(fleet_commander_));
 #endif // BOOST_MSVC > 1500
     }
 };
@@ -75,34 +73,32 @@ public:
     typedef boost::weak_ptr<fleet_commander> wptr;
 
 public:
-    virtual ~fleet_commander()
-    {
-    }
+    virtual ~fleet_commander() GO_BOOST_DEFAULT_DESTRUCTOR
 
 private:
-    fleet_commander(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    fleet_commander(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_)
         : u::noncopyable_nonmovable()
-        , commander(L"commander")
-        , battle(L"battle", btl)
-        , _event_manager(event_mgr)
-        , _commander(cmd)
+        , commander(std::wstring(L"commander"))
+        , battle(std::wstring(L"battle"), battle_)
+        , _event_manager(event_manager_)
+        , _commander(commander_)
     {
         bind_properties();
     }
 
 public:
-    static ptr create(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl)
+    static ptr create(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_)
     {
 #if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
-            virtual ~make_shared_enabler() {}
-            make_shared_enabler(const m::wevent_manager::ptr& event_mgr, const std::wstring& cmd, const std::wstring& btl) : this_type(event_mgr, cmd, btl) {}
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_) : this_type(event_manager_, commander_, battle_) {}
         };
-        return boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_mgr, cmd, btl);
+        return boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_manager_, commander_, battle_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(event_mgr, cmd, btl));
+        return boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
 #endif // BOOST_MSVC > 1500
     }
 
@@ -140,15 +136,15 @@ class spaceship
     : private u::noncopyable_nonmovable
 {
 public:
-    virtual ~spaceship() {}
+    virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 public:
-    spaceship(const std::wstring& nme, const std::wstring& cpt, const std::wstring& flt_cmd)
+    spaceship(const std::wstring& name_, const std::wstring& captain_, const std::wstring& fleet_commander_)
         : u::noncopyable_nonmovable()
-        , fleet_commander(L"fleet_commander")
-        , name(L"name", nme)
-        , captain(L"captain", cpt)
-        , _fleet_commander(flt_cmd)
+        , fleet_commander(std::wstring(L"fleet_commander"))
+        , name(std::wstring(L"name"), name_)
+        , captain(std::wstring(L"captain"), captain_)
+        , _fleet_commander(fleet_commander_)
     {
         bind_properties();
     }
@@ -187,7 +183,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::wevent_manager::ptr event_mgr = m::wevent_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
 \
     boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna"); \
     boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna"); \
@@ -210,7 +206,7 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::wevent_manager::ptr event_mgr = m::wevent_manager::create(); \
 \
-    fleet_commander::ptr flt_cmd = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
+    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
 \
     boost::shared_ptr<spaceship> ship1(new spaceship(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna")); \
     boost::shared_ptr<spaceship> ship2(new spaceship(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna")); \
@@ -246,7 +242,7 @@ TEST(boost_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship8->fleet_commander());
 
     // Change fleet commander
-    flt_cmd->commander(L"Admiral Gial Ackbar");
+    fleet_cmdr->commander(L"Admiral Gial Ackbar");
 
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship1->fleet_commander());
     EXPECT_EQ(std::wstring(L"General Jan Dodonna"), ship2->fleet_commander());

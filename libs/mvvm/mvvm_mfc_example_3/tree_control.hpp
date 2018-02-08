@@ -4,7 +4,7 @@
 //
 //  tree_control.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -19,7 +19,7 @@ class tree_control
     : public CTreeCtrl
 {
 public:
-    virtual ~tree_control() = default;
+    virtual ~tree_control() GO_DEFAULT_DESTRUCTOR
     explicit tree_control(tree_control_observer* observer);
 
 protected:

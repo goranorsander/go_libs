@@ -1,7 +1,7 @@
 //
 //  spaceship_view_model.cpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -54,7 +54,7 @@ spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::pt
     struct make_shared_enabler
         : public this_type
     {
-        virtual ~make_shared_enabler() = default;
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler(const spaceship_model::ptr& model, const fleet_organization_id_type& id, const main_frame_view_model::ptr& vm) : this_type(model, id, vm) {}
     };
 
@@ -168,12 +168,12 @@ void spaceship_view_model::bind_properties()
                     main_frame_view_model::ptr vm = _main_frame_vm.lock();
                     if(vm)
                     {
-                        m::wcommand_manager::ptr cmd_mgr = vm->command_manager();
-                        if(cmd_mgr)
+                        m::wcommand_manager::ptr command_mgr = vm->command_manager();
+                        if(command_mgr)
                         {
-                            m::wcommand_interface::ptr cmd = vm->open_add_equipment_view_command;
-                            std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(cmd->parameters())->spaceship = data_context();
-                            cmd_mgr->post(cmd);
+                            m::wcommand_interface::ptr commander_ = vm->open_add_equipment_view_command;
+                            std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(commander_->parameters())->spaceship = data_context();
+                            command_mgr->post(commander_);
                         }
                     }
                 },

@@ -4,7 +4,7 @@
 //
 //  view_model_interface.hpp
 //
-//  Copyright 2016-2017 Göran Orsander
+//  Copyright 2016-2018 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -34,7 +34,7 @@ public:
     virtual ~view_model_interface() = 0;
 
 protected:
-    view_model_interface() = default;
+    view_model_interface() GO_DEFAULT_CONSTRUCTOR
 
 protected:
     virtual void on_view_model_will_change()
