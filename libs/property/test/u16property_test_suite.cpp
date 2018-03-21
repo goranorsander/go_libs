@@ -63,7 +63,12 @@ TEST(std_u16property_test_suite, value_properties)
 {
     spaceship s;
 
-    // Method oriented get
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented get
     EXPECT_EQ(1012, s.crew_complement());
     EXPECT_EQ(9.8, s.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
@@ -134,7 +139,12 @@ TEST(std_u16property_test_suite, read_only_value_properties)
 {
     read_only_spaceship s;
 
-    // Method oriented get
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented get
     EXPECT_EQ(1012, s.crew_complement());
     EXPECT_EQ(9.8, s.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
@@ -181,7 +191,12 @@ TEST(std_u16property_test_suite, write_only_value_properties)
 {
     write_only_spaceship s;
 
-    // Method oriented set
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented set
     s.crew_complement(647);
     s.max_speed(9.975);
     s.name("USS Enterprise (NCC-1701-E)");
@@ -224,7 +239,12 @@ TEST(std_u16property_test_suite, reference_properties)
 {
     reference_spaceship s;
 
-    // Verify default values
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Verify default values
     EXPECT_TRUE(s.crew_complement.empty() == true);
     EXPECT_TRUE(s.max_speed.empty() == true);
     EXPECT_TRUE(s.name.empty() == true);
@@ -364,7 +384,12 @@ TEST(std_u16property_test_suite, read_only_reference_properties)
 
     read_only_reference_spaceship s(store_crew_complement, store_max_speed, store_name);
 
-    // Verify storage values
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Verify storage values
     EXPECT_EQ(1012, store_crew_complement);
     EXPECT_EQ(9.8, store_max_speed);
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), store_name);
@@ -460,7 +485,12 @@ TEST(std_u16property_test_suite, write_only_reference_properties)
 
     read_only_reference_spaceship s(store_crew_complement, store_max_speed, store_name);
 
-    // Verify storage values
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Verify storage values
     EXPECT_EQ(1012, store_crew_complement);
     EXPECT_EQ(9.8, store_max_speed);
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), store_name);
@@ -608,7 +638,12 @@ TEST(std_u16property_test_suite, proxy_properties)
 
     // INHERITED PROPERTIES
 
-    // Method oriented get
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented get
     EXPECT_EQ(1012, s.crew_complement());
     EXPECT_EQ(9.8, s.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
@@ -660,7 +695,10 @@ TEST(std_u16property_test_suite, proxy_properties)
 
     // PROXY
 
-    s.phaser_arrays(8);
+	// Property name
+	EXPECT_EQ(std::u16string(u"phaser_arrays"), s.phaser_arrays.name());
+
+	s.phaser_arrays(8);
 
     // Method oriented get
     EXPECT_EQ(8, s.phaser_arrays());
@@ -736,7 +774,12 @@ TEST(std_u16property_test_suite, read_only_proxy_properties)
 
     // INHERITED PROPERTIES
 
-    // Method oriented get
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented get
     EXPECT_EQ(1012, s.crew_complement());
     EXPECT_EQ(9.8, s.max_speed());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701-D)"), s.name());
@@ -764,7 +807,10 @@ TEST(std_u16property_test_suite, read_only_proxy_properties)
 
     // PROXY
 
-    // Method oriented get
+	// Property name
+	EXPECT_EQ(std::u16string(u"phaser_arrays"), s.phaser_arrays.name());
+
+	// Method oriented get
     EXPECT_EQ(8, s.phaser_arrays());
 
     // Cast operator oriented get
@@ -825,7 +871,12 @@ TEST(std_u16property_test_suite, write_only_proxy_properties)
 
     // INHERITED PROPERTIES
 
-    // Method oriented set
+	// Property name
+	EXPECT_EQ(std::u16string(u"crew_complement"), s.crew_complement.name());
+	EXPECT_EQ(std::u16string(u"max_speed"), s.max_speed.name());
+	EXPECT_EQ(std::u16string(u"name"), s.name.name());
+
+	// Method oriented set
     s.crew_complement(647);
     s.max_speed(9.975);
     s.name("USS Enterprise (NCC-1701-E)");
@@ -845,7 +896,10 @@ TEST(std_u16property_test_suite, write_only_proxy_properties)
 
     // PROXY
 
-    // Method oriented set
+	// Property name
+	EXPECT_EQ(std::u16string(u"phaser_arrays"), s.phaser_arrays.name());
+
+	// Method oriented set
     s.phaser_arrays(10);
 
     // Assign operator oriented set
