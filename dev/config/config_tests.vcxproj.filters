@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\libs\config\test\define_go_typename_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\config\test\define_go_address_model_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\libs\config\test\define_go_compiler_clang_test.ipp">
@@ -44,5 +47,13 @@
     <None Include="..\..\libs\config\test\define_go_platform_windows_test.ipp">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libs\config\test\define_go_address_model_32_test.ipp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\config\test\define_go_address_model_64_test.ipp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

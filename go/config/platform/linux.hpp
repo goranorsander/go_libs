@@ -17,4 +17,14 @@
 
 #endif  // defined(__linux__)
 
+#if defined(__x86_64__) || defined(__ppc64__)
+
+#define GO_ADDRESS_MODEL_64 1
+
+#else
+
+#define GO_ADDRESS_MODEL_32 1
+
+#endif  // #if defined(__x86_64__) || defined(__ppc64__)
+
 #endif  // #ifndef GO_CONFIG_PLATFORM_LINUX_HPP_INCLUDED

@@ -11,10 +11,20 @@
 //  See accompanying file LICENSE.md.
 //
 
-#if defined(_WIN32) || defined(WIN32)
+#if defined(_WIN32) || defined(WIN32) || defined(_WIN64)
 
 #define GO_PLATFORM_WINDOWS 1
 
-#endif  // #if defined(_WIN32) || defined(WIN32)
+#if defined(_WIN64)
+
+#define GO_ADDRESS_MODEL_64 1
+
+#else
+
+#define GO_ADDRESS_MODEL_32 1
+
+#endif  // #if defined(_WIN64)
+
+#endif  // #if defined(_WIN32) || defined(WIN32) || defined(_WIN64)
 
 #endif  // #ifndef GO_CONFIG_PLATFORM_WINDOWS_HPP_INCLUDED

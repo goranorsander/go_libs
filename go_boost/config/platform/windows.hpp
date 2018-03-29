@@ -23,4 +23,18 @@
 
 #endif  // #if defined(_WIN32) || defined(WIN32)
 
+#if defined(_WIN32) || defined(_WIN64)
+
+#if defined(_WIN64)
+
+#define GO_BOOST_ADDRESS_MODEL_64 1
+
+#else
+
+#define GO_BOOST_ADDRESS_MODEL_32 1
+
+#endif  // #if defined(_WIN64)
+
+#endif  // #if defined(_WIN32) || defined(_WIN64)
+
 #endif  // #ifndef GO_BOOST_CONFIG_PLATFORM_WINDOWS_HPP_INCLUDED
