@@ -17,10 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/signals2.hpp>
 #include <go_boost/mvvm/view_model_changed_arguments.hpp>
 #include <go_boost/mvvm/view_model_will_change_arguments.hpp>
-#include <go_boost/signals/slot.hpp>
+#include <go_boost/signals.hpp>
 
 namespace go_boost
 {

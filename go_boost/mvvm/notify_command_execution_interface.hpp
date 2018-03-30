@@ -18,9 +18,8 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <string>
-#include <boost/signals2.hpp>
 #include <go_boost/mvvm/command_interface.hpp>
-#include <go_boost/signals/slot.hpp>
+#include <go_boost/signals.hpp>
 
 namespace go_boost
 {

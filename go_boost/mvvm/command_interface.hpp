@@ -18,10 +18,9 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/enable_shared_from_this.hpp>
-#include <boost/signals2.hpp>
-#include <boost/weak_ptr.hpp>
 #include <go_boost/mvvm/command_parameters.hpp>
 #include <go_boost/property/nameless/read_only_property.hpp>
+#include <go_boost/signals.hpp>
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost

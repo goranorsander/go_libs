@@ -34,8 +34,8 @@ spaceship_view::spaceship_view()
     , _equipment_list_ctrl()
     , _selected_equipment_id(0)
     , _equipment_list_data()
-    , _on_data_context_container_changed_slot_key(0)
-    , _on_data_context_property_changed_slot_key(0)
+    , _on_data_context_container_changed_slot_key()
+    , _on_data_context_property_changed_slot_key()
 {
 }
 

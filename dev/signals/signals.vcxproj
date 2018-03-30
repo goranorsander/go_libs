@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\go\signals\signal.hpp" />
     <ClInclude Include="..\..\go\signals\slot.hpp" />
     <ClInclude Include="..\..\go\signals\slot_arguments.hpp" />
+    <ClInclude Include="..\..\go\signals\slot_key.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

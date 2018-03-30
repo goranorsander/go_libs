@@ -11,7 +11,6 @@
 #include <go_boost/config.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/signals.hpp>
-#include <boost/signals2.hpp>
 #include <iostream>
 
 namespace p = go_boost::property;
@@ -21,7 +20,7 @@ class fleet_commander
 public:
     typedef boost::shared_ptr<fleet_commander> ptr;
     typedef boost::weak_ptr<fleet_commander> wptr;
-    typedef GO_TYPENAME boost::signals2::signal<void(const bool&)> fire_lasers_signal;
+    typedef GO_BOOST_TYPENAME boost::signals2::signal<void(const bool&)> fire_lasers_signal;
 
     virtual ~fleet_commander() {}
 

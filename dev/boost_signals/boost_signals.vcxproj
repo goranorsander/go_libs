@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\signals.hpp" />
+    <ClInclude Include="..\..\go_boost\signals\signal.hpp" />
     <ClInclude Include="..\..\go_boost\signals\slot.hpp" />
     <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp" />
   </ItemGroup>

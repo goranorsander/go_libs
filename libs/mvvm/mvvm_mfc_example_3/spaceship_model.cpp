@@ -25,7 +25,7 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
     , _equipment(m::wobservable_deque<equipment_interface::ptr>::create())
     , _captain()
     , _crew_complement(0)
-    , _on_equipment_list_changed_slot_key(0)
+    , _on_equipment_list_changed_slot_key()
 {
     bind_properties();
 }

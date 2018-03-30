@@ -59,47 +59,47 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         const activate_spaceship_command_parameters::ptr asp = boost::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
         if(asp)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]")
                 % (*asp->id)).str();
         }
         const add_equipment_command_parameters::ptr aep = boost::dynamic_pointer_cast<add_equipment_command_parameters>(p);
         if (aep)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]")
                 % (*aep->spaceship_id)).str();
         }
         const close_spaceship_command_parameters::ptr csp = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
         if(csp)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]")
                 % (csp->spaceship_vm() ? *csp->spaceship_vm()->spaceship_id : 0)).str();
         }
         const delete_dialog_view_command_parameters::ptr dvp = boost::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
         if (dvp)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class delete_dialog_view_command_parameters[dialog=0x%X]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class delete_dialog_view_command_parameters[dialog=0x%X]}]")
                 % reinterpret_cast<unsigned __int3264>(dvp->dialog().get())).str();
         }
         const fleet_organization_command_parameters::ptr fop = boost::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
         if(fop)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]")
                 % (*fop->id)).str();
         }
         const open_add_equipment_view_command_parameters::ptr oep = boost::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
         if (oep)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class open_add_equipment_view_command_parameters[spaceship=0x%X]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class open_add_equipment_view_command_parameters[spaceship=0x%X]}]")
                 % reinterpret_cast<unsigned __int3264>(oep->spaceship().get())).str();
         }
         const remove_equipment_command_parameters::ptr rep = boost::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
         if (rep)
         {
-            return (boost::wformat(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]")
+            return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]")
                 % rep->spaceship_id % rep->equipment_id).str();
         }
     }
-    return L"class go::mvvm::wcommand_interface";
+    return L"class go_boost::mvvm::wcommand_interface";
 }
 
 std::wstring event_information(const m::wevent::ptr& e)
@@ -124,7 +124,7 @@ std::wstring event_information(const m::wevent::ptr& e)
         return (boost::wformat(L"class show_spaceship_event[id=%d]")
             % (*ss->id)).str();
     }
-    return L"class go::mvvm::wevent";
+    return L"class go_boost::mvvm::wevent";
 }
 
 std::wstring object_information(const m::object::ptr& o)

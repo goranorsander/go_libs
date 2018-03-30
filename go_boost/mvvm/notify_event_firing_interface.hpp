@@ -17,9 +17,8 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/signals2.hpp>
 #include <go_boost/mvvm/event.hpp>
-#include <go_boost/signals/slot.hpp>
+#include <go_boost/signals.hpp>
 
 namespace go_boost
 {

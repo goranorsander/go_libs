@@ -33,7 +33,7 @@ fleet_organization_model::fleet_organization_model(const std::wstring& name_, co
     , _id(_next_id++)
     , _name(name_)
     , _spaceship(spaceship_)
-    , _on_spaceship_property_changed_slot_key(0)
+    , _on_spaceship_property_changed_slot_key()
     , _parent()
     , _first_child()
     , _previous_sibling()

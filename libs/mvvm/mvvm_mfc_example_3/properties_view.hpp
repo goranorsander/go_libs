@@ -69,8 +69,8 @@ protected:
     void InitPropList();
 
 private:
-    s::slot_key_type _on_data_context_container_changed_slot_key;
-    s::slot_key_type _on_data_context_property_changed_slot_key;
+    s::slot_key _on_data_context_container_changed_slot_key;
+    s::slot_key _on_data_context_property_changed_slot_key;
 };
 
 #endif  // #ifndef GO_MVVM_EXAMPLE_3_PROPERTIES_VIEW_HPP_INCLUDED

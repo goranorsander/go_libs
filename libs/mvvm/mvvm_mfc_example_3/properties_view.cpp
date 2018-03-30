@@ -29,8 +29,8 @@ properties_view::properties_view()
     , m::object_wobserver_interface()
     , _wndToolBar()
     , _wndPropList()
-    , _on_data_context_container_changed_slot_key(0)
-    , _on_data_context_property_changed_slot_key(0)
+    , _on_data_context_container_changed_slot_key()
+    , _on_data_context_property_changed_slot_key()
 {
 }
 

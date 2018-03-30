@@ -22,6 +22,9 @@
     <ClInclude Include="..\..\go_boost\signals\slot_arguments.hpp">
       <Filter>go_boost\signals</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\signals\signal.hpp">
+      <Filter>go_boost\signals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

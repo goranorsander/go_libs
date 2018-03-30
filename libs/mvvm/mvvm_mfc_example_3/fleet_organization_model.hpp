@@ -66,7 +66,7 @@ private:
     const std::wstring _name;
     spaceship_interface::ptr _spaceship;
 
-    s::slot_key_type _on_spaceship_property_changed_slot_key;
+    s::slot_key _on_spaceship_property_changed_slot_key;
 
     ptr _parent;
     ptr _first_child;

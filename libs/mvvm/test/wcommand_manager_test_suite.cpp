@@ -189,7 +189,7 @@ public:
     virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_slot_key(0)
+        : _on_property_changed_slot_key()
         , _on_property_changed_count()
     {
     }
@@ -246,7 +246,7 @@ private:
     typedef std::pair<std::wstring, std::wstring> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
-    s::slot_key_type _on_property_changed_slot_key;
+    s::slot_key _on_property_changed_slot_key;
     on_property_changed_counter_type _on_property_changed_count;
 };
 

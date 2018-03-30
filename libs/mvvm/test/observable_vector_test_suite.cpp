@@ -34,8 +34,8 @@ public:
     virtual ~vector_observer() GO_DEFAULT_DESTRUCTOR
 
     vector_observer()
-        : _on_container_changed_slot_key(0)
-        , _on_property_changed_slot_key(0)
+        : _on_container_changed_slot_key()
+        , _on_property_changed_slot_key()
         , _last_action(m::undefined_notify_container_changed_action)
         , _last_change_added(0)
         , _last_change_removed(0)
@@ -136,8 +136,8 @@ public:
     }
 
 private:
-    s::slot_key_type _on_container_changed_slot_key;
-    s::slot_key_type _on_property_changed_slot_key;
+    s::slot_key _on_container_changed_slot_key;
+    s::slot_key _on_property_changed_slot_key;
 
     m::notify_container_changed_action _last_action;
     int _last_change_added;

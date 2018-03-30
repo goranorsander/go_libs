@@ -461,6 +461,7 @@ set(GO_LIBS_SRC_GO_SIGNALS_HPP
     ${GO_SIGNALS_DIR}/signal.hpp
     ${GO_SIGNALS_DIR}/slot.hpp
     ${GO_SIGNALS_DIR}/slot_arguments.hpp
+    ${GO_SIGNALS_DIR}/slot_key.hpp
 )
 
 # *.cpp
@@ -845,6 +846,7 @@ set(GO_BOOST_SIGNALS_DIR ${GO_BOOST_DIR}/signals)
 # *.hpp
 
 set(GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP
+    ${GO_BOOST_SIGNALS_DIR}/signal.hpp
     ${GO_BOOST_SIGNALS_DIR}/slot.hpp
     ${GO_BOOST_SIGNALS_DIR}/slot_arguments.hpp
 )

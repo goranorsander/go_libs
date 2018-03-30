@@ -28,7 +28,7 @@ properties_view_model::properties_view_model()
     , main_frame_vm(L"properties_view_model::main_frame_vm")
     , fleet_organization(L"properties_view_model::fleet_organization")
     , _main_frame_vm()
-    , _on_data_context_property_changed_slot_key(0)
+    , _on_data_context_property_changed_slot_key()
     , _select_fleet_organization_event_key(0)
 {
     bind_properties();

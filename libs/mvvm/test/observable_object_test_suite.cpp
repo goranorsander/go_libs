@@ -122,7 +122,7 @@ public:
     virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_slot_key(0)
+        : _on_property_changed_slot_key()
         , _crew_complement_change_count(0)
         , _name_change_count(0)
         , _max_speed_change_count(0)
@@ -154,7 +154,7 @@ public:
     int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
-    s::slot_key_type _on_property_changed_slot_key;
+    s::slot_key _on_property_changed_slot_key;
     int _crew_complement_change_count;
     int _name_change_count;
     int _max_speed_change_count;

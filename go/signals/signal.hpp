@@ -21,12 +21,12 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <map>
 #include <mutex>
 
+#include <go/signals/slot_key.hpp>
+
 namespace go
 {
 namespace signals
 {
-
-typedef unsigned int slot_key_type;
 
 template<typename F, typename M = std::recursive_mutex>
 class signal
@@ -37,32 +37,31 @@ public:
     typedef signal<F, M> this_type;
 
 protected:
-    typedef typename std::map<slot_key_type, function_type> connections_type;
+    typedef typename std::map<slot_key, function_type> connections_type;
 
 public:
     virtual ~signal() GO_DEFAULT_DESTRUCTOR
 
     signal()
-        : _slot_next_key(0)
-        , _connections()
+        : _connections()
         , _signal_guard()
     {
     }
 
 public:
     template<typename F1>
-    slot_key_type connect(F1&& f)
+    slot_key connect(F1&& f)
     {
         const std::lock_guard<mutex_type> lock(_signal_guard);
-        const slot_key_type slot_key = ++_slot_next_key;
-        _connections[slot_key] = f;
-        return slot_key;
+        const slot_key s(f);
+        _connections[s] = f;
+        return s;
     }
 
-    void disconnect(const slot_key_type slot_key)
+    void disconnect(const slot_key& s)
     {
         const std::lock_guard<mutex_type> lock(_signal_guard);
-        _connections.erase(slot_key);
+        _connections.erase(s);
     }
 
     void disconnect_all_slots()
@@ -100,7 +99,6 @@ public:
     }
 
 protected:
-    slot_key_type _slot_next_key;
     connections_type _connections;
 
 private:

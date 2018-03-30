@@ -13,8 +13,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
-#include <boost/signals2.hpp>
+#include <go_boost/signals.hpp>
 
 class dialog_view
     : public CDialogEx

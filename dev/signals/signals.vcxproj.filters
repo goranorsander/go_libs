@@ -25,6 +25,9 @@
     <ClInclude Include="..\..\go\signals\slot_arguments.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\signals\slot_key.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
