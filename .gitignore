@@ -18,6 +18,7 @@ syntax: glob
 *~
 
 dev/.vs/**
+dev/.vscode/0.*.bat
 unsuccessfulbuild
 
 # switch to regexp syntax.
