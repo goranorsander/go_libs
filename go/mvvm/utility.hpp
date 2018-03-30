@@ -12,9 +12,7 @@
 //
 
 #if defined(GO_MSVC_MFC)
-#include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
-#endif  // #if defined(GO_MSVC_MFC)
-
 #include <go/mvvm/utility/mfc_dlgdata.hpp>
+#endif  // #if defined(GO_MSVC_MFC)
 
 #endif  // #ifndef GO_MVVM_UTILITY_HPP_INCLUDED

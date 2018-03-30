@@ -25,12 +25,12 @@ public:
 
 private:
 
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     nonmovable(nonmovable&&) = delete;
     auto operator=(nonmovable&&)->nonmovable& = delete;
 
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 protected:
     nonmovable() = default;

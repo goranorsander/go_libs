@@ -26,19 +26,19 @@ public:
 private:
     noncopyable_nonmovable(const noncopyable_nonmovable&) = delete;
 
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     noncopyable_nonmovable(noncopyable_nonmovable&&) = delete;
 
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& = delete;
 
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& = delete;
 
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 protected:
     noncopyable_nonmovable() = default;
