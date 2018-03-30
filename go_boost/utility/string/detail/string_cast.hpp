@@ -77,7 +77,7 @@ GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(std::wstring, u8string, string::convert_u8
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(std::wstring, u16string, string::convert_u16string_to_wstring)
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(std::wstring, u32string, string::convert_u32string_to_wstring)
 
-// to go::utility::u2string
+// to go_boost::utility::u2string
 
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT_NO_CONVERSION(u2string)
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(u2string, std::string, string::convert_string_to_u2string)
@@ -86,7 +86,7 @@ GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(u2string, u8string, string::convert_u8stri
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(u2string, u16string, string::convert_u16string_to_u2string)
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(u2string, u32string, string::convert_u32string_to_u2string)
 
-// to go::utility::u8string
+// to go_boost::utility::u8string
 
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT_NO_CONVERSION(u8string)
 GO_BOOST_IMPLEMENT_STRING_CAST_STRUCT(u8string, std::string, string::convert_string_to_u8string)

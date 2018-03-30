@@ -91,7 +91,7 @@ inline convert_u32string_to_wstring_function_signature& convert_u32string_to_wst
     return f;
 }
 
-// to go::utility::u2string
+// to go_boost::utility::u2string
 
 inline convert_string_to_u2string_function_signature& convert_string_to_u2string()
 {
@@ -123,7 +123,7 @@ inline convert_u32string_to_u2string_function_signature& convert_u32string_to_u2
     return f;
 }
 
-// to go::utility::u8string
+// to go_boost::utility::u8string
 
 inline convert_string_to_u8string_function_signature& convert_string_to_u8string()
 {

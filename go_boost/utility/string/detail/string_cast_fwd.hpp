@@ -99,7 +99,7 @@ convert_u8string_to_wstring_function_signature& convert_u8string_to_wstring();
 convert_u16string_to_wstring_function_signature& convert_u16string_to_wstring();
 convert_u32string_to_wstring_function_signature& convert_u32string_to_wstring();
 
-// to go::utility::u2string
+// to go_boost::utility::u2string
 
 typedef GO_BOOST_TYPENAME boost::function<u2string(const std::string&)> convert_string_to_u2string_function_signature;
 typedef GO_BOOST_TYPENAME boost::function<u2string(const std::wstring&)> convert_wstring_to_u2string_function_signature;
@@ -113,7 +113,7 @@ convert_u8string_to_u2string_function_signature& convert_u8string_to_u2string();
 convert_u16string_to_u2string_function_signature& convert_u16string_to_u2string();
 convert_u32string_to_u2string_function_signature& convert_u32string_to_u2string();
 
-// to go::utility::u8string
+// to go_boost::utility::u8string
 
 typedef GO_BOOST_TYPENAME boost::function<u8string(const std::string&)> convert_string_to_u8string_function_signature;
 typedef GO_BOOST_TYPENAME boost::function<u8string(const std::wstring&)> convert_wstring_to_u8string_function_signature;

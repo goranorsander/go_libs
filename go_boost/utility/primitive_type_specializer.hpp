@@ -24,14 +24,14 @@ namespace utility
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_, _default_value_ ) \
 class _class_name_ \
-    : public go::utility::primitive_type_specializer<_primitive_type_> \
+    : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
     virtual ~_class_name_() GO_BOOST_DEFAULT_DESTRUCTOR \
-    _class_name_() : go::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
-    _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
-    explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
-    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
+    _class_name_() : go_boost::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
+    _class_name_(const _class_name_& t) : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {} \
+    explicit _class_name_(const value_type& t) : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {} \
+    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go_boost::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
     _class_name_ operator+() const { return _class_name_(+get()); } \
     _class_name_ operator-() const { return _class_name_(-get()); } \
     _class_name_ operator+(const _class_name_& t) const { return _class_name_(get() + t.get()); } \

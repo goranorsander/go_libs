@@ -68,7 +68,7 @@ inline std::wstring convert_u32string_to_wstring(const u32string& s)
     return convert_u16string_to_wstring(convert_u32string_to_u16string(s));
 }
 
-// to go::utility::u2string
+// to go_boost::utility::u2string
 
 inline u2string convert_wstring_to_u2string(const std::wstring& s)
 {
@@ -76,7 +76,7 @@ inline u2string convert_wstring_to_u2string(const std::wstring& s)
     return u2string(s.begin(), s.end());
 }
 
-// to go::utility::u8string
+// to go_boost::utility::u8string
 
 inline u8string convert_string_to_u8string(const std::string& s)
 {
