@@ -116,11 +116,11 @@ My development environment and toolset details:
 * Windows 10 Professional, 64 bit
   * cmake version 3.10.3
   * MSYS2 64bit 20161025
-  * gcc (Rev1, Built by MSYS2 project) 7.2.0
+  * gcc (Rev1, Built by MSYS2 project) 7.3.0
   * git 2.16.2.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
-  * TortoiseGit 2.5.0.0
+  * TortoiseGit 2.6.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
