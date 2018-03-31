@@ -17,6 +17,8 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <cstdint>
+
 namespace go
 {
 namespace signals
@@ -26,9 +28,9 @@ class slot_key
 {
 private:
 #if defined(GO_ADDRESS_MODEL_64)
-    typedef unsigned __int64 slot_key_type;
+    typedef uint64_t slot_key_type;
 #else
-    typedef unsigned __int32 slot_key_type;
+    typedef uint32_t slot_key_type;
 #endif  // #if defined(GO_ADDRESS_MODEL_64)
 
 public:
