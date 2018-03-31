@@ -23,9 +23,8 @@
 #endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
 
 // Compiler message
-#define GO_MESSAGE_HELPER_0(_message_) #_message_
-#define GO_MESSAGE_HELPER_1(_message_) GO_MESSAGE_HELPER_0(GCC warning _message_)
-#define GO_MESSAGE(_message_) _Pragma(GO_MESSAGE_HELPER_1(_message_))
+#define GO_MESSAGE(_message_) \
+__warning _message_
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
 #if (GO_GCC_VERSION < 40500)
