@@ -43,7 +43,8 @@ public:
     virtual ~signal() GO_DEFAULT_DESTRUCTOR
 
     signal()
-        : _connections()
+        : _next_slot_key()
+        , _connections()
         , _signal_guard()
     {
     }
@@ -53,15 +54,15 @@ public:
     slot_key connect(F1&& f)
     {
         const std::lock_guard<mutex_type> lock(_signal_guard);
-        const slot_key s(f);
-        _connections[s] = f;
-        return s;
+        const slot_key key = ++_next_slot_key;
+        _connections[key] = f;
+        return key;
     }
 
-    void disconnect(const slot_key& s)
+    void disconnect(const slot_key key)
     {
         const std::lock_guard<mutex_type> lock(_signal_guard);
-        _connections.erase(s);
+        _connections.erase(key);
     }
 
     void disconnect_all_slots()
@@ -99,6 +100,7 @@ public:
     }
 
 protected:
+    slot_key _next_slot_key;
     connections_type _connections;
 
 private:

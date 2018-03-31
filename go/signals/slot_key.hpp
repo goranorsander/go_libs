@@ -47,12 +47,6 @@ public:
     {
     }
 
-    template<typename F>
-    slot_key(const F& f)
-        : _slot_key(reinterpret_cast<slot_key_type>(&f))
-    {
-    }
-
     this_type operator=(const this_type& other)
     {
         if (this != &other)
@@ -110,6 +104,26 @@ public:
             return _slot_key >= other._slot_key;
         }
         return true;
+    }
+
+    this_type& operator++()
+    {
+        // Prefix ++
+        ++_slot_key;
+        return *this;
+    }
+
+    this_type operator++(int)
+    {
+        // Postfix ++
+        const this_type result(*this);
+        ++(*this);
+        return result;
+    }
+
+    void reset()
+    {
+        _slot_key = 0;
     }
 
 private:
