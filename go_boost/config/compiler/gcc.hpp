@@ -17,16 +17,16 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#if defined(__GNUC__)
+
+#define GO_BOOST_COMP_GCC 1
+
+#define GO_BOOST_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+
 // MinGW
 #if defined(__MINGW32__) || defined(__MINGW64__)
 #define GO_BOOST_COMP_GCC_MINGW 1
 #endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
-
-#if defined(BOOST_GCC)
-
-#if !defined(GO_BOOST_COMP_GCC_MINGW)
-#define GO_BOOST_COMP_GCC 1
-#endif  // #if !defined(GO_BOOST_COMP_GCC_MINGW)
 
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
@@ -53,6 +53,6 @@ __warning _message_
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
-#endif  // #if defined(BOOST_GCC)
+#endif  // #if defined(__GNUC__)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_GCC_HPP_INCLUDED
