@@ -1,5 +1,7 @@
  #!/bin/sh
 
+./GO_libraries_boost_config_tests --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
+./GO_libraries_boost_exception_tests --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
 ./GO_libraries_boost_mvvm_tests --gtest_output=xml:GO_libraries_boost_mvvm_tests_report.xml
 ./GO_libraries_boost_property_tests --gtest_output=xml:GO_libraries_boost_property_tests_report.xml
 ./GO_libraries_boost_utility_tests --gtest_output=xml:GO_libraries_boost_utility_tests_report.xml
