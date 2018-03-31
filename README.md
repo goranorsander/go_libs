@@ -73,7 +73,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 5.0.1|gcc 7.2.1|MSYS2 MinGW gcc 7.2.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 6.0.0|gcc 7.3.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 | 66 
