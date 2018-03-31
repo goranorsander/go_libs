@@ -61,7 +61,7 @@ public:
         , lasers_firing("lasers_firing")
         , _lasers_firing(false)
         , _fleet_commander(fleet_commander_)
-        , _fire_lasers_slot_key(0)
+        , _fire_lasers_slot_key()
     {
         lasers_firing.getter([this]() { return _lasers_firing; });
         lasers_firing.setter(std::bind(&spaceship::set_lasers_firing, this, ph::_1));

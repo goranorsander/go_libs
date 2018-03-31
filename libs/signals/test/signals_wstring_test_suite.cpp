@@ -96,8 +96,8 @@ public:
         , lasers_firing(L"lasers_firing", false)
         , proton_torpedoes(L"proton_torpedoes", proton_torpedoes_)
         , _fleet_commander(fleet_commander_)
-        , _fire_lasers_slot_key(0)
-        , _fire_proton_torpedoes_slot_key(0)
+        , _fire_lasers_slot_key()
+        , _fire_proton_torpedoes_slot_key()
     {
         _fire_lasers_slot_key = fleet_commander_->fire_lasers.connect(std::bind(&p::value_wproperty<bool>::set, &lasers_firing, ph::_1));
         _fire_proton_torpedoes_slot_key = fleet_commander_->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));

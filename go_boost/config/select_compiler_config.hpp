@@ -19,9 +19,9 @@
 
 #if defined(__clang__)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/clang.hpp"
-#elif defined(BOOST_GCC)
+#elif defined(__GNUC__)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/gcc.hpp"
-#elif defined(BOOST_MSVC)
+#elif defined(_MSC_VER)
 #define GO_BOOST_COMPILER_CONFIG "go_boost/config/compiler/visualc.hpp"
 #endif  // #if defined(__clang__)
 
