@@ -59,7 +59,7 @@ public:
         return key;
     }
 
-    void disconnect(const slot_key key)
+    void disconnect(const slot_key& key)
     {
         const std::lock_guard<mutex_type> lock(_signal_guard);
         _connections.erase(key);
