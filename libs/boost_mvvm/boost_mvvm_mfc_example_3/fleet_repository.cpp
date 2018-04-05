@@ -15,7 +15,7 @@
 namespace
 {
 
-fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr fleet_org, const std::wstring& name)
+fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr& fleet_org, const std::wstring& name)
 {
     if(fleet_org)
     {
@@ -28,7 +28,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
     return fleet_organization_interface::ptr();
 }
 
-fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr fleet_org, const spaceship_interface::ptr& spaceship_model)
+fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr& fleet_org, const spaceship_interface::ptr& spaceship_model)
 {
     if(fleet_org)
     {
@@ -41,7 +41,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
     return fleet_organization_interface::ptr();
 }
 
-fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr fleet_org, const fleet_organization_id_type id)
+fleet_organization_interface::ptr find_fleet_organization(const fleet_organization_interface::ptr& fleet_org, const fleet_organization_id_type id)
 {
     fleet_organization_model::ptr fleet_org_ = boost::dynamic_pointer_cast<fleet_organization_model>(fleet_org);
     if(fleet_org_)
@@ -55,7 +55,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
     return fleet_organization_interface::ptr();
 }
 
-spaceship_interface::ptr find_spaceship(const fleet_organization_interface::ptr fleet_org, const std::wstring& name)
+spaceship_interface::ptr find_spaceship(const fleet_organization_interface::ptr& fleet_org, const std::wstring& name)
 {
     if(fleet_org)
     {

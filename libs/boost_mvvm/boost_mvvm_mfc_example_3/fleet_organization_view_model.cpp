@@ -19,7 +19,7 @@
 namespace
 {
 
-bool is_spaceship(const fleet_organization_interface::ptr fleet_org, const fleet_organization_id_type id)
+bool is_spaceship(const fleet_organization_interface::ptr& fleet_org, const fleet_organization_id_type id)
 {
     fleet_organization_model::ptr fleet_org_ = boost::dynamic_pointer_cast<fleet_organization_model>(fleet_org);
     if(fleet_org_)
