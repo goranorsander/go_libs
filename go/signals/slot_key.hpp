@@ -49,7 +49,7 @@ public:
     {
     }
 
-    this_type operator=(const this_type& other)
+    this_type& operator=(const this_type& other)
     {
         if (this != &other)
         {
