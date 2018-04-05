@@ -126,7 +126,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.6.4
+  * Visual Studio 2017, Community Edition, version 15.6.5
   * Visual Studio Code 1.21.1 - with same extensions as in Linux environment
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.10.2
