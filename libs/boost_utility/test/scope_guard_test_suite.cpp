@@ -11,6 +11,8 @@
 #include <gtest/gtest.h>
 #include <go_boost/config.hpp>
 
+#include <boost/bind.hpp>
+
 #include <go_boost/utility/scope_guard.hpp>
 
 namespace u = go_boost::utility;
@@ -33,11 +35,11 @@ TEST(std_scope_guard_test_suite, test_scope_guard)
 {
     {
         EXPECT_EQ(0, scope_exit_count());
-        const u::scope_guard guard1(u::scope_guard::on_scope_exit_function_type(std::bind(on_scope_exit)));
+        const u::scope_guard guard1(u::scope_guard::on_scope_exit_function_type(boost::bind(on_scope_exit)));
         EXPECT_EQ(0, scope_exit_count());
         {
             EXPECT_EQ(0, scope_exit_count());
-            const u::scope_guard guard2(u::scope_guard::on_scope_exit_function_type(std::bind(on_scope_exit)));
+            const u::scope_guard guard2(u::scope_guard::on_scope_exit_function_type(boost::bind(on_scope_exit)));
             EXPECT_EQ(0, scope_exit_count());
         }
         EXPECT_EQ(1, scope_exit_count());

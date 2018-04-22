@@ -36,6 +36,6 @@ void delete_foo(foo* p)
 int main()
 {
     foo* f = new foo;
-    const u::scope_guard guard(u::scope_guard::on_scope_exit_function_type(std::bind(&delete_foo, f)));
+    const u::scope_guard guard(u::scope_guard::on_scope_exit_function_type(boost::bind(&delete_foo, f)));
     return 0;
 }
