@@ -35,112 +35,112 @@ namespace utility
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
-    _class_name_& operator+=(const _class_name_& t) { _t += t._t; return *this; } \
-    _class_name_& operator-=(const _class_name_& t) { _t -= t._t; return *this; } \
-    _class_name_& operator*=(const _class_name_& t) { _t *= t._t; return *this; } \
-    _class_name_& operator/=(const _class_name_& t) { _t /= t._t; return *this; }
+    _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; }
 
 #define GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::implicit_primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
-    _class_name_& operator+=(const _class_name_& t) { _t += t._t; return *this; } \
-    _class_name_& operator-=(const _class_name_& t) { _t -= t._t; return *this; } \
-    _class_name_& operator*=(const _class_name_& t) { _t *= t._t; return *this; } \
-    _class_name_& operator/=(const _class_name_& t) { _t /= t._t; return *this; } \
-    template<typename P> _class_name_& operator=(const P& p) { _t = static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator+=(const P& p) { _t += static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator-=(const P& p) { _t -= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator*=(const P& p) { _t *= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator/=(const P& p) { _t /= static_cast<_primitive_type_>(p); return *this; }
+    _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; } \
+    template<typename P> _class_name_& operator=(const P& p) { get() = static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator+=(const P& p) { get() += static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator-=(const P& p) { get() -= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator*=(const P& p) { get() *= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator/=(const P& p) { get() /= static_cast<_primitive_type_>(p); return *this; }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { _t %= t._t; return *this; } \
-    _class_name_& operator&=(const _class_name_& t) { _t &= t._t; return *this; } \
-    _class_name_& operator|=(const _class_name_& t) { _t |= t._t; return *this; } \
-    _class_name_& operator^=(const _class_name_& t) { _t ^= t._t; return *this; } \
-    _class_name_& operator<<=(const _class_name_& t) { _t <<= t._t; return *this; } \
-    _class_name_& operator>>=(const _class_name_& t) { _t >>= t._t; return *this; }
+    _class_name_& operator%=(const _class_name_& t) { get() %= t.get(); return *this; } \
+    _class_name_& operator&=(const _class_name_& t) { get() &= t.get(); return *this; } \
+    _class_name_& operator|=(const _class_name_& t) { get() |= t.get(); return *this; } \
+    _class_name_& operator^=(const _class_name_& t) { get() ^= t.get(); return *this; } \
+    _class_name_& operator<<=(const _class_name_& t) { get() <<= t.get(); return *this; } \
+    _class_name_& operator>>=(const _class_name_& t) { get() >>= t.get(); return *this; }
 
 #define GO_IMPLEMENT_IMPLICIT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_& operator%=(const P& p) { _t %= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator&=(const P& p) { _t &= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator|=(const P& p) { _t |= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator^=(const P& p) { _t ^= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator<<=(const P& p) { _t <<= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator>>=(const P& p) { _t >>= static_cast<_primitive_type_>(p); return *this; }
+    template<typename P> _class_name_& operator%=(const P& p) { get() %= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator&=(const P& p) { get() &= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator|=(const P& p) { get() |= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator^=(const P& p) { get() ^= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator<<=(const P& p) { get() <<= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator>>=(const P& p) { get() >>= static_cast<_primitive_type_>(p); return *this; }
 
 #define GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { _t = std::fmod(_t, t._t); return *this; }
+    _class_name_& operator%=(const _class_name_& t) { get() = std::fmod(get(), t.get()); return *this; }
 
 #define GO_IMPLEMENT_IMPLICIT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_& operator%=(const P& p) { _t = std::fmod(_t, static_cast<_primitive_type_>(p)); return *this; }
+    template<typename P> _class_name_& operator%=(const P& p) { get() = std::fmod(get(), static_cast<_primitive_type_>(p)); return *this; }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator+() const { return _class_name_(+_t); } \
-    _class_name_ operator-() const { return _class_name_(-_t); } \
-    _class_name_ operator+(const _class_name_& t) const { return _class_name_(_t + t._t); } \
-    _class_name_ operator-(const _class_name_& t) const { return _class_name_(_t - t._t); } \
-    _class_name_ operator*(const _class_name_& t) const { return _class_name_(_t*t._t); } \
-    _class_name_ operator/(const _class_name_& t) const { return _class_name_(_t/t._t); }
+    _class_name_ operator+() const { return _class_name_(+get()); } \
+    _class_name_ operator-() const { return _class_name_(-get()); } \
+    _class_name_ operator+(const _class_name_& t) const { return _class_name_(get() + t.get()); } \
+    _class_name_ operator-(const _class_name_& t) const { return _class_name_(get() - t.get()); } \
+    _class_name_ operator*(const _class_name_& t) const { return _class_name_(get()*t.get()); } \
+    _class_name_ operator/(const _class_name_& t) const { return _class_name_(get()/t.get()); }
 
 #define GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_ operator+(const P& p) const { return _class_name_(_t + static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator-(const P& p) const { return _class_name_(_t - static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator*(const P& p) const { return _class_name_(_t*static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator/(const P& p) const { return _class_name_(_t/static_cast<_primitive_type_>(p)); }
+    template<typename P> _class_name_ operator+(const P& p) const { return _class_name_(get() + static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator-(const P& p) const { return _class_name_(get() - static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator*(const P& p) const { return _class_name_(get()*static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator/(const P& p) const { return _class_name_(get()/static_cast<_primitive_type_>(p)); }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator~() const { return _class_name_(~_t); } \
-    _class_name_ operator%(const _class_name_& t) const { return _class_name_(_t%t._t); } \
-    _class_name_ operator&(const _class_name_& t) const { return _class_name_(_t&t._t); } \
-    _class_name_ operator|(const _class_name_& t) const { return _class_name_(_t|t._t); } \
-    _class_name_ operator^(const _class_name_& t) const { return _class_name_(_t^t._t); } \
-    _class_name_ operator<<(const _class_name_& t) const { return _class_name_(_t<<t._t); } \
-    _class_name_ operator>>(const _class_name_& t) const { return _class_name_(_t>>t._t); }
+    _class_name_ operator~() const { return _class_name_(~get()); } \
+    _class_name_ operator%(const _class_name_& t) const { return _class_name_(get()%t.get()); } \
+    _class_name_ operator&(const _class_name_& t) const { return _class_name_(get()&t.get()); } \
+    _class_name_ operator|(const _class_name_& t) const { return _class_name_(get()|t.get()); } \
+    _class_name_ operator^(const _class_name_& t) const { return _class_name_(get()^t.get()); } \
+    _class_name_ operator<<(const _class_name_& t) const { return _class_name_(get()<<t.get()); } \
+    _class_name_ operator>>(const _class_name_& t) const { return _class_name_(get()>>t.get()); }
 
 #define GO_IMPLEMENT_IMPLICIT_INTEGER_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(_t%static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator&(const P& p) const { return _class_name_(_t&static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator|(const P& p) const { return _class_name_(_t|static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator^(const P& p) const { return _class_name_(_t^static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator<<(const P& p) const { return _class_name_(_t<<static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator>>(const P& p) const { return _class_name_(_t>>static_cast<_primitive_type_>(p)); }
+    template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(get()%static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator&(const P& p) const { return _class_name_(get()&static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator|(const P& p) const { return _class_name_(get()|static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator^(const P& p) const { return _class_name_(get()^static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator<<(const P& p) const { return _class_name_(get()<<static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator>>(const P& p) const { return _class_name_(get()>>static_cast<_primitive_type_>(p)); }
 
 #define GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(_t, t._t)); }
+    _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(get(), t.get())); }
 
 #define GO_IMPLEMENT_IMPLICIT_FLOATING_POINT_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(std::fmod(_t, static_cast<_primitive_type_>(p))); }
+    template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(std::fmod(get(), static_cast<_primitive_type_>(p))); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_ ) \
-    bool operator==(const _class_name_& t) const { return _t == t._t; } \
+    bool operator==(const _class_name_& t) const { return get() == t.get(); } \
     bool operator!=(const _class_name_& t) const { return !operator==(t); } \
-    bool operator<(const _class_name_& t) const { return _t < t._t; } \
-    bool operator<=(const _class_name_& t) const { return _t <= t._t; } \
-    bool operator>(const _class_name_& t) const { return _t > t._t; } \
-    bool operator>=(const _class_name_& t) const { return _t >= t._t; }
+    bool operator<(const _class_name_& t) const { return get() < t.get(); } \
+    bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
+    bool operator>(const _class_name_& t) const { return get() > t.get(); } \
+    bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
 
 #define GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> bool operator==(const P& p) const { return _t == static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator==(const P& p) const { return get() == static_cast<_primitive_type_>(p); } \
     template<typename P> bool operator!=(const P& p) const { return !operator==(static_cast<_primitive_type_>(p)); } \
-    template<typename P> bool operator<(const P& p) const { return _t < static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator<=(const P& p) const { return _t <= static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>(const P& p) const { return _t > static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>=(const P& p) const { return _t >= static_cast<_primitive_type_>(p); }
+    template<typename P> bool operator<(const P& p) const { return get() < static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator<=(const P& p) const { return get() <= static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator>(const P& p) const { return get() > static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator>=(const P& p) const { return get() >= static_cast<_primitive_type_>(p); }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_ ) \
-    _class_name_ operator!() const { return _class_name_(!_t); } \
-    _class_name_ operator&&(const _class_name_& t) const { return _class_name_(_t&&t._t); } \
-    _class_name_ operator||(const _class_name_& t) const { return _class_name_(_t||t._t); }
+    _class_name_ operator!() const { return _class_name_(!get()); } \
+    _class_name_ operator&&(const _class_name_& t) const { return _class_name_(get()&&t.get()); } \
+    _class_name_ operator||(const _class_name_& t) const { return _class_name_(get()||t.get()); }
 
 #define GO_IMPLEMENT_IMPLICIT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_ operator&&(const P& p) const { return _class_name_(_t&&static_cast<_primitive_type_>(p)); } \
-    template<typename P> _class_name_ operator||(const P& p) const { return _class_name_(_t||static_cast<_primitive_type_>(p)); }
+    template<typename P> _class_name_ operator&&(const P& p) const { return _class_name_(get()&&static_cast<_primitive_type_>(p)); } \
+    template<typename P> _class_name_ operator||(const P& p) const { return _class_name_(get()||static_cast<_primitive_type_>(p)); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_INCREMENT_DECREMENT_OPERATORS( _class_name_ ) \
-    _class_name_ operator++() { return _class_name_(++_t); } \
-    _class_name_ operator--() { return _class_name_(--_t); } \
-    _class_name_ operator++(int) { return _class_name_(_t++); } \
-    _class_name_ operator--(int) { return _class_name_(_t--); }
+    _class_name_ operator++() { return _class_name_(++get()); } \
+    _class_name_ operator--() { return _class_name_(--get()); } \
+    _class_name_ operator++(int) { return _class_name_(get()++); } \
+    _class_name_ operator--(int) { return _class_name_(get()--); }
 
 #define GO_IMPLEMENT_OUTSIDE_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
 template<typename P> inline _class_name_ operator+(const P& lhs, const _class_name_& rhs) { return _class_name_(static_cast<_primitive_type_>(lhs)+rhs.get()); } \
@@ -304,7 +304,7 @@ public:
         _t = t._t;
     }
 
-protected:
+private:
     value_type _t;
 };
 
@@ -312,7 +312,6 @@ template<typename T>
 inline primitive_type_specializer<T>::~primitive_type_specializer()
 {
 }
-
 
 template<typename T>
 class implicit_primitive_type_specializer
@@ -358,12 +357,12 @@ protected:
 public:
     operator const value_type&() const
     {
-        return _t;
+        return primitive_type_specializer<T>::get();
     }
 
     operator value_type&()
     {
-        return _t;
+        return primitive_type_specializer<T>::get();
     }
 };
 

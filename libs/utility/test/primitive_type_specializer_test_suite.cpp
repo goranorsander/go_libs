@@ -387,12 +387,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_eq
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 == v2;
-    const bool equal_to_2 = v2 == v2;
-    const bool equal_to_3 = v3 == v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 == v2);
+    const bool comparison_result_2 = (v2 == v2);
+    const bool comparison_result_3 = (v3 == v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_not_equal_to_comparison_operator)
@@ -403,12 +403,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_no
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 != v2;
-    const bool equal_to_2 = v2 != v2;
-    const bool equal_to_3 = v3 != v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 != v2);
+    const bool comparison_result_2 = (v2 != v2);
+    const bool comparison_result_3 = (v3 != v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_less_than_comparison_operator)
@@ -419,12 +419,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_le
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 < v2;
-    const bool equal_to_2 = v2 < v2;
-    const bool equal_to_3 = v3 < v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 < v2);
+    const bool comparison_result_2 = (v2 < v2);
+    const bool comparison_result_3 = (v3 < v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_greater_than_comparison_operator)
@@ -435,12 +435,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_gr
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 > v2;
-    const bool equal_to_2 = v2 > v2;
-    const bool equal_to_3 = v3 > v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 > v2);
+    const bool comparison_result_2 = (v2 > v2);
+    const bool comparison_result_3 = (v3 > v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_less_than_or_equal_to_comparison_operator)
@@ -451,12 +451,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_le
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 <= v2;
-    const bool equal_to_2 = v2 <= v2;
-    const bool equal_to_3 = v3 <= v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 <= v2);
+    const bool comparison_result_2 = (v2 <= v2);
+    const bool comparison_result_3 = (v3 <= v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_greater_than_or_equal_to_comparison_operator)
@@ -467,12 +467,12 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_gr
     EXPECT_EQ(1, v1.get());
     EXPECT_EQ(2, v2.get());
     EXPECT_EQ(3, v3.get());
-    const bool equal_to_1 = v1 >= v2;
-    const bool equal_to_2 = v2 >= v2;
-    const bool equal_to_3 = v3 >= v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 >= v2);
+    const bool comparison_result_2 = (v2 >= v2);
+    const bool comparison_result_3 = (v3 >= v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_pre_increment_operator)
@@ -723,12 +723,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 == v2;
-    const bool equal_to_2 = v2 == v2;
-    const bool equal_to_3 = v3 == v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 == v2);
+    const bool comparison_result_2 = (v2 == v2);
+    const bool comparison_result_3 = (v3 == v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_not_equal_to_comparison_operator)
@@ -739,12 +739,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 != v2;
-    const bool equal_to_2 = v2 != v2;
-    const bool equal_to_3 = v3 != v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 != v2);
+    const bool comparison_result_2 = (v2 != v2);
+    const bool comparison_result_3 = (v3 != v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_less_than_to_comparison_operator)
@@ -755,12 +755,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 < v2;
-    const bool equal_to_2 = v2 < v2;
-    const bool equal_to_3 = v3 < v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 < v2);
+    const bool comparison_result_2 = (v2 < v2);
+    const bool comparison_result_3 = (v3 < v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_comparison_operator)
@@ -771,12 +771,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 > v2;
-    const bool equal_to_2 = v2 > v2;
-    const bool equal_to_3 = v3 > v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(false, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 > v2);
+    const bool comparison_result_2 = (v2 > v2);
+    const bool comparison_result_3 = (v3 > v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(false, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator)
@@ -787,12 +787,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 <= v2;
-    const bool equal_to_2 = v2 <= v2;
-    const bool equal_to_3 = v3 <= v2;
-    EXPECT_EQ(true, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(false, equal_to_3);
+    const bool comparison_result_1 = (v1 <= v2);
+    const bool comparison_result_2 = (v2 <= v2);
+    const bool comparison_result_3 = (v3 <= v2);
+    EXPECT_EQ(true, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(false, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator)
@@ -803,12 +803,12 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(1.0, v1.get());
     EXPECT_EQ(2.0, v2.get());
     EXPECT_EQ(3.0, v3.get());
-    const bool equal_to_1 = v1 >= v2;
-    const bool equal_to_2 = v2 >= v2;
-    const bool equal_to_3 = v3 >= v2;
-    EXPECT_EQ(false, equal_to_1);
-    EXPECT_EQ(true, equal_to_2);
-    EXPECT_EQ(true, equal_to_3);
+    const bool comparison_result_1 = (v1 >= v2);
+    const bool comparison_result_2 = (v2 >= v2);
+    const bool comparison_result_3 = (v3 >= v2);
+    EXPECT_EQ(false, comparison_result_1);
+    EXPECT_EQ(true, comparison_result_2);
+    EXPECT_EQ(true, comparison_result_3);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_pre_increment_operator)
@@ -1384,12 +1384,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 == v2;
-        const bool equal_to_2 = v2 == v2;
-        const bool equal_to_3 = v3 == v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 == v2);
+        const bool comparison_result_2 = (v2 == v2);
+        const bool comparison_result_3 = (v3 == v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1398,12 +1398,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 == v2;
-        const bool equal_to_2 = v2 == v2;
-        const bool equal_to_3 = i3 == v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 == v2);
+        const bool comparison_result_2 = (v2 == v2);
+        const bool comparison_result_3 = (i3 == v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1414,12 +1414,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 == i2;
-        const bool equal_to_2 = v2 == i2;
-        const bool equal_to_3 = v3 == i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 == i2);
+        const bool comparison_result_2 = (v2 == i2);
+        const bool comparison_result_3 = (v3 == i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -1432,12 +1432,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 != v2;
-        const bool equal_to_2 = v2 != v2;
-        const bool equal_to_3 = v3 != v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 != v2);
+        const bool comparison_result_2 = (v2 != v2);
+        const bool comparison_result_3 = (v3 != v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1446,12 +1446,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 != v2;
-        const bool equal_to_2 = v2 != v2;
-        const bool equal_to_3 = i3 != v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 != v2);
+        const bool comparison_result_2 = (v2 != v2);
+        const bool comparison_result_3 = (i3 != v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1462,12 +1462,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 != i2;
-        const bool equal_to_2 = v2 != i2;
-        const bool equal_to_3 = v3 != i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 != i2);
+        const bool comparison_result_2 = (v2 != i2);
+        const bool comparison_result_3 = (v3 != i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
@@ -1480,12 +1480,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 < v2;
-        const bool equal_to_2 = v2 < v2;
-        const bool equal_to_3 = v3 < v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 < v2);
+        const bool comparison_result_2 = (v2 < v2);
+        const bool comparison_result_3 = (v3 < v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1494,12 +1494,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 < v2;
-        const bool equal_to_2 = v2 < v2;
-        const bool equal_to_3 = i3 < v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 < v2);
+        const bool comparison_result_2 = (v2 < v2);
+        const bool comparison_result_3 = (i3 < v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1510,12 +1510,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 < i2;
-        const bool equal_to_2 = v2 < i2;
-        const bool equal_to_3 = v3 < i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 < i2);
+        const bool comparison_result_2 = (v2 < i2);
+        const bool comparison_result_3 = (v3 < i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -1528,12 +1528,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 > v2;
-        const bool equal_to_2 = v2 > v2;
-        const bool equal_to_3 = v3 > v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 > v2);
+        const bool comparison_result_2 = (v2 > v2);
+        const bool comparison_result_3 = (v3 > v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1542,12 +1542,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 > v2;
-        const bool equal_to_2 = v2 > v2;
-        const bool equal_to_3 = i3 > v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 > v2);
+        const bool comparison_result_2 = (v2 > v2);
+        const bool comparison_result_3 = (i3 > v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1558,12 +1558,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 > i2;
-        const bool equal_to_2 = v2 > i2;
-        const bool equal_to_3 = v3 > i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 > i2);
+        const bool comparison_result_2 = (v2 > i2);
+        const bool comparison_result_3 = (v3 > i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
@@ -1576,12 +1576,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 <= v2;
-        const bool equal_to_2 = v2 <= v2;
-        const bool equal_to_3 = v3 <= v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 <= v2);
+        const bool comparison_result_2 = (v2 <= v2);
+        const bool comparison_result_3 = (v3 <= v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1590,12 +1590,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 <= v2;
-        const bool equal_to_2 = v2 <= v2;
-        const bool equal_to_3 = i3 <= v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 <= v2);
+        const bool comparison_result_2 = (v2 <= v2);
+        const bool comparison_result_3 = (i3 <= v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1606,12 +1606,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 <= i2;
-        const bool equal_to_2 = v2 <= i2;
-        const bool equal_to_3 = v3 <= i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 <= i2);
+        const bool comparison_result_2 = (v2 <= i2);
+        const bool comparison_result_3 = (v3 <= i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -1624,12 +1624,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, v1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 >= v2;
-        const bool equal_to_2 = v2 >= v2;
-        const bool equal_to_3 = v3 >= v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 >= v2);
+        const bool comparison_result_2 = (v2 >= v2);
+        const bool comparison_result_3 = (v3 >= v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const int i1 = 1;
@@ -1638,12 +1638,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(1, i1);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, i3);
-        const bool equal_to_1 = i1 >= v2;
-        const bool equal_to_2 = v2 >= v2;
-        const bool equal_to_3 = i3 >= v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 >= v2);
+        const bool comparison_result_2 = (v2 >= v2);
+        const bool comparison_result_3 = (i3 >= v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_integer_type v1(1);
@@ -1654,12 +1654,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_EQ(2, i2);
         EXPECT_EQ(2, v2);
         EXPECT_EQ(3, v3);
-        const bool equal_to_1 = v1 >= i2;
-        const bool equal_to_2 = v2 >= i2;
-        const bool equal_to_3 = v3 >= i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 >= i2);
+        const bool comparison_result_2 = (v2 >= i2);
+        const bool comparison_result_3 = (v3 >= i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
@@ -1971,12 +1971,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 == v2;
-        const bool equal_to_2 = v2 == v2;
-        const bool equal_to_3 = v3 == v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 == v2);
+        const bool comparison_result_2 = (v2 == v2);
+        const bool comparison_result_3 = (v3 == v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -1985,12 +1985,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 == v2;
-        const bool equal_to_2 = v2 == v2;
-        const bool equal_to_3 = i3 == v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 == v2);
+        const bool comparison_result_2 = (v2 == v2);
+        const bool comparison_result_3 = (i3 == v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2001,12 +2001,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 == i2;
-        const bool equal_to_2 = v2 == i2;
-        const bool equal_to_3 = v3 == i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 == i2);
+        const bool comparison_result_2 = (v2 == i2);
+        const bool comparison_result_3 = (v3 == i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -2019,12 +2019,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 != v2;
-        const bool equal_to_2 = v2 != v2;
-        const bool equal_to_3 = v3 != v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 != v2);
+        const bool comparison_result_2 = (v2 != v2);
+        const bool comparison_result_3 = (v3 != v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -2033,12 +2033,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 != v2;
-        const bool equal_to_2 = v2 != v2;
-        const bool equal_to_3 = i3 != v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 != v2);
+        const bool comparison_result_2 = (v2 != v2);
+        const bool comparison_result_3 = (i3 != v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2049,12 +2049,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 != i2;
-        const bool equal_to_2 = v2 != i2;
-        const bool equal_to_3 = v3 != i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 != i2);
+        const bool comparison_result_2 = (v2 != i2);
+        const bool comparison_result_3 = (v3 != i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
@@ -2067,12 +2067,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 < v2;
-        const bool equal_to_2 = v2 < v2;
-        const bool equal_to_3 = v3 < v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 < v2);
+        const bool comparison_result_2 = (v2 < v2);
+        const bool comparison_result_3 = (v3 < v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -2081,12 +2081,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 < v2;
-        const bool equal_to_2 = v2 < v2;
-        const bool equal_to_3 = i3 < v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 < v2);
+        const bool comparison_result_2 = (v2 < v2);
+        const bool comparison_result_3 = (i3 < v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2097,12 +2097,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 < i2;
-        const bool equal_to_2 = v2 < i2;
-        const bool equal_to_3 = v3 < i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 < i2);
+        const bool comparison_result_2 = (v2 < i2);
+        const bool comparison_result_3 = (v3 < i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -2115,12 +2115,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 > v2;
-        const bool equal_to_2 = v2 > v2;
-        const bool equal_to_3 = v3 > v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 > v2);
+        const bool comparison_result_2 = (v2 > v2);
+        const bool comparison_result_3 = (v3 > v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -2129,12 +2129,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 > v2;
-        const bool equal_to_2 = v2 > v2;
-        const bool equal_to_3 = i3 > v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 > v2);
+        const bool comparison_result_2 = (v2 > v2);
+        const bool comparison_result_3 = (i3 > v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2145,12 +2145,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 > i2;
-        const bool equal_to_2 = v2 > i2;
-        const bool equal_to_3 = v3 > i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(false, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 > i2);
+        const bool comparison_result_2 = (v2 > i2);
+        const bool comparison_result_3 = (v3 > i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(false, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
@@ -2163,12 +2163,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 <= v2;
-        const bool equal_to_2 = v2 <= v2;
-        const bool equal_to_3 = v3 <= v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 <= v2);
+        const bool comparison_result_2 = (v2 <= v2);
+        const bool comparison_result_3 = (v3 <= v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -2177,12 +2177,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 <= v2;
-        const bool equal_to_2 = v2 <= v2;
-        const bool equal_to_3 = i3 <= v2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (i1 <= v2);
+        const bool comparison_result_2 = (v2 <= v2);
+        const bool comparison_result_3 = (i3 <= v2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2193,12 +2193,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 <= i2;
-        const bool equal_to_2 = v2 <= i2;
-        const bool equal_to_3 = v3 <= i2;
-        EXPECT_EQ(true, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(false, equal_to_3);
+        const bool comparison_result_1 = (v1 <= i2);
+        const bool comparison_result_2 = (v2 <= i2);
+        const bool comparison_result_3 = (v3 <= i2);
+        EXPECT_EQ(true, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(false, comparison_result_3);
     }
 }
 
@@ -2211,12 +2211,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, v1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 >= v2;
-        const bool equal_to_2 = v2 >= v2;
-        const bool equal_to_3 = v3 >= v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 >= v2);
+        const bool comparison_result_2 = (v2 >= v2);
+        const bool comparison_result_3 = (v3 >= v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const double i1 = 1.0;
@@ -2225,12 +2225,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(1.0, i1);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, i3);
-        const bool equal_to_1 = i1 >= v2;
-        const bool equal_to_2 = v2 >= v2;
-        const bool equal_to_3 = i3 >= v2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (i1 >= v2);
+        const bool comparison_result_2 = (v2 >= v2);
+        const bool comparison_result_3 = (i3 >= v2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
     {
         const implicit_floating_point_type v1(1.0);
@@ -2241,12 +2241,12 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(2.0, i2);
         EXPECT_EQ(2.0, v2);
         EXPECT_EQ(3.0, v3);
-        const bool equal_to_1 = v1 >= i2;
-        const bool equal_to_2 = v2 >= i2;
-        const bool equal_to_3 = v3 >= i2;
-        EXPECT_EQ(false, equal_to_1);
-        EXPECT_EQ(true, equal_to_2);
-        EXPECT_EQ(true, equal_to_3);
+        const bool comparison_result_1 = (v1 >= i2);
+        const bool comparison_result_2 = (v2 >= i2);
+        const bool comparison_result_3 = (v3 >= i2);
+        EXPECT_EQ(false, comparison_result_1);
+        EXPECT_EQ(true, comparison_result_2);
+        EXPECT_EQ(true, comparison_result_3);
     }
 }
 
