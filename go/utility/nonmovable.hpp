@@ -25,17 +25,24 @@ public:
 
 private:
 
-#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     nonmovable(nonmovable&&) = delete;
     auto operator=(nonmovable&&)->nonmovable& = delete;
 
-#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#else
+
+    nonmovable(nonmovable&&) {}
+    auto operator=(nonmovable&&)->nonmovable& {}
+
+#endif  // #!defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 protected:
-    nonmovable() = default;
-    nonmovable(const nonmovable&) = default;
-    auto operator=(const nonmovable&)->nonmovable& = default;
+    nonmovable() GO_DEFAULT_CONSTRUCTOR
+    nonmovable(const nonmovable&) GO_DEFAULT_CONSTRUCTOR
+    auto operator=(const nonmovable&)->nonmovable& GO_DEFAULT_CONSTRUCTOR
 };
 
 inline nonmovable::~nonmovable()

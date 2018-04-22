@@ -24,18 +24,28 @@ public:
     virtual ~noncopyable() = 0;
 
 private:
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
     noncopyable(const noncopyable&) = delete;
     auto operator=(const noncopyable&)->noncopyable& = delete;
 
+#else
+
+    noncopyable(const noncopyable&) {}
+    auto operator=(const noncopyable&)->noncopyable& {}
+
+#endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 protected:
-    noncopyable() = default;
+    noncopyable() GO_DEFAULT_CONSTRUCTOR
 
-#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-    noncopyable(noncopyable&&) = default;
-    auto operator=(noncopyable&&)->noncopyable& = default;
+    noncopyable(noncopyable&&) GO_DEFAULT_CONSTRUCTOR
+    auto operator=(noncopyable&&)->noncopyable& GO_DEFAULT_CONSTRUCTOR
 
-#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 };
 

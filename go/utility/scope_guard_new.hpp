@@ -49,10 +49,21 @@ public:
         return *_px;
     }
 
+#if !defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
+
     explicit operator bool() const
     {
         return _px != nullptr;
     }
+
+#else
+
+    operator bool() const
+    {
+        return _px != nullptr;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
 
 public:
     pointer detach()

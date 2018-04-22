@@ -23,7 +23,7 @@ namespace p = go::property;
 class spaceship
 {
 public:
-    ~spaceship() = default;
+    ~spaceship() GO_DEFAULT_DESTRUCTOR
 
     spaceship()
         : crew_complement(std::string("crew_complement"))

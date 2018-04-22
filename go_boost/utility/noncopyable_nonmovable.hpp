@@ -48,16 +48,7 @@ private:
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 protected:
-
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
-
-    noncopyable_nonmovable() = default;
-
-#else  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
-
-    noncopyable_nonmovable() {}
-
-#endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+    noncopyable_nonmovable() GO_BOOST_DEFAULT_CONSTRUCTOR
 };
 
 inline noncopyable_nonmovable::~noncopyable_nonmovable()

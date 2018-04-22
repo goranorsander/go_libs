@@ -24,24 +24,53 @@ public:
     virtual ~noncopyable_nonmovable() = 0;
 
 private:
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
     noncopyable_nonmovable(const noncopyable_nonmovable&) = delete;
 
-#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#else
+
+    noncopyable_nonmovable(const noncopyable_nonmovable&) {}
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     noncopyable_nonmovable(noncopyable_nonmovable&&) = delete;
 
-#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#else
+
+    noncopyable_nonmovable(noncopyable_nonmovable&&) {}
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& = delete;
 
-#if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#else
+
+    auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& {}
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& = delete;
 
-#endif  // #if defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#else
+
+    auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& {}
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 protected:
-    noncopyable_nonmovable() = default;
+    noncopyable_nonmovable() GO_DEFAULT_CONSTRUCTOR
 };
 
 inline noncopyable_nonmovable::~noncopyable_nonmovable()

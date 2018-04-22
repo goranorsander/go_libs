@@ -36,7 +36,7 @@ public:
     typedef std::shared_ptr<fleet_commander_changed_event> ptr;
 
 public:
-    virtual ~fleet_commander_changed_event() = default;
+    virtual ~fleet_commander_changed_event() GO_DEFAULT_DESTRUCTOR
 
     fleet_commander_changed_event()
         : m::event(fleet_commander_changed_event_type)
@@ -49,7 +49,7 @@ class fleet_commander
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
 
-    virtual ~fleet_commander() = default;
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
     fleet_commander(const m::event_manager::ptr& event_manager_, const std::string& commander_)
         : commander("commander")
@@ -80,7 +80,7 @@ class spaceship
 public:
     typedef std::shared_ptr<spaceship> ptr;
 
-    virtual ~spaceship() = default;
+    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_)
         : fleet_commander("fleet_commander", fleet_commander_)

@@ -30,7 +30,7 @@ public:
     typedef std::weak_ptr<fleet_commander> wptr;
     typedef s::signal<std::function<void(const bool&)>> fire_lasers_signal;
 
-    virtual ~fleet_commander() = default;
+    virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
     explicit fleet_commander(const std::string& commander_)
         : commander("commander", commander_)

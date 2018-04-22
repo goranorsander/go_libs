@@ -44,17 +44,15 @@ private:
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 protected:
+    nonmovable() GO_BOOST_DEFAULT_CONSTRUCTOR
+    nonmovable(const nonmovable&) GO_BOOST_DEFAULT_CONSTRUCTOR
 
 #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
-    nonmovable() = default;
-    nonmovable(const nonmovable&) = default;
     nonmovable& operator=(const nonmovable&) = default;
 
 #else  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
-    nonmovable() {}
-    nonmovable(const nonmovable&) {}
     nonmovable& operator=(const nonmovable&) { return *this; }
 
 #endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
