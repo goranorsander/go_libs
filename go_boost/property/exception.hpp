@@ -31,16 +31,18 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() BOOST_NOEXCEPT_OR_NOTHROW;
+    virtual ~exception() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit exception(const std::string& message);
+    explicit exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW;
 };
 
-inline exception::~exception() BOOST_NOEXCEPT_OR_NOTHROW
+inline exception::exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW
+    : go_boost::exception::exception(message)
 {
 }
 
-inline exception::exception(const std::string& message)
+inline exception::exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW
     : go_boost::exception::exception(message)
 {
 }

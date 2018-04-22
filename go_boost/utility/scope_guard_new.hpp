@@ -31,6 +31,7 @@ template<class T> class scope_guard_new
 {
 public:
     typedef scope_guard_new<T> this_type;
+    typedef scope_guard base_type;
     typedef T value_type;
     typedef T& reference;
     typedef T* pointer;
@@ -71,7 +72,7 @@ public:
         return px;
     }
 
-    pointer get() BOOST_NOEXCEPT
+    pointer get() const BOOST_NOEXCEPT
     {
         return _px;
     }

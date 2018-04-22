@@ -34,41 +34,48 @@ public:
 public:
     virtual ~exception() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_DESTRUCTOR
 
-    exception(const exception& other);
-    explicit exception(const char* message);
-    explicit exception(const std::string& message);
+    exception() BOOST_NOEXCEPT_OR_NOTHROW;
+    exception(const exception& other) BOOST_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW;
 
 public:
-    exception& operator=(const exception& other);
+    exception& operator=(const exception& other) BOOST_NOEXCEPT_OR_NOTHROW;
 
 public:
     virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW;
 
-    virtual std::string message() const;
+    virtual std::string message() const BOOST_NOEXCEPT_OR_NOTHROW;
 
 private:
     std::string _message;
 };
 
-inline exception::exception(const exception& other)
+inline exception::exception() BOOST_NOEXCEPT_OR_NOTHROW
+    : std::exception()
+    , _message()
+{
+}
+
+inline exception::exception(const exception& other) BOOST_NOEXCEPT_OR_NOTHROW
     : std::exception(other)
     , _message(other._message)
 {
 }
 
-inline exception::exception(const char* message)
+inline exception::exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW
     : std::exception()
     , _message(message)
 {
 }
 
-inline exception::exception(const std::string& message)
+inline exception::exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW
     : std::exception()
     , _message(message)
 {
 }
 
-inline exception& exception::operator=(const exception& other)
+inline exception& exception::operator=(const exception& other) BOOST_NOEXCEPT_OR_NOTHROW
 {
     if(this != &other)
     {
@@ -83,7 +90,7 @@ inline const char* exception::what() const BOOST_NOEXCEPT_OR_NOTHROW
     return _message.c_str();
 }
 
-inline std::string exception::message() const
+inline std::string exception::message() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _message;
 }

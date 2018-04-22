@@ -30,6 +30,8 @@ class scope_guard
     : private noncopyable_nonmovable
 {
 public:
+    typedef scope_guard this_type;
+    typedef noncopyable_nonmovable base_type;
     typedef boost::function<void()> on_scope_exit_function_type;
 
 public:
@@ -46,6 +48,13 @@ public:
         , _on_scope_exit(NULL)
     {
         set_on_scope_exit_function(on_scope_exit);
+    }
+
+protected:
+    scope_guard()
+        : noncopyable_nonmovable()
+        , _on_scope_exit(NULL)
+    {
     }
 
 protected:

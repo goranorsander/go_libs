@@ -21,7 +21,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\libs\utility\test\ascii_test_suite.cpp" />
     <ClCompile Include="..\..\libs\utility\test\iso_8859_1_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\utility\test\primitive_type_specializer_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\utility\test\scope_guard_new_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\utility\test\scope_guard_test_suite.cpp" />
     <ClCompile Include="..\..\libs\utility\test\string_cast_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\utility\test\value_guard_test_suite.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>

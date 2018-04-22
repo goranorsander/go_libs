@@ -23,6 +23,8 @@ class scope_guard
     : public noncopyable_nonmovable
 {
 public:
+    typedef scope_guard this_type;
+    typedef noncopyable_nonmovable base_type;
     typedef std::function<void()> on_scope_exit_function_type;
 
 public:
@@ -39,6 +41,13 @@ public:
         , _on_scope_exit(nullptr)
     {
         set_on_scope_exit_function(on_scope_exit);
+    }
+
+protected:
+    scope_guard()
+        : noncopyable_nonmovable()
+        , _on_scope_exit(nullptr)
+    {
     }
 
 protected:

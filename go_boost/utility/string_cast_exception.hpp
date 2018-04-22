@@ -33,10 +33,16 @@ public:
 public:
     virtual ~string_cast_exception() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit string_cast_exception(const std::string& message);
+    explicit string_cast_exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW;
+    explicit string_cast_exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW;
 };
 
-inline string_cast_exception::string_cast_exception(const std::string& message)
+inline string_cast_exception::string_cast_exception(const char* message) BOOST_NOEXCEPT_OR_NOTHROW
+    : go_boost::exception::exception(message)
+{
+}
+
+inline string_cast_exception::string_cast_exception(const std::string& message) BOOST_NOEXCEPT_OR_NOTHROW
     : go_boost::exception::exception(message)
 {
 }

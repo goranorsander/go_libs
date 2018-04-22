@@ -14,7 +14,7 @@ if(BUILD_BOOST_EXAMPLES)
     link_directories(${BOOST_LIBRARYDIR})
 
     ########################################################
-    #  libs/boost_mvvm/boost_signals_example               #
+    #  libs/boost_signals/boost_signals_example            #
     ########################################################
 
     set(PROJECT_BOOST_SIGNALS_EXAMPLE ${BOOST_PROJECT_NAME_STR}_signals_example)

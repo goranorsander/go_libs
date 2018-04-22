@@ -128,6 +128,11 @@ public:
         _slot_key = 0;
     }
 
+    static bool is_null_key(const this_type& key)
+    {
+        return key._slot_key == 0;
+    }
+
 private:
     slot_key_type _slot_key;
 };

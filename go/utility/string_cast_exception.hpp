@@ -27,10 +27,16 @@ public:
 public:
     virtual ~string_cast_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
 
-    explicit string_cast_exception(const std::string& message);
+    explicit string_cast_exception(const char* message) GO_NOEXCEPT_OR_NOTHROW;
+    explicit string_cast_exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW;
 };
 
-inline string_cast_exception::string_cast_exception(const std::string& message)
+inline string_cast_exception::string_cast_exception(const char* message) GO_NOEXCEPT_OR_NOTHROW
+    : go::exception::exception(message)
+{
+}
+
+inline string_cast_exception::string_cast_exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW
     : go::exception::exception(message)
 {
 }

@@ -25,16 +25,18 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW;
+    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
 
-    explicit exception(const std::string& message);
+    explicit exception(const char* message) GO_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW;
 };
 
-inline exception::~exception() GO_NOEXCEPT_OR_NOTHROW
+inline exception::exception(const char* message) GO_NOEXCEPT_OR_NOTHROW
+    : go::exception::exception(message)
 {
 }
 
-inline exception::exception(const std::string& message)
+inline exception::exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW
     : go::exception::exception(message)
 {
 }

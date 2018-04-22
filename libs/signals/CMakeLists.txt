@@ -13,7 +13,7 @@ if(BUILD_STD_EXAMPLES)
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
     ########################################################
-    #  libs/mvvm/std_signals_example                       #
+    #  libs/signals/std_signals_example                    #
     ########################################################
 
     set(PROJECT_STD_SIGNALS_EXAMPLE ${STD_PROJECT_NAME_STR}_signals_example)

@@ -17,34 +17,36 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/bind.hpp>
-#include <go_boost/utility/scope_guard.hpp>
-
 namespace go_boost
 {
 namespace utility
 {
 
 template<class T> class value_guard
-    : public scope_guard
 {
 public:
     typedef value_guard<T> this_type;
     typedef T value_type;
 
 public:
-    virtual ~value_guard() GO_BOOST_DEFAULT_DESTRUCTOR
+    virtual ~value_guard()
+    {
+        on_destroy();
+    }
 
     value_guard(value_type& value, const value_type& new_value)
-        : scope_guard(nullptr)
-        , _old_value(new_value)
+        : _old_value(new_value)
         , _value(value)
     {
-        std::swap(_old_value, _value);
-        set_on_scope_exit_function(on_scope_exit_function_type(boost::bind(&this_type::on_destroy, this)));
+        on_construction();
     }
 
 private:
+    void on_construction()
+    {
+        std::swap(_old_value, _value);
+    }
+
     void on_destroy()
     {
         std::swap(_old_value, _value);

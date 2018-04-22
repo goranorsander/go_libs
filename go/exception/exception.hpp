@@ -34,12 +34,13 @@ public:
 public:
     virtual ~exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
 
-    exception(const exception& other);
-    explicit exception(const char* message);
-    explicit exception(const std::string& message);
+    exception() GO_NOEXCEPT_OR_NOTHROW;
+    exception(const exception& other) GO_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const char* message) GO_NOEXCEPT_OR_NOTHROW;
+    explicit exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW;
 
 public:
-    exception& operator=(const exception& other);
+    exception& operator=(const exception& other) GO_NOEXCEPT_OR_NOTHROW;
 
 public:
 
@@ -51,25 +52,31 @@ private:
     std::string _message;
 };
 
-inline exception::exception(const exception& other)
+inline exception::exception() GO_NOEXCEPT_OR_NOTHROW
+    : std::exception()
+    , _message()
+{
+}
+
+inline exception::exception(const exception& other) GO_NOEXCEPT_OR_NOTHROW
     : std::exception(other)
     , _message(other._message)
 {
 }
 
-inline exception::exception(const char* message)
+inline exception::exception(const char* message) GO_NOEXCEPT_OR_NOTHROW
     : std::exception()
     , _message(message)
 {
 }
 
-inline exception::exception(const std::string& message)
+inline exception::exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW
     : std::exception()
     , _message(message)
 {
 }
 
-inline exception& exception::operator=(const exception& other)
+inline exception& exception::operator=(const exception& other) GO_NOEXCEPT_OR_NOTHROW
 {
     if(this != &other)
     {

@@ -8,6 +8,57 @@
 #  See accompanying file LICENSE.md.
 #
 
+if(BUILD_STD_EXAMPLES)
+
+    include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
+
+    ########################################################
+    #  libs/utility/std_scope_guard_example                #
+    ########################################################
+
+    set(PROJECT_STD_SCOPE_GUARD_EXAMPLE ${STD_PROJECT_NAME_STR}_scope_guard_example)
+
+    file(GLOB STD_SCOPE_GUARD_EXAMPLE_SRC_FILES std_scope_guard_example/*.cpp)
+    add_executable(${PROJECT_STD_SCOPE_GUARD_EXAMPLE} ${STD_SCOPE_GUARD_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_SCOPE_GUARD_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_SCOPE_GUARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_SCOPE_GUARD_EXAMPLE})
+
+    ########################################################
+    #  libs/utility/std_scope_guard_new_example            #
+    ########################################################
+
+    set(PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE ${STD_PROJECT_NAME_STR}_scope_guard_new_example)
+
+    file(GLOB STD_SCOPE_GUARD_NEW_EXAMPLE_SRC_FILES std_scope_guard_new_example/*.cpp)
+    add_executable(${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE} ${STD_SCOPE_GUARD_NEW_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE})
+
+    ########################################################
+    #  libs/utility/std_value_guard_example                #
+    ########################################################
+
+    set(PROJECT_STD_VALUE_GUARD_EXAMPLE ${STD_PROJECT_NAME_STR}_value_guard_example)
+
+    file(GLOB STD_VALUE_GUARD_EXAMPLE_SRC_FILES std_value_guard_example/*.cpp)
+    add_executable(${PROJECT_STD_VALUE_GUARD_EXAMPLE} ${STD_VALUE_GUARD_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_VALUE_GUARD_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_VALUE_GUARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_VALUE_GUARD_EXAMPLE})
+
+endif(BUILD_STD_EXAMPLES)
+
 if(BUILD_STD_TESTS)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
