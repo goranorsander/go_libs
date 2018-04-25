@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\go\utility\noncopyable.hpp" />
     <ClInclude Include="..\..\go\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go\utility\nonmovable.hpp" />
+    <ClInclude Include="..\..\go\utility\primitive_type_implicit_specializer.hpp" />
     <ClInclude Include="..\..\go\utility\primitive_type_specializer.hpp" />
     <ClInclude Include="..\..\go\utility\sanity.hpp" />
     <ClInclude Include="..\..\go\utility\scope_guard.hpp" />

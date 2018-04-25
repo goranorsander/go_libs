@@ -16,7 +16,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_primitive_type_specializer_test_suite, cpp11_not_supported) {}
 #else
 
-#include <go/utility/primitive_type_specializer.hpp>
+#include <go/utility/primitive_type_implicit_specializer.hpp>
 
 namespace u = go::utility;
 
@@ -29,11 +29,11 @@ GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(another_integer_type, int, 0)
 GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(floating_point_type, double, 47.0)
 GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(another_floating_point_type, double, 0.0)
 
-GO_IMPLEMENT_IMPLICIT_INTEGER_TYPE_SPECIALIZER(implicit_integer_type, int, 42)
-GO_IMPLEMENT_IMPLICIT_INTEGER_TYPE_SPECIALIZER(another_implicit_integer_type, int, 0)
+GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(implicit_integer_type, int, 42)
+GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(another_implicit_integer_type, int, 0)
 
-GO_IMPLEMENT_IMPLICIT_FLOATING_POINT_TYPE_SPECIALIZER(implicit_floating_point_type, double, 47.0)
-GO_IMPLEMENT_IMPLICIT_FLOATING_POINT_TYPE_SPECIALIZER(another_implicit_floating_point_type, double, 0.0)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(implicit_floating_point_type, double, 47.0)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(another_implicit_floating_point_type, double, 0.0)
 
 TEST(std_primitive_type_specializer_test_suite, test_explicit_integer_type_specializer)
 {

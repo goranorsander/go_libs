@@ -481,6 +481,7 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
     ${GO_UTILITY_DIR}/noncopyable.hpp
     ${GO_UTILITY_DIR}/noncopyable_nonmovable.hpp
     ${GO_UTILITY_DIR}/nonmovable.hpp
+    ${GO_UTILITY_DIR}/primitive_type_implicit_specializer.hpp
     ${GO_UTILITY_DIR}/primitive_type_specializer.hpp
     ${GO_UTILITY_DIR}/sanity.hpp
     ${GO_UTILITY_DIR}/scope_guard.hpp
@@ -867,6 +868,7 @@ set(GO_BOOST_UTILITY_DIR ${GO_BOOST_DIR}/utility)
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
     ${GO_BOOST_UTILITY_DIR}/noncopyable_nonmovable.hpp
     ${GO_BOOST_UTILITY_DIR}/nonmovable.hpp
+    ${GO_BOOST_UTILITY_DIR}/primitive_type_implicit_specializer.hpp
     ${GO_BOOST_UTILITY_DIR}/primitive_type_specializer.hpp
     ${GO_BOOST_UTILITY_DIR}/sanity.hpp
     ${GO_BOOST_UTILITY_DIR}/scope_guard.hpp

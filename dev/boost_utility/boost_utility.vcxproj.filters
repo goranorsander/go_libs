@@ -101,6 +101,9 @@
     <ClInclude Include="..\..\go_boost\utility\iterator\erase.hpp">
       <Filter>go_boost\utility\iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\primitive_type_implicit_specializer.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

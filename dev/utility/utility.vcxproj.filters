@@ -95,6 +95,9 @@
     <ClInclude Include="..\..\go\utility\iterator\erase.hpp">
       <Filter>go\utility\iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\primitive_type_implicit_specializer.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
