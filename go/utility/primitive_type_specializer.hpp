@@ -159,7 +159,7 @@ public:
         return _t;
     }
 
-    GO_CONSTEXPR value_type& get()
+    value_type& get()
     {
         return _t;
     }

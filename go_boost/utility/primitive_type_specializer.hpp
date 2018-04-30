@@ -151,7 +151,7 @@ public:
         return _t;
     }
 
-    GO_BOOST_CONSTEXPR value_type& get()
+    value_type& get()
     {
         return _t;
     }

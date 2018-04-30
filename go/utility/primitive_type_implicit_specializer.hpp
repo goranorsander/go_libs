@@ -195,7 +195,7 @@ public:
         return primitive_type_specializer<T>::get();
     }
 
-    GO_CONSTEXPR operator value_type&()
+    operator value_type&()
     {
         return primitive_type_specializer<T>::get();
     }

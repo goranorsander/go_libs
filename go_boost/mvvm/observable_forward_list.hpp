@@ -153,7 +153,7 @@ public:
         return _container.before_begin();
     }
 
-    GO_BOOST_CONSTEXPR size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
+    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
 
     void resize(size_type n)
     {
@@ -516,7 +516,7 @@ private:
 };
 
 template<class T, class S>
-inline GO_BOOST_CONSTEXPR typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
+inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }

@@ -136,7 +136,7 @@ public:
         return _container.before_begin();
     }
 
-    GO_CONSTEXPR size_type size() const noexcept;
+    size_type size() const noexcept;
 
     void resize(size_type n)
     {
@@ -459,7 +459,7 @@ private:
 };
 
 template<class T, class S>
-inline GO_CONSTEXPR typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const noexcept
+inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const noexcept
 {
     size_type size = 0;
     const const_iterator end = _container.cend();
