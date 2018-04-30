@@ -60,7 +60,7 @@ protected:
     }
 
 public:
-    const_reference operator[](size_type n) const
+    GO_CONSTEXPR const_reference operator[](size_type n) const
     {
         return _container.operator[](n);
     }
@@ -91,7 +91,7 @@ public:
         return _container.rbegin();
     }
 
-    const_reverse_iterator rbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rbegin() const noexcept
     {
         return _container.rbegin();
     }
@@ -101,27 +101,27 @@ public:
         return _container.rend();
     }
 
-    const_reverse_iterator rend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rend() const noexcept
     {
         return _container.rend();
     }
 
-    const_reverse_iterator crbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crbegin() const noexcept
     {
         return _container.crbegin();
     }
 
-    const_reverse_iterator crend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crend() const noexcept
     {
         return _container.crend();
     }
 
-    size_type size() const noexcept
+    GO_CONSTEXPR size_type size() const noexcept
     {
         return _container.size();
     }
 
-    const_reference at(size_type n) const
+    GO_CONSTEXPR const_reference at(size_type n) const
     {
         return _container.at(n);
     }
@@ -136,7 +136,7 @@ public:
         return _container.back();
     }
 
-    const_reference back() const
+    GO_CONSTEXPR const_reference back() const
     {
         return _container.back();
     }
@@ -146,7 +146,7 @@ public:
         return _container.data();
     }
 
-    const_pointer data() const noexcept
+    GO_CONSTEXPR const_pointer data() const noexcept
     {
         return _container.data();
     }

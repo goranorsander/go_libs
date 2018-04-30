@@ -66,7 +66,7 @@ public:
         return this->container().rbegin();
     }
 
-    const_reverse_iterator rbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rbegin() const noexcept
     {
         return this->container().rbegin();
     }
@@ -76,17 +76,17 @@ public:
         return this->container().rend();
     }
 
-    const_reverse_iterator rend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rend() const noexcept
     {
         return this->container().rend();
     }
 
-    const_reverse_iterator crbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crbegin() const noexcept
     {
         return this->container().crbegin();
     }
 
-    const_reverse_iterator crend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crend() const noexcept
     {
         return this->container().crend();
     }
@@ -96,7 +96,7 @@ public:
         return this->container().lower_bound(val);
     }
 
-    const_iterator lower_bound(const value_type& val) const
+    GO_CONSTEXPR const_iterator lower_bound(const value_type& val) const
     {
         return this->container().lower_bound(val);
     }
@@ -106,17 +106,17 @@ public:
         return this->container().upper_bound(val);
     }
 
-    const_iterator upper_bound(const value_type& val) const
+    GO_CONSTEXPR const_iterator upper_bound(const value_type& val) const
     {
         return this->container().upper_bound(val);
     }
 
-    key_compare key_comp() const
+    GO_CONSTEXPR key_compare key_comp() const
     {
         return this->container().key_comp();
     }
 
-    value_compare value_comp() const
+    GO_CONSTEXPR value_compare value_comp() const
     {
         return this->container().key_comp();
     }

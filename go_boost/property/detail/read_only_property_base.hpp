@@ -44,17 +44,17 @@ protected:
     }
 
 public:
-    operator value_type() const
+    GO_BOOST_CONSTEXPR operator value_type() const
     {
         return get();
     }
 
-    value_type operator()() const
+    GO_BOOST_CONSTEXPR value_type operator()() const
     {
         return get();
     }
 
-    value_type operator*() const
+    GO_BOOST_CONSTEXPR value_type operator*() const
     {
         return get();
     }
@@ -62,12 +62,12 @@ public:
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 
 public:
-    value_type get() const
+    GO_BOOST_CONSTEXPR value_type get() const
     {
         return _s.get();
     }
 
-    const string_type& name() const
+    GO_BOOST_CONSTEXPR const string_type& name() const
     {
         return _n;
     }
@@ -78,7 +78,7 @@ protected:
         return _s;
     }
 
-    const storage_policy& storage() const
+    GO_BOOST_CONSTEXPR const storage_policy& storage() const
     {
         return _s;
     }

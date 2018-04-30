@@ -139,7 +139,7 @@ public:
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    const_reference operator[](size_type n) const
+    GO_BOOST_CONSTEXPR const_reference operator[](size_type n) const
     {
         return _container.operator[](n);
     }
@@ -160,7 +160,7 @@ public:
         return _container.rbegin();
     }
 
-    const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rbegin();
     }
@@ -170,24 +170,24 @@ public:
         return _container.rend();
     }
 
-    const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rend();
     }
 
-    const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crbegin();
     }
 
-    const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crend();
     }
 
-    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
+    GO_BOOST_CONSTEXPR size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
 
-    const_reference at(size_type n) const
+    GO_BOOST_CONSTEXPR const_reference at(size_type n) const
     {
         return _container.at(n);
     }
@@ -202,7 +202,7 @@ public:
         return _container.back();
     }
 
-    const_reference back() const
+    GO_BOOST_CONSTEXPR const_reference back() const
     {
         return _container.back();
     }
@@ -212,7 +212,7 @@ public:
         return _container.data();
     }
 
-    const_pointer data() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_pointer data() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.data();
     }
@@ -227,7 +227,7 @@ public:
         _container.resize(n, val);
     }
 
-    size_type capacity() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR size_type capacity() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.capacity();
     }
@@ -410,7 +410,7 @@ public:
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
 
-    allocator_type get_allocator() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR allocator_type get_allocator() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.get_allocator();
     }
@@ -420,7 +420,7 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_vector<T, S>::size_type basic_observable_vector<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
+inline GO_BOOST_CONSTEXPR typename basic_observable_vector<T, S>::size_type basic_observable_vector<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }

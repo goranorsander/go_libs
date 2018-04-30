@@ -107,6 +107,12 @@ __warning _message_
 #define GO_NO_CXX11 1
 #endif  // #if (GO_GCC_VERSION < 30300)
 
+#if defined(GO_NO_CXX11_CONSTEXPR)
+#define GO_CONSTEXPR
+#else
+#define GO_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}

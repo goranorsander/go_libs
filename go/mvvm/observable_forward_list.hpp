@@ -131,12 +131,12 @@ public:
         return _container.before_begin();
     }
 
-    const_iterator before_begin() const noexcept
+    GO_CONSTEXPR const_iterator before_begin() const noexcept
     {
         return _container.before_begin();
     }
 
-    size_type size() const noexcept;
+    GO_CONSTEXPR size_type size() const noexcept;
 
     void resize(size_type n)
     {
@@ -301,7 +301,7 @@ public:
         return it;
     }
 
-    allocator_type get_allocator() const noexcept
+    GO_CONSTEXPR allocator_type get_allocator() const noexcept
     {
         return _container.get_allocator();
     }
@@ -459,7 +459,7 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const noexcept
+inline GO_CONSTEXPR typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const noexcept
 {
     size_type size = 0;
     const const_iterator end = _container.cend();

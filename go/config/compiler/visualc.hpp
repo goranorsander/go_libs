@@ -38,9 +38,20 @@
 #elif (_MSC_VER == 1900)
 #define GO_COMP_MSVC_VC140 1
 #define GO_IDE_MS_VS2015 1
-#elif (_MSC_VER == 1910)
+#elif (_MSC_VER >= 1910)
 #define GO_COMP_MSVC_VC141 1
 #define GO_IDE_MS_VS2017 1
+#if (_MSC_VER == 1910)
+#define GO_IDE_MS_VS2017_15_0 1
+#elif (_MSC_VER == 1911)
+#define GO_IDE_MS_VS2017_15_3 1
+#elif (_MSC_VER == 1912)
+#define GO_IDE_MS_VS2017_15_5 1
+#elif (_MSC_VER == 1913)
+#define GO_IDE_MS_VS2017_15_6 1
+#elif (_MSC_VER == 1914)
+#define GO_IDE_MS_VS2017_15_7 1
+#endif  // #if (_MSC_VER == 1910)
 #endif  // #if (_MSC_VER == 1500)
 
 // Compiler message
@@ -67,12 +78,12 @@ __pragma(message(_message_))
 
 // C++11 support
 #if (_MSC_VER)
-#define GO_NO_CXX11_CONSTEXPR 1
 #define GO_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
 #endif  // #if (_MSC_VER)
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX11_ALIGNAS 1
 #define GO_NO_CXX11_ALIGNOF 1
+#define GO_NO_CXX11_CONSTEXPR 1
 #define GO_NO_CXX11_INHERITING_CONSTRUCTORS 1
 #define GO_NO_CXX11_INLINE_NAMESPACES 1
 #define GO_NO_CXX11_NEW_CHARACTER_TYPES 1
@@ -116,6 +127,12 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_STATIC_ASSERT 1
 #define GO_NO_CXX11 1
 #endif  // #if (_MSC_VER < 1600)
+
+#if defined(GO_NO_CXX11_CONSTEXPR)
+#define GO_CONSTEXPR
+#else
+#define GO_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120)
 #define GO_DEFAULT_CONSTRUCTOR {}

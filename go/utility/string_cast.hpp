@@ -19,7 +19,7 @@ namespace utility
 {
 
 template <typename to_string, typename from_string>
-to_string string_cast(const from_string& from)
+GO_CONSTEXPR to_string string_cast(const from_string& from)
 {
     return string::detail::string_cast<to_string, from_string>::cast(from);
 }

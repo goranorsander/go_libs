@@ -64,22 +64,22 @@ public:
 #endif // BOOST_MSVC > 1500
     }
 
-    notify_container_changed_action action() const
+    GO_BOOST_CONSTEXPR notify_container_changed_action action() const
     {
         return _action;
     }
 
-    std::size_t added_elements() const
+    GO_BOOST_CONSTEXPR std::size_t added_elements() const
     {
         return _added_elements;
     }
 
-    std::size_t removed_elements() const
+    GO_BOOST_CONSTEXPR std::size_t removed_elements() const
     {
         return _removed_elements;
     }
 
-    std::size_t new_size() const
+    GO_BOOST_CONSTEXPR std::size_t new_size() const
     {
         return _new_size;
     }

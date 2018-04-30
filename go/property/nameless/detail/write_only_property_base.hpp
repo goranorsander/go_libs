@@ -68,7 +68,7 @@ protected:
         return _s;
     }
 
-    const storage_policy& storage() const
+    GO_CONSTEXPR const storage_policy& storage() const
     {
         return _s;
     }

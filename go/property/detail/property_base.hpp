@@ -44,12 +44,12 @@ protected:
     }
 
 public:
-    operator value_type() const
+    GO_CONSTEXPR operator value_type() const
     {
         return get();
     }
 
-    value_type operator()() const
+    GO_CONSTEXPR value_type operator()() const
     {
         return get();
     }
@@ -59,7 +59,7 @@ public:
         set(v);
     }
 
-    value_type operator*() const
+    GO_CONSTEXPR value_type operator*() const
     {
         return get();
     }
@@ -67,7 +67,7 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 
 public:
-    value_type get() const
+    GO_CONSTEXPR value_type get() const
     {
         return _s.get();
     }
@@ -77,7 +77,7 @@ public:
         _s.set(v);
     }
 
-    const string_type& name() const
+    GO_CONSTEXPR const string_type& name() const
     {
         return _n;
     }
@@ -88,7 +88,7 @@ protected:
         return _s;
     }
 
-    const storage_policy& storage() const
+    GO_CONSTEXPR const storage_policy& storage() const
     {
         return _s;
     }

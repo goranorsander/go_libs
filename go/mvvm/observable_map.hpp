@@ -124,7 +124,7 @@ public:
         return _container.at(k);
     }
 
-    const mapped_type& at(const key_type& k) const
+    GO_CONSTEXPR const mapped_type& at(const key_type& k) const
     {
         return _container.at(k);
     }

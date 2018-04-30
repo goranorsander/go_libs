@@ -59,7 +59,7 @@ public:
         _s.set(v);
     }
 
-    const string_type& name() const
+    GO_CONSTEXPR const string_type& name() const
     {
         return _n;
     }
@@ -70,7 +70,7 @@ protected:
         return _s;
     }
 
-    const storage_policy& storage() const
+    GO_CONSTEXPR const storage_policy& storage() const
     {
         return _s;
     }

@@ -62,7 +62,7 @@ public:
         return this->container().begin();
     }
 
-    const_iterator begin() const noexcept
+    GO_CONSTEXPR const_iterator begin() const noexcept
     {
         return this->container().begin();
     }
@@ -72,32 +72,32 @@ public:
         return this->container().end();
     }
 
-    const_iterator end() const noexcept
+    GO_CONSTEXPR const_iterator end() const noexcept
     {
         return this->container().end();
     }
 
-    const_iterator cbegin() const noexcept
+    GO_CONSTEXPR const_iterator cbegin() const noexcept
     {
         return this->container().cbegin();
     }
 
-    const_iterator cend() const noexcept
+    GO_CONSTEXPR const_iterator cend() const noexcept
     {
         return this->container().cend();
     }
 
-    size_type size() const noexcept
+    GO_CONSTEXPR size_type size() const noexcept
     {
         return this->container().size();
     }
 
-    size_type max_size() const noexcept
+    GO_CONSTEXPR size_type max_size() const noexcept
     {
         return this->container().max_size();
     }
 
-    bool empty() const noexcept
+    GO_CONSTEXPR bool empty() const noexcept
     {
         return this->container().empty();
     }
@@ -129,12 +129,12 @@ public:
         this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, this->container().size());
     }
 
-    size_type count(const value_type& val) const
+    GO_CONSTEXPR size_type count(const value_type& val) const
     {
         return this->container().count(val);
     }
 
-    const_iterator find(const value_type& val) const
+    GO_CONSTEXPR const_iterator find(const value_type& val) const
     {
         return this->container().find(val);
     }
@@ -144,7 +144,7 @@ public:
         return this->container().find(val);
     }
 
-    std::pair<const_iterator, const_iterator> equal_range(const value_type& val) const
+    GO_CONSTEXPR std::pair<const_iterator, const_iterator> equal_range(const value_type& val) const
     {
         return this->container().equal_range(val);
     }
@@ -154,7 +154,7 @@ public:
         return this->container().equal_range(val);
     }
 
-    allocator_type get_allocator() const noexcept
+    GO_CONSTEXPR allocator_type get_allocator() const noexcept
     {
         return this->container().get_allocator();
     }

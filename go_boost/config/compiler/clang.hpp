@@ -38,6 +38,12 @@ __warning _message_
 #define GO_BOOST_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 
 // C++11 support
+#if defined(BOOST_NO_CXX11_CONSTEXPR)
+#define GO_BOOST_CONSTEXPR
+#else
+#define GO_BOOST_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 #define GO_BOOST_DEFAULT_CONSTRUCTOR {}
 #define GO_BOOST_DEFAULT_DESTRUCTOR {}

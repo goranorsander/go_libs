@@ -61,7 +61,7 @@ protected:
     }
 
 public:
-    const_reference operator[](size_type n) const
+    GO_BOOST_CONSTEXPR const_reference operator[](size_type n) const
     {
         return _container.operator[](n);
     }
@@ -92,7 +92,7 @@ public:
         return _container.rbegin();
     }
 
-    const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator rbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rbegin();
     }
@@ -102,27 +102,27 @@ public:
         return _container.rend();
     }
 
-    const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator rend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.rend();
     }
 
-    const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator crbegin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crbegin();
     }
 
-    const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_reverse_iterator crend() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.crend();
     }
 
-    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR size_type size() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.size();
     }
 
-    const_reference at(size_type n) const
+    GO_BOOST_CONSTEXPR const_reference at(size_type n) const
     {
         return _container.at(n);
     }
@@ -137,7 +137,7 @@ public:
         return _container.back();
     }
 
-    const_reference back() const
+    GO_BOOST_CONSTEXPR const_reference back() const
     {
         return _container.back();
     }
@@ -147,7 +147,7 @@ public:
         return _container.data();
     }
 
-    const_pointer data() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_pointer data() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.data();
     }

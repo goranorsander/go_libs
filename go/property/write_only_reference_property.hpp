@@ -59,7 +59,7 @@ public:
         detail::property_base<value_type, policy_type, string_type>::storage().bind(v);
     }
 
-    bool empty() const
+    GO_CONSTEXPR bool empty() const
     {
         return detail::property_base<value_type, policy_type, string_type>::storage().empty();
     }
@@ -69,12 +69,12 @@ public:
         detail::property_base<value_type, policy_type, string_type>::storage().reset();
     }
 
-    explicit operator bool() const
+    explicit GO_CONSTEXPR operator bool() const
     {
         return !empty();
     }
 
-    bool operator!() const
+    GO_CONSTEXPR bool operator!() const
     {
         return empty();
     }

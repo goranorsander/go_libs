@@ -51,26 +51,26 @@ protected:
 public:
     static std::shared_ptr<basic_property_changed_arguments<S>> create(const string_type& property_name);
 
-    string_type property_name() const;
+    GO_CONSTEXPR string_type property_name() const;
 
 private:
     const string_type _property_name;
 };
 
 template<>
-inline std::string basic_property_changed_arguments<std::string>::property_name() const
+inline GO_CONSTEXPR std::string basic_property_changed_arguments<std::string>::property_name() const
 {
     return _property_name;
 }
 
 template<>
-inline std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
+inline GO_CONSTEXPR std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
 {
     return _property_name;
 }
 
 template<class S>
-inline S basic_property_changed_arguments<S>::property_name() const
+inline GO_CONSTEXPR S basic_property_changed_arguments<S>::property_name() const
 {
     return _property_name;
 }

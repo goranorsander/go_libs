@@ -148,12 +148,12 @@ public:
         return _container.before_begin();
     }
 
-    const_iterator before_begin() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR const_iterator before_begin() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _container.before_begin();
     }
 
-    size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
+    GO_BOOST_CONSTEXPR size_type size() const BOOST_NOEXCEPT_OR_NOTHROW;
 
     void resize(size_type n)
     {
@@ -338,7 +338,7 @@ public:
         return it;
     }
 
-    allocator_type get_allocator() const
+    GO_BOOST_CONSTEXPR allocator_type get_allocator() const
     {
         return _container.get_allocator();
     }
@@ -516,7 +516,7 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
+inline GO_BOOST_CONSTEXPR typename basic_observable_forward_list<T, S>::size_type basic_observable_forward_list<T, S>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }

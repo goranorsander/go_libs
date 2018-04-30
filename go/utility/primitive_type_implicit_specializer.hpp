@@ -66,12 +66,12 @@ namespace utility
     template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(std::fmod(get(), static_cast<_primitive_type_>(p))); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_COMPARISON_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> bool operator==(const P& p) const { return get() == static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator!=(const P& p) const { return !operator==(static_cast<_primitive_type_>(p)); } \
-    template<typename P> bool operator<(const P& p) const { return get() < static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator<=(const P& p) const { return get() <= static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>(const P& p) const { return get() > static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>=(const P& p) const { return get() >= static_cast<_primitive_type_>(p); }
+    template<typename P> GO_CONSTEXPR bool operator==(const P& p) const { return get() == static_cast<_primitive_type_>(p); } \
+    template<typename P> GO_CONSTEXPR bool operator!=(const P& p) const { return !operator==(static_cast<_primitive_type_>(p)); } \
+    template<typename P> GO_CONSTEXPR bool operator<(const P& p) const { return get() < static_cast<_primitive_type_>(p); } \
+    template<typename P> GO_CONSTEXPR bool operator<=(const P& p) const { return get() <= static_cast<_primitive_type_>(p); } \
+    template<typename P> GO_CONSTEXPR bool operator>(const P& p) const { return get() > static_cast<_primitive_type_>(p); } \
+    template<typename P> GO_CONSTEXPR bool operator>=(const P& p) const { return get() >= static_cast<_primitive_type_>(p); }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER_LOGICAL_OPERATORS( _class_name_, _primitive_type_ ) \
     template<typename P> _class_name_ operator&&(const P& p) const { return _class_name_(get()&&static_cast<_primitive_type_>(p)); } \
@@ -190,12 +190,12 @@ protected:
     }
 
 public:
-    operator const value_type&() const
+    GO_CONSTEXPR operator const value_type&() const
     {
         return primitive_type_specializer<T>::get();
     }
 
-    operator value_type&()
+    GO_CONSTEXPR operator value_type&()
     {
         return primitive_type_specializer<T>::get();
     }

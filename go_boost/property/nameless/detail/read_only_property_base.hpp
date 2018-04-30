@@ -44,17 +44,17 @@ protected:
     }
 
 public:
-    operator value_type() const
+    GO_BOOST_CONSTEXPR operator value_type() const
     {
         return get();
     }
 
-    value_type operator()() const
+    GO_BOOST_CONSTEXPR value_type operator()() const
     {
         return get();
     }
 
-    value_type operator*() const
+    GO_BOOST_CONSTEXPR value_type operator*() const
     {
         return get();
     }
@@ -66,7 +66,7 @@ private:
     }
 
 public:
-    value_type get() const
+    GO_BOOST_CONSTEXPR value_type get() const
     {
         return _s.get();
     }
@@ -77,7 +77,7 @@ protected:
         return _s;
     }
 
-    const storage_policy& storage() const
+    GO_BOOST_CONSTEXPR const storage_policy& storage() const
     {
         return _s;
     }

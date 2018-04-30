@@ -59,32 +59,32 @@ protected:
     }
 
 public:
-    key_equal key_eq() const
+    GO_BOOST_CONSTEXPR key_equal key_eq() const
     {
         return this->container().key_eq();
     }
 
-    hasher hash_function() const
+    GO_BOOST_CONSTEXPR hasher hash_function() const
     {
         return this->container().hash_function();
     }
 
-    size_type bucket(const key_type& k) const
+    GO_BOOST_CONSTEXPR size_type bucket(const key_type& k) const
     {
         return this->container().bucket(k);
     }
 
-    size_type bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR size_type bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->container().bucket_count();
     }
 
-    size_type bucket_size(size_type n) const
+    GO_BOOST_CONSTEXPR size_type bucket_size(size_type n) const
     {
         return this->container().bucket_size(n);
     }
 
-    size_type max_bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR size_type max_bucket_count() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->container().max_bucket_count();
     }
@@ -94,12 +94,12 @@ public:
         this->container().rehash(n);
     }
 
-    float load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR float load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->container().load_factor();
     }
 
-    float max_load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
+    GO_BOOST_CONSTEXPR float max_load_factor() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->container().max_load_factor();
     }

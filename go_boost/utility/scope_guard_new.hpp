@@ -47,17 +47,17 @@ public:
     }
 
 public:
-    pointer operator->() const BOOST_NOEXCEPT
+    GO_BOOST_CONSTEXPR pointer operator->() const BOOST_NOEXCEPT
     {
         return _px;
     }
 
-    reference operator*() const BOOST_NOEXCEPT
+    GO_BOOST_CONSTEXPR reference operator*() const BOOST_NOEXCEPT
     {
         return *_px;
     }
 
-    bool operator!() const BOOST_NOEXCEPT
+    GO_BOOST_CONSTEXPR bool operator!() const BOOST_NOEXCEPT
     {
         return _px == NULL;
     }
@@ -72,7 +72,7 @@ public:
         return px;
     }
 
-    pointer get() const BOOST_NOEXCEPT
+    GO_BOOST_CONSTEXPR pointer get() const BOOST_NOEXCEPT
     {
         return _px;
     }

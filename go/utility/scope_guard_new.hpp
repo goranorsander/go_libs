@@ -39,26 +39,26 @@ public:
     }
 
 public:
-    pointer operator->() const
+    GO_CONSTEXPR pointer operator->() const
     {
         return _px;
     }
 
-    reference operator*() const
+    GO_CONSTEXPR reference operator*() const
     {
         return *_px;
     }
 
 #if !defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
 
-    explicit operator bool() const
+    explicit GO_CONSTEXPR operator bool() const
     {
         return _px != nullptr;
     }
 
 #else
 
-    operator bool() const
+    GO_CONSTEXPR operator bool() const
     {
         return _px != nullptr;
     }
@@ -73,7 +73,7 @@ public:
         return px;
     }
 
-    pointer get() const
+    GO_CONSTEXPR pointer get() const
     {
         return _px;
     }

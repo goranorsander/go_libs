@@ -60,7 +60,7 @@ public:
         return this->container().begin();
     }
 
-    const_iterator begin() const noexcept
+    GO_CONSTEXPR const_iterator begin() const noexcept
     {
         return this->container().begin();
     }
@@ -70,27 +70,27 @@ public:
         return this->container().end();
     }
 
-    const_iterator end() const noexcept
+    GO_CONSTEXPR const_iterator end() const noexcept
     {
         return this_type::ontainer().end();
     }
 
-    const_iterator cbegin() const noexcept
+    GO_CONSTEXPR const_iterator cbegin() const noexcept
     {
         return this->container().cbegin();
     }
 
-    const_iterator cend() const noexcept
+    GO_CONSTEXPR const_iterator cend() const noexcept
     {
         return this->container().cend();
     }
 
-    size_type max_size() const noexcept
+    GO_CONSTEXPR size_type max_size() const noexcept
     {
         return this->container().max_size();
     }
 
-    bool empty() const noexcept
+    GO_CONSTEXPR bool empty() const noexcept
     {
         return this->container().empty();
     }

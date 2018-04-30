@@ -59,22 +59,22 @@ public:
         return std::make_shared<make_shared_enabler, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);
     }
 
-    notify_container_changed_action action() const
+    GO_CONSTEXPR notify_container_changed_action action() const
     {
         return _action;
     }
 
-    std::size_t added_elements() const
+    GO_CONSTEXPR std::size_t added_elements() const
     {
         return _added_elements;
     }
 
-    std::size_t removed_elements() const
+    GO_CONSTEXPR std::size_t removed_elements() const
     {
         return _removed_elements;
     }
 
-    std::size_t new_size() const
+    GO_CONSTEXPR std::size_t new_size() const
     {
         return _new_size;
     }

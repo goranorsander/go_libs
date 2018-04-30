@@ -60,7 +60,7 @@ public:
         return this->container().begin();
     }
 
-    const_iterator begin() const
+    GO_BOOST_CONSTEXPR const_iterator begin() const
     {
         return this->container().begin();
     }
@@ -70,27 +70,27 @@ public:
         return this->container().end();
     }
 
-    const_iterator end() const
+    GO_BOOST_CONSTEXPR const_iterator end() const
     {
         return this->container().end();
     }
 
-    const_iterator cbegin() const
+    GO_BOOST_CONSTEXPR const_iterator cbegin() const
     {
         return this->container().cbegin();
     }
 
-    const_iterator cend() const
+    GO_BOOST_CONSTEXPR const_iterator cend() const
     {
         return this->container().cend();
     }
 
-    size_type max_size() const
+    GO_BOOST_CONSTEXPR size_type max_size() const
     {
         return this->container().max_size();
     }
 
-    bool empty() const
+    GO_BOOST_CONSTEXPR bool empty() const
     {
         return this->container().empty();
     }
@@ -100,7 +100,7 @@ public:
         return this->container().front();
     }
 
-    const_reference front() const
+    GO_BOOST_CONSTEXPR const_reference front() const
     {
         return this->container().front();
     }

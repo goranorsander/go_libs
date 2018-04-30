@@ -122,7 +122,7 @@ public:
         return *this;
     }
 
-    const_reference operator[](size_type n) const
+    GO_CONSTEXPR const_reference operator[](size_type n) const
     {
         return _container.operator[](n);
     }
@@ -143,7 +143,7 @@ public:
         return _container.rbegin();
     }
 
-    const_reverse_iterator rbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rbegin() const noexcept
     {
         return _container.rbegin();
     }
@@ -153,24 +153,24 @@ public:
         return _container.rend();
     }
 
-    const_reverse_iterator rend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator rend() const noexcept
     {
         return _container.rend();
     }
 
-    const_reverse_iterator crbegin() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crbegin() const noexcept
     {
         return _container.crbegin();
     }
 
-    const_reverse_iterator crend() const noexcept
+    GO_CONSTEXPR const_reverse_iterator crend() const noexcept
     {
         return _container.crend();
     }
 
-    size_type size() const noexcept;
+    GO_CONSTEXPR size_type size() const noexcept;
 
-    const_reference at(size_type n) const
+    GO_CONSTEXPR const_reference at(size_type n) const
     {
         return _container.at(n);
     }
@@ -185,7 +185,7 @@ public:
         return _container.back();
     }
 
-    const_reference back() const
+    GO_CONSTEXPR const_reference back() const
     {
         return _container.back();
     }
@@ -195,7 +195,7 @@ public:
         return _container.data();
     }
 
-    const_pointer data() const noexcept
+    GO_CONSTEXPR const_pointer data() const noexcept
     {
         return _container.data();
     }
@@ -210,7 +210,7 @@ public:
         _container.resize(n, val);
     }
 
-    size_type capacity() const noexcept
+    GO_CONSTEXPR size_type capacity() const noexcept
     {
         return _container.capacity();
     }
@@ -373,7 +373,7 @@ public:
         this->notify_insert(before, after);
     }
 
-    allocator_type get_allocator() const noexcept
+    GO_CONSTEXPR allocator_type get_allocator() const noexcept
     {
         return _container.get_allocator();
     }
@@ -383,7 +383,7 @@ private:
 };
 
 template<class T, class S>
-inline typename basic_observable_vector<T, S>::size_type basic_observable_vector<T, S>::size() const noexcept
+inline GO_CONSTEXPR typename basic_observable_vector<T, S>::size_type basic_observable_vector<T, S>::size() const noexcept
 {
     return _container.size();
 }

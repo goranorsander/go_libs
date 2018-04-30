@@ -36,9 +36,20 @@
 #elif (_MSC_VER == 1900)
 #define GO_BOOST_COMP_MSVC_VC140 1
 #define GO_BOOST_IDE_MS_VS2015 1
-#elif (_MSC_VER == 1910)
+#elif (_MSC_VER >= 1910)
 #define GO_BOOST_COMP_MSVC_VC141 1
 #define GO_BOOST_IDE_MS_VS2017 1
+#if (_MSC_VER == 1910)
+#define GO_BOOST_IDE_MS_VS2017_15_0 1
+#elif (_MSC_VER == 1911)
+#define GO_BOOST_IDE_MS_VS2017_15_3 1
+#elif (_MSC_VER == 1912)
+#define GO_BOOST_IDE_MS_VS2017_15_5 1
+#elif (_MSC_VER == 1913)
+#define GO_BOOST_IDE_MS_VS2017_15_6 1
+#elif (_MSC_VER == 1914)
+#define GO_BOOST_IDE_MS_VS2017_15_7 1
+#endif  // #if (_MSC_VER == 1910)
 #endif  // #if (_MSC_VER == 1500)
 
 // Compiler message
@@ -71,6 +82,12 @@ __pragma(message(_message_))
 #endif  // #if (_MSC_VER < 1900)
 
 // C++11 support
+#if defined(BOOST_NO_CXX11_CONSTEXPR)
+#define GO_BOOST_CONSTEXPR
+#else
+#define GO_BOOST_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120)
 #define GO_BOOST_DEFAULT_CONSTRUCTOR {}
 #define GO_BOOST_DEFAULT_DESTRUCTOR {}

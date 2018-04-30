@@ -65,12 +65,12 @@ namespace utility
     _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(get(), t.get())); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_ ) \
-    bool operator==(const _class_name_& t) const { return get() == t.get(); } \
-    bool operator!=(const _class_name_& t) const { return !operator==(t); } \
-    bool operator<(const _class_name_& t) const { return get() < t.get(); } \
-    bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
-    bool operator>(const _class_name_& t) const { return get() > t.get(); } \
-    bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
+    GO_CONSTEXPR bool operator==(const _class_name_& t) const { return get() == t.get(); } \
+    GO_CONSTEXPR bool operator!=(const _class_name_& t) const { return !operator==(t); } \
+    GO_CONSTEXPR bool operator<(const _class_name_& t) const { return get() < t.get(); } \
+    GO_CONSTEXPR bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
+    GO_CONSTEXPR bool operator>(const _class_name_& t) const { return get() > t.get(); } \
+    GO_CONSTEXPR bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_ ) \
     _class_name_ operator!() const { return _class_name_(!get()); } \
@@ -154,12 +154,12 @@ protected:
     }
 
 public:
-    const value_type& get() const
+    GO_CONSTEXPR const value_type& get() const
     {
         return _t;
     }
 
-    value_type& get()
+    GO_CONSTEXPR value_type& get()
     {
         return _t;
     }
