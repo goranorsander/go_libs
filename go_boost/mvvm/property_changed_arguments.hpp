@@ -49,7 +49,7 @@ protected:
 public:
     static boost::shared_ptr<basic_property_changed_arguments<S>> create(const string_type& property_name);
 
-    GO_BOOST_CONSTEXPR string_type property_name() const;
+    string_type property_name() const;
 
 private:
     const string_type _property_name;
@@ -77,19 +77,19 @@ inline basic_property_changed_arguments<S>::basic_property_changed_arguments(con
 }
 
 template<>
-inline GO_BOOST_CONSTEXPR std::string basic_property_changed_arguments<std::string>::property_name() const
+inline std::string basic_property_changed_arguments<std::string>::property_name() const
 {
     return _property_name;
 }
 
 template<>
-inline GO_BOOST_CONSTEXPR std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
+inline std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
 {
     return _property_name;
 }
 
 template<class S>
-inline GO_BOOST_CONSTEXPR S basic_property_changed_arguments<S>::property_name() const
+inline S basic_property_changed_arguments<S>::property_name() const
 {
     return _property_name;
 }
