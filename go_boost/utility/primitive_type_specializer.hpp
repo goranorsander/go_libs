@@ -67,12 +67,12 @@ namespace utility
     _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(get(), t.get())); }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_ ) \
-    GO_BOOST_CONSTEXPR bool operator==(const _class_name_& t) const { return get() == t.get(); } \
-    GO_BOOST_CONSTEXPR bool operator!=(const _class_name_& t) const { return !operator==(t); } \
-    GO_BOOST_CONSTEXPR bool operator<(const _class_name_& t) const { return get() < t.get(); } \
-    GO_BOOST_CONSTEXPR bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
-    GO_BOOST_CONSTEXPR bool operator>(const _class_name_& t) const { return get() > t.get(); } \
-    GO_BOOST_CONSTEXPR bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
+    bool operator==(const _class_name_& t) const { return get() == t.get(); } \
+    bool operator!=(const _class_name_& t) const { return !operator==(t); } \
+    bool operator<(const _class_name_& t) const { return get() < t.get(); } \
+    bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
+    bool operator>(const _class_name_& t) const { return get() > t.get(); } \
+    bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_ ) \
     _class_name_ operator!() const { return _class_name_(!get()); } \
@@ -90,7 +90,7 @@ class _class_name_ \
     : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() GO_BOOST_DEFAULT_DESTRUCTOR \
+    virtual ~_class_name_() {} \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
@@ -106,7 +106,7 @@ class _class_name_ \
     : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() GO_BOOST_DEFAULT_DESTRUCTOR \
+    virtual ~_class_name_() {} \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
@@ -146,7 +146,7 @@ protected:
     }
 
 public:
-    GO_BOOST_CONSTEXPR const value_type& get() const
+    const value_type& get() const
     {
         return _t;
     }

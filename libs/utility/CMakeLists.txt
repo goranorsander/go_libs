@@ -12,6 +12,36 @@ if(BUILD_STD_EXAMPLES)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
+    #################################################################
+    #  libs/utility/std_primitive_type_implicit_specializer_example #
+    #################################################################
+
+    set(PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_implicit_specializer_example)
+
+    file(GLOB STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES std_primitive_type_implicit_specializer_example/*.cpp)
+    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE})
+
+    ########################################################
+    #  libs/utility/std_primitive_type_specializer_example #
+    ########################################################
+
+    set(PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_specializer_example)
+
+    file(GLOB STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES std_primitive_type_specializer_example/*.cpp)
+    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE})
+
     ########################################################
     #  libs/utility/std_scope_guard_example                #
     ########################################################

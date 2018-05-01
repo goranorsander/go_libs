@@ -14,6 +14,7 @@
 #include <go/utility/noncopyable.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/nonmovable.hpp>
+#include <go/utility/primitive_type_implicit_specializer.hpp>
 #include <go/utility/primitive_type_specializer.hpp>
 #include <go/utility/sanity.hpp>
 #include <go/utility/scope_guard.hpp>
