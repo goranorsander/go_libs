@@ -20,6 +20,7 @@
 #if defined(GO_BOOST_PLATFORM_WINDOWS) && !defined(GO_BOOST_COMP_GCC_MINGW)
 
 #include <go_boost/utility/string/detail/string_cast_fwd.hpp>
+#include <go_boost/utility/string/windows_1252.hpp>
 #include <windows.h>
 
 namespace go_boost
@@ -35,12 +36,8 @@ namespace detail
 
 inline std::string convert_u8string_to_string(const u8string& s)
 {
-    const std::string u8s(s.begin(), s.end());
-    boost::locale::generator g;
-    g.locale_cache_enabled(true);
-    std::locale loc = g(boost::locale::util::get_system_locale());
-    const std::string mbs = boost::locale::conv::from_utf<char>(u8s, loc);
-    return mbs;
+    std::string mbs;
+    return reduce_to_windows_1252(s, mbs);
 }
 
 // to std::wstring

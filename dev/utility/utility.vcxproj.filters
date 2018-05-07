@@ -98,6 +98,12 @@
     <ClInclude Include="..\..\go\utility\primitive_type_implicit_specializer.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\windows_1252.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\iso_8859_1.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

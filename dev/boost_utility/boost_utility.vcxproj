@@ -40,6 +40,7 @@
     <ClInclude Include="..\..\go_boost\utility\string\iso_8859_1.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string\string_cast.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string\ucs2.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\string\windows_1252.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string_cast.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string_cast_exception.hpp" />
     <ClInclude Include="..\..\go_boost\utility\u16string.hpp" />

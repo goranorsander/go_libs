@@ -73,6 +73,21 @@ if(BUILD_STD_EXAMPLES)
     add_test(test_mvvm ${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE})
 
     ########################################################
+    #  libs/utility/std_string_cast_example                #
+    ########################################################
+
+    set(PROJECT_STD_STRING_CAST_EXAMPLE ${STD_PROJECT_NAME_STR}_string_cast_example)
+
+    file(GLOB STD_STRING_CAST_EXAMPLE_SRC_FILES std_string_cast_example/*.cpp)
+    add_executable(${PROJECT_STD_STRING_CAST_EXAMPLE} ${STD_STRING_CAST_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_STRING_CAST_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_STRING_CAST_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_STRING_CAST_EXAMPLE})
+
+    ########################################################
     #  libs/utility/std_value_guard_example                #
     ########################################################
 

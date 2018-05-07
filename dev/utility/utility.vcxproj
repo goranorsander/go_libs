@@ -39,7 +39,9 @@
     <ClInclude Include="..\..\go\utility\string\detail\string_convert_linux.hpp" />
     <ClInclude Include="..\..\go\utility\string\detail\string_convert_windows.hpp" />
     <ClInclude Include="..\..\go\utility\string\format.hpp" />
+    <ClInclude Include="..\..\go\utility\string\iso_8859_1.hpp" />
     <ClInclude Include="..\..\go\utility\string\string_cast.hpp" />
+    <ClInclude Include="..\..\go\utility\string\windows_1252.hpp" />
     <ClInclude Include="..\..\go\utility\string_cast.hpp" />
     <ClInclude Include="..\..\go\utility\string_cast_exception.hpp" />
     <ClInclude Include="..\..\go\utility\u2string.hpp" />

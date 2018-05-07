@@ -21,6 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <go/utility/string/detail/deletable_facet.hpp>
 #include <go/utility/string/detail/string_cast_fwd.hpp>
+#include <go/utility/string/windows_1252.hpp>
 #include <codecvt>
 #include <windows.h>
 
@@ -50,9 +51,8 @@ inline std::string convert_u2string_to_string(const u2string& s)
 
 inline std::string convert_u8string_to_string(const u8string& s)
 {
-    typedef deletable_facet<std::codecvt<wchar_t, char, mbstate_t>> facet_type;
-    std::wstring_convert<facet_type> converter;
-    return converter.to_bytes(convert_u8string_to_wstring(s));
+    std::string mbs;
+    return reduce_to_windows_1252(s, mbs);
 }
 
 inline std::string convert_u16string_to_string(const std::u16string& s)
