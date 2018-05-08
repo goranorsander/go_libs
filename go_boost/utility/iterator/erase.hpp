@@ -40,7 +40,7 @@ inline I erase(C& container, I& it, const D& n)
 }
 
 template<class I, class C, class D>
-inline bool erase(boost::shared_ptr<C>& container, I& it, const D& n)
+inline bool erase(const boost::shared_ptr<C>& container, I& it, const D& n)
 {
     if(container)
     {
