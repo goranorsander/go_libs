@@ -18,6 +18,9 @@
     <Filter Include="go_boost\utility\string\detail">
       <UniqueIdentifier>{a1bfda61-7b94-47d3-b3b7-d87a74c28615}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go_boost\utility\container">
+      <UniqueIdentifier>{554a38b6-20e9-42ea-b7a8-9715eaa9b246}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\utility.hpp">
@@ -26,7 +29,7 @@
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp">
       <Filter>go_boost\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\utility\iterator\try_move_iterator_backward.hpp">
+    <ClInclude Include="..\..\go_boost\utility\iterator\try_move_backward.hpp">
       <Filter>go_boost\utility\iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\utility\string\windows_1252.hpp">
       <Filter>go_boost\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\container\size.hpp">
+      <Filter>go_boost\utility\container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

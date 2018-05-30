@@ -358,6 +358,24 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
 set(GO_LIBS_SRC_GO_MVVM_CPP)
 
 ########################################################
+#  go/mvvm/iterator                                    #
+########################################################
+
+set(GO_MVVM_ITERATOR_DIRNAME iterator)
+set(GO_MVVM_ITERATOR_DIR ${GO_MVVM_DIR}/iterator)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_MVVM_ITERATOR_HPP
+    ${GO_MVVM_ITERATOR_DIR}/erase.hpp
+    ${GO_MVVM_ITERATOR_DIR}/try_move_backward.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_MVVM_ITERATOR_CPP)
+
+########################################################
 #  go/mvvm/utility                                     #
 ########################################################
 
@@ -528,6 +546,23 @@ set(GO_LIBS_SRC_GO_UTILITY_HPP
 set(GO_LIBS_SRC_GO_UTILITY_CPP)
 
 ########################################################
+#  go/utility/container                                #
+########################################################
+
+set(GO_UTILITY_CONTAINER_DIRNAME utility/container)
+set(GO_UTILITY_CONTAINER_DIR ${GO_DIR}/utility/container)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_UTILITY_CONTAINER_HPP
+    ${GO_UTILITY_CONTAINER_DIR}/size.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_UTILITY_CONTAINER_CPP)
+
+########################################################
 #  go/utility/iterator                                 #
 ########################################################
 
@@ -538,7 +573,7 @@ set(GO_UTILITY_ITERATOR_DIR ${GO_DIR}/utility/iterator)
 
 set(GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP
     ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
-    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_backward.hpp
 )
 
 # *.cpp
@@ -560,6 +595,7 @@ set(GO_LIBS_SRC_GO_UTILITY_STRING_HPP
     ${GO_UTILITY_STRING_DIR}/format.hpp
     ${GO_UTILITY_STRING_DIR}/iso_8859_1.hpp
     ${GO_UTILITY_STRING_DIR}/string_cast.hpp
+    ${GO_UTILITY_STRING_DIR}/windows_1252.hpp
 )
 
 # *.cpp
@@ -744,6 +780,24 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
 set(GO_LIBS_SRC_GO_BOOST_MVVM_CPP)
 
 ########################################################
+#  go_boost/mvvm/iterator                              #
+########################################################
+
+set(GO_BOOST_MVVM_ITERATOR_DIRNAME iterator)
+set(GO_BOOST_MVVM_ITERATOR_DIR ${GO_BOOST_MVVM_DIR}/iterator)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_MVVM_ITERATOR_HPP
+    ${GO_BOOST_MVVM_ITERATOR_DIR}/erase.hpp
+    ${GO_BOOST_MVVM_ITERATOR_DIR}/try_move_backward.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_MVVM_ITERATOR_CPP)
+
+########################################################
 #  go_boost/mvvm/utility                               #
 ########################################################
 
@@ -917,6 +971,23 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_HPP
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_CPP)
 
 ########################################################
+#  go_boost/utility/container                          #
+########################################################
+
+set(GO_BOOST_UTILITY_CONTAINER_DIRNAME utility/container)
+set(GO_BOOST_UTILITY_CONTAINER_DIR ${GO_BOOST_DIR}/utility/container)
+
+# *.hpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP
+    ${GO_BOOST_UTILITY_CONTAINER_DIR}/size.hpp
+)
+
+# *.cpp
+
+set(GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_CPP)
+
+########################################################
 #  go_boost/utility/iterator                           #
 ########################################################
 
@@ -927,7 +998,7 @@ set(GO_BOOST_UTILITY_ITERATOR_DIR ${GO_BOOST_DIR}/utility/iterator)
 
 set(GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP
     ${GO_UTILITY_ITERATOR_DIR}/erase.hpp
-    ${GO_UTILITY_ITERATOR_DIR}/try_move_iterator_backward.hpp
+    ${GO_UTILITY_ITERATOR_DIR}/try_move_backward.hpp
 )
 
 # *.cpp
@@ -949,6 +1020,7 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP
     ${GO_BOOST_UTILITY_STRING_DIR}/string_cast.hpp
     ${GO_BOOST_UTILITY_STRING_DIR}/iso_8859_1.hpp
     ${GO_BOOST_UTILITY_STRING_DIR}/ucs2.hpp
+    ${GO_BOOST_UTILITY_STRING_DIR}/windows_1252.hpp
 )
 
 # *.cpp
@@ -995,6 +1067,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_EXCEPTION_HPP}                  DESTINATION  include/${GO_DIRNAME}/${GO_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_ITERATOR_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_HPP}                   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_DETAIL_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_DETAIL_DIRNAME})
@@ -1003,6 +1076,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DETAIL_DIRNAME})
@@ -1013,6 +1087,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_EXCEPTION_HPP}                  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_HPP}                       DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_ITERATOR_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_MVVM_UTILITY_HPP}               DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_MVVM_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_HPP}                   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_DETAIL_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_DETAIL_DIRNAME})
@@ -1021,6 +1096,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP}             DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME})

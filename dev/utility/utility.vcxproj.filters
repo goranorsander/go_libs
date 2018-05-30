@@ -18,6 +18,9 @@
     <Filter Include="go\utility\string\detail">
       <UniqueIdentifier>{1367001a-85f9-440b-bccd-c2ea167294da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\utility\container">
+      <UniqueIdentifier>{95f11b71-8e0b-4d30-9ec7-0d2fad79833a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp">
@@ -26,7 +29,7 @@
     <ClInclude Include="..\..\go\utility\sanity.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\utility\iterator\try_move_iterator_backward.hpp">
+    <ClInclude Include="..\..\go\utility\iterator\try_move_backward.hpp">
       <Filter>go\utility\iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\utility\noncopyable.hpp">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="..\..\go\utility\string\iso_8859_1.hpp">
       <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\container\size.hpp">
+      <Filter>go\utility\container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

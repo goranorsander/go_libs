@@ -12,6 +12,9 @@
     <Filter Include="go_boost\mvvm\utility">
       <UniqueIdentifier>{5dba567e-c7af-41a4-a0b6-b3cd4279ef8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go_boost\mvvm\iterator">
+      <UniqueIdentifier>{ac4f95e7-5fe3-44ba-934a-867d414c6dc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\mvvm.hpp">
@@ -163,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\notify_event_firing_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\iterator\erase.hpp">
+      <Filter>go_boost\mvvm\iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\iterator\try_move_backward.hpp">
+      <Filter>go_boost\mvvm\iterator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

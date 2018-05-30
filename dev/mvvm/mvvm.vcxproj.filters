@@ -14,6 +14,9 @@
     <Filter Include="go\mvvm\utility">
       <UniqueIdentifier>{23f8254f-e6d2-4505-bbc4-534d92300771}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\mvvm\iterator">
+      <UniqueIdentifier>{8d8b77a7-3570-407d-9ad5-e15a9710a98e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\mvvm.hpp">
@@ -156,6 +159,12 @@
     </ClInclude>
     <ClInclude Include="..\..\go\mvvm\notify_event_firing_interface.hpp">
       <Filter>go\mvvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\iterator\erase.hpp">
+      <Filter>go\mvvm\iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\iterator\try_move_backward.hpp">
+      <Filter>go\mvvm\iterator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
