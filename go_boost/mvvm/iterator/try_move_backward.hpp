@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED
-#define GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_ITERATOR_TRY_MOVE_BACKWARD_HPP_INCLUDED
+#define GO_BOOST_MVVM_ITERATOR_TRY_MOVE_BACKWARD_HPP_INCLUDED
 
 //
-//  try_move_iterator_backward.hpp
+//  try_move_backward.hpp
 //
 //  Copyright 2016-2018 Göran Orsander
 //
@@ -21,32 +21,13 @@
 
 namespace go_boost
 {
-namespace utility
+namespace mvvm
 {
 namespace iterator
 {
 
 template<class I, class C>
-inline bool try_move_iterator_backward(const C& container, I& it)
-{
-    I at = container.begin();
-    const I end = container.end();
-    while(at != end)
-    {
-        I look_ahead = at;
-        ++look_ahead;
-        if(look_ahead == it)
-        {
-            it = at;
-            return true;
-        }
-        ++at;
-    }
-    return false;
-}
-
-template<class I, class C>
-inline bool try_move_iterator_backward(const boost::shared_ptr<C>& container, I& it)
+inline bool try_move_backward(const boost::shared_ptr<C>& container, I& it)
 {
     if(container)
     {
@@ -71,4 +52,4 @@ inline bool try_move_iterator_backward(const boost::shared_ptr<C>& container, I&
 }
 }
 
-#endif  // #ifndef GO_BOOST_UTILITY_ITERATOR_TRY_MOVE_ITERATOR_BACKWARD_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_ITERATOR_TRY_MOVE_BACKWARD_HPP_INCLUDED
