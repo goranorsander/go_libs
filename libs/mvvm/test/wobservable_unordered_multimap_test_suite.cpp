@@ -17,9 +17,8 @@ TEST(std_wobservable_unordered_multimap_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-#include <go/utility/iterator/try_move_iterator_backward.hpp>
 
-namespace i = go::utility::iterator;
+namespace i = go::mvvm::iterator;
 namespace m = go::mvvm;
 namespace ph = std::placeholders;
 namespace s = go::signals;
@@ -453,7 +452,7 @@ TEST(std_wobservable_unordered_multimap_test_suite, test_erase_range)
     m::wobservable_unordered_multimap<int, int>::iterator begin = m->begin();
     ++begin;
     m::wobservable_unordered_multimap<int, int>::iterator end = m->end();
-    const bool moved_backward = i::try_move_iterator_backward<m::wobservable_unordered_multimap<int, int>::iterator>(m, end);
+    const bool moved_backward = i::try_move_backward<m::wobservable_unordered_multimap<int, int>::iterator>(m, end);
     EXPECT_EQ(moved_backward, true);
 
     m->erase(begin, end);

@@ -15,6 +15,8 @@
 #include <go/mvvm/command_manager.hpp>
 #include <go/mvvm/data_context_interface.hpp>
 #include <go/mvvm/event_manager.hpp>
+#include <go/mvvm/iterator/erase.hpp>
+#include <go/mvvm/iterator/try_move_backward.hpp>
 #include <go/mvvm/object_observer_interface.hpp>
 #include <go/mvvm/observable_array.hpp>
 #include <go/mvvm/observable_deque.hpp>
