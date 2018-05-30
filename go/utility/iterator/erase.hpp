@@ -20,29 +20,14 @@ namespace utility
 namespace iterator
 {
 
-template<class I, class C, class D>
-inline I erase(C& container, I& it, const D& n)
+template<class I, class C>
+inline I erase(C& container, I& it, const std::size_t& n)
 {
-    D count = 0;
+    std::size_t count = 0;
     while ((count < n) && (it != container.end()))
     {
         ++count;
         it = container.erase(it);
-    }
-    return it;
-}
-
-template<class I, class C, class D>
-inline bool erase(const std::shared_ptr<C>& container, I& it, const D& n)
-{
-    if(container)
-    {
-        D count = 0;
-        while ((count < n) && (it != container.end()))
-        {
-            ++count;
-            it = container->erase(it);
-        }
     }
     return it;
 }

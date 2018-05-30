@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_UTILITY_ITERATOR_ERASE_HPP_INCLUDED
-#define GO_BOOST_UTILITY_ITERATOR_ERASE_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_ITERATOR_ERASE_HPP_INCLUDED
+#define GO_BOOST_MVVM_ITERATOR_ERASE_HPP_INCLUDED
 
 //
 //  erase.hpp
@@ -22,19 +22,22 @@
 
 namespace go_boost
 {
-namespace utility
+namespace mvvm
 {
 namespace iterator
 {
 
 template<class I, class C>
-inline I erase(C& container, I& it, const std::size_t& n)
+inline I erase(const boost::shared_ptr<C>& container, I& it, const std::size_t& n)
 {
-    std::size_t count = 0;
-    while ((count < n) && (it != container.end()))
+    if(container)
     {
-        ++count;
-        it = container.erase(it);
+        std::size_t count = 0;
+        while ((count < n) && (it != container.end()))
+        {
+            ++count;
+            it = container->erase(it);
+        }
     }
     return it;
 }
@@ -43,4 +46,4 @@ inline I erase(C& container, I& it, const std::size_t& n)
 }
 }
 
-#endif  // #ifndef GO_BOOST_UTILITY_ITERATOR_ERASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_ITERATOR_ERASE_HPP_INCLUDED
