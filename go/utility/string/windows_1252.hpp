@@ -27,7 +27,7 @@ bool is_windows_1252_character(const C c);
 template<>
 inline bool is_windows_1252_character(const unsigned char c)
 {
-    if ((c < 0x20) || (c == 0x81) || (c == 0x8D) || (c == 0x8F) || (c == 0x90) || (c == 0x9D))
+    if ((c < 0x20) || (c == 0x7F) || (c == 0x81) || (c == 0x8D) || (c == 0x8F) || (c == 0x90) || (c == 0x9D) || (c > 0xFF))
     {
         return false;
     }
@@ -43,7 +43,7 @@ inline bool is_windows_1252_character(const char c)
 template<typename C>
 inline bool is_windows_1252_character(const C c)
 {
-    if ((c < 0x20) || (c == 0x81) || (c == 0x8D) || (c == 0x8F) || (c == 0x90) || (c == 0x9D))
+    if ((c < 0x20) || (c == 0x7F) || (c == 0x81) || (c == 0x8D) || (c == 0x8F) || (c == 0x90) || (c == 0x9D) || (c > 0xFF))
     {
         return false;
     }
