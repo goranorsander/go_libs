@@ -19,6 +19,10 @@
 #include <map>
 #include <set>
 
+#if defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+#include <boost/assign.hpp>
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 namespace uc = go_boost::utility::container;
 
 namespace
@@ -26,35 +30,60 @@ namespace
 
 TEST(boost_container_size_test_suite, test_size_on_deque)
 {
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     std::deque<int> container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    std::deque<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, container.size());
     EXPECT_EQ(10, uc::size(container));
 }
 
 TEST(boost_container_size_test_suite, test_size_on_list)
 {
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     std::list<int> container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#else
+    std::list<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, container.size());
     EXPECT_EQ(10, uc::size(container));
 }
 
 TEST(boost_container_size_test_suite, test_size_on_vector)
 {
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     std::vector<int> container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#else
+    std::vector<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, container.size());
     EXPECT_EQ(10, uc::size(container));
 }
 
 TEST(boost_container_size_test_suite, test_size_on_map)
 {
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     std::map<int, int> container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
+#else
+    std::map<int, int> container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, container.size());
     EXPECT_EQ(10, uc::size(container));
 }
 
 TEST(boost_container_size_test_suite, test_size_on_set)
 {
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     std::set<int> container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#else
+    std::set<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, container.size());
     EXPECT_EQ(10, uc::size(container));
 }

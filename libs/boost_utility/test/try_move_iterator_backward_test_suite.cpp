@@ -26,6 +26,10 @@
 #include <boost/unordered_map.hpp>
 #include <boost/unordered_set.hpp>
 
+#if defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+#include <boost/assign.hpp>
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
 namespace uc = go_boost::utility::container;
 namespace ui = go_boost::utility::iterator;
 
@@ -36,7 +40,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_arra
 {
     typedef boost::container::static_vector<int, 10> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -66,7 +75,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_dequ
 {
     typedef std::deque<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -96,7 +110,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_forw
 {
     typedef boost::container::slist<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -126,7 +145,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_list
 {
     typedef std::list<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -156,7 +180,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_vect
 {
     typedef std::vector<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -186,7 +215,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_map)
 {
     typedef std::map<int, int> test_container_type;
 
-    test_container_type container = { { 1, 11 },{ 2, 12 },{ 3, 13 },{ 4, 14 },{ 5, 15 },{ 6, 16 },{ 7, 17 },{ 8, 18 },{ 9, 19 },{ 10, 20 } };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
+#else
+    test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -221,7 +255,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_set)
 {
     typedef std::set<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -251,7 +290,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_mult
 {
     typedef std::multimap<int, int> test_container_type;
 
-    test_container_type container = { { 1, 11 },{ 2, 12 },{ 3, 13 },{ 4, 14 },{ 5, 15 },{ 6, 16 },{ 7, 17 },{ 8, 18 },{ 9, 19 },{ 10, 20 } };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
+#else
+    test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -286,7 +330,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_mult
 {
     typedef std::multiset<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -316,7 +365,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
 {
     typedef boost::unordered_map<int, int> test_container_type;
 
-    test_container_type container = { { 1, 11 },{ 2, 12 },{ 3, 13 },{ 4, 14 },{ 5, 15 },{ 6, 16 },{ 7, 17 },{ 8, 18 },{ 9, 19 },{ 10, 20 } };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
+#else
+    test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -342,7 +396,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
 {
     typedef boost::unordered_set<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -368,7 +427,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
 {
     typedef boost::unordered_multimap<int, int> test_container_type;
 
-    test_container_type container = { { 1, 11 },{ 2, 12 },{ 3, 13 },{ 4, 14 },{ 5, 15 },{ 6, 16 },{ 7, 17 },{ 8, 18 },{ 9, 19 },{ 10, 20 } };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
+#else
+    test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();
@@ -394,7 +458,12 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
 {
     typedef boost::unordered_multiset<int> test_container_type;
 
-    test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+    test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+#else
+    test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
     EXPECT_EQ(10, uc::size(container));
 
     test_container_type::iterator it = container.begin();

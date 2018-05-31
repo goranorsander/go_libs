@@ -16,7 +16,11 @@
 
 namespace u = go_boost::utility;
 
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 template<class S, typename C = unsigned int>
+#else
+template<class S, typename C>
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 void print_hex(const S& s)
 {
     const size_t sizeof_value_type = sizeof(S::value_type);
@@ -55,17 +59,33 @@ int main()
 
         std::wcout << std::endl << L"System wide: size=" << system_wide_swedish.size()
             << L", text=" << system_wide_swedish.c_str() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(system_wide_swedish);
+#else
+        print_hex<std::wstring, unsigned int>(system_wide_swedish);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-16: size=" << utf_16_swedish.size() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_16_swedish);
+#else
+        print_hex<u::u16string, unsigned int>(utf_16_swedish);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-32: size=" << utf_32_swedish.size() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_32_swedish);
+#else
+        print_hex<u::u32string, unsigned int>(utf_32_swedish);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-8: size=" << utf_8_swedish.size()
             << L", characters=" << utf_8_swedish.characters() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_8_swedish);
+#else
+        print_hex<u::u8string, unsigned int>(utf_8_swedish);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
     }
     {
         std::wcout << std::endl << L"Om mani padme hum (Tibetan mantra)" << std::endl << std::endl;
@@ -87,17 +107,33 @@ int main()
         print_hex<std::string, unsigned char>(multibyte_tibetan);
 
         std::wcout << std::endl << L"System wide: size=" << system_wide_tibetan.size() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(system_wide_tibetan);
+#else
+        print_hex<std::wstring, unsigned int>(system_wide_tibetan);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-16: size=" << utf_16_tibetan.size() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_16_tibetan);
+#else
+        print_hex<u::u16string, unsigned int>(utf_16_tibetan);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-32: size=" << utf_32_tibetan.size() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_32_tibetan);
+#else
+        print_hex<u::u32string, unsigned int>(utf_32_tibetan);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
         std::wcout << std::endl << L"UTF-8: size=" << utf_8_tibetan.size()
             << L", characters=" << utf_8_tibetan.characters() << std::endl;
+#if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
         print_hex(utf_8_tibetan);
+#else
+        print_hex<u::u8string, unsigned int>(utf_8_tibetan);
+#endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
     }
     return 0;
 }
