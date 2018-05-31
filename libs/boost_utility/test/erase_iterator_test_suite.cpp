@@ -1,5 +1,5 @@
 //
-//  container_size_test_suite.cpp
+//  erase_iterator_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -32,7 +32,7 @@ namespace ui = go_boost::utility::iterator;
 namespace
 {
 
-TEST(boost_container_size_test_suite, test_erase_iterator_on_deque)
+TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_deque)
 {
     typedef std::deque<int> test_container_type;
 
@@ -61,7 +61,7 @@ TEST(boost_container_size_test_suite, test_erase_iterator_on_deque)
     EXPECT_EQ(3, uc::size(container));
 }
 
-//TEST(boost_container_size_test_suite, test_erase_iterator_on_forward_list)
+//TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_forward_list)
 //{
 //    typedef boost::container::slist<int> test_container_type;
 //
@@ -90,7 +90,7 @@ TEST(boost_container_size_test_suite, test_erase_iterator_on_deque)
 //    EXPECT_EQ(3, uc::size(container));
 //}
 
-TEST(boost_container_size_test_suite, test_erase_iterator_on_list)
+TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_list)
 {
     typedef std::list<int> test_container_type;
 
@@ -119,7 +119,7 @@ TEST(boost_container_size_test_suite, test_erase_iterator_on_list)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(boost_container_size_test_suite, test_erase_iterator_on_vector)
+TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_vector)
 {
     typedef std::vector<int> test_container_type;
 
@@ -148,7 +148,7 @@ TEST(boost_container_size_test_suite, test_erase_iterator_on_vector)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(boost_container_size_test_suite, test_erase_iterator_on_map)
+TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_map)
 {
     typedef std::map<int, int> test_container_type;
 
@@ -180,7 +180,7 @@ TEST(boost_container_size_test_suite, test_erase_iterator_on_map)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(boost_container_size_test_suite, test_erase_iterator_on_set)
+TEST(boost_erase_iterator_test_suite, test_erase_iterator_on_set)
 {
     typedef std::set<int> test_container_type;
 

@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
+#if defined(GO_NO_CXX11_RANGE_FOR_LOOP)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 #include <memory>
 
 namespace go
@@ -42,5 +48,7 @@ inline std::size_t size(const std::shared_ptr<C>& container)
 }
 }
 }
+
+#endif  // #if defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 
 #endif  // #ifndef GO_UTILITY_CONTAINER_SIZE_HPP_INCLUDED

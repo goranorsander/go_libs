@@ -1,5 +1,5 @@
 //
-//  container_size_test_suite.cpp
+//  erase_iterator_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -11,9 +11,9 @@
 #include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_container_size_test_suite, cpp11_not_supported) {}
+TEST(std_erase_iterator_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/utility/container/size.hpp>
@@ -32,7 +32,7 @@ namespace ui = go::utility::iterator;
 namespace
 {
 
-TEST(std_container_size_test_suite, test_erase_iterator_on_deque)
+TEST(std_erase_iterator_test_suite, test_erase_iterator_on_deque)
 {
     typedef std::deque<int> test_container_type;
 
@@ -71,7 +71,7 @@ TEST(std_container_size_test_suite, test_erase_iterator_on_deque)
     EXPECT_EQ(3, uc::size(container));
 }
 
-//TEST(std_container_size_test_suite, test_erase_iterator_on_forward_list)
+//TEST(std_erase_iterator_test_suite, test_erase_iterator_on_forward_list)
 //{
 //    typedef std::forward_list<int> test_container_type;
 //
@@ -110,7 +110,7 @@ TEST(std_container_size_test_suite, test_erase_iterator_on_deque)
 //    EXPECT_EQ(3, uc::size(container));
 //}
 
-TEST(std_container_size_test_suite, test_erase_iterator_on_list)
+TEST(std_erase_iterator_test_suite, test_erase_iterator_on_list)
 {
     typedef std::list<int> test_container_type;
 
@@ -149,7 +149,7 @@ TEST(std_container_size_test_suite, test_erase_iterator_on_list)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(std_container_size_test_suite, test_erase_iterator_on_vector)
+TEST(std_erase_iterator_test_suite, test_erase_iterator_on_vector)
 {
     typedef std::vector<int> test_container_type;
 
@@ -188,7 +188,7 @@ TEST(std_container_size_test_suite, test_erase_iterator_on_vector)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(std_container_size_test_suite, test_erase_iterator_on_map)
+TEST(std_erase_iterator_test_suite, test_erase_iterator_on_map)
 {
     typedef std::map<int, int> test_container_type;
 
@@ -230,7 +230,7 @@ TEST(std_container_size_test_suite, test_erase_iterator_on_map)
     EXPECT_EQ(3, uc::size(container));
 }
 
-TEST(std_container_size_test_suite, test_erase_iterator_on_set)
+TEST(std_erase_iterator_test_suite, test_erase_iterator_on_set)
 {
     typedef std::set<int> test_container_type;
 
