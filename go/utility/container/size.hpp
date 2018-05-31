@@ -30,7 +30,7 @@ template<class C>
 inline std::size_t size(C& container)
 {
     std::size_t s = 0;
-    for (C::value_type v : container) { ++s; }
+    for (GO_TYPENAME C::value_type v : container) { ++s; }
     return s;
 }
 
@@ -40,7 +40,7 @@ inline std::size_t size(const std::shared_ptr<C>& container)
     std::size_t s = 0;
     if(container)
     {
-        for (C::value_type v : *container) { ++s; }
+        for (GO_TYPENAME C::value_type v : *container) { ++s; }
     }
     return s;
 }

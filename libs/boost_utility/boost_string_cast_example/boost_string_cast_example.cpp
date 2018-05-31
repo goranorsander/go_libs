@@ -23,11 +23,11 @@ template<class S, typename C>
 #endif  // #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 void print_hex(const S& s)
 {
-    const size_t sizeof_value_type = sizeof(S::value_type);
+    const size_t sizeof_value_type = sizeof(GO_BOOST_TYPENAME S::value_type);
     const size_t hex_c_size = sizeof_value_type*2 + 3;
     const std::wstring hex_format = (boost::wformat(L"0x%%0%uX ") % (sizeof_value_type*2)).str();
     unsigned int line_length = 0;
-    BOOST_FOREACH (const S::value_type c, s)
+    BOOST_FOREACH (const GO_BOOST_TYPENAME S::value_type c, s)
     {
         std::wcout << (boost::wformat(hex_format.c_str()) % static_cast<C>(c)).str().c_str();
         line_length += hex_c_size;
@@ -44,10 +44,18 @@ void print_hex(const S& s)
 int main()
 {
     {
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
         std::wcout << L"Sju sjösjuka sjömän ... (Swedish tongue twister)" << std::endl << std::endl;
+#else
+        std::wcout << L"Sju sjosjuka sjoman ... (Swedish tongue twister)" << std::endl << std::endl;
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
         const std::string multibyte_swedish_source =
+#if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
             "Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.";
+#else
+            "Sju sjosjuka sjoman på sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.";
+#endif  // #if !defined(GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
         const std::string multibyte_swedish = u::string_cast<std::string>(multibyte_swedish_source);
         const std::wstring system_wide_swedish = u::string_cast<std::wstring>(multibyte_swedish_source);
         const u::u16string utf_16_swedish = u::string_cast<u::u16string>(multibyte_swedish_source);

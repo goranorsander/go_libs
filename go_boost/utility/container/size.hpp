@@ -31,7 +31,7 @@ template<class C>
 inline std::size_t size(C& container)
 {
     std::size_t s = 0;
-    C::const_iterator it = container.begin();
+    GO_BOOST_TYPENAME C::const_iterator it = container.begin();
     while (it != container.end())
     {
         ++s;
@@ -46,7 +46,7 @@ inline std::size_t size(const boost::shared_ptr<C>& container)
     std::size_t s = 0;
     if(container)
     {
-        C::const_iterator it = container->begin();
+        GO_BOOST_TYPENAME C::const_iterator it = container->begin();
         while (it != container->end())
         {
             ++s;
