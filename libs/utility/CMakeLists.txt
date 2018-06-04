@@ -88,6 +88,21 @@ if(BUILD_STD_EXAMPLES)
     add_test(test_mvvm ${PROJECT_STD_STRING_CAST_EXAMPLE})
 
     ########################################################
+    #  libs/utility/std_try_move_backward_example          #
+    ########################################################
+
+    set(PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE ${STD_PROJECT_NAME_STR}_try_move_backward_example)
+
+    file(GLOB STD_TRY_MOVE_BACKWARD_EXAMPLE_SRC_FILES std_try_move_backward_example/*.cpp)
+    add_executable(${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE} ${STD_TRY_MOVE_BACKWARD_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE})
+
+    ########################################################
     #  libs/utility/std_value_guard_example                #
     ########################################################
 
