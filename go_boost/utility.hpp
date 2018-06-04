@@ -27,6 +27,9 @@
 #include <go_boost/utility/string_cast.hpp>
 #include <go_boost/utility/value_guard.hpp>
 
+#include <go_boost/utility/container/size.hpp>
+
+#include <go_boost/utility/iterator/erase.hpp>
 #include <go_boost/utility/iterator/try_move_backward.hpp>
 
 #include <go_boost/utility/string/algorithm.hpp>

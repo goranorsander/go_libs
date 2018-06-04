@@ -22,6 +22,9 @@
 #include <go/utility/string_cast.hpp>
 #include <go/utility/value_guard.hpp>
 
+#include <go/utility/container/size.hpp>
+
+#include <go/utility/iterator/erase.hpp>
 #include <go/utility/iterator/try_move_backward.hpp>
 
 #include <go/utility/string/algorithm.hpp>

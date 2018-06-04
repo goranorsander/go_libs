@@ -13,6 +13,21 @@ if(BUILD_STD_EXAMPLES)
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
     #################################################################
+    #  libs/utility/std_erase_example                               #
+    #################################################################
+
+    set(PROJECT_STD_ERASE_EXAMPLE ${STD_PROJECT_NAME_STR}_erase_example)
+
+    file(GLOB STD_ERASE_EXAMPLE_SRC_FILES std_erase_example/*.cpp)
+    add_executable(${PROJECT_STD_ERASE_EXAMPLE} ${STD_ERASE_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_ERASE_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_ERASE_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+
+    add_test(test_mvvm ${PROJECT_STD_ERASE_EXAMPLE})
+
+    #################################################################
     #  libs/utility/std_primitive_type_implicit_specializer_example #
     #################################################################
 
