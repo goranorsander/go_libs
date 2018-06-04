@@ -13,5 +13,8 @@ to my design and implementation.
 * Answer to Stack Overflow question:  
 [std::string formatting like sprintf](http://stackoverflow.com/questions/2342162/stdstring-formatting-like-sprintf)
 
+I found [kbroman/simple_site](https://github.com/kbroman/simple_site)
+to be a good tutorial on how-to setup GitHub Pages.
+
 Kind regards  
 Göran Orsander
