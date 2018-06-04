@@ -1,5 +1,5 @@
 //
-//  std_scope_guard_example.cpp
+//  std_try_move_backward_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

@@ -1,5 +1,5 @@
 //
-//  boost_scope_guard_example.cpp
+//  boost_try_move_backward_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

@@ -1,5 +1,5 @@
 //
-//  boost_value_property_example.cpp
+//  boost_signals_example.cpp
 //
 //  Copyright 2017-2018 Göran Orsander
 //

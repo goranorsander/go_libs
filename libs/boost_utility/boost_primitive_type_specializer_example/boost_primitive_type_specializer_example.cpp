@@ -1,5 +1,5 @@
 //
-//  boostfloatspecializer_example.cpp
+//  boost_primitive_type_specializer_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
