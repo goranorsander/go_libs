@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #define GO_IMPLEMENT_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _property_name_type_, _value_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_, _property_name_type_>& lhs, const _value_type_& rhs) \
 { \

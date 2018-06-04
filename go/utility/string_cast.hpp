@@ -11,6 +11,7 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
 #include <go/utility/string/string_cast.hpp>
 
 namespace go

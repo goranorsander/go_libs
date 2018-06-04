@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+
 #include <cmath>
 
 namespace go

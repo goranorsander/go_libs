@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #include <string>
 #include <go/utility/iterator/erase.hpp>
 #include <go/utility/u8string.hpp>

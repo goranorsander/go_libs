@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
+#if defined(GO_NO_CXX11)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 #include <memory>
 
 namespace go
@@ -42,5 +48,7 @@ inline bool try_move_backward(const C& container, I& it)
 }
 }
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_UTILITY_ITERATOR_TRY_MOVE_BACKWARD_HPP_INCLUDED

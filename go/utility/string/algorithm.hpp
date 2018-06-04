@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 namespace go
 {
 namespace utility
