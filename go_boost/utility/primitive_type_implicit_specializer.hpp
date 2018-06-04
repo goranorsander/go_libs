@@ -11,11 +11,13 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go_boost/utility/primitive_type_specializer.hpp>
+#include <go_boost/config.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
+
+#include <go_boost/utility/primitive_type_specializer.hpp>
 
 namespace go_boost
 {
