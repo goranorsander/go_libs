@@ -45,8 +45,8 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_66_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_66_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_67_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_67_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
  * **BOOST_MINOR_VERSION** = 67
  * **BOOST_PATCH_LEVEL** = 0
