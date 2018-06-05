@@ -15,4 +15,4 @@ The **GO Std C++ Libraries** uses **C++11/14/17** and the **C++ Standard Library
 * MVVM
 * Property
 * Signals
-* Utility
+* [Utility](./std/utility/utility.html)
