@@ -2,10 +2,9 @@
 
 When **C++11** was released I wanted to learn the new features introduced. I soon realized that it was
 unlikely to happen at work. Migrating the company C++ source code, projects, solutions, etc. was
-simply to big a task (and it still is, a least when the managers consider pros and cons). I wanted
-a reasonably challenging idea for a hobby project and decided to try implement an **MFC**-based
-application using the **MVVM** (Model–View–ViewModel) architecture pattern. This was the start of the
-**GO C++ Libraries**.
+simply to big a task. I wanted a reasonably challenging idea for a hobby project and decided to try
+implement an **MFC**-based application using the **MVVM** (Model–View–ViewModel) architecture pattern.
+This was the start of the **GO C++ Libraries**.
 
 The **GO C++ Libraries** have two main implementations. The first uses **C++11/14/17** and the
 **C++ Standard Library**. The second uses **C++98/03** and the **Boost Libraries**. I find it
