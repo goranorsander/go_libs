@@ -46,7 +46,7 @@ this_type | scope_guard_new\<T>
 base_type | scope_guard
 value_type | T
 reference | T&
-pointer | T**
+pointer | T*
 
 ## Member functions
 
