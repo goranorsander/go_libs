@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: boost_libs
 ---
 
 # GO Boost C++ Libraries

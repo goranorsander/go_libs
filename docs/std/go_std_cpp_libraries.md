@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: std_libs
 ---
 
 # GO Std C++ Libraries
