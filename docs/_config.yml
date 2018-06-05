@@ -1,6 +1,14 @@
 title: GO C++ Libraries
 logo: 
-description: 
+description: The GO C++ Libraries documentation site
 show_downloads: true
 google_analytics: UA-120383713-1
 theme: jekyll-theme-minimal
+plugins:
+  - jekyll-seo-tag
+social:
+  name: Göran Orsander
+  links:
+    - https://github.com/goranorsander
+    - https://plus.google.com/+G%C3%B6ranOrsander
+    - https://www.linkedin.com/in/g%C3%B6ran-orsander-25552319/
