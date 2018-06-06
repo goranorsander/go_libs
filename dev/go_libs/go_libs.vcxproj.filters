@@ -103,11 +103,101 @@
     <Filter Include="CMake Configuration\libs\config">
       <UniqueIdentifier>{f1929e3e-fe2f-435a-bca3-3e1d62200f87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{4a447960-84fc-42a4-be5e-09ac70b4d920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\_layouts">
+      <UniqueIdentifier>{aa945264-f6e1-4a20-b973-5f5ea76c0dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\_sass">
+      <UniqueIdentifier>{52ce8cfc-5b2a-4c41-bea0-212f7153474a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost">
+      <UniqueIdentifier>{c011f26c-b4e5-4f7e-8b8f-505b722105a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std">
+      <UniqueIdentifier>{b7354f1d-9345-4283-b7d6-078c841d4e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\utility">
+      <UniqueIdentifier>{44333990-7779-4f3a-80db-d9aa55b5480d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
       <Filter>CMake Configuration</Filter>
     </None>
     <None Include="..\..\README.md" />
+    <None Include="..\..\docs\_config.yml">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\docs\index.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_libs.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\default.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_utility.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_libs.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_sass\jekyll-theme-minimal.scss">
+      <Filter>Documentation\_sass</Filter>
+    </None>
+    <None Include="..\..\docs\boost\go_boost_cpp_libraries.md">
+      <Filter>Documentation\boost</Filter>
+    </None>
+    <None Include="..\..\docs\std\go_std_cpp_libraries.md">
+      <Filter>Documentation\std</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_noncopyable.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_noncopyable_nonmovable.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_nonmovable.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_scope_guard.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_string_cast_exception.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_template_primitive_type_implicit_specializer.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_template_primitive_type_specializer.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_template_scope_guard_new.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_template_value_guard.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_u2string.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_u8string.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\function_template_erase.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\function_template_string_cast.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\function_template_try_move_backward.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\utility.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>

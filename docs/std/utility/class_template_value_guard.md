@@ -61,14 +61,6 @@ Constructor | Signature
 1. Constructs a **value_guard**.
 2. Constructs a **value_guard**.
 
-## Inherited functions
-
-### void set_on_scope_exit_function(const on_scope_exit_function_type& on_scope_exit)
-
-*protected virtual member function*
-
-Set the callback function called by the **scope_guard** destructor.
-
 ## Example
 
 This example is intended to show how signals can be used. It implements a 

@@ -452,5 +452,3 @@ measurement by use of specialized types. The information is there for anyone who
 to read the function signature. The specialized types are explicit, e.g. you cannot pass
 an anonymous **double** or **degree_type** value to the function that expect a
 **radian_type** parameter (or worse, get the parameter order mixed up).
-
-Copyright &copy; 2014-2018 Göran Orsander

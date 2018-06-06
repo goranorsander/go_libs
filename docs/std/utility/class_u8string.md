@@ -133,16 +133,19 @@ Not equal to operator. Returns true if this is not equal to other, false otherwi
 
 *public member function*
 
+Returns the number of UTF-8 encoded characters in the string.
 
 ### uft8_character_type character(const size_type pos) const
 
 *public member function*
 
+Returns the UTF-8 encoded character at position *pos* in the string.
 
 ### uft8_string_type string() const
 
 *public member function*
 
+Retruns the string as a **uft8_string_type** object.
 
 ## Inherited functions
 

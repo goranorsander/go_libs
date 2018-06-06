@@ -74,5 +74,3 @@ Operator | Signature
 
 1. Copy assignment operator.
 2. Move asignment operator. Deleted.
-
-Copyright &copy; 2014-2018 Göran Orsander
