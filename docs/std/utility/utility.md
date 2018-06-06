@@ -35,3 +35,4 @@ of components too small to be called libraries in their own right.
 * [go\::utility\::container\::**size**](./function_template_size.html)
 * [go\::utility\::iterator\::**erase**](./function_template_erase.html)
 * [go\::utility\::iterator\::**try_move_backward**](./function_template_try_move_backward.html)
+* [go\::utility\::string\::**equals**](./function_template_equals.html)

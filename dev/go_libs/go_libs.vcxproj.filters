@@ -202,5 +202,8 @@
     <None Include="..\..\docs\std\utility\function_template_size.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
+    <None Include="..\..\docs\std\utility\function_template_equals.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>
