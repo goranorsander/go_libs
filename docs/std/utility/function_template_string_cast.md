@@ -12,7 +12,7 @@ namespace go::utility
 <go/utility/string_cast.hpp>
 ```
 
-The **string_cast** function can be used to convert string objects from one
+The **string_cast** function is used to convert string objects from one
 string class to another. The following string classes are supported:
 
 Class|Expected encoding

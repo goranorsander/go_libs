@@ -63,8 +63,7 @@ Constructor | Signature
 
 ## Example
 
-This example is intended to show how signals can be used. It implements a 
-simple fire lasers command that the fleet commander can give to the ships.
+This example is intended to show how value guards can be used.
 
 ```c++
 #include <iostream>

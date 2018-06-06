@@ -12,7 +12,7 @@ namespace go::utility::iterator
 <go/utility/iterator/erase.hpp>
 ```
 
-The **erase** function can be used to remove one or more elements from a
+The **erase** function is used to remove one or more elements from a
 container.
 
 It is declared as:

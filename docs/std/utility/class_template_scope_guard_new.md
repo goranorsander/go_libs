@@ -108,8 +108,7 @@ Set the callback function called by the **scope_guard** destructor.
 
 ## Example
 
-This example is intended to show how signals can be used. It implements a 
-simple fire lasers command that the fleet commander can give to the ships.
+This example is intended to show how scope guards can be used.
 
 ```c++
 #include <iostream>

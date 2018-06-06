@@ -12,7 +12,7 @@ namespace go::utility::iterator
 <go/utility/iterator/try_move_backward.hpp>
 ```
 
-The **try_move_backward** function can be used to move an iterator backward.
+The **try_move_backward** function is used to move an iterator backward.
 The function is intended to be used with *forward only* iterators.
 
 It is declared as:

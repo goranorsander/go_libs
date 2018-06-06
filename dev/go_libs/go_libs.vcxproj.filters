@@ -199,5 +199,8 @@
     <None Include="..\..\docs\std\utility\utility.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
+    <None Include="..\..\docs\std\utility\function_template_size.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>
