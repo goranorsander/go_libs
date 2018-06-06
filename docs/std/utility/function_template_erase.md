@@ -19,7 +19,7 @@ It is declared as:
 
 ```c++
 template<class I, class C>
-inline I erase(C& container, I& it, const std::size_t& n);
+I erase(C& container, I& it, const std::size_t& n);
 ```
 
 ## Parameters

@@ -19,7 +19,7 @@ It is declared as:
 
 ```c++
 template<class I, class C>
-inline bool try_move_backward(C& container, I& it);
+bool try_move_backward(C& container, I& it);
 ```
 
 # Example

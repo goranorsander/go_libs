@@ -18,17 +18,15 @@ container.
 It is declared as:
 
 ```c++
-template<class I, class C>
-inline I size(C& container, I& it, const std::size_t& n);
+template<class C>
+std::size_t size(C& container);
 ```
 
 ## Parameters
 
 Parameter | Description
 -|-
-container|The container
-it|Iterator of the first element to be removed
-n|The number of consecutive elements to remove
+container|The container to get size of
 
 ## Return value
 
