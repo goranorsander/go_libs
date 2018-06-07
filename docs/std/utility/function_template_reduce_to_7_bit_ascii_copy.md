@@ -32,7 +32,6 @@ S|The string class
 
 Parameter | Description
 -|-
-container|The container
 s|The string to be reduced
 
 ## Return value
