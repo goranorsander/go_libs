@@ -15,6 +15,12 @@ of components too small to be called libraries in their own right.
 
 ## Reference
 
+### Nested namespaces
+
+* [go\::utility\::**container**](./container/container.html)
+* [go\::utility\::**iterator**](./iterator/iterator.html)
+* [go\::utility\::**string**](./string/string.html)
+
 ### Class reference
 
 * [go\::utility\::**noncopyable**](./class_noncopyable.html)
@@ -32,14 +38,3 @@ of components too small to be called libraries in their own right.
 ### Function reference
 
 * [go\::utility\::**string_cast**](./function_template_string_cast.html)
-* [go\::utility\::container\::**size**](./function_template_size.html)
-* [go\::utility\::iterator\::**erase**](./function_template_erase.html)
-* [go\::utility\::iterator\::**try_move_backward**](./function_template_try_move_backward.html)
-* [go\::utility\::string\::**equals**](./function_template_equals.html)
-* [go\::utility\::string\::**is_7_bit_ascii_character**](./function_template_is_7_bit_ascii_character.html)
-* [go\::utility\::string\::**reduce_iso_8859_1_to_7_bit_ascii**](./function_template_reduce_iso_8859_1_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_iso_8859_1_to_7_bit_ascii_copy**](./function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii**](./function_template_reduce_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii_copy**](./function_template_reduce_to_7_bit_ascii_copy.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii**](./function_template_reduce_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii_copy**](./function_template_reduce_to_7_bit_ascii_copy.html)
