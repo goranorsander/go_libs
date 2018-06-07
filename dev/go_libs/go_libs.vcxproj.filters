@@ -121,6 +121,15 @@
     <Filter Include="Documentation\std\utility">
       <UniqueIdentifier>{44333990-7779-4f3a-80db-d9aa55b5480d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\std\utility\container">
+      <UniqueIdentifier>{8b9fa65b-107f-4e2e-a839-c4eea75f04b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\utility\iterator">
+      <UniqueIdentifier>{0da38cc1-16a3-4077-9d50-520002130992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\utility\string">
+      <UniqueIdentifier>{47eb519d-4710-4d41-a86c-c98415df8a56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -187,44 +196,62 @@
     <None Include="..\..\docs\std\utility\class_u8string.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_erase.md">
-      <Filter>Documentation\std\utility</Filter>
-    </None>
     <None Include="..\..\docs\std\utility\function_template_string_cast.md">
-      <Filter>Documentation\std\utility</Filter>
-    </None>
-    <None Include="..\..\docs\std\utility\function_template_try_move_backward.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
     <None Include="..\..\docs\std\utility\utility.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_size.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\_layouts\std_lib_utility_container.html">
+      <Filter>Documentation\_layouts</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_equals.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\_layouts\std_lib_utility_iterator.html">
+      <Filter>Documentation\_layouts</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_is_7_bit_ascii_character.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\_layouts\std_lib_utility_string.html">
+      <Filter>Documentation\_layouts</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_to_7_bit_ascii.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\container\container.md">
+      <Filter>Documentation\std\utility\container</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_to_7_bit_ascii_copy.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\iterator\iterator.md">
+      <Filter>Documentation\std\utility\iterator</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_iso_8859_1_to_7_bit_ascii.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\string\string.md">
+      <Filter>Documentation\std\utility\string</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\container\function_template_size.md">
+      <Filter>Documentation\std\utility\container</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_windows_1252_to_7_bit_ascii.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\iterator\function_template_erase.md">
+      <Filter>Documentation\std\utility\iterator</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\function_template_reduce_windows_1252_to_7_bit_ascii_copy.md">
-      <Filter>Documentation\std\utility</Filter>
+    <None Include="..\..\docs\std\utility\iterator\function_template_try_move_backward.md">
+      <Filter>Documentation\std\utility\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_equals.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_is_7_bit_ascii_character.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_iso_8859_1_to_7_bit_ascii.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_to_7_bit_ascii.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\std\utility\string</Filter>
     </None>
   </ItemGroup>
 </Project>
