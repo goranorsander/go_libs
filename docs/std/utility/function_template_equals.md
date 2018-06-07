@@ -12,7 +12,7 @@ namespace go::utility::string
 <go/utility/string/algorithm.hpp>
 ```
 
-The **equals** function can be used to ...
+The **equals** function is used to compare strings.
 
 It is declared as:
 
