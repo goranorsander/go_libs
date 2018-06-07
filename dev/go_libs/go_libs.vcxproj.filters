@@ -211,5 +211,8 @@
     <None Include="..\..\docs\std\utility\function_template_reduce_to_7_bit_ascii.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
+    <None Include="..\..\docs\std\utility\function_template_reduce_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>
