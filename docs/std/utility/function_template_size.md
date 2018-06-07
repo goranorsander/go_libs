@@ -22,6 +22,12 @@ template<class C>
 std::size_t size(C& container);
 ```
 
+## Template parameters
+
+Parameter | Description
+-|-
+C|The container class
+
 ## Parameters
 
 Parameter | Description

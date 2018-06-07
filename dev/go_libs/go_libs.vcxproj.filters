@@ -205,5 +205,8 @@
     <None Include="..\..\docs\std\utility\function_template_equals.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
+    <None Include="..\..\docs\std\utility\function_template_is_7_bit_ascii_character.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>

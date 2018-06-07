@@ -22,6 +22,24 @@ template<class I, class C>
 bool try_move_backward(C& container, I& it);
 ```
 
+## Template parameters
+
+Parameter | Description
+-|-
+I|The iterator class
+C|The container class
+
+## Parameters
+
+Parameter | Description
+-|-
+container|The container
+it|The iterator to move backward
+
+## Return value
+
+**true** if and only if **it** was moved backward, **false** otherwise.
+
 # Example
 
 Iterating a std\::forward_list backwards.

@@ -22,6 +22,13 @@ template<class I, class C>
 I erase(C& container, I& it, const std::size_t& n);
 ```
 
+## Template parameters
+
+Parameter | Description
+-|-
+I|The iterator class
+C|The container class
+
 ## Parameters
 
 Parameter | Description

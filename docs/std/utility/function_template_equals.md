@@ -21,6 +21,12 @@ template<class S>
 bool equals(const S& s1, const S& s2);
 ```
 
+## Template parameters
+
+Parameter | Description
+-|-
+S|The string class
+
 ## Parameters
 
 Parameter | Description
