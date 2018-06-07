@@ -6,7 +6,7 @@ layout: std_lib_utility
 namespace go::utility::string
 ```
 
-# function template equals
+# function template is_7_bit_ascii_character
 
 ```c++
 <go/utility/string/ascii.hpp>
