@@ -56,7 +56,10 @@ a:hover small {
 }
 
 .header_menu {
-  overflow-y: scroll;
+  height:calc(100%-50px);
+  height:-moz-calc(100%-50px);
+  height:-webkit-calc(100%-50px);
+  overflow-y:scroll;
 }
 
 .wrapper {
