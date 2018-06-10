@@ -2,7 +2,11 @@
 layout: std_lib_utility_container
 ---
 
-# GO Std Utility Library
+```c++
+namespace go::utility::container
+```
+
+# GO Std Utility Library - Container
 
 ```c++
 <go/utility.hpp>
@@ -20,4 +24,4 @@ with containers.
 
 ### Function reference
 
-* [go\::utility\::container\::**size**](./function_template_size.html)
+* [size](./function_template_size.html)

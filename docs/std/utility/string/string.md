@@ -2,7 +2,11 @@
 layout: std_lib_utility_string
 ---
 
-# GO Std Utility Library
+```c++
+namespace go::utility::string
+```
+
+# GO Std Utility Library - String
 
 ```c++
 <go/utility.hpp>
@@ -20,11 +24,11 @@ with strings.
 
 ### Function reference
 
-* [go\::utility\::string\::**equals**](./function_template_equals.html)
-* [go\::utility\::string\::**is_7_bit_ascii_character**](./function_template_is_7_bit_ascii_character.html)
-* [go\::utility\::string\::**reduce_iso_8859_1_to_7_bit_ascii**](./function_template_reduce_iso_8859_1_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_iso_8859_1_to_7_bit_ascii_copy**](./function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii**](./function_template_reduce_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii_copy**](./function_template_reduce_to_7_bit_ascii_copy.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii**](./function_template_reduce_to_7_bit_ascii.html)
-* [go\::utility\::string\::**reduce_to_7_bit_ascii_copy**](./function_template_reduce_to_7_bit_ascii_copy.html)
+* [equals](./function_template_equals.html)
+* [is_7_bit_ascii_character](./function_template_is_7_bit_ascii_character.html)
+* [reduce_iso_8859_1_to_7_bit_ascii](./function_template_reduce_iso_8859_1_to_7_bit_ascii.html)
+* [reduce_iso_8859_1_to_7_bit_ascii_copy](./function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.html)
+* [reduce_to_7_bit_ascii](./function_template_reduce_to_7_bit_ascii.html)
+* [reduce_to_7_bit_ascii_copy](./function_template_reduce_to_7_bit_ascii_copy.html)
+* [reduce_to_7_bit_ascii](./function_template_reduce_to_7_bit_ascii.html)
+* [reduce_to_7_bit_ascii_copy](./function_template_reduce_to_7_bit_ascii_copy.html)

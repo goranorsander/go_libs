@@ -2,7 +2,11 @@
 layout: std_lib_utility_iterator
 ---
 
-# GO Std Utility Library
+```c++
+namespace go::utility::iterator
+```
+
+# GO Std Utility Library - Iterator
 
 ```c++
 <go/utility.hpp>
@@ -20,5 +24,5 @@ with iterators.
 
 ### Function reference
 
-* [go\::utility\::iterator\::**erase**](./function_template_erase.html)
-* [go\::utility\::iterator\::**try_move_backward**](./function_template_try_move_backward.html)
+* [erase](./function_template_erase.html)
+* [try_move_backward](./function_template_try_move_backward.html)

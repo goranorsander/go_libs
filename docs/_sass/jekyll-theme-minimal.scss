@@ -55,6 +55,11 @@ a:hover small {
   color:#777;
 }
 
+header.wrapper {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
 .wrapper {
   width:1110px;
   margin:0 auto;
