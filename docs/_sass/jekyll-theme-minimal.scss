@@ -56,9 +56,7 @@ a:hover small {
 }
 
 .header_menu {
-  height:calc(100%-50px);
-  height:-moz-calc(100%-50px);
-  height:-webkit-calc(100%-50px);
+  padding-bottom:50px;
   overflow-y:scroll;
 }
 
