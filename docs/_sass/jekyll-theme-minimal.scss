@@ -55,6 +55,10 @@ a:hover small {
   color:#777;
 }
 
+.header_menu {
+  overflow-y: scroll;
+}
+
 .wrapper {
   width:1110px;
   margin:0 auto;
@@ -105,11 +109,8 @@ img {
 }
 
 header {
-  height:inherit;
   width:270px;
   float:left;
-  overflow-x:scroll;
-  overflow-y:scroll;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
 }
