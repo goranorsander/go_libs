@@ -63,20 +63,15 @@ a:hover small {
   color:#777;
 }
 
-/*.go_body {
-  height:-webkit-calc(100vh - 40px);
-  height:-moz-calc(100vh - 40px);
-  height:calc(100vh - 40px);
-  padding:10px 10px 10px 10px;
-}*/
-
 .go_body {
   height:100%;
   padding:10px 10px 10px 10px;
 }
 
 .go_wrapper {
-  height:100%;
+  height:-webkit-calc(100% - 20px);
+  height:-moz-calc(100% - 20px);
+  height:calc(100% - 20px);
   width:100%;
 }
 
