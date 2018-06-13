@@ -1,12 +1,20 @@
 @import "fonts";
 @import "rouge-github";
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: #fff;
   padding:50px;
   font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#727272;
   font-weight:400;
+}
+
+#right {
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,10 +63,15 @@ a:hover small {
   color:#777;
 }
 
-.go_body {
+/*.go_body {
   height:-webkit-calc(100vh - 40px);
   height:-moz-calc(100vh - 40px);
   height:calc(100vh - 40px);
+  padding:10px 10px 10px 10px;
+}*/
+
+.go_body {
+  height:100%;
   padding:10px 10px 10px 10px;
 }
 
@@ -74,7 +87,9 @@ a:hover small {
 }
 
 .go_layout_table_row_1 {
-  height:auto;
+  height:-webkit-calc(100% - 40px);
+  height:-moz-calc(100% - 40px);
+  height:calc(100% - 40px);
 }
 
 .go_layout_table_row_1_menu {
