@@ -55,9 +55,54 @@ a:hover small {
   color:#777;
 }
 
-.header_menu {
+.go_body {
+  height:-webkit-calc(100vh - 40px);
+  height:-moz-calc(100vh - 40px);
+  height:calc(100vh - 40px);
+  padding:10px 10px 10px 10px;
+}
+
+.go_wrapper {
+  height:100%;
+  width:100%;
+}
+
+.go_layout_table {
+  border:0px solid transparent;
+  height:100%;
+  width:100%;
+}
+
+.go_layout_table_row_1 {
+  height:auto;
+}
+
+.go_layout_table_row_1_menu {
+  text-align: left;
+  vertical-align: top;
+  width: 20%;
+}
+
+.go_menu {
   padding-bottom:50px;
   overflow-y:scroll;
+}
+
+.go_layout_table_row_1_content {
+  overflow-y:scroll;
+  text-align:left;
+  vertical-align:top;
+  width:80%;
+}
+
+.go_layout_table_row_2 {
+  height:40px;
+}
+
+.go_layout_table_row_2_copyright {
+  text-align:center;
+  vertical-align:middle;
+  width:100%;
 }
 
 .wrapper {
