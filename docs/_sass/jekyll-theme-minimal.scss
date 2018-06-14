@@ -78,7 +78,7 @@ a:hover small {
 }
 
 .go_layout_table {
-  border:0px solid transparent;
+  border:0 solid transparent;
   height:-webkit-calc(100% - 30px);
   height:-moz-calc(100% - 30px);
   height:calc(100% - 30px);
@@ -86,12 +86,14 @@ a:hover small {
 }
 
 .go_layout_table_row_1 {
+  border:0 solid transparent;
   height:-webkit-calc(100% - 70px);
   height:-moz-calc(100% - 70px);
   height:calc(100% - 70px);
 }
 
 .go_layout_table_row_1_menu {
+  border:0 solid transparent;
   text-align: left;
   vertical-align: top;
   width: 20%;
@@ -103,6 +105,7 @@ a:hover small {
 }
 
 .go_layout_table_row_1_content {
+  border:0 solid transparent;
   overflow-wrap:normal;
   overflow-y:auto;
   text-align: left;
@@ -111,10 +114,12 @@ a:hover small {
 }
 
 .go_layout_table_row_2 {
+  border:0 solid transparent;
   height:40px;
 }
 
 .go_layout_table_row_2_copyright {
+  border:0 solid transparent;
   text-align:center;
   vertical-align:middle;
   width:100%;
