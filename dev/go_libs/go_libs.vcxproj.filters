@@ -130,6 +130,9 @@
     <Filter Include="Documentation\std\utility\string">
       <UniqueIdentifier>{47eb519d-4710-4d41-a86c-c98415df8a56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\std\signals">
+      <UniqueIdentifier>{f53b3fcc-d829-4110-84fc-0eaca3abb7d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -252,6 +255,24 @@
     </None>
     <None Include="..\..\docs\std\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii_copy.md">
       <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\abstract_class_slot_arguments.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\class_slot_key.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\class_template_signal.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\signals.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\abstract_class_slot.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_signals.html">
+      <Filter>Documentation\_layouts</Filter>
     </None>
   </ItemGroup>
 </Project>
