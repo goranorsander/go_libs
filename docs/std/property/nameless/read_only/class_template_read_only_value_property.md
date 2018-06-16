@@ -9,7 +9,7 @@ namespace go::property::nameless::read_only
 # class template value_property
 
 ```c++
-<go/property/read_only_value_property.hpp>
+<go/property/nameless/read_only_value_property.hpp>
 ```
 
 **Generic read-only value property class**

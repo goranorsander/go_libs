@@ -9,7 +9,7 @@ namespace go::property::nameless
 # class template value_property
 
 ```c++
-<go/property/value_property.hpp>
+<go/property/nameless/value_property.hpp>
 ```
 
 **Generic value property class**

@@ -9,7 +9,7 @@ namespace go::property::nameless::read_only
 # class template property
 
 ```c++
-<go/property/write_only_property.hpp>
+<go/property/nameless/write_only_property.hpp>
 ```
 
 **Generic write-only property class**
