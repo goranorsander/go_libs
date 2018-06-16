@@ -133,6 +133,24 @@
     <Filter Include="Documentation\std\signals">
       <UniqueIdentifier>{f53b3fcc-d829-4110-84fc-0eaca3abb7d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\std\property">
+      <UniqueIdentifier>{7bf76c6b-90e2-464e-8644-78bef189477f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\property\nameless">
+      <UniqueIdentifier>{a542a410-ebbc-4f97-9064-6a181610950b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\property\read_only">
+      <UniqueIdentifier>{e4d6d6d0-9fd9-44e1-826e-bd8843205ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\property\write_only">
+      <UniqueIdentifier>{1376486e-fb9a-449e-854b-069f815acd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\property\nameless\write_only">
+      <UniqueIdentifier>{80fa406a-6bb7-4bd0-bc70-a077a8d5a7bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\property\nameless\read_only">
+      <UniqueIdentifier>{c4e21cf5-0fcd-45ec-b73a-ab3f61e03f91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -273,6 +291,96 @@
     </None>
     <None Include="..\..\docs\_layouts\std_lib_signals.html">
       <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\class_template_basic_property.md">
+      <Filter>Documentation\std\property</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\class_template_basic_reference_property.md">
+      <Filter>Documentation\std\property</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\class_template_basic_value_property.md">
+      <Filter>Documentation\std\property</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\property.md">
+      <Filter>Documentation\std\property</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\read_only\class_template_read_only_basic_property.md">
+      <Filter>Documentation\std\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\read_only\class_template_read_only_basic_reference_property.md">
+      <Filter>Documentation\std\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\read_only\class_template_read_only_basic_value_property.md">
+      <Filter>Documentation\std\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\read_only\read_only.md">
+      <Filter>Documentation\std\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\write_only\class_template_write_only_basic_property.md">
+      <Filter>Documentation\std\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\write_only\class_template_write_only_basic_reference_property.md">
+      <Filter>Documentation\std\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\write_only\class_template_write_only_basic_value_property.md">
+      <Filter>Documentation\std\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\write_only\write_only.md">
+      <Filter>Documentation\std\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property_read_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property_write_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\class_template_property.md">
+      <Filter>Documentation\std\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\class_template_reference_property.md">
+      <Filter>Documentation\std\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\class_template_value_property.md">
+      <Filter>Documentation\std\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\read_only\class_template_read_only_property.md">
+      <Filter>Documentation\std\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\read_only\class_template_read_only_reference_property.md">
+      <Filter>Documentation\std\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\read_only\class_template_read_only_value_property.md">
+      <Filter>Documentation\std\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\read_only\read_only.md">
+      <Filter>Documentation\std\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\write_only\class_template_write_only_property.md">
+      <Filter>Documentation\std\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\write_only\class_template_write_only_reference_property.md">
+      <Filter>Documentation\std\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\write_only\class_template_write_only_value_property.md">
+      <Filter>Documentation\std\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\write_only\write_only.md">
+      <Filter>Documentation\std\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property_nameless.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property_nameless_read_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_property_nameless_write_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\property\nameless\nameless.md">
+      <Filter>Documentation\std\property\nameless</Filter>
     </None>
   </ItemGroup>
 </Project>
