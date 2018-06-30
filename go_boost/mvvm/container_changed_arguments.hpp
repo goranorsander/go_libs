@@ -19,6 +19,7 @@
 
 #include <boost/make_shared.hpp>
 #include <go_boost/mvvm/notify_container_changed_action.hpp>
+#include <go_boost/property/nameless/read_only_value_property.hpp>
 #include <go_boost/signals/slot_arguments.hpp>
 
 namespace go_boost
@@ -38,57 +39,37 @@ public:
     virtual ~container_changed_arguments() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    container_changed_arguments(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    container_changed_arguments(const notify_container_changed_action& action_, const std::size_t& added_elements_, const std::size_t& removed_elements_, const std::size_t& new_size_)
         : go_boost::signals::slot_arguments()
-        , _action(action)
-        , _added_elements(added_elements)
-        , _removed_elements(removed_elements)
-        , _new_size(new_size)
+        , action(action_)
+        , added_elements(added_elements_)
+        , removed_elements(removed_elements_)
+        , new_size(new_size_)
     {
     }
 
 public:
-    static boost::shared_ptr<container_changed_arguments> create(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    go_boost::property::nameless::read_only::value_property<notify_container_changed_action> action;
+    go_boost::property::nameless::read_only::value_property<std::size_t> added_elements;
+    go_boost::property::nameless::read_only::value_property<std::size_t> removed_elements;
+    go_boost::property::nameless::read_only::value_property<std::size_t> new_size;
+
+public:
+    static boost::shared_ptr<container_changed_arguments> create(const notify_container_changed_action& action_, const std::size_t& added_elements_, const std::size_t& removed_elements_, const std::size_t& new_size_)
     {
 #if BOOST_MSVC > 1500
         struct make_shared_enabler
             : public this_type
         {
             virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
-            make_shared_enabler(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size) : this_type(action, added_elements, removed_elements, new_size) {}
+            make_shared_enabler(const notify_container_changed_action& action_, const std::size_t& added_elements_, const std::size_t& removed_elements_, const std::size_t& new_size_) : this_type(action_, added_elements_, removed_elements_, new_size_) {}
         };
 
-        return boost::make_shared<make_shared_enabler, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action, added_elements, removed_elements, new_size);
+        return boost::make_shared<make_shared_enabler, const notify_container_changed_action&, const std::size_t&, const std::size_t&, const std::size_t&>(action_, added_elements_, removed_elements_, new_size_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(action, added_elements, removed_elements, new_size));
+        return boost::shared_ptr<this_type>(new this_type(action_, added_elements_, removed_elements_, new_size_));
 #endif // BOOST_MSVC > 1500
     }
-
-    GO_BOOST_CONSTEXPR notify_container_changed_action action() const
-    {
-        return _action;
-    }
-
-    GO_BOOST_CONSTEXPR std::size_t added_elements() const
-    {
-        return _added_elements;
-    }
-
-    GO_BOOST_CONSTEXPR std::size_t removed_elements() const
-    {
-        return _removed_elements;
-    }
-
-    GO_BOOST_CONSTEXPR std::size_t new_size() const
-    {
-        return _new_size;
-    }
-
-private:
-    const notify_container_changed_action _action;
-    const std::size_t _added_elements;
-    const std::size_t _removed_elements;
-    const std::size_t _new_size;
 };
 
 } // namespace mvvm
