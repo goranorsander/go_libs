@@ -323,7 +323,7 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/notify_data_context_change_interface.hpp
     ${GO_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_MVVM_DIR}/notify_property_changed_interface.hpp
-    ${GO_MVVM_DIR}/notify_view_model_changed_interface.hpp
+    ${GO_MVVM_DIR}/notify_view_model_change_interface.hpp
     ${GO_MVVM_DIR}/object.hpp
     ${GO_MVVM_DIR}/object_observer_interface.hpp
     ${GO_MVVM_DIR}/observable_array.hpp
@@ -745,7 +745,7 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/notify_data_context_change_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_property_changed_interface.hpp
-    ${GO_BOOST_MVVM_DIR}/notify_view_model_changed_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/notify_view_model_change_interface.hpp
     ${GO_BOOST_MVVM_DIR}/object.hpp
     ${GO_BOOST_MVVM_DIR}/object_observer_interface.hpp
     ${GO_BOOST_MVVM_DIR}/observable_array.hpp

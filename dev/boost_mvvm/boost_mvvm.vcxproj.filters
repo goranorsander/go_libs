@@ -140,7 +140,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\notify_command_execution_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\mvvm\notify_view_model_changed_interface.hpp">
+    <ClInclude Include="..\..\go_boost\mvvm\notify_view_model_change_interface.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\mvvm\view_model_changed_arguments.hpp">

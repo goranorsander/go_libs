@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/mvvm/notify_view_model_changed_interface.hpp>
+#include <go_boost/mvvm/notify_view_model_change_interface.hpp>
 
 namespace go_boost
 {
@@ -25,7 +25,7 @@ namespace mvvm
 {
 
 class view_model_interface
-    : public notify_view_model_changed_interface
+    : public notify_view_model_change_interface
 {
 public:
     typedef view_model_interface this_type;
@@ -35,24 +35,24 @@ public:
 
 protected:
     view_model_interface()
-        : notify_view_model_changed_interface()
+        : notify_view_model_change_interface()
     {
     }
 
 protected:
     virtual void on_view_model_will_change()
     {
-        if(!notify_view_model_changed_interface::view_model_will_change.empty())
+        if(!notify_view_model_change_interface::view_model_will_change.empty())
         {
-            notify_view_model_changed_interface::view_model_will_change(view_model_will_change_arguments::create());
+            notify_view_model_change_interface::view_model_will_change(view_model_will_change_arguments::create());
         }
     }
 
     virtual void on_view_model_changed()
     {
-        if(!notify_view_model_changed_interface::view_model_changed.empty())
+        if(!notify_view_model_change_interface::view_model_changed.empty())
         {
-            notify_view_model_changed_interface::view_model_changed(view_model_changed_arguments::create());
+            notify_view_model_change_interface::view_model_changed(view_model_changed_arguments::create());
         }
     }
 };

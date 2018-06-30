@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
-#define GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED
+#define GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED
 
 //
-//  notify_view_model_changed_interface.hpp
+//  notify_view_model_change_interface.hpp
 //
 //  Copyright 2015-2018 Göran Orsander
 //
@@ -26,19 +26,19 @@ namespace go_boost
 namespace mvvm
 {
 
-class notify_view_model_changed_interface
+class notify_view_model_change_interface
     : public go_boost::signals::slot
 {
 public:
-    typedef notify_view_model_changed_interface this_type;
+    typedef notify_view_model_change_interface this_type;
     typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_changed_arguments>&)> view_model_changed_signal;
     typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_will_change_arguments>&)> view_model_will_change_signal;
 
 public:
-    virtual ~notify_view_model_changed_interface() = 0;
+    virtual ~notify_view_model_change_interface() = 0;
 
 protected:
-    notify_view_model_changed_interface()
+    notify_view_model_change_interface()
     {
     }
 
@@ -47,7 +47,7 @@ public:
     view_model_changed_signal view_model_changed;
 };
 
-inline notify_view_model_changed_interface::~notify_view_model_changed_interface()
+inline notify_view_model_change_interface::~notify_view_model_change_interface()
 {
     view_model_will_change.disconnect_all_slots();
     view_model_changed.disconnect_all_slots();
@@ -56,4 +56,4 @@ inline notify_view_model_changed_interface::~notify_view_model_changed_interface
 } // namespace mvvm
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED

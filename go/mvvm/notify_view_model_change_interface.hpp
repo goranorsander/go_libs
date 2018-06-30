@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
-#define GO_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
+#ifndef GO_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED
+#define GO_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED
 
 //
-//  notify_view_model_changed_interface.hpp
+//  notify_view_model_change_interface.hpp
 //
 //  Copyright 2016-2018 Göran Orsander
 //
@@ -27,26 +27,26 @@ namespace go
 namespace mvvm
 {
 
-class notify_view_model_changed_interface
+class notify_view_model_change_interface
     : public go::signals::slot
 {
 public:
-    typedef notify_view_model_changed_interface this_type;
+    typedef notify_view_model_change_interface this_type;
     typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_changed_arguments>&)>> view_model_changed_signal;
     typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_will_change_arguments>&)>> view_model_will_change_signal;
 
 public:
-    virtual ~notify_view_model_changed_interface() = 0;
+    virtual ~notify_view_model_change_interface() = 0;
 
 protected:
-    notify_view_model_changed_interface() GO_DEFAULT_CONSTRUCTOR
+    notify_view_model_change_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     view_model_will_change_signal view_model_will_change;
     view_model_changed_signal view_model_changed;
 };
 
-inline notify_view_model_changed_interface::~notify_view_model_changed_interface()
+inline notify_view_model_change_interface::~notify_view_model_change_interface()
 {
     view_model_will_change.disconnect_all_slots();
     view_model_changed.disconnect_all_slots();
@@ -57,4 +57,4 @@ inline notify_view_model_changed_interface::~notify_view_model_changed_interface
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_MVVM_NOTIFY_VIEW_MODEL_CHANGED_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_MVVM_NOTIFY_VIEW_MODEL_CHANGE_INTERFACE_HPP_INCLUDED
