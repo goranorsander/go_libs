@@ -320,7 +320,7 @@ set(GO_LIBS_SRC_GO_MVVM_HPP
     ${GO_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_MVVM_DIR}/notify_container_changed_interface.hpp
-    ${GO_MVVM_DIR}/notify_data_context_changed_interface.hpp
+    ${GO_MVVM_DIR}/notify_data_context_change_interface.hpp
     ${GO_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_MVVM_DIR}/notify_property_changed_interface.hpp
     ${GO_MVVM_DIR}/notify_view_model_changed_interface.hpp
@@ -742,7 +742,7 @@ set(GO_LIBS_SRC_GO_BOOST_MVVM_HPP
     ${GO_BOOST_MVVM_DIR}/notify_command_execution_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_action.hpp
     ${GO_BOOST_MVVM_DIR}/notify_container_changed_interface.hpp
-    ${GO_BOOST_MVVM_DIR}/notify_data_context_changed_interface.hpp
+    ${GO_BOOST_MVVM_DIR}/notify_data_context_change_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_event_firing_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_property_changed_interface.hpp
     ${GO_BOOST_MVVM_DIR}/notify_view_model_changed_interface.hpp

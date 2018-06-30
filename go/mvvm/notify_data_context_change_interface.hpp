@@ -1,8 +1,8 @@
-#ifndef GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGED_INTERFACE_HPP_INCLUDED
-#define GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGED_INTERFACE_HPP_INCLUDED
+#ifndef GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGE_INTERFACE_HPP_INCLUDED
+#define GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGE_INTERFACE_HPP_INCLUDED
 
 //
-//  notify_data_context_changed_interface.hpp
+//  notify_data_context_change_interface.hpp
 //
 //  Copyright 2015-2018 Göran Orsander
 //
@@ -27,26 +27,26 @@ namespace go
 namespace mvvm
 {
 
-class notify_data_context_changed_interface
+class notify_data_context_change_interface
     : public go::signals::slot
 {
 public:
-    typedef notify_data_context_changed_interface this_type;
+    typedef notify_data_context_change_interface this_type;
     typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_changed_arguments>&)>> data_context_changed_signal;
     typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_will_change_arguments>&)>> data_context_will_change_signal;
 
 public:
-    virtual ~notify_data_context_changed_interface() = 0;
+    virtual ~notify_data_context_change_interface() = 0;
 
 protected:
-    notify_data_context_changed_interface() GO_DEFAULT_CONSTRUCTOR
+    notify_data_context_change_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
     data_context_will_change_signal data_context_will_change;
     data_context_changed_signal data_context_changed;
 };
 
-inline notify_data_context_changed_interface::~notify_data_context_changed_interface()
+inline notify_data_context_change_interface::~notify_data_context_change_interface()
 {
     data_context_will_change.disconnect_all_slots();
     data_context_changed.disconnect_all_slots();
@@ -57,4 +57,4 @@ inline notify_data_context_changed_interface::~notify_data_context_changed_inter
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGED_INTERFACE_HPP_INCLUDED
+#endif  // #ifndef GO_MVVM_NOTIFY_DATA_CONTEXT_CHANGE_INTERFACE_HPP_INCLUDED

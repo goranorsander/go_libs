@@ -36,7 +36,7 @@
     <ClInclude Include="..\..\go\mvvm\notify_command_execution_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_container_changed_action.hpp" />
-    <ClInclude Include="..\..\go\mvvm\notify_data_context_changed_interface.hpp" />
+    <ClInclude Include="..\..\go\mvvm\notify_data_context_change_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_event_firing_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_property_changed_interface.hpp" />
     <ClInclude Include="..\..\go\mvvm\notify_view_model_changed_interface.hpp" />
