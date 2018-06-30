@@ -96,7 +96,7 @@ inline void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double
 
 // go_boost::property::property
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<BYTE>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<BYTE>& value)
 {
     int n = static_cast<int>(value);
     if(pDX->m_bSaveAndValidate)
@@ -113,7 +113,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
         detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<short>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<short>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -128,7 +128,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<int>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<int>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -143,7 +143,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<UINT>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<UINT>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -158,7 +158,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<long>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<long>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -173,7 +173,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<DWORD>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<DWORD>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -188,7 +188,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<LONGLONG>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<LONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -203,7 +203,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<ULONGLONG>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<ULONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -248,7 +248,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::pr
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<CString>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<CString>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -266,7 +266,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::string>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::string>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -290,7 +290,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::wstring>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::wstring>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -316,7 +316,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<
 
 // go_boost::property::wproperty
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<BYTE>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<BYTE>& value)
 {
     int n = static_cast<int>(value);
     if(pDX->m_bSaveAndValidate)
@@ -333,7 +333,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
         detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<short>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<short>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -348,7 +348,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<int>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<int>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -363,7 +363,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<UINT>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<UINT>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -378,7 +378,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<long>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<long>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -393,7 +393,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<DWORD>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<DWORD>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -408,7 +408,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<LONGLONG>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<LONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -423,7 +423,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<ULONGLONG>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<ULONGLONG>& value)
 {
     if(pDX->m_bSaveAndValidate)
     {
@@ -468,7 +468,7 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wp
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<CString>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<CString>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -486,7 +486,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::string>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::string>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
@@ -510,7 +510,7 @@ inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty
     }
 }
 
-inline void DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::wstring>& value)
+inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::wstring>& value)
 {
     HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
     if(pDX->m_bSaveAndValidate)
