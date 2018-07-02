@@ -47,6 +47,7 @@ public:
     typedef basic_command_interface<S, M> this_type;
     typedef typename std::shared_ptr<basic_command_interface<S, M>> ptr;
     typedef typename std::weak_ptr<basic_command_interface<S, M>> wptr;
+    typedef typename std::shared_ptr<command_parameters> command_parameters_type;
     typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<S, M>>&)>> can_execute_changed_signal;
     typedef typename go::property::nameless::read_only::property<S> command_name_type;
 
@@ -54,7 +55,7 @@ public:
     virtual ~basic_command_interface() = 0;
 
 protected:
-    basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params);
+    basic_command_interface(const S& cmd_name, const command_parameters_type& params);
 
 public:
     virtual std::shared_ptr<command_parameters> parameters() const;
@@ -62,9 +63,9 @@ public:
     virtual void notify_can_execute_changed();
 
 protected:
-    virtual bool can_execute(const std::shared_ptr<command_parameters>& params) = 0;
+    virtual bool can_execute(const command_parameters_type& params) = 0;
 
-    virtual void execute(const std::shared_ptr<command_parameters>& params) = 0;
+    virtual void execute(const command_parameters_type& params) = 0;
 
 public:
     command_name_type command_name;
@@ -72,7 +73,7 @@ public:
 
 private:
     const S _command_name;
-    std::shared_ptr<command_parameters> _parameters;
+    command_parameters_type _parameters;
 };
 
 template<>
@@ -94,7 +95,7 @@ inline basic_command_interface<S, M>::~basic_command_interface()
 }
 
 template<class S, typename M>
-inline basic_command_interface<S, M>::basic_command_interface(const S& cmd_name, const std::shared_ptr<command_parameters>& params)
+inline basic_command_interface<S, M>::basic_command_interface(const S& cmd_name, const command_parameters_type& params)
     : std::enable_shared_from_this<basic_command_interface<S, M>>()
     , go::utility::noncopyable_nonmovable()
     , command_name(nullptr)
