@@ -151,6 +151,15 @@
     <Filter Include="Documentation\std\property\nameless\read_only">
       <UniqueIdentifier>{c4e21cf5-0fcd-45ec-b73a-ab3f61e03f91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\std\mvvm">
+      <UniqueIdentifier>{69a10211-fbbb-4987-aee2-dabc8acb364a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\mvvm\iterator">
+      <UniqueIdentifier>{4193f6e5-ee6f-4540-bf6d-e01177b85ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\mvvm\utility">
+      <UniqueIdentifier>{09157b1e-8c75-4b33-b821-9cf7a733e282}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -381,6 +390,165 @@
     </None>
     <None Include="..\..\docs\std\property\nameless\nameless.md">
       <Filter>Documentation\std\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_mvvm.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_mvvm_iterator.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_mvvm_utility.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\mvvm.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_command_parameters.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_container_changed_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_data_context_changed_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_data_context_will_change_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_notify_container_changed_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_notify_data_context_change_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_notify_view_model_change_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_object.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_command_execution_observer_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_command_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_command_manager.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_event.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_event_firing_observer_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_event_manager.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_notify_command_execution_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_notify_event_firing_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_notify_property_changed_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_object_observer_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_array.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_associative_container.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_container.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_deque.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_forward_list.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_list.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_map.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_multimap.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_multiset.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_object.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_ordered_associative_container.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_sequence_container.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_set.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_unordered_associative_container.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_unordered_map.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_unordered_multimap.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_unordered_multiset.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_unordered_set.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_observable_vector.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_property_changed_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_basic_relay_command.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_template_data_context_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_view_model_changed_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_view_model_interface.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\class_view_model_will_change_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\enum_notify_container_changed_action.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\iterator\function_template_erase.md">
+      <Filter>Documentation\std\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\iterator\function_template_try_move_backward.md">
+      <Filter>Documentation\std\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\iterator\iterator.md">
+      <Filter>Documentation\std\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\utility\function_ddx_text.md">
+      <Filter>Documentation\std\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\utility\utility.md">
+      <Filter>Documentation\std\mvvm\utility</Filter>
     </None>
   </ItemGroup>
 </Project>
