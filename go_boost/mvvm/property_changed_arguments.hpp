@@ -19,6 +19,7 @@
 
 #include <boost/make_shared.hpp>
 
+#include <go_boost/mvvm/container_changed_arguments.hpp>
 #include <go_boost/signals/slot_arguments.hpp>
 
 namespace go_boost
@@ -44,104 +45,84 @@ public:
     virtual ~basic_property_changed_arguments() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-    explicit basic_property_changed_arguments(const string_type& property_name);
+    explicit basic_property_changed_arguments(const string_type& property_name_);
 
 public:
-    static boost::shared_ptr<basic_property_changed_arguments<S>> create(const string_type& property_name);
+    static boost::shared_ptr<basic_property_changed_arguments<S>> create(const string_type& property_name_);
 
-    string_type property_name() const;
-
-private:
-    const string_type _property_name;
+public:
+    go_boost::property::nameless::read_only::value_property<string_type> property_name;
 };
 
 template<>
-inline basic_property_changed_arguments<std::string>::basic_property_changed_arguments(const std::string& property_name)
+inline basic_property_changed_arguments<std::string>::basic_property_changed_arguments(const std::string& property_name_)
     : go_boost::signals::slot_arguments()
-    , _property_name(property_name)
+    , property_name(property_name_)
 {
 }
 
 template<>
-inline basic_property_changed_arguments<std::wstring>::basic_property_changed_arguments(const std::wstring& property_name)
+inline basic_property_changed_arguments<std::wstring>::basic_property_changed_arguments(const std::wstring& property_name_)
     : go_boost::signals::slot_arguments()
-    , _property_name(property_name)
+    , property_name(property_name_)
 {
 }
 
 template<class S>
-inline basic_property_changed_arguments<S>::basic_property_changed_arguments(const S& property_name)
+inline basic_property_changed_arguments<S>::basic_property_changed_arguments(const S& property_name_)
     : go_boost::signals::slot_arguments()
-    , _property_name(property_name)
+    , property_name(property_name_)
 {
 }
 
 template<>
-inline std::string basic_property_changed_arguments<std::string>::property_name() const
-{
-    return _property_name;
-}
-
-template<>
-inline std::wstring basic_property_changed_arguments<std::wstring>::property_name() const
-{
-    return _property_name;
-}
-
-template<class S>
-inline S basic_property_changed_arguments<S>::property_name() const
-{
-    return _property_name;
-}
-
-template<>
-inline boost::shared_ptr<basic_property_changed_arguments<std::string>> basic_property_changed_arguments<std::string>::create(const std::string& property_name)
+inline boost::shared_ptr<basic_property_changed_arguments<std::string>> basic_property_changed_arguments<std::string>::create(const std::string& property_name_)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
-        explicit make_shared_enabler(const std::string& property_name) : this_type(property_name) {}
+        explicit make_shared_enabler(const std::string& property_name_) : this_type(property_name_) {}
     };
 
-    return boost::make_shared<make_shared_enabler, const std::string&>(property_name);
+    return boost::make_shared<make_shared_enabler, const std::string&>(property_name_);
 #else
-    return boost::shared_ptr<this_type>(new this_type(property_name));
+    return boost::shared_ptr<this_type>(new this_type(property_name_));
 #endif // BOOST_MSVC > 1500
 }
 
 template<>
-inline boost::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_property_changed_arguments<std::wstring>::create(const std::wstring& property_name)
+inline boost::shared_ptr<basic_property_changed_arguments<std::wstring>> basic_property_changed_arguments<std::wstring>::create(const std::wstring& property_name_)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
-        explicit make_shared_enabler(const std::wstring& property_name) : this_type(property_name) {}
+        explicit make_shared_enabler(const std::wstring& property_name_) : this_type(property_name_) {}
     };
 
-    return boost::make_shared<make_shared_enabler, const std::wstring&>(property_name);
+    return boost::make_shared<make_shared_enabler, const std::wstring&>(property_name_);
 #else
-    return boost::shared_ptr<this_type>(new this_type(property_name));
+    return boost::shared_ptr<this_type>(new this_type(property_name_));
 #endif // BOOST_MSVC > 1500
 }
 
 template<class S>
-inline boost::shared_ptr<basic_property_changed_arguments<S>> basic_property_changed_arguments<S>::create(const S& property_name)
+inline boost::shared_ptr<basic_property_changed_arguments<S>> basic_property_changed_arguments<S>::create(const S& property_name_)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
-        explicit make_shared_enabler(const S& property_name) : this_type(property_name) {}
+        explicit make_shared_enabler(const S& property_name_) : this_type(property_name_) {}
     };
 
-    return boost::make_shared<make_shared_enabler, const S&>(property_name);
+    return boost::make_shared<make_shared_enabler, const S&>(property_name_);
 #else
-    return boost::shared_ptr<this_type>(new this_type(property_name));
+    return boost::shared_ptr<this_type>(new this_type(property_name_));
 #endif // BOOST_MSVC > 1500
 }
 
