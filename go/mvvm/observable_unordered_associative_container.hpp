@@ -53,7 +53,7 @@ public:
     virtual ~basic_observable_unordered_associative_container() = 0;
 
 protected:
-     basic_observable_unordered_associative_container()
+    basic_observable_unordered_associative_container()
         : basic_observable_associative_container<string_type, container_type>()
     {
     }

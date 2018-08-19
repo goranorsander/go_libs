@@ -33,7 +33,7 @@ template<class T, class S, size_t N> class basic_observable_array
 public:
     typedef S string_type;
     typedef typename std::array<T, N> container_type;
-    typedef basic_observable_array<string_type, container_type, N> this_type;
+    typedef basic_observable_array<T, S, N> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -53,10 +53,23 @@ public:
     virtual ~basic_observable_array() GO_DEFAULT_DESTRUCTOR
 
 protected:
-     basic_observable_array()
+    basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
+    }
+
+public:
+    static ptr create()
+    {
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+                make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
+        };
+
+        return std::make_shared<make_shared_enabler>();
     }
 
 public:

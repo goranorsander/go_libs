@@ -49,7 +49,7 @@ public:
     virtual ~basic_observable_sequence_container() = 0;
 
 protected:
-     basic_observable_sequence_container()
+    basic_observable_sequence_container()
         : basic_observable_container<string_type, container_type>()
     {
     }
@@ -100,7 +100,7 @@ public:
         return this->container().front();
     }
 
-    const_reference front() const
+    GO_CONSTEXPR const_reference front() const
     {
         return this->container().front();
     }
