@@ -63,93 +63,107 @@ set_function_signature | std\::function<void(const value_type&)>
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **basic_property** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*assign name (1)* | **basic_property**(const **string_type**& property_name)
-*assign name, bind getter and setter (2)* | **basic_property**(const **string_type**& property_name, const **get_function_signature**& get_function, const **set_function_signature**& set_function)
+Constructor | Specifiers | Signature
+-|-|-
+*assign name (1)* | public explicit | **basic_property**(const **string_type**& property_name)
+*assign name, bind getter and setter (2)* | public | **basic_property**(const **string_type**& property_name, const **get_function_signature**& get_function, const **set_function_signature**& set_function)
 
 1. Constructs a **basic_property** object with the name *property_name*.
 2. Constructs a **basic_property** object with the name *property_name*, get function *get_function*, and set function *set_function*.
 
-### operator=
+### Assignment operator
 
-*public member function*
-
-Operator | Signature
+Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | **this_type**& operator=(const **this_type**& other)
-*assign value (2)* | **this_type**& operator=(const **value_type**& other)
+*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other)
+*assign value (2)* | public | **this_type**& operator=(const **value_type**& other)
 
 1. Copies an **basic_property** object.
 2. Assign a value to the **basic_property** object.
 
-### void getter(const get_function_signature& f)
+### getter
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **void getter**(const get_function_signature& f)
 
 Binds a *getter* function to the **basic_property** object. This function is invoked when the property
 value is gotten (returned or retrieved).
 
-### void setter(const set_function_signature& f)
+### setter
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **void setter**(const set_function_signature& f)
 
 Binds a *setter* function to the **basic_property** object. This function is invoked when the property
 value is set (assigned or updated).
 
 ## Inherited functions
 
-### operator value_type() const
+### Cast operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | operator **value_type**() const
 
 Conversion function (or cast operator) that return the value of the **basic_property** object.
 
-### value_type operator()() const
+### Get value operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **value_type** operator()() const
 
 Function call operator that return the value of the **basic_property** object.
 
-### void operator()(const value_type& other)
+### Set value operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | void operator()(const **value_type**& other)
 
 Function call operator that assign the value of the **basic_property** object.
 
-### value_type operator*() const
+### Indirection operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **value_type** operator\*() const
 
 Indirection operator that return the value of the **basic_property** object.
 
-### value_type get() const
+### get
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **value_type get**() const
 
 Function that return the value of the **basic_property** object.
 
-### void set(const value_type& other)
+### set
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **void set**(const value_type& other)
 
 Function that assign the value of the **basic_property** object.
 
-### const string_type& name() const
+### name
 
-*public member function*
+Specifiers | Signature
+-|-
+public | **const string_type**& **name**() const
 
 Function that return the name of the **basic_property** object.
 

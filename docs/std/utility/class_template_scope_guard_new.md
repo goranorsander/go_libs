@@ -50,59 +50,69 @@ pointer | T*
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **scope_guard_new** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*constructor (1)* | explicit **scope_guard_new**(pointer px)
+Constructor | Specifiers | Signature
+-|-|-
+*constructor (1)* | public explicit | **scope_guard_new**(pointer px)
 
 1. Constructs a **scope_guard**.
 
-### constexpr pointer operator->() const
+### Member of pointer operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public constexpr | pointer operator->() const
 
 Returns a raw pointer to the guarded object.
 
-### constexpr reference operator*() const
+### Indirection operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public constexpr | reference operator*() const
 
 Returns a reference to the guarded object.
 
-### explicit constexpr operator bool() const
+### operator bool
 
-*public member function*
+Specifiers | Signature
+-|-
+public explicit constexpr | operator bool() const
 
 Returns true if the guarded object pointer is not nullptr, false otherwise.
 
-### pointer detach()
+### detach
 
-*public member function*
+Specifiers | Signature
+-|-
+public | pointer detach()
 
 Returns a pointer to the guarded object and relesees the object from the scoped guard.
 
-### constexpr pointer get() const
+### get
 
-*public member function*
+Specifiers | Signature
+-|-
+public constexpr | pointer get() const
 
 Returns a pointer to the guarded object.
 
 ## Inherited functions
 
-### void set_on_scope_exit_function(const on_scope_exit_function_type& on_scope_exit)
+### set_on_scope_exit_function
 
-*protected virtual member function*
+Specifiers | Signature
+-|-
+protected virtual | void set_on_scope_exit_function(const on_scope_exit_function_type& on_scope_exit)
 
 Set the callback function called by the **scope_guard** destructor.
 

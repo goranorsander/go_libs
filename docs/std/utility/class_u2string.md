@@ -68,34 +68,32 @@ const_reverse_iterator | base_type\::const_reverse_iterator
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **exception** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **u2string**()
-*allocator constructor (2)* | explicit **u2string**(const allocator_type& alloc)
-*character count constructor (3)* | **u2string**(size_type count, value_type ch, const allocator_type& alloc = allocator_type())
-*substring constructor (4)* | **u2string**(const **u2string**& other, size_type pos, size_type count = this_type\::npos, const allocator_type& alloc = allocator_type())
-*substring constructor (5)* | **u2string**(const **u2string**& other, size_type pos, const allocator_type& alloc = allocator_type())
-*substring constructor (6)* | **u2string**(const value_type\* s, size_type count, const allocator_type& alloc = allocator_type())
-*substring constructor (7)* | **u2string**(const value_type\* s, const allocator_type& alloc = allocator_type())
-*range constructor (8)* | template\<class InputIt> **u2string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
-*copy constructor (9)* | **u2string**(const **u2string**& other)
-*copy constructor (10)* | **u2string**(const **u2string**& other, const allocator_type& alloc)
-*move constructor (11)* | **u2string**(**u2string**&& other) noexcept
-*move constructor (12)* | **u2string**(**u2string**&& other, const allocator_type& alloc)
-*initializer list constructor (13)* | **u2string**(std\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
-*string view constructor (14)* | template\<class T> **u2string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | public | **u2string**()
+*allocator constructor (2)* | public explicit | **u2string**(const allocator_type& alloc)
+*character count constructor (3)* | public | **u2string**(size_type count, value_type ch, const allocator_type& alloc = allocator_type())
+*substring constructor (4)* | public | **u2string**(const **u2string**& other, size_type pos, size_type count = this_type\::npos, const allocator_type& alloc = allocator_type())
+*substring constructor (5)* | public | **u2string**(const **u2string**& other, size_type pos, const allocator_type& alloc = allocator_type())
+*substring constructor (6)* | public | **u2string**(const value_type\* s, size_type count, const allocator_type& alloc = allocator_type())
+*substring constructor (7)* | public | **u2string**(const value_type\* s, const allocator_type& alloc = allocator_type())
+*range constructor (8)* | public | template\<class InputIt> **u2string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
+*copy constructor (9)* | public | **u2string**(const **u2string**& other)
+*copy constructor (10)* | public | **u2string**(const **u2string**& other, const allocator_type& alloc)
+*move constructor (11)* | public | **u2string**(**u2string**&& other) noexcept
+*move constructor (12)* | public | **u2string**(**u2string**&& other, const allocator_type& alloc)
+*initializer list constructor (13)* | public | **u2string**(std\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
+*string view constructor (14)* | public | template\<class T> **u2string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())
 
 1. Constructs a **u2string** object.
 2. Constructs empty **u2string** (zero size and unspecified capacity) using the supplied allocator.
@@ -112,15 +110,19 @@ Constructor | Signature
 13. Constructs the **u2string** with the contents of the initializer list init.
 14. Implicitly converts t to a **u2string** view sv as if by std\::basic_string_view<CharT, Traits> sv = t;, then initializes the string with the subrange [pos, pos + n) of sv as if by basic_string(sv.substr(pos, n), a). This overload only participates in overload resolution if std\::is_convertible_v<const T&, std\::basic_string_view<CharT, Traits>> is true.
 
-### operator==
+### Equality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator==(const u2string& other) const
 
 Equal to operator. Returns true if this is equal to other, false otherwise.
 
-### operator!=
+### Inequality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator!=(const u2string& other) const
 
 Not equal to operator. Returns true if this is not equal to other, false otherwise.
 

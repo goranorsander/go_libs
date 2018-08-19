@@ -2,6 +2,10 @@
 layout: std_lib_signals
 ---
 
+```c++
+namespace go::signals
+```
+
 # GO Std Signals Library
 
 ```c++

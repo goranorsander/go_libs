@@ -57,61 +57,51 @@ this_type | primitive_type_specializer<value_type>
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **primitive_type_specializer** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*protected member function*
-
-Constructor | Signature
--|-
-*copy constructor (1)* | **primitive_type_specializer**(const **primitive_type_specializer**& t)
-*move constructor (2)* | **primitive_type_specializer**(**primitive_type_specializer**&& t)
-*assign value, copy (3)* | **primitive_type_specializer**(const **value_type**& t)
-*assign value, move (4)* | **primitive_type_specializer**(**value_type**&& t)
+Constructor | Specifiers | Signature
+-|-|-
+*copy constructor (1)* | protected explicit | **primitive_type_specializer**(const **primitive_type_specializer**& t)
+*move constructor (2)* | protected explicit | **primitive_type_specializer**(**primitive_type_specializer**&& t)
+*assign value, copy (3)* | protected | **primitive_type_specializer**(const **value_type**& t)
+*assign value, move (4)* | protected | **primitive_type_specializer**(**value_type**&& t)
 
 1. Copy constructor. Constructs the **primitive_type_specializer** with the copy of the contents of t.
 2. Move constructor. Constructs the **primitive_type_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
 3. Assign value constructor. Constructs the **primitive_type_specializer** and assign it the contents of t.
 4. Assign value constructor. Constructs the **primitive_type_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
 
-### operator=
+### Assignment operator
 
-*protected member function*
-
-Operator | Signature
+Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t)
+*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t)
 
 1. Copies an **primitive_type_specializer** object.
 
-### constexpr const value_type& get() const
+### get
 
-*public member function*
-
-Return the specialized primitive type value.
-
-### value_type& get()
-
-*public member function*
+Specifiers | Signature
+-|-
+public | **constexpr const value_type**& **get**() const
+public | **value_type**& **get**()
 
 Return the specialized primitive type value.
 
-### void set(const value_type& t)
+### set
 
-*public member function*
-
-Set the specialized primitive type value.
-
-### void set(const this_type& t)
-
-*public member function*
+Specifiers | Signature
+-|-
+public | **void set**(const value_type& t)
+public | **void set**(const this_type& t)
 
 Set the specialized primitive type value.
 

@@ -39,20 +39,18 @@ wptr | std\::weak_ptr\<this_type>
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **slot** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*protected member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **slot**()
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | protected | **slot**()
 
 1. Constructs a **slot** object.

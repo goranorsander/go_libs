@@ -47,78 +47,90 @@ this_type | slot_key
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **slot_key** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **slot_key**()
-*copy constructor (2)* | **slot_key**(const **slot_key**& other)
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | public | **slot_key**()
+*copy constructor (2)* | public | **slot_key**(const **slot_key**& other)
 
 1. Constructs a **slot_key** object.
 2. Constructs a **slot_key** object as a copy of *other*.
 
-### this_type& operator=(const this_type& other)
+### Assignment operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | this_type& operator=(const this_type& other)
 
 The copy assignment operator *a* **=** *b* replaces the contents of the object 
 *a* with a copy of the contents of *b* (*b* is not modified). 
 
-### bool operator==(const this_type& other) const
+### Equality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator==(const this_type& other) const
 
 The two-way comparison operator *lhs* **==** *rhs*.
 Returns true if *lhs* is equal to *rhs*, false otherwise.
 
-### bool operator!=(const this_type& other) const
+### Inequality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator!=(const this_type& other) const
 
 The two-way comparison operator *lhs* **!=** *rhs*.
 Returns true if *lhs* is not equal to *rhs*, false otherwise.
 
-### bool operator<(const this_type& other) const
+### Less than operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator<(const this_type& other) const
 
 The two-way comparison operator *lhs* **<** *rhs*.
 Returns true if *lhs* is less than *rhs*, false otherwise.
 
-### bool operator>(const this_type& other) const
+### Greater than operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator>(const this_type& other) const
 
 The two-way comparison operator *lhs* **>** *rhs*.
 Returns true if *lhs* is greater than *rhs*, false otherwise.
 
-### bool operator<=(const this_type& other) const
+### Less than or equal to operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator<=(const this_type& other) const
 
 The two-way comparison operator *lhs* **<=** *rhs*.
 Returns true if *lhs* is less than or equal to *rhs*, false otherwise.
 
-### bool operator>=(const this_type& other) const
+### Greater than or equal to operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator>=(const this_type& other) const
 
 The two-way comparison operator *lhs* **>=** *rhs*.
 Returns true if *lhs* is greater than or equal to *rhs*, false otherwise.
 
 ### operator++
 
-Constructor | Signature
+Specifiers | Signature
 -|-
 *pre-increment (1)* | **this_type**& operator++()
 *post-increment (2)* | **this_type** operator++(int)
@@ -126,14 +138,18 @@ Constructor | Signature
 1. Pre-increment.
 2. Post-increment.
 
-### void reset()
+### reset
 
-*public member function*
+Specifiers | Signature
+-|-
+public | void **reset**()
 
 Resets the **slot_key** to the null value.
 
-### static bool is_null_key(const this_type& key)
+### is_null_key
 
-*public static member function*
+Specifiers | Signature
+-|-
+public static | bool **is_null_key**(const this_type& key)
 
 Returns true if *key* is equal to the null value, false otherwise.

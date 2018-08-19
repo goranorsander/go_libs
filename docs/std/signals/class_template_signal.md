@@ -54,57 +54,67 @@ this_type | **signal**<function_type, mutex_type>
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **signal** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **signal**()
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | public | **signal**()
 
 1. Constructs a **signal** object.
 
-### template\<typename F1> slot_key_type connect(F1&& f)
+### connect
 
-*public member function*
+Specifiers | Signature
+-|-
+public | template\<typename F1> slot_key_type **connect**(F1&& f)
 
 Connect a slot, i.e. a callback receiver, to a **signal**.
 
-### void disconnect(const slot_key_type slot_key)
+### disconnect
 
-*public member function*
+Specifiers | Signature
+-|-
+public | void **disconnect**(const slot_key_type slot_key)
 
 Disconnect a slot, i.e. a callback receiver, from a **signal**.
 
-### void disconnect_all_slots()
+### disconnect_all_slots
 
-*public member function*
+Specifiers | Signature
+-|-
+public | void **disconnect_all_slots**()
 
 Disconnect all slots, i.e. a callback receivers, from a **signal**.
 
-### bool empty() const
+### empty
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool **empty**() const
 
 Returns **true** if the **signal** have no connected slots, i.e. callback 
 receivers.
 
-### template\<typename... A> void operator()(A... a) const
+### Emit signal operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | template\<typename... A> void operator()(A... a) const
 
 Emits a **signal** to all connected slots, i.e. all callback receivers.
 
-### template\<typename... A> void call(A... a) const
+### call
 
-*public member function*
+Specifiers | Signature
+-|-
+public | template\<typename... A> void call(A... a) const
 
 Emits a **signal** to all connected slots, i.e. all callback receivers.

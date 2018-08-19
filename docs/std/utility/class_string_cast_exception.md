@@ -29,22 +29,20 @@ public:
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **string_cast_exception** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*from c-string (1)* | **string_cast_exception**(const char\* message)
-*from std\::string (2)* | **string_cast_exception**(const std\::string& message)
+Constructor | Specifiers | Signature
+-|-|-
+*from c-string (1)* | public explicit | **string_cast_exception**(const char\* message)
+*from std\::string (2)* | public explicit | **string_cast_exception**(const std\::string& message)
 
 1. Copies the null-terminated character sequence (C-string) pointed by *message*.
 2. Copies the character sequence (std\::string) handled by *message*.

@@ -73,34 +73,32 @@ const_reverse_iterator | base_type\::const_reverse_iterator
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **exception** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **u8string**()
-*allocator constructor (2)* | explicit **u8string**(const allocator_type& alloc)
-*character count constructor (3)* | **u8string**(size_type count, value_type ch, const allocator_type& alloc = allocator_type())
-*substring constructor (4)* | **u8string**(const **u8string**& other, size_type pos, size_type count = this_type\::npos, const allocator_type& alloc = allocator_type())
-*substring constructor (5)* | **u8string**(const **u8string**& other, size_type pos, const allocator_type& alloc = allocator_type())
-*substring constructor (6)* | **u8string**(const value_type\* s, size_type count, const allocator_type& alloc = allocator_type())
-*substring constructor (7)* | **u8string**(const value_type\* s, const allocator_type& alloc = allocator_type())
-*range constructor (8)* | template\<class InputIt> **u8string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
-*copy constructor (9)* | **u8string**(const **u8string**& other)
-*copy constructor (10)* | **u8string**(const **u8string**& other, const allocator_type& alloc)
-*move constructor (11)* | **u8string**(**u8string**&& other) noexcept
-*move constructor (12)* | **u8string**(**u8string**&& other, const allocator_type& alloc)
-*initializer list constructor (13)* | **u8string**(std\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
-*string view constructor (14)* | template\<class T> **u8string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | public | **u8string**()
+*allocator constructor (2)* | public explicit | **u8string**(const allocator_type& alloc)
+*character count constructor (3)* | public | **u8string**(size_type count, value_type ch, const allocator_type& alloc = allocator_type())
+*substring constructor (4)* | public | **u8string**(const **u8string**& other, size_type pos, size_type count = this_type\::npos, const allocator_type& alloc = allocator_type())
+*substring constructor (5)* | public | **u8string**(const **u8string**& other, size_type pos, const allocator_type& alloc = allocator_type())
+*substring constructor (6)* | public | **u8string**(const value_type\* s, size_type count, const allocator_type& alloc = allocator_type())
+*substring constructor (7)* | public | **u8string**(const value_type\* s, const allocator_type& alloc = allocator_type())
+*range constructor (8)* | public | template\<class InputIt> **u8string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
+*copy constructor (9)* | public | **u8string**(const **u8string**& other)
+*copy constructor (10)* | public | **u8string**(const **u8string**& other, const allocator_type& alloc)
+*move constructor (11)* | public | **u8string**(**u8string**&& other) noexcept
+*move constructor (12)* | public | **u8string**(**u8string**&& other, const allocator_type& alloc)
+*initializer list constructor (13)* | public | **u8string**(std\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
+*string view constructor (14)* | public | template\<class T> **u8string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())
 
 1. Constructs a **u8string** object.
 2. Constructs empty **u8string** (zero size and unspecified capacity) using the supplied allocator.
@@ -117,33 +115,43 @@ Constructor | Signature
 13. Constructs the **u8string** with the contents of the initializer list init.
 14. Implicitly converts t to a **u8string** view sv as if by std\::basic_string_view<CharT, Traits> sv = t;, then initializes the string with the subrange [pos, pos + n) of sv as if by basic_string(sv.substr(pos, n), a). This overload only participates in overload resolution if std\::is_convertible_v<const T&, std\::basic_string_view<CharT, Traits>> is true.
 
-### bool operator==(const u8string& other) const
+### Equality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator==(const this_type& other) const
 
 Equal to operator. Returns true if this is equal to other, false otherwise.
 
-### bool operator!=(const u8string& other) const
+### Inequality operator
 
-*public member function*
+Specifiers | Signature
+-|-
+public | bool operator!=(const this_type& other) const
 
 Not equal to operator. Returns true if this is not equal to other, false otherwise.
 
-### std::size_t characters() const
+### characters
 
-*public member function*
+Specifiers | Signature
+-|-
+public | std::size_t characters() const
 
 Returns the number of UTF-8 encoded characters in the string.
 
-### uft8_character_type character(const size_type pos) const
+### character
 
-*public member function*
+Specifiers | Signature
+-|-
+public | uft8_character_type character(const size_type pos) const
 
 Returns the UTF-8 encoded character at position *pos* in the string.
 
-### uft8_string_type string() const
+### string
 
-*public member function*
+Specifiers | Signature
+-|-
+public | uft8_string_type string() const
 
 Retruns the string as a **uft8_string_type** object.
 

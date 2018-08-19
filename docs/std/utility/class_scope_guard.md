@@ -50,35 +50,29 @@ on_scope_exit_function_type | std\::function\<void()>
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **scope_guard** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*constructor (1)* | explicit **scope_guard**(const on_scope_exit_function_type& on_scope_exit)
+Constructor | Specifiers | Signature
+-|-|-
+*constructor (1)* | public explicit | **scope_guard**(const on_scope_exit_function_type& on_scope_exit)
+*constructor (2)* | protected | **scope_guard**()
 
 1. Constructs a **scope_guard**.
-
-*protected member function*
-
-Constructor | Signature
--|-
-*constructor (2)* | **scope_guard**()
-
 2. Constructs a **scope_guard**.
 
-### void set_on_scope_exit_function(const on_scope_exit_function_type& on_scope_exit)
+### set_on_scope_exit_function
 
-*protected virtual member function*
+Specifiers | Signature
+-|-
+protected virtual | void set_on_scope_exit_function(const on_scope_exit_function_type& on_scope_exit)
 
 Set the callback function called by the **scope_guard** destructor.
 

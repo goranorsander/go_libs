@@ -17,8 +17,8 @@ namespace go::utility::string
 The **GO Std Utility Library** is not really a single library at all. It is a collection
 of components too small to be called libraries in their own right.
 
-Functions in the **go\::utility\::string** namespace are intended to help working
-with strings.
+Functions in the **go\::utility\::string** namespace are intended to simplify use of
+strings.
 
 ## Reference
 

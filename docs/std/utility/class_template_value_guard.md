@@ -41,22 +41,20 @@ value_type | T
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual member function*
+Specifiers |
+-|
+public virtual |
 
 Destroys the **value_guard** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*public member function*
-
-Constructor | Signature
--|-
-*constructor (1)* | **value_guard**(value_type& value, const value_type& new_value)
-*constructor (2)* | **value_guard**(value_type& value, value_type&& new_value)
+Constructor | Specifiers | Signature
+-|-|-
+*constructor (1)* | public | **value_guard**(value_type& value, const value_type& new_value)
+*constructor (2)* | public | **value_guard**(value_type& value, value_type&& new_value)
 
 1. Constructs a **value_guard**.
 2. Constructs a **value_guard**.

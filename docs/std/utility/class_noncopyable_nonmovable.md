@@ -41,36 +41,32 @@ private:
 
 ## Member functions
 
-### (destructor)
+### Destructor
 
-*public virtual abstract member function*
+Specifiers |
+-|
+public abstract |
 
 Destroys the **noncopyable_nonmovable** object.
 
-As a virtual function, derived classes may redefine its behavior.
+### Constructor
 
-### (constructor)
-
-*private member function*
-
-Constructor | Signature
--|-
-*default constructor (1)* | **noncopyable_nonmovable**()
-*copy constructor (2)* | **noncopyable_nonmovable**(const **noncopyable_nonmovable**& other)
-*move constructor (3)* | **noncopyable_nonmovable**(**noncopyable_nonmovable**&& other)
+Constructor | Specifiers | Signature
+-|-|-
+*default constructor (1)* | private | **noncopyable_nonmovable**()
+*copy constructor (2)* | private | **noncopyable_nonmovable**(const **noncopyable_nonmovable**& other)
+*move constructor (3)* | private | **noncopyable_nonmovable**(**noncopyable_nonmovable**&& other)
 
 1. Constructs a **noncopyable_nonmovable** object.
 2. Copy constructor. Constructs the **noncopyable_nonmovable** with the copy of the contents of other.
 3. Move constructor. Deleted.
 
-### operator=
+### Assignment operator
 
-*private member function*
-
-Operator | Signature
+Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | auto operator=(const **noncopyable_nonmovable**&)->**noncopyable_nonmovable**&
-*assign by move (2)* | auto operator=(**noncopyable_nonmovable**&&)->**noncopyable_nonmovable**&
+*assign copy (1)* | private | auto operator=(const **noncopyable_nonmovable**&)->**noncopyable_nonmovable**&
+*assign by move (2)* | private | auto operator=(**noncopyable_nonmovable**&&)->**noncopyable_nonmovable**&
 
 1. Copy assignment operator.
 2. Move asignment operator. Deleted.
