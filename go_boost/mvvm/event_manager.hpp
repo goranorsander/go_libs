@@ -66,6 +66,8 @@ public:
     void post(const boost::shared_ptr<basic_event<S>>& e, const bool keep_event_alive = true);
     void fire_events();
 
+    size_t events() const;
+
 private:
     mutable boost::recursive_mutex _events_guard;
     event_subscription_key_type _next_event_subscription_key;
@@ -377,6 +379,27 @@ inline void basic_event_manager<S, M>::fire_events()
     {
         fire(e.first.lock());
     }
+}
+
+template<>
+inline size_t basic_event_manager<std::string, boost::recursive_mutex>::events() const
+{
+    const boost::recursive_mutex::scoped_lock lock(_events_guard);
+    return _events.size();
+}
+
+template<>
+inline size_t basic_event_manager<std::wstring, boost::recursive_mutex>::events() const
+{
+    const boost::recursive_mutex::scoped_lock lock(_events_guard);
+    return _events.size();
+}
+
+template<class S, typename M>
+inline size_t basic_event_manager<S, M>::events() const
+{
+    const boost::recursive_mutex::scoped_lock lock(_events_guard);
+    return _events.size();
 }
 
 template<class S, typename M>
