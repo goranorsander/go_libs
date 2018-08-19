@@ -34,7 +34,7 @@ template<class T, class S> class basic_observable_deque
 public:
     typedef S string_type;
     typedef typename boost::container::deque<T> container_type;
-    typedef basic_observable_deque<string_type, container_type> this_type;
+    typedef basic_observable_deque<T, S> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -55,7 +55,7 @@ public:
     virtual ~basic_observable_deque() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-     basic_observable_deque()
+    basic_observable_deque()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
@@ -102,6 +102,120 @@ protected:
         : basic_observable_sequence_container<string_type, container_type>()
         , _container(il)
     {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+public:
+    static ptr create()
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
+        };
+
+        return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+    }
+
+    static ptr create(size_type n)
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                explicit make_shared_enabler(size_type n) : this_type(n) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, size_type>(n);
+#else
+        return boost::shared_ptr<this_type>(new this_type(n));
+#endif // BOOST_MSVC > 1500
+    }
+
+    static ptr create(size_type n, const value_type& val)
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                make_shared_enabler(size_type n, const value_type& val) : this_type(n, val) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, size_type, const value_type&>(n, val);
+#else
+        return boost::shared_ptr<this_type>(new this_type(n, val));
+#endif // BOOST_MSVC > 1500
+    }
+
+    template <class InputIterator>
+    static ptr create(InputIterator first, InputIterator last)
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                make_shared_enabler(InputIterator first, InputIterator last) : this_type(first, last) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, InputIterator, InputIterator>(first, last);
+#else
+        return boost::shared_ptr<this_type>(new this_type(first, last));
+#endif // BOOST_MSVC > 1500
+    }
+
+    static ptr create(const this_type& x)
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                explicit make_shared_enabler(const this_type& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, const this_type&>(x);
+#else
+        return boost::shared_ptr<this_type>(new this_type(x));
+#endif // BOOST_MSVC > 1500
+    }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    static ptr create(this_type&& x)
+    {
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                explicit make_shared_enabler(this_type&& x) : this_type(x) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, this_type&&>(x);
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    static ptr create(const std::initializer_list<value_type>& il)
+    {
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                explicit make_shared_enabler(const std::initializer_list<value_type>& il) : this_type(il) {}
+        };
+
+        return boost::make_shared<make_shared_enabler, std::initializer_list<value_type>>(il);
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)

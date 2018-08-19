@@ -33,7 +33,7 @@ template<class T, class S, size_t N> class basic_observable_array
 public:
     typedef S string_type;
     typedef typename boost::container::static_vector<T, N> container_type;
-    typedef basic_observable_array<string_type, container_type, N> this_type;
+    typedef basic_observable_array<T, S, N> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -53,11 +53,28 @@ public:
     virtual ~basic_observable_array() GO_BOOST_DEFAULT_DESTRUCTOR
 
 protected:
-     basic_observable_array()
+    basic_observable_array()
         : basic_observable_sequence_container<string_type, container_type>()
         , _container()
     {
         initialize_array();
+    }
+
+public:
+    static ptr create()
+    {
+#if BOOST_MSVC > 1500
+        struct make_shared_enabler
+            : public this_type
+        {
+            virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+                make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
+        };
+
+        return boost::make_shared<make_shared_enabler>();
+#else
+        return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
     }
 
 public:

@@ -40,7 +40,7 @@ public:
     virtual ~basic_observable_container() = 0;
 
 protected:
-     basic_observable_container()
+    basic_observable_container()
         : notify_container_changed_interface()
         , basic_observable_object<string_type>()
     {
