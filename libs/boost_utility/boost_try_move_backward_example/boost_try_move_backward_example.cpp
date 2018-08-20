@@ -19,7 +19,16 @@ namespace ui = go_boost::utility::iterator;
 
 int main()
 {
+#if defined(BOOST_MSVC_FULL_VER) && (BOOST_MSVC_FULL_VER >= 190000000)
     boost::container::slist<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5);
+#else
+    boost::container::slist<int> container;
+    container.push_front(5);
+    container.push_front(4);
+    container.push_front(3);
+    container.push_front(2);
+    container.push_front(1);
+#endif
     boost::container::slist<int>::iterator it = container.end();
     while (ui::try_move_backward(container, it))
     {
