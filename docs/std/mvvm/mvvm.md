@@ -16,7 +16,7 @@ namespace go::mvvm
 
 **MVVM**
 
-Model–View–ViewModel (MVVM) is a software architectural pattern primarily intended for
+Modelâ€“Viewâ€“ViewModel (MVVM) is a software architectural pattern primarily intended for
 development of the graphical user interface (GUI) applications. MVVM favours separation
 of development of the user interface from development of the business logic. The three
 main components in MVVM are:
