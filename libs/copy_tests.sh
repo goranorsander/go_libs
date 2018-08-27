@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 cp ./clang/libs/boost_config/GO_libraries_boost_config_tests ./bin/clang/.
 cp ./clang/libs/boost_exception/GO_libraries_boost_exception_tests ./bin/clang/.
