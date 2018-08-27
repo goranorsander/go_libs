@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\libs\boost_mvvm\test\command_execution_observer_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\command_manager_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\command_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\command_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\event_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_array_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_deque_test_suite.cpp" />
@@ -37,8 +39,12 @@
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_unordered_multiset_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_unordered_set_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\observable_vector_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\relay_command_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\relay_wcommand_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_execution_observer_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_manager_phoenix_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_manager_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_mvvm\test\wcommand_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wevent_manager_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_array_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_mvvm\test\wobservable_deque_test_suite.cpp" />
