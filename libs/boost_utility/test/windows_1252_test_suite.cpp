@@ -466,11 +466,11 @@ TEST(boost_windows_1252_test_suite, test_wchar_t_is_windows_1252_character)
         }
     }
     {
-#if defined(GO_PLATFORM_WINDOWS)
+#if defined(GO_BOOST_PLATFORM_WINDOWS)
         short c = -256;
 #else
         long c = -256;
-#endif  // #if defined(GO_PLATFORM_WINDOWS)
+#endif  // #if defined(GO_BOOST_PLATFORM_WINDOWS)
         while (c < 0)
         {
             const bool is_windows_1252 = us::is_windows_1252_character(static_cast<wchar_t>(c));

@@ -11,11 +11,6 @@
 #include <gtest/gtest.h>
 #include <go_boost/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_command_test_suite, cpp11_not_supported) {}
-#else
-
 #include <go_boost/mvvm.hpp>
 
 namespace m = go_boost::mvvm;
@@ -32,7 +27,7 @@ public:
     virtual ~test_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
     test_command()
-        : m::command_interface(TEST_COMMAND_NAME, nullptr)
+        : m::command_interface(TEST_COMMAND_NAME, m::command_interface::command_parameters_type())
         , _allow_execute(false)
         , _executed(false)
     {
@@ -59,9 +54,9 @@ public:
 
     void allow_execute(const bool v)
     {
-        const bool can_execute_ = can_execute(nullptr);
+        const bool can_execute_ = can_execute(m::command_interface::command_parameters_type());
         _allow_execute = v;
-        if(can_execute_ != can_execute(nullptr))
+        if(can_execute_ != can_execute(m::command_interface::command_parameters_type()))
         {
             can_execute_changed(shared_from_this());
         }
@@ -99,11 +94,11 @@ TEST(command_test_suite, test_command)
 {
     boost::shared_ptr<test_command> command(new test_command());
 
-    EXPECT_TRUE(command != nullptr);
+    EXPECT_TRUE(command != NULL);
     EXPECT_EQ(TEST_COMMAND_NAME, command->command_name());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command->can_execute(m::command_interface::command_parameters_type()));
     EXPECT_TRUE(command->can_execute_changed.empty());
 
     test_command_observer command_observer;
@@ -116,15 +111,15 @@ TEST(command_test_suite, test_command)
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command->can_execute(m::command_interface::command_parameters_type()));
 
-    command->execute(nullptr);
+    command->execute(m::command_interface::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command->can_execute(m::command_interface::command_parameters_type()));
 
     command->allow_execute(true);
 
@@ -132,25 +127,23 @@ TEST(command_test_suite, test_command)
     EXPECT_EQ(1, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_TRUE(command->can_execute(nullptr));
+    EXPECT_TRUE(command->can_execute(m::command_interface::command_parameters_type()));
 
-    command->execute(nullptr);
-
-    EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
-    EXPECT_TRUE(command->allow_execute());
-    EXPECT_TRUE(command->executed());
-    EXPECT_FALSE(command->can_execute(nullptr));
-
-    command->execute(nullptr);
+    command->execute(m::command_interface::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command->can_execute(m::command_interface::command_parameters_type()));
+
+    command->execute(m::command_interface::command_parameters_type());
+
+    EXPECT_FALSE(command->can_execute_changed.empty());
+    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_TRUE(command->allow_execute());
+    EXPECT_TRUE(command->executed());
+    EXPECT_FALSE(command->can_execute(m::command_interface::command_parameters_type()));
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler

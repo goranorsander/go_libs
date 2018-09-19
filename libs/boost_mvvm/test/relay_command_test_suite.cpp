@@ -11,11 +11,6 @@
 #include <gtest/gtest.h>
 #include <go_boost/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_relay_command_test_suite, cpp11_not_supported) {}
-#else
-
 #include <go_boost/mvvm.hpp>
 
 namespace m = go_boost::mvvm;
@@ -32,7 +27,7 @@ public:
     virtual ~test_relay_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
         test_relay_command(const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command)
-        : m::relay_command(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, nullptr)
+        : m::relay_command(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, m::relay_command::command_parameters_type())
     {
     }
 
@@ -72,7 +67,7 @@ public:
             _executed = true;
             if(!can_execute(params))
             {
-                can_execute_changed(nullptr);
+                can_execute_changed(m::relay_command::ptr());
             }
         }
     }
@@ -81,11 +76,11 @@ public:
 
     void allow_execute(const bool v)
     {
-        const bool can_execute_ = can_execute(nullptr);
+        const bool can_execute_ = can_execute(m::relay_command::command_parameters_type());
         _allow_execute = v;
-        if(can_execute_ != can_execute(nullptr))
+        if(can_execute_ != can_execute(m::relay_command::command_parameters_type()))
         {
-            can_execute_changed(nullptr);
+            can_execute_changed(m::relay_command::ptr());
         }
     }
 
@@ -125,17 +120,17 @@ TEST(relay_command_test_suite, test_relay_command)
 
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
 
     boost::shared_ptr<test_relay_command> command(new test_relay_command(boost::bind(&test_relay_command_exection_context::execute, &command_exection_context, _1),
         boost::bind(&test_relay_command_exection_context::can_execute, &command_exection_context, _1)));
 
-    EXPECT_TRUE(command != nullptr);
+    EXPECT_TRUE(command != NULL);
     EXPECT_EQ(TEST_RELAY_COMMAND_NAME, command->command_name());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::relay_command::command_parameters_type()));
     EXPECT_TRUE(command->can_execute_changed.empty());
 
     test_relay_command_observer command_observer;
@@ -148,17 +143,17 @@ TEST(relay_command_test_suite, test_relay_command)
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::relay_command::command_parameters_type()));
 
-    command->execute(nullptr);
+    command->execute(m::relay_command::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::relay_command::command_parameters_type()));
 
     command_exection_context.allow_execute(true);
 
@@ -166,28 +161,26 @@ TEST(relay_command_test_suite, test_relay_command)
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_TRUE(command_exection_context.can_execute(nullptr));
-    EXPECT_TRUE(command->can_execute(nullptr));
+    EXPECT_TRUE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_TRUE(command->can_execute(m::relay_command::command_parameters_type()));
 
-    command->execute(nullptr);
-
-    EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
-    EXPECT_TRUE(command_exection_context.allow_execute());
-    EXPECT_TRUE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
-    EXPECT_FALSE(command->can_execute(nullptr));
-
-    command->execute(nullptr);
+    command->execute(m::relay_command::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_TRUE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(nullptr));
-    EXPECT_FALSE(command->can_execute(nullptr));
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::relay_command::command_parameters_type()));
+
+    command->execute(m::relay_command::command_parameters_type());
+
+    EXPECT_FALSE(command->can_execute_changed.empty());
+    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_TRUE(command_exection_context.allow_execute());
+    EXPECT_TRUE(command_exection_context.executed());
+    EXPECT_FALSE(command_exection_context.can_execute(m::relay_command::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::relay_command::command_parameters_type()));
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler
