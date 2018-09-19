@@ -49,7 +49,7 @@ __warning _message_
 #define GO_BOOST_CONSTEXPR
 #else
 #define GO_BOOST_CONSTEXPR constexpr
-#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+#endif  // #if defined(BOOST_NO_CXX11_CONSTEXPR)
 
 #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 #define GO_BOOST_DEFAULT_CONSTRUCTOR {}

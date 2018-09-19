@@ -86,7 +86,7 @@ __pragma(message(_message_))
 #define GO_BOOST_CONSTEXPR
 #else
 #define GO_BOOST_CONSTEXPR constexpr
-#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+#endif  // #if defined(BOOST_NO_CXX11_CONSTEXPR)
 
 #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120)
 #define GO_BOOST_DEFAULT_CONSTRUCTOR {}
