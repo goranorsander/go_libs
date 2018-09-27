@@ -160,6 +160,36 @@
     <Filter Include="Documentation\std\mvvm\utility">
       <UniqueIdentifier>{09157b1e-8c75-4b33-b821-9cf7a733e282}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\test_reports">
+      <UniqueIdentifier>{1f223f10-5f64-4d5a-8a59-598821652ee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\linux_clang">
+      <UniqueIdentifier>{851c0071-67e5-4fa7-9abd-84ee47d13155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\linux_gcc">
+      <UniqueIdentifier>{d23d68fc-1c9e-4d20-b98a-459bc8002b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_gcc">
+      <UniqueIdentifier>{6b1192ef-2d18-479b-ba2b-5a7af697ad6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc90">
+      <UniqueIdentifier>{d8577a64-cb62-4ff2-aba2-925cc131ae56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc100">
+      <UniqueIdentifier>{416e7201-07a5-4a01-8647-4b7f09a98f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc110">
+      <UniqueIdentifier>{692e9b4a-d31f-472e-b427-5155385cebfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc120">
+      <UniqueIdentifier>{8d3a4094-ae62-4080-8fe6-8fc538f0aee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc140">
+      <UniqueIdentifier>{d221189e-123f-44e6-845f-f4c1602dc6fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\test_reports\windows_msvc141">
+      <UniqueIdentifier>{c4a0e085-65e8-4023-8daf-79710cdfedfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -549,6 +579,339 @@
     </None>
     <None Include="..\..\docs\std\mvvm\utility\utility.md">
       <Filter>Documentation\std\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\test_reports.md">
+      <Filter>Documentation\test_reports</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\unit_tests.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\unit_tests.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\unit_tests.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\test_reports.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\unit_tests.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_clang\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\linux_clang</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\linux_gcc\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\linux_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc141\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc141</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc140\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc140</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc120\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc120</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc110\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc110</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc100\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc100</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_msvc90\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_msvc90</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_boost_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_boost_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_boost_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_boost_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_boost_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_config_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_exception_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_mvvm_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_property_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_signals_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_utility_tests_report.md">
+      <Filter>Documentation\test_reports\windows_gcc</Filter>
     </None>
   </ItemGroup>
 </Project>

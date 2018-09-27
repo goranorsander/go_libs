@@ -1,3 +1,5 @@
+@echo off
+
 copy /B /V /Y .\msys-mingw\libs\boost_config\GO_libraries_boost_config_tests.exe .\bin\msys-mingw\.
 copy /B /V /Y .\msys-mingw\libs\boost_exception\GO_libraries_boost_exception_tests.exe .\bin\msys-mingw\.
 copy /B /V /Y .\msys-mingw\libs\boost_mvvm\GO_libraries_boost_mvvm_tests.exe .\bin\msys-mingw\.

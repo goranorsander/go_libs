@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="48" failures="0" disabled="0" errors="0" timestamp="2018-09-20T18:10:15" time="0.084" name="AllTests">
+  <testsuite name="command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.005">
+    <testcase name="test_execute_command" status="run" time="0.004" classname="command_execution_observer_test_suite" />
+    <testcase name="test_post_command" status="run" time="0" classname="command_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_command_manager" status="run" time="0.001" classname="std_command_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_command_manager" status="run" time="0" classname="std_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_test_suite" />
+  </testsuite>
+  <testsuite name="command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_command" status="run" time="0" classname="command_test_suite" />
+  </testsuite>
+  <testsuite name="std_event_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_command_manager" status="run" time="0" classname="std_event_manager_test_suite" />
+    <testcase name="test_command_manager" status="run" time="0" classname="std_event_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_array_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_deque_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_forward_list_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_list_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_map_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multimap_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multiset_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_observable_object" status="run" time="0" classname="std_observable_object_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_observable_object" status="run" time="0" classname="std_observable_object_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_set_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_map_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multimap_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multiset_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_set_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_vector_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_observable_vector_test_suite" />
+  </testsuite>
+  <testsuite name="relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_relay_command" status="run" time="0" classname="relay_command_test_suite" />
+  </testsuite>
+  <testsuite name="relay_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_relay_wcommand" status="run" time="0" classname="relay_wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_execute_wcommand" status="run" time="0" classname="wcommand_execution_observer_test_suite" />
+    <testcase name="test_post_wcommand" status="run" time="0" classname="wcommand_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.008">
+    <testcase name="test_command_manager" status="run" time="0.001" classname="std_wcommand_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0" classname="std_wcommand_manager_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_command_manager" status="run" time="0" classname="std_wcommand_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0" classname="std_wcommand_manager_test_suite" />
+  </testsuite>
+  <testsuite name="wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_wcommand" status="run" time="0" classname="wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_array_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_deque_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_forward_list_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_list_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_map_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_multimap_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_multiset_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_observable_object" status="run" time="0" classname="std_wobservable_object_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="test_observable_object" status="run" time="0" classname="std_wobservable_object_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_set_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_map_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_multimap_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_multiset_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_set_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_vector_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
+    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_wobservable_vector_test_suite" />
+  </testsuite>
+</testsuites>

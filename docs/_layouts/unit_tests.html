@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% seo %}
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+<body class="go_body">
+  <div class="go_wrapper">
+    <table cellpadding="0" cellspacing="0" class="go_layout_table">
+      <tr class="go_layout_table_row_1">
+        <td class="go_layout_table_row_1_menu">
+          <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+          <h3><a href="./../test_reports.html">GO C++ Libraries Test Reports</a></h3>
+          <h4><a href="./test_reports.html">Test environment and toolset</a></h4>
+          <div class="go_menu">
+            <p><strong>GO Boost C++ Libraries</strong></p>
+            <p>
+              <a href="./GO_libraries_boost_config_tests_report.html">Config</a><br />
+              <a href="./GO_libraries_boost_exception_tests_report.html">Exception</a><br />
+              <a href="./GO_libraries_boost_mvvm_tests_report.html">MVVM</a><br />
+              <a href="./GO_libraries_boost_property_tests_report.html">Property</a><br />
+              <a href="./GO_libraries_boost_utility_tests_report.html">Utility</a><br />
+            </p>
+            <p><strong>GO Std C++ Libraries</strong></p>
+            <p>
+              <a href="./GO_libraries_std_config_tests_report.html">Config</a><br />
+              <a href="./GO_libraries_std_exception_tests_report.html">Exception</a><br />
+              <a href="./GO_libraries_std_mvvm_tests_report.html">MVVM</a><br />
+              <a href="./GO_libraries_std_property_tests_report.html">Property</a><br />
+              <a href="./GO_libraries_std_signals_tests_report.html">Signals</a><br />
+              <a href="./GO_libraries_std_utility_tests_report.html">Utility</a><br />
+            </p>
+          </div>
+        </td>
+        <td class="go_layout_table_row_1_content">
+          {{ content }}
+        </td>
+      </tr>
+      <tr class="go_layout_table_row_2">
+        <td colspan="2" class="go_layout_table_row_2_copyright">
+          <p>Copyright &copy; 2014-2018 G&ouml;ran Orsander</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  {% if site.google_analytics %}
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+  </script>
+  {% endif %}
+</body>
+</html>

@@ -1,4 +1,6 @@
-cd .\bin\msys-mingw
+@echo off
+
+pushd %CD%\bin\msys-mingw
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -12,7 +14,8 @@ cd .\bin\msys-mingw
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc90
+popd
+pushd %CD%\bin\vc90
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -26,7 +29,8 @@ cd .\..\..\bin\vc90
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc100
+popd
+pushd %CD%\bin\vc100
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -40,7 +44,8 @@ cd .\..\..\bin\vc100
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc110
+popd
+pushd %CD%\bin\vc110
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -54,7 +59,8 @@ cd .\..\..\bin\vc110
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc120
+popd
+pushd %CD%\bin\vc120
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -68,7 +74,8 @@ cd .\..\..\bin\vc120
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc140
+popd
+pushd %CD%\bin\vc140
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -82,7 +89,8 @@ cd .\..\..\bin\vc140
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..\bin\vc141
+popd
+pushd %CD%\bin\vc141
 
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
@@ -96,4 +104,4 @@ cd .\..\..\bin\vc141
 .\GO_libraries_std_signals_tests.exe --gtest_output=xml:GO_libraries_std_signals_tests_report.xml
 .\GO_libraries_std_utility_tests.exe --gtest_output=xml:GO_libraries_std_utility_tests_report.xml
 
-cd .\..\..
+popd

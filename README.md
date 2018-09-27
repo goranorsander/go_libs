@@ -110,13 +110,13 @@ My development environment and toolset details:
     * C/C++ 0.18.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
     * CMake Tools 1.1.1 _(Extended CMake support)_
-    * Git Lens 8.5.5 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Git Lens 8.5.6 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 1.6.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.12.1
+  * cmake version 3.12.2
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
-  * git 2.18.0.windows.1
+  * git 2.19.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * TortoiseGit 2.7.0.0
@@ -125,8 +125,8 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.8.1
-  * Visual Studio Code 1.26.1 - with same extensions as in Linux environment
+  * Visual Studio 2017, Community Edition, version 15.8.4
+  * Visual Studio Code 1.27.2 - with same extensions as in Linux environment
 * Windows 7 Enterprise, 64 bit
   * cmake version 3.12.1
   * Visual Studio 2008 Professional Edition

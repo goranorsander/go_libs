@@ -1,3 +1,5 @@
+@echo off
+
 .\GO_libraries_boost_config_tests.exe --gtest_output=xml:GO_libraries_boost_config_tests_report.xml
 .\GO_libraries_boost_exception_tests.exe --gtest_output=xml:GO_libraries_boost_exception_tests_report.xml
 .\GO_libraries_boost_mvvm_tests.exe --gtest_output=xml:GO_libraries_boost_mvvm_tests_report.xml
