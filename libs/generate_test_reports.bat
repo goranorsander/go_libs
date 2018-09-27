@@ -8,7 +8,7 @@ set report_output_dir=%repo_root_dir%\docs\test_reports
 set summary_generator=%report_generator_dir%\gtest_xml_reports_summary.rb
 set summary_input_dir=%report_output_dir%
 set summary_template=%report_template_dir%\test_reports_header.md
-set summary_output=%report_output_dir%\test_reports.md
+set summary_output=%report_output_dir%\unit_tests.md
 
 pushd %CD%\bin\msys-mingw
 
