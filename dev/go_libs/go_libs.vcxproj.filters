@@ -580,9 +580,6 @@
     <None Include="..\..\docs\std\mvvm\utility\utility.md">
       <Filter>Documentation\std\mvvm\utility</Filter>
     </None>
-    <None Include="..\..\docs\test_reports\test_reports.md">
-      <Filter>Documentation\test_reports</Filter>
-    </None>
     <None Include="..\..\docs\test_reports\linux_clang\unit_tests.md">
       <Filter>Documentation\test_reports\linux_clang</Filter>
     </None>
@@ -912,6 +909,9 @@
     </None>
     <None Include="..\..\docs\test_reports\windows_gcc\GO_libraries_std_utility_tests_report.md">
       <Filter>Documentation\test_reports\windows_gcc</Filter>
+    </None>
+    <None Include="..\..\docs\test_reports\unit_tests.md">
+      <Filter>Documentation\test_reports</Filter>
     </None>
   </ItemGroup>
 </Project>
