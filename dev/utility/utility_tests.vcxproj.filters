@@ -42,5 +42,8 @@
     <ClCompile Include="..\..\libs\utility\test\try_move_iterator_backward_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\utility\test\create_string_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

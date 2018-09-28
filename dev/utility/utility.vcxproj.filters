@@ -110,6 +110,12 @@
     <ClInclude Include="..\..\go\utility\container\size.hpp">
       <Filter>go\utility\container</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\create.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\string\create_exception.hpp">
+      <Filter>go\utility\string</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

@@ -33,6 +33,8 @@
     <ClInclude Include="..\..\go\utility\scope_guard_new.hpp" />
     <ClInclude Include="..\..\go\utility\string\algorithm.hpp" />
     <ClInclude Include="..\..\go\utility\string\ascii.hpp" />
+    <ClInclude Include="..\..\go\utility\string\create.hpp" />
+    <ClInclude Include="..\..\go\utility\string\create_exception.hpp" />
     <ClInclude Include="..\..\go\utility\string\detail\deletable_facet.hpp" />
     <ClInclude Include="..\..\go\utility\string\detail\string_cast.hpp" />
     <ClInclude Include="..\..\go\utility\string\detail\string_cast_fwd.hpp" />
