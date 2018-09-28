@@ -1,0 +1,112 @@
+#
+#  CMakeLists.txt
+#
+#  Copyright 2018 Göran Orsander
+#
+#  This file is part of the GO.libraries.
+#  Distributed under the GO Software License, Version 2.0.
+#  See accompanying file LICENSE.md.
+#
+
+set(PROJECT_GO_LIBS_DOCS_NAME GO_libraries_documentation)
+
+file(GLOB GO_LIBS_DOCS_LAYOUTS_FILES ./_layouts/*.html)
+file(GLOB GO_LIBS_DOCS_SASS_FILES ./_sass/*.scss)
+
+file(GLOB GO_LIBS_DOCS_BOOST_MVVM_DIR_FILES ./boost/mvvm/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_MVVM_ITERATOR_DIR_FILES ./boost/mvvm/iterator/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_MVVM_UTILITY_DIR_FILES ./boost/mvvm/utility/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_PROPERTY_DIR_FILES ./boost/property/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_PROPERTY_DETAIL_DIR_FILES ./boost/property/detail/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DIR_FILES ./boost/property/nameless/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./boost/property/nameless/detail/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_PROPERTY_POLICY_DIR_FILES ./boost/property/policy/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_SIGNALS_FILES ./boost/signals/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_UTILITY_FILES ./boost/utility/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_UTILITY_CONTAINER_FILES ./boost/utility/container/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_UTILITY_ITERATOR_FILES ./boost/utility/iterator/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_FILES ./boost/utility/string/*.md)
+file(GLOB GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_DETAIL_FILES ./boost/utility/string/detail/*.md)
+
+file(GLOB GO_LIBS_DOCS_STD_MVVM_DIR_FILES ./std/mvvm/*.md)
+file(GLOB GO_LIBS_DOCS_STD_MVVM_ITERATOR_DIR_FILES ./std/mvvm/iterator/*.md)
+file(GLOB GO_LIBS_DOCS_STD_MVVM_UTILITY_DIR_FILES ./std/mvvm/utility/*.md)
+file(GLOB GO_LIBS_DOCS_STD_PROPERTY_DIR_FILES ./std/property/*.md)
+file(GLOB GO_LIBS_DOCS_STD_PROPERTY_DETAIL_DIR_FILES ./std/property/detail/*.md)
+file(GLOB GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DIR_FILES ./std/property/nameless/*.md)
+file(GLOB GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./std/property/nameless/detail/*.md)
+file(GLOB GO_LIBS_DOCS_STD_PROPERTY_POLICY_DIR_FILES ./std/property/policy/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_SIGNALS_FILES ./std/signals/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_UTILITY_FILES ./std/utility/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_UTILITY_CONTAINER_FILES ./std/utility/container/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_UTILITY_ITERATOR_FILES ./std/utility/iterator/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_FILES ./std/utility/string/*.md)
+file(GLOB GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_DETAIL_FILES ./std/utility/string/detail/*.md)
+
+add_library(${PROJECT_GO_LIBS_DOCS_NAME} STATIC
+    ${GO_LIBS_DOCS_FILES}
+    ${GO_LIBS_DOCS_LAYOUTS_FILES}
+    ${GO_LIBS_DOCS_SASS_FILES}
+    ${GO_LIBS_DOCS_BOOST_MVVM_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_MVVM_ITERATOR_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_MVVM_UTILITY_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_PROPERTY_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_PROPERTY_DETAIL_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_PROPERTY_POLICY_DIR_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_SIGNALS_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_CONTAINER_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_ITERATOR_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_FILES}
+    ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_DETAIL_FILES}
+    ${GO_LIBS_DOCS_STD_MVVM_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_MVVM_ITERATOR_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_MVVM_UTILITY_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_PROPERTY_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_PROPERTY_DETAIL_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DETAIL_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_PROPERTY_POLICY_DIR_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_SIGNALS_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_UTILITY_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_UTILITY_CONTAINER_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_UTILITY_ITERATOR_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_FILES}
+    ${GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_DETAIL_FILES}
+)
+
+set_target_properties(${PROJECT_GO_LIBS_DOCS_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/docs)
+
+source_group(GitHubPages FILES ${GO_LIBS_DOCS_FILES})
+source_group(GitHubPages\\layouts FILES ${GO_LIBS_DOCS_LAYOUTS_FILES})
+source_group(GitHubPages\\sass FILES ${GO_LIBS_DOCS_SASS_FILES})
+source_group(go_boost\\mvvm FILES ${GO_LIBS_DOCS_BOOST_MVVM_DIR_FILES})
+source_group(go_boost\\mvvm\\iterator FILES ${GO_LIBS_DOCS_BOOST_MVVM_ITERATOR_DIR_FILES})
+source_group(go_boost\\mvvm\\utility FILES ${GO_LIBS_DOCS_BOOST_MVVM_UTILITY_DIR_FILES})
+source_group(go_boost\\property FILES ${GO_LIBS_DOCS_BOOST_PROPERTY_DIR_FILES})
+source_group(go_boost\\property\\detail FILES ${GO_LIBS_DOCS_BOOST_PROPERTY_DETAIL_DIR_FILES})
+source_group(go_boost\\property\\nameless FILES ${GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DIR_FILES})
+source_group(go_boost\\property\\nameless\\detail FILES ${GO_LIBS_DOCS_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES})
+source_group(go_boost\\property\\policy FILES ${GO_LIBS_DOCS_BOOST_PROPERTY_POLICY_DIR_FILES})
+source_group(go_boost\\signals FILES ${GO_LIBS_DOCS_BOOST_DIR_SIGNALS_FILES})
+source_group(go_boost\\utility FILES ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_FILES})
+source_group(go_boost\\utility\\container FILES ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_CONTAINER_FILES})
+source_group(go_boost\\utility\\iterator FILES ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_ITERATOR_FILES})
+source_group(go_boost\\utility\\string FILES ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_FILES})
+source_group(go_boost\\utility\\string\\detail FILES ${GO_LIBS_DOCS_BOOST_DIR_UTILITY_STRING_DETAIL_FILES})
+source_group(go\\mvvm FILES ${GO_LIBS_DOCS_STD_MVVM_DIR_FILES})
+source_group(go\\mvvm\\iterator FILES ${GO_LIBS_DOCS_STD_MVVM_ITERATOR_DIR_FILES})
+source_group(go\\mvvm\\utility FILES ${GO_LIBS_DOCS_STD_MVVM_UTILITY_DIR_FILES})
+source_group(go\\property FILES ${GO_LIBS_DOCS_STD_PROPERTY_DIR_FILES})
+source_group(go\\property\\detail FILES ${GO_LIBS_DOCS_STD_PROPERTY_DETAIL_DIR_FILES})
+source_group(go\\property\\nameless FILES ${GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DIR_FILES})
+source_group(go\\property\\nameless\\detail FILES ${GO_LIBS_DOCS_STD_PROPERTY_NAMELESS_DETAIL_DIR_FILES})
+source_group(go\\property\\policy FILES ${GO_LIBS_DOCS_STD_PROPERTY_POLICY_DIR_FILES})
+source_group(go\\signals FILES ${GO_LIBS_DOCS_STD_DIR_SIGNALS_FILES})
+source_group(go\\utility FILES ${GO_LIBS_DOCS_STD_DIR_UTILITY_FILES})
+source_group(go\\utility\\container FILES ${GO_LIBS_DOCS_STD_DIR_UTILITY_CONTAINER_FILES})
+source_group(go\\utility\\iterator FILES ${GO_LIBS_DOCS_STD_DIR_UTILITY_ITERATOR_FILES})
+source_group(go\\utility\\string FILES ${GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_FILES})
+source_group(go\\utility\\string\\detail FILES ${GO_LIBS_DOCS_STD_DIR_UTILITY_STRING_DETAIL_FILES})

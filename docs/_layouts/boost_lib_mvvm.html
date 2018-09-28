@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="go_body">
+    <div class="go_wrapper">
+      <table cellpadding="0" cellspacing="0" class="go_layout_table">
+        <tr class="go_layout_table_row_1">
+          <td class="go_layout_table_row_1_menu">
+            <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+            <h3><a href="./../go_boost_cpp_libraries.html">GO Boost C++ Libraries</a></h3>
+            <h4><a href="./mvvm.html">GO Boost MVVM Library</a></h4>
+            <p>namespace <strong>go::mvvm</strong></p>
+            <div class="go_menu">
+              <p><strong>Nested namespaces</strong></p>
+              <p>
+                <a href="./iterator/iterator.html">iterator</a><br />
+                <a href="./utility/utility.html">utility</a>
+              </p>
+              <p><strong>Class reference</strong></p>
+              <p>Interfaces</p>
+              <p>
+                <a href="./class_template_basic_command_execution_observer_interface.html">basic_command_execution_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_execution_observer_interface.html">command_execution_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_execution_observer_interface.html">wcommand_execution_wobserver_interface</a><br />
+                <a href="./class_template_basic_command_interface.html">basic_command_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_interface.html">command_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_interface.html">wcommand_interface</a><br />
+                <a href="./class_template_data_context_interface.html">data_context_interface</a><br />
+                <a href="./class_template_basic_event_firing_observer_interface.html">basic_event_firing_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event_firing_observer_interface.html">event_firing_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event_firing_observer_interface.html">wevent_firing_observer_interface</a><br />
+                <a href="./class_template_basic_notify_command_execution_interface.html">basic_notify_command_execution_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_command_execution_interface.html">notify_command_execution_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_command_execution_interface.html">notify_wcommand_execution_interface</a><br />
+                <a href="./class_notify_container_changed_interface.html">notify_container_changed_interface</a><br />
+                <a href="./class_notify_data_context_change_interface.html">notify_data_context_change_interface</a><br />
+                <a href="./class_template_basic_notify_event_firing_interface.html">basic_notify_event_firing_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_event_firing_interface.html">notify_event_firing_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_event_firing_interface.html">notify_wevent_firing_interface</a><br />
+                <a href="./class_template_basic_notify_property_changed_interface.html">basic_notify_property_changed_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_property_changed_interface.html">notify_property_changed_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_notify_property_changed_interface.html">notify_wproperty_changed_interface</a><br />
+                <a href="./class_notify_view_model_change_interface.html">notify_view_model_change_interface</a><br />
+                <a href="./class_template_basic_object_observer_interface.html">basic_object_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_object_observer_interface.html">object_observer_interface</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_object_observer_interface.html">object_wobserver_interface</a><br />
+                <a href="./class_view_model_interface.html">view_model_interface</a>
+              </p>
+              <p>Managers</p>
+              <p>
+                <a href="./class_template_basic_command_manager.html">basic_command_manager</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_manager.html">command_manager</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_command_manager.html">wcommand_manager</a><br />
+                <a href="./class_template_basic_event_manager.html">basic_event_manager</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event_manager.html">event_manager</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event_manager.html">wevent_manager</a>
+              </p>
+              <p>Commands</p>
+              <p>
+                <a href="./class_command_parameters.html">command_parameters</a><br />
+                <a href="./class_template_basic_relay_command.html">basic_relay_command</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_relay_command.html">relay_command</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_relay_command.html">relay_wcommand</a>
+              </p>
+              <p>Events</p>
+              <p>
+                <a href="./class_container_changed_arguments.html">container_changed_arguments</a><br />
+                <a href="./class_data_context_changed_arguments.html">data_context_changed_arguments</a><br />
+                <a href="./class_data_context_will_change_arguments.html">data_context_will_change_arguments</a><br />
+                <a href="./class_template_basic_event.html">basic_event</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event.html">event</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_event.html">wevent</a><br />
+                <a href="./enum_notify_container_changed_action.html">notify_container_changed_action</a><br />
+                <a href="./class_template_basic_property_changed_arguments.html">basic_property_changed_arguments</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_property_changed_arguments.html">property_changed_arguments</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_property_changed_arguments.html">wproperty_changed_arguments</a><br />
+                <a href="./class_view_model_changed_arguments.html">view_model_changed_arguments</a><br />
+                <a href="./class_view_model_will_change_arguments.html">view_model_will_change_arguments</a>
+              </p>
+              <p>Objects</p>
+              <p>
+                <a href="./class_template_basic_observable_object.html">basic_observable_object</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_object.html">observable_object</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_object.html">wobservable_object</a><br />
+                <a href="./class_object.html">object</a>
+              </p>
+              <p>Observable containers</p>
+              <p>
+                <a href="./class_template_basic_observable_container.html">basic_observable_container</a><br />
+                <a href="./class_template_basic_observable_associative_container.html">basic_observable_associative_container</a><br />
+                <a href="./class_template_basic_observable_ordered_associative_container.html">basic_observable_ordered_associative_container</a><br />
+                <a href="./class_template_basic_observable_sequence_container.html">basic_observable_sequence_container</a><br />
+                <a href="./class_template_basic_observable_unordered_associative_container.html">basic_observable_unordered_associative_container</a>
+              </p>
+              <p>
+                <a href="./class_template_basic_observable_array.html">basic_observable_array</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_array.html">observable_array</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_array.html">wobservable_array</a><br />
+                <a href="./class_template_basic_observable_deque.html">basic_observable_deque</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_deque.html">observable_deque</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_deque.html">wobservable_deque</a><br />
+                <a href="./class_template_basic_observable_forward_list.html">basic_observable_forward_list</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_forward_list.html">observable_forward_list</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_forward_list.html">wobservable_forward_list</a><br />
+                <a href="./class_template_basic_observable_list.html">basic_observable_list</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_list.html">observable_list</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_list.html">wobservable_list</a><br />
+                <a href="./class_template_basic_observable_vector.html">basic_observable_vector</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_vector.html">observable_vector</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_vector.html">wobservable_vector</a>
+              </p>
+              <p>
+                <a href="./class_template_basic_observable_map.html">basic_observable_map</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_map.html">observable_map</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_map.html">wobservable_map</a><br />
+                <a href="./class_template_basic_observable_multimap.html">basic_observable_multimap</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_multimap.html">observable_multimap</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_multimap.html">wobservable_multimap</a><br />
+                <a href="./class_template_basic_observable_multiset.html">basic_observable_multiset</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_multiset.html">observable_multiset</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_multiset.html">wobservable_multiset</a><br />
+                <a href="./class_template_basic_observable_set.html">basic_observable_set</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_set.html">observable_set</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_set.html">wobservable_set</a><br />
+                <a href="./class_template_basic_observable_unordered_map.html">basic_observable_unordered_map</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_map.html">observable_unordered_map</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_map.html">wobservable_unordered_map</a><br />
+                <a href="./class_template_basic_observable_unordered_multimap.html">basic_observable_unordered_multimap</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_multimap.html">observable_unordered_multimap</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_multimap.html">wobservable_unordered_multimap</a><br />
+                <a href="./class_template_basic_observable_unordered_multiset.html">basic_observable_unordered_multiset</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_multiset.html">observable_unordered_multiset</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_multiset.html">wobservable_unordered_multiset</a><br />
+                <a href="./class_template_basic_observable_unordered_set.html">basic_observable_unordered_set</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_set.html">observable_unordered_set</a><br />
+                <a style="padding-left:10px;" href="./class_template_basic_observable_unordered_set.html">wobservable_unordered_set</a>
+              </p>
+            </div>
+          </td>
+          <td class="go_layout_table_row_1_content">
+            {{ content }}
+          </td>
+        </tr>
+        <tr class="go_layout_table_row_2">
+          <td colspan="2" class="go_layout_table_row_2_copyright">
+            <p>Copyright &copy; 2014-2018 G&ouml;ran Orsander</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+  </body>
+</html>

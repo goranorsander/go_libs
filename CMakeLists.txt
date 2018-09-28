@@ -24,7 +24,7 @@ option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-i
 option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14/17.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "67" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "68" CACHE STRING "Boost libraries minor version.")
 set(BOOST_PATCH_LEVEL "0" CACHE STRING "Boost libraries patch level.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
@@ -1049,6 +1049,26 @@ set(GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP
 set(GO_BOOST_LIBS_SRC_GO_BOOST_UTILITY_STRING_CPP)
 
 ########################################################
+#  docs                                                #
+########################################################
+
+set(GO_LIBS_DOCS_DIRNAME docs)
+set(GO_LIBS_DOCS_DIR ${GO_LIBS_SOURCE_DIR}/docs)
+
+# *.md, *.yml
+
+set(GO_LIBS_DOCS_FILES
+    ${GO_LIBS_DOCS_DIR}/_config.yml
+    ${GO_LIBS_DOCS_DIR}/index.md
+)
+
+set(GO_LIBS_DOCS_LAYOUTS_DIRNAME _layouts)
+set(GO_LIBS_DOCS_LAYOUTS_DIR ${GO_LIBS_DOCS_DIR}/_layouts)
+
+set(GO_LIBS_DOCS_SASS_DIRNAME _sass)
+set(GO_LIBS_DOCS_SASS_DIR ${GO_LIBS_DOCS_DIR}/_sass)
+
+########################################################
 #  libs                                                #
 ########################################################
 
@@ -1058,6 +1078,7 @@ set(STD_PROJECT_NAME_STR GO_libraries_std)
 ADD_SUBDIRECTORY(go)
 ADD_SUBDIRECTORY(go_boost)
 ADD_SUBDIRECTORY(libs)
+ADD_SUBDIRECTORY(docs)
 
 INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 
