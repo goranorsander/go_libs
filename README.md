@@ -72,7 +72,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 6.0.1|gcc 8.2.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 6.0.1|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 
@@ -100,12 +100,13 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 My development environment and toolset details:
 
 * Manjaro Linux 17.1.12 Hakoila, Xfce, 64 bits
-  * cmake version 3.11.4
+  * cmake version 3.12.1
   * clang version 6.0.1 (tags/RELEASE_601/final)
-  * gcc (GCC) 8.2.0
+  * gcc (GCC) 8.2.1 20180831
   * git 2.18.0
   * GNU Make 4.2.1
   * Code::Blocks 17.12
+  * ruby 2.5.1p57 (2018-03-29 revision 63029)
   * Visual Studio Code 1.19.2 - with extensions:
     * C/C++ 0.18.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
@@ -119,6 +120,7 @@ My development environment and toolset details:
   * git 2.19.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
+  * ruby 2.4.4p296 (2018-03-28 revision 63013)
   * TortoiseGit 2.7.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express

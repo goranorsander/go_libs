@@ -24,7 +24,7 @@ ruby $REPORT_GENERATOR -i ./GO_libraries_std_property_tests_report.xml -t $REPOR
 ruby $REPORT_GENERATOR -i ./GO_libraries_std_signals_tests_report.xml -t $REPORT_TEMPLATE_DIR/linux_clang_report_header.md -o $REPORT_OUTPUT_DIR/linux_clang/GO_libraries_std_signals_tests_report.md
 ruby $REPORT_GENERATOR -i ./GO_libraries_std_utility_tests_report.xml -t $REPORT_TEMPLATE_DIR/linux_clang_report_header.md -o $REPORT_OUTPUT_DIR/linux_clang/GO_libraries_std_utility_tests_report.md
 
-cd ./bin/gcc
+cd ./../../bin/gcc
 
 ruby $REPORT_GENERATOR -i ./GO_libraries_boost_config_tests_report.xml -t $REPORT_TEMPLATE_DIR/linux_gcc_report_header.md -o $REPORT_OUTPUT_DIR/linux_gcc/GO_libraries_boost_config_tests_report.md
 ruby $REPORT_GENERATOR -i ./GO_libraries_boost_exception_tests_report.xml -t $REPORT_TEMPLATE_DIR/linux_gcc_report_header.md -o $REPORT_OUTPUT_DIR/linux_gcc/GO_libraries_boost_exception_tests_report.md

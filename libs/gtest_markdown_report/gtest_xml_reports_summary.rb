@@ -74,7 +74,9 @@ def generate_markdown_report(xml_source_directory_name, md_file)
         xml_report = File.open(xml_source_filename) { |xml_file| REXML::Document.new(xml_file) }
         reports += 1
         xml_testsuites = REXML::XPath.first(xml_report, "/testsuites")
-        testsuites += 1
+        xml_testsuites.elements.each("testsuite") do |xml_testsuite|
+            testsuites += 1
+        end
         testcases += xml_testsuites.attributes["tests"].to_i
         errors += xml_testsuites.attributes["errors"].to_i
         failures += xml_testsuites.attributes["failures"].to_i
@@ -83,9 +85,9 @@ def generate_markdown_report(xml_source_directory_name, md_file)
     md_file.puts("")
     md_file.puts("# Summary")
     md_file.puts("")
-    md_file.puts("* " + reports.to_s + " unit test applications executed")
-    md_file.puts("* " + testsuites.to_s + " unit test suites")
-    md_file.puts("* " + testcases.to_s + " unit test cases")
+    md_file.puts("* " + reports.to_s + " unit test applications executed, " + (reports/9).to_s + " for each toolset" )
+    md_file.puts("* " + testsuites.to_s + " unit test suites, on average " + (testsuites/9).to_s + " for each toolset")
+    md_file.puts("* " + testcases.to_s + " unit test cases, on average " + (testcases/9).to_s + " for each toolset")
     md_file.puts("* " + errors.to_s + " errors")
     md_file.puts("* " + failures.to_s + " failures")
     md_file.puts("* " + disabled.to_s + " disabled test cases")
