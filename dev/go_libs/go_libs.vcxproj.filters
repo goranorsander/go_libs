@@ -199,6 +199,48 @@
     <Filter Include="libs\gtest_markdown_report\template">
       <UniqueIdentifier>{2796f055-ae83-4dad-9506-5b7371021906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\boost\mvvm">
+      <UniqueIdentifier>{bcb3cb2f-59b9-491d-84a1-bdd46cfa60a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property">
+      <UniqueIdentifier>{56e36fd5-2612-42ab-99d6-3eda3eb1b323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\signals">
+      <UniqueIdentifier>{09a59603-e752-4e7b-b2be-b091761b76d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\utility">
+      <UniqueIdentifier>{f313fbf7-7671-4293-9363-077fa10e9bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\mvvm\iterator">
+      <UniqueIdentifier>{52f1944b-9784-4d1b-9b3f-743a504c2556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\mvvm\utility">
+      <UniqueIdentifier>{5f1bbf63-e316-4f82-bf2a-00198e7e219a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property\nameless">
+      <UniqueIdentifier>{f6a9405e-a8f3-4ac8-8aba-1936d86c6f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property\read_only">
+      <UniqueIdentifier>{089992ed-b15b-42ab-ad8d-1f85d33d718b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property\write_only">
+      <UniqueIdentifier>{4ced8893-0f54-4779-9d46-fbf563b35d4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property\nameless\read_only">
+      <UniqueIdentifier>{c1ff125b-f2d7-436d-953f-353f1995fbd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\property\nameless\write_only">
+      <UniqueIdentifier>{c0df65e6-74b9-424b-a985-680de58048cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\utility\container">
+      <UniqueIdentifier>{f90d0303-d306-450a-ad18-01eb350a4a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\utility\iterator">
+      <UniqueIdentifier>{f9414878-1310-43a9-ade8-adc128030531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\utility\string">
+      <UniqueIdentifier>{4aa4f5c0-aa66-40a0-a01c-84d71e7d20ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -981,6 +1023,324 @@
     </None>
     <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc141_report_header.md">
       <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\iterator\function_template_erase.md">
+      <Filter>Documentation\boost\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\iterator\function_template_try_move_backward.md">
+      <Filter>Documentation\boost\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\iterator\iterator.md">
+      <Filter>Documentation\boost\mvvm\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\utility\function_ddx_text.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\utility\utility.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_command_parameters.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_container_changed_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_data_context_changed_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_data_context_will_change_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_notify_container_changed_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_notify_data_context_change_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_notify_view_model_change_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_object.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_command_execution_observer_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_command_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_command_manager.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_event.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_event_firing_observer_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_event_manager.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_notify_command_execution_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_notify_event_firing_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_notify_property_changed_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_object_observer_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_array.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_associative_container.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_container.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_deque.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_forward_list.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_list.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_map.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_multimap.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_multiset.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_object.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_ordered_associative_container.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_sequence_container.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_set.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_unordered_associative_container.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_unordered_map.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_unordered_multimap.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_unordered_multiset.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_unordered_set.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_observable_vector.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_property_changed_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_basic_relay_command.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_template_data_context_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_view_model_changed_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_view_model_interface.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_view_model_will_change_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\enum_notify_container_changed_action.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\mvvm.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\read_only\class_template_read_only_property.md">
+      <Filter>Documentation\boost\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\read_only\class_template_read_only_reference_property.md">
+      <Filter>Documentation\boost\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\read_only\class_template_read_only_value_property.md">
+      <Filter>Documentation\boost\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\read_only\read_only.md">
+      <Filter>Documentation\boost\property\nameless\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\write_only\class_template_write_only_property.md">
+      <Filter>Documentation\boost\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\write_only\class_template_write_only_reference_property.md">
+      <Filter>Documentation\boost\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\write_only\class_template_write_only_value_property.md">
+      <Filter>Documentation\boost\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\write_only\write_only.md">
+      <Filter>Documentation\boost\property\nameless\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\class_template_property.md">
+      <Filter>Documentation\boost\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\class_template_reference_property.md">
+      <Filter>Documentation\boost\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\class_template_value_property.md">
+      <Filter>Documentation\boost\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\nameless\nameless.md">
+      <Filter>Documentation\boost\property\nameless</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\read_only\class_template_read_only_basic_property.md">
+      <Filter>Documentation\boost\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\read_only\class_template_read_only_basic_reference_property.md">
+      <Filter>Documentation\boost\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\read_only\class_template_read_only_basic_value_property.md">
+      <Filter>Documentation\boost\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\read_only\read_only.md">
+      <Filter>Documentation\boost\property\read_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\write_only\class_template_write_only_basic_property.md">
+      <Filter>Documentation\boost\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\write_only\class_template_write_only_basic_reference_property.md">
+      <Filter>Documentation\boost\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\write_only\class_template_write_only_basic_value_property.md">
+      <Filter>Documentation\boost\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\write_only\write_only.md">
+      <Filter>Documentation\boost\property\write_only</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\class_template_basic_property.md">
+      <Filter>Documentation\boost\property</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\class_template_basic_reference_property.md">
+      <Filter>Documentation\boost\property</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\class_template_basic_value_property.md">
+      <Filter>Documentation\boost\property</Filter>
+    </None>
+    <None Include="..\..\docs\boost\property\property.md">
+      <Filter>Documentation\boost\property</Filter>
+    </None>
+    <None Include="..\..\docs\boost\signals\abstract_class_slot.md">
+      <Filter>Documentation\boost\signals</Filter>
+    </None>
+    <None Include="..\..\docs\boost\signals\abstract_class_slot_arguments.md">
+      <Filter>Documentation\boost\signals</Filter>
+    </None>
+    <None Include="..\..\docs\boost\signals\class_slot_key.md">
+      <Filter>Documentation\boost\signals</Filter>
+    </None>
+    <None Include="..\..\docs\boost\signals\class_template_signal.md">
+      <Filter>Documentation\boost\signals</Filter>
+    </None>
+    <None Include="..\..\docs\boost\signals\signals.md">
+      <Filter>Documentation\boost\signals</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\container\container.md">
+      <Filter>Documentation\boost\utility\container</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\container\function_template_size.md">
+      <Filter>Documentation\boost\utility\container</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\iterator\function_template_erase.md">
+      <Filter>Documentation\boost\utility\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\iterator\function_template_try_move_backward.md">
+      <Filter>Documentation\boost\utility\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\iterator\iterator.md">
+      <Filter>Documentation\boost\utility\iterator</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_equals.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_is_7_bit_ascii_character.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_iso_8859_1_to_7_bit_ascii.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_iso_8859_1_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_to_7_bit_ascii.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii_copy.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\string.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_noncopyable.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_noncopyable_nonmovable.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_nonmovable.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_scope_guard.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_string_cast_exception.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_template_primitive_type_implicit_specializer.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_template_primitive_type_specializer.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_template_scope_guard_new.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_template_value_guard.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_u2string.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_u8string.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\function_template_string_cast.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\utility.md">
+      <Filter>Documentation\boost\utility</Filter>
     </None>
   </ItemGroup>
 </Project>
