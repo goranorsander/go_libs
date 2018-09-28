@@ -190,6 +190,15 @@
     <Filter Include="Documentation\test_reports\windows_msvc141">
       <UniqueIdentifier>{c4a0e085-65e8-4023-8daf-79710cdfedfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{5b964ad3-e9fa-475d-a2bb-34c5bdd79c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\gtest_markdown_report">
+      <UniqueIdentifier>{568ba02c-ff96-4142-9dfb-4fcae28694f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\gtest_markdown_report\template">
+      <UniqueIdentifier>{2796f055-ae83-4dad-9506-5b7371021906}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -912,6 +921,66 @@
     </None>
     <None Include="..\..\docs\test_reports\unit_tests.md">
       <Filter>Documentation\test_reports</Filter>
+    </None>
+    <None Include="..\..\libs\copy_tests.bat">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\copy_tests.sh">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\generate_test_reports.bat">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\generate_test_reports.sh">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\run_all_tests.bat">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\run_all_tests.sh">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\run_tests.bat">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\run_tests.sh">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\gtest_xml_report_to_markdown.rb">
+      <Filter>libs\gtest_markdown_report</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\gtest_xml_reports_summary.rb">
+      <Filter>libs\gtest_markdown_report</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\linux_clang_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\linux_gcc_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\test_reports_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_gcc_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc90_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc100_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc110_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc120_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc140_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc141_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
     </None>
   </ItemGroup>
 </Project>
