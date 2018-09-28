@@ -109,7 +109,7 @@ S | The string class
 Member type | Definition
 -|-
 string_type | S
-container_type | std\::vector<T>
+container_type | std\::deque<T>
 this_type | basic_observable_deque<T, S>
 ptr | std\::shared_ptr\<this_type>
 wptr | std\::weak_ptr\<this_type>
