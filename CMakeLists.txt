@@ -1125,3 +1125,118 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP}          DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP}             DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME})
+
+########################################################
+#  CMake Configuration                                 #
+########################################################
+
+set(PROJECT_GO_LIBS_CMAKE_NAME GO_libraries_CMake_Configuration)
+
+set(GO_LIBS_CMAKE
+    ${ROOT_DIR}/CMakeLists.googletest.txt.in
+    ${ROOT_DIR}/CMakeLists.txt
+)
+
+set(GO_LIBS_DOCS_CMAKE
+    ${ROOT_DIR}/docs/CMakeLists.txt
+)
+
+set(GO_LIBS_GO_CMAKE
+    ${ROOT_DIR}/go/CMakeLists.txt
+)
+
+set(GO_LIBS_GO_BOOST_CMAKE
+    ${ROOT_DIR}/go_boost/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_CMAKE
+    ${ROOT_DIR}/libs/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_CONFIG_CMAKE
+    ${ROOT_DIR}/libs/boost_config/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_EXCEPTION_CMAKE
+    ${ROOT_DIR}/libs/boost_exception/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_MVVM_CMAKE
+    ${ROOT_DIR}/libs/boost_mvvm/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE
+    ${ROOT_DIR}/libs/boost_property/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE
+    ${ROOT_DIR}/libs/boost_signals/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_BOOST_UTILITY_CMAKE
+    ${ROOT_DIR}/libs/boost_utility/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_CONFIG_CMAKE
+    ${ROOT_DIR}/libs/config/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_EXCEPTION_CMAKE
+    ${ROOT_DIR}/libs/exception/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_MVVM_CMAKE
+    ${ROOT_DIR}/libs/mvvm/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_PROPERTY_CMAKE
+    ${ROOT_DIR}/libs/property/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_SIGNALS_CMAKE
+    ${ROOT_DIR}/libs/signals/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_UTILITY_CMAKE
+    ${ROOT_DIR}/libs/utility/CMakeLists.txt
+)
+
+add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
+    ${GO_LIBS_CMAKE}
+    ${GO_LIBS_DOCS_CMAKE}
+    ${GO_LIBS_GO_CMAKE}
+    ${GO_LIBS_GO_BOOST_CMAKE}
+    ${GO_LIBS_LIBS_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_CONFIG_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_EXCEPTION_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_MVVM_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE}
+    ${GO_LIBS_LIBS_CONFIG_CMAKE}
+    ${GO_LIBS_LIBS_EXCEPTION_CMAKE}
+    ${GO_LIBS_LIBS_MVVM_CMAKE}
+    ${GO_LIBS_LIBS_PROPERTY_CMAKE}
+    ${GO_LIBS_LIBS_SIGNALS_CMAKE}
+    ${GO_LIBS_LIBS_UTILITY_CMAKE}
+)
+
+set_target_properties(${PROJECT_GO_LIBS_CMAKE_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/CMakeConfiguration)
+
+source_group(CMake FILES ${GO_LIBS_CMAKE})
+source_group(CMake\\docs FILES ${GO_LIBS_DOCS_CMAKE})
+source_group(CMake\\go FILES ${GO_LIBS_GO_CMAKE})
+source_group(CMake\\go_boost FILES ${GO_LIBS_GO_BOOST_CMAKE})
+source_group(CMake\\libs FILES ${GO_LIBS_LIBS_CMAKE})
+source_group(CMake\\libs\\boost_config FILES ${GO_LIBS_LIBS_BOOST_CONFIG_CMAKE})
+source_group(CMake\\libs\\boost_exception FILES ${GO_LIBS_LIBS_BOOST_EXCEPTION_CMAKE})
+source_group(CMake\\libs\\boost_mvvm FILES ${GO_LIBS_LIBS_BOOST_MVVM_CMAKE})
+source_group(CMake\\libs\\boost_property FILES ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE})
+source_group(CMake\\libs\\boost_signals FILES ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE})
+source_group(CMake\\libs\\boost_utility FILES ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE})
+source_group(CMake\\libs\\config FILES ${GO_LIBS_LIBS_CONFIG_CMAKE})
+source_group(CMake\\libs\\exception FILES ${GO_LIBS_LIBS_EXCEPTION_CMAKE})
+source_group(CMake\\libs\\mvvm FILES ${GO_LIBS_LIBS_MVVM_CMAKE})
+source_group(CMake\\libs\\property FILES ${GO_LIBS_LIBS_PROPERTY_CMAKE})
+source_group(CMake\\libs\\signals FILES ${GO_LIBS_LIBS_SIGNALS_CMAKE})
+source_group(CMake\\libs\\utility FILES ${GO_LIBS_LIBS_UTILITY_CMAKE})
