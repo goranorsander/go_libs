@@ -8,7 +8,7 @@
 #  See accompanying file LICENSE.md.
 #
 
-set(PROJECT_GO_LIBS_STD_NAME GO_libraries_std)
+set(PROJECT_GO_STD_LIBS_NAME GO_std_libraries)
 
 file(GLOB GO_DIR_FILES ./*.hpp)
 file(GLOB GO_CONFIG_DIR_FILES ./config/*.hpp)
@@ -30,7 +30,7 @@ file(GLOB GO_DIR_UTILITY_ITERATOR_FILES ./utility/iterator/*.hpp)
 file(GLOB GO_DIR_UTILITY_STRING_FILES ./utility/string/*.hpp)
 file(GLOB GO_DIR_UTILITY_STRING_DETAIL_FILES ./utility/string/detail/*.hpp)
 
-add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
+add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_DIR_FILES}
     ${GO_CONFIG_DIR_FILES}
     ${GO_CONFIG_COMPILER_DIR_FILES}
@@ -52,7 +52,7 @@ add_library(${PROJECT_GO_LIBS_STD_NAME} STATIC
     ${GO_DIR_UTILITY_STRING_DETAIL_FILES}
 )
 
-set_target_properties(${PROJECT_GO_LIBS_STD_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/std/libs)
+set_target_properties(${PROJECT_GO_STD_LIBS_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/std/libs)
 
 source_group(go FILES ${GO_DIR_FILES})
 source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})
