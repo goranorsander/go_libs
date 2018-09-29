@@ -53,6 +53,9 @@
     <Text Include="..\..\libs\exception\CMakeLists.txt">
       <Filter>CMake Configuration\libs\exception</Filter>
     </Text>
+    <Text Include="..\..\docs\CMakeLists.txt">
+      <Filter>CMake Configuration\docs</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Configuration">
@@ -240,6 +243,9 @@
     </Filter>
     <Filter Include="Documentation\boost\utility\string">
       <UniqueIdentifier>{4aa4f5c0-aa66-40a0-a01c-84d71e7d20ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\docs">
+      <UniqueIdentifier>{2402d7d7-5026-4a76-b0a2-4839ecb9567c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
