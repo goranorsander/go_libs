@@ -56,10 +56,10 @@ protected:
     virtual const container_type& container() const;
 
 public:
-    iterator before_begin() noexcept;
-    constexpr const_iterator before_begin() const noexcept;
-    constexpr const_iterator cbefore_begin() const noexcept;
-    size_type size() const noexcept;
+    iterator before_begin() throw();
+    const_iterator before_begin() const throw();
+    const_iterator cbefore_begin() const throw();
+    size_type size() const throw();
     void resize(size_type n);
     void resize(size_type n, const value_type& val);
     void shrink_to_fit();
@@ -70,7 +70,7 @@ public:
     void push_front(value_type&& val);
     void pop_front();
     template<class t, class s> void swap(basic_observable_forward_list<t, s>& x);
-    void clear() noexcept;
+    void clear() throw();
     template <class... Args> void emplace_front(Args&&... args);
     template <class... Args> iterator emplace_after(const_iterator position, Args&&... args);
     iterator insert_after(const_iterator position, const value_type& val);
@@ -80,7 +80,7 @@ public:
     iterator insert_after(const_iterator position, boost::initializer_list<value_type> il);
     iterator erase_after(const_iterator position);
     iterator erase_after(const_iterator position, const_iterator last);
-    constexpr allocator_type get_allocator() const noexcept;
+    allocator_type get_allocator() const throw();
     template<class t, class s> void splice_after(const_iterator position, basic_observable_forward_list<t, s>& x);
     template<class t, class s> void splice_after(const_iterator position, basic_observable_forward_list<t, s>&& x);
     template<class t, class s> void splice_after(const_iterator position, basic_observable_forward_list<t, s>& x, const_iterator i);
@@ -213,8 +213,8 @@ Return a referense to the underlying container storage.
 
 Specifiers | Signature
 -|-
-public | iterator **before_begin**() noexcept
-public constexpr | const_iterator **before_begin**() const noexcept
+public | iterator **before_begin**() throw()
+public | const_iterator **before_begin**() const throw()
 
 Returns an iterator to the element before the first element of the container.
 
@@ -224,7 +224,7 @@ Returns an iterator to the element before the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbefore_begin**() const noexcept
+public | const_iterator **cbefore_begin**() const throw()
 
 Returns an iterator to the element before the first element of the container.
 
@@ -234,7 +234,7 @@ Returns an iterator to the element before the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -308,7 +308,7 @@ Exchanges the contents of the container with those of **x**.
 
 Specifiers | Signature
 -|-
-public | void **clear**() noexcept
+public | void **clear**() throw()
 
 Removes all elements from the container.
 
@@ -363,7 +363,7 @@ Removes specified elements from the container.
 
 Specifiers | Signature
 -|-
-public constexpr | allocator_type **get_allocator**() const noexcept
+public | allocator_type **get_allocator**() const throw()
 
 Returns the allocator associated with the container.
 
@@ -455,8 +455,8 @@ Reverses the order of the elements in the container.
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -466,8 +466,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -477,7 +477,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -487,7 +487,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -497,7 +497,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -507,7 +507,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -518,7 +518,7 @@ Checks if the container has no elements, i.e. whether **begin() == end()**.
 Specifiers | Signature
 -|-
 public | reference front()
-public constexpr | const_reference **front**() const
+public | const_reference **front**() const
 
 Returns a reference to the first element in the container.
 

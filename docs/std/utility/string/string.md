@@ -22,8 +22,13 @@ strings.
 
 ## Reference
 
+### Class reference
+
+* [create_exception](./class_create_exception.html)
+
 ### Function reference
 
+* [create](./function_template_create.html)
 * [equals](./function_template_equals.html)
 * [is_7_bit_ascii_character](./function_template_is_7_bit_ascii_character.html)
 * [reduce_iso_8859_1_to_7_bit_ascii](./function_template_reduce_iso_8859_1_to_7_bit_ascii.html)

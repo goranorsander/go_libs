@@ -30,16 +30,16 @@ protected:
     basic_observable_sequence_container();
 
 public:
-    iterator begin() noexcept;
-    constexpr const_iterator begin() const noexcept;
-    iterator end() noexcept;
-    constexpr const_iterator end() const noexcept;
-    constexpr const_iterator cbegin() const noexcept;
-    constexpr const_iterator cend() const noexcept;
-    constexpr size_type max_size() const noexcept;
-    constexpr bool empty() const noexcept;
+    iterator begin() throw();
+    const_iterator begin() const throw();
+    iterator end() throw();
+    const_iterator end() const throw();
+    const_iterator cbegin() const throw();
+    const_iterator cend() const throw();
+    size_type max_size() const throw();
+    bool empty() const throw();
     reference front();
-    constexpr const_reference front() const;
+    const_reference front() const;
 
 protected:
     void notify_assign(const boost::size_t& before, const boost::size_t& after);
@@ -103,8 +103,8 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -112,8 +112,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -121,7 +121,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -129,7 +129,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -137,7 +137,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -145,7 +145,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -154,7 +154,7 @@ Checks if the container has no elements, i.e. whether **begin() == end()**.
 Specifiers | Signature
 -|-
 public | reference front()
-public constexpr | const_reference **front**() const
+public | const_reference **front**() const
 
 Returns a reference to the first element in the container.
 

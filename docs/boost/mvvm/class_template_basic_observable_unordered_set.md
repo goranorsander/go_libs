@@ -212,7 +212,7 @@ Return a referense to the underlying container storage.
 
 Specifiers | Signature
 -|-
-public constexpr | key_equal **key_eq**() const
+public | key_equal **key_eq**() const
 
 Returns the function that compares keys for equality.
 
@@ -222,7 +222,7 @@ Returns the function that compares keys for equality.
 
 Specifiers | Signature
 -|-
-public constexpr | hasher **hash_function**() const
+public | hasher **hash_function**() const
 
 Returns the function that hashes the keys.
 
@@ -232,7 +232,7 @@ Returns the function that hashes the keys.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **bucket**(const key_type& k) const
+public | size_type **bucket**(const key_type& k) const
 
 Returns the index of the bucket for key key.
 
@@ -242,7 +242,7 @@ Returns the index of the bucket for key key.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **bucket_count**() const noexcept
+public | size_type **bucket_count**() const throw()
 
 Returns the number of buckets in the container.
 
@@ -252,7 +252,7 @@ Returns the number of buckets in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **bucket_size**(size_type n) const
+public | size_type **bucket_size**(size_type n) const
 
 Returns the number of elements in the bucket with index n.
 
@@ -262,7 +262,7 @@ Returns the number of elements in the bucket with index n.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_bucket_count**() const
+public | size_type **max_bucket_count**() const
 
 Returns the maximum number of buckets the container is able to hold.
 
@@ -282,7 +282,7 @@ Sets the number of buckets to count and rehashes the container.
 
 Specifiers | Signature
 -|-
-public constexpr | float **load_factor**() const
+public | float **load_factor**() const
 
 Returns the average number of elements per bucket, that is, **size()** divided by
 **bucket_count()**.
@@ -293,7 +293,7 @@ Returns the average number of elements per bucket, that is, **size()** divided b
 
 Specifiers | Signature
 -|-
-public constexpr | float **max_load_factor**() const
+public | float **max_load_factor**() const
 public | void **max_load_factor**(float z)
 
 Manages the maximum load factor (number of elements per bucket). The container
@@ -308,8 +308,8 @@ automatically increases the number of buckets if the load factor exceeds this th
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -319,8 +319,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -330,7 +330,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -340,7 +340,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -350,7 +350,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -360,7 +360,7 @@ Returns the number of elements in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -370,7 +370,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -391,7 +391,7 @@ before hint.
 
 Specifiers | Signature
 -|-
-public | void **clear**() noexcept
+public | void **clear**() throw()
 
 Removes all elements from the container.
 
@@ -411,7 +411,7 @@ Exchanges the contents of the container with those of **x**.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **count**(const value_type& val) const
+public | size_type **count**(const value_type& val) const
 
 Returns the number of elements with key that compares equivalent to **val**.
 
@@ -421,7 +421,7 @@ Returns the number of elements with key that compares equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **find**(const value_type& val) const
+public | const_iterator **find**(const value_type& val) const
 public | iterator **find**(const value_type& val)
 
 Finds an element with key equivalent to **val**.
@@ -432,7 +432,7 @@ Finds an element with key equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
+public | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
 public | boost::pair<iterator, iterator> **equal_range**(const value_type& val)
 
 Returns a range containing all elements with the given key in the container.
@@ -443,7 +443,7 @@ Returns a range containing all elements with the given key in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | allocator_type **get_allocator**() const noexcept
+public | allocator_type **get_allocator**() const throw()
 
 Returns the allocator associated with the container.
 

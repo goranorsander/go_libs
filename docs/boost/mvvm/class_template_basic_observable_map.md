@@ -50,7 +50,7 @@ public:
 
 public:
     mapped_type& at(const key_type& k);
-    constexpr const mapped_type& at(const key_type& k) const;
+    const mapped_type& at(const key_type& k) const;
     template <class... Args> boost::pair<iterator, bool> emplace(Args&&... args);
     boost::pair<iterator, bool> insert(const value_type& val);
     template <class P> boost::pair<iterator, bool> insert(P&& val);
@@ -183,7 +183,7 @@ performing an insertion if such key does not already exist.
 Specifiers | Signature
 -|-
 public | mapped_type& *at**(const key_type& k)
-public constexpr | const mapped_type& **at**(const key_type& k) const
+public | const mapped_type& **at**(const key_type& k) const
 
 Returns a reference to the mapped value of the element with key equivalent to key.
 
@@ -243,8 +243,8 @@ Return a referense to the underlying container storage.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rbegin**() noexcept
-public constexpr | const_reverse_iterator **rbegin**() const noexcept
+public | reverse_iterator **rbegin**() throw()
+public | const_reverse_iterator **rbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -254,8 +254,8 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rend**() noexcept
-public constexpr | const_reverse_iterator **rend**() const noexcept
+public | reverse_iterator **rend**() throw()
+public | const_reverse_iterator **rend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -266,7 +266,7 @@ reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crbegin**() const noexcept
+public | const_reverse_iterator **crbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -276,7 +276,7 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crend**() const noexcept
+public | const_reverse_iterator **crend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -288,7 +288,7 @@ reversed container.
 Specifiers | Signature
 -|-
 public | iterator **lower_bound**(const value_type& val)
-public constexpr | const_iterator **lower_bound**(const value_type& val) const
+public | const_iterator **lower_bound**(const value_type& val) const
 
 Returns an iterator pointing to the first element that is *not less* than **val**.
 
@@ -299,7 +299,7 @@ Returns an iterator pointing to the first element that is *not less* than **val*
 Specifiers | Signature
 -|-
 public | iterator **upper_bound**(const value_type& val)
-public constexpr | const_iterator **upper_bound**(const value_type& val) const
+public | const_iterator **upper_bound**(const value_type& val) const
 
 Returns an iterator pointing to the first element that is *greater* than **val**.
 
@@ -309,7 +309,7 @@ Returns an iterator pointing to the first element that is *greater* than **val**
 
 Specifiers | Signature
 -|-
-public constexpr | key_compare **key_comp**() const
+public | key_compare **key_comp**() const
 
 Returns the function object that compares the keys, which is a copy of this container's
 constructor argument comp.
@@ -320,7 +320,7 @@ constructor argument comp.
 
 Specifiers | Signature
 -|-
-public constexpr | value_compare **value_comp**() const
+public | value_compare **value_comp**() const
 
 Returns the function object that compares the values.
 
@@ -330,8 +330,8 @@ Returns the function object that compares the values.
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -341,8 +341,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -352,7 +352,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -362,7 +362,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -372,7 +372,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -382,7 +382,7 @@ Returns the number of elements in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -392,7 +392,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -413,7 +413,7 @@ before hint.
 
 Specifiers | Signature
 -|-
-public | void **clear**() noexcept
+public | void **clear**() throw()
 
 Removes all elements from the container.
 
@@ -433,7 +433,7 @@ Exchanges the contents of the container with those of **x**.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **count**(const value_type& val) const
+public | size_type **count**(const value_type& val) const
 
 Returns the number of elements with key that compares equivalent to **val**.
 
@@ -443,7 +443,7 @@ Returns the number of elements with key that compares equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **find**(const value_type& val) const
+public | const_iterator **find**(const value_type& val) const
 public | iterator **find**(const value_type& val)
 
 Finds an element with key equivalent to **val**.
@@ -454,7 +454,7 @@ Finds an element with key equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
+public | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
 public | boost::pair<iterator, iterator> **equal_range**(const value_type& val)
 
 Returns a range containing all elements with the given key in the container.
@@ -465,7 +465,7 @@ Returns a range containing all elements with the given key in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | allocator_type **get_allocator**() const noexcept
+public | allocator_type **get_allocator**() const throw()
 
 Returns the allocator associated with the container.
 

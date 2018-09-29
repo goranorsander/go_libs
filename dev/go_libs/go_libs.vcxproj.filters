@@ -1348,5 +1348,23 @@
     <None Include="..\..\docs\boost\utility\utility.md">
       <Filter>Documentation\boost\utility</Filter>
     </None>
+    <None Include="..\..\docs\std\utility\string\class_create_exception.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\string\function_template_create.md">
+      <Filter>Documentation\std\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\class_create_exception.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\string\function_template_create.md">
+      <Filter>Documentation\boost\utility\string</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_u16string.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_u32string.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>

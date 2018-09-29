@@ -37,6 +37,8 @@ of components too small to be called libraries in their own right.
 * [string_cast_exception](./class_string_cast_exception.html)
 * [u2string](./class_u2string.html)
 * [u8string](./class_u8string.html)
+* [u16string](./class_u16string.html)
+* [u32string](./class_u32string.html)
 * [value_guard](./class_template_value_guard.html)
 
 ### Function reference

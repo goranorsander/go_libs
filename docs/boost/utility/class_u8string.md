@@ -38,7 +38,7 @@ public:
     u8string(InputIt first, InputIt last, const allocator_type& alloc = allocator_type());
     u8string(const u8string& other);
     u8string(const u8string& other, const allocator_type& alloc);
-    u8string(u8string&& other) noexcept;
+    u8string(u8string&& other) throw();
     u8string(u8string&& other, const allocator_type& alloc);
     u8string(boost::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
     template<class T>
@@ -95,7 +95,7 @@ Constructor | Specifiers | Signature
 *range constructor (8)* | public | template\<class InputIt> **u8string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
 *copy constructor (9)* | public | **u8string**(const **u8string**& other)
 *copy constructor (10)* | public | **u8string**(const **u8string**& other, const allocator_type& alloc)
-*move constructor (11)* | public | **u8string**(**u8string**&& other) noexcept
+*move constructor (11)* | public | **u8string**(**u8string**&& other) throw()
 *move constructor (12)* | public | **u8string**(**u8string**&& other, const allocator_type& alloc)
 *initializer list constructor (13)* | public | **u8string**(boost\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
 *string view constructor (14)* | public | template\<class T> **u8string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())

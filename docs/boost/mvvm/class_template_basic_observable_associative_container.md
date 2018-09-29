@@ -30,24 +30,24 @@ protected:
     basic_observable_associative_container();
 
 public:
-    iterator begin() noexcept;
-    constexpr const_iterator begin() const noexcept;
-    iterator end() noexcept;
-    constexpr const_iterator end() const noexcept;
-    constexpr const_iterator cbegin() const noexcept;
-    constexpr const_iterator cend() const noexcept;
-    constexpr size_type size() const noexcept;
-    constexpr size_type max_size() const noexcept;
-    constexpr bool empty() const noexcept;
+    iterator begin() throw();
+    const_iterator begin() const throw();
+    iterator end() throw();
+    const_iterator end() const throw();
+    const_iterator cbegin() const throw();
+    const_iterator cend() const throw();
+    size_type size() const throw();
+    size_type max_size() const throw();
+    bool empty() const throw();
     template <class... Args> iterator emplace_hint(const_iterator position, Args&&... args);
-    void clear() noexcept;
+    void clear() throw();
     template<class t, class s> void swap(basic_observable_associative_container<t, s>& x);
-    constexpr size_type count(const value_type& val) const;
-    constexpr const_iterator find(const value_type& val) const;
+    size_type count(const value_type& val) const;
+    const_iterator find(const value_type& val) const;
     iterator find(const value_type& val);
-    constexpr boost::pair<const_iterator, const_iterator> equal_range(const value_type& val) const;
+    boost::pair<const_iterator, const_iterator> equal_range(const value_type& val) const;
     boost::pair<iterator, iterator> equal_range(const value_type& val);
-    constexpr allocator_type get_allocator() const noexcept;
+    allocator_type get_allocator() const throw();
 
 protected:
     void notify_insert(const boost::size_t& before, const boost::size_t& after);
@@ -112,8 +112,8 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -121,8 +121,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -130,7 +130,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -138,7 +138,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -146,7 +146,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -154,7 +154,7 @@ Returns the number of elements in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -162,7 +162,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -179,7 +179,7 @@ before hint.
 
 Specifiers | Signature
 -|-
-public | void **clear**() noexcept
+public | void **clear**() throw()
 
 Removes all elements from the container.
 
@@ -195,7 +195,7 @@ Exchanges the contents of the container with those of **x**.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **count**(const value_type& val) const
+public | size_type **count**(const value_type& val) const
 
 Returns the number of elements with key that compares equivalent to **val**.
 
@@ -203,7 +203,7 @@ Returns the number of elements with key that compares equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **find**(const value_type& val) const
+public | const_iterator **find**(const value_type& val) const
 public | iterator **find**(const value_type& val)
 
 Finds an element with key equivalent to **val**.
@@ -212,7 +212,7 @@ Finds an element with key equivalent to **val**.
 
 Specifiers | Signature
 -|-
-public constexpr | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
+public | boost::pair<const_iterator, const_iterator> **equal_range**(const value_type& val) const
 public | boost::pair<iterator, iterator> **equal_range**(const value_type& val)
 
 Returns a range containing all elements with the given key in the container.
@@ -221,7 +221,7 @@ Returns a range containing all elements with the given key in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | allocator_type **get_allocator**() const noexcept
+public | allocator_type **get_allocator**() const throw()
 
 Returns the allocator associated with the container.
 

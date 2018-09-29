@@ -35,7 +35,7 @@ protected:
 public:
     static ptr create();
 
-    constexpr const_reference operator[](size_type n) const;
+    const_reference operator[](size_type n) const;
     reference operator[](size_type n);
 
 protected:
@@ -44,19 +44,19 @@ protected:
     virtual const container_type& container() const;
 
 public:
-    reverse_iterator rbegin() noexcept;
-    constexpr const_reverse_iterator rbegin() const noexcept;
-    reverse_iterator rend() noexcept;
-    constexpr const_reverse_iterator rend() const noexcept;
-    constexpr const_reverse_iterator crbegin() const noexcept;
-    constexpr const_reverse_iterator crend() const noexcept;
-    constexpr size_type size() const noexcept;
-    constexpr const_reference at(size_type n) const;
+    reverse_iterator rbegin() throw();
+    const_reverse_iterator rbegin() const throw();
+    reverse_iterator rend() throw();
+    const_reverse_iterator rend() const throw();
+    const_reverse_iterator crbegin() const throw();
+    const_reverse_iterator crend() const throw();
+    size_type size() const throw();
+    const_reference at(size_type n) const;
     reference at(size_type n);
     reference back();
-    constexpr const_reference back() const;
-    pointer data() noexcept;
-    constexpr const_pointer data() const noexcept;
+    const_reference back() const;
+    pointer data() throw();
+    const_pointer data() const throw();
 };
 ```
 
@@ -133,7 +133,7 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public constexpr | const_reference **operator[]**(size_type n) const
+public | const_reference **operator[]**(size_type n) const
 public | reference **operator[]**(size_type n)
 
 Returns a reference to the element at specified location **n**.
@@ -161,8 +161,8 @@ Return a referense to the underlying container storage.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rbegin**() noexcept
-public constexpr | const_reverse_iterator **rbegin**() const noexcept
+public | reverse_iterator **rbegin**() throw()
+public | const_reverse_iterator **rbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -172,8 +172,8 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rend**() noexcept
-public constexpr | const_reverse_iterator **rend**() const noexcept
+public | reverse_iterator **rend**() throw()
+public | const_reverse_iterator **rend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -184,7 +184,7 @@ reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crbegin**() const noexcept
+public | const_reverse_iterator **crbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -194,7 +194,7 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crend**() const noexcept
+public | const_reverse_iterator **crend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -205,7 +205,7 @@ reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -215,7 +215,7 @@ Returns the number of elements in the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reference *at**(size_type n) const
+public | const_reference *at**(size_type n) const
 public | reference **at**(size_type n)
 
 Returns a reference to the element at specified location *n*.
@@ -227,7 +227,7 @@ Returns a reference to the element at specified location *n*.
 Specifiers | Signature
 -|-
 public | reference **back**()
-public constexpr | const_reference **back**() const
+public | const_reference **back**() const
 
 Returns reference to the last element in the container.
 
@@ -237,8 +237,8 @@ Returns reference to the last element in the container.
 
 Specifiers | Signature
 -|-
-public | pointer **data**() noexcept
-public constexpr | const_pointer **data**() const noexcept
+public | pointer **data**() throw()
+public | const_pointer **data**() const throw()
 
 Returns pointer to the underlying array serving as element storage.
 
@@ -250,8 +250,8 @@ Returns pointer to the underlying array serving as element storage.
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -261,8 +261,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -272,7 +272,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -282,7 +282,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -292,7 +292,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -302,7 +302,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -313,7 +313,7 @@ Checks if the container has no elements, i.e. whether **begin() == end()**.
 Specifiers | Signature
 -|-
 public | reference front()
-public constexpr | const_reference **front**() const
+public | const_reference **front**() const
 
 Returns a reference to the first element in the container.
 

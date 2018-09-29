@@ -36,9 +36,9 @@ protected:
     primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t);
 
 public:
-    constexpr operator const value_type&() const;
+    operator const value_type&() const;
     operator value_type&();
-    constexpr const value_type& get() const;
+    const value_type& get() const;
     value_type& get();
     void set(const value_type& t);
     void set(const this_type& t);
@@ -94,7 +94,7 @@ Operator | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public constexpr | operator const value_type&() const
+public | operator const value_type&() const
 public | operator value_type&()
 
 Return the specialized primitive type value.
@@ -105,7 +105,7 @@ Return the specialized primitive type value.
 
 Specifiers | Signature
 -|-
-public | **constexpr const value_type**& **get**() const
+public | **const value_type**& **get**() const
 public | **value_type**& **get**()
 
 Return the specialized primitive type value.
@@ -131,13 +131,13 @@ specialized primitive type with same funtionallity.
 * [Logical operators](http://en.cppreference.com/w/cpp/language/operator_logical)
 * [Increment/decrement operators](http://en.cppreference.com/w/cpp/language/operator_incdec)
 
-### GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
+### GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
 
-The **GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized integer
+The **GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized integer
 type class, e.g:
 
 ```c++
-GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(my_integer_type, long, 0)
+GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(my_integer_type, long, 0)
 ```
 
 Will implement a class declared as:
@@ -205,18 +205,18 @@ public:
     template<typename P> my_integer_type operator>>(const P& p) const;
 
     // Comparison operators
-    constexpr bool operator==(const my_integer_type& t) const;
-    constexpr bool operator!=(const my_integer_type& t) const;
-    constexpr bool operator<(const my_integer_type& t) const;
-    constexpr bool operator<=(const my_integer_type& t) const;
-    constexpr bool operator>(const my_integer_type& t) const;
-    constexpr bool operator>=(const my_integer_type& t) const;
-    template<typename P> constexpr bool operator==(const P& p) const;
-    template<typename P> constexpr bool operator!=(const P& p) const;
-    template<typename P> constexpr bool operator<(const P& p) const;
-    template<typename P> constexpr bool operator<=(const P& p) const;
-    template<typename P> constexpr bool operator>(const P& p) const;
-    template<typename P> constexpr bool operator>=(const P& p) const;
+    bool operator==(const my_integer_type& t) const;
+    bool operator!=(const my_integer_type& t) const;
+    bool operator<(const my_integer_type& t) const;
+    bool operator<=(const my_integer_type& t) const;
+    bool operator>(const my_integer_type& t) const;
+    bool operator>=(const my_integer_type& t) const;
+    template<typename P> bool operator==(const P& p) const;
+    template<typename P> bool operator!=(const P& p) const;
+    template<typename P> bool operator<(const P& p) const;
+    template<typename P> bool operator<=(const P& p) const;
+    template<typename P> bool operator>(const P& p) const;
+    template<typename P> bool operator>=(const P& p) const;
 
     // Logical operators
     my_integer_type operator!() const;
@@ -253,13 +253,13 @@ template<typename P> inline my_integer_type operator>(const P& lhs, const my_int
 template<typename P> inline my_integer_type operator>=(const P& lhs, const my_integer_type& rhs);
 ```
 
-### GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
+### GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
 
-The **GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized
+The **GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized
 floating point type class, e.g:
 
 ```c++
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(my_floating_point_type, double, 0.0)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(my_floating_point_type, double, 0.0)
 ```
 
 Will implement a class declared as:
@@ -306,18 +306,18 @@ public:
     template<typename P> my_floating_point_type operator%(const P& p) const;
 
     // Comparison operators
-    constexpr bool operator==(const my_floating_point_type& t) const;
-    constexpr bool operator!=(const my_floating_point_type& t) const;
-    constexpr bool operator<(const my_floating_point_type& t) const;
-    constexpr bool operator<=(const my_floating_point_type& t) const;
-    constexpr bool operator>(const my_floating_point_type& t) const;
-    constexpr bool operator>=(const my_floating_point_type& t) const;
-    template<typename P> constexpr bool operator==(const P& p) const;
-    template<typename P> constexpr bool operator!=(const P& p) const;
-    template<typename P> constexpr bool operator<(const P& p) const;
-    template<typename P> constexpr bool operator<=(const P& p) const;
-    template<typename P> constexpr bool operator>(const P& p) const;
-    template<typename P> constexpr bool operator>=(const P& p) const;
+    bool operator==(const my_floating_point_type& t) const;
+    bool operator!=(const my_floating_point_type& t) const;
+    bool operator<(const my_floating_point_type& t) const;
+    bool operator<=(const my_floating_point_type& t) const;
+    bool operator>(const my_floating_point_type& t) const;
+    bool operator>=(const my_floating_point_type& t) const;
+    template<typename P> bool operator==(const P& p) const;
+    template<typename P> bool operator!=(const P& p) const;
+    template<typename P> bool operator<(const P& p) const;
+    template<typename P> bool operator<=(const P& p) const;
+    template<typename P> bool operator>(const P& p) const;
+    template<typename P> bool operator>=(const P& p) const;
 
     // Increment/decrement operators
     my_floating_point_type operator++();
@@ -354,10 +354,10 @@ is expected.
 
 namespace u = go_boost::utility;
 
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(radian_type, double, 0.0)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(degree_type, double, 0.0)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(meter_type, double, 0.0)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(square_meter_type, double, 0.0)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(radian_type, double, 0.0)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(degree_type, double, 0.0)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(meter_type, double, 0.0)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(square_meter_type, double, 0.0)
 
 namespace bad
 {

@@ -36,7 +36,7 @@ public:
     u2string(InputIt first, InputIt last, const allocator_type& alloc = allocator_type());
     u2string(const u2string& other);
     u2string(const u2string& other, const allocator_type& alloc);
-    u2string(u2string&& other) noexcept;
+    u2string(u2string&& other) throw();
     u2string(u2string&& other, const allocator_type& alloc);
     u2string(boost::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
     template<class T>
@@ -90,7 +90,7 @@ Constructor | Specifiers | Signature
 *range constructor (8)* | public | template\<class InputIt> **u2string**(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
 *copy constructor (9)* | public | **u2string**(const **u2string**& other)
 *copy constructor (10)* | public | **u2string**(const **u2string**& other, const allocator_type& alloc)
-*move constructor (11)* | public | **u2string**(**u2string**&& other) noexcept
+*move constructor (11)* | public | **u2string**(**u2string**&& other) throw()
 *move constructor (12)* | public | **u2string**(**u2string**&& other, const allocator_type& alloc)
 *initializer list constructor (13)* | public | **u2string**(boost\::initializer_list<value_type> init, const allocator_type& alloc = allocator_type())
 *string view constructor (14)* | public | template\<class T> **u2string**(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type())

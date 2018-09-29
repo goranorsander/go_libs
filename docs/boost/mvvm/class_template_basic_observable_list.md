@@ -56,15 +56,15 @@ protected:
     virtual const container_type& container() const;
 
 public:
-    reverse_iterator rbegin() noexcept;
-    constexpr const_reverse_iterator rbegin() const noexcept;
-    reverse_iterator rend() noexcept;
-    constexpr const_reverse_iterator rend() const noexcept;
-    constexpr const_reverse_iterator crbegin() const noexcept;
-    constexpr const_reverse_iterator crend() const noexcept;
-    constexpr size_type size() const noexcept;
+    reverse_iterator rbegin() throw();
+    const_reverse_iterator rbegin() const throw();
+    reverse_iterator rend() throw();
+    const_reverse_iterator rend() const throw();
+    const_reverse_iterator crbegin() const throw();
+    const_reverse_iterator crend() const throw();
+    size_type size() const throw();
     reference back();
-    constexpr const_reference back() const;
+    const_reference back() const;
     void resize(size_type n);
     void resize(size_type n, const value_type& val);
     void shrink_to_fit();
@@ -85,11 +85,11 @@ public:
     iterator erase(const_iterator position);
     iterator erase(const_iterator first, const_iterator last);
     template<class t, class s> void swap(basic_observable_list<t, s>& x);
-    void clear() noexcept;
+    void clear() throw();
     template <class... Args> iterator emplace(const_iterator position, Args&&... args);
     template <class... Args> void emplace_back(Args&&... args);
     template <class... Args> void emplace_front(Args&&... args);
-    constexpr allocator_type get_allocator() const noexcept;
+    allocator_type get_allocator() const throw();
     template<class t, class s> void splice(const_iterator position, basic_observable_list<t, s>& x);
     template<class t, class s> void splice(const_iterator position, basic_observable_list<t, s>&& x);
     template<class t, class s> void splice(const_iterator position, basic_observable_list<t, s>& x, const_iterator i);
@@ -224,8 +224,8 @@ Return a referense to the underlying container storage.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rbegin**() noexcept
-public constexpr | const_reverse_iterator **rbegin**() const noexcept
+public | reverse_iterator **rbegin**() throw()
+public | const_reverse_iterator **rbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -235,8 +235,8 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public | reverse_iterator **rend**() noexcept
-public constexpr | const_reverse_iterator **rend**() const noexcept
+public | reverse_iterator **rend**() throw()
+public | const_reverse_iterator **rend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -247,7 +247,7 @@ reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crbegin**() const noexcept
+public | const_reverse_iterator **crbegin**() const throw()
 
 Returns a reverse iterator to the first element of the reversed container.
 
@@ -257,7 +257,7 @@ Returns a reverse iterator to the first element of the reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_reverse_iterator **crend**() const noexcept
+public | const_reverse_iterator **crend**() const throw()
 
 Returns a reverse iterator to the element following the last element of the
 reversed container.
@@ -268,7 +268,7 @@ reversed container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **size**() const noexcept
+public | size_type **size**() const throw()
 
 Returns the number of elements in the container.
 
@@ -279,7 +279,7 @@ Returns the number of elements in the container.
 Specifiers | Signature
 -|-
 public | reference **back**()
-public constexpr | const_reference **back**() const
+public | const_reference **back**() const
 
 Returns reference to the last element in the container.
 
@@ -399,7 +399,7 @@ Exchanges the contents of the container with those of **x**.
 
 Specifiers | Signature
 -|-
-public | void **clear**() noexcept
+public | void **clear**() throw()
 
 Removes all elements from the container.
 
@@ -439,7 +439,7 @@ Inserts a new element to the beginning of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | allocator_type **get_allocator**() const noexcept
+public | allocator_type **get_allocator**() const throw()
 
 Returns the allocator associated with the container.
 
@@ -531,8 +531,8 @@ Reverses the order of the elements in the container.
 
 Specifiers | Signature
 -|-
-public | iterator **begin**() noexcept
-public constexpr | const_iterator **begin**() const noexcept
+public | iterator **begin**() throw()
+public | const_iterator **begin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -542,8 +542,8 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public | iterator **end**() noexcept
-public constexpr | const_iterator **end**() const noexcept
+public | iterator **end**() throw()
+public | const_iterator **end**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -553,7 +553,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cbegin**() const noexcept
+public | const_iterator **cbegin**() const throw()
 
 Returns an iterator to the first element of the container.
 
@@ -563,7 +563,7 @@ Returns an iterator to the first element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | const_iterator **cend**() const noexcept
+public | const_iterator **cend**() const throw()
 
 Returns an iterator to the element following the last element of the container.
 
@@ -573,7 +573,7 @@ Returns an iterator to the element following the last element of the container.
 
 Specifiers | Signature
 -|-
-public constexpr | size_type **max_size**() const noexcept
+public | size_type **max_size**() const throw()
 
 Returns the maximum number of elements the container is able to hold.
 
@@ -583,7 +583,7 @@ Returns the maximum number of elements the container is able to hold.
 
 Specifiers | Signature
 -|-
-public constexpr | bool **empty**() const noexcept
+public | bool **empty**() const throw()
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
@@ -594,7 +594,7 @@ Checks if the container has no elements, i.e. whether **begin() == end()**.
 Specifiers | Signature
 -|-
 public | reference front()
-public constexpr | const_reference **front**() const
+public | const_reference **front**() const
 
 Returns a reference to the first element in the container.
 

@@ -24,11 +24,11 @@ template<class T> class scope_guard_new
 public:
     virtual ~scope_guard_new();
     explicit scope_guard_new(pointer px);
-    constexpr pointer operator->() const;
-    constexpr reference operator*() const;
-    explicit constexpr operator bool() const;
+    pointer operator->() const;
+    reference operator*() const;
+    explicit operator bool() const;
     pointer detach();
-    constexpr pointer get() const;
+    pointer get() const;
 };
 ```
 
@@ -70,7 +70,7 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public constexpr | pointer operator->() const
+public | pointer operator->() const
 
 Returns a raw pointer to the guarded object.
 
@@ -78,7 +78,7 @@ Returns a raw pointer to the guarded object.
 
 Specifiers | Signature
 -|-
-public constexpr | reference operator*() const
+public | reference operator*() const
 
 Returns a reference to the guarded object.
 
@@ -86,7 +86,7 @@ Returns a reference to the guarded object.
 
 Specifiers | Signature
 -|-
-public explicit constexpr | operator bool() const
+public explicit | operator bool() const
 
 Returns true if the guarded object pointer is not nullptr, false otherwise.
 
@@ -102,7 +102,7 @@ Returns a pointer to the guarded object and relesees the object from the scoped 
 
 Specifiers | Signature
 -|-
-public constexpr | pointer get() const
+public | pointer get() const
 
 Returns a pointer to the guarded object.
 

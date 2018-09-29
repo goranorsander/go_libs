@@ -19,10 +19,10 @@ Class|Expected encoding
 -|-
 std\::string|ASCII, ISO/IEC 8859-1, or Windows 1252
 std\::wstring|UCS-2 or UCS-4
-go_boost\::u16string|UTF-16
-go_boost\::u32string|UTF-32
 go_boost\::utility\::u2string|UCS-2
 go_boost\::utility\::u8string|UTF-8
+go_boost\::utility\::u16string|UTF-16
+go_boost\::utility\::u32string|UTF-32
 
 The **string_cast** function will try to encode the string using the expected
 encoding for the destination string class.
@@ -31,7 +31,7 @@ It is declared as:
 
 ```c++
 template <typename to_string, typename from_string>
-constexpr to_string string_cast(const from_string& from);
+to_string string_cast(const from_string& from);
 ```
 
 ## Template parameters
