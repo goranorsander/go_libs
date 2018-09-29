@@ -23,7 +23,7 @@ namespace string
 {
 
 template<class to_string, typename from_char_t>
-inline to_string create(const from_char_t* sz);
+to_string create(const from_char_t* sz);
 
 #define GO_BOOST_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(_to_string_type_) \
 template <> \
