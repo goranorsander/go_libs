@@ -105,7 +105,7 @@ GO_BOOST_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u32string, u16string)
 template<class to_string, typename from_char_t>
 inline to_string create(const from_char_t* /*sz*/)
 {
-    const std::string message = std::string("Cannot assign as ") + std::string(typeid(from_string).name()) + std::string(" from ") + std::string(typeid(from_char_t).name());
+    const std::string message = std::string("Cannot create ") + std::string(typeid(from_string).name()) + std::string(" from ") + std::string(typeid(from_char_t).name());
     throw create_exception(message);
 }
 
