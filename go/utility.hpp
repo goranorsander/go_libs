@@ -28,6 +28,7 @@
 #include <go/utility/iterator/try_move_backward.hpp>
 
 #include <go/utility/string/algorithm.hpp>
+#include <go/utility/string/create.hpp>
 #include <go/utility/string/format.hpp>
 
 #endif  // #ifndef GO_UTILITY_HPP_INCLUDED

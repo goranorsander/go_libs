@@ -33,5 +33,6 @@
 #include <go_boost/utility/iterator/try_move_backward.hpp>
 
 #include <go_boost/utility/string/algorithm.hpp>
+#include <go/utility/string/create.hpp>
 
 #endif  // #ifndef GO_BOOST_UTILITY_HPP_INCLUDED
