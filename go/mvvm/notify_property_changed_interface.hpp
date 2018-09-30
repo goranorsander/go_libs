@@ -48,6 +48,9 @@ protected:
 
 public:
     property_changed_signal property_changed;
+
+protected:
+    virtual void notify_property_changed(const string_type& property_name) = 0;
 };
 
 template<>
