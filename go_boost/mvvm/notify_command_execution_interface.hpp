@@ -50,6 +50,10 @@ protected:
 public:
     command_executed_signal command_executed;
     command_not_executed_signal command_not_executed;
+
+protected:
+    virtual void notify_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const;
+    virtual void notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const;
 };
 
 template<>
@@ -95,6 +99,42 @@ inline basic_notify_command_execution_interface<S, M>::basic_notify_command_exec
     , command_executed()
     , command_not_executed()
 {
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
+{
+    command_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
+{
+    command_executed(command);
+}
+
+template<class S, typename M>
+inline void basic_notify_command_execution_interface<S, M>::notify_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
+{
+    command_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
+{
+    command_not_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
+{
+    command_not_executed(command);
+}
+
+template<class S, typename M>
+inline void basic_notify_command_execution_interface<S, M>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
+{
+    command_not_executed(command);
 }
 
 } // namespace mvvm

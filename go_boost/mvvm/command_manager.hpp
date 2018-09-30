@@ -120,11 +120,11 @@ inline void basic_command_manager<std::string, boost::recursive_mutex>::execute(
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed(command);
+            notify_command_not_executed(command);
         }
     }
 }
@@ -138,11 +138,11 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::execute
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed(command);
+            notify_command_not_executed(command);
         }
     }
 }
@@ -156,11 +156,11 @@ inline void basic_command_manager<S, M>::execute(const boost::shared_ptr<basic_c
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed(command);
+            notify_command_not_executed(command);
         }
     }
 }

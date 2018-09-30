@@ -91,11 +91,11 @@ inline void basic_command_manager<std::string, std::recursive_mutex>::execute(co
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed.call(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed.call(command);
+            notify_command_not_executed(command);
         }
     }
 }
@@ -109,11 +109,11 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute(c
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed.call(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed.call(command);
+            notify_command_not_executed(command);
         }
     }
 }
@@ -130,11 +130,11 @@ inline void basic_command_manager<S, M>::execute(const std::shared_ptr<basic_com
         if(command->can_execute(params))
         {
             command->execute(params);
-            command_executed.call(command);
+            notify_command_executed(command);
         }
         else
         {
-            command_not_executed.call(command);
+            notify_command_not_executed(command);
         }
     }
 #endif  // #if defined(GO_COMP_GCC) && defined(GO_GCC_VERSION < 60000)
