@@ -57,11 +57,11 @@ private:
     void bind_properties()
     {
         crew_complement.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_crew_complement)));
-        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(crew_complement.name(), boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_crew_complement), bph::arg1));
+        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(crew_complement.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_crew_complement), bph::arg1));
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(name.name(), boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_name), bph::arg1));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(name.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_name), bph::arg1));
         max_speed.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_max_speed)));
-        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(max_speed.name(), boost::bind(&spaceship::on_property_changed, this, _1), bp::ref(_max_speed), bph::arg1));
+        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(max_speed.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_max_speed), bph::arg1));
     }
 
 public:

@@ -134,7 +134,7 @@ void fleet_organization_view_model::on_select_fleet_organization_event(const m::
         if(_selected_fleet_organization_id != select_event->id)
         {
             _selected_fleet_organization_id = select_event->id;
-            on_property_changed(selected_fleet_organization_id.name());
+            notify_property_changed(selected_fleet_organization_id.name());
         }
     }
 }
@@ -151,7 +151,7 @@ void fleet_organization_view_model::set_main_frame_vm(const main_frame_view_mode
         unsubscribe_events();
         _main_frame_vm = v;
         subscribe_events();
-        on_property_changed(main_frame_vm.name());
+        notify_property_changed(main_frame_vm.name());
     }
 }
 
@@ -165,7 +165,7 @@ void fleet_organization_view_model::set_selected_fleet_organization_id(const fle
     if(_selected_fleet_organization_id != v)
     {
         _selected_fleet_organization_id = v;
-        on_property_changed(selected_fleet_organization_id.name());
+        notify_property_changed(selected_fleet_organization_id.name());
         main_frame_view_model::ptr vm = _main_frame_vm.lock();
         if(vm)
         {

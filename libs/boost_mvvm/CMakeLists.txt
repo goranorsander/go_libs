@@ -66,6 +66,59 @@ if(BUILD_BOOST_EXAMPLES)
 
     add_test(test_mvvm ${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE})
 
+    ########################################################
+    #  libs/boost_mvvm/boost_phoenix_functor_example       #
+    ########################################################
+
+    set(PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE ${BOOST_PROJECT_NAME_STR}_phoenix_functor_example)
+
+    file(GLOB BOOST_PHOENIX_FUNCTOR_EXAMPLE_SRC_FILES boost_phoenix_functor_example/*.cpp)
+    add_executable(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE} ${BOOST_PHOENIX_FUNCTOR_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
+
+    if(CMAKE_COMPILER_IS_CLANG)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE}
+            ${LIBBOOST_LOCALE}
+            ${LIBBOOST_SYSTEM}
+            ${CMAKE_THREAD_LIBS_INIT}
+            )
+    elseif(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                find_package(Threads)
+                target_link_libraries(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE}
+                    ${LIBBOOST_LOCALE}
+                    ${LIBBOOST_SYSTEM}
+                    ${CMAKE_THREAD_LIBS_INIT}
+                    )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        else(WIN32)
+            find_package(Threads)
+            target_link_libraries(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE}
+                ${LIBBOOST_LOCALE}
+                ${LIBBOOST_SYSTEM}
+                ${CMAKE_THREAD_LIBS_INIT}
+                )
+        endif(WIN32)
+    elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+    else(CMAKE_COMPILER_IS_CLANG)
+        # Unsupported compiler
+        message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
+    endif(CMAKE_COMPILER_IS_CLANG)
+
+    add_test(test_mvvm ${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE})
+
 endif(BUILD_BOOST_EXAMPLES)
 
 if(WIN32 AND BUILD_BOOST_MFC_EXAMPLES)

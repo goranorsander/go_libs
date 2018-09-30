@@ -66,9 +66,9 @@ void add_equipment_view_model::on_close() const
 void add_equipment_view_model::bind_properties()
 {
     category.getter([this]() { return _category; });
-    category.setter([this](const std::wstring& v) { if (v != _category) { _category = v; on_property_changed(category.name()); } });
+    category.setter([this](const std::wstring& v) { if (v != _category) { _category = v; notify_property_changed(category.name()); } });
     name.getter([this]() { return _name; });
-    name.setter([this](const std::wstring& v) { if (v != _name) { _name = v; on_property_changed(name.name()); } });
+    name.setter([this](const std::wstring& v) { if (v != _name) { _name = v; notify_property_changed(name.name()); } });
     quantity.getter([this]() { return _quantity; });
-    quantity.setter([this](const unsigned int& v) { if (v != _quantity) { _quantity = v; on_property_changed(quantity.name()); } });
+    quantity.setter([this](const unsigned int& v) { if (v != _quantity) { _quantity = v; notify_property_changed(quantity.name()); } });
 }

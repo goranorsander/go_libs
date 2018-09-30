@@ -38,12 +38,12 @@ struct set_property_value_notify_changed_functor
     };
 
     template <typename Arg1, typename Arg2, typename Arg3>
-    void operator()(const Arg1& property_name, Arg2 on_property_changed, Arg3& current_value, const Arg3& new_value) const
+    void operator()(const Arg1& property_name, Arg2 notify_property_changed, Arg3& current_value, const Arg3& new_value) const
     {
         if(new_value != current_value)
         {
             current_value = new_value;
-            on_property_changed(property_name);
+            notify_property_changed(property_name);
         }
     }
 };

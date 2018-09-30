@@ -42,7 +42,7 @@ protected:
     basic_observable_object() GO_DEFAULT_CONSTRUCTOR
 
 protected:
-    virtual void on_property_changed(const string_type& property_name)
+    virtual void notify_property_changed(const string_type& property_name)
     {
         if(!basic_notify_property_changed_interface<string_type>::property_changed.empty())
         {

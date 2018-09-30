@@ -94,6 +94,6 @@ void equipment_model::set_quantity(const unsigned int& v)
     if(v != _quantity)
     {
         _quantity = v;
-        on_property_changed(quantity.name());
+        notify_property_changed(quantity.name());
     }
 }

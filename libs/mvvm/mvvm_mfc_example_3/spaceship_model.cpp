@@ -47,10 +47,10 @@ void spaceship_model::bind_properties()
     spaceship_class.getter([this]() { return _spaceship_class; });
     name.getter([this]() { return _name; });
     captain.getter([this]() { return _captain; });
-    captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; on_property_changed(captain.name()); } });
+    captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; notify_property_changed(captain.name()); } });
     crew_complement.getter([this]() { return _crew_complement; });
-    crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; on_property_changed(crew_complement.name()); } });
+    crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(crew_complement.name()); } });
     equipment.getter([this]() { return _equipment; });
-    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; on_property_changed(equipment.name()); } });
-    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { on_property_changed(equipment.name()); });
+    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; notify_property_changed(equipment.name()); } });
+    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { notify_property_changed(equipment.name()); });
 }

@@ -101,7 +101,7 @@ private:
         if(v != _name)
         {
             _name = v;
-            on_property_changed(name.name());
+            notify_property_changed(name.name());
         }
     }
 
@@ -116,7 +116,7 @@ private:
         if(v != _captain)
         {
             _captain = v;
-            on_property_changed(captain.name());
+            notify_property_changed(captain.name());
         }
     }
 

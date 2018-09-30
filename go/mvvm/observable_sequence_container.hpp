@@ -110,11 +110,11 @@ protected:
     {
         if(before > 0)
         {
-            this->on_container_changed(after > 0 ? notify_container_changed_action_reset : notify_container_changed_action_remove, after, before, after);
+            this->notify_container_changed(after > 0 ? notify_container_changed_action_reset : notify_container_changed_action_remove, after, before, after);
         }
         else if(after > 0)
         {
-            this->on_container_changed(notify_container_changed_action_add, after, 0, after);
+            this->notify_container_changed(notify_container_changed_action_add, after, 0, after);
         }
     }
 
@@ -122,7 +122,7 @@ protected:
     {
         if(after - before > 0)
         {
-            this->on_container_changed(notify_container_changed_action_add, after - before, 0, after);
+            this->notify_container_changed(notify_container_changed_action_add, after - before, 0, after);
         }
     }
 
@@ -130,7 +130,7 @@ protected:
     {
         if(before - after > 0)
         {
-            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+            this->notify_container_changed(notify_container_changed_action_remove, 0, before - after, after);
         }
     }
 };

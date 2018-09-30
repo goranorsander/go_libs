@@ -87,7 +87,7 @@ void add_equipment_view_model::set_category(const std::wstring& v)
     if (v != _category)
     {
         _category = v;
-        on_property_changed(category.name());
+        notify_property_changed(category.name());
     }
 }
 
@@ -101,7 +101,7 @@ void add_equipment_view_model::set_name(const std::wstring& v)
     if (v != _name)
     {
         _name = v;
-        on_property_changed(name.name());
+        notify_property_changed(name.name());
     }
 }
 
@@ -115,6 +115,6 @@ void add_equipment_view_model::set_quantity(const unsigned int& v)
     if (v != _quantity)
     {
         _quantity = v;
-        on_property_changed(quantity.name());
+        notify_property_changed(quantity.name());
     }
 }

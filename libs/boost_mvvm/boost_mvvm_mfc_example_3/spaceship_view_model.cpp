@@ -167,7 +167,7 @@ void spaceship_view_model::set_captain(const std::wstring& v)
     if(data_context() && v != data_context()->captain())
     {
         data_context()->captain = v;
-        on_property_changed(captain.name());
+        notify_property_changed(captain.name());
     }
 }
 
@@ -185,7 +185,7 @@ void spaceship_view_model::set_crew_complement(const unsigned int& v)
     if(data_context() && v != data_context()->crew_complement())
     {
         data_context()->crew_complement = v;
-        on_property_changed(crew_complement.name());
+        notify_property_changed(crew_complement.name());
     }
 }
 
@@ -203,7 +203,7 @@ void spaceship_view_model::set_equipment(const m::wobservable_deque<equipment_in
     if(data_context() && v != data_context()->equipment())
     {
         data_context()->equipment = v;
-        on_property_changed(equipment.name());
+        notify_property_changed(equipment.name());
     }
 }
 
@@ -217,7 +217,7 @@ void spaceship_view_model::set_selected_equipment(const equipment_interface::ptr
     if (_selected_equipment != v)
     {
         _selected_equipment = v;
-        on_property_changed(selected_equipment.name());
+        notify_property_changed(selected_equipment.name());
     }
 }
 

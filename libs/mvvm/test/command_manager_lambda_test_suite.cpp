@@ -79,9 +79,9 @@ private:
     void bind_properties()
     {
         name.getter([this]() { return _name; });
-        name.setter([this](const std::string& v) { if(v != _name) { _name = v; on_property_changed(name.name()); } });
+        name.setter([this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(name.name()); } });
         captain.getter([this]() { return _captain; });
-        captain.setter([this](const std::string& v) { if(v != _captain) { _captain = v; on_property_changed(captain.name()); } });
+        captain.setter([this](const std::string& v) { if(v != _captain) { _captain = v; notify_property_changed(captain.name()); } });
         impulse_speed_command.getter(
             [this]() { if(!_impulse_speed_command) {
             _impulse_speed_command = m::relay_command::create("impulse_speed",

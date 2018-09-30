@@ -47,7 +47,7 @@ protected:
     }
 
 protected:
-    virtual void on_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
+    virtual void notify_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
         if(!basic_observable_container<string_type, container_type>::container_changed.empty())
         {
@@ -55,9 +55,9 @@ protected:
         }
     }
 
-    virtual void on_property_changed(const string_type& property_name)
+    virtual void notify_property_changed(const string_type& property_name)
     {
-        basic_observable_object<string_type>::on_property_changed(property_name);
+        basic_observable_object<string_type>::notify_property_changed(property_name);
     }
 
     virtual container_type& container() = 0;

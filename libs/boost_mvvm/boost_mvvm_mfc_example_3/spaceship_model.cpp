@@ -74,7 +74,7 @@ void spaceship_model::bind_properties()
 
 void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)
 {
-    on_property_changed(equipment.name());
+    notify_property_changed(equipment.name());
 }
 
 std::wstring spaceship_model::get_spaceship_class() const
@@ -97,7 +97,7 @@ void spaceship_model::set_equipment(const m::wobservable_deque<equipment_interfa
     if(v != _equipment)
     {
         _equipment = v;
-        on_property_changed(equipment.name());
+        notify_property_changed(equipment.name());
     }
 }
 
@@ -111,7 +111,7 @@ void spaceship_model::set_captain(const std::wstring& v)
     if(v != _captain)
     {
         _captain = v;
-        on_property_changed(captain.name());
+        notify_property_changed(captain.name());
     }
 }
 
@@ -125,6 +125,6 @@ void spaceship_model::set_crew_complement(const unsigned int& v)
     if(v != _crew_complement)
     {
         _crew_complement = v;
-        on_property_changed(crew_complement.name());
+        notify_property_changed(crew_complement.name());
     }
 }

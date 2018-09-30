@@ -70,7 +70,7 @@ void product_view_model::set_product_id(const product_model::product_id_type& v)
     if(v != _product_id)
     {
         _product_id = v;
-        on_property_changed(product_id.name());
+        notify_property_changed(product_id.name());
     }
 }
 

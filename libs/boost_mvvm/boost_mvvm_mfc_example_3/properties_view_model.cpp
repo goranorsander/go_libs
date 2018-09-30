@@ -147,7 +147,7 @@ void properties_view_model::set_main_frame_vm(const main_frame_view_model::ptr& 
         unsubscribe_events();
         _main_frame_vm = v;
         subscribe_events();
-        m::wobservable_object::on_property_changed(main_frame_vm.name());
+        m::wobservable_object::notify_property_changed(main_frame_vm.name());
     }
 }
 

@@ -87,7 +87,7 @@ void properties_view_model::on_property_changed(const m::object::ptr& o, const m
 void properties_view_model::bind_properties()
 {
     main_frame_vm.getter([this]() -> main_frame_view_model::ptr { return _main_frame_vm.lock(); });
-    main_frame_vm.setter([this](const main_frame_view_model::ptr& v) { if(_main_frame_vm.lock() != v) { unsubscribe_events(); _main_frame_vm = v; subscribe_events(); m::wobservable_object::on_property_changed(main_frame_vm.name()); } });
+    main_frame_vm.setter([this](const main_frame_view_model::ptr& v) { if(_main_frame_vm.lock() != v) { unsubscribe_events(); _main_frame_vm = v; subscribe_events(); m::wobservable_object::notify_property_changed(main_frame_vm.name()); } });
     fleet_organization.getter([this]() -> fleet_organization_interface::ptr { return data_context(); });
 }
 

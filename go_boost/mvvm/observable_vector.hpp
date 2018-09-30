@@ -388,7 +388,7 @@ public:
     void push_back(const value_type& val)
     {
         _container.push_back(val);
-        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->notify_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -396,7 +396,7 @@ public:
     void push_back(value_type&& val)
     {
         _container.push_back(val);
-        this->on_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->notify_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -408,7 +408,7 @@ public:
         const std::size_t after = _container.size();
         if(before > after)
         {
-            this->on_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
+            this->notify_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
         }
     }
 
@@ -490,15 +490,15 @@ public:
         const std::size_t this_before = _container.size();
         const std::size_t x_before = x._container.size();
         _container.swap(x._container);
-        x.on_container_changed(notify_container_changed_action_swap, this_before, x_before, x._container.size());
-        this->on_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
+        x.notify_container_changed(notify_container_changed_action_swap, this_before, x_before, x._container.size());
+        this->notify_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
     }
 
     void clear() BOOST_NOEXCEPT_OR_NOTHROW
     {
         const std::size_t before = _container.size();
         _container.clear();
-        this->on_container_changed(notify_container_changed_action_reset, 0, before, 0);
+        this->notify_container_changed(notify_container_changed_action_reset, 0, before, 0);
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
