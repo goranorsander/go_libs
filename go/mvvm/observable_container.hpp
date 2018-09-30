@@ -55,11 +55,6 @@ protected:
         }
     }
 
-    virtual void notify_property_changed(const string_type& property_name)
-    {
-        basic_observable_object<string_type>::notify_property_changed(property_name);
-    }
-
     virtual container_type& container() = 0;
 
     virtual const container_type& container() const = 0;

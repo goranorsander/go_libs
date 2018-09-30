@@ -44,6 +44,9 @@ protected:
 
 public:
     container_changed_signal container_changed;
+
+protected:
+    virtual void notify_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size) = 0;
 };
 
 inline notify_container_changed_interface::~notify_container_changed_interface()
