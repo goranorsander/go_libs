@@ -38,7 +38,7 @@ class spaceship
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
-public:
+private:
     explicit spaceship(const m::command_manager::ptr& command_manager_)
         : m::observable_object()
         , u::noncopyable_nonmovable()
@@ -54,7 +54,6 @@ public:
         , _impulse_speed_command()
         , _warp_speed_command()
     {
-        bind_properties();
     }
 
     spaceship(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
@@ -72,16 +71,30 @@ public:
         , _impulse_speed_command()
         , _warp_speed_command()
     {
-        bind_properties();
+    }
+
+public:
+    static std::shared_ptr<spaceship> create(m::command_manager::ptr& command_manager_)
+    {
+        std::shared_ptr<spaceship> ship(new spaceship(command_manager_));
+        ship->bind_properties();
+        return ship;
+    }
+
+    static std::shared_ptr<spaceship> create(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
+    {
+        std::shared_ptr<spaceship> ship(new spaceship(command_manager_, name_, captain_));
+        ship->bind_properties();
+        return ship;
     }
 
 private:
     void bind_properties()
     {
         name.getter([this]() { return _name; });
-        name.setter([this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(name.name()); } });
+        name.setter([this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(shared_from_this(), name.name()); } });
         captain.getter([this]() { return _captain; });
-        captain.setter([this](const std::string& v) { if(v != _captain) { _captain = v; notify_property_changed(captain.name()); } });
+        captain.setter([this](const std::string& v) { if(v != _captain) { _captain = v; notify_property_changed(shared_from_this(), captain.name()); } });
         impulse_speed_command.getter(
             [this]() { if(!_impulse_speed_command) {
             _impulse_speed_command = m::relay_command::create("impulse_speed",
@@ -186,11 +199,11 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::command_manager::ptr command_mgr = m::command_manager::create(); \
 \
-    std::shared_ptr<spaceship> ship1 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "USS Enterprise", "Captain James T Kirk"); \
-    std::shared_ptr<spaceship> ship2 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Millennium Falcon", "Han Solo"); \
-    std::shared_ptr<spaceship> ship3 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Executor", "Lord Darth Vader"); \
-    std::shared_ptr<spaceship> ship4 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Battlestar Galactica", "Admiral William Adama"); \
-    std::shared_ptr<spaceship> ship5 = std::make_shared<spaceship, const m::command_manager::ptr&, const std::string&, const std::string&>(command_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
+    std::shared_ptr<spaceship> ship1 = spaceship::create(command_mgr, "USS Enterprise", "Captain James T Kirk"); \
+    std::shared_ptr<spaceship> ship2 = spaceship::create(command_mgr, "Millennium Falcon", "Han Solo"); \
+    std::shared_ptr<spaceship> ship3 = spaceship::create(command_mgr, "Executor", "Lord Darth Vader"); \
+    std::shared_ptr<spaceship> ship4 = spaceship::create(command_mgr, "Battlestar Galactica", "Admiral William Adama"); \
+    std::shared_ptr<spaceship> ship5 = spaceship::create(command_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
 \
     std::shared_ptr<spaceship_observer> observer = std::make_shared<spaceship_observer>(); \
 \

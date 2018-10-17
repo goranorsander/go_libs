@@ -57,7 +57,6 @@ fleet_organization_view_model::fleet_organization_view_model()
     , _on_left_double_click_command()
     , _select_fleet_organization_event_key(0)
 {
-    bind_properties();
 }
 
 fleet_organization_view_model::ptr fleet_organization_view_model::create()
@@ -69,7 +68,9 @@ fleet_organization_view_model::ptr fleet_organization_view_model::create()
         make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
-    return boost::make_shared<make_shared_enabler>();
+    fleet_organization_view_model::ptr view_model = boost::make_shared<make_shared_enabler>();
+    view_model->bind_properties();
+    return view_model;
 }
 
 void fleet_organization_view_model::set_data_context(const fleet_organization_interface::ptr& context)
@@ -134,7 +135,7 @@ void fleet_organization_view_model::on_select_fleet_organization_event(const m::
         if(_selected_fleet_organization_id != select_event->id)
         {
             _selected_fleet_organization_id = select_event->id;
-            notify_property_changed(selected_fleet_organization_id.name());
+            notify_property_changed(shared_from_this(), selected_fleet_organization_id.name());
         }
     }
 }
@@ -151,7 +152,7 @@ void fleet_organization_view_model::set_main_frame_vm(const main_frame_view_mode
         unsubscribe_events();
         _main_frame_vm = v;
         subscribe_events();
-        notify_property_changed(main_frame_vm.name());
+        notify_property_changed(shared_from_this(), main_frame_vm.name());
     }
 }
 
@@ -165,7 +166,7 @@ void fleet_organization_view_model::set_selected_fleet_organization_id(const fle
     if(_selected_fleet_organization_id != v)
     {
         _selected_fleet_organization_id = v;
-        notify_property_changed(selected_fleet_organization_id.name());
+        notify_property_changed(shared_from_this(), selected_fleet_organization_id.name());
         main_frame_view_model::ptr vm = _main_frame_vm.lock();
         if(vm)
         {

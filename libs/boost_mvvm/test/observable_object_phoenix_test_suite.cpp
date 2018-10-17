@@ -39,8 +39,8 @@ class spaceship
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
-public:
-     spaceship()
+private:
+    spaceship()
         : m::observable_object()
         , u::noncopyable_nonmovable()
         , crew_complement("crew_complement")
@@ -50,18 +50,25 @@ public:
         , _name()
         , _max_speed(0.0)
     {
-        bind_properties();
+    }
+
+public:
+    static boost::shared_ptr<spaceship> create()
+    {
+        boost::shared_ptr<spaceship> ship(new spaceship());
+        ship->bind_properties();
+        return ship;
     }
 
 private:
     void bind_properties()
     {
         crew_complement.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_crew_complement)));
-        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(crew_complement.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_crew_complement), bph::arg1));
+        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), crew_complement.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_crew_complement), bph::arg1, bph::arg2));
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(name.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_name), bph::arg1));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_name), bph::arg1, bph::arg2));
         max_speed.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_max_speed)));
-        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(max_speed.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_max_speed), bph::arg1));
+        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), max_speed.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_max_speed), bph::arg1, bph::arg2));
     }
 
 public:
@@ -119,7 +126,7 @@ private:
 
 TEST(boost_observable_object_phoenix_test_suite, test_observable_object)
 {
-    boost::shared_ptr<spaceship> m = boost::make_shared<spaceship>();
+    boost::shared_ptr<spaceship> m = spaceship::create();
     spaceship_observer o;
 
     o.connect(*m);

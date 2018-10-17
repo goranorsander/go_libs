@@ -1366,5 +1366,17 @@
     <None Include="..\..\docs\boost\utility\class_u32string.md">
       <Filter>Documentation\boost\utility</Filter>
     </None>
+    <None Include="..\..\docs\boost\mvvm\utility\functor_get_property_relay_command.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\utility\functor_get_property_value.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\utility\functor_set_property_value_notify_changed.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\utility\functor_set_property_value.md">
+      <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>

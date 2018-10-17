@@ -40,7 +40,7 @@ class spaceship
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
-public:
+private:
     explicit spaceship(const m::wcommand_manager::ptr& command_manager_)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
@@ -56,7 +56,6 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
-        bind_properties();
     }
 
     spaceship(const m::wcommand_manager::ptr& command_manager_, const std::wstring& name_, const std::wstring& captain_)
@@ -74,16 +73,30 @@ public:
         , impulse_speed_command(L"impulse_speed_command")
         , warp_speed_command(L"warp_speed_command")
     {
-        bind_properties();
+    }
+
+public:
+    static boost::shared_ptr<spaceship> create(m::wcommand_manager::ptr& command_manager_)
+    {
+        boost::shared_ptr<spaceship> ship(new spaceship(command_manager_));
+        ship->bind_properties();
+        return ship;
+    }
+
+    static boost::shared_ptr<spaceship> create(const m::wcommand_manager::ptr& command_manager_, const std::wstring& name_, const std::wstring& captain_)
+    {
+        boost::shared_ptr<spaceship> ship(new spaceship(command_manager_, name_, captain_));
+        ship->bind_properties();
+        return ship;
     }
 
 private:
     void bind_properties()
     {
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(name.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_name), bph::arg1));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_name), bph::arg1, bph::arg2));
         captain.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_captain)));
-        captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(captain.name(), boost::bind(&spaceship::notify_property_changed, this, _1), bp::ref(_captain), bph::arg1));
+        captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), captain.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_captain), bph::arg1, bph::arg2));
         impulse_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"impulse_speed"), boost::bind(&spaceship::go_to_impulse, this, _1), boost::bind(&spaceship::can_go_to_impulse, this, _1), m::command_parameters::create(), bp::ref(_impulse_speed_command)));
         warp_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"warp_speed"), boost::bind(&spaceship::go_to_warp, this, _1), boost::bind(&spaceship::can_go_to_warp, this, _1), m::command_parameters::create(), bp::ref(_warp_speed_command)));
     }
@@ -205,11 +218,11 @@ private:
 #define TEST_CASE_SHIPYARD \
     m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create(); \
 \
-    boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"USS Enterprise", L"Captain James T Kirk"); \
-    boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Millennium Falcon", L"Han Solo"); \
-    boost::shared_ptr<spaceship> ship3 = boost::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Executor", L"Lord Darth Vader"); \
-    boost::shared_ptr<spaceship> ship4 = boost::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Battlestar Galactica", L"Admiral William Adama"); \
-    boost::shared_ptr<spaceship> ship5 = boost::make_shared<spaceship, const m::wcommand_manager::ptr&, const std::wstring&, const std::wstring&>(command_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds"); \
+    boost::shared_ptr<spaceship> ship1 = spaceship::create(command_mgr, L"USS Enterprise", L"Captain James T Kirk"); \
+    boost::shared_ptr<spaceship> ship2 = spaceship::create(command_mgr, L"Millennium Falcon", L"Han Solo"); \
+    boost::shared_ptr<spaceship> ship3 = spaceship::create(command_mgr, L"Executor", L"Lord Darth Vader"); \
+    boost::shared_ptr<spaceship> ship4 = spaceship::create(command_mgr, L"Battlestar Galactica", L"Admiral William Adama"); \
+    boost::shared_ptr<spaceship> ship5 = spaceship::create(command_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds"); \
 \
     boost::shared_ptr<spaceship_observer> observer = boost::make_shared<spaceship_observer>(); \
 \

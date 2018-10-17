@@ -131,6 +131,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_erase_example", "boos
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_erase_example", "std_erase_example\std_erase_example.vcxproj", "{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_phoenix_functor_example", "boost_phoenix_functor_example\boost_phoenix_functor_example.vcxproj", "{271A6A18-CE5A-494E-89F6-13FC7DB6E041}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -587,6 +589,14 @@ Global
 		{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}.Release|Win32.Build.0 = Release|Win32
 		{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}.Release|x64.ActiveCfg = Release|x64
 		{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}.Release|x64.Build.0 = Release|x64
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Debug|Win32.ActiveCfg = Debug|Win32
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Debug|Win32.Build.0 = Debug|Win32
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Debug|x64.ActiveCfg = Debug|x64
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Debug|x64.Build.0 = Debug|x64
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Release|Win32.ActiveCfg = Release|Win32
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Release|Win32.Build.0 = Release|Win32
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Release|x64.ActiveCfg = Release|x64
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -653,6 +663,7 @@ Global
 		{329C9DDC-2B47-491C-BB65-9ED071B57C9A} = {04DAA2E1-F5BC-49C6-811B-E295FF683261}
 		{2D8ABFD1-2381-480B-A6AF-07C036DE3A49} = {DCA714AF-BA31-426C-9924-5950C23EEF9B}
 		{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3} = {04DAA2E1-F5BC-49C6-811B-E295FF683261}
+		{271A6A18-CE5A-494E-89F6-13FC7DB6E041} = {DCA714AF-BA31-426C-9924-5950C23EEF9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {314278FE-C3E4-4B26-8801-E3D86961A835}

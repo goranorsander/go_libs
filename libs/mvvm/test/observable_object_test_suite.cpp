@@ -37,7 +37,7 @@ class spaceship
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
-public:
+private:
      spaceship()
         : m::observable_object()
         , u::noncopyable_nonmovable()
@@ -48,7 +48,14 @@ public:
         , _name()
         , _max_speed(0.0)
     {
-        bind_properties();
+    }
+
+public:
+    static std::shared_ptr<spaceship> create()
+    {
+        std::shared_ptr<spaceship> ship(new spaceship());
+        ship->bind_properties();
+        return ship;
     }
 
 private:
@@ -78,7 +85,7 @@ private:
         if(v != _crew_complement)
         {
             _crew_complement = v;
-            notify_property_changed(crew_complement.name());
+            notify_property_changed(shared_from_this(), crew_complement.name());
         }
     }
 
@@ -92,7 +99,7 @@ private:
         if(v != _name)
         {
             _name = v;
-            notify_property_changed(name.name());
+            notify_property_changed(shared_from_this(), name.name());
         }
     }
 
@@ -106,7 +113,7 @@ private:
         if(v != _max_speed)
         {
             _max_speed = v;
-            notify_property_changed(max_speed.name());
+            notify_property_changed(shared_from_this(), max_speed.name());
         }
     }
 
@@ -162,7 +169,7 @@ private:
 
 TEST(std_observable_object_test_suite, test_observable_object)
 {
-    std::shared_ptr<spaceship> m = std::make_shared<spaceship>();
+    std::shared_ptr<spaceship> m = spaceship::create();
     spaceship_observer o;
 
     o.connect(*m);

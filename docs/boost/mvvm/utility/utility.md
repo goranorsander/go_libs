@@ -22,3 +22,10 @@ implementation of an application using a MVVM design.
 ### Function reference
 
 * [equals](./function_template_equals.html)
+
+### Functor reference
+
+* [get_property_relay_command](./functor_get_property_relay_command.html)
+* [get_property_value](./functor_get_property_value.html)
+* [set_property_value](./functor_set_property_value.html)
+* [set_property_value_notify_changed](./functor_set_property_value_notify_changed.html)

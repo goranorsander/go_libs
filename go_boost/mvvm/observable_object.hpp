@@ -42,20 +42,7 @@ public:
     virtual ~basic_observable_object() = 0;
 
 protected:
-    basic_observable_object()
-        : basic_notify_property_changed_interface<string_type>()
-        , object()
-    {
-    }
-
-protected:
-    virtual void notify_property_changed(const string_type& property_name)
-    {
-        if(!basic_notify_property_changed_interface<string_type>::property_changed.empty())
-        {
-            basic_notify_property_changed_interface<string_type>::property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
-        }
-    }
+    basic_observable_object() GO_BOOST_DEFAULT_CONSTRUCTOR
 };
 
 template<class S>

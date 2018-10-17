@@ -83,7 +83,6 @@ private:
         , _event_manager(event_manager_)
         , _commander(commander_)
     {
-        bind_properties();
     }
 
 public:
@@ -96,10 +95,12 @@ public:
             virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_) : this_type(event_manager_, commander_, battle_) {}
         };
-        return boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_manager_, commander_, battle_);
+        ptr commander = boost::make_shared<make_shared_enabler, const m::wevent_manager::ptr&, const std::wstring&, const std::wstring&>(event_manager_, commander_, battle_);
 #else
-        return boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
+        ptr commander = boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
 #endif // BOOST_MSVC > 1500
+        commander->bind_properties();
+        return commander;
     }
 
 public:
@@ -138,7 +139,7 @@ class spaceship
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
-public:
+private:
     spaceship(const std::wstring& name_, const std::wstring& captain_, const std::wstring& fleet_commander_)
         : u::noncopyable_nonmovable()
         , fleet_commander(std::wstring(L"fleet_commander"))
@@ -146,7 +147,14 @@ public:
         , captain(std::wstring(L"captain"), captain_)
         , _fleet_commander(fleet_commander_)
     {
-        bind_properties();
+    }
+
+public:
+    static boost::shared_ptr<spaceship> create(const std::wstring& name_, const std::wstring& captain_, const std::wstring& fleet_commander_)
+    {
+        boost::shared_ptr<spaceship> ship(new spaceship(name_, captain_, fleet_commander_));
+        ship->bind_properties();
+        return ship;
     }
 
 public:
@@ -185,14 +193,14 @@ private:
 \
     fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
 \
-    boost::shared_ptr<spaceship> ship1 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship2 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship3 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Two", L"Wedge Antilles", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship4 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Three", L"Biggs Darklighter", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship5 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Four", L"John D. Branon", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship6 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"X-Wing Red Five", L"Luke Skywalker", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship7 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", L"General Jan Dodonna"); \
-    boost::shared_ptr<spaceship> ship8 = boost::make_shared<spaceship, const std::wstring&, const std::wstring&, const std::wstring&>(L"Y-Wing Gold Two", L"Dex Tiree", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship1 = spaceship::create(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship2 = spaceship::create(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship3 = spaceship::create(L"X-Wing Red Two", L"Wedge Antilles", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship4 = spaceship::create(L"X-Wing Red Three", L"Biggs Darklighter", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship5 = spaceship::create(L"X-Wing Red Four", L"John D. Branon", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship6 = spaceship::create(L"X-Wing Red Five", L"Luke Skywalker", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship7 = spaceship::create(L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", L"General Jan Dodonna"); \
+    boost::shared_ptr<spaceship> ship8 = spaceship::create(L"Y-Wing Gold Two", L"Dex Tiree", L"General Jan Dodonna"); \
 \
     event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, _1)); \
     event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, _1)); \

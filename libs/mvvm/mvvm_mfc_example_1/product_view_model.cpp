@@ -31,7 +31,6 @@ product_view_model::product_view_model()
     , _save_product_command()
     , _products(product_repository::create())
 {
-    bind_properties();
 }
 
 product_view_model::ptr product_view_model::create()
@@ -43,7 +42,9 @@ product_view_model::ptr product_view_model::create()
         make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
-    return std::make_shared<make_shared_enabler>();
+    product_view_model::ptr view_model = std::make_shared<make_shared_enabler>();
+    view_model->bind_properties();
+    return view_model;
 }
 
 void product_view_model::bind_properties()
@@ -70,7 +71,7 @@ void product_view_model::set_product_id(const product_model::product_id_type& v)
     if(v != _product_id)
     {
         _product_id = v;
-        notify_property_changed(product_id.name());
+        notify_property_changed(shared_from_this(), product_id.name());
     }
 }
 

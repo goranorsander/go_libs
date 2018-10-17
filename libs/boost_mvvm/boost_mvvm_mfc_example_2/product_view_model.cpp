@@ -43,7 +43,6 @@ product_view_model::product_view_model()
     , _save_product_command()
     , _products(product_repository::create())
 {
-    bind_properties();
 }
 
 product_view_model::ptr product_view_model::create()
@@ -55,13 +54,15 @@ product_view_model::ptr product_view_model::create()
         make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
-    return boost::make_shared<make_shared_enabler>();
+    product_view_model::ptr view_model = boost::make_shared<make_shared_enabler>();
+    view_model->bind_properties();
+    return view_model;
 }
 
 void product_view_model::bind_properties()
 {
     product_id.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_product_id)));
-    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4)(product_id.name(), boost::bind(&product_view_model::notify_property_changed, this, _1), bp::ref(_product_id), bph::arg1));
+    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(shared_from_this(), product_id.name(), boost::bind(&product_view_model::notify_property_changed, this, _1, _2), bp::ref(_product_id), bph::arg1, bph::arg2));
     current_product_id.getter(boost::bind(&product_view_model::get_current_product_id, this));
     current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, _1));
     current_product_name.getter(boost::bind(&product_view_model::get_current_product_name, this));

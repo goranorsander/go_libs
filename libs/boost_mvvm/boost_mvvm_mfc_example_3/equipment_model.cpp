@@ -29,7 +29,6 @@ equipment_model::equipment_model(const std::wstring& category_, const std::wstri
     , _name(name_)
     , _quantity(quantity_)
 {
-    bind_properties();
 }
 
 equipment_model::equipment_model()
@@ -54,10 +53,12 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
         make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_) : this_type(category_, name_, quantity_) {}
     };
 
-    return boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);
+    equipment_model::ptr model = boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);
 #else
-    return boost::shared_ptr<this_type>(new this_type(category_, name_, quantity_));
+    equipment_model::ptr model = boost::shared_ptr<this_type>(new this_type(category_, name_, quantity_));
 #endif // BOOST_MSVC > 1500
+    model->bind_properties();
+    return model;
 }
 
 void equipment_model::bind_properties()
@@ -94,6 +95,6 @@ void equipment_model::set_quantity(const unsigned int& v)
     if(v != _quantity)
     {
         _quantity = v;
-        notify_property_changed(quantity.name());
+        notify_property_changed(shared_from_this(), quantity.name());
     }
 }

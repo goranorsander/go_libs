@@ -25,7 +25,6 @@ add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<eq
     , _name(L"New equipment")
     , _quantity(0)
 {
-    bind_properties();
 }
 
 add_equipment_view_model::ptr add_equipment_view_model::create(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
@@ -37,7 +36,9 @@ add_equipment_view_model::ptr add_equipment_view_model::create(const m::wobserva
         explicit make_shared_enabler(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment) : this_type(equipment) {}
     };
 
-    return std::make_shared<make_shared_enabler>(equipment);
+    add_equipment_view_model::ptr view_model = std::make_shared<make_shared_enabler>(equipment);
+    view_model->bind_properties();
+    return view_model;
 }
 
 void add_equipment_view_model::on_add_equipment() const
@@ -66,9 +67,9 @@ void add_equipment_view_model::on_close() const
 void add_equipment_view_model::bind_properties()
 {
     category.getter([this]() { return _category; });
-    category.setter([this](const std::wstring& v) { if (v != _category) { _category = v; notify_property_changed(category.name()); } });
+    category.setter([this](const std::wstring& v) { if (v != _category) { _category = v; notify_property_changed(shared_from_this(), category.name()); } });
     name.getter([this]() { return _name; });
-    name.setter([this](const std::wstring& v) { if (v != _name) { _name = v; notify_property_changed(name.name()); } });
+    name.setter([this](const std::wstring& v) { if (v != _name) { _name = v; notify_property_changed(shared_from_this(), name.name()); } });
     quantity.getter([this]() { return _quantity; });
-    quantity.setter([this](const unsigned int& v) { if (v != _quantity) { _quantity = v; notify_property_changed(quantity.name()); } });
+    quantity.setter([this](const unsigned int& v) { if (v != _quantity) { _quantity = v; notify_property_changed(shared_from_this(), quantity.name()); } });
 }

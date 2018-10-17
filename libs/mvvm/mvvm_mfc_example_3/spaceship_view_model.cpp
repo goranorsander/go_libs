@@ -46,7 +46,6 @@ spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, co
     , _on_add_equipment_command()
     , _on_remove_equipment_command()
 {
-    bind_properties();
 }
 
 spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
@@ -58,7 +57,9 @@ spaceship_view_model::ptr spaceship_view_model::create(const spaceship_model::pt
         make_shared_enabler(const spaceship_model::ptr& model, const fleet_organization_id_type& id, const main_frame_view_model::ptr& vm) : this_type(model, id, vm) {}
     };
 
-    return std::make_shared<make_shared_enabler, const spaceship_model::ptr&, const fleet_organization_id_type&, const main_frame_view_model::ptr&>(model, id, vm);
+    spaceship_view_model::ptr view_model = std::make_shared<make_shared_enabler, const spaceship_model::ptr&, const fleet_organization_id_type&, const main_frame_view_model::ptr&>(model, id, vm);
+    view_model->bind_properties();
+    return view_model;
 }
 
 void spaceship_view_model::on_data_context_will_change()
@@ -80,11 +81,11 @@ void spaceship_view_model::bind_properties()
     spaceship_class.getter([this]() -> std::wstring { if(data_context()) { return data_context()->spaceship_class; } return std::wstring(); });
     name.getter([this]() -> std::wstring { if(data_context()) { return data_context()->name; } return std::wstring(); });
     captain.getter([this]() -> std::wstring { if(data_context()) { return data_context()->captain; } return std::wstring(); });
-    captain.setter([this](const std::wstring& v) { if(data_context() && v != data_context()->captain()) { data_context()->captain = v; notify_property_changed(captain.name()); } });
+    captain.setter([this](const std::wstring& v) { if(data_context() && v != data_context()->captain()) { data_context()->captain = v; notify_property_changed(shared_from_this(), captain.name()); } });
     crew_complement.getter([this]() -> unsigned int { if(data_context()) { return data_context()->crew_complement; } return 0; });
-    crew_complement.setter([this](const unsigned int& v) { if(data_context() && v != data_context()->crew_complement()) { data_context()->crew_complement = v; notify_property_changed(crew_complement.name()); } });
+    crew_complement.setter([this](const unsigned int& v) { if(data_context() && v != data_context()->crew_complement()) { data_context()->crew_complement = v; notify_property_changed(shared_from_this(), crew_complement.name()); } });
     equipment.getter([this]() -> m::wobservable_deque<equipment_interface::ptr>::ptr { if(data_context()) { return data_context()->equipment; } return nullptr; });
-    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(data_context() && v != data_context()->equipment()) { data_context()->equipment = v; notify_property_changed(equipment.name()); } });
+    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(data_context() && v != data_context()->equipment()) { data_context()->equipment = v; notify_property_changed(shared_from_this(), equipment.name()); } });
     selected_equipment.getter([this]() -> equipment_interface::ptr { return _selected_equipment; });
     selected_equipment.setter(
         [this](const equipment_interface::ptr& v)
@@ -92,7 +93,7 @@ void spaceship_view_model::bind_properties()
             if(_selected_equipment != v)
             {
                 _selected_equipment = v;
-                notify_property_changed(selected_equipment.name());
+                notify_property_changed(shared_from_this(), selected_equipment.name());
             }
         });
     on_activate_spaceship_view_command.getter(

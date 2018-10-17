@@ -43,8 +43,6 @@ main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_fr
     , _close_spaceship_event_key(0)
     , _show_spaceship_event_key(0)
 {
-    bind_properties();
-    subscribe_events();
 }
 
 main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
@@ -56,7 +54,10 @@ main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::po
         make_shared_enabler(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo) : this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo) {}
     };
 
-    return std::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const m::wcommand_manager::ptr&, const m::wevent_manager::ptr&, const fleet_repository::ptr&>(std::forward<mdi_frame_interface::pointer>(mdi_frame_mgr), command_mgr, event_mgr, fleet_repo);
+    main_frame_view_model::ptr view_model = std::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const m::wcommand_manager::ptr&, const m::wevent_manager::ptr&, const fleet_repository::ptr&>(std::forward<mdi_frame_interface::pointer>(mdi_frame_mgr), command_mgr, event_mgr, fleet_repo);
+    view_model->bind_properties();
+    view_model->subscribe_events();
+    return view_model;
 }
 
 void main_frame_view_model::on_data_context_will_change()

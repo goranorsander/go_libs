@@ -28,7 +28,6 @@ properties_view_model::properties_view_model()
     , _main_frame_vm()
     , _select_fleet_organization_event_key(0)
 {
-    bind_properties();
 }
 
 properties_view_model::ptr properties_view_model::create()
@@ -40,7 +39,9 @@ properties_view_model::ptr properties_view_model::create()
         make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
-    return boost::make_shared<make_shared_enabler>();
+    properties_view_model::ptr view_model = boost::make_shared<make_shared_enabler>();
+    view_model->bind_properties();
+    return view_model;
 }
 
 void properties_view_model::set_data_context(const fleet_organization_model::ptr& context)
@@ -147,7 +148,7 @@ void properties_view_model::set_main_frame_vm(const main_frame_view_model::ptr& 
         unsubscribe_events();
         _main_frame_vm = v;
         subscribe_events();
-        m::wobservable_object::notify_property_changed(main_frame_vm.name());
+        m::wobservable_object::notify_property_changed(shared_from_this(), main_frame_vm.name());
     }
 }
 

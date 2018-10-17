@@ -31,19 +31,19 @@ struct set_property_value_notify_changed_functor
     template <typename Sig>
     struct result;
 
-    template <typename This, typename Arg1, typename Arg2, typename Arg3>
-    struct result<This(const Arg1&, Arg2, Arg3&, const Arg3&)>
+    template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4>
+    struct result<This(const Arg1&, const Arg2&, Arg3, Arg4&, const Arg4&)>
     {
         typedef void type;
     };
 
-    template <typename Arg1, typename Arg2, typename Arg3>
-    void operator()(const Arg1& property_name, Arg2 notify_property_changed, Arg3& current_value, const Arg3& new_value) const
+    template <typename Arg1, typename Arg2, typename Arg3, typename Arg4>
+    void operator()(const Arg1& object, const Arg2& property_name, Arg3 notify_property_changed, Arg4& current_value, const Arg4& new_value) const
     {
         if(new_value != current_value)
         {
             current_value = new_value;
-            notify_property_changed(property_name);
+            notify_property_changed(object, property_name);
         }
     }
 };

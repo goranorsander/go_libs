@@ -41,18 +41,12 @@ public:
      spaceship()
         : m::observable_object()
         , u::noncopyable_nonmovable()
-        , crew_complement("crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(crew_complement.name()); } })
-        , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(name.name()); } })
-        , max_speed("max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; notify_property_changed(max_speed.name()); } })
+        , crew_complement("crew_complement", [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(shared_from_this(), crew_complement.name()); } })
+        , name("name", [this]() { return _name; }, [this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(shared_from_this(), name.name()); } })
+        , max_speed("max_speed", [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; notify_property_changed(shared_from_this(), max_speed.name()); } })
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
-    {
-        bind_properties();
-    }
-
-private:
-    void bind_properties()
     {
     }
 

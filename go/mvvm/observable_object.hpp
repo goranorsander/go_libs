@@ -25,6 +25,11 @@ namespace mvvm
 {
 
 template<class S>
+class basic_observable_object;
+typedef basic_observable_object<std::string> observable_object;
+typedef basic_observable_object<std::wstring> wobservable_object;
+
+template<class S>
 class basic_observable_object
     : public basic_notify_property_changed_interface<S>
     , public object
@@ -40,53 +45,10 @@ public:
 
 protected:
     basic_observable_object() GO_DEFAULT_CONSTRUCTOR
-
-protected:
-    virtual void notify_property_changed(const string_type& property_name)
-    {
-        if(!basic_notify_property_changed_interface<string_type>::property_changed.empty())
-        {
-            basic_notify_property_changed_interface<string_type>::property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
-        }
-    }
 };
 
 template<class S>
 inline basic_observable_object<S>::~basic_observable_object()
-{
-}
-
-class observable_object
-    : public basic_observable_object<std::string>
-{
-public:
-    typedef observable_object this_type;
-
-public:
-    virtual ~observable_object() = 0;
-
-protected:
-    observable_object() GO_DEFAULT_CONSTRUCTOR
-};
-
-inline observable_object::~observable_object()
-{
-}
-
-class wobservable_object
-    : public basic_observable_object<std::wstring>
-{
-public:
-    typedef wobservable_object this_type;
-
-public:
-    virtual ~wobservable_object() = 0;
-
-protected:
-    wobservable_object() GO_DEFAULT_CONSTRUCTOR
-};
-
-inline wobservable_object::~wobservable_object()
 {
 }
 

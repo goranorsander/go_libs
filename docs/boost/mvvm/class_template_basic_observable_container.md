@@ -37,8 +37,8 @@ protected:
     basic_observable_container();
 
 protected:
-    virtual void on_container_changed(const notify_container_changed_action& action, const boost::size_t& added_elements, const boost::size_t& removed_elements, const boost::size_t& new_size);
-    virtual void on_property_changed(const string_type& property_name);
+    virtual void notify_container_changed(const notify_container_changed_action& action, const boost::size_t& added_elements, const boost::size_t& removed_elements, const boost::size_t& new_size);
+    virtual void notify_property_changed(const string_type& property_name);
     virtual container_type& container() = 0;
     virtual const container_type& container() const = 0;
 };
@@ -97,18 +97,18 @@ Return a referense to the underlying container storage.
 
 ## Inherited functions
 
-### on_container_changed
+### notify_container_changed
 
 Specifiers | Signature
 -|-
-protected virtual | void **on_container_changed**(const notify_container_changed_action& action, const boost::size_t& added_elements, const boost::size_t& removed_elements, const boost::size_t& new_size)
+protected virtual | void **notify_container_changed**(const notify_container_changed_action& action, const boost::size_t& added_elements, const boost::size_t& removed_elements, const boost::size_t& new_size)
 
 Called when the container have changed.
 
-### on_property_changed
+### notify_property_changed
 
 Specifiers | Signature
 -|-
-protected virtual | void **on_property_changed**(const string_type& property_name)
+protected virtual | void **notify_property_changed**(const string_type& property_name)
 
 Called when a property value have changed if the property *setter* implements **basic_notify_property_changed_interface**.

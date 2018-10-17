@@ -39,7 +39,6 @@ fleet_organization_model::fleet_organization_model(const std::wstring& name_, co
     , _previous_sibling()
     , _next_sibling()
 {
-    bind_properties();
 }
 
 fleet_organization_model::ptr fleet_organization_model::create()
@@ -56,7 +55,9 @@ fleet_organization_model::ptr fleet_organization_model::create(const std::wstrin
         make_shared_enabler(const std::wstring& name_, const spaceship_interface::ptr& spaceship_) : this_type(name_, spaceship_) {}
     };
 
-    return std::make_shared<make_shared_enabler, const std::wstring&, const spaceship_interface::ptr&>(name_, spaceship_);
+    fleet_organization_model::ptr model = std::make_shared<make_shared_enabler, const std::wstring&, const spaceship_interface::ptr&>(name_, spaceship_);
+    model->bind_properties();
+    return model;
 }
 
 bool fleet_organization_model::add_child(const fleet_organization_interface::ptr& child)
@@ -120,13 +121,13 @@ void fleet_organization_model::bind_properties()
     name.getter([this]() { return _name; });
     spaceship_model.getter([this]() { return _spaceship; });
     parent.getter([this]() { return _parent; });
-    parent.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _parent) { _parent = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(parent.name()); } });
+    parent.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _parent) { _parent = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(shared_from_this(), parent.name()); } });
     first_child.getter([this]() { return _first_child; });
-    first_child.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _first_child) { _first_child = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(first_child.name()); } });
+    first_child.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _first_child) { _first_child = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(shared_from_this(), first_child.name()); } });
     previous_sibling.getter([this]() { return _previous_sibling; });
-    previous_sibling.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _previous_sibling) { _previous_sibling = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(previous_sibling.name()); } });
+    previous_sibling.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _previous_sibling) { _previous_sibling = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(shared_from_this(), previous_sibling.name()); } });
     next_sibling.getter([this]() { return _next_sibling; });
-    next_sibling.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _next_sibling) { _next_sibling = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(next_sibling.name()); } });
+    next_sibling.setter([this](const fleet_organization_interface::ptr& v) { if(std::dynamic_pointer_cast<fleet_organization_model>(v) != _next_sibling) { _next_sibling = std::dynamic_pointer_cast<fleet_organization_model>(v); m::wobservable_object::notify_property_changed(shared_from_this(), next_sibling.name()); } });
     spaceship_model::ptr spaceship = std::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {

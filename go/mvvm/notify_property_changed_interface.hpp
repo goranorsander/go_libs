@@ -50,7 +50,7 @@ public:
     property_changed_signal property_changed;
 
 protected:
-    virtual void notify_property_changed(const string_type& property_name) = 0;
+    virtual void notify_property_changed(const std::shared_ptr<object>& object, const string_type& property_name);
 };
 
 template<>
@@ -69,6 +69,33 @@ template<class S>
 inline basic_notify_property_changed_interface<S>::~basic_notify_property_changed_interface()
 {
     property_changed.disconnect_all_slots();
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::string>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::wstring>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<class S>
+inline void basic_notify_property_changed_interface<S>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
+    }
 }
 
 } // namespace mvvm

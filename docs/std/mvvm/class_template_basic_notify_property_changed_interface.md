@@ -34,6 +34,9 @@ protected:
 
 public:
     property_changed_signal property_changed;
+
+protected:
+    virtual void notify_property_changed(const string_type& property_name) = 0;
 };
 ```
 
@@ -75,9 +78,17 @@ Constructor | Specifiers | Signature
 
 1. Constructs a **basic_notify_property_changed_interface** object.
 
+### notify_property_changed
+
+Specifiers | Signature
+-|
+protected abstract | void **notify_property_changed**(const string_type& property_name)
+
+Function that shall implement the notification using signal **property_changed**.
+
 # class template basic_notify_property_changed_interface specializations
 
-## typedef nnn
+## typedef notify_property_changed_interface
 
 The **notify_property_changed_interface** is a type definition for observing properties
 using **std::string** type being changed.

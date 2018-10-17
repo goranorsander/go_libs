@@ -36,7 +36,7 @@ protected:
     basic_observable_object() = default;
 
 protected:
-    virtual void on_property_changed(const string_type& property_name);
+    virtual void notify_property_changed(const string_type& property_name);
 };
 ```
 
@@ -79,10 +79,10 @@ Constructor | Specifiers | Signature
 
 1. Constructs a **basic_observable_object** object.
 
-### on_property_changed
+### notify_property_changed
 
 Specifiers | Signature
 -|-
-protected virtual | void **on_property_changed**(const string_type& property_name)
+protected virtual | void **notify_property_changed**(const string_type& property_name)
 
 Called when a property value have changed if the property *setter* implements **basic_notify_property_changed_interface**.

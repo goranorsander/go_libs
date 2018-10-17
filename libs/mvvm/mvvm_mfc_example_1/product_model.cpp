@@ -25,7 +25,6 @@ product_model::product_model()
     , _product_name()
     , _unit_price(0.0)
 {
-    bind_properties();
 }
 
 product_model::ptr product_model::create()
@@ -37,7 +36,9 @@ product_model::ptr product_model::create()
         make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
-    return std::make_shared<make_shared_enabler>();
+    product_model::ptr model = std::make_shared<make_shared_enabler>();
+    model->bind_properties();
+    return model;
 }
 
 void product_model::bind_properties()
@@ -60,7 +61,7 @@ void product_model::set_product_id(const product_model::product_id_type& v)
     if(v != _product_id)
     {
         _product_id = v;
-        notify_property_changed(product_id.name());
+        notify_property_changed(shared_from_this(), product_id.name());
     }
 }
 
@@ -74,7 +75,7 @@ void product_model::set_product_name(const std::wstring& v)
     if(v != _product_name)
     {
         _product_name = v;
-        notify_property_changed(product_name.name());
+        notify_property_changed(shared_from_this(), product_name.name());
     }
 }
 
@@ -88,6 +89,6 @@ void product_model::set_unit_price(const double& v)
     if(v != _unit_price)
     {
         _unit_price = v;
-        notify_property_changed(unit_price.name());
+        notify_property_changed(shared_from_this(), unit_price.name());
     }
 }

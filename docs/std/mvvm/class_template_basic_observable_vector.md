@@ -160,8 +160,6 @@ public virtual |
 
 Destroys the **basic_observable_vector** object.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/~vector)
-
 ### Constructor
 
 Constructor | Specifiers | Signature
@@ -182,8 +180,6 @@ Constructor | Specifiers | Signature
 6. Constructs a **basic_observable_vector** object with the contents of **x** using move semantics.
 7. Constructs a **basic_observable_vector** object with the contents of the initializer list **il**.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/vector)
-
 ### Assignment operator
 
 Operator | Specifiers | Signature
@@ -196,8 +192,6 @@ Operator | Specifiers | Signature
 2. Move assignment operator. Replaces the contents with those of **x** using move semantics.
 3. Replaces the contents with those identified by initializer list **il**.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/operator%3D)
-
 ### Subscript operator
 
 Specifiers | Signature
@@ -206,8 +200,6 @@ public constexpr | const_reference **operator[]**(size_type n) const
 public | reference **operator[]**(size_type n)
 
 Returns a reference to the element at specified location **n**.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/operator_at)
 
 ### container
 
@@ -227,8 +219,6 @@ public constexpr | const_reverse_iterator **rbegin**() const noexcept
 
 Returns a reverse iterator to the first element of the reversed container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### rend
 
 Specifiers | Signature
@@ -239,8 +229,6 @@ public constexpr | const_reverse_iterator **rend**() const noexcept
 Returns a reverse iterator to the element following the last element of the
 reversed container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### crbegin
 
 Specifiers | Signature
@@ -248,8 +236,6 @@ Specifiers | Signature
 public constexpr | const_reverse_iterator **crbegin**() const noexcept
 
 Returns a reverse iterator to the first element of the reversed container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### crend
 
@@ -260,8 +246,6 @@ public constexpr | const_reverse_iterator **crend**() const noexcept
 Returns a reverse iterator to the element following the last element of the
 reversed container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### size
 
 Specifiers | Signature
@@ -269,8 +253,6 @@ Specifiers | Signature
 public constexpr | size_type **size**() const noexcept
 
 Returns the number of elements in the container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### at
 
@@ -281,8 +263,6 @@ public | reference **at**(size_type n)
 
 Returns a reference to the element at specified location **n**.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### back
 
 Specifiers | Signature
@@ -292,8 +272,6 @@ public constexpr | const_reference **back**() const
 
 Returns reference to the last element in the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### data
 
 Specifiers | Signature
@@ -302,8 +280,6 @@ public | pointer **data**() noexcept
 public constexpr | const_pointer **data**() const noexcept
 
 Returns pointer to the underlying array serving as element storage.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### resize
 
@@ -322,8 +298,6 @@ If the current size is less than **n**,
 1. additional default-inserted elements are appended
 2. additional copies of **val** are appended
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### capacity
 
 Specifiers | Signature
@@ -332,8 +306,6 @@ public constexpr | size_type **capacity**() const noexcept
 
 Returns the number of elements that the container has currently allocated space for.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### reserve
 
 Specifiers | Signature
@@ -341,8 +313,6 @@ Specifiers | Signature
 public | void **reserve**(size_type n)
 
 Increase the capacity of the vector to a value that's greater or equal to **n**.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### shrink_to_fit
 
@@ -354,8 +324,6 @@ Requests the removal of unused capacity.
 
 It is a non-binding request to reduce **capacity**() to **size**().
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### assign
 
 Specifiers | Signature
@@ -366,8 +334,6 @@ public | void **assign**(const std::initializer_list<value_type>& il)
 
 Replaces the contents of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### push_back
 
 Specifiers | Signature
@@ -377,8 +343,6 @@ public | void **push_back**(value_type&& val)
 
 Appends the given element value to the end of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### pop_back
 
 Specifiers | Signature
@@ -386,8 +350,6 @@ Specifiers | Signature
 public | void **pop_back**()
 
 Removes the last element of the container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### insert
 
@@ -401,8 +363,6 @@ public | iterator **insert**(const_iterator position, std::initializer_list<valu
 
 Inserts elements at the specified location in the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### erase
 
 Specifiers | Signature
@@ -412,8 +372,6 @@ public | iterator **erase**(const_iterator first, const_iterator last)
 
 Removes specified elements from the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### swap
 
 Specifiers | Signature
@@ -421,8 +379,6 @@ Specifiers | Signature
 public | template<class t, class s> void **swap**(basic_observable_vector<t, s>& x)
 
 Exchanges the contents of the container with those of **x**.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### clear
 
@@ -432,8 +388,6 @@ public | void **clear**() noexcept
 
 Removes all elements from the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### emplace
 
 Specifiers | Signature
@@ -441,8 +395,6 @@ Specifiers | Signature
 public | template <class... Args> iterator **emplace**(const_iterator position, Args&&... args)
 
 Inserts a new element into the container directly before **position**.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### emplace_back
 
@@ -452,8 +404,6 @@ public | template <class... Args> void **emplace_back**(Args&&... args)
 
 Appends a new element to the end of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### get_allocator
 
 Specifiers | Signature
@@ -461,8 +411,6 @@ Specifiers | Signature
 public constexpr | allocator_type **get_allocator**() const noexcept
 
 Returns the allocator associated with the container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ## Inherited functions
 
@@ -475,8 +423,6 @@ public constexpr | const_iterator **begin**() const noexcept
 
 Returns an iterator to the first element of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### end
 
 Specifiers | Signature
@@ -486,8 +432,6 @@ public constexpr | const_iterator **end**() const noexcept
 
 Returns an iterator to the element following the last element of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### cbegin
 
 Specifiers | Signature
@@ -495,8 +439,6 @@ Specifiers | Signature
 public constexpr | const_iterator **cbegin**() const noexcept
 
 Returns an iterator to the first element of the container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### cend
 
@@ -506,8 +448,6 @@ public constexpr | const_iterator **cend**() const noexcept
 
 Returns an iterator to the element following the last element of the container.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### max_size
 
 Specifiers | Signature
@@ -515,8 +455,6 @@ Specifiers | Signature
 public constexpr | size_type **max_size**() const noexcept
 
 Returns the maximum number of elements the container is able to hold.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### empty
 
@@ -526,8 +464,6 @@ public constexpr | bool **empty**() const noexcept
 
 Checks if the container has no elements, i.e. whether **begin() == end()**.
 
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
-
 ### front
 
 Specifiers | Signature
@@ -536,8 +472,6 @@ public | reference front()
 public constexpr | const_reference **front**() const
 
 Returns a reference to the first element in the container.
-
-[See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/vector/nnn)
 
 ### notify_assign
 

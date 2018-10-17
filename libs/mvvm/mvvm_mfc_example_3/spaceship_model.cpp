@@ -27,7 +27,6 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
     , _crew_complement(0)
     , _on_equipment_list_changed_slot_key()
 {
-    bind_properties();
 }
 
 spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class_, const std::wstring& name_)
@@ -39,7 +38,9 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
         make_shared_enabler(const std::wstring& spaceship_class_, const std::wstring& name_) : this_type(spaceship_class_, name_) {}
     };
 
-    return std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(spaceship_class_, name_);
+    spaceship_model::ptr model = std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(spaceship_class_, name_);
+    model->bind_properties();
+    return model;
 }
 
 void spaceship_model::bind_properties()
@@ -47,10 +48,10 @@ void spaceship_model::bind_properties()
     spaceship_class.getter([this]() { return _spaceship_class; });
     name.getter([this]() { return _name; });
     captain.getter([this]() { return _captain; });
-    captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; notify_property_changed(captain.name()); } });
+    captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; notify_property_changed(shared_from_this(), captain.name()); } });
     crew_complement.getter([this]() { return _crew_complement; });
-    crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(crew_complement.name()); } });
+    crew_complement.setter([this](const unsigned int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(shared_from_this(), crew_complement.name()); } });
     equipment.getter([this]() { return _equipment; });
-    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; notify_property_changed(equipment.name()); } });
-    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { notify_property_changed(equipment.name()); });
+    equipment.setter([this](const m::wobservable_deque<equipment_interface::ptr>::ptr& v) { if(v != _equipment) { _equipment = v; notify_property_changed(shared_from_this(), equipment.name()); } });
+    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { notify_property_changed(shared_from_this(), equipment.name()); });
 }

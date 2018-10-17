@@ -30,6 +30,9 @@ protected:
 
 public:
     container_changed_signal container_changed;
+
+protected:
+    virtual void notify_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size) = 0;
 };
 ```
 
@@ -64,3 +67,11 @@ Constructor | Specifiers | Signature
 *default constructor (1)* | protected | **notify_container_changed_interface**()
 
 1. Constructs a **notify_container_changed_interface** object.
+
+### notify_container_changed
+
+Specifiers | Signature
+-|
+protected abstract | void **notify_container_changed**(const notify_container_changed_action& action, const std\::size_t& added_elements, const std\::size_t& removed_elements, const std\::size_t& new_size)
+
+Function that shall implement the notification using signal **container_changed**.
