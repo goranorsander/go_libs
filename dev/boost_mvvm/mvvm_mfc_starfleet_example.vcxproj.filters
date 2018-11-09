@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MVVM Example">
+      <UniqueIdentifier>{f2b994f5-02a4-4cd3-8fa6-3c5e46748e9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MFC Application Code">
+      <UniqueIdentifier>{47757b56-2c3b-49fd-a780-3c452afb048e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MFC Application Code\Header Files">
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="MFC Application Code\Resource Files">
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="MFC Application Code\Source Files">
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="MVVM Example\Model">
+      <UniqueIdentifier>{f1a46133-7539-484a-a2ce-f5056946f46d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MVVM Example\View Model">
+      <UniqueIdentifier>{1d62c327-dde9-42c5-a787-5079a545a8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MVVM Example\View">
+      <UniqueIdentifier>{5808b0f6-bdd0-4fbe-86e2-b87c8c7bfa75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MVVM Example\View\Control">
+      <UniqueIdentifier>{4f0b7615-39c7-41ed-88ee-fd8563981f2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MVVM Example\View Model\Command">
+      <UniqueIdentifier>{b4ab173b-7e0c-427d-8c1d-cc708234e50b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MVVM Example\View Model\Event">
+      <UniqueIdentifier>{08f4be4c-78a6-4c8b-a094-0aac7466a78c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\mvvm_mfc_starfleet_example.hpp">
+      <Filter>MFC Application Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\stdafx.h">
+      <Filter>MFC Application Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\targetver.h">
+      <Filter>MFC Application Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\Resource.h">
+      <Filter>MFC Application Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_repository_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\equipment_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\equipment_interface.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_repository.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_repository_populator.hpp">
+      <Filter>MVVM Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_model.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\output_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\child_frame_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\tree_control.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view_tool_bar.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_tool_bar.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_tool_bar.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_menu_bar.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\output_view_list.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_grid.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\close_spaceship_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\boost_mvvm_mfc_example_3_namespace_alias.hpp">
+      <Filter>MVVM Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\select_fleet_organization_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\mdi_frame_interface.hpp">
+      <Filter>MVVM Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\tree_control_observer.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\activate_spaceship_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\close_spaceship_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\show_spaceship_event.hpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\dialog_view.hpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_view.hpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_view_model.hpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\delete_dialog_view_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\open_add_equipment_view_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\remove_equipment_command_parameters.hpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\mvvm_mfc_starfleet_example.cpp">
+      <Filter>MFC Application Code\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\stdafx.cpp">
+      <Filter>MFC Application Code\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\equipment_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_repository.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_repository_populator.cpp">
+      <Filter>MVVM Example</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_model.cpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\output_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\child_frame_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\tree_control.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view_tool_bar.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_tool_bar.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_tool_bar.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\main_frame_view_menu_bar.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\output_view_list.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\properties_view_grid.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\spaceship_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\close_spaceship_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\select_fleet_organization_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\activate_spaceship_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\close_spaceship_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\show_spaceship_event.cpp">
+      <Filter>MVVM Example\View Model\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\dialog_view.cpp">
+      <Filter>MVVM Example\View\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_view.cpp">
+      <Filter>MVVM Example\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\add_equipment_view_model.cpp">
+      <Filter>MVVM Example\View Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\delete_dialog_view_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\open_add_equipment_view_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\remove_equipment_command_parameters.cpp">
+      <Filter>MVVM Example\View Model\Command</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\mvvm_mfc_starfleet_example.rc">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\file_view.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\file_view_hc.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\class_view.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\class_view_hc.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\fileview.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\fileview_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\classview.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\classview_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\explorer.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\explorer_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\sort.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\sort_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\menuimages.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\menuimages_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\output_wnd.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\output_wnd_hc.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\properties_wnd.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\properties_wnd_hc.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\properties.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\properties_hc.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\UserImages.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\boost_mvvm_mfc_example_3Doc.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\mvvm_mfc_starfleet_example.ico">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\Toolbar.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\Toolbar256.bmp">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\res\mvvm_mfc_starfleet_example.rc2">
+      <Filter>MFC Application Code\Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\ReadMe.txt">
+      <Filter>MFC Application Code</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
