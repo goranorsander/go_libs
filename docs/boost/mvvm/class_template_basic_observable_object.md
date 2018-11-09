@@ -51,7 +51,7 @@ S | The string class
 Member type | Definition
 -|-
 string_type | S
-this_type | basic_observable_object<string_type, container_type>
+this_type | basic_observable_object<string_type, container_type, mutex_type>
 ptr | boost\::shared_ptr\<this_type>
 wptr | boost\::weak_ptr\<this_type>
 

@@ -26,7 +26,7 @@ template<class S, class C> class basic_observable_container
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef basic_observable_container<string_type, container_type> this_type;
+    typedef basic_observable_container<string_type, container_type, mutex_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -57,7 +57,7 @@ Member type | Definition
 -|-
 string_type | S
 container_type | C
-this_type | basic_observable_container<string_type, container_type>
+this_type | basic_observable_container<string_type, container_type, mutex_type>
 ptr | std\::shared_ptr\<this_type>
 wptr | std\::weak_ptr\<this_type>
 

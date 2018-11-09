@@ -61,7 +61,7 @@ Member type | Definition
 -|-
 string_type | S
 container_type | C
-this_type | basic_observable_sequence_container<string_type, container_type>
+this_type | basic_observable_sequence_container<string_type, container_type, mutex_type>
 ptr | std\::shared_ptr\<this_type>
 wptr | std\::weak_ptr\<this_type>
 value_type | container_type\::value_type
