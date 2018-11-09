@@ -14,12 +14,12 @@ if(BUILD_BOOST_EXAMPLES)
     link_directories(${BOOST_LIBRARYDIR})
 
     ########################################################
-    #  libs/boost_signals/boost_signals_example            #
+    #  libs/boost_signals/signals_example                  #
     ########################################################
 
     set(PROJECT_BOOST_SIGNALS_EXAMPLE ${BOOST_PROJECT_NAME_STR}_signals_example)
 
-    file(GLOB BOOST_SIGNALS_EXAMPLE_SRC_FILES boost_signals_example/*.cpp)
+    file(GLOB BOOST_SIGNALS_EXAMPLE_SRC_FILES signals_example/*.cpp)
     add_executable(${PROJECT_BOOST_SIGNALS_EXAMPLE} ${BOOST_SIGNALS_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_SIGNALS_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 

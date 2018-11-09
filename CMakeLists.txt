@@ -175,13 +175,20 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
         set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
     endif(MSYS OR MINGW)
 
+    # Set googletest and googlemock directories
+    set(GMOCK_INCLUDE_DIR ${CMAKE_BINARY_DIR}/googletest-src/googlemock/include)
+    set(GTEST_INCLUDE_DIR ${CMAKE_BINARY_DIR}/googletest-src/googletest/include)
+
+    set(GMOCK_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock)
+    set(GTEST_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock/gtest)
+
     # Add googletest directly to our build. This adds
     # the following targets: gtest, gtest_main, gmock
     # and gmock_main
     add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src ${CMAKE_BINARY_DIR}/googletest-build)
 
-    include_directories("${gtest_SOURCE_DIR}/include" "${gmock_SOURCE_DIR}/include")
-    link_directories("${gtest_BINARY_DIR}" "${gmock_BINARY_DIR}")
+    include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR})
+    link_directories(${GTEST_LIBS_DIR} ${GMOCK_LIBS_DIR})
 
 endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
@@ -744,28 +751,28 @@ set(GO_LIBS_LIBS_BOOST_UTILITY_CMAKE
     ${ROOT_DIR}/libs/boost_utility/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_CONFIG_CMAKE
-    ${ROOT_DIR}/libs/config/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_CONFIG_CMAKE
+    ${ROOT_DIR}/libs/std_config/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_EXCEPTION_CMAKE
-    ${ROOT_DIR}/libs/exception/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_EXCEPTION_CMAKE
+    ${ROOT_DIR}/libs/std_exception/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_MVVM_CMAKE
-    ${ROOT_DIR}/libs/mvvm/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_MVVM_CMAKE
+    ${ROOT_DIR}/libs/std_mvvm/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_PROPERTY_CMAKE
-    ${ROOT_DIR}/libs/property/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_PROPERTY_CMAKE
+    ${ROOT_DIR}/libs/std_property/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_SIGNALS_CMAKE
-    ${ROOT_DIR}/libs/signals/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_SIGNALS_CMAKE
+    ${ROOT_DIR}/libs/std_signals/CMakeLists.txt
 )
 
-set(GO_LIBS_LIBS_UTILITY_CMAKE
-    ${ROOT_DIR}/libs/utility/CMakeLists.txt
+set(GO_LIBS_LIBS_STD_UTILITY_CMAKE
+    ${ROOT_DIR}/libs/std_utility/CMakeLists.txt
 )
 
 add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
@@ -780,12 +787,12 @@ add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
     ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE}
     ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE}
-    ${GO_LIBS_LIBS_CONFIG_CMAKE}
-    ${GO_LIBS_LIBS_EXCEPTION_CMAKE}
-    ${GO_LIBS_LIBS_MVVM_CMAKE}
-    ${GO_LIBS_LIBS_PROPERTY_CMAKE}
-    ${GO_LIBS_LIBS_SIGNALS_CMAKE}
-    ${GO_LIBS_LIBS_UTILITY_CMAKE}
+    ${GO_LIBS_LIBS_STD_CONFIG_CMAKE}
+    ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE}
+    ${GO_LIBS_LIBS_STD_MVVM_CMAKE}
+    ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE}
+    ${GO_LIBS_LIBS_STD_SIGNALS_CMAKE}
+    ${GO_LIBS_LIBS_STD_UTILITY_CMAKE}
 )
 
 set_target_properties(${PROJECT_GO_LIBS_CMAKE_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/CMakeConfiguration)
@@ -801,9 +808,9 @@ source_group(CMake\\libs\\boost_mvvm FILES ${GO_LIBS_LIBS_BOOST_MVVM_CMAKE})
 source_group(CMake\\libs\\boost_property FILES ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE})
 source_group(CMake\\libs\\boost_signals FILES ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE})
 source_group(CMake\\libs\\boost_utility FILES ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE})
-source_group(CMake\\libs\\config FILES ${GO_LIBS_LIBS_CONFIG_CMAKE})
-source_group(CMake\\libs\\exception FILES ${GO_LIBS_LIBS_EXCEPTION_CMAKE})
-source_group(CMake\\libs\\mvvm FILES ${GO_LIBS_LIBS_MVVM_CMAKE})
-source_group(CMake\\libs\\property FILES ${GO_LIBS_LIBS_PROPERTY_CMAKE})
-source_group(CMake\\libs\\signals FILES ${GO_LIBS_LIBS_SIGNALS_CMAKE})
-source_group(CMake\\libs\\utility FILES ${GO_LIBS_LIBS_UTILITY_CMAKE})
+source_group(CMake\\libs\\std_config FILES ${GO_LIBS_LIBS_STD_CONFIG_CMAKE})
+source_group(CMake\\libs\\std_exception FILES ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE})
+source_group(CMake\\libs\\std_mvvm FILES ${GO_LIBS_LIBS_STD_MVVM_CMAKE})
+source_group(CMake\\libs\\std_property FILES ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE})
+source_group(CMake\\libs\\std_signals FILES ${GO_LIBS_LIBS_STD_SIGNALS_CMAKE})
+source_group(CMake\\libs\\std_utility FILES ${GO_LIBS_LIBS_STD_UTILITY_CMAKE})

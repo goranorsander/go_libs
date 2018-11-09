@@ -14,12 +14,12 @@ if(BUILD_BOOST_EXAMPLES)
     link_directories(${BOOST_LIBRARYDIR})
 
     ########################################################
-    #  libs/mvvm/boost_proxy_property_example              #
+    #  libs/mvvm/proxy_property_example                    #
     ########################################################
 
     set(PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE ${BOOST_PROJECT_NAME_STR}_proxy_property_example)
 
-    file(GLOB BOOST_PROXY_PROPERTY_EXAMPLE_SRC_FILES boost_proxy_property_example/*.cpp)
+    file(GLOB BOOST_PROXY_PROPERTY_EXAMPLE_SRC_FILES proxy_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE} ${BOOST_PROXY_PROPERTY_EXAMPLE_SRC_FILES})
     set_target_properties (${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -67,12 +67,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE})
 
     ########################################################
-    #  libs/mvvm/boost_reference_property_example          #
+    #  libs/mvvm/reference_property_example                #
     ########################################################
 
     set(PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE ${BOOST_PROJECT_NAME_STR}_reference_property_example)
 
-    file(GLOB BOOST_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES boost_reference_property_example/*.cpp)
+    file(GLOB BOOST_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES reference_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE} ${BOOST_REFERENCE_PROPERTY_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -120,12 +120,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE})
 
     ########################################################
-    #  libs/mvvm/boost_value_property_example              #
+    #  libs/mvvm/value_property_example                    #
     ########################################################
 
     set(PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE ${BOOST_PROJECT_NAME_STR}_value_property_example)
 
-    file(GLOB BOOST_VALUE_PROPERTY_EXAMPLE_SRC_FILES boost_value_property_example/*.cpp)
+    file(GLOB BOOST_VALUE_PROPERTY_EXAMPLE_SRC_FILES value_property_example/*.cpp)
     add_executable(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE} ${BOOST_VALUE_PROPERTY_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 

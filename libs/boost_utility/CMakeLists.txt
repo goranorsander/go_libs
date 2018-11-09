@@ -13,13 +13,13 @@ if(BUILD_BOOST_EXAMPLES)
     include_directories(${GO_LIBS_SOURCE_DIR} ${BOOST_INCLUDEDIR} ${COMMON_INCLUDES})
     link_directories(${BOOST_LIBRARYDIR})
 
-    #########################################################################
-    #  libs/boost_utility/boost_erase_example                               #
-    #########################################################################
+    ########################################################
+    #  libs/boost_utility/erase_example                    #
+    ########################################################
 
     set(PROJECT_BOOST_ERASE_EXAMPLE ${BOOST_PROJECT_NAME_STR}_erase_example)
 
-    file(GLOB BOOST_ERASE_EXAMPLE_SRC_FILES boost_erase_example/*.cpp)
+    file(GLOB BOOST_ERASE_EXAMPLE_SRC_FILES erase_example/*.cpp)
     add_executable(${PROJECT_BOOST_ERASE_EXAMPLE} ${BOOST_ERASE_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_ERASE_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -66,13 +66,13 @@ if(BUILD_BOOST_EXAMPLES)
 
     add_test(test_mvvm ${PROJECT_BOOST_ERASE_EXAMPLE})
 
-    #########################################################################
-    #  libs/boost_utility/boost_primitive_type_implicit_specializer_example #
-    #########################################################################
+    ###################################################################
+    #  libs/boost_utility/primitive_type_implicit_specializer_example #
+    ###################################################################
 
     set(PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_primitive_type_implicit_specializer_example)
 
-    file(GLOB BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES boost_primitive_type_implicit_specializer_example/*.cpp)
+    file(GLOB BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_implicit_specializer_example/*.cpp)
     add_executable(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -119,13 +119,13 @@ if(BUILD_BOOST_EXAMPLES)
 
     add_test(test_mvvm ${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE})
 
-    ################################################################
-    #  libs/boost_utility/boost_primitive_type_specializer_example #
-    ################################################################
+    ##########################################################
+    #  libs/boost_utility/primitive_type_specializer_example #
+    ##########################################################
 
     set(PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_primitive_type_specializer_example)
 
-    file(GLOB BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES boost_primitive_type_specializer_example/*.cpp)
+    file(GLOB BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_specializer_example/*.cpp)
     add_executable(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -173,12 +173,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE})
 
     ########################################################
-    #  libs/boost_utility/boost_scope_guard_example        #
+    #  libs/boost_utility/scope_guard_example              #
     ########################################################
 
     set(PROJECT_BOOST_SCOPE_GUARD_EXAMPLE ${BOOST_PROJECT_NAME_STR}_scope_guard_example)
 
-    file(GLOB BOOST_SCOPE_GUARD_EXAMPLE_SRC_FILES boost_scope_guard_example/*.cpp)
+    file(GLOB BOOST_SCOPE_GUARD_EXAMPLE_SRC_FILES scope_guard_example/*.cpp)
     add_executable(${PROJECT_BOOST_SCOPE_GUARD_EXAMPLE} ${BOOST_SCOPE_GUARD_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_SCOPE_GUARD_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -226,12 +226,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_SCOPE_GUARD_EXAMPLE})
 
     ########################################################
-    #  libs/boost_utility/boost_scope_guard_new_example    #
+    #  libs/boost_utility/scope_guard_new_example          #
     ########################################################
 
     set(PROJECT_BOOST_SCOPE_GUARD_NEW_EXAMPLE ${BOOST_PROJECT_NAME_STR}_scope_guard_new_example)
 
-    file(GLOB BOOST_SCOPE_GUARD_NEW_EXAMPLE_SRC_FILES boost_scope_guard_new_example/*.cpp)
+    file(GLOB BOOST_SCOPE_GUARD_NEW_EXAMPLE_SRC_FILES scope_guard_new_example/*.cpp)
     add_executable(${PROJECT_BOOST_SCOPE_GUARD_NEW_EXAMPLE} ${BOOST_SCOPE_GUARD_NEW_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_SCOPE_GUARD_NEW_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -279,12 +279,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_SCOPE_GUARD_NEW_EXAMPLE})
 
     ########################################################
-    #  libs/boost_utility/boost_string_cast_example        #
+    #  libs/boost_utility/string_cast_example              #
     ########################################################
 
     set(PROJECT_BOOST_STRING_CAST_EXAMPLE ${BOOST_PROJECT_NAME_STR}_string_cast_example)
 
-    file(GLOB BOOST_STRING_CAST_EXAMPLE_SRC_FILES boost_string_cast_example/*.cpp)
+    file(GLOB BOOST_STRING_CAST_EXAMPLE_SRC_FILES string_cast_example/*.cpp)
     add_executable(${PROJECT_BOOST_STRING_CAST_EXAMPLE} ${BOOST_STRING_CAST_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_STRING_CAST_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -339,12 +339,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_STRING_CAST_EXAMPLE})
 
     ########################################################
-    #  libs/boost_utility/boost_try_move_backward_example  #
+    #  libs/boost_utility/try_move_backward_example        #
     ########################################################
 
     set(PROJECT_BOOST_TRY_MOVE_BACKWARD_EXAMPLE ${BOOST_PROJECT_NAME_STR}_try_move_backward_example)
 
-    file(GLOB BOOST_TRY_MOVE_BACKWARD_EXAMPLE_SRC_FILES boost_try_move_backward_example/*.cpp)
+    file(GLOB BOOST_TRY_MOVE_BACKWARD_EXAMPLE_SRC_FILES try_move_backward_example/*.cpp)
     add_executable(${PROJECT_BOOST_TRY_MOVE_BACKWARD_EXAMPLE} ${BOOST_TRY_MOVE_BACKWARD_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_TRY_MOVE_BACKWARD_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
@@ -392,12 +392,12 @@ if(BUILD_BOOST_EXAMPLES)
     add_test(test_mvvm ${PROJECT_BOOST_TRY_MOVE_BACKWARD_EXAMPLE})
 
     ########################################################
-    #  libs/boost_utility/boost_value_guard_example        #
+    #  libs/boost_utility/value_guard_example              #
     ########################################################
 
     set(PROJECT_BOOST_VALUE_GUARD_EXAMPLE ${BOOST_PROJECT_NAME_STR}_value_guard_example)
 
-    file(GLOB BOOST_VALUE_GUARD_EXAMPLE_SRC_FILES boost_value_guard_example/*.cpp)
+    file(GLOB BOOST_VALUE_GUARD_EXAMPLE_SRC_FILES value_guard_example/*.cpp)
     add_executable(${PROJECT_BOOST_VALUE_GUARD_EXAMPLE} ${BOOST_VALUE_GUARD_EXAMPLE_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_VALUE_GUARD_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
