@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/property_base.hpp>
 #include <go/property/policy/proxy.hpp>
+#include <go/utility/placebo_mutex.hpp>
 #include <go/utility/u8string.hpp>
 
 namespace go
@@ -29,13 +30,14 @@ namespace property
 namespace nameless
 {
 
-template<class T> class property
-    : public detail::property_base<T, policy::proxy<T>>
+template<class T, typename M = std::recursive_mutex> class property
+    : public detail::property_base<T, policy::proxy<T, M>>
 {
 public:
     typedef T value_type;
-    typedef property<value_type> this_type;
-    typedef typename policy::proxy<value_type> policy_type;
+    typedef M mutex_type;
+    typedef property<value_type, mutex_type> this_type;
+    typedef typename policy::proxy<value_type, mutex_type> policy_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
@@ -66,11 +68,7 @@ public:
     }
 };
 
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::wstring)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, utility::u8string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u16string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(property, std::u32string)
+GO_IMPLEMENT_DEFAULT_NAMELESS_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(property)
 
 } // namespace nameless
 } // namespace property

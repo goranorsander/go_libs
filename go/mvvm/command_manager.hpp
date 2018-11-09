@@ -22,6 +22,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/utility/placebo_mutex.hpp>
 
 namespace go
 {
@@ -31,6 +32,14 @@ namespace mvvm
 template<class S, typename M> class basic_command_manager;
 typedef basic_command_manager<std::string, std::recursive_mutex> command_manager;
 typedef basic_command_manager<std::wstring, std::recursive_mutex> wcommand_manager;
+
+namespace single_threaded
+{
+
+typedef basic_command_manager<std::string, go::utility::placebo_mutex> command_manager;
+typedef basic_command_manager<std::wstring, go::utility::placebo_mutex> wcommand_manager;
+
+}
 
 template<class S, typename M = std::recursive_mutex>
 class basic_command_manager

@@ -17,7 +17,6 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_container.hpp>
 
 namespace go
@@ -25,13 +24,15 @@ namespace go
 namespace mvvm
 {
 
-template<class S, class C> class basic_observable_sequence_container
-    : public basic_observable_container<S, C>
+template<class S, class C, typename M = std::recursive_mutex>
+class basic_observable_sequence_container
+    : public basic_observable_container<S, C, M>
 {
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef basic_observable_sequence_container<string_type, container_type> this_type;
+    typedef M mutex_type;
+    typedef basic_observable_sequence_container<string_type, container_type, mutex_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -50,7 +51,7 @@ public:
 
 protected:
     basic_observable_sequence_container()
-        : basic_observable_container<string_type, container_type>()
+        : basic_observable_container<string_type, container_type, mutex_type>()
     {
     }
 
@@ -135,8 +136,8 @@ protected:
     }
 };
 
-template<class S, class C>
-inline basic_observable_sequence_container<S, C>::~basic_observable_sequence_container()
+template<class S, class C, typename M>
+inline basic_observable_sequence_container<S, C, M>::~basic_observable_sequence_container()
 {
 }
 

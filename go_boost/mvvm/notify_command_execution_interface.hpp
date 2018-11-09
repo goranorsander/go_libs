@@ -20,6 +20,7 @@
 #include <string>
 #include <go_boost/mvvm/command_interface.hpp>
 #include <go_boost/signals.hpp>
+#include <go_boost/utility/placebo_mutex.hpp>
 
 namespace go_boost
 {
@@ -29,6 +30,14 @@ namespace mvvm
 template<class S, typename M> class basic_notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::string, boost::recursive_mutex> notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex> notify_wcommand_execution_interface;
+
+namespace single_threaded
+{
+
+typedef basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex> notify_wcommand_execution_interface;
+
+}
 
 template<class S, typename M = boost::recursive_mutex>
 class basic_notify_command_execution_interface

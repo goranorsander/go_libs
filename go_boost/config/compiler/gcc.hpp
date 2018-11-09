@@ -59,6 +59,15 @@ __warning _message_
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
+// C++ keyword override and final support
+#if (GO_BOOST_GCC_VERSION < 40700)
+#define GO_BOOST_FINAL
+#define GO_BOOST_OVERRIDE
+#else
+#define GO_BOOST_FINAL final
+#define GO_BOOST_OVERRIDE override
+#endif  // #if (GO_BOOST_GCC_VERSION < 40700)
+
 #endif  // #if defined(__GNUC__)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_GCC_HPP_INCLUDED

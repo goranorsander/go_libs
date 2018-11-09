@@ -19,7 +19,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <unordered_map>
 
-#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_unordered_associative_container.hpp>
 
 namespace go
@@ -27,13 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class K, class T, class S> class basic_observable_unordered_multimap
-    : public basic_observable_unordered_associative_container<S, std::unordered_multimap<K, T>>
+template<class K, class T, class S, typename M = std::recursive_mutex>
+class basic_observable_unordered_multimap
+    : public basic_observable_unordered_associative_container<S, std::unordered_multimap<K, T>, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef typename std::unordered_multimap<K, T> container_type;
-    typedef basic_observable_unordered_multimap<K, T, S> this_type;
+    typedef basic_observable_unordered_multimap<K, T, S, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -57,32 +58,32 @@ public:
 
 protected:
     basic_observable_unordered_multimap()
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
     basic_observable_unordered_multimap(InputIterator first, InputIterator last)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_unordered_multimap(const this_type& x)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_unordered_multimap(this_type&& x)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_unordered_multimap(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(il)
     {
     }
@@ -165,6 +166,12 @@ public:
         {
             _container.operator=(x._container);
         }
+        return *this;
+    }
+
+    this_type& operator=(const std::initializer_list<value_type>& il)
+    {
+        this->container().operator=(il);
         return *this;
     }
 
@@ -271,25 +278,27 @@ private:
     container_type _container;
 };
 
-template<class K, class T, class S>
-inline typename basic_observable_unordered_multimap<K, T, S>::container_type& basic_observable_unordered_multimap<K, T, S>::container()
+template<class K, class T, class S, typename M>
+inline typename basic_observable_unordered_multimap<K, T, S, M>::container_type& basic_observable_unordered_multimap<K, T, S, M>::container()
 {
     return _container;
 }
 
-template<class K, class T, class S>
-inline const typename basic_observable_unordered_multimap<K, T, S>::container_type& basic_observable_unordered_multimap<K, T, S>::container() const
+template<class K, class T, class S, typename M>
+inline const typename basic_observable_unordered_multimap<K, T, S, M>::container_type& basic_observable_unordered_multimap<K, T, S, M>::container() const
 {
     return _container;
 }
 
-template<class K, class T> class observable_unordered_multimap
-    : public basic_observable_unordered_multimap<K, T, std::string>
+template<class K, class T, typename M = std::recursive_mutex>
+class observable_unordered_multimap
+    : public basic_observable_unordered_multimap<K, T, std::string, M>
 {
 public:
     typedef std::string string_type;
+    typedef M mutex_type;
     typedef typename std::unordered_multimap<K, T> container_type;
-    typedef observable_unordered_multimap<K, T> this_type;
+    typedef observable_unordered_multimap<K, T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -313,28 +322,28 @@ public:
 
 protected:
      observable_unordered_multimap()
-        //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
+        //: basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     observable_unordered_multimap(InputIterator first, InputIterator last)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(first, last)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit observable_unordered_multimap(const this_type& x)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_unordered_multimap(this_type&& x)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_unordered_multimap(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(il)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -405,7 +414,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(x);
+            basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -414,7 +423,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(x);
+            basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -426,20 +435,22 @@ public:
     }
 
 public:
-    template<class k, class t>
-    void swap(observable_unordered_multimap<k, t>& x)
+    template<class k, class t, typename m>
+    void swap(observable_unordered_multimap<k, t, m>& x)
     {
-        basic_observable_unordered_multimap<k, t, string_type>::swap(dynamic_cast<basic_observable_unordered_multimap<k, t, string_type>&>(x));
+        basic_observable_unordered_multimap<k, t, string_type, m>::swap(dynamic_cast<basic_observable_unordered_multimap<k, t, string_type, m>&>(x));
     }
 };
 
-template<class K, class T> class wobservable_unordered_multimap
-    : public basic_observable_unordered_multimap<K, T, std::wstring>
+template<class K, class T, typename M = std::recursive_mutex>
+class wobservable_unordered_multimap
+    : public basic_observable_unordered_multimap<K, T, std::wstring, M>
 {
 public:
     typedef std::wstring string_type;
+    typedef M mutex_type;
     typedef typename std::unordered_multimap<K, T> container_type;
-    typedef wobservable_unordered_multimap<K, T> this_type;
+    typedef wobservable_unordered_multimap<K, T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -463,28 +474,28 @@ public:
 
 protected:
      wobservable_unordered_multimap()
-        //: basic_observable_unordered_multimap<key_type, value_type, string_type>()
+        //: basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     wobservable_unordered_multimap(InputIterator first, InputIterator last)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(first, last)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit wobservable_unordered_multimap(const this_type& x)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_unordered_multimap(this_type&& x)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(x)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_unordered_multimap(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_multimap<key_type, value_type, string_type>(il)
+        : basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -555,7 +566,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(x);
+            basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -564,7 +575,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_multimap<key_type, value_type, string_type>::operator=(x);
+            basic_observable_unordered_multimap<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -576,10 +587,10 @@ public:
     }
 
 public:
-    template<class k, class t>
-    void swap(wobservable_unordered_multimap<k, t>& x)
+    template<class k, class t, typename m>
+    void swap(wobservable_unordered_multimap<k, t, m>& x)
     {
-        basic_observable_unordered_multimap<k, t, string_type>::swap(dynamic_cast<basic_observable_unordered_multimap<k, t, string_type>&>(x));
+        basic_observable_unordered_multimap<k, t, string_type, m>::swap(dynamic_cast<basic_observable_unordered_multimap<k, t, string_type, m>&>(x));
     }
 };
 

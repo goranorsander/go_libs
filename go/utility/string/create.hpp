@@ -52,7 +52,9 @@ inline _to_string_type_ create(const _from_string_type_::value_type* sz) \
 
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::wstring)
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, u2string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::u32string)
@@ -61,26 +63,32 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::u32string)
 
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::wstring)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::string)
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, u2string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::u32string)
 
 // go::utility::u2string
 
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(u2string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::wstring)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::u32string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 
 // go::utility::u8string
 
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::wstring)
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, u2string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::u32string)
 
@@ -89,7 +97,9 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::u32string)
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::wstring)
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, u2string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::u32string)
 
@@ -98,14 +108,16 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::u32string)
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::u32string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::wstring)
+#if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, u2string)
+#endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::u16string)
 
 template<class to_string, typename from_char_t>
 inline to_string create(const from_char_t* /*sz*/)
 {
-    const std::string message = std::string("Cannot create ") + std::string(typeid(from_string).name()) + std::string(" from ") + std::string(typeid(from_char_t).name());
+    const std::string message = std::string("Cannot create ") + std::string(typeid(to_string).name()) + std::string(" from ") + std::string(typeid(from_char_t).name());
     throw create_exception(message);
 }
 

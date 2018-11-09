@@ -19,7 +19,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <deque>
 
-#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_sequence_container.hpp>
 
 namespace go
@@ -27,13 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class T, class S> class basic_observable_deque
-    : public basic_observable_sequence_container<S, std::deque<T>>
+template<class T, class S, typename M = std::recursive_mutex>
+class basic_observable_deque
+    : public basic_observable_sequence_container<S, std::deque<T>, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef typename std::deque<T> container_type;
-    typedef basic_observable_deque<T, S> this_type;
+    typedef basic_observable_deque<T, S, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -55,44 +56,44 @@ public:
 
 protected:
     basic_observable_deque()
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container()
     {
     }
 
     explicit basic_observable_deque(size_type n)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(n)
     {
     }
 
     basic_observable_deque(size_type n, const value_type& val)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
     basic_observable_deque(InputIterator first, InputIterator last)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_deque(const this_type& x)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_deque(this_type&& x)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_deque(const std::initializer_list<value_type>& il)
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container(il)
     {
     }
@@ -426,8 +427,8 @@ public:
         return it;
     }
 
-    template<class t, class s>
-    void swap(basic_observable_deque<t, s>& x)
+    template<class t, class s, typename m>
+    void swap(basic_observable_deque<t, s, m>& x)
     {
         const std::size_t this_before = _container.size();
         const std::size_t x_before = x._container.size();
@@ -480,31 +481,33 @@ private:
     container_type _container;
 };
 
-template<class T, class S>
-inline GO_CONSTEXPR typename basic_observable_deque<T, S>::size_type basic_observable_deque<T, S>::size() const noexcept
+template<class T, class S, typename M>
+inline GO_CONSTEXPR typename basic_observable_deque<T, S, M>::size_type basic_observable_deque<T, S, M>::size() const noexcept
 {
     return _container.size();
 }
 
-template<class T, class S>
-inline typename basic_observable_deque<T, S>::container_type& basic_observable_deque<T, S>::container()
+template<class T, class S, typename M>
+inline typename basic_observable_deque<T, S, M>::container_type& basic_observable_deque<T, S, M>::container()
 {
     return _container;
 }
 
-template<class T, class S>
-inline const typename basic_observable_deque<T, S>::container_type& basic_observable_deque<T, S>::container() const
+template<class T, class S, typename M>
+inline const typename basic_observable_deque<T, S, M>::container_type& basic_observable_deque<T, S, M>::container() const
 {
     return _container;
 }
 
-template<class T> class observable_deque
-    : public basic_observable_deque<T, std::string>
+template<class T, typename M = std::recursive_mutex>
+class observable_deque
+    : public basic_observable_deque<T, std::string, M>
 {
 public:
     typedef std::string string_type;
+    typedef M mutex_type;
     typedef typename std::deque<T> container_type;
-    typedef observable_deque<T> this_type;
+    typedef observable_deque<T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -526,38 +529,38 @@ public:
 
 protected:
      observable_deque()
-        : basic_observable_deque<value_type, string_type>()
+        : basic_observable_deque<value_type, string_type, mutex_type>()
     {
     }
 
     explicit observable_deque(size_type n)
-        : basic_observable_deque<value_type, string_type>(n)
+        : basic_observable_deque<value_type, string_type, mutex_type>(n)
     {
     }
 
     observable_deque(size_type n, const value_type& val)
-        : basic_observable_deque<value_type, string_type>(n, val)
+        : basic_observable_deque<value_type, string_type, mutex_type>(n, val)
     {
     }
 
     template <class InputIterator>
     observable_deque(InputIterator first, InputIterator last)
-        : basic_observable_deque<value_type, string_type>(first, last)
+        : basic_observable_deque<value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit observable_deque(const this_type& x)
-        : basic_observable_deque<value_type, string_type>(x)
+        : basic_observable_deque<value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_deque(this_type&& x)
-        : basic_observable_deque<value_type, string_type>(x)
+        : basic_observable_deque<value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_deque(const std::initializer_list<value_type>& il)
-        : basic_observable_deque<value_type, string_type>(il)
+        : basic_observable_deque<value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -652,7 +655,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_deque<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -661,32 +664,34 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_deque<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_deque<value_type, string_type>::operator=(il);
+        basic_observable_deque<value_type, string_type, mutex_type>::operator=(il);
         return *this;
     }
 
 public:
-    template<class t>
-    void swap(observable_deque<t>& x)
+    template<class t, typename m>
+    void swap(observable_deque<t, m>& x)
     {
-        basic_observable_deque<t, string_type>::swap(dynamic_cast<basic_observable_deque<t, string_type>&>(x));
+        basic_observable_deque<t, string_type, m>::swap(dynamic_cast<basic_observable_deque<t, string_type, m>&>(x));
     }
 };
 
-template<class T> class wobservable_deque
-    : public basic_observable_deque<T, std::wstring>
+template<class T, typename M = std::recursive_mutex>
+class wobservable_deque
+    : public basic_observable_deque<T, std::wstring, M>
 {
 public:
     typedef std::wstring string_type;
+    typedef M mutex_type;
     typedef typename std::deque<T> container_type;
-    typedef wobservable_deque<T> this_type;
+    typedef wobservable_deque<T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -708,38 +713,38 @@ public:
 
 protected:
      wobservable_deque()
-        : basic_observable_deque<value_type, string_type>()
+        : basic_observable_deque<value_type, string_type, mutex_type>()
     {
     }
 
     explicit wobservable_deque(size_type n)
-        : basic_observable_deque<value_type, string_type>(n)
+        : basic_observable_deque<value_type, string_type, mutex_type>(n)
     {
     }
 
     wobservable_deque(size_type n, const value_type& val)
-        : basic_observable_deque<value_type, string_type>(n, val)
+        : basic_observable_deque<value_type, string_type, mutex_type>(n, val)
     {
     }
 
     template <class InputIterator>
     wobservable_deque(InputIterator first, InputIterator last)
-        : basic_observable_deque<value_type, string_type>(first, last)
+        : basic_observable_deque<value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit wobservable_deque(const this_type& x)
-        : basic_observable_deque<value_type, string_type>(x)
+        : basic_observable_deque<value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_deque(this_type&& x)
-        : basic_observable_deque<value_type, string_type>(x)
+        : basic_observable_deque<value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_deque(const std::initializer_list<value_type>& il)
-        : basic_observable_deque<value_type, string_type>(il)
+        : basic_observable_deque<value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -834,7 +839,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_deque<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -843,22 +848,22 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_deque<value_type, string_type>::operator=(x);
+            basic_observable_deque<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_deque<value_type, string_type>::operator=(il);
+        basic_observable_deque<value_type, string_type, mutex_type>::operator=(il);
         return *this;
     }
 
 public:
-    template<class t>
-    void swap(wobservable_deque<t>& x)
+    template<class t, typename m>
+    void swap(wobservable_deque<t, m>& x)
     {
-        basic_observable_deque<t, string_type>::swap(dynamic_cast<basic_observable_deque<t, string_type>&>(x));
+        basic_observable_deque<t, string_type, m>::swap(dynamic_cast<basic_observable_deque<t, string_type, m>&>(x));
     }
 };
 

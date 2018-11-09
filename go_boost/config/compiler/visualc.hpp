@@ -73,12 +73,22 @@ __pragma(message(_message_))
 #define GO_BOOST_UNICODE 1
 #endif  // if defined(_UNICODE) || defined(UNICODE)
 
+// Boost libraries support
+#if (_MSC_VER < 1800)
+#define GO_BOOST_NO_BOOST_PHOENIX 1
+#endif  // #if (_MSC_VER < 1900)
+
 // C++ keyword typename support
 #if (_MSC_VER < 1900)
 #define GO_BOOST_TYPENAME
 #else
 #define GO_BOOST_TYPENAME typename
 #define GO_BOOST_TYPENAME_REQUIRED 1
+#endif  // #if (_MSC_VER < 1900)
+
+// C++ issue workarounds
+#if (_MSC_VER < 1900)
+#define GO_BOOST_CANNOT_CREATE_U2STRING_ISSUE 1
 #endif  // #if (_MSC_VER < 1900)
 
 // C++11 support
@@ -95,6 +105,15 @@ __pragma(message(_message_))
 #define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+// C++ keyword override and final support
+#if (_MSC_VER < 1700)
+#define GO_BOOST_FINAL
+#define GO_BOOST_OVERRIDE
+#else
+#define GO_BOOST_FINAL final
+#define GO_BOOST_OVERRIDE override
+#endif  // #if (_MSC_VER < 1900)
 
 #endif  // #if defined(BOOST_MSVC)
 

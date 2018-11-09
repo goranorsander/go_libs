@@ -22,6 +22,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/read_only_property.hpp>
 #include <go/signals/signal.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/utility/placebo_mutex.hpp>
 
 namespace go
 {
@@ -33,6 +34,14 @@ template<class S, typename M> class basic_command_manager;
 template<class S, typename M> class basic_command_interface;
 typedef basic_command_interface<std::string, std::recursive_mutex> command_interface;
 typedef basic_command_interface<std::wstring, std::recursive_mutex> wcommand_interface;
+
+namespace single_threaded
+{
+
+typedef basic_command_interface<std::string, go::utility::placebo_mutex> command_interface;
+typedef basic_command_interface<std::wstring, go::utility::placebo_mutex> wcommand_interface;
+
+}
 
 template<class S, typename M = std::recursive_mutex>
 class basic_command_interface
@@ -48,7 +57,7 @@ public:
     typedef typename std::shared_ptr<basic_command_interface<S, M>> ptr;
     typedef typename std::weak_ptr<basic_command_interface<S, M>> wptr;
     typedef typename std::shared_ptr<command_parameters> command_parameters_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<S, M>>&)>> can_execute_changed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<S, M>>&)>, M> can_execute_changed_signal;
     typedef typename go::property::nameless::read_only::property<S> command_name_type;
 
 public:

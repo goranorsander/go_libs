@@ -28,11 +28,12 @@ namespace property
 namespace policy
 {
 
-template<class T> class proxy
+template<class T, typename M> class proxy
 {
 public:
     typedef T value_type;
-    typedef proxy<value_type> this_type;
+    typedef M mutex_type;
+    typedef proxy<value_type, mutex_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
@@ -41,8 +42,8 @@ public:
 
     proxy()
         : _property_guard()
-        , _get(&proxy<value_type>::default_get)
-        , _set(&proxy<value_type>::default_set)
+        , _get(&this_type::default_get)
+        , _set(&this_type::default_set)
     {
     }
 
@@ -72,25 +73,25 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         _get = f;
     }
 
     void setter(const set_function_signature& f)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         _set = f;
     }
 
     value_type get() const
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         return _get();
     }
 
     void set(const value_type& v)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         _set(v);
     }
 
@@ -106,7 +107,7 @@ private:
     }
 
 private:
-    mutable std::recursive_mutex _property_guard;
+    mutable mutex_type _property_guard;
     get_function_signature _get;
     set_function_signature _set;
 };

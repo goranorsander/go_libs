@@ -31,7 +31,7 @@ void on_scope_exit()
     scope_exit_count()++;
 }
 
-TEST(std_scope_guard_test_suite, test_scope_guard)
+TEST(boost_scope_guard_test_suite, test_scope_guard)
 {
     {
         EXPECT_EQ(0, scope_exit_count());

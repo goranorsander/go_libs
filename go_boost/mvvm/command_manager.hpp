@@ -20,8 +20,8 @@
 #include <deque>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
-#include <boost/thread/recursive_mutex.hpp>
 #include <go_boost/mvvm/notify_command_execution_interface.hpp>
+#include <go_boost/utility/placebo_mutex.hpp>
 
 namespace go_boost
 {
@@ -32,13 +32,22 @@ template<class S, typename M> class basic_command_manager;
 typedef basic_command_manager<std::string, boost::recursive_mutex> command_manager;
 typedef basic_command_manager<std::wstring, boost::recursive_mutex> wcommand_manager;
 
-template<class S, typename M>
+namespace single_threaded
+{
+
+typedef basic_command_manager<std::string, go_boost::utility::placebo_mutex> command_manager;
+typedef basic_command_manager<std::wstring, go_boost::utility::placebo_mutex> wcommand_manager;
+
+}
+
+template<class S, typename M = boost::recursive_mutex>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S, M>
     , private go_boost::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef basic_command_manager<S, M> this_type;
     typedef typename boost::shared_ptr<basic_command_manager<S, M>> ptr;
     typedef typename boost::weak_ptr<basic_command_manager<S, M>> wptr;
@@ -59,7 +68,7 @@ public:
     size_t commands() const;
 
 private:
-    mutable boost::recursive_mutex _commands_guard;
+    mutable mutex_type _commands_guard;
     std::deque<std::pair<boost::weak_ptr<basic_command_interface<S, M>>, boost::shared_ptr<basic_command_interface<S, M>>>> _commands;
 };
 
@@ -71,6 +80,18 @@ inline basic_command_manager<std::string, boost::recursive_mutex>::~basic_comman
 
 template<>
 inline basic_command_manager<std::wstring, boost::recursive_mutex>::~basic_command_manager()
+{
+    _commands.clear();
+}
+
+template<>
+inline basic_command_manager<std::string, go_boost::utility::placebo_mutex>::~basic_command_manager()
+{
+    _commands.clear();
+}
+
+template<>
+inline basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::~basic_command_manager()
 {
     _commands.clear();
 }
@@ -94,6 +115,26 @@ inline basic_command_manager<std::string, boost::recursive_mutex>::basic_command
 template<>
 inline basic_command_manager<std::wstring, boost::recursive_mutex>::basic_command_manager()
     : basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>()
+    , go_boost::utility::noncopyable_nonmovable()
+    , _commands_guard()
+    , _commands()
+{
+    _commands.clear();
+}
+
+template<>
+inline basic_command_manager<std::string, go_boost::utility::placebo_mutex>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex>()
+    , go_boost::utility::noncopyable_nonmovable()
+    , _commands_guard()
+    , _commands()
+{
+    _commands.clear();
+}
+
+template<>
+inline basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex>()
     , go_boost::utility::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
@@ -147,6 +188,42 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::execute
     }
 }
 
+template<>
+inline void basic_command_manager<std::string, go_boost::utility::placebo_mutex>::execute(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>& command) const
+{
+    if (command)
+    {
+        const boost::shared_ptr<command_parameters> params = command->parameters();
+        if (command->can_execute(params))
+        {
+            command->execute(params);
+            notify_command_executed(command);
+        }
+        else
+        {
+            notify_command_not_executed(command);
+        }
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::execute(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>& command) const
+{
+    if (command)
+    {
+        const boost::shared_ptr<command_parameters> params = command->parameters();
+        if (command->can_execute(params))
+        {
+            command->execute(params);
+            notify_command_executed(command);
+        }
+        else
+        {
+            notify_command_not_executed(command);
+        }
+    }
+}
+
 template<class S, typename M>
 inline void basic_command_manager<S, M>::execute(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
 {
@@ -182,6 +259,26 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::post(co
     {
         const boost::recursive_mutex::scoped_lock lock(_commands_guard);
         _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>, boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>>(boost::weak_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>()));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::string, go_boost::utility::placebo_mutex>::post(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>& command, const bool keep_command_alive)
+{
+    if (command)
+    {
+        const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>>(boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>()));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::post(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>& command, const bool keep_command_alive)
+{
+    if (command)
+    {
+        const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>>(boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>()));
     }
 }
 
@@ -227,6 +324,38 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::execute
     }
 }
 
+template<>
+inline void basic_command_manager<std::string, go_boost::utility::placebo_mutex>::execute_commands()
+{
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>>> command_list_type;
+    command_list_type commands;
+    {
+        const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
+        std::swap(commands, _commands);
+    }
+    BOOST_FOREACH(const GO_BOOST_TYPENAME command_list_type::value_type& wcommand, commands)
+    {
+        const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>> command = wcommand.first.lock();
+        execute(command);
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::execute_commands()
+{
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>>> command_list_type;
+    command_list_type commands;
+    {
+        const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
+        std::swap(commands, _commands);
+    }
+    BOOST_FOREACH(const GO_BOOST_TYPENAME command_list_type::value_type& wcommand, commands)
+    {
+        const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>> command = wcommand.first.lock();
+        execute(command);
+    }
+}
+
 template<class S, typename M>
 inline void basic_command_manager<S, M>::execute_commands()
 {
@@ -254,6 +383,20 @@ template<>
 inline size_t basic_command_manager<std::wstring, boost::recursive_mutex>::commands() const
 {
     const boost::recursive_mutex::scoped_lock lock(_commands_guard);
+    return _commands.size();
+}
+
+template<>
+inline size_t basic_command_manager<std::string, go_boost::utility::placebo_mutex>::commands() const
+{
+    const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
+    return _commands.size();
+}
+
+template<>
+inline size_t basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::commands() const
+{
+    const go_boost::utility::placebo_mutex::scoped_lock lock(_commands_guard);
     return _commands.size();
 }
 
@@ -290,6 +433,40 @@ inline boost::shared_ptr<basic_command_manager<std::wstring, boost::recursive_mu
     {
         virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
         make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<>
+inline boost::shared_ptr<basic_command_manager<std::string, go_boost::utility::placebo_mutex>> basic_command_manager<std::string, go_boost::utility::placebo_mutex>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
+    };
+
+    return boost::make_shared<make_shared_enabler>();
+#else
+    return boost::shared_ptr<this_type>(new this_type());
+#endif // BOOST_MSVC > 1500
+}
+
+template<>
+inline boost::shared_ptr<basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>> basic_command_manager<std::wstring, go_boost::utility::placebo_mutex>::create()
+{
+#if BOOST_MSVC > 1500
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_BOOST_DEFAULT_CONSTRUCTOR
     };
 
     return boost::make_shared<make_shared_enabler>();

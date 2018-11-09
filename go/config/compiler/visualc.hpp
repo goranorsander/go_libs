@@ -69,6 +69,7 @@ __pragma(message(_message_))
 // C++ issue workarounds
 #if (_MSC_VER < 1900)
 #define GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE 1
+#define GO_CANNOT_CREATE_U2STRING_ISSUE 1
 #endif  // #if (_MSC_VER < 1900)
 
 // C/C++ support according to http://en.cppreference.com/w/cpp/compiler_support
@@ -153,6 +154,14 @@ __pragma(message(_message_))
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
+
+#if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
+#define GO_FINAL
+#define GO_OVERRIDE
+#else
+#define GO_FINAL final
+#define GO_OVERRIDE override
+#endif  // #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 
 // C++14 support
 #if (_MSC_VER)

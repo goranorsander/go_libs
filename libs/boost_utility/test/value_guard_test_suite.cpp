@@ -18,7 +18,7 @@ namespace u = go_boost::utility;
 namespace
 {
 
-TEST(std_value_guard_test_suite, test_value_guard)
+TEST(boost_value_guard_test_suite, test_value_guard)
 {
     bool is_guarded_1 = false;
     {

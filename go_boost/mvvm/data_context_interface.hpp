@@ -25,12 +25,13 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T> class data_context_interface
-    : public notify_data_context_change_interface
+template<class T, typename M = boost::recursive_mutex> class data_context_interface
+    : public notify_data_context_change_interface<M>
 {
 public:
     typedef T data_type;
-    typedef data_context_interface<data_type> this_type;
+    typedef M mutex_type;
+    typedef data_context_interface<T, M> this_type;
     typedef go_boost::property::nameless::property<data_type> data_context_type;
 
 public:
@@ -38,7 +39,7 @@ public:
 
 protected:
     data_context_interface()
-        : notify_data_context_change_interface()
+        : notify_data_context_change_interface<mutex_type>()
         , data_context()
         , _data_context()
     {
@@ -46,7 +47,7 @@ protected:
     }
 
     explicit data_context_interface(const data_type& t)
-        : notify_data_context_change_interface()
+        : notify_data_context_change_interface<mutex_type>()
         , data_context()
         , _data_context(t)
     {
@@ -65,17 +66,17 @@ protected:
 
     virtual void on_data_context_will_change()
     {
-        if(!notify_data_context_change_interface::data_context_will_change.empty())
+        if(!notify_data_context_change_interface<mutex_type>::data_context_will_change.empty())
         {
-            notify_data_context_change_interface::data_context_will_change(data_context_will_change_arguments::create());
+            notify_data_context_change_interface<mutex_type>::data_context_will_change(data_context_will_change_arguments::create());
         }
     }
 
     virtual void on_data_context_changed()
     {
-        if(!notify_data_context_change_interface::data_context_changed.empty())
+        if(!notify_data_context_change_interface<mutex_type>::data_context_changed.empty())
         {
-            notify_data_context_change_interface::data_context_changed(data_context_changed_arguments::create());
+            notify_data_context_change_interface<mutex_type>::data_context_changed(data_context_changed_arguments::create());
         }
     }
 
@@ -99,8 +100,8 @@ private:
     data_type _data_context;
 };
 
-template<class T>
-inline data_context_interface<T>::~data_context_interface()
+template<class T, typename M>
+inline data_context_interface<T, M>::~data_context_interface()
 {
 }
 

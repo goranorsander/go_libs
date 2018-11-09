@@ -21,6 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/mvvm/command_interface.hpp>
 #include <go/signals/signal.hpp>
 #include <go/signals/slot.hpp>
+#include <go/utility/placebo_mutex.hpp>
 
 namespace go
 {
@@ -31,6 +32,14 @@ template<class S, typename M> class basic_notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::string, std::recursive_mutex> notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mutex> notify_wcommand_execution_interface;
 
+namespace single_threaded
+{
+
+typedef basic_notify_command_execution_interface<std::string, go::utility::placebo_mutex> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, go::utility::placebo_mutex> notify_wcommand_execution_interface;
+
+}
+
 template<class S, typename M = std::recursive_mutex>
 class basic_notify_command_execution_interface
     : public go::signals::slot
@@ -39,8 +48,8 @@ public:
     typedef S string_type;
     typedef M mutex_type;
     typedef basic_notify_command_execution_interface<S, M> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>> command_not_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>, M> command_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>, M> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

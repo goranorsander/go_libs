@@ -108,6 +108,8 @@ public:
     u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
 public:
+    u8string& operator=(const u8string& other);
+
     bool operator==(const u8string& other) const;
 
     bool operator!=(const u8string& other) const;
@@ -217,6 +219,15 @@ template<class T>
 inline u8string::u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc)
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(t, pos, n, alloc)
 {
+}
+
+inline u8string& u8string::operator=(const u8string& other)
+{
+    if (&other != this)
+    {
+        std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>::operator=(other);
+    }
+    return *this;
 }
 
 inline bool u8string::operator==(const u8string& other) const

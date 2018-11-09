@@ -1,5 +1,5 @@
 //
-//  command_execution_observer_test_suite.cpp
+//  boost_command_execution_observer_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -119,7 +119,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(command_execution_observer_test_suite, test_execute_command)
+TEST(boost_command_execution_observer_test_suite, test_execute_command)
 {
     m::command_manager::ptr command_mgr = m::command_manager::create();
 
@@ -204,7 +204,7 @@ TEST(command_execution_observer_test_suite, test_execute_command)
     EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
 }
 
-TEST(command_execution_observer_test_suite, test_post_command)
+TEST(boost_command_execution_observer_test_suite, test_post_command)
 {
     m::command_manager::ptr command_mgr = m::command_manager::create();
 

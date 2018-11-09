@@ -29,14 +29,15 @@ namespace property
 namespace write_only
 {
 
-template<class T, class S> class basic_value_property
-    : public detail::property_base<T, policy::value<T>, S>
+template<class T, class S, typename M = std::recursive_mutex> class basic_value_property
+    : public detail::property_base<T, policy::value<T, M>, S>
 {
 public:
     typedef T value_type;
     typedef S string_type;
-    typedef basic_value_property<value_type, string_type> this_type;
-    typedef typename policy::value<value_type> policy_type;
+    typedef M mutex_type;
+    typedef basic_value_property<value_type, string_type, mutex_type> this_type;
+    typedef typename policy::value<value_type, mutex_type> policy_type;
 
 public:
     virtual ~basic_value_property() GO_DEFAULT_DESTRUCTOR
@@ -54,120 +55,125 @@ public:
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-template<class T> class value_property
-    : public basic_value_property<T, std::string>
+template<class T, typename M = std::recursive_mutex> class value_property
+    : public basic_value_property<T, std::string, M>
 {
 public:
     typedef T value_type;
     typedef std::string string_type;
-    typedef value_property<value_type> this_type;
+    typedef M mutex_type;
+    typedef value_property<value_type, mutex_type> this_type;
 
 public:
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
 
     explicit value_property(const std::string& property_name)
-        : basic_value_property<value_type, string_type>(property_name)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name)
     {
     }
 
     value_property(const std::string& property_name, const value_type& v)
-        : basic_value_property<value_type, string_type>(property_name, v)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name, v)
     {
     }
 
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-template<class T> class value_wproperty
-    : public basic_value_property<T, std::wstring>
+template<class T, typename M = std::recursive_mutex> class value_wproperty
+    : public basic_value_property<T, std::wstring, M>
 {
 public:
     typedef T value_type;
     typedef std::wstring string_type;
-    typedef value_wproperty<value_type> this_type;
+    typedef M mutex_type;
+    typedef value_wproperty<value_type, mutex_type> this_type;
 
 public:
     virtual ~value_wproperty() GO_DEFAULT_DESTRUCTOR
 
     explicit value_wproperty(const std::wstring& property_name)
-        : basic_value_property<value_type, string_type>(property_name)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name)
     {
     }
 
     value_wproperty(const std::wstring& property_name, const value_type& v)
-        : basic_value_property<value_type, string_type>(property_name, v)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name, v)
     {
     }
 
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-template<class T> class value_u8property
-    : public basic_value_property<T, utility::u8string>
+template<class T, typename M = std::recursive_mutex> class value_u8property
+    : public basic_value_property<T, utility::u8string, M>
 {
 public:
     typedef T value_type;
     typedef utility::u8string string_type;
-    typedef value_u8property<value_type> this_type;
+    typedef M mutex_type;
+    typedef value_u8property<value_type, mutex_type> this_type;
 
 public:
     virtual ~value_u8property() GO_DEFAULT_DESTRUCTOR
 
     explicit value_u8property(const utility::u8string& property_name)
-        : basic_value_property<value_type, string_type>(property_name)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name)
     {
     }
 
     value_u8property(const utility::u8string& property_name, const value_type& v)
-        : basic_value_property<value_type, string_type>(property_name, v)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name, v)
     {
     }
 
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-template<class T> class value_u16property
-    : public basic_value_property<T, std::u16string>
+template<class T, typename M = std::recursive_mutex> class value_u16property
+    : public basic_value_property<T, std::u16string, M>
 {
 public:
     typedef T value_type;
     typedef std::u16string string_type;
-    typedef value_u16property<value_type> this_type;
+    typedef M mutex_type;
+    typedef value_u16property<value_type, mutex_type> this_type;
 
 public:
     virtual ~value_u16property() GO_DEFAULT_DESTRUCTOR
 
     explicit value_u16property(const std::u16string& property_name)
-        : basic_value_property<value_type, string_type>(property_name)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name)
     {
     }
 
     value_u16property(const std::u16string& property_name, const value_type& v)
-        : basic_value_property<value_type, string_type>(property_name, v)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name, v)
     {
     }
 
 #include <go/property/detail/assignment_operator.hpp>
 };
 
-template<class T> class value_u32property
-    : public basic_value_property<T, std::u32string>
+template<class T, typename M = std::recursive_mutex> class value_u32property
+    : public basic_value_property<T, std::u32string, M>
 {
 public:
     typedef T value_type;
     typedef std::u32string string_type;
-    typedef value_u32property<value_type> this_type;
+    typedef M mutex_type;
+    typedef value_u32property<value_type, mutex_type> this_type;
 
 public:
     virtual ~value_u32property() GO_DEFAULT_DESTRUCTOR
 
     explicit value_u32property(const std::u32string& property_name)
-        : basic_value_property<value_type, string_type>(property_name)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name)
     {
     }
 
     value_u32property(const std::u32string& property_name, const value_type& v)
-        : basic_value_property<value_type, string_type>(property_name, v)
+        : basic_value_property<value_type, string_type, mutex_type>(property_name, v)
     {
     }
 

@@ -25,17 +25,18 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S> class basic_notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::string> notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::wstring> notify_wevent_firing_interface;
+template<class S, typename M> class basic_notify_event_firing_interface;
+typedef basic_notify_event_firing_interface<std::string, boost::recursive_mutex> notify_event_firing_interface;
+typedef basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex> notify_wevent_firing_interface;
 
-template<class S>
+template<class S, typename M = boost::recursive_mutex>
 class basic_notify_event_firing_interface
     : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
-    typedef basic_notify_event_firing_interface<S> this_type;
+    typedef M mutex_type;
+    typedef basic_notify_event_firing_interface<S, M> this_type;
     typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_event<S>>&)> event_fired_signal;
 
 public:
@@ -49,39 +50,39 @@ public:
 };
 
 template<>
-inline basic_notify_event_firing_interface<std::string>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
     event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
     event_fired.disconnect_all_slots();
 }
 
-template<class S>
-inline basic_notify_event_firing_interface<S>::~basic_notify_event_firing_interface()
+template<class S, typename M>
+inline basic_notify_event_firing_interface<S, M>::~basic_notify_event_firing_interface()
 {
     event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::string>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>::basic_notify_event_firing_interface()
     : go_boost::signals::slot()
     , event_fired()
 {
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::basic_notify_event_firing_interface()
     : go_boost::signals::slot()
     , event_fired()
 {
 }
 
-template<class S>
-inline basic_notify_event_firing_interface<S>::basic_notify_event_firing_interface()
+template<class S, typename M>
+inline basic_notify_event_firing_interface<S, M>::basic_notify_event_firing_interface()
     : go_boost::signals::slot()
     , event_fired()
 {

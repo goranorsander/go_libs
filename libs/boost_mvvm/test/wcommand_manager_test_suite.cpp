@@ -254,7 +254,6 @@ private:
     on_property_changed_counter_type _on_property_changed_count;
 };
 
-#if BOOST_MSVC > 1500
 #define TEST_CASE_SHIPYARD \
     m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create(); \
 \
@@ -271,24 +270,6 @@ private:
     observer->connect(ship3); \
     observer->connect(ship4); \
     observer->connect(ship5);
-#else
-#define TEST_CASE_SHIPYARD \
-    m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create(); \
-\
-    boost::shared_ptr<spaceship> ship1(new spaceship(command_mgr, L"USS Enterprise", L"Captain James T Kirk")); \
-    boost::shared_ptr<spaceship> ship2(new spaceship(command_mgr, L"Millennium Falcon", L"Han Solo")); \
-    boost::shared_ptr<spaceship> ship3(new spaceship(command_mgr, L"Executor", L"Lord Darth Vader")); \
-    boost::shared_ptr<spaceship> ship4(new spaceship(command_mgr, L"Battlestar Galactica", L"Admiral William Adama")); \
-    boost::shared_ptr<spaceship> ship5(new spaceship(command_mgr, L"Serenity", L"Captain Malcolm 'Mal' Reynolds")); \
-\
-    boost::shared_ptr<spaceship_observer> observer(new spaceship_observer()); \
-\
-    observer->connect(ship1); \
-    observer->connect(ship2); \
-    observer->connect(ship3); \
-    observer->connect(ship4); \
-    observer->connect(ship5);
-#endif  // BOOST_MSVC > 1500
 
 TEST(boost_wcommand_manager_test_suite, test_wcommand_manager)
 {

@@ -27,13 +27,15 @@ namespace go
 namespace mvvm
 {
 
+template<typename M = std::recursive_mutex>
 class notify_view_model_change_interface
     : public go::signals::slot
 {
 public:
-    typedef notify_view_model_change_interface this_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_changed_arguments>&)>> view_model_changed_signal;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_will_change_arguments>&)>> view_model_will_change_signal;
+    typedef M mutex_type;
+    typedef notify_view_model_change_interface<M> this_type;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_changed_arguments>&)>, M> view_model_changed_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_will_change_arguments>&)>, M> view_model_will_change_signal;
 
 public:
     virtual ~notify_view_model_change_interface() = 0;
@@ -46,7 +48,8 @@ public:
     view_model_changed_signal view_model_changed;
 };
 
-inline notify_view_model_change_interface::~notify_view_model_change_interface()
+template<typename M>
+inline notify_view_model_change_interface<M>::~notify_view_model_change_interface()
 {
     view_model_will_change.disconnect_all_slots();
     view_model_changed.disconnect_all_slots();

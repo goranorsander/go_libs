@@ -21,24 +21,34 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/mvvm/property_changed_arguments.hpp>
 #include <go/signals/signal.hpp>
 #include <go/signals/slot.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
 namespace mvvm
 {
 
-template<class S> class basic_notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::string> notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::wstring> notify_wproperty_changed_interface;
+template<class S, typename M> class basic_notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::string, std::recursive_mutex> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring, std::recursive_mutex> notify_wproperty_changed_interface;
 
-template<class S>
+namespace single_threaded
+{
+
+typedef basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex> notify_wproperty_changed_interface;
+
+}
+
+template<class S, typename M = std::recursive_mutex>
 class basic_notify_property_changed_interface
     : public go::signals::slot
 {
 public:
     typedef S string_type;
-    typedef basic_notify_property_changed_interface<S> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>> property_changed_signal;
+    typedef M mutex_type;
+    typedef basic_notify_property_changed_interface<S, M> this_type;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>, M> property_changed_signal;
 
 public:
     virtual ~basic_notify_property_changed_interface() = 0;
@@ -54,25 +64,73 @@ protected:
 };
 
 template<>
-inline basic_notify_property_changed_interface<std::string>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
     property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::wstring>::~basic_notify_property_changed_interface()
-{
-    property_changed.disconnect_all_slots();
-}
-
-template<class S>
-inline basic_notify_property_changed_interface<S>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::wstring, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
     property_changed.disconnect_all_slots();
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::string>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
+inline basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::u16string, std::recursive_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::u32string, std::recursive_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<class S, typename M>
+inline basic_notify_property_changed_interface<S, M>::~basic_notify_property_changed_interface()
+{
+    property_changed.disconnect_all_slots();
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
 {
     if (!property_changed.empty())
     {
@@ -81,7 +139,7 @@ inline void basic_notify_property_changed_interface<std::string>::notify_propert
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::wstring>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
+inline void basic_notify_property_changed_interface<std::wstring, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
 {
     if (!property_changed.empty())
     {
@@ -89,8 +147,80 @@ inline void basic_notify_property_changed_interface<std::wstring>::notify_proper
     }
 }
 
-template<class S>
-inline void basic_notify_property_changed_interface<S>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
+template<>
+inline void basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::u16string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::u32string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<>
+inline void basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
+{
+    if (!property_changed.empty())
+    {
+        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+    }
+}
+
+template<class S, typename M>
+inline void basic_notify_property_changed_interface<S, M>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
 {
     if (!property_changed.empty())
     {

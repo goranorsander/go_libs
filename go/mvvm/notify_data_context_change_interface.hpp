@@ -27,13 +27,15 @@ namespace go
 namespace mvvm
 {
 
+template<typename M = std::recursive_mutex>
 class notify_data_context_change_interface
     : public go::signals::slot
 {
 public:
-    typedef notify_data_context_change_interface this_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_changed_arguments>&)>> data_context_changed_signal;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_will_change_arguments>&)>> data_context_will_change_signal;
+    typedef M mutex_type;
+    typedef notify_data_context_change_interface<M> this_type;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_changed_arguments>&)>, M> data_context_changed_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_will_change_arguments>&)>, M> data_context_will_change_signal;
 
 public:
     virtual ~notify_data_context_change_interface() = 0;
@@ -46,7 +48,8 @@ public:
     data_context_changed_signal data_context_changed;
 };
 
-inline notify_data_context_change_interface::~notify_data_context_change_interface()
+template<typename M>
+inline notify_data_context_change_interface<M>::~notify_data_context_change_interface()
 {
     data_context_will_change.disconnect_all_slots();
     data_context_changed.disconnect_all_slots();

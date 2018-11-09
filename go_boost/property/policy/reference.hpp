@@ -28,11 +28,12 @@ namespace property
 namespace policy
 {
 
-template<class V> class reference
+template<class V, typename M> class reference
 {
 public:
     typedef V value_type;
-    typedef reference<value_type> this_type;
+    typedef M mutex_type;
+    typedef reference<value_type, mutex_type> this_type;
 
 public:
     virtual ~reference() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -72,7 +73,7 @@ public:
 
     value_type get() const
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         if (_v == NULL)
         {
             throw exception("Cannot get value to unbound reference property");
@@ -86,30 +87,30 @@ public:
         {
             throw exception("Cannot set value to unbound reference property");
         }
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         *_v = v;
     }
 
     void bind(value_type& v)
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         _v = boost::addressof(v);
     }
 
     bool empty() const
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         return _v == NULL;
     }
 
     void reset()
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         _v = NULL;
     }
 
 private:
-    mutable boost::recursive_mutex _property_guard;
+    mutable mutex_type _property_guard;
     value_type* _v;
 };
 

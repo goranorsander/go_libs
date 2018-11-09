@@ -1,5 +1,5 @@
 //
-//  relay_command_test_suite.cpp
+//  boost_relay_command_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -114,7 +114,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(relay_command_test_suite, test_relay_command)
+TEST(boost_relay_command_test_suite, test_relay_command)
 {
     test_relay_command_exection_context command_exection_context;
 

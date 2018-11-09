@@ -132,6 +132,14 @@ __warning _message_
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
 
+#if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
+#define GO_FINAL
+#define GO_OVERRIDE
+#else
+#define GO_FINAL final
+#define GO_OVERRIDE override
+#endif  // #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
+
 // C++14 support
 #if (GO_GCC_VERSION)
 #define GO_NO_CXX14_CLARIFYING_MEMORY_ALLOCATION 1

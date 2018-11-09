@@ -19,7 +19,6 @@
 
 #include <boost/container/static_vector.hpp>
 
-#include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_sequence_container.hpp>
 
 namespace go_boost
@@ -27,13 +26,15 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S, size_t N> class basic_observable_array
-    : public basic_observable_sequence_container<S, boost::container::static_vector<T, N>>
+template<class T, class S, size_t N, typename M = boost::recursive_mutex>
+class basic_observable_array
+    : public basic_observable_sequence_container<S, boost::container::static_vector<T, N>, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef typename boost::container::static_vector<T, N> container_type;
-    typedef basic_observable_array<T, S, N> this_type;
+    typedef basic_observable_array<T, S, N, M> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -54,7 +55,7 @@ public:
 
 protected:
     basic_observable_array()
-        : basic_observable_sequence_container<string_type, container_type>()
+        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
         , _container()
     {
         initialize_array();
@@ -183,13 +184,14 @@ private:
     container_type _container;
 };
 
-template<class T, size_t N> class observable_array
-    : public basic_observable_array<T, std::string, N>
+template<class T, size_t N, typename M = boost::recursive_mutex> class observable_array
+    : public basic_observable_array<T, std::string, N, M>
 {
 public:
     typedef typename std::string string_type;
+    typedef M mutex_type;
     typedef typename boost::container::static_vector<T, N> container_type;
-    typedef observable_array<T, N> this_type;
+    typedef observable_array<T, N, M> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -210,7 +212,7 @@ public:
 
 protected:
      observable_array()
-        : basic_observable_array<T, string_type, N>()
+        : basic_observable_array<T, string_type, N, mutex_type>()
     {
     }
 
@@ -232,13 +234,14 @@ public:
     }
 };
 
-template<class T, size_t N> class wobservable_array
-    : public basic_observable_array<T, std::wstring, N>
+template<class T, size_t N, typename M = boost::recursive_mutex> class wobservable_array
+    : public basic_observable_array<T, std::wstring, N, M>
 {
 public:
     typedef typename std::wstring string_type;
+    typedef M mutex_type;
     typedef typename boost::container::static_vector<T, N> container_type;
-    typedef wobservable_array<T, N> this_type;
+    typedef wobservable_array<T, N, M> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -259,7 +262,7 @@ public:
 
 protected:
      wobservable_array()
-        : basic_observable_array<T, string_type, N>()
+        : basic_observable_array<T, string_type, N, mutex_type>()
     {
     }
 

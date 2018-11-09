@@ -20,6 +20,7 @@
 #include <string>
 
 #include <go_boost/mvvm/command_interface.hpp>
+#include <go_boost/utility/placebo_mutex.hpp>
 
 namespace go_boost
 {
@@ -29,6 +30,14 @@ namespace mvvm
 template<class S, typename M> class basic_command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::string, boost::recursive_mutex> command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex> wcommand_execution_wobserver_interface;
+
+namespace single_threaded
+{
+
+typedef basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_mutex> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_mutex> wcommand_execution_wobserver_interface;
+
+}
 
 template<class S, typename M = boost::recursive_mutex>
 class basic_command_execution_observer_interface
@@ -59,6 +68,16 @@ inline basic_command_execution_observer_interface<std::wstring, boost::recursive
 {
 }
 
+template<>
+inline basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_mutex>::~basic_command_execution_observer_interface()
+{
+}
+
+template<>
+inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_mutex>::~basic_command_execution_observer_interface()
+{
+}
+
 template<class S, typename M>
 inline basic_command_execution_observer_interface<S, M>::~basic_command_execution_observer_interface()
 {
@@ -71,6 +90,16 @@ inline basic_command_execution_observer_interface<std::string, boost::recursive_
 
 template<>
 inline basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex>::basic_command_execution_observer_interface()
+{
+}
+
+template<>
+inline basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_mutex>::basic_command_execution_observer_interface()
+{
+}
+
+template<>
+inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_mutex>::basic_command_execution_observer_interface()
 {
 }
 

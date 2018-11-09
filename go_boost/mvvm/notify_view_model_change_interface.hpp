@@ -26,11 +26,13 @@ namespace go_boost
 namespace mvvm
 {
 
+template<typename M = boost::recursive_mutex>
 class notify_view_model_change_interface
     : public go_boost::signals::slot
 {
 public:
-    typedef notify_view_model_change_interface this_type;
+    typedef M mutex_type;
+    typedef notify_view_model_change_interface<M> this_type;
     typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_changed_arguments>&)> view_model_changed_signal;
     typedef boost::signals2::signal<void(const boost::shared_ptr<view_model_will_change_arguments>&)> view_model_will_change_signal;
 
@@ -47,7 +49,8 @@ public:
     view_model_changed_signal view_model_changed;
 };
 
-inline notify_view_model_change_interface::~notify_view_model_change_interface()
+template<typename M>
+inline notify_view_model_change_interface<M>::~notify_view_model_change_interface()
 {
     view_model_will_change.disconnect_all_slots();
     view_model_changed.disconnect_all_slots();

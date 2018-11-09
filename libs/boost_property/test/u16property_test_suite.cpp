@@ -63,7 +63,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, value_properties)
+TEST(boost_u16property_test_suite, value_properties)
 {
     spaceship s;
 
@@ -139,7 +139,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, read_only_value_properties)
+TEST(boost_u16property_test_suite, read_only_value_properties)
 {
     read_only_spaceship s;
 
@@ -191,7 +191,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, write_only_value_properties)
+TEST(boost_u16property_test_suite, write_only_value_properties)
 {
     write_only_spaceship s;
 
@@ -239,7 +239,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, reference_properties)
+TEST(boost_u16property_test_suite, reference_properties)
 {
     reference_spaceship s;
 
@@ -380,7 +380,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, read_only_reference_properties)
+TEST(boost_u16property_test_suite, read_only_reference_properties)
 {
     int store_crew_complement = 1012;
     double store_max_speed = 9.8;
@@ -481,7 +481,7 @@ public:
     }
 };
 
-TEST(std_u16property_test_suite, write_only_reference_properties)
+TEST(boost_u16property_test_suite, write_only_reference_properties)
 {
     int store_crew_complement = 1012;
     double store_max_speed = 9.8;
@@ -636,7 +636,7 @@ private:
     armament _armament;
 };
 
-TEST(std_u16property_test_suite, proxy_properties)
+TEST(boost_u16property_test_suite, proxy_properties)
 {
     armed_spaceship s;
 
@@ -776,7 +776,7 @@ private:
     armament _armament;
 };
 
-TEST(std_u16property_test_suite, read_only_proxy_properties)
+TEST(boost_u16property_test_suite, read_only_proxy_properties)
 {
     read_only_armed_spaceship s;
 
@@ -877,7 +877,7 @@ private:
     armament _armament;
 };
 
-TEST(std_u16property_test_suite, write_only_proxy_properties)
+TEST(boost_u16property_test_suite, write_only_proxy_properties)
 {
     write_only_armed_spaceship s;
 

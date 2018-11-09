@@ -24,19 +24,30 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S>
+template<class S, typename M>
 class basic_observable_object;
-typedef basic_observable_object<std::string> observable_object;
-typedef basic_observable_object<std::wstring> wobservable_object;
+typedef basic_observable_object<std::string, boost::recursive_mutex> observable_object;
+typedef basic_observable_object<std::wstring, boost::recursive_mutex> wobservable_object;
 
-template<class S>
+namespace single_threaded
+{
+
+typedef basic_observable_object<std::string, go_boost::utility::placebo_mutex> observable_object;
+typedef basic_observable_object<std::wstring, go_boost::utility::placebo_mutex> wobservable_object;
+
+}
+
+template<class S, typename M = boost::recursive_mutex>
 class basic_observable_object
-    : public basic_notify_property_changed_interface<S>
+    : public basic_notify_property_changed_interface<S, M>
     , public object
 {
 public:
     typedef S string_type;
-    typedef basic_observable_object<string_type> this_type;
+    typedef M mutex_type;
+    typedef basic_observable_object<S, M> this_type;
+    typedef typename boost::shared_ptr<this_type> ptr;
+    typedef typename boost::weak_ptr<this_type> wptr;
 
 public:
     virtual ~basic_observable_object() = 0;
@@ -45,8 +56,8 @@ protected:
     basic_observable_object() GO_BOOST_DEFAULT_CONSTRUCTOR
 };
 
-template<class S>
-inline basic_observable_object<S>::~basic_observable_object()
+template<class S, typename M>
+inline basic_observable_object<S, M>::~basic_observable_object()
 {
 }
 

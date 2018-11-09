@@ -90,7 +90,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(wcommand_test_suite, test_wcommand)
+TEST(boost_wcommand_test_suite, test_wcommand)
 {
     boost::shared_ptr<test_wcommand> command(new test_wcommand());
 

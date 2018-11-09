@@ -25,14 +25,16 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, class C> class basic_observable_container
-    : public notify_container_changed_interface
-    , public basic_observable_object<S>
+template<class S, class C, typename M = boost::recursive_mutex>
+class basic_observable_container
+    : public notify_container_changed_interface<M>
+    , public basic_observable_object<S, M>
 {
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef basic_observable_container<string_type, container_type> this_type;
+    typedef M mutex_type;
+    typedef basic_observable_container<string_type, container_type, mutex_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -41,17 +43,17 @@ public:
 
 protected:
     basic_observable_container()
-        : notify_container_changed_interface()
-        , basic_observable_object<string_type>()
+        : notify_container_changed_interface<mutex_type>()
+        , basic_observable_object<string_type, mutex_type>()
     {
     }
 
 protected:
     virtual void notify_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size)
     {
-        if(!basic_observable_container<string_type, container_type>::container_changed.empty())
+        if(!this_type::container_changed.empty())
         {
-            basic_observable_container<string_type, container_type>::container_changed(this->shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
+            this_type::container_changed(this->shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
         }
     }
 
@@ -60,8 +62,8 @@ protected:
     virtual const container_type& container() const = 0;
 };
 
-template<class S, class C>
-inline basic_observable_container<S, C>::~basic_observable_container()
+template<class S, class C, typename M>
+inline basic_observable_container<S, C, M>::~basic_observable_container()
 {
 }
 

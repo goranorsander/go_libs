@@ -114,7 +114,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(relay_wcommand_test_suite, test_relay_wcommand)
+TEST(boost_relay_wcommand_test_suite, test_relay_wcommand)
 {
     test_relay_wcommand_exection_context command_exection_context;
 

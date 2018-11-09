@@ -21,10 +21,10 @@
 #include <map>
 #include <boost/foreach.hpp>
 #include <boost/function.hpp>
-#include <boost/thread/recursive_mutex.hpp>
 #include <go_boost/mvvm/event.hpp>
 #include <go_boost/mvvm/notify_event_firing_interface.hpp>
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/utility/placebo_mutex.hpp>
 
 namespace go_boost
 {
@@ -37,13 +37,22 @@ template<class S, typename M> class basic_event_manager;
 typedef basic_event_manager<std::string, boost::recursive_mutex> event_manager;
 typedef basic_event_manager<std::wstring, boost::recursive_mutex> wevent_manager;
 
-template<class S, typename M>
+namespace single_threaded
+{
+
+typedef basic_event_manager<std::string, go_boost::utility::placebo_mutex> event_manager;
+typedef basic_event_manager<std::wstring, go_boost::utility::placebo_mutex> wevent_manager;
+
+}
+
+template<class S, typename M = boost::recursive_mutex>
 class basic_event_manager
-    : public basic_notify_event_firing_interface<S>
+    : public basic_notify_event_firing_interface<S, M>
     , private go_boost::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef basic_event_manager<S, M> this_type;
     typedef typename boost::shared_ptr<basic_event_manager<S, M>> ptr;
     typedef typename boost::weak_ptr<basic_event_manager<S, M>> wptr;
@@ -83,7 +92,7 @@ inline basic_event_manager<S, M>::~basic_event_manager()
 
 template<class S, typename M>
 inline basic_event_manager<S, M>::basic_event_manager()
-    : basic_notify_event_firing_interface<S>()
+    : basic_notify_event_firing_interface<S, M>()
     , go_boost::utility::noncopyable_nonmovable()
     , _events_guard()
     , _next_event_subscription_key(0)

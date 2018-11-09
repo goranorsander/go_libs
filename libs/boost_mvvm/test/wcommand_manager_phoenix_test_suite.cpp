@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 #include <go_boost/config.hpp>
 
-#if (BOOST_COMP_MSVC) && (BOOST_MSVC <= 1700)
+#if defined(GO_BOOST_NO_BOOST_PHOENIX)
 GO_BOOST_MESSAGE("Boost.Phoenix is not supported by this compiler")
 TEST(boost_wcommand_manager_phoenix_test_suite, boost_phoenix_not_supported) {}
 #else
@@ -349,4 +349,4 @@ TEST(boost_wcommand_manager_phoenix_test_suite, test_spaceship_observer)
 
 }
 
-#endif  // Boost.Phoenix is not supported by this compiler
+#endif  // #if defined(GO_BOOST_NO_BOOST_PHOENIX)

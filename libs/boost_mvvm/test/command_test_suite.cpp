@@ -1,5 +1,5 @@
 //
-//  command_test_suite.cpp
+//  boost_command_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -90,7 +90,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(command_test_suite, test_command)
+TEST(boost_command_test_suite, test_command)
 {
     boost::shared_ptr<test_command> command(new test_command());
 

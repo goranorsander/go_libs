@@ -22,6 +22,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <map>
 #include <mutex>
 #include <go/mvvm/notify_event_firing_interface.hpp>
+#include <go/utility/placebo_mutex.hpp>
 
 namespace go
 {
@@ -34,9 +35,17 @@ template<class S, typename M> class basic_event_manager;
 typedef basic_event_manager<std::string, std::recursive_mutex> event_manager;
 typedef basic_event_manager<std::wstring, std::recursive_mutex> wevent_manager;
 
+namespace single_threaded
+{
+
+typedef basic_event_manager<std::string, go::utility::placebo_mutex> event_manager;
+typedef basic_event_manager<std::wstring, go::utility::placebo_mutex> wevent_manager;
+
+}
+
 template<class S, typename M = std::recursive_mutex>
 class basic_event_manager
-    : public basic_notify_event_firing_interface<S>
+    : public basic_notify_event_firing_interface<S, M>
     , public go::utility::noncopyable_nonmovable
 {
 public:
@@ -83,7 +92,7 @@ inline basic_event_manager<S, M>::~basic_event_manager()
 
 template<class S, typename M>
 inline basic_event_manager<S, M>::basic_event_manager()
-    : basic_notify_event_firing_interface<S>()
+    : basic_notify_event_firing_interface<S, M>()
     , go::utility::noncopyable_nonmovable()
     , _events_guard()
     , _next_event_subscription_key(0)

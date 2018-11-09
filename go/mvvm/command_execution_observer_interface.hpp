@@ -21,6 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <string>
 
 #include <go/mvvm/command_interface.hpp>
+#include <go/utility/placebo_mutex.hpp>
 
 namespace go
 {
@@ -30,6 +31,14 @@ namespace mvvm
 template<class S, typename M> class basic_command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::string, std::recursive_mutex> command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::wstring, std::recursive_mutex> wcommand_execution_wobserver_interface;
+
+namespace single_threaded
+{
+
+typedef basic_command_execution_observer_interface<std::string, go::utility::placebo_mutex> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go::utility::placebo_mutex> wcommand_execution_wobserver_interface;
+
+}
 
 template<class S, typename M = std::recursive_mutex>
 class basic_command_execution_observer_interface

@@ -51,7 +51,7 @@ private:
 std::size_t foo::_new_count = 0;
 std::size_t foo::_delete_count = 0;
 
-TEST(std_scope_guard_new_test_suite, test_scope_guard_new)
+TEST(boost_scope_guard_new_test_suite, test_scope_guard_new)
 {
     EXPECT_EQ(0, foo::calls_to_new());
     EXPECT_EQ(0, foo::calls_to_delete());

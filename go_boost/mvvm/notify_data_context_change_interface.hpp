@@ -26,11 +26,13 @@ namespace go_boost
 namespace mvvm
 {
 
+template<typename M = boost::recursive_mutex>
 class notify_data_context_change_interface
     : public go_boost::signals::slot
 {
 public:
-    typedef notify_data_context_change_interface this_type;
+    typedef M mutex_type;
+    typedef notify_data_context_change_interface<M> this_type;
     typedef boost::signals2::signal<void(const boost::shared_ptr<data_context_changed_arguments>&)> data_context_changed_signal;
     typedef boost::signals2::signal<void(const boost::shared_ptr<data_context_will_change_arguments>&)> data_context_will_change_signal;
 
@@ -47,7 +49,8 @@ public:
     data_context_changed_signal data_context_changed;
 };
 
-inline notify_data_context_change_interface::~notify_data_context_change_interface()
+template<typename M>
+inline notify_data_context_change_interface<M>::~notify_data_context_change_interface()
 {
     data_context_will_change.disconnect_all_slots();
     data_context_changed.disconnect_all_slots();

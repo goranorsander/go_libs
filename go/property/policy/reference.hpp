@@ -28,11 +28,12 @@ namespace property
 namespace policy
 {
 
-template<class T> class reference
+template<class T, typename M> class reference
 {
 public:
     typedef T value_type;
-    typedef reference<value_type> this_type;
+    typedef M mutex_type;
+    typedef reference<value_type, mutex_type> this_type;
 
 public:
     virtual ~reference() GO_DEFAULT_DESTRUCTOR
@@ -76,7 +77,7 @@ public:
         {
             throw exception("Cannot get value to unbound reference property");
         }
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         return *_v;
     }
 
@@ -86,30 +87,30 @@ public:
         {
             throw exception("Cannot set value to unbound reference property");
         }
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         *_v = v;
     }
 
     void bind(value_type& v)
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         _v = std::addressof(v);
     }
 
     bool empty() const
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         return _v == nullptr;
     }
 
     void reset()
     {
-        const std::lock_guard<std::recursive_mutex> lock(_property_guard);
+        const std::lock_guard<mutex_type> lock(_property_guard);
         _v = nullptr;
     }
 
 private:
-    mutable std::recursive_mutex _property_guard;
+    mutable mutex_type _property_guard;
     value_type* _v;
 };
 

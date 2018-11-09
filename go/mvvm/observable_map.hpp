@@ -19,7 +19,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <map>
 
-#include <go/mvvm/notify_container_changed_interface.hpp>
 #include <go/mvvm/observable_ordered_associative_container.hpp>
 
 namespace go
@@ -27,13 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class K, class T, class S> class basic_observable_map
-    : public basic_observable_ordered_associative_container<S, std::map<K, T>>
+template<class K, class T, class S, typename M = std::recursive_mutex>
+class basic_observable_map
+    : public basic_observable_ordered_associative_container<S, std::map<K, T>, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef typename std::map<K, T> container_type;
-    typedef basic_observable_map<K, T, S> this_type;
+    typedef basic_observable_map<K, T, S, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -59,32 +60,32 @@ public:
 
 protected:
     basic_observable_map()
-        : basic_observable_ordered_associative_container<string_type, container_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
     basic_observable_map(InputIterator first, InputIterator last)
-        : basic_observable_ordered_associative_container<string_type, container_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_map(const this_type& x)
-        : basic_observable_ordered_associative_container<string_type, container_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_map(this_type&& x)
-        : basic_observable_ordered_associative_container<string_type, container_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_map(const std::initializer_list<value_type>& il)
-        : basic_observable_ordered_associative_container<string_type, container_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
         , _container(il)
     {
     }
@@ -167,6 +168,12 @@ public:
         {
             _container.operator=(x._container);
         }
+        return *this;
+    }
+
+    this_type& operator=(const std::initializer_list<value_type>& il)
+    {
+        this->container().operator=(il);
         return *this;
     }
 
@@ -302,25 +309,27 @@ private:
     container_type _container;
 };
 
-template<class K, class T, class S>
-inline typename basic_observable_map<K, T, S>::container_type& basic_observable_map<K, T, S>::container()
+template<class K, class T, class S, typename M>
+inline typename basic_observable_map<K, T, S, M>::container_type& basic_observable_map<K, T, S, M>::container()
 {
     return _container;
 }
 
-template<class K, class T, class S>
-inline const typename basic_observable_map<K, T, S>::container_type& basic_observable_map<K, T, S>::container() const
+template<class K, class T, class S, typename M>
+inline const typename basic_observable_map<K, T, S, M>::container_type& basic_observable_map<K, T, S, M>::container() const
 {
     return _container;
 }
 
-template<class K, class T> class observable_map
-    : public basic_observable_map<K, T, std::string>
+template<class K, class T, typename M = std::recursive_mutex>
+class observable_map
+    : public basic_observable_map<K, T, std::string, M>
 {
 public:
     typedef std::string string_type;
+    typedef M mutex_type;
     typedef typename std::map<K, T> container_type;
-    typedef observable_map<K, T> this_type;
+    typedef observable_map<K, T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -346,28 +355,28 @@ public:
 
 protected:
      observable_map()
-        //: basic_observable_map<key_type, value_type, string_type>()
+        //: basic_observable_map<key_type, value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     observable_map(InputIterator first, InputIterator last)
-        : basic_observable_map<key_type, value_type, string_type>(first, last)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit observable_map(const this_type& x)
-        : basic_observable_map<key_type, value_type, string_type>(x)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_map(this_type&& x)
-        : basic_observable_map<key_type, value_type, string_type>(x)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit observable_map(const std::initializer_list<value_type>& il)
-        : basic_observable_map<key_type, value_type, string_type>(il)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -438,7 +447,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_map<key_type, value_type, string_type>::operator=(x);
+            basic_observable_map<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -447,7 +456,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_map<key_type, value_type, string_type>::operator=(x);
+            basic_observable_map<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -459,20 +468,22 @@ public:
     }
 
 public:
-    template<class k, class t>
-    void swap(observable_map<k, t>& x)
+    template<class k, class t, typename m>
+    void swap(observable_map<k, t, m>& x)
     {
-        basic_observable_map<k, t, string_type>::swap(dynamic_cast<basic_observable_map<k, t, string_type>&>(x));
+        basic_observable_map<k, t, string_type, m>::swap(dynamic_cast<basic_observable_map<k, t, string_type, m>&>(x));
     }
 };
 
-template<class K, class T> class wobservable_map
-    : public basic_observable_map<K, T, std::wstring>
+template<class K, class T, typename M = std::recursive_mutex>
+class wobservable_map
+    : public basic_observable_map<K, T, std::wstring, M>
 {
 public:
     typedef std::wstring string_type;
+    typedef M mutex_type;
     typedef typename std::map<K, T> container_type;
-    typedef wobservable_map<K, T> this_type;
+    typedef wobservable_map<K, T, M> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -498,28 +509,28 @@ public:
 
 protected:
      wobservable_map()
-        //: basic_observable_map<key_type, value_type, string_type>()
+        //: basic_observable_map<key_type, value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     wobservable_map(InputIterator first, InputIterator last)
-        : basic_observable_map<key_type, value_type, string_type>(first, last)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit wobservable_map(const this_type& x)
-        : basic_observable_map<key_type, value_type, string_type>(x)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_map(this_type&& x)
-        : basic_observable_map<key_type, value_type, string_type>(x)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(x)
     {
     }
 
     explicit wobservable_map(const std::initializer_list<value_type>& il)
-        : basic_observable_map<key_type, value_type, string_type>(il)
+        : basic_observable_map<key_type, value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -590,7 +601,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_map<key_type, value_type, string_type>::operator=(x);
+            basic_observable_map<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -599,7 +610,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_map<key_type, value_type, string_type>::operator=(x);
+            basic_observable_map<key_type, value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -611,10 +622,10 @@ public:
     }
 
 public:
-    template<class k, class t>
-    void swap(wobservable_map<k, t>& x)
+    template<class k, class t, typename m>
+    void swap(wobservable_map<k, t, m>& x)
     {
-        basic_observable_map<k, t, string_type>::swap(dynamic_cast<basic_observable_map<k, t, string_type>&>(x));
+        basic_observable_map<k, t, string_type, m>::swap(dynamic_cast<basic_observable_map<k, t, string_type, m>&>(x));
     }
 };
 

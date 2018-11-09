@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/reference.hpp>
+#include <go/utility/placebo_mutex.hpp>
 #include <go/utility/u8string.hpp>
 
 namespace go
@@ -31,13 +32,14 @@ namespace nameless
 namespace read_only
 {
 
-template<class T> class reference_property
-    : public detail::property_base<T, policy::reference<T>>
+template<class T, typename M = std::recursive_mutex> class reference_property
+    : public detail::property_base<T, policy::reference<T, M>>
 {
 public:
     typedef T value_type;
-    typedef reference_property<value_type> this_type;
-    typedef typename policy::reference<value_type> policy_type;
+    typedef M mutex_type;
+    typedef reference_property<value_type, mutex_type> this_type;
+    typedef typename policy::reference<value_type, mutex_type> policy_type;
 
 public:
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
@@ -76,11 +78,7 @@ public:
     }
 };
 
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::wstring)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, utility::u8string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::u16string)
-GO_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(reference_property, std::u32string)
+GO_IMPLEMENT_DEFAULT_NAMELESS_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(reference_property)
 
 } // namespace read_only
 } // namespace nameless

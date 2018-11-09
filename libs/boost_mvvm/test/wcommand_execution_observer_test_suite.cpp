@@ -120,7 +120,7 @@ private:
     unsigned int _number_of_can_execute_changes;
 };
 
-TEST(wcommand_execution_observer_test_suite, test_execute_wcommand)
+TEST(boost_wcommand_execution_observer_test_suite, test_execute_wcommand)
 {
     m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create();
 
@@ -205,7 +205,7 @@ TEST(wcommand_execution_observer_test_suite, test_execute_wcommand)
     EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
 }
 
-TEST(wcommand_execution_observer_test_suite, test_post_wcommand)
+TEST(boost_wcommand_execution_observer_test_suite, test_post_wcommand)
 {
     m::wcommand_manager::ptr command_mgr = m::wcommand_manager::create();
 

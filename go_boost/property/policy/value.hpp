@@ -26,11 +26,12 @@ namespace property
 namespace policy
 {
 
-template<class V> class value
+template<class V, typename M> class value
 {
 public:
     typedef V value_type;
-    typedef value<value_type> this_type;
+    typedef M mutex_type;
+    typedef value<value_type, mutex_type> this_type;
 
 public:
     virtual ~value() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -55,18 +56,18 @@ public:
 
     value_type get() const
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         return _v;
     }
 
     void set(const value_type& v)
     {
-        const boost::recursive_mutex::scoped_lock lock(_property_guard);
+        const typename mutex_type::scoped_lock lock(_property_guard);
         _v = v;
     }
 
 private:
-    mutable boost::recursive_mutex _property_guard;
+    mutable mutex_type _property_guard;
     value_type _v;
 };
 

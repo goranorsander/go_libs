@@ -187,7 +187,6 @@ private:
     std::wstring _fleet_commander;
 };
 
-#if BOOST_MSVC > 1500
 #define TEST_CASE_SHIPYARD \
     m::wevent_manager::ptr event_mgr = m::wevent_manager::create(); \
 \
@@ -210,30 +209,6 @@ private:
     event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship6, _1)); \
     event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship7, _1)); \
     event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship8, _1));
-#else
-#define TEST_CASE_SHIPYARD \
-    m::wevent_manager::ptr event_mgr = m::wevent_manager::create(); \
-\
-    fleet_commander::ptr fleet_cmdr = fleet_commander::create(event_mgr, L"General Jan Dodonna", L"Battle of Yavin"); \
-\
-    boost::shared_ptr<spaceship> ship1(new spaceship(L"Millennium Falcon", L"Han Solo", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship2(new spaceship(L"X-Wing Red Leader", L"Garven Dreis", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship3(new spaceship(L"X-Wing Red Two", L"Wedge Antilles", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship4(new spaceship(L"X-Wing Red Three", L"Biggs Darklighter", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship5(new spaceship(L"X-Wing Red Four", L"John D. Branon", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship6(new spaceship(L"X-Wing Red Five", L"Luke Skywalker", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship7(new spaceship(L"Y-Wing Gold Leader", L"Jon 'Dutch' Vander", L"General Jan Dodonna")); \
-    boost::shared_ptr<spaceship> ship8(new spaceship(L"Y-Wing Gold Two", L"Dex Tiree", L"General Jan Dodonna")); \
-\
-    const m::event_subscription_key_type ship1_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, _1)); \
-    const m::event_subscription_key_type ship2_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, _1)); \
-    const m::event_subscription_key_type ship3_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship3, _1)); \
-    const m::event_subscription_key_type ship4_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship4, _1)); \
-    const m::event_subscription_key_type ship5_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship5, _1)); \
-    const m::event_subscription_key_type ship6_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship6, _1)); \
-    const m::event_subscription_key_type ship7_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship7, _1)); \
-    const m::event_subscription_key_type ship8_key = event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship8, _1));
-#endif  // BOOST_MSVC > 1500
 
 TEST(boost_event_manager_test_suite, test_command_manager)
 {

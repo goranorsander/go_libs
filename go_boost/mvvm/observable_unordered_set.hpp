@@ -20,7 +20,6 @@
 #include <boost/make_shared.hpp>
 #include <boost/unordered_set.hpp>
 
-#include <go_boost/mvvm/notify_container_changed_interface.hpp>
 #include <go_boost/mvvm/observable_unordered_associative_container.hpp>
 
 namespace go_boost
@@ -28,11 +27,13 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class K, class S> class basic_observable_unordered_set
-    : public basic_observable_unordered_associative_container<S, boost::unordered_set<K>>
+template<class K, class S, typename M = boost::recursive_mutex>
+class basic_observable_unordered_set
+    : public basic_observable_unordered_associative_container<S, boost::unordered_set<K>, M>
 {
 public:
     typedef S string_type;
+    typedef M mutex_type;
     typedef typename boost::unordered_set<K> container_type;
     typedef basic_observable_unordered_set<K, S> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
@@ -57,20 +58,20 @@ public:
 
 protected:
     basic_observable_unordered_set()
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
     basic_observable_unordered_set(InputIterator first, InputIterator last)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_unordered_set(const this_type& x)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
@@ -78,7 +79,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit basic_observable_unordered_set(this_type&& x)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(x._container)
     {
     }
@@ -88,7 +89,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit basic_observable_unordered_set(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_associative_container<string_type, container_type>()
+        : basic_observable_unordered_associative_container<string_type, container_type, mutex_type>()
         , _container(il)
     {
     }
@@ -199,6 +200,16 @@ public:
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+
+    this_type& operator=(const std::initializer_list<value_type>& il)
+    {
+        this->container().operator=(il);
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
 
@@ -329,25 +340,27 @@ private:
     container_type _container;
 };
 
-template<class K, class S>
-inline typename basic_observable_unordered_set<K, S>::container_type& basic_observable_unordered_set<K, S>::container()
+template<class K, class S, typename M>
+inline typename basic_observable_unordered_set<K, S, M>::container_type& basic_observable_unordered_set<K, S, M>::container()
 {
     return _container;
 }
 
-template<class K, class S>
-inline const typename basic_observable_unordered_set<K, S>::container_type& basic_observable_unordered_set<K, S>::container() const
+template<class K, class S, typename M>
+inline const typename basic_observable_unordered_set<K, S, M>::container_type& basic_observable_unordered_set<K, S, M>::container() const
 {
     return _container;
 }
 
-template<class K> class observable_unordered_set
-    : public basic_observable_unordered_set<K, std::string>
+template<class K, typename M = boost::recursive_mutex>
+class observable_unordered_set
+    : public basic_observable_unordered_set<K, std::string, M>
 {
 public:
     typedef std::string string_type;
+    typedef M mutex_type;
     typedef typename boost::unordered_set<K> container_type;
-    typedef observable_unordered_set<K> this_type;
+    typedef observable_unordered_set<K, M> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -370,25 +383,25 @@ public:
 
 protected:
      observable_unordered_set()
-        : basic_observable_unordered_set<value_type, string_type>()
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     observable_unordered_set(InputIterator first, InputIterator last)
-        : basic_observable_unordered_set<value_type, string_type>(first, last)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit observable_unordered_set(const this_type& x)
-        : basic_observable_unordered_set<value_type, string_type>(x)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit observable_unordered_set(this_type&& x)
-        : basic_observable_unordered_set<value_type, string_type>(x)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(x)
     {
     }
 
@@ -397,7 +410,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit observable_unordered_set(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_set<value_type, string_type>(il)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -490,7 +503,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_set<value_type, string_type>::operator=(x);
+            basic_observable_unordered_set<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -501,7 +514,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_set<value_type, string_type>::operator=(x);
+            basic_observable_unordered_set<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -519,20 +532,22 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    template<class k>
-    void swap(observable_unordered_set<k>& x)
+    template<class k, typename m>
+    void swap(observable_unordered_set<k, m>& x)
     {
-        basic_observable_unordered_set<k, string_type>::swap(dynamic_cast<basic_observable_unordered_set<k, string_type>&>(x));
+        basic_observable_unordered_set<k, string_type, m>::swap(dynamic_cast<basic_observable_unordered_set<k, string_type, m>&>(x));
     }
 };
 
-template<class K> class wobservable_unordered_set
-    : public basic_observable_unordered_set<K, std::wstring>
+template<class K, typename M = boost::recursive_mutex>
+class wobservable_unordered_set
+    : public basic_observable_unordered_set<K, std::wstring, M>
 {
 public:
     typedef std::wstring string_type;
+    typedef M mutex_type;
     typedef typename boost::unordered_set<K> container_type;
-    typedef wobservable_unordered_set<K> this_type;
+    typedef wobservable_unordered_set<K, M> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -555,25 +570,25 @@ public:
 
 protected:
      wobservable_unordered_set()
-        : basic_observable_unordered_set<value_type, string_type>()
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>()
     {
     }
 
     template <class InputIterator>
     wobservable_unordered_set(InputIterator first, InputIterator last)
-        : basic_observable_unordered_set<value_type, string_type>(first, last)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(first, last)
     {
     }
 
     explicit wobservable_unordered_set(const this_type& x)
-        : basic_observable_unordered_set<value_type, string_type>(x)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit wobservable_unordered_set(this_type&& x)
-        : basic_observable_unordered_set<value_type, string_type>(x)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(x)
     {
     }
 
@@ -582,7 +597,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit wobservable_unordered_set(const std::initializer_list<value_type>& il)
-        : basic_observable_unordered_set<value_type, string_type>(il)
+        : basic_observable_unordered_set<value_type, string_type, mutex_type>(il)
     {
     }
 
@@ -675,7 +690,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_set<value_type, string_type>::operator=(x);
+            basic_observable_unordered_set<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -686,7 +701,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_unordered_set<value_type, string_type>::operator=(x);
+            basic_observable_unordered_set<value_type, string_type, mutex_type>::operator=(x);
         }
         return *this;
     }
@@ -704,10 +719,10 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    template<class k>
-    void swap(wobservable_unordered_set<k>& x)
+    template<class k, typename m>
+    void swap(wobservable_unordered_set<k, m>& x)
     {
-        basic_observable_unordered_set<k, string_type>::swap(dynamic_cast<basic_observable_unordered_set<k, string_type>&>(x));
+        basic_observable_unordered_set<k, string_type, m>::swap(dynamic_cast<basic_observable_unordered_set<k, string_type, m>&>(x));
     }
 };
 

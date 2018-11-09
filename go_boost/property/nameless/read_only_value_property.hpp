@@ -20,9 +20,6 @@
 #include <go_boost/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go_boost/property/nameless/detail/read_only_property_base.hpp>
 #include <go_boost/property/policy/value.hpp>
-#include <go_boost/utility/u8string.hpp>
-#include <go_boost/utility/u16string.hpp>
-#include <go_boost/utility/u32string.hpp>
 
 namespace go_boost
 {
@@ -33,30 +30,27 @@ namespace nameless
 namespace read_only
 {
 
-template<class T> class value_property
-    : public detail::property_base<T, policy::value<T>>
+template<class T, typename M = boost::recursive_mutex> class value_property
+    : public detail::property_base<T, policy::value<T, M>>
 {
 public:
     typedef T value_type;
-    typedef value_property<value_type> this_type;
-    typedef typename policy::value<value_type> policy_type;
+    typedef M mutex_type;
+    typedef value_property<value_type, mutex_type> this_type;
+    typedef typename policy::value<value_type, mutex_type> policy_type;
 
 public:
     virtual ~value_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit value_property(const value_type& v)
-        : detail::property_base<value_type, policy::value<value_type>>(policy::value<value_type>(v))
+        : detail::property_base<value_type, policy_type>(policy::value<value_type, mutex_type>(v))
     {
     }
 
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::string)
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, std::wstring)
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u8string)
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u16string)
-GO_BOOST_IMPLEMENT_ANONYMOUS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(value_property, utility::u32string)
+GO_BOOST_IMPLEMENT_DEFAULT_NAMELESS_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(value_property)
 
 } // namespace read_only
 } // namespace nameless

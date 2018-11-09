@@ -103,6 +103,8 @@ public:
     u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
 public:
+    u2string& operator=(const u2string& other);
+
     bool operator==(const u2string& other) const;
 
     bool operator!=(const u2string& other) const;
@@ -206,6 +208,15 @@ template<class T>
 inline u2string::u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc)
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(t, pos, n, alloc)
 {
+}
+
+inline u2string& u2string::operator=(const u2string& other)
+{
+    if (&other != this)
+    {
+        std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>::operator=(other);
+    }
+    return *this;
 }
 
 inline bool u2string::operator==(const u2string& other) const
