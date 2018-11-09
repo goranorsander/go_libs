@@ -30,6 +30,7 @@ of components too small to be called libraries in their own right.
 * [noncopyable](./class_noncopyable.html)
 * [noncopyable_nonmovable](./class_noncopyable_nonmovable.html)
 * [nonmovable](./class_nonmovable.html)
+* [placebo_mutex](./class_placebo_mutex.html)
 * [primitive_type_implicit_specializer](./class_template_primitive_type_implicit_specializer.html)
 * [primitive_type_specializer](./class_template_primitive_type_specializer.html)
 * [scope_guard](./class_scope_guard.html)
