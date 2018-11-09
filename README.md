@@ -114,7 +114,7 @@ My development environment and toolset details:
     * Git Lens 8.5.6 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 1.6.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.12.2
+  * cmake version 3.12.3
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.19.0.windows.1
@@ -127,11 +127,8 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.8.7
+  * Visual Studio 2017, Community Edition, version 15.8.9
   * Visual Studio Code 1.27.2 - with same extensions as in Linux environment
-* Windows 7 Enterprise, 64 bit
-  * cmake version 3.12.1
-  * Visual Studio 2008 Professional Edition
 
 # GOOGLE TEST
 
