@@ -14,21 +14,21 @@
 namespace
 {
 
-TEST(std_define_go_boost_address_model_test_suite, test_not_define_go_boost_address_model_32)
+TEST(boost_define_go_boost_address_model_test_suite, test_not_define_go_boost_address_model_32)
 {
     #if defined(GO_BOOST_ADDRESS_MODEL_32)
     EXPECT_TRUE(false);
     #endif
 }
 
-TEST(std_define_go_boost_address_model_test_suite, test_define_go_boost_address_model_64)
+TEST(boost_define_go_boost_address_model_test_suite, test_define_go_boost_address_model_64)
 {
     #if !defined(GO_BOOST_ADDRESS_MODEL_64)
     EXPECT_TRUE(false);
     #endif
 }
 
-TEST(std_define_go_boost_address_model_test_suite, test_pointer_size)
+TEST(boost_define_go_boost_address_model_test_suite, test_pointer_size)
 {
     const int* p = NULL;
     const std::size_t p_size = sizeof(p);
