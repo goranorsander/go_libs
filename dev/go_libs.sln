@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property", "property\property.vcxproj", "{26553CCB-6522-42AB-AE06-356EAFCED11F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property", "std_property\property.vcxproj", "{26553CCB-6522-42AB-AE06-356EAFCED11F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property_tests", "property\property_tests.vcxproj", "{1FB6F0EC-D203-4F07-AECA-8F4C174CD1BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property_tests", "std_property\property_tests.vcxproj", "{1FB6F0EC-D203-4F07-AECA-8F4C174CD1BC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm", "mvvm\mvvm.vcxproj", "{FEC03570-CB02-4DAC-8D9F-55A42DDE90E2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm", "std_mvvm\mvvm.vcxproj", "{FEC03570-CB02-4DAC-8D9F-55A42DDE90E2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_tests", "mvvm\mvvm_tests.vcxproj", "{E5B97DF8-30D7-4B81-A043-29F4DC2713F4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_tests", "std_mvvm\mvvm_tests.vcxproj", "{E5B97DF8-30D7-4B81-A043-29F4DC2713F4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals", "signals\signals.vcxproj", "{99DA5C28-BFE0-4F04-86FD-CEA6A66BAE6C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals", "std_signals\signals.vcxproj", "{99DA5C28-BFE0-4F04-86FD-CEA6A66BAE6C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals_tests", "signals\signals_tests.vcxproj", "{3B7E3A04-6EF7-4D77-B650-6776B813939B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals_tests", "std_signals\signals_tests.vcxproj", "{3B7E3A04-6EF7-4D77-B650-6776B813939B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_property", "boost_property\boost_property.vcxproj", "{73046F89-903D-413D-92B3-EF88D64097F6}"
 EndProject
@@ -23,25 +23,25 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm", "boost_mvvm\bo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_tests", "boost_mvvm\boost_mvvm_tests.vcxproj", "{3D6E880C-944A-4EBF-9072-861E84C02D5A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config", "config\config.vcxproj", "{CA1E677D-34E7-4AE9-82CA-8158F0ED5265}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config", "std_config\config.vcxproj", "{CA1E677D-34E7-4AE9-82CA-8158F0ED5265}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config_tests", "config\config_tests.vcxproj", "{D0B22A17-CDB9-49A2-A5B1-BEA083ED1E24}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config_tests", "std_config\config_tests.vcxproj", "{D0B22A17-CDB9-49A2-A5B1-BEA083ED1E24}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_example_1", "mvvm\mvvm_mfc_example_1.vcxproj", "{0716CE9B-0DF8-49E6-8C9D-C3434B3186DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_product_example", "std_mvvm\mvvm_mfc_product_example.vcxproj", "{0716CE9B-0DF8-49E6-8C9D-C3434B3186DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_example_2", "mvvm\mvvm_mfc_example_2.vcxproj", "{BE3A7CB2-2AE2-4B9B-B031-184F5086558F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_lambda_product_example", "std_mvvm\mvvm_mfc_lambda_product_example.vcxproj", "{BE3A7CB2-2AE2-4B9B-B031-184F5086558F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_mfc_example_1", "boost_mvvm\boost_mvvm_mfc_example_1.vcxproj", "{8403138C-4BFD-4466-B407-DA6217DC2568}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_product_example", "boost_mvvm\mvvm_mfc_product_example.vcxproj", "{8403138C-4BFD-4466-B407-DA6217DC2568}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_mfc_example_2", "boost_mvvm\boost_mvvm_mfc_example_2.vcxproj", "{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_phoenix_product_example", "boost_mvvm\mvvm_mfc_phoenix_product_example.vcxproj", "{D52F0F80-2762-4EC0-BB9F-F4EA3E3D6912}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_example_3", "mvvm\mvvm_mfc_example_3.vcxproj", "{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_starfleet_example", "std_mvvm\mvvm_mfc_starfleet_example.vcxproj", "{3AEBBF03-54FD-4BC8-8A39-55D041C00AF4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "utility\utility.vcxproj", "{3C10061B-82B1-47E2-AFDE-F293BCB364B4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "std_utility\utility.vcxproj", "{3C10061B-82B1-47E2-AFDE-F293BCB364B4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility_tests", "utility\utility_tests.vcxproj", "{40ADD9BF-37DD-4FEF-B1B3-6CC7AC44480E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility_tests", "std_utility\utility_tests.vcxproj", "{40ADD9BF-37DD-4FEF-B1B3-6CC7AC44480E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_mfc_example_3", "boost_mvvm\boost_mvvm_mfc_example_3.vcxproj", "{C4DCE310-256B-4DCD-A024-1A2D347D99BF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_starfleet_example", "boost_mvvm\mvvm_mfc_starfleet_example.vcxproj", "{C4DCE310-256B-4DCD-A024-1A2D347D99BF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_signals", "boost_signals\boost_signals.vcxproj", "{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}"
 EndProject
@@ -53,29 +53,29 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_config", "boost_confi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception", "boost_exception\boost_exception.vcxproj", "{B6DB2899-5BDA-4ABE-A2B9-C664376B8004}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception", "exception\exception.vcxproj", "{CC49C15B-9830-497E-B151-04CCEA0EDE79}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception", "std_exception\exception.vcxproj", "{CC49C15B-9830-497E-B151-04CCEA0EDE79}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility_tests", "boost_utility\boost_utility_tests.vcxproj", "{D14B0B9F-8E8E-4230-9051-C4310769F632}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_value_property_example", "std_value_property_example\std_value_property_example.vcxproj", "{5BFF6B8F-FB28-4774-8B35-D5AC2EFAB362}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "value_property_example", "std_property\value_property_example.vcxproj", "{5BFF6B8F-FB28-4774-8B35-D5AC2EFAB362}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_proxy_property_example", "std_proxy_property_example\std_proxy_property_example.vcxproj", "{1FF990DF-6A9E-4B1E-B0F0-63FF21A1B034}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "proxy_property_example", "std_property\proxy_property_example.vcxproj", "{1FF990DF-6A9E-4B1E-B0F0-63FF21A1B034}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_reference_property_example", "std_reference_property_example\std_reference_property_example.vcxproj", "{B6709B3B-0B7D-4364-99E9-99C30937290E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reference_property_example", "std_property\reference_property_example.vcxproj", "{B6709B3B-0B7D-4364-99E9-99C30937290E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_signals_example", "std_signals_example\std_signals_example.vcxproj", "{7D60F023-4A1A-4129-BABF-EA5682302406}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals_example", "std_signals\signals_example.vcxproj", "{7D60F023-4A1A-4129-BABF-EA5682302406}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_event_manager_example", "std_event_manager_example\std_event_manager_example.vcxproj", "{382537C5-FFFF-45C0-B31D-9D9E165343B9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "event_manager_example", "std_mvvm\event_manager_example.vcxproj", "{382537C5-FFFF-45C0-B31D-9D9E165343B9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_event_manager_example", "boost_event_manager_example\boost_event_manager_example.vcxproj", "{1A75E591-CEEC-42FF-BCB5-376F8765CD29}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "event_manager_example", "boost_mvvm\event_manager_example.vcxproj", "{1A75E591-CEEC-42FF-BCB5-376F8765CD29}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_proxy_property_example", "boost_proxy_property_example\boost_proxy_property_example.vcxproj", "{6750C75C-FB63-4F82-A0E1-751EB7BBA743}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "proxy_property_example", "boost_property\proxy_property_example.vcxproj", "{6750C75C-FB63-4F82-A0E1-751EB7BBA743}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_reference_property_example", "boost_reference_property_example\boost_reference_property_example.vcxproj", "{3FAA5A2A-7C7A-4704-966F-990B03295D35}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reference_property_example", "boost_property\reference_property_example.vcxproj", "{3FAA5A2A-7C7A-4704-966F-990B03295D35}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_signals_example", "boost_signals_example\boost_signals_example.vcxproj", "{5AA34BE7-ACF5-4BCE-B252-34243E427C13}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals_example", "boost_signals\signals_example.vcxproj", "{5AA34BE7-ACF5-4BCE-B252-34243E427C13}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_value_property_example", "boost_value_property_example\boost_value_property_example.vcxproj", "{599DE86A-15E0-4715-9B46-FAC84B541C4A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "value_property_example", "boost_property\value_property_example.vcxproj", "{599DE86A-15E0-4715-9B46-FAC84B541C4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "boost", "boost", "{330E9A6B-0EBA-4902-B9B6-67C0A33AF2C7}"
 EndProject
@@ -93,45 +93,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{60DF1746
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E2D5652A-FF4C-4301-B3BF-73C8EC650F8C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception_tests", "exception\exception_tests.vcxproj", "{F427A655-42DF-48CD-A6A4-DC79440773CA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception_tests", "std_exception\exception_tests.vcxproj", "{F427A655-42DF-48CD-A6A4-DC79440773CA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_config_tests", "boost_config\boost_config_tests.vcxproj", "{3C75FE42-A051-4999-98BB-929F0D96DB7F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception_tests", "boost_exception\boost_exception_tests.vcxproj", "{4CA19070-D48B-4FB0-AF06-9BF24C5223FB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_scope_guard_example", "std_scope_guard_example\std_scope_guard_example.vcxproj", "{01506A19-EBA7-4C86-BEE6-DFD99F0FFC08}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scope_guard_example", "std_utility\scope_guard_example.vcxproj", "{01506A19-EBA7-4C86-BEE6-DFD99F0FFC08}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_scope_guard_new_example", "std_scope_guard_new_example\std_scope_guard_new_example.vcxproj", "{6DAD83A4-E298-401B-9AA8-1C872324C753}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scope_guard_new_example", "std_utility\scope_guard_new_example.vcxproj", "{6DAD83A4-E298-401B-9AA8-1C872324C753}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_scope_guard_example", "boost_scope_guard_example\boost_scope_guard_example.vcxproj", "{81B82430-C554-4502-BD69-F05B7F07B964}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scope_guard_example", "boost_utility\scope_guard_example.vcxproj", "{81B82430-C554-4502-BD69-F05B7F07B964}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_scope_guard_new_example", "boost_scope_guard_new_example\boost_scope_guard_new_example.vcxproj", "{BFC8189B-3D22-41E3-8D4D-47DAE8E023D8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scope_guard_new_example", "boost_utility\scope_guard_new_example.vcxproj", "{BFC8189B-3D22-41E3-8D4D-47DAE8E023D8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_value_guard_example", "boost_value_guard_example\boost_value_guard_example.vcxproj", "{FFA50385-06A7-4259-84E5-CB58A1895312}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "value_guard_example", "boost_utility\value_guard_example.vcxproj", "{FFA50385-06A7-4259-84E5-CB58A1895312}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_value_guard_example", "std_value_guard_example\std_value_guard_example.vcxproj", "{E8E891F0-7CEF-4107-8681-5820FE999043}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "value_guard_example", "std_utility\value_guard_example.vcxproj", "{E8E891F0-7CEF-4107-8681-5820FE999043}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_primitive_type_implicit_specializer_example", "std_primitive_type_implicit_specializer_example\std_primitive_type_implicit_specializer_example.vcxproj", "{42192EE5-DD04-49D6-90BA-E079D7F3BFE4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "primitive_type_implicit_specializer_example", "std_utility\primitive_type_implicit_specializer_example.vcxproj", "{42192EE5-DD04-49D6-90BA-E079D7F3BFE4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_primitive_type_specializer_example", "std_primitive_type_specializer_example\std_primitive_type_specializer_example.vcxproj", "{CE3A210A-1DF6-4B48-B9C5-E428180DB21A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "primitive_type_specializer_example", "std_utility\primitive_type_specializer_example.vcxproj", "{CE3A210A-1DF6-4B48-B9C5-E428180DB21A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_primitive_type_implicit_specializer_example", "boost_primitive_type_implicit_specializer_example\boost_primitive_type_implicit_specializer_example.vcxproj", "{D3FABBBA-0FF9-4533-A0B0-CB84CB2C8DEB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "primitive_type_implicit_specializer_example", "boost_utility\primitive_type_implicit_specializer_example.vcxproj", "{D3FABBBA-0FF9-4533-A0B0-CB84CB2C8DEB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_primitive_type_specializer_example", "boost_primitive_type_specializer_example\boost_primitive_type_specializer_example.vcxproj", "{2FA32641-7231-40D1-979B-32AA4B769223}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "primitive_type_specializer_example", "boost_utility\primitive_type_specializer_example.vcxproj", "{2FA32641-7231-40D1-979B-32AA4B769223}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_string_cast_example", "std_string_cast_example\std_string_cast_example.vcxproj", "{817A6AE3-2A74-4DD8-8C4D-BE92C1186E0C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_cast_example", "std_utility\string_cast_example.vcxproj", "{817A6AE3-2A74-4DD8-8C4D-BE92C1186E0C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_string_cast_example", "boost_string_cast_example\boost_string_cast_example.vcxproj", "{BCEBCFE5-019B-4AF8-AE18-8709412728A4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_cast_example", "boost_utility\string_cast_example.vcxproj", "{BCEBCFE5-019B-4AF8-AE18-8709412728A4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_try_move_backward_example", "boost_try_move_backward_example\boost_try_move_backward_example.vcxproj", "{4817ED09-72DD-44AB-BEE4-8B507C086AA6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "try_move_backward_example", "boost_utility\try_move_backward_example.vcxproj", "{4817ED09-72DD-44AB-BEE4-8B507C086AA6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_try_move_backward_example", "std_try_move_backward_example\std_try_move_backward_example.vcxproj", "{329C9DDC-2B47-491C-BB65-9ED071B57C9A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "try_move_backward_example", "std_utility\try_move_backward_example.vcxproj", "{329C9DDC-2B47-491C-BB65-9ED071B57C9A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_erase_example", "boost_erase_example\boost_erase_example.vcxproj", "{2D8ABFD1-2381-480B-A6AF-07C036DE3A49}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "erase_example", "boost_utility\erase_example.vcxproj", "{2D8ABFD1-2381-480B-A6AF-07C036DE3A49}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_erase_example", "std_erase_example\std_erase_example.vcxproj", "{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "erase_example", "std_utility\erase_example.vcxproj", "{3E1A6E83-DEB6-46B1-A8E4-9111C24155E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_phoenix_functor_example", "boost_phoenix_functor_example\boost_phoenix_functor_example.vcxproj", "{271A6A18-CE5A-494E-89F6-13FC7DB6E041}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phoenix_functor_example", "boost_mvvm\phoenix_functor_example.vcxproj", "{271A6A18-CE5A-494E-89F6-13FC7DB6E041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

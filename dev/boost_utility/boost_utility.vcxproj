@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\go_boost\utility\iterator\try_move_backward.hpp" />
     <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\placebo_mutex.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_implicit_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />

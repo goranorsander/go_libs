@@ -23,22 +23,22 @@
     <Text Include="..\..\libs\boost_property\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_property</Filter>
     </Text>
-    <Text Include="..\..\libs\mvvm\CMakeLists.txt">
+    <Text Include="..\..\libs\std_mvvm\CMakeLists.txt">
       <Filter>CMake Configuration\libs\mvvm</Filter>
     </Text>
     <Text Include="..\..\libs\boost_utility\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_utility</Filter>
     </Text>
-    <Text Include="..\..\libs\utility\CMakeLists.txt">
+    <Text Include="..\..\libs\std_utility\CMakeLists.txt">
       <Filter>CMake Configuration\libs\utility</Filter>
     </Text>
     <Text Include="..\..\libs\boost_signals\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_signals</Filter>
     </Text>
-    <Text Include="..\..\libs\property\CMakeLists.txt">
+    <Text Include="..\..\libs\std_property\CMakeLists.txt">
       <Filter>CMake Configuration\libs\property</Filter>
     </Text>
-    <Text Include="..\..\libs\signals\CMakeLists.txt">
+    <Text Include="..\..\libs\std_signals\CMakeLists.txt">
       <Filter>CMake Configuration\libs\signals</Filter>
     </Text>
     <Text Include="..\..\libs\boost_config\CMakeLists.txt">
@@ -47,10 +47,10 @@
     <Text Include="..\..\libs\boost_exception\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_exception</Filter>
     </Text>
-    <Text Include="..\..\libs\config\CMakeLists.txt">
+    <Text Include="..\..\libs\std_config\CMakeLists.txt">
       <Filter>CMake Configuration\libs\config</Filter>
     </Text>
-    <Text Include="..\..\libs\exception\CMakeLists.txt">
+    <Text Include="..\..\libs\std_exception\CMakeLists.txt">
       <Filter>CMake Configuration\libs\exception</Filter>
     </Text>
     <Text Include="..\..\docs\CMakeLists.txt">
@@ -1377,6 +1377,12 @@
     </None>
     <None Include="..\..\docs\boost\mvvm\utility\functor_set_property_value.md">
       <Filter>Documentation\boost\mvvm\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_placebo_mutex.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_placebo_mutex.md">
+      <Filter>Documentation\boost\utility</Filter>
     </None>
   </ItemGroup>
 </Project>
