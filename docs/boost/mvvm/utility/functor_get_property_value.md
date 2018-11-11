@@ -14,7 +14,7 @@ namespace go_boost::mvvm::utility
 
 [Boost.Phoenix](https://www.boost.org/doc/libs/1_68_0/libs/phoenix/doc/html/index.html)
 is the most important Boost library for functional programming according to
-Boris Sch‰ling, author of [The Boost C++ Libraries](https://theboostcpplibraries.com/boost.phoenix).
+Boris Sch√§ling, author of [The Boost C++ Libraries](https://theboostcpplibraries.com/boost.phoenix).
 
 The **get_property_value** functor enables lambda style function binding to
 the *getter* function of a property to a *functor*, i.e. a
