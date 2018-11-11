@@ -79,7 +79,7 @@ private:
         if(v != _crew_complement)
         {
             _crew_complement = v;
-            notify_property_changed(shared_from_this(), crew_complement.name());
+            notify_property_changed(this->shared_from_this(), crew_complement.name());
         }
     }
 
@@ -93,7 +93,7 @@ private:
         if(v != _name)
         {
             _name = v;
-            notify_property_changed(shared_from_this(), name.name());
+            notify_property_changed(this->shared_from_this(), name.name());
         }
     }
 
@@ -107,7 +107,7 @@ private:
         if(v != _max_speed)
         {
             _max_speed = v;
-            notify_property_changed(shared_from_this(), max_speed.name());
+            notify_property_changed(this->shared_from_this(), max_speed.name());
         }
     }
 

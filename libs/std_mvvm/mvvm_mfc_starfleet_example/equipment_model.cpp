@@ -45,5 +45,5 @@ void equipment_model::bind_properties()
     category.getter([this]() { return _category; });
     name.getter([this]() { return _name; });
     quantity.getter([this]() { return _quantity; });
-    quantity.setter([this](const unsigned int& v) { if(v != _quantity) { _quantity = v; notify_property_changed(shared_from_this(), quantity.name()); } });
+    quantity.setter([this](const unsigned int& v) { if(v != _quantity) { _quantity = v; notify_property_changed(this->shared_from_this(), quantity.name()); } });
 }

@@ -95,6 +95,6 @@ void equipment_model::set_quantity(const unsigned int& v)
     if(v != _quantity)
     {
         _quantity = v;
-        notify_property_changed(shared_from_this(), quantity.name());
+        notify_property_changed(this->shared_from_this(), quantity.name());
     }
 }

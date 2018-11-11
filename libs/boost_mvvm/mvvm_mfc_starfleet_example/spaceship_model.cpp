@@ -75,7 +75,7 @@ void spaceship_model::bind_properties()
 
 void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)
 {
-    notify_property_changed(shared_from_this(), equipment.name());
+    notify_property_changed(this->shared_from_this(), equipment.name());
 }
 
 std::wstring spaceship_model::get_spaceship_class() const
@@ -98,7 +98,7 @@ void spaceship_model::set_equipment(const m::wobservable_deque<equipment_interfa
     if(v != _equipment)
     {
         _equipment = v;
-        notify_property_changed(shared_from_this(), equipment.name());
+        notify_property_changed(this->shared_from_this(), equipment.name());
     }
 }
 
@@ -112,7 +112,7 @@ void spaceship_model::set_captain(const std::wstring& v)
     if(v != _captain)
     {
         _captain = v;
-        notify_property_changed(shared_from_this(), captain.name());
+        notify_property_changed(this->shared_from_this(), captain.name());
     }
 }
 
@@ -126,6 +126,6 @@ void spaceship_model::set_crew_complement(const unsigned int& v)
     if(v != _crew_complement)
     {
         _crew_complement = v;
-        notify_property_changed(shared_from_this(), crew_complement.name());
+        notify_property_changed(this->shared_from_this(), crew_complement.name());
     }
 }

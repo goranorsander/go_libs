@@ -92,9 +92,9 @@ private:
     void bind_properties()
     {
         name.getter([this]() { return _name; });
-        name.setter([this](const std::wstring& v) { if(v != _name) { _name = v; notify_property_changed(shared_from_this(), name.name()); } });
+        name.setter([this](const std::wstring& v) { if(v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
         captain.getter([this]() { return _captain; });
-        captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; notify_property_changed(shared_from_this(), captain.name()); } });
+        captain.setter([this](const std::wstring& v) { if(v != _captain) { _captain = v; notify_property_changed(this->shared_from_this(), captain.name()); } });
         impulse_speed_command.getter(
             [this]() { if(!_impulse_speed_command) {
             _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed",

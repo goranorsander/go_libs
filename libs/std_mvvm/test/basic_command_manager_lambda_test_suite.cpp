@@ -93,9 +93,9 @@ private:
     void bind_properties()
     {
         name.getter([this]() { return _name; });
-        name.setter([this](const u::u8string& v) { if(v != _name) { _name = v; notify_property_changed(shared_from_this(), name.name()); } });
+        name.setter([this](const u::u8string& v) { if(v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
         captain.getter([this]() { return _captain; });
-        captain.setter([this](const u::u8string& v) { if(v != _captain) { _captain = v; notify_property_changed(shared_from_this(), captain.name()); } });
+        captain.setter([this](const u::u8string& v) { if(v != _captain) { _captain = v; notify_property_changed(this->shared_from_this(), captain.name()); } });
         impulse_speed_command.getter(
             [this]() { if(!_impulse_speed_command) {
             _impulse_speed_command = m::basic_relay_command<u::u8string>::create(us::create<u::u8string>("impulse_speed"),

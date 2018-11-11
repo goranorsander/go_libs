@@ -114,7 +114,7 @@ private:
         if(v != _name)
         {
             _name = v;
-            notify_property_changed(shared_from_this(), name.name());
+            notify_property_changed(this->shared_from_this(), name.name());
         }
     }
 
@@ -129,7 +129,7 @@ private:
         if(v != _captain)
         {
             _captain = v;
-            notify_property_changed(shared_from_this(), captain.name());
+            notify_property_changed(this->shared_from_this(), captain.name());
         }
     }
 

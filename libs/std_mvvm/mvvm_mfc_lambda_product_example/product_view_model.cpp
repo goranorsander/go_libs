@@ -50,7 +50,7 @@ product_view_model::ptr product_view_model::create()
 void product_view_model::bind_properties()
 {
     product_id.getter([this]() { return _product_id; });
-    product_id.setter([this](const product_model::product_id_type& v) { if(v != _product_id) { _product_id = v; notify_property_changed(shared_from_this(), product_id.name()); } });
+    product_id.setter([this](const product_model::product_id_type& v) { if(v != _product_id) { _product_id = v; notify_property_changed(this->shared_from_this(), product_id.name()); } });
     current_product_id.getter([this]() -> product_model::product_id_type { if(*data_context) { return data_context()->product_id; } return 0; });
     current_product_id.setter([this](const product_model::product_id_type& v) { if(*data_context) { data_context()->product_id = v; } });
     current_product_name.getter([this]() -> std::wstring { if(*data_context) { return data_context()->product_name; } return std::wstring(); });

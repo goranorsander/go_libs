@@ -94,7 +94,7 @@ bool fleet_organization_model::add_child(const fleet_organization_interface::ptr
     {
         first_child = child;
     }
-    child->parent = boost::dynamic_pointer_cast<fleet_organization_interface>(shared_from_this());
+    child->parent = boost::dynamic_pointer_cast<fleet_organization_interface>(this->shared_from_this());
     return true;
 }
 
@@ -197,7 +197,7 @@ void fleet_organization_model::set_parent(const fleet_organization_interface::pt
     if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _parent)
     {
         _parent = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(shared_from_this(), parent.name());
+        m::wobservable_object::notify_property_changed(this->shared_from_this(), parent.name());
     }
 }
 
@@ -211,7 +211,7 @@ void fleet_organization_model::set_first_child(const fleet_organization_interfac
     if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _first_child)
     {
         _first_child = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(shared_from_this(), first_child.name());
+        m::wobservable_object::notify_property_changed(this->shared_from_this(), first_child.name());
     }
 }
 
@@ -225,7 +225,7 @@ void fleet_organization_model::set_previous_sibling(const fleet_organization_int
     if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _previous_sibling)
     {
         _previous_sibling = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(shared_from_this(), previous_sibling.name());
+        m::wobservable_object::notify_property_changed(this->shared_from_this(), previous_sibling.name());
     }
 }
 
@@ -239,6 +239,6 @@ void fleet_organization_model::set_next_sibling(const fleet_organization_interfa
     if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _next_sibling)
     {
         _next_sibling = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(shared_from_this(), next_sibling.name());
+        m::wobservable_object::notify_property_changed(this->shared_from_this(), next_sibling.name());
     }
 }

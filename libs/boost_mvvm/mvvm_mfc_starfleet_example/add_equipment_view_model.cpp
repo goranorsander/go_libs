@@ -88,7 +88,7 @@ void add_equipment_view_model::set_category(const std::wstring& v)
     if (v != _category)
     {
         _category = v;
-        notify_property_changed(shared_from_this(), category.name());
+        notify_property_changed(this->shared_from_this(), category.name());
     }
 }
 
@@ -102,7 +102,7 @@ void add_equipment_view_model::set_name(const std::wstring& v)
     if (v != _name)
     {
         _name = v;
-        notify_property_changed(shared_from_this(), name.name());
+        notify_property_changed(this->shared_from_this(), name.name());
     }
 }
 
@@ -116,6 +116,6 @@ void add_equipment_view_model::set_quantity(const unsigned int& v)
     if (v != _quantity)
     {
         _quantity = v;
-        notify_property_changed(shared_from_this(), quantity.name());
+        notify_property_changed(this->shared_from_this(), quantity.name());
     }
 }

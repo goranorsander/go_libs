@@ -168,7 +168,7 @@ void spaceship_view_model::set_captain(const std::wstring& v)
     if(data_context() && v != data_context()->captain())
     {
         data_context()->captain = v;
-        notify_property_changed(shared_from_this(), captain.name());
+        notify_property_changed(this->shared_from_this(), captain.name());
     }
 }
 
@@ -186,7 +186,7 @@ void spaceship_view_model::set_crew_complement(const unsigned int& v)
     if(data_context() && v != data_context()->crew_complement())
     {
         data_context()->crew_complement = v;
-        notify_property_changed(shared_from_this(), crew_complement.name());
+        notify_property_changed(this->shared_from_this(), crew_complement.name());
     }
 }
 
@@ -204,7 +204,7 @@ void spaceship_view_model::set_equipment(const m::wobservable_deque<equipment_in
     if(data_context() && v != data_context()->equipment())
     {
         data_context()->equipment = v;
-        notify_property_changed(shared_from_this(), equipment.name());
+        notify_property_changed(this->shared_from_this(), equipment.name());
     }
 }
 
@@ -218,7 +218,7 @@ void spaceship_view_model::set_selected_equipment(const equipment_interface::ptr
     if (_selected_equipment != v)
     {
         _selected_equipment = v;
-        notify_property_changed(shared_from_this(), selected_equipment.name());
+        notify_property_changed(this->shared_from_this(), selected_equipment.name());
     }
 }
 
@@ -260,7 +260,7 @@ void spaceship_view_model::execute_activate_spaceship_view_command(const m::comm
 
 m::wcommand_interface::ptr spaceship_view_model::get_close_spaceship_view_command()
 {
-    ptr this_vm = boost::dynamic_pointer_cast<this_type, m::object>(shared_from_this());
+    ptr this_vm = boost::dynamic_pointer_cast<this_type, m::object>(this->shared_from_this());
     _on_close_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
         boost::bind(&this_type::execute_close_spaceship_view_command, this, _1),
         boost::bind(&this_type::can_execute_close_spaceship_view_command, this, _1),

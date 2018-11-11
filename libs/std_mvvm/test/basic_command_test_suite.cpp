@@ -54,7 +54,7 @@ public:
             _executed = true;
             if(!can_execute(params))
             {
-                can_execute_changed(shared_from_this());
+                can_execute_changed(this->shared_from_this());
             }
         }
     }
@@ -67,7 +67,7 @@ public:
         _allow_execute = v;
         if(can_execute_ != can_execute(nullptr))
         {
-            can_execute_changed(shared_from_this());
+            can_execute_changed(this->shared_from_this());
         }
     }
 

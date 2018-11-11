@@ -71,7 +71,7 @@ void product_view_model::set_product_id(const product_model::product_id_type& v)
     if(v != _product_id)
     {
         _product_id = v;
-        notify_property_changed(shared_from_this(), product_id.name());
+        notify_property_changed(this->shared_from_this(), product_id.name());
     }
 }
 
