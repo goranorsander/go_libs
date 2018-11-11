@@ -90,31 +90,31 @@ private:
 template<>
 inline basic_command_interface<std::string, boost::recursive_mutex>::~basic_command_interface()
 {
-    can_execute_changed.disconnect_all_slots();
+    this->can_execute_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_command_interface<std::wstring, boost::recursive_mutex>::~basic_command_interface()
 {
-    can_execute_changed.disconnect_all_slots();
+    this->can_execute_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_command_interface<std::string, go_boost::utility::placebo_mutex>::~basic_command_interface()
 {
-    can_execute_changed.disconnect_all_slots();
+    this->can_execute_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>::~basic_command_interface()
 {
-    can_execute_changed.disconnect_all_slots();
+    this->can_execute_changed.disconnect_all_slots();
 }
 
 template<class S, typename M>
 inline basic_command_interface<S, M>::~basic_command_interface()
 {
-    can_execute_changed.disconnect_all_slots();
+    this->can_execute_changed.disconnect_all_slots();
 }
 
 template<class S, typename M>
@@ -164,7 +164,7 @@ inline void basic_command_interface<std::string, boost::recursive_mutex>::notify
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::string, boost::recursive_mutex>>::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -173,7 +173,7 @@ inline void basic_command_interface<std::wstring, boost::recursive_mutex>::notif
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::wstring, boost::recursive_mutex>>::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -182,7 +182,7 @@ inline void basic_command_interface<std::string, go_boost::utility::placebo_mute
 {
     if (!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -191,7 +191,7 @@ inline void basic_command_interface<std::wstring, go_boost::utility::placebo_mut
 {
     if (!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -200,7 +200,7 @@ inline void basic_command_interface<S, M>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(boost::enable_shared_from_this<basic_command_interface<S, M>>::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 

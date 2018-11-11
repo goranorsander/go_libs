@@ -59,16 +59,6 @@ public:
     virtual void on_command_not_executed(const std::shared_ptr<basic_command_interface<S, M>>& /*c*/) = 0;
 };
 
-template<>
-inline basic_command_execution_observer_interface<std::string, std::recursive_mutex>::~basic_command_execution_observer_interface()
-{
-}
-
-template<>
-inline basic_command_execution_observer_interface<std::wstring, std::recursive_mutex>::~basic_command_execution_observer_interface()
-{
-}
-
 template<class S, typename M>
 inline basic_command_execution_observer_interface<S, M>::~basic_command_execution_observer_interface()
 {

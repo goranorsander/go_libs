@@ -73,18 +73,6 @@ private:
     std::deque<std::pair<std::weak_ptr<basic_command_interface<S, M>>, std::shared_ptr<basic_command_interface<S, M>>>> _commands;
 };
 
-template<>
-inline basic_command_manager<std::string, std::recursive_mutex>::~basic_command_manager()
-{
-    _commands.clear();
-}
-
-template<>
-inline basic_command_manager<std::wstring, std::recursive_mutex>::~basic_command_manager()
-{
-    _commands.clear();
-}
-
 template<class S, typename M>
 inline basic_command_manager<S, M>::~basic_command_manager()
 {
@@ -127,16 +115,31 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute(c
     }
 }
 
-template<class S, typename M>
-inline void basic_command_manager<S, M>::execute(const std::shared_ptr<basic_command_interface<S, M>>& command) const
+template<>
+inline void basic_command_manager<std::string, go::utility::placebo_mutex>::execute(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>& command) const
 {
-#if defined(GO_COMP_CLANG) || defined(GO_COMP_GCC)
-    throw go::exception::exception("Unsupported string class used by basic_command_manager<S, M>::execute(...)");
-#else
-    if(command)
+    if (command)
     {
         const auto params = command->parameters();
-        if(command->can_execute(params))
+        if (command->can_execute(params))
+        {
+            command->execute(params);
+            notify_command_executed(command);
+        }
+        else
+        {
+            notify_command_not_executed(command);
+        }
+}
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go::utility::placebo_mutex>::execute(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>& command) const
+{
+    if (command)
+    {
+        const auto params = command->parameters();
+        if (command->can_execute(params))
         {
             command->execute(params);
             notify_command_executed(command);
@@ -146,7 +149,24 @@ inline void basic_command_manager<S, M>::execute(const std::shared_ptr<basic_com
             notify_command_not_executed(command);
         }
     }
-#endif  // #if defined(GO_COMP_GCC) && defined(GO_GCC_VERSION < 60000)
+}
+
+template<class S, typename M>
+inline void basic_command_manager<S, M>::execute(const std::shared_ptr<basic_command_interface<S, M>>& command) const
+{
+    if(command)
+    {
+        const auto params = command->parameters();
+        if(command->can_execute(params))
+        {
+            command->execute(params);
+            basic_notify_command_execution_interface<S, M>::notify_command_executed(command);
+        }
+        else
+        {
+            basic_notify_command_execution_interface<S, M>::notify_command_not_executed(command);
+        }
+    }
 }
 
 template<>
@@ -166,6 +186,26 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::post(cons
     {
         const std::lock_guard<mutex_type> lock(_commands_guard);
         _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>, std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>>(std::weak_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>(command), keep_command_alive ? command : nullptr));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::string, go::utility::placebo_mutex>::post(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>& command, const bool keep_command_alive)
+{
+    if (command)
+    {
+        const std::lock_guard<mutex_type> lock(_commands_guard);
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>, std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>>(std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>(command), keep_command_alive ? command : nullptr));
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go::utility::placebo_mutex>::post(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>& command, const bool keep_command_alive)
+{
+    if (command)
+    {
+        const std::lock_guard<mutex_type> lock(_commands_guard);
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>>(std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>(command), keep_command_alive ? command : nullptr));
     }
 }
 
@@ -209,6 +249,36 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute_c
     }
 }
 
+template<>
+inline void basic_command_manager<std::string, go::utility::placebo_mutex>::execute_commands()
+{
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>, std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_mutex>>>> commands;
+    {
+        const std::lock_guard<mutex_type> lock(_commands_guard);
+        std::swap(commands, _commands);
+    }
+    for (const auto& wcommand : commands)
+    {
+        const auto command = wcommand.first.lock();
+        execute(command);
+    }
+}
+
+template<>
+inline void basic_command_manager<std::wstring, go::utility::placebo_mutex>::execute_commands()
+{
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_mutex>>>> commands;
+    {
+        const std::lock_guard<mutex_type> lock(_commands_guard);
+        std::swap(commands, _commands);
+    }
+    for (const auto& wcommand : commands)
+    {
+        const auto command = wcommand.first.lock();
+        execute(command);
+    }
+}
+
 template<class S, typename M>
 inline void basic_command_manager<S, M>::execute_commands()
 {
@@ -233,6 +303,20 @@ inline size_t basic_command_manager<std::string, std::recursive_mutex>::commands
 
 template<>
 inline size_t basic_command_manager<std::wstring, std::recursive_mutex>::commands() const
+{
+    const std::lock_guard<mutex_type> lock(_commands_guard);
+    return _commands.size();
+}
+
+template<>
+inline size_t basic_command_manager<std::string, go::utility::placebo_mutex>::commands() const
+{
+    const std::lock_guard<mutex_type> lock(_commands_guard);
+    return _commands.size();
+}
+
+template<>
+inline size_t basic_command_manager<std::wstring, go::utility::placebo_mutex>::commands() const
 {
     const std::lock_guard<mutex_type> lock(_commands_guard);
     return _commands.size();
@@ -266,6 +350,32 @@ inline std::shared_ptr<basic_command_manager<std::wstring, std::recursive_mutex>
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
         make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
+    };
+
+    return std::make_shared<make_shared_enabler>();
+}
+
+template<>
+inline std::shared_ptr<basic_command_manager<std::string, go::utility::placebo_mutex>> basic_command_manager<std::string, go::utility::placebo_mutex>::create()
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
+    };
+
+    return std::make_shared<make_shared_enabler>();
+}
+
+template<>
+inline std::shared_ptr<basic_command_manager<std::wstring, go::utility::placebo_mutex>> basic_command_manager<std::wstring, go::utility::placebo_mutex>::create()
+{
+    struct make_shared_enabler
+        : public this_type
+    {
+        virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
+            make_shared_enabler() GO_DEFAULT_CONSTRUCTOR
     };
 
     return std::make_shared<make_shared_enabler>();

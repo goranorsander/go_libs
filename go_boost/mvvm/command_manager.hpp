@@ -233,11 +233,11 @@ inline void basic_command_manager<S, M>::execute(const boost::shared_ptr<basic_c
         if(command->can_execute(params))
         {
             command->execute(params);
-            notify_command_executed(command);
+            basic_notify_command_execution_interface<S, M>::notify_command_executed(command);
         }
         else
         {
-            notify_command_not_executed(command);
+            basic_notify_command_execution_interface<S, M>::notify_command_not_executed(command);
         }
     }
 }

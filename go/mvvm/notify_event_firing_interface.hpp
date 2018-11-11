@@ -53,19 +53,31 @@ public:
 template<>
 inline basic_notify_event_firing_interface<std::string, std::recursive_mutex>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring, std::recursive_mutex>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::string, go::utility::placebo_mutex>::~basic_notify_event_firing_interface()
+{
+    this->event_fired.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::wstring, go::utility::placebo_mutex>::~basic_notify_event_firing_interface()
+{
+    this->event_fired.disconnect_all_slots();
 }
 
 template<class S, typename M>
 inline basic_notify_event_firing_interface<S, M>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
 }
 
 } // namespace mvvm

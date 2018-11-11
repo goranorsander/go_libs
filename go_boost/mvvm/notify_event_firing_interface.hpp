@@ -52,19 +52,31 @@ public:
 template<>
 inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::string, go_boost::utility::placebo_mutex>::~basic_notify_event_firing_interface()
+{
+    this->event_fired.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::placebo_mutex>::~basic_notify_event_firing_interface()
+{
+    this->event_fired.disconnect_all_slots();
 }
 
 template<class S, typename M>
 inline basic_notify_event_firing_interface<S, M>::~basic_notify_event_firing_interface()
 {
-    event_fired.disconnect_all_slots();
+    this->event_fired.disconnect_all_slots();
 }
 
 template<>
@@ -76,6 +88,20 @@ inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>:
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::basic_notify_event_firing_interface()
+    : go_boost::signals::slot()
+    , event_fired()
+{
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::string, go_boost::utility::placebo_mutex>::basic_notify_event_firing_interface()
+    : go_boost::signals::slot()
+    , event_fired()
+{
+}
+
+template<>
+inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::placebo_mutex>::basic_notify_event_firing_interface()
     : go_boost::signals::slot()
     , event_fired()
 {

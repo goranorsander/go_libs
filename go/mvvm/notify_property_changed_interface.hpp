@@ -66,165 +66,165 @@ protected:
 template<>
 inline basic_notify_property_changed_interface<std::string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::wstring, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::u16string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::u32string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<class S, typename M>
 inline basic_notify_property_changed_interface<S, M>::~basic_notify_property_changed_interface()
 {
-    property_changed.disconnect_all_slots();
+    this->property_changed.disconnect_all_slots();
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::wstring, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::u16string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::u32string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<>
 inline void basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(object, basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 
 template<class S, typename M>
 inline void basic_notify_property_changed_interface<S, M>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
 {
-    if (!property_changed.empty())
+    if (!this->property_changed.empty())
     {
-        property_changed(shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
+        this->property_changed(this->shared_from_this(), basic_property_changed_arguments<string_type>::create(property_name));
     }
 }
 

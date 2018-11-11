@@ -68,22 +68,36 @@ protected:
 template<>
 inline basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::~basic_notify_command_execution_interface()
 {
-    command_executed.disconnect_all_slots();
-    command_not_executed.disconnect_all_slots();
+    this->command_executed.disconnect_all_slots();
+    this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
 inline basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::~basic_notify_command_execution_interface()
 {
-    command_executed.disconnect_all_slots();
-    command_not_executed.disconnect_all_slots();
+    this->command_executed.disconnect_all_slots();
+    this->command_not_executed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex>::~basic_notify_command_execution_interface()
+{
+    this->command_executed.disconnect_all_slots();
+    this->command_not_executed.disconnect_all_slots();
+}
+
+template<>
+inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex>::~basic_notify_command_execution_interface()
+{
+    this->command_executed.disconnect_all_slots();
+    this->command_not_executed.disconnect_all_slots();
 }
 
 template<class S, typename M>
 inline basic_notify_command_execution_interface<S, M>::~basic_notify_command_execution_interface()
 {
-    command_executed.disconnect_all_slots();
-    command_not_executed.disconnect_all_slots();
+    this->command_executed.disconnect_all_slots();
+    this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
@@ -102,6 +116,22 @@ inline basic_notify_command_execution_interface<std::wstring, boost::recursive_m
 {
 }
 
+template<>
+inline basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex>::basic_notify_command_execution_interface()
+    : go_boost::signals::slot()
+    , command_executed()
+    , command_not_executed()
+{
+}
+
+template<>
+inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex>::basic_notify_command_execution_interface()
+    : go_boost::signals::slot()
+    , command_executed()
+    , command_not_executed()
+{
+}
+
 template<class S, typename M>
 inline basic_notify_command_execution_interface<S, M>::basic_notify_command_execution_interface()
     : go_boost::signals::slot()
@@ -113,37 +143,61 @@ inline basic_notify_command_execution_interface<S, M>::basic_notify_command_exec
 template<>
 inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
 {
-    command_executed(command);
+    this->command_executed(command);
 }
 
 template<>
 inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
 {
-    command_executed(command);
+    this->command_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>& command) const
+{
+    this->command_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>& command) const
+{
+    this->command_executed(command);
 }
 
 template<class S, typename M>
 inline void basic_notify_command_execution_interface<S, M>::notify_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
 {
-    command_executed(command);
+    this->command_executed(command);
 }
 
 template<>
 inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
 {
-    command_not_executed(command);
+    this->command_not_executed(command);
 }
 
 template<>
 inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
 {
-    command_not_executed(command);
+    this->command_not_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_mutex>>& command) const
+{
+    this->command_not_executed(command);
+}
+
+template<>
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>>& command) const
+{
+    this->command_not_executed(command);
 }
 
 template<class S, typename M>
 inline void basic_notify_command_execution_interface<S, M>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
 {
-    command_not_executed(command);
+    this->command_not_executed(command);
 }
 
 } // namespace mvvm

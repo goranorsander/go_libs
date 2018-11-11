@@ -135,6 +135,40 @@ inline event_subscription_key_type basic_event_manager<std::wstring, std::recurs
     return event_subscription_key;
 }
 
+template<>
+inline event_subscription_key_type basic_event_manager<std::string, go::utility::placebo_mutex>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions == _subscriptions.end())
+    {
+        std::string key = event_type;
+        auto value = std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>>();
+        _subscriptions[key] = value;
+        event_type_subscriptions = _subscriptions.find(event_type);
+    }
+    const event_subscription_key_type event_subscription_key = ++_next_event_subscription_key;
+    event_type_subscriptions->second[event_subscription_key] = fire_event_function;
+    return event_subscription_key;
+}
+
+template<>
+inline event_subscription_key_type basic_event_manager<std::wstring, go::utility::placebo_mutex>::subscribe(const std::wstring& event_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>&& fire_event_function)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions == _subscriptions.end())
+    {
+        std::wstring key = event_type;
+        auto value = std::map<event_subscription_key_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>>();
+        _subscriptions[key] = value;
+        event_type_subscriptions = _subscriptions.find(event_type);
+    }
+    const event_subscription_key_type event_subscription_key = ++_next_event_subscription_key;
+    event_type_subscriptions->second[event_subscription_key] = fire_event_function;
+    return event_subscription_key;
+}
+
 template<class S, typename M>
 inline event_subscription_key_type basic_event_manager<S, M>::subscribe(const S& event_type, basic_event_function_type&& fire_event_function)
 {
@@ -174,6 +208,28 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe
     }
 }
 
+template<>
+inline void basic_event_manager<std::string, go::utility::placebo_mutex>::unsubscribe(const std::string& event_type, const event_subscription_key_type& event_subscription_key)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions != _subscriptions.end())
+    {
+        event_type_subscriptions->second.erase(event_subscription_key);
+    }
+}
+
+template<>
+inline void basic_event_manager<std::wstring, go::utility::placebo_mutex>::unsubscribe(const std::wstring& event_type, const event_subscription_key_type& event_subscription_key)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions != _subscriptions.end())
+    {
+        event_type_subscriptions->second.erase(event_subscription_key);
+    }
+}
+
 template<class S, typename M>
 inline void basic_event_manager<S, M>::unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key)
 {
@@ -202,6 +258,28 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe
     const std::lock_guard<mutex_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
+    {
+        _subscriptions.erase(event_type_subscriptions);
+    }
+}
+
+template<>
+inline void basic_event_manager<std::string, go::utility::placebo_mutex>::unsubscribe_all(const std::string& event_type)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions != _subscriptions.end())
+    {
+        _subscriptions.erase(event_type_subscriptions);
+    }
+}
+
+template<>
+inline void basic_event_manager<std::wstring, go::utility::placebo_mutex>::unsubscribe_all(const std::wstring& event_type)
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    auto event_type_subscriptions = _subscriptions.find(event_type);
+    if (event_type_subscriptions != _subscriptions.end())
     {
         _subscriptions.erase(event_type_subscriptions);
     }
@@ -240,7 +318,7 @@ inline void basic_event_manager<std::string, std::recursive_mutex>::fire(const s
                 auto s = std::bind(std::forward<std::function<void(const std::shared_ptr<basic_event<std::string>>&)>>(f), e);
                 s();
             }
-            event_fired(e);
+            this->event_fired(e);
         }
     }
 }
@@ -260,7 +338,47 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire(const 
                 auto s = std::bind(std::forward<std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>>(f), e);
                 s();
             }
-            event_fired(e);
+            this->event_fired(e);
+        }
+    }
+}
+
+template<>
+inline void basic_event_manager<std::string, go::utility::placebo_mutex>::fire(const std::shared_ptr<basic_event<std::string>>& e) const
+{
+    if (e)
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        auto event_type_subscriptions = _subscriptions.find(e->event_type());
+        if (event_type_subscriptions != _subscriptions.end())
+        {
+            for (auto& subscription : event_type_subscriptions->second)
+            {
+                auto f = subscription.second;
+                auto s = std::bind(std::forward<std::function<void(const std::shared_ptr<basic_event<std::string>>&)>>(f), e);
+                s();
+            }
+            this->event_fired(e);
+        }
+    }
+}
+
+template<>
+inline void basic_event_manager<std::wstring, go::utility::placebo_mutex>::fire(const std::shared_ptr<basic_event<std::wstring>>& e) const
+{
+    if (e)
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        auto event_type_subscriptions = _subscriptions.find(e->event_type());
+        if (event_type_subscriptions != _subscriptions.end())
+        {
+            for (auto& subscription : event_type_subscriptions->second)
+            {
+                auto f = subscription.second;
+                auto s = std::bind(std::forward<std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>>(f), e);
+                s();
+            }
+            this->event_fired(e);
         }
     }
 }
@@ -280,7 +398,7 @@ inline void basic_event_manager<S, M>::fire(const std::shared_ptr<basic_event<S>
                 auto s = std::bind(std::forward<basic_event_function_type>(f), e);
                 s();
             }
-            event_fired(e);
+            this->event_fired(e);
         }
     }
 }
@@ -299,6 +417,26 @@ template<>
 inline void basic_event_manager<std::wstring, std::recursive_mutex>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
 {
     if(e)
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        _events.push_back(std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>(std::weak_ptr<basic_event<std::wstring>>(e), keep_event_alive ? e : nullptr));
+    }
+}
+
+template<>
+inline void basic_event_manager<std::string, go::utility::placebo_mutex>::post(const std::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
+{
+    if (e)
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        _events.push_back(std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>(std::weak_ptr<basic_event<std::string>>(e), keep_event_alive ? e : nullptr));
+    }
+}
+
+template<>
+inline void basic_event_manager<std::wstring, go::utility::placebo_mutex>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
+{
+    if (e)
     {
         const std::lock_guard<mutex_type> lock(_events_guard);
         _events.push_back(std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>(std::weak_ptr<basic_event<std::wstring>>(e), keep_event_alive ? e : nullptr));
@@ -343,6 +481,34 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire_events
     }
 }
 
+template<>
+inline void basic_event_manager<std::string, go::utility::placebo_mutex>::fire_events()
+{
+    std::deque<std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>> events;
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        std::swap(events, _events);
+    }
+    for (const auto& e : events)
+    {
+        fire(e.first.lock());
+    }
+}
+
+template<>
+inline void basic_event_manager<std::wstring, go::utility::placebo_mutex>::fire_events()
+{
+    std::deque<std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>> events;
+    {
+        const std::lock_guard<mutex_type> lock(_events_guard);
+        std::swap(events, _events);
+    }
+    for (const auto& e : events)
+    {
+        fire(e.first.lock());
+    }
+}
+
 template<class S, typename M>
 inline void basic_event_manager<S, M>::fire_events()
 {
@@ -366,6 +532,20 @@ inline size_t basic_event_manager<std::string, std::recursive_mutex>::events() c
 
 template<>
 inline size_t basic_event_manager<std::wstring, std::recursive_mutex>::events() const
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    return _events.size();
+}
+
+template<>
+inline size_t basic_event_manager<std::string, go::utility::placebo_mutex>::events() const
+{
+    const std::lock_guard<mutex_type> lock(_events_guard);
+    return _events.size();
+}
+
+template<>
+inline size_t basic_event_manager<std::wstring, go::utility::placebo_mutex>::events() const
 {
     const std::lock_guard<mutex_type> lock(_events_guard);
     return _events.size();

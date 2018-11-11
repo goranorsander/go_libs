@@ -53,7 +53,7 @@ protected:
     {
         if(!this_type::container_changed.empty())
         {
-            this_type::container_changed(this_type::shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
+            this_type::container_changed(this->shared_from_this(), container_changed_arguments::create(action, added_elements, removed_elements, new_size));
         }
     }
 

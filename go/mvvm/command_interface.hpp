@@ -85,18 +85,6 @@ private:
     command_parameters_type _parameters;
 };
 
-template<>
-inline basic_command_interface<std::string, std::recursive_mutex>::~basic_command_interface()
-{
-    can_execute_changed.disconnect_all_slots();
-}
-
-template<>
-inline basic_command_interface<std::wstring, std::recursive_mutex>::~basic_command_interface()
-{
-    can_execute_changed.disconnect_all_slots();
-}
-
 template<class S, typename M>
 inline basic_command_interface<S, M>::~basic_command_interface()
 {
@@ -127,6 +115,18 @@ inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring,
     return _parameters;
 }
 
+template<>
+inline std::shared_ptr<command_parameters> basic_command_interface<std::string, go::utility::placebo_mutex>::parameters() const
+{
+    return _parameters;
+}
+
+template<>
+inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring, go::utility::placebo_mutex>::parameters() const
+{
+    return _parameters;
+}
+
 template<class S, typename M>
 inline std::shared_ptr<command_parameters> basic_command_interface<S, M>::parameters() const
 {
@@ -138,7 +138,7 @@ inline void basic_command_interface<std::string, std::recursive_mutex>::notify_c
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(this_type::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -147,7 +147,25 @@ inline void basic_command_interface<std::wstring, std::recursive_mutex>::notify_
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(this_type::shared_from_this());
+        can_execute_changed(this->shared_from_this());
+    }
+}
+
+template<>
+inline void basic_command_interface<std::string, go::utility::placebo_mutex>::notify_can_execute_changed()
+{
+    if (!can_execute_changed.empty())
+    {
+        can_execute_changed(this->shared_from_this());
+    }
+}
+
+template<>
+inline void basic_command_interface<std::wstring, go::utility::placebo_mutex>::notify_can_execute_changed()
+{
+    if (!can_execute_changed.empty())
+    {
+        can_execute_changed(this->shared_from_this());
     }
 }
 
@@ -156,7 +174,7 @@ inline void basic_command_interface<S, M>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
-        can_execute_changed(this_type::shared_from_this());
+        can_execute_changed(this->shared_from_this());
     }
 }
 
