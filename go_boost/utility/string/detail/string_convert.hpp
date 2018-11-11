@@ -28,6 +28,8 @@
 #endif  // #if defined(GO_BOOST_PLATFORM_WINDOWS)
 
 #include <go_boost/utility/string/algorithm.hpp>
+#include <go_boost/utility/string/ascii.hpp>
+#include <go_boost/utility/string/detail/setup_global_locale.hpp>
 #include <go_boost/utility/string/detail/string_cast_fwd.hpp>
 #include <go_boost/utility/string/iso_8859_1.hpp>
 #include <go_boost/utility/string/ucs2.hpp>
@@ -43,6 +45,11 @@ namespace detail
 
 // conversions
 
+inline wchar_t to_char(const wchar_t c)
+{
+    return static_cast<char>(c & 0xFF);
+}
+
 inline wchar_t to_wchar_t(const char c)
 {
     return static_cast<wchar_t>(c) & 0xFF;
@@ -52,18 +59,35 @@ inline wchar_t to_wchar_t(const char c)
 
 inline std::string convert_wstring_to_string(const std::wstring& s)
 {
-    boost::locale::generator g;
-    g.locale_cache_enabled(true);
-    std::locale loc = g(boost::locale::util::get_system_locale());
-    const std::string mbs = boost::locale::conv::from_utf(s, loc);
+    try
+    {
+        static bool global_locale_is_initialized = false;
+        if (!global_locale_is_initialized)
+        {
+            setup_global_locale();
+            global_locale_is_initialized = true;
+        }
+        boost::locale::generator generator;
+        generator.locale_cache_enabled(true);
+        const std::locale locale = generator(boost::locale::util::get_system_locale());
+        const std::string mbs = boost::locale::conv::from_utf(s, locale);
 #if defined(GO_BOOST_COMP_CLANG)
-    const u8string u8s(mbs.begin(), mbs.end());
-    std::string mbs_reduced;
-    reduce_to_iso_8859_1(u8s, mbs_reduced);
-    return mbs_reduced;
+        const u8string u8s(mbs.begin(), mbs.end());
+        std::string mbs_reduced;
+        reduce_to_iso_8859_1(u8s, mbs_reduced);
+        return mbs_reduced;
 #else
-    return mbs;
+        return mbs;
 #endif  // #if defined(GO_BOOST_COMP_CLANG)
+    }
+    catch (const std::exception&)
+    {
+        // Fallback
+        const std::wstring s2 = reduce_to_7_bit_ascii_copy(s);
+        std::string mbs;
+        std::transform(s2.begin(), s2.end(), std::back_inserter(mbs), boost::bind(to_char, _1));
+        return mbs;
+    }
 }
 
 inline std::string convert_u2string_to_string(const u2string& s)

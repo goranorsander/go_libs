@@ -19,6 +19,8 @@
 
 #if defined(GO_BOOST_PLATFORM_WINDOWS) && !defined(GO_BOOST_COMP_GCC_MINGW)
 
+#include <go_boost/utility/string/ascii.hpp>
+#include <go_boost/utility/string/detail/setup_global_locale.hpp>
 #include <go_boost/utility/string/detail/string_cast_fwd.hpp>
 #include <go_boost/utility/string/windows_1252.hpp>
 #include <windows.h>
@@ -77,12 +79,28 @@ inline u2string convert_wstring_to_u2string(const std::wstring& s)
 
 inline u8string convert_string_to_u8string(const std::string& s)
 {
-    boost::locale::generator g;
-    g.locale_cache_enabled(true);
-    std::locale loc = g(boost::locale::util::get_system_locale());
-    const std::string utf8s = boost::locale::conv::to_utf<char>(s, loc);
-    const u8string u8s(utf8s.begin(), utf8s.end());
-    return u8s;
+    try
+    {
+        static bool global_locale_is_initialized = false;
+        if (!global_locale_is_initialized)
+        {
+            setup_global_locale();
+            global_locale_is_initialized = true;
+        }
+        boost::locale::generator generator;
+        generator.locale_cache_enabled(true);
+        const std::locale locale = generator(boost::locale::util::get_system_locale());
+        const std::string utf8s = boost::locale::conv::to_utf<char>(s, locale);
+        const u8string u8s(utf8s.begin(), utf8s.end());
+        return u8s;
+    }
+    catch (const std::exception&)
+    {
+        // Fallback
+        const std::string s2 = reduce_to_7_bit_ascii_copy(s);
+        const u8string u8s(s2.begin(), s2.end());
+        return u8s;
+    }
 }
 
 // to u16string
