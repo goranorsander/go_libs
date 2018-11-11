@@ -9,18 +9,18 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2018-08-22 at 19:55:33 with result:
+Test suites *AllTests* with 32 test cases was executed 2018-11-11 at 14:51:53 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.002 seconds.
+Test suites execution took 0.001 seconds.
 
 # Details
 
-## std_define_go_boost_address_model_test_suite
+## boost_define_go_boost_address_model_test_suite
 
-Test suite *std_define_go_boost_address_model_test_suite* with 3 test cases was executed with result:
+Test suite *boost_define_go_boost_address_model_test_suite* with 3 test cases was executed with result:
 
 * 0 errors
 * 0 failures
