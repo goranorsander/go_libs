@@ -18,7 +18,7 @@
 // __LOC__ : Line Of Code (see https://support.microsoft.com/en-us/kb/155196)
 #define __STR2__(x) #x
 #define __STR1__(x) __STR2__(x)
-#define __LOC__ __FILE__ "("__STR1__(__LINE__)")"
+#define __LOC__ __FILE__ "(" __STR1__(__LINE__) ")"
 
 #define GO_BEGIN_DISABLE_WARNING(_warning_) \
 __pragma(warning(push)) \
