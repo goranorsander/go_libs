@@ -85,7 +85,9 @@ def generate_markdown_report_testcase_failure(xml_report_testcase, md_file)
     failure_message = ""
     xml_report_testcase.elements.each("failure") do |xml_failure|
         failure_at = xml_failure.attributes["message"].to_s.match /.*(go_libs.*\.cpp\:\d+)/
-        failure_message += failure_at[1].to_s + "; "
+        if failure_at != nil
+            failure_message += failure_at[1].to_s + "; "
+        end
     end
     md_file.puts(xml_report_testcase.attributes["name"].to_s + " | " + xml_report_testcase.attributes["time"].to_s + " | " + failure_message.chomp("; ").unixPath)
 end
