@@ -5,27 +5,27 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.8.1
+* Visual Studio 2017, Community Edition, version 15.8.9
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2018-09-20 at 18:10:17 with result:
+Test suites *AllTests* with 32 test cases was executed 2018-11-11 at 10:51:41 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.022 seconds.
+Test suites execution took 0.023 seconds.
 
 # Details
 
-## std_define_go_boost_address_model_test_suite
+## boost_define_go_boost_address_model_test_suite
 
-Test suite *std_define_go_boost_address_model_test_suite* with 3 test cases was executed with result:
+Test suite *boost_define_go_boost_address_model_test_suite* with 3 test cases was executed with result:
 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.019 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ Test suite *boost_define_go_boost_platform_test_suite* with 2 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

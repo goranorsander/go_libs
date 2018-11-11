@@ -9,14 +9,31 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2018-09-20 at 18:10:15 with result:
+Test suites *AllTests* with 9 test cases was executed 2018-11-11 at 10:51:38 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.009 seconds.
+Test suites execution took 0.016 seconds.
 
 # Details
+
+## std_signals_string_placebo_mutex_test_suite
+
+Test suite *std_signals_string_placebo_mutex_test_suite* with 3 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.005 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_fire_lasers | 0.004
+test_fire_proton_torpedoes | 0
+test_fire_all_weapons | 0
 
 ## std_signals_string_test_suite
 
@@ -25,13 +42,13 @@ Test suite *std_signals_string_test_suite* with 3 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.006 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_fire_lasers | 0.005
+test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
 test_fire_all_weapons | 0
 
@@ -42,12 +59,12 @@ Test suite *std_signals_wstring_test_suite* with 3 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_fire_lasers | 0.001
+test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
 test_fire_all_weapons | 0

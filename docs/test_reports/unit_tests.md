@@ -27,8 +27,8 @@ more information.
 # Summary
 
 * 99 unit test applications executed, 11 for each toolset
-* 1164 unit test suites, on average 129 for each toolset
-* 11425 unit test cases, on average 1269 for each toolset
+* 1805 unit test suites, on average 200 for each toolset
+* 15578 unit test cases, on average 1730 for each toolset
 * 0 errors
 * 0 failures
 * 0 disabled test cases
