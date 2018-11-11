@@ -25,7 +25,7 @@ class placebo_mutex
 {
 public:
     virtual ~placebo_mutex() GO_DEFAULT_DESTRUCTOR
-    GO_CONSTEXPR placebo_mutex() GO_NOEXCEPT GO_DEFAULT_CONSTRUCTOR
+    placebo_mutex() GO_NOEXCEPT GO_DEFAULT_CONSTRUCTOR
 
 public:
     void lock();

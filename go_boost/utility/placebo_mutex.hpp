@@ -30,7 +30,7 @@ class placebo_mutex
 {
 public:
     virtual ~placebo_mutex();
-    GO_BOOST_CONSTEXPR placebo_mutex() BOOST_NOEXCEPT;
+    placebo_mutex() BOOST_NOEXCEPT;
 
 public:
     void lock();
@@ -54,13 +54,13 @@ private:
 inline placebo_mutex::~placebo_mutex()
 {
 #if defined BOOST_THREAD_DEFINES_MUTEX_NATIVE_HANDLE
-    const int res = posix::pthread_mutex_destroy(&m);
+    const int res = pthread_mutex_destroy(&m);
     boost::ignore_unused(res);
     BOOST_ASSERT(!res);
 #endif
 }
 
-inline GO_BOOST_CONSTEXPR placebo_mutex::placebo_mutex() BOOST_NOEXCEPT
+inline placebo_mutex::placebo_mutex() BOOST_NOEXCEPT
     : boost::noncopyable()
 #if defined BOOST_THREAD_DEFINES_MUTEX_NATIVE_HANDLE
     , m()
@@ -70,7 +70,7 @@ inline GO_BOOST_CONSTEXPR placebo_mutex::placebo_mutex() BOOST_NOEXCEPT
     const int res = pthread_mutex_init(&m, NULL);
     if (res)
     {
-        boost::throw_exception(thread_resource_error(res, "go_boost::utility:: placebo_mutex constructor failed in pthread_mutex_init"));
+        boost::throw_exception(boost::thread_resource_error(res, "go_boost::utility:: placebo_mutex constructor failed in pthread_mutex_init"));
     }
 #endif
 }
