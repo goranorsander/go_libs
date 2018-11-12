@@ -109,7 +109,7 @@ END_MESSAGE_MAP()
 void spaceship_view::OnBnClickedButtonAdd()
 {
     UpdateData();
-    mst::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
+    GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
     if (command_manager)
     {
         command_manager->post(data_context()->on_add_equipment_command);
@@ -119,7 +119,7 @@ void spaceship_view::OnBnClickedButtonAdd()
 void spaceship_view::OnBnClickedButtonRemove()
 {
     UpdateData();
-    mst::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
+    GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = data_context()->main_frame_vm()->command_manager();
     if (command_manager)
     {
         command_manager->post(data_context()->on_remove_equipment_command);
@@ -150,7 +150,7 @@ void spaceship_view::on_close() const
         main_frame_view_model::ptr vm = data_context()->main_frame_vm();
         if(vm)
         {
-            mst::wcommand_manager::ptr command_manager = vm->command_manager();
+            GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = vm->command_manager();
             if(command_manager)
             {
                 command_manager->post(data_context()->on_close_spaceship_view_command);
@@ -166,7 +166,7 @@ void spaceship_view::on_activate() const
         main_frame_view_model::ptr vm = data_context()->main_frame_vm();
         if(vm)
         {
-            mst::wcommand_manager::ptr command_manager = vm->command_manager();
+            GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = vm->command_manager();
             if(command_manager)
             {
                 command_manager->post(data_context()->on_activate_spaceship_view_command);

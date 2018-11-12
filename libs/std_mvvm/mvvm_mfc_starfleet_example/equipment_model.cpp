@@ -15,7 +15,7 @@ equipment_id_type equipment_model::_next_id = 0;
 
 equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
     : equipment_interface()
-    , mst::wobservable_object()
+    , GO_MUTEX_NAMESPACE::wobservable_object()
     , u::noncopyable_nonmovable()
     , id(L"equipment_model::id")
     , _id(_next_id++)
@@ -41,9 +41,9 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
 
 void equipment_model::bind_properties()
 {
-    id.getter([this]() { return _id; });
-    category.getter([this]() { return _category; });
-    name.getter([this]() { return _name; });
-    quantity.getter([this]() { return _quantity; });
+    id.getter([this]() -> equipment_id_type { return _id; });
+    category.getter([this]() -> std::wstring { return _category; });
+    name.getter([this]() -> std::wstring { return _name; });
+    quantity.getter([this]() -> unsigned int { return _quantity; });
     quantity.setter([this](const unsigned int& v) { if(v != _quantity) { _quantity = v; notify_property_changed(this->shared_from_this(), quantity.name()); } });
 }

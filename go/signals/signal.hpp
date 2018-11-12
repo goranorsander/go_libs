@@ -53,39 +53,39 @@ public:
     template<typename F1>
     slot_key connect(F1&& f)
     {
-        const std::lock_guard<mutex_type> lock(_signal_guard);
-        const slot_key key = ++_next_slot_key;
-        _connections[key] = f;
+        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const slot_key key = ++(this->_next_slot_key);
+        (this->_connections)[key] = f;
         return key;
     }
 
     void disconnect(const slot_key& key)
     {
-        const std::lock_guard<mutex_type> lock(_signal_guard);
-        _connections.erase(key);
+        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        this->_connections.erase(key);
     }
 
     void disconnect_all_slots()
     {
-        const std::lock_guard<mutex_type> lock(_signal_guard);
-        _connections.clear();
+        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        this->_connections.clear();
     }
 
     bool empty() const
     {
-        const std::lock_guard<mutex_type> lock(_signal_guard);
-        return _connections.empty();
+        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        return this->_connections.empty();
     }
 
     template<typename... A>
     void operator()(A... a) const
     {
-        const std::lock_guard<mutex_type> lock(_signal_guard);
-        if(_connections.empty())
+        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        if(this->_connections.empty())
         {
             return;
         }
-        for(auto& connection : _connections)
+        for(auto& connection : this->_connections)
         {
             function_type f = connection.second;
             auto s = std::bind(std::forward<function_type>(f), a...);

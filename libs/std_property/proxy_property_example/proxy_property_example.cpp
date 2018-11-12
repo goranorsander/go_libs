@@ -33,11 +33,11 @@ public:
         , _max_speed(9.8)
         , _name("USS Enterprise (NCC-1701-D)")
     {
-        crew_complement.getter([this]() { return _crew_complement; });
+        crew_complement.getter([this]() -> int { return _crew_complement; });
         crew_complement.setter([this](const int& v) { if (v != _crew_complement) { _crew_complement = v; } });
-        max_speed.getter([this]() { return _max_speed; });
+        max_speed.getter([this]() -> double { return _max_speed; });
         max_speed.setter([this](const double& v) { if (v != _max_speed) { _max_speed = v; } });
-        name.getter([this]() { return _name; });
+        name.getter([this]() -> std::string { return _name; });
         name.setter([this](const std::string& v) { if (v != _name) { _name = v; } });
     }
 

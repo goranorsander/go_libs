@@ -20,8 +20,8 @@
 #include "main_frame_view_model.hpp"
 
 class fleet_organization_view_model
-    : public m::view_model_interface<u::placebo_mutex>
-    , public mst::wobservable_object
+    : public m::view_model_interface<GO_MUTEX_TYPE>
+    , public GO_MUTEX_NAMESPACE::wobservable_object
     , private m::data_context_interface<fleet_organization_interface::ptr>
     , private u::noncopyable_nonmovable
 {
@@ -40,7 +40,7 @@ public:
     p::wproperty<main_frame_view_model::ptr> main_frame_vm;
     p::wproperty<fleet_organization_id_type> selected_fleet_organization_id;
 
-    rop::wproperty<mst::wcommand_interface::ptr> on_left_double_click_command;
+    rop::wproperty<GO_MUTEX_NAMESPACE::wcommand_interface::ptr> on_left_double_click_command;
 
     nrop::property<fleet_organization_interface::ptr> fleet_organization_root;
 
@@ -61,7 +61,7 @@ private:
 private:
     main_frame_view_model::wptr _main_frame_vm;
     fleet_organization_id_type _selected_fleet_organization_id;
-    mst::wcommand_interface::ptr _on_left_double_click_command;
+    GO_MUTEX_NAMESPACE::wcommand_interface::ptr _on_left_double_click_command;
     m::event_subscription_key_type _select_fleet_organization_event_key;
 };
 

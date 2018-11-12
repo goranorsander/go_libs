@@ -20,7 +20,7 @@
 
 class output_view
     : public CDockablePane
-    , public mst::wcommand_execution_wobserver_interface
+    , public GO_MUTEX_NAMESPACE::wcommand_execution_wobserver_interface
     , public m::object_wobserver_interface
 {
 public:
@@ -30,8 +30,8 @@ public:
 
     void UpdateFonts();
 
-    virtual void on_command_executed(const mst::wcommand_interface::ptr& c);
-    virtual void on_command_not_executed(const mst::wcommand_interface::ptr& c);
+    virtual void on_command_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c);
+    virtual void on_command_not_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c);
 
     virtual void on_event_fired(const m::wevent::ptr& e);
 

@@ -15,7 +15,7 @@
 #include <functional>
 
 add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
-    : mst::wobservable_object()
+    : GO_MUTEX_NAMESPACE::wobservable_object()
     , u::noncopyable_nonmovable()
     , category(L"add_equipment_view_model::category")
     , name(L"add_equipment_view_model::name")
@@ -66,10 +66,10 @@ void add_equipment_view_model::on_close() const
 
 void add_equipment_view_model::bind_properties()
 {
-    category.getter([this]() { return _category; });
+    category.getter([this]() -> std::wstring { return _category; });
     category.setter([this](const std::wstring& v) { if (v != _category) { _category = v; notify_property_changed(this->shared_from_this(), category.name()); } });
-    name.getter([this]() { return _name; });
+    name.getter([this]() -> std::wstring { return _name; });
     name.setter([this](const std::wstring& v) { if (v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
-    quantity.getter([this]() { return _quantity; });
+    quantity.getter([this]() -> unsigned int { return _quantity; });
     quantity.setter([this](const unsigned int& v) { if (v != _quantity) { _quantity = v; notify_property_changed(this->shared_from_this(), quantity.name()); } });
 }

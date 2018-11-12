@@ -56,7 +56,7 @@ public:
         , _event_manager(event_manager_)
         , _commander(commander_)
     {
-        commander.getter([this]() { return _commander; });
+        commander.getter([this]() -> std::string { return _commander; });
         commander.setter(
             [this](const std::string& commander_)
             {

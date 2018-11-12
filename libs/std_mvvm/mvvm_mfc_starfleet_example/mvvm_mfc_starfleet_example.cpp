@@ -92,8 +92,8 @@ BOOL mvvm_mfc_starfleet_example_app::InitInstance()
     ttParams.m_bVislManagerTheme = TRUE;
     theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL, RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
 
-    _command_manager = mst::wcommand_manager::create();
-    _event_manager = mst::wevent_manager::create();
+    _command_manager = GO_MUTEX_NAMESPACE::wcommand_manager::create();
+    _event_manager = GO_MUTEX_NAMESPACE::wevent_manager::create();
     _fleet_repository = fleet_repository::create();
     _timer_id = SetTimer(nullptr, 0, 100, nullptr);
 

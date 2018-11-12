@@ -53,4 +53,13 @@ namespace placeholders {}
 
 namespace ph = std::placeholders;
 
+// mutex configuration
+#define GO_MUTEX_TYPE std::recursive_mutex
+#define GO_MUTEX_NAMESPACE m
+#define GO_MUTEX_COMMAND_INTERFACE L"class go::mvvm::wcommand_interface"
+
+//#define GO_MUTEX_TYPE u::placebo_mutex
+//#define GO_MUTEX_NAMESPACE mst
+//#define GO_MUTEX_COMMAND_INTERFACE L"class go::mvvm::single_threaded::wcommand_interface"
+
 #endif  // #ifndef GO_MVVM_MFC_STARFLEET_EXAMPLE_NAMESPACE_ALIAS_HPP_INCLUDED

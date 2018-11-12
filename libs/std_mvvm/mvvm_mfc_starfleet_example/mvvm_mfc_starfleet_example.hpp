@@ -61,8 +61,8 @@ protected:
 
 private:
     UINT_PTR _timer_id;
-    mst::wcommand_manager::ptr _command_manager;
-    mst::wevent_manager::ptr _event_manager;
+    GO_MUTEX_NAMESPACE::wcommand_manager::ptr _command_manager;
+    GO_MUTEX_NAMESPACE::wevent_manager::ptr _event_manager;
     fleet_repository::ptr _fleet_repository;
 };
 

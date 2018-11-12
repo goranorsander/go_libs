@@ -22,8 +22,8 @@
 #include <functional>
 
 spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
-    : m::view_model_interface<u::placebo_mutex>()
-    , mst::wobservable_object()
+    : m::view_model_interface<GO_MUTEX_TYPE>()
+    , GO_MUTEX_NAMESPACE::wobservable_object()
     , m::data_context_interface<spaceship_model::ptr>(model)
     , u::noncopyable_nonmovable()
     , main_frame_vm(L"spaceship_view_model::main_frame_vm")
@@ -99,7 +99,7 @@ void spaceship_view_model::bind_properties()
     on_activate_spaceship_view_command.getter(
         [this]()
         {
-            _on_activate_spaceship_view_command = mst::relay_wcommand::create(L"spaceship_view_model::on_activate_spaceship_view",
+            _on_activate_spaceship_view_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"spaceship_view_model::on_activate_spaceship_view",
                 [this](const m::command_parameters::ptr& p)
                 {
                     activate_spaceship_command_parameters::ptr cmd_params = std::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
@@ -108,7 +108,7 @@ void spaceship_view_model::bind_properties()
                         main_frame_view_model::ptr vm = _main_frame_vm.lock();
                         if(vm)
                         {
-                            mst::wevent_manager::ptr event_mgr = vm->event_manager();
+                            GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
                             if(event_mgr)
                             {
                                 event_mgr->post(select_fleet_organization_event::create(cmd_params->id, L"spaceship_view_model"));
@@ -131,7 +131,7 @@ void spaceship_view_model::bind_properties()
     on_close_spaceship_view_command.getter(
         [this]()
         {
-            _on_close_spaceship_view_command = mst::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
+            _on_close_spaceship_view_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
                 [this](const m::command_parameters::ptr& p)
                 {
                     close_spaceship_command_parameters::ptr cmd_params = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
@@ -140,7 +140,7 @@ void spaceship_view_model::bind_properties()
                         main_frame_view_model::ptr vm = _main_frame_vm.lock();
                         if(vm)
                         {
-                            mst::wevent_manager::ptr event_mgr = vm->event_manager();
+                            GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
                             if(event_mgr)
                             {
                                 event_mgr->post(close_spaceship_event::create(cmd_params->spaceship_vm));
@@ -163,16 +163,16 @@ void spaceship_view_model::bind_properties()
     on_add_equipment_command.getter(
         [this]()
         {
-            _on_add_equipment_command = mst::relay_wcommand::create(L"spaceship_view_model::on_add_equipment_command",
+            _on_add_equipment_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"spaceship_view_model::on_add_equipment_command",
                 [this](const m::command_parameters::ptr& p)
                 {
                     main_frame_view_model::ptr vm = _main_frame_vm.lock();
                     if(vm)
                     {
-                        mst::wcommand_manager::ptr command_mgr = vm->command_manager();
+                        GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_mgr = vm->command_manager();
                         if(command_mgr)
                         {
-                            mst::wcommand_interface::ptr commander_ = vm->open_add_equipment_view_command;
+                            GO_MUTEX_NAMESPACE::wcommand_interface::ptr commander_ = vm->open_add_equipment_view_command;
                             std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(commander_->parameters())->spaceship = data_context();
                             command_mgr->post(commander_);
                         }
@@ -193,7 +193,7 @@ void spaceship_view_model::bind_properties()
     on_remove_equipment_command.getter(
         [this]()
         {
-            _on_remove_equipment_command = mst::relay_wcommand::create(L"spaceship_view_model::on_remove_equipment_command",
+            _on_remove_equipment_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"spaceship_view_model::on_remove_equipment_command",
                 [this](const m::command_parameters::ptr& p)
                 {
                     remove_equipment_command_parameters::ptr cmd_params = std::dynamic_pointer_cast<remove_equipment_command_parameters>(p);

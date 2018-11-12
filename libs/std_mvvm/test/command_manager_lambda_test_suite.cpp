@@ -91,18 +91,18 @@ public:
 private:
     void bind_properties()
     {
-        name.getter([this]() { return _name; });
+        name.getter([this]() -> std::string { return _name; });
         name.setter([this](const std::string& v) { if(v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
-        captain.getter([this]() { return _captain; });
+        captain.getter([this]() -> std::string { return _captain; });
         captain.setter([this](const std::string& v) { if(v != _captain) { _captain = v; notify_property_changed(this->shared_from_this(), captain.name()); } });
         impulse_speed_command.getter(
-            [this]() { if(!_impulse_speed_command) {
+            [this]() -> m::command_interface::ptr { if(!_impulse_speed_command) {
             _impulse_speed_command = m::relay_command::create("impulse_speed",
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = true; _at_warp_speed = false; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create());
         } return _impulse_speed_command; });
         warp_speed_command.getter(
-            [this]() { if(!_warp_speed_command) {
+            [this]() -> m::command_interface::ptr { if(!_warp_speed_command) {
             _warp_speed_command = m::relay_command::create("warp_speed",
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = false; _at_warp_speed = true; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create());

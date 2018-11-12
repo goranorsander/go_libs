@@ -46,8 +46,8 @@ fleet_organization_view_model::~fleet_organization_view_model()
 }
 
 fleet_organization_view_model::fleet_organization_view_model()
-    : m::view_model_interface<u::placebo_mutex>()
-    , mst::wobservable_object()
+    : m::view_model_interface<GO_MUTEX_TYPE>()
+    , GO_MUTEX_NAMESPACE::wobservable_object()
     , m::data_context_interface<fleet_organization_interface::ptr>(fleet_organization_model::create())
     , u::noncopyable_nonmovable()
     , main_frame_vm(L"fleet_organization_view_model::main_frame_vm")
@@ -107,7 +107,7 @@ void fleet_organization_view_model::bind_properties()
                 main_frame_view_model::ptr vm = _main_frame_vm.lock();
                 if(vm)
                 {
-                    mst::wevent_manager::ptr event_mgr = vm->event_manager();
+                    GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
                     if(event_mgr)
                     {
                         event_mgr->post(select_fleet_organization_event::create(_selected_fleet_organization_id, L"fleet_organization_view_model"));
@@ -116,9 +116,9 @@ void fleet_organization_view_model::bind_properties()
             }
         });
     on_left_double_click_command.getter(
-        [this]()
+        [this]() -> GO_MUTEX_NAMESPACE::wcommand_interface::ptr
         {
-            _on_left_double_click_command = mst::relay_wcommand::create(L"fleet_organization_view_model::on_left_double_click",
+            _on_left_double_click_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"fleet_organization_view_model::on_left_double_click",
                 [this](const m::command_parameters::ptr& p)
                 {
                     fleet_organization_command_parameters::ptr params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
@@ -129,7 +129,7 @@ void fleet_organization_view_model::bind_properties()
                             main_frame_view_model::ptr vm = _main_frame_vm.lock();
                             if(vm)
                             {
-                                mst::wevent_manager::ptr event_mgr = vm->event_manager();
+                                GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
                                 if(event_mgr)
                                 {
                                     event_mgr->post(show_spaceship_event::create(params->id));
@@ -158,7 +158,7 @@ void fleet_organization_view_model::subscribe_events()
     main_frame_view_model::ptr vm = _main_frame_vm.lock();
     if(vm)
     {
-        mst::wevent_manager::ptr event_mgr = vm->event_manager();
+        GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
             _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event",
@@ -183,7 +183,7 @@ void fleet_organization_view_model::unsubscribe_events()
     main_frame_view_model::ptr vm = _main_frame_vm.lock();
     if(vm)
     {
-        mst::wevent_manager::ptr event_mgr = vm->event_manager();
+        GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
             event_mgr->unsubscribe(L"select fleet organization event", _select_fleet_organization_event_key);

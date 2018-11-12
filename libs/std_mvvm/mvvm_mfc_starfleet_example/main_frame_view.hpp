@@ -38,7 +38,7 @@ private:
 
 public:
     virtual ~main_frame_view() GO_DEFAULT_DESTRUCTOR
-    main_frame_view(const mst::wcommand_manager::ptr& command_manager, const mst::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
+    main_frame_view(const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_manager, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
     virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id);
@@ -78,8 +78,8 @@ protected:
     properties_view _properties_view;
 
 private:
-    mst::wcommand_manager::wptr _command_manager;
-    mst::wevent_manager::wptr _event_manager;
+    GO_MUTEX_NAMESPACE::wcommand_manager::wptr _command_manager;
+    GO_MUTEX_NAMESPACE::wevent_manager::wptr _event_manager;
     fleet_repository::wptr _fleet_repository;
     fleet_organization_child_frame_view_type _fleet_org_child_view;
 };

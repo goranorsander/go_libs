@@ -50,9 +50,9 @@ std::wstring current_date_and_time()
     return dt;
 }
 
-std::wstring command_information(const mst::wcommand_interface::ptr& c)
+std::wstring command_information(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
 {
-    const mst::relay_wcommand::ptr r = std::dynamic_pointer_cast<mst::relay_wcommand>(c);
+    const GO_MUTEX_NAMESPACE::relay_wcommand::ptr r = std::dynamic_pointer_cast<GO_MUTEX_NAMESPACE::relay_wcommand>(c);
     if(r)
     {
         const m::command_parameters::ptr p = c->parameters();
@@ -99,7 +99,7 @@ std::wstring command_information(const mst::wcommand_interface::ptr& c)
                 rep->spaceship_id, rep->equipment_id);
         }
     }
-    return L"class go::mvvm::single_threaded::wcommand_interface";
+    return GO_MUTEX_COMMAND_INTERFACE;
 }
 
 std::wstring event_information(const m::wevent::ptr& e)
@@ -184,7 +184,7 @@ std::wstring object_information(const m::object::ptr& o)
 
 output_view::output_view()
     : CDockablePane()
-    , mst::wcommand_execution_wobserver_interface()
+    , GO_MUTEX_NAMESPACE::wcommand_execution_wobserver_interface()
     , m::object_wobserver_interface()
     , _wndTabs()
     , _wndOutputAllMvvmEvents()
@@ -279,7 +279,7 @@ void output_view::UpdateFonts()
     _wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
-void output_view::on_command_executed(const mst::wcommand_interface::ptr& c)
+void output_view::on_command_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
 {
     if(c)
     {
@@ -289,7 +289,7 @@ void output_view::on_command_executed(const mst::wcommand_interface::ptr& c)
     }
 }
 
-void output_view::on_command_not_executed(const mst::wcommand_interface::ptr& c)
+void output_view::on_command_not_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
 {
     if(c)
     {

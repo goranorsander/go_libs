@@ -22,8 +22,8 @@
 typedef m::observable_set<dialog_view::ptr> dialog_view_container_type;
 
 class main_frame_view_model
-    : public m::view_model_interface<u::placebo_mutex>
-    , public mst::wobservable_object
+    : public m::view_model_interface<GO_MUTEX_TYPE>
+    , public GO_MUTEX_NAMESPACE::wobservable_object
     , private m::data_context_interface<fleet_repository::wptr>
     , private u::noncopyable_nonmovable
 {
@@ -36,21 +36,21 @@ public:
     virtual ~main_frame_view_model();
 
 private:
-    main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const mst::wcommand_manager::ptr& command_mgr, const mst::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
+    main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_mgr, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 public:
     nrop::value_property<mdi_frame_interface::pointer> mdi_frame_manager;
-    nrop::value_property<mst::wcommand_manager::ptr> command_manager;
-    nrop::value_property<mst::wevent_manager::ptr> event_manager;
+    nrop::value_property<GO_MUTEX_NAMESPACE::wcommand_manager::ptr> command_manager;
+    nrop::value_property<GO_MUTEX_NAMESPACE::wevent_manager::ptr> event_manager;
     nrop::value_property<fleet_repository_interface::ptr> fleet_repository;
 
     np::value_property<dialog_view_container_type::ptr> dialogs;
 
-    rop::wproperty<mst::wcommand_interface::ptr> open_add_equipment_view_command;
-    rop::wproperty<mst::wcommand_interface::ptr> delete_dialog_view_command;
+    rop::wproperty<GO_MUTEX_NAMESPACE::wcommand_interface::ptr> open_add_equipment_view_command;
+    rop::wproperty<GO_MUTEX_NAMESPACE::wcommand_interface::ptr> delete_dialog_view_command;
 
 public:
-    static ptr create(mdi_frame_interface::pointer mdi_frame_mgr, const mst::wcommand_manager::ptr& command_mgr, const mst::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
+    static ptr create(mdi_frame_interface::pointer mdi_frame_mgr, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_mgr, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 protected:
     virtual void on_data_context_will_change();
@@ -62,8 +62,8 @@ private:
     void unsubscribe_events();
 
 private:
-    mst::wcommand_interface::ptr _open_add_equipment_view_command;
-    mst::wcommand_interface::ptr _delete_dialog_view_command;
+    GO_MUTEX_NAMESPACE::wcommand_interface::ptr _open_add_equipment_view_command;
+    GO_MUTEX_NAMESPACE::wcommand_interface::ptr _delete_dialog_view_command;
     m::event_subscription_key_type _close_spaceship_event_key;
     m::event_subscription_key_type _show_spaceship_event_key;
 };

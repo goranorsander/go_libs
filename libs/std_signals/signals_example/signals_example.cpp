@@ -63,7 +63,7 @@ public:
         , _fleet_commander(fleet_commander_)
         , _fire_lasers_slot_key()
     {
-        lasers_firing.getter([this]() { return _lasers_firing; });
+        lasers_firing.getter([this]() -> bool { return _lasers_firing; });
         lasers_firing.setter(std::bind(&spaceship::set_lasers_firing, this, ph::_1));
         _fire_lasers_slot_key = fleet_commander_->fire_lasers.connect(std::bind(&p::property<bool>::set, &lasers_firing, ph::_1));
     }

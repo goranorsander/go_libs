@@ -106,7 +106,7 @@ public:
 private:
     void bind_properties()
     {
-        commander.getter([this]() { return _commander; });
+        commander.getter([this]() -> std::wstring { return _commander; });
         commander.setter(
             [this](const std::wstring& commander_)
         {
@@ -169,7 +169,7 @@ public:
 private:
     void bind_properties()
     {
-        fleet_commander.getter([this]() { return _fleet_commander; });
+        fleet_commander.getter([this]() -> std::wstring { return _fleet_commander; });
     }
 
 private:

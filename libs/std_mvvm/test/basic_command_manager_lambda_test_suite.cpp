@@ -92,18 +92,18 @@ public:
 private:
     void bind_properties()
     {
-        name.getter([this]() { return _name; });
+        name.getter([this]() -> u::u8string { return _name; });
         name.setter([this](const u::u8string& v) { if(v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
-        captain.getter([this]() { return _captain; });
+        captain.getter([this]() -> u::u8string { return _captain; });
         captain.setter([this](const u::u8string& v) { if(v != _captain) { _captain = v; notify_property_changed(this->shared_from_this(), captain.name()); } });
         impulse_speed_command.getter(
-            [this]() { if(!_impulse_speed_command) {
+            [this]() -> m::basic_command_interface<u::u8string>::ptr { if(!_impulse_speed_command) {
             _impulse_speed_command = m::basic_relay_command<u::u8string>::create(us::create<u::u8string>("impulse_speed"),
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = true; _at_warp_speed = false; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return _at_warp_speed; }, m::command_parameters::create());
         } return _impulse_speed_command; });
         warp_speed_command.getter(
-            [this]() { if(!_warp_speed_command) {
+            [this]() -> m::basic_command_interface<u::u8string>::ptr { if(!_warp_speed_command) {
             _warp_speed_command = m::basic_relay_command<u::u8string>::create(us::create<u::u8string>("warp_speed"),
                 [this](const m::command_parameters::ptr&) { _at_impulse_speed = false; _at_warp_speed = true; if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); } if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return !_at_warp_speed; }, m::command_parameters::create());

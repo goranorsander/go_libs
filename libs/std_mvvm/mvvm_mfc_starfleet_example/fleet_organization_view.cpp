@@ -170,7 +170,7 @@ void fleet_organization_view::on_double_click(const HTREEITEM hItem, DWORD_PTR p
         main_frame_view_model::ptr vm = data_context()->main_frame_vm();
         if(vm)
         {
-            mst::wcommand_manager::ptr command_manager = vm->command_manager();
+            GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = vm->command_manager();
             if(command_manager)
             {
                 command_manager->post(data_context()->on_left_double_click_command);

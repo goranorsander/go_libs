@@ -61,7 +61,7 @@ public:
 protected:
     virtual void bind_data_context_properties()
     {
-        data_context.getter([this]() { return _data_context; });
+        data_context.getter([this]() -> data_type { return _data_context; });
         data_context.setter([this](const data_type& v) { if(v != _data_context) { on_data_context_will_change(); _data_context = v; on_data_context_changed(); } });
     }
 
