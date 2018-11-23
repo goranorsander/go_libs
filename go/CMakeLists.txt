@@ -14,6 +14,10 @@ file(GLOB GO_DIR_FILES ./*.hpp)
 file(GLOB GO_CONFIG_DIR_FILES ./config/*.hpp)
 file(GLOB GO_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
 file(GLOB GO_CONFIG_PLATFORM_DIR_FILES ./config/platform/*.hpp)
+file(GLOB GO_DIAGNOSTICS_DIR_FILES ./diagnostics/*.hpp)
+file(GLOB GO_DIAGNOSTICS_LOG_DIR_FILES ./diagnostics/log/*.hpp)
+file(GLOB GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES ./diagnostics/log/detail/*.hpp)
+file(GLOB GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES ./diagnostics/log/policy/*.hpp)
 file(GLOB GO_EXCEPTION_DIR_FILES ./exception/*.hpp)
 file(GLOB GO_MVVM_DIR_FILES ./mvvm/*.hpp)
 file(GLOB GO_MVVM_ITERATOR_DIR_FILES ./mvvm/iterator/*.hpp)
@@ -35,6 +39,10 @@ add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_CONFIG_DIR_FILES}
     ${GO_CONFIG_COMPILER_DIR_FILES}
     ${GO_CONFIG_PLATFORM_DIR_FILES}
+    ${GO_DIAGNOSTICS_DIR_FILES}
+    ${GO_DIAGNOSTICS_LOG_DIR_FILES}
+    ${GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES}
+    ${GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES}
     ${GO_EXCEPTION_DIR_FILES}
     ${GO_MVVM_DIR_FILES}
     ${GO_MVVM_ITERATOR_DIR_FILES}
@@ -58,6 +66,10 @@ source_group(go FILES ${GO_DIR_FILES})
 source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})
 source_group(go\\config\\compiler FILES ${GO_CONFIG_COMPILER_DIR_FILES})
 source_group(go\\config\\platform FILES ${GO_CONFIG_PLATFORM_DIR_FILES})
+source_group(go\\diagnostics FILES ${GO_DIAGNOSTICS_DIR_FILES})
+source_group(go\\diagnostics\\log FILES ${GO_DIAGNOSTICS_LOG_DIR_FILES})
+source_group(go\\diagnostics\\log\\detail FILES ${GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES})
+source_group(go\\diagnostics\\log\\policy FILES ${GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES})
 source_group(go\\exception FILES ${GO_EXCEPTION_DIR_FILES})
 source_group(go\\mvvm FILES ${GO_MVVM_DIR_FILES})
 source_group(go\\mvvm\\iterator FILES ${GO_MVVM_ITERATOR_DIR_FILES})

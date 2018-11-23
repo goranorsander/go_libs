@@ -253,6 +253,50 @@ set(GO_CONFIG_PLATFORM_DIR ${GO_CONFIG_DIR}/platform)
 file(GLOB GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP ${GO_CONFIG_PLATFORM_DIR}/*.hpp)
 
 ########################################################
+#  go/diagnostics                                      #
+########################################################
+
+set(GO_DIAGNOSTICS_DIRNAME diagnostics)
+set(GO_DIAGNOSTICS_DIR ${GO_DIR}/diagnostics)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_HPP ${GO_DIAGNOSTICS_DIR}/*.hpp)
+
+########################################################
+#  go/diagnostics/log                                  #
+########################################################
+
+set(GO_DIAGNOSTICS_LOG_DIRNAME diagnostics/log)
+set(GO_DIAGNOSTICS_LOG_DIR ${GO_DIAGNOSTICS_DIR}/log)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_HPP ${GO_DIAGNOSTICS_LOG_DIR}/*.hpp)
+
+########################################################
+#  go/diagnostics/log/detail                           #
+########################################################
+
+set(GO_DIAGNOSTICS_LOG_DETAIL_DIRNAME diagnostics/log/detail)
+set(GO_DIAGNOSTICS_LOG_DETAIL_DIR ${GO_DIAGNOSTICS_DIR}/log/detail)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_DETAIL_HPP ${GO_DIAGNOSTICS_LOG_DETAIL_DIR}/*.hpp)
+
+########################################################
+#  go/diagnostics/log/policy                           #
+########################################################
+
+set(GO_DIAGNOSTICS_LOG_POLICY_DIRNAME diagnostics/log/policy)
+set(GO_DIAGNOSTICS_LOG_POLICY_DIR ${GO_DIAGNOSTICS_DIR}/log/policy)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_POLICY_HPP ${GO_DIAGNOSTICS_LOG_POLICY_DIR}/*.hpp)
+
+########################################################
 #  go/exception                                        #
 ########################################################
 
@@ -664,6 +708,10 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_HPP}                DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_DETAIL_HPP}     DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_DETAIL_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_POLICY_HPP}     DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_EXCEPTION_HPP}                  DESTINATION  include/${GO_DIRNAME}/${GO_EXCEPTION_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_HPP}                       DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_MVVM_ITERATOR_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_MVVM_ITERATOR_DIRNAME})
@@ -755,6 +803,10 @@ set(GO_LIBS_LIBS_STD_CONFIG_CMAKE
     ${ROOT_DIR}/libs/std_config/CMakeLists.txt
 )
 
+set(GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE
+    ${ROOT_DIR}/libs/std_diagnostics/CMakeLists.txt
+)
+
 set(GO_LIBS_LIBS_STD_EXCEPTION_CMAKE
     ${ROOT_DIR}/libs/std_exception/CMakeLists.txt
 )
@@ -788,6 +840,7 @@ add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
     ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE}
     ${GO_LIBS_LIBS_STD_CONFIG_CMAKE}
+    ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE}
     ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE}
     ${GO_LIBS_LIBS_STD_MVVM_CMAKE}
     ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE}
@@ -809,6 +862,7 @@ source_group(CMake\\libs\\boost_property FILES ${GO_LIBS_LIBS_BOOST_PROPERTY_CMA
 source_group(CMake\\libs\\boost_signals FILES ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE})
 source_group(CMake\\libs\\boost_utility FILES ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE})
 source_group(CMake\\libs\\std_config FILES ${GO_LIBS_LIBS_STD_CONFIG_CMAKE})
+source_group(CMake\\libs\\std_diagnostics FILES ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE})
 source_group(CMake\\libs\\std_exception FILES ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE})
 source_group(CMake\\libs\\std_mvvm FILES ${GO_LIBS_LIBS_STD_MVVM_CMAKE})
 source_group(CMake\\libs\\std_property FILES ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE})
