@@ -5,7 +5,7 @@ layout: unit_tests
 # Test environment and toolset
 
 * Windows 10 Professional, 64 bit
-* MSVC++ 14.0
+* MSVC++ 14.0 / Visual Studio 2015
 
 ## GO Boost C++ Libraries Test Reports
 
