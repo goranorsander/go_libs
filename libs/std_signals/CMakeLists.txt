@@ -25,8 +25,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_SIGNALS_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_SIGNALS_EXAMPLE})
-
 endif(BUILD_STD_EXAMPLES)
 
 if(BUILD_STD_TESTS)

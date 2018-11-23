@@ -64,8 +64,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE})
-
     ########################################################
     #  libs/mvvm/reference_property_example                #
     ########################################################
@@ -117,8 +115,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE})
-
     ########################################################
     #  libs/mvvm/value_property_example                    #
     ########################################################
@@ -169,8 +165,6 @@ if(BUILD_BOOST_EXAMPLES)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
-
-    add_test(test_mvvm ${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE})
 
 endif(BUILD_BOOST_EXAMPLES)
 

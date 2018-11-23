@@ -64,8 +64,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_EVENT_MANAGER_EXAMPLE})
-
     ########################################################
     #  libs/boost_mvvm/phoenix_functor_example             #
     ########################################################
@@ -116,8 +114,6 @@ if(BUILD_BOOST_EXAMPLES)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
-
-    add_test(test_mvvm ${PROJECT_BOOST_PHOENIX_FUNCTOR_EXAMPLE})
 
 endif(BUILD_BOOST_EXAMPLES)
 

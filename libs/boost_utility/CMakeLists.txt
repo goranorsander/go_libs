@@ -64,8 +64,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_ERASE_EXAMPLE})
-
     ###################################################################
     #  libs/boost_utility/primitive_type_implicit_specializer_example #
     ###################################################################
@@ -116,8 +114,6 @@ if(BUILD_BOOST_EXAMPLES)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
-
-    add_test(test_mvvm ${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE})
 
     ##########################################################
     #  libs/boost_utility/primitive_type_specializer_example #
@@ -170,8 +166,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE})
-
     ########################################################
     #  libs/boost_utility/scope_guard_example              #
     ########################################################
@@ -223,8 +217,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_SCOPE_GUARD_EXAMPLE})
-
     ########################################################
     #  libs/boost_utility/scope_guard_new_example          #
     ########################################################
@@ -275,8 +267,6 @@ if(BUILD_BOOST_EXAMPLES)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
-
-    add_test(test_mvvm ${PROJECT_BOOST_SCOPE_GUARD_NEW_EXAMPLE})
 
     ########################################################
     #  libs/boost_utility/string_cast_example              #
@@ -336,8 +326,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_STRING_CAST_EXAMPLE})
-
     ########################################################
     #  libs/boost_utility/try_move_backward_example        #
     ########################################################
@@ -389,8 +377,6 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_mvvm ${PROJECT_BOOST_TRY_MOVE_BACKWARD_EXAMPLE})
-
     ########################################################
     #  libs/boost_utility/value_guard_example              #
     ########################################################
@@ -441,8 +427,6 @@ if(BUILD_BOOST_EXAMPLES)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
-
-    add_test(test_mvvm ${PROJECT_BOOST_VALUE_GUARD_EXAMPLE})
 
 endif(BUILD_BOOST_EXAMPLES)
 

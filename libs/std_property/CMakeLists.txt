@@ -25,8 +25,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_PROXY_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_PROXY_PROPERTY_EXAMPLE})
-
     ########################################################
     #  libs/mvvm/reference_property_example                #
     ########################################################
@@ -40,8 +38,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_REFERENCE_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_REFERENCE_PROPERTY_EXAMPLE})
-
     ########################################################
     #  libs/mvvm/value_property_example                    #
     ########################################################
@@ -54,8 +50,6 @@ if(BUILD_STD_EXAMPLES)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_VALUE_PROPERTY_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    add_test(test_mvvm ${PROJECT_STD_VALUE_PROPERTY_EXAMPLE})
 
 endif(BUILD_STD_EXAMPLES)
 

@@ -25,8 +25,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_ERASE_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_ERASE_EXAMPLE})
-
     #############################################################
     #  libs/utility/primitive_type_implicit_specializer_example #
     #############################################################
@@ -39,8 +37,6 @@ if(BUILD_STD_EXAMPLES)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    add_test(test_mvvm ${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE})
 
     ########################################################
     #  libs/utility/primitive_type_specializer_example     #
@@ -55,8 +51,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE})
-
     ########################################################
     #  libs/utility/scope_guard_example                    #
     ########################################################
@@ -69,8 +63,6 @@ if(BUILD_STD_EXAMPLES)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_SCOPE_GUARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    add_test(test_mvvm ${PROJECT_STD_SCOPE_GUARD_EXAMPLE})
 
     ########################################################
     #  libs/utility/scope_guard_new_example                #
@@ -85,8 +77,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE})
-
     ########################################################
     #  libs/utility/string_cast_example                    #
     ########################################################
@@ -99,8 +89,6 @@ if(BUILD_STD_EXAMPLES)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_STRING_CAST_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    add_test(test_mvvm ${PROJECT_STD_STRING_CAST_EXAMPLE})
 
     ########################################################
     #  libs/utility/try_move_backward_example              #
@@ -115,8 +103,6 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    add_test(test_mvvm ${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE})
-
     ########################################################
     #  libs/utility/value_guard_example                    #
     ########################################################
@@ -129,8 +115,6 @@ if(BUILD_STD_EXAMPLES)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_VALUE_GUARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    add_test(test_mvvm ${PROJECT_STD_VALUE_GUARD_EXAMPLE})
 
 endif(BUILD_STD_EXAMPLES)
 
