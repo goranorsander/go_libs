@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\go\utility\container\size.hpp" />
     <ClInclude Include="..\..\go\utility\iterator\erase.hpp" />
     <ClInclude Include="..\..\go\utility\iterator\try_move_backward.hpp" />
+    <ClInclude Include="..\..\go\utility\min_max.hpp" />
     <ClInclude Include="..\..\go\utility\noncopyable.hpp" />
     <ClInclude Include="..\..\go\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go\utility\nonmovable.hpp" />

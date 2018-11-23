@@ -122,6 +122,9 @@
     <ClInclude Include="..\..\go\utility\string\ucs2.hpp">
       <Filter>go\utility\string</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\min_max.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
