@@ -57,6 +57,7 @@ int main()
     const int64_t i64 = -64;
     const float f = 123.456f;
     const double d = 1234.5678;
+    const bool b = true;
 
     GO_WLOG_INFO << L"GO_WLOG_INFO @ wchar_t = " << c;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ uint16_t = " << u16;
@@ -67,6 +68,7 @@ int main()
     GO_WLOG_INFO << L"GO_WLOG_INFO @ int64_t = " << i64;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ float = " << f;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ double = " << d;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ bool = " << b;
 
     l::set_wlog_level(l::log_level::none);
 

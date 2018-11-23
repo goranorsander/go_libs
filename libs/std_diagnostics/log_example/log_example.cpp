@@ -57,6 +57,7 @@ int main()
     const int64_t i64 = -64;
     const float f = 123.456f;
     const double d = 1234.5678;
+    const bool b = true;
 
     GO_LOG_INFO << "GO_LOG_INFO @ char = " << c;
     GO_LOG_INFO << "GO_LOG_INFO @ uint16_t = " << u16;
@@ -67,6 +68,7 @@ int main()
     GO_LOG_INFO << "GO_LOG_INFO @ int64_t = " << i64;
     GO_LOG_INFO << "GO_LOG_INFO @ float = " << f;
     GO_LOG_INFO << "GO_LOG_INFO @ double = " << d;
+    GO_LOG_INFO << "GO_LOG_INFO @ bool = " << b;
 
     l::set_log_level(l::log_level::none);
 
