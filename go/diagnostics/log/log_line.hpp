@@ -47,7 +47,7 @@ public:
     typedef typename S::value_type char_type;
 
     typedef detail::string_literal_t<char_type> string_literal_type;
-    typedef std::tuple<char_type, uint32_t, uint64_t, int32_t, int64_t, double, string_literal_type, char_type*> supported_types_type;
+    typedef std::tuple<char_type, uint32_t, uint64_t, int32_t, int64_t, float, double, string_literal_type, char_type*> supported_types_type;
 
 public:
     virtual ~basic_log_line() = default;
@@ -134,6 +134,12 @@ public:
         return *this;
     }
 
+    basic_log_line& operator<<(const float arg)
+    {
+        encode<float>(arg, detail::types_tuple_index<float, supported_types_type>::value);
+        return *this;
+    }
+
     basic_log_line& operator<<(const double arg)
     {
         encode<double>(arg, detail::types_tuple_index<double, supported_types_type>::value);
@@ -216,7 +222,7 @@ private:
         else
         {
             _buffer_size = std::max(static_cast<std::size_t>(2 * _buffer_size), required_size);
-            std::unique_ptr < char_type[] > new_heap_buffer(new char_type[_buffer_size]);
+            std::unique_ptr<char_type[]> new_heap_buffer(new char_type[_buffer_size]);
             memcpy(new_heap_buffer.get(), _heap_buffer.get(), _bytes_used);
             _heap_buffer.swap(new_heap_buffer);
         }
@@ -229,7 +235,7 @@ private:
         if (start == end)
             return;
 
-        int type_id = static_cast <int>(*start);
+        const std::size_t type_id = static_cast<std::size_t>(*start);
         ++start;
 
         switch (type_id)
@@ -257,6 +263,9 @@ private:
             return;
         case 7:
             stringify(os, detail::decode(os, start, static_cast<std::tuple_element<7, supported_types_type>::type*>(nullptr)), end);
+            return;
+        case 8:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<8, supported_types_type>::type*>(nullptr)), end);
             return;
         }
     }
