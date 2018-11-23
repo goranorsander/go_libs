@@ -106,37 +106,37 @@ public:
 
     basic_log_line& operator<<(const char_type arg)
     {
-        encode<char_type>(arg, types_tuple_index<char_type, supported_types_type>::value);
+        encode<char_type>(arg, detail::types_tuple_index<char_type, supported_types_type>::value);
         return *this;
     }
 
     basic_log_line& operator<<(const int32_t arg)
     {
-        encode<int32_t>(arg, types_tuple_index<int32_t, supported_types_type>::value);
+        encode<int32_t>(arg, detail::types_tuple_index<int32_t, supported_types_type>::value);
         return *this;
     }
 
     basic_log_line& operator<<(const uint32_t arg)
     {
-        encode<uint32_t>(arg, types_tuple_index<uint32_t, supported_types_type>::value);
+        encode<uint32_t>(arg, detail::types_tuple_index<uint32_t, supported_types_type>::value);
         return *this;
     }
 
     basic_log_line& operator<<(const int64_t arg)
     {
-        encode<int64_t>(arg, types_tuple_index<int64_t, supported_types_type>::value);
+        encode<int64_t>(arg, detail::types_tuple_index<int64_t, supported_types_type>::value);
         return *this;
     }
 
     basic_log_line& operator<<(const uint64_t arg)
     {
-        encode<uint64_t>(arg, types_tuple_index<uint64_t, supported_types_type>::value);
+        encode<uint64_t>(arg, detail::types_tuple_index<uint64_t, supported_types_type>::value);
         return *this;
     }
 
     basic_log_line& operator<<(const double arg)
     {
-        encode<double>(arg, types_tuple_index<double, supported_types_type>::value);
+        encode<double>(arg, detail::types_tuple_index<double, supported_types_type>::value);
         return *this;
     }
 
