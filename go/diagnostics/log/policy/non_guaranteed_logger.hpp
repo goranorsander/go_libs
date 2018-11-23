@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <go/diagnostics/log/detail/ring_buffer.hpp>
 #include <go/diagnostics/log/policy/logging_policy_interface.hpp>
+#include <go/utility/min_max.hpp>
 
 namespace go
 {
@@ -56,7 +57,7 @@ public:
 private:
     virtual buffer_interface_pointer create_buffer() const override
     {
-        return dynamic_cast<buffer_interface_pointer>(new go::diagnostics::log::detail::ring_buffer<log_line_type>(static_cast<std::size_t>(std::max(1u, _ring_buffer_size_mb) * 1024 * 4)));
+        return dynamic_cast<buffer_interface_pointer>(new go::diagnostics::log::detail::ring_buffer<log_line_type>(static_cast<std::size_t>(go::utility::max_of(1u, _ring_buffer_size_mb) * 1024 * 4)));
     }
 
 private:

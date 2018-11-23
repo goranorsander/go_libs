@@ -48,7 +48,8 @@ int main()
     GO_WLOG_INFO << L"GO_WLOG_INFO @ info";
     GO_WLOG_DEBUG << L"GO_WLOG_DEBUG @ info";
 
-    const wchar_t c = 'A';
+    const char mbc = 'A';
+    const wchar_t swc = L'B';
     const uint16_t u16 = 16;
     const uint32_t u32 = 32;
     const uint64_t u64 = 64;
@@ -58,8 +59,11 @@ int main()
     const float f = 123.456f;
     const double d = 1234.5678;
     const bool b = true;
+    const char* mbs = "Multibyte string";
+    const wchar_t* sws = L"System wide string";
 
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ wchar_t = " << c;
+    GO_WLOG_INFO << L"GO_LOG_INFO @ char = " << mbc;
+    GO_WLOG_INFO << L"GO_LOG_INFO @ wchar_t = " << swc;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ uint16_t = " << u16;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ uint32_t = " << u32;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ uint64_t = " << u64;
@@ -69,6 +73,8 @@ int main()
     GO_WLOG_INFO << L"GO_WLOG_INFO @ float = " << f;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ double = " << d;
     GO_WLOG_INFO << L"GO_WLOG_INFO @ bool = " << b;
+    GO_WLOG_INFO << L"GO_LOG_INFO @ char* = " << mbs;
+    GO_WLOG_INFO << L"GO_LOG_INFO @ wchar_t* = " << sws;
 
     l::set_wlog_level(l::log_level::none);
 

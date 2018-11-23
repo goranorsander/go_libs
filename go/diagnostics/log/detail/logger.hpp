@@ -65,7 +65,7 @@ public:
     basic_logger(const logging_policy_interface_type& policy, const string_type& log_directory, const string_type& log_file_name, const uint32_t log_file_roll_size_mb)
         : _state(logger_state::logger_state_init)
         , _buffer_base(policy.create_buffer())
-        , _file_writer(log_directory, log_file_name, std::max(1u, log_file_roll_size_mb))
+        , _file_writer(log_directory, log_file_name, go::utility::max_of(1u, log_file_roll_size_mb))
         , _thread(&basic_logger::pop, this)
     {
         _state.store(logger_state::logger_state_ready, std::memory_order_release);

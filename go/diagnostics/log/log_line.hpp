@@ -47,7 +47,25 @@ public:
     typedef typename S::value_type char_type;
 
     typedef detail::string_literal_t<char_type> string_literal_type;
-    typedef std::tuple<char_type, uint16_t, uint32_t, uint64_t, int16_t, int32_t, int64_t, float, double, bool, string_literal_type, char_type*> supported_types_type;
+    typedef detail::string_literal_t<std::string::value_type> std_string_literal_type;
+    typedef detail::string_literal_t<std::wstring::value_type> std_wstring_literal_type;
+    typedef std::tuple<
+              std::string::value_type   // 0
+            , std::wstring::value_type  // 1
+            , uint16_t                  // 2
+            , uint32_t                  // 3
+            , uint64_t                  // 4
+            , int16_t                   // 5
+            , int32_t                   // 6
+            , int64_t                   // 7
+            , float                     // 8
+            , double                    // 9
+            , bool                      // 10
+            , std_string_literal_type   // 11
+            , std_wstring_literal_type  // 12
+            , std::string::value_type*  // 13
+            , std::wstring::value_type* // 14
+        > supported_types_type;
 
 public:
     virtual ~basic_log_line() = default;
@@ -104,9 +122,15 @@ public:
         os.flush();
     }
 
-    basic_log_line& operator<<(const char_type arg)
+    basic_log_line& operator<<(const std::string::value_type arg)
     {
-        encode<char_type>(arg, detail::types_tuple_index<char_type, supported_types_type>::value);
+        encode<std::string::value_type>(arg, detail::types_tuple_index<std::string::value_type, supported_types_type>::value);
+        return *this;
+    }
+
+    basic_log_line& operator<<(const std::wstring::value_type arg)
+    {
+        encode<std::wstring::value_type>(arg, detail::types_tuple_index<std::wstring::value_type, supported_types_type>::value);
         return *this;
     }
 
@@ -171,14 +195,14 @@ public:
     }
 
     template <std::size_t N>
-    basic_log_line& operator<<(const char_type(&arg)[N])
+    basic_log_line& operator<<(const std::string::value_type(&arg)[N])
     {
-        encode(string_literal_type(arg));
+        encode(std_string_literal_type(arg));
         return *this;
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, const char_type*>::value, basic_log_line&>::type
+    typename std::enable_if<std::is_same<Arg, const std::string::value_type*>::value, basic_log_line&>::type
     operator<<(const Arg& arg)
     {
         encode(arg);
@@ -186,8 +210,31 @@ public:
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, char_type*>::value, basic_log_line&>::type
+    typename std::enable_if<std::is_same<Arg, std::string::value_type*>::value, basic_log_line&>::type
     operator<<(const Arg& arg)
+    {
+        encode(arg);
+        return *this;
+    }
+
+    template <std::size_t N>
+    basic_log_line& operator<<(const std::wstring::value_type(&arg)[N])
+    {
+        encode(std_wstring_literal_type(arg));
+        return *this;
+    }
+
+    template <typename Arg>
+    typename std::enable_if<std::is_same<Arg, const std::wstring::value_type*>::value, basic_log_line&>::type
+        operator<<(const Arg& arg)
+    {
+        encode(arg);
+        return *this;
+    }
+
+    template <typename Arg>
+    typename std::enable_if<std::is_same<Arg, std::wstring::value_type*>::value, basic_log_line&>::type
+        operator<<(const Arg& arg)
     {
         encode(arg);
         return *this;
@@ -219,9 +266,13 @@ private:
         encode<string_literal_type>(arg, detail::types_tuple_index<string_literal_type, supported_types_type>::value);
     }
 
-    void encode(char_type* arg);
-    void encode(const char_type* arg);
-    void encode_c_string(const char_type* arg, const std::size_t length);
+    void encode(std::string::value_type* arg);
+    void encode(const std::string::value_type* arg);
+    void encode_c_string(const std::string::value_type* arg, const std::size_t length);
+
+    void encode(std::wstring::value_type* arg);
+    void encode(const std::wstring::value_type* arg);
+    void encode_c_string(const std::wstring::value_type* arg, const std::size_t length);
 
     void resize_buffer_if_needed(const std::size_t additional_bytes)
     {
@@ -232,14 +283,14 @@ private:
 
         if (!_heap_buffer)
         {
-            _buffer_size = std::max(static_cast<std::size_t>(512), required_size);
+            _buffer_size = go::utility::max_of(static_cast<std::size_t>(512), required_size);
             _heap_buffer.reset(new char_type[_buffer_size]);
             memcpy(_heap_buffer.get(), _stack_buffer, _bytes_used);
             return;
         }
         else
         {
-            _buffer_size = std::max(static_cast<std::size_t>(2 * _buffer_size), required_size);
+            _buffer_size = go::utility::max_of(static_cast<std::size_t>(2 * _buffer_size), required_size);
             std::unique_ptr<char_type[]> new_heap_buffer(new char_type[_buffer_size]);
             memcpy(new_heap_buffer.get(), _heap_buffer.get(), _bytes_used);
             _heap_buffer.swap(new_heap_buffer);
@@ -294,6 +345,15 @@ private:
         case 11:
             stringify(os, detail::decode(os, start, static_cast<std::tuple_element<11, supported_types_type>::type*>(nullptr)), end);
             return;
+        case 12:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<12, supported_types_type>::type*>(nullptr)), end);
+            return;
+        case 13:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<13, supported_types_type>::type*>(nullptr)), end);
+            return;
+        case 14:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<14, supported_types_type>::type*>(nullptr)), end);
+            return;
         }
     }
 
@@ -312,15 +372,24 @@ inline void basic_log_line<std::string, std::ostream>::encode(std::string::value
 }
 
 template<>
-inline void basic_log_line<std::wstring, std::wostream>::encode(std::wstring::value_type* arg)
+inline void basic_log_line<std::wstring, std::wostream>::encode(std::string::value_type* arg)
+{
+    if (arg != nullptr)
+        encode_c_string(arg, strlen(arg));
+}
+
+template<>
+inline void basic_log_line<std::string, std::ostream>::encode(std::wstring::value_type* arg)
 {
     if (arg != nullptr)
         encode_c_string(arg, wcslen(arg));
 }
 
-template<class S, class O>
-inline void basic_log_line<S, O>::encode(typename S::value_type* /*arg*/)
+template<>
+inline void basic_log_line<std::wstring, std::wostream>::encode(std::wstring::value_type* arg)
 {
+    if (arg != nullptr)
+        encode_c_string(arg, wcslen(arg));
 }
 
 template<>
@@ -331,15 +400,24 @@ inline void basic_log_line<std::string, std::ostream>::encode(const std::string:
 }
 
 template<>
-inline void basic_log_line<std::wstring, std::wostream>::encode(const std::wstring::value_type* arg)
+inline void basic_log_line<std::wstring, std::wostream>::encode(const std::string::value_type* arg)
+{
+    if (arg != nullptr)
+        encode_c_string(arg, strlen(arg));
+}
+
+template<>
+inline void basic_log_line<std::string, std::ostream>::encode(const std::wstring::value_type* arg)
 {
     if (arg != nullptr)
         encode_c_string(arg, wcslen(arg));
 }
 
-template<class S, class O>
-inline void basic_log_line<S, O>::encode(typename const S::value_type* /*arg*/)
+template<>
+inline void basic_log_line<std::wstring, std::wostream>::encode(const std::wstring::value_type* arg)
 {
+    if (arg != nullptr)
+        encode_c_string(arg, wcslen(arg));
 }
 
 template<>
@@ -357,6 +435,24 @@ inline void basic_log_line<std::string, std::ostream>::encode_c_string(const std
 }
 
 template<>
+inline void basic_log_line<std::wstring, std::wostream>::encode_c_string(const std::string::value_type* arg, const std::size_t length)
+{
+    if (length == 0)
+        return;
+    const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(arg));
+    encode_c_string(sws.c_str(), sws.size());
+}
+
+template<>
+inline void basic_log_line<std::string, std::ostream>::encode_c_string(const std::wstring::value_type* arg, const std::size_t length)
+{
+    if (length == 0)
+        return;
+    const std::string mbs = go::utility::string_cast<std::string>(std::wstring(arg));
+    encode_c_string(mbs.c_str(), mbs.size());
+}
+
+template<>
 inline void basic_log_line<std::wstring, std::wostream>::encode_c_string(const std::wstring::value_type* arg, const std::size_t length)
 {
     if (length == 0)
@@ -368,11 +464,6 @@ inline void basic_log_line<std::wstring, std::wostream>::encode_c_string(const s
     *reinterpret_cast<uint8_t*>(b++) = static_cast<uint8_t>(type_id);
     memcpy(b, arg, string_size);
     _bytes_used += 1 + string_size;
-}
-
-template<class S, class O>
-inline void basic_log_line<S, O>::encode_c_string(typename const S::value_type* /*arg*/, const std::size_t /*length*/)
-{
 }
 
 template<>

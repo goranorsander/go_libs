@@ -18,6 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/diagnostics/log/detail/string_literal.hpp>
+#include <go/utility/string_cast.hpp>
 
 #include <string>
 
@@ -42,11 +43,33 @@ std::string::value_type* decode(std::ostream& os, std::string::value_type* b, st
 }
 
 template <>
+std::string::value_type* decode(std::ostream& os, std::string::value_type* b, string_literal_t<std::wstring::value_type>* /*a*/)
+{
+    string_literal_t<std::wstring::value_type> s = *reinterpret_cast<string_literal_t<std::wstring::value_type>*>(b);
+    const std::string mbs = go::utility::string_cast<std::string>(std::wstring(s._s));
+    os << mbs.c_str();
+    return b + sizeof(string_literal_t<std::string::value_type>);
+}
+
+template <>
 std::string::value_type* decode(std::ostream & os, std::string::value_type* b, std::string::value_type** /*a*/)
 {
     while (*b != '\0')
     {
         os << *b;
+        ++b;
+    }
+    return ++b;
+}
+
+template <>
+std::string::value_type* decode(std::ostream & os, std::string::value_type* b, std::wstring::value_type** /*a*/)
+{
+    string_literal_t<std::wstring::value_type> s = *reinterpret_cast<string_literal_t<std::wstring::value_type>*>(b);
+    const std::string mbs = go::utility::string_cast<std::string>(std::wstring(s._s));
+    for(const std::string::value_type c : mbs)
+    {
+        os << c;
         ++b;
     }
     return ++b;
@@ -61,11 +84,33 @@ std::wstring::value_type* decode(std::wostream& os, std::wstring::value_type* b,
 }
 
 template <>
+std::wstring::value_type* decode(std::wostream& os, std::wstring::value_type* b, string_literal_t<std::string::value_type>* /*a*/)
+{
+    string_literal_t<std::string::value_type> s = *reinterpret_cast<string_literal_t<std::string::value_type>*>(b);
+    const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(s._s));
+    os << sws.c_str();
+    return b + sizeof(string_literal_t<std::wstring::value_type>);
+}
+
+template <>
 std::wstring::value_type* decode(std::wostream & os, std::wstring::value_type* b, std::wstring::value_type** /*a*/)
 {
     while (*b != L'\0')
     {
         os << *b;
+        ++b;
+    }
+    return ++b;
+}
+
+template <>
+std::wstring::value_type* decode(std::wostream & os, std::wstring::value_type* b, std::string::value_type** /*a*/)
+{
+    string_literal_t<std::string::value_type> s = *reinterpret_cast<string_literal_t<std::string::value_type>*>(b);
+    const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(s._s));
+    for (const std::wstring::value_type c : sws)
+    {
+        os << c;
         ++b;
     }
     return ++b;
