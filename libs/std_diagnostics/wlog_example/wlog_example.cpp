@@ -48,6 +48,22 @@ int main()
     GO_WLOG_INFO << L"GO_WLOG_INFO @ info";
     GO_WLOG_DEBUG << L"GO_WLOG_DEBUG @ info";
 
+    const wchar_t c = 'A';
+    const uint32_t u32 = 32;
+    const uint64_t u64 = 64;
+    const int32_t i32 = -32;
+    const int64_t i64 = -64;
+    const float f = 123.456f;
+    const double d = 1234.5678;
+
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ wchar_t = " << c;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ uint32_t = " << u32;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ uint64_t = " << u64;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ int32_t = " << i32;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ int64_t = " << i64;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ float = " << f;
+    GO_WLOG_INFO << L"GO_WLOG_INFO @ double = " << d;
+
     l::set_wlog_level(l::log_level::none);
 
     GO_WLOG(l::log_level::fatal) << L"GO_WLOG(l::log_level::fatal) @ none";
