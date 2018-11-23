@@ -31,7 +31,7 @@ static UINT indicators[] =
 
 IMPLEMENT_DYNAMIC(main_frame_view, CMDIFrameWndEx)
 
-main_frame_view::main_frame_view(const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_manager, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo)
+main_frame_view::main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo)
     : CMDIFrameWndEx()
     , m::data_context_interface<main_frame_view_model::ptr>()
     , _wndMenuBar()
@@ -67,7 +67,7 @@ void main_frame_view::on_close_dialog(const dialog_view::pointer dialog)
         dialog_view_container_type::iterator it = std::find_if(data_context()->dialogs()->begin(), data_context()->dialogs()->end(), [dialog](const dialog_view::ptr& d) { return d.get() == dialog; });
         if (it != data_context()->dialogs()->end())
         {
-            GO_MUTEX_NAMESPACE::wcommand_interface::ptr command = data_context()->delete_dialog_view_command;
+            m::wcommand_interface::ptr command = data_context()->delete_dialog_view_command;
             std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(command->parameters())->dialog = *it;
             data_context()->command_manager()->post(command);
         }
@@ -304,14 +304,14 @@ BOOL main_frame_view::CreateDockingWindows()
         return FALSE;
     }
 
-    GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = _command_manager.lock();
+    m::wcommand_manager::ptr command_manager = _command_manager.lock();
     if(command_manager)
     {
         command_manager->command_executed.connect(std::bind(&output_view::on_command_executed, &_output_view, ph::_1));
         command_manager->command_not_executed.connect(std::bind(&output_view::on_command_not_executed, &_output_view, ph::_1));
     }
 
-    GO_MUTEX_NAMESPACE::wevent_manager::ptr event_manager = _event_manager.lock();
+    m::wevent_manager::ptr event_manager = _event_manager.lock();
     if(event_manager)
     {
         event_manager->event_fired.connect(std::bind(&output_view::on_event_fired, &_output_view, ph::_1));
@@ -346,8 +346,8 @@ void main_frame_view::SetDockingWindowIcons(BOOL bHiColorIcons)
 
 void main_frame_view::initialize()
 {
-    GO_MUTEX_NAMESPACE::wcommand_manager::ptr command_manager = _command_manager.lock();
-    GO_MUTEX_NAMESPACE::wevent_manager::ptr event_manager = _event_manager.lock();
+    m::wcommand_manager::ptr command_manager = _command_manager.lock();
+    m::wevent_manager::ptr event_manager = _event_manager.lock();
     fleet_repository::ptr fleet_repo = _fleet_repository.lock();
     if(command_manager && event_manager && fleet_repo)
     {

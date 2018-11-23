@@ -15,7 +15,7 @@ equipment_id_type equipment_model::_next_id = 0;
 
 equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
     : equipment_interface()
-    , GO_MUTEX_NAMESPACE::wobservable_object()
+    , m::wobservable_object()
     , u::noncopyable_nonmovable()
     , id(L"equipment_model::id")
     , _id(_next_id++)

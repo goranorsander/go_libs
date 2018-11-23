@@ -18,7 +18,7 @@ spaceship_model::~spaceship_model()
 
 spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_)
     : spaceship_interface()
-    , GO_MUTEX_NAMESPACE::wobservable_object()
+    , m::wobservable_object()
     , u::noncopyable_nonmovable()
     , _spaceship_class(spaceship_class_)
     , _name(name_)

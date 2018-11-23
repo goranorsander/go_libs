@@ -21,8 +21,8 @@ properties_view_model::~properties_view_model()
 }
 
 properties_view_model::properties_view_model()
-    : m::view_model_interface<GO_MUTEX_TYPE>()
-    , GO_MUTEX_NAMESPACE::wobservable_object()
+    : m::view_model_interface<std::recursive_mutex>()
+    , m::wobservable_object()
     , m::data_context_interface<fleet_organization_model::ptr>(fleet_organization_model::create())
     , u::noncopyable_nonmovable()
     , main_frame_vm(L"properties_view_model::main_frame_vm")
@@ -88,7 +88,7 @@ void properties_view_model::on_property_changed(const m::object::ptr& o, const m
 void properties_view_model::bind_properties()
 {
     main_frame_vm.getter([this]() -> main_frame_view_model::ptr { return _main_frame_vm.lock(); });
-    main_frame_vm.setter([this](const main_frame_view_model::ptr& v) { if(_main_frame_vm.lock() != v) { unsubscribe_events(); _main_frame_vm = v; subscribe_events(); GO_MUTEX_NAMESPACE::wobservable_object::notify_property_changed(this->shared_from_this(), main_frame_vm.name()); } });
+    main_frame_vm.setter([this](const main_frame_view_model::ptr& v) { if(_main_frame_vm.lock() != v) { unsubscribe_events(); _main_frame_vm = v; subscribe_events(); m::wobservable_object::notify_property_changed(this->shared_from_this(), main_frame_vm.name()); } });
     fleet_organization.getter([this]() -> fleet_organization_interface::ptr { return data_context(); });
 }
 
@@ -97,7 +97,7 @@ void properties_view_model::subscribe_events()
     main_frame_view_model::ptr vm = _main_frame_vm.lock();
     if(vm)
     {
-        GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
+        m::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
             _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event",
@@ -130,7 +130,7 @@ void properties_view_model::unsubscribe_events()
     main_frame_view_model::ptr vm = _main_frame_vm.lock();
     if(vm)
     {
-        GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = vm->event_manager();
+        m::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
             event_mgr->unsubscribe(L"select fleet organization event", _select_fleet_organization_event_key);

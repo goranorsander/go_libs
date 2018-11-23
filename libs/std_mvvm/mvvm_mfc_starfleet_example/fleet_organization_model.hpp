@@ -19,7 +19,7 @@ typedef unsigned long fleet_organization_id_type;
 
 class fleet_organization_model
     : public fleet_organization_interface
-    , public GO_MUTEX_NAMESPACE::wobservable_object
+    , public m::wobservable_object
     , public m::object_wobserver_interface
     , private u::noncopyable_nonmovable
 {

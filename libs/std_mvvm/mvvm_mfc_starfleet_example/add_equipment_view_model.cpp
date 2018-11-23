@@ -15,7 +15,7 @@
 #include <functional>
 
 add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
-    : GO_MUTEX_NAMESPACE::wobservable_object()
+    : m::wobservable_object()
     , u::noncopyable_nonmovable()
     , category(L"add_equipment_view_model::category")
     , name(L"add_equipment_view_model::name")

@@ -19,7 +19,7 @@
 #include "equipment_interface.hpp"
 
 class add_equipment_view_model
-    : public GO_MUTEX_NAMESPACE::wobservable_object
+    : public m::wobservable_object
     , public u::noncopyable_nonmovable
 {
 public:

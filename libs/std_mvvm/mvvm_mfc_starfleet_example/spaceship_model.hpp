@@ -17,7 +17,7 @@
 
 class spaceship_model
     : public spaceship_interface
-    , public GO_MUTEX_NAMESPACE::wobservable_object
+    , public m::wobservable_object
     , private u::noncopyable_nonmovable
 {
 public:

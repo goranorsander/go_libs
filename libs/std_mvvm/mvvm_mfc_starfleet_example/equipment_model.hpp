@@ -20,7 +20,7 @@ typedef unsigned long equipment_id_type;
 
 class equipment_model
     : public equipment_interface
-    , public GO_MUTEX_NAMESPACE::wobservable_object
+    , public m::wobservable_object
     , private u::noncopyable_nonmovable
 {
 public:

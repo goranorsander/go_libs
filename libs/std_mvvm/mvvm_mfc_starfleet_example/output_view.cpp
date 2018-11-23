@@ -50,9 +50,9 @@ std::wstring current_date_and_time()
     return dt;
 }
 
-std::wstring command_information(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
+std::wstring command_information(const m::wcommand_interface::ptr& c)
 {
-    const GO_MUTEX_NAMESPACE::relay_wcommand::ptr r = std::dynamic_pointer_cast<GO_MUTEX_NAMESPACE::relay_wcommand>(c);
+    const m::relay_wcommand::ptr r = std::dynamic_pointer_cast<m::relay_wcommand>(c);
     if(r)
     {
         const m::command_parameters::ptr p = c->parameters();
@@ -99,7 +99,7 @@ std::wstring command_information(const GO_MUTEX_NAMESPACE::wcommand_interface::p
                 rep->spaceship_id, rep->equipment_id);
         }
     }
-    return GO_MUTEX_COMMAND_INTERFACE;
+    return L"class go::mvvm::wcommand_interface";
 }
 
 std::wstring event_information(const m::wevent::ptr& e)
@@ -184,7 +184,7 @@ std::wstring object_information(const m::object::ptr& o)
 
 output_view::output_view()
     : CDockablePane()
-    , GO_MUTEX_NAMESPACE::wcommand_execution_wobserver_interface()
+    , m::wcommand_execution_wobserver_interface()
     , m::object_wobserver_interface()
     , _wndTabs()
     , _wndOutputAllMvvmEvents()
@@ -279,7 +279,7 @@ void output_view::UpdateFonts()
     _wndOutputObservableObjectEvents.SetFont(&afxGlobalData.fontRegular);
 }
 
-void output_view::on_command_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
+void output_view::on_command_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
@@ -289,7 +289,7 @@ void output_view::on_command_executed(const GO_MUTEX_NAMESPACE::wcommand_interfa
     }
 }
 
-void output_view::on_command_not_executed(const GO_MUTEX_NAMESPACE::wcommand_interface::ptr& c)
+void output_view::on_command_not_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
@@ -316,16 +316,16 @@ void output_view::on_container_changed(const m::object::ptr& o, const m::contain
         std::wstring msg;
         switch(a->action())
         {
-        case m::notify_container_changed_action_add:
+        case m::notify_container_changed_action::add:
             msg = us::format(L"%s: Added %zu elements to container, %s", current_date_and_time().c_str(), a->added_elements(), object_information(o).c_str());
             break;
-        case m::notify_container_changed_action_remove:
+        case m::notify_container_changed_action::remove:
             msg = us::format(L"%s: Removed %zu elements from container, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
-        case m::notify_container_changed_action_reset:
+        case m::notify_container_changed_action::reset:
             msg = us::format(L"%s: Reset container, removed all %zu elements, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
-        case m::notify_container_changed_action_swap:
+        case m::notify_container_changed_action::swap:
             msg = us::format(L"%s: Swapped container elements, had %zu, now got %zu, %s", current_date_and_time().c_str(), a->removed_elements(), a->added_elements(), object_information(o).c_str());
             break;
         default:

@@ -26,9 +26,9 @@ main_frame_view_model::~main_frame_view_model()
     unsubscribe_events();
 }
 
-main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_mgr, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
-    : m::view_model_interface<GO_MUTEX_TYPE>()
-    , GO_MUTEX_NAMESPACE::wobservable_object()
+main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
+    : m::view_model_interface<std::recursive_mutex>()
+    , m::wobservable_object()
     , m::data_context_interface<fleet_repository::wptr>(fleet_repository::wptr(fleet_repo))
     , u::noncopyable_nonmovable()
     , mdi_frame_manager(mdi_frame_mgr)
@@ -45,16 +45,16 @@ main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_fr
 {
 }
 
-main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::pointer mdi_frame_mgr, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_mgr, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
+main_frame_view_model::ptr main_frame_view_model::create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
 {
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_DEFAULT_DESTRUCTOR
-        make_shared_enabler(mdi_frame_interface::pointer mdi_frame_mgr, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr& command_mgr, const GO_MUTEX_NAMESPACE::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo) : this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo) {}
+        make_shared_enabler(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo) : this_type(mdi_frame_mgr, command_mgr, event_mgr, fleet_repo) {}
     };
 
-    main_frame_view_model::ptr view_model = std::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const GO_MUTEX_NAMESPACE::wcommand_manager::ptr&, const GO_MUTEX_NAMESPACE::wevent_manager::ptr&, const fleet_repository::ptr&>(std::forward<mdi_frame_interface::pointer>(mdi_frame_mgr), command_mgr, event_mgr, fleet_repo);
+    main_frame_view_model::ptr view_model = std::make_shared<make_shared_enabler, mdi_frame_interface::pointer, const m::wcommand_manager::ptr&, const m::wevent_manager::ptr&, const fleet_repository::ptr&>(std::forward<mdi_frame_interface::pointer>(mdi_frame_mgr), command_mgr, event_mgr, fleet_repo);
     view_model->bind_properties();
     view_model->subscribe_events();
     return view_model;
@@ -77,7 +77,7 @@ void main_frame_view_model::bind_properties()
     open_add_equipment_view_command.getter(
         [this]()
         {
-            _open_add_equipment_view_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"main_frame_view_model::open_add_equipment_view_command",
+            _open_add_equipment_view_command = m::relay_wcommand::create(L"main_frame_view_model::open_add_equipment_view_command",
                 [this](const m::command_parameters::ptr& p)
                 {
                     mdi_frame_interface::pointer mdi_frame_mgr = mdi_frame_manager;
@@ -106,7 +106,7 @@ void main_frame_view_model::bind_properties()
     delete_dialog_view_command.getter(
         [this]()
         {
-            _delete_dialog_view_command = GO_MUTEX_NAMESPACE::relay_wcommand::create(L"main_frame_view_model::delete_dialog_view_command",
+            _delete_dialog_view_command = m::relay_wcommand::create(L"main_frame_view_model::delete_dialog_view_command",
                 [this](const m::command_parameters::ptr& p)
                 {
                     mdi_frame_interface::pointer mdi_frame_mgr = mdi_frame_manager;
@@ -139,7 +139,7 @@ void main_frame_view_model::bind_properties()
 
 void main_frame_view_model::subscribe_events()
 {
-    GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = event_manager();
+    m::wevent_manager::ptr event_mgr = event_manager();
     if(event_mgr)
     {
         _close_spaceship_event_key = event_mgr->subscribe(L"close spaceship event",
@@ -173,7 +173,7 @@ void main_frame_view_model::subscribe_events()
 
 void main_frame_view_model::unsubscribe_events()
 {
-    GO_MUTEX_NAMESPACE::wevent_manager::ptr event_mgr = event_manager();
+    m::wevent_manager::ptr event_mgr = event_manager();
     if(event_mgr)
     {
         event_mgr->unsubscribe(L"close spaceship event", _close_spaceship_event_key);
