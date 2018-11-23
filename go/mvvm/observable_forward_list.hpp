@@ -273,13 +273,13 @@ public:
     void push_front(const value_type& val)
     {
         _container.push_front(val);
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, size());
     }
 
     void push_front(value_type&& val)
     {
         _container.push_front(val);
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, size());
     }
 
     void pop_front()
@@ -289,7 +289,7 @@ public:
         const std::size_t after = size();
         if(before > after)
         {
-            this->notify_container_changed(notify_container_changed_action_remove, 0, before - after, size());
+            this->notify_container_changed(notify_container_changed_action::remove, 0, before - after, size());
         }
     }
 
@@ -299,15 +299,15 @@ public:
         const std::size_t this_before = size();
         const std::size_t x_before = x.size();
         _container.swap(x._container);
-        x.notify_container_changed(notify_container_changed_action_swap, this_before, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_swap, x_before, this_before, size());
+        x.notify_container_changed(notify_container_changed_action::swap, this_before, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::swap, x_before, this_before, size());
     }
 
     void clear() noexcept
     {
         const std::size_t before = size();
         _container.clear();
-        this->notify_container_changed(notify_container_changed_action_reset, 0, before, 0);
+        this->notify_container_changed(notify_container_changed_action::reset, 0, before, 0);
     }
 
     template <class... Args>
@@ -403,8 +403,8 @@ public:
     {
         const std::size_t x_before = x.size();
         _container.splice_after(position, x._container);
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, x_before, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, x_before, 0, size());
     }
 
     template<class t, class s, typename m>
@@ -412,24 +412,24 @@ public:
     {
         const std::size_t x_before = x.size();
         _container.splice_after(position, x._container);
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, x_before, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, x_before, 0, size());
     }
 
     template<class t, class s, typename m>
     void splice_after(const_iterator position, basic_observable_forward_list<t, s, m>& x, const_iterator i)
     {
         _container.splice_after(position, x._container, i);
-        x.notify_container_changed(notify_container_changed_action_remove, 0, 1, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, 1, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, size());
     }
 
     template<class t, class s, typename m>
     void splice_after(const_iterator position, basic_observable_forward_list<t, s, m>&& x, const_iterator i)
     {
         _container.splice_after(position, x._container, i);
-        x.notify_container_changed(notify_container_changed_action_remove, 0, 1, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, 1, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, size());
     }
 
     template<class t, class s, typename m>
@@ -438,8 +438,8 @@ public:
         const std::size_t this_before = size();
         _container.splice_after(position, x._container, first, last);
         const std::size_t transfer_count = size() - this_before;
-        x.notify_container_changed(notify_container_changed_action_remove, 0, transfer_count, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, transfer_count, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, transfer_count, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, transfer_count, 0, size());
     }
 
     template<class t, class s, typename m>
@@ -448,8 +448,8 @@ public:
         const std::size_t this_before = size();
         _container.splice_after(position, x._container, first, last);
         const std::size_t transfer_count = size() - this_before;
-        x.notify_container_changed(notify_container_changed_action_remove, 0, transfer_count, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, transfer_count, 0, size());
+        x.notify_container_changed(notify_container_changed_action::remove, 0, transfer_count, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, transfer_count, 0, size());
     }
 
     void remove(const value_type& val)
@@ -493,8 +493,8 @@ public:
         const std::size_t x_before = x.size();
         _container.merge(x._container);
         const std::size_t this_after = size();
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, this_after - this_before, 0, this_after);
     }
 
     template<class t, class s, typename m>
@@ -504,8 +504,8 @@ public:
         const std::size_t x_before = x.size();
         _container.merge(x._container);
         const std::size_t this_after = size();
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, this_after - this_before, 0, this_after);
     }
 
     template<class t, class s, typename m, class Compare>
@@ -515,8 +515,8 @@ public:
         const std::size_t x_before = x.size();
         _container.merge(x._container, comp);
         const std::size_t this_after = size();
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, this_after - this_before, 0, this_after);
     }
 
     template<class t, class s, typename m, class Compare>
@@ -526,8 +526,8 @@ public:
         const std::size_t x_before = x.size();
         _container.merge(x._container, comp);
         const std::size_t this_after = size();
-        x.notify_container_changed(notify_container_changed_action_remove, 0, x_before, x.size());
-        this->notify_container_changed(notify_container_changed_action_add, this_after - this_before, 0, this_after);
+        x.notify_container_changed(notify_container_changed_action::remove, 0, x_before, x.size());
+        this->notify_container_changed(notify_container_changed_action::add, this_after - this_before, 0, this_after);
     }
 
     void sort()

@@ -117,7 +117,7 @@ public:
     {
         const std::size_t before = this->container().size();
         this->container().clear();
-        this->notify_container_changed(notify_container_changed_action_reset, 0, before, 0);
+        this->notify_container_changed(notify_container_changed_action::reset, 0, before, 0);
     }
 
     template<class t, class s, typename m>
@@ -126,8 +126,8 @@ public:
         const std::size_t this_before = this->container().size();
         const std::size_t x_before = x.size();
         this->container().swap(x.container());
-        x.notify_container_changed(notify_container_changed_action_swap, this_before, x_before, x.container().size());
-        this->notify_container_changed(notify_container_changed_action_swap, x_before, this_before, this->container().size());
+        x.notify_container_changed(notify_container_changed_action::swap, this_before, x_before, x.container().size());
+        this->notify_container_changed(notify_container_changed_action::swap, x_before, this_before, this->container().size());
     }
 
     GO_CONSTEXPR size_type count(const value_type& val) const
@@ -165,7 +165,7 @@ protected:
     {
         if(after - before > 0)
         {
-            this->notify_container_changed(notify_container_changed_action_add, after - before, 0, after);
+            this->notify_container_changed(notify_container_changed_action::add, after - before, 0, after);
         }
     }
 
@@ -173,7 +173,7 @@ protected:
     {
         if(before - after > 0)
         {
-            this->notify_container_changed(notify_container_changed_action_remove, 0, before - after, after);
+            this->notify_container_changed(notify_container_changed_action::remove, 0, before - after, after);
         }
     }
 };

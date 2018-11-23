@@ -18,13 +18,14 @@ namespace go
 namespace mvvm
 {
 
-enum notify_container_changed_action
+enum class notify_container_changed_action
+    : int8_t
 {
-    notify_container_changed_action_add,
-    notify_container_changed_action_remove,
-    notify_container_changed_action_reset,
-    notify_container_changed_action_swap,
-    undefined_notify_container_changed_action = ~0
+    add,
+    remove,
+    reset,
+    swap,
+    undefined = ~0
 };
 
 } // namespace mvvm

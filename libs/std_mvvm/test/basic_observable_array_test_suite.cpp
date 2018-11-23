@@ -39,7 +39,7 @@ public:
     array_observer()
         : _on_container_changed_slot_key()
         , _on_property_changed_slot_key()
-        , _last_action(m::undefined_notify_container_changed_action)
+        , _last_action(m::notify_container_changed_action::undefined)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -74,10 +74,10 @@ public:
             _last_change_new_size = static_cast<int>(a->new_size());
             _total_change_added += static_cast<int>(a->added_elements());
             _total_change_removed += static_cast<int>(a->removed_elements());
-            _action_add_count += a->action() == m::notify_container_changed_action_add ? 1 : 0;
-            _action_remove_count += a->action() == m::notify_container_changed_action_remove ? 1 : 0;
-            _action_reset_count += a->action() == m::notify_container_changed_action_reset ? 1 : 0;
-            _action_swap_count += a->action() == m::notify_container_changed_action_swap ? 1 : 0;
+            _action_add_count += a->action() == m::notify_container_changed_action::add ? 1 : 0;
+            _action_remove_count += a->action() == m::notify_container_changed_action::remove ? 1 : 0;
+            _action_reset_count += a->action() == m::notify_container_changed_action::reset ? 1 : 0;
+            _action_swap_count += a->action() == m::notify_container_changed_action::swap ? 1 : 0;
         }
     }
 
@@ -183,7 +183,7 @@ TEST(std_basic_observable_array_test_suite, test_create)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::undefined_notify_container_changed_action, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::undefined, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());

@@ -36,7 +36,7 @@ public:
     set_observer()
         : _on_container_changed_slot_key()
         , _on_property_changed_slot_key()
-        , _last_action(m::undefined_notify_container_changed_action)
+        , _last_action(m::notify_container_changed_action::undefined)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -71,10 +71,10 @@ public:
             _last_change_new_size = static_cast<int>(a->new_size());
             _total_change_added += static_cast<int>(a->added_elements());
             _total_change_removed += static_cast<int>(a->removed_elements());
-            _action_add_count += a->action() == m::notify_container_changed_action_add ? 1 : 0;
-            _action_remove_count += a->action() == m::notify_container_changed_action_remove ? 1 : 0;
-            _action_reset_count += a->action() == m::notify_container_changed_action_reset ? 1 : 0;
-            _action_swap_count += a->action() == m::notify_container_changed_action_swap ? 1 : 0;
+            _action_add_count += a->action() == m::notify_container_changed_action::add ? 1 : 0;
+            _action_remove_count += a->action() == m::notify_container_changed_action::remove ? 1 : 0;
+            _action_reset_count += a->action() == m::notify_container_changed_action::reset ? 1 : 0;
+            _action_swap_count += a->action() == m::notify_container_changed_action::swap ? 1 : 0;
         }
     }
 
@@ -177,7 +177,7 @@ TEST(std_observable_set_test_suite, test_insert_single_element)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -222,7 +222,7 @@ TEST(std_observable_set_test_suite, test_insert_single_element_with_hint)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -274,7 +274,7 @@ TEST(std_observable_set_test_suite, test_insert_range)
     ++it;
     EXPECT_EQ(s2->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -323,7 +323,7 @@ TEST(std_observable_set_test_suite, test_insert_initializer_list)
     ++it;
     EXPECT_EQ(s->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -370,7 +370,7 @@ TEST(std_observable_set_test_suite, test_erase_position)
     ++it1;
     EXPECT_EQ(s->end(), it1);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -415,7 +415,7 @@ TEST(std_observable_set_test_suite, test_erase_value)
     ++it;
     EXPECT_EQ(s->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -456,7 +456,7 @@ TEST(std_observable_set_test_suite, test_erase_range)
     ++it;
     EXPECT_EQ(s->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(1, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -509,7 +509,7 @@ TEST(std_observable_set_test_suite, test_swap)
     }
     EXPECT_EQ(5, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::swap, o1.last_action());
     EXPECT_EQ(0, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -520,7 +520,7 @@ TEST(std_observable_set_test_suite, test_swap)
     EXPECT_EQ(7, o1.total_change_added());
     EXPECT_EQ(5, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::swap, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(0, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -549,7 +549,7 @@ TEST(std_observable_set_test_suite, test_clear)
     s->clear();
     EXPECT_EQ(0, s->size());
 
-    EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::reset, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(1, o.action_reset_count());
@@ -604,7 +604,7 @@ TEST(std_observable_set_test_suite, test_emplace)
     ++it;
     EXPECT_EQ(s->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -655,7 +655,7 @@ TEST(std_observable_set_test_suite, test_emplace_hint)
     ++it;
     EXPECT_EQ(s->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());

@@ -340,13 +340,13 @@ public:
     void push_back(const value_type& val)
     {
         _container.push_back(val);
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, _container.size());
     }
 
     void push_back(value_type&& val)
     {
         _container.push_back(val);
-        this->notify_container_changed(notify_container_changed_action_add, 1, 0, _container.size());
+        this->notify_container_changed(notify_container_changed_action::add, 1, 0, _container.size());
     }
 
     void pop_back()
@@ -356,7 +356,7 @@ public:
         const std::size_t after = _container.size();
         if(before > after)
         {
-            this->notify_container_changed(notify_container_changed_action_remove, 0, before - after, _container.size());
+            this->notify_container_changed(notify_container_changed_action::remove, 0, before - after, _container.size());
         }
     }
 
@@ -430,15 +430,15 @@ public:
         const std::size_t this_before = _container.size();
         const std::size_t x_before = x._container.size();
         _container.swap(x._container);
-        x.notify_container_changed(notify_container_changed_action_swap, this_before, x_before, x._container.size());
-        this->notify_container_changed(notify_container_changed_action_swap, x_before, this_before, _container.size());
+        x.notify_container_changed(notify_container_changed_action::swap, this_before, x_before, x._container.size());
+        this->notify_container_changed(notify_container_changed_action::swap, x_before, this_before, _container.size());
     }
 
     void clear() noexcept
     {
         const std::size_t before = _container.size();
         _container.clear();
-        this->notify_container_changed(notify_container_changed_action_reset, 0, before, 0);
+        this->notify_container_changed(notify_container_changed_action::reset, 0, before, 0);
     }
 
     template <class... Args>

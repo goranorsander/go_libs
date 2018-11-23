@@ -36,7 +36,7 @@ public:
     forward_list_observer()
         : _on_container_changed_slot_key()
         , _on_property_changed_slot_key()
-        , _last_action(m::undefined_notify_container_changed_action)
+        , _last_action(m::notify_container_changed_action::undefined)
         , _last_change_added(0)
         , _last_change_removed(0)
         , _last_change_new_size(0)
@@ -71,10 +71,10 @@ public:
             _last_change_new_size = static_cast<int>(a->new_size());
             _total_change_added += static_cast<int>(a->added_elements());
             _total_change_removed += static_cast<int>(a->removed_elements());
-            _action_add_count += a->action() == m::notify_container_changed_action_add ? 1 : 0;
-            _action_remove_count += a->action() == m::notify_container_changed_action_remove ? 1 : 0;
-            _action_reset_count += a->action() == m::notify_container_changed_action_reset ? 1 : 0;
-            _action_swap_count += a->action() == m::notify_container_changed_action_swap ? 1 : 0;
+            _action_add_count += a->action() == m::notify_container_changed_action::add ? 1 : 0;
+            _action_remove_count += a->action() == m::notify_container_changed_action::remove ? 1 : 0;
+            _action_reset_count += a->action() == m::notify_container_changed_action::reset ? 1 : 0;
+            _action_swap_count += a->action() == m::notify_container_changed_action::swap ? 1 : 0;
         }
     }
 
@@ -174,7 +174,7 @@ TEST(std_wobservable_forward_list_test_suite, test_assign_range)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -208,7 +208,7 @@ TEST(std_wobservable_forward_list_test_suite, test_assign_initializer_list)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -254,7 +254,7 @@ TEST(std_wobservable_forward_list_test_suite, test_assign_fill)
     }
     EXPECT_EQ(5, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -293,7 +293,7 @@ TEST(std_wobservable_forward_list_test_suite, test_push_front)
     }
     EXPECT_EQ(3, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -335,7 +335,7 @@ TEST(std_wobservable_forward_list_test_suite, test_pop_front)
     }
     EXPECT_EQ(4, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(3, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -373,7 +373,7 @@ TEST(std_wobservable_forward_list_test_suite, test_insert_after_single_element)
     }
     EXPECT_EQ(7, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -426,7 +426,7 @@ TEST(std_wobservable_forward_list_test_suite, test_insert_after_fill)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -484,7 +484,7 @@ TEST(std_wobservable_forward_list_test_suite, test_insert_after_range)
     ++it;
     EXPECT_EQ(l2->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(1, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -531,7 +531,7 @@ TEST(std_wobservable_forward_list_test_suite, test_erase_position)
     ++it1;
     EXPECT_EQ(l->end(), it1);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -574,7 +574,7 @@ TEST(std_wobservable_forward_list_test_suite, test_erase_range)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(1, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -625,7 +625,7 @@ TEST(std_wobservable_forward_list_test_suite, test_swap)
     }
     EXPECT_EQ(5, count);
 
-    EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::swap, o1.last_action());
     EXPECT_EQ(0, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -636,7 +636,7 @@ TEST(std_wobservable_forward_list_test_suite, test_swap)
     EXPECT_EQ(7, o1.total_change_added());
     EXPECT_EQ(5, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::swap, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(0, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -665,7 +665,7 @@ TEST(std_wobservable_forward_list_test_suite, test_clear)
     l->clear();
     EXPECT_EQ(0, l->size());
 
-    EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::reset, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(1, o.action_reset_count());
@@ -713,7 +713,7 @@ TEST(std_wobservable_forward_list_test_suite, test_emplace_after)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -757,7 +757,7 @@ TEST(std_wobservable_forward_list_test_suite, test_emplace_back)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -801,7 +801,7 @@ TEST(std_wobservable_forward_list_test_suite, test_emplace_front)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
     EXPECT_EQ(3, o.action_add_count());
     EXPECT_EQ(0, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -861,7 +861,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_entire_forward_l
     ++it;
     EXPECT_EQ(l1->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o1.last_action());
     EXPECT_EQ(1, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -872,7 +872,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_entire_forward_l
     EXPECT_EQ(3, o1.total_change_added());
     EXPECT_EQ(0, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(1, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -937,7 +937,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_single_element)
     ++it2;
     EXPECT_EQ(l2->end(), it2);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o1.last_action());
     EXPECT_EQ(1, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -948,7 +948,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_single_element)
     EXPECT_EQ(1, o1.total_change_added());
     EXPECT_EQ(0, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(1, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -1025,7 +1025,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_element_range)
     ++it;
     EXPECT_EQ(l2->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o1.last_action());
     EXPECT_EQ(1, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -1036,7 +1036,7 @@ TEST(std_wobservable_forward_list_test_suite, test_splice_after_element_range)
     EXPECT_EQ(1, o1.total_change_added());
     EXPECT_EQ(0, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(1, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -1076,7 +1076,7 @@ TEST(std_wobservable_forward_list_test_suite, test_remove)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(1, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -1124,7 +1124,7 @@ TEST(std_wobservable_forward_list_test_suite, test_remove_if)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(1, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -1185,7 +1185,7 @@ TEST(std_wobservable_forward_list_test_suite, test_unique)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -1238,7 +1238,7 @@ TEST(std_wobservable_forward_list_test_suite, test_unique_binary_predicate)
     ++it;
     EXPECT_EQ(l->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
     EXPECT_EQ(0, o.action_add_count());
     EXPECT_EQ(2, o.action_remove_count());
     EXPECT_EQ(0, o.action_reset_count());
@@ -1294,7 +1294,7 @@ TEST(std_wobservable_forward_list_test_suite, test_merge)
     ++it;
     EXPECT_EQ(l1->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o1.last_action());
     EXPECT_EQ(1, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -1305,7 +1305,7 @@ TEST(std_wobservable_forward_list_test_suite, test_merge)
     EXPECT_EQ(3, o1.total_change_added());
     EXPECT_EQ(0, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(1, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
@@ -1370,7 +1370,7 @@ TEST(std_wobservable_forward_list_test_suite, test_merge_compare_predicate)
     ++it;
     EXPECT_EQ(l1->end(), it);
 
-    EXPECT_EQ(m::notify_container_changed_action_add, o1.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::add, o1.last_action());
     EXPECT_EQ(1, o1.action_add_count());
     EXPECT_EQ(0, o1.action_remove_count());
     EXPECT_EQ(0, o1.action_reset_count());
@@ -1381,7 +1381,7 @@ TEST(std_wobservable_forward_list_test_suite, test_merge_compare_predicate)
     EXPECT_EQ(1, o1.total_change_added());
     EXPECT_EQ(0, o1.total_change_removed());
 
-    EXPECT_EQ(m::notify_container_changed_action_remove, o2.last_action());
+    EXPECT_EQ(m::notify_container_changed_action::remove, o2.last_action());
     EXPECT_EQ(0, o2.action_add_count());
     EXPECT_EQ(1, o2.action_remove_count());
     EXPECT_EQ(0, o2.action_reset_count());
