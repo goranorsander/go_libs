@@ -49,16 +49,20 @@ int main()
     GO_LOG_DEBUG << "GO_LOG_DEBUG @ info";
 
     const char c = 'A';
+    const uint16_t u16 = 16;
     const uint32_t u32 = 32;
     const uint64_t u64 = 64;
+    const int16_t i16 = -16;
     const int32_t i32 = -32;
     const int64_t i64 = -64;
     const float f = 123.456f;
     const double d = 1234.5678;
 
     GO_LOG_INFO << "GO_LOG_INFO @ char = " << c;
+    GO_LOG_INFO << "GO_LOG_INFO @ uint16_t = " << u16;
     GO_LOG_INFO << "GO_LOG_INFO @ uint32_t = " << u32;
     GO_LOG_INFO << "GO_LOG_INFO @ uint64_t = " << u64;
+    GO_LOG_INFO << "GO_LOG_INFO @ int16_t = " << i16;
     GO_LOG_INFO << "GO_LOG_INFO @ int32_t = " << i32;
     GO_LOG_INFO << "GO_LOG_INFO @ int64_t = " << i64;
     GO_LOG_INFO << "GO_LOG_INFO @ float = " << f;

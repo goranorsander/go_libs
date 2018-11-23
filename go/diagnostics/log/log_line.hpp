@@ -47,7 +47,7 @@ public:
     typedef typename S::value_type char_type;
 
     typedef detail::string_literal_t<char_type> string_literal_type;
-    typedef std::tuple<char_type, uint32_t, uint64_t, int32_t, int64_t, float, double, string_literal_type, char_type*> supported_types_type;
+    typedef std::tuple<char_type, uint16_t, uint32_t, uint64_t, int16_t, int32_t, int64_t, float, double, string_literal_type, char_type*> supported_types_type;
 
 public:
     virtual ~basic_log_line() = default;
@@ -107,6 +107,18 @@ public:
     basic_log_line& operator<<(const char_type arg)
     {
         encode<char_type>(arg, detail::types_tuple_index<char_type, supported_types_type>::value);
+        return *this;
+    }
+
+    basic_log_line& operator<<(const int16_t arg)
+    {
+        encode<int16_t>(arg, detail::types_tuple_index<int16_t, supported_types_type>::value);
+        return *this;
+    }
+
+    basic_log_line& operator<<(const uint16_t arg)
+    {
+        encode<uint16_t>(arg, detail::types_tuple_index<uint16_t, supported_types_type>::value);
         return *this;
     }
 
@@ -266,6 +278,12 @@ private:
             return;
         case 8:
             stringify(os, detail::decode(os, start, static_cast<std::tuple_element<8, supported_types_type>::type*>(nullptr)), end);
+            return;
+        case 9:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<9, supported_types_type>::type*>(nullptr)), end);
+            return;
+        case 10:
+            stringify(os, detail::decode(os, start, static_cast<std::tuple_element<10, supported_types_type>::type*>(nullptr)), end);
             return;
         }
     }
