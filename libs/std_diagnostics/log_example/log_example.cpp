@@ -21,6 +21,9 @@ namespace l = go::diagnostics::log;
 
 int main()
 {
+    GO_LOG_FATAL << "GO_LOG_FATAL : uninitialized";
+    GO_LOG_TRACE << "GO_LOG_TRACE : uninitialized";
+
     l::initialize(l::policy::guaranteed_logger<l::file_writer>(), "./", "log_example", 10);
     l::set_log_level(l::log_level::trace);
 
@@ -61,20 +64,24 @@ int main()
     const bool b = true;
     const char* mbs = "Multibyte string";
     const wchar_t* sws = L"System wide string";
+    const std::string std_mbs("std::string");
+    const std::wstring std_sws(L"std::wstring");
 
-    GO_LOG_INFO << "GO_LOG_INFO @ char = " << mbc;
-    GO_LOG_INFO << "GO_LOG_INFO @ wchar_t = " << swc;
-    GO_LOG_INFO << "GO_LOG_INFO @ uint16_t = " << u16;
-    GO_LOG_INFO << "GO_LOG_INFO @ uint32_t = " << u32;
-    GO_LOG_INFO << "GO_LOG_INFO @ uint64_t = " << u64;
-    GO_LOG_INFO << "GO_LOG_INFO @ int16_t = " << i16;
-    GO_LOG_INFO << "GO_LOG_INFO @ int32_t = " << i32;
-    GO_LOG_INFO << "GO_LOG_INFO @ int64_t = " << i64;
-    GO_LOG_INFO << "GO_LOG_INFO @ float = " << f;
-    GO_LOG_INFO << "GO_LOG_INFO @ double = " << d;
-    GO_LOG_INFO << "GO_LOG_INFO @ bool = " << b;
-    GO_LOG_INFO << "GO_LOG_INFO @ char* = " << mbs;
-    GO_LOG_INFO << "GO_LOG_INFO @ wchar_t* = " << sws;
+    GO_LOG_INFO << "GO_LOG_INFO : char ....... = " << mbc;
+    GO_LOG_INFO << "GO_LOG_INFO : wchar_t .... = " << swc;
+    GO_LOG_INFO << "GO_LOG_INFO : uint16_t ... = " << u16;
+    GO_LOG_INFO << "GO_LOG_INFO : uint32_t ... = " << u32;
+    GO_LOG_INFO << "GO_LOG_INFO : uint64_t ... = " << u64;
+    GO_LOG_INFO << "GO_LOG_INFO : int16_t .... = " << i16;
+    GO_LOG_INFO << "GO_LOG_INFO : int32_t .... = " << i32;
+    GO_LOG_INFO << "GO_LOG_INFO : int64_t .... = " << i64;
+    GO_LOG_INFO << "GO_LOG_INFO : float ...... = " << f;
+    GO_LOG_INFO << "GO_LOG_INFO : double ..... = " << d;
+    GO_LOG_INFO << "GO_LOG_INFO : bool ....... = " << b;
+    GO_LOG_INFO << "GO_LOG_INFO : char* ...... = " << mbs;
+    GO_LOG_INFO << "GO_LOG_INFO : wchar_t* ... = " << sws;
+    GO_LOG_INFO << "GO_LOG_INFO : std::string  = " << std_mbs;
+    GO_LOG_INFO << "GO_LOG_INFO : std::wstring = " << std_sws;
 
     l::set_log_level(l::log_level::none);
 

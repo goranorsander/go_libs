@@ -188,7 +188,13 @@ public:
         return *this;
     }
 
-    basic_log_line& operator<<(const string_type& arg)
+    basic_log_line& operator<<(const std::string& arg)
+    {
+        encode_c_string(arg.c_str(), arg.length());
+        return *this;
+    }
+
+    basic_log_line& operator<<(const std::wstring& arg)
     {
         encode_c_string(arg.c_str(), arg.length());
         return *this;

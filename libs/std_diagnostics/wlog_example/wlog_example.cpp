@@ -21,6 +21,9 @@ namespace l = go::diagnostics::log;
 
 int main()
 {
+    GO_WLOG_FATAL << "GO_WLOG_FATAL : uninitialized";
+    GO_WLOG_TRACE << "GO_WLOG_TRACE : uninitialized";
+
     l::initialize(l::policy::guaranteed_logger<l::wfile_writer>(), L"./", L"wlog_example", 10);
     l::set_wlog_level(l::log_level::trace);
 
@@ -61,20 +64,24 @@ int main()
     const bool b = true;
     const char* mbs = "Multibyte string";
     const wchar_t* sws = L"System wide string";
+    const std::string std_mbs("std::string");
+    const std::wstring std_sws(L"std::wstring");
 
-    GO_WLOG_INFO << L"GO_LOG_INFO @ char = " << mbc;
-    GO_WLOG_INFO << L"GO_LOG_INFO @ wchar_t = " << swc;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ uint16_t = " << u16;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ uint32_t = " << u32;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ uint64_t = " << u64;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ int16_t = " << i16;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ int32_t = " << i32;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ int64_t = " << i64;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ float = " << f;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ double = " << d;
-    GO_WLOG_INFO << L"GO_WLOG_INFO @ bool = " << b;
-    GO_WLOG_INFO << L"GO_LOG_INFO @ char* = " << mbs;
-    GO_WLOG_INFO << L"GO_LOG_INFO @ wchar_t* = " << sws;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : char ....... = " << mbc;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : wchar_t .... = " << swc;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : uint16_t ... = " << u16;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : uint32_t ... = " << u32;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : uint64_t ... = " << u64;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : int16_t .... = " << i16;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : int32_t .... = " << i32;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : int64_t .... = " << i64;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : float ...... = " << f;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : double ..... = " << d;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : bool ....... = " << b;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : char* ...... = " << mbs;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : wchar_t* ... = " << sws;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : std::string  = " << std_mbs;
+    GO_WLOG_INFO << L"GO_WLOG_INFO : std::wstring = " << std_sws;
 
     l::set_wlog_level(l::log_level::none);
 
