@@ -91,7 +91,7 @@ private:
         element()
             : flag{ ATOMIC_FLAG_INIT }
             , written(false)
-            , logline(log_level::info, nullptr, nullptr, 0)
+            , logline(log_level::none, nullptr, nullptr, 0)
         {
         }
 

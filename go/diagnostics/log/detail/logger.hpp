@@ -84,7 +84,7 @@ private:
             std::this_thread::sleep_for(std::chrono::microseconds(50));
         }
 
-        log_line_type logline(log_level::info, nullptr, nullptr, 0);
+        log_line_type logline(log_level::none, nullptr, nullptr, 0);
 
         while (_state.load() == logger_state::logger_state_ready)
         {
