@@ -41,7 +41,7 @@ public:
     typedef typename L::char_type char_type;
 
 public:
-    static constexpr const std::size_t size = 32768;
+    static GO_CONSTEXPR const std::size_t size = 32768;
 
     virtual ~buffer()
     {

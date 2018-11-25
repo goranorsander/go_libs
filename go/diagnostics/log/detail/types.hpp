@@ -34,13 +34,13 @@ struct types_tuple_index;
 template <typename T, typename ... Types>
 struct types_tuple_index <T, std::tuple<T, Types...>>
 {
-    static constexpr const std::size_t value = 0;
+    static GO_CONSTEXPR const std::size_t value = 0;
 };
 
 template <typename T, typename U, typename ... Types>
 struct types_tuple_index <T, std::tuple<U, Types...>>
 {
-    static constexpr const std::size_t value = 1 + types_tuple_index<T, std::tuple<Types...>>::value;
+    static GO_CONSTEXPR const std::size_t value = 1 + types_tuple_index<T, std::tuple<Types...>>::value;
 };
 
 } // namespace detail

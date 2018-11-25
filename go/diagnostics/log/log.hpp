@@ -22,7 +22,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/policy/guaranteed_logger.hpp>
 #include <go/diagnostics/log/policy/non_guaranteed_logger.hpp>
 
-#define GO_LOG(level) go::diagnostics::log::is_logged(level) && go::diagnostics::log::log() == go::diagnostics::log::log_line(level, __FILE__, __func__, __LINE__)
+#define GO_LOG(level) go::diagnostics::log::is_logged(level) && go::diagnostics::log::log() == go::diagnostics::log::log_line(level, __FILE__, GO_FUNC, __LINE__)
 #define GO_LOG_FATAL GO_LOG(go::diagnostics::log::log_level::fatal)
 #define GO_LOG_ERROR GO_LOG(go::diagnostics::log::log_level::error)
 #define GO_LOG_WARN GO_LOG(go::diagnostics::log::log_level::warning)

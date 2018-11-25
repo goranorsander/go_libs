@@ -58,9 +58,16 @@ public:
         , _current_write_buffer()
         , _current_read_buffer{ nullptr }
         , _write_index(0)
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+        , _flag()
+#else
         , _flag{ ATOMIC_FLAG_INIT }
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
         , _read_index(0)
     {
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+        _flag.clear(std::memory_order_relaxed);
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
         setup_next_write_buffer();
     }
 

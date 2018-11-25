@@ -26,9 +26,11 @@
 #define GO_WFILE GO_TO_WSTRING(__FILE__)
 
 #if defined(GO_COMP_MSVC)
-#define GO_WFUNC GO_TO_WSTRING(__FUNCTION__)
+#define GO_FUNC __FUNCTION__
 #else
-#define GO_WFUNC GO_MAKE_WIDE(__func__)
+#define GO_FUNC __func__
 #endif  // #if defined(GO_MSVC)
+
+#define GO_WFUNC GO_TO_WSTRING(GO_FUNC)
 
 #endif  // #ifndef GO_CONFIG_PREPROCESSOR_HPP_INCLUDED

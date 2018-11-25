@@ -84,10 +84,48 @@ public:
         encode<log_level>(level);
     }
 
+#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+
     basic_log_line(basic_log_line&&) = default;
 
+#else
+
+    basic_log_line(basic_log_line&& other)
+        : _bytes_used(0)
+        , _buffer_size(0)
+        , _heap_buffer()
+        , _stack_buffer()
+    {
+        *this = std::move(other);
+    }
+
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+
 public:
+#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+
     basic_log_line& operator=(basic_log_line&&) = default;
+
+#else
+
+    basic_log_line& operator=(basic_log_line&& other)
+    {
+        if(this != &other)
+        {
+            _heap_buffer.reset();
+            _heap_buffer = std::move(other._heap_buffer);
+
+            _bytes_used = other._bytes_used;
+            _buffer_size = other._buffer_size;
+            std::copy(std::begin(other._stack_buffer), std::end(other._stack_buffer), std::begin(_stack_buffer));
+
+            other._bytes_used = 0;
+            other._buffer_size = 0;
+        }
+        return *this;
+    }
+
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
 
 public:
     void stringify(out_stream_type& os)

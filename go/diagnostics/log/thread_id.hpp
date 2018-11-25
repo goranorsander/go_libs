@@ -28,8 +28,12 @@ namespace log
 
 inline std::thread::id this_thread_id()
 {
+#if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+    return std::this_thread::get_id();
+#else
     static thread_local const std::thread::id id = std::this_thread::get_id();
     return id;
+#endif  // #if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
 }
 
 } // namespace log

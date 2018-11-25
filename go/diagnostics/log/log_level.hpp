@@ -21,7 +21,11 @@ namespace log
 {
 
 enum class log_level
+#if defined(GO_NO_CXX11_FIXED_WIDTH_INTEGER_TYPES)
+    : char
+#else
     : int8_t
+#endif  // #if defined(GO_NO_CXX11_FIXED_WIDTH_INTEGER_TYPES)
 {
     none = 0,
     fatal = 1,

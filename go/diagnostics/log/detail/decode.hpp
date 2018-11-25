@@ -69,6 +69,10 @@ std::string::value_type* decode(std::ostream & os, std::string::value_type* b, s
     const std::string mbs = go::utility::string_cast<std::string>(std::wstring(s._s));
     for(const std::string::value_type c : mbs)
     {
+        if (c == '\0')
+        {
+            break;
+        }
         os << c;
         ++b;
     }
@@ -110,6 +114,10 @@ std::wstring::value_type* decode(std::wostream & os, std::wstring::value_type* b
     const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(s._s));
     for (const std::wstring::value_type c : sws)
     {
+        if (c == L'\0')
+        {
+            break;
+        }
         os << c;
         ++b;
     }

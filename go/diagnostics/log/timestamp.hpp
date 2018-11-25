@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/log_line.hpp>
 
 #include <chrono>
+#include <cstdio>
 #include <ctime>
 
 namespace go
@@ -60,7 +61,11 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
     char buffer[32];
     std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %T.", &result);
     char microseconds[7];
+#if defined(GO_NO_CXX11_SNPRINTF)
+    std::sprintf(microseconds, "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
+#else
     std::snprintf(microseconds, sizeof(microseconds), "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
+#endif  // #if defined(GO_NO_CXX11_SNPRINTF)
     os << '[' << buffer << microseconds << ']';
 }
 

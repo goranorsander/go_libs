@@ -89,10 +89,17 @@ private:
         ~element() = default;
 
         element()
-            : flag{ ATOMIC_FLAG_INIT }
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+            : flag()
+#else
+            : flag{ATOMIC_FLAG_INIT}
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
             , written(false)
             , logline(log_level::none, nullptr, nullptr, 0)
         {
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+            flag.clear(std::memory_order_relaxed);
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
         }
 
         std::atomic_flag flag;
