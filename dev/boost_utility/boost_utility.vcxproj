@@ -31,6 +31,7 @@
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\spin_lock.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string\algorithm.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string\algorithm_fwd.hpp" />
     <ClInclude Include="..\..\go_boost\utility\string\ascii.hpp" />

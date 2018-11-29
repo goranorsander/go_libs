@@ -125,6 +125,9 @@
     <ClInclude Include="..\..\go_boost\utility\string\detail\setup_global_locale.hpp">
       <Filter>go_boost\utility\string\detail</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\utility\spin_lock.hpp">
+      <Filter>go_boost\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

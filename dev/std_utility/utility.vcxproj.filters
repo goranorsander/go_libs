@@ -125,6 +125,9 @@
     <ClInclude Include="..\..\go\utility\min_max.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\spin_lock.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

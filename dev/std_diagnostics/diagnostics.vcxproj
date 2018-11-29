@@ -27,7 +27,6 @@
     <ClInclude Include="..\..\go\diagnostics\log\detail\logger.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\queue_buffer.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\ring_buffer.hpp" />
-    <ClInclude Include="..\..\go\diagnostics\log\detail\spin_lock.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\string_literal.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\types.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\file_writer.hpp" />

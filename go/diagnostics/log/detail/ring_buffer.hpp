@@ -18,8 +18,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/diagnostics/log/detail/buffer_interface.hpp>
-#include <go/diagnostics/log/detail/spin_lock.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/utility/spin_lock.hpp>
+
+#include <mutex>
 
 namespace go
 {
@@ -72,7 +74,7 @@ public:
     virtual bool try_pop(L& logline) override
     {
         element& item = _ring[_read_index % _size];
-        const spin_lock lock(item.flag);
+        const std::lock_guard<go::utility::spin_lock> lock(item.lock);
         if (item.written == 1)
         {
             logline = std::move(item.logline);
@@ -89,20 +91,13 @@ private:
         ~element() = default;
 
         element()
-#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
-            : flag()
-#else
-            : flag{ATOMIC_FLAG_INIT}
-#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+            : lock()
             , written(false)
             , logline(log_level::none, nullptr, nullptr, 0)
         {
-#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
-            flag.clear(std::memory_order_relaxed);
-#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
         }
 
-        std::atomic_flag flag;
+        go::utility::spin_lock lock;
         bool written;
         log_line_type logline;
     };
@@ -120,7 +115,7 @@ inline void ring_buffer<log_line>::push(log_line&& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const spin_lock lock(item.flag);
+    const std::lock_guard<go::utility::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = 1;
 }
@@ -130,7 +125,7 @@ inline void ring_buffer<wlog_line>::push(wlog_line&& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const spin_lock lock(item.flag);
+    const std::lock_guard<go::utility::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = 1;
 }

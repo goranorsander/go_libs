@@ -61,9 +61,6 @@
     <ClInclude Include="..\..\go\diagnostics\log\detail\ring_buffer.hpp">
       <Filter>go\diagnostics\log\detail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\diagnostics\log\detail\spin_lock.hpp">
-      <Filter>go\diagnostics\log\detail</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\go\diagnostics\log\detail\buffer_interface.hpp">
       <Filter>go\diagnostics\log\detail</Filter>
     </ClInclude>
