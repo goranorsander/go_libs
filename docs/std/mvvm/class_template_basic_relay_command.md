@@ -20,9 +20,9 @@ command objects through which the view can call methods.
 It is declared as:
 
 ```c++
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_relay_command
-    : public basic_command_interface<S, M>
+    : public basic_command_interface<S, L>
 {
 public:
     virtual ~basic_relay_command() = default;
@@ -31,7 +31,7 @@ protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
 
 public:
-    static std::shared_ptr<basic_relay_command<S, M>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
+    static std::shared_ptr<basic_relay_command<S, L>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
 
 protected:
     virtual bool can_execute(const command_parameters_type& params);
@@ -44,17 +44,17 @@ protected:
 Parameter | Description
 -|-
 S | The command string class
-M | The command mutex class
+L | The command lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_relay_command<S, M>
-ptr | std\::shared_ptr<basic_relay_command<S, M>>
-wptr | std\::weak_ptr<basic_relay_command<S, M>>
+lockable_type | L
+this_type | basic_relay_command<S, L>
+ptr | std\::shared_ptr<basic_relay_command<S, L>>
+wptr | std\::weak_ptr<basic_relay_command<S, L>>
 command_parameters_type | std\::shared_ptr<command_parameters>
 can_execute_command_signature | std\::function<bool(const command_parameters_type&)>
 execute_command_signature | std\::function<void(const command_parameters_type&)>

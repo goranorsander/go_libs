@@ -27,15 +27,15 @@ namespace go
 namespace mvvm
 {
 
-template<typename M = std::recursive_mutex>
+template<class L = std::recursive_mutex>
 class notify_container_changed_interface
     : public go::signals::slot
 {
 public:
-    typedef M mutex_type;
-    typedef notify_container_changed_interface<M> this_type;
+    typedef L lockable_type;
+    typedef notify_container_changed_interface<L> this_type;
     typedef container_changed_arguments container_changed_arguments_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)>, M> container_changed_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)>, L> container_changed_signal;
 
 public:
     virtual ~notify_container_changed_interface() = 0;
@@ -50,8 +50,8 @@ protected:
     virtual void notify_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size) = 0;
 };
 
-template<typename M>
-inline notify_container_changed_interface<M>::~notify_container_changed_interface()
+template<class L>
+inline notify_container_changed_interface<L>::~notify_container_changed_interface()
 {
     container_changed.disconnect_all_slots();
 }

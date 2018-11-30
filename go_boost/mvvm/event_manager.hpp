@@ -33,7 +33,7 @@ namespace mvvm
 
 typedef unsigned int event_subscription_key_type;
 
-template<class S, typename M> class basic_event_manager;
+template<class S, class L> class basic_event_manager;
 typedef basic_event_manager<std::string, boost::recursive_mutex> event_manager;
 typedef basic_event_manager<std::wstring, boost::recursive_mutex> wevent_manager;
 
@@ -45,17 +45,17 @@ typedef basic_event_manager<std::wstring, go_boost::utility::placebo_mutex> weve
 
 }
 
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_event_manager
-    : public basic_notify_event_firing_interface<S, M>
+    : public basic_notify_event_firing_interface<S, L>
     , private go_boost::utility::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_event_manager<S, M> this_type;
-    typedef typename boost::shared_ptr<basic_event_manager<S, M>> ptr;
-    typedef typename boost::weak_ptr<basic_event_manager<S, M>> wptr;
+    typedef L lockable_type;
+    typedef basic_event_manager<S, L> this_type;
+    typedef typename boost::shared_ptr<basic_event_manager<S, L>> ptr;
+    typedef typename boost::weak_ptr<basic_event_manager<S, L>> wptr;
 
 public:
     virtual ~basic_event_manager();
@@ -78,21 +78,21 @@ public:
     size_t events() const;
 
 private:
-    mutable mutex_type _events_guard;
+    mutable lockable_type _events_guard;
     event_subscription_key_type _next_event_subscription_key;
     std::map<S, std::map<event_subscription_key_type, boost::function<void(const boost::shared_ptr<basic_event<S>>&)>>> _subscriptions;
     std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> _events;
 };
 
-template<class S, typename M>
-inline basic_event_manager<S, M>::~basic_event_manager()
+template<class S, class L>
+inline basic_event_manager<S, L>::~basic_event_manager()
 {
     unsubscribe_all();
 }
 
-template<class S, typename M>
-inline basic_event_manager<S, M>::basic_event_manager()
-    : basic_notify_event_firing_interface<S, M>()
+template<class S, class L>
+inline basic_event_manager<S, L>::basic_event_manager()
+    : basic_notify_event_firing_interface<S, L>()
     , go_boost::utility::noncopyable_nonmovable()
     , _events_guard()
     , _next_event_subscription_key(0)
@@ -181,13 +181,13 @@ inline event_subscription_key_type basic_event_manager<std::wstring, go_boost::u
     return event_subscription_key;
 }
 
-template<class S, typename M>
-inline event_subscription_key_type basic_event_manager<S, M>::subscribe(const S& event_type, const boost::function<void(const boost::shared_ptr<basic_event<S>>&)>& fire_event_function)
+template<class S, class L>
+inline event_subscription_key_type basic_event_manager<S, L>::subscribe(const S& event_type, const boost::function<void(const boost::shared_ptr<basic_event<S>>&)>& fire_event_function)
 {
     typedef typename boost::function<void(const boost::shared_ptr<basic_event<S>>&)> event_signal_signature;
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
-    const typename mutex_type::scoped_lock lock(_events_guard);
+    const typename lockable_type::scoped_lock lock(_events_guard);
     typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions == _subscriptions.end())
     {
@@ -257,13 +257,13 @@ inline void basic_event_manager<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key)
+template<class S, class L>
+inline void basic_event_manager<S, L>::unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key)
 {
     typedef typename boost::function<void(const boost::shared_ptr<basic_event<S>>&)> event_signal_signature;
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
-    const typename mutex_type::scoped_lock lock(_events_guard);
+    const typename lockable_type::scoped_lock lock(_events_guard);
     typename subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -327,13 +327,13 @@ inline void basic_event_manager<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::unsubscribe_all(const S& event_type)
+template<class S, class L>
+inline void basic_event_manager<S, L>::unsubscribe_all(const S& event_type)
 {
     typedef typename boost::function<void(const boost::shared_ptr<basic_event<S>>&)> event_signal_signature;
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
-    const typename mutex_type::scoped_lock lock(_events_guard);
+    const typename lockable_type::scoped_lock lock(_events_guard);
     typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if(event_type_subscriptions != _subscriptions.end())
     {
@@ -341,10 +341,10 @@ inline void basic_event_manager<S, M>::unsubscribe_all(const S& event_type)
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::unsubscribe_all()
+template<class S, class L>
+inline void basic_event_manager<S, L>::unsubscribe_all()
 {
-    const typename mutex_type::scoped_lock lock(this->_events_guard);
+    const typename lockable_type::scoped_lock lock(this->_events_guard);
     this->_subscriptions.clear();
 }
 
@@ -432,15 +432,15 @@ inline void basic_event_manager<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::fire(const boost::shared_ptr<basic_event<S>>& e) const
+template<class S, class L>
+inline void basic_event_manager<S, L>::fire(const boost::shared_ptr<basic_event<S>>& e) const
 {
     typedef typename boost::function<void(const boost::shared_ptr<basic_event<S>>&)> event_signal_signature;
     typedef typename std::map<event_subscription_key_type, event_signal_signature> event_subscription_type;
     typedef typename std::map<S, event_subscription_type> subscriptions_type;
     if(e)
     {
-        const typename mutex_type::scoped_lock lock(_events_guard);
+        const typename lockable_type::scoped_lock lock(_events_guard);
         typename subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if(event_type_subscriptions != _subscriptions.end())
         {
@@ -493,12 +493,12 @@ inline void basic_event_manager<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::post(const boost::shared_ptr<basic_event<S>>& e, const bool keep_event_alive)
+template<class S, class L>
+inline void basic_event_manager<S, L>::post(const boost::shared_ptr<basic_event<S>>& e, const bool keep_event_alive)
 {
     if(e)
     {
-        const typename mutex_type::scoped_lock lock(_events_guard);
+        const typename lockable_type::scoped_lock lock(_events_guard);
         _events.push_back(std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>(boost::weak_ptr<basic_event<S>>(e), keep_event_alive ? e : boost::shared_ptr<basic_event<S>>()));
     }
 }
@@ -563,13 +563,13 @@ inline void basic_event_manager<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_event_manager<S, M>::fire_events()
+template<class S, class L>
+inline void basic_event_manager<S, L>::fire_events()
 {
     typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events_type;
     std::deque<std::pair<boost::weak_ptr<basic_event<S>>, boost::shared_ptr<basic_event<S>>>> events;
     {
-        const typename mutex_type::scoped_lock lock(_events_guard);
+        const typename lockable_type::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
     BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
@@ -606,15 +606,15 @@ inline size_t basic_event_manager<std::wstring, go_boost::utility::placebo_mutex
     return _events.size();
 }
 
-template<class S, typename M>
-inline size_t basic_event_manager<S, M>::events() const
+template<class S, class L>
+inline size_t basic_event_manager<S, L>::events() const
 {
-    const typename mutex_type::scoped_lock lock(_events_guard);
+    const typename lockable_type::scoped_lock lock(_events_guard);
     return _events.size();
 }
 
-template<class S, typename M>
-inline boost::shared_ptr<basic_event_manager<S, M>> basic_event_manager<S, M>::create()
+template<class S, class L>
+inline boost::shared_ptr<basic_event_manager<S, L>> basic_event_manager<S, L>::create()
 {
     struct make_shared_enabler
         : public this_type

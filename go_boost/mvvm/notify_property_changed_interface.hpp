@@ -29,7 +29,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, typename M> class basic_notify_property_changed_interface;
+template<class S, class L> class basic_notify_property_changed_interface;
 typedef basic_notify_property_changed_interface<std::string, boost::recursive_mutex> notify_property_changed_interface;
 typedef basic_notify_property_changed_interface<std::wstring, boost::recursive_mutex> notify_wproperty_changed_interface;
 
@@ -41,14 +41,14 @@ typedef basic_notify_property_changed_interface<std::wstring, go_boost::utility:
 
 }
 
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_notify_property_changed_interface
     : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_notify_property_changed_interface<S, M> this_type;
+    typedef L lockable_type;
+    typedef basic_notify_property_changed_interface<S, L> this_type;
     typedef typename boost::signals2::signal<void(const boost::shared_ptr<object>&, const boost::shared_ptr<basic_property_changed_arguments<S>>&)> property_changed_signal;
 
 public:
@@ -124,8 +124,8 @@ inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_
     this->property_changed.disconnect_all_slots();
 }
 
-template<class S, typename M>
-inline basic_notify_property_changed_interface<S, M>::~basic_notify_property_changed_interface()
+template<class S, class L>
+inline basic_notify_property_changed_interface<S, L>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -190,8 +190,8 @@ inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_
 {
 }
 
-template<class S, typename M>
-inline basic_notify_property_changed_interface<S, M>::basic_notify_property_changed_interface()
+template<class S, class L>
+inline basic_notify_property_changed_interface<S, L>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
@@ -286,8 +286,8 @@ inline void basic_notify_property_changed_interface<go_boost::utility::u32string
     }
 }
 
-template<class S, typename M>
-inline void basic_notify_property_changed_interface<S, M>::notify_property_changed(const boost::shared_ptr<object>&, const string_type& property_name)
+template<class S, class L>
+inline void basic_notify_property_changed_interface<S, L>::notify_property_changed(const boost::shared_ptr<object>&, const string_type& property_name)
 {
     if (!this->property_changed.empty())
     {

@@ -23,7 +23,7 @@ is *"emitted"*.
 It is declared as:
 
 ```c++
-template<typename F, typename M = boost::recursive_mutex> class signal
+template<typename F, class L = boost::recursive_mutex> class signal
 {
 public:
     virtual ~signal();
@@ -42,15 +42,15 @@ public:
 Parameter | Description
 -|-
 F | The function type
-M | The mutex type
+L | The mutex type
 
 ## Member types
 
 Member type | Definition
 -|-
 function_type | F
-mutex_type | M
-this_type | **signal**<function_type, mutex_type>
+lockable_type | L
+this_type | **signal**<function_type, lockable_type>
 
 ## Member functions
 

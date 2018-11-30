@@ -20,7 +20,7 @@ observing [command](./class_template_basic_command_interface.html) execution.
 It is declared as:
 
 ```c++
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_command_execution_observer_interface
 {
 public:
@@ -30,8 +30,8 @@ protected:
     basic_command_execution_observer_interface();
 
 public:
-    virtual void on_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& /*c*/) = 0;
-    virtual void on_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& /*c*/) = 0;
+    virtual void on_command_executed(const boost::shared_ptr<basic_command_interface<S, L>>& /*c*/) = 0;
+    virtual void on_command_not_executed(const boost::shared_ptr<basic_command_interface<S, L>>& /*c*/) = 0;
 };
 ```
 
@@ -40,15 +40,15 @@ public:
 Parameter | Description
 -|-
 S | The observer string class
-M | The observer mutex class
+L | The observer lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_command_execution_observer_interface<S, M>
+lockable_type | L
+this_type | basic_command_execution_observer_interface<S, L>
 
 ## Member functions
 
@@ -72,7 +72,7 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public abstract | **void on_command_executed**(const boost\::shared_ptr<basic_command_interface<S, M>>& c) = 0
+public abstract | **void on_command_executed**(const boost\::shared_ptr<basic_command_interface<S, L>>& c) = 0
 
 This is a callback member function that is called by classes implementing the
 [basic_notify_command_execution_interface](./class_template_basic_command_execution_observer_interface.html),
@@ -87,7 +87,7 @@ have been executed.
 
 Specifiers | Signature
 -|-
-public abstract | **void on_command_not_executed**(const boost\::shared_ptr<basic_command_interface<S, M>>& c) = 0
+public abstract | **void on_command_not_executed**(const boost\::shared_ptr<basic_command_interface<S, L>>& c) = 0
 
 The [command manager](./class_template_basic_command_manager.html) call this member
 function as a signal that a [command](./class_template_basic_command_interface.html)

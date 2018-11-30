@@ -30,26 +30,26 @@ namespace nameless
 namespace read_only
 {
 
-template<class T, typename M = boost::recursive_mutex> class property
-    : public detail::property_base<T, policy::proxy<T, M>>
+template<class T, class L = boost::recursive_mutex> class property
+    : public detail::property_base<T, policy::proxy<T, L>>
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef property<value_type, mutex_type> this_type;
-    typedef typename policy::proxy<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef property<value_type, lockable_type> this_type;
+    typedef typename policy::proxy<value_type, lockable_type> policy_type;
     typedef typename boost::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~property() GO_BOOST_DEFAULT_DESTRUCTOR
 
      property()
-        : detail::property_base<value_type, policy_type>(policy::proxy<value_type, mutex_type>())
+        : detail::property_base<value_type, policy_type>(policy::proxy<value_type, lockable_type>())
     {
     }
 
     explicit property(const get_function_signature& get_function)
-        : detail::property_base<value_type, policy_type>(policy::proxy<value_type, mutex_type>(get_function, NULL))
+        : detail::property_base<value_type, policy_type>(policy::proxy<value_type, lockable_type>(get_function, NULL))
     {
     }
 

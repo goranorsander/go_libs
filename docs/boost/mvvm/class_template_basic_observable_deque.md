@@ -147,8 +147,8 @@ public static | ptr **create**(const this_type& x)
 public static | ptr **create**(this_type&& x)
 public static | ptr **create**(const boost::initializer_list<value_type>& il)
 
-Constructs a new **basic_observable_deque<value_type, string_type, mutex_type>** object and return it as a
-**basic_observable_deque<value_type, string_type, mutex_type>\::ptr** object.
+Constructs a new **basic_observable_deque<value_type, string_type, lockable_type>** object and return it as a
+**basic_observable_deque<value_type, string_type, lockable_type>\::ptr** object.
 
 ## Member functions
 

@@ -27,7 +27,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, typename M> class basic_notify_command_execution_interface;
+template<class S, class L> class basic_notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::string, boost::recursive_mutex> notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex> notify_wcommand_execution_interface;
 
@@ -39,16 +39,16 @@ typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility
 
 }
 
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_notify_command_execution_interface
     : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_notify_command_execution_interface<S, M> this_type;
-    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, M>>&)> command_executed_signal;
-    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, M>>&)> command_not_executed_signal;
+    typedef L lockable_type;
+    typedef basic_notify_command_execution_interface<S, L> this_type;
+    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, L>>&)> command_executed_signal;
+    typedef typename boost::signals2::signal<void(const boost::shared_ptr<basic_command_interface<S, L>>&)> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;
@@ -61,8 +61,8 @@ public:
     command_not_executed_signal command_not_executed;
 
 protected:
-    virtual void notify_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const;
-    virtual void notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const;
+    virtual void notify_command_executed(const boost::shared_ptr<basic_command_interface<S, L>>& command) const;
+    virtual void notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, L>>& command) const;
 };
 
 template<>
@@ -93,8 +93,8 @@ inline basic_notify_command_execution_interface<std::wstring, go_boost::utility:
     this->command_not_executed.disconnect_all_slots();
 }
 
-template<class S, typename M>
-inline basic_notify_command_execution_interface<S, M>::~basic_notify_command_execution_interface()
+template<class S, class L>
+inline basic_notify_command_execution_interface<S, L>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -132,8 +132,8 @@ inline basic_notify_command_execution_interface<std::wstring, go_boost::utility:
 {
 }
 
-template<class S, typename M>
-inline basic_notify_command_execution_interface<S, M>::basic_notify_command_execution_interface()
+template<class S, class L>
+inline basic_notify_command_execution_interface<S, L>::basic_notify_command_execution_interface()
     : go_boost::signals::slot()
     , command_executed()
     , command_not_executed()
@@ -164,8 +164,8 @@ inline void basic_notify_command_execution_interface<std::wstring, go_boost::uti
     this->command_executed(command);
 }
 
-template<class S, typename M>
-inline void basic_notify_command_execution_interface<S, M>::notify_command_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
+template<class S, class L>
+inline void basic_notify_command_execution_interface<S, L>::notify_command_executed(const boost::shared_ptr<basic_command_interface<S, L>>& command) const
 {
     this->command_executed(command);
 }
@@ -194,8 +194,8 @@ inline void basic_notify_command_execution_interface<std::wstring, go_boost::uti
     this->command_not_executed(command);
 }
 
-template<class S, typename M>
-inline void basic_notify_command_execution_interface<S, M>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, M>>& command) const
+template<class S, class L>
+inline void basic_notify_command_execution_interface<S, L>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<S, L>>& command) const
 {
     this->command_not_executed(command);
 }

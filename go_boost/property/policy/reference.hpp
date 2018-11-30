@@ -28,12 +28,12 @@ namespace property
 namespace policy
 {
 
-template<class V, typename M> class reference
+template<class V, class L> class reference
 {
 public:
     typedef V value_type;
-    typedef M mutex_type;
-    typedef reference<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -73,7 +73,7 @@ public:
 
     value_type get() const
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         if (_v == NULL)
         {
             throw exception("Cannot get value to unbound reference property");
@@ -87,30 +87,30 @@ public:
         {
             throw exception("Cannot set value to unbound reference property");
         }
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         *_v = v;
     }
 
     void bind(value_type& v)
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         _v = boost::addressof(v);
     }
 
     bool empty() const
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         return _v == NULL;
     }
 
     void reset()
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         _v = NULL;
     }
 
 private:
-    mutable mutex_type _property_guard;
+    mutable lockable_type _property_guard;
     value_type* _v;
 };
 

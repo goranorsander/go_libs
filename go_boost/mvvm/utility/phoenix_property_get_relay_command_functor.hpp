@@ -34,7 +34,7 @@ namespace utility
 struct get_property_relay_command_functor
 {
     typedef std::string string_type;
-    typedef boost::recursive_mutex mutex_type;
+    typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -42,15 +42,15 @@ struct get_property_relay_command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -59,7 +59,7 @@ struct get_property_relay_command_functor
 struct get_wproperty_relay_wcommand_functor
 {
     typedef std::wstring string_type;
-    typedef boost::recursive_mutex mutex_type;
+    typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -67,15 +67,15 @@ struct get_wproperty_relay_wcommand_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -84,7 +84,7 @@ struct get_wproperty_relay_wcommand_functor
 struct get_u8property_relay_u8command_functor
 {
     typedef go_boost::utility::u8string string_type;
-    typedef boost::recursive_mutex mutex_type;
+    typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -92,15 +92,15 @@ struct get_u8property_relay_u8command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -109,7 +109,7 @@ struct get_u8property_relay_u8command_functor
 struct get_u16property_relay_u16command_functor
 {
     typedef go_boost::utility::u16string string_type;
-    typedef boost::recursive_mutex mutex_type;
+    typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -117,15 +117,15 @@ struct get_u16property_relay_u16command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -134,7 +134,7 @@ struct get_u16property_relay_u16command_functor
 struct get_u32property_relay_u32command_functor
 {
     typedef go_boost::utility::u32string string_type;
-    typedef boost::recursive_mutex mutex_type;
+    typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -142,15 +142,15 @@ struct get_u32property_relay_u32command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -168,7 +168,7 @@ namespace single_threaded
 struct get_property_relay_command_functor
 {
     typedef std::string string_type;
-    typedef go_boost::utility::placebo_mutex mutex_type;
+    typedef go_boost::utility::placebo_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -176,15 +176,15 @@ struct get_property_relay_command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -193,7 +193,7 @@ struct get_property_relay_command_functor
 struct get_wproperty_relay_wcommand_functor
 {
     typedef std::wstring string_type;
-    typedef go_boost::utility::placebo_mutex mutex_type;
+    typedef go_boost::utility::placebo_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -201,15 +201,15 @@ struct get_wproperty_relay_wcommand_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if(!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -218,7 +218,7 @@ struct get_wproperty_relay_wcommand_functor
 struct get_u8property_relay_u8command_functor
 {
     typedef go_boost::utility::u8string string_type;
-    typedef go_boost::utility::placebo_mutex mutex_type;
+    typedef go_boost::utility::placebo_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -226,15 +226,15 @@ struct get_u8property_relay_u8command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -243,7 +243,7 @@ struct get_u8property_relay_u8command_functor
 struct get_u16property_relay_u16command_functor
 {
     typedef go_boost::utility::u16string string_type;
-    typedef go_boost::utility::placebo_mutex mutex_type;
+    typedef go_boost::utility::placebo_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -251,15 +251,15 @@ struct get_u16property_relay_u16command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }
@@ -268,7 +268,7 @@ struct get_u16property_relay_u16command_functor
 struct get_u32property_relay_u32command_functor
 {
     typedef go_boost::utility::u32string string_type;
-    typedef go_boost::utility::placebo_mutex mutex_type;
+    typedef go_boost::utility::placebo_mutex lockable_type;
 
     template <typename Sig>
     struct result;
@@ -276,15 +276,15 @@ struct get_u32property_relay_u32command_functor
     template <typename This, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     struct result<This(const Arg1&, const Arg2&, const Arg3&, const Arg4&, Arg5&)>
     {
-        typedef typename go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr type;
+        typedef typename go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr type;
     };
 
     template <typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
-    go_boost::mvvm::basic_command_interface<string_type, mutex_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
+    go_boost::mvvm::basic_command_interface<string_type, lockable_type>::ptr operator()(const Arg1& cmd_name, const Arg2& execute_cmd, const Arg3& can_execute_cmd, const Arg4& params, Arg5& relay_cmd) const
     {
         if (!relay_cmd)
         {
-            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, mutex_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
+            relay_cmd = go_boost::mvvm::basic_relay_command<string_type, lockable_type>::create(cmd_name, execute_cmd, can_execute_cmd, params);
         }
         return relay_cmd;
     }

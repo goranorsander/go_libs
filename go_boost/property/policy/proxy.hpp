@@ -28,12 +28,12 @@ namespace property
 namespace policy
 {
 
-template<class T, typename M> class proxy
+template<class T, class L> class proxy
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef proxy<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef proxy<value_type, lockable_type> this_type;
     typedef typename boost::function<value_type(void)> get_function_signature;
     typedef typename boost::function<void(const value_type&)> set_function_signature;
 
@@ -63,25 +63,25 @@ public:
 
     void getter(const get_function_signature& f)
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         _get = f;
     }
 
     void setter(const set_function_signature& f)
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         _set = f;
     }
 
     value_type get() const
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         return _get();
     }
 
     void set(const value_type& v)
     {
-        const typename mutex_type::scoped_lock lock(_property_guard);
+        const typename lockable_type::scoped_lock lock(_property_guard);
         _set(v);
     }
 
@@ -97,7 +97,7 @@ private:
     }
 
 private:
-    mutable mutex_type _property_guard;
+    mutable lockable_type _property_guard;
     get_function_signature _get;
     set_function_signature _set;
 };

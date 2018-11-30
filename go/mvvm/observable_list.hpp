@@ -26,15 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class T, class S, typename M = std::recursive_mutex>
+template<class T, class S, class L = std::recursive_mutex>
 class basic_observable_list
-    : public basic_observable_sequence_container<S, std::list<T>, M>
+    : public basic_observable_sequence_container<S, std::list<T>, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::list<T> container_type;
-    typedef basic_observable_list<T, S, M> this_type;
+    typedef basic_observable_list<T, S, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -56,44 +56,44 @@ public:
 
 protected:
     basic_observable_list()
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container()
     {
     }
 
     explicit basic_observable_list(size_type n)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n)
     {
     }
 
     basic_observable_list(size_type n, const value_type& val)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
     basic_observable_list(InputIterator first, InputIterator last)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_list(const this_type& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_list(this_type&& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_list(const std::initializer_list<value_type>& il)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(il)
     {
     }
@@ -609,33 +609,33 @@ private:
     container_type _container;
 };
 
-template<class T, class S, typename M>
-inline GO_CONSTEXPR typename basic_observable_list<T, S, M>::size_type basic_observable_list<T, S, M>::size() const noexcept
+template<class T, class S, class L>
+inline GO_CONSTEXPR typename basic_observable_list<T, S, L>::size_type basic_observable_list<T, S, L>::size() const noexcept
 {
     return _container.size();
 }
 
-template<class T, class S, typename M>
-inline typename basic_observable_list<T, S, M>::container_type& basic_observable_list<T, S, M>::container()
+template<class T, class S, class L>
+inline typename basic_observable_list<T, S, L>::container_type& basic_observable_list<T, S, L>::container()
 {
     return _container;
 }
 
-template<class T, class S, typename M>
-inline const typename basic_observable_list<T, S, M>::container_type& basic_observable_list<T, S, M>::container() const
+template<class T, class S, class L>
+inline const typename basic_observable_list<T, S, L>::container_type& basic_observable_list<T, S, L>::container() const
 {
     return _container;
 }
 
-template<class T, typename M = std::recursive_mutex>
+template<class T, class L = std::recursive_mutex>
 class observable_list
-    : public basic_observable_list<T, std::string, M>
+    : public basic_observable_list<T, std::string, L>
 {
 public:
     typedef std::string string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::list<T> container_type;
-    typedef observable_list<T, M> this_type;
+    typedef observable_list<T, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -657,38 +657,38 @@ public:
 
 protected:
      observable_list()
-        : basic_observable_list<value_type, string_type, mutex_type>()
+        : basic_observable_list<value_type, string_type, lockable_type>()
     {
     }
 
     explicit observable_list(size_type n)
-        : basic_observable_list<value_type, string_type, mutex_type>(n)
+        : basic_observable_list<value_type, string_type, lockable_type>(n)
     {
     }
 
     observable_list(size_type n, const value_type& val)
-        : basic_observable_list<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_list<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     observable_list(InputIterator first, InputIterator last)
-        : basic_observable_list<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_list<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit observable_list(const this_type& x)
-        : basic_observable_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_list<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit observable_list(this_type&& x)
-        : basic_observable_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_list<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit observable_list(const std::initializer_list<value_type>& il)
-        : basic_observable_list<value_type, string_type, mutex_type>(il)
+        : basic_observable_list<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -783,7 +783,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -792,14 +792,14 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_list<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 
@@ -811,15 +811,15 @@ public:
     }
 };
 
-template<class T, typename M = std::recursive_mutex>
+template<class T, class L = std::recursive_mutex>
 class wobservable_list
-    : public basic_observable_list<T, std::wstring, M>
+    : public basic_observable_list<T, std::wstring, L>
 {
 public:
     typedef std::wstring string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::list<T> container_type;
-    typedef wobservable_list<T, M> this_type;
+    typedef wobservable_list<T, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -841,38 +841,38 @@ public:
 
 protected:
      wobservable_list()
-        : basic_observable_list<value_type, string_type, mutex_type>()
+        : basic_observable_list<value_type, string_type, lockable_type>()
     {
     }
 
     explicit wobservable_list(size_type n)
-        : basic_observable_list<value_type, string_type, mutex_type>(n)
+        : basic_observable_list<value_type, string_type, lockable_type>(n)
     {
     }
 
     wobservable_list(size_type n, const value_type& val)
-        : basic_observable_list<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_list<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     wobservable_list(InputIterator first, InputIterator last)
-        : basic_observable_list<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_list<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit wobservable_list(const this_type& x)
-        : basic_observable_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_list<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit wobservable_list(this_type&& x)
-        : basic_observable_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_list<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit wobservable_list(const std::initializer_list<value_type>& il)
-        : basic_observable_list<value_type, string_type, mutex_type>(il)
+        : basic_observable_list<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -967,7 +967,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -976,14 +976,14 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_list<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 

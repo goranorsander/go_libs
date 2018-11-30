@@ -29,14 +29,14 @@ namespace nameless
 namespace write_only
 {
 
-template<class T, typename M = std::recursive_mutex> class property
-    : public detail::property_base<T, policy::proxy<T, M>>
+template<class T, class L = std::recursive_mutex> class property
+    : public detail::property_base<T, policy::proxy<T, L>>
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef property<value_type, mutex_type> this_type;
-    typedef typename policy::proxy<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef property<value_type, lockable_type> this_type;
+    typedef typename policy::proxy<value_type, lockable_type> policy_type;
     typedef typename std::function<void(const value_type&)> set_function_signature;
 
 public:

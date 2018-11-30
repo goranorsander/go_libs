@@ -31,26 +31,26 @@ namespace property
 namespace write_only
 {
 
-template<class T, class S, typename M = boost::recursive_mutex> class basic_reference_property
-    : public detail::property_base<T, policy::reference<T, M>, S>
+template<class T, class S, class L = boost::recursive_mutex> class basic_reference_property
+    : public detail::property_base<T, policy::reference<T, L>, S>
 {
 public:
     typedef T value_type;
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_reference_property<value_type, string_type, mutex_type> this_type;
-    typedef typename policy::reference<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef basic_reference_property<value_type, string_type, lockable_type> this_type;
+    typedef typename policy::reference<value_type, lockable_type> policy_type;
 
 public:
     virtual ~basic_reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit basic_reference_property(const string_type& property_name)
-        : detail::property_base<value_type, policy::reference<value_type, mutex_type>, string_type>(policy::reference<value_type, mutex_type>(), property_name)
+        : detail::property_base<value_type, policy::reference<value_type, lockable_type>, string_type>(policy::reference<value_type, lockable_type>(), property_name)
     {
     }
 
     basic_reference_property(const string_type& property_name, const value_type& v)
-        : detail::property_base<value_type, policy::reference<value_type, mutex_type>, string_type>(policy::reference<value_type, mutex_type>(v), property_name)
+        : detail::property_base<value_type, policy::reference<value_type, lockable_type>, string_type>(policy::reference<value_type, lockable_type>(v), property_name)
     {
     }
 
@@ -80,125 +80,125 @@ public:
     }
 };
 
-template<class T, typename M = boost::recursive_mutex> class reference_property
-    : public basic_reference_property<T, std::string, M>
+template<class T, class L = boost::recursive_mutex> class reference_property
+    : public basic_reference_property<T, std::string, L>
 {
 public:
     typedef T value_type;
     typedef std::string string_type;
-    typedef M mutex_type;
-    typedef reference_property<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference_property<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_property(const std::string& property_name)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
     reference_property(const std::string& property_name, const value_type& v)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name, v)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 };
 
-template<class T, typename M = boost::recursive_mutex> class reference_wproperty
-    : public basic_reference_property<T, std::wstring, M>
+template<class T, class L = boost::recursive_mutex> class reference_wproperty
+    : public basic_reference_property<T, std::wstring, L>
 {
 public:
     typedef T value_type;
     typedef std::wstring string_type;
-    typedef M mutex_type;
-    typedef reference_wproperty<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference_wproperty<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_wproperty() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_wproperty(const std::wstring& property_name)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
     reference_wproperty(const std::wstring& property_name, const value_type& v)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name, v)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 };
 
-template<class T, typename M = boost::recursive_mutex> class reference_u8property
-    : public basic_reference_property<T, utility::u8string, M>
+template<class T, class L = boost::recursive_mutex> class reference_u8property
+    : public basic_reference_property<T, utility::u8string, L>
 {
 public:
     typedef T value_type;
     typedef utility::u8string string_type;
-    typedef M mutex_type;
-    typedef reference_u8property<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference_u8property<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_u8property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_u8property(const utility::u8string& property_name)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
     reference_u8property(const utility::u8string& property_name, const value_type& v)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name, v)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 };
 
-template<class T, typename M = boost::recursive_mutex> class reference_u16property
-    : public basic_reference_property<T, utility::u16string, M>
+template<class T, class L = boost::recursive_mutex> class reference_u16property
+    : public basic_reference_property<T, utility::u16string, L>
 {
 public:
     typedef T value_type;
     typedef utility::u16string string_type;
-    typedef M mutex_type;
-    typedef reference_u16property<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference_u16property<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_u16property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_u16property(const utility::u16string& property_name)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
     reference_u16property(const utility::u16string& property_name, const value_type& v)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name, v)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }
 
 #include <go_boost/property/detail/assignment_operator.hpp>
 };
 
-template<class T, typename M = boost::recursive_mutex> class reference_u32property
-    : public basic_reference_property<T, utility::u32string, M>
+template<class T, class L = boost::recursive_mutex> class reference_u32property
+    : public basic_reference_property<T, utility::u32string, L>
 {
 public:
     typedef T value_type;
     typedef utility::u32string string_type;
-    typedef M mutex_type;
-    typedef reference_u32property<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef reference_u32property<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_u32property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_u32property(const utility::u32string& property_name)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
     reference_u32property(const utility::u32string& property_name, const value_type& v)
-        : basic_reference_property<value_type, string_type, mutex_type>(property_name, v)
+        : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }
 

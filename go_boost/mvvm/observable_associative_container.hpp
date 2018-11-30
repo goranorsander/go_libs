@@ -24,15 +24,15 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, class C, typename M = boost::recursive_mutex>
+template<class S, class C, class L = boost::recursive_mutex>
 class basic_observable_associative_container
-    : public basic_observable_container<S, C, M>
+    : public basic_observable_container<S, C, L>
 {
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef M mutex_type;
-    typedef basic_observable_associative_container<string_type, container_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef basic_observable_associative_container<string_type, container_type, lockable_type> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -53,7 +53,7 @@ public:
 
 protected:
     basic_observable_associative_container()
-        : basic_observable_container<string_type, container_type, mutex_type>()
+        : basic_observable_container<string_type, container_type, lockable_type>()
     {
     }
 
@@ -182,8 +182,8 @@ protected:
     }
 };
 
-template<class S, class C, typename M>
-inline basic_observable_associative_container<S, C, M>::~basic_observable_associative_container()
+template<class S, class C, class L>
+inline basic_observable_associative_container<S, C, L>::~basic_observable_associative_container()
 {
 }
 

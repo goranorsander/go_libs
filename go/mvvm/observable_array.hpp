@@ -26,15 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class T, class S, size_t N, typename M = std::recursive_mutex>
+template<class T, class S, size_t N, class L = std::recursive_mutex>
 class basic_observable_array
-    : public basic_observable_sequence_container<S, std::array<T, N>, M>
+    : public basic_observable_sequence_container<S, std::array<T, N>, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::array<T, N> container_type;
-    typedef basic_observable_array<T, S, N, M> this_type;
+    typedef basic_observable_array<T, S, N, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -55,7 +55,7 @@ public:
 
 protected:
     basic_observable_array()
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container()
     {
     }
@@ -169,14 +169,14 @@ private:
     container_type _container;
 };
 
-template<class T, size_t N, typename M = std::recursive_mutex> class observable_array
-    : public basic_observable_array<T, std::string, N, M>
+template<class T, size_t N, class L = std::recursive_mutex> class observable_array
+    : public basic_observable_array<T, std::string, N, L>
 {
 public:
     typedef std::string string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::array<T, N> container_type;
-    typedef observable_array<T, N, M> this_type;
+    typedef observable_array<T, N, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -197,7 +197,7 @@ public:
 
 protected:
      observable_array()
-        : basic_observable_array<T, string_type, N, mutex_type>()
+        : basic_observable_array<T, string_type, N, lockable_type>()
     {
     }
 
@@ -215,14 +215,14 @@ public:
     }
 };
 
-template<class T, size_t N, typename M = std::recursive_mutex> class wobservable_array
-    : public basic_observable_array<T, std::wstring, N, M>
+template<class T, size_t N, class L = std::recursive_mutex> class wobservable_array
+    : public basic_observable_array<T, std::wstring, N, L>
 {
 public:
     typedef std::wstring string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::array<T, N> container_type;
-    typedef wobservable_array<T, N, M> this_type;
+    typedef wobservable_array<T, N, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -243,7 +243,7 @@ public:
 
 protected:
      wobservable_array()
-        : basic_observable_array<T, string_type, N, mutex_type>()
+        : basic_observable_array<T, string_type, N, lockable_type>()
     {
     }
 

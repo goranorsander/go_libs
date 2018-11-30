@@ -24,7 +24,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, typename M>
+template<class S, class L>
 class basic_observable_object;
 typedef basic_observable_object<std::string, boost::recursive_mutex> observable_object;
 typedef basic_observable_object<std::wstring, boost::recursive_mutex> wobservable_object;
@@ -37,15 +37,15 @@ typedef basic_observable_object<std::wstring, go_boost::utility::placebo_mutex> 
 
 }
 
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_observable_object
-    : public basic_notify_property_changed_interface<S, M>
+    : public basic_notify_property_changed_interface<S, L>
     , public object
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_observable_object<S, M> this_type;
+    typedef L lockable_type;
+    typedef basic_observable_object<S, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -56,8 +56,8 @@ protected:
     basic_observable_object() GO_BOOST_DEFAULT_CONSTRUCTOR
 };
 
-template<class S, typename M>
-inline basic_observable_object<S, M>::~basic_observable_object()
+template<class S, class L>
+inline basic_observable_object<S, L>::~basic_observable_object()
 {
 }
 

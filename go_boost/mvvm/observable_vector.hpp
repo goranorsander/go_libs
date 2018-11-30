@@ -27,13 +27,13 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S, typename M = boost::recursive_mutex>
+template<class T, class S, class L = boost::recursive_mutex>
 class basic_observable_vector
-    : public basic_observable_sequence_container<S, boost::container::stable_vector<T>, M>
+    : public basic_observable_sequence_container<S, boost::container::stable_vector<T>, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::stable_vector<T> container_type;
     typedef basic_observable_vector<T, S> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
@@ -57,32 +57,32 @@ public:
 
 protected:
     basic_observable_vector()
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container()
     {
     }
 
     explicit basic_observable_vector(size_type n)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n)
     {
     }
 
     basic_observable_vector(size_type n, const value_type& val)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
     basic_observable_vector(InputIterator first, InputIterator last)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_vector(const this_type& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
@@ -90,7 +90,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit basic_observable_vector(this_type&& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
@@ -100,7 +100,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit basic_observable_vector(const std::initializer_list<value_type>& il)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(il)
     {
     }
@@ -534,33 +534,33 @@ private:
     container_type _container;
 };
 
-template<class T, class S, typename M>
-inline GO_BOOST_CONSTEXPR typename basic_observable_vector<T, S, M>::size_type basic_observable_vector<T, S, M>::size() const BOOST_NOEXCEPT_OR_NOTHROW
+template<class T, class S, class L>
+inline GO_BOOST_CONSTEXPR typename basic_observable_vector<T, S, L>::size_type basic_observable_vector<T, S, L>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }
 
-template<class T, class S, typename M>
-inline typename basic_observable_vector<T, S, M>::container_type& basic_observable_vector<T, S, M>::container()
+template<class T, class S, class L>
+inline typename basic_observable_vector<T, S, L>::container_type& basic_observable_vector<T, S, L>::container()
 {
     return _container;
 }
 
-template<class T, class S, typename M>
-inline const typename basic_observable_vector<T, S, M>::container_type& basic_observable_vector<T, S, M>::container() const
+template<class T, class S, class L>
+inline const typename basic_observable_vector<T, S, L>::container_type& basic_observable_vector<T, S, L>::container() const
 {
     return _container;
 }
 
-template<class T, typename M = boost::recursive_mutex>
+template<class T, class L = boost::recursive_mutex>
 class observable_vector
-    : public basic_observable_vector<T, std::string, M>
+    : public basic_observable_vector<T, std::string, L>
 {
 public:
     typedef typename std::string string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::stable_vector<T> container_type;
-    typedef observable_vector<T, M> this_type;
+    typedef observable_vector<T, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -582,35 +582,35 @@ public:
 
 protected:
      observable_vector()
-        : basic_observable_vector<value_type, string_type, mutex_type>()
+        : basic_observable_vector<value_type, string_type, lockable_type>()
     {
     }
 
     explicit observable_vector(size_type n)
-        : basic_observable_vector<value_type, string_type, mutex_type>(n)
+        : basic_observable_vector<value_type, string_type, lockable_type>(n)
     {
     }
 
     observable_vector(size_type n, const value_type& val)
-        : basic_observable_vector<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_vector<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     observable_vector(InputIterator first, InputIterator last)
-        : basic_observable_vector<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_vector<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit observable_vector(const this_type& x)
-        : basic_observable_vector<value_type, string_type, mutex_type>(x)
+        : basic_observable_vector<value_type, string_type, lockable_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit observable_vector(this_type&& x)
-        : basic_observable_vector<value_type, string_type, mutex_type>(x)
+        : basic_observable_vector<value_type, string_type, lockable_type>(x)
     {
     }
 
@@ -619,7 +619,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit observable_vector(const std::initializer_list<value_type>& il)
-        : basic_observable_vector<value_type, string_type, mutex_type>(il)
+        : basic_observable_vector<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -744,7 +744,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_vector<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -755,7 +755,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_vector<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -766,7 +766,7 @@ public:
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_vector<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_vector<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 
@@ -780,15 +780,15 @@ public:
     }
 };
 
-template<class T, typename M = boost::recursive_mutex>
+template<class T, class L = boost::recursive_mutex>
 class wobservable_vector
-    : public basic_observable_vector<T, std::wstring, M>
+    : public basic_observable_vector<T, std::wstring, L>
 {
 public:
     typedef typename std::wstring string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::stable_vector<T> container_type;
-    typedef wobservable_vector<T, M> this_type;
+    typedef wobservable_vector<T, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -810,35 +810,35 @@ public:
 
 protected:
      wobservable_vector()
-        : basic_observable_vector<value_type, string_type, mutex_type>()
+        : basic_observable_vector<value_type, string_type, lockable_type>()
     {
     }
 
     explicit wobservable_vector(size_type n)
-        : basic_observable_vector<value_type, string_type, mutex_type>(n)
+        : basic_observable_vector<value_type, string_type, lockable_type>(n)
     {
     }
 
     wobservable_vector(size_type n, const value_type& val)
-        : basic_observable_vector<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_vector<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     wobservable_vector(InputIterator first, InputIterator last)
-        : basic_observable_vector<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_vector<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit wobservable_vector(const this_type& x)
-        : basic_observable_vector<value_type, string_type, mutex_type>(x)
+        : basic_observable_vector<value_type, string_type, lockable_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit wobservable_vector(this_type&& x)
-        : basic_observable_vector<value_type, string_type, mutex_type>(x)
+        : basic_observable_vector<value_type, string_type, lockable_type>(x)
     {
     }
 
@@ -847,7 +847,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit wobservable_vector(const std::initializer_list<value_type>& il)
-        : basic_observable_vector<value_type, string_type, mutex_type>(il)
+        : basic_observable_vector<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -972,7 +972,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_vector<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -983,7 +983,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_vector<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_vector<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -994,7 +994,7 @@ public:
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_vector<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_vector<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 

@@ -28,7 +28,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S, typename M> class basic_notify_command_execution_interface;
+template<class S, class L> class basic_notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::string, std::recursive_mutex> notify_command_execution_interface;
 typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mutex> notify_wcommand_execution_interface;
 
@@ -40,16 +40,16 @@ typedef basic_notify_command_execution_interface<std::wstring, go::utility::plac
 
 }
 
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_notify_command_execution_interface
     : public go::signals::slot
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_notify_command_execution_interface<S, M> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>, M> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>, M> command_not_executed_signal;
+    typedef L lockable_type;
+    typedef basic_notify_command_execution_interface<S, L> this_type;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_executed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;
@@ -62,8 +62,8 @@ public:
     command_not_executed_signal command_not_executed;
 
 protected:
-    virtual void notify_command_executed(const std::shared_ptr<basic_command_interface<S, M>>& command) const;
-    virtual void notify_command_not_executed(const std::shared_ptr<basic_command_interface<S, M>>& command) const;
+    virtual void notify_command_executed(const std::shared_ptr<basic_command_interface<S, L>>& command) const;
+    virtual void notify_command_not_executed(const std::shared_ptr<basic_command_interface<S, L>>& command) const;
 };
 
 template<>
@@ -94,8 +94,8 @@ inline basic_notify_command_execution_interface<std::wstring, go::utility::place
     this->command_not_executed.disconnect_all_slots();
 }
 
-template<class S, typename M>
-inline basic_notify_command_execution_interface<S, M>::~basic_notify_command_execution_interface()
+template<class S, class L>
+inline basic_notify_command_execution_interface<S, L>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -125,8 +125,8 @@ inline void basic_notify_command_execution_interface<std::wstring, go::utility::
     this->command_executed(command);
 }
 
-template<class S, typename M>
-inline void basic_notify_command_execution_interface<S, M>::notify_command_executed(const std::shared_ptr<basic_command_interface<S, M>>& command) const
+template<class S, class L>
+inline void basic_notify_command_execution_interface<S, L>::notify_command_executed(const std::shared_ptr<basic_command_interface<S, L>>& command) const
 {
     this->command_executed(command);
 }
@@ -155,8 +155,8 @@ inline void basic_notify_command_execution_interface<std::wstring, go::utility::
     this->command_not_executed(command);
 }
 
-template<class S, typename M>
-inline void basic_notify_command_execution_interface<S, M>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<S, M>>& command) const
+template<class S, class L>
+inline void basic_notify_command_execution_interface<S, L>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<S, L>>& command) const
 {
     this->command_not_executed(command);
 }

@@ -19,7 +19,7 @@ The **basic_event_manager** is a generalization class to manage events.
 It is declared as:
 
 ```c++
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_event_manager
     : public basic_notify_event_firing_interface<S>
     , public go_boost::utility::noncopyable_nonmovable
@@ -49,17 +49,17 @@ public:
 Parameter | Description
 -|-
 S | The manager string class
-M | The manager mutex class
+L | The manager lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_event_manager<S, M>
-ptr | boost\::shared_ptr<basic_event_manager<S, M>>
-wptr | boost\::weak_ptr<basic_event_manager<S, M>>
+lockable_type | L
+this_type | basic_event_manager<S, L>
+ptr | boost\::shared_ptr<basic_event_manager<S, L>>
+wptr | boost\::weak_ptr<basic_event_manager<S, L>>
 basic_event_ptr | boost\::shared_ptr<basic_event<S>>
 basic_event_function_type | boost\::function<void(const boost\::shared_ptr<basic_event<S>>&)>
 
@@ -72,7 +72,7 @@ Specifiers | Signature
 public static | ptr create()
 
 Constructs a new **basic_event_manager** object and return it as a
-**basic_event_manager<string_type, mutex_type>\::ptr** object.
+**basic_event_manager<string_type, lockable_type>\::ptr** object.
 
 ## Member functions
 

@@ -25,16 +25,16 @@ namespace go
 namespace mvvm
 {
 
-template<class S, class C, typename M = std::recursive_mutex>
+template<class S, class C, class L = std::recursive_mutex>
 class basic_observable_container
-    : public notify_container_changed_interface<M>
-    , public basic_observable_object<S, M>
+    : public notify_container_changed_interface<L>
+    , public basic_observable_object<S, L>
 {
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef M mutex_type;
-    typedef basic_observable_container<string_type, container_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef basic_observable_container<string_type, container_type, lockable_type> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -43,8 +43,8 @@ public:
 
 protected:
     basic_observable_container()
-        : notify_container_changed_interface<mutex_type>()
-        , basic_observable_object<string_type, mutex_type>()
+        : notify_container_changed_interface<lockable_type>()
+        , basic_observable_object<string_type, lockable_type>()
     {
     }
 
@@ -62,8 +62,8 @@ protected:
     virtual const container_type& container() const = 0;
 };
 
-template<class S, class C, typename M>
-inline basic_observable_container<S, C, M>::~basic_observable_container()
+template<class S, class C, class L>
+inline basic_observable_container<S, C, L>::~basic_observable_container()
 {
 }
 

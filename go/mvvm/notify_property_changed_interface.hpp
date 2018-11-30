@@ -28,7 +28,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S, typename M> class basic_notify_property_changed_interface;
+template<class S, class L> class basic_notify_property_changed_interface;
 typedef basic_notify_property_changed_interface<std::string, std::recursive_mutex> notify_property_changed_interface;
 typedef basic_notify_property_changed_interface<std::wstring, std::recursive_mutex> notify_wproperty_changed_interface;
 
@@ -40,15 +40,15 @@ typedef basic_notify_property_changed_interface<std::wstring, go::utility::place
 
 }
 
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_notify_property_changed_interface
     : public go::signals::slot
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_notify_property_changed_interface<S, M> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>, M> property_changed_signal;
+    typedef L lockable_type;
+    typedef basic_notify_property_changed_interface<S, L> this_type;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>, L> property_changed_signal;
 
 public:
     virtual ~basic_notify_property_changed_interface() = 0;
@@ -123,8 +123,8 @@ inline basic_notify_property_changed_interface<std::u32string, go::utility::plac
     this->property_changed.disconnect_all_slots();
 }
 
-template<class S, typename M>
-inline basic_notify_property_changed_interface<S, M>::~basic_notify_property_changed_interface()
+template<class S, class L>
+inline basic_notify_property_changed_interface<S, L>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -219,8 +219,8 @@ inline void basic_notify_property_changed_interface<std::u32string, go::utility:
     }
 }
 
-template<class S, typename M>
-inline void basic_notify_property_changed_interface<S, M>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
+template<class S, class L>
+inline void basic_notify_property_changed_interface<S, L>::notify_property_changed(const std::shared_ptr<object>&, const string_type& property_name)
 {
     if (!this->property_changed.empty())
     {

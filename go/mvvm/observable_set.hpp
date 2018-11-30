@@ -26,15 +26,15 @@ namespace go
 namespace mvvm
 {
 
-template<class K, class S, typename M = std::recursive_mutex>
+template<class K, class S, class L = std::recursive_mutex>
 class basic_observable_set
-    : public basic_observable_ordered_associative_container<S, std::set<K>, M>
+    : public basic_observable_ordered_associative_container<S, std::set<K>, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::set<K> container_type;
-    typedef basic_observable_set<K, S, M> this_type;
+    typedef basic_observable_set<K, S, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -59,32 +59,32 @@ public:
 
 protected:
     basic_observable_set()
-        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, lockable_type>()
         , _container()
     {
     }
 
     template <class InputIterator>
     basic_observable_set(InputIterator first, InputIterator last)
-        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, lockable_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_set(const this_type& x)
-        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_set(this_type&& x)
-        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
 
     explicit basic_observable_set(const std::initializer_list<value_type>& il)
-        : basic_observable_ordered_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_ordered_associative_container<string_type, container_type, lockable_type>()
         , _container(il)
     {
     }
@@ -288,27 +288,27 @@ private:
     container_type _container;
 };
 
-template<class K, class S, typename M>
-inline typename basic_observable_set<K, S, M>::container_type& basic_observable_set<K, S, M>::container()
+template<class K, class S, class L>
+inline typename basic_observable_set<K, S, L>::container_type& basic_observable_set<K, S, L>::container()
 {
     return _container;
 }
 
-template<class K, class S, typename M>
-inline const typename basic_observable_set<K, S, M>::container_type& basic_observable_set<K, S, M>::container() const
+template<class K, class S, class L>
+inline const typename basic_observable_set<K, S, L>::container_type& basic_observable_set<K, S, L>::container() const
 {
     return _container;
 }
 
-template<class K, typename M = std::recursive_mutex>
+template<class K, class L = std::recursive_mutex>
 class observable_set
-    : public basic_observable_set<K, std::string, M>
+    : public basic_observable_set<K, std::string, L>
 {
 public:
     typedef std::string string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::set<K> container_type;
-    typedef observable_set<K, M> this_type;
+    typedef observable_set<K, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -333,28 +333,28 @@ public:
 
 protected:
      observable_set()
-        : basic_observable_set<value_type, string_type, mutex_type>()
+        : basic_observable_set<value_type, string_type, lockable_type>()
     {
     }
 
     template <class InputIterator>
     observable_set(InputIterator first, InputIterator last)
-        : basic_observable_set<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_set<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit observable_set(const this_type& x)
-        : basic_observable_set<value_type, string_type, mutex_type>(x)
+        : basic_observable_set<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit observable_set(this_type&& x)
-        : basic_observable_set<value_type, string_type, mutex_type>(x)
+        : basic_observable_set<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit observable_set(const std::initializer_list<value_type>& il)
-        : basic_observable_set<value_type, string_type, mutex_type>(il)
+        : basic_observable_set<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -425,7 +425,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_set<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_set<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -434,7 +434,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_set<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_set<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -453,15 +453,15 @@ public:
     }
 };
 
-template<class K, typename M = std::recursive_mutex>
+template<class K, class L = std::recursive_mutex>
 class wobservable_set
-    : public basic_observable_set<K, std::wstring, M>
+    : public basic_observable_set<K, std::wstring, L>
 {
 public:
     typedef std::wstring string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename std::set<K> container_type;
-    typedef wobservable_set<K, M> this_type;
+    typedef wobservable_set<K, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -486,28 +486,28 @@ public:
 
 protected:
      wobservable_set()
-        : basic_observable_set<value_type, string_type, mutex_type>()
+        : basic_observable_set<value_type, string_type, lockable_type>()
     {
     }
 
     template <class InputIterator>
     wobservable_set(InputIterator first, InputIterator last)
-        : basic_observable_set<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_set<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit wobservable_set(const this_type& x)
-        : basic_observable_set<value_type, string_type, mutex_type>(x)
+        : basic_observable_set<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit wobservable_set(this_type&& x)
-        : basic_observable_set<value_type, string_type, mutex_type>(x)
+        : basic_observable_set<value_type, string_type, lockable_type>(x)
     {
     }
 
     explicit wobservable_set(const std::initializer_list<value_type>& il)
-        : basic_observable_set<value_type, string_type, mutex_type>(il)
+        : basic_observable_set<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -578,7 +578,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_set<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_set<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -587,7 +587,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_set<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_set<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }

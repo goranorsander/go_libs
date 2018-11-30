@@ -21,9 +21,9 @@ information necessary to perform the action.
 It is declared as:
 
 ```c++
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_command_interface
-    : public boost::enable_shared_from_this<basic_command_interface<S, M>>
+    : public boost::enable_shared_from_this<basic_command_interface<S, L>>
     , public go_boost::utility::noncopyable_nonmovable
 {
 public:
@@ -51,19 +51,19 @@ public:
 Parameter | Description
 -|-
 S | The command string class
-M | The command mutex class
+L | The command lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_command_interface<S, M>
-ptr | boost\::shared_ptr<basic_command_interface<S, M>>
-wptr | boost\::weak_ptr<basic_command_interface<S, M>>
+lockable_type | L
+this_type | basic_command_interface<S, L>
+ptr | boost\::shared_ptr<basic_command_interface<S, L>>
+wptr | boost\::weak_ptr<basic_command_interface<S, L>>
 command_parameters_type | boost\::shared_ptr<command_parameters>
-can_execute_changed_signal | go_boost\::signals\::signal<boost\::function<void(const boost\::shared_ptr<basic_command_interface<S, M>>&)>>
+can_execute_changed_signal | go_boost\::signals\::signal<boost\::function<void(const boost\::shared_ptr<basic_command_interface<S, L>>&)>>
 command_name_type | go_boost\::property\::nameless\::read_only\::property<S>
 
 ## Member properties

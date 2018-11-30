@@ -28,13 +28,13 @@ namespace go
 namespace signals
 {
 
-template<typename F, typename M = std::recursive_mutex>
+template<typename F, class L = std::recursive_mutex>
 class signal
 {
 public:
     typedef F function_type;
-    typedef M mutex_type;
-    typedef signal<F, M> this_type;
+    typedef L lockable_type;
+    typedef signal<F, L> this_type;
 
 protected:
     typedef typename std::map<slot_key, function_type> connections_type;
@@ -53,7 +53,7 @@ public:
     template<typename F1>
     slot_key connect(F1&& f)
     {
-        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const std::lock_guard<lockable_type> lock(this->_signal_guard);
         const slot_key key = ++(this->_next_slot_key);
         (this->_connections)[key] = f;
         return key;
@@ -61,26 +61,26 @@ public:
 
     void disconnect(const slot_key& key)
     {
-        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const std::lock_guard<lockable_type> lock(this->_signal_guard);
         this->_connections.erase(key);
     }
 
     void disconnect_all_slots()
     {
-        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const std::lock_guard<lockable_type> lock(this->_signal_guard);
         this->_connections.clear();
     }
 
     bool empty() const
     {
-        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const std::lock_guard<lockable_type> lock(this->_signal_guard);
         return this->_connections.empty();
     }
 
     template<typename... A>
     void operator()(A... a) const
     {
-        const std::lock_guard<mutex_type> lock(this->_signal_guard);
+        const std::lock_guard<lockable_type> lock(this->_signal_guard);
         if(this->_connections.empty())
         {
             return;
@@ -104,7 +104,7 @@ protected:
     connections_type _connections;
 
 private:
-    mutable mutex_type _signal_guard;
+    mutable lockable_type _signal_guard;
 };
 
 } // namespace signals

@@ -26,7 +26,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class S, typename M> class basic_relay_command;
+template<class S, class L> class basic_relay_command;
 typedef basic_relay_command<std::string, boost::recursive_mutex> relay_command;
 typedef basic_relay_command<std::wstring, boost::recursive_mutex> relay_wcommand;
 
@@ -38,14 +38,14 @@ typedef basic_relay_command<std::wstring, go_boost::utility::placebo_mutex> rela
 
 }
 
-template<class S, typename M = boost::recursive_mutex>
+template<class S, class L = boost::recursive_mutex>
 class basic_relay_command
-    : public basic_command_interface<S, M>
+    : public basic_command_interface<S, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_relay_command<S, M> this_type;
+    typedef L lockable_type;
+    typedef basic_relay_command<S, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
     typedef typename boost::shared_ptr<command_parameters> command_parameters_type;
@@ -59,7 +59,7 @@ protected:
     basic_relay_command(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
 
 public:
-    static boost::shared_ptr<basic_relay_command<S, M>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
+    static boost::shared_ptr<basic_relay_command<S, L>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
 
 protected:
     virtual bool can_execute(const command_parameters_type& params);
@@ -103,9 +103,9 @@ inline basic_relay_command<std::wstring, go_boost::utility::placebo_mutex>::basi
 {
 }
 
-template<class S, typename M>
-inline basic_relay_command<S, M>::basic_relay_command(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
-    : basic_command_interface<S, M>(cmd_name, params)
+template<class S, class L>
+inline basic_relay_command<S, L>::basic_relay_command(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+    : basic_command_interface<S, L>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
@@ -135,8 +135,8 @@ inline bool basic_relay_command<std::wstring, go_boost::utility::placebo_mutex>:
     return _can_execute ? _can_execute(params) : true;
 }
 
-template<class S, typename M>
-inline bool basic_relay_command<S, M>::can_execute(const command_parameters_type& params)
+template<class S, class L>
+inline bool basic_relay_command<S, L>::can_execute(const command_parameters_type& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
@@ -177,8 +177,8 @@ inline void basic_relay_command<std::wstring, go_boost::utility::placebo_mutex>:
     }
 }
 
-template<class S, typename M>
-inline void basic_relay_command<S, M>::execute(const command_parameters_type& params)
+template<class S, class L>
+inline void basic_relay_command<S, L>::execute(const command_parameters_type& params)
 {
     if(_execute)
     {
@@ -254,8 +254,8 @@ inline boost::shared_ptr<basic_relay_command<std::wstring, go_boost::utility::pl
 #endif // BOOST_MSVC > 1500
 }
 
-template<class S, typename M>
-inline boost::shared_ptr<basic_relay_command<S, M>> basic_relay_command<S, M>::create(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+template<class S, class L>
+inline boost::shared_ptr<basic_relay_command<S, L>> basic_relay_command<S, L>::create(const S& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler

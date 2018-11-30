@@ -26,19 +26,19 @@ namespace go
 namespace mvvm
 {
 
-template<class S, typename M> class basic_notify_event_firing_interface;
+template<class S, class L> class basic_notify_event_firing_interface;
 typedef basic_notify_event_firing_interface<std::string, std::recursive_mutex> notify_event_firing_interface;
 typedef basic_notify_event_firing_interface<std::wstring, std::recursive_mutex> notify_wevent_firing_interface;
 
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_notify_event_firing_interface
     : public go::signals::slot
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_notify_event_firing_interface<S, M> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_event<string_type>>&)>, M> event_fired_signal;
+    typedef L lockable_type;
+    typedef basic_notify_event_firing_interface<S, L> this_type;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_event<string_type>>&)>, L> event_fired_signal;
 
 public:
     virtual ~basic_notify_event_firing_interface() = 0;
@@ -74,8 +74,8 @@ inline basic_notify_event_firing_interface<std::wstring, go::utility::placebo_mu
     this->event_fired.disconnect_all_slots();
 }
 
-template<class S, typename M>
-inline basic_notify_event_firing_interface<S, M>::~basic_notify_event_firing_interface()
+template<class S, class L>
+inline basic_notify_event_firing_interface<S, L>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }

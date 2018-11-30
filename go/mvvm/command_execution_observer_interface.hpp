@@ -28,7 +28,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S, typename M> class basic_command_execution_observer_interface;
+template<class S, class L> class basic_command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::string, std::recursive_mutex> command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::wstring, std::recursive_mutex> wcommand_execution_wobserver_interface;
 
@@ -40,13 +40,13 @@ typedef basic_command_execution_observer_interface<std::wstring, go::utility::pl
 
 }
 
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_command_execution_observer_interface
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
-    typedef basic_command_execution_observer_interface<S, M> this_type;
+    typedef L lockable_type;
+    typedef basic_command_execution_observer_interface<S, L> this_type;
 
 public:
     virtual ~basic_command_execution_observer_interface() = 0;
@@ -55,12 +55,12 @@ protected:
     basic_command_execution_observer_interface() GO_DEFAULT_CONSTRUCTOR
 
 public:
-    virtual void on_command_executed(const std::shared_ptr<basic_command_interface<S, M>>& /*c*/) = 0;
-    virtual void on_command_not_executed(const std::shared_ptr<basic_command_interface<S, M>>& /*c*/) = 0;
+    virtual void on_command_executed(const std::shared_ptr<basic_command_interface<S, L>>& /*c*/) = 0;
+    virtual void on_command_not_executed(const std::shared_ptr<basic_command_interface<S, L>>& /*c*/) = 0;
 };
 
-template<class S, typename M>
-inline basic_command_execution_observer_interface<S, M>::~basic_command_execution_observer_interface()
+template<class S, class L>
+inline basic_command_execution_observer_interface<S, L>::~basic_command_execution_observer_interface()
 {
 }
 

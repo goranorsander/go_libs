@@ -24,15 +24,15 @@ namespace go
 namespace mvvm
 {
 
-template<class S, class C, typename M = std::recursive_mutex>
+template<class S, class C, class L = std::recursive_mutex>
 class basic_observable_unordered_associative_container
-    : public basic_observable_associative_container<S, C, M>
+    : public basic_observable_associative_container<S, C, L>
 {
 public:
     typedef S string_type;
     typedef C container_type;
-    typedef M mutex_type;
-    typedef basic_observable_unordered_associative_container<S, C, M> this_type;
+    typedef L lockable_type;
+    typedef basic_observable_unordered_associative_container<S, C, L> this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
 
@@ -55,7 +55,7 @@ public:
 
 protected:
     basic_observable_unordered_associative_container()
-        : basic_observable_associative_container<string_type, container_type, mutex_type>()
+        : basic_observable_associative_container<string_type, container_type, lockable_type>()
     {
     }
 
@@ -111,8 +111,8 @@ public:
     }
 };
 
-template<class S, class C, typename M>
-inline basic_observable_unordered_associative_container<S, C, M>::~basic_observable_unordered_associative_container()
+template<class S, class C, class L>
+inline basic_observable_unordered_associative_container<S, C, L>::~basic_observable_unordered_associative_container()
 {
 }
 

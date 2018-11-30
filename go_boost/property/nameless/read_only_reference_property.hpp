@@ -31,20 +31,20 @@ namespace nameless
 namespace read_only
 {
 
-template<class T, typename M = boost::recursive_mutex> class reference_property
-    : public detail::property_base<T, policy::reference<T, M>>
+template<class T, class L = boost::recursive_mutex> class reference_property
+    : public detail::property_base<T, policy::reference<T, L>>
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef reference_property<value_type, mutex_type> this_type;
-    typedef typename policy::reference<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef reference_property<value_type, lockable_type> this_type;
+    typedef typename policy::reference<value_type, lockable_type> policy_type;
 
 public:
     virtual ~reference_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit reference_property(const value_type& v)
-        : detail::property_base<value_type, policy_type>(policy::reference<value_type, mutex_type>(const_cast<value_type&>(v)))
+        : detail::property_base<value_type, policy_type>(policy::reference<value_type, lockable_type>(const_cast<value_type&>(v)))
     {
     }
 

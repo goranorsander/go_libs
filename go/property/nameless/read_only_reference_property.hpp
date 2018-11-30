@@ -32,14 +32,14 @@ namespace nameless
 namespace read_only
 {
 
-template<class T, typename M = std::recursive_mutex> class reference_property
-    : public detail::property_base<T, policy::reference<T, M>>
+template<class T, class L = std::recursive_mutex> class reference_property
+    : public detail::property_base<T, policy::reference<T, L>>
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef reference_property<value_type, mutex_type> this_type;
-    typedef typename policy::reference<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef reference_property<value_type, lockable_type> this_type;
+    typedef typename policy::reference<value_type, lockable_type> policy_type;
 
 public:
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR

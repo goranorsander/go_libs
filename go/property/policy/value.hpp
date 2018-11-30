@@ -26,12 +26,12 @@ namespace property
 namespace policy
 {
 
-template<class T, typename M> class value
+template<class T, class L> class value
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef value<value_type, mutex_type> this_type;
+    typedef L lockable_type;
+    typedef value<value_type, lockable_type> this_type;
 
 public:
     virtual ~value() GO_DEFAULT_DESTRUCTOR
@@ -61,18 +61,18 @@ public:
 
     value_type get() const
     {
-        const std::lock_guard<mutex_type> lock(_property_guard);
+        const std::lock_guard<lockable_type> lock(_property_guard);
         return _v;
     }
 
     void set(const value_type& v)
     {
-        const std::lock_guard<mutex_type> lock(_property_guard);
+        const std::lock_guard<lockable_type> lock(_property_guard);
         _v = v;
     }
 
 private:
-    mutable mutex_type _property_guard;
+    mutable lockable_type _property_guard;
     value_type _v;
 };
 

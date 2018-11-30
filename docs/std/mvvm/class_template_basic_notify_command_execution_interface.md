@@ -20,7 +20,7 @@ when a [command](./class_template_basic_command_interface.html) is executed.
 It is declared as:
 
 ```c++
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_notify_command_execution_interface
     : public go::signals::slot
 {
@@ -41,17 +41,17 @@ public:
 Parameter | Description
 -|-
 S | The string class
-M | The mutex class
+L | The lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_notify_command_execution_interface<S, M>
-command_executed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>>
-command_not_executed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<string_type, mutex_type>>&)>>
+lockable_type | L
+this_type | basic_notify_command_execution_interface<S, L>
+command_executed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>>
+command_not_executed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>>
 
 ## Member signals
 

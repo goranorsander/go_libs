@@ -29,25 +29,25 @@ namespace nameless
 namespace write_only
 {
 
-template<class T, typename M = boost::recursive_mutex> class value_property
-    : public detail::property_base<T, policy::value<T, M>>
+template<class T, class L = boost::recursive_mutex> class value_property
+    : public detail::property_base<T, policy::value<T, L>>
 {
 public:
     typedef T value_type;
-    typedef M mutex_type;
-    typedef value_property<value_type, mutex_type> this_type;
-    typedef typename policy::value<value_type, mutex_type> policy_type;
+    typedef L lockable_type;
+    typedef value_property<value_type, lockable_type> this_type;
+    typedef typename policy::value<value_type, lockable_type> policy_type;
 
 public:
     virtual ~value_property() GO_BOOST_DEFAULT_DESTRUCTOR
 
     value_property()
-        : detail::property_base<value_type, policy_type>(policy::value<value_type, mutex_type>())
+        : detail::property_base<value_type, policy_type>(policy::value<value_type, lockable_type>())
     {
     }
 
     explicit value_property(const value_type& v)
-        : detail::property_base<value_type, policy_type>(policy::value<value_type, mutex_type>(v))
+        : detail::property_base<value_type, policy_type>(policy::value<value_type, lockable_type>(v))
     {
     }
 

@@ -24,43 +24,43 @@ namespace go_boost
 namespace mvvm
 {
 
-template<typename M = boost::recursive_mutex>
+template<class L = boost::recursive_mutex>
 class view_model_interface
-    : public notify_view_model_change_interface<M>
+    : public notify_view_model_change_interface<L>
 {
 public:
-    typedef M mutex_type;
-    typedef view_model_interface<M> this_type;
+    typedef L lockable_type;
+    typedef view_model_interface<L> this_type;
 
 public:
     virtual ~view_model_interface() = 0;
 
 protected:
     view_model_interface()
-        : notify_view_model_change_interface<M>()
+        : notify_view_model_change_interface<L>()
     {
     }
 
 protected:
     virtual void on_view_model_will_change()
     {
-        if(!notify_view_model_change_interface<M>::view_model_will_change.empty())
+        if(!notify_view_model_change_interface<L>::view_model_will_change.empty())
         {
-            notify_view_model_change_interface<M>::view_model_will_change(view_model_will_change_arguments::create());
+            notify_view_model_change_interface<L>::view_model_will_change(view_model_will_change_arguments::create());
         }
     }
 
     virtual void on_view_model_changed()
     {
-        if(!notify_view_model_change_interface<M>::view_model_changed.empty())
+        if(!notify_view_model_change_interface<L>::view_model_changed.empty())
         {
-            notify_view_model_change_interface<M>::view_model_changed(view_model_changed_arguments::create());
+            notify_view_model_change_interface<L>::view_model_changed(view_model_changed_arguments::create());
         }
     }
 };
 
-template<typename M>
-inline view_model_interface<M>::~view_model_interface()
+template<class L>
+inline view_model_interface<L>::~view_model_interface()
 {
 }
 

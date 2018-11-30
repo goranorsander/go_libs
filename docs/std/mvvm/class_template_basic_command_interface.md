@@ -21,9 +21,9 @@ information necessary to perform the action.
 It is declared as:
 
 ```c++
-template<class S, typename M = std::recursive_mutex>
+template<class S, class L = std::recursive_mutex>
 class basic_command_interface
-    : public std::enable_shared_from_this<basic_command_interface<S, M>>
+    : public std::enable_shared_from_this<basic_command_interface<S, L>>
     , public go::utility::noncopyable_nonmovable
 {
 public:
@@ -51,19 +51,19 @@ public:
 Parameter | Description
 -|-
 S | The command string class
-M | The command mutex class
+L | The command lockable class
 
 ## Member types
 
 Member type | Definition
 -|-
 string_type | S
-mutex_type | M
-this_type | basic_command_interface<S, M>
-ptr | std\::shared_ptr<basic_command_interface<S, M>>
-wptr | std\::weak_ptr<basic_command_interface<S, M>>
+lockable_type | L
+this_type | basic_command_interface<S, L>
+ptr | std\::shared_ptr<basic_command_interface<S, L>>
+wptr | std\::weak_ptr<basic_command_interface<S, L>>
 command_parameters_type | std\::shared_ptr<command_parameters>
-can_execute_changed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<S, M>>&)>>
+can_execute_changed_signal | go\::signals\::signal<std\::function<void(const std\::shared_ptr<basic_command_interface<S, L>>&)>>
 command_name_type | go\::property\::nameless\::read_only\::property<S>
 
 ## Member properties

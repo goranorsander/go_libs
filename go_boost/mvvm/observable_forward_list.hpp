@@ -27,15 +27,15 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S, typename M = boost::recursive_mutex>
+template<class T, class S, class L = boost::recursive_mutex>
 class basic_observable_forward_list
-    : public basic_observable_sequence_container<S, boost::container::slist<T>, M>
+    : public basic_observable_sequence_container<S, boost::container::slist<T>, L>
 {
 public:
     typedef S string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::slist<T> container_type;
-    typedef basic_observable_forward_list<T, S, M> this_type;
+    typedef basic_observable_forward_list<T, S, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -55,32 +55,32 @@ public:
 
 protected:
     basic_observable_forward_list()
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container()
     {
     }
 
     explicit basic_observable_forward_list(size_type n)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n)
     {
     }
 
     basic_observable_forward_list(size_type n, const value_type& val)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(n, val)
     {
     }
 
     template <class InputIterator>
     basic_observable_forward_list(InputIterator first, InputIterator last)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(first, last)
     {
     }
 
     explicit basic_observable_forward_list(const this_type& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
@@ -88,7 +88,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit basic_observable_forward_list(this_type&& x)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(x._container)
     {
     }
@@ -98,7 +98,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit basic_observable_forward_list(const std::initializer_list<value_type>& il)
-        : basic_observable_sequence_container<string_type, container_type, mutex_type>()
+        : basic_observable_sequence_container<string_type, container_type, lockable_type>()
         , _container(il)
     {
     }
@@ -630,33 +630,33 @@ private:
     container_type _container;
 };
 
-template<class T, class S, typename M>
-inline typename basic_observable_forward_list<T, S, M>::size_type basic_observable_forward_list<T, S, M>::size() const BOOST_NOEXCEPT_OR_NOTHROW
+template<class T, class S, class L>
+inline typename basic_observable_forward_list<T, S, L>::size_type basic_observable_forward_list<T, S, L>::size() const BOOST_NOEXCEPT_OR_NOTHROW
 {
     return _container.size();
 }
 
-template<class T, class S, typename M>
-inline typename basic_observable_forward_list<T, S, M>::container_type& basic_observable_forward_list<T, S, M>::container()
+template<class T, class S, class L>
+inline typename basic_observable_forward_list<T, S, L>::container_type& basic_observable_forward_list<T, S, L>::container()
 {
     return _container;
 }
 
-template<class T, class S, typename M>
-inline const typename basic_observable_forward_list<T, S, M>::container_type& basic_observable_forward_list<T, S, M>::container() const
+template<class T, class S, class L>
+inline const typename basic_observable_forward_list<T, S, L>::container_type& basic_observable_forward_list<T, S, L>::container() const
 {
     return _container;
 }
 
-template<class T, typename M = boost::recursive_mutex>
+template<class T, class L = boost::recursive_mutex>
 class observable_forward_list
-    : public basic_observable_forward_list<T, std::string, M>
+    : public basic_observable_forward_list<T, std::string, L>
 {
 public:
     typedef typename std::string string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::slist<T> container_type;
-    typedef observable_forward_list<T, M> this_type;
+    typedef observable_forward_list<T, L> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -676,35 +676,35 @@ public:
 
 protected:
      observable_forward_list()
-        : basic_observable_forward_list<value_type, string_type, mutex_type>()
+        : basic_observable_forward_list<value_type, string_type, lockable_type>()
     {
     }
 
     explicit observable_forward_list(size_type n)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(n)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(n)
     {
     }
 
     observable_forward_list(size_type n, const value_type& val)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     observable_forward_list(InputIterator first, InputIterator last)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit observable_forward_list(const this_type& x)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit observable_forward_list(this_type&& x)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(x)
     {
     }
 
@@ -713,7 +713,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit observable_forward_list(const std::initializer_list<value_type>& il)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(il)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -838,7 +838,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -849,7 +849,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -860,7 +860,7 @@ public:
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 
@@ -874,13 +874,13 @@ public:
     }
 };
 
-template<class T, typename M = boost::recursive_mutex>
+template<class T, class L = boost::recursive_mutex>
 class wobservable_forward_list
     : public basic_observable_forward_list<T, std::wstring>
 {
 public:
     typedef typename std::wstring string_type;
-    typedef M mutex_type;
+    typedef L lockable_type;
     typedef typename boost::container::slist<T> container_type;
     typedef wobservable_forward_list<T> this_type;
     typedef typename boost::shared_ptr<this_type> ptr;
@@ -902,35 +902,35 @@ public:
 
 protected:
      wobservable_forward_list()
-        : basic_observable_forward_list<value_type, string_type, mutex_type>()
+        : basic_observable_forward_list<value_type, string_type, lockable_type>()
     {
     }
 
     explicit wobservable_forward_list(size_type n)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(n)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(n)
     {
     }
 
     wobservable_forward_list(size_type n, const value_type& val)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(n, val)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(n, val)
     {
     }
 
     template <class InputIterator>
     wobservable_forward_list(InputIterator first, InputIterator last)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(first, last)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(first, last)
     {
     }
 
     explicit wobservable_forward_list(const this_type& x)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(x)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit wobservable_forward_list(this_type&& x)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(x)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(x)
     {
     }
 
@@ -939,7 +939,7 @@ protected:
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
     explicit wobservable_forward_list(const std::initializer_list<value_type>& il)
-        : basic_observable_forward_list<value_type, string_type, mutex_type>(il)
+        : basic_observable_forward_list<value_type, string_type, lockable_type>(il)
     {
     }
 
@@ -1064,7 +1064,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -1075,7 +1075,7 @@ public:
     {
         if(this != &x)
         {
-            basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(x);
+            basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(x);
         }
         return *this;
     }
@@ -1086,7 +1086,7 @@ public:
 
     this_type& operator=(const std::initializer_list<value_type>& il)
     {
-        basic_observable_forward_list<value_type, string_type, mutex_type>::operator=(il);
+        basic_observable_forward_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;
     }
 
