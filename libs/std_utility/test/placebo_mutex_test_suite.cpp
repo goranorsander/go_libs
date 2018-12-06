@@ -38,6 +38,8 @@ TEST(std_placebo_mutex_test_suite, test_placebo_mutex)
     mutex.unlock();
 }
 
+#if !defined(GO_NO_CXX11_MUTEX)
+
 TEST(std_placebo_mutex_test_suite, test_placebo_mutex_lock_guard)
 {
     u::placebo_mutex mutex;
@@ -50,6 +52,8 @@ TEST(std_placebo_mutex_test_suite, test_placebo_mutex_lock_guard)
 
     EXPECT_EQ(true, mutex.try_lock());
 }
+
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 
 }
 
