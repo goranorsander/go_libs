@@ -1,5 +1,5 @@
 //
-//  std_erase_example.cpp
+//  erase_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
@@ -8,23 +8,18 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go/config.hpp>
-
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-int main() { return -1; }
-#else
-
+#include <go_boost/config.hpp>
+#include <go_boost/utility.hpp>
 #include <deque>
 #include <iostream>
-#include <go/utility.hpp>
+#include <boost/assign.hpp>
 
-namespace u = go::utility;
-namespace ui = go::utility::iterator;
+namespace u = go_boost::utility;
+namespace ui = go_boost::utility::iterator;
 
 int main()
 {
-    std::deque<int> container = { 1, 2, 3, 4, 5 };
+    std::deque<int> container = boost::assign::list_of<int>(1)(2)(3)(4)(5);
     std::deque<int>::iterator it = container.begin();
     ++it;
     it = ui::erase(container, it, 3);
@@ -33,5 +28,3 @@ int main()
     std::cout << container.size() << std::endl;
     return 0;
 }
-
-#endif  // Required C++11 feature is not supported by this compiler
