@@ -45,6 +45,10 @@ __warning _message_
 #define GO_BOOST_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7 1
 
 // C++11 support
+#if (GO_BOOST_GCC_VERSION < 40800)
+#define GO_BOOST_NO_CXX11_THREAD_LOCAL_STORAGE 1
+#endif  // #if (GO_BOOST_GCC_VERSION < 40800)
+
 #if defined(BOOST_NO_CXX11_CONSTEXPR)
 #define GO_BOOST_CONSTEXPR
 #else
@@ -58,6 +62,12 @@ __warning _message_
 #define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+#if defined(BOOST_NO_CXX11_NULLPTR)
+#define GO_BOOST_NULLPTR NULL
+#else
+#define GO_BOOST_NULLPTR nullptr
+#endif  // #if defined(BOOST_NO_CXX11_NULLPTR)
 
 // C++ keyword override and final support
 #if (GO_BOOST_GCC_VERSION < 40700)

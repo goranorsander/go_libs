@@ -35,4 +35,6 @@
 #include GO_BOOST_PLATFORM_CONFIG
 #endif  // #ifdef GO_BOOST_PLATFORM_CONFIG
 
+#include "go_boost/config/preprocessor.hpp"
+
 #endif  // #ifndef GO_BOOST_CONFIG_HPP_INCLUDED
