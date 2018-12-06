@@ -107,6 +107,7 @@ _Pragma message _message_
 #define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()
@@ -118,6 +119,12 @@ _Pragma message _message_
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
+
+#if defined(GO_NO_CXX11_NULLPTR)
+#define GONULLPTR NULL
+#else
+#define GO_NULLPTR nullptr
+#endif  // #if defined(GO_NO_CXX11_NULLPTR)
 
 #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 #define GO_FINAL
@@ -215,7 +222,6 @@ _Pragma message _message_
 #define GO_NO_CXX17_ALLOW_CONSTANT_EVALUATION_FOR_ALL_NONTYPE_TEMPLATE_ARGUMENTS 1
 #define GO_NO_CXX17_FOLD_EXPRESSIONS 1
 #define GO_NO_CXX17_HAS_INCLUDE_IN_PREPROCESSOR_CONDITIONALS 1
-#define GO_NO_CXX17 1
 #endif  // #if (GO_CLANG_VERSION < 30600)
 #if (GO_CLANG_VERSION < 30500)
 #define GO_NO_CXX17_TYPENAME_IN_A_TEMPLATE_TEMPLATE_PARAMETER 1

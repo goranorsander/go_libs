@@ -120,6 +120,7 @@ __warning _message_
 #define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()
@@ -131,6 +132,12 @@ __warning _message_
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
+
+#if defined(GO_NO_CXX11_NULLPTR)
+#define GONULLPTR NULL
+#else
+#define GO_NULLPTR nullptr
+#endif  // #if defined(GO_NO_CXX11_NULLPTR)
 
 #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 #define GO_FINAL
@@ -215,6 +222,7 @@ __warning _message_
 #define GO_NO_CXX17_UNARY_FOLD_EXPRESSIONS_AND_EMPTY_PARAMETER_PACKS 1
 #define GO_NO_CXX17_DIFFERING_BEGIN_AND_END_TYPES_IN_RANGE_BASED_FOR 1
 #define GO_NO_CXX17_STD_UNCAUGHT_EXCEPTIONS 1
+#define GO_NO_CXX17_IMPROVING_STD_PAIR_AND_STD_TUPLE 1
 #define GO_NO_CXX17_STD_SHARED_MUTEX_UNTIMED 1
 #endif  // #if (GO_GCC_VERSION < 60000)
 #if (GO_GCC_VERSION < 50100)
@@ -229,9 +237,6 @@ __warning _message_
 #define GO_NO_CXX17_HEXADECIMAL_FLOATING_POINT_LITERALS 1
 #define GO_NO_CXX17 1
 #endif  // #if (GO_GCC_VERSION < 30000)
-#if (GO_GCC_VERSION)
-#define GO_NO_CXX17_IMPROVING_STD_PAIR_AND_STD_TUPLE 1
-#endif  // #if (GO_GCC_VERSION)
 
 // C99 support
 #if (GO_GCC_VERSION < 40300)

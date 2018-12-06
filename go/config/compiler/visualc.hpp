@@ -123,6 +123,8 @@ __pragma(message(_message_))
 #define GO_NO_CXX11_RANGE_FOR_LOOP 1
 #define GO_NO_CXX11_OVERRIDE_AND_FINAL 1
 #define GO_NO_CXX11_CONCURRENCY_SUPPORT 1
+#define GO_NO_CXX11_CONCURRENCY_SUPPORT 1
+#define GO_NO_CXX11_MUTEX 1
 #endif  // #if (_MSC_VER < 1700)
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX11_AUTO 1
@@ -149,6 +151,7 @@ __pragma(message(_message_))
 #define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 #if defined(GO_NO_CXX11_NOEXCEPT)
 #define GO_NOEXCEPT
 #define GO_NOEXCEPT_OR_NOTHROW throw()
@@ -160,6 +163,12 @@ __pragma(message(_message_))
 #define GO_NOEXCEPT_IF(_predicate_) noexcept((_predicate_))
 #define GO_NOEXCEPT_EXPR(_expression_) noexcept((_expression_))
 #endif  // #if defined(GO_NO_CXX11_NOEXCEPT)
+
+#if defined(GO_NO_CXX11_NULLPTR)
+#define GONULLPTR NULL
+#else
+#define GO_NULLPTR nullptr
+#endif  // #if defined(GO_NO_CXX11_NULLPTR)
 
 #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 #define GO_FINAL
@@ -221,7 +230,6 @@ __pragma(message(_message_))
 #define GO_NO_CXX17_STD_UNCAUGHT_EXCEPTIONS 1
 #define GO_NO_CXX17_IMPROVING_STD_PAIR_AND_STD_TUPLE 1
 #define GO_NO_CXX17_STD_SHARED_MUTEX_UNTIMED 1
-#define GO_NO_CXX17 1
 #endif  // #if (_MSC_VER < 1900)
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX17_REMOVING_TRIGRAPHS 1
