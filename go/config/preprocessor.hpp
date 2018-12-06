@@ -31,6 +31,6 @@
 #define GO_FUNC __func__
 #endif  // #if defined(GO_MSVC)
 
-#define GO_WFUNC GO_TO_WSTRING(GO_FUNC)
+#define GO_WFUNC GO_TO_WSTRING(GO_TO_STRING(GO_FUNC))
 
 #endif  // #ifndef GO_CONFIG_PREPROCESSOR_HPP_INCLUDED
