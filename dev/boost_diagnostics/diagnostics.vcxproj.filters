@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="go_boost">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\diagnostics">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="go_boost\diagnostics\log">
+      <UniqueIdentifier>{a61833ea-2eaf-40a2-83e8-3e51310da24d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go_boost\diagnostics\log\detail">
+      <UniqueIdentifier>{4aa48201-2ca5-43ef-aec0-a4fb6d8a4ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="go_boost\diagnostics\log\policy">
+      <UniqueIdentifier>{a85d01a7-9801-4326-b52f-3e066f346bb6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\go_boost\diagnostics.hpp">
+      <Filter>go_boost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log.hpp">
+      <Filter>go_boost\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\log.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\log_level.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\log_line.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\thread_id.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\timestamp.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\decode.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\string_literal.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\types.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\buffer.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\queue_buffer.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\ring_buffer.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\buffer_interface.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\detail\logger.hpp">
+      <Filter>go_boost\diagnostics\log\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\policy\logging_policy_interface.hpp">
+      <Filter>go_boost\diagnostics\log\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\policy\guaranteed_logger.hpp">
+      <Filter>go_boost\diagnostics\log\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\policy\non_guaranteed_logger.hpp">
+      <Filter>go_boost\diagnostics\log\policy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go_boost\diagnostics\log\file_writer.hpp">
+      <Filter>go_boost\diagnostics\log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\enable_intellisence.cpp" />
+  </ItemGroup>
+</Project>
