@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #include <go/mvvm/command_execution_observer_interface.hpp>
 #include <go/mvvm/command_manager.hpp>
 #include <go/mvvm/data_context_interface.hpp>

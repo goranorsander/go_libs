@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #include <go/signals/signal.hpp>
 #include <go/signals/slot.hpp>
 #include <go/signals/slot_arguments.hpp>

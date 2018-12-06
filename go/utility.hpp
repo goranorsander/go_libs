@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #include <go/utility/noncopyable.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/nonmovable.hpp>
