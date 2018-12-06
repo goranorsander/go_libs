@@ -15,13 +15,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals", "std_signals\sign
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals_tests", "std_signals\signals_tests.vcxproj", "{3B7E3A04-6EF7-4D77-B650-6776B813939B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_property", "boost_property\boost_property.vcxproj", "{73046F89-903D-413D-92B3-EF88D64097F6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property", "boost_property\property.vcxproj", "{73046F89-903D-413D-92B3-EF88D64097F6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_property_tests", "boost_property\boost_property_tests.vcxproj", "{F7CFC27F-4576-4879-BA49-9A895EDC319A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "property_tests", "boost_property\property_tests.vcxproj", "{F7CFC27F-4576-4879-BA49-9A895EDC319A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm", "boost_mvvm\boost_mvvm.vcxproj", "{AAFC5379-94AF-4B21-A4A9-7A867F5A07D9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm", "boost_mvvm\mvvm.vcxproj", "{AAFC5379-94AF-4B21-A4A9-7A867F5A07D9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_mvvm_tests", "boost_mvvm\boost_mvvm_tests.vcxproj", "{3D6E880C-944A-4EBF-9072-861E84C02D5A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_tests", "boost_mvvm\mvvm_tests.vcxproj", "{3D6E880C-944A-4EBF-9072-861E84C02D5A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config", "std_config\config.vcxproj", "{CA1E677D-34E7-4AE9-82CA-8158F0ED5265}"
 EndProject
@@ -43,19 +43,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility_tests", "std_utilit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mvvm_mfc_starfleet_example", "boost_mvvm\mvvm_mfc_starfleet_example.vcxproj", "{C4DCE310-256B-4DCD-A024-1A2D347D99BF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_signals", "boost_signals\boost_signals.vcxproj", "{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "signals", "boost_signals\signals.vcxproj", "{A816E015-D181-4FA7-B2FC-EB1CC2E4DF2E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility", "boost_utility\boost_utility.vcxproj", "{EF398B6B-2025-411F-9479-5FB666A7A245}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "boost_utility\utility.vcxproj", "{EF398B6B-2025-411F-9479-5FB666A7A245}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "go_libs", "go_libs\go_libs.vcxproj", "{9AB76A50-100E-464C-865F-1048072CC5E2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_config", "boost_config\boost_config.vcxproj", "{FABAD94E-A2BD-42ED-BABF-B630ADF8CA99}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config", "boost_config\config.vcxproj", "{FABAD94E-A2BD-42ED-BABF-B630ADF8CA99}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception", "boost_exception\boost_exception.vcxproj", "{B6DB2899-5BDA-4ABE-A2B9-C664376B8004}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception", "boost_exception\exception.vcxproj", "{B6DB2899-5BDA-4ABE-A2B9-C664376B8004}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception", "std_exception\exception.vcxproj", "{CC49C15B-9830-497E-B151-04CCEA0EDE79}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_utility_tests", "boost_utility\boost_utility_tests.vcxproj", "{D14B0B9F-8E8E-4230-9051-C4310769F632}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility_tests", "boost_utility\utility_tests.vcxproj", "{D14B0B9F-8E8E-4230-9051-C4310769F632}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "value_property_example", "std_property\value_property_example.vcxproj", "{5BFF6B8F-FB28-4774-8B35-D5AC2EFAB362}"
 EndProject
@@ -95,9 +95,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E2D5652A
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception_tests", "std_exception\exception_tests.vcxproj", "{F427A655-42DF-48CD-A6A4-DC79440773CA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_config_tests", "boost_config\boost_config_tests.vcxproj", "{3C75FE42-A051-4999-98BB-929F0D96DB7F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config_tests", "boost_config\config_tests.vcxproj", "{3C75FE42-A051-4999-98BB-929F0D96DB7F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception_tests", "boost_exception\boost_exception_tests.vcxproj", "{4CA19070-D48B-4FB0-AF06-9BF24C5223FB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exception_tests", "boost_exception\exception_tests.vcxproj", "{4CA19070-D48B-4FB0-AF06-9BF24C5223FB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scope_guard_example", "std_utility\scope_guard_example.vcxproj", "{01506A19-EBA7-4C86-BEE6-DFD99F0FFC08}"
 EndProject
@@ -138,6 +138,12 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log_example", "std_diagnostics\log_example.vcxproj", "{6D2A34A3-C2E9-4DE2-8B96-313C494BA600}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wlog_example", "std_diagnostics\wlog_example.vcxproj", "{5BFD23AF-6463-4848-95F8-C08EEADBC3C9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log_example", "boost_diagnostics\log_example.vcxproj", "{95EBF9D4-935F-4284-B372-3DBB4412FFE1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wlog_example", "boost_diagnostics\wlog_example.vcxproj", "{4857A41D-E430-4506-8EC3-FF240AAD80F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "diagnostics", "boost_diagnostics\diagnostics.vcxproj", "{562F1D62-90AA-420F-ADD7-C738DB68EF3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -627,6 +633,30 @@ Global
 		{5BFD23AF-6463-4848-95F8-C08EEADBC3C9}.Release|Win32.Build.0 = Release|Win32
 		{5BFD23AF-6463-4848-95F8-C08EEADBC3C9}.Release|x64.ActiveCfg = Release|x64
 		{5BFD23AF-6463-4848-95F8-C08EEADBC3C9}.Release|x64.Build.0 = Release|x64
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Debug|Win32.Build.0 = Debug|Win32
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Debug|x64.ActiveCfg = Debug|x64
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Debug|x64.Build.0 = Debug|x64
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Release|Win32.ActiveCfg = Release|Win32
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Release|Win32.Build.0 = Release|Win32
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Release|x64.ActiveCfg = Release|x64
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1}.Release|x64.Build.0 = Release|x64
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Debug|Win32.Build.0 = Debug|Win32
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Debug|x64.ActiveCfg = Debug|x64
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Debug|x64.Build.0 = Debug|x64
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Release|Win32.ActiveCfg = Release|Win32
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Release|Win32.Build.0 = Release|Win32
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Release|x64.ActiveCfg = Release|x64
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4}.Release|x64.Build.0 = Release|x64
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Debug|Win32.Build.0 = Debug|Win32
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Debug|x64.ActiveCfg = Debug|x64
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Debug|x64.Build.0 = Debug|x64
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Release|Win32.ActiveCfg = Release|Win32
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Release|Win32.Build.0 = Release|Win32
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Release|x64.ActiveCfg = Release|x64
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -697,6 +727,9 @@ Global
 		{F9C5F151-5E64-4659-8EFC-9D39B3C2CA8E} = {74F49F20-F733-4E7D-8088-24D519306C6F}
 		{6D2A34A3-C2E9-4DE2-8B96-313C494BA600} = {04DAA2E1-F5BC-49C6-811B-E295FF683261}
 		{5BFD23AF-6463-4848-95F8-C08EEADBC3C9} = {04DAA2E1-F5BC-49C6-811B-E295FF683261}
+		{95EBF9D4-935F-4284-B372-3DBB4412FFE1} = {DCA714AF-BA31-426C-9924-5950C23EEF9B}
+		{4857A41D-E430-4506-8EC3-FF240AAD80F4} = {DCA714AF-BA31-426C-9924-5950C23EEF9B}
+		{562F1D62-90AA-420F-ADD7-C738DB68EF3B} = {50CCD438-42C4-4A77-AE86-851340047741}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {314278FE-C3E4-4B26-8801-E3D86961A835}

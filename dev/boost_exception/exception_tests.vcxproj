@@ -23,7 +23,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>boost_exception_tests</RootNamespace>
+    <RootNamespace>exception_tests</RootNamespace>
     <ProjectGuid>{4CA19070-D48B-4FB0-AF06-9BF24C5223FB}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

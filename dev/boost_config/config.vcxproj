@@ -19,47 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\go_boost\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\deleted_assignment_operator.hpp" />
-    <ClInclude Include="..\..\go_boost\property\exception.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\detail\arithmetic_comparison_operators.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\detail\property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\detail\read_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\detail\write_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\read_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\read_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\read_only_value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\write_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\write_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\nameless\write_only_value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\arithmetic_comparison_operators.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\assignment_operator.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\read_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\detail\write_only_property_base.hpp" />
-    <ClInclude Include="..\..\go_boost\property\reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\policy\proxy.hpp" />
-    <ClInclude Include="..\..\go_boost\property\policy\reference.hpp" />
-    <ClInclude Include="..\..\go_boost\property\policy\value.hpp" />
-    <ClInclude Include="..\..\go_boost\property\read_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\read_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\read_only_value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\value_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\write_only_reference_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\write_only_property.hpp" />
-    <ClInclude Include="..\..\go_boost\property\write_only_value_property.hpp" />
+    <ClInclude Include="..\..\go_boost\config.hpp" />
+    <ClInclude Include="..\..\go_boost\config\compiler\clang.hpp" />
+    <ClInclude Include="..\..\go_boost\config\compiler\gcc.hpp" />
+    <ClInclude Include="..\..\go_boost\config\compiler\visualc.hpp" />
+    <ClInclude Include="..\..\go_boost\config\platform\linux.hpp" />
+    <ClInclude Include="..\..\go_boost\config\platform\windows.hpp" />
+    <ClInclude Include="..\..\go_boost\config\preprocessor.hpp" />
+    <ClInclude Include="..\..\go_boost\config\select_compiler_config.hpp" />
+    <ClInclude Include="..\..\go_boost\config\select_platform_config.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>boost_property</RootNamespace>
-    <ProjectGuid>{73046F89-903D-413D-92B3-EF88D64097F6}</ProjectGuid>
+    <RootNamespace>config</RootNamespace>
+    <ProjectGuid>{FABAD94E-A2BD-42ED-BABF-B630ADF8CA99}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -59,6 +59,9 @@
     <Text Include="..\..\libs\std_diagnostics\CMakeLists.txt">
       <Filter>CMake Configuration\libs\std_diagnostics</Filter>
     </Text>
+    <Text Include="..\..\libs\boost_diagnostics\CMakeLists.txt">
+      <Filter>CMake Configuration\libs\boost_diagnostics</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Configuration">
@@ -252,6 +255,9 @@
     </Filter>
     <Filter Include="CMake Configuration\libs\std_utility">
       <UniqueIdentifier>{af6fd419-bd69-4bf7-9ed0-5c59f9b33655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\libs\boost_diagnostics">
+      <UniqueIdentifier>{9fd0cd71-ac0b-43ad-bd06-1b2c56cee9b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

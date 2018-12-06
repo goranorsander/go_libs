@@ -19,49 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\go_boost\utility.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\container\size.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\iterator\erase.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\iterator\try_move_backward.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\placebo_mutex.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\primitive_type_implicit_specializer.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\spin_lock.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\algorithm.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\algorithm_fwd.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\ascii.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\create.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\create_exception.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\setup_global_locale.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\string_cast_fwd.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_linux.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\detail\string_convert_windows.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\iso_8859_1.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\string_cast.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\ucs2.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string\windows_1252.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string_cast.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\string_cast_exception.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\u16string.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\u2string.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\u32string.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\u8string.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\value_guard.hpp" />
+    <ClInclude Include="..\..\go_boost\exception.hpp" />
+    <ClInclude Include="..\..\go_boost\exception\exception.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>boost_utility</RootNamespace>
-    <ProjectGuid>{EF398B6B-2025-411F-9479-5FB666A7A245}</ProjectGuid>
+    <RootNamespace>signals</RootNamespace>
+    <ProjectGuid>{B6DB2899-5BDA-4ABE-A2B9-C664376B8004}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
