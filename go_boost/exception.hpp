@@ -11,6 +11,12 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go_boost/config.hpp>
+
+#ifdef BOOST_HAS_PRAGMA_ONCE
+#pragma once
+#endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
+
 #include <go_boost/exception/exception.hpp>
 
 #endif  // #ifndef GO_BOOST_EXCEPTION_HPP_INCLUDED
