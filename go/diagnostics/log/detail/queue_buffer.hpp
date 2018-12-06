@@ -43,7 +43,7 @@ public:
     typedef L log_line_type;
     typedef queue_buffer<L> this_type;
 
-    typedef typename buffer<log_line_type> buffer_type;
+    typedef buffer<log_line_type> buffer_type;
     typedef typename L::string_type string_type;
     typedef typename L::out_stream_type out_stream_type;
     typedef typename L::char_type char_type;

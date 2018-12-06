@@ -20,6 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/detail/string_literal.hpp>
 #include <go/utility/string_cast.hpp>
 
+#include <iostream> 
 #include <string>
 
 namespace go

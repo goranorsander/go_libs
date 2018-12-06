@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <go/diagnostics/log/log_line.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/utility/string_cast.hpp>
 
 #include <fstream>
 #include <string>
@@ -53,6 +54,7 @@ public:
     basic_file_writer(const string_type& log_directory, const string_type& log_file_name, uint32_t log_file_roll_size_mb)
         : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
         , _name(log_directory + log_file_name)
+        , _os()
     {
         roll_file();
     }
@@ -108,10 +110,10 @@ inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
 
     _bytes_written = 0;
     _os.reset(new std::wofstream());
-    std::wstring log_file_name = _name;
-    log_file_name.append(L".");
-    log_file_name.append(std::to_wstring(++_file_number));
-    log_file_name.append(L".txt");
+    std::string log_file_name = go::utility::string_cast<std::string>(_name);
+    log_file_name.append(".");
+    log_file_name.append(std::to_string(++_file_number));
+    log_file_name.append(".txt");
     _os->open(log_file_name, std::wofstream::out | std::wofstream::trunc);
 }
 

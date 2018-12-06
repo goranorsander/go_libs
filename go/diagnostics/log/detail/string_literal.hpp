@@ -29,10 +29,11 @@ namespace detail
 template <typename C>
 struct string_literal_t
 {
-    typedef typename C char_type;
+    typedef C char_type;
     typedef string_literal_t<C> this_type;
 
     ~string_literal_t() = default;
+
     explicit string_literal_t(const char_type* s)
         : _s(s)
     {

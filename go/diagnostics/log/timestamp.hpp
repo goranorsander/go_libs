@@ -58,15 +58,19 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
 #endif  // #if defined(GO_COMP_MSVC)
     struct tm result;
     const auto error = localtime_s(&result, &time_t);
-    char buffer[32];
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %T.", &result);
+    char ymd_hms[32];
+    std::strftime(ymd_hms, 32, "%Y-%m-%d %T.", &result);
     char microseconds[7];
 #if defined(GO_NO_CXX11_SNPRINTF)
     std::sprintf(microseconds, "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #else
-    std::snprintf(microseconds, sizeof(microseconds), "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
+    std::snprintf(microseconds, 7, "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #endif  // #if defined(GO_NO_CXX11_SNPRINTF)
-    os << '[' << buffer << microseconds << ']';
+#if defined(GO_COMP_GCC)
+    os << std::string("[") << std::string(ymd_hms) << std::string(microseconds) << std::string("]");
+#else
+    os << '[' << ymd_hms << microseconds << ']';
+#endif  // #if defined(GO_COMP_GCC)
 }
 
 inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
@@ -80,11 +84,15 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
 #endif  // #if defined(GO_COMP_MSVC)
     struct tm result;
     const auto error = localtime_s(&result, &time_t);
-    wchar_t buffer[32];
-    std::wcsftime(buffer, sizeof(buffer), L"%Y-%m-%d %T.", &result);
+    wchar_t ymd_hms[32];
+    std::wcsftime(ymd_hms, 32, L"%Y-%m-%d %T.", &result);
     wchar_t microseconds[7];
-    std::swprintf(microseconds, sizeof(microseconds), L"%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
-    os << L'[' << buffer << microseconds << L']';
+    std::swprintf(microseconds, 7, L"%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
+#if defined(GO_COMP_GCC)
+    os << std::wstring(L"[") << std::wstring(ymd_hms) << std::wstring(microseconds) << std::wstring(L"]");
+#else
+    os << L'[' << ymd_hms << microseconds << L']';
+#endif  // #if defined(GO_COMP_GCC)
 }
 
 } // namespace log

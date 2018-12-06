@@ -58,17 +58,17 @@ public:
 public:
     ~basic_logger()
     {
-        _state.store(logger_state::logger_state_shutdown);
+        _state.store(logger_state::shutdown);
         _thread.join();
     }
 
     basic_logger(const logging_policy_interface_type& policy, const string_type& log_directory, const string_type& log_file_name, const uint32_t log_file_roll_size_mb)
-        : _state(logger_state::logger_state_init)
+        : _state(logger_state::init)
         , _buffer_base(policy.create_buffer())
         , _file_writer(log_directory, log_file_name, go::utility::max_of(1u, log_file_roll_size_mb))
         , _thread(&basic_logger::pop, this)
     {
-        _state.store(logger_state::logger_state_ready, std::memory_order_release);
+        _state.store(logger_state::ready, std::memory_order_release);
     }
 
     void add(log_line_type&& logline)
@@ -79,38 +79,43 @@ public:
 private:
     void pop()
     {
-        while (_state.load(std::memory_order_acquire) == logger_state::logger_state_init)
+        try
         {
-            std::this_thread::sleep_for(std::chrono::microseconds(50));
-        }
-
-        log_line_type logline(log_level::none, nullptr, nullptr, 0);
-
-        while (_state.load() == logger_state::logger_state_ready)
-        {
-            if (_buffer_base->try_pop(logline))
-            {
-                _file_writer.write(logline);
-            }
-            else
+            while (_state.load(std::memory_order_acquire) == logger_state::init)
             {
                 std::this_thread::sleep_for(std::chrono::microseconds(50));
             }
-        }
 
-        // Pop and log all remaining entries
-        while (_buffer_base->try_pop(logline))
-        {
-            _file_writer.write(logline);
+            log_line_type logline(log_level::none, nullptr, nullptr, 0);
+
+            while (_state.load() == logger_state::ready)
+            {
+                if (_buffer_base->try_pop(logline))
+                {
+                    _file_writer.write(logline);
+                }
+                else
+                {
+                    std::this_thread::sleep_for(std::chrono::microseconds(50));
+                }
+            }
+
+            // Pop and log all remaining entries
+            while (_buffer_base->try_pop(logline))
+            {
+                _file_writer.write(logline);
+            }
         }
+        catch (...) {}
     }
 
 private:
     enum class logger_state
+        : int8_t
     {
-        logger_state_init,
-        logger_state_ready,
-        logger_state_shutdown
+        init,
+        ready,
+        shutdown
     };
 
 private:

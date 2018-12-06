@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #include <go/diagnostics/log.hpp>
 
 #endif  // #ifndef GO_DIAGNOSTICS_HPP_INCLUDED

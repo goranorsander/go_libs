@@ -13,7 +13,10 @@
 
 #include <go/config.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
+
+#if !defined(GO_NO_CXX11_MUTEX)
 #include <mutex>
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 
 namespace go
 {
@@ -32,9 +35,13 @@ public:
     bool try_lock();
     void unlock();
 
+#if !defined(GO_NO_CXX11_MUTEX)
+
     typedef std::mutex::native_handle_type native_handle_type;
 
     native_handle_type native_handle();
+
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 };
 
 inline void placebo_mutex::lock()
@@ -50,10 +57,14 @@ inline void placebo_mutex::unlock()
 {
 }
 
+#if !defined(GO_NO_CXX11_MUTEX)
+
 inline placebo_mutex::native_handle_type placebo_mutex::native_handle()
 {
     return placebo_mutex::native_handle_type();
 }
+
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 
 }
 }

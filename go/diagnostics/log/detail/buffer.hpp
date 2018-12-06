@@ -71,7 +71,7 @@ public:
         return _write_state[size].fetch_add(1, std::memory_order_acquire) + 1 == size;
     }
 
-    bool try_pop(log_line_type & logline, unsigned int const read_index)
+    bool try_pop(log_line_type& logline, unsigned int const read_index)
     {
         if (_write_state[read_index].load(std::memory_order_acquire))
         {
@@ -87,7 +87,7 @@ private:
     {
         ~element() = default;
 
-        element(log_line_type && nanologline)
+        element(log_line_type&& nanologline)
             : logline(std::move(nanologline))
         {
         }

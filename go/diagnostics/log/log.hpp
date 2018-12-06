@@ -72,7 +72,7 @@ public:
 
     static std::atomic<unsigned int>& log_level()
     {
-        static std::atomic<unsigned int> level = {0};
+        static std::atomic<unsigned int> level = { 0 };
         return level;
     }
 };

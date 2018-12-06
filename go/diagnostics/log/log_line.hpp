@@ -22,8 +22,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/log_level.hpp>
 #include <go/diagnostics/log/thread_id.hpp>
 #include <go/diagnostics/log/timestamp.hpp>
+#include <go/utility/min_max.hpp>
 
 #include <cstdint>
+#include <cstring>
 #include <memory>
 
 namespace go
@@ -228,13 +230,15 @@ public:
 
     basic_log_line& operator<<(const std::string& arg)
     {
-        encode_c_string(arg.c_str(), arg.length());
+        static const out_stream_type* const s = GO_NULLPTR;
+        encode_c_string(arg.c_str(), arg.length(), s);
         return *this;
     }
 
     basic_log_line& operator<<(const std::wstring& arg)
     {
-        encode_c_string(arg.c_str(), arg.length());
+        static const out_stream_type* const s = GO_NULLPTR;
+        encode_c_string(arg.c_str(), arg.length(), s);
         return *this;
     }
 
@@ -312,11 +316,51 @@ private:
 
     void encode(std::string::value_type* arg);
     void encode(const std::string::value_type* arg);
-    void encode_c_string(const std::string::value_type* arg, const std::size_t length);
+
+    void encode_c_string(const std::string::value_type* arg, const std::size_t length, const std::ostream* const /*stream_selector*/)
+    {
+        if (length == 0)
+            return;
+        const std::size_t string_size = length + 1;
+        resize_buffer_if_needed(1 + string_size);
+        std::string::value_type* b = buffer();
+        auto type_id = detail::types_tuple_index<std::string::value_type*, this_type::supported_types_type>::value;
+        *reinterpret_cast<uint8_t*>(b++) = static_cast<uint8_t>(type_id);
+        memcpy(b, arg, string_size);
+        _bytes_used += 1 + string_size;
+    }
+
+    void encode_c_string(const std::string::value_type* arg, const std::size_t length, const std::wostream* const stream_selector)
+    {
+        if (length == 0)
+            return;
+        const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(arg));
+        encode_c_string(sws.c_str(), sws.size(), stream_selector);
+    }
 
     void encode(std::wstring::value_type* arg);
     void encode(const std::wstring::value_type* arg);
-    void encode_c_string(const std::wstring::value_type* arg, const std::size_t length);
+
+    void encode_c_string(const std::wstring::value_type* arg, const std::size_t length, const std::ostream* const stream_selector)
+    {
+        if (length == 0)
+            return;
+        const std::string mbs = go::utility::string_cast<std::string>(std::wstring(arg));
+        encode_c_string(mbs.c_str(), mbs.size(), stream_selector);
+    }
+
+    void encode_c_string(const std::wstring::value_type* arg, const std::size_t length, const std::wostream* const /*stream_selector*/)
+    {
+        if (length == 0)
+            return;
+        const std::size_t string_size = (length + 1) * 2;
+        resize_buffer_if_needed(1 + string_size);
+        std::wstring::value_type* b = buffer();
+        auto type_id = detail::types_tuple_index<std::wstring::value_type*, this_type::supported_types_type>::value;
+        *reinterpret_cast<uint8_t*>(b++) = static_cast<uint8_t>(type_id);
+        memcpy(b, arg, string_size);
+        _bytes_used += 1 + string_size;
+    }
 
     void resize_buffer_if_needed(const std::size_t additional_bytes)
     {
@@ -411,103 +455,65 @@ private:
 template<>
 inline void basic_log_line<std::string, std::ostream>::encode(std::string::value_type* arg)
 {
+    static const std::ostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, strlen(arg));
+        encode_c_string(arg, strlen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::wstring, std::wostream>::encode(std::string::value_type* arg)
 {
+    static const std::wostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, strlen(arg));
+        encode_c_string(arg, strlen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::string, std::ostream>::encode(std::wstring::value_type* arg)
 {
+    static const std::ostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, wcslen(arg));
+        encode_c_string(arg, wcslen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::wstring, std::wostream>::encode(std::wstring::value_type* arg)
 {
+    static const std::wostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, wcslen(arg));
+        encode_c_string(arg, wcslen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::string, std::ostream>::encode(const std::string::value_type* arg)
 {
+    static const std::ostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, strlen(arg));
+        encode_c_string(arg, strlen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::wstring, std::wostream>::encode(const std::string::value_type* arg)
 {
+    static const std::wostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, strlen(arg));
+        encode_c_string(arg, strlen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::string, std::ostream>::encode(const std::wstring::value_type* arg)
 {
+    static const std::ostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, wcslen(arg));
+        encode_c_string(arg, wcslen(arg), s);
 }
 
 template<>
 inline void basic_log_line<std::wstring, std::wostream>::encode(const std::wstring::value_type* arg)
 {
+    static const std::wostream* const s = GO_NULLPTR;
     if (arg != nullptr)
-        encode_c_string(arg, wcslen(arg));
-}
-
-template<>
-inline void basic_log_line<std::string, std::ostream>::encode_c_string(const std::string::value_type* arg, const std::size_t length)
-{
-    if (length == 0)
-        return;
-    const std::size_t string_size = length + 1;
-    resize_buffer_if_needed(1 + string_size);
-    std::string::value_type* b = buffer();
-    auto type_id = detail::types_tuple_index<std::string::value_type*, this_type::supported_types_type>::value;
-    *reinterpret_cast<uint8_t*>(b++) = static_cast<uint8_t>(type_id);
-    memcpy(b, arg, string_size);
-    _bytes_used += 1 + string_size;
-}
-
-template<>
-inline void basic_log_line<std::wstring, std::wostream>::encode_c_string(const std::string::value_type* arg, const std::size_t length)
-{
-    if (length == 0)
-        return;
-    const std::wstring sws = go::utility::string_cast<std::wstring>(std::string(arg));
-    encode_c_string(sws.c_str(), sws.size());
-}
-
-template<>
-inline void basic_log_line<std::string, std::ostream>::encode_c_string(const std::wstring::value_type* arg, const std::size_t length)
-{
-    if (length == 0)
-        return;
-    const std::string mbs = go::utility::string_cast<std::string>(std::wstring(arg));
-    encode_c_string(mbs.c_str(), mbs.size());
-}
-
-template<>
-inline void basic_log_line<std::wstring, std::wostream>::encode_c_string(const std::wstring::value_type* arg, const std::size_t length)
-{
-    if (length == 0)
-        return;
-    const std::size_t string_size = (length + 1) * 2;
-    resize_buffer_if_needed(1 + string_size);
-    std::wstring::value_type* b = buffer();
-    auto type_id = detail::types_tuple_index<std::wstring::value_type*, this_type::supported_types_type>::value;
-    *reinterpret_cast<uint8_t*>(b++) = static_cast<uint8_t>(type_id);
-    memcpy(b, arg, string_size);
-    _bytes_used += 1 + string_size;
+        encode_c_string(arg, wcslen(arg), s);
 }
 
 template<>
