@@ -1,5 +1,5 @@
 //
-//  boost_phoenix_functor_example.cpp
+//  phoenix_functor_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

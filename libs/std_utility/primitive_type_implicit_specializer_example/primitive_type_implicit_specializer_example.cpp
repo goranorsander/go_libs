@@ -1,5 +1,5 @@
 //
-//  std_primitive_type_implicit_specializer_example.cpp
+//  primitive_type_implicit_specializer_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

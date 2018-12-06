@@ -1,5 +1,5 @@
 //
-//  boost_relay_command_test_suite.cpp
+//  relay_command_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

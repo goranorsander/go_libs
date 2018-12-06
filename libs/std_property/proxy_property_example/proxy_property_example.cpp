@@ -1,5 +1,5 @@
 //
-//  std_proxy_property_example.cpp
+//  proxy_property_example.cpp
 //
 //  Copyright 2017-2018 Göran Orsander
 //

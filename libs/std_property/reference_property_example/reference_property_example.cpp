@@ -1,5 +1,5 @@
 //
-//  std_reference_property_example.cpp
+//  reference_property_example.cpp
 //
 //  Copyright 2017-2018 Göran Orsander
 //

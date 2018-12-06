@@ -1,5 +1,5 @@
 //
-//  boost_command_execution_observer_test_suite.cpp
+//  command_execution_observer_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

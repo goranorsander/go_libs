@@ -1,5 +1,5 @@
 //
-//  boost_string_cast_example.cpp
+//  string_cast_example.cpp
 //
 //  Copyright 2018 Göran Orsander
 //

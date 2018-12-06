@@ -1,5 +1,5 @@
 //
-//  std_event_manager_example.cpp
+//  event_manager_example.cpp
 //
 //  Copyright 2017-2018 Göran Orsander
 //

@@ -1,5 +1,5 @@
 //
-//  boost_command_test_suite.cpp
+//  command_test_suite.cpp
 //
 //  Copyright 2018 Göran Orsander
 //
