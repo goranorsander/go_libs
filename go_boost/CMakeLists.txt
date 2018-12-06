@@ -14,6 +14,10 @@ file(GLOB GO_BOOST_DIR_FILES ./*.hpp)
 file(GLOB GO_BOOST_CONFIG_DIR_FILES ./config/*.hpp)
 file(GLOB GO_BOOST_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
 file(GLOB GO_BOOST_CONFIG_PLATFORM_DIR_FILES ./config/platform/*.hpp)
+file(GLOB GO_BOOST_DIAGNOSTICS_DIR_FILES ./diagnostics/*.hpp)
+file(GLOB GO_BOOST_DIAGNOSTICS_LOG_DIR_FILES ./diagnostics/log/*.hpp)
+file(GLOB GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIR_FILES ./diagnostics/log/detail/*.hpp)
+file(GLOB GO_BOOST_DIAGNOSTICS_LOG_POLICY_DIR_FILES ./diagnostics/log/policy/*.hpp)
 file(GLOB GO_BOOST_EXCEPTION_DIR_FILES ./exception/*.hpp)
 file(GLOB GO_BOOST_MVVM_DIR_FILES ./mvvm/*.hpp)
 file(GLOB GO_BOOST_MVVM_ITERATOR_DIR_FILES ./mvvm/iterator/*.hpp)
@@ -35,6 +39,10 @@ add_library(${PROJECT_GO_BOOST_LIBS_NAME} STATIC
     ${GO_BOOST_CONFIG_DIR_FILES}
     ${GO_BOOST_CONFIG_COMPILER_DIR_FILES}
     ${GO_BOOST_CONFIG_PLATFORM_DIR_FILES}
+    ${GO_BOOST_DIAGNOSTICS_DIR_FILES}
+    ${GO_BOOST_DIAGNOSTICS_LOG_DIR_FILES}
+    ${GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIR_FILES}
+    ${GO_BOOST_DIAGNOSTICS_LOG_POLICY_DIR_FILES}
     ${GO_BOOST_EXCEPTION_DIR_FILES}
     ${GO_BOOST_MVVM_DIR_FILES}
     ${GO_BOOST_MVVM_ITERATOR_DIR_FILES}
@@ -58,6 +66,10 @@ source_group(go_boost FILES ${GO_BOOST_DIR_FILES})
 source_group(go_boost\\config FILES ${GO_BOOST_CONFIG_DIR_FILES})
 source_group(go_boost\\config\\compiler FILES ${GO_BOOST_CONFIG_COMPILER_DIR_FILES})
 source_group(go_boost\\config\\platform FILES ${GO_BOOST_CONFIG_PLATFORM_DIR_FILES})
+source_group(go_boost\\diagnostics FILES ${GO_BOOST_DIAGNOSTICS_DIR_FILES})
+source_group(go_boost\\diagnostics\\log FILES ${GO_BOOST_DIAGNOSTICS_LOG_DIR_FILES})
+source_group(go_boost\\diagnostics\\log\\detail FILES ${GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIR_FILES})
+source_group(go_boost\\diagnostics\\log\\policy FILES ${GO_BOOST_DIAGNOSTICS_LOG_POLICY_DIR_FILES})
 source_group(go_boost\\exception FILES ${GO_BOOST_EXCEPTION_DIR_FILES})
 source_group(go_boost\\mvvm FILES ${GO_BOOST_MVVM_DIR_FILES})
 source_group(go_boost\\mvvm\\iterator FILES ${GO_BOOST_MVVM_ITERATOR_DIR_FILES})

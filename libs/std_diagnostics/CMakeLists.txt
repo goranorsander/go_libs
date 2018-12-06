@@ -12,6 +12,17 @@ if(BUILD_STD_EXAMPLES)
 
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
+    if(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations -Wno-write-strings" )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        endif(WIN32)
+    endif(CMAKE_COMPILER_IS_GNUCC)
+
     ########################################################
     #  libs/diagnostics/log_example                        #
     ########################################################

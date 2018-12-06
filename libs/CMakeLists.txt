@@ -9,6 +9,7 @@
 #
 
 add_subdirectory(boost_config)
+add_subdirectory(boost_diagnostics)
 add_subdirectory(boost_exception)
 add_subdirectory(boost_mvvm)
 add_subdirectory(boost_property)
