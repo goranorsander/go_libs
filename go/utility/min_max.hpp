@@ -21,17 +21,17 @@ namespace utility
 {
 
 template <typename T>
-GO_CONSTEXPR const T& max_of(const T& t1, const T& t2)
+GO_CONSTEXPR const T& max_of(const T& lhs, const T& rhs)
 {
     using namespace std;  // MSVC++ defines a macro max. It does not work well with std::max.
-    return max(t1, t2);
+    return max(lhs, rhs);
 }
 
 template <typename T>
-GO_CONSTEXPR const T& min_of(const T& t1, const T& t2)
+GO_CONSTEXPR const T& min_of(const T& lhs, const T& rhs)
 {
     using namespace std;  // MSVC++ defines a macro min. It does not work well with std::min.
-    return min(t1, t2);
+    return min(lhs, rhs);
 }
 
 }
