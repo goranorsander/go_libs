@@ -35,7 +35,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.68.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.69.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -44,10 +44,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_68_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_68_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_69_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_69_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 68
+ * **BOOST_MINOR_VERSION** = 69
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -75,7 +75,7 @@ The CMake configurations I use:
 **SETTING \ TOOLSET**      |clang 7.0.0|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 
+**BOOST_MINOR_VERSION** | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | | | | X | 
