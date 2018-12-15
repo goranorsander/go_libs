@@ -17,8 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
+
 #include <boost/atomic.hpp>
-#include <boost/noncopyable.hpp>
 #include <boost/thread/mutex.hpp>
 
 namespace go_boost
@@ -27,7 +28,7 @@ namespace utility
 {
 
 struct spin_lock
-    : boost::noncopyable
+    : noncopyable_nonmovable
 {
 public:
     virtual ~spin_lock() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -46,7 +47,7 @@ private:
 };
 
 inline spin_lock::spin_lock() BOOST_NOEXCEPT
-    : boost::noncopyable()
+    : noncopyable_nonmovable()
     , _flag()
 {
 }

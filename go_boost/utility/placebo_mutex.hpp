@@ -17,7 +17,8 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/noncopyable.hpp>
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
+
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/null_mutex.hpp>
 
@@ -28,7 +29,7 @@ namespace utility
 
 class placebo_mutex
     : public boost::null_mutex
-    , boost::noncopyable
+    , noncopyable_nonmovable
 {
 public:
     virtual ~placebo_mutex();
@@ -46,7 +47,7 @@ inline placebo_mutex::~placebo_mutex()
 
 inline placebo_mutex::placebo_mutex() BOOST_NOEXCEPT
     : boost::null_mutex()
-    , boost::noncopyable()
+    , noncopyable_nonmovable()
 {
 }
 

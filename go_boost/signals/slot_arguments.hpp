@@ -17,9 +17,10 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -27,7 +28,7 @@ namespace signals
 {
 
 class slot_arguments
-    : private boost::noncopyable
+    : go_boost::utility::noncopyable_nonmovable
 {
 public:
     typedef boost::shared_ptr<slot_arguments> ptr;
@@ -38,6 +39,7 @@ public:
 
 protected:
     slot_arguments()
+        : go_boost::utility::noncopyable_nonmovable()
     {
     }
 };
