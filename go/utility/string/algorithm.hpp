@@ -25,7 +25,11 @@ inline bool equals(const S& s1, const S& s2)
 {
     if (s1.size() == s2.size())
     {
+#if defined(GO_NO_CXX11_AUTO)
+        for (S::const_iterator i1 = s1.begin(), i2 = s2.begin(), e = s1.end(); i1 != e; ++i1, ++i2)
+#else
         for (auto i1 = s1.begin(), i2 = s2.begin(), e = s1.end(); i1 != e; ++i1, ++i2)
+#endif  // #if defined(GO_NO_CXX11_AUTO)
         {
             if (*i1 != *i2)
             {

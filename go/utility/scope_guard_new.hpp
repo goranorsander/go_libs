@@ -33,10 +33,14 @@ public:
     virtual ~scope_guard_new() GO_DEFAULT_DESTRUCTOR
 
     explicit scope_guard_new(pointer px)
-        : scope_guard(nullptr)
+        : scope_guard(GO_NULLPTR)
         , _px(px)
     {
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+        set_on_scope_exit_function(on_scope_exit_function_type(std::tr1::bind(&this_type::on_destroy, this)));
+#else
         set_on_scope_exit_function(on_scope_exit_function_type(std::bind(&this_type::on_destroy, this)));
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
     }
 
 public:
@@ -54,14 +58,14 @@ public:
 
     explicit GO_CONSTEXPR operator bool() const
     {
-        return _px != nullptr;
+        return _px != GO_NULLPTR;
     }
 
 #else
 
     GO_CONSTEXPR operator bool() const
     {
-        return _px != nullptr;
+        return _px != GO_NULLPTR;
     }
 
 #endif  // #if !defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
@@ -70,7 +74,7 @@ public:
     pointer detach()
     {
         pointer px = _px;
-        _px = nullptr;
+        _px = GO_NULLPTR;
         return px;
     }
 
@@ -82,10 +86,10 @@ public:
 private:
     void on_destroy()
     {
-        if(_px != nullptr)
+        if(_px != GO_NULLPTR)
         {
             delete _px;
-            _px = nullptr;
+            _px = GO_NULLPTR;
         }
     }
 

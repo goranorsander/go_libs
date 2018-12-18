@@ -355,6 +355,9 @@ const u::char8_t* windows_1252_reduced_to_ascii_non_strict_from_hex_codes = rein
 const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
+
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 namespace utf_16
 {
 
@@ -439,6 +442,11 @@ const char16_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
 const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 namespace utf_32
 {
 
@@ -524,6 +532,8 @@ const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 24
 
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_multibyte_character_count)
 {
     const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
@@ -566,6 +576,8 @@ TEST(std_ascii_test_suite, test_utf_8_character_count)
     EXPECT_EQ(utf_8::iso_8859_1_printable_characters_size, iso_8859_1_printable_characters_size);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_utf_16_character_count)
 {
     const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
@@ -576,6 +588,10 @@ TEST(std_ascii_test_suite, test_utf_16_character_count)
     EXPECT_EQ(utf_16::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_utf_32_character_count)
 {
     const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
@@ -585,6 +601,8 @@ TEST(std_ascii_test_suite, test_utf_32_character_count)
     EXPECT_EQ(utf_32::ascii_printable_characters_count, ascii_printable_characters_count);
     EXPECT_EQ(utf_32::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_ascii_test_suite, test_char_is_7_bit_ascii_character)
 {
@@ -695,6 +713,8 @@ TEST(std_ascii_test_suite, test_char2_t_is_7_bit_ascii_character)
     }
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_char16_t_is_7_bit_ascii_character)
 {
     {
@@ -726,6 +746,10 @@ TEST(std_ascii_test_suite, test_char16_t_is_7_bit_ascii_character)
     }
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_char32_t_is_7_bit_ascii_character)
 {
     {
@@ -756,6 +780,8 @@ TEST(std_ascii_test_suite, test_char32_t_is_7_bit_ascii_character)
         }
     }
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
@@ -789,6 +815,8 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_character
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
@@ -797,6 +825,10 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characte
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characters)
 {
     const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
@@ -804,6 +836,8 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characte
     const std::u32string iso_8859_1_reduced_to_7_bit_ascii = us::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_ascii_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
@@ -837,6 +871,8 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_non_stric
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const std::u16string ascii_printable_characters(utf_16::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
@@ -845,6 +881,10 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_stri
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters)
 {
     const std::u32string ascii_printable_characters(utf_32::iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes);
@@ -852,6 +892,8 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_stri
     const std::u32string iso_8859_1_reduced_to_7_bit_ascii = us::reduce_iso_8859_1_to_7_bit_ascii_copy(iso_8859_1_printable_characters, false);
     EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters)
 {
@@ -885,6 +927,8 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_charact
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
@@ -893,6 +937,10 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_charac
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters)
 {
     const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
@@ -900,6 +948,8 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_charac
     const std::u32string windows_1252_reduced_to_7_bit_ascii = us::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_ascii_test_suite, test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
@@ -934,6 +984,8 @@ TEST(std_ascii_test_suite, test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_str
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const std::u16string ascii_printable_characters(utf_16::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
@@ -942,6 +994,10 @@ TEST(std_ascii_test_suite, test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_st
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters)
 {
     const std::u32string ascii_printable_characters(utf_32::windows_1252_reduced_to_ascii_non_strict_from_hex_codes);
@@ -949,6 +1005,8 @@ TEST(std_ascii_test_suite, test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_st
     const std::u32string windows_1252_reduced_to_7_bit_ascii = us::reduce_windows_1252_to_7_bit_ascii_copy(windows_1252_printable_characters, false);
     EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 }
 

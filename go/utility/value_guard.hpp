@@ -37,12 +37,16 @@ public:
         on_construction();
     }
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
     value_guard(value_type& value, value_type&& new_value)
         : _old_value(std::forward<value_type>(new_value))
         , _value(value)
     {
         on_construction();
     }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 private:
     void on_construction()

@@ -12,9 +12,9 @@
 //
 
 #include <go/config.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 #include <functional>
-#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -27,12 +27,17 @@ class scope_guard
 public:
     typedef scope_guard this_type;
     typedef noncopyable_nonmovable base_type;
+
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+    typedef std::tr1::function<void()> on_scope_exit_function_type;
+#else
     typedef std::function<void()> on_scope_exit_function_type;
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
 
 public:
     virtual ~scope_guard()
     {
-        if(_on_scope_exit != nullptr)
+        if(_on_scope_exit != GO_NULLPTR)
         {
             _on_scope_exit();
         }
@@ -40,7 +45,7 @@ public:
 
     explicit scope_guard(const on_scope_exit_function_type& on_scope_exit)
         : noncopyable_nonmovable()
-        , _on_scope_exit(nullptr)
+        , _on_scope_exit(GO_NULLPTR)
     {
         set_on_scope_exit_function(on_scope_exit);
     }
@@ -48,7 +53,7 @@ public:
 protected:
     scope_guard()
         : noncopyable_nonmovable()
-        , _on_scope_exit(nullptr)
+        , _on_scope_exit(GO_NULLPTR)
     {
     }
 

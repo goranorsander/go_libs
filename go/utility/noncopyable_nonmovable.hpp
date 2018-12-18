@@ -47,6 +47,7 @@ private:
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
+#if !defined(GO_NO_CXX11_AUTO)
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& = delete;
@@ -56,6 +57,7 @@ private:
     auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& {}
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#endif  // #if !defined(GO_NO_CXX11_AUTO)
 
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)

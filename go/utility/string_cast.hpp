@@ -12,6 +12,11 @@
 //
 
 #include <go/config.hpp>
+
+#if defined(GO_NO_CXX11_CODECVT)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 #include <go/utility/string/string_cast.hpp>
 
 namespace go
@@ -27,5 +32,7 @@ GO_CONSTEXPR to_string string_cast(const from_string& from)
 
 }
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_UTILITY_STRING_CAST_HPP_INCLUDED

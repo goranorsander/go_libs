@@ -148,6 +148,9 @@ const std::size_t iso_8859_1_printable_characters_count = 191;
 const std::size_t iso_8859_1_printable_characters_size = 287;
 
 }
+
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 namespace utf_16
 {
 
@@ -179,6 +182,11 @@ const char16_t iso_8859_1_printable_characters_from_hex_codes[] =
 const std::size_t iso_8859_1_printable_characters_count = 191;
 
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 namespace utf_32
 {
 
@@ -210,6 +218,8 @@ const char32_t iso_8859_1_printable_characters_from_hex_codes[] =
 const std::size_t iso_8859_1_printable_characters_count = 191;
 
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_iso_8859_1_test_suite, test_multibyte_character_count)
 {
@@ -253,6 +263,8 @@ TEST(std_iso_8859_1_test_suite, test_utf_8_character_count)
     EXPECT_EQ(utf_8::iso_8859_1_printable_characters_size, iso_8859_1_printable_characters_size);
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_iso_8859_1_test_suite, test_utf_16_character_count)
 {
     const std::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
@@ -263,6 +275,10 @@ TEST(std_iso_8859_1_test_suite, test_utf_16_character_count)
     EXPECT_EQ(utf_16::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_iso_8859_1_test_suite, test_utf_32_character_count)
 {
     const std::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
@@ -272,6 +288,8 @@ TEST(std_iso_8859_1_test_suite, test_utf_32_character_count)
     EXPECT_EQ(utf_32::ascii_printable_characters_count, ascii_printable_characters_count);
     EXPECT_EQ(utf_32::iso_8859_1_printable_characters_count, iso_8859_1_printable_characters_count);
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_iso_8859_1_test_suite, test_char_is_iso_8859_1_character)
 {
@@ -449,6 +467,8 @@ TEST(std_iso_8859_1_test_suite, test_char2_t_is_iso_8859_1_character)
     }
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_iso_8859_1_test_suite, test_char16_t_is_iso_8859_1_character)
 {
     {
@@ -501,6 +521,10 @@ TEST(std_iso_8859_1_test_suite, test_char16_t_is_iso_8859_1_character)
     }
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 {
     {
@@ -552,6 +576,8 @@ TEST(std_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
         }
     }
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 //TEST(std_iso_8859_1_test_suite, test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters)
 //{

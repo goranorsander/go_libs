@@ -20,12 +20,23 @@ namespace go
 namespace utility
 {
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
     _class_name_() : go::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
     _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     _class_name_(_class_name_&& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     explicit _class_name_(value_type&& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {}
+
+#else
+
+#define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
+    _class_name_() : go::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
+    _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
+    explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {}
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
@@ -130,20 +141,28 @@ protected:
     {
     }
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
     primitive_type_specializer(primitive_type_specializer&& t)
         : _t(t._t)
     {
     }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     explicit primitive_type_specializer(const value_type& t)
         : _t(t)
     {
     }
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
     explicit primitive_type_specializer(value_type&& t)
         : _t(t)
     {
     }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     primitive_type_specializer& operator=(const primitive_type_specializer& t)
     {

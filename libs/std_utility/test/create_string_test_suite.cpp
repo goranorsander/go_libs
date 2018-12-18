@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11_CODECVT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_create_string_test_suite, cpp11_not_supported) {}
 #else
@@ -174,6 +174,9 @@ const std::size_t iso_8859_1_printable_characters_size = 95;
 #endif  // #if !defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
+
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 namespace utf_16
 {
 
@@ -212,6 +215,11 @@ const std::size_t iso_8859_1_printable_characters_count = 95;
 #endif  // #if !defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 namespace utf_32
 {
 
@@ -251,6 +259,8 @@ const std::size_t iso_8859_1_printable_characters_count = 95;
 
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_string_from_char)
 {
     const char* expected_result = multibyte::iso_8859_1_printable_characters;
@@ -287,6 +297,8 @@ TEST(std_create_string_test_suite, test_create_string_from_char8_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_create_string_test_suite, test_create_string_from_char16_t)
 {
     const char* expected_result = multibyte::iso_8859_1_printable_characters;
@@ -296,6 +308,10 @@ TEST(std_create_string_test_suite, test_create_string_from_char16_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_string_from_char32_t)
 {
     const char* expected_result = multibyte::iso_8859_1_printable_characters;
@@ -304,6 +320,8 @@ TEST(std_create_string_test_suite, test_create_string_from_char32_t)
     const std::size_t string_memory_usage = sizeof(std::string::value_type)*multibyte::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 TEST(std_create_string_test_suite, test_create_wstring_from_char)
 {
@@ -341,6 +359,8 @@ TEST(std_create_string_test_suite, test_create_wstring_from_char8_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_create_string_test_suite, test_create_wstring_from_char16_t)
 {
     const wchar_t* expected_result = system_wide::iso_8859_1_printable_characters;
@@ -350,6 +370,10 @@ TEST(std_create_string_test_suite, test_create_wstring_from_char16_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_wstring_from_char32_t)
 {
     const wchar_t* expected_result = system_wide::iso_8859_1_printable_characters;
@@ -358,6 +382,8 @@ TEST(std_create_string_test_suite, test_create_wstring_from_char32_t)
     const std::size_t string_memory_usage = sizeof(std::wstring::value_type)*system_wide::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 #if defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_MESSAGE("This compiler have an issue creating u2string")
@@ -400,6 +426,8 @@ TEST(std_create_string_test_suite, test_create_u2string_from_char8_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_create_string_test_suite, test_create_u2string_from_char16_t)
 {
     const u::char2_t* expected_result = ucs_2::iso_8859_1_printable_characters;
@@ -409,6 +437,10 @@ TEST(std_create_string_test_suite, test_create_u2string_from_char16_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_u2string_from_char32_t)
 {
     const u::char2_t* expected_result = ucs_2::iso_8859_1_printable_characters;
@@ -417,6 +449,8 @@ TEST(std_create_string_test_suite, test_create_u2string_from_char32_t)
     const std::size_t string_memory_usage = sizeof(u::u2string::value_type)*ucs_2::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 #endif  // #if defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 
@@ -456,6 +490,8 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char8_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
+
 TEST(std_create_string_test_suite, test_create_u8string_from_char16_t)
 {
     const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
@@ -465,6 +501,10 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char16_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_u8string_from_char32_t)
 {
     const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
@@ -473,6 +513,10 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char32_t)
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
+
+#if !defined(GO_NO_CXX11_CHAR16_T)
 
 TEST(std_create_string_test_suite, test_create_u16string_from_char)
 {
@@ -528,6 +572,10 @@ TEST(std_create_string_test_suite, test_create_u16string_from_char32_t)
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+
+#if !defined(GO_NO_CXX11_CHAR32_T)
+
 TEST(std_create_string_test_suite, test_create_u32string_from_char)
 {
     const char32_t* expected_result = utf_32::iso_8859_1_printable_characters;
@@ -581,6 +629,8 @@ TEST(std_create_string_test_suite, test_create_u32string_from_char32_t)
     const std::size_t string_memory_usage = sizeof(std::u32string::value_type)*utf_32::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 }
 

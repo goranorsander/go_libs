@@ -12,8 +12,15 @@
 //
 
 #include <go/config.hpp>
+
+#if defined(GO_NO_CXX11_CODECVT)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 #include <go/utility/string_cast.hpp>
 #include <go/utility/string/create_exception.hpp>
+#include <go/utility/u2string.hpp>
+#include <go/utility/u8string.hpp>
 
 namespace go
 {
@@ -56,8 +63,12 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::wstring)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, u2string)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, u8string)
+#if !defined(GO_NO_CXX11_CHAR16_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::u16string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+#if !defined(GO_NO_CXX11_CHAR32_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::string, std::u32string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 // std::wstring
 
@@ -67,8 +78,12 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, u2string)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, u8string)
+#if !defined(GO_NO_CXX11_CHAR16_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::u16string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+#if !defined(GO_NO_CXX11_CHAR32_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::wstring, std::u32string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 // go::utility::u2string
 
@@ -77,8 +92,12 @@ GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(u2string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::wstring)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, u8string)
+#if !defined(GO_NO_CXX11_CHAR16_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::u16string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+#if !defined(GO_NO_CXX11_CHAR32_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u2string, std::u32string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 
 // go::utility::u8string
@@ -89,11 +108,16 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::wstring)
 #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, u2string)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
+#if !defined(GO_NO_CXX11_CHAR16_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::u16string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
+#if !defined(GO_NO_CXX11_CHAR32_T)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(u8string, std::u32string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 // std::u16string
 
+#if !defined(GO_NO_CXX11_CHAR16_T)
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::u16string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::wstring)
@@ -102,9 +126,11 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, u2string)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u16string, std::u32string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR16_T)
 
 // std::u32string
 
+#if !defined(GO_NO_CXX11_CHAR32_T)
 GO_IMPLEMENT_STRING_CREATE_SAME_VALUE_TYPE(std::u32string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::wstring)
@@ -113,6 +139,7 @@ GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, u2string)
 #endif  // #if !defined(GO_CANNOT_CREATE_U2STRING_ISSUE)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, u8string)
 GO_IMPLEMENT_STRING_CREATE_OTHER_VALUE_TYPE(std::u32string, std::u16string)
+#endif  // #if !defined(GO_NO_CXX11_CHAR32_T)
 
 template<class to_string, typename from_char_t>
 inline to_string create(const from_char_t* /*sz*/)
@@ -124,5 +151,7 @@ inline to_string create(const from_char_t* /*sz*/)
 }
 }
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_UTILITY_STRING_CREATE_HPP_INCLUDED
