@@ -188,7 +188,7 @@ TEST(std_define_go_compiler_test_suite, test_not_define_go_msvc_ver)
 
 TEST(std_define_go_compiler_test_suite, test_not_define_go_unicode)
 {
-    #if defined(GO_UNICODE)
+    #if defined(GO_MSVC_UNICODE)
     EXPECT_TRUE(false);
     #endif
 }

@@ -17,7 +17,7 @@ namespace
 TEST(std_define_go_typename_test_suite, test_define_go_typename)
 {
     #if defined(GO_TYPENAME)
-    #if defined(GO_TYPENAME_REQUIRED)
+    #if defined(GO_CPP_TYPENAME_REQUIRED)
     const std::string expected_define("typename");
     const std::string go_typename(GO_TO_STRING(GO_TYPENAME));
     #else
