@@ -275,13 +275,13 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::pr
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-#if defined(GO_BOOST_UNICODE)
+#if defined(GO_BOOST_MSVC_UNICODE)
         std::string t(nLen, 0);
         ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
         value = t;
 #else
         value = static_cast<const TCHAR*>(v);
-#endif  // #if defined(GO_BOOST_UNICODE)
+#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
     }
     else
     {
@@ -299,13 +299,13 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::pr
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-#if defined(GO_BOOST_UNICODE)
+#if defined(GO_BOOST_MSVC_UNICODE)
         value = static_cast<const TCHAR*>(v);
 #else
         std::wstring t(nLen, 0);
         ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
         value = t;
-#endif  // #if defined(GO_BOOST_UNICODE)
+#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
     }
     else
     {
@@ -495,13 +495,13 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wp
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-#if defined(GO_BOOST_UNICODE)
+#if defined(GO_BOOST_MSVC_UNICODE)
         std::string t(nLen, 0);
         ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
         value = t;
 #else
         value = static_cast<const TCHAR*>(v);
-#endif  // #if defined(GO_BOOST_UNICODE)
+#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
     }
     else
     {
@@ -519,13 +519,13 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wp
         CString v;
         ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
         v.ReleaseBuffer();
-#if defined(GO_BOOST_UNICODE)
+#if defined(GO_BOOST_MSVC_UNICODE)
         value = static_cast<const TCHAR*>(v);
 #else
         std::wstring t(nLen, 0);
         ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
         value = t;
-#endif  // #if defined(GO_BOOST_UNICODE)
+#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
     }
     else
     {

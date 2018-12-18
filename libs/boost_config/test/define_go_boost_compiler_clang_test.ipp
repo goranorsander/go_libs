@@ -188,7 +188,7 @@ TEST(boost_define_go_boost_compiler_test_suite, test_not_define_go_boost_msvc_ve
 
 TEST(boost_define_go_boost_compiler_test_suite, test_not_define_go_boost_unicode)
 {
-    #if defined(GO_BOOST_UNICODE)
+    #if defined(GO_BOOST_MSVC_UNICODE)
     EXPECT_TRUE(false);
     #endif
 }

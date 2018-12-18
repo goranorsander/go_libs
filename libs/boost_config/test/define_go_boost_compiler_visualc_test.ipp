@@ -240,7 +240,7 @@ TEST(boost_define_go_boost_compiler_test_suite, test_define_go_boost_msvc_ver)
 
 TEST(boost_define_go_boost_compiler_test_suite, test_define_go_boost_unicode)
 {
-    #if defined(GO_BOOST_UNICODE)
+    #if defined(GO_BOOST_MSVC_UNICODE)
     #if !(defined(_UNICODE) || defined(UNICODE))
     EXPECT_TRUE(false);
     #endif

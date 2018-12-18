@@ -18,7 +18,7 @@ namespace
 TEST(boost_define_go_boost_typename_test_suite, test_define_go_boost_typename)
 {
     #if defined(GO_BOOST_TYPENAME)
-    #if defined(GO_BOOST_TYPENAME_REQUIRED)
+    #if defined(GO_BOOST_CPP_TYPENAME_REQUIRED)
     const std::string expected_define("typename");
     const std::string go_boost_typename(BOOST_PP_STRINGIZE(GO_BOOST_TYPENAME));
     #else

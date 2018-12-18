@@ -29,7 +29,7 @@ __warning _message_
 
 // C++ keyword typename support
 #define GO_BOOST_TYPENAME typename
-#define GO_BOOST_TYPENAME_REQUIRED 1
+#define GO_BOOST_CPP_TYPENAME_REQUIRED 1
 
 // C++ issue workarounds
 #define GO_BOOST_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE 1

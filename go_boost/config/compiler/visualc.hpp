@@ -49,6 +49,10 @@
 #define GO_BOOST_IDE_MS_VS2017_15_6 1
 #elif (_MSC_VER == 1914)
 #define GO_BOOST_IDE_MS_VS2017_15_7 1
+#elif (_MSC_VER == 1915)
+#define GO_BOOST_IDE_MS_VS2017_15_8 1
+#elif (_MSC_VER == 1916)
+#define GO_BOOST_IDE_MS_VS2017_15_9 1
 #endif  // #if (_MSC_VER == 1910)
 #endif  // #if (_MSC_VER == 1500)
 
@@ -70,7 +74,7 @@ __pragma(message(_message_))
 
 // Unicode support
 #if defined(_UNICODE) || defined(UNICODE)
-#define GO_BOOST_UNICODE 1
+#define GO_BOOST_MSVC_UNICODE 1
 #endif  // if defined(_UNICODE) || defined(UNICODE)
 
 // Boost libraries support
@@ -83,7 +87,7 @@ __pragma(message(_message_))
 #define GO_BOOST_TYPENAME
 #else
 #define GO_BOOST_TYPENAME typename
-#define GO_BOOST_TYPENAME_REQUIRED 1
+#define GO_BOOST_CPP_TYPENAME_REQUIRED 1
 #endif  // #if (_MSC_VER < 1900)
 
 // C++ issue workarounds
