@@ -22,7 +22,7 @@
 typedef m::observable_set<dialog_view::ptr> dialog_view_container_type;
 
 class main_frame_view_model
-    : public m::view_model_interface<u::placebo_mutex>
+    : public m::view_model_interface<u::placebo_lockable>
     , public m::wobservable_object
     , private m::data_context_interface<fleet_repository::wptr>
     , private u::noncopyable_nonmovable

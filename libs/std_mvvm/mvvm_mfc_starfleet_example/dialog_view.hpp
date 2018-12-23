@@ -14,7 +14,7 @@
 #pragma once
 
 #include <go/signals.hpp>
-#include <go/utility/placebo_mutex.hpp>
+#include <go/utility/placebo_lockable.hpp>
 
 class dialog_view
     : public CDialogEx

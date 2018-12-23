@@ -17,7 +17,7 @@
     <ClCompile Include="..\..\libs\std_signals\test\signals_wstring_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\std_signals\test\placebo_mutex_signals_string_test_suite.cpp">
+    <ClCompile Include="..\..\libs\std_signals\test\placebo_lockable_signals_string_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

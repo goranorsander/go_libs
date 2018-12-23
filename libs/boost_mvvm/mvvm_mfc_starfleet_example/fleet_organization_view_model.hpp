@@ -20,7 +20,7 @@
 #include "main_frame_view_model.hpp"
 
 class fleet_organization_view_model
-    : public m::view_model_interface<u::placebo_mutex>
+    : public m::view_model_interface<u::placebo_lockable>
     , public m::wobservable_object
     , private m::data_context_interface<fleet_organization_interface::ptr>
     , private u::noncopyable_nonmovable

@@ -25,7 +25,7 @@ main_frame_view_model::~main_frame_view_model()
 }
 
 main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo)
-    : m::view_model_interface<u::placebo_mutex>()
+    : m::view_model_interface<u::placebo_lockable>()
     , m::wobservable_object()
     , m::data_context_interface<fleet_repository::wptr>(fleet_repository::wptr(fleet_repo))
     , u::noncopyable_nonmovable()

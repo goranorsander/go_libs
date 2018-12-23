@@ -19,7 +19,7 @@ properties_view_model::~properties_view_model()
 }
 
 properties_view_model::properties_view_model()
-    : m::view_model_interface<u::placebo_mutex>()
+    : m::view_model_interface<u::placebo_lockable>()
     , m::wobservable_object()
     , m::data_context_interface<fleet_organization_model::ptr>(fleet_organization_model::create())
     , u::noncopyable_nonmovable()

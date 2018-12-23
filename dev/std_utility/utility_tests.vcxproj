@@ -24,7 +24,7 @@
     <ClCompile Include="..\..\libs\std_utility\test\create_string_test_suite.cpp" />
     <ClCompile Include="..\..\libs\std_utility\test\erase_iterator_test_suite.cpp" />
     <ClCompile Include="..\..\libs\std_utility\test\iso_8859_1_test_suite.cpp" />
-    <ClCompile Include="..\..\libs\std_utility\test\placebo_mutex_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\std_utility\test\placebo_lockable_test_suite.cpp" />
     <ClCompile Include="..\..\libs\std_utility\test\primitive_type_specializer_test_suite.cpp" />
     <ClCompile Include="..\..\libs\std_utility\test\scope_guard_new_test_suite.cpp" />
     <ClCompile Include="..\..\libs\std_utility\test\scope_guard_test_suite.cpp" />

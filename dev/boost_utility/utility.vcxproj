@@ -26,7 +26,7 @@
     <ClInclude Include="..\..\go_boost\utility\min_max.hpp" />
     <ClInclude Include="..\..\go_boost\utility\noncopyable_nonmovable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\nonmovable.hpp" />
-    <ClInclude Include="..\..\go_boost\utility\placebo_mutex.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\placebo_lockable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_implicit_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />

@@ -116,7 +116,7 @@
     <ClInclude Include="..\..\go\utility\string\create_exception.hpp">
       <Filter>go\utility\string</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\utility\placebo_mutex.hpp">
+    <ClInclude Include="..\..\go\utility\placebo_lockable.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\utility\string\ucs2.hpp">

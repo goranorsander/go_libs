@@ -119,7 +119,7 @@
     <ClInclude Include="..\..\go_boost\utility\string\create_exception.hpp">
       <Filter>go_boost\utility\string</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go_boost\utility\placebo_mutex.hpp">
+    <ClInclude Include="..\..\go_boost\utility\placebo_lockable.hpp">
       <Filter>go_boost\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go_boost\utility\string\detail\setup_global_locale.hpp">

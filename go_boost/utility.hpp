@@ -19,7 +19,7 @@
 
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/nonmovable.hpp>
-#include <go_boost/utility/placebo_mutex.hpp>
+#include <go_boost/utility/placebo_lockable.hpp>
 #include <go_boost/utility/primitive_type_implicit_specializer.hpp>
 #include <go_boost/utility/primitive_type_specializer.hpp>
 #include <go_boost/utility/sanity.hpp>
