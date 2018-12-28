@@ -38,7 +38,7 @@ enum class log_level
     undefined = ~0
 };
 
-inline std::string::value_type* to_string(const log_level& loglevel)
+inline const std::string::value_type* to_string(const log_level& loglevel)
 {
     static const std::string::value_type* none = "NONE";
     static const std::string::value_type* fatal = "FATAL";
@@ -75,7 +75,7 @@ inline std::string::value_type* to_string(const log_level& loglevel)
     return undefined;
 }
 
-inline std::wstring::value_type* to_wstring(const log_level& loglevel)
+inline const std::wstring::value_type* to_wstring(const log_level& loglevel)
 {
     static const std::wstring::value_type* none = L"NONE";
     static const std::wstring::value_type* fatal = L"FATAL";
