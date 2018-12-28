@@ -23,7 +23,32 @@
 #define GO_MSVC_FULL_VER (_MSC_FULL_VER * 10)
 #endif  // #if _MSC_FULL_VER > 100000000
 
-#if (_MSC_VER == 1500)
+#if (_MSC_VER == 800)
+#define GO_COMP_MSVC_VC10 1
+#elif (_MSC_VER == 900)
+#define GO_COMP_MSVC_VC20 1
+#elif (_MSC_VER == 1000)
+#define GO_COMP_MSVC_VC40 1
+#define GO_IDE_MS_DS40 1
+#elif (_MSC_VER == 1020)
+#define GO_COMP_MSVC_VC42 1
+#define GO_IDE_MS_DS42 1
+#elif (_MSC_VER == 1100)
+#define GO_COMP_MSVC_VC50 1
+#define GO_IDE_MS_VS97 1
+#elif (_MSC_VER == 1200)
+#define GO_COMP_MSVC_VC60 1
+#define GO_IDE_MS_VS60 1
+#elif (_MSC_VER == 1300)
+#define GO_COMP_MSVC_VC70 1
+#define GO_IDE_MS_VS2002 1
+#elif (_MSC_VER == 1310)
+#define GO_COMP_MSVC_VC71 1
+#define GO_IDE_MS_VS2003 1
+#elif (_MSC_VER == 1400)
+#define GO_COMP_MSVC_VC80 1
+#define GO_IDE_MS_VS2005 1
+#elif (_MSC_VER == 1500)
 #define GO_COMP_MSVC_VC90 1
 #define GO_IDE_MS_VS2008 1
 #elif (_MSC_VER == 1600)
@@ -297,6 +322,7 @@ __pragma(message(_message_))
 // C++2a support
 #if (_MSC_VER < 1915)
 #define GO_NO_CXX2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1
+#define GO_NO_CXX2A 1
 #endif  // #if (_MSC_VER < 1915)
 #if defined(_MSC_VER)
 #define GO_NO_CXX2A_CONCEPTS 1
@@ -342,7 +368,6 @@ __pragma(message(_message_))
 #define GO_NO_CXX2A_STRING_PREFIX_AND_SUFFIX_CHECKING 1
 #define GO_NO_CXX2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1
 #define GO_NO_CXX2A_VERSION 1
-#define GO_NO_CXX2A 1
 #endif  // #if defined(_MSC_VER)
 
 // C99 support
