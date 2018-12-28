@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/utility/placebo_mutex.hpp>
+#include <go_boost/utility/placebo_lockable.hpp>
 #include <go_boost/utility/u8string.hpp>
 #include <go_boost/utility/u16string.hpp>
 #include <go_boost/utility/u32string.hpp>
@@ -125,34 +125,34 @@ GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_,
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u16string, boost::recursive_mutex) \
 GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u32string, boost::recursive_mutex) \
 \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::wstring, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u8string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u16string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u32string, utility::placebo_mutex) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::wstring, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u8string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u16string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u32string, utility::placebo_lockable) \
 \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::wstring, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u8string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u16string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u32string, utility::placebo_mutex) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::wstring, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u8string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u16string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u32string, utility::placebo_lockable) \
 \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::wstring, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u8string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u16string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u32string, utility::placebo_mutex) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::wstring, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u8string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u16string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u32string, utility::placebo_lockable) \
 \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, std::string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, std::wstring, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u8string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u16string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u32string, utility::placebo_mutex) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, std::string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, std::wstring, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u8string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u16string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, utility::u32string, utility::placebo_lockable) \
 \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, std::string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, std::wstring, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u8string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u16string, utility::placebo_mutex) \
-GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u32string, utility::placebo_mutex)
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, std::string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, std::wstring, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u8string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u16string, utility::placebo_lockable) \
+GO_BOOST_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, utility::u32string, utility::placebo_lockable)
 
 #endif  // #ifndef GO_BOOST_PROPERTY_DETAIL_ARITHMETIC_COMPARISON_OPERATORS_HPP_INCLUDED

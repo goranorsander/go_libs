@@ -21,7 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <string>
 
 #include <go/mvvm/command_interface.hpp>
-#include <go/utility/placebo_mutex.hpp>
+#include <go/utility/placebo_lockable.hpp>
 
 namespace go
 {
@@ -35,8 +35,8 @@ typedef basic_command_execution_observer_interface<std::wstring, std::recursive_
 namespace single_threaded
 {
 
-typedef basic_command_execution_observer_interface<std::string, go::utility::placebo_mutex> command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::wstring, go::utility::placebo_mutex> wcommand_execution_wobserver_interface;
+typedef basic_command_execution_observer_interface<std::string, go::utility::placebo_lockable> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go::utility::placebo_lockable> wcommand_execution_wobserver_interface;
 
 }
 

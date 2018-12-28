@@ -22,7 +22,7 @@
 #include <go_boost/property/nameless/read_only_property.hpp>
 #include <go_boost/signals.hpp>
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
-#include <go_boost/utility/placebo_mutex.hpp>
+#include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
 {
@@ -38,8 +38,8 @@ typedef basic_command_interface<std::wstring, boost::recursive_mutex> wcommand_i
 namespace single_threaded
 {
 
-typedef basic_command_interface<std::string, go_boost::utility::placebo_mutex> command_interface;
-typedef basic_command_interface<std::wstring, go_boost::utility::placebo_mutex> wcommand_interface;
+typedef basic_command_interface<std::string, go_boost::utility::placebo_lockable> command_interface;
+typedef basic_command_interface<std::wstring, go_boost::utility::placebo_lockable> wcommand_interface;
 
 }
 
@@ -100,13 +100,13 @@ inline basic_command_interface<std::wstring, boost::recursive_mutex>::~basic_com
 }
 
 template<>
-inline basic_command_interface<std::string, go_boost::utility::placebo_mutex>::~basic_command_interface()
+inline basic_command_interface<std::string, go_boost::utility::placebo_lockable>::~basic_command_interface()
 {
     this->can_execute_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>::~basic_command_interface()
+inline basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>::~basic_command_interface()
 {
     this->can_execute_changed.disconnect_all_slots();
 }
@@ -142,13 +142,13 @@ inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstrin
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, go_boost::utility::placebo_mutex>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, go_boost::utility::placebo_lockable>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>::parameters() const
 {
     return _parameters;
 }
@@ -178,7 +178,7 @@ inline void basic_command_interface<std::wstring, boost::recursive_mutex>::notif
 }
 
 template<>
-inline void basic_command_interface<std::string, go_boost::utility::placebo_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::string, go_boost::utility::placebo_lockable>::notify_can_execute_changed()
 {
     if (!can_execute_changed.empty())
     {
@@ -187,7 +187,7 @@ inline void basic_command_interface<std::string, go_boost::utility::placebo_mute
 }
 
 template<>
-inline void basic_command_interface<std::wstring, go_boost::utility::placebo_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>::notify_can_execute_changed()
 {
     if (!can_execute_changed.empty())
     {

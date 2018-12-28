@@ -22,7 +22,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/read_only_property.hpp>
 #include <go/signals/signal.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
-#include <go/utility/placebo_mutex.hpp>
+#include <go/utility/placebo_lockable.hpp>
 
 namespace go
 {
@@ -38,8 +38,8 @@ typedef basic_command_interface<std::wstring, std::recursive_mutex> wcommand_int
 namespace single_threaded
 {
 
-typedef basic_command_interface<std::string, go::utility::placebo_mutex> command_interface;
-typedef basic_command_interface<std::wstring, go::utility::placebo_mutex> wcommand_interface;
+typedef basic_command_interface<std::string, go::utility::placebo_lockable> command_interface;
+typedef basic_command_interface<std::wstring, go::utility::placebo_lockable> wcommand_interface;
 
 }
 
@@ -116,13 +116,13 @@ inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring,
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command_interface<std::string, go::utility::placebo_mutex>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::string, go::utility::placebo_lockable>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring, go::utility::placebo_mutex>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring, go::utility::placebo_lockable>::parameters() const
 {
     return _parameters;
 }
@@ -152,7 +152,7 @@ inline void basic_command_interface<std::wstring, std::recursive_mutex>::notify_
 }
 
 template<>
-inline void basic_command_interface<std::string, go::utility::placebo_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::string, go::utility::placebo_lockable>::notify_can_execute_changed()
 {
     if (!can_execute_changed.empty())
     {
@@ -161,7 +161,7 @@ inline void basic_command_interface<std::string, go::utility::placebo_mutex>::no
 }
 
 template<>
-inline void basic_command_interface<std::wstring, go::utility::placebo_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring, go::utility::placebo_lockable>::notify_can_execute_changed()
 {
     if (!can_execute_changed.empty())
     {

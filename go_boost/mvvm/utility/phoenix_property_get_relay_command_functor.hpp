@@ -19,7 +19,7 @@
 
 #include <string>
 #include <boost/phoenix/phoenix.hpp>
-#include <go_boost/utility/placebo_mutex.hpp>
+#include <go_boost/utility/placebo_lockable.hpp>
 #include <go_boost/utility/u8string.hpp>
 #include <go_boost/utility/u16string.hpp>
 #include <go_boost/utility/u32string.hpp>
@@ -168,7 +168,7 @@ namespace single_threaded
 struct get_property_relay_command_functor
 {
     typedef std::string string_type;
-    typedef go_boost::utility::placebo_mutex lockable_type;
+    typedef go_boost::utility::placebo_lockable lockable_type;
 
     template <typename Sig>
     struct result;
@@ -193,7 +193,7 @@ struct get_property_relay_command_functor
 struct get_wproperty_relay_wcommand_functor
 {
     typedef std::wstring string_type;
-    typedef go_boost::utility::placebo_mutex lockable_type;
+    typedef go_boost::utility::placebo_lockable lockable_type;
 
     template <typename Sig>
     struct result;
@@ -218,7 +218,7 @@ struct get_wproperty_relay_wcommand_functor
 struct get_u8property_relay_u8command_functor
 {
     typedef go_boost::utility::u8string string_type;
-    typedef go_boost::utility::placebo_mutex lockable_type;
+    typedef go_boost::utility::placebo_lockable lockable_type;
 
     template <typename Sig>
     struct result;
@@ -243,7 +243,7 @@ struct get_u8property_relay_u8command_functor
 struct get_u16property_relay_u16command_functor
 {
     typedef go_boost::utility::u16string string_type;
-    typedef go_boost::utility::placebo_mutex lockable_type;
+    typedef go_boost::utility::placebo_lockable lockable_type;
 
     template <typename Sig>
     struct result;
@@ -268,7 +268,7 @@ struct get_u16property_relay_u16command_functor
 struct get_u32property_relay_u32command_functor
 {
     typedef go_boost::utility::u32string string_type;
-    typedef go_boost::utility::placebo_mutex lockable_type;
+    typedef go_boost::utility::placebo_lockable lockable_type;
 
     template <typename Sig>
     struct result;

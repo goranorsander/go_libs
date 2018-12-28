@@ -32,8 +32,8 @@ typedef basic_observable_object<std::wstring, boost::recursive_mutex> wobservabl
 namespace single_threaded
 {
 
-typedef basic_observable_object<std::string, go_boost::utility::placebo_mutex> observable_object;
-typedef basic_observable_object<std::wstring, go_boost::utility::placebo_mutex> wobservable_object;
+typedef basic_observable_object<std::string, go_boost::utility::placebo_lockable> observable_object;
+typedef basic_observable_object<std::wstring, go_boost::utility::placebo_lockable> wobservable_object;
 
 }
 

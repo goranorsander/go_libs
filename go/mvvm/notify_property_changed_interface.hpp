@@ -35,8 +35,8 @@ typedef basic_notify_property_changed_interface<std::wstring, std::recursive_mut
 namespace single_threaded
 {
 
-typedef basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex> notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex> notify_wproperty_changed_interface;
+typedef basic_notify_property_changed_interface<std::string, go::utility::placebo_lockable> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring, go::utility::placebo_lockable> notify_wproperty_changed_interface;
 
 }
 
@@ -94,31 +94,31 @@ inline basic_notify_property_changed_interface<std::u32string, std::recursive_mu
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::string, go::utility::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::wstring, go::utility::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::u16string, go::utility::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::u32string, go::utility::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -175,7 +175,7 @@ inline void basic_notify_property_changed_interface<std::u32string, std::recursi
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
+inline void basic_notify_property_changed_interface<std::string, go::utility::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const std::string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -184,7 +184,7 @@ inline void basic_notify_property_changed_interface<std::string, go::utility::pl
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::wstring, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
+inline void basic_notify_property_changed_interface<std::wstring, go::utility::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const std::wstring& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -193,7 +193,7 @@ inline void basic_notify_property_changed_interface<std::wstring, go::utility::p
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
+inline void basic_notify_property_changed_interface<go::utility::u8string, go::utility::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -202,7 +202,7 @@ inline void basic_notify_property_changed_interface<go::utility::u8string, go::u
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::u16string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
+inline void basic_notify_property_changed_interface<std::u16string, go::utility::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const std::u16string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -211,7 +211,7 @@ inline void basic_notify_property_changed_interface<std::u16string, go::utility:
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::u32string, go::utility::placebo_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
+inline void basic_notify_property_changed_interface<std::u32string, go::utility::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const std::u32string& property_name)
 {
     if (!this->property_changed.empty())
     {
