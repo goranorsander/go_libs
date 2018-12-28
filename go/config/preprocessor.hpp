@@ -14,16 +14,19 @@
 #define GO_TO_STRING_HELPER(s) #s
 #define GO_TO_STRING(s) GO_TO_STRING_HELPER(s)
 
-#define GO_APPEND_L(s) L##s
+#define GO_APPEND_L(s) L## #s
 #define GO_TO_WSTRING(s) GO_APPEND_L(s)
 
-#define GO_APPEND_U16(s) u##s
+#define GO_APPEND_U8(s) u8## #s
+#define GO_TO_U8STRING(s) GO_APPEND_U8(s)
+
+#define GO_APPEND_U16(s) u## #s
 #define GO_TO_U16STRING(s) GO_APPEND_U16(s)
 
-#define GO_APPEND_U32(s) U##s
+#define GO_APPEND_U32(s) U## #s
 #define GO_TO_U32STRING(s) GO_APPEND_U32(s)
 
-#define GO_WFILE GO_TO_WSTRING(__FILE__)
+#define GO_WFILE GO_APPEND_L(__FILE__)
 
 #if defined(GO_COMP_MSVC)
 #define GO_FUNC __FUNCTION__
@@ -31,6 +34,6 @@
 #define GO_FUNC __func__
 #endif  // #if defined(GO_MSVC)
 
-#define GO_WFUNC GO_TO_WSTRING(GO_TO_STRING(GO_FUNC))
+#define GO_WFUNC GO_APPEND_L(GO_FUNC)
 
 #endif  // #ifndef GO_CONFIG_PREPROCESSOR_HPP_INCLUDED
