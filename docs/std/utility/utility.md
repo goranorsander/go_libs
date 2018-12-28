@@ -30,11 +30,12 @@ of components too small to be called libraries in their own right.
 * [noncopyable](./class_noncopyable.html)
 * [noncopyable_nonmovable](./class_noncopyable_nonmovable.html)
 * [nonmovable](./class_nonmovable.html)
-* [placebo_mutex](./class_placebo_mutex.html)
+* [placebo_lockable](./class_placebo_lockable.html)
 * [primitive_type_implicit_specializer](./class_template_primitive_type_implicit_specializer.html)
 * [primitive_type_specializer](./class_template_primitive_type_specializer.html)
 * [scope_guard](./class_scope_guard.html)
 * [scope_guard_new](./class_template_scope_guard_new.html)
+* [spin_lock](./class_spin_lock.html)
 * [string_cast_exception](./class_string_cast_exception.html)
 * [u2string](./class_u2string.html)
 * [u8string](./class_u8string.html)
@@ -42,4 +43,6 @@ of components too small to be called libraries in their own right.
 
 ### Function reference
 
+* [max_of](./function_template_min_max.html)
+* [min_of](./function_template_min_max.html)
 * [string_cast](./function_template_string_cast.html)

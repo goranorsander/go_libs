@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_unordered_map class**
 
 The **basic_observable_unordered_map** is a container that encapsulates collections of key-value
-pairs, hashed by keys, keys are unique. It wraps the [**boost\::unordered_map**](https://www.boost.org/doc/libs/1_68_0/doc/html/boost/unordered_map.html)
+pairs, hashed by keys, keys are unique. It wraps the [**boost\::unordered_map**](https://www.boost.org/doc/libs/1_69_0/doc/html/boost/unordered_map.html)
 and adds notifications when items get added, removed, or when the whole map is reset
 or swapped.
 

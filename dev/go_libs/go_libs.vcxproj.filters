@@ -259,6 +259,36 @@
     <Filter Include="CMake Configuration\libs\boost_diagnostics">
       <UniqueIdentifier>{9fd0cd71-ac0b-43ad-bd06-1b2c56cee9b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\boost\config">
+      <UniqueIdentifier>{7f29970b-fbfc-474e-bb14-82effa7d2b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\config">
+      <UniqueIdentifier>{6b63c5ed-15e4-45f2-9d76-7f367480115d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\diagnostics">
+      <UniqueIdentifier>{50772ef8-afdc-4b25-bbb1-2231e15696ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\diagnostics">
+      <UniqueIdentifier>{2fbdbfec-c2cc-4f82-86ef-c1f7cc8d4911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\exception">
+      <UniqueIdentifier>{2d2f0b1e-8aff-4891-bc16-de007e262997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\exception">
+      <UniqueIdentifier>{90dde5c4-b43d-4a28-82b9-a17f1d935179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\diagnostics\log">
+      <UniqueIdentifier>{d2b5a673-c3dc-4961-ba0c-1d1c6df707aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\diagnostics\log">
+      <UniqueIdentifier>{88178acb-431d-41f0-a165-2a799f781ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\diagnostics\log\policy">
+      <UniqueIdentifier>{3fdae823-0c83-4aac-b08b-de7d7d28ce08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\boost\diagnostics\log\policy">
+      <UniqueIdentifier>{fe9c0355-050a-4f3f-af27-8e3f24dd2fb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -1390,11 +1420,203 @@
     <None Include="..\..\docs\boost\mvvm\utility\functor_set_property_value.md">
       <Filter>Documentation\boost\mvvm\utility</Filter>
     </None>
-    <None Include="..\..\docs\std\utility\class_placebo_mutex.md">
+    <None Include="..\..\docs\std\utility\class_placebo_lockable.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
-    <None Include="..\..\docs\boost\utility\class_placebo_mutex.md">
+    <None Include="..\..\docs\boost\utility\class_placebo_lockable.md">
       <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\exception\class_exception.md">
+      <Filter>Documentation\std\exception</Filter>
+    </None>
+    <None Include="..\..\docs\std\exception\exception.md">
+      <Filter>Documentation\std\exception</Filter>
+    </None>
+    <None Include="..\..\docs\boost\exception\class_exception.md">
+      <Filter>Documentation\boost\exception</Filter>
+    </None>
+    <None Include="..\..\docs\boost\exception\exception.md">
+      <Filter>Documentation\boost\exception</Filter>
+    </None>
+    <None Include="..\..\docs\boost\config\config.md">
+      <Filter>Documentation\boost\config</Filter>
+    </None>
+    <None Include="..\..\docs\boost\config\macro_compiler_configuration.md">
+      <Filter>Documentation\boost\config</Filter>
+    </None>
+    <None Include="..\..\docs\boost\config\macro_platform_configuration.md">
+      <Filter>Documentation\boost\config</Filter>
+    </None>
+    <None Include="..\..\docs\boost\config\macro_preprocessor.md">
+      <Filter>Documentation\boost\config</Filter>
+    </None>
+    <None Include="..\..\docs\std\config\config.md">
+      <Filter>Documentation\std\config</Filter>
+    </None>
+    <None Include="..\..\docs\std\config\macro_compiler_configuration.md">
+      <Filter>Documentation\std\config</Filter>
+    </None>
+    <None Include="..\..\docs\std\config\macro_platform_configuration.md">
+      <Filter>Documentation\std\config</Filter>
+    </None>
+    <None Include="..\..\docs\std\config\macro_preprocessor.md">
+      <Filter>Documentation\std\config</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_spin_lock.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\function_template_min_max.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\class_spin_lock.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\function_template_min_max.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_config.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_diagnostics.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_exception.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_config.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_diagnostics.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_exception.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_mvvm.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_mvvm_iterator.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_mvvm_utility.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property_nameless.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property_nameless_read_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property_nameless_write_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property_read_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_property_write_only.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_signals.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_utility.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_utility_container.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_utility_iterator.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_utility_string.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_diagnostics_log.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_diagnostics_log.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\diagnostics.md">
+      <Filter>Documentation\boost\diagnostics</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\class_log.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\class_template_basic_file_writer.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\class_template_basic_log_line.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\enum_log_level.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\function_this_thread_id.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\function_timestamp.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\log.md">
+      <Filter>Documentation\boost\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\policy\class_template_guaranteed_logger.md">
+      <Filter>Documentation\boost\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\policy\class_template_logging_policy_interface.md">
+      <Filter>Documentation\boost\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\policy\class_template_non_guaranteed_logger.md">
+      <Filter>Documentation\boost\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\log\policy\policy.md">
+      <Filter>Documentation\boost\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\diagnostics.md">
+      <Filter>Documentation\std\diagnostics</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\class_log.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\class_template_basic_file_writer.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\class_template_basic_log_line.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\enum_log_level.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\function_this_thread_id.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\function_timestamp.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\log.md">
+      <Filter>Documentation\std\diagnostics\log</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\policy\class_template_guaranteed_logger.md">
+      <Filter>Documentation\std\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\policy\class_template_logging_policy_interface.md">
+      <Filter>Documentation\std\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\policy\class_template_non_guaranteed_logger.md">
+      <Filter>Documentation\std\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\log\policy\policy.md">
+      <Filter>Documentation\std\diagnostics\log\policy</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_diagnostics_log_policy.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_diagnostics_log_policy.html">
+      <Filter>Documentation\_layouts</Filter>
     </None>
   </ItemGroup>
 </Project>
