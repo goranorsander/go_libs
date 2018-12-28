@@ -130,7 +130,7 @@ public:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120))
 
-    basic_log_line& operator=(basic_log_line&&) GO_BOOST_DEFAULT_CONSTRUCTOR
+    basic_log_line& operator=(basic_log_line&&) = default;
 
 #else
 

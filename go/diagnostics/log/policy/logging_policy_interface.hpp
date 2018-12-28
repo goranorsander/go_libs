@@ -54,6 +54,8 @@ public:
     virtual ~logging_policy_interface() = 0;
 
 protected:
+    logging_policy_interface() GO_DEFAULT_DESTRUCTOR
+
     virtual buffer_interface_pointer create_buffer() const = 0;
 
     friend class go::diagnostics::log::detail::basic_logger<W>;

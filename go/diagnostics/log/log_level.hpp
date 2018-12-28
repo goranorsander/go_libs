@@ -40,56 +40,76 @@ enum class log_level
 
 inline std::string::value_type* to_string(const log_level& loglevel)
 {
+    static const std::string::value_type* none = "NONE";
+    static const std::string::value_type* fatal = "FATAL";
+    static const std::string::value_type* error = "ERROR";
+    static const std::string::value_type* warn = "WARN";
+    static const std::string::value_type* info = "INFO";
+    static const std::string::value_type* debug = "DEBUG";
+    static const std::string::value_type* trace = "TRACE";
+    static const std::string::value_type* all = "ALL";
+    static const std::string::value_type* undefined = "UNDEFINED";
+
     switch (loglevel)
     {
     case log_level::none:
-        return "NONE";
+        return none;
     case log_level::fatal:
-        return "FATAL";
+        return fatal;
     case log_level::error:
-        return "ERROR";
+        return error;
     case log_level::warning:
-        return "WARN";
+        return warn;
     case log_level::info:
-        return "INFO";
+        return info;
     case log_level::debug:
-        return "DEBUG";
+        return debug;
     case log_level::trace:
-        return "TRACE";
+        return trace;
     case log_level::all:
-        return "ALL";
+        return all;
     case log_level::undefined:
     default:
         break;
     }
-    return "UNDEFINED";
+    return undefined;
 }
 
 inline std::wstring::value_type* to_wstring(const log_level& loglevel)
 {
+    static const std::wstring::value_type* none = L"NONE";
+    static const std::wstring::value_type* fatal = L"FATAL";
+    static const std::wstring::value_type* error = L"ERROR";
+    static const std::wstring::value_type* warn = L"WARN";
+    static const std::wstring::value_type* info = L"INFO";
+    static const std::wstring::value_type* debug = L"DEBUG";
+    static const std::wstring::value_type* trace = L"TRACE";
+    static const std::wstring::value_type* all = L"ALL";
+    static const std::wstring::value_type* undefined = L"UNDEFINED";
+
     switch (loglevel)
     {
     case log_level::none:
-        return L"NONE";
+        return none;
     case log_level::fatal:
-        return L"FATAL";
+        return fatal;
     case log_level::error:
-        return L"ERROR";
+        return error;
     case log_level::warning:
-        return L"WARN";
+        return warn;
     case log_level::info:
-        return L"INFO";
+        return info;
     case log_level::debug:
-        return L"DEBUG";
+        return debug;
     case log_level::trace:
-        return L"TRACE";
+        return trace;
     case log_level::all:
-        return L"ALL";
+        return all;
     case log_level::undefined:
     default:
         break;
     }
-    return L"UNDEFINED";
+    return undefined;
 }
 
 } // namespace log

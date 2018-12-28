@@ -48,7 +48,7 @@ public:
 public:
     virtual ~non_guaranteed_logger() = default;
 
-    non_guaranteed_logger(const uint32_t ring_buffer_size_mb)
+    explicit non_guaranteed_logger(const uint32_t ring_buffer_size_mb)
         : logging_policy_interface<W>()
         , _ring_buffer_size_mb(ring_buffer_size_mb)
     {
