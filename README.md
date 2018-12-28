@@ -99,11 +99,11 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 18.0.0 Illyria, Xfce, 64 bits
-  * cmake version 3.12.4
+* Manjaro Linux 18.0.1 Illyria, Xfce, 64 bits
+  * cmake version 3.13.1
   * clang version 7.0.0 (tags/RELEASE_700/final)
-  * gcc (GCC) 8.2.1 20180831
-  * git 2.19.1
+  * gcc (GCC) 8.2.1 20181127
+  * git 2.19.2
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.5.3p105 (2018-10-18 revision 65156)
