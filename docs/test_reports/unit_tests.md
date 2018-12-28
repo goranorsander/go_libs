@@ -17,18 +17,18 @@ more information.
   * [gcc 8.2.1](./linux_gcc/unit_tests.html)
 * Windows 10 Professional, 64 bit
   * [MSYS2/MinGW/gcc 7.3.0](./windows_gcc/unit_tests.html)
-  * [MSVC++ 9.0](./windows_msvc90/unit_tests.html)
-  * [MSVC++ 10.0](./windows_msvc100/unit_tests.html)
-  * [MSVC++ 11.0](./windows_msvc110/unit_tests.html)
-  * [MSVC++ 12.0](./windows_msvc120/unit_tests.html)
-  * [MSVC++ 14.0](./windows_msvc140/unit_tests.html)
-  * [MSVC++ 14.16](./windows_msvc141/unit_tests.html)
+  * [MSVC++ 9.0 / Visual Studio 2008](./windows_msvc90/unit_tests.html)
+  * [MSVC++ 10.0 / Visual Studio 2010](./windows_msvc100/unit_tests.html)
+  * [MSVC++ 11.0 / Visual Studio 2012](./windows_msvc110/unit_tests.html)
+  * [MSVC++ 12.0 / Visual Studio 2013](./windows_msvc120/unit_tests.html)
+  * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
+  * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
 
 # Summary
 
 * 99 unit test applications executed, 11 for each toolset
-* 2007 unit test suites, on average 223 for each toolset
-* 17228 unit test cases, on average 1914 for each toolset
+* 2035 unit test suites, on average 226 for each toolset
+* 17415 unit test cases, on average 1935 for each toolset
 * 0 errors
 * 0 failures
 * 0 disabled test cases
