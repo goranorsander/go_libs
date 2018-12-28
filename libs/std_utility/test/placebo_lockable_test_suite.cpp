@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
