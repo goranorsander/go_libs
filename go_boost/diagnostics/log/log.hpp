@@ -76,7 +76,11 @@ public:
 
     static boost::atomic<unsigned int>& log_level()
     {
+#if !defined(GO_BOOST_COMP_CLANG)
         static boost::atomic<unsigned int> level = 0;
+#else
+        static boost::atomic<unsigned int> level;
+#endif  // #if !defined(GO_BOOST_COMP_CLANG)
         return level;
     }
 };
@@ -112,7 +116,11 @@ public:
 
     static boost::atomic<unsigned int>& log_level()
     {
+#if !defined(GO_BOOST_COMP_CLANG)
         static boost::atomic<unsigned int> level = 0;
+#else
+        static boost::atomic<unsigned int> level;
+#endif  // #if !defined(GO_BOOST_COMP_CLANG)
         return level;
     }
 };

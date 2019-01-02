@@ -95,6 +95,7 @@ __warning _message_
 #if defined(GO_BOOST_CLANG_VERSION)
 #define GO_BOOST_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
 #endif  // #if defined(GO_BOOST_CLANG_VERSION)
+#define GO_BOOST_NO_CXX11_LOCALTIME_S 1
 
 #if defined(BOOST_NO_CXX11_CONSTEXPR)
 #define GO_BOOST_CONSTEXPR
