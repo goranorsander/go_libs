@@ -102,6 +102,9 @@ __warning _message_
 #if defined(GO_GCC_VERSION)
 #define GO_NO_CXX11_DYNAMIC_POINTER_SAFETY 1
 #endif  // #if defined(GO_GCC_VERSION)
+#if !defined(GO_COMP_GCC_MINGW)
+#define GO_NO_CXX11_LOCALTIME_S 1
+#endif  // #if !defined(GO_COMP_GCC_MINGW)
 
 #if defined(GO_NO_CXX11_CONSTEXPR)
 #define GO_CONSTEXPR

@@ -65,7 +65,7 @@ public:
 
     void write(log_line_type& logline)
     {
-        typename out_file_stream_type::streampos pos = _os->tellp();
+        typename out_file_stream_type::pos_type pos = _os->tellp();
         logline.stringify(*_os);
         _bytes_written += _os->tellp() - pos;
         if (_bytes_written > _log_file_roll_size_bytes)
