@@ -4,7 +4,7 @@
 //
 //  command_interface.hpp
 //
-//  Copyright 2015-2018 Göran Orsander
+//  Copyright 2015-2019 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
