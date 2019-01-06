@@ -10,8 +10,9 @@ The **GO Boost C++ Libraries** uses **C++98/03** and the **Boost Libraries**.
 
 ## Libraries
 
-* Config
-* Exception
+* [Config](./config/config.html)
+* [Diagnostics](./diagnostics/diagnostics.html)
+* [Exception](./exception/exception.html)
 * [MVVM](./mvvm/mvvm.html)
 * [Property](./property/property.html)
 * [Signals](./signals/signals.html)
