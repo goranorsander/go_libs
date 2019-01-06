@@ -14,7 +14,7 @@ namespace go::config
 
 ## Platform information
 
-Macros that are defined if compiler is **clang**.
+Macros that are defined depending on platform.
 
 Macro | Description
 -|-
@@ -23,7 +23,7 @@ GO_PLATFORM_WINDOWS | Platform is [Microsoft Windows](https://en.wikipedia.org/w
 
 ## Address model
 
-Macros that are defined if compiler is **gcc**.
+Macros that are defined depending on address model.
 
 Macro | Description
 -|-
