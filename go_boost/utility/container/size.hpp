@@ -30,13 +30,7 @@ namespace container
 template<class C>
 inline std::size_t size(C& container)
 {
-    std::size_t s = 0;
-    GO_BOOST_TYPENAME C::const_iterator it = container.begin();
-    while (it != container.end())
-    {
-        ++s;
-        ++it;
-    }
+    const std::size_t s = std::distance(container.begin(), container.end());
     return s;
 }
 
@@ -46,12 +40,7 @@ inline std::size_t size(const boost::shared_ptr<C>& container)
     std::size_t s = 0;
     if(container)
     {
-        GO_BOOST_TYPENAME C::const_iterator it = container->begin();
-        while (it != container->end())
-        {
-            ++s;
-            ++it;
-        }
+        s = std::distance(container->begin(), container->end());
     }
     return s;
 }

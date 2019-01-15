@@ -17,6 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <iterator>
 #include <memory>
 
 namespace go
@@ -29,8 +30,7 @@ namespace container
 template<class C>
 inline std::size_t size(C& container)
 {
-    std::size_t s = 0;
-    for (GO_TYPENAME C::value_type v : container) { ++s; }
+    const std::size_t s = std::distance(container.begin(), container.end());
     return s;
 }
 
@@ -40,7 +40,7 @@ inline std::size_t size(const std::shared_ptr<C>& container)
     std::size_t s = 0;
     if(container)
     {
-        for (GO_TYPENAME C::value_type v : *container) { ++s; }
+        s = std::distance(container->begin(), container->end());
     }
     return s;
 }
