@@ -97,12 +97,12 @@ public:
             virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
             make_shared_enabler(const m::basic_event_manager<u::u8string>::ptr& event_manager_, const u::u8string& commander_, const u::u8string& battle_) : this_type(event_manager_, commander_, battle_) {}
         };
-        ptr commander = boost::make_shared<make_shared_enabler, const m::basic_event_manager<u::u8string>::ptr&, const u::u8string&, const u::u8string&>(event_manager_, commander_, battle_);
+        ptr fleet_cmdr = boost::make_shared<make_shared_enabler, const m::basic_event_manager<u::u8string>::ptr&, const u::u8string&, const u::u8string&>(event_manager_, commander_, battle_);
 #else
-        ptr commander = boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
+        ptr fleet_cmdr = boost::shared_ptr<this_type>(new this_type(event_manager_, commander_, battle_));
 #endif // BOOST_MSVC > 1500
-        commander->bind_properties();
-        return commander;
+        fleet_cmdr->bind_properties();
+        return fleet_cmdr;
     }
 
 public:

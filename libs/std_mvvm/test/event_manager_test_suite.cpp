@@ -98,9 +98,9 @@ public:
             make_shared_enabler(const m::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_) : fleet_commander(event_manager_, commander_, battle_) {}
         };
 
-        ptr commander = std::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_manager_, commander_, battle_);
-        commander->bind_properties();
-        return commander;
+        ptr fleet_cmdr = std::make_shared<make_shared_enabler, const m::event_manager::ptr&, const std::string&, const std::string&>(event_manager_, commander_, battle_);
+        fleet_cmdr->bind_properties();
+        return fleet_cmdr;
     }
 
 private:
@@ -199,6 +199,16 @@ private:
     const m::event_subscription_key_type ship7_key = event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship7, ph::_1)); \
     const m::event_subscription_key_type ship8_key = event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship8, ph::_1));
 
+#define TEST_CASE_SCRAP_HEAP \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship1_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship2_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship3_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship4_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship5_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship6_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship7_key); \
+    event_mgr->unsubscribe(fleet_commander_changed_event_type, ship8_key);
+
 TEST(std_event_manager_test_suite, test_command_manager)
 {
     TEST_CASE_SHIPYARD
@@ -235,6 +245,8 @@ TEST(std_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::string("Admiral Gial Ackbar"), ship6->fleet_commander());
     EXPECT_EQ(std::string("Admiral Gial Ackbar"), ship7->fleet_commander());
     EXPECT_EQ(std::string("Admiral Gial Ackbar"), ship8->fleet_commander());
+
+    TEST_CASE_SCRAP_HEAP
 }
 
 }
