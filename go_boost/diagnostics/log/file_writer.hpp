@@ -53,15 +53,7 @@ public:
 public:
     virtual ~basic_file_writer() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb)
-        : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
-        , _name(log_directory + log_file_name)
-        , _file_number(0)
-        , _bytes_written(0)
-        , _os()
-    {
-        roll_file();
-    }
+    basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb);
 
     void write(log_line_type& logline)
     {
@@ -84,6 +76,28 @@ private:
     std::streamoff _bytes_written;
     std::auto_ptr<out_file_stream_type> _os;
 };
+
+template <>
+inline basic_file_writer<log_line, std::ofstream>::basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb)
+    : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
+    , _name(log_directory + log_file_name)
+    , _file_number(0)
+    , _bytes_written(0)
+    , _os()
+{
+    roll_file();
+}
+
+template <>
+inline basic_file_writer<wlog_line, std::wofstream>::basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb)
+    : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
+    , _name(log_directory + log_file_name)
+    , _file_number(0)
+    , _bytes_written(0)
+    , _os()
+{
+    roll_file();
+}
 
 template <>
 inline void basic_file_writer<log_line, std::ofstream>::roll_file()

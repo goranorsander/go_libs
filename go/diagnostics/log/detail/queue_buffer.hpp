@@ -51,18 +51,7 @@ public:
 public:
     virtual ~queue_buffer() = default;
 
-    queue_buffer()
-        : buffer_interface<L>()
-        , go::utility::noncopyable_nonmovable()
-        , _buffers()
-        , _current_write_buffer()
-        , _current_read_buffer{ nullptr }
-        , _write_index(0)
-        , _spin_lock()
-        , _read_index(0)
-    {
-        setup_next_write_buffer();
-    }
+    queue_buffer();
 
     virtual void push(L&& logline) override;
 
@@ -120,6 +109,34 @@ private:
     go::utility::spin_lock _spin_lock;
     unsigned int _read_index;
 };
+
+template <>
+inline queue_buffer<log_line>::queue_buffer()
+    : buffer_interface<log_line>()
+    , go::utility::noncopyable_nonmovable()
+    , _buffers()
+    , _current_write_buffer()
+    , _current_read_buffer{ nullptr }
+    , _write_index(0)
+    , _spin_lock()
+    , _read_index(0)
+{
+    setup_next_write_buffer();
+}
+
+template <>
+inline queue_buffer<wlog_line>::queue_buffer()
+    : buffer_interface<wlog_line>()
+    , go::utility::noncopyable_nonmovable()
+    , _buffers()
+    , _current_write_buffer()
+    , _current_read_buffer{ nullptr }
+    , _write_index(0)
+    , _spin_lock()
+    , _read_index(0)
+{
+    setup_next_write_buffer();
+}
 
 template <>
 inline void queue_buffer<log_line>::push(log_line&& logline)

@@ -52,18 +52,7 @@ public:
 public:
     virtual ~queue_buffer() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    queue_buffer()
-        : buffer_interface<L>()
-        , go_boost::utility::noncopyable_nonmovable()
-        , _buffers()
-        , _current_write_buffer()
-        , _current_read_buffer(GO_BOOST_NULLPTR)
-        , _write_index(0)
-        , _spin_lock()
-        , _read_index(0)
-    {
-        setup_next_write_buffer();
-    }
+    queue_buffer();
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
@@ -133,6 +122,34 @@ private:
     go_boost::utility::spin_lock _spin_lock;
     unsigned int _read_index;
 };
+
+template <>
+inline queue_buffer<log_line>::queue_buffer()
+    : buffer_interface<log_line>()
+    , go_boost::utility::noncopyable_nonmovable()
+    , _buffers()
+    , _current_write_buffer()
+    , _current_read_buffer(GO_BOOST_NULLPTR)
+    , _write_index(0)
+    , _spin_lock()
+    , _read_index(0)
+{
+    setup_next_write_buffer();
+}
+
+template <>
+inline queue_buffer<wlog_line>::queue_buffer()
+    : buffer_interface<wlog_line>()
+    , go_boost::utility::noncopyable_nonmovable()
+    , _buffers()
+    , _current_write_buffer()
+    , _current_read_buffer(GO_BOOST_NULLPTR)
+    , _write_index(0)
+    , _spin_lock()
+    , _read_index(0)
+{
+    setup_next_write_buffer();
+}
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
