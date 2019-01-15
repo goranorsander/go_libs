@@ -164,7 +164,6 @@ inline u8string convert_wstring_to_u8string(const std::wstring& s)
 
 inline u8string convert_u2string_to_u8string(const u2string& s)
 {
-    const std::wstring ucs2s(s.begin(), s.end());
     const std::string utf8s = boost::locale::conv::utf_to_utf<char>(s);
     const u8string u8s(utf8s.begin(), utf8s.end());
     return u8s;
