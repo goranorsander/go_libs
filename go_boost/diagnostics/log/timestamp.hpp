@@ -59,9 +59,9 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
     BOOST_AUTO(error, localtime_s(&result, &time_t));
 #else
 #if !defined(GO_BOOST_NO_CXX11_LOCALTIME_S)
-    const auto error = localtime_s(&result, &time_t);
+    /*const auto error =*/ localtime_s(&result, &time_t);
 #else
-    const auto error = localtime_r(&time_t, &result);
+    /*const auto error =*/ localtime_r(&time_t, &result);
 #endif  // #if !defined(GO_BOOST_NO_CXX11_LOCALTIME_S)
 #endif  // #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
     char ymd_hms[32];
@@ -83,9 +83,9 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
     BOOST_AUTO(error, localtime_s(&result, &time_t));
 #else
 #if !defined(GO_BOOST_NO_CXX11_LOCALTIME_S)
-    const auto error = localtime_s(&result, &time_t);
+    /*const auto error =*/ localtime_s(&result, &time_t);
 #else
-    const auto error = localtime_r(&time_t, &result);
+    /*const auto error =*/ localtime_r(&time_t, &result);
 #endif  // #if !defined(GO_BOOST_NO_CXX11_LOCALTIME_S)
 #endif  // #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
     wchar_t ymd_hms[32];
