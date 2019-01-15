@@ -58,12 +58,6 @@ public:
     data_context_type data_context;
 
 protected:
-    virtual void bind_data_context_properties()
-    {
-        data_context.getter(boost::bind(&this_type::get_data_context, this));
-        data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
-    }
-
     virtual void on_data_context_will_change()
     {
         if(!notify_data_context_change_interface<lockable_type>::data_context_will_change.empty())
@@ -78,6 +72,13 @@ protected:
         {
             notify_data_context_change_interface<lockable_type>::data_context_changed(data_context_changed_arguments::create());
         }
+    }
+
+private:
+    void bind_data_context_properties()
+    {
+        data_context.getter(boost::bind(&this_type::get_data_context, this));
+        data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
     }
 
 private:

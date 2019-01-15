@@ -59,12 +59,6 @@ public:
     data_context_type data_context;
 
 protected:
-    virtual void bind_data_context_properties()
-    {
-        data_context.getter([this]() -> data_type { return _data_context; });
-        data_context.setter([this](const data_type& v) { if(v != _data_context) { on_data_context_will_change(); _data_context = v; on_data_context_changed(); } });
-    }
-
     virtual void on_data_context_will_change()
     {
         if(!notify_data_context_change_interface<lockable_type>::data_context_will_change.empty())
@@ -79,6 +73,13 @@ protected:
         {
             notify_data_context_change_interface<lockable_type>::data_context_changed(data_context_changed_arguments::create());
         }
+    }
+
+private:
+    void bind_data_context_properties()
+    {
+        data_context.getter([this]() -> data_type { return _data_context; });
+        data_context.setter([this](const data_type& v) { if (v != _data_context) { on_data_context_will_change(); _data_context = v; on_data_context_changed(); } });
     }
 
 private:
