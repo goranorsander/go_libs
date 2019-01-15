@@ -11,12 +11,6 @@
 
 private:
 
-    this_type& operator=(const this_type& v)
-    {
-        throw std::logic_error(std::string("deleted assignment operator : assignment operator should not be used"));
-    }
+    this_type& operator=(const this_type& v); // = delete;
 
-    this_type& operator=(const value_type& v)
-    {
-        throw std::logic_error(std::string("deleted assignment operator : assignment operator should not be used"));
-    }
+    this_type& operator=(const value_type& v); // = delete;

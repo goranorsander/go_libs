@@ -50,10 +50,7 @@ public:
     }
 
 private:
-    this_type& operator=(const this_type& v)
-    {
-        throw std::logic_error(std::string("template<class V, class P, class S> class property_base : assignment operator should not be used"));
-    }
+    this_type& operator=(const this_type& v); // = delete;
 
 public:
     void set(const value_type& v)
