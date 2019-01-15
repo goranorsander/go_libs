@@ -26,7 +26,7 @@ public:
     typedef exception this_type;
 
 public:
-    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
+    virtual ~exception() GO_NOEXCEPT_OR_NOTHROW override GO_DEFAULT_DESTRUCTOR
 
     explicit exception(const char* message) GO_NOEXCEPT_OR_NOTHROW;
     explicit exception(const std::string& message) GO_NOEXCEPT_OR_NOTHROW;
