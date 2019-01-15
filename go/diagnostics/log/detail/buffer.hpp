@@ -87,7 +87,7 @@ private:
     {
         ~element() = default;
 
-        element(log_line_type&& nanologline)
+        explicit element(log_line_type&& nanologline)
             : logline(std::move(nanologline))
         {
         }

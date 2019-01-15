@@ -106,14 +106,14 @@ private:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-        element(log_line_type&& nanologline)
+        explicit element(log_line_type&& nanologline)
             : logline(std::move(nanologline))
         {
         }
 
 #else
 
-        element(const log_line_type& nanologline)
+        explicit element(const log_line_type& nanologline)
             : logline(nanologline)
         {
         }
