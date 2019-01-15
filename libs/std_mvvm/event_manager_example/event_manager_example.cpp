@@ -113,14 +113,16 @@ int main()
     spaceship::ptr ship2(new spaceship(commander, "X-Wing Red Two", "Wedge Antilles"));
     spaceship::ptr ship3(new spaceship(commander, "X-Wing Red Five", "Luke Skywalker"));
 
-    const m::event_subscription_key_type ship1_key = event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship1, ph::_1));
-    const m::event_subscription_key_type ship2_key = event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship2, ph::_1));
-    const m::event_subscription_key_type ship3_key = event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship3, ph::_1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship1, ph::_1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship2, ph::_1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, std::bind(&spaceship::on_fleet_commander_changed, ship3, ph::_1));
 
     commander->commander("General Jan Dodonna");
     event_mgr->fire_events();
     commander->commander("Admiral Gial Ackbar");
     event_mgr->fire_events();
+
+    event_mgr->unsubscribe_all();
 
     return 0;
 }
