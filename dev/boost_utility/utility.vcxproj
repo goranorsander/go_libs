@@ -29,6 +29,7 @@
     <ClInclude Include="..\..\go_boost\utility\placebo_lockable.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_implicit_specializer.hpp" />
     <ClInclude Include="..\..\go_boost\utility\primitive_type_specializer.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\recursive_spin_lock.hpp" />
     <ClInclude Include="..\..\go_boost\utility\sanity.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard.hpp" />
     <ClInclude Include="..\..\go_boost\utility\scope_guard_new.hpp" />

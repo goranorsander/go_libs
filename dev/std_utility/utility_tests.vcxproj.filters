@@ -51,5 +51,8 @@
     <ClCompile Include="..\..\libs\std_utility\test\spin_lock_test_suite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libs\std_utility\test\recursive_spin_lock_test_suite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

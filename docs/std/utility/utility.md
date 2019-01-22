@@ -33,6 +33,7 @@ of components too small to be called libraries in their own right.
 * [placebo_lockable](./class_placebo_lockable.html)
 * [primitive_type_implicit_specializer](./class_template_primitive_type_implicit_specializer.html)
 * [primitive_type_specializer](./class_template_primitive_type_specializer.html)
+* [recursive_spin_lock](./class_recursive_spin_lock.html)
 * [scope_guard](./class_scope_guard.html)
 * [scope_guard_new](./class_template_scope_guard_new.html)
 * [spin_lock](./class_spin_lock.html)

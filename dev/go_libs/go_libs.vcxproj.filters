@@ -1618,5 +1618,11 @@
     <None Include="..\..\docs\_layouts\std_lib_diagnostics_log_policy.html">
       <Filter>Documentation\_layouts</Filter>
     </None>
+    <None Include="..\..\docs\boost\utility\class_recursive_spin_lock.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\class_recursive_spin_lock.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>

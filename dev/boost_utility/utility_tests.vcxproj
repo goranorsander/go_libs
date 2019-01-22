@@ -200,6 +200,7 @@
     <ClCompile Include="..\..\libs\boost_utility\test\iso_8859_1_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\placebo_lockable_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\primitive_type_specializer_test_suite.cpp" />
+    <ClCompile Include="..\..\libs\boost_utility\test\recursive_spin_lock_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\scope_guard_new_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\scope_guard_test_suite.cpp" />
     <ClCompile Include="..\..\libs\boost_utility\test\spin_lock_test_suite.cpp" />
