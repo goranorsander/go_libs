@@ -43,30 +43,30 @@ public:
     typedef boost::detail::try_lock_wrapper<spin_lock> scoped_try_lock;
 
 private:
-    boost::atomic_flag _flag;
+    boost::atomic_flag _lock;
 };
 
 inline spin_lock::spin_lock() BOOST_NOEXCEPT
     : noncopyable_nonmovable()
-    , _flag()
+    , _lock()
 {
 }
 
 inline void spin_lock::lock()
 {
-    while (_flag.test_and_set(boost::memory_order_acquire))
+    while (_lock.test_and_set(boost::memory_order_acquire))
     {
     }
 }
 
 inline bool spin_lock::try_lock()
 {
-    return !_flag.test_and_set(boost::memory_order_acquire);
+    return !_lock.test_and_set(boost::memory_order_acquire);
 }
 
 inline void spin_lock::unlock()
 {
-    _flag.clear(boost::memory_order_release);
+    _lock.clear(boost::memory_order_release);
 }
 
 } // namespace utility

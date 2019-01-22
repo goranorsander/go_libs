@@ -39,37 +39,37 @@ public:
     void unlock();
 
 private:
-    std::atomic_flag _flag;
+    std::atomic_flag _lock;
 };
 
 inline spin_lock::spin_lock() GO_NOEXCEPT
     : noncopyable_nonmovable()
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
-    , _flag()
+    , _lock()
 #else
-    , _flag{ ATOMIC_FLAG_INIT }
+    , _lock{ ATOMIC_FLAG_INIT }
 #endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
 {
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
-    _flag.clear(std::memory_order_relaxed);
+    _lock.clear(std::memory_order_relaxed);
 #endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
 }
 
 inline void spin_lock::lock()
 {
-    while (_flag.test_and_set(std::memory_order_acquire))
+    while (_lock.test_and_set(std::memory_order_acquire))
     {
     }
 }
 
 inline bool spin_lock::try_lock()
 {
-    return !_flag.test_and_set(std::memory_order_acquire);
+    return !_lock.test_and_set(std::memory_order_acquire);
 }
 
 inline void spin_lock::unlock()
 {
-    _flag.clear(std::memory_order_release);
+    _lock.clear(std::memory_order_release);
 }
 
 } // namespace utility
