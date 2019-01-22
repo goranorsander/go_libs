@@ -109,46 +109,46 @@ public:
     }
 };
 
-void initialize(const policy::guaranteed_logger<file_writer>& policy, const std::string& log_directory, const std::string& log_file_name, uint32_t log_file_roll_size_mb)
+inline void initialize(const policy::guaranteed_logger<file_writer>& policy, const std::string& log_directory, const std::string& log_file_name, uint32_t log_file_roll_size_mb)
 {
     log::logger_instance().reset(new detail::logger(policy, log_directory, log_file_name, log_file_roll_size_mb));
     log::logger_atom().store(log::logger_instance().get(), std::memory_order_seq_cst);
 }
 
-void initialize(const policy::non_guaranteed_logger<file_writer>& policy, const std::string& log_directory, const std::string& log_file_name, uint32_t log_file_roll_size_mb)
+inline void initialize(const policy::non_guaranteed_logger<file_writer>& policy, const std::string& log_directory, const std::string& log_file_name, uint32_t log_file_roll_size_mb)
 {
     log::logger_instance().reset(new detail::logger(policy, log_directory, log_file_name, log_file_roll_size_mb));
     log::logger_atom().store(log::logger_instance().get(), std::memory_order_seq_cst);
 }
 
-void initialize(const policy::guaranteed_logger<wfile_writer>& policy, const std::wstring& log_directory, const std::wstring& log_file_name, uint32_t log_file_roll_size_mb)
+inline void initialize(const policy::guaranteed_logger<wfile_writer>& policy, const std::wstring& log_directory, const std::wstring& log_file_name, uint32_t log_file_roll_size_mb)
 {
     wlog::logger_instance().reset(new detail::wlogger(policy, log_directory, log_file_name, log_file_roll_size_mb));
     wlog::logger_atom().store(wlog::logger_instance().get(), std::memory_order_seq_cst);
 }
 
-void initialize(const policy::non_guaranteed_logger<wfile_writer>& policy, const std::wstring& log_directory, const std::wstring& log_file_name, uint32_t log_file_roll_size_mb)
+inline void initialize(const policy::non_guaranteed_logger<wfile_writer>& policy, const std::wstring& log_directory, const std::wstring& log_file_name, uint32_t log_file_roll_size_mb)
 {
     wlog::logger_instance().reset(new detail::wlogger(policy, log_directory, log_file_name, log_file_roll_size_mb));
     wlog::logger_atom().store(wlog::logger_instance().get(), std::memory_order_seq_cst);
 }
 
-void set_log_level(const log_level level)
+inline void set_log_level(const log_level level)
 {
     log::log_level().store(static_cast<unsigned int>(level), std::memory_order_release);
 }
 
-void set_wlog_level(const log_level level)
+inline void set_wlog_level(const log_level level)
 {
     wlog::log_level().store(static_cast<unsigned int>(level), std::memory_order_release);
 }
 
-bool is_logged(const log_level level)
+inline bool is_logged(const log_level level)
 {
     return static_cast<unsigned int>(level) <= log::log_level().load(std::memory_order_relaxed);
 }
 
-bool is_wlogged(const log_level level)
+inline bool is_wlogged(const log_level level)
 {
     return static_cast<unsigned int>(level) <= wlog::log_level().load(std::memory_order_relaxed);
 }
