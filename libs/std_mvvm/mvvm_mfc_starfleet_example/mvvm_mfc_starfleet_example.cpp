@@ -15,6 +15,7 @@
 #include "main_frame_view.hpp"
 #include "spaceship_view.hpp"
 
+#include <go/diagnostics/log.hpp>
 #include <go/utility.hpp>
 
 #ifdef _DEBUG
@@ -65,6 +66,9 @@ mvvm_mfc_starfleet_example_app::mvvm_mfc_starfleet_example_app()
 {
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
     SetAppID(_T("mvvm_mfc_starfleet_example.AppID.NoVersion"));
+
+    l::initialize(l::policy::guaranteed_logger<l::file_writer>(), "./", "mfc_starfleet_example", 10);
+    l::set_log_level(l::log_level::trace);
 }
 
 BOOL mvvm_mfc_starfleet_example_app::InitInstance()
@@ -95,7 +99,6 @@ BOOL mvvm_mfc_starfleet_example_app::InitInstance()
     _command_manager = m::wcommand_manager::create();
     _event_manager = m::wevent_manager::create();
     _fleet_repository = fleet_repository::create();
-    _timer_id = SetTimer(nullptr, 0, 100, nullptr);
 
     {
         u::scope_guard_new<main_frame_view> pMainFrame(new main_frame_view(_command_manager, _event_manager, _fleet_repository));
@@ -112,6 +115,8 @@ BOOL mvvm_mfc_starfleet_example_app::InitInstance()
 
     m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
     m_pMainWnd->UpdateWindow();
+
+    _timer_id = SetTimer(nullptr, 0, 100, nullptr);
 
     return TRUE;
 }

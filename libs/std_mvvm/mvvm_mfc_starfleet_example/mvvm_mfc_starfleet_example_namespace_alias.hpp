@@ -15,6 +15,10 @@
 
 namespace go
 {
+namespace diagnostics
+{
+namespace log {}
+}
 namespace mvvm
 {
 namespace single_threaded {}
@@ -35,6 +39,8 @@ namespace string {}
 }
 }
 
+namespace d = go::diagnostics;
+namespace l = go::diagnostics::log;
 namespace m = go::mvvm;
 namespace mu = go::mvvm::utility;
 namespace p = go::property;

@@ -15,22 +15,28 @@
 #include "output_view.hpp"
 #include "spaceship_model.hpp"
 
+#include <go/diagnostics/log.hpp>
+
 namespace
 {
 
 template<class T, typename... A>
 std::shared_ptr<T> create(output_view* object_observer, const A&... a)
 {
+    GO_LOG_TRACE << "create<T>";
     std::shared_ptr<T> t = T::create(a...);
     if(t != nullptr)
     {
         t->property_changed.connect(std::bind(&output_view::on_property_changed, object_observer, ph::_1, ph::_2));
     }
+    GO_LOG_TRACE << "create<T>: done";
     return t;
 }
 
 void add_colonial_fleet(const fleet_organization_model::ptr& good_guys, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_colonial_fleet";
+
     fleet_organization_model::ptr colonial_fleet = create<fleet_organization_model>(object_observer, L"Colonial Fleet", nullptr);
     good_guys->add_child(colonial_fleet);
 
@@ -69,10 +75,14 @@ void add_colonial_fleet(const fleet_organization_model::ptr& good_guys, output_v
     ship_viper_8757->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Missile", 6));
     fleet_organization_model::ptr viper_8757 = create<fleet_organization_model>(object_observer, L"Viper 8757", ship_viper_8757);
     battlestar_galactica->add_child(viper_8757);
+
+    GO_LOG_TRACE << "add_colonial_fleet: done";
 }
 
 void add_rebel_alliance(const fleet_organization_model::ptr& good_guys, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_rebel_alliance";
+
     fleet_organization_model::ptr rebel_alliance = create<fleet_organization_model>(object_observer, L"Rebel Alliance", nullptr);
     good_guys->add_child(rebel_alliance);
 
@@ -116,10 +126,14 @@ void add_rebel_alliance(const fleet_organization_model::ptr& good_guys, output_v
     ship_xwing_red_five->equipment()->push_back(create<equipment_model>(object_observer, L"Shielding", L"Deflector shield generator", 1));
     fleet_organization_model::ptr xwing_red_five = create<fleet_organization_model>(object_observer, L"X-Wing Red Five", ship_xwing_red_five);
     rebel_alliance->add_child(xwing_red_five);
+
+    GO_LOG_TRACE << "add_rebel_alliance: done";
 }
 
 void add_starfleet(const fleet_organization_model::ptr& good_guys, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_starfleet";
+
     fleet_organization_model::ptr starfleet = create<fleet_organization_model>(object_observer, L"Starfleet", nullptr);
     good_guys->add_child(starfleet);
 
@@ -134,10 +148,14 @@ void add_starfleet(const fleet_organization_model::ptr& good_guys, output_view* 
     ship_uss_enterprise->equipment()->push_back(create<equipment_model>(object_observer, L"Defense", L"Deflector shield ", 1));
     fleet_organization_model::ptr uss_enterprise = create<fleet_organization_model>(object_observer, L"USS Enterprise", ship_uss_enterprise);
     starfleet->add_child(uss_enterprise);
+
+    GO_LOG_TRACE << "add_starfleet: done";
 }
 
 void add_galactic_empire(const fleet_organization_model::ptr& evil_menace, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_galactic_empire";
+
     fleet_organization_model::ptr galactic_empire = create<fleet_organization_model>(object_observer, L"Galactic Empire", nullptr);
     evil_menace->add_child(galactic_empire);
 
@@ -178,10 +196,14 @@ void add_galactic_empire(const fleet_organization_model::ptr& evil_menace, outpu
     ship_executor->equipment()->push_back(create<equipment_model>(object_observer, L"Complement", L"AT-ST", 40));
     fleet_organization_model::ptr executor = create<fleet_organization_model>(object_observer, L"Executor", ship_executor);
     galactic_empire->add_child(executor);
+
+    GO_LOG_TRACE << "add_galactic_empire: done";
 }
 
 void add_spaceball_fleet(const fleet_organization_model::ptr& evil_menace, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_spaceball_fleet";
+
     fleet_organization_model::ptr spaceball_fleet = create<fleet_organization_model>(object_observer, L"Spaceball Fleet", nullptr);
     evil_menace->add_child(spaceball_fleet);
 
@@ -198,10 +220,14 @@ void add_spaceball_fleet(const fleet_organization_model::ptr& evil_menace, outpu
     ship_spaceball_one->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Vaccu-suck atmospheric removal system", 1));
     fleet_organization_model::ptr spaceball_one = create<fleet_organization_model>(object_observer, L"Spaceball One", ship_spaceball_one);
     spaceball_fleet->add_child(spaceball_one);
+
+    GO_LOG_TRACE << "add_spaceball_fleet: done";
 }
 
 void add_the_borg(const fleet_organization_model::ptr& evil_menace, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_the_borg";
+
     fleet_organization_model::ptr the_borg = create<fleet_organization_model>(object_observer, L"The Borg", nullptr);
     evil_menace->add_child(the_borg);
 
@@ -217,24 +243,34 @@ void add_the_borg(const fleet_organization_model::ptr& evil_menace, output_view*
     ship_tactical_cube_138->equipment()->push_back(create<equipment_model>(object_observer, L"Defense", L"Multi-regenerative security field", 1));
     fleet_organization_model::ptr tactical_cube_138 = create<fleet_organization_model>(object_observer, L"Tactical Cube 138", ship_tactical_cube_138);
     the_borg->add_child(tactical_cube_138);
+
+    GO_LOG_TRACE << "add_the_borg: done";
 }
 
 void add_good_guys(const fleet_repository_interface::ptr& fleet_repo, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_good_guys";
+
     fleet_organization_model::ptr good_guys = create<fleet_organization_model>(object_observer, L"Good Guys", nullptr);
     fleet_repo->fleet_organization_model()->add_child(good_guys);
     add_colonial_fleet(good_guys, object_observer);
     add_rebel_alliance(good_guys, object_observer);
     add_starfleet(good_guys, object_observer);
+
+    GO_LOG_TRACE << "add_good_guys: done";
 }
 
 void add_evil_menace(const fleet_repository_interface::ptr& fleet_repo, output_view* object_observer)
 {
+    GO_LOG_TRACE << "add_evil_menace";
+
     fleet_organization_model::ptr evil_menace = create<fleet_organization_model>(object_observer, L"Evil Menaces", nullptr);
     fleet_repo->fleet_organization_model()->add_child(evil_menace);
     add_galactic_empire(evil_menace, object_observer);
     add_spaceball_fleet(evil_menace, object_observer);
     add_the_borg(evil_menace, object_observer);
+
+    GO_LOG_TRACE << "add_evil_menace: done";
 }
 
 }
@@ -258,9 +294,13 @@ void fleet_repository_populator::populate(const fleet_repository_interface::ptr&
         fleet_organization_model::ptr fleet = std::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model());
         if(fleet)
         {
+            GO_LOG_TRACE << "fleet_repository_populator::populate: fleet->property_changed.connect(output_view::on_property_changed)";
+
             fleet->property_changed.connect(std::bind(&output_view::on_property_changed, object_observer, ph::_1, ph::_2));
             add_good_guys(fleet_repo, object_observer);
             add_evil_menace(fleet_repo, object_observer);
+
+            GO_LOG_TRACE << "fleet_repository_populator::populate: done";
         }
     }
 }

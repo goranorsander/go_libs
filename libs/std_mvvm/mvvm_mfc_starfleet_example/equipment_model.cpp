@@ -11,6 +11,8 @@
 #include "stdafx.h"
 #include "equipment_model.hpp"
 
+#include <go/diagnostics/log.hpp>
+
 equipment_id_type equipment_model::_next_id = 0;
 
 equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
@@ -27,6 +29,8 @@ equipment_model::equipment_model(const std::wstring& category_, const std::wstri
 
 equipment_model::ptr equipment_model::create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
 {
+    GO_LOG_TRACE << "equipment_model::create: " << category_ << ", " << name_ << ", " << quantity_;
+
     struct make_shared_enabler
         : public this_type
     {
@@ -36,6 +40,9 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
 
     equipment_model::ptr model = std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);
     model->bind_properties();
+
+    GO_LOG_TRACE << "equipment_model::create: done";
+
     return model;
 }
 

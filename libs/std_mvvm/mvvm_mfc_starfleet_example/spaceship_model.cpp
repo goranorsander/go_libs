@@ -11,6 +11,8 @@
 #include "stdafx.h"
 #include "spaceship_model.hpp"
 
+#include <go/diagnostics/log.hpp>
+
 spaceship_model::~spaceship_model()
 {
     _equipment->container_changed.disconnect(_on_equipment_list_changed_slot_key);
@@ -31,6 +33,8 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
 
 spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class_, const std::wstring& name_)
 {
+    GO_LOG_TRACE << "spaceship_model::create: " << spaceship_class_ << ", " << name_;
+
     struct make_shared_enabler
         : public this_type
     {
@@ -40,6 +44,9 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
 
     spaceship_model::ptr model = std::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&>(spaceship_class_, name_);
     model->bind_properties();
+
+    GO_LOG_TRACE << "spaceship_model::create: done";
+
     return model;
 }
 

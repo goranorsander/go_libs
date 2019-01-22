@@ -12,6 +12,8 @@
 #include "fleet_organization_model.hpp"
 #include "spaceship_model.hpp"
 
+#include <go/diagnostics/log.hpp>
+
 fleet_organization_id_type fleet_organization_model::_next_id = 0;
 
 fleet_organization_model::~fleet_organization_model()
@@ -48,6 +50,8 @@ fleet_organization_model::ptr fleet_organization_model::create()
 
 fleet_organization_model::ptr fleet_organization_model::create(const std::wstring& name_, const spaceship_interface::ptr& spaceship_)
 {
+    GO_LOG_TRACE << "fleet_organization_model::create: " << name_;
+
     struct make_shared_enabler
         : public this_type
     {
@@ -57,6 +61,9 @@ fleet_organization_model::ptr fleet_organization_model::create(const std::wstrin
 
     fleet_organization_model::ptr model = std::make_shared<make_shared_enabler, const std::wstring&, const spaceship_interface::ptr&>(name_, spaceship_);
     model->bind_properties();
+
+    GO_LOG_TRACE << "fleet_organization_model::create: done";
+
     return model;
 }
 
