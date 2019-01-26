@@ -22,7 +22,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/log_line.hpp>
 #include <go/utility/spin_lock.hpp>
 
-#include <mutex>
 #include <queue>
 
 namespace go
