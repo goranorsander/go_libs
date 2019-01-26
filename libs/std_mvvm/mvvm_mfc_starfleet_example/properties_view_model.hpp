@@ -19,7 +19,7 @@
 #include "main_frame_view_model.hpp"
 
 class properties_view_model
-    : public m::view_model_interface<std::recursive_mutex>
+    : public m::view_model_interface<go::utility::recursive_spin_lock>
     , public m::wobservable_object
     , public m::object_wobserver_interface
     , private m::data_context_interface<fleet_organization_model::ptr>

@@ -20,7 +20,7 @@
 #include "spaceship_model.hpp"
 
 class spaceship_view_model
-    : public m::view_model_interface<std::recursive_mutex>
+    : public m::view_model_interface<go::utility::recursive_spin_lock>
     , public m::wobservable_object
     , private m::data_context_interface<spaceship_model::ptr>
     , private u::noncopyable_nonmovable

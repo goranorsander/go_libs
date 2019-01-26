@@ -21,7 +21,7 @@ properties_view_model::~properties_view_model()
 }
 
 properties_view_model::properties_view_model()
-    : m::view_model_interface<std::recursive_mutex>()
+    : m::view_model_interface<go::utility::recursive_spin_lock>()
     , m::wobservable_object()
     , m::data_context_interface<fleet_organization_model::ptr>(fleet_organization_model::create())
     , u::noncopyable_nonmovable()
