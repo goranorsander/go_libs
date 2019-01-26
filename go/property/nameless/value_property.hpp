@@ -21,6 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/property/nameless/detail/property_base.hpp>
 #include <go/property/policy/value.hpp>
 #include <go/utility/placebo_lockable.hpp>
+#include <go/utility/recursive_spin_lock.hpp>
 #include <go/utility/u8string.hpp>
 
 namespace go
@@ -30,7 +31,7 @@ namespace property
 namespace nameless
 {
 
-template<class T, class L = std::recursive_mutex> class value_property
+template<class T, class L = go::utility::recursive_spin_lock> class value_property
     : public detail::property_base<T, policy::value<T, L>>
 {
 public:

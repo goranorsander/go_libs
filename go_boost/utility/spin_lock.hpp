@@ -17,10 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
-
 #include <boost/atomic.hpp>
 #include <boost/thread/mutex.hpp>
+#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {

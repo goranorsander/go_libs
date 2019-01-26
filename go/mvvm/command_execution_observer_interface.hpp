@@ -29,8 +29,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::string, std::recursive_mutex> command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::wstring, std::recursive_mutex> wcommand_execution_wobserver_interface;
+typedef basic_command_execution_observer_interface<std::string, go::utility::recursive_spin_lock> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go::utility::recursive_spin_lock> wcommand_execution_wobserver_interface;
 
 namespace single_threaded
 {
@@ -40,7 +40,7 @@ typedef basic_command_execution_observer_interface<std::wstring, go::utility::pl
 
 }
 
-template<class S, class L = std::recursive_mutex>
+template<class S, class L = go::utility::recursive_spin_lock>
 class basic_command_execution_observer_interface
 {
 public:

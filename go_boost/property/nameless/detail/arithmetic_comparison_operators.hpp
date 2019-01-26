@@ -95,11 +95,11 @@ GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _v
 GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_NOT_EQUAL_TO_OPERATOR(_basic_property_type_, _value_type_, _mutex_type_)
 
 #define GO_BOOST_IMPLEMENT_DEFAULT_NAMELESS_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_) \
-GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, boost::recursive_mutex) \
-GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, boost::recursive_mutex) \
-GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, boost::recursive_mutex) \
-GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, boost::recursive_mutex) \
-GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, boost::recursive_mutex) \
+GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, go_boost::utility::recursive_spin_lock) \
+GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, go_boost::utility::recursive_spin_lock) \
+GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, go_boost::utility::recursive_spin_lock) \
+GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u16string, go_boost::utility::recursive_spin_lock) \
+GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u32string, go_boost::utility::recursive_spin_lock) \
 \
 GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::placebo_lockable) \
 GO_BOOST_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::placebo_lockable) \

@@ -27,7 +27,7 @@ namespace go
 namespace mvvm
 {
 
-template<class L = std::recursive_mutex>
+template<class L = go::utility::recursive_spin_lock>
 class notify_container_changed_interface
     : public go::signals::slot
 {

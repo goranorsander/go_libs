@@ -28,7 +28,7 @@ namespace property
 namespace nameless
 {
 
-template<class T, class L = boost::recursive_mutex> class property
+template<class T, class L = go_boost::utility::recursive_spin_lock> class property
     : public detail::property_base<T, policy::proxy<T, L>>
 {
 public:

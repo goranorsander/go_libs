@@ -32,8 +32,8 @@ namespace mvvm
 template<class S, class L> class basic_command_manager;
 
 template<class S, class L> class basic_command_interface;
-typedef basic_command_interface<std::string, boost::recursive_mutex> command_interface;
-typedef basic_command_interface<std::wstring, boost::recursive_mutex> wcommand_interface;
+typedef basic_command_interface<std::string, go_boost::utility::recursive_spin_lock> command_interface;
+typedef basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock> wcommand_interface;
 
 namespace single_threaded
 {
@@ -43,7 +43,7 @@ typedef basic_command_interface<std::wstring, go_boost::utility::placebo_lockabl
 
 }
 
-template<class S, class L = boost::recursive_mutex>
+template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_command_interface
     : public boost::enable_shared_from_this<basic_command_interface<S, L>>
     , private go_boost::utility::noncopyable_nonmovable
@@ -88,13 +88,13 @@ private:
 };
 
 template<>
-inline basic_command_interface<std::string, boost::recursive_mutex>::~basic_command_interface()
+inline basic_command_interface<std::string, go_boost::utility::recursive_spin_lock>::~basic_command_interface()
 {
     this->can_execute_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_command_interface<std::wstring, boost::recursive_mutex>::~basic_command_interface()
+inline basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock>::~basic_command_interface()
 {
     this->can_execute_changed.disconnect_all_slots();
 }
@@ -130,13 +130,13 @@ inline basic_command_interface<S, L>::basic_command_interface(const S& cmd_name,
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, boost::recursive_mutex>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, go_boost::utility::recursive_spin_lock>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, boost::recursive_mutex>::parameters() const
+inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock>::parameters() const
 {
     return _parameters;
 }
@@ -160,7 +160,7 @@ inline boost::shared_ptr<command_parameters> basic_command_interface<S, L>::para
 }
 
 template<>
-inline void basic_command_interface<std::string, boost::recursive_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::string, go_boost::utility::recursive_spin_lock>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
@@ -169,7 +169,7 @@ inline void basic_command_interface<std::string, boost::recursive_mutex>::notify
 }
 
 template<>
-inline void basic_command_interface<std::wstring, boost::recursive_mutex>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {

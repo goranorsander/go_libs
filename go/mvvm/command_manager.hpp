@@ -18,11 +18,11 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <deque>
-#include <mutex>
 #include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/placebo_lockable.hpp>
+#include <go/utility/recursive_spin_lock.hpp>
 
 namespace go
 {
@@ -30,8 +30,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_command_manager;
-typedef basic_command_manager<std::string, std::recursive_mutex> command_manager;
-typedef basic_command_manager<std::wstring, std::recursive_mutex> wcommand_manager;
+typedef basic_command_manager<std::string, go::utility::recursive_spin_lock> command_manager;
+typedef basic_command_manager<std::wstring, go::utility::recursive_spin_lock> wcommand_manager;
 
 namespace single_threaded
 {
@@ -41,7 +41,7 @@ typedef basic_command_manager<std::wstring, go::utility::placebo_lockable> wcomm
 
 }
 
-template<class S, class L = std::recursive_mutex>
+template<class S, class L = go::utility::recursive_spin_lock>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S, L>
     , public go::utility::noncopyable_nonmovable
@@ -80,7 +80,7 @@ inline basic_command_manager<S, L>::~basic_command_manager()
 }
 
 template<>
-inline void basic_command_manager<std::string, std::recursive_mutex>::execute(const std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>& command) const
+inline void basic_command_manager<std::string, go::utility::recursive_spin_lock>::execute(const std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>& command) const
 {
     if(command)
     {
@@ -98,7 +98,7 @@ inline void basic_command_manager<std::string, std::recursive_mutex>::execute(co
 }
 
 template<>
-inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute(const std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>& command) const
+inline void basic_command_manager<std::wstring, go::utility::recursive_spin_lock>::execute(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>& command) const
 {
     if(command)
     {
@@ -170,22 +170,22 @@ inline void basic_command_manager<S, L>::execute(const std::shared_ptr<basic_com
 }
 
 template<>
-inline void basic_command_manager<std::string, std::recursive_mutex>::post(const std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::string, go::utility::recursive_spin_lock>::post(const std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>& command, const bool keep_command_alive)
 {
     if(command)
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
-        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string, std::recursive_mutex>>, std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>>(std::weak_ptr<basic_command_interface<std::string, std::recursive_mutex>>(command), keep_command_alive ? command : nullptr));
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>, std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>>(std::weak_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>(command), keep_command_alive ? command : nullptr));
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring, std::recursive_mutex>::post(const std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::wstring, go::utility::recursive_spin_lock>::post(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>& command, const bool keep_command_alive)
 {
     if(command)
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
-        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>, std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>>(std::weak_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>(command), keep_command_alive ? command : nullptr));
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>>(std::weak_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>(command), keep_command_alive ? command : nullptr));
     }
 }
 
@@ -220,9 +220,9 @@ inline void basic_command_manager<S, L>::post(const std::shared_ptr<basic_comman
 }
 
 template<>
-inline void basic_command_manager<std::string, std::recursive_mutex>::execute_commands()
+inline void basic_command_manager<std::string, go::utility::recursive_spin_lock>::execute_commands()
 {
-    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string, std::recursive_mutex>>, std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>>> commands;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>, std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>>> commands;
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
         std::swap(commands, _commands);
@@ -235,9 +235,9 @@ inline void basic_command_manager<std::string, std::recursive_mutex>::execute_co
 }
 
 template<>
-inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute_commands()
+inline void basic_command_manager<std::wstring, go::utility::recursive_spin_lock>::execute_commands()
 {
-    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>, std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>>> commands;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>>> commands;
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
         std::swap(commands, _commands);
@@ -295,14 +295,14 @@ inline void basic_command_manager<S, L>::execute_commands()
 }
 
 template<>
-inline size_t basic_command_manager<std::string, std::recursive_mutex>::commands() const
+inline size_t basic_command_manager<std::string, go::utility::recursive_spin_lock>::commands() const
 {
     const std::lock_guard<lockable_type> lock(_commands_guard);
     return _commands.size();
 }
 
 template<>
-inline size_t basic_command_manager<std::wstring, std::recursive_mutex>::commands() const
+inline size_t basic_command_manager<std::wstring, go::utility::recursive_spin_lock>::commands() const
 {
     const std::lock_guard<lockable_type> lock(_commands_guard);
     return _commands.size();
@@ -330,7 +330,7 @@ inline size_t basic_command_manager<S, L>::commands() const
 }
 
 template<>
-inline std::shared_ptr<basic_command_manager<std::string, std::recursive_mutex>> basic_command_manager<std::string, std::recursive_mutex>::create()
+inline std::shared_ptr<basic_command_manager<std::string, go::utility::recursive_spin_lock>> basic_command_manager<std::string, go::utility::recursive_spin_lock>::create()
 {
     struct make_shared_enabler
         : public this_type
@@ -343,7 +343,7 @@ inline std::shared_ptr<basic_command_manager<std::string, std::recursive_mutex>>
 }
 
 template<>
-inline std::shared_ptr<basic_command_manager<std::wstring, std::recursive_mutex>> basic_command_manager<std::wstring, std::recursive_mutex>::create()
+inline std::shared_ptr<basic_command_manager<std::wstring, go::utility::recursive_spin_lock>> basic_command_manager<std::wstring, go::utility::recursive_spin_lock>::create()
 {
     struct make_shared_enabler
         : public this_type

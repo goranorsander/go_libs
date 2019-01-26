@@ -30,8 +30,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::string, boost::recursive_mutex> notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::wstring, boost::recursive_mutex> notify_wproperty_changed_interface;
+typedef basic_notify_property_changed_interface<std::string, go_boost::utility::recursive_spin_lock> notify_property_changed_interface;
+typedef basic_notify_property_changed_interface<std::wstring, go_boost::utility::recursive_spin_lock> notify_wproperty_changed_interface;
 
 namespace single_threaded
 {
@@ -41,7 +41,7 @@ typedef basic_notify_property_changed_interface<std::wstring, go_boost::utility:
 
 }
 
-template<class S, class L = boost::recursive_mutex>
+template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_notify_property_changed_interface
     : public go_boost::signals::slot
 {
@@ -65,31 +65,31 @@ protected:
 };
 
 template<>
-inline basic_notify_property_changed_interface<std::string, boost::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::string, go_boost::utility::recursive_spin_lock>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::wstring, boost::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::wstring, go_boost::utility::recursive_spin_lock>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u8string, boost::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u8string, go_boost::utility::recursive_spin_lock>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u16string, boost::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u16string, go_boost::utility::recursive_spin_lock>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u32string, boost::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_boost::utility::recursive_spin_lock>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -131,31 +131,31 @@ inline basic_notify_property_changed_interface<S, L>::~basic_notify_property_cha
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::string, boost::recursive_mutex>::basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
 
 template<>
-inline basic_notify_property_changed_interface<std::wstring, boost::recursive_mutex>::basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u8string, boost::recursive_mutex>::basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u8string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u16string, boost::recursive_mutex>::basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u16string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
 
 template<>
-inline basic_notify_property_changed_interface<go_boost::utility::u32string, boost::recursive_mutex>::basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
     : go_boost::signals::slot()
 {
 }
@@ -197,7 +197,7 @@ inline basic_notify_property_changed_interface<S, L>::basic_notify_property_chan
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::string, boost::recursive_mutex>::notify_property_changed(const boost::shared_ptr<object>& object, const std::string& property_name)
+inline void basic_notify_property_changed_interface<std::string, go_boost::utility::recursive_spin_lock>::notify_property_changed(const boost::shared_ptr<object>& object, const std::string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -206,7 +206,7 @@ inline void basic_notify_property_changed_interface<std::string, boost::recursiv
 }
 
 template<>
-inline void basic_notify_property_changed_interface<std::wstring, boost::recursive_mutex>::notify_property_changed(const boost::shared_ptr<object>& object, const std::wstring& property_name)
+inline void basic_notify_property_changed_interface<std::wstring, go_boost::utility::recursive_spin_lock>::notify_property_changed(const boost::shared_ptr<object>& object, const std::wstring& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -215,7 +215,7 @@ inline void basic_notify_property_changed_interface<std::wstring, boost::recursi
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go_boost::utility::u8string, boost::recursive_mutex>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u8string& property_name)
+inline void basic_notify_property_changed_interface<go_boost::utility::u8string, go_boost::utility::recursive_spin_lock>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u8string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -224,7 +224,7 @@ inline void basic_notify_property_changed_interface<go_boost::utility::u8string,
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go_boost::utility::u16string, boost::recursive_mutex>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u16string& property_name)
+inline void basic_notify_property_changed_interface<go_boost::utility::u16string, go_boost::utility::recursive_spin_lock>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u16string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -233,7 +233,7 @@ inline void basic_notify_property_changed_interface<go_boost::utility::u16string
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go_boost::utility::u32string, boost::recursive_mutex>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u32string& property_name)
+inline void basic_notify_property_changed_interface<go_boost::utility::u32string, go_boost::utility::recursive_spin_lock>::notify_property_changed(const boost::shared_ptr<object>& object, const go_boost::utility::u32string& property_name)
 {
     if (!this->property_changed.empty())
     {

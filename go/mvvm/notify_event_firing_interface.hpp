@@ -27,10 +27,10 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::string, std::recursive_mutex> notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::wstring, std::recursive_mutex> notify_wevent_firing_interface;
+typedef basic_notify_event_firing_interface<std::string, go::utility::recursive_spin_lock> notify_event_firing_interface;
+typedef basic_notify_event_firing_interface<std::wstring, go::utility::recursive_spin_lock> notify_wevent_firing_interface;
 
-template<class S, class L = std::recursive_mutex>
+template<class S, class L = go::utility::recursive_spin_lock>
 class basic_notify_event_firing_interface
     : public go::signals::slot
 {
@@ -51,13 +51,13 @@ public:
 };
 
 template<>
-inline basic_notify_event_firing_interface<std::string, std::recursive_mutex>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, go::utility::recursive_spin_lock>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, std::recursive_mutex>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, go::utility::recursive_spin_lock>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }

@@ -17,7 +17,6 @@ TEST(std_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
 
 #include <mutex>
-
 #include <go/utility/placebo_lockable.hpp>
 
 namespace u = go::utility;

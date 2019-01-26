@@ -26,7 +26,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class L = boost::recursive_mutex>
+template<class L = go_boost::utility::recursive_spin_lock>
 class notify_data_context_change_interface
     : public go_boost::signals::slot
 {

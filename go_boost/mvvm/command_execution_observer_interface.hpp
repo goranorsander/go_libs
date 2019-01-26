@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::string, boost::recursive_mutex> command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex> wcommand_execution_wobserver_interface;
+typedef basic_command_execution_observer_interface<std::string, go_boost::utility::recursive_spin_lock> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go_boost::utility::recursive_spin_lock> wcommand_execution_wobserver_interface;
 
 namespace single_threaded
 {
@@ -39,7 +39,7 @@ typedef basic_command_execution_observer_interface<std::wstring, go_boost::utili
 
 }
 
-template<class S, class L = boost::recursive_mutex>
+template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_command_execution_observer_interface
 {
 public:
@@ -59,12 +59,12 @@ public:
 };
 
 template<>
-inline basic_command_execution_observer_interface<std::string, boost::recursive_mutex>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, go_boost::utility::recursive_spin_lock>::~basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::recursive_spin_lock>::~basic_command_execution_observer_interface()
 {
 }
 
@@ -84,12 +84,12 @@ inline basic_command_execution_observer_interface<S, L>::~basic_command_executio
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::string, boost::recursive_mutex>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring, boost::recursive_mutex>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_command_execution_observer_interface()
 {
 }
 

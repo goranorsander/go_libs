@@ -14,7 +14,6 @@
 #include <go_boost/config.hpp>
 
 #include <boost/signals2.hpp>
-#include <boost/thread/recursive_mutex.hpp>
 
 namespace go
 {

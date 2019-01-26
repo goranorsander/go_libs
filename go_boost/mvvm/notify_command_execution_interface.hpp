@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::string, boost::recursive_mutex> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex> notify_wcommand_execution_interface;
+typedef basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock> notify_wcommand_execution_interface;
 
 namespace single_threaded
 {
@@ -39,7 +39,7 @@ typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility
 
 }
 
-template<class S, class L = boost::recursive_mutex>
+template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_notify_command_execution_interface
     : public go_boost::signals::slot
 {
@@ -66,14 +66,14 @@ protected:
 };
 
 template<>
-inline basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -101,7 +101,7 @@ inline basic_notify_command_execution_interface<S, L>::~basic_notify_command_exe
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_command_execution_interface()
     : go_boost::signals::slot()
     , command_executed()
     , command_not_executed()
@@ -109,7 +109,7 @@ inline basic_notify_command_execution_interface<std::string, boost::recursive_mu
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_command_execution_interface()
     : go_boost::signals::slot()
     , command_executed()
     , command_not_executed()
@@ -141,13 +141,13 @@ inline basic_notify_command_execution_interface<S, L>::basic_notify_command_exec
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::recursive_spin_lock>>& command) const
 {
     this->command_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock>>& command) const
 {
     this->command_executed(command);
 }
@@ -171,13 +171,13 @@ inline void basic_notify_command_execution_interface<S, L>::notify_command_execu
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, boost::recursive_mutex>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::recursive_spin_lock>>& command) const
 {
     this->command_not_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, boost::recursive_mutex>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, boost::recursive_mutex>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::recursive_spin_lock>>& command) const
 {
     this->command_not_executed(command);
 }

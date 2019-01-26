@@ -25,7 +25,7 @@ namespace go
 namespace mvvm
 {
 
-template<class S, class C, class L = std::recursive_mutex>
+template<class S, class C, class L = go::utility::recursive_spin_lock>
 class basic_observable_container
     : public notify_container_changed_interface<L>
     , public basic_observable_object<S, L>

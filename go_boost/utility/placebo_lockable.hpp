@@ -18,8 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
-
-#include <boost/thread/mutex.hpp>
+#include <go_boost/utility/recursive_spin_lock.hpp>
 
 namespace go_boost
 {

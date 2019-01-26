@@ -27,7 +27,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class K, class T, class S, class L = boost::recursive_mutex>
+template<class K, class T, class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_observable_multimap
     : public basic_observable_ordered_associative_container<S, boost::container::multimap<K, T>, L>
 {
@@ -346,7 +346,7 @@ inline const typename basic_observable_multimap<K, T, S, L>::container_type& bas
     return _container;
 }
 
-template<class K, class T, class L = boost::recursive_mutex> class observable_multimap
+template<class K, class T, class L = go_boost::utility::recursive_spin_lock> class observable_multimap
     : public basic_observable_multimap<K, T, std::string, L>
 {
 public:
@@ -535,7 +535,7 @@ public:
     }
 };
 
-template<class K, class T, class L = boost::recursive_mutex>
+template<class K, class T, class L = go_boost::utility::recursive_spin_lock>
 class wobservable_multimap
     : public basic_observable_multimap<K, T, std::wstring, L>
 {

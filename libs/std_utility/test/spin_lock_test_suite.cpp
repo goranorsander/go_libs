@@ -17,7 +17,6 @@ TEST(std_spin_lock_test_suite, cpp11_not_supported) {}
 #else
 
 #include <mutex>
-
 #include <go/utility/spin_lock.hpp>
 
 namespace u = go::utility;

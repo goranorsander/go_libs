@@ -17,8 +17,6 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/thread/recursive_mutex.hpp>
-
 namespace go_boost
 {
 namespace property

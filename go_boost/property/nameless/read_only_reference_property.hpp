@@ -31,7 +31,7 @@ namespace nameless
 namespace read_only
 {
 
-template<class T, class L = boost::recursive_mutex> class reference_property
+template<class T, class L = go_boost::utility::recursive_spin_lock> class reference_property
     : public detail::property_base<T, policy::reference<T, L>>
 {
 public:

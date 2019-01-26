@@ -30,7 +30,7 @@ namespace property
 namespace read_only
 {
 
-template<class T, class S, class L = std::recursive_mutex> class basic_reference_property
+template<class T, class S, class L = go::utility::recursive_spin_lock> class basic_reference_property
     : public detail::property_base<T, policy::reference<T, L>, S>
 {
 public:
@@ -77,7 +77,7 @@ public:
     }
 };
 
-template<class T, class L = std::recursive_mutex> class reference_property
+template<class T, class L = go::utility::recursive_spin_lock> class reference_property
     : public basic_reference_property<T, std::string, L>
 {
 public:
@@ -97,7 +97,7 @@ public:
 #include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = std::recursive_mutex> class reference_wproperty
+template<class T, class L = go::utility::recursive_spin_lock> class reference_wproperty
     : public basic_reference_property<T, std::wstring, L>
 {
 public:
@@ -117,7 +117,7 @@ public:
 #include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = std::recursive_mutex> class reference_u8property
+template<class T, class L = go::utility::recursive_spin_lock> class reference_u8property
     : public basic_reference_property<T, utility::u8string, L>
 {
 public:
@@ -137,7 +137,7 @@ public:
 #include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = std::recursive_mutex> class reference_u16property
+template<class T, class L = go::utility::recursive_spin_lock> class reference_u16property
     : public basic_reference_property<T, std::u16string, L>
 {
 public:
@@ -157,7 +157,7 @@ public:
 #include <go/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = std::recursive_mutex> class reference_u32property
+template<class T, class L = go::utility::recursive_spin_lock> class reference_u32property
     : public basic_reference_property<T, std::u32string, L>
 {
 public:
