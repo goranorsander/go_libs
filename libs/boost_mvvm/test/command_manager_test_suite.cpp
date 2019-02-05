@@ -17,7 +17,6 @@
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
-namespace s = go_boost::signals;
 namespace u = go_boost::utility;
 
 namespace

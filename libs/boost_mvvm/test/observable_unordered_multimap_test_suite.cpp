@@ -14,7 +14,6 @@
 #include <go_boost/mvvm.hpp>
 
 namespace m = go_boost::mvvm;
-namespace s = go_boost::signals;
 
 namespace
 {

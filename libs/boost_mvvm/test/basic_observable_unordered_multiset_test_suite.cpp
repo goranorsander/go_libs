@@ -14,7 +14,6 @@
 #include <go_boost/utility.hpp>
 
 namespace m = go_boost::mvvm;
-namespace s = go_boost::signals;
 namespace u = go_boost::utility;
 namespace us = go_boost::utility::string;
 

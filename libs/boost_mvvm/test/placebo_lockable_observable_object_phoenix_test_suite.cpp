@@ -27,7 +27,6 @@ namespace m = go_boost::mvvm;
 namespace mst = go_boost::mvvm::single_threaded;
 namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
-namespace s = go_boost::signals;
 namespace u = go_boost::utility;
 
 namespace

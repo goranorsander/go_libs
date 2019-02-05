@@ -18,7 +18,6 @@
 
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
-namespace s = go_boost::signals;
 
 namespace
 {
