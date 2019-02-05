@@ -17,7 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/signals/slot_arguments.hpp>
+#include <go/mvvm/arguments.hpp>
 
 namespace go
 {
@@ -25,7 +25,7 @@ namespace mvvm
 {
 
 class data_context_changed_arguments
-    : public go::signals::slot_arguments
+    : public arguments
 {
 public:
     typedef data_context_changed_arguments this_type;

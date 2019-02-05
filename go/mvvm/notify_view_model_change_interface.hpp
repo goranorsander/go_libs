@@ -20,7 +20,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/mvvm/view_model_changed_arguments.hpp>
 #include <go/mvvm/view_model_will_change_arguments.hpp>
 #include <go/signals/signal.hpp>
-#include <go/signals/slot.hpp>
 
 namespace go
 {
@@ -29,13 +28,12 @@ namespace mvvm
 
 template<class L = go::utility::recursive_spin_lock>
 class notify_view_model_change_interface
-    : public go::signals::slot
 {
 public:
     typedef L lockable_type;
     typedef notify_view_model_change_interface<L> this_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_changed_arguments>&)>, L> view_model_changed_signal;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_will_change_arguments>&)>, L> view_model_will_change_signal;
+    typedef go::signals::signal<void(const std::shared_ptr<view_model_changed_arguments>&), go::signals::default_collector<void>, L> view_model_changed_signal;
+    typedef go::signals::signal<void(const std::shared_ptr<view_model_will_change_arguments>&), go::signals::default_collector<void>, L> view_model_will_change_signal;
 
 public:
     virtual ~notify_view_model_change_interface() = 0;

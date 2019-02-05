@@ -43,7 +43,6 @@ typedef basic_notify_property_changed_interface<std::wstring, go_boost::utility:
 
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_notify_property_changed_interface
-    : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
@@ -132,67 +131,56 @@ inline basic_notify_property_changed_interface<S, L>::~basic_notify_property_cha
 
 template<>
 inline basic_notify_property_changed_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u8string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u16string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_boost::utility::recursive_spin_lock>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::string, go_boost::utility::placebo_lockable>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u8string, go_boost::utility::placebo_lockable>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u16string, go_boost::utility::placebo_lockable>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<>
 inline basic_notify_property_changed_interface<go_boost::utility::u32string, go_boost::utility::placebo_lockable>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 
 template<class S, class L>
 inline basic_notify_property_changed_interface<S, L>::basic_notify_property_changed_interface()
-    : go_boost::signals::slot()
 {
 }
 

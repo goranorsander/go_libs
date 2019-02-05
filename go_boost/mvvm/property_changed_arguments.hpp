@@ -19,8 +19,8 @@
 
 #include <boost/make_shared.hpp>
 
+#include <go_boost/mvvm/arguments.hpp>
 #include <go_boost/mvvm/container_changed_arguments.hpp>
-#include <go_boost/signals/slot_arguments.hpp>
 
 namespace go_boost
 {
@@ -33,7 +33,7 @@ typedef basic_property_changed_arguments<std::wstring> wproperty_changed_argumen
 
 template<class S>
 class basic_property_changed_arguments
-    : public go_boost::signals::slot_arguments
+    : public go_boost::mvvm::arguments
 {
 public:
     typedef S string_type;
@@ -56,21 +56,21 @@ public:
 
 template<>
 inline basic_property_changed_arguments<std::string>::basic_property_changed_arguments(const std::string& property_name_)
-    : go_boost::signals::slot_arguments()
+    : go_boost::mvvm::arguments()
     , property_name(property_name_)
 {
 }
 
 template<>
 inline basic_property_changed_arguments<std::wstring>::basic_property_changed_arguments(const std::wstring& property_name_)
-    : go_boost::signals::slot_arguments()
+    : go_boost::mvvm::arguments()
     , property_name(property_name_)
 {
 }
 
 template<class S>
 inline basic_property_changed_arguments<S>::basic_property_changed_arguments(const S& property_name_)
-    : go_boost::signals::slot_arguments()
+    : go_boost::mvvm::arguments()
     , property_name(property_name_)
 {
 }

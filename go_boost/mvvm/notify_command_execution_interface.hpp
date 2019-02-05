@@ -41,7 +41,6 @@ typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility
 
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_notify_command_execution_interface
-    : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
@@ -102,40 +101,35 @@ inline basic_notify_command_execution_interface<S, L>::~basic_notify_command_exe
 
 template<>
 inline basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_command_execution_interface()
-    : go_boost::signals::slot()
-    , command_executed()
+    : command_executed()
     , command_not_executed()
 {
 }
 
 template<>
 inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_command_execution_interface()
-    : go_boost::signals::slot()
-    , command_executed()
+    : command_executed()
     , command_not_executed()
 {
 }
 
 template<>
 inline basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>::basic_notify_command_execution_interface()
-    : go_boost::signals::slot()
-    , command_executed()
+    : command_executed()
     , command_not_executed()
 {
 }
 
 template<>
 inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_notify_command_execution_interface()
-    : go_boost::signals::slot()
-    , command_executed()
+    : command_executed()
     , command_not_executed()
 {
 }
 
 template<class S, class L>
 inline basic_notify_command_execution_interface<S, L>::basic_notify_command_execution_interface()
-    : go_boost::signals::slot()
-    , command_executed()
+    : command_executed()
     , command_not_executed()
 {
 }

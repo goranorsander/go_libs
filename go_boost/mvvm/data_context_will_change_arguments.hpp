@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/signals/slot_arguments.hpp>
+#include <go_boost/mvvm/arguments.hpp>
 
 namespace go_boost
 {
@@ -25,7 +25,7 @@ namespace mvvm
 {
 
 class data_context_will_change_arguments
-    : public go_boost::signals::slot_arguments
+    : public go_boost::mvvm::arguments
 {
 public:
     typedef data_context_will_change_arguments this_type;
@@ -37,7 +37,7 @@ public:
 
 protected:
     data_context_will_change_arguments()
-        : go_boost::signals::slot_arguments()
+        : go_boost::mvvm::arguments()
     {
     }
 

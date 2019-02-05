@@ -20,7 +20,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <string>
 #include <go/mvvm/command_interface.hpp>
 #include <go/signals/signal.hpp>
-#include <go/signals/slot.hpp>
 #include <go/utility/placebo_lockable.hpp>
 
 namespace go
@@ -42,14 +41,13 @@ typedef basic_notify_command_execution_interface<std::wstring, go::utility::plac
 
 template<class S, class L = go::utility::recursive_spin_lock>
 class basic_notify_command_execution_interface
-    : public go::signals::slot
 {
 public:
     typedef S string_type;
     typedef L lockable_type;
     typedef basic_notify_command_execution_interface<S, L> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_not_executed_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&), go::signals::default_collector<void>, L> command_executed_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&), go::signals::default_collector<void>, L> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

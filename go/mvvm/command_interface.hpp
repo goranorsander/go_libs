@@ -57,7 +57,7 @@ public:
     typedef typename std::shared_ptr<basic_command_interface<S, L>> ptr;
     typedef typename std::weak_ptr<basic_command_interface<S, L>> wptr;
     typedef typename std::shared_ptr<command_parameters> command_parameters_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<S, L>>&)>, L> can_execute_changed_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<S, L>>&), go::signals::default_collector<void>, L> can_execute_changed_signal;
     typedef typename go::property::nameless::read_only::property<S> command_name_type;
 
 public:

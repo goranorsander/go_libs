@@ -51,7 +51,7 @@ public:
 class test_relay_wcommand_exection_context
 {
 public:
-    typedef GO_TYPENAME go::signals::signal<std::function<void(const std::shared_ptr<m::wcommand_interface>&)>> can_execute_changed_signal;
+    typedef GO_TYPENAME go::signals::signal<void(const std::shared_ptr<m::wcommand_interface>&)> can_execute_changed_signal;
 
     virtual ~test_relay_wcommand_exection_context() GO_DEFAULT_DESTRUCTOR
 

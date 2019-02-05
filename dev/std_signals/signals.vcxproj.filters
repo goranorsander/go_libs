@@ -28,6 +28,21 @@
     <ClInclude Include="..\..\go\signals\slot_key.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\signals\default_collector.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\return_last_signal_collector.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\return_value_collector_invoker.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\return_value_collector_invoker_fwd.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\signals\slot_fwd.hpp">
+      <Filter>go\signals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

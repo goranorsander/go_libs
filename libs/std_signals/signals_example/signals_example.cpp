@@ -28,7 +28,7 @@ class fleet_commander
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef s::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef s::signal<void(const bool&)> fire_lasers_signal;
 
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 

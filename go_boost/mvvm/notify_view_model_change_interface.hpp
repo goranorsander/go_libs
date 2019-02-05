@@ -28,7 +28,6 @@ namespace mvvm
 
 template<class L = go_boost::utility::recursive_spin_lock>
 class notify_view_model_change_interface
-    : public go_boost::signals::slot
 {
 public:
     typedef L lockable_type;

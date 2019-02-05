@@ -15,8 +15,6 @@
 
 #include "product_view_model.hpp"
 
-namespace s = go_boost::signals;
-
 class product_view
     : public CDialogEx
 {

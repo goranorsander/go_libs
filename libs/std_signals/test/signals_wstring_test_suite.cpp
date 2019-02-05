@@ -37,8 +37,12 @@ public:
     typedef fleet_commander this_type;
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef go::signals::signal<std::function<void(const bool&)>> fire_lasers_signal;
-    typedef go::signals::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef s::signal<void(const bool&)> fire_lasers_signal;
+#if !defined(GO_COMP_MSVC)
+    typedef s::signal<bool()> fire_proton_torpedoes_signal;
+#else
+    typedef s::signal<bool(), s::default_collector<bool>> fire_proton_torpedoes_signal;
+#endif  // #if !defined(GO_COMP_MSVC)
 
 public:
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR

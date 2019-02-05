@@ -1,10 +1,10 @@
-#ifndef GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
-#define GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
+#ifndef GO_MVVM_ARGUMENTS_HPP_INCLUDED
+#define GO_MVVM_ARGUMENTS_HPP_INCLUDED
 
 //
-//  slot_arguments.hpp
+//  arguments.hpp
 //
-//  Copyright 2015-2019 Göran Orsander
+//  Copyright 2019 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -22,31 +22,31 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 namespace go
 {
-namespace signals
+namespace mvvm
 {
 
-class slot_arguments
+class arguments
     : public go::utility::noncopyable_nonmovable
 {
 public:
-    typedef slot_arguments this_type;
+    typedef arguments this_type;
     typedef std::shared_ptr<this_type> ptr;
     typedef std::weak_ptr<this_type> wptr;
 
 public:
-    virtual ~slot_arguments() = 0;
+    virtual ~arguments() = 0;
 
 protected:
-    slot_arguments() GO_DEFAULT_CONSTRUCTOR
+    arguments() GO_DEFAULT_CONSTRUCTOR
 };
 
-inline slot_arguments::~slot_arguments()
+inline arguments::~arguments()
 {
 }
 
-} // namespace signals
+} // namespace mvvm
 } // namespace go
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
+#endif  // #ifndef GO_MVVM_ARGUMENTS_HPP_INCLUDED

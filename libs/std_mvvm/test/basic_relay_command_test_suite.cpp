@@ -54,7 +54,7 @@ public:
 class test_relay_command_exection_context
 {
 public:
-    typedef GO_TYPENAME go::signals::signal<std::function<void(const std::shared_ptr<m::basic_command_interface<u::u8string>>&)>> can_execute_changed_signal;
+    typedef GO_TYPENAME go::signals::signal<void(const std::shared_ptr<m::basic_command_interface<u::u8string>>&)> can_execute_changed_signal;
 
     virtual ~test_relay_command_exection_context() GO_DEFAULT_DESTRUCTOR
 

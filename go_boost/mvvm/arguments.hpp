@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
-#define GO_BOOST_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
+#ifndef GO_BOOST_MVVM_ARGUMENTS_HPP_INCLUDED
+#define GO_BOOST_MVVM_ARGUMENTS_HPP_INCLUDED
 
 //
-//  slot_arguments.hpp
+//  arguments.hpp
 //
 //  Copyright 2015-2019 Göran Orsander
 //
@@ -24,31 +24,31 @@
 
 namespace go_boost
 {
-namespace signals
+namespace mvvm
 {
 
-class slot_arguments
+class arguments
     : go_boost::utility::noncopyable_nonmovable
 {
 public:
-    typedef boost::shared_ptr<slot_arguments> ptr;
-    typedef boost::weak_ptr<slot_arguments> wptr;
+    typedef boost::shared_ptr<arguments> ptr;
+    typedef boost::weak_ptr<arguments> wptr;
 
 public:
-    virtual ~slot_arguments() = 0;
+    virtual ~arguments() = 0;
 
 protected:
-    slot_arguments()
+    arguments()
         : go_boost::utility::noncopyable_nonmovable()
     {
     }
 };
 
-inline slot_arguments::~slot_arguments()
+inline arguments::~arguments()
 {
 }
 
-} // namespace signals
+} // namespace mvvm
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_SIGNALS_SLOT_ARGUMENTS_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_MVVM_ARGUMENTS_HPP_INCLUDED

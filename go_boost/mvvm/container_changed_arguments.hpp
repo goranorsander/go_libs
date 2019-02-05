@@ -18,9 +18,9 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <boost/make_shared.hpp>
+#include <go_boost/mvvm/arguments.hpp>
 #include <go_boost/mvvm/notify_container_changed_action.hpp>
 #include <go_boost/property/nameless/read_only_value_property.hpp>
-#include <go_boost/signals/slot_arguments.hpp>
 
 namespace go_boost
 {
@@ -28,7 +28,7 @@ namespace mvvm
 {
 
 class container_changed_arguments
-    : public go_boost::signals::slot_arguments
+    : public go_boost::mvvm::arguments
 {
 public:
     typedef container_changed_arguments this_type;
@@ -40,7 +40,7 @@ public:
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action_, const std::size_t& added_elements_, const std::size_t& removed_elements_, const std::size_t& new_size_)
-        : go_boost::signals::slot_arguments()
+        : go_boost::mvvm::arguments()
         , action(action_)
         , added_elements(added_elements_)
         , removed_elements(removed_elements_)

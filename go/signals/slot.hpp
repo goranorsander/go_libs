@@ -17,30 +17,118 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <memory>
+#include <map>
+#include <go/signals/return_value_collector_invoker.hpp>
+#include <go/signals/slot_fwd.hpp>
+#include <go/signals/slot_key.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
 namespace signals
 {
 
-class slot
+template<class Collector, class ReturnValueType, class... Args>
+class slots<ReturnValueType(Args...), Collector>
+    : private return_value_collector_invoker<Collector, ReturnValueType (Args...)>
+    , go::utility::noncopyable_nonmovable
 {
-public:
-    typedef slot this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+protected:
+    using signal_function_type = std::function<ReturnValueType (Args...)>;
+    using signal_return_value_type = typename signal_function_type::result_type;
+
+private:
+    using slot_type = std::shared_ptr<signal_function_type>;
+    using slot_sequence_type = std::map<slot_key, slot_type>;
 
 public:
-    virtual ~slot() = 0;
+    virtual ~slots() = default;
 
 protected:
-    slot() GO_DEFAULT_CONSTRUCTOR
-};
+    explicit slots(const signal_function_type& signal_function)
+        : _next_slot_key()
+        , _slots()
+    {
+        if (signal_function)
+        {
+            add_slot(signal_function);
+        }
+    }
 
-inline slot::~slot()
-{
-}
+    template <typename R>
+    typename std::enable_if<std::is_void<R>::value && std::is_same<R, signal_return_value_type>::value, R>::type emit(Args... args) const
+    {
+        Collector collector;
+        slot_sequence_type::const_iterator it = this->_slots.cbegin();
+        while (it != this->_slots.cend())
+        {
+            if (it->second)
+            {
+                signal_function_type f = *(it->second);
+                const bool continue_emission = this->invoke(collector, f, args...);
+                if (!continue_emission)
+                {
+                    break;
+                }
+            }
+            ++it;
+        }
+    }
+
+    template <typename R>
+    typename std::enable_if<!std::is_void<R>::value && std::is_same<R, signal_return_value_type>::value, R>::type emit(Args... args) const
+    {
+        Collector collector;
+        slot_sequence_type::const_iterator it = this->_slots.cbegin();
+        while (it != this->_slots.cend())
+        {
+            if (it->second)
+            {
+                signal_function_type f = *(it->second);
+                const bool continue_emission = this->invoke(collector, f, args...);
+                if (!continue_emission)
+                {
+                    break;
+                }
+            }
+            ++it;
+        }
+        return collector.return_value();
+    }
+
+    std::size_t connections() const
+    {
+        return this->_slots.size();
+    }
+
+    slot_key add_slot(const signal_function_type& signal_function)
+    {
+        const slot_key key = ++_next_slot_key;
+        slot_type slot = std::make_shared<signal_function_type>(signal_function);
+        this->_slots[key] = slot;
+        return key;
+    }
+
+    bool remove_slot(const slot_key key)
+    {
+        auto it = _slots.find(key);
+        if (it != this->_slots.end())
+        {
+            this->_slots.erase(it);
+            return true;
+        }
+        return false;
+    }
+
+    void remove_all_slots()
+    {
+        this->_slots.clear();
+    }
+
+private:
+    slot_key _next_slot_key;
+    slot_sequence_type _slots;
+};
 
 } // namespace signals
 } // namespace go

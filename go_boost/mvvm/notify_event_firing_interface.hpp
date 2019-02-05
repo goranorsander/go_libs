@@ -31,7 +31,6 @@ typedef basic_notify_event_firing_interface<std::wstring, go_boost::utility::rec
 
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_notify_event_firing_interface
-    : public go_boost::signals::slot
 {
 public:
     typedef S string_type;
@@ -81,36 +80,31 @@ inline basic_notify_event_firing_interface<S, L>::~basic_notify_event_firing_int
 
 template<>
 inline basic_notify_event_firing_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_event_firing_interface()
-    : go_boost::signals::slot()
-    , event_fired()
+    : event_fired()
 {
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_event_firing_interface()
-    : go_boost::signals::slot()
-    , event_fired()
+    : event_fired()
 {
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::string, go_boost::utility::placebo_lockable>::basic_notify_event_firing_interface()
-    : go_boost::signals::slot()
-    , event_fired()
+    : event_fired()
 {
 }
 
 template<>
 inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_notify_event_firing_interface()
-    : go_boost::signals::slot()
-    , event_fired()
+    : event_fired()
 {
 }
 
 template<class S, class L>
 inline basic_notify_event_firing_interface<S, L>::basic_notify_event_firing_interface()
-    : go_boost::signals::slot()
-    , event_fired()
+    : event_fired()
 {
 }
 

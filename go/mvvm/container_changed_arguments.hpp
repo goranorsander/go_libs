@@ -19,7 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <go/mvvm/notify_container_changed_action.hpp>
 #include <go/property/nameless/read_only_value_property.hpp>
-#include <go/signals/slot_arguments.hpp>
+#include <go/mvvm/arguments.hpp>
 
 namespace go
 {
@@ -27,7 +27,7 @@ namespace mvvm
 {
 
 class container_changed_arguments
-    : public go::signals::slot_arguments
+    : public arguments
 {
 public:
     typedef container_changed_arguments this_type;
@@ -39,7 +39,7 @@ public:
 
 protected:
     container_changed_arguments(const notify_container_changed_action& action_, const std::size_t& added_elements_, const std::size_t& removed_elements_, const std::size_t& new_size_)
-        : go::signals::slot_arguments()
+        : arguments()
         , action(action_)
         , added_elements(added_elements_)
         , removed_elements(removed_elements_)

@@ -18,7 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/property/nameless/read_only_value_property.hpp>
-#include <go/signals/slot_arguments.hpp>
+#include <go/mvvm/arguments.hpp>
 
 namespace go
 {
@@ -31,7 +31,7 @@ typedef basic_property_changed_arguments<std::wstring> wproperty_changed_argumen
 
 template<class S>
 class basic_property_changed_arguments
-    : public go::signals::slot_arguments
+    : public arguments
 {
 public:
     typedef S string_type;
@@ -44,7 +44,7 @@ public:
 
 protected:
     explicit basic_property_changed_arguments(const string_type& property_name_)
-        : go::signals::slot_arguments()
+        : arguments()
         , property_name(property_name_)
     {
     }

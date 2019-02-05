@@ -18,7 +18,5 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/signals/signal.hpp>
-#include <go_boost/signals/slot.hpp>
-#include <go_boost/signals/slot_arguments.hpp>
 
 #endif  // #ifndef GO_BOOST_SIGNALS_HPP_INCLUDED

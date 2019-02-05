@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/signals/slot_arguments.hpp>
+#include <go_boost/mvvm/arguments.hpp>
 
 namespace go_boost
 {
@@ -25,7 +25,7 @@ namespace mvvm
 {
 
 class view_model_changed_arguments
-    : public go_boost::signals::slot_arguments
+    : public go_boost::mvvm::arguments
 {
 public:
     typedef view_model_changed_arguments this_type;
@@ -37,7 +37,7 @@ public:
 
 protected:
     view_model_changed_arguments()
-        : go_boost::signals::slot_arguments()
+        : go_boost::mvvm::arguments()
     {
     }
 

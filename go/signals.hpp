@@ -15,6 +15,5 @@
 
 #include <go/signals/signal.hpp>
 #include <go/signals/slot.hpp>
-#include <go/signals/slot_arguments.hpp>
 
 #endif  // #ifndef GO_SIGNALS_HPP_INCLUDED

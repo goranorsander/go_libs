@@ -166,6 +166,9 @@
     <ClInclude Include="..\..\go\mvvm\iterator\try_move_backward.hpp">
       <Filter>go\mvvm\iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\mvvm\arguments.hpp">
+      <Filter>go\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
