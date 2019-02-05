@@ -250,16 +250,14 @@ public:
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, const std::string::value_type*>::value, basic_log_line&>::type
-    operator<<(const Arg& arg)
+    typename std::enable_if<std::is_same<Arg, const std::string::value_type*>::value, basic_log_line&>::type operator<<(const Arg& arg)
     {
         encode(arg);
         return *this;
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, std::string::value_type*>::value, basic_log_line&>::type
-    operator<<(const Arg& arg)
+    typename std::enable_if<std::is_same<Arg, std::string::value_type*>::value, basic_log_line&>::type operator<<(const Arg& arg)
     {
         encode(arg);
         return *this;
@@ -273,16 +271,14 @@ public:
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, const std::wstring::value_type*>::value, basic_log_line&>::type
-    operator<<(const Arg& arg)
+    typename std::enable_if<std::is_same<Arg, const std::wstring::value_type*>::value, basic_log_line&>::type operator<<(const Arg& arg)
     {
         encode(arg);
         return *this;
     }
 
     template <typename Arg>
-    typename std::enable_if<std::is_same<Arg, std::wstring::value_type*>::value, basic_log_line&>::type
-    operator<<(const Arg& arg)
+    typename std::enable_if<std::is_same<Arg, std::wstring::value_type*>::value, basic_log_line&>::type operator<<(const Arg& arg)
     {
         encode(arg);
         return *this;
