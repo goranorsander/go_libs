@@ -25,9 +25,8 @@
     <ClInclude Include="..\..\go\signals\return_value_collector_invoker.hpp" />
     <ClInclude Include="..\..\go\signals\return_value_collector_invoker_fwd.hpp" />
     <ClInclude Include="..\..\go\signals\signal.hpp" />
-    <ClInclude Include="..\..\go\signals\slot.hpp" />
-    <ClInclude Include="..\..\go\signals\slot_arguments.hpp" />
-    <ClInclude Include="..\..\go\signals\slot_fwd.hpp" />
+    <ClInclude Include="..\..\go\signals\slots.hpp" />
+    <ClInclude Include="..\..\go\signals\slots_fwd.hpp" />
     <ClInclude Include="..\..\go\signals\slot_key.hpp" />
   </ItemGroup>
   <ItemGroup>

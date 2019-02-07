@@ -1,8 +1,8 @@
-#ifndef GO_SIGNALS_SLOT_HPP_INCLUDED
-#define GO_SIGNALS_SLOT_HPP_INCLUDED
+#ifndef GO_SIGNALS_SLOTS_HPP_INCLUDED
+#define GO_SIGNALS_SLOTS_HPP_INCLUDED
 
 //
-//  slot.hpp
+//  slots.hpp
 //
 //  Copyright 2015-2019 Göran Orsander
 //
@@ -19,7 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <map>
 #include <go/signals/return_value_collector_invoker.hpp>
-#include <go/signals/slot_fwd.hpp>
+#include <go/signals/slots_fwd.hpp>
 #include <go/signals/slot_key.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 
@@ -109,7 +109,7 @@ protected:
         return key;
     }
 
-    bool remove_slot(const slot_key key)
+    bool remove_slot(const slot_key& key)
     {
         auto it = _slots.find(key);
         if (it != this->_slots.end())
@@ -135,4 +135,4 @@ private:
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_SIGNALS_SLOT_HPP_INCLUDED
+#endif  // #ifndef GO_SIGNALS_SLOTS_HPP_INCLUDED

@@ -19,10 +19,7 @@
     <ClInclude Include="..\..\go\signals\signal.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\signals\slot.hpp">
-      <Filter>go\signals</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\go\signals\slot_arguments.hpp">
+    <ClInclude Include="..\..\go\signals\slots.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
     <ClInclude Include="..\..\go\signals\slot_key.hpp">
@@ -40,7 +37,7 @@
     <ClInclude Include="..\..\go\signals\return_value_collector_invoker_fwd.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\signals\slot_fwd.hpp">
+    <ClInclude Include="..\..\go\signals\slots_fwd.hpp">
       <Filter>go\signals</Filter>
     </ClInclude>
   </ItemGroup>

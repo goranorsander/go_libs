@@ -2,7 +2,7 @@
 #define GO_SIGNALS_SIGNAL_SLOTS_FWD_HPP_INCLUDED
 
 //
-//  slot_fwd.hpp
+//  slots_fwd.hpp
 //
 //  Copyright 2019 Göran Orsander
 //

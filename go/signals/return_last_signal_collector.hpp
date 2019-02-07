@@ -30,7 +30,7 @@ struct return_last_signal_collector
     virtual ~return_last_signal_collector() = default;
     return_last_signal_collector() = default;
 
-    bool operator()(ReturnValueType r)
+    bool operator()(signal_return_value_type r)
     {
         _return_value = r;
         return true;

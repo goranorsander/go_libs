@@ -21,7 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <mutex>
 #include <go/signals/default_collector.hpp>
 #include <go/utility/recursive_spin_lock.hpp>
-#include <go/signals/slot.hpp>
+#include <go/signals/slots.hpp>
 
 namespace go
 {
@@ -37,21 +37,29 @@ class signal
     : slots<F, C>
 {
 public:
+    using collector_type = C;
     using lockable_type = L;
-    using slots_base_type = slots<F, C>;
-    using signal_function_type = typename slots_base_type::signal_function_type;
-    using signal_return_value_type = typename signal_function_type::result_type;
+    using this_type = signal<F, C, L>;
+    using base_type = slots<F, C>;
+    using function_type = typename base_type::signal_function_type;
+    using return_value_type = typename base_type::signal_function_type::result_type;
 
 public:
     virtual ~signal() = default;
 
-    signal(const signal_function_type& signal_function = signal_function_type())
-        : slots_base_type(signal_function)
+    signal()
+        : base_type(function_type())
         , _signal_guard()
     {
     }
 
-    slot_key connect(const signal_function_type& signal_function)
+    signal(const function_type& signal_function)
+        : base_type(signal_function)
+        , _signal_guard()
+    {
+    }
+
+    slot_key connect(const function_type& signal_function)
     {
         const std::lock_guard<lockable_type> lock(this->_signal_guard);
         return this->add_slot(signal_function);;
@@ -85,7 +93,7 @@ public:
     void operator()(A... a) const
     {
         const std::lock_guard<lockable_type> lock(this->_signal_guard);
-        this->emit<signal_return_value_type>(a...);
+        this->emit<return_value_type>(a...);
     }
 
     template<typename... A>
