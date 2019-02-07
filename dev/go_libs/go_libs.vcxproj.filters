@@ -412,9 +412,6 @@
     <None Include="..\..\docs\std\utility\string\function_template_reduce_windows_1252_to_7_bit_ascii_copy.md">
       <Filter>Documentation\std\utility\string</Filter>
     </None>
-    <None Include="..\..\docs\std\signals\abstract_class_slot_arguments.md">
-      <Filter>Documentation\std\signals</Filter>
-    </None>
     <None Include="..\..\docs\std\signals\class_slot_key.md">
       <Filter>Documentation\std\signals</Filter>
     </None>
@@ -424,7 +421,7 @@
     <None Include="..\..\docs\std\signals\signals.md">
       <Filter>Documentation\std\signals</Filter>
     </None>
-    <None Include="..\..\docs\std\signals\abstract_class_slot.md">
+    <None Include="..\..\docs\std\signals\class_template_slots.md">
       <Filter>Documentation\std\signals</Filter>
     </None>
     <None Include="..\..\docs\_layouts\std_lib_signals.html">
@@ -1294,18 +1291,6 @@
     <None Include="..\..\docs\boost\property\property.md">
       <Filter>Documentation\boost\property</Filter>
     </None>
-    <None Include="..\..\docs\boost\signals\abstract_class_slot.md">
-      <Filter>Documentation\boost\signals</Filter>
-    </None>
-    <None Include="..\..\docs\boost\signals\abstract_class_slot_arguments.md">
-      <Filter>Documentation\boost\signals</Filter>
-    </None>
-    <None Include="..\..\docs\boost\signals\class_slot_key.md">
-      <Filter>Documentation\boost\signals</Filter>
-    </None>
-    <None Include="..\..\docs\boost\signals\class_template_signal.md">
-      <Filter>Documentation\boost\signals</Filter>
-    </None>
     <None Include="..\..\docs\boost\signals\signals.md">
       <Filter>Documentation\boost\signals</Filter>
     </None>
@@ -1623,6 +1608,21 @@
     </None>
     <None Include="..\..\docs\std\utility\class_recursive_spin_lock.md">
       <Filter>Documentation\std\utility</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\abstract_class_arguments.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\mvvm\abstract_class_arguments.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\class_template_return_value_collector_invoker.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\class_template_default_collector.md">
+      <Filter>Documentation\std\signals</Filter>
+    </None>
+    <None Include="..\..\docs\std\signals\class_template_return_last_signal_collector.md">
+      <Filter>Documentation\std\signals</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -100,6 +100,7 @@ with protected or private constructors.
 
 #### Events
 
+* [arguments](./abstract_class_arguments.html)
 * [container_changed_arguments](./class_container_changed_arguments.html)
 * [data_context_changed_arguments](./class_data_context_changed_arguments.html)
 * [data_context_will_change_arguments](./class_data_context_will_change_arguments.html)

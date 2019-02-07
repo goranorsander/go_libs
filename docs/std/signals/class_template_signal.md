@@ -42,15 +42,19 @@ public:
 Parameter | Description
 -|-
 F | The function type
-L | The mutex type
+C | The collector type
+L | The lockable type
 
 ## Member types
 
 Member type | Definition
 -|-
-function_type | F
+collector_type | C
 lockable_type | L
 this_type | **signal**<function_type, lockable_type>
+base_type | **slots**<F, C>
+function_type | base_type\::signal_function_type
+return_value_type | base_type\::signal_function_type\::result_type
 
 ## Member functions
 
@@ -67,14 +71,16 @@ Destroys the **signal** object.
 Constructor | Specifiers | Signature
 -|-|-
 *default constructor (1)* | public | **signal**()
+*constructor (2)* | public | **signal**(const function_type& signal_function)
 
 1. Constructs a **signal** object.
+2. Constructs a **signal** object and connects a function.
 
 ### connect
 
 Specifiers | Signature
 -|-
-public | template\<typename F1> slot_key_type **connect**(F1&& f)
+public | slot_key **connect**(const function_type& signal_function)
 
 Connect a slot, i.e. a callback receiver, to a **signal**.
 
@@ -82,7 +88,7 @@ Connect a slot, i.e. a callback receiver, to a **signal**.
 
 Specifiers | Signature
 -|-
-public | void **disconnect**(const slot_key_type slot_key)
+public | void **disconnect**(const slot_key& key)
 
 Disconnect a slot, i.e. a callback receiver, from a **signal**.
 
@@ -102,6 +108,14 @@ public | bool **empty**() const
 
 Returns **true** if the **signal** have no connected slots, i.e. callback 
 receivers.
+
+### size
+
+Specifiers | Signature
+-|-
+public | std\::size_t **size**() const
+
+Returns the number of connected slots.
 
 ### Emit signal operator
 
