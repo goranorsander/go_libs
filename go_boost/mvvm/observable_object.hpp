@@ -54,6 +54,22 @@ public:
 
 protected:
     basic_observable_object() GO_BOOST_DEFAULT_CONSTRUCTOR
+
+    template<class T>
+    T get_property_value(const T& value)
+    {
+        return value;
+    }
+
+    template<class P>
+    void set_property_value(const P& prop, typename P::value_type& value, const typename P::value_type& new_value)
+    {
+        if (value != new_value)
+        {
+            value = new_value;
+            this->notify_property_changed(this->shared_from_this(), prop.name());
+        }
+    }
 };
 
 template<class S, class L>
