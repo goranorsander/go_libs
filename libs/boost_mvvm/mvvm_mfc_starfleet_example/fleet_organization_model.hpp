@@ -58,18 +58,6 @@ private:
     bool is_parent_to(const fleet_organization_interface::ptr& child) const;
     fleet_organization_interface::ptr last_child() const;
 
-    fleet_organization_id_type get_id() const;
-    std::wstring get_name() const;
-    spaceship_interface::ptr get_spaceship() const;
-    fleet_organization_interface::ptr get_parent() const;
-    void set_parent(const fleet_organization_interface::ptr& v);
-    fleet_organization_interface::ptr get_first_child() const;
-    void set_first_child(const fleet_organization_interface::ptr& v);
-    fleet_organization_interface::ptr get_previous_sibling() const;
-    void set_previous_sibling(const fleet_organization_interface::ptr& v);
-    fleet_organization_interface::ptr get_next_sibling() const;
-    void set_next_sibling(const fleet_organization_interface::ptr& v);
-
 private:
     static fleet_organization_id_type _next_id;
     const fleet_organization_id_type _id;
@@ -77,10 +65,10 @@ private:
     const std::wstring _name;
     spaceship_interface::ptr _spaceship;
 
-    ptr _parent;
-    ptr _first_child;
-    ptr _previous_sibling;
-    ptr _next_sibling;
+    fleet_organization_interface::ptr _parent;
+    fleet_organization_interface::ptr _first_child;
+    fleet_organization_interface::ptr _previous_sibling;
+    fleet_organization_interface::ptr _next_sibling;
 };
 
 #endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED

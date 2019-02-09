@@ -62,70 +62,18 @@ spaceship_model::ptr spaceship_model::create(const std::wstring& spaceship_class
 
 void spaceship_model::bind_properties()
 {
-    spaceship_class.getter(boost::bind(&this_type::get_spaceship_class, this));
-    name.getter(boost::bind(&this_type::get_name, this));
-    captain.getter(boost::bind(&this_type::get_captain, this));
-    captain.setter(boost::bind(&this_type::set_captain, this, _1));
-    crew_complement.getter(boost::bind(&this_type::get_crew_complement, this));
-    crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, _1));
-    equipment.getter(boost::bind(&this_type::get_equipment, this));
-    equipment.setter(boost::bind(&this_type::set_equipment, this, _1));
+    spaceship_class.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_spaceship_class)));
+    name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
+    captain.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_captain)));
+    captain.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(captain), boost::ref(_captain), _1));
+    crew_complement.getter(boost::bind(&this_type::get_property_value<unsigned int>, this, boost::cref(_crew_complement)));
+    crew_complement.setter(boost::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, boost::cref(crew_complement), boost::ref(_crew_complement), _1));
+    equipment.getter(boost::bind(&this_type::get_property_value<m::wobservable_deque<equipment_interface::ptr>::ptr>, this, boost::cref(_equipment)));
+    equipment.setter(boost::bind(&this_type::set_property_value<p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr>>, this, boost::cref(equipment), boost::ref(_equipment), _1));
     _equipment->container_changed.connect(boost::bind(&this_type::on_equipment_list_changed, this, _1, _2));
 }
 
 void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)
 {
     notify_property_changed(this->shared_from_this(), equipment.name());
-}
-
-std::wstring spaceship_model::get_spaceship_class() const
-{
-    return _spaceship_class;
-}
-
-std::wstring spaceship_model::get_name() const
-{
-    return _name;
-}
-
-m::wobservable_deque<equipment_interface::ptr>::ptr spaceship_model::get_equipment() const
-{
-    return _equipment;
-}
-
-void spaceship_model::set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v)
-{
-    if(v != _equipment)
-    {
-        _equipment = v;
-        notify_property_changed(this->shared_from_this(), equipment.name());
-    }
-}
-
-std::wstring spaceship_model::get_captain() const
-{
-    return _captain;
-}
-
-void spaceship_model::set_captain(const std::wstring& v)
-{
-    if(v != _captain)
-    {
-        _captain = v;
-        notify_property_changed(this->shared_from_this(), captain.name());
-    }
-}
-
-unsigned int spaceship_model::get_crew_complement() const
-{
-    return _crew_complement;
-}
-
-void spaceship_model::set_crew_complement(const unsigned int& v)
-{
-    if(v != _crew_complement)
-    {
-        _crew_complement = v;
-        notify_property_changed(this->shared_from_this(), crew_complement.name());
-    }
 }

@@ -43,15 +43,6 @@ protected:
 private:
     void on_equipment_list_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
 
-    std::wstring get_spaceship_class() const;
-    std::wstring get_name() const;
-    m::wobservable_deque<equipment_interface::ptr>::ptr get_equipment() const;
-    void set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v);
-    std::wstring get_captain() const;
-    void set_captain(const std::wstring& v);
-    unsigned int get_crew_complement() const;
-    void set_crew_complement(const unsigned int& v);
-
 private:
     const std::wstring _spaceship_class;
     const std::wstring _name;

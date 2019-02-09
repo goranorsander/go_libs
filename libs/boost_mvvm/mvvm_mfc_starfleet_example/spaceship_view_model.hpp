@@ -63,7 +63,6 @@ private:
     void bind_properties();
 
     main_frame_view_model::ptr get_main_frame_vm() const;
-    fleet_organization_id_type get_spaceship_id() const;
     std::wstring get_spaceship_class() const;
     std::wstring get_name() const;
     std::wstring get_captain() const;
@@ -72,7 +71,6 @@ private:
     void set_crew_complement(const unsigned int& v);
     m::wobservable_deque<equipment_interface::ptr>::ptr get_equipment() const;
     void set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v);
-    equipment_interface::ptr get_selected_equipment() const;
     void set_selected_equipment(const equipment_interface::ptr& v);
 
     m::wcommand_interface::ptr get_activate_spaceship_view_command();

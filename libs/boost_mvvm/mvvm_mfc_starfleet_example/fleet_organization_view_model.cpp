@@ -94,7 +94,7 @@ void fleet_organization_view_model::bind_properties()
 {
     main_frame_vm.getter(boost::bind(&this_type::get_main_frame_vm, this));
     main_frame_vm.setter(boost::bind(&this_type::set_main_frame_vm, this, _1));
-    selected_fleet_organization_id.getter(boost::bind(&this_type::get_selected_fleet_organization_id, this));
+    selected_fleet_organization_id.getter(boost::bind(&this_type::get_property_value<fleet_organization_id_type>, this, boost::cref(_selected_fleet_organization_id)));
     selected_fleet_organization_id.setter(boost::bind(&this_type::set_selected_fleet_organization_id, this, _1));
     on_left_double_click_command.getter(boost::bind(&this_type::get_on_left_double_click_command, this));
     fleet_organization_root.getter(boost::bind(&this_type::get_fleet_organization_root, this));
@@ -154,11 +154,6 @@ void fleet_organization_view_model::set_main_frame_vm(const main_frame_view_mode
         subscribe_events();
         notify_property_changed(this->shared_from_this(), main_frame_vm.name());
     }
-}
-
-fleet_organization_id_type fleet_organization_view_model::get_selected_fleet_organization_id() const
-{
-    return _selected_fleet_organization_id;
 }
 
 void fleet_organization_view_model::set_selected_fleet_organization_id(const fleet_organization_id_type& v)

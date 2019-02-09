@@ -63,38 +63,9 @@ equipment_model::ptr equipment_model::create(const std::wstring& category_, cons
 
 void equipment_model::bind_properties()
 {
-    id.getter(boost::bind(&this_type::get_id, this));
-    category.getter(boost::bind(&this_type::get_category, this));
-    name.getter(boost::bind(&this_type::get_name, this));
-    quantity.getter(boost::bind(&this_type::get_quantity, this));
-    quantity.setter(boost::bind(&this_type::set_quantity, this, _1));
-}
-
-equipment_id_type equipment_model::get_id() const
-{
-    return _id;
-}
-
-std::wstring equipment_model::get_category() const
-{
-    return _category;
-}
-
-std::wstring equipment_model::get_name() const
-{
-    return _name;
-}
-
-unsigned int equipment_model::get_quantity() const
-{
-    return _quantity;
-}
-
-void equipment_model::set_quantity(const unsigned int& v)
-{
-    if(v != _quantity)
-    {
-        _quantity = v;
-        notify_property_changed(this->shared_from_this(), quantity.name());
-    }
+    id.getter(boost::bind(&this_type::get_property_value<equipment_id_type>, this, boost::cref(_id)));
+    category.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_category)));
+    name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
+    quantity.getter(boost::bind(&this_type::get_property_value<unsigned int>, this, boost::cref(_quantity)));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
 }

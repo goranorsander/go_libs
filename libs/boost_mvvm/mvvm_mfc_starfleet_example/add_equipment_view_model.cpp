@@ -70,52 +70,10 @@ void add_equipment_view_model::on_close() const
 
 void add_equipment_view_model::bind_properties()
 {
-    category.getter(boost::bind(&this_type::get_category, this));
-    category.setter(boost::bind(&this_type::set_category, this, _1));
-    name.getter(boost::bind(&this_type::get_name, this));
-    name.setter(boost::bind(&this_type::set_name, this, _1));
-    quantity.getter(boost::bind(&this_type::get_quantity, this));
-    quantity.setter(boost::bind(&this_type::set_quantity, this, _1));
-}
-
-std::wstring add_equipment_view_model::get_category() const
-{
-    return _category;
-}
-
-void add_equipment_view_model::set_category(const std::wstring& v)
-{
-    if (v != _category)
-    {
-        _category = v;
-        notify_property_changed(this->shared_from_this(), category.name());
-    }
-}
-
-std::wstring add_equipment_view_model::get_name() const
-{
-    return _name;
-}
-
-void add_equipment_view_model::set_name(const std::wstring& v)
-{
-    if (v != _name)
-    {
-        _name = v;
-        notify_property_changed(this->shared_from_this(), name.name());
-    }
-}
-
-unsigned int add_equipment_view_model::get_quantity() const
-{
-    return _quantity;
-}
-
-void add_equipment_view_model::set_quantity(const unsigned int& v)
-{
-    if (v != _quantity)
-    {
-        _quantity = v;
-        notify_property_changed(this->shared_from_this(), quantity.name());
-    }
+    category.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_category)));
+    category.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(category), boost::ref(_category), _1));
+    name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
+    name.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(name), boost::ref(_name), _1));
+    quantity.getter(boost::bind(&this_type::get_property_value<unsigned int>, this, boost::cref(_quantity)));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
 }

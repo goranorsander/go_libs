@@ -50,14 +50,6 @@ public:
     p::wproperty<unsigned int> quantity;
 
 private:
-    std::wstring get_category() const;
-    void set_category(const std::wstring& v);
-    std::wstring get_name() const;
-    void set_name(const std::wstring& v);
-    unsigned int get_quantity() const;
-    void set_quantity(const unsigned int& v);
-
-private:
     m::wobservable_deque<equipment_interface::ptr>::wptr _equipment;
 
     std::wstring _category;

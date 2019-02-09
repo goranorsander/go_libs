@@ -109,7 +109,7 @@ void spaceship_view_model::on_data_context_changed()
 void spaceship_view_model::bind_properties()
 {
     main_frame_vm.getter(boost::bind(&this_type::get_main_frame_vm, this));
-    spaceship_id.getter(boost::bind(&this_type::get_spaceship_id, this));
+    spaceship_id.getter(boost::bind(&this_type::get_property_value<fleet_organization_id_type>, this, boost::cref(_spaceship_id)));
     spaceship_class.getter(boost::bind(&this_type::get_spaceship_class, this));
     name.getter(boost::bind(&this_type::get_name, this));
     captain.getter(boost::bind(&this_type::get_captain, this));
@@ -118,7 +118,7 @@ void spaceship_view_model::bind_properties()
     crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, _1));
     equipment.getter(boost::bind(&this_type::get_equipment, this));
     equipment.setter(boost::bind(&this_type::set_equipment, this, _1));
-    selected_equipment.getter(boost::bind(&this_type::get_selected_equipment, this));
+    selected_equipment.getter(boost::bind(&this_type::get_property_value<equipment_interface::ptr>, this, boost::cref(_selected_equipment)));
     selected_equipment.setter(boost::bind(&this_type::set_selected_equipment, this, _1));
     on_activate_spaceship_view_command.getter(boost::bind(&this_type::get_activate_spaceship_view_command, this));
     on_close_spaceship_view_command.getter(boost::bind(&this_type::get_close_spaceship_view_command, this));
@@ -129,11 +129,6 @@ void spaceship_view_model::bind_properties()
 main_frame_view_model::ptr spaceship_view_model::get_main_frame_vm() const
 {
     return _main_frame_vm.lock();
-}
-
-fleet_organization_id_type spaceship_view_model::get_spaceship_id() const
-{
-    return _spaceship_id;
 }
 
 std::wstring spaceship_view_model::get_spaceship_class() const
@@ -206,11 +201,6 @@ void spaceship_view_model::set_equipment(const m::wobservable_deque<equipment_in
         data_context()->equipment = v;
         notify_property_changed(this->shared_from_this(), equipment.name());
     }
-}
-
-equipment_interface::ptr spaceship_view_model::get_selected_equipment() const
-{
-    return _selected_equipment;
 }
 
 void spaceship_view_model::set_selected_equipment(const equipment_interface::ptr& v)

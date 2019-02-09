@@ -62,7 +62,6 @@ private:
 
     main_frame_view_model::ptr get_main_frame_vm() const;
     void set_main_frame_vm(const main_frame_view_model::ptr& v);
-    fleet_organization_id_type get_selected_fleet_organization_id() const;
     void set_selected_fleet_organization_id(const fleet_organization_id_type& v);
     fleet_organization_interface::ptr get_fleet_organization_root() const;
 

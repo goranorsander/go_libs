@@ -137,17 +137,17 @@ void fleet_organization_model::on_property_changed(const m::object::ptr& o, cons
 
 void fleet_organization_model::bind_properties()
 {
-    id.getter(boost::bind(&this_type::get_id, this));
-    name.getter(boost::bind(&this_type::get_name, this));
-    spaceship_model.getter(boost::bind(&this_type::get_spaceship, this));
-    parent.getter(boost::bind(&this_type::get_parent, this));
-    parent.setter(boost::bind(&this_type::set_parent, this, _1));
-    first_child.getter(boost::bind(&this_type::get_first_child, this));
-    first_child.setter(boost::bind(&this_type::set_first_child, this, _1));
-    previous_sibling.getter(boost::bind(&this_type::get_previous_sibling, this));
-    previous_sibling.setter(boost::bind(&this_type::set_previous_sibling, this, _1));
-    next_sibling.getter(boost::bind(&this_type::get_next_sibling, this));
-    next_sibling.setter(boost::bind(&this_type::set_next_sibling, this, _1));
+    id.getter(boost::bind(&this_type::get_property_value<fleet_organization_id_type>, this, boost::cref(_id)));
+    name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
+    spaceship_model.getter(boost::bind(&this_type::get_property_value<spaceship_interface::ptr>, this, boost::cref(_spaceship)));
+    parent.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_parent)));
+    parent.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(parent), boost::ref(_parent), _1));
+    first_child.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_first_child)));
+    first_child.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(first_child), boost::ref(_first_child), _1));
+    previous_sibling.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_previous_sibling)));
+    previous_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(previous_sibling), boost::ref(_previous_sibling), _1));
+    next_sibling.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_next_sibling)));
+    next_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(next_sibling), boost::ref(_next_sibling), _1));
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
@@ -170,75 +170,4 @@ fleet_organization_interface::ptr fleet_organization_model::last_child() const
         child = child->next_sibling();
     }
     return child;
-}
-
-fleet_organization_id_type fleet_organization_model::get_id() const
-{
-    return _id;
-}
-
-std::wstring fleet_organization_model::get_name() const
-{
-    return _name;
-}
-
-spaceship_interface::ptr fleet_organization_model::get_spaceship() const
-{
-    return _spaceship;
-}
-
-fleet_organization_interface::ptr fleet_organization_model::get_parent() const
-{
-    return _parent;
-}
-
-void fleet_organization_model::set_parent(const fleet_organization_interface::ptr& v)
-{
-    if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _parent)
-    {
-        _parent = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(this->shared_from_this(), parent.name());
-    }
-}
-
-fleet_organization_interface::ptr fleet_organization_model::get_first_child() const
-{
-    return _first_child;
-}
-
-void fleet_organization_model::set_first_child(const fleet_organization_interface::ptr& v)
-{
-    if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _first_child)
-    {
-        _first_child = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(this->shared_from_this(), first_child.name());
-    }
-}
-
-fleet_organization_interface::ptr fleet_organization_model::get_previous_sibling() const
-{
-    return _previous_sibling;
-}
-
-void fleet_organization_model::set_previous_sibling(const fleet_organization_interface::ptr& v)
-{
-    if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _previous_sibling)
-    {
-        _previous_sibling = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(this->shared_from_this(), previous_sibling.name());
-    }
-}
-
-fleet_organization_interface::ptr fleet_organization_model::get_next_sibling() const
-{
-    return _next_sibling;
-}
-
-void fleet_organization_model::set_next_sibling(const fleet_organization_interface::ptr& v)
-{
-    if(boost::dynamic_pointer_cast<fleet_organization_model>(v) != _next_sibling)
-    {
-        _next_sibling = boost::dynamic_pointer_cast<fleet_organization_model>(v);
-        m::wobservable_object::notify_property_changed(this->shared_from_this(), next_sibling.name());
-    }
 }
