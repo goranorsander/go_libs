@@ -51,8 +51,16 @@ TEST(boost_placebo_lockable_test_suite, test_placebo_lockable_scoped_lock)
 class test_thread
 {
 public:
-    ~test_thread() = default;
-    test_thread() = default;
+    ~test_thread() GO_BOOST_DEFAULT_DESTRUCTOR
+    test_thread()
+        : m()
+        , cv()
+        , step_1_complete(false)
+        , step_2_complete(false)
+        , step_3_complete(false)
+        , step_4_complete(false)
+    {
+    }
 
     void run()
     {
@@ -86,10 +94,10 @@ public:
 
     boost::mutex m;
     boost::condition_variable cv;
-    bool step_1_complete = false;
-    bool step_2_complete = false;
-    bool step_3_complete = false;
-    bool step_4_complete = false;
+    bool step_1_complete;
+    bool step_2_complete;
+    bool step_3_complete;
+    bool step_4_complete;
 };
 
 TEST(boost_placebo_lockable_test_suite, test_placebo_lockable_two_threads)

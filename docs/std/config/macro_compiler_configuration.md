@@ -144,9 +144,10 @@ GO_NO_CXX11_RIGHT_ANGLE_BRACKETS | Right angle brackets
 GO_NO_CXX11_SNPRINTF | snprintf
 GO_NO_CXX11_STATIC_ASSERT | [static_assert](https://en.cppreference.com/w/cpp/language/static_assert)
 GO_NO_CXX11_STRONGLY_TYPED_ENUM | [Strongly-typed enum](https://en.cppreference.com/w/cpp/language/enum#Scoped_enumerations)
-GO_NO_CXX11_TEMPLATE_ALIASES | Template aliases
+GO_NO_CXX11_TEMPLATE_ALIASES | [Template aliases](https://en.cppreference.com/w/cpp/language/type_alias)
 GO_NO_CXX11_THREAD_LOCAL_STORAGE | Thread-local storage
 GO_NO_CXX11_TRAILING_FUNCTION_RETURN_TYPES | Trailing function return types
+GO_NO_CXX11_TYPE_ALIASES | [Type aliases](https://en.cppreference.com/w/cpp/language/type_alias)
 GO_NO_CXX11_TYPE_TRAITS | Type traits
 GO_NO_CXX11_UNICODE_STRING_LITERALS | Unicode string literals
 GO_NO_CXX11_UNRESTRICTED_UNIONS | Unrestricted unions

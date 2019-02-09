@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -125,7 +125,15 @@ namespace go
 namespace utility
 {
 
+#if !defined(GO_NO_CXX11_TYPE_ALIASES)
+
 using recursive_spin_lock = std::recursive_mutex;
+
+#else
+
+typedef std::recursive_mutex recursive_spin_lock;
+
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 } // namespace utility
 } // namespace go
