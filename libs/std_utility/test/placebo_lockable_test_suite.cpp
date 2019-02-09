@@ -52,6 +52,8 @@ TEST(std_placebo_lockable_test_suite, test_placebo_lockable_lock_guard)
     EXPECT_EQ(true, mutex.try_lock());
 }
 
+#if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
+
 class test_thread
 {
 public:
@@ -153,6 +155,8 @@ TEST(std_recursive_spin_lock_test_suite, test_placebo_lockable_two_threads)
 
     worker.join();
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
 
 }
 

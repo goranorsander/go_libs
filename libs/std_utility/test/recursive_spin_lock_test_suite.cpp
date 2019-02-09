@@ -55,6 +55,8 @@ TEST(std_recursive_spin_lock_test_suite, test_recursive_spin_lock_lock_guard)
     EXPECT_EQ(true, lock.try_lock());
 }
 
+#if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
+
 class test_thread
 {
 public:
@@ -152,6 +154,8 @@ TEST(std_recursive_spin_lock_test_suite, test_recursive_spin_lock_two_threads)
 
     worker.join();
 }
+
+#endif  // #if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
 
 }
 

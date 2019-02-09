@@ -110,6 +110,7 @@ GO_NO_CXX11_CHAR16_T | char16_t
 GO_NO_CXX11_CHAR32_T | char32_t
 GO_NO_CXX11_CODECVT | Header \<codecvt\>
 GO_NO_CXX11_CONCURRENCY_SUPPORT | Concurrency support
+GO_NO_CXX11_CONDITION_VARIABLE | [constexpr](https://en.cppreference.com/w/cpp/header/condition_variable)
 GO_NO_CXX11_CONSTEXPR | [constexpr](https://en.cppreference.com/w/cpp/language/constexpr)
 GO_NO_CXX11_DECLTYPE | [decltype](https://en.cppreference.com/w/cpp/language/decltype)
 GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS | Defaulted and deleted functions

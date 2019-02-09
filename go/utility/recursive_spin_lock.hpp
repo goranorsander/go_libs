@@ -17,6 +17,8 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+
 #include <go/utility/noncopyable_nonmovable.hpp>
 
 #include <atomic>
@@ -113,6 +115,22 @@ inline const std::thread::id& recursive_spin_lock::this_thread_local() const
 
 } // namespace utility
 } // namespace go
+
+#else  // #if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+
+#include <mutex>
+
+namespace go
+{
+namespace utility
+{
+
+using recursive_spin_lock = std::recursive_mutex;
+
+} // namespace utility
+} // namespace go
+
+#endif  // #if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
 
 #endif  // Required C++11 feature is not supported by this compiler
 
