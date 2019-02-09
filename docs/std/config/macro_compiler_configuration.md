@@ -174,6 +174,7 @@ GO_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS | Generic (polymorphic) lambd
 GO_NO_CXX14_HETEROGENEOUS_ASSOCIATIVE_LOOKUP | Heterogeneous associative lookup
 GO_NO_CXX14_IMPROVED_STD_INTEGRAL_CONSTANT | [Improved std::integral_constant](https://en.cppreference.com/w/cpp/types/integral_constant)
 GO_NO_CXX14_INITIALIZED_GENERALIZED_LAMBDA_CAPTURES | Initialized/Generalized lambda captures (init-capture)
+GO_NO_CXX14_LAMBDA_DEFAULT_ARGUMENTS | Default arguments are allowed in the parameter lists of lambda-expressions
 GO_NO_CXX14_MEMBER_INITIALIZERS_AND_AGGREGATES | Member initializers and aggregates (NSDMI)
 GO_NO_CXX14_NULL_FORWARD_ITERATORS | [Null forward iterators](https://en.cppreference.com/w/cpp/named_req/ForwardIterator#Singular_iterators)
 GO_NO_CXX14_SINGLE_QUOTE_AS_DIGIT_SEPARATOR | Single quote as digit separator

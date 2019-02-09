@@ -247,6 +247,7 @@ __pragma(message(_message_))
 #endif  // #if (_MSC_VER < 1800)
 #if defined(_MSC_VER)
 #define GO_NO_CXX14_CLARIFYING_MEMORY_ALLOCATION 1
+#define GO_NO_CXX14_LAMBDA_DEFAULT_ARGUMENTS 1
 #endif  // #if defined(_MSC_VER)
 
 // C++17 support
