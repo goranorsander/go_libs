@@ -56,6 +56,8 @@ private:
     void subscribe_events();
     void unsubscribe_events();
 
+    void set_main_frame_vm(const main_frame_view_model::ptr& v);
+
 private:
     main_frame_view_model::wptr _main_frame_vm;
     s::slot_key _on_data_context_property_changed_slot_key;

@@ -58,6 +58,13 @@ private:
     void subscribe_events();
     void unsubscribe_events();
 
+    void set_main_frame_vm(const main_frame_view_model::ptr& v);
+    void set_selected_fleet_organization_id(const fleet_organization_id_type& v);
+
+    m::wcommand_interface::ptr get_on_left_double_click_command();
+    bool can_execute_on_left_double_click_command(const m::command_parameters::ptr& p);
+    void execute_on_left_double_click_command(const m::command_parameters::ptr& p);
+
 private:
     main_frame_view_model::wptr _main_frame_vm;
     fleet_organization_id_type _selected_fleet_organization_id;

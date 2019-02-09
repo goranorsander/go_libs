@@ -88,7 +88,7 @@ void properties_view_model::on_property_changed(const m::object::ptr& o, const m
 void properties_view_model::bind_properties()
 {
     main_frame_vm.getter([this]() -> main_frame_view_model::ptr { return _main_frame_vm.lock(); });
-    main_frame_vm.setter([this](const main_frame_view_model::ptr& v) { if(_main_frame_vm.lock() != v) { unsubscribe_events(); _main_frame_vm = v; subscribe_events(); m::wobservable_object::notify_property_changed(this->shared_from_this(), main_frame_vm.name()); } });
+    main_frame_vm.setter(std::bind(&this_type::set_main_frame_vm, this, ph::_1));
     fleet_organization.getter([this]() -> fleet_organization_interface::ptr { return data_context(); });
 }
 
@@ -136,5 +136,16 @@ void properties_view_model::unsubscribe_events()
             event_mgr->unsubscribe(L"select fleet organization event", _select_fleet_organization_event_key);
             _select_fleet_organization_event_key = 0;
         }
+    }
+}
+
+void properties_view_model::set_main_frame_vm(const main_frame_view_model::ptr& v)
+{
+    if (_main_frame_vm.lock() != v)
+    {
+        unsubscribe_events();
+        _main_frame_vm = v;
+        subscribe_events();
+        m::wobservable_object::notify_property_changed(this->shared_from_this(), main_frame_vm.name());
     }
 }

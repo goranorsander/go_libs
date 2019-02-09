@@ -62,6 +62,27 @@ protected:
 private:
     void bind_properties();
 
+    void set_captain(const std::wstring& v);
+    void set_crew_complement(const unsigned int& v);
+    void set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v);
+    void set_selected_equipment(const equipment_interface::ptr& v);
+
+    m::wcommand_interface::ptr get_activate_spaceship_view_command();
+    bool can_execute_activate_spaceship_view_command(const m::command_parameters::ptr& p);
+    void execute_activate_spaceship_view_command(const m::command_parameters::ptr& p);
+
+    m::wcommand_interface::ptr get_close_spaceship_view_command();
+    bool can_execute_close_spaceship_view_command(const m::command_parameters::ptr& p);
+    void execute_close_spaceship_view_command(const m::command_parameters::ptr& p);
+
+    m::wcommand_interface::ptr get_add_equipment_command();
+    bool can_execute_add_equipment_command(const m::command_parameters::ptr& p);
+    void execute_add_equipment_command(const m::command_parameters::ptr& p);
+
+    m::wcommand_interface::ptr get_remove_equipment_command();
+    bool can_execute_remove_equipment_command(const m::command_parameters::ptr& p);
+    void execute_remove_equipment_command(const m::command_parameters::ptr& p);
+
 private:
     main_frame_view_model::wptr _main_frame_vm;
     fleet_organization_id_type _spaceship_id;

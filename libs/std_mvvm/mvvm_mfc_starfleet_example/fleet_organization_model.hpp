@@ -68,10 +68,10 @@ private:
 
     s::slot_key _on_spaceship_property_changed_slot_key;
 
-    ptr _parent;
-    ptr _first_child;
-    ptr _previous_sibling;
-    ptr _next_sibling;
+    fleet_organization_interface::ptr _parent;
+    fleet_organization_interface::ptr _first_child;
+    fleet_organization_interface::ptr _previous_sibling;
+    fleet_organization_interface::ptr _next_sibling;
 };
 
 #endif  // #ifndef GO_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED

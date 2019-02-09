@@ -52,5 +52,5 @@ void equipment_model::bind_properties()
     category.getter([this]() -> std::wstring { return _category; });
     name.getter([this]() -> std::wstring { return _name; });
     quantity.getter([this]() -> unsigned int { return _quantity; });
-    quantity.setter([this](const unsigned int& v) { if(v != _quantity) { _quantity = v; notify_property_changed(this->shared_from_this(), quantity.name()); } });
+    quantity.setter(std::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, std::cref(quantity), std::ref(_quantity), ph::_1));
 }
