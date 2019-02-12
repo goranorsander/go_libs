@@ -134,7 +134,7 @@ inline basic_file_writer<wlog_line, std::wofstream>::basic_file_writer(const str
 template <>
 inline void basic_file_writer<log_line, std::ofstream>::write(log_line_type& logline)
 {
-    typename out_file_stream_type::pos_type pos = this->_os->tellp();
+    GO_BOOST_TYPENAME out_file_stream_type::pos_type pos = this->_os->tellp();
     logline.stringify(*(this->_os));
     this->_bytes_written += this->_os->tellp() - pos;
     if (this->_bytes_written > this->_log_file_roll_size_bytes)
@@ -146,7 +146,7 @@ inline void basic_file_writer<log_line, std::ofstream>::write(log_line_type& log
 template <>
 inline void basic_file_writer<wlog_line, std::wofstream>::write(log_line_type& logline)
 {
-    typename out_file_stream_type::pos_type pos = this->_os->tellp();
+    GO_BOOST_TYPENAME out_file_stream_type::pos_type pos = this->_os->tellp();
     logline.stringify(*(this->_os));
     this->_bytes_written += this->_os->tellp() - pos;
     if (this->_bytes_written > this->_log_file_roll_size_bytes)
