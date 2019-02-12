@@ -62,6 +62,12 @@
     <Text Include="..\..\libs\boost_diagnostics\CMakeLists.txt">
       <Filter>CMake Configuration\libs\boost_diagnostics</Filter>
     </Text>
+    <Text Include="..\..\rnd\CMakeLists.txt">
+      <Filter>CMake Configuration\rnd</Filter>
+    </Text>
+    <Text Include="..\..\rnd\std_rnd\CMakeLists.txt">
+      <Filter>CMake Configuration\rnd\std_rnd</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Configuration">
@@ -289,6 +295,12 @@
     <Filter Include="Documentation\boost\diagnostics\log\policy">
       <UniqueIdentifier>{fe9c0355-050a-4f3f-af27-8e3f24dd2fb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CMake Configuration\rnd">
+      <UniqueIdentifier>{6d53d2cf-fa5c-4d85-b717-ca4a08777779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMake Configuration\rnd\std_rnd">
+      <UniqueIdentifier>{e4b551ac-7fa1-4b5f-ae11-f369d9a457f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -419,9 +431,6 @@
       <Filter>Documentation\std\signals</Filter>
     </None>
     <None Include="..\..\docs\std\signals\signals.md">
-      <Filter>Documentation\std\signals</Filter>
-    </None>
-    <None Include="..\..\docs\std\signals\class_template_slots.md">
       <Filter>Documentation\std\signals</Filter>
     </None>
     <None Include="..\..\docs\_layouts\std_lib_signals.html">
@@ -1614,15 +1623,6 @@
     </None>
     <None Include="..\..\docs\std\mvvm\abstract_class_arguments.md">
       <Filter>Documentation\std\mvvm</Filter>
-    </None>
-    <None Include="..\..\docs\std\signals\class_template_return_value_collector_invoker.md">
-      <Filter>Documentation\std\signals</Filter>
-    </None>
-    <None Include="..\..\docs\std\signals\class_template_default_collector.md">
-      <Filter>Documentation\std\signals</Filter>
-    </None>
-    <None Include="..\..\docs\std\signals\class_template_return_last_signal_collector.md">
-      <Filter>Documentation\std\signals</Filter>
     </None>
   </ItemGroup>
 </Project>

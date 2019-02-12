@@ -17,12 +17,14 @@ project(GO_LIBS)
 #Options-------------------------------------------------
 
 option(USE_SOLUTION_FOLDERS "Organise all projects into folders in your solution." ON)
-option(BUILD_STD_EXAMPLES "Build the GO libraries examples for std-implementation. Requires C++14/17.")
-option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires MFC and C++14/17.")
+option(BUILD_STD_EXAMPLES "Build the GO libraries examples for std-implementation. Requires C++11/14/17.")
+option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires MFC and C++11/14/17.")
 option(BUILD_BOOST_EXAMPLES "Build the GO libraries examples for boost-implementation. Requires the Boost libraries.")
 option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires MFC and the Boost libraries.")
-option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++14/17.")
+option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++11/14/17.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
+option(BUILD_STD_RND "Build RnD applications for std-implementation. Uses the GO Std libraries. Requires C++11/14/17.")
+option(BUILD_BOOST_RND "Build RnD applications for boost-implementation. Uses the GO Boost libraries. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
 set(BOOST_MINOR_VERSION "69" CACHE STRING "Boost libraries minor version.")
 set(BOOST_PATCH_LEVEL "0" CACHE STRING "Boost libraries patch level.")
@@ -765,10 +767,11 @@ set(GO_LIBS_DOCS_SASS_DIR ${GO_LIBS_DOCS_DIR}/_sass)
 set(BOOST_PROJECT_NAME_STR GO_boost_libraries)
 set(STD_PROJECT_NAME_STR GO_std_libraries)
 
+ADD_SUBDIRECTORY(docs)
 ADD_SUBDIRECTORY(go)
 ADD_SUBDIRECTORY(go_boost)
 ADD_SUBDIRECTORY(libs)
-ADD_SUBDIRECTORY(docs)
+ADD_SUBDIRECTORY(rnd)
 
 INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 
@@ -901,6 +904,14 @@ set(GO_LIBS_LIBS_STD_SIGNALS_CMAKE
 
 set(GO_LIBS_LIBS_STD_UTILITY_CMAKE
     ${ROOT_DIR}/libs/std_utility/CMakeLists.txt
+)
+
+set(GO_LIBS_RND_CMAKE
+    ${ROOT_DIR}/rnd/CMakeLists.txt
+)
+
+set(GO_LIBS_RND_STD_RND_CMAKE
+    ${ROOT_DIR}/rnd/std_rnd/CMakeLists.txt
 )
 
 add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
