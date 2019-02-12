@@ -28,6 +28,7 @@ if(BUILD_BOOST_EXAMPLES)
         target_link_libraries(${PROJECT_BOOST_SIGNALS_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
             ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -37,6 +38,7 @@ if(BUILD_BOOST_EXAMPLES)
                 target_link_libraries(${PROJECT_BOOST_SIGNALS_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
                     ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
@@ -48,6 +50,7 @@ if(BUILD_BOOST_EXAMPLES)
             target_link_libraries(${PROJECT_BOOST_SIGNALS_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
                 ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)

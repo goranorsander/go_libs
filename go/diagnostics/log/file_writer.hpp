@@ -53,16 +53,7 @@ public:
 
     basic_file_writer(const string_type& log_directory, const string_type& log_file_name, uint32_t log_file_roll_size_mb);
 
-    void write(log_line_type& logline)
-    {
-        auto pos = _os->tellp();
-        logline.stringify(*_os);
-        _bytes_written += _os->tellp() - pos;
-        if (_bytes_written > _log_file_roll_size_bytes)
-        {
-            roll_file();
-        }
-    }
+    void write(log_line_type& logline);
 
 private:
     void roll_file();
@@ -76,12 +67,53 @@ private:
 };
 
 template <>
+inline void basic_file_writer<log_line, std::ofstream>::roll_file()
+{
+    if (this->_os)
+    {
+        this->_os->flush();
+        this->_os->close();
+    }
+
+    this->_bytes_written = 0;
+    this->_os.reset(new std::ofstream());
+    std::string log_file_name = this->_name;
+    log_file_name.append(".");
+    log_file_name.append(std::to_string(++(this->_file_number)));
+    log_file_name.append(".txt");
+    this->_os->open(log_file_name, std::ofstream::out | std::ofstream::trunc);
+}
+
+template <>
+inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
+{
+    if (this->_os)
+    {
+        this->_os->flush();
+        this->_os->close();
+    }
+
+    this->_bytes_written = 0;
+    this->_os.reset(new std::wofstream());
+    std::string log_file_name = go::utility::string_cast<std::string>(this->_name);
+    log_file_name.append(".");
+    log_file_name.append(std::to_string(++(this->_file_number)));
+    log_file_name.append(".txt");
+    this->_os->open(log_file_name, std::wofstream::out | std::wofstream::trunc);
+}
+
+template <class L, class O>
+inline void basic_file_writer<L, O>::roll_file()
+{
+}
+
+template <>
 inline basic_file_writer<log_line, std::ofstream>::basic_file_writer(const string_type& log_directory, const string_type& log_file_name, uint32_t log_file_roll_size_mb)
     : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
     , _name(log_directory + log_file_name)
     , _os()
 {
-    roll_file();
+    this->roll_file();
 }
 
 template <>
@@ -90,48 +122,43 @@ inline basic_file_writer<wlog_line, std::wofstream>::basic_file_writer(const str
     , _name(log_directory + log_file_name)
     , _os()
 {
-    roll_file();
+    this->roll_file();
 }
 
 template <>
-inline void basic_file_writer<log_line, std::ofstream>::roll_file()
+inline void basic_file_writer<log_line, std::ofstream>::write(log_line_type& logline)
 {
-    if (_os)
+    auto pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
     {
-        _os->flush();
-        _os->close();
+        this->roll_file();
     }
-
-    _bytes_written = 0;
-    _os.reset(new std::ofstream());
-    std::string log_file_name = _name;
-    log_file_name.append(".");
-    log_file_name.append(std::to_string(++_file_number));
-    log_file_name.append(".txt");
-    _os->open(log_file_name, std::ofstream::out | std::ofstream::trunc);
 }
 
 template <>
-inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
+inline void basic_file_writer<wlog_line, std::wofstream>::write(log_line_type& logline)
 {
-    if (_os)
+    auto pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
     {
-        _os->flush();
-        _os->close();
+        this->roll_file();
     }
-
-    _bytes_written = 0;
-    _os.reset(new std::wofstream());
-    std::string log_file_name = go::utility::string_cast<std::string>(_name);
-    log_file_name.append(".");
-    log_file_name.append(std::to_string(++_file_number));
-    log_file_name.append(".txt");
-    _os->open(log_file_name, std::wofstream::out | std::wofstream::trunc);
 }
 
 template <class L, class O>
-inline void basic_file_writer<L, O>::roll_file()
+inline void basic_file_writer<L, O>::write(log_line_type& logline)
 {
+    auto pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
+    {
+        this->roll_file();
+    }
 }
 
 } // namespace log

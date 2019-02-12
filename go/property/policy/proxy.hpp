@@ -18,6 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <functional>
+#include <mutex>
 #include <stdexcept>
 #include <go/utility/recursive_spin_lock.hpp>
 

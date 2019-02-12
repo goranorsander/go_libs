@@ -28,6 +28,7 @@ if(BUILD_BOOST_EXAMPLES)
         target_link_libraries(${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
             ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -37,6 +38,7 @@ if(BUILD_BOOST_EXAMPLES)
                 target_link_libraries(${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
                     ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
@@ -48,6 +50,7 @@ if(BUILD_BOOST_EXAMPLES)
             target_link_libraries(${PROJECT_BOOST_PROXY_PROPERTY_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
                 ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)
@@ -79,6 +82,7 @@ if(BUILD_BOOST_EXAMPLES)
         target_link_libraries(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
             ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -88,6 +92,7 @@ if(BUILD_BOOST_EXAMPLES)
                 target_link_libraries(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
                     ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
@@ -99,6 +104,7 @@ if(BUILD_BOOST_EXAMPLES)
             target_link_libraries(${PROJECT_BOOST_REFERENCE_PROPERTY_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
                 ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)
@@ -130,6 +136,7 @@ if(BUILD_BOOST_EXAMPLES)
         target_link_libraries(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
             ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
@@ -139,6 +146,7 @@ if(BUILD_BOOST_EXAMPLES)
                 target_link_libraries(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
                     ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
@@ -150,6 +158,7 @@ if(BUILD_BOOST_EXAMPLES)
             target_link_libraries(${PROJECT_BOOST_VALUE_PROPERTY_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
                 ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)
@@ -190,6 +199,8 @@ if(BUILD_BOOST_TESTS)
             libgtest_main.a
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
+            ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
         if(WIN32)
@@ -200,6 +211,8 @@ if(BUILD_BOOST_TESTS)
                     libgtest_main.a
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
+                    ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
                 # Unsupported compiler
@@ -212,6 +225,8 @@ if(BUILD_BOOST_TESTS)
                 libgtest_main.a
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
+                ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)

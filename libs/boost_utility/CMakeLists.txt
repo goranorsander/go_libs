@@ -452,6 +452,8 @@ if(BUILD_BOOST_TESTS)
             libgtest_main.a
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
+            ${CMAKE_THREAD_LIBS_INIT}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
         if(WIN32)
@@ -462,6 +464,8 @@ if(BUILD_BOOST_TESTS)
                     libgtest_main.a
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
+                    ${CMAKE_THREAD_LIBS_INIT}
                     )
             else(MSYS OR MINGW)
                 # Unsupported compiler
@@ -474,6 +478,8 @@ if(BUILD_BOOST_TESTS)
                 libgtest_main.a
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
+                ${CMAKE_THREAD_LIBS_INIT}
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)

@@ -55,16 +55,7 @@ public:
 
     basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb);
 
-    void write(log_line_type& logline)
-    {
-        typename out_file_stream_type::pos_type pos = _os->tellp();
-        logline.stringify(*_os);
-        _bytes_written += _os->tellp() - pos;
-        if (_bytes_written > _log_file_roll_size_bytes)
-        {
-            roll_file();
-        }
-    }
+    void write(log_line_type& logline);
 
 private:
     void roll_file();
@@ -78,6 +69,47 @@ private:
 };
 
 template <>
+inline void basic_file_writer<log_line, std::ofstream>::roll_file()
+{
+    if (this->_os.get() != GO_BOOST_NULLPTR)
+    {
+        this->_os->flush();
+        this->_os->close();
+    }
+
+    this->_bytes_written = 0;
+    this->_os.reset(new std::ofstream());
+    std::string log_file_name = this->_name;
+    log_file_name.append(".");
+    log_file_name.append(boost::lexical_cast<std::string>(++(this->_file_number)));
+    log_file_name.append(".txt");
+    this->_os->open(log_file_name.c_str(), std::ofstream::out | std::ofstream::trunc);
+}
+
+template <>
+inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
+{
+    if (this->_os.get() != GO_BOOST_NULLPTR)
+    {
+        this->_os->flush();
+        this->_os->close();
+    }
+
+    this->_bytes_written = 0;
+    this->_os.reset(new std::wofstream());
+    std::string log_file_name = go_boost::utility::string_cast<std::string>(this->_name);
+    log_file_name.append(".");
+    log_file_name.append(boost::lexical_cast<std::string>(++(this->_file_number)));
+    log_file_name.append(".txt");
+    this->_os->open(log_file_name.c_str(), std::wofstream::out | std::wofstream::trunc);
+}
+
+template <class L, class O>
+inline void basic_file_writer<L, O>::roll_file()
+{
+}
+
+template <>
 inline basic_file_writer<log_line, std::ofstream>::basic_file_writer(const string_type& log_directory, const string_type& log_file_name, boost::uint32_t log_file_roll_size_mb)
     : _log_file_roll_size_bytes(log_file_roll_size_mb * 1024 * 1024)
     , _name(log_directory + log_file_name)
@@ -85,7 +117,7 @@ inline basic_file_writer<log_line, std::ofstream>::basic_file_writer(const strin
     , _bytes_written(0)
     , _os()
 {
-    roll_file();
+    this->roll_file();
 }
 
 template <>
@@ -96,48 +128,43 @@ inline basic_file_writer<wlog_line, std::wofstream>::basic_file_writer(const str
     , _bytes_written(0)
     , _os()
 {
-    roll_file();
+    this->roll_file();
 }
 
 template <>
-inline void basic_file_writer<log_line, std::ofstream>::roll_file()
+inline void basic_file_writer<log_line, std::ofstream>::write(log_line_type& logline)
 {
-    if (_os.get() != GO_BOOST_NULLPTR)
+    typename out_file_stream_type::pos_type pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
     {
-        _os->flush();
-        _os->close();
+        this->roll_file();
     }
-
-    _bytes_written = 0;
-    _os.reset(new std::ofstream());
-    std::string log_file_name = _name;
-    log_file_name.append(".");
-    log_file_name.append(boost::lexical_cast<std::string>(++_file_number));
-    log_file_name.append(".txt");
-    _os->open(log_file_name.c_str(), std::ofstream::out | std::ofstream::trunc);
 }
 
 template <>
-inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
+inline void basic_file_writer<wlog_line, std::wofstream>::write(log_line_type& logline)
 {
-    if (_os.get() != GO_BOOST_NULLPTR)
+    typename out_file_stream_type::pos_type pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
     {
-        _os->flush();
-        _os->close();
+        this->roll_file();
     }
-
-    _bytes_written = 0;
-    _os.reset(new std::wofstream());
-    std::string log_file_name = go_boost::utility::string_cast<std::string>(_name);
-    log_file_name.append(".");
-    log_file_name.append(boost::lexical_cast<std::string>(++_file_number));
-    log_file_name.append(".txt");
-    _os->open(log_file_name.c_str(), std::wofstream::out | std::wofstream::trunc);
 }
 
 template <class L, class O>
-inline void basic_file_writer<L, O>::roll_file()
+inline void basic_file_writer<L, O>::write(log_line_type& logline)
 {
+    typename out_file_stream_type::pos_type pos = this->_os->tellp();
+    logline.stringify(*(this->_os));
+    this->_bytes_written += this->_os->tellp() - pos;
+    if (this->_bytes_written > this->_log_file_roll_size_bytes)
+    {
+        this->roll_file();
+    }
 }
 
 } // namespace log

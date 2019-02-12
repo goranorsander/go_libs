@@ -35,6 +35,11 @@ __warning _message_
 #define GO_CHAR16_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 #define GO_CHAR32_T_ILLEGAL_BYTE_SEQUENCE_ISSUE 1
 
+#if defined(GO_COMP_GCC_MINGW) && (defined(_WIN32) || defined(WIN32))
+// See https://stackoverflow.com/questions/14191566/c-mutex-in-namespace-std-does-not-name-a-type
+#define GO_NO_GTHREADS_ISSUE 1
+#endif  // #if defined(GO_COMP_GCC_MINGW)
+
 // C++ restrictions
 #define GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7 1
 

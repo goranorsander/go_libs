@@ -16,7 +16,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_spin_lock_test_suite, cpp11_not_supported) {}
 #else
 
+#include <condition_variable>
+#include <functional>
 #include <mutex>
+#include <thread>
 #include <go/utility/spin_lock.hpp>
 
 namespace u = go::utility;

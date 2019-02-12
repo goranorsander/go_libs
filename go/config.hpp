@@ -11,14 +11,6 @@
 //  See accompanying file LICENSE.md.
 //
 
-#if !defined(GO_COMPILER_CONFIG) && !defined(GO_NO_COMPILER_CONFIG) && !defined(GO_NO_CONFIG)
-#include "go/config/select_compiler_config.hpp"
-#endif  // #if !defined(GO_COMPILER_CONFIG) && !defined(GO_NO_COMPILER_CONFIG) && !defined(GO_NO_CONFIG)
-
-#ifdef GO_COMPILER_CONFIG
-#include GO_COMPILER_CONFIG
-#endif  // #ifdef GO_COMPILER_CONFIG
-
 #if !defined(GO_PLATFORM_CONFIG) && !defined(GO_NO_PLATFORM_CONFIG) && !defined(GO_NO_CONFIG)
 #include "go/config/select_platform_config.hpp"
 #endif  // #if !defined(GO_PLATFORM_CONFIG) && !defined(GO_NO_PLATFORM_CONFIG) && !defined(GO_NO_CONFIG)
@@ -26,6 +18,14 @@
 #ifdef GO_PLATFORM_CONFIG
 #include GO_PLATFORM_CONFIG
 #endif  // #ifdef GO_PLATFORM_CONFIG
+
+#if !defined(GO_COMPILER_CONFIG) && !defined(GO_NO_COMPILER_CONFIG) && !defined(GO_NO_CONFIG)
+#include "go/config/select_compiler_config.hpp"
+#endif  // #if !defined(GO_COMPILER_CONFIG) && !defined(GO_NO_COMPILER_CONFIG) && !defined(GO_NO_CONFIG)
+
+#ifdef GO_COMPILER_CONFIG
+#include GO_COMPILER_CONFIG
+#endif  // #ifdef GO_COMPILER_CONFIG
 
 #include "go/config/preprocessor.hpp"
 
