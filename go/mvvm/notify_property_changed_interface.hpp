@@ -46,7 +46,7 @@ public:
     typedef S string_type;
     typedef L lockable_type;
     typedef basic_notify_property_changed_interface<S, L> this_type;
-    typedef typename go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&), go::signals::default_collector<void>, L> property_changed_signal;
+    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>, L> property_changed_signal;
 
 public:
     virtual ~basic_notify_property_changed_interface() = 0;

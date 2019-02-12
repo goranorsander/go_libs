@@ -32,8 +32,8 @@ class notify_data_context_change_interface
 public:
     typedef L lockable_type;
     typedef notify_data_context_change_interface<L> this_type;
-    typedef go::signals::signal<void(const std::shared_ptr<data_context_changed_arguments>&), go::signals::default_collector<void>, L> data_context_changed_signal;
-    typedef go::signals::signal<void(const std::shared_ptr<data_context_will_change_arguments>&), go::signals::default_collector<void>, L> data_context_will_change_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_changed_arguments>&)>, L> data_context_changed_signal;
+    typedef go::signals::signal<std::function<void(const std::shared_ptr<data_context_will_change_arguments>&)>, L> data_context_will_change_signal;
 
 public:
     virtual ~notify_data_context_change_interface() = 0;

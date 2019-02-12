@@ -139,9 +139,5 @@ X-Wing Red Five stop firing lasers
 
 ### Class reference
 
-* [default_collector](./class_template_default_collector.html)
-* [return_last_signal_collector](./class_template_return_last_signal_collector.html)
-* [return_value_collector_invoker](./class_template_return_value_collector_invoker.html)
 * [signal](./class_template_signal.html)
-* [slot](./class_template_slots.html)
 * [slot_key](./class_slot_key.html)

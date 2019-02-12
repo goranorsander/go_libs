@@ -21,6 +21,7 @@ TEST(std_relay_command_placebo_lockable_test_suite, cpp11_not_supported) {}
 namespace m = go::mvvm;
 namespace mst = go::mvvm::single_threaded;
 namespace ph = std::placeholders;
+namespace s = go::signals;
 namespace u = go::utility;
 
 namespace
@@ -53,7 +54,7 @@ public:
 class test_relay_command_exection_context
 {
 public:
-    typedef GO_TYPENAME go::signals::signal<void(const std::shared_ptr<mst::command_interface>&)> can_execute_changed_signal;
+    typedef GO_TYPENAME s::signal<std::function<void(const std::shared_ptr<mst::command_interface>&)>> can_execute_changed_signal;
 
     virtual ~test_relay_command_exection_context() GO_DEFAULT_DESTRUCTOR
 

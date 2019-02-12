@@ -20,6 +20,7 @@ TEST(std_relay_wcommand_test_suite, cpp11_not_supported) {}
 
 namespace m = go::mvvm;
 namespace ph = std::placeholders;
+namespace s = go::signals;
 
 namespace
 {
@@ -51,7 +52,7 @@ public:
 class test_relay_wcommand_exection_context
 {
 public:
-    typedef GO_TYPENAME go::signals::signal<void(const std::shared_ptr<m::wcommand_interface>&)> can_execute_changed_signal;
+    typedef GO_TYPENAME s::signal<std::function<void(const std::shared_ptr<m::wcommand_interface>&)>> can_execute_changed_signal;
 
     virtual ~test_relay_wcommand_exection_context() GO_DEFAULT_DESTRUCTOR
 

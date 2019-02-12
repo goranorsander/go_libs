@@ -32,6 +32,7 @@ public:
     void disconnect(const slot_key& s);
     void disconnect_all_slots();
     bool empty() const;
+    size_type size() const;
     template<typename... A> void operator()(A... a) const;
     template<typename... A> void call(A... a) const;
 };
@@ -42,19 +43,17 @@ public:
 Parameter | Description
 -|-
 F | The function type
-C | The collector type
 L | The lockable type
 
 ## Member types
 
 Member type | Definition
 -|-
-collector_type | C
+function_type | F
 lockable_type | L
 this_type | **signal**<function_type, lockable_type>
-base_type | **slots**<F, C>
-function_type | base_type\::signal_function_type
-return_value_type | base_type\::signal_function_type\::result_type
+connections_type | std\::map<slot_key, function_type>
+size_type | connections_type\::size_type
 
 ## Member functions
 
@@ -113,7 +112,7 @@ receivers.
 
 Specifiers | Signature
 -|-
-public | std\::size_t **size**() const
+public | size_type **size**() const
 
 Returns the number of connected slots.
 
