@@ -51,9 +51,11 @@ CMake configuration:
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
+ * **BUILD_BOOST_RND** = TRUE|FALSE
  * **BUILD_BOOST_TESTS** = TRUE|FALSE
  * **BUILD_STD_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
+ * **BUILD_STD_RND** = TRUE|FALSE
  * **BUILD_STD_TESTS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
  * **CMAKE_INSTALL_PREFIX** = path to install directory
@@ -79,9 +81,11 @@ The CMake configurations I use:
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | | | | X | 
+**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X | X | | | | | 
+**BUILD_STD_RND** | X | X | X | X | X | X | X | X | | 
 **BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | | 
 **USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | | | 
 **BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X 
@@ -114,7 +118,7 @@ My development environment and toolset details:
     * Git Lens 8.5.6 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 1.6.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.13.2
+  * cmake version 3.13.4
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.20.1.windows.1
@@ -127,7 +131,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.4
+  * Visual Studio 2017, Community Edition, version 15.9.7
   * Visual Studio Code 1.27.2 - with same extensions as in Linux environment
 
 # GOOGLE TEST
