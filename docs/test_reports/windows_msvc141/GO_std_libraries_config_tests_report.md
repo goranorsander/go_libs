@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.4
+* Visual Studio 2017, Community Edition, version 15.9.7
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2018-12-28 at 17:37:14 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-02-13 at 18:56:41 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.029 seconds.
+Test suites execution took 0.035 seconds.
 
 # Details
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.016 seconds.
+Test suite execution took 0.02 seconds.
 
 ### Successful test cases
 
@@ -87,7 +87,7 @@ test_define_go_msvc_full_ver | 0
 test_define_go_msvc_mfc | 0
 test_define_go_msvc_mfc_ver | 0
 test_define_go_msvc_ver | 0
-test_define_go_unicode | 0
+test_define_go_unicode | 0.001
 
 ## std_define_go_message_test_suite
 
@@ -96,7 +96,7 @@ Test suite *std_define_go_message_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -111,7 +111,7 @@ Test suite *std_define_go_platform_test_suite* with 2 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 

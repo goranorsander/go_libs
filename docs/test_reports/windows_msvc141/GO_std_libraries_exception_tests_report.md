@@ -5,11 +5,11 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.4
+* Visual Studio 2017, Community Edition, version 15.9.7
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2018-12-28 at 17:37:14 with result:
+Test suites *AllTests* with 6 test cases was executed 2019-02-13 at 18:56:41 with result:
 
 * 0 errors
 * 0 failures
