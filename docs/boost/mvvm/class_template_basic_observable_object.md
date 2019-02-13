@@ -37,6 +37,9 @@ protected:
 
 protected:
     virtual void notify_property_changed(const string_type& property_name);
+
+    template<class T> T get_property_value(const T& value);
+    template<class P> void set_property_value(const P& prop, typename P::value_type& value, const typename P::value_type& new_value);
 };
 ```
 
@@ -86,3 +89,24 @@ Specifiers | Signature
 protected virtual | void **notify_property_changed**(const string_type& property_name)
 
 Called when a property value have changed if the property *setter* implements **basic_notify_property_changed_interface**.
+
+### get_property_value
+
+Specifiers | Signature
+-|-
+protected | template\<class T\> T **get_property_value**(const T& value)
+
+A template function that provide a basic property *getter* function.
+
+The template parameter **T** is the property value type.
+
+### set_property_value
+
+Specifiers | Signature
+-|-
+protected | template\<class T\> void **set_property_value**(const P& prop, typename P\::value_type& value, const typename P\::value_type& new_value)
+
+A template function that provide a basic property *setter* function that will
+call **notify_property_changed** if necessary.
+
+The template parameter **P** is the property type.
