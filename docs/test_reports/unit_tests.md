@@ -13,7 +13,7 @@ more information.
 ## Test environment and toolset
 
 * Manjaro Linux 18, 64 bits
-  * [clang 7.0.0](./linux_clang/unit_tests.html)
+  * [clang 7.0.1](./linux_clang/unit_tests.html)
   * [gcc 8.2.1](./linux_gcc/unit_tests.html)
 * Windows 10 Professional, 64 bit
   * [MSYS2/MinGW/gcc 7.3.0](./windows_gcc/unit_tests.html)
