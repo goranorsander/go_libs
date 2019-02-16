@@ -39,7 +39,6 @@ public:
     reference operator[](size_type n);
 
 protected:
-    virtual void on_container_changed(const notify_container_changed_action& action, const std::size_t& added_elements, const std::size_t& removed_elements, const std::size_t& new_size);
     virtual container_type& container();
     virtual const container_type& container() const;
 
@@ -139,14 +138,6 @@ public | reference **operator[]**(size_type n)
 Returns a reference to the element at specified location **n**.
 
 [See **cppreference.com** for a detailed description.](https://en.cppreference.com/w/cpp/container/array/operator_at)
-
-### on_container_changed
-
-Specifiers | Signature
--|-
-protected virtual | void **on_container_changed**(const notify_container_changed_action& action, const std\::size_t& added_elements, const std\::size_t& removed_elements, const std\::size_t& new_size)
-
-Called when the container have changed.
 
 ### container
 
@@ -342,14 +333,6 @@ Specifiers | Signature
 protected | void **notify_erase**(const std\::size_t& before, const std\::size_t& after)
 
 Emit signal to notify that elements have been erased from the container.
-
-### on_property_changed
-
-Specifiers | Signature
--|-
-protected virtual | void **on_property_changed**(const string_type& property_name)
-
-Called when a property value have changed if the property *setter* implements **basic_notify_property_changed_interface**.
 
 # class template basic_property specializations
 
