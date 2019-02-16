@@ -31,11 +31,11 @@ public:
 #endif
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    virtual void DoDataExchange(CDataExchange* pDX) GO_BOOST_OVERRIDE;    // DDX/DDV support
 
-    virtual BOOL OnInitDialog();
-    virtual void OnOK();
-    virtual void OnCancel();
+    virtual BOOL OnInitDialog() GO_BOOST_OVERRIDE;
+    virtual void OnOK() GO_BOOST_OVERRIDE;
+    virtual void OnCancel() GO_BOOST_OVERRIDE;
 
     DECLARE_MESSAGE_MAP()
 

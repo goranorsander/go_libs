@@ -46,10 +46,10 @@ public:
     void set_data_context(const fleet_organization_model::ptr& context);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_data_context_will_change() override;
+    virtual void on_data_context_changed() override;
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) override;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) override;
 
 private:
     void bind_properties();

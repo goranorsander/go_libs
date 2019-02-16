@@ -44,7 +44,7 @@ public:
     static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
 
 protected:
-    virtual void bind_properties();
+    virtual void bind_properties() override;
 
 private:
     static equipment_id_type _next_id;

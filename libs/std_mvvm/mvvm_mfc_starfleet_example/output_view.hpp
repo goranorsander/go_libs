@@ -30,13 +30,13 @@ public:
 
     void UpdateFonts();
 
-    virtual void on_command_executed(const m::wcommand_interface::ptr& c);
-    virtual void on_command_not_executed(const m::wcommand_interface::ptr& c);
+    virtual void on_command_executed(const m::wcommand_interface::ptr& c) override;
+    virtual void on_command_not_executed(const m::wcommand_interface::ptr& c) override;
 
     virtual void on_event_fired(const m::wevent::ptr& e);
 
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) override;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) override;
 
 protected:
     CMFCTabCtrl _wndTabs;

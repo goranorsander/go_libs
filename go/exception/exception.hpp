@@ -44,7 +44,7 @@ public:
 
 public:
 
-    virtual const char* what() const GO_NOEXCEPT_OR_NOTHROW;
+    virtual const char* what() const GO_NOEXCEPT_OR_NOTHROW GO_OVERRIDE;
 
     virtual std::string message() const GO_NOEXCEPT_OR_NOTHROW;
 

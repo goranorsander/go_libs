@@ -39,23 +39,23 @@ public:
 #endif
 
 public:
-    virtual BOOL DestroyWindow();
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL DestroyWindow() GO_BOOST_OVERRIDE;
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) GO_BOOST_OVERRIDE;
+    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL) GO_BOOST_OVERRIDE;
+    virtual BOOL PreTranslateMessage(MSG* pMsg) GO_BOOST_OVERRIDE;
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    virtual void OnInitialUpdate();
+    virtual void DoDataExchange(CDataExchange* pDX) GO_BOOST_OVERRIDE;
+    virtual void OnInitialUpdate() GO_BOOST_OVERRIDE;
 
 public:
 #ifdef _DEBUG
-    virtual void AssertValid() const;
-    virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const GO_BOOST_OVERRIDE;
+    virtual void Dump(CDumpContext& dc) const GO_BOOST_OVERRIDE;
 #endif
 
 protected:
-    virtual void PostNcDestroy();
+    virtual void PostNcDestroy() GO_BOOST_OVERRIDE;
 
     DECLARE_MESSAGE_MAP()
 
@@ -75,10 +75,10 @@ public:
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_data_context_will_change() GO_BOOST_OVERRIDE;
+    virtual void on_data_context_changed() GO_BOOST_OVERRIDE;
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) GO_BOOST_OVERRIDE;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) GO_BOOST_OVERRIDE;
 
 private:
     void on_initial_update_spaceship_name();

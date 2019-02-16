@@ -39,10 +39,10 @@ public:
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_data_context_will_change() GO_BOOST_OVERRIDE;
+    virtual void on_data_context_changed() GO_BOOST_OVERRIDE;
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) GO_BOOST_OVERRIDE;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) GO_BOOST_OVERRIDE;
 
     void populate();
 

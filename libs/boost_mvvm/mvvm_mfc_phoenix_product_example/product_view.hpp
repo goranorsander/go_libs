@@ -29,9 +29,9 @@ public:
 protected:
     virtual void on_data_context_changed();
 
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    virtual void DoDataExchange(CDataExchange* pDX) GO_BOOST_OVERRIDE;    // DDX/DDV support
 
-    virtual BOOL OnInitDialog();
+    virtual BOOL OnInitDialog() GO_BOOST_OVERRIDE;
 
     DECLARE_MESSAGE_MAP()
 

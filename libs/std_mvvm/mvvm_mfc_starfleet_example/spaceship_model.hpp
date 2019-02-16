@@ -38,7 +38,7 @@ public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 protected:
-    virtual void bind_properties();
+    virtual void bind_properties() override;
 
 private:
     const std::wstring _spaceship_class;

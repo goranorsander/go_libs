@@ -31,17 +31,17 @@ public:
     void OnChangeVisualStyle();
 
 public:
-    virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData);
-    virtual void on_deselect(const HTREEITEM hItem, DWORD_PTR pItemData);
-    virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
-    virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton);
+    virtual void on_selected(const HTREEITEM hItem, DWORD_PTR pItemData) override;
+    virtual void on_deselect(const HTREEITEM hItem, DWORD_PTR pItemData) override;
+    virtual void on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) override;
+    virtual void on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton) override;
 
     virtual void on_view_model_will_change(const m::view_model_will_change_arguments::ptr& a);
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
+    virtual void on_data_context_will_change() override;
+    virtual void on_data_context_changed() override;
 
     void populate();
 

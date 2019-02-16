@@ -35,7 +35,7 @@ public:
 #endif
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
 protected:
     DECLARE_MESSAGE_MAP()

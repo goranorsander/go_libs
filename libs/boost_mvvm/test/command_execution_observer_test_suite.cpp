@@ -32,12 +32,12 @@ public:
     {
     }
 
-    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& /*params*/)
+    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& /*params*/) GO_BOOST_OVERRIDE
     {
         return _allow_execute && !_executed;
     }
 
-    virtual void execute(const boost::shared_ptr<m::command_parameters>& params)
+    virtual void execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
         if(can_execute(params))
         {
@@ -80,12 +80,12 @@ public:
     {
     }
 
-    virtual void on_command_executed(const boost::shared_ptr<m::command_interface>& /*c*/)
+    virtual void on_command_executed(const boost::shared_ptr<m::command_interface>& /*c*/) GO_BOOST_OVERRIDE
     {
         ++_number_of_executed_commands;
     }
 
-    virtual void on_command_not_executed(const boost::shared_ptr<m::command_interface>& /*c*/)
+    virtual void on_command_not_executed(const boost::shared_ptr<m::command_interface>& /*c*/) GO_BOOST_OVERRIDE
     {
         ++_number_of_not_executed_commands;
     }

@@ -56,8 +56,8 @@ public:
     static ptr create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
+    virtual void on_data_context_will_change() GO_BOOST_OVERRIDE;
+    virtual void on_data_context_changed() GO_BOOST_OVERRIDE;
 
 private:
     void bind_properties();

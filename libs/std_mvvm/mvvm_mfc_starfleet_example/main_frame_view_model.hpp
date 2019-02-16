@@ -53,8 +53,8 @@ public:
     static ptr create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
+    virtual void on_data_context_will_change() override;
+    virtual void on_data_context_changed() override;
 
 private:
     void bind_properties();

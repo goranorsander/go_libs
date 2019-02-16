@@ -35,12 +35,12 @@ public:
     {
     }
 
-    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& /*params*/)
+    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& /*params*/) GO_BOOST_OVERRIDE
     {
         return _allow_execute && !_executed;
     }
 
-    virtual void execute(const boost::shared_ptr<m::command_parameters>& params)
+    virtual void execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
         if(can_execute(params))
         {

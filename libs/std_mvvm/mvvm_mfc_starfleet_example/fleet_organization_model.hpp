@@ -49,8 +49,8 @@ public:
     bool remove_child(const fleet_organization_interface::ptr& child);
 
 protected:
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) override;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) override;
 
 private:
     void bind_properties();

@@ -35,8 +35,8 @@ protected:
     dialog_view(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
 
 protected:
-    virtual void OnOK();
-    virtual void OnCancel();
+    virtual void OnOK() GO_BOOST_OVERRIDE;
+    virtual void OnCancel() GO_BOOST_OVERRIDE;
 
     DECLARE_MESSAGE_MAP()
 

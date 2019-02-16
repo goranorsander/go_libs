@@ -36,11 +36,11 @@ public:
     static ptr create();
 
 public:
-    virtual fleet_organization_interface::ptr fleet_organization_model() const;
-    virtual fleet_organization_interface::ptr fleet_organization_model(const std::wstring& name) const;
-    virtual fleet_organization_interface::ptr fleet_organization_model(const spaceship_interface::ptr& spaceship_model) const;
+    virtual fleet_organization_interface::ptr fleet_organization_model() const override;
+    virtual fleet_organization_interface::ptr fleet_organization_model(const std::wstring& name) const override;
+    virtual fleet_organization_interface::ptr fleet_organization_model(const spaceship_interface::ptr& spaceship_model) const override;
     virtual fleet_organization_interface::ptr fleet_organization_model(const fleet_organization_id_type id) const;
-    virtual spaceship_interface::ptr spaceship_model(const std::wstring& name) const;
+    virtual spaceship_interface::ptr spaceship_model(const std::wstring& name) const override;
 
 private:
     fleet_organization_interface::ptr _fleet_organization;

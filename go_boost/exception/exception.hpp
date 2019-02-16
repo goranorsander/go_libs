@@ -43,7 +43,7 @@ public:
     exception& operator=(const exception& other) BOOST_NOEXCEPT_OR_NOTHROW;
 
 public:
-    virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW;
+    virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_OVERRIDE;
 
     virtual std::string message() const BOOST_NOEXCEPT_OR_NOTHROW;
 

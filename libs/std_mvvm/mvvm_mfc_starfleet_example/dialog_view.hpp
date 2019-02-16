@@ -36,8 +36,8 @@ protected:
     dialog_view(LPCTSTR lpszTemplateName, CWnd* pParentWnd = nullptr);
 
 protected:
-    virtual void OnOK();
-    virtual void OnCancel();
+    virtual void OnOK() override;
+    virtual void OnCancel() override;
 
     DECLARE_MESSAGE_MAP()
 

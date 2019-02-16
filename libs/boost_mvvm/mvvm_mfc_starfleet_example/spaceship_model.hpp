@@ -38,7 +38,7 @@ public:
     static ptr create(const std::wstring& spaceship_class_, const std::wstring& name_);
 
 protected:
-    virtual void bind_properties();
+    virtual void bind_properties() GO_BOOST_OVERRIDE;
 
 private:
     void on_equipment_list_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);

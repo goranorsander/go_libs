@@ -43,12 +43,12 @@ public:
     {
     }
 
-    virtual bool can_execute(const std::shared_ptr<m::command_parameters>& /*params*/)
+    virtual bool can_execute(const std::shared_ptr<m::command_parameters>& /*params*/) override
     {
         return _allow_execute && !_executed;
     }
 
-    virtual void execute(const std::shared_ptr<m::command_parameters>& params)
+    virtual void execute(const std::shared_ptr<m::command_parameters>& params) override
     {
         if(can_execute(params))
         {
@@ -91,12 +91,12 @@ public:
     {
     }
 
-    virtual void on_command_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    virtual void on_command_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/) override
     {
         ++_number_of_executed_commands;
     }
 
-    virtual void on_command_not_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    virtual void on_command_not_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/) override
     {
         ++_number_of_not_executed_commands;
     }

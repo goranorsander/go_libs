@@ -50,8 +50,8 @@ public:
     void set_data_context(const fleet_organization_interface::ptr& context);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
+    virtual void on_data_context_will_change() override;
+    virtual void on_data_context_changed() override;
 
 private:
     void bind_properties();

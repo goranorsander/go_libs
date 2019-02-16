@@ -23,7 +23,7 @@ public:
     explicit tree_control(tree_control_observer* observer);
 
 protected:
-    virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+    virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult) override;
     afx_msg void OnClick(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnDblclk(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnRclick(NMHDR* pNMHDR, LRESULT* pResult);

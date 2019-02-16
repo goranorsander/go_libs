@@ -27,14 +27,14 @@ public:
     child_frame_view();
 
 public:
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
-    virtual CString GetFrameText() const;
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) GO_BOOST_OVERRIDE;
+    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) GO_BOOST_OVERRIDE;
+    virtual CString GetFrameText() const GO_BOOST_OVERRIDE;
 
 public:
 #ifdef _DEBUG
-    virtual void AssertValid() const;
-    virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const GO_BOOST_OVERRIDE;
+    virtual void Dump(CDumpContext& dc) const GO_BOOST_OVERRIDE;
 #endif
 
 protected:

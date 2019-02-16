@@ -62,9 +62,9 @@ public:
     static boost::shared_ptr<basic_relay_command<S, L>> create(const string_type& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params);
 
 protected:
-    virtual bool can_execute(const command_parameters_type& params);
+    virtual bool can_execute(const command_parameters_type& params) GO_BOOST_OVERRIDE;
 
-    virtual void execute(const command_parameters_type& params);
+    virtual void execute(const command_parameters_type& params) GO_BOOST_OVERRIDE;
 
 private:
     can_execute_command_signature _can_execute;

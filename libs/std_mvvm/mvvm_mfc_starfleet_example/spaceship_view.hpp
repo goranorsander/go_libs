@@ -39,23 +39,23 @@ public:
 #endif
 
 public:
-    virtual BOOL DestroyWindow();
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = nullptr);
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL DestroyWindow() override;
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) override;
+    virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = nullptr) override;
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    virtual void OnInitialUpdate();
+    virtual void DoDataExchange(CDataExchange* pDX) override;
+    virtual void OnInitialUpdate() override;
 
 public:
 #ifdef _DEBUG
-    virtual void AssertValid() const;
-    virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const override;
+    virtual void Dump(CDumpContext& dc) const override;
 #endif
 
 protected:
-    virtual void PostNcDestroy();
+    virtual void PostNcDestroy() override;
 
     DECLARE_MESSAGE_MAP()
 
@@ -75,10 +75,10 @@ public:
     virtual void on_view_model_changed(const m::view_model_changed_arguments::ptr& a);
 
 protected:
-    virtual void on_data_context_will_change();
-    virtual void on_data_context_changed();
-    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a);
-    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a);
+    virtual void on_data_context_will_change() override;
+    virtual void on_data_context_changed() override;
+    virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) override;
+    virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) override;
 
 private:
     void on_initial_update_spaceship_name();

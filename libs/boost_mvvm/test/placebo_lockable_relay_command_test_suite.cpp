@@ -34,12 +34,12 @@ public:
     {
     }
 
-    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& params)
+    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
         return mst::relay_command::can_execute(params);
     }
 
-    virtual void execute(const boost::shared_ptr<m::command_parameters>& params)
+    virtual void execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
         mst::relay_command::execute(params);
     }

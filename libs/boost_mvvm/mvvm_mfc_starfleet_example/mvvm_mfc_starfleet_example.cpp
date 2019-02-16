@@ -34,7 +34,7 @@ public:
 #endif
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void DoDataExchange(CDataExchange* pDX) GO_BOOST_OVERRIDE;
 
 protected:
     DECLARE_MESSAGE_MAP()

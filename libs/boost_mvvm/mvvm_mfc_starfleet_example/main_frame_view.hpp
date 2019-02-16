@@ -41,16 +41,16 @@ public:
     main_frame_view(const m::wcommand_manager::ptr& command_manager, const m::wevent_manager::ptr& event_manager, const fleet_repository::ptr& fleet_repo);
 
 public:
-    virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id);
-    virtual void on_close_dialog(const dialog_view::pointer dialog);
-    virtual void on_show_spaceship(const fleet_organization_id_type id);
-    virtual void on_close_spaceship(const fleet_organization_id_type id);
+    virtual void on_show_dialog(const dialog_view::ptr& dialog, const UINT template_id) GO_BOOST_OVERRIDE;
+    virtual void on_close_dialog(const dialog_view::pointer dialog) GO_BOOST_OVERRIDE;
+    virtual void on_show_spaceship(const fleet_organization_id_type id) GO_BOOST_OVERRIDE;
+    virtual void on_close_spaceship(const fleet_organization_id_type id) GO_BOOST_OVERRIDE;
 
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) GO_BOOST_OVERRIDE;
 
 #ifdef _DEBUG
-    virtual void AssertValid() const;
-    virtual void Dump(CDumpContext& dc) const;
+    virtual void AssertValid() const GO_BOOST_OVERRIDE;
+    virtual void Dump(CDumpContext& dc) const GO_BOOST_OVERRIDE;
 #endif
 
 protected:

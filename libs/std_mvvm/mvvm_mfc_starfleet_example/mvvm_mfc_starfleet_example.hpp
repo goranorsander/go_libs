@@ -32,13 +32,13 @@ public:
     mvvm_mfc_starfleet_example_app();
 
 public:
-    virtual BOOL InitInstance();
-    virtual int ExitInstance();
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL InitInstance() override;
+    virtual int ExitInstance() override;
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
-    virtual void PreLoadState();
-    virtual void LoadCustomState();
-    virtual void SaveCustomState();
+    virtual void PreLoadState() override;
+    virtual void LoadCustomState() override;
+    virtual void SaveCustomState() override;
 
     afx_msg void OnAppAbout();
     afx_msg void OnFileNew();

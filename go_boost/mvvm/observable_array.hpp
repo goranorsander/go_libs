@@ -90,10 +90,6 @@ public:
     }
 
 protected:
-    virtual void on_container_changed(const notify_container_changed_action& /*action*/, const std::size_t& /*added_elements*/, const std::size_t& /*removed_elements*/, const std::size_t& /*new_size*/)
-    {
-    }
-
     virtual container_type& container()
     {
         return _container;

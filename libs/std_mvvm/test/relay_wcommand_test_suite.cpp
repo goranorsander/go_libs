@@ -38,12 +38,12 @@ public:
     {
     }
 
-    virtual bool can_execute(const std::shared_ptr<m::command_parameters>& params)
+    virtual bool can_execute(const std::shared_ptr<m::command_parameters>& params) override
     {
         return m::relay_wcommand::can_execute(params);
     }
 
-    virtual void execute(const std::shared_ptr<m::command_parameters>& params)
+    virtual void execute(const std::shared_ptr<m::command_parameters>& params) override
     {
         m::relay_wcommand::execute(params);
     }

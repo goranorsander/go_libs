@@ -31,8 +31,8 @@ public:
     mvvm_mfc_lambda_product_example_app();
 
 public:
-    virtual BOOL InitInstance();
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL InitInstance() override;
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
     DECLARE_MESSAGE_MAP()
 

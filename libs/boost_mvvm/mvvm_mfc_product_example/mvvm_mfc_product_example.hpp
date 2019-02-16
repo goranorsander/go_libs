@@ -31,8 +31,8 @@ public:
     mvvm_mfc_product_example_app();
 
 public:
-    virtual BOOL InitInstance();
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL InitInstance() GO_BOOST_OVERRIDE;
+    virtual BOOL PreTranslateMessage(MSG* pMsg) GO_BOOST_OVERRIDE;
 
     DECLARE_MESSAGE_MAP()
 

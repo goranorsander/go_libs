@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include <go_boost/config.hpp>
+
 #include "tree_control_observer.hpp"
 
 class tree_control
@@ -23,7 +25,7 @@ public:
     explicit tree_control(tree_control_observer* observer);
 
 protected:
-    virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+    virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult) GO_BOOST_OVERRIDE;
     afx_msg void OnClick(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnDblclk(NMHDR* pNMHDR, LRESULT* pResult);
     afx_msg void OnRclick(NMHDR* pNMHDR, LRESULT* pResult);
