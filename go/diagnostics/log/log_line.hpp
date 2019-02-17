@@ -24,7 +24,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/timestamp.hpp>
 #include <go/utility/min_max.hpp>
 
-#include <cstdint>
 #include <cstring>
 #include <memory>
 

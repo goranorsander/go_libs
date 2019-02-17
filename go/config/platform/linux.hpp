@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <cstdint>
+
 #if defined(__linux__)
 
 #define GO_PLATFORM_LINUX 1
@@ -21,9 +23,25 @@
 
 #define GO_ADDRESS_MODEL_64 1
 
+namespace go
+{
+
+typedef int64_t int3264_t;
+typedef uint64_t uint3264_t;
+
+}
+
 #else
 
 #define GO_ADDRESS_MODEL_32 1
+
+namespace go
+{
+
+typedef int32_t int3264_t;
+typedef uint32_t uint3264_t;
+
+}
 
 #endif  // #if defined(__x86_64__) || defined(__ppc64__)
 

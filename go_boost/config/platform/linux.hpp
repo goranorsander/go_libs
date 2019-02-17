@@ -17,6 +17,8 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <boost/cstdint.hpp>
+
 #if defined(__linux__)
 
 #define GO_BOOST_PLATFORM_LINUX 1
@@ -27,9 +29,25 @@
 
 #define GO_BOOST_ADDRESS_MODEL_64 1
 
+namespace go_boost
+{
+
+typedef boost::int64_t int3264_t;
+typedef boost::uint64_t uint3264_t;
+
+}
+
 #else
 
 #define GO_BOOST_ADDRESS_MODEL_32 1
+
+namespace go_boost
+{
+
+typedef boost::int32_t int3264_t;
+typedef boost::uint32_t uint3264_t;
+
+}
 
 #endif  // #if defined(__x86_64__) || defined(__ppc64__)
 

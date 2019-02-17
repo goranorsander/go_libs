@@ -21,7 +21,6 @@
 #include <string>
 
 #if defined(BOOST_NO_CXX11_CHAR32_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
-#include <boost/cstdint.hpp>
 typedef boost::uint32_t char32_t;
 #endif  // #if defined(BOOST_NO_CXX11_CHAR32_T) && !(defined(GO_BOOST_COMP_MSVC_VC100) || defined(GO_BOOST_COMP_MSVC_VC110) || defined(GO_BOOST_COMP_MSVC_VC120))
 

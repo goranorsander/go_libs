@@ -17,7 +17,6 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/cstdint.hpp>
 #include <go_boost/utility/string/algorithm_fwd.hpp>
 #include <string>
 
