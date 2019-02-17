@@ -212,8 +212,10 @@ if(BUILD_BOOST_TESTS)
         target_link_libraries(${PROJECT_BOOST_TEST_DIAGNOSTICS_NAME}
             libgtest.a
             libgtest_main.a
+            ${LIBBOOST_CHRONO}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
             )
     elseif(CMAKE_COMPILER_IS_GNUCC)
         if(WIN32)
@@ -222,8 +224,10 @@ if(BUILD_BOOST_TESTS)
                 target_link_libraries(${PROJECT_BOOST_TEST_DIAGNOSTICS_NAME}
                     libgtest.a
                     libgtest_main.a
+                    ${LIBBOOST_CHRONO}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
                     )
             else(MSYS OR MINGW)
                 # Unsupported compiler
@@ -234,8 +238,10 @@ if(BUILD_BOOST_TESTS)
             target_link_libraries(${PROJECT_BOOST_TEST_DIAGNOSTICS_NAME}
                 libgtest.a
                 libgtest_main.a
+                ${LIBBOOST_CHRONO}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
                 )
         endif(WIN32)
     elseif(CMAKE_COMPILER_IS_MSVC)
