@@ -14,7 +14,7 @@
 
 namespace b = go_boost::diagnostics::benchmark;
 
-uint64_t fibonacci_number(const uint64_t n)
+boost::uint64_t fibonacci_number(const boost::uint64_t n)
 {
     return ((n == 0) || (n == 1)) ? 1 : fibonacci_number(n - 1) + fibonacci_number(n - 2);
 }
@@ -22,10 +22,10 @@ uint64_t fibonacci_number(const uint64_t n)
 int main()
 {
     b::stopwatch sw;
-    uint64_t n = 0;
+    boost::uint64_t n = 0;
     while (n < 31)
     {
-        uint64_t fn = 0;
+        boost::uint64_t fn = 0;
         {
             b::stopwatch_guard g(sw);
             fn = fibonacci_number(n);
