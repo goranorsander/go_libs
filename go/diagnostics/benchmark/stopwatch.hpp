@@ -56,10 +56,50 @@ public:
     }
 
     basic_stopwatch(const basic_stopwatch& other) = default;
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+
     basic_stopwatch(basic_stopwatch&& other) = default;
 
+#else
+
+    basic_stopwatch(basic_stopwatch&& other)
+        : _started(other._started)
+        , _start_time(other._start_time)
+        , _last_duration(other._last_duration)
+        , _total_duration(other._total_duration)
+        , _count(other._count)
+    {
+    }
+
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
     this_type& operator=(const this_type&) = default;
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+
     this_type& operator=(this_type&&) = default;
+
+#else
+
+    this_type& operator=(this_type&&)
+    {
+        if (this != &other)
+        {
+            _started = std::move(other._started);
+            _start_time = std::move(other._start_time);
+            _last_duration = std::move(other._last_duration);
+            _total_duration = std::move(other._total_duration);
+            _count = std::move(other._count);
+        }
+        return *this;
+    }
+
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     void start()
     {
@@ -84,7 +124,7 @@ public:
         this->_started = false;
     }
 
-    void reset() noexcept
+    void reset() GO_NOEXCEPT_OR_NOTHROW
     {
         this->_started = false;
         this->_start_time = time_point_type();
@@ -93,22 +133,22 @@ public:
         this->_count = 0;
     }
 
-    constexpr bool started() const noexcept
+    GO_CONSTEXPR bool started() const GO_NOEXCEPT_OR_NOTHROW
     {
         return this->_started;
     }
 
-    constexpr duration_type last_duration() const noexcept
+    GO_CONSTEXPR duration_type last_duration() const GO_NOEXCEPT_OR_NOTHROW
     {
         return this->_last_duration;
     }
 
-    constexpr duration_type total_duration() const noexcept
+    GO_CONSTEXPR duration_type total_duration() const GO_NOEXCEPT_OR_NOTHROW
     {
         return this->_total_duration;
     }
 
-    duration_type average_duration() const noexcept
+    duration_type average_duration() const GO_NOEXCEPT_OR_NOTHROW
     {
         if (this->_count > 0)
         {
@@ -117,7 +157,7 @@ public:
         return duration_type::zero();
     }
 
-    constexpr count_type count() const noexcept
+    GO_CONSTEXPR count_type count() const GO_NOEXCEPT_OR_NOTHROW
     {
         return this->_count;
     }
