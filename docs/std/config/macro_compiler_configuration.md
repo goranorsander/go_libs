@@ -114,6 +114,10 @@ GO_NO_CXX11_CONDITION_VARIABLE | [constexpr](https://en.cppreference.com/w/cpp/h
 GO_NO_CXX11_CONSTEXPR | [constexpr](https://en.cppreference.com/w/cpp/language/constexpr)
 GO_NO_CXX11_DECLTYPE | [decltype](https://en.cppreference.com/w/cpp/language/decltype)
 GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS | Defaulted and deleted functions
+GO_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR | Defaulted copy assign operator
+GO_NO_CXX11_DEFAULTED_COPY_CONSTRUCTOR | Defaulted copy assign constructor
+GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR | Defaulted move assign operator
+GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR | Defaulted move assign constructor
 GO_NO_CXX11_DELEGATING_CONSTRUCTORS | [Delegating constructors](https://en.cppreference.com/w/cpp/language/initializer_list#Delegating_constructor)
 GO_NO_CXX11_DYNAMIC_POINTER_SAFETY | [dynamic pointer safety (GC interface)](https://en.cppreference.com/w/cpp/memory#Garbage_collector_support)
 GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS | Explicit conversion operators

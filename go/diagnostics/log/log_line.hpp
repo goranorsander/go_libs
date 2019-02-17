@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -86,7 +86,8 @@ public:
         encode<log_level>(level);
     }
 
-#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     basic_log_line(basic_log_line&&) = default;
 
@@ -101,10 +102,12 @@ public:
         *this = std::move(other);
     }
 
-#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 public:
-#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     basic_log_line& operator=(basic_log_line&&) = default;
 
@@ -127,7 +130,8 @@ public:
         return *this;
     }
 
-#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 public:
     void stringify(out_stream_type& os)

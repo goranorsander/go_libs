@@ -97,7 +97,7 @@ public:
 
 #else
 
-    this_type& operator=(const this_type&&)
+    this_type& operator=(const this_type& other)
     {
         if (this != &other)
         {

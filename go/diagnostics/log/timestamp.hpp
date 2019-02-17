@@ -17,8 +17,6 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/diagnostics/log/log_line.hpp>
-
 #include <chrono>
 #include <cstdio>
 #include <ctime>

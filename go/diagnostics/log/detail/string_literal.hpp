@@ -32,7 +32,7 @@ struct string_literal_t
     typedef C char_type;
     typedef string_literal_t<C> this_type;
 
-    ~string_literal_t() = default;
+    ~string_literal_t() GO_DEFAULT_DESTRUCTOR
 
     explicit string_literal_t(const char_type* s)
         : _s(s)

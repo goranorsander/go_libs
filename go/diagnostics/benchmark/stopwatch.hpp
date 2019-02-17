@@ -37,14 +37,26 @@ template<class C, class D>
 class basic_stopwatch
 {
 public:
+#if !defined(GO_NO_CXX11_TYPE_ALIASES)
+
     using clock_type = C;
     using duration_type = D;
     using this_type = basic_stopwatch<C, D>;
     using time_point_type = std::chrono::time_point<C>;
     using count_type = std::size_t;
 
+#else
+
+    typedef C clock_type;
+    typedef D duration_type;
+    typedef basic_stopwatch<C, D> this_type;
+    typedef std::chrono::time_point<C> time_point_type;
+    typedef std::size_t count_type;
+
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
+
 public:
-    virtual ~basic_stopwatch() = default;
+    virtual ~basic_stopwatch() GO_DEFAULT_DESTRUCTOR
 
     basic_stopwatch()
         : _started(false)
@@ -55,10 +67,25 @@ public:
     {
     }
 
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
     basic_stopwatch(const basic_stopwatch& other) = default;
 
+#else
+
+    basic_stopwatch(const basic_stopwatch& other)
+        : _started(other._started)
+        , _start_time(other._start_time)
+        , _last_duration(other._last_duration)
+        , _total_duration(other._total_duration)
+        , _count(other._count)
+    {
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
-#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     basic_stopwatch(basic_stopwatch&& other) = default;
 
@@ -73,13 +100,32 @@ public:
     {
     }
 
-#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     this_type& operator=(const this_type&) = default;
 
+#else
+
+    this_type& operator=(const this_type& other)
+    {
+        if (this != &other)
+        {
+            _started = other._started;
+            _start_time = other._start_time;
+            _last_duration = other._last_duration;
+            _total_duration = other._total_duration;
+            _count = other._count;
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
-#if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     this_type& operator=(this_type&&) = default;
 
@@ -98,7 +144,7 @@ public:
         return *this;
     }
 
-#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_COMP_MSVC_VC120))
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) && defined(GO_COMP_MSVC_VC120))
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     void start()

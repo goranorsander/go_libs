@@ -26,9 +26,19 @@ class basic_stopwatch_guard
     : public go::utility::scope_guard
 {
 public:
+#if !defined(GO_NO_CXX11_TYPE_ALIASES)
+
     using stopwatch_type = S;
     using this_type = basic_stopwatch_guard<S>;
     using base_type = go::utility::scope_guard;
+
+#else
+
+    typedef S stopwatch_type;
+    typedef basic_stopwatch_guard<S> this_type;
+    typedef go::utility::scope_guard base_type;
+
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~basic_stopwatch_guard() GO_DEFAULT_DESTRUCTOR

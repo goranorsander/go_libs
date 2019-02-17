@@ -17,8 +17,6 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/diagnostics/log/log_line.hpp>
-
 #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
 #include <boost/typeof/std/utility.hpp>
 #endif  // #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
