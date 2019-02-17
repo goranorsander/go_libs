@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="3" failures="0" disabled="0" errors="0" timestamp="2019-02-13T18:56:24" time="0.005" name="AllTests">
-  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+<testsuites tests="3" failures="0" disabled="0" errors="0" timestamp="2019-02-17T13:52:11" time="0.016" name="AllTests">
+  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
   </testsuite>
   <testsuite name="std_signals_string_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_signals_string_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_wstring_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_signals_wstring_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_signals_wstring_test_suite" />
   </testsuite>
 </testsuites>
