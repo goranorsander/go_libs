@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-02-13 at 22:02:22 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-02-17 at 16:46:08 with result:
 
 * 0 errors
 * 0 failures
@@ -96,7 +96,7 @@ Test suite *std_define_go_message_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
