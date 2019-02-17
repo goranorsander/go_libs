@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_diagnostics_test_suite, cpp11_not_supported) {}
 #else
