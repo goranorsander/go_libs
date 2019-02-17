@@ -36,7 +36,7 @@ public:
     constexpr bool started() const noexcept;
     constexpr duration_type last_duration() const noexcept;
     constexpr duration_type total_duration() const noexcept;
-    constexpr duration_type average_duration() const noexcept;
+    duration_type average_duration() const noexcept;
     constexpr count_type count() const noexcept;
 };
 ```
@@ -144,7 +144,7 @@ and **stop** command sequences since the stopwatch was created or reset.
 
 Specifiers | Signature
 -|-
-public constexpr | duration_type average_duration() const noexcept
+public | duration_type average_duration() const noexcept
 
 Return the average duration, i.e. the acumulated time between all **start**
 and **stop** command sequences since the stopwatch was created or reset divided

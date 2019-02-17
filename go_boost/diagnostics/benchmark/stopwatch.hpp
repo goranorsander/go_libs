@@ -182,7 +182,7 @@ public:
         return this->_total_duration;
     }
 
-    GO_BOOST_CONSTEXPR duration_type average_duration() const BOOST_NOEXCEPT_OR_NOTHROW
+    duration_type average_duration() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (this->_count > 0)
         {

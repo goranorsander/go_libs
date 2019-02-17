@@ -108,7 +108,7 @@ public:
         return this->_total_duration;
     }
 
-    constexpr duration_type average_duration() const noexcept
+    duration_type average_duration() const noexcept
     {
         if (this->_count > 0)
         {
