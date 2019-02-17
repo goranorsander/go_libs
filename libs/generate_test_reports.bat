@@ -13,11 +13,13 @@ set summary_output=%report_output_dir%\unit_tests.md
 pushd %CD%\bin\msys-mingw
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_gcc_report_header.md -o %report_output_dir%\windows_gcc\GO_std_libraries_property_tests_report.md
@@ -28,11 +30,13 @@ popd
 pushd %CD%\bin\vc90
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc90_report_header.md -o %report_output_dir%\windows_msvc90\GO_std_libraries_property_tests_report.md
@@ -43,11 +47,13 @@ popd
 pushd %CD%\bin\vc100
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc100_report_header.md -o %report_output_dir%\windows_msvc100\GO_std_libraries_property_tests_report.md
@@ -58,11 +64,13 @@ popd
 pushd %CD%\bin\vc110
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc110_report_header.md -o %report_output_dir%\windows_msvc110\GO_std_libraries_property_tests_report.md
@@ -73,11 +81,13 @@ popd
 pushd %CD%\bin\vc120
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc120_report_header.md -o %report_output_dir%\windows_msvc120\GO_std_libraries_property_tests_report.md
@@ -88,11 +98,13 @@ popd
 pushd %CD%\bin\vc140
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc140_report_header.md -o %report_output_dir%\windows_msvc140\GO_std_libraries_property_tests_report.md
@@ -103,11 +115,13 @@ popd
 pushd %CD%\bin\vc141
 
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_boost_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_property_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_boost_libraries_utility_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_boost_libraries_utility_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_config_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_std_libraries_config_tests_report.md
+ruby.exe %report_generator% -i %CD%\GO_std_libraries_diagnostics_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_std_libraries_diagnostics_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_exception_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_std_libraries_exception_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_mvvm_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_std_libraries_mvvm_tests_report.md
 ruby.exe %report_generator% -i %CD%\GO_std_libraries_property_tests_report.xml -t %report_template_dir%\windows_msvc141_report_header.md -o %report_output_dir%\windows_msvc141\GO_std_libraries_property_tests_report.md

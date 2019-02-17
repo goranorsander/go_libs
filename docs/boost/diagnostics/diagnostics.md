@@ -21,4 +21,5 @@ to help debugging and improving code.
 
 ### Nested namespaces
 
+* [benchmark](./benchmark/benchmark.html)
 * [log](./log/log.html)

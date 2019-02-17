@@ -20,6 +20,9 @@
     <Filter Include="go\diagnostics\log\policy">
       <UniqueIdentifier>{a85d01a7-9801-4326-b52f-3e066f346bb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="go\diagnostics\benchmark">
+      <UniqueIdentifier>{2b2c5823-e230-4fcb-8458-a43e5c3112b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\diagnostics.hpp">
@@ -78,6 +81,18 @@
     </ClInclude>
     <ClInclude Include="..\..\go\diagnostics\log\file_writer.hpp">
       <Filter>go\diagnostics\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch.hpp">
+      <Filter>go\diagnostics\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\diagnostics\benchmark.hpp">
+      <Filter>go\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\diagnostics\benchmark\exception.hpp">
+      <Filter>go\diagnostics\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch_guard.hpp">
+      <Filter>go\diagnostics\benchmark</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

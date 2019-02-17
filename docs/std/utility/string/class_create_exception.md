@@ -1,5 +1,5 @@
 ---
-layout: std_lib_utility_string_
+layout: std_lib_utility_string
 ---
 
 ```c++

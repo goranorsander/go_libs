@@ -17,6 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/diagnostics/benchmark.hpp>
 #include <go_boost/diagnostics/log.hpp>
 
 #endif  // #ifndef GO_BOOST_DIAGNOSTICS_HPP_INCLUDED

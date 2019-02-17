@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\diagnostics.hpp" />
+    <ClInclude Include="..\..\go\diagnostics\benchmark.hpp" />
+    <ClInclude Include="..\..\go\diagnostics\benchmark\exception.hpp" />
+    <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch.hpp" />
+    <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch_guard.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\buffer.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\buffer_interface.hpp" />

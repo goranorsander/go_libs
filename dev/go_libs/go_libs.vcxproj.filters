@@ -301,6 +301,12 @@
     <Filter Include="CMake Configuration\rnd\std_rnd">
       <UniqueIdentifier>{e4b551ac-7fa1-4b5f-ae11-f369d9a457f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\boost\diagnostics\benchmark">
+      <UniqueIdentifier>{0a85ed5e-8481-489a-80f6-fe86e88596f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\diagnostics\benchmark">
+      <UniqueIdentifier>{a5f6d233-91ff-40e2-b737-fdedaca3b9c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -1623,6 +1629,36 @@
     </None>
     <None Include="..\..\docs\std\mvvm\abstract_class_arguments.md">
       <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_diagnostics_benchmark.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_diagnostics_benchmark.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\benchmark\benchmark.md">
+      <Filter>Documentation\std\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\benchmark\class_exception.md">
+      <Filter>Documentation\std\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\benchmark\class_template_basic_stopwatch.md">
+      <Filter>Documentation\std\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\std\diagnostics\benchmark\class_template_basic_stopwatch_guard.md">
+      <Filter>Documentation\std\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\benchmark\benchmark.md">
+      <Filter>Documentation\boost\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\benchmark\class_exception.md">
+      <Filter>Documentation\boost\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\benchmark\class_template_basic_stopwatch.md">
+      <Filter>Documentation\boost\diagnostics\benchmark</Filter>
+    </None>
+    <None Include="..\..\docs\boost\diagnostics\benchmark\class_template_basic_stopwatch_guard.md">
+      <Filter>Documentation\boost\diagnostics\benchmark</Filter>
     </None>
   </ItemGroup>
 </Project>

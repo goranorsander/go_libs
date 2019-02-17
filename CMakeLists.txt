@@ -290,6 +290,17 @@ set(GO_DIAGNOSTICS_DIR ${GO_DIR}/diagnostics)
 file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_HPP ${GO_DIAGNOSTICS_DIR}/*.hpp)
 
 ########################################################
+#  go/diagnostics/benchmark                            #
+########################################################
+
+set(GO_DIAGNOSTICS_BENCHMARK_DIRNAME diagnostics/benchmark)
+set(GO_DIAGNOSTICS_BENCHMARK_DIR ${GO_DIAGNOSTICS_DIR}/benchmark)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_DIAGNOSTICS_BENCHMARK_HPP ${GO_DIAGNOSTICS_BENCHMARK_DIR}/*.hpp)
+
+########################################################
 #  go/diagnostics/log                                  #
 ########################################################
 
@@ -532,7 +543,7 @@ set(GO_BOOST_CONFIG_PLATFORM_DIR ${GO_BOOST_CONFIG_DIR}/platform)
 file(GLOB GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP ${GO_BOOST_CONFIG_PLATFORM_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/diagnostics                                      #
+#  go_boost/diagnostics                                #
 ########################################################
 
 set(GO_BOOST_DIAGNOSTICS_DIRNAME diagnostics)
@@ -543,7 +554,18 @@ set(GO_BOOST_DIAGNOSTICS_DIR ${GO_BOOST_DIR}/diagnostics)
 file(GLOB GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_HPP ${GO_BOOST_DIAGNOSTICS_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/diagnostics/log                                  #
+#  go_boost/diagnostics/benchmark                      #
+########################################################
+
+set(GO_BOOST_DIAGNOSTICS_BENCHMARK_DIRNAME diagnostics/benchmark)
+set(GO_BOOST_DIAGNOSTICS_BENCHMARK_DIR ${GO_BOOST_DIAGNOSTICS_DIR}/benchmark)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_BENCHMARK_HPP ${GO_BOOST_DIAGNOSTICS_BENCHMARK_DIR}/*.hpp)
+
+########################################################
+#  go_boost/diagnostics/log                            #
 ########################################################
 
 set(GO_BOOST_DIAGNOSTICS_LOG_DIRNAME diagnostics/log)
@@ -554,7 +576,7 @@ set(GO_BOOST_DIAGNOSTICS_LOG_DIR ${GO_BOOST_DIAGNOSTICS_DIR}/log)
 file(GLOB GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_LOG_HPP ${GO_BOOST_DIAGNOSTICS_LOG_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/diagnostics/log/detail                           #
+#  go_boost/diagnostics/log/detail                     #
 ########################################################
 
 set(GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIRNAME diagnostics/log/detail)
@@ -565,7 +587,7 @@ set(GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIR ${GO_BOOST_DIAGNOSTICS_DIR}/log/detail)
 file(GLOB GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_LOG_DETAIL_HPP ${GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/diagnostics/log/policy                           #
+#  go_boost/diagnostics/log/policy                     #
 ########################################################
 
 set(GO_BOOST_DIAGNOSTICS_LOG_POLICY_DIRNAME diagnostics/log/policy)
@@ -780,6 +802,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_HPP}                DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_BENCHMARK_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_BENCHMARK_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_DETAIL_HPP}     DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_DIAGNOSTICS_LOG_POLICY_HPP}     DESTINATION  include/${GO_DIRNAME}/${GO_DIAGNOSTICS_LOG_POLICY_DIRNAME})
@@ -804,6 +827,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_COMPILER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_PLATFORM_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_HPP}                DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_DIAGNOSTICS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_BENCHMARK_HPP}      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_DIAGNOSTICS_BENCHMARK_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_LOG_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_DIAGNOSTICS_LOG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_LOG_DETAIL_HPP}     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_DIAGNOSTICS_LOG_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_DIAGNOSTICS_LOG_POLICY_HPP}     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_DIAGNOSTICS_LOG_POLICY_DIRNAME})

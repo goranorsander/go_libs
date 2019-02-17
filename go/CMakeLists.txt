@@ -15,6 +15,7 @@ file(GLOB GO_CONFIG_DIR_FILES ./config/*.hpp)
 file(GLOB GO_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
 file(GLOB GO_CONFIG_PLATFORM_DIR_FILES ./config/platform/*.hpp)
 file(GLOB GO_DIAGNOSTICS_DIR_FILES ./diagnostics/*.hpp)
+file(GLOB GO_DIAGNOSTICS_BENCHMARK_DIR_FILES ./diagnostics/benchmark/*.hpp)
 file(GLOB GO_DIAGNOSTICS_LOG_DIR_FILES ./diagnostics/log/*.hpp)
 file(GLOB GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES ./diagnostics/log/detail/*.hpp)
 file(GLOB GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES ./diagnostics/log/policy/*.hpp)
@@ -40,6 +41,7 @@ add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_CONFIG_COMPILER_DIR_FILES}
     ${GO_CONFIG_PLATFORM_DIR_FILES}
     ${GO_DIAGNOSTICS_DIR_FILES}
+    ${GO_DIAGNOSTICS_BENCHMARK_DIR_FILES}
     ${GO_DIAGNOSTICS_LOG_DIR_FILES}
     ${GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES}
     ${GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES}
@@ -67,6 +69,7 @@ source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})
 source_group(go\\config\\compiler FILES ${GO_CONFIG_COMPILER_DIR_FILES})
 source_group(go\\config\\platform FILES ${GO_CONFIG_PLATFORM_DIR_FILES})
 source_group(go\\diagnostics FILES ${GO_DIAGNOSTICS_DIR_FILES})
+source_group(go\\diagnostics\\benchmark FILES ${GO_DIAGNOSTICS_BENCHMARK_DIR_FILES})
 source_group(go\\diagnostics\\log FILES ${GO_DIAGNOSTICS_LOG_DIR_FILES})
 source_group(go\\diagnostics\\log\\detail FILES ${GO_DIAGNOSTICS_LOG_DETAIL_DIR_FILES})
 source_group(go\\diagnostics\\log\\policy FILES ${GO_DIAGNOSTICS_LOG_POLICY_DIR_FILES})

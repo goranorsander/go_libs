@@ -1,5 +1,5 @@
 ---
-layout: boost_lib_utility_string_
+layout: boost_lib_utility_string
 ---
 
 ```c++
