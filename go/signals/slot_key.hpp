@@ -17,119 +17,25 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/utility/primitive_type_specializer.hpp>
+
 namespace go
 {
 namespace signals
 {
 
-class slot_key
+GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(slot_key, uint3264_t, 0)
+
+inline void reset(slot_key& key)
 {
-private:
-    typedef uint3264_t slot_key_type;
+    key = slot_key();
+}
 
-public:
-    typedef slot_key this_type;
-
-public:
-    virtual ~slot_key() GO_DEFAULT_DESTRUCTOR
-
-    slot_key()
-        : _slot_key(0)
-    {
-    }
-
-    slot_key(const slot_key& other)
-        : _slot_key(other._slot_key)
-    {
-    }
-
-    this_type& operator=(const this_type& other)
-    {
-        if (this != &other)
-        {
-            _slot_key = other._slot_key;
-        }
-        return *this;
-    }
-
-    bool operator==(const this_type& other) const
-    {
-        if(this != &other)
-        {
-            return _slot_key == other._slot_key;
-        }
-        return true;
-    }
-
-    bool operator!=(const this_type& other) const
-    {
-        return !operator==(other);
-    }
-
-    bool operator<(const this_type& other) const
-    {
-        if (this != &other)
-        {
-            return _slot_key < other._slot_key;
-        }
-        return false;
-    }
-
-    bool operator>(const this_type& other) const
-    {
-        if (this != &other)
-        {
-            return _slot_key > other._slot_key;
-        }
-        return false;
-    }
-
-    bool operator<=(const this_type& other) const
-    {
-        if (this != &other)
-        {
-            return _slot_key <= other._slot_key;
-        }
-        return true;
-    }
-
-    bool operator>=(const this_type& other) const
-    {
-        if (this != &other)
-        {
-            return _slot_key >= other._slot_key;
-        }
-        return true;
-    }
-
-    this_type& operator++()
-    {
-        // Prefix ++
-        ++_slot_key;
-        return *this;
-    }
-
-    this_type operator++(int)
-    {
-        // Postfix ++
-        const this_type result(*this);
-        ++(*this);
-        return result;
-    }
-
-    void reset()
-    {
-        _slot_key = 0;
-    }
-
-    static bool is_null_key(const this_type& key)
-    {
-        return key._slot_key == 0;
-    }
-
-private:
-    slot_key_type _slot_key;
-};
+inline bool is_null_key(const slot_key& key)
+{
+    static slot_key null_key;
+    return key == null_key;
+}
 
 } // namespace signals
 } // namespace go

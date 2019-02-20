@@ -19,130 +19,21 @@ The **slot_key** is a class used to identify connected signals.
 It is declared as:
 
 ```c++
-class slot_key
-{
-public:
-    virtual ~slot_key();
-    slot_key();
-    slot_key(const slot_key& other)
-    this_type& operator=(const this_type& other);
-    bool operator==(const this_type& other) const;
-    bool operator!=(const this_type& other) const;
-    bool operator<(const this_type& other) const;
-    bool operator>(const this_type& other) const;
-    bool operator<=(const this_type& other) const;
-    bool operator>=(const this_type& other) const;
-    this_type& operator++();
-    this_type operator++(int);
-    void reset();
-    static bool is_null_key(const this_type& key);
-};
+GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(slot_key, uint3264_t, 0)
 ```
-
-## Member types
-
-Member type | Definition
--|-
-this_type | slot_key
 
 ## Member functions
 
-### Destructor
+See [primitive_type_specializer](./../utility/class_template_primitive_type_specializer.html)
+for a description of the **GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER** macro.
 
-Specifiers |
--|
-public virtual |
-
-Destroys the **slot_key** object.
-
-### Constructor
-
-Constructor | Specifiers | Signature
--|-|-
-*default constructor (1)* | public | **slot_key**()
-*copy constructor (2)* | public | **slot_key**(const **slot_key**& other)
-
-1. Constructs a **slot_key** object.
-2. Constructs a **slot_key** object as a copy of *other*.
-
-### Assignment operator
-
-Specifiers | Signature
--|-
-public | this_type& operator=(const this_type& other)
-
-The copy assignment operator *a* **=** *b* replaces the contents of the object 
-*a* with a copy of the contents of *b* (*b* is not modified). 
-
-### Equality operator
-
-Specifiers | Signature
--|-
-public | bool operator==(const this_type& other) const
-
-The two-way comparison operator *lhs* **==** *rhs*.
-Returns true if *lhs* is equal to *rhs*, false otherwise.
-
-### Inequality operator
-
-Specifiers | Signature
--|-
-public | bool operator!=(const this_type& other) const
-
-The two-way comparison operator *lhs* **!=** *rhs*.
-Returns true if *lhs* is not equal to *rhs*, false otherwise.
-
-### Less than operator
-
-Specifiers | Signature
--|-
-public | bool operator<(const this_type& other) const
-
-The two-way comparison operator *lhs* **<** *rhs*.
-Returns true if *lhs* is less than *rhs*, false otherwise.
-
-### Greater than operator
-
-Specifiers | Signature
--|-
-public | bool operator>(const this_type& other) const
-
-The two-way comparison operator *lhs* **>** *rhs*.
-Returns true if *lhs* is greater than *rhs*, false otherwise.
-
-### Less than or equal to operator
-
-Specifiers | Signature
--|-
-public | bool operator<=(const this_type& other) const
-
-The two-way comparison operator *lhs* **<=** *rhs*.
-Returns true if *lhs* is less than or equal to *rhs*, false otherwise.
-
-### Greater than or equal to operator
-
-Specifiers | Signature
--|-
-public | bool operator>=(const this_type& other) const
-
-The two-way comparison operator *lhs* **>=** *rhs*.
-Returns true if *lhs* is greater than or equal to *rhs*, false otherwise.
-
-### operator++
-
-Specifiers | Signature
--|-
-*pre-increment (1)* | **this_type**& operator++()
-*post-increment (2)* | **this_type** operator++(int)
-
-1. Pre-increment.
-2. Post-increment.
+## Global functions
 
 ### reset
 
 Specifiers | Signature
 -|-
-public | void **reset**()
+n/a | void **reset**(slot_key& key)
 
 Resets the **slot_key** to the null value.
 
@@ -150,6 +41,6 @@ Resets the **slot_key** to the null value.
 
 Specifiers | Signature
 -|-
-public static | bool **is_null_key**(const this_type& key)
+n/a | bool **is_null_key**(const slot_key& key)
 
 Returns true if *key* is equal to the null value, false otherwise.
