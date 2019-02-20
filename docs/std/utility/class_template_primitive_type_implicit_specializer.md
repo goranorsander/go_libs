@@ -253,6 +253,127 @@ template<typename P> inline my_integer_type operator>(const P& lhs, const my_int
 template<typename P> inline my_integer_type operator>=(const P& lhs, const my_integer_type& rhs);
 ```
 
+### GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
+
+The **GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized integer
+type class, e.g:
+
+```c++
+GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER(my_integer_type, unsigned long, 0)
+```
+
+Will implement a class declared as:
+
+```c++
+class my_integer_type
+    : primitive_type_implicit_specializer<unsigned long>
+{
+public:
+    // Destructor and constructors
+    virtual ~my_integer_type();
+    my_integer_type(0);
+    my_integer_type(const my_integer_type& t);
+    my_integer_type(my_integer_type&& t);
+    explicit my_integer_type(const value_type& t);
+    explicit my_integer_type(value_type&& t);
+
+    // Assignment operators
+    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator+=(const my_integer_type& t);
+    my_integer_type& operator-=(const my_integer_type& t);
+    my_integer_type& operator*=(const my_integer_type& t);
+    my_integer_type& operator/=(const my_integer_type& t);
+    my_integer_type& operator%=(const my_integer_type& t);
+    my_integer_type& operator&=(const my_integer_type& t);
+    my_integer_type& operator|=(const my_integer_type& t);
+    my_integer_type& operator^=(const my_integer_type& t);
+    my_integer_type& operator<<=(const my_integer_type& t);
+    my_integer_type& operator>>=(const my_integer_type& t);
+    template<typename P> my_integer_type& operator=(const P& p);
+    template<typename P> my_integer_type& operator+=(const P& p);
+    template<typename P> my_integer_type& operator-=(const P& p);
+    template<typename P> my_integer_type& operator*=(const P& p);
+    template<typename P> my_integer_type& operator/=(const P& p);
+    template<typename P> my_integer_type& operator%=(const P& p);
+    template<typename P> my_integer_type& operator&=(const P& p);
+    template<typename P> my_integer_type& operator|=(const P& p);
+    template<typename P> my_integer_type& operator^=(const P& p);
+    template<typename P> my_integer_type& operator<<=(const P& p);
+    template<typename P> my_integer_type& operator>>=(const P& p);
+
+    // Arithmetic operators
+    my_integer_type operator+() const;
+    my_integer_type operator+(const my_integer_type& t) const;
+    my_integer_type operator-(const my_integer_type& t) const;
+    my_integer_type operator*(const my_integer_type& t) const;
+    my_integer_type operator/(const my_integer_type& t) const;
+    my_integer_type operator~() const;
+    my_integer_type operator%(const my_integer_type& t) const;
+    my_integer_type operator&(const my_integer_type& t) const;
+    my_integer_type operator|(const my_integer_type& t) const;
+    my_integer_type operator^(const my_integer_type& t) const;
+    my_integer_type operator<<(const my_integer_type& t) const;
+    my_integer_type operator>>(const my_integer_type& t) const;
+    template<typename P> my_integer_type operator+(const P& p) const;
+    template<typename P> my_integer_type operator-(const P& p) const;
+    template<typename P> my_integer_type operator*(const P& p) const;
+    template<typename P> my_integer_type operator/(const P& p) const;
+    template<typename P> my_integer_type operator%(const P& p) const;
+    template<typename P> my_integer_type operator&(const P& p) const;
+    template<typename P> my_integer_type operator|(const P& p) const;
+    template<typename P> my_integer_type operator^(const P& p) const;
+    template<typename P> my_integer_type operator<<(const P& p) const;
+    template<typename P> my_integer_type operator>>(const P& p) const;
+
+    // Comparison operators
+    bool operator==(const my_integer_type& t) const;
+    bool operator!=(const my_integer_type& t) const;
+    bool operator<(const my_integer_type& t) const;
+    bool operator<=(const my_integer_type& t) const;
+    bool operator>(const my_integer_type& t) const;
+    bool operator>=(const my_integer_type& t) const;
+    template<typename P> bool operator==(const P& p) const;
+    template<typename P> bool operator!=(const P& p) const;
+    template<typename P> bool operator<(const P& p) const;
+    template<typename P> bool operator<=(const P& p) const;
+    template<typename P> bool operator>(const P& p) const;
+    template<typename P> bool operator>=(const P& p) const;
+
+    // Logical operators
+    my_integer_type operator!() const;
+    my_integer_type operator&&(const my_integer_type& t) const;
+    my_integer_type operator||(const my_integer_type& t) const;
+    template<typename P> my_integer_type operator&&(const P& p) const;
+    template<typename P> my_integer_type operator||(const P& p) const;
+
+    // Increment/decrement operators
+    my_integer_type operator++();
+    my_integer_type operator--();
+    my_integer_type operator++(int);
+    my_integer_type operator--(int);
+};
+
+// Outside arithmetic operators
+template<typename P> inline my_integer_type operator+(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator-(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator*(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator/(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator%(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator&(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator|(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator^(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator<<(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator>>(const P& lhs, const my_integer_type& rhs);
+
+// Outside comparison operators
+template<typename P> inline my_integer_type operator==(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator!=(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator<(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator<=(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator>(const P& lhs, const my_integer_type& rhs);
+template<typename P> inline my_integer_type operator>=(const P& lhs, const my_integer_type& rhs);
+```
+
 ### GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type, default_value)
 
 The **GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized

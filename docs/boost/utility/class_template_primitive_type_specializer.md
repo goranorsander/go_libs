@@ -190,6 +190,79 @@ public:
 };
 ```
 
+### GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(class_name, primitive_type, default_value)
+
+The **GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER** macro implements a specialized
+unsigned integer
+type class, e.g:
+
+```c++
+GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(my_integer_type, unsigned long, 0)
+```
+
+Will implement a class declared as:
+
+```c++
+class my_integer_type
+    : primitive_type_specializer<unsigned long>
+{
+public:
+    // Destructor and constructors
+    virtual ~my_integer_type();
+    my_integer_type();
+    my_integer_type(const my_integer_type& t);
+    my_integer_type(my_integer_type&& t);
+    explicit my_integer_type(const value_type& t);
+    explicit my_integer_type(value_type&& t);
+
+    // Assignment operators
+    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator+=(const my_integer_type& t);
+    my_integer_type& operator-=(const my_integer_type& t);
+    my_integer_type& operator*=(const my_integer_type& t);
+    my_integer_type& operator/=(const my_integer_type& t);
+    my_integer_type& operator%=(const my_integer_type& t);
+    my_integer_type& operator&=(const my_integer_type& t);
+    my_integer_type& operator|=(const my_integer_type& t);
+    my_integer_type& operator^=(const my_integer_type& t);
+    my_integer_type& operator<<=(const my_integer_type& t);
+    my_integer_type& operator>>=(const my_integer_type& t);
+
+    // Arithmetic operators
+    my_integer_type operator+() const;
+    my_integer_type operator+(const my_integer_type& t) const;
+    my_integer_type operator-(const my_integer_type& t) const;
+    my_integer_type operator*(const my_integer_type& t) const;
+    my_integer_type operator/(const my_integer_type& t) const;
+    my_integer_type operator~() const;
+    my_integer_type operator%(const my_integer_type& t) const;
+    my_integer_type operator&(const my_integer_type& t) const;
+    my_integer_type operator|(const my_integer_type& t) const;
+    my_integer_type operator^(const my_integer_type& t) const;
+    my_integer_type operator<<(const my_integer_type& t) const;
+    my_integer_type operator>>(const my_integer_type& t) const;
+
+    // Comparison operators
+    bool operator==(const my_integer_type& t) const;
+    bool operator!=(const my_integer_type& t) const;
+    bool operator<(const my_integer_type& t) const;
+    bool operator<=(const my_integer_type& t) const;
+    bool operator>(const my_integer_type& t) const;
+    bool operator>=(const my_integer_type& t) const;
+
+    // Logical operators
+    my_integer_type operator!() const;
+    my_integer_type operator&&(const my_integer_type& t) const;
+    my_integer_type operator||(const my_integer_type& t) const;
+
+    // Increment/decrement operators
+    my_integer_type operator++();
+    my_integer_type operator--();
+    my_integer_type operator++(int);
+    my_integer_type operator--(int);
+};
+```
+
 ### GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(class_name, primitive_type, default_value)
 
 The **GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER** macro implements a specialized
