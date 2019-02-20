@@ -100,9 +100,9 @@ void main_frame_view_model::unsubscribe_events()
     if(event_mgr)
     {
         event_mgr->unsubscribe(L"close spaceship event", _close_spaceship_event_key);
-        _close_spaceship_event_key = 0;
+        m::reset(_close_spaceship_event_key);
         event_mgr->unsubscribe(L"show spaceship event", _show_spaceship_event_key);
-        _show_spaceship_event_key = 0;
+        m::reset(_show_spaceship_event_key);
     }
 }
 

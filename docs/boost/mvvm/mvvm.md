@@ -90,6 +90,7 @@ with protected or private constructors.
 * [basic_event_manager](./class_template_basic_event_manager.html)
   * [event_manager](./class_template_basic_event_manager.html)
   * [wevent_manager](./class_template_basic_event_manager.html)
+* [event_subscription_key](./class_event_subscription_key.html)
 
 #### Commands
 

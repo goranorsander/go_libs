@@ -110,7 +110,7 @@ void properties_view_model::unsubscribe_events()
         if(event_mgr)
         {
             event_mgr->unsubscribe(L"select fleet organization event", _select_fleet_organization_event_key);
-            _select_fleet_organization_event_key = 0;
+            m::reset(_select_fleet_organization_event_key);
         }
     }
 }

@@ -106,7 +106,7 @@ private:
 
     bool _lasers_firing;
     fleet_commander::wptr _fleet_commander;
-    s::slot_key_type _fire_lasers_slot_key;
+    s::slot_key _fire_lasers_slot_key;
 };
 
 int main()

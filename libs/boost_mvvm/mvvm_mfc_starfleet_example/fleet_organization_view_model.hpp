@@ -73,7 +73,7 @@ private:
     main_frame_view_model::wptr _main_frame_vm;
     fleet_organization_id_type _selected_fleet_organization_id;
     mutable m::wcommand_interface::ptr _on_left_double_click_command;
-    m::event_subscription_key_type _select_fleet_organization_event_key;
+    m::event_subscription_key _select_fleet_organization_event_key;
 };
 
 #endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_VIEW_MODEL_HPP_INCLUDED

@@ -33,8 +33,8 @@ protected:
 public:
     static ptr create();
 
-    event_subscription_key_type subscribe(const S& event_type, basic_event_function_type&& fire_event_function);
-    void unsubscribe(const S& event_type, const event_subscription_key_type& event_subscription_key);
+    event_subscription_key subscribe(const S& event_type, basic_event_function_type&& fire_event_function);
+    void unsubscribe(const S& event_type, const event_subscription_key& event_subscription_key);
     void unsubscribe_all(const S& event_type);
     void unsubscribe_all();
     void fire(const std::shared_ptr<basic_event<S>>& e) const;
@@ -96,7 +96,7 @@ Constructor | Specifiers | Signature
 
 Specifiers | Signature
 -|-
-public | event_subscription_key_type **subscribe**(const S& event_type, basic_event_function_type&& fire_event_function)
+public | event_subscription_key **subscribe**(const S& event_type, basic_event_function_type&& fire_event_function)
 
 Subscribe to an *event type* by registering a call back function.
 
@@ -104,7 +104,7 @@ Subscribe to an *event type* by registering a call back function.
 
 Specifiers | Signature
 -|-
-public | void **unsubscribe**(const S& event_type, const event_subscription_key_type& event_subscription_key)
+public | void **unsubscribe**(const S& event_type, const event_subscription_key& event_subscription_key)
 
 Unsubscribe a specific subscription.
 

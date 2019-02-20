@@ -75,8 +75,8 @@ private:
 private:
     m::wcommand_interface::ptr _open_add_equipment_view_command;
     m::wcommand_interface::ptr _delete_dialog_view_command;
-    m::event_subscription_key_type _close_spaceship_event_key;
-    m::event_subscription_key_type _show_spaceship_event_key;
+    m::event_subscription_key _close_spaceship_event_key;
+    m::event_subscription_key _show_spaceship_event_key;
 };
 
 #endif  // #ifndef GO_BOOST_APPLICATION_VIEW_MODEL_HPP_INCLUDED

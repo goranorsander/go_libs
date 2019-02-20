@@ -64,7 +64,7 @@ private:
 
 private:
     main_frame_view_model::wptr _main_frame_vm;
-    m::event_subscription_key_type _select_fleet_organization_event_key;
+    m::event_subscription_key _select_fleet_organization_event_key;
 };
 
 #endif  // #ifndef GO_BOOST_PROPERTIES_VIEW_MODEL_HPP_INCLUDED

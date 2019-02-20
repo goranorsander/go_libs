@@ -1660,5 +1660,11 @@
     <None Include="..\..\docs\boost\diagnostics\benchmark\class_template_basic_stopwatch_guard.md">
       <Filter>Documentation\boost\diagnostics\benchmark</Filter>
     </None>
+    <None Include="..\..\docs\std\mvvm\class_event_subscription_key.md">
+      <Filter>Documentation\std\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\boost\mvvm\class_event_subscription_key.md">
+      <Filter>Documentation\boost\mvvm</Filter>
+    </None>
   </ItemGroup>
 </Project>

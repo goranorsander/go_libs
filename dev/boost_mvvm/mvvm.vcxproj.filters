@@ -176,6 +176,9 @@
     <ClInclude Include="..\..\go_boost\mvvm\arguments.hpp">
       <Filter>go_boost\mvvm</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go_boost\mvvm\event_subscription_key.hpp">
+      <Filter>go_boost\mvvm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

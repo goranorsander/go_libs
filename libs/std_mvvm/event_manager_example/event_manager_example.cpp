@@ -62,6 +62,7 @@ public:
             {
                 if (commander_ != _commander)
                 {
+                    std::cout << _commander << " is relieved by " << commander_;
                     _commander = commander_;
                     _event_manager->post(fleet_commander_changed_event::ptr(new fleet_commander_changed_event()));
                 }

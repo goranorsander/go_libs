@@ -57,7 +57,7 @@ void properties_view_model::on_data_context_will_change()
     if(data_context())
     {
         data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
-        _on_data_context_property_changed_slot_key.reset();
+        s::reset(_on_data_context_property_changed_slot_key);
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_will_change();
     on_view_model_will_change();
@@ -134,7 +134,7 @@ void properties_view_model::unsubscribe_events()
         if(event_mgr)
         {
             event_mgr->unsubscribe(L"select fleet organization event", _select_fleet_organization_event_key);
-            _select_fleet_organization_event_key = 0;
+            m::reset(_select_fleet_organization_event_key);
         }
     }
 }

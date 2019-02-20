@@ -32,6 +32,7 @@
     <ClInclude Include="..\..\go_boost\mvvm\event.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\event_firing_observer_interface.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\event_manager.hpp" />
+    <ClInclude Include="..\..\go_boost\mvvm\event_subscription_key.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\iterator\erase.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\iterator\try_move_backward.hpp" />
     <ClInclude Include="..\..\go_boost\mvvm\notify_command_execution_interface.hpp" />
