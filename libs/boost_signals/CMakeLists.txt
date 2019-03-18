@@ -67,6 +67,4 @@ if(BUILD_BOOST_EXAMPLES)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
-    add_test(test_signals ${PROJECT_BOOST_SIGNALS_EXAMPLE})
-
 endif(BUILD_BOOST_EXAMPLES)
