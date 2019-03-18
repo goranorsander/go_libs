@@ -12,7 +12,8 @@ namespace go::utility
 <go/utility/value_guard.hpp>
 ```
 
-The **value_guard** is a class template restore a variables original value on scope exit.
+The **value_guard** is a class template that restore an associated objects original
+value on destruction, typically on scope exit.
 
 It is declared as:
 
