@@ -8,4 +8,5 @@
 #  See accompanying file LICENSE.md.
 #
 
+add_subdirectory(boost_rnd)
 add_subdirectory(std_rnd)

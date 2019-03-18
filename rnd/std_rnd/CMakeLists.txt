@@ -13,6 +13,19 @@ if(BUILD_STD_RND)
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
     ########################################################
+    #  rnd/std_rnd/container_benchmark                     #
+    ########################################################
+
+    set(PROJECT_STD_CONTAINER_BENCHMARK ${STD_PROJECT_NAME_STR}_container_benchmark)
+
+    file(GLOB STD_CONTAINER_BENCHMARK_SRC_FILES container_benchmark/*.cpp)
+    add_executable(${PROJECT_STD_CONTAINER_BENCHMARK} ${STD_CONTAINER_BENCHMARK_SRC_FILES})
+    set_target_properties(${PROJECT_STD_CONTAINER_BENCHMARK} PROPERTIES FOLDER rnd/std)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_CONTAINER_BENCHMARK} ${CMAKE_THREAD_LIBS_INIT})
+
+    ########################################################
     #  rnd/std_rnd/lambda_binding                          #
     ########################################################
 
@@ -24,5 +37,18 @@ if(BUILD_STD_RND)
     find_package(Threads)
 
     target_link_libraries(${PROJECT_STD_LAMBDA_BINDING} ${CMAKE_THREAD_LIBS_INIT})
+
+    ########################################################
+    #  rnd/std_rnd/lockable_benchmark                      #
+    ########################################################
+
+    set(PROJECT_STD_LOCKABLE_BENCHMARK ${STD_PROJECT_NAME_STR}_lockable_benchmark)
+
+    file(GLOB STD_LOCKABLE_BENCHMARK_SRC_FILES lockable_benchmark/*.cpp)
+    add_executable(${PROJECT_STD_LOCKABLE_BENCHMARK} ${STD_LOCKABLE_BENCHMARK_SRC_FILES})
+    set_target_properties(${PROJECT_STD_LOCKABLE_BENCHMARK} PROPERTIES FOLDER rnd/std)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_LOCKABLE_BENCHMARK} ${CMAKE_THREAD_LIBS_INIT})
 
 endif(BUILD_STD_RND)
