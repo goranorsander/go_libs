@@ -307,6 +307,12 @@
     <Filter Include="Documentation\std\diagnostics\benchmark">
       <UniqueIdentifier>{a5f6d233-91ff-40e2-b737-fdedaca3b9c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation\boost\utility\range">
+      <UniqueIdentifier>{b2f7a8d9-1ca0-49e2-ae63-8a50c77237f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\std\utility\range">
+      <UniqueIdentifier>{4e231d89-a3c9-4836-8b79-a49824e5d531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CMakeLists.googletest.txt.in">
@@ -1665,6 +1671,24 @@
     </None>
     <None Include="..\..\docs\boost\mvvm\class_event_subscription_key.md">
       <Filter>Documentation\boost\mvvm</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\boost_lib_utility_range.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\_layouts\std_lib_utility_range.html">
+      <Filter>Documentation\_layouts</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\range\class_template_sequentially_increasing.md">
+      <Filter>Documentation\boost\utility\range</Filter>
+    </None>
+    <None Include="..\..\docs\boost\utility\range\range.md">
+      <Filter>Documentation\boost\utility\range</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\range\class_template_sequentially_increasing.md">
+      <Filter>Documentation\std\utility\range</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\range\range.md">
+      <Filter>Documentation\std\utility\range</Filter>
     </None>
   </ItemGroup>
 </Project>

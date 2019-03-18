@@ -23,6 +23,7 @@ of components too small to be called libraries in their own right.
 
 * [container](./container/container.html)
 * [iterator](./iterator/iterator.html)
+* [range](./range/range.html)
 * [string](./string/string.html)
 
 ### Class reference
