@@ -34,6 +34,7 @@ namespace b = go::diagnostics::benchmark;
 namespace ph = std::placeholders;
 namespace ur = go::utility::range;
 
+#if !defined(GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_COMMON_FUNCTIONS( _class_name_ ) \
 public: \
     ~_class_name_() = default; \
@@ -45,10 +46,23 @@ public: \
     GO_CONSTEXPR bool operator>(const _class_name_& other) const { return _key > other._key; } \
     GO_CONSTEXPR bool operator>=(const _class_name_& other) const { return _key >= other._key; } \
     uint64_t _key = 0;
+#else
+#define GO_IMPLEMENT_CONTAINER_ELEMENT_COMMON_FUNCTIONS( _class_name_ ) \
+public: \
+    ~_class_name_() = default; \
+    _class_name_() : _key(0) {} \
+    GO_CONSTEXPR bool operator==(const _class_name_& other) const { return _key == other._key; } \
+    GO_CONSTEXPR bool operator!=(const _class_name_& other) const { return !operator==(other); } \
+    GO_CONSTEXPR bool operator<(const _class_name_& other) const { return _key < other._key; } \
+    GO_CONSTEXPR bool operator<=(const _class_name_& other) const { return _key <= other._key; } \
+    GO_CONSTEXPR bool operator>(const _class_name_& other) const { return _key > other._key; } \
+    GO_CONSTEXPR bool operator>=(const _class_name_& other) const { return _key >= other._key; } \
+    uint64_t _key;
+#endif  // #if !defined(GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS)
 
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_DATA( _element_size_in_bytes_ ) \
 public: \
-    std::array<char, _element_size_in_bytes_ - sizeof(_key)> _data;
+    std::array<char, _element_size_in_bytes_ - sizeof(uint64_t)> _data;
 
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_COPY_FUNCTIONS( _class_name_ ) \
 public: \
