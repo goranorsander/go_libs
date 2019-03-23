@@ -10,6 +10,11 @@
 
 #include <go/config.hpp>
 
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1900)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+int main() { return -1; }
+#else
+
 #include <array>
 #include <deque>
 #include <forward_list>
@@ -25,13 +30,14 @@
 #include <iostream>
 #include <numeric>
 #include <random>
-#include <utility>
 
 #include <go/diagnostics/benchmark.hpp>
+#include <go/utility/exchange.hpp>
 #include <go/utility/range/sequentially_increasing.hpp>
 
 namespace b = go::diagnostics::benchmark;
 namespace ph = std::placeholders;
+namespace u = go::utility;
 namespace ur = go::utility::range;
 
 #if !defined(GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS)
@@ -76,15 +82,29 @@ public: \
     _class_name_(const uint64_t key) : _key(key), _data() {} \
     _class_name_& operator=(const _class_name_& other) { if (&other != this) { _key = other._key; _data = other._data; } return *this; }
 
+#if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(std::exchange(other._key, 0)) {} \
     _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = std::exchange(other._key, 0); } return *this; }
+#else
+#define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_MOVE_FUNCTIONS( _class_name_ ) \
+public: \
+    _class_name_(_class_name_&& other) : _key(u::exchange(other._key, 0)) {} \
+    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = u::exchange(other._key, 0); } return *this; }
+#endif  // #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 
+#if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_DATA_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(std::exchange(other._key, 0)), _data(std::move(other._data)) {} \
     _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = std::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
+#else
+#define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_DATA_MOVE_FUNCTIONS( _class_name_ ) \
+public: \
+    _class_name_(_class_name_&& other) : _key(u::exchange(other._key, 0)), _data(std::move(other._data)) {} \
+    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = u::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
+#endif  // #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_DELETE_MOVE_FUNCTIONS( _class_name_ ) \
 private: \
@@ -96,7 +116,7 @@ template<> struct hash<_class_name_> \
 { \
     typedef _class_name_ argument_type; \
     typedef std::size_t result_type; \
-    result_type operator()(const argument_type& e) const noexcept \
+    result_type operator()(const argument_type& e) const GO_NOEXCEPT \
     { \
         return std::hash<uint64_t>{}(e._key); \
     } \
@@ -702,10 +722,10 @@ public:
 
 public:
     ~allocator() = default;
-    allocator() noexcept = default;
-    allocator(const allocator& /*other*/) noexcept = default;
+    allocator() GO_NOEXCEPT = default;
+    allocator(const allocator& /*other*/) GO_NOEXCEPT = default;
     template<class U>
-    allocator(const allocator<U>& /*other*/) noexcept {}
+    allocator(const allocator<U>& /*other*/) GO_NOEXCEPT {}
 
     pointer allocate(std::size_t n, const void* /*hint*/)
     {
@@ -724,13 +744,13 @@ public:
 };
 
 template <class T1, class T2>
-bool operator==(const allocator<T1>&, const allocator<T2>&) noexcept
+bool operator==(const allocator<T1>&, const allocator<T2>&) GO_NOEXCEPT
 {
     return true;
 }
 
 template <class T1, class T2>
-bool operator!=(const allocator<T1>&, const allocator<T2>&) noexcept
+bool operator!=(const allocator<T1>&, const allocator<T2>&) GO_NOEXCEPT
 {
     return false;
 }
@@ -1121,3 +1141,5 @@ int main()
 
     return 0;
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
