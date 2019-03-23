@@ -137,6 +137,9 @@
     <ClInclude Include="..\..\go\utility\range\sequentially_increasing.hpp">
       <Filter>go\utility\range</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\exchange.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />

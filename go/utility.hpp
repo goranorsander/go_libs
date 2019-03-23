@@ -13,6 +13,8 @@
 
 #include <go/config.hpp>
 
+#include <go/utility/exchange.hpp>
+#include <go/utility/min_max.hpp>
 #include <go/utility/noncopyable.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/nonmovable.hpp>

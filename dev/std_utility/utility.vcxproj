@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp" />
+    <ClInclude Include="..\..\go\utility\exchange.hpp" />
     <ClInclude Include="..\..\go\utility\range\sequentially_increasing.hpp" />
     <ClInclude Include="..\..\go\utility\recursive_spin_lock.hpp" />
     <ClInclude Include="..\..\go\utility\spin_lock.hpp" />

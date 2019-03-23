@@ -17,6 +17,8 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/utility/exchange.hpp>
+#include <go_boost/utility/min_max.hpp>
 #include <go_boost/utility/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/nonmovable.hpp>
 #include <go_boost/utility/placebo_lockable.hpp>

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\go_boost\utility.hpp" />
     <ClInclude Include="..\..\go_boost\utility\container\size.hpp" />
+    <ClInclude Include="..\..\go_boost\utility\exchange.hpp" />
     <ClInclude Include="..\..\go_boost\utility\iterator\erase.hpp" />
     <ClInclude Include="..\..\go_boost\utility\iterator\try_move_backward.hpp" />
     <ClInclude Include="..\..\go_boost\utility\min_max.hpp" />

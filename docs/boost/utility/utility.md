@@ -47,6 +47,7 @@ of components too small to be called libraries in their own right.
 
 ### Function reference
 
+* [exchange](./function_template_exchange.html)
 * [max_of](./function_template_min_max.html)
 * [min_of](./function_template_min_max.html)
 * [string_cast](./function_template_string_cast.html)

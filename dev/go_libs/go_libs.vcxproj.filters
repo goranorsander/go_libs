@@ -1690,5 +1690,11 @@
     <None Include="..\..\docs\std\utility\range\range.md">
       <Filter>Documentation\std\utility\range</Filter>
     </None>
+    <None Include="..\..\docs\boost\utility\function_template_exchange.md">
+      <Filter>Documentation\boost\utility</Filter>
+    </None>
+    <None Include="..\..\docs\std\utility\function_template_exchange.md">
+      <Filter>Documentation\std\utility</Filter>
+    </None>
   </ItemGroup>
 </Project>
