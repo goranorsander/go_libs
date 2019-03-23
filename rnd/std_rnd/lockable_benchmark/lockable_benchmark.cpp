@@ -10,13 +10,12 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else
 
 #include <iostream>
-#include <mutex>
 #include <vector>
 #include <go/diagnostics/benchmark.hpp>
 #include <go/utility/placebo_lockable.hpp>
@@ -26,6 +25,9 @@ int main() { return -1; }
 #if defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
 #include <memory>
 #endif  //#if defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
+#if !defined(GO_NO_CXX11_MUTEX)
+#include <mutex>
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 
 namespace b = go::diagnostics::benchmark;
 namespace u = go::utility;
@@ -132,6 +134,8 @@ void recursive_lock_and_unlock(const std::size_t count, b::stopwatch& lock_durat
     unlock_duration.stop();
 }
 
+#if !defined(GO_NO_CXX11_MUTEX)
+
 void std_mutex()
 {
     b::stopwatch lock_duration;
@@ -155,6 +159,8 @@ void std_recursive_mutex_recursive()
     recursive_lock_and_unlock<std::recursive_mutex>(100, lock_duration, unlock_duration);
     std::cout << "std_recursive_mutex_recursive: 100M lock in " << lock_duration.total_duration().count() << " microseconds, 100M unlock in " << unlock_duration.total_duration().count() << " microseconds" << std::endl;
 }
+
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
 
 void go_utility_placebo_lockable()
 {
@@ -192,9 +198,11 @@ void go_utility_recursive_spin_lock_recursive()
 
 int main()
 {
+#if !defined(GO_NO_CXX11_MUTEX)
     benchmark::std_mutex();
     benchmark::std_recursive_mutex();
     benchmark::std_recursive_mutex_recursive();
+#endif  // #if !defined(GO_NO_CXX11_MUTEX)
     benchmark::go_utility_placebo_lockable();
     benchmark::go_utility_spin_lock();
     benchmark::go_utility_recursive_spin_lock();
