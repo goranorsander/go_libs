@@ -100,6 +100,9 @@ __pragma(message(_message_))
 #define GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE 1
 #define GO_CANNOT_CREATE_U2STRING_ISSUE 1
 #endif  // #if (_MSC_VER < 1900)
+#if (_MSC_VER < 1800)
+#define GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE 1
+#endif  // #if (_MSC_VER < 1800)
 
 // C++11 support
 #if (_MSC_VER < 1900)
@@ -213,6 +216,12 @@ __pragma(message(_message_))
 #define GO_FINAL final
 #define GO_OVERRIDE override
 #endif  // #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
+
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
+#define GO_USING(_alias_, _type_) typedef _type_ _alias_
+#else
+#define GO_USING(_alias_, _type_) using _alias_ = _type_;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 
 // C++14 support
 #if (_MSC_VER < 1910)
