@@ -15,13 +15,17 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else
 
-#include <vector>
-#include <mutex>
 #include <iostream>
+#include <mutex>
+#include <vector>
 #include <go/diagnostics/benchmark.hpp>
 #include <go/utility/placebo_lockable.hpp>
 #include <go/utility/recursive_spin_lock.hpp>
 #include <go/utility/spin_lock.hpp>
+
+#if defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
+#include <memory>
+#endif  //#if defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
 
 namespace b = go::diagnostics::benchmark;
 namespace u = go::utility;
@@ -29,15 +33,17 @@ namespace u = go::utility;
 namespace benchmark
 {
 
+#if !defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
+
 template<class L>
 void lock_and_unlock(const std::size_t count, b::stopwatch& lock_duration, b::stopwatch& unlock_duration)
 {
-    using lockable_vector = std::vector<L>;
+    GO_USING(lockable_vector, std::vector<L>);
 
     lockable_vector l(1000000);
     const lockable_vector::iterator end = l.end();
 
-    for (int i = 0; i < count; ++i)
+    for (std::size_t i = 0; i < count; ++i)
     {
         lockable_vector::iterator it = l.begin();
         lock_duration.start();
@@ -59,10 +65,53 @@ void lock_and_unlock(const std::size_t count, b::stopwatch& lock_duration, b::st
     }
 }
 
+#else
+
+template<class L>
+void lock_and_unlock(const std::size_t count, b::stopwatch& lock_duration, b::stopwatch& unlock_duration)
+{
+    GO_USING(lockable_vector, std::vector<std::shared_ptr<L>>);
+
+    lockable_vector l(1000000);
+    const lockable_vector::iterator end = l.end();
+
+    {
+        lockable_vector::iterator it = l.begin();
+        while (it < end)
+        {
+            it->reset(new L());
+            ++it;
+        }
+    }
+
+    for (std::size_t i = 0; i < count; ++i)
+    {
+        lockable_vector::iterator it = l.begin();
+        lock_duration.start();
+        while (it < end)
+        {
+            (*it)->lock();
+            ++it;
+        }
+        lock_duration.stop();
+
+        it = l.begin();
+        unlock_duration.start();
+        while (it < end)
+        {
+            (*it)->unlock();
+            ++it;
+        }
+        unlock_duration.stop();
+    }
+}
+
+#endif  // #if !defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
+
 template<class L>
 void recursive_lock_and_unlock(const std::size_t count, b::stopwatch& lock_duration, b::stopwatch& unlock_duration)
 {
-    using lockable = L;
+    GO_USING(lockable, L);
 
     const std::size_t count_m = count * 1000000;
 

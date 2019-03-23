@@ -24,22 +24,23 @@ namespace utility
 #if !defined(GO_BOOST_NO_CXX14_STD_EXCHANGE)
 #if !defined(GO_BOOST_NO_CXX2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
 
-    template<class T, class U = T>
-    T exchange(T& obj, U&& new_value)
-    {
-        return std::exchange<T, U>(obj, new_value);
-    }
+template<class T, class U = T>
+T exchange(T& obj, U&& new_value)
+{
+    return std::exchange<T, U>(obj, new_value);
+}
 
 #else
 
-    template<class T, class U = T>
-    constexpr T exchange(T& obj, U&& new_value)
-    {
-        return std::exchange<T, U>(obj, new_value);
-    }
+template<class T, class U = T>
+constexpr T exchange(T& obj, U&& new_value)
+{
+    return std::exchange<T, U>(obj, new_value);
+}
 
 #endif  // #if !defined(GO_BOOST_NO_CXX2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
 #else
+#if !defined(GO_BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 
 template<class T, class U = T>
 T exchange(T& obj, U&& new_value)
@@ -49,6 +50,17 @@ T exchange(T& obj, U&& new_value)
     return old_value;
 }
 
+#else
+
+template<class T, class U>
+T exchange(T& obj, U&& new_value)
+{
+    const T old_value = std::move(obj);
+    obj = std::forward<U>(new_value);
+    return old_value;
+}
+
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 #endif  // #if !defined(GO_BOOST_NO_CXX14_STD_EXCHANGE)
 #else
 
