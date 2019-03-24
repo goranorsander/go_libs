@@ -64,7 +64,7 @@ T exchange(T& obj, U&& new_value)
 #endif  // #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #else
 
-template<class T, class U = T>
+template<class T, class U>
 T exchange(T& obj, const U& new_value)
 {
     const T old_value = obj;

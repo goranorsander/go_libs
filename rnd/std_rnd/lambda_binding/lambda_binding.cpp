@@ -10,7 +10,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else
