@@ -104,35 +104,35 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 My development environment and toolset details:
 
 * Manjaro Linux 18.0.1 Illyria, Xfce, 64 bits
-  * cmake version 3.13.3
+  * cmake version 3.13.4
   * clang version 7.0.1 (tags/RELEASE_701/final)
   * gcc (GCC) 8.2.1 20181127
-  * git 2.20.1
+  * git 2.21.0
   * GNU Make 4.2.1
   * Code::Blocks 17.12
-  * ruby 2.6.0p0 (2018-12-25 revision 66547)
+  * ruby 2.6.1p33 (2019-01-30 revision 66950)
   * Visual Studio Code 1.19.2 - with extensions:
-    * C/C++ 0.18.1 _(C/C++ IntelliSense, debugging, and code browsing)_
+    * C/C++ 0.22.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.1.1 _(Extended CMake support)_
-    * Git Lens 8.5.6 _(Supercharge Visual Studio Code's Git capabilities)_
-    * Markdown All in One 1.6.0 _(All you need to write Markdown)_
+    * CMake Tools 1.1.3 _(Extended CMake support)_
+    * Git Lens 9.5.1 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 2.2.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.13.4
+  * cmake version 3.14.0
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
-  * git 2.20.1.windows.1
+  * git 2.21.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
-  * TortoiseGit 2.7.0.0
+  * TortoiseGit 2.8.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.7
-  * Visual Studio Code 1.27.2 - with same extensions as in Linux environment
+  * Visual Studio 2017, Community Edition, version 15.9.9
+  * Visual Studio Code 1.32.3 - with same extensions as in Linux environment
 
 # GOOGLE TEST
 
