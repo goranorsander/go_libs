@@ -23,8 +23,8 @@
 #endif  // #if defined(__MINGW32__) || defined(__MINGW64__)
 
 // Compiler message
-#define GO_MESSAGE(_message_) \
-__warning _message_
+#define GO_DO_PRAGMA(x) _Pragma (#x)
+#define GO_MESSAGE(_message_) GO_DO_PRAGMA(message (#_message_))
 
 // C++ keyword typename support
 #define GO_TYPENAME typename

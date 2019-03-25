@@ -40,14 +40,14 @@ namespace benchmark
 template<class L>
 void lock_and_unlock(const std::size_t count, b::stopwatch& lock_duration, b::stopwatch& unlock_duration)
 {
-    GO_USING(lockable_vector, std::vector<L>);
+    GO_USING(lockable_vector, typename std::vector<L>);
 
     lockable_vector l(1000000);
-    const lockable_vector::iterator end = l.end();
+    const GO_TYPENAME lockable_vector::iterator end = l.end();
 
     for (std::size_t i = 0; i < count; ++i)
     {
-        lockable_vector::iterator it = l.begin();
+        GO_TYPENAME lockable_vector::iterator it = l.begin();
         lock_duration.start();
         while (it < end)
         {
