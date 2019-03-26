@@ -10,7 +10,7 @@
 
 #include <go/config.hpp>
 
-#if (defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1900)) || (defined(GO_COMP_GCC) && GO_GCC_VERSION < 90000)
+#if (defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1900)) || (defined(GO_COMP_GCC) && GO_GCC_VERSION < 80000)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else
@@ -301,14 +301,15 @@ template <class C>
 void add_keyed_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> add, b::stopwatch& duration)
 {
     using container_type = C;
-    using element_type = typename container_type::mapped_type;
     using value_type = typename container_type::value_type;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
 
     auto keys = key_sequence(number_of_elements);
     duration.start();
     for (const uint64_t key : keys)
     {
-        value_type e(key, element_type(key));
+        element_type e(key, mapped_type(key));
         add(std::move(e));
     }
     duration.stop();
@@ -364,7 +365,7 @@ void emplace_keyed_elements_at(const uint64_t number_of_elements, std::function<
     using container_type = C;
     using element_type = typename container_type::value_type;
     using const_iterator = typename container_type::const_iterator;
-    using return_type = std::pair<container_type::iterator, bool>;
+    using return_type = std::pair<typename container_type::iterator, bool>;
 
     auto keys = key_sequence_at(number_of_elements);
     {
@@ -390,15 +391,16 @@ void emplace_mapped_elements_at(const uint64_t number_of_elements, std::function
 {
     using container_type = C;
     using value_type = typename container_type::value_type;
-    using element_type = typename container_type::mapped_type;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
     using const_iterator = typename container_type::const_iterator;
-    using return_type = std::pair<container_type::iterator, bool>;
+    using return_type = std::pair<typename container_type::iterator, bool>;
 
     auto keys = key_sequence_at(number_of_elements);
     {
         for (const uint64_t key : keys)
         {
-            value_type e(key, element_type(key));
+            element_type e(key, mapped_type(key));
             emplace(std::move(e));
         }
     }
@@ -407,7 +409,7 @@ void emplace_mapped_elements_at(const uint64_t number_of_elements, std::function
         for (const uint64_t key : keys)
         {
             const uint64_t k = key - 1;
-            value_type e(k, element_type(k));
+            element_type e(k, mapped_type(k));
             emplace(std::move(e));
         }
         duration.stop();
@@ -419,7 +421,7 @@ void std_container_push_back(const std::string& container, const std::string& el
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(container_type::value_type&&)>;
+    using add_function = std::function<void(element_type&&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -428,7 +430,7 @@ void std_container_push_back(const std::string& container, const std::string& el
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<void(container_type::*)(container_type::value_type&&)>(&container_type::push_back), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_back), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -441,7 +443,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(container_type::value_type&&)>;
+    using add_function = std::function<void(element_type&&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -451,7 +453,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
     {
         container_type c;
         c.reserve(number_of_elements);
-        add_function add = std::bind(static_cast<void(container_type::*)(container_type::value_type&&)>(&container_type::push_back), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_back), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -464,7 +466,7 @@ void std_container_push_front(const std::string& container, const std::string& e
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(container_type::value_type&&)>;
+    using add_function = std::function<void(element_type&&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -473,7 +475,7 @@ void std_container_push_front(const std::string& container, const std::string& e
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<void(container_type::*)(container_type::value_type&&)>(&container_type::push_front), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_front), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -486,8 +488,8 @@ void std_container_insert(const std::string& container, const std::string& eleme
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using return_type = std::pair<container_type::iterator, bool>;
-    using add_function = std::function<return_type(container_type::value_type&&)>;
+    using return_type = std::pair<typename container_type::iterator, bool>;
+    using add_function = std::function<return_type(element_type&&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -496,7 +498,7 @@ void std_container_insert(const std::string& container, const std::string& eleme
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<return_type(container_type::*)(container_type::value_type&&)>(&container_type::insert), &c, ph::_1);
+        add_function add = std::bind(static_cast<return_type(container_type::*)(element_type&&)>(&container_type::insert), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -509,9 +511,11 @@ void std_container_keyed_insert(const std::string& container, const std::string&
 {
     using container_type = C;
     using key_type = typename container_type::key_type;
-    using element_type = typename container_type::mapped_type;
-    using return_type = std::pair<container_type::iterator, bool>;
-    using add_function = std::function<return_type(container_type::value_type&&)>;
+    using value_type = typename container_type::value_type;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
+    using return_type = std::pair<typename container_type::iterator, bool>;
+    using add_function = std::function<return_type(element_type&&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -520,7 +524,7 @@ void std_container_keyed_insert(const std::string& container, const std::string&
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<return_type(container_type::*)(container_type::value_type&&)>(&container_type::insert), &c, ph::_1);
+        add_function add = std::bind(static_cast<return_type(container_type::*)(element_type&&)>(&container_type::insert), &c, ph::_1);
         b::stopwatch duration;
         add_keyed_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -542,7 +546,7 @@ void std_container_emplace_back(const std::string& container, const std::string&
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        emplace_function emplace = std::bind(&container_type::emplace_back<element_type>, &c, ph::_1);
+        emplace_function emplace = std::bind(&container_type::template emplace_back<element_type>, &c, ph::_1);
         b::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -565,7 +569,7 @@ void std_container_reserved_emplace_back(const std::string& container, const std
     {
         container_type c;
         c.reserve(number_of_elements);
-        emplace_function emplace = std::bind(&container_type::emplace_back<element_type>, &c, ph::_1);
+        emplace_function emplace = std::bind(&container_type::template emplace_back<element_type>, &c, ph::_1);
         b::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -587,7 +591,7 @@ void std_container_emplace_front(const std::string& container, const std::string
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        emplace_function emplace = std::bind(&container_type::emplace_front<element_type>, &c, ph::_1);
+        emplace_function emplace = std::bind(&container_type::template emplace_front<element_type>, &c, ph::_1);
         b::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -600,8 +604,8 @@ void std_container_emplace(const std::string& container, const std::string& elem
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using emplace_function = std::function<container_type::iterator(container_type::const_iterator, element_type&&)>;
-    using iterator_function = std::function<container_type::const_iterator()>;
+    using emplace_function = std::function<typename container_type::iterator(typename container_type::const_iterator, element_type&&)>;
+    using iterator_function = std::function<typename container_type::const_iterator()>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -610,7 +614,7 @@ void std_container_emplace(const std::string& container, const std::string& elem
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        emplace_function emplace = std::bind(&container_type::emplace<element_type>, &c, ph::_1, ph::_2);
+        emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1, ph::_2);
         iterator_function begin = std::bind(&container_type::cbegin, &c);
         iterator_function end = std::bind(&container_type::cend, &c);
         b::stopwatch duration;
@@ -625,8 +629,8 @@ void std_container_reserved_emplace(const std::string& container, const std::str
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using emplace_function = std::function<container_type::iterator(container_type::const_iterator, element_type&&)>;
-    using iterator_function = std::function<container_type::const_iterator()>;
+    using emplace_function = std::function<typename container_type::iterator(typename container_type::const_iterator, element_type&&)>;
+    using iterator_function = std::function<typename container_type::const_iterator()>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -636,7 +640,7 @@ void std_container_reserved_emplace(const std::string& container, const std::str
     {
         container_type c;
         c.reserve(number_of_elements);
-        emplace_function emplace = std::bind(&container_type::emplace<element_type>, &c, ph::_1, ph::_2);
+        emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1, ph::_2);
         iterator_function begin = std::bind(&container_type::cbegin, &c);
         iterator_function end = std::bind(&container_type::cend, &c);
         b::stopwatch duration;
@@ -651,7 +655,7 @@ void std_container_emplace_keyed(const std::string& container, const std::string
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using return_type = std::pair<container_type::iterator, bool>;
+    using return_type = std::pair<typename container_type::iterator, bool>;
     using emplace_function = std::function<return_type(element_type&&)>;
 
     std::cout
@@ -661,7 +665,7 @@ void std_container_emplace_keyed(const std::string& container, const std::string
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        emplace_function emplace = std::bind(&container_type::emplace<element_type>, &c, ph::_1);
+        emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1);
         b::stopwatch duration;
         emplace_keyed_elements_at<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -674,8 +678,9 @@ void std_container_emplace_mapped(const std::string& container, const std::strin
 {
     using container_type = C;
     using value_type = typename container_type::value_type;
-    using element_type = typename container_type::mapped_type;
-    using return_type = std::pair<container_type::iterator, bool>;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
+    using return_type = std::pair<typename container_type::iterator, bool>;
     using emplace_function = std::function<return_type(value_type&&)>;
 
     std::cout
@@ -685,7 +690,7 @@ void std_container_emplace_mapped(const std::string& container, const std::strin
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        emplace_function emplace = std::bind(&container_type::emplace<value_type>, &c, ph::_1);
+        emplace_function emplace = std::bind(&container_type::template emplace<value_type>, &c, ph::_1);
         b::stopwatch duration;
         emplace_mapped_elements_at<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -775,14 +780,15 @@ template <class C>
 void add_keyed_elements(const uint64_t number_of_elements, std::function<void(const typename C::value_type&)> add, b::stopwatch& duration)
 {
     using container_type = C;
-    using element_type = typename container_type::mapped_type;
     using value_type = typename container_type::value_type;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
 
     auto keys = key_sequence(number_of_elements);
     duration.start();
     for (const uint64_t key : keys)
     {
-        value_type e(key, element_type(key));
+        element_type e(key, mapped_type(key));
         add(e);
     }
     duration.stop();
@@ -793,7 +799,7 @@ void std_container_push_back(const std::string& container, const std::string& el
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(const container_type::value_type&)>;
+    using add_function = std::function<void(const element_type&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -802,7 +808,7 @@ void std_container_push_back(const std::string& container, const std::string& el
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<void(container_type::*)(const container_type::value_type&)>(&container_type::push_back), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_back), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -815,7 +821,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(const container_type::value_type&)>;
+    using add_function = std::function<void(const element_type&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -825,7 +831,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
     {
         container_type c;
         c.reserve(number_of_elements);
-        add_function add = std::bind(static_cast<void(container_type::*)(const container_type::value_type&)>(&container_type::push_back), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_back), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -838,7 +844,7 @@ void std_container_push_front(const std::string& container, const std::string& e
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using add_function = std::function<void(const container_type::value_type&)>;
+    using add_function = std::function<void(const element_type&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -847,7 +853,7 @@ void std_container_push_front(const std::string& container, const std::string& e
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<void(container_type::*)(const container_type::value_type&)>(&container_type::push_front), &c, ph::_1);
+        add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_front), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -860,8 +866,8 @@ void std_container_insert(const std::string& container, const std::string& eleme
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
-    using return_type = std::pair<container_type::iterator, bool>;
-    using add_function = std::function<return_type(const container_type::value_type&)>;
+    using return_type = std::pair<typename container_type::iterator, bool>;
+    using add_function = std::function<return_type(const element_type&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -870,7 +876,7 @@ void std_container_insert(const std::string& container, const std::string& eleme
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<return_type(container_type::*)(const container_type::value_type&)>(&container_type::insert), &c, ph::_1);
+        add_function add = std::bind(static_cast<return_type(container_type::*)(const element_type&)>(&container_type::insert), &c, ph::_1);
         b::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
@@ -883,9 +889,11 @@ void std_container_keyed_insert(const std::string& container, const std::string&
 {
     using container_type = C;
     using key_type = typename container_type::key_type;
-    using element_type = typename container_type::mapped_type;
-    using return_type = std::pair<container_type::iterator, bool>;
-    using add_function = std::function<return_type(const container_type::value_type&)>;
+    using value_type = typename container_type::value_type;
+    using mapped_type = typename container_type::mapped_type;
+    using element_type = value_type;
+    using return_type = std::pair<typename container_type::iterator, bool>;
+    using add_function = std::function<return_type(const value_type&)>;
 
     std::cout
         << element.c_str() << ": " << "size: " << sizeof(element_type) << " bytes" << std::endl
@@ -894,7 +902,7 @@ void std_container_keyed_insert(const std::string& container, const std::string&
     for (const uint64_t number_of_elements : test_case_number_of_elements)
     {
         container_type c;
-        add_function add = std::bind(static_cast<return_type(container_type::*)(const container_type::value_type&)>(&container_type::insert), &c, ph::_1);
+        add_function add = std::bind(static_cast<return_type(container_type::*)(const value_type&)>(&container_type::insert), &c, ph::_1);
         b::stopwatch duration;
         add_keyed_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
