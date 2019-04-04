@@ -63,7 +63,7 @@
 #elif (_MSC_VER == 1900)
 #define GO_COMP_MSVC_VC140 1
 #define GO_IDE_MS_VS2015 1
-#elif (_MSC_VER >= 1910)
+#elif (_MSC_VER >= 1910) && (_MSC_VER < 1920)
 #define GO_COMP_MSVC_VC141 1
 #define GO_IDE_MS_VS2017 1
 #if (_MSC_VER == 1910)
@@ -81,7 +81,13 @@
 #elif (_MSC_VER == 1916)
 #define GO_IDE_MS_VS2017_15_9 1
 #endif  // #if (_MSC_VER == 1910)
-#endif  // #if (_MSC_VER == 1500)
+#elif (_MSC_VER >= 1920)
+#define GO_COMP_MSVC_VC142 1
+#define GO_IDE_MS_VS2019 1
+#if (_MSC_VER == 1920)
+#define GO_IDE_MS_VS2019_16_0 1
+#endif  // #if (_MSC_VER == 1920)
+#endif  // #if (_MSC_VER == 800)
 
 // Compiler message
 #define GO_MESSAGE(_message_) \

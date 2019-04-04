@@ -1696,5 +1696,8 @@
     <None Include="..\..\docs\std\utility\function_template_exchange.md">
       <Filter>Documentation\std\utility</Filter>
     </None>
+    <None Include="..\..\libs\gtest_markdown_report\template\windows_msvc142_report_header.md">
+      <Filter>libs\gtest_markdown_report\template</Filter>
+    </None>
   </ItemGroup>
 </Project>

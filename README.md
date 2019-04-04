@@ -74,29 +74,29 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 7.0.1|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
----------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
-**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 
-**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
-**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | | | | X | 
-**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_MFC_EXAMPLES** | | | | X | X | | | | | 
-**BUILD_STD_RND** | X | X | X | X | X | X | X | X | | 
-**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | | 
-**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | | | 
-**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_SHARED_LIBS** | | | | | | | | | |
-**gmock_build_tests** | | | | | | | | | |
-**gtest_build_samples** | X | X | | | | | | | |
-**gtest_build_tests** | | | | | | | | | |
-**gtest_disable_pthreads** | | | X | | | | | | |
-**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X 
-**gtest_hide_internal_symbols** | | | | | | | | | |
+**SETTING \ TOOLSET**      |clang 7.0.1|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | | 1 | 1 | 1 | 1 | 1 | 1 | 1 
+**BOOST_MINOR_VERSION** | 69 | 69 | 69 | | 69 | 69 | 69 | 69 | 69 | 69 | 69 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | | X | X | X | X | X | X | X 
+**BUILD_BOOST_MFC_EXAMPLES** | | | | | X | X | | | | X | 
+**BUILD_BOOST_RND** | X | X | X | | X | X | X | X | X | X | X 
+**BUILD_BOOST_TESTS** | X | X | X | | X | X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
+**BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
+**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | | 
+**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | | | 
+**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_SHARED_LIBS** | | | | | | | | | | |
+**gmock_build_tests** | | | | | | | | | | |
+**gtest_build_samples** | X | X | | | | | | | | |
+**gtest_build_tests** | | | | | | | | | | |
+**gtest_disable_pthreads** | | | X | | | | | | | |
+**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X | X 
+**gtest_hide_internal_symbols** | | | | | | | | | | |
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
 CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
@@ -131,7 +131,8 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.9
+  * Visual Studio 2017, Community Edition, version 15.9.11
+  * Visual Studio 2019, Community Edition, version 16.0.0
   * Visual Studio Code 1.32.3 - with same extensions as in Linux environment
 
 # GOOGLE TEST

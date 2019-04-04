@@ -97,3 +97,17 @@ copy /B /V /Y .\vc141\libs\std_mvvm\Release\GO_std_libraries_mvvm_tests.exe .\bi
 copy /B /V /Y .\vc141\libs\std_property\Release\GO_std_libraries_property_tests.exe .\bin\vc141\.
 copy /B /V /Y .\vc141\libs\std_signals\Release\GO_std_libraries_signals_tests.exe .\bin\vc141\.
 copy /B /V /Y .\vc141\libs\std_utility\Release\GO_std_libraries_utility_tests.exe .\bin\vc141\.
+
+copy /B /V /Y .\vc142\libs\boost_config\Release\GO_boost_libraries_config_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\boost_diagnostics\Release\GO_boost_libraries_diagnostics_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\boost_exception\Release\GO_boost_libraries_exception_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\boost_mvvm\Release\GO_boost_libraries_mvvm_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\boost_property\Release\GO_boost_libraries_property_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\boost_utility\Release\GO_boost_libraries_utility_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_config\Release\GO_std_libraries_config_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_diagnostics\Release\GO_std_libraries_diagnostics_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_exception\Release\GO_std_libraries_exception_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_mvvm\Release\GO_std_libraries_mvvm_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_property\Release\GO_std_libraries_property_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_signals\Release\GO_std_libraries_signals_tests.exe .\bin\vc142\.
+copy /B /V /Y .\vc142\libs\std_utility\Release\GO_std_libraries_utility_tests.exe .\bin\vc142\.

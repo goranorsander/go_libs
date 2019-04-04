@@ -23,3 +23,4 @@ more information.
   * [MSVC++ 12.0 / Visual Studio 2013](./windows_msvc120/unit_tests.html)
   * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
   * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
+  * [MSVC++ 14.2 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
