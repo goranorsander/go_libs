@@ -106,7 +106,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_dequ
     EXPECT_EQ(1, *it);
 }
 
-#if !defined(GO_BOOST_COMP_MSVC_VC120) && (BOOST_VERSION != 106900)
+#if !defined(GO_BOOST_COMP_MSVC_VC120) && !((BOOST_VERSION == 106900) || (BOOST_VERSION == 107000))
 TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_forward_list)
 {
     typedef boost::container::slist<int> test_container_type;
@@ -141,7 +141,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_forw
     EXPECT_EQ(false, moved_backward);
     EXPECT_EQ(1, *it);
 }
-#endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120) && (BOOST_VERSION != 106900)
+#endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120) && !((BOOST_VERSION == 106900) || (BOOST_VERSION == 107000))
 
 TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_list)
 {
