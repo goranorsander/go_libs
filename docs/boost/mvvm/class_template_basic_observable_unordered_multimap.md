@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_unordered_multimap class**
 
 The **basic_observable_unordered_multimap** is a container that encapsulates collections of key-value
-pairs, hashed by keys. It wraps the [**boost\::unordered_multimap**](https://www.boost.org/doc/libs/1_69_0/doc/html/boost/unordered_multimap.html)
+pairs, hashed by keys. It wraps the [**boost\::unordered_multimap**](https://www.boost.org/doc/libs/1_70_0/doc/html/boost/unordered_multimap.html)
 and adds notifications when items get added, removed, or when the whole map is reset
 or swapped.
 
