@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2019-03-25T21:01:52" time="0.008" name="AllTests">
-  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.002">
+<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2019-04-17T18:08:33" time="0.008" name="AllTests">
+  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_fire_lasers" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
@@ -10,7 +10,7 @@
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_string_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_string_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_fire_lasers" status="run" time="0" classname="std_signals_wstring_test_suite" />
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_wstring_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_wstring_test_suite" />
