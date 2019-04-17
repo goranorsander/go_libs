@@ -70,13 +70,13 @@ The CMake configurations I use:
 
 **SETTING \ TOOLSET**      |clang 7.0.1|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
-**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 70 | 70 | 70 | | 70 | 70 | 70 | 70 | 70 | 70 | 70 
-**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | | 0 | 0 | 0 | 0 | 0 | 0 | 0 
-**BUILD_BOOST_EXAMPLES** | X | X | X | | X | X | X | X | X | X | X 
-**BUILD_BOOST_MFC_EXAMPLES** | | | | | X | X | | | | X | 
-**BUILD_BOOST_RND** | X | X | X | | X | X | X | X | X | X | X 
-**BUILD_BOOST_TESTS** | X | X | X | | X | X | X | X | X | X | X 
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
+**BOOST_MINOR_VERSION** | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | | | | X | 
+**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
 **BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
