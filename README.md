@@ -59,20 +59,10 @@ CMake configuration:
  * **BUILD_STD_TESTS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
  * **CMAKE_INSTALL_PREFIX** = path to install directory
+ * **CMAKE_GNUtoMS** = TRUE|FALSE
  * **USE_SOLUTION_FOLDERS** = TRUE|FALSE
  * **BUILD_GMOCK** = TRUE|FALSE
  * **INSTALL_GTEST** = TRUE|FALSE
-
- Old
-
- * **BUILD_GTEST** = TRUE|FALSE
- * **BUILD_SHARED_LIBS** = TRUE|FALSE
- * **gmock_build_tests** = TRUE|FALSE
- * **gtest_build_samples** = TRUE|FALSE
- * **gtest_build_tests** = TRUE|FALSE
- * **gtest_disable_pthreads** = TRUE|FALSE
- * **gtest_force_shared_crt** = TRUE|FALSE
- * **gtest_hide_internal_symbols** = TRUE|FALSE
 
 Use CMake to configure and generate a build solution for your toolset.
 
@@ -91,20 +81,10 @@ The CMake configurations I use:
 **BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
 **BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
 **BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | | 
+**CMAKE_GNUtoMS** | N/A | N/A | | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
 **USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | | | 
 **BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X 
 **INSTALL_GTEST** | X | X | X | X | X | X | X | X | X | X | X 
-
-Old
-
-**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X | X 
-**BUILD_SHARED_LIBS** | | | | | | | | | | |
-**gmock_build_tests** | | | | | | | | | | |
-**gtest_build_samples** | X | X | | | | | | | | |
-**gtest_build_tests** | | | | | | | | | | |
-**gtest_disable_pthreads** | | | X | | | | | | | |
-**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X | X 
-**gtest_hide_internal_symbols** | | | | | | | | | | |
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
 CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
