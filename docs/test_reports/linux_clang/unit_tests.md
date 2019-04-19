@@ -5,7 +5,7 @@ layout: unit_tests
 # Test environment and toolset
 
 * Manjaro Linux 18, 64 bits
-* clang 7.0.1
+* clang 8.0.0
 
 ## GO Boost C++ Libraries Test Reports
 
