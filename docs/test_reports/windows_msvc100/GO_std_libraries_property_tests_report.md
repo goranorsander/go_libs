@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2019-03-25 at 21:01:36 with result:
+Test suites *AllTests* with 8 test cases was executed 2019-04-17 at 18:08:17 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.017 seconds.
+Test suites execution took 0.016 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_nameless_property_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -70,7 +70,7 @@ Test suite *std_property_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -85,7 +85,7 @@ Test suite *std_u16property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -100,7 +100,7 @@ Test suite *std_u32property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -115,7 +115,7 @@ Test suite *std_u8property_test_suite* with 1 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 

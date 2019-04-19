@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2019-03-25 at 21:01:52 with result:
+Test suites *AllTests* with 72 test cases was executed 2019-04-17 at 18:08:33 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.082 seconds.
+Test suites execution took 0.081 seconds.
 
 # Details
 
@@ -58,7 +58,7 @@ value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
-read_only_reference_properties | 0
+read_only_reference_properties | 0.001
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
@@ -100,7 +100,7 @@ Test suite execution took 0.005 seconds.
 
 Test case|Execution time
 -|-
-value_properties | 0
+value_properties | 0.001
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
@@ -123,8 +123,8 @@ Test suite execution took 0.011 seconds.
 
 Test case|Execution time
 -|-
-value_properties | 0
-read_only_value_properties | 0.001
+value_properties | 0.001
+read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
@@ -152,7 +152,7 @@ write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0.001
+proxy_properties | 0
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
@@ -169,13 +169,13 @@ Test suite execution took 0.014 seconds.
 
 Test case|Execution time
 -|-
-value_properties | 0
-read_only_value_properties | 0
+value_properties | 0.001
+read_only_value_properties | 0.001
 write_only_value_properties | 0.001
 reference_properties | 0.001
 read_only_reference_properties | 0.001
 write_only_reference_properties | 0.001
-proxy_properties | 0.001
+proxy_properties | 0
 read_only_proxy_properties | 0.001
 write_only_proxy_properties | 0.001
 

@@ -26,7 +26,7 @@ option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementa
 option(BUILD_STD_RND "Build RnD applications for std-implementation. Uses the GO Std libraries. Requires C++11/14/17.")
 option(BUILD_BOOST_RND "Build RnD applications for boost-implementation. Uses the GO Boost libraries. Requires the Boost libraries.")
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "69" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "70" CACHE STRING "Boost libraries minor version.")
 set(BOOST_PATCH_LEVEL "0" CACHE STRING "Boost libraries patch level.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")
@@ -76,9 +76,13 @@ elseif(MSVC)
     elseif((MSVC_VERSION GREATER_EQUAL 1900) AND (MSVC_VERSION LESS 1910))
         # using Visual Studio 2015 C++
         set( CMAKE_MSVC_TOOLSET_VERSION 140 )
-    elseif(MSVC_VERSION GREATER_EQUAL 1910)
+    elseif((MSVC_VERSION GREATER_EQUAL 1910) AND (MSVC_VERSION LESS 1920))
         # using Visual Studio 2017 C++
         set( CMAKE_MSVC_TOOLSET_VERSION 141 )
+    elseif(MSVC_VERSION GREATER_EQUAL 1920)
+        # using Visual Studio 2019 C++
+        set( CMAKE_MSVC_TOOLSET_VERSION 142 )
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /bigobj" )
     endif((MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1600))
 endif()
 

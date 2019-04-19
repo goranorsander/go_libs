@@ -14,7 +14,7 @@ namespace go_boost::utility
 
 The class **recursive_spin_lock** is a [lockable](https://en.cppreference.com/w/cpp/named_req/Lockable).
 It implements the *Lockable* requirements using
-[boost::atomic](https://www.boost.org/doc/libs/1_69_0/doc/html/atomic/interface.html).
+[boost::atomic](https://www.boost.org/doc/libs/1_70_0/doc/html/atomic/interface.html).
 
 **recursive_spin_lock** offers exclusive, recursive ownership semantics:
 

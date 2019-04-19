@@ -47,7 +47,7 @@ inline spin_lock::spin_lock() GO_NOEXCEPT
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
     , _lock()
 #else
-    , _lock{ ATOMIC_FLAG_INIT }
+    , _lock ATOMIC_FLAG_INIT
 #endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
 {
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)

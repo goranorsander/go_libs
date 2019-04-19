@@ -35,7 +35,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.69.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.70.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -44,10 +44,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_69_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_69_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_70_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_70_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 69
+ * **BOOST_MINOR_VERSION** = 70
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -59,44 +59,32 @@ CMake configuration:
  * **BUILD_STD_TESTS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
  * **CMAKE_INSTALL_PREFIX** = path to install directory
+ * **CMAKE_GNUtoMS** = TRUE|FALSE
  * **USE_SOLUTION_FOLDERS** = TRUE|FALSE
  * **BUILD_GMOCK** = TRUE|FALSE
- * **BUILD_GTEST** = TRUE|FALSE
- * **BUILD_SHARED_LIBS** = TRUE|FALSE
- * **gmock_build_tests** = TRUE|FALSE
- * **gtest_build_samples** = TRUE|FALSE
- * **gtest_build_tests** = TRUE|FALSE
- * **gtest_disable_pthreads** = TRUE|FALSE
- * **gtest_force_shared_crt** = TRUE|FALSE
- * **gtest_hide_internal_symbols** = TRUE|FALSE
+ * **INSTALL_GTEST** = TRUE|FALSE
 
 Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 8.0.0|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
----------------------------|-----------|---------|---------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
-**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 | 69 
-**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
-**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | | | | X | 
-**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_MFC_EXAMPLES** | | | | X | X | | | | | 
-**BUILD_STD_RND** | X | X | X | X | X | X | X | X | | 
-**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | | 
-**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | | | 
-**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_GTEST** | X | X | X | X | X | X | X | X | X | X 
-**BUILD_SHARED_LIBS** | | | | | | | | | |
-**gmock_build_tests** | | | | | | | | | |
-**gtest_build_samples** | X | X | | | | | | | |
-**gtest_build_tests** | | | | | | | | | |
-**gtest_disable_pthreads** | | | X | | | | | | |
-**gtest_force_shared_crt** | | | | X | X | X | X | X | X | X 
-**gtest_hide_internal_symbols** | | | | | | | | | |
+**SETTING \ TOOLSET**      |clang 8.0.0|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
+**BOOST_MINOR_VERSION** | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 | 70 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | | | | X | 
+**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
+**BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
+**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | | 
+**CMAKE_GNUtoMS** | N/A | N/A | | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
+**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | | | 
+**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X 
+**INSTALL_GTEST** | X | X | X | X | X | X | X | X | X | X | X 
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
 CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
@@ -118,7 +106,7 @@ My development environment and toolset details:
     * Git Lens 9.5.1 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 2.2.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.14.0
+  * cmake version 3.14.2
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.21.0.windows.1
@@ -131,7 +119,8 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.9
+  * Visual Studio 2017, Community Edition, version 15.9.11
+  * Visual Studio 2019, Community Edition, version 16.0.1
   * Visual Studio Code 1.32.3 - with same extensions as in Linux environment
 
 # GOOGLE TEST

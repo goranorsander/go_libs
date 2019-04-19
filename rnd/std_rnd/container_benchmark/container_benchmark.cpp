@@ -10,7 +10,7 @@
 
 #include <go/config.hpp>
 
-#if (defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1900)) || (defined(GO_COMP_GCC) && GO_GCC_VERSION < 80000)
+#if (defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1900))
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else
