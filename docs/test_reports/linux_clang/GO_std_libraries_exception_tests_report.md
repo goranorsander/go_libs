@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.0.1 Illyria, Xfce, 64 bits
-* clang version 7.0.1 (tags/RELEASE_701/final)
+* Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
+* clang version 8.0.0 (tags/RELEASE_701/final)
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2019-03-27 at 18:57:27 with result:
+Test suites *AllTests* with 6 test cases was executed 2019-04-19 at 11:48:43 with result:
 
 * 0 errors
 * 0 failures

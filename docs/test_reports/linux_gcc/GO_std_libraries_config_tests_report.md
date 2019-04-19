@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro 18.0.1 Illyria, Xfce, 64 bits
+* Manjaro 18.0.4 Illyria, Xfce, 64 bits
 * gcc (GCC) 8.2.1 20181127
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-03-27 at 18:57:28 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-04-19 at 11:48:45 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.002 seconds.
+Test suites execution took 0.001 seconds.
 
 # Details
 
@@ -40,7 +40,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.0.1 Illyria, Xfce, 64 bits
-* clang version 7.0.1 (tags/RELEASE_701/final)
+* Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
+* clang version 8.0.0 (tags/RELEASE_701/final)
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-03-27 at 18:57:26 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-04-19 at 11:48:42 with result:
 
 * 0 errors
 * 0 failures
@@ -25,7 +25,7 @@ Test suite *std_define_go_add_quotes_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
