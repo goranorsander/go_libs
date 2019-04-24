@@ -11,6 +11,8 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #if defined(_MSC_VER)
 
 #define GO_COMP_MSVC 1
@@ -413,6 +415,47 @@ __pragma(message(_message_))
 #if defined(_UNICODE) || defined(UNICODE)
 #define GO_MSVC_UNICODE 1
 #endif  // if defined(_UNICODE) || defined(UNICODE)
+
+// Treat some warnings as error
+#pragma warning (error: 4355) // 'this' : used in base member initializer list
+
+// Suppress warnings
+#if defined (GO_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BEGIN_SUPPRESS_ALL_WARNINGS \
+__pragma(warning(push, 0))
+
+#define GO_END_SUPPRESS_ALL_WARNINGS \
+__pragma(warning(pop))
+
+#define GO_MSVC_BEGIN_SUPPRESS_WARNING(_warning_) \
+__pragma(warning(push)) \
+__pragma(warning(disable: _warning_))
+
+#define GO_MSVC_SUPPRESS_WARNING(_warning_) \
+__pragma(warning(disable: _warning_))
+
+#define GO_MSVC_END_SUPPRESS_WARNING \
+__pragma(warning(pop))
+
+#else
+
+#define GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#define GO_END_SUPPRESS_ALL_WARNINGS
+
+#define GO_MSVC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_MSVC_SUPPRESS_WARNING(_warning_)
+#define GO_MSVC_END_SUPPRESS_WARNING
+
+#endif  // #if defined (GO_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_CLANG_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_CLANG_SUPPRESS_WARNING(_warning_)
+#define GO_CLANG_END_SUPPRESS_WARNING
+
+#define GO_GCC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_GCC_SUPPRESS_WARNING(_warning_)
+#define GO_GCC_END_SUPPRESS_WARNING
 
 #endif  // defined(_MSC_VER)
 

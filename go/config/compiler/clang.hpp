@@ -11,11 +11,17 @@
 //  See accompanying file LICENSE.md.
 //
 
+#include <go/config.hpp>
+
 #if defined(__clang__)
 
 #define GO_COMP_CLANG 1
 
 #define GO_CLANG_VERSION (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__)
+
+// Use #pragma in macros
+#define GO_DO_PRAGMA(x) _Pragma (#x)
+#define GO_DO_PRAGMA_EX(x) GO_DO_PRAGMA(x)
 
 // Compiler message
 #define GO_MESSAGE(_message_) \
@@ -316,6 +322,48 @@ _Pragma message _message_
 #if (GO_CLANG_VERSION < 20800)
 #define GO_NO_C99_PREPROCESSOR 1
 #endif  // #if (GO_CLANG_VERSION < 20800)
+
+// Treat some warnings as error
+//#pragma GCC diagnostic error "-Wfoo"
+
+// Suppress warnings
+#if defined (GO_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BEGIN_SUPPRESS_ALL_WARNINGS \
+_Pragma("GCC diagnostic push") \
+_Pragma("GCC diagnostic ignored \"-Weverything\"")
+
+#define GO_END_SUPPRESS_ALL_WARNINGS \
+_Pragma("GCC diagnostic pop")
+
+#define GO_CLANG_BEGIN_SUPPRESS_WARNING(_warning_) \
+_Pragma("GCC diagnostic push") \
+GO_DO_PRAGMA_EX(GCC diagnostic ignored GO_TO_STRING(GO_CAT(-W, _warning_)))
+
+#define GO_CLANG_SUPPRESS_WARNING(_warning_) \
+GO_DO_PRAGMA_EX(GCC diagnostic ignored GO_TO_STRING(GO_CAT(-W, _warning_)))
+
+#define GO_CLANG_END_SUPPRESS_WARNING \
+_Pragma("GCC diagnostic pop")
+
+#else
+
+#define GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#define GO_END_SUPPRESS_ALL_WARNINGS
+
+#define GO_CLANG_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_CLANG_SUPPRESS_WARNING(_warning_)
+#define GO_CLANG_END_SUPPRESS_WARNING
+
+#endif  // #if defined (GO_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_GCC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_GCC_SUPPRESS_WARNING(_warning_)
+#define GO_GCC_END_SUPPRESS_WARNING
+
+#define GO_MSVC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_MSVC_SUPPRESS_WARNING(_warning_)
+#define GO_MSVC_END_SUPPRESS_WARNING
 
 #endif  // defined(__clang__)
 

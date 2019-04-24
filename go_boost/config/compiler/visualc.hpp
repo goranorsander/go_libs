@@ -421,6 +421,47 @@ __pragma(message(_message_))
 #define GO_BOOST_NO_BOOST_PHOENIX 1
 #endif  // #if (_MSC_VER < 1900)
 
+// Treat some warnings as error
+#pragma warning (error: 4355) // 'this' : used in base member initializer list
+
+// Suppress warnings
+#if defined (GO_BOOST_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS \
+__pragma(warning(push, 0))
+
+#define GO_BOOST_END_SUPPRESS_ALL_WARNINGS \
+__pragma(warning(pop))
+
+#define GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(_warning_) \
+__pragma(warning(push)) \
+__pragma(warning(disable: _warning_))
+
+#define GO_BOOST_MSVC_SUPPRESS_WARNING(_warning_) \
+__pragma(warning(disable: _warning_))
+
+#define GO_BOOST_MSVC_END_SUPPRESS_WARNING \
+__pragma(warning(pop))
+
+#else
+
+#define GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#define GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+
+#define GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_MSVC_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_MSVC_END_SUPPRESS_WARNING
+
+#endif  // #if defined (GO_BOOST_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BOOST_CLANG_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_CLANG_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_CLANG_END_SUPPRESS_WARNING
+
+#define GO_BOOST_GCC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_GCC_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_GCC_END_SUPPRESS_WARNING
+
 #endif  // #if defined(BOOST_MSVC)
 
 #endif  // #ifndef GO_BOOST_CONFIG_COMPILER_VISUALC_HPP_INCLUDED

@@ -12,7 +12,7 @@
 //
 
 #include <boost/current_function.hpp>
-#include <boost/preprocessor/stringize.hpp>
+#include <boost/preprocessor.hpp>
 
 #define GO_BOOST_TO_STRING_HELPER(s) #s
 #define GO_BOOST_TO_STRING(s) GO_BOOST_TO_STRING_HELPER(s)

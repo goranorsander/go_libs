@@ -23,6 +23,10 @@
 
 #define GO_BOOST_CLANG_VERSION (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__)
 
+// Use #pragma in macros
+#define GO_BOOST_DO_PRAGMA(x) _Pragma (#x)
+#define GO_BOOST_DO_PRAGMA_EX(x) GO_BOOST_DO_PRAGMA(x)
+
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
 __warning _message_
@@ -323,6 +327,48 @@ __warning _message_
 #if (GO_BOOST_CLANG_VERSION < 20800)
 #define GO_BOOST_NO_C99_PREPROCESSOR 1
 #endif  // #if (GO_BOOST_CLANG_VERSION < 20800)
+
+// Treat some warnings as error
+//#pragma GCC diagnostic error "-Wfoo"
+
+// Suppress warnings
+#if defined (GO_BOOST_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS \
+_Pragma("GCC diagnostic push") \
+_Pragma("GCC diagnostic ignored \"-Weverything\"")
+
+#define GO_BOOST_END_SUPPRESS_ALL_WARNINGS \
+_Pragma("GCC diagnostic pop")
+
+#define GO_BOOST_CLANG_BEGIN_SUPPRESS_WARNING(_warning_) \
+_Pragma("GCC diagnostic push") \
+GO_BOOST_DO_PRAGMA_EX(GCC diagnostic ignored BOOST_PP_STRINGIZE(BOOST_PP_CAT(-W, _warning_)))
+
+#define GO_BOOST_CLANG_SUPPRESS_WARNING(_warning_) \
+GO_BOOST_DO_PRAGMA_EX(GCC diagnostic ignored BOOST_PP_STRINGIZE(BOOST_PP_CAT(-W, _warning_)))
+
+#define GO_BOOST_CLANG_END_SUPPRESS_WARNING \
+_Pragma("GCC diagnostic pop")
+
+#else
+
+#define GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#define GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+
+#define GO_BOOST_CLANG_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_CLANG_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_CLANG_END_SUPPRESS_WARNING
+
+#endif  // #if defined (GO_BOOST_ENABLE_SUPPRESS_WARNINGS)
+
+#define GO_BOOST_GCC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_GCC_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_GCC_END_SUPPRESS_WARNING
+
+#define GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_MSVC_SUPPRESS_WARNING(_warning_)
+#define GO_BOOST_MSVC_END_SUPPRESS_WARNING
 
 #endif  // #if defined(__clang__)
 

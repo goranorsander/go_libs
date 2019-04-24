@@ -36,4 +36,7 @@
 
 #define GO_WFUNC GO_APPEND_L(GO_FUNC)
 
+#define GO_CAT_HELPER(a, ...) a ## __VA_ARGS__
+#define GO_CAT(a, ...) GO_CAT_HELPER(a, __VA_ARGS__)
+
 #endif  // #ifndef GO_CONFIG_PREPROCESSOR_HPP_INCLUDED
