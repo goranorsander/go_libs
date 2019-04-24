@@ -25,6 +25,12 @@ option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
 option(BUILD_STD_RND "Build RnD applications for std-implementation. Uses the GO Std libraries. Requires C++11/14/17.")
 option(BUILD_BOOST_RND "Build RnD applications for boost-implementation. Uses the GO Boost libraries. Requires the Boost libraries.")
+option(ENABLE_SUPPRESS_WARNINGS "Enable the GO libraries macros to suppress warnings selectively" ON)
+
+set(CXX_COMPILER_WARNING_LEVEL "W3" CACHE STRING "C++ compiler warning level")
+set(CMAKE_CXX_COMPILER_WARNING_LEVELS "W0;W1;W2;W3;W4;W5")
+set_property(CACHE CXX_COMPILER_WARNING_LEVEL PROPERTY STRINGS ${CMAKE_CXX_COMPILER_WARNING_LEVELS})
+
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
 set(BOOST_MINOR_VERSION "70" CACHE STRING "Boost libraries minor version.")
 set(BOOST_PATCH_LEVEL "0" CACHE STRING "Boost libraries patch level.")
@@ -48,42 +54,105 @@ set( CMAKE_COMPILER_IS_MSVC FALSE )
 set( CMAKE_MSVC_TOOLSET_VERSION 0 )
 
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-    # using Clang
+    # using Clang, see https://clang.llvm.org/docs/UsersManual.html and  https://clang.llvm.org/docs/DiagnosticsReference.html
     set( CMAKE_COMPILER_IS_CLANG TRUE )
-    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14" )
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17" )
+	if(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W0")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -w" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W1")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-deprecated" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W2")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-deprecated" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W3")
+		# Use default warnings
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W4")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wno-comment -Wno-parentheses -Wno-missing-braces -Wno-char-subscripts -Wno-write-strings -Wno-unknown-pragmas" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W5")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Weverything" )
+	endif()
+	if(ENABLE_SUPPRESS_WARNINGS)
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DGO_ENABLE_SUPPRESS_WARNINGS=1 -DGO_BOOST_ENABLE_SUPPRESS_WARNINGS=1" )
+	endif()
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-    # using gcc/g++
+    # using gcc/g++, see https://gcc.gnu.org/onlinedocs/gcc/Standards.html#C_002b_002b-Language and https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
     set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17 -fpermissive -ftemplate-backtrace-limit=0" )
+	if(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W0")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -w" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W1")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-cpp -Wno-deprecated" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W2")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-deprecated" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W3")
+		# Use default warnings
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W4")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wno-comment -Wno-parentheses -Wno-missing-braces -Wno-char-subscripts -Wno-write-strings -Wno-unknown-pragmas" )
+	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W5")
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra" )
+	endif()
+	if(ENABLE_SUPPRESS_WARNINGS)
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DGO_ENABLE_SUPPRESS_WARNINGS=1 -DGO_BOOST_ENABLE_SUPPRESS_WARNINGS=1" )
+	endif()
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel")
     # using Intel C++
     set( CMAKE_COMPILER_IS_INTEL TRUE )
 elseif(MSVC)
     # using Visual Studio C++
     set( CMAKE_COMPILER_IS_MSVC TRUE )
+    set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /bigobj" )
     if((MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1600))
         # using Visual Studio 2008 C++
         set( CMAKE_MSVC_TOOLSET_VERSION 90 )
-    elseif((MSVC_VERSION GREATER_EQUAL 1600) AND (MSVC_VERSION LESS 1700))
-        # using Visual Studio 2010 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 100 )
-    elseif((MSVC_VERSION GREATER_EQUAL 1700) AND (MSVC_VERSION LESS 1800))
-        # using Visual Studio 2012 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 110 )
-        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"_VARIADIC_MAX=10\"" )
-    elseif((MSVC_VERSION GREATER_EQUAL 1800) AND (MSVC_VERSION LESS 1900))
-        # using Visual Studio 2013 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 120 )
-    elseif((MSVC_VERSION GREATER_EQUAL 1900) AND (MSVC_VERSION LESS 1910))
-        # using Visual Studio 2015 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 140 )
-    elseif((MSVC_VERSION GREATER_EQUAL 1910) AND (MSVC_VERSION LESS 1920))
-        # using Visual Studio 2017 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 141 )
-    elseif(MSVC_VERSION GREATER_EQUAL 1920)
-        # using Visual Studio 2019 C++
-        set( CMAKE_MSVC_TOOLSET_VERSION 142 )
-        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /bigobj" )
+		if(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W0")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W0" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W1")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W1" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W2")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W2" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W3")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W3" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W4")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W5")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4" )
+		endif()
+    elseif(MSVC_VERSION GREATER_EQUAL 1600)
+		if((MSVC_VERSION GREATER_EQUAL 1600) AND (MSVC_VERSION LESS 1700))
+			# using Visual Studio 2010 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 100 )
+		elseif((MSVC_VERSION GREATER_EQUAL 1700) AND (MSVC_VERSION LESS 1800))
+			# using Visual Studio 2012 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 110 )
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"_VARIADIC_MAX=10\"" )
+		elseif((MSVC_VERSION GREATER_EQUAL 1800) AND (MSVC_VERSION LESS 1900))
+			# using Visual Studio 2013 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 120 )
+		elseif((MSVC_VERSION GREATER_EQUAL 1900) AND (MSVC_VERSION LESS 1910))
+			# using Visual Studio 2015 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 140 )
+		elseif((MSVC_VERSION GREATER_EQUAL 1910) AND (MSVC_VERSION LESS 1920))
+			# using Visual Studio 2017 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 141 )
+		elseif(MSVC_VERSION GREATER_EQUAL 1920)
+			# using Visual Studio 2019 C++
+			set( CMAKE_MSVC_TOOLSET_VERSION 142 )
+		endif((MSVC_VERSION GREATER_EQUAL 1600) AND (MSVC_VERSION LESS 1700))
+		if(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W0")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W0" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W1")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W1" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W2")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W2" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W3")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W3" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W4")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4" )
+		elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W5")
+			set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /Wall" )
+		endif()
     endif((MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1600))
+	if(ENABLE_SUPPRESS_WARNINGS)
+		set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"GO_ENABLE_SUPPRESS_WARNINGS=1\" /D \"GO_BOOST_ENABLE_SUPPRESS_WARNINGS=1\"" )
+	endif()
 endif()
 
 ########################################################
@@ -212,12 +281,14 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
     set(GMOCK_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock)
     set(GTEST_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock/gtest)
 
+    set(GTEST_EXTENSIONS_INCLUDE_DIR ${GO_LIBS_SOURCE_DIR}/libs/gtest_extensions)
+
     # Add googletest directly to our build. This adds
     # the following targets: gtest, gtest_main, gmock
     # and gmock_main
     add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src ${CMAKE_BINARY_DIR}/googletest-build)
 
-    include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR})
+    include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR} ${GTEST_EXTENSIONS_INCLUDE_DIR})
     link_directories(${GTEST_LIBS_DIR} ${GMOCK_LIBS_DIR})
 
 endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)

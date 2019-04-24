@@ -57,6 +57,8 @@ CMake configuration:
  * **BUILD_STD_MFC_EXAMPLES** = TRUE|FALSE
  * **BUILD_STD_RND** = TRUE|FALSE
  * **BUILD_STD_TESTS** = TRUE|FALSE
+ * **CXX_COMPILER_WARNING_LEVEL** = W0|W1|W2|W3|W4|W5 *(W0 disables all warnings, W5 enables all warnings)*
+ * **ENABLE_SUPPRESS_WARNINGS** = TRUE|FALSE
  * **CMAKE_CONFIGURATION_TYPES** = Debug;Release
  * **CMAKE_INSTALL_PREFIX** = path to install directory
  * **CMAKE_GNUtoMS** = TRUE|FALSE
@@ -81,6 +83,7 @@ The CMake configurations I use:
 **BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
 **BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
 **BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | | 
+**ENABLE_SUPPRESS_WARNINGS** | X | X | X | X | X | X | X | X | X | X | X 
 **CMAKE_GNUtoMS** | N/A | N/A | | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
 **USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | | | 
 **BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X 
@@ -120,7 +123,7 @@ My development environment and toolset details:
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.9.11
-  * Visual Studio 2019, Community Edition, version 16.0.1
+  * Visual Studio 2019, Community Edition, version 16.0.2
   * Visual Studio Code 1.32.3 - with same extensions as in Linux environment
 
 # GOOGLE TEST
