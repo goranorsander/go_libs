@@ -304,7 +304,7 @@ bool spaceship_view_model::can_execute_add_equipment_command(const m::command_pa
     return false;
 }
 
-void spaceship_view_model::execute_add_equipment_command(const m::command_parameters::ptr& p)
+void spaceship_view_model::execute_add_equipment_command(const m::command_parameters::ptr& /*p*/)
 {
     main_frame_view_model::ptr vm = _main_frame_vm.lock();
     if (vm)

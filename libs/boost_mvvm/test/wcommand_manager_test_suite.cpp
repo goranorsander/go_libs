@@ -348,11 +348,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
     // Verify initial 'on property changed' count
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Executor", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Executor", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
     // Give Mr Spock command of USS Enterprise
     ship1->captain = L"Mr Spock";
@@ -363,11 +363,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == std::wstring(L"Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(1, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Executor", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
+    EXPECT_EQ(1u, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Executor", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 
     // Return command of USS Enterprise to Captain Kirk
     ship1->captain = L"Captain James T Kirk";
@@ -378,11 +378,11 @@ TEST(boost_wcommand_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == std::wstring(L"Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == std::wstring(L"Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(2, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Executor", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count(L"Serenity", L"captain"));
+    EXPECT_EQ(2u, observer->get_on_property_changed_count(L"USS Enterprise", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Millennium Falcon", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Executor", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Battlestar Galactica", L"captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count(L"Serenity", L"captain"));
 }
 
 }

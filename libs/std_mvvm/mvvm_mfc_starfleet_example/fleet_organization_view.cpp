@@ -143,7 +143,7 @@ void fleet_organization_view::OnChangeVisualStyle()
     _wndFileView->SetImageList(&_fileViewImages, TVSIL_NORMAL);
 }
 
-void fleet_organization_view::on_selected(const HTREEITEM hItem, DWORD_PTR pItemData)
+void fleet_organization_view::on_selected(const HTREEITEM /*hItem*/, DWORD_PTR pItemData)
 {
     if(data_context())
     {
@@ -151,7 +151,7 @@ void fleet_organization_view::on_selected(const HTREEITEM hItem, DWORD_PTR pItem
     }
 }
 
-void fleet_organization_view::on_deselect(const HTREEITEM hItem, DWORD_PTR pItemData)
+void fleet_organization_view::on_deselect(const HTREEITEM /*hItem*/, DWORD_PTR /*pItemData*/)
 {
     if(data_context())
     {
@@ -159,11 +159,11 @@ void fleet_organization_view::on_deselect(const HTREEITEM hItem, DWORD_PTR pItem
     }
 }
 
-void fleet_organization_view::on_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton)
+void fleet_organization_view::on_click(const HTREEITEM /*hItem*/, DWORD_PTR /*pItemData*/, const CPoint& /*screenPos*/, const MouseButton /*mouseButton*/)
 {
 }
 
-void fleet_organization_view::on_double_click(const HTREEITEM hItem, DWORD_PTR pItemData, const CPoint& screenPos, const MouseButton mouseButton)
+void fleet_organization_view::on_double_click(const HTREEITEM /*hItem*/, DWORD_PTR /*pItemData*/, const CPoint& /*screenPos*/, const MouseButton mouseButton)
 {
     if(data_context() && mouseButton == mb_left)
     {

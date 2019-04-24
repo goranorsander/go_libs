@@ -309,11 +309,11 @@ TEST(boost_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
 
     // Verify initial 'on property changed' count
-    EXPECT_EQ(0, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
 
     // Give Mr Spock command of USS Enterprise
     ship1->captain = "Mr Spock";
@@ -324,11 +324,11 @@ TEST(boost_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == std::string("Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(1, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(1u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
 
     // Return command of USS Enterprise to Captain Kirk
     ship1->captain = "Captain James T Kirk";
@@ -339,11 +339,11 @@ TEST(boost_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == std::string("Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(2, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(2u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
+    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
 }
 
 }

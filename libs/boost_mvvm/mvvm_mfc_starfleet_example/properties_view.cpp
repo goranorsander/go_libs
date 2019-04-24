@@ -203,6 +203,7 @@ void properties_view::populate_with(const m::wobservable_deque<equipment_interfa
     {
         u::scope_guard_new<CMFCPropertyGridProperty> category_group(new CMFCPropertyGridProperty(ec.first.c_str()));
 
+		GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(4456)
         BOOST_FOREACH(const equipment_interface::ptr& e, ec.second)
         {
             u::scope_guard_new<CMFCPropertyGridProperty> name_prop(new CMFCPropertyGridProperty(_T("Name"), e->name().c_str(), _T("Equipment name")));
@@ -213,6 +214,7 @@ void properties_view::populate_with(const m::wobservable_deque<equipment_interfa
             quantity_prop->AllowEdit(FALSE);
             category_group->AddSubItem(quantity_prop.detach());
         }
+		GO_BOOST_MSVC_END_SUPPRESS_WARNING
 
         equipment_group->AddSubItem(category_group.detach());
     }

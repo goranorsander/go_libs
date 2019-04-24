@@ -21,6 +21,7 @@
 #include <go_boost/diagnostics/log/policy/logging_policy_interface.hpp>
 
 #include <boost/atomic/atomic.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
 namespace go_boost
@@ -60,15 +61,17 @@ public:
     ~basic_logger()
     {
         _state.store(logger_state_shutdown);
-        _thread.join();
+        _thread->join();
+		_thread.reset();
     }
 
     basic_logger(const logging_policy_interface_type& policy, const string_type& log_directory, const string_type& log_file_name, const boost::uint32_t log_file_roll_size_mb)
         : _state(logger_state_init)
         , _buffer_base(policy.create_buffer())
         , _file_writer(log_directory, log_file_name, go_boost::utility::max_of(1u, log_file_roll_size_mb))
-        , _thread(&basic_logger::pop, this)
+        , _thread()
     {
+		_thread.reset(new boost::thread(&basic_logger::pop, this));
         _state.store(logger_state_ready, boost::memory_order_release);
     }
 
@@ -131,9 +134,9 @@ private:
 
 private:
     boost::atomic<logger_state> _state;
-    std::auto_ptr<buffer_interface<log_line_type>> _buffer_base;
+    boost::scoped_ptr<buffer_interface<log_line_type>> _buffer_base;
     file_writer_type _file_writer;
-    boost::thread _thread;
+	boost::scoped_ptr<boost::thread> _thread;
 };
 
 } // namespace detail

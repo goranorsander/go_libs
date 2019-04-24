@@ -96,7 +96,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if (rep)
         {
             return us::format(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]",
-                rep->spaceship_id, rep->equipment_id);
+                rep->spaceship_id.get(), rep->equipment_id.get());
         }
     }
     return L"class go::mvvm::wcommand_interface";

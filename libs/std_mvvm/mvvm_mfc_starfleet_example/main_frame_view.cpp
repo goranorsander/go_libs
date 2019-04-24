@@ -201,7 +201,6 @@ int main_frame_view::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
     _fleet_organization_view.EnableDocking(CBRS_ALIGN_ANY);
     DockPane(&_fleet_organization_view);
-    CDockablePane* pTabbedBar = nullptr;
     _output_view.EnableDocking(CBRS_ALIGN_ANY);
     DockPane(&_output_view);
     _properties_view.EnableDocking(CBRS_ALIGN_ANY);

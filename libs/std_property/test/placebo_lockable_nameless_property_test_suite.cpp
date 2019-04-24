@@ -23,6 +23,8 @@ TEST(std_nameless_property_placebo_lockable_test_suite, cpp11_not_supported) {}
 #include <go/property.hpp>
 #include <go/utility.hpp>
 
+#include <go_gtest/double_without_formatter.hpp>
+
 namespace e = go::exception;
 namespace p = go::property;
 namespace np = go::property::nameless;
@@ -30,6 +32,27 @@ namespace ph = std::placeholders;
 namespace roap = go::property::nameless::read_only;
 namespace u = go::utility;
 namespace woap = go::property::nameless::write_only;
+
+namespace testing
+{
+namespace internal2
+{
+
+template <>
+class TypeWithoutFormatter<np::value_property<double, u::placebo_lockable>, kConvertibleToInteger>
+{
+public:
+	static void PrintValue(const np::value_property<double, u::placebo_lockable>& value, ::std::ostream* os)
+	{
+		const double vd = value.get();
+		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
+		const internal::BiggestInt kBigInt = static_cast<internal::BiggestInt>(vi);
+		*os << kBigInt;
+	}
+};
+
+}
+}
 
 namespace
 {
@@ -102,7 +125,7 @@ TEST(std_nameless_property_placebo_lockable_test_suite, value_properties)
     s.max_speed = 9.0;
     s.name = std::string("USS Enterprise (NCC-1701)");
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
@@ -303,7 +326,7 @@ TEST(std_nameless_property_placebo_lockable_test_suite, reference_properties)
     s.max_speed = s_ms_3;
     s.name = s_n_3;
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
@@ -671,7 +694,7 @@ TEST(std_nameless_property_placebo_lockable_test_suite, proxy_properties)
     s.max_speed = 9.0;
     s.name = std::string("USS Enterprise (NCC-1701)");
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set

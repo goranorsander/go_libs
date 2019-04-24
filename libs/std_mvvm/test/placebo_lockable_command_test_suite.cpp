@@ -111,12 +111,12 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
 
     test_command_observer command_observer;
 
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
     command->can_execute_changed.connect(std::bind(&test_command_observer::on_can_execute_changed, &command_observer, ph::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
@@ -124,7 +124,7 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
     command->execute(nullptr);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
@@ -132,7 +132,7 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
     command->allow_execute(true);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(1, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_TRUE(command->can_execute(nullptr));
@@ -140,7 +140,7 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
     command->execute(nullptr);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
@@ -148,7 +148,7 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
     command->execute(nullptr);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));

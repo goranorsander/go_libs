@@ -42,14 +42,20 @@ public:
      spaceship()
         : m::basic_observable_object<u::u8string>()
         , u::noncopyable_nonmovable()
-        , crew_complement(us::create<u::u8string>("crew_complement"), [this]() { return _crew_complement; }, [this](const int& v) { if(v != _crew_complement) { _crew_complement = v; notify_property_changed(this->shared_from_this(), crew_complement.name()); } })
-        , name(us::create<u::u8string>("name"), [this]() { return _name; }, [this](const u::u8string& v) { if(v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } })
-        , max_speed(us::create<u::u8string>("max_speed"), [this]() { return _max_speed; }, [this](const double& v) { if(v != _max_speed) { _max_speed = v; notify_property_changed(this->shared_from_this(), max_speed.name()); } })
+        , crew_complement(us::create<u::u8string>("crew_complement"))
+        , name(us::create<u::u8string>("name"))
+        , max_speed(us::create<u::u8string>("max_speed"))
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
     {
-    }
+		 crew_complement.getter([this]() { return _crew_complement; });
+		 crew_complement.setter([this](const int& v) { if (v != _crew_complement) { _crew_complement = v; notify_property_changed(this->shared_from_this(), crew_complement.name()); } });
+		 name.getter([this]() { return _name; });
+		 name.setter([this](const u::u8string & v) { if (v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
+		 max_speed.getter([this]() { return _max_speed; });
+		 max_speed.setter([this](const double& v) { if (v != _max_speed) { _max_speed = v; notify_property_changed(this->shared_from_this(), max_speed.name()); } });
+	 }
 
 public:
     p::u8property<int> crew_complement;

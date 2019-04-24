@@ -137,8 +137,8 @@ TEST(std_wcommand_execution_observer_test_suite, test_execute_wcommand)
 
     test_wcommand_execution_wobserver command_execution_observer;
 
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(0, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->command_executed.connect(std::bind(&test_wcommand_execution_wobserver::on_command_executed, &command_execution_observer, ph::_1));
     command_mgr->command_not_executed.connect(std::bind(&test_wcommand_execution_wobserver::on_command_not_executed, &command_execution_observer, ph::_1));
@@ -146,12 +146,12 @@ TEST(std_wcommand_execution_observer_test_suite, test_execute_wcommand)
     EXPECT_EQ(0, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(0, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_not_executed_commands());
 
     test_wcommand_observer command_observer;
 
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
     std::shared_ptr<test_wcommand> command(new test_wcommand());
 
@@ -165,7 +165,7 @@ TEST(std_wcommand_execution_observer_test_suite, test_execute_wcommand)
     command->can_execute_changed.connect(std::bind(&test_wcommand_observer::on_can_execute_changed, &command_observer, ph::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
@@ -173,42 +173,42 @@ TEST(std_wcommand_execution_observer_test_suite, test_execute_wcommand)
     command_mgr->execute(command);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command->allow_execute(true);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(1, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_TRUE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->execute(command);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(1, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command->execute(nullptr);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(1, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 }
 
 TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
@@ -222,8 +222,8 @@ TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
 
     test_wcommand_execution_wobserver command_execution_observer;
 
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(0, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->command_executed.connect(std::bind(&test_wcommand_execution_wobserver::on_command_executed, &command_execution_observer, ph::_1));
     command_mgr->command_not_executed.connect(std::bind(&test_wcommand_execution_wobserver::on_command_not_executed, &command_execution_observer, ph::_1));
@@ -231,12 +231,12 @@ TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
     EXPECT_EQ(0, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(0, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_not_executed_commands());
 
     test_wcommand_observer command_observer;
 
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
     std::shared_ptr<test_wcommand> command(new test_wcommand());
 
@@ -250,7 +250,7 @@ TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
     command->can_execute_changed.connect(std::bind(&test_wcommand_observer::on_can_execute_changed, &command_observer, ph::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
@@ -259,77 +259,77 @@ TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
 
     EXPECT_EQ(1, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(0, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->execute_commands();
 
     EXPECT_EQ(0, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command->allow_execute(true);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(1, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_TRUE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->post(command);
 
     EXPECT_EQ(1, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(1, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
     EXPECT_TRUE(command->can_execute(nullptr));
-    EXPECT_EQ(0, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->execute_commands();
 
     EXPECT_EQ(0, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(1, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->post(command);
 
     EXPECT_EQ(1, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(1, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(1, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_not_executed_commands());
 
     command_mgr->execute_commands();
 
     EXPECT_EQ(0, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(nullptr));
-    EXPECT_EQ(1, command_execution_observer.number_of_executed_commands());
-    EXPECT_EQ(2, command_execution_observer.number_of_not_executed_commands());
+    EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
+    EXPECT_EQ(2u, command_execution_observer.number_of_not_executed_commands());
 }
 
 }

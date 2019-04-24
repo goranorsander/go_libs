@@ -35,6 +35,45 @@ GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(another_implicit_integer_type, in
 GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(implicit_floating_point_type, double, 47.0)
 GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(another_implicit_floating_point_type, double, 0.0)
 
+}
+
+namespace testing
+{
+namespace internal2
+{
+
+template <>
+class TypeWithoutFormatter<implicit_floating_point_type, kConvertibleToInteger>
+{
+public:
+	static void PrintValue(const implicit_floating_point_type& value, ::std::ostream* os)
+	{
+		const double vd = value.get();
+		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
+		const internal::BiggestInt kBigInt = static_cast<internal::BiggestInt>(vi);
+		*os << kBigInt;
+	}
+};
+
+template <>
+class TypeWithoutFormatter<another_implicit_floating_point_type, kConvertibleToInteger>
+{
+public:
+	static void PrintValue(const another_implicit_floating_point_type& value, ::std::ostream* os)
+	{
+		const double vd = value.get();
+		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
+		const internal::BiggestInt kBigInt = static_cast<internal::BiggestInt>(vi);
+		*os << kBigInt;
+	}
+};
+
+}
+}
+
+namespace
+{
+
 TEST(std_primitive_type_specializer_test_suite, test_explicit_integer_type_specializer)
 {
     integer_type v1;
@@ -313,70 +352,70 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_mo
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_not_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); //        10100000 10110011 11100111 11111001
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
     const integer_type v2 = ~v1; // 0x5F4C1806 = 01011111 01001100 00011000 00000110
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
-    EXPECT_EQ(0x5F4C1806, v2.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
+    EXPECT_EQ(static_cast<int>(0x5F4C1806), v2.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_and_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
     const integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
     const integer_type v3 = v1 & v2;   // 10100000 10100000 11100001 11100001 = 0xA0A0E1E1
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
-    EXPECT_EQ(0xA0A0E1E1, v3.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
+    EXPECT_EQ(static_cast<int>(0xA0A0E1E1), v3.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_or_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
     const integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
     const integer_type v3 = v1 | v2;   // 10110011 10110011 11111111 11111111 = 0xB3B3FFFF
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
-    EXPECT_EQ(0xB3B3FFFF, v3.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
+    EXPECT_EQ(static_cast<int>(0xB3B3FFFF), v3.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_xor_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
     const integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
     const integer_type v3 = v1 ^ v2;   // 00010011 00010011 00011110 00011110 = 0x13131E1E
-    EXPECT_EQ(0xA0B3E7F9, v1.get());
-    EXPECT_EQ(0xB3A0F9E7, v2.get());
-    EXPECT_EQ(0x13131E1E, v3.get());
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
+    EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2.get());
+    EXPECT_EQ(static_cast<int>(0x13131E1E), v3.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_left_shift_arithmetic_operator)
 {
     const integer_type v1(0x0AB3E7F9); // 00001010 10110011 11100111 11111001
-    EXPECT_EQ(0x0AB3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1.get());
     const integer_type v2(3);
     EXPECT_EQ(3, v2.get());
     const integer_type v3 = v1 << v2;  // 01010101 10011111 00111111 11001000 = 0x559F3FC8
-    EXPECT_EQ(0x0AB3E7F9, v1.get());
+    EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1.get());
     EXPECT_EQ(3, v2.get());
-    EXPECT_EQ(0x559F3FC8, v3.get());
+    EXPECT_EQ(static_cast<int>(0x559F3FC8), v3.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_right_shift_arithmetic_operator)
 {
     const integer_type v1(0x0AB3E7F0); // 00001010 10110011 11100111 11111000
-    EXPECT_EQ(0x0AB3E7F0, v1.get());
+    EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1.get());
     const integer_type v2(3);
     EXPECT_EQ(3, v2.get());
     const integer_type v3 = v1 >> v2;  // 00000001 01010110 01111100 11111110 = 0x01567CFE
-    EXPECT_EQ(0x0AB3E7F0, v1.get());
+    EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1.get());
     EXPECT_EQ(3, v2.get());
-    EXPECT_EQ(0x01567CFE, v3.get());
+    EXPECT_EQ(static_cast<int>(0x01567CFE), v3.get());
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_equal_to_comparison_operator)
@@ -1199,43 +1238,43 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator)
 {
     const implicit_integer_type v1(0xA0B3E7F9); //        10100000 10110011 11100111 11111001
-    EXPECT_EQ(0xA0B3E7F9, v1);
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
     const implicit_integer_type v2 = ~v1; // 0x5F4C1806 = 01011111 01001100 00011000 00000110
-    EXPECT_EQ(0xA0B3E7F9, v1);
-    EXPECT_EQ(0x5F4C1806, v2);
+    EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+    EXPECT_EQ(static_cast<int>(0x5F4C1806), v2);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = v1 & v2;   // 10100000 10100000 11100001 11100001 = 0xA0A0E1E1
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0xA0A0E1E1, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0xA0A0E1E1), v3);
     }
     {
         const int i1 = 0xA0B3E7F9;         // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, i1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = i1 & v2;   // 10100000 10100000 11100001 11100001 = 0xA0A0E1E1
-        EXPECT_EQ(0xA0B3E7F9, i1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0xA0A0E1E1, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0xA0A0E1E1), v3);
     }
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const int i2 = 0xB3A0F9E7;         // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, i2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
         const implicit_integer_type v3 = v1 & i2;   // 10100000 10100000 11100001 11100001 = 0xA0A0E1E1
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, i2);
-        EXPECT_EQ(0xA0A0E1E1, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
+        EXPECT_EQ(static_cast<int>(0xA0A0E1E1), v3);
     }
 }
 
@@ -1243,33 +1282,33 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = v1 | v2;   // 10110011 10110011 11111111 11111111 = 0xB3B3FFFF
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0xB3B3FFFF, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0xB3B3FFFF), v3);
     }
     {
         const int i1 = 0xA0B3E7F9;         // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, i1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = i1 | v2;   // 10110011 10110011 11111111 11111111 = 0xB3B3FFFF
-        EXPECT_EQ(0xA0B3E7F9, i1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0xB3B3FFFF, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0xB3B3FFFF), v3);
     }
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const int i2 = 0xB3A0F9E7;         // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, i2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
         const implicit_integer_type v3 = v1 | i2;   // 10110011 10110011 11111111 11111111 = 0xB3B3FFFF
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, i2);
-        EXPECT_EQ(0xB3B3FFFF, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
+        EXPECT_EQ(static_cast<int>(0xB3B3FFFF), v3);
     }
 }
 
@@ -1277,33 +1316,33 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = v1 ^ v2;   // 00010011 00010011 00011110 00011110 = 0x13131E1E
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0x13131E1E, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0x13131E1E), v3);
     }
     {
         const int i1 = 0xA0B3E7F9;         // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, i1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
         const implicit_integer_type v2(0xB3A0F9E7); // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, v2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
         const implicit_integer_type v3 = i1 ^ v2;   // 00010011 00010011 00011110 00011110 = 0x13131E1E
-        EXPECT_EQ(0xA0B3E7F9, i1);
-        EXPECT_EQ(0xB3A0F9E7, v2);
-        EXPECT_EQ(0x13131E1E, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), i1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), v2);
+        EXPECT_EQ(static_cast<int>(0x13131E1E), v3);
     }
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
-        EXPECT_EQ(0xA0B3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
         const int i2 = 0xB3A0F9E7;         // 10110011 10100000 11111001 11100111
-        EXPECT_EQ(0xB3A0F9E7, i2);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
         const implicit_integer_type v3 = v1 ^ i2;   // 00010011 00010011 00011110 00011110 = 0x13131E1E
-        EXPECT_EQ(0xA0B3E7F9, v1);
-        EXPECT_EQ(0xB3A0F9E7, i2);
-        EXPECT_EQ(0x13131E1E, v3);
+        EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
+        EXPECT_EQ(static_cast<int>(0xB3A0F9E7), i2);
+        EXPECT_EQ(static_cast<int>(0x13131E1E), v3);
     }
 }
 
@@ -1311,33 +1350,33 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 {
     {
         const implicit_integer_type v1(0x0AB3E7F9); // 00001010 10110011 11100111 11111001
-        EXPECT_EQ(0x0AB3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1);
         const implicit_integer_type v2(3);
         EXPECT_EQ(3, v2);
         const implicit_integer_type v3 = v1 << v2;  // 01010101 10011111 00111111 11001000 = 0x559F3FC8
-        EXPECT_EQ(0x0AB3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1);
         EXPECT_EQ(3, v2);
-        EXPECT_EQ(0x559F3FC8, v3);
+        EXPECT_EQ(static_cast<int>(0x559F3FC8), v3);
     }
     {
         const int i1 = 0x0AB3E7F9;         // 00001010 10110011 11100111 11111001
-        EXPECT_EQ(0x0AB3E7F9, i1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), i1);
         const implicit_integer_type v2(3);
         EXPECT_EQ(3, v2);
         const implicit_integer_type v3 = i1 << v2;  // 01010101 10011111 00111111 11001000 = 0x559F3FC8
-        EXPECT_EQ(0x0AB3E7F9, i1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), i1);
         EXPECT_EQ(3, v2);
-        EXPECT_EQ(0x559F3FC8, v3);
+        EXPECT_EQ(static_cast<int>(0x559F3FC8), v3);
     }
     {
         const implicit_integer_type v1(0x0AB3E7F9); // 00001010 10110011 11100111 11111001
-        EXPECT_EQ(0x0AB3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1);
         const int i2 = 3;
         EXPECT_EQ(3, i2);
         const implicit_integer_type v3 = v1 << i2;  // 01010101 10011111 00111111 11001000 = 0x559F3FC8
-        EXPECT_EQ(0x0AB3E7F9, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1);
         EXPECT_EQ(3, i2);
-        EXPECT_EQ(0x559F3FC8, v3);
+        EXPECT_EQ(static_cast<int>(0x559F3FC8), v3);
     }
 }
 
@@ -1345,33 +1384,33 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 {
     {
         const implicit_integer_type v1(0x0AB3E7F0); // 00001010 10110011 11100111 11111000
-        EXPECT_EQ(0x0AB3E7F0, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1);
         const implicit_integer_type v2(3);
         EXPECT_EQ(3, v2);
         const implicit_integer_type v3 = v1 >> v2;  // 00000001 01010110 01111100 11111110 = 0x01567CFE
-        EXPECT_EQ(0x0AB3E7F0, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1);
         EXPECT_EQ(3, v2);
-        EXPECT_EQ(0x01567CFE, v3);
+        EXPECT_EQ(static_cast<int>(0x01567CFE), v3);
     }
     {
         const int i1 = 0x0AB3E7F0;         // 00001010 10110011 11100111 11111000
-        EXPECT_EQ(0x0AB3E7F0, i1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), i1);
         const implicit_integer_type v2(3);
         EXPECT_EQ(3, v2);
         const implicit_integer_type v3 = i1 >> v2;  // 00000001 01010110 01111100 11111110 = 0x01567CFE
-        EXPECT_EQ(0x0AB3E7F0, i1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), i1);
         EXPECT_EQ(3, v2);
-        EXPECT_EQ(0x01567CFE, v3);
+        EXPECT_EQ(static_cast<int>(0x01567CFE), v3);
     }
     {
         const implicit_integer_type v1(0x0AB3E7F0); // 00001010 10110011 11100111 11111000
-        EXPECT_EQ(0x0AB3E7F0, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1);
         const int i2 = 3;
         EXPECT_EQ(3, i2);
         const implicit_integer_type v3 = v1 >> i2;  // 00000001 01010110 01111100 11111110 = 0x01567CFE
-        EXPECT_EQ(0x0AB3E7F0, v1);
+        EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1);
         EXPECT_EQ(3, i2);
-        EXPECT_EQ(0x01567CFE, v3);
+        EXPECT_EQ(static_cast<int>(0x01567CFE), v3);
     }
 }
 

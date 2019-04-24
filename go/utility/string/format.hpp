@@ -31,7 +31,7 @@ namespace utility
 namespace string
 {
 
-inline std::string format(const std::string fmt_str, ...)  // See implementation note #1
+inline std::string format(const std::string& fmt_str, ...)  // See implementation note #1
 {
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<char[]> formatted;
@@ -44,7 +44,8 @@ inline std::string format(const std::string fmt_str, ...)  // See implementation
 #else
         strcpy(&formatted[0], fmt_str.c_str());
 #endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
-        va_start(ap, fmt_str);
+		const char* f = fmt_str.c_str();
+		va_start(ap, f);
 #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         const int final_n = vsnprintf_s(&formatted[0], n, n, fmt_str.c_str(), ap);
 #else
@@ -63,7 +64,7 @@ inline std::string format(const std::string fmt_str, ...)  // See implementation
     return std::string(formatted.get());
 }
 
-inline std::wstring format(const std::wstring fmt_str, ...)  // See implementation note #1
+inline std::wstring format(const std::wstring& fmt_str, ...)  // See implementation note #1
 {
     int n = ((int)fmt_str.size()) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<wchar_t[]> formatted;
@@ -76,7 +77,8 @@ inline std::wstring format(const std::wstring fmt_str, ...)  // See implementati
 #else
         wcscpy(&formatted[0], fmt_str.c_str());
 #endif  // #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
-        va_start(ap, fmt_str);
+		const wchar_t* f = fmt_str.c_str();
+        va_start(ap, f);
         const int final_n = vswprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
         if(final_n < 0 || final_n >= n)

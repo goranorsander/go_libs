@@ -51,7 +51,7 @@ BOOL tree_control::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
     return bRes;
 }
 
-void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnClick(NMHDR* /*pNMHDR*/, LRESULT* /*pResult*/)
 {
     if(_observer == NULL)
     {
@@ -64,7 +64,7 @@ void tree_control::OnClick(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void tree_control::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnDblclk(NMHDR* /*pNMHDR*/, LRESULT* /*pResult*/)
 {
     if(_observer == NULL)
     {
@@ -77,7 +77,7 @@ void tree_control::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void tree_control::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnRclick(NMHDR* /*pNMHDR*/, LRESULT* /*pResult*/)
 {
     if(_observer == NULL)
     {
@@ -91,7 +91,7 @@ void tree_control::OnRclick(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void tree_control::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnRdblclk(NMHDR* /*pNMHDR*/, LRESULT* /*pResult*/)
 {
     if(_observer == NULL)
     {
@@ -104,7 +104,7 @@ void tree_control::OnRdblclk(NMHDR* pNMHDR, LRESULT* pResult)
     }
 }
 
-void tree_control::OnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
+void tree_control::OnSelchanged(NMHDR* /*pNMHDR*/, LRESULT* /*pResult*/)
 {
     if(_observer == NULL)
     {

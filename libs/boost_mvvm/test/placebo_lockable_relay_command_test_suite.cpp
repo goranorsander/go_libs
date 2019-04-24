@@ -138,12 +138,12 @@ TEST(boost_relay_command_placebo_lockable_test_suite, test_relay_command)
 
     test_relay_command_observer command_observer;
 
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
     command->can_execute_changed.connect(boost::bind(&test_relay_command_observer::on_can_execute_changed, &command_observer, _1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
     EXPECT_FALSE(command_exection_context.can_execute(mst::relay_command::command_parameters_type()));
@@ -152,7 +152,7 @@ TEST(boost_relay_command_placebo_lockable_test_suite, test_relay_command)
     command->execute(mst::relay_command::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
     EXPECT_FALSE(command_exection_context.can_execute(mst::relay_command::command_parameters_type()));
@@ -161,7 +161,7 @@ TEST(boost_relay_command_placebo_lockable_test_suite, test_relay_command)
     command_exection_context.allow_execute(true);
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
     EXPECT_TRUE(command_exection_context.can_execute(mst::relay_command::command_parameters_type()));
@@ -170,7 +170,7 @@ TEST(boost_relay_command_placebo_lockable_test_suite, test_relay_command)
     command->execute(mst::relay_command::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_TRUE(command_exection_context.executed());
     EXPECT_FALSE(command_exection_context.can_execute(mst::relay_command::command_parameters_type()));
@@ -179,7 +179,7 @@ TEST(boost_relay_command_placebo_lockable_test_suite, test_relay_command)
     command->execute(mst::relay_command::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0, command_observer.number_of_can_execute_changes());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_TRUE(command_exection_context.executed());
     EXPECT_FALSE(command_exection_context.can_execute(mst::relay_command::command_parameters_type()));

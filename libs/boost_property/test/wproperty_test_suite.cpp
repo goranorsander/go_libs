@@ -15,9 +15,32 @@
 
 #include <go_boost/property.hpp>
 
+#include <go_gtest/double_without_formatter.hpp>
+
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
 namespace wop = go_boost::property::write_only;
+
+namespace testing
+{
+namespace internal2
+{
+
+template <>
+class TypeWithoutFormatter<p::value_wproperty<double>, kConvertibleToInteger>
+{
+public:
+	static void PrintValue(const p::value_wproperty<double>& value, ::std::ostream* os)
+	{
+		const double vd = value.get();
+		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
+		const internal::BiggestInt kBigInt = static_cast<internal::BiggestInt>(vi);
+		*os << kBigInt;
+	}
+};
+
+}
+}
 
 namespace
 {
@@ -95,7 +118,7 @@ TEST(boost_wproperty_test_suite, value_properties)
     s.max_speed = 9.0;
     s.name = std::string("USS Enterprise (NCC-1701)");
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
@@ -307,7 +330,7 @@ TEST(boost_wproperty_test_suite, reference_properties)
     s.max_speed = s_ms_3;
     s.name = s_n_3;
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
@@ -664,7 +687,7 @@ TEST(boost_wproperty_test_suite, proxy_properties)
     s.max_speed = 9.0;
     s.name = std::string("USS Enterprise (NCC-1701)");
     EXPECT_EQ(430, s.crew_complement);
-    EXPECT_EQ(9.0, s.max_speed);
+    EXPECT_EQ(9.0, s.max_speed.get());
     EXPECT_EQ(std::string("USS Enterprise (NCC-1701)"), s.name());
 
     // Traditional set
