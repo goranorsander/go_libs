@@ -331,7 +331,8 @@ _Pragma message _message_
 
 #define GO_BEGIN_SUPPRESS_ALL_WARNINGS \
 _Pragma("GCC diagnostic push") \
-_Pragma("GCC diagnostic ignored \"-Weverything\"")
+_Pragma("GCC diagnostic ignored \"-Wall\"") \
+_Pragma("GCC diagnostic ignored \"-Wextra\"")
 
 #define GO_END_SUPPRESS_ALL_WARNINGS \
 _Pragma("GCC diagnostic pop")
