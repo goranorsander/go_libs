@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_BOOST_NO_BOOST_PHOENIX)
 GO_BOOST_MESSAGE("Boost.Phoenix is not supported by this compiler")
@@ -43,6 +46,10 @@ private:
     explicit spaceship(const m::wcommand_manager::ptr& command_manager_)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
+        , name(L"name")
+        , captain(L"captain")
+        , impulse_speed_command(L"impulse_speed_command")
+        , warp_speed_command(L"warp_speed_command")
         , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -50,16 +57,16 @@ private:
         , _captain()
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name(L"name")
-        , captain(L"captain")
-        , impulse_speed_command(L"impulse_speed_command")
-        , warp_speed_command(L"warp_speed_command")
     {
     }
 
     spaceship(const m::wcommand_manager::ptr& command_manager_, const std::wstring& name_, const std::wstring& captain_)
         : m::wobservable_object()
         , u::noncopyable_nonmovable()
+        , name(L"name")
+        , captain(L"captain")
+        , impulse_speed_command(L"impulse_speed_command")
+        , warp_speed_command(L"warp_speed_command")
         , _command_manager(command_manager_)
         , _at_impulse_speed(false)
         , _at_warp_speed(false)
@@ -67,10 +74,6 @@ private:
         , _captain(captain_)
         , _impulse_speed_command()
         , _warp_speed_command()
-        , name(L"name")
-        , captain(L"captain")
-        , impulse_speed_command(L"impulse_speed_command")
-        , warp_speed_command(L"warp_speed_command")
     {
     }
 

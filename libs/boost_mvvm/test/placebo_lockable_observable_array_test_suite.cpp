@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/foreach.hpp>
 
@@ -35,15 +38,15 @@ public:
 
     array_observer()
         : _last_action(m::undefined_notify_container_changed_action)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -88,64 +91,64 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
 
 private:
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(boost_observable_array_placebo_lockable_test_suite, test_create)
@@ -154,8 +157,8 @@ TEST(boost_observable_array_placebo_lockable_test_suite, test_create)
     array_observer<int, 7> o;
     o.connect(a);
 
-    EXPECT_EQ(7, a->size());
-    EXPECT_EQ(7, a->max_size());
+    EXPECT_EQ(7u, a->size());
+    EXPECT_EQ(7u, a->max_size());
 
     for(int i = 0; i < 7; i++)
     {
@@ -167,24 +170,24 @@ TEST(boost_observable_array_placebo_lockable_test_suite, test_create)
         EXPECT_EQ((*a)[i], i);
     }
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *a)
     {
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::undefined_notify_container_changed_action, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 }

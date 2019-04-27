@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/utility/container/size.hpp>
 #include <go_boost/utility/iterator/try_move_backward.hpp>
@@ -46,7 +49,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_arra
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -81,7 +84,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_dequ
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -117,7 +120,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_forw
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -153,7 +156,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_list
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -188,7 +191,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_vect
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -223,7 +226,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_map)
     test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, it->first);
@@ -263,7 +266,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_set)
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -298,7 +301,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_mult
     test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, it->first);
@@ -338,7 +341,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_mult
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -373,7 +376,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
     test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(true, it != container.end());
@@ -404,7 +407,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(true, it != container.end());
@@ -435,7 +438,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
     test_container_type container = boost::assign::map_list_of<int, int>(1, 11)(2, 12)(3, 13)(4, 14)(5, 15)(6, 16)(7, 17)(8, 18)(9, 19)(10, 20);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(true, it != container.end());
@@ -466,7 +469,7 @@ TEST(boost_try_move_iterator_backward_test_suite, test_try_move_backward_on_unor
     test_container_type container = boost::assign::list_of<int>(1)(2)(3)(4)(5)(6)(7)(8)(9)(10);
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(true, it != container.end());

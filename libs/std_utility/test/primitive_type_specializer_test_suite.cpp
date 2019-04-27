@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -900,14 +903,14 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_default_value)
 {
     const implicit_integer_type v;
-    EXPECT_EQ(42, v);
+    EXPECT_EQ(42u, v);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_construction)
 {
     {
         const implicit_integer_type v(0);
-        EXPECT_EQ(0, v);
+        EXPECT_EQ(0u, v);
     }
     {
         const implicit_integer_type v1(1);
@@ -1028,9 +1031,9 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     }
     {
         implicit_integer_type v;
-        EXPECT_EQ(42, v);
+        EXPECT_EQ(42u, v);
         v %= 10;
-        EXPECT_EQ(2, v);
+        EXPECT_EQ(2u, v);
     }
 }
 
@@ -1157,10 +1160,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     EXPECT_EQ(142, v3);
     const implicit_integer_type v4 = v3 + 50;
     EXPECT_EQ(142, v3);
-    EXPECT_EQ(192, v4);
+    EXPECT_EQ(192u, v4);
     const implicit_integer_type v5 = 50 + v4;
-    EXPECT_EQ(192, v4);
-    EXPECT_EQ(242, v5);
+    EXPECT_EQ(192u, v4);
+    EXPECT_EQ(242u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_subtraction_arithmetic_operator)
@@ -1175,10 +1178,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     EXPECT_EQ(58, v3);
     const implicit_integer_type v4 = v3 - 50;
     EXPECT_EQ(58, v3);
-    EXPECT_EQ(8, v4);
+    EXPECT_EQ(8u, v4);
     const implicit_integer_type v5 = 50 - v4;
-    EXPECT_EQ(8, v4);
-    EXPECT_EQ(42, v5);
+    EXPECT_EQ(8u, v4);
+    EXPECT_EQ(42u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_multiplication_arithmetic_operator)
@@ -1193,10 +1196,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     EXPECT_EQ(420, v3);
     const implicit_integer_type v4 = v3 * 5;
     EXPECT_EQ(420, v3);
-    EXPECT_EQ(2100, v4);
+    EXPECT_EQ(2100u, v4);
     const implicit_integer_type v5 = 5 * v4;
-    EXPECT_EQ(2100, v4);
-    EXPECT_EQ(10500, v5);
+    EXPECT_EQ(2100u, v4);
+    EXPECT_EQ(10500u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_division_arithmetic_operator)
@@ -1211,10 +1214,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     EXPECT_EQ(2100, v3);
     const implicit_integer_type v4 = v3 / 5;
     EXPECT_EQ(2100, v3);
-    EXPECT_EQ(420, v4);
+    EXPECT_EQ(420u, v4);
     const implicit_integer_type v5 = 4200 / v4;
-    EXPECT_EQ(420, v4);
-    EXPECT_EQ(10, v5);
+    EXPECT_EQ(420u, v4);
+    EXPECT_EQ(10u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_modulo_arithmetic_operator)
@@ -1229,10 +1232,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     EXPECT_EQ(30, v3);
     const implicit_integer_type v4 = v2 % 5;
     EXPECT_EQ(42, v2);
-    EXPECT_EQ(2, v4);
+    EXPECT_EQ(2u, v4);
     const implicit_integer_type v5 = 100 % v3;
     EXPECT_EQ(30, v3);
-    EXPECT_EQ(10, v5);
+    EXPECT_EQ(10u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator)
@@ -1995,10 +1998,10 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
     EXPECT_EQ(12.0, v3);
     const implicit_floating_point_type v4 = v2 % 5;
     EXPECT_EQ(47.0, v2);
-    EXPECT_EQ(2, v4);
+    EXPECT_EQ(2u, v4);
     const implicit_floating_point_type v5 = 100.0 % v3;
     EXPECT_EQ(12, v3);
-    EXPECT_EQ(4, v5);
+    EXPECT_EQ(4u, v5);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_equal_to_comparison_operator)

@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11_CODECVT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")

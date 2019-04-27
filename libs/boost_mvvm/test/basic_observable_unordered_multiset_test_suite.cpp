@@ -8,8 +8,12 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+
 #include <go_boost/mvvm.hpp>
 #include <go_boost/utility.hpp>
 
@@ -30,15 +34,15 @@ public:
 
     unordered_multiset_observer()
         : _last_action(m::undefined_notify_container_changed_action)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -83,64 +87,64 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
 
 private:
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_single_element)
@@ -150,40 +154,40 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_single_el
     unordered_multiset_observer<int> o;
 
     // TODO: Find a way to test insert without using insert to prepare the test
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
     s->insert(1);
     s->insert(2);
     s->insert(4);
     s->insert(5);
     s->insert(6);
     s->insert(7);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     o.connect(s);
 
     s->insert(3);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const int& i, *s)
     {
         sum += i;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(28, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(1, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(1u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_single_element_with_hint)
@@ -192,37 +196,37 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_single_el
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
     s->insert(1);
     s->insert(2);
     s->insert(5);
     s->insert(7);
-    EXPECT_EQ(4, s->size());
+    EXPECT_EQ(4u, s->size());
 
     o.connect(s);
 
     m::basic_observable_unordered_multiset<int, u::u8string>::iterator it = s->insert(s->begin(), 3);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     it = s->insert(it, 4);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     it = s->insert(it, 4);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     it = s->insert(it, 6);
-    EXPECT_EQ(8, s->size());
+    EXPECT_EQ(8u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(8, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(8u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_range)
@@ -232,35 +236,35 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_range)
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s2 = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s1->size());
-    EXPECT_EQ(0, s2->size());
+    EXPECT_EQ(0u, s1->size());
+    EXPECT_EQ(0u, s2->size());
 
     s1->insert(1);
     s1->insert(2);
     s1->insert(5);
     s1->insert(7);
-    EXPECT_EQ(4, s1->size());
+    EXPECT_EQ(4u, s1->size());
 
     s2->insert(3);
     s2->insert(4);
     s2->insert(6);
-    EXPECT_EQ(3, s2->size());
+    EXPECT_EQ(3u, s2->size());
 
     o.connect(s2);
 
     s2->insert(s1->begin(), s1->end());
-    EXPECT_EQ(7, s2->size());
+    EXPECT_EQ(7u, s2->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(4, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(4u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -271,30 +275,30 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_insert_initializ
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il1 = {1, 2, 5, 7};
     *s = il1;
-    EXPECT_EQ(4, s->size());
+    EXPECT_EQ(4u, s->size());
 
     const std::initializer_list<int> il2 = {3, 4, 6};
-    EXPECT_EQ(3, il2.size());
+    EXPECT_EQ(3u, il2.size());
 
     o.connect(s);
 
     s->insert(il2);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -305,7 +309,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_position)
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     s->insert(1);
     s->insert(2);
@@ -314,28 +318,28 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_position)
     s->insert(5);
     s->insert(6);
     s->insert(7);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     m::basic_observable_unordered_multiset<int, u::u8string>::iterator it1 = s->begin();
     std::advance(it1, 3);
     m::basic_observable_unordered_multiset<int, u::u8string>::iterator it2 = s->erase(it1);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     s->erase(it2);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_value)
@@ -344,7 +348,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_value)
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     s->insert(1);
     s->insert(2);
@@ -353,37 +357,37 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_value)
     s->insert(5);
     s->insert(6);
     s->insert(7);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     s->erase(4);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     s->erase(5);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     typedef m::basic_observable_unordered_multiset<int, u::u8string> observable_unordered_multiset_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multiset_type::value_type& i, *s)
     {
         sum += i;
         ++count;
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
     EXPECT_EQ(19, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_range)
@@ -392,7 +396,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_range)
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     s->insert(1);
     s->insert(2);
@@ -401,7 +405,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_range)
     s->insert(5);
     s->insert(6);
     s->insert(7);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
@@ -411,18 +415,18 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_erase_range)
     std::advance(end, 5);
 
     s->erase(begin, end);
-    EXPECT_EQ(2, s->size());
+    EXPECT_EQ(2u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(1, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(2, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(5, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(5, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(1u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(2u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(5u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(5u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_swap)
@@ -433,15 +437,15 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_swap)
     unordered_multiset_observer<int> o1;
     unordered_multiset_observer<int> o2;
 
-    EXPECT_EQ(0, s1->size());
-    EXPECT_EQ(0, s2->size());
+    EXPECT_EQ(0u, s1->size());
+    EXPECT_EQ(0u, s2->size());
 
     s1->insert(1);
     s1->insert(2);
     s1->insert(3);
     s1->insert(4);
     s1->insert(5);
-    EXPECT_EQ(5, s1->size());
+    EXPECT_EQ(5u, s1->size());
 
     s2->insert(10);
     s2->insert(20);
@@ -450,23 +454,23 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_swap)
     s2->insert(50);
     s2->insert(60);
     s2->insert(70);
-    EXPECT_EQ(7, s2->size());
+    EXPECT_EQ(7u, s2->size());
 
     o1.connect(s1);
     o2.connect(s2);
 
     s1->swap(*s2);
-    EXPECT_EQ(7, s1->size());
-    EXPECT_EQ(5, s2->size());
+    EXPECT_EQ(7u, s1->size());
+    EXPECT_EQ(5u, s2->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const int& i, *s1)
     {
         sum += i;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(280, sum);
 
     count = 0;
@@ -476,30 +480,30 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_swap)
         sum += i;
         ++count;
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
     EXPECT_EQ(15, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
-    EXPECT_EQ(0, o1.action_add_count());
-    EXPECT_EQ(0, o1.action_remove_count());
-    EXPECT_EQ(0, o1.action_reset_count());
-    EXPECT_EQ(1, o1.action_swap_count());
-    EXPECT_EQ(7, o1.last_change_new_size());
-    EXPECT_EQ(7, o1.last_change_added());
-    EXPECT_EQ(5, o1.last_change_removed());
-    EXPECT_EQ(7, o1.total_change_added());
-    EXPECT_EQ(5, o1.total_change_removed());
+    EXPECT_EQ(0u, o1.action_add_count());
+    EXPECT_EQ(0u, o1.action_remove_count());
+    EXPECT_EQ(0u, o1.action_reset_count());
+    EXPECT_EQ(1u, o1.action_swap_count());
+    EXPECT_EQ(7u, o1.last_change_new_size());
+    EXPECT_EQ(7u, o1.last_change_added());
+    EXPECT_EQ(5u, o1.last_change_removed());
+    EXPECT_EQ(7u, o1.total_change_added());
+    EXPECT_EQ(5u, o1.total_change_removed());
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
-    EXPECT_EQ(0, o2.action_add_count());
-    EXPECT_EQ(0, o2.action_remove_count());
-    EXPECT_EQ(0, o2.action_reset_count());
-    EXPECT_EQ(1, o2.action_swap_count());
-    EXPECT_EQ(5, o2.last_change_new_size());
-    EXPECT_EQ(5, o2.last_change_added());
-    EXPECT_EQ(7, o2.last_change_removed());
-    EXPECT_EQ(5, o2.total_change_added());
-    EXPECT_EQ(7, o2.total_change_removed());
+    EXPECT_EQ(0u, o2.action_add_count());
+    EXPECT_EQ(0u, o2.action_remove_count());
+    EXPECT_EQ(0u, o2.action_reset_count());
+    EXPECT_EQ(1u, o2.action_swap_count());
+    EXPECT_EQ(5u, o2.last_change_new_size());
+    EXPECT_EQ(5u, o2.last_change_added());
+    EXPECT_EQ(7u, o2.last_change_removed());
+    EXPECT_EQ(5u, o2.total_change_added());
+    EXPECT_EQ(7u, o2.total_change_removed());
 }
 
 TEST(boost_basic_observable_unordered_multiset_test_suite, test_clear)
@@ -508,7 +512,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_clear)
     m::basic_observable_unordered_multiset<int, u::u8string>::ptr s = m::basic_observable_unordered_multiset<int, u::u8string>::create();
     unordered_multiset_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     s->insert(1);
     s->insert(2);
@@ -517,23 +521,23 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_clear)
     s->insert(5);
     s->insert(6);
     s->insert(7);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     s->clear();
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(1, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(7, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(7, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(1u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(7u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(7u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -547,7 +551,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_emplace)
     s->insert(1);
     s->insert(2);
     s->insert(3);
-    EXPECT_EQ(3, s->size());
+    EXPECT_EQ(3u, s->size());
 
     o.connect(s);
 
@@ -564,26 +568,26 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_emplace)
     EXPECT_EQ(6, *it);
 
     typedef m::basic_observable_unordered_multiset<int, u::u8string> observable_unordered_multiset_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multiset_type::value_type& i, *s)
     {
         sum += i;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(25, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -599,7 +603,7 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_emplace_hint)
     s->insert(1);
     s->insert(2);
     s->insert(5);
-    EXPECT_EQ(3, s->size());
+    EXPECT_EQ(3u, s->size());
 
     o.connect(s);
 
@@ -615,18 +619,18 @@ TEST(boost_basic_observable_unordered_multiset_test_suite, test_emplace_hint)
     it = s->emplace_hint(it, 6);
     EXPECT_EQ(6, *it);
 
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)

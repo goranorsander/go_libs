@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/utility.hpp>
@@ -31,15 +34,15 @@ public:
 
     unordered_map_observer()
         : _last_action(m::undefined_notify_container_changed_action)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -84,64 +87,64 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
 
 private:
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_single_element)
@@ -150,41 +153,41 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_sin
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
     (*m)[1] = 10;
     (*m)[2] = 20;
     (*m)[4] = 40;
     (*m)[5] = 50;
     (*m)[6] = 60;
     (*m)[7] = 70;
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     o.connect(m);
 
     m->insert(m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(3, 30));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     typedef m::observable_unordered_map<int, int> observable_unordered_map_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(280, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(1, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(1u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_single_element_with_hint)
@@ -193,48 +196,48 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_sin
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
     (*m)[1] = 10;
     (*m)[2] = 20;
     (*m)[5] = 50;
     (*m)[7] = 70;
-    EXPECT_EQ(4, m->size());
+    EXPECT_EQ(4u, m->size());
 
     o.connect(m);
 
     m::observable_unordered_map<int, int, u::placebo_lockable>::iterator it = m->insert(m->begin(), m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(3, 30));
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     it = m->insert(it, m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(4, 40));
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     it = m->insert(it, m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(4, 40));
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     it = m->insert(it, m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(6, 60));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     typedef m::observable_unordered_map<int, int> observable_unordered_map_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(280, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_range)
@@ -244,35 +247,35 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_ran
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m2 = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m1->size());
-    EXPECT_EQ(0, m2->size());
+    EXPECT_EQ(0u, m1->size());
+    EXPECT_EQ(0u, m2->size());
 
     (*m1)[1] = 10;
     (*m1)[2] = 20;
     (*m1)[5] = 50;
     (*m1)[7] = 70;
-    EXPECT_EQ(4, m1->size());
+    EXPECT_EQ(4u, m1->size());
 
     (*m2)[3] = 30;
     (*m2)[4] = 40;
     (*m2)[6] = 60;
-    EXPECT_EQ(3, m2->size());
+    EXPECT_EQ(3u, m2->size());
 
     o.connect(m2);
 
     m2->insert(m1->begin(), m1->end());
-    EXPECT_EQ(7, m2->size());
+    EXPECT_EQ(7u, m2->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(4, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(4u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -283,7 +286,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_ini
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     const std::initializer_list<m::observable_unordered_map<int, int, u::placebo_lockable>::value_type> il1 =
     {
@@ -293,7 +296,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_ini
         m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(7, 70)
     };
     *m = il1;
-    EXPECT_EQ(4, m->size());
+    EXPECT_EQ(4u, m->size());
 
     const std::initializer_list<m::observable_unordered_map<int, int, u::placebo_lockable>::value_type> il2 =
     {
@@ -301,23 +304,23 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_insert_ini
         m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(4, 40),
         m::observable_unordered_map<int, int, u::placebo_lockable>::value_type(6, 60)
     };
-    EXPECT_EQ(3, il2.size());
+    EXPECT_EQ(3u, il2.size());
 
     o.connect(m);
 
     m->insert(il2);
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -328,7 +331,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_posi
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     (*m)[1] = 10;
     (*m)[2] = 20;
@@ -337,28 +340,28 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_posi
     (*m)[5] = 50;
     (*m)[6] = 60;
     (*m)[7] = 70;
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m::observable_unordered_map<int, int, u::placebo_lockable>::iterator it1 = m->begin();
     std::advance(it1, 3);
     m::observable_unordered_map<int, int, u::placebo_lockable>::iterator it2 = m->erase(it1);
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_value)
@@ -367,7 +370,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_valu
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     (*m)[1] = 10;
     (*m)[2] = 20;
@@ -376,37 +379,37 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_valu
     (*m)[5] = 50;
     (*m)[6] = 60;
     (*m)[7] = 70;
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m->erase(4);
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     m->erase(5);
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     typedef m::observable_unordered_map<int, int> observable_unordered_map_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
     EXPECT_EQ(190, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_range)
@@ -415,7 +418,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_rang
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     (*m)[1] = 10;
     (*m)[2] = 20;
@@ -424,7 +427,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_rang
     (*m)[5] = 50;
     (*m)[6] = 60;
     (*m)[7] = 70;
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
@@ -434,18 +437,18 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_erase_rang
     std::advance(end, 5);
 
     m->erase(begin, end);
-    EXPECT_EQ(2, m->size());
+    EXPECT_EQ(2u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(1, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(2, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(5, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(5, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(1u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(2u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(5u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(5u, o.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_swap)
@@ -456,15 +459,15 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_swap)
     unordered_map_observer<int, int> o1;
     unordered_map_observer<int, int> o2;
 
-    EXPECT_EQ(0, m1->size());
-    EXPECT_EQ(0, m2->size());
+    EXPECT_EQ(0u, m1->size());
+    EXPECT_EQ(0u, m2->size());
 
     (*m1)[1] = 10;
     (*m1)[2] = 20;
     (*m1)[3] = 30;
     (*m1)[4] = 40;
     (*m1)[5] = 50;
-    EXPECT_EQ(5, m1->size());
+    EXPECT_EQ(5u, m1->size());
 
     (*m2)[10] = 100;
     (*m2)[20] = 200;
@@ -473,24 +476,24 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_swap)
     (*m2)[50] = 500;
     (*m2)[60] = 600;
     (*m2)[70] = 700;
-    EXPECT_EQ(7, m2->size());
+    EXPECT_EQ(7u, m2->size());
 
     o1.connect(m1);
     o2.connect(m2);
 
     m1->swap(*m2);
-    EXPECT_EQ(7, m1->size());
-    EXPECT_EQ(5, m2->size());
+    EXPECT_EQ(7u, m1->size());
+    EXPECT_EQ(5u, m2->size());
 
     typedef m::observable_unordered_map<int, int> observable_unordered_map_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m1)
     {
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
     EXPECT_EQ(2800, sum);
 
     count = 0;
@@ -500,30 +503,30 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_swap)
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
     EXPECT_EQ(150, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
-    EXPECT_EQ(0, o1.action_add_count());
-    EXPECT_EQ(0, o1.action_remove_count());
-    EXPECT_EQ(0, o1.action_reset_count());
-    EXPECT_EQ(1, o1.action_swap_count());
-    EXPECT_EQ(7, o1.last_change_new_size());
-    EXPECT_EQ(7, o1.last_change_added());
-    EXPECT_EQ(5, o1.last_change_removed());
-    EXPECT_EQ(7, o1.total_change_added());
-    EXPECT_EQ(5, o1.total_change_removed());
+    EXPECT_EQ(0u, o1.action_add_count());
+    EXPECT_EQ(0u, o1.action_remove_count());
+    EXPECT_EQ(0u, o1.action_reset_count());
+    EXPECT_EQ(1u, o1.action_swap_count());
+    EXPECT_EQ(7u, o1.last_change_new_size());
+    EXPECT_EQ(7u, o1.last_change_added());
+    EXPECT_EQ(5u, o1.last_change_removed());
+    EXPECT_EQ(7u, o1.total_change_added());
+    EXPECT_EQ(5u, o1.total_change_removed());
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
-    EXPECT_EQ(0, o2.action_add_count());
-    EXPECT_EQ(0, o2.action_remove_count());
-    EXPECT_EQ(0, o2.action_reset_count());
-    EXPECT_EQ(1, o2.action_swap_count());
-    EXPECT_EQ(5, o2.last_change_new_size());
-    EXPECT_EQ(5, o2.last_change_added());
-    EXPECT_EQ(7, o2.last_change_removed());
-    EXPECT_EQ(5, o2.total_change_added());
-    EXPECT_EQ(7, o2.total_change_removed());
+    EXPECT_EQ(0u, o2.action_add_count());
+    EXPECT_EQ(0u, o2.action_remove_count());
+    EXPECT_EQ(0u, o2.action_reset_count());
+    EXPECT_EQ(1u, o2.action_swap_count());
+    EXPECT_EQ(5u, o2.last_change_new_size());
+    EXPECT_EQ(5u, o2.last_change_added());
+    EXPECT_EQ(7u, o2.last_change_removed());
+    EXPECT_EQ(5u, o2.total_change_added());
+    EXPECT_EQ(7u, o2.total_change_removed());
 }
 
 TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_clear)
@@ -532,7 +535,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_clear)
     m::observable_unordered_map<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_map<int, int, u::placebo_lockable>::create();
     unordered_map_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     (*m)[1] = 10;
     (*m)[2] = 20;
@@ -541,23 +544,23 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_clear)
     (*m)[5] = 50;
     (*m)[6] = 60;
     (*m)[7] = 70;
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m->clear();
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(1, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(7, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(7, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(1u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(7u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(7u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -571,7 +574,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_emplace)
     (*m)[1] = 10;
     (*m)[2] = 20;
     (*m)[3] = 30;
-    EXPECT_EQ(3, m->size());
+    EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
@@ -596,26 +599,26 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_emplace)
     EXPECT_TRUE(ret.second);
 
     typedef m::observable_unordered_map<int, int> observable_unordered_map_type;
-    int count = 0;
+    unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
     {
         sum += i.second;
         ++count;
     }
-    EXPECT_EQ(6, count);
+    EXPECT_EQ(6u, count);
     EXPECT_EQ(210, sum);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(6u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -631,7 +634,7 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_emplace_hi
     (*m)[1] = 10;
     (*m)[2] = 20;
     (*m)[5] = 50;
-    EXPECT_EQ(3, m->size());
+    EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
@@ -651,18 +654,18 @@ TEST(boost_observable_unordered_map_placebo_lockable_test_suite, test_emplace_hi
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(6u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)

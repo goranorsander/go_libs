@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -30,7 +33,7 @@ TEST(std_stopwatch_test_suite, test_create_stopwatch)
 
     b::stopwatch sw;
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(0, sw.count());
+    EXPECT_EQ(0u, sw.count());
     EXPECT_EQ(zero_duration, sw.last_duration());
     EXPECT_EQ(zero_duration, sw.total_duration());
     EXPECT_EQ(zero_duration, sw.average_duration());
@@ -45,7 +48,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_start_stop)
 
     sw.start();
     EXPECT_TRUE(sw.started());
-    EXPECT_EQ(0, sw.count());
+    EXPECT_EQ(0u, sw.count());
     EXPECT_EQ(zero_duration, sw.last_duration());
     EXPECT_EQ(zero_duration, sw.total_duration());
     EXPECT_EQ(zero_duration, sw.average_duration());
@@ -54,7 +57,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_start_stop)
 
     sw.stop();
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(1, sw.count());
+    EXPECT_EQ(1u, sw.count());
     EXPECT_NE(zero_duration, sw.last_duration());
     EXPECT_NE(zero_duration, sw.total_duration());
     EXPECT_NE(zero_duration, sw.average_duration());
@@ -69,7 +72,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_reset)
 
     sw.start();
     EXPECT_TRUE(sw.started());
-    EXPECT_EQ(0, sw.count());
+    EXPECT_EQ(0u, sw.count());
     EXPECT_EQ(zero_duration, sw.last_duration());
     EXPECT_EQ(zero_duration, sw.total_duration());
     EXPECT_EQ(zero_duration, sw.average_duration());
@@ -78,14 +81,14 @@ TEST(std_stopwatch_test_suite, test_stopwatch_reset)
 
     sw.stop();
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(1, sw.count());
+    EXPECT_EQ(1u, sw.count());
     EXPECT_NE(zero_duration, sw.last_duration());
     EXPECT_NE(zero_duration, sw.total_duration());
     EXPECT_NE(zero_duration, sw.average_duration());
 
     sw.reset();
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(0, sw.count());
+    EXPECT_EQ(0u, sw.count());
     EXPECT_EQ(zero_duration, sw.last_duration());
     EXPECT_EQ(zero_duration, sw.total_duration());
     EXPECT_EQ(zero_duration, sw.average_duration());
@@ -101,7 +104,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_guard)
     {
         b::stopwatch_guard g(sw);
         EXPECT_TRUE(sw.started());
-        EXPECT_EQ(0, sw.count());
+        EXPECT_EQ(0u, sw.count());
         EXPECT_EQ(zero_duration, sw.last_duration());
         EXPECT_EQ(zero_duration, sw.total_duration());
         EXPECT_EQ(zero_duration, sw.average_duration());
@@ -110,7 +113,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_guard)
     }
 
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(1, sw.count());
+    EXPECT_EQ(1u, sw.count());
     EXPECT_NE(zero_duration, sw.last_duration());
     EXPECT_NE(zero_duration, sw.total_duration());
     EXPECT_NE(zero_duration, sw.average_duration());
@@ -145,7 +148,7 @@ TEST(std_stopwatch_test_suite, test_stopwatch_start_stop_five_times)
     }
 
     EXPECT_FALSE(sw.started());
-    EXPECT_EQ(5, sw.count());
+    EXPECT_EQ(5u, sw.count());
     EXPECT_NE(zero_duration, sw.last_duration());
     EXPECT_NE(zero_duration, sw.total_duration());
     EXPECT_NE(zero_duration, sw.average_duration());

@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #define GO_TEST_DEFINE_VALUE abc123
 

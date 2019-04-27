@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/foreach.hpp>
 
@@ -35,15 +38,15 @@ public:
 
     deque_observer()
         : _last_action(m::undefined_notify_container_changed_action)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -88,64 +91,64 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
 
 private:
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(boost_basic_observable_deque_test_suite, test_assign_range)
@@ -154,31 +157,31 @@ TEST(boost_basic_observable_deque_test_suite, test_assign_range)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     o.connect(d);
 
     d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(7, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(7, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(7u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(7u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_assign_initializer_list)
@@ -187,32 +190,32 @@ TEST(boost_basic_observable_deque_test_suite, test_assign_initializer_list)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     o.connect(d);
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
     d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(7, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(7, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(7u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(7u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_assign_fill)
@@ -222,40 +225,40 @@ TEST(boost_basic_observable_deque_test_suite, test_assign_fill)
     m::basic_observable_deque<int, u::u8string>::ptr d2 = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d1->size());
-    EXPECT_EQ(0, d2->size());
+    EXPECT_EQ(0u, d1->size());
+    EXPECT_EQ(0u, d2->size());
 
     o.connect(d2);
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
     d1->assign(a, a + 7);
-    EXPECT_EQ(7, d1->size());
-    EXPECT_EQ(0, d2->size());
+    EXPECT_EQ(7u, d1->size());
+    EXPECT_EQ(0u, d2->size());
 
     m::basic_observable_deque<int, u::u8string>::iterator it = d1->begin() + 1;
 
     d2->assign(it, d1->end() - 1);
-    EXPECT_EQ(7, d1->size());
-    EXPECT_EQ(5, d2->size());
+    EXPECT_EQ(7u, d1->size());
+    EXPECT_EQ(5u, d2->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d2)
     {
         ++count;
-        EXPECT_EQ(count + 1, i);
+        EXPECT_EQ(static_cast<int>(count) + 1, i);
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(5, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(5, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(5u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(5u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_push_back)
@@ -264,37 +267,37 @@ TEST(boost_basic_observable_deque_test_suite, test_push_back)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     o.connect(d);
 
     d->push_back(1);
-    EXPECT_EQ(1, d->size());
+    EXPECT_EQ(1u, d->size());
 
     d->push_back(2);
-    EXPECT_EQ(2, d->size());
+    EXPECT_EQ(2u, d->size());
 
     d->push_back(3);
-    EXPECT_EQ(3, d->size());
+    EXPECT_EQ(3u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(3, count);
+    EXPECT_EQ(3u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(3, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(3u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_push_front)
@@ -303,37 +306,37 @@ TEST(boost_basic_observable_deque_test_suite, test_push_front)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     o.connect(d);
 
     d->push_front(3);
-    EXPECT_EQ(1, d->size());
+    EXPECT_EQ(1u, d->size());
 
     d->push_front(2);
-    EXPECT_EQ(2, d->size());
+    EXPECT_EQ(2u, d->size());
 
     d->push_front(1);
-    EXPECT_EQ(3, d->size());
+    EXPECT_EQ(3u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(3, count);
+    EXPECT_EQ(3u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(3, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(3u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_pop_back)
@@ -342,40 +345,40 @@ TEST(boost_basic_observable_deque_test_suite, test_pop_back)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     d->pop_back();
-    EXPECT_EQ(6, d->size());
+    EXPECT_EQ(6u, d->size());
 
     d->pop_back();
-    EXPECT_EQ(5, d->size());
+    EXPECT_EQ(5u, d->size());
 
     d->pop_back();
-    EXPECT_EQ(4, d->size());
+    EXPECT_EQ(4u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
     }
-    EXPECT_EQ(4, count);
+    EXPECT_EQ(4u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(3, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(4, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(3, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(3u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(4u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(3u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_pop_front)
@@ -384,40 +387,40 @@ TEST(boost_basic_observable_deque_test_suite, test_pop_front)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     d->pop_front();
-    EXPECT_EQ(6, d->size());
+    EXPECT_EQ(6u, d->size());
 
     d->pop_front();
-    EXPECT_EQ(5, d->size());
+    EXPECT_EQ(5u, d->size());
 
     d->pop_front();
-    EXPECT_EQ(4, d->size());
+    EXPECT_EQ(4u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
         EXPECT_EQ(47, i);
     }
-    EXPECT_EQ(4, count);
+    EXPECT_EQ(4u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(3, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(4, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(3, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(3u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(4u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(3u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_insert_single_element)
@@ -426,35 +429,35 @@ TEST(boost_basic_observable_deque_test_suite, test_insert_single_element)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
     const int a[] = {1, 2, 4, 5, 6, 7};
     d->assign(a, a + 6);
-    EXPECT_EQ(6, d->size());
+    EXPECT_EQ(6u, d->size());
 
     o.connect(d);
 
     m::basic_observable_deque<int, u::u8string>::iterator it = d->begin();
     d->insert(it + 2, 3);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(1, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(1u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_insert_fill)
@@ -463,16 +466,16 @@ TEST(boost_basic_observable_deque_test_suite, test_insert_fill)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     d->assign(7, 47);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     m::basic_observable_deque<int, u::u8string>::iterator it = d->begin();
     d->insert(it + 3, 3, 74);
-    EXPECT_EQ(10, d->size());
+    EXPECT_EQ(10u, d->size());
 
     EXPECT_EQ(47, (*d)[0]);
     EXPECT_EQ(47, (*d)[1]);
@@ -486,15 +489,15 @@ TEST(boost_basic_observable_deque_test_suite, test_insert_fill)
     EXPECT_EQ(47, (*d)[9]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(10, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(10u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_insert_range)
@@ -504,20 +507,20 @@ TEST(boost_basic_observable_deque_test_suite, test_insert_range)
     m::basic_observable_deque<int, u::u8string>::ptr d2 = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d1->size());
+    EXPECT_EQ(0u, d1->size());
 
     d1->assign(3, 74);
-    EXPECT_EQ(3, d1->size());
+    EXPECT_EQ(3u, d1->size());
 
-    EXPECT_EQ(0, d2->size());
+    EXPECT_EQ(0u, d2->size());
     d2->assign(7, 47);
-    EXPECT_EQ(7, d2->size());
+    EXPECT_EQ(7u, d2->size());
 
     o.connect(d2);
 
     m::basic_observable_deque<int, u::u8string>::iterator it = d2->begin();
     d2->insert(it + 3, d1->begin(), d1->end());
-    EXPECT_EQ(10, d2->size());
+    EXPECT_EQ(10u, d2->size());
 
     EXPECT_EQ(47, (*d2)[0]);
     EXPECT_EQ(47, (*d2)[1]);
@@ -531,15 +534,15 @@ TEST(boost_basic_observable_deque_test_suite, test_insert_range)
     EXPECT_EQ(47, (*d2)[9]);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(10, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(10u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_erase_position)
@@ -548,20 +551,20 @@ TEST(boost_basic_observable_deque_test_suite, test_erase_position)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
     d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     m::basic_observable_deque<int, u::u8string>::iterator it1 = d->begin();
     m::basic_observable_deque<int, u::u8string>::iterator it2 = d->erase(it1 + 3);
-    EXPECT_EQ(6, d->size());
+    EXPECT_EQ(6u, d->size());
 
     d->erase(it2);
-    EXPECT_EQ(5, d->size());
+    EXPECT_EQ(5u, d->size());
 
     EXPECT_EQ(1, (*d)[0]);
     EXPECT_EQ(2, (*d)[1]);
@@ -570,15 +573,15 @@ TEST(boost_basic_observable_deque_test_suite, test_erase_position)
     EXPECT_EQ(7, (*d)[4]);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_erase_range)
@@ -587,30 +590,30 @@ TEST(boost_basic_observable_deque_test_suite, test_erase_range)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
     d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     d->erase(d->begin() + 1, d->end() - 1);
-    EXPECT_EQ(2, d->size());
+    EXPECT_EQ(2u, d->size());
 
     EXPECT_EQ(1, (*d)[0]);
     EXPECT_EQ(7, (*d)[1]);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(1, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(2, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(5, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(5, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(1u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(2u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(5u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(5u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_swap)
@@ -621,28 +624,28 @@ TEST(boost_basic_observable_deque_test_suite, test_swap)
     deque_observer<int> o1;
     deque_observer<int> o2;
 
-    EXPECT_EQ(0, d1->size());
-    EXPECT_EQ(0, d2->size());
+    EXPECT_EQ(0u, d1->size());
+    EXPECT_EQ(0u, d2->size());
 
     d1->assign(5, 1);
     d2->assign(7, 2);
-    EXPECT_EQ(5, d1->size());
-    EXPECT_EQ(7, d2->size());
+    EXPECT_EQ(5u, d1->size());
+    EXPECT_EQ(7u, d2->size());
 
     o1.connect(d1);
     o2.connect(d2);
 
     d1->swap(*d2);
-    EXPECT_EQ(7, d1->size());
-    EXPECT_EQ(5, d2->size());
+    EXPECT_EQ(7u, d1->size());
+    EXPECT_EQ(5u, d2->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const int& i, *d1)
     {
         ++count;
         EXPECT_EQ(2, i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     count = 0;
     BOOST_FOREACH(const int& i, *d2)
@@ -650,29 +653,29 @@ TEST(boost_basic_observable_deque_test_suite, test_swap)
         ++count;
         EXPECT_EQ(1, i);
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
-    EXPECT_EQ(0, o1.action_add_count());
-    EXPECT_EQ(0, o1.action_remove_count());
-    EXPECT_EQ(0, o1.action_reset_count());
-    EXPECT_EQ(1, o1.action_swap_count());
-    EXPECT_EQ(7, o1.last_change_new_size());
-    EXPECT_EQ(7, o1.last_change_added());
-    EXPECT_EQ(5, o1.last_change_removed());
-    EXPECT_EQ(7, o1.total_change_added());
-    EXPECT_EQ(5, o1.total_change_removed());
+    EXPECT_EQ(0u, o1.action_add_count());
+    EXPECT_EQ(0u, o1.action_remove_count());
+    EXPECT_EQ(0u, o1.action_reset_count());
+    EXPECT_EQ(1u, o1.action_swap_count());
+    EXPECT_EQ(7u, o1.last_change_new_size());
+    EXPECT_EQ(7u, o1.last_change_added());
+    EXPECT_EQ(5u, o1.last_change_removed());
+    EXPECT_EQ(7u, o1.total_change_added());
+    EXPECT_EQ(5u, o1.total_change_removed());
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
-    EXPECT_EQ(0, o2.action_add_count());
-    EXPECT_EQ(0, o2.action_remove_count());
-    EXPECT_EQ(0, o2.action_reset_count());
-    EXPECT_EQ(1, o2.action_swap_count());
-    EXPECT_EQ(5, o2.last_change_new_size());
-    EXPECT_EQ(5, o2.last_change_added());
-    EXPECT_EQ(7, o2.last_change_removed());
-    EXPECT_EQ(5, o2.total_change_added());
-    EXPECT_EQ(7, o2.total_change_removed());
+    EXPECT_EQ(0u, o2.action_add_count());
+    EXPECT_EQ(0u, o2.action_remove_count());
+    EXPECT_EQ(0u, o2.action_reset_count());
+    EXPECT_EQ(1u, o2.action_swap_count());
+    EXPECT_EQ(5u, o2.last_change_new_size());
+    EXPECT_EQ(5u, o2.last_change_added());
+    EXPECT_EQ(7u, o2.last_change_removed());
+    EXPECT_EQ(5u, o2.total_change_added());
+    EXPECT_EQ(7u, o2.total_change_removed());
 }
 
 TEST(boost_basic_observable_deque_test_suite, test_clear)
@@ -681,27 +684,27 @@ TEST(boost_basic_observable_deque_test_suite, test_clear)
     m::basic_observable_deque<int, u::u8string>::ptr d = m::basic_observable_deque<int, u::u8string>::create();
     deque_observer<int> o;
 
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     const int a[] = {1, 2, 3, 4, 5, 6, 7};
     d->assign(a, a + 7);
-    EXPECT_EQ(7, d->size());
+    EXPECT_EQ(7u, d->size());
 
     o.connect(d);
 
     d->clear();
-    EXPECT_EQ(0, d->size());
+    EXPECT_EQ(0u, d->size());
 
     EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(1, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(7, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(7, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(1u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(7u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(7u, o.total_change_removed());
 }
 
 }

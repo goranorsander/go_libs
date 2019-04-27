@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -52,7 +55,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_deque)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -64,11 +67,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_deque)
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it != container.end());
     EXPECT_EQ(8, *it);
-    EXPECT_EQ(6, uc::size(container));
+    EXPECT_EQ(6u, uc::size(container));
 
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it == container.end());
-    EXPECT_EQ(3, uc::size(container));
+    EXPECT_EQ(3u, uc::size(container));
 }
 
 //TEST(std_erase_iterator_test_suite, test_erase_iterator_on_forward_list)
@@ -91,7 +94,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_deque)
 //    container.push_back(10);
 //#endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 //
-//    EXPECT_EQ(10, uc::size(container));
+//    EXPECT_EQ(10u, uc::size(container));
 //
 //    test_container_type::iterator it = container.begin();
 //    EXPECT_EQ(1, *it);
@@ -103,11 +106,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_deque)
 //    it = ui::erase(container, it, 4);
 //    EXPECT_EQ(true, it != container.end());
 //    EXPECT_EQ(8, *it);
-//    EXPECT_EQ(6, uc::size(container));
+//    EXPECT_EQ(6u, uc::size(container));
 //
 //    it = ui::erase(container, it, 4);
 //    EXPECT_EQ(true, it == container.end());
-//    EXPECT_EQ(3, uc::size(container));
+//    EXPECT_EQ(3u, uc::size(container));
 //}
 
 TEST(std_erase_iterator_test_suite, test_erase_iterator_on_list)
@@ -130,7 +133,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_list)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -142,11 +145,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_list)
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it != container.end());
     EXPECT_EQ(8, *it);
-    EXPECT_EQ(6, uc::size(container));
+    EXPECT_EQ(6u, uc::size(container));
 
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it == container.end());
-    EXPECT_EQ(3, uc::size(container));
+    EXPECT_EQ(3u, uc::size(container));
 }
 
 TEST(std_erase_iterator_test_suite, test_erase_iterator_on_vector)
@@ -169,7 +172,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_vector)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -181,11 +184,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_vector)
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it != container.end());
     EXPECT_EQ(8, *it);
-    EXPECT_EQ(6, uc::size(container));
+    EXPECT_EQ(6u, uc::size(container));
 
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it == container.end());
-    EXPECT_EQ(3, uc::size(container));
+    EXPECT_EQ(3u, uc::size(container));
 }
 
 TEST(std_erase_iterator_test_suite, test_erase_iterator_on_map)
@@ -208,7 +211,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_map)
     container.insert(test_container_type::value_type(10, 20));
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, it->first);
@@ -223,11 +226,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_map)
     EXPECT_EQ(true, it != container.end());
     EXPECT_EQ(8, it->first);
     EXPECT_EQ(18, it->second);
-    EXPECT_EQ(6, uc::size(container));
+    EXPECT_EQ(6u, uc::size(container));
 
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it == container.end());
-    EXPECT_EQ(3, uc::size(container));
+    EXPECT_EQ(3u, uc::size(container));
 }
 
 TEST(std_erase_iterator_test_suite, test_erase_iterator_on_set)
@@ -250,7 +253,7 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_set)
     container.insert(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, uc::size(container));
 
     test_container_type::iterator it = container.begin();
     EXPECT_EQ(1, *it);
@@ -262,11 +265,11 @@ TEST(std_erase_iterator_test_suite, test_erase_iterator_on_set)
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it != container.end());
     EXPECT_EQ(8, *it);
-    EXPECT_EQ(6, uc::size(container));
+    EXPECT_EQ(6u, uc::size(container));
 
     it = ui::erase(container, it, 4);
     EXPECT_EQ(true, it == container.end());
-    EXPECT_EQ(3, uc::size(container));
+    EXPECT_EQ(3u, uc::size(container));
 }
 
 }

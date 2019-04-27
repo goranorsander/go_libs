@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -23,9 +26,9 @@ namespace u = go::utility;
 namespace
 {
 
-int& scope_exit_count()
+unsigned int& scope_exit_count()
 {
-    static int count = 0;
+    static unsigned int count = 0u;
     return count;
 }
 
@@ -37,25 +40,25 @@ void on_scope_exit()
 TEST(std_scope_guard_test_suite, test_scope_guard)
 {
     {
-        EXPECT_EQ(0, scope_exit_count());
+        EXPECT_EQ(0u, scope_exit_count());
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
         const u::scope_guard guard1(u::scope_guard::on_scope_exit_function_type(std::tr1::bind(on_scope_exit)));
 #else
         const u::scope_guard guard1(u::scope_guard::on_scope_exit_function_type(std::bind(on_scope_exit)));
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
-        EXPECT_EQ(0, scope_exit_count());
+        EXPECT_EQ(0u, scope_exit_count());
         {
-            EXPECT_EQ(0, scope_exit_count());
+            EXPECT_EQ(0u, scope_exit_count());
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
             const u::scope_guard guard2(u::scope_guard::on_scope_exit_function_type(std::tr1::bind(on_scope_exit)));
 #else
             const u::scope_guard guard2(u::scope_guard::on_scope_exit_function_type(std::bind(on_scope_exit)));
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
-            EXPECT_EQ(0, scope_exit_count());
+            EXPECT_EQ(0u, scope_exit_count());
         }
-        EXPECT_EQ(1, scope_exit_count());
+        EXPECT_EQ(1u, scope_exit_count());
     }
-    EXPECT_EQ(2, scope_exit_count());
+    EXPECT_EQ(2u, scope_exit_count());
 }
 
 }

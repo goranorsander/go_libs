@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -58,22 +61,22 @@ std::size_t foo::_delete_count = 0;
 
 TEST(std_scope_guard_new_test_suite, test_scope_guard_new)
 {
-    EXPECT_EQ(0, foo::calls_to_new());
-    EXPECT_EQ(0, foo::calls_to_delete());
+    EXPECT_EQ(0u, foo::calls_to_new());
+    EXPECT_EQ(0u, foo::calls_to_delete());
     {
         const u::scope_guard_new<foo> guard1(new foo);
-        EXPECT_EQ(1, foo::calls_to_new());
-        EXPECT_EQ(0, foo::calls_to_delete());
+        EXPECT_EQ(1u, foo::calls_to_new());
+        EXPECT_EQ(0u, foo::calls_to_delete());
         {
             const u::scope_guard_new<foo> guard2(new foo);
-            EXPECT_EQ(2, foo::calls_to_new());
-            EXPECT_EQ(0, foo::calls_to_delete());
+            EXPECT_EQ(2u, foo::calls_to_new());
+            EXPECT_EQ(0u, foo::calls_to_delete());
         }
-        EXPECT_EQ(2, foo::calls_to_new());
-        EXPECT_EQ(1, foo::calls_to_delete());
+        EXPECT_EQ(2u, foo::calls_to_new());
+        EXPECT_EQ(1u, foo::calls_to_delete());
     }
-    EXPECT_EQ(2, foo::calls_to_new());
-    EXPECT_EQ(2, foo::calls_to_delete());
+    EXPECT_EQ(2u, foo::calls_to_new());
+    EXPECT_EQ(2u, foo::calls_to_delete());
 }
 
 }

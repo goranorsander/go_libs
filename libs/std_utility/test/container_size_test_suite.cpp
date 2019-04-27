@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -47,8 +50,8 @@ TEST(std_container_size_test_suite, test_size_on_deque)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, container.size());
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, container.size());
+    EXPECT_EQ(10u, uc::size(container));
 }
 
 TEST(std_container_size_test_suite, test_size_on_list)
@@ -69,8 +72,8 @@ TEST(std_container_size_test_suite, test_size_on_list)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, container.size());
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, container.size());
+    EXPECT_EQ(10u, uc::size(container));
 }
 
 TEST(std_container_size_test_suite, test_size_on_vector)
@@ -91,8 +94,8 @@ TEST(std_container_size_test_suite, test_size_on_vector)
     container.push_back(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, container.size());
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, container.size());
+    EXPECT_EQ(10u, uc::size(container));
 }
 
 TEST(std_container_size_test_suite, test_size_on_map)
@@ -113,8 +116,8 @@ TEST(std_container_size_test_suite, test_size_on_map)
     container.insert(std::map<int, int>::value_type(10, 20));
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, container.size());
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, container.size());
+    EXPECT_EQ(10u, uc::size(container));
 }
 
 TEST(std_container_size_test_suite, test_size_on_set)
@@ -135,8 +138,8 @@ TEST(std_container_size_test_suite, test_size_on_set)
     container.insert(10);
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    EXPECT_EQ(10, container.size());
-    EXPECT_EQ(10, uc::size(container));
+    EXPECT_EQ(10u, container.size());
+    EXPECT_EQ(10u, uc::size(container));
 }
 
 }

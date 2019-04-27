@@ -61,7 +61,9 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
     /*const auto error =*/ localtime_r(&time_t, &result);
 #endif  // #if !defined(GO_NO_CXX11_LOCALTIME_S)
     char ymd_hms[32];
+	GO_GCC_BEGIN_SUPPRESS_WARNING(format)
     std::strftime(ymd_hms, 32, "%Y-%m-%d %T.", &result);
+	GO_GCC_END_SUPPRESS_WARNING
     char microseconds[7];
 #if defined(GO_NO_CXX11_SNPRINTF)
     std::sprintf(microseconds, "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
@@ -91,7 +93,9 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
     /*const auto error =*/ localtime_r(&time_t, &result);
 #endif  // #if !defined(GO_NO_CXX11_LOCALTIME_S)
     wchar_t ymd_hms[32];
+	GO_GCC_BEGIN_SUPPRESS_WARNING(format)
     std::wcsftime(ymd_hms, 32, L"%Y-%m-%d %T.", &result);
+	GO_GCC_END_SUPPRESS_WARNING
     wchar_t microseconds[7];
     std::swprintf(microseconds, 7, L"%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #if defined(GO_COMP_GCC)

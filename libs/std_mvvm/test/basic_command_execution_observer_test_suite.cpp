@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -135,7 +138,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_execute_command)
     m::basic_command_manager<u::u8string>::ptr command_mgr = m::basic_command_manager<u::u8string>::create();
 
     EXPECT_TRUE(command_mgr != nullptr);
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_TRUE(command_mgr->command_executed.empty());
     EXPECT_TRUE(command_mgr->command_not_executed.empty());
 
@@ -147,7 +150,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_execute_command)
     command_mgr->command_executed.connect(std::bind(&test_command_execution_observer::on_command_executed, &command_execution_observer, ph::_1));
     command_mgr->command_not_executed.connect(std::bind(&test_command_execution_observer::on_command_not_executed, &command_execution_observer, ph::_1));
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
     EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
@@ -220,7 +223,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
     m::basic_command_manager<u::u8string>::ptr command_mgr = m::basic_command_manager<u::u8string>::create();
 
     EXPECT_TRUE(command_mgr != nullptr);
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_TRUE(command_mgr->command_executed.empty());
     EXPECT_TRUE(command_mgr->command_not_executed.empty());
 
@@ -232,7 +235,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
     command_mgr->command_executed.connect(std::bind(&test_command_execution_observer::on_command_executed, &command_execution_observer, ph::_1));
     command_mgr->command_not_executed.connect(std::bind(&test_command_execution_observer::on_command_not_executed, &command_execution_observer, ph::_1));
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
     EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
@@ -261,7 +264,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
@@ -272,7 +275,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
@@ -293,7 +296,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -304,7 +307,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -315,7 +318,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -326,7 +329,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());

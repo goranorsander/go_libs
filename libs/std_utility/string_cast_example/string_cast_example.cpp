@@ -30,7 +30,7 @@ void print_hex(const S& s)
     unsigned int line_length = 0;
     for (const GO_TYPENAME S::value_type c : s)
     {
-        std::wcout << us::format(hex_format, static_cast<C>(c)).c_str();
+        std::wcout << us::format(hex_format.c_str(), static_cast<C>(c)).c_str();
         line_length += hex_c_size;
         if (line_length >= 80)
         {

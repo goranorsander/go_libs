@@ -8,8 +8,12 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+
 #include <go_boost/mvvm.hpp>
 
 namespace m = go_boost::mvvm;
@@ -124,7 +128,7 @@ TEST(boost_command_execution_observer_test_suite, test_execute_command)
     m::command_manager::ptr command_mgr = m::command_manager::create();
 
     EXPECT_TRUE(command_mgr != NULL);
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_TRUE(command_mgr->command_executed.empty());
     EXPECT_TRUE(command_mgr->command_not_executed.empty());
 
@@ -136,7 +140,7 @@ TEST(boost_command_execution_observer_test_suite, test_execute_command)
     command_mgr->command_executed.connect(boost::bind(&test_command_execution_observer::on_command_executed, &command_execution_observer, _1));
     command_mgr->command_not_executed.connect(boost::bind(&test_command_execution_observer::on_command_not_executed, &command_execution_observer, _1));
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
     EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
@@ -209,7 +213,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
     m::command_manager::ptr command_mgr = m::command_manager::create();
 
     EXPECT_TRUE(command_mgr != NULL);
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_TRUE(command_mgr->command_executed.empty());
     EXPECT_TRUE(command_mgr->command_not_executed.empty());
 
@@ -221,7 +225,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
     command_mgr->command_executed.connect(boost::bind(&test_command_execution_observer::on_command_executed, &command_execution_observer, _1));
     command_mgr->command_not_executed.connect(boost::bind(&test_command_execution_observer::on_command_not_executed, &command_execution_observer, _1));
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command_mgr->command_executed.empty());
     EXPECT_FALSE(command_mgr->command_not_executed.empty());
     EXPECT_EQ(0u, command_execution_observer.number_of_executed_commands());
@@ -250,7 +254,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
@@ -261,7 +265,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
@@ -282,7 +286,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -293,7 +297,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -304,7 +308,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->post(command);
 
-    EXPECT_EQ(1, command_mgr->commands());
+    EXPECT_EQ(1u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
@@ -315,7 +319,7 @@ TEST(boost_command_execution_observer_test_suite, test_post_command)
 
     command_mgr->execute_commands();
 
-    EXPECT_EQ(0, command_mgr->commands());
+    EXPECT_EQ(0u, command_mgr->commands());
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());

@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_LAMBDA_EXPRESSIONS)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -74,9 +77,9 @@ public:
 
      spaceship_observer()
         : _on_property_changed_slot_key()
-        , _crew_complement_change_count(0)
-        , _name_change_count(0)
-        , _max_speed_change_count(0)
+        , _crew_complement_change_count(0u)
+        , _name_change_count(0u)
+        , _max_speed_change_count(0u)
     {
     }
 
@@ -100,15 +103,15 @@ public:
         }
     }
 
-    int crew_complement_change_count() const { return _crew_complement_change_count; }
-    int name_change_count() const { return _name_change_count; }
-    int max_speed_change_count() const { return _max_speed_change_count; }
+    unsigned int crew_complement_change_count() const { return _crew_complement_change_count; }
+    unsigned int name_change_count() const { return _name_change_count; }
+    unsigned int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
     s::slot_key _on_property_changed_slot_key;
-    int _crew_complement_change_count;
-    int _name_change_count;
-    int _max_speed_change_count;
+    unsigned int _crew_complement_change_count;
+    unsigned int _name_change_count;
+    unsigned int _max_speed_change_count;
 };
 
 TEST(std_observable_object_lambda_test_suite, test_observable_object)
@@ -119,33 +122,33 @@ TEST(std_observable_object_lambda_test_suite, test_observable_object)
     o.connect(*m);
 
     // After connect
-    EXPECT_EQ(0, o.crew_complement_change_count());
-    EXPECT_EQ(0, o.name_change_count());
-    EXPECT_EQ(0, o.max_speed_change_count());
+    EXPECT_EQ(0u, o.crew_complement_change_count());
+    EXPECT_EQ(0u, o.name_change_count());
+    EXPECT_EQ(0u, o.max_speed_change_count());
 
     m->crew_complement = 47;
 
     // After one assignment
-    EXPECT_EQ(1, o.crew_complement_change_count());
-    EXPECT_EQ(0, o.name_change_count());
-    EXPECT_EQ(0, o.max_speed_change_count());
+    EXPECT_EQ(1u, o.crew_complement_change_count());
+    EXPECT_EQ(0u, o.name_change_count());
+    EXPECT_EQ(0u, o.max_speed_change_count());
 
     int pid = m->crew_complement;
 
     // After one access
     EXPECT_EQ(47, pid);
-    EXPECT_EQ(1, o.crew_complement_change_count());
-    EXPECT_EQ(0, o.name_change_count());
-    EXPECT_EQ(0, o.max_speed_change_count());
+    EXPECT_EQ(1u, o.crew_complement_change_count());
+    EXPECT_EQ(0u, o.name_change_count());
+    EXPECT_EQ(0u, o.max_speed_change_count());
 
     m->crew_complement = 47;
     pid = m->crew_complement;
 
     // After assignment of same value
     EXPECT_EQ(47, pid);
-    EXPECT_EQ(1, o.crew_complement_change_count());
-    EXPECT_EQ(0, o.name_change_count());
-    EXPECT_EQ(0, o.max_speed_change_count());
+    EXPECT_EQ(1u, o.crew_complement_change_count());
+    EXPECT_EQ(0u, o.name_change_count());
+    EXPECT_EQ(0u, o.max_speed_change_count());
 
     o.disconnect(*m);
     m->crew_complement = 74;
@@ -153,9 +156,9 @@ TEST(std_observable_object_lambda_test_suite, test_observable_object)
 
     // After disconnect and assignment of new value
     EXPECT_EQ(74, pid);
-    EXPECT_EQ(1, o.crew_complement_change_count());
-    EXPECT_EQ(0, o.name_change_count());
-    EXPECT_EQ(0, o.max_speed_change_count());
+    EXPECT_EQ(1u, o.crew_complement_change_count());
+    EXPECT_EQ(0u, o.name_change_count());
+    EXPECT_EQ(0u, o.max_speed_change_count());
 }
 
 }

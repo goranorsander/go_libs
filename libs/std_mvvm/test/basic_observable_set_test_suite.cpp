@@ -8,8 +8,11 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go/config.hpp>
+
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_NOEXCEPT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
@@ -40,15 +43,15 @@ public:
         : _on_container_changed_slot_key()
         , _on_property_changed_slot_key()
         , _last_action(m::notify_container_changed_action::undefined)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -93,47 +96,47 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
@@ -143,17 +146,17 @@ private:
     s::slot_key _on_property_changed_slot_key;
 
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(std_basic_observable_set_test_suite, test_insert_single_element)
@@ -162,34 +165,34 @@ TEST(std_basic_observable_set_test_suite, test_insert_single_element)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
     const std::initializer_list<int> il = {1, 2, 4, 5, 6, 7};
     *s = il;
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     o.connect(s);
 
     s->insert(3);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     for(const int& i : *s)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(1, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(1u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_insert_single_element_with_hint)
@@ -198,43 +201,43 @@ TEST(std_basic_observable_set_test_suite, test_insert_single_element_with_hint)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
     const std::initializer_list<int> il = {1, 2, 5, 7};
     *s = il;
-    EXPECT_EQ(4, s->size());
+    EXPECT_EQ(4u, s->size());
 
     o.connect(s);
 
     m::basic_observable_set<int, u::u8string>::iterator it = s->insert(s->begin(), 3);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     it = s->insert(it, 4);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     it = s->insert(it, 4);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     it = s->insert(it, 6);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     for(const int& i : *s)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_insert_range)
@@ -244,21 +247,21 @@ TEST(std_basic_observable_set_test_suite, test_insert_range)
     m::basic_observable_set<int, u::u8string>::ptr s2 = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s1->size());
-    EXPECT_EQ(0, s2->size());
+    EXPECT_EQ(0u, s1->size());
+    EXPECT_EQ(0u, s2->size());
 
     const std::initializer_list<int> il1 = {1, 2, 5, 7};
     *s1 = il1;
-    EXPECT_EQ(4, s1->size());
+    EXPECT_EQ(4u, s1->size());
 
     const std::initializer_list<int> il2 = {3, 4, 6};
     *s2 = il2;
-    EXPECT_EQ(3, s2->size());
+    EXPECT_EQ(3u, s2->size());
 
     o.connect(s2);
 
     s2->insert(s1->begin(), s1->end());
-    EXPECT_EQ(7, s2->size());
+    EXPECT_EQ(7u, s2->size());
 
     m::basic_observable_set<int, u::u8string>::iterator it = s2->begin();
     EXPECT_EQ(1, *it);
@@ -278,15 +281,15 @@ TEST(std_basic_observable_set_test_suite, test_insert_range)
     EXPECT_EQ(s2->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(4, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(4u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_insert_initializer_list)
@@ -295,19 +298,19 @@ TEST(std_basic_observable_set_test_suite, test_insert_initializer_list)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il1 = {1, 2, 5, 7};
     *s = il1;
-    EXPECT_EQ(4, s->size());
+    EXPECT_EQ(4u, s->size());
 
     const std::initializer_list<int> il2 = {3, 4, 6};
-    EXPECT_EQ(3, il2.size());
+    EXPECT_EQ(3u, il2.size());
 
     o.connect(s);
 
     s->insert(il2);
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     m::basic_observable_set<int, u::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
@@ -327,15 +330,15 @@ TEST(std_basic_observable_set_test_suite, test_insert_initializer_list)
     EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_erase_position)
@@ -344,21 +347,21 @@ TEST(std_basic_observable_set_test_suite, test_erase_position)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
     *s = il;
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     m::basic_observable_set<int, u::u8string>::iterator it1 = s->begin();
     std::advance(it1, 3);
     m::basic_observable_set<int, u::u8string>::iterator it2 = s->erase(it1);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     s->erase(it2);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     it1 = s->begin();
     EXPECT_EQ(1, *it1);
@@ -374,15 +377,15 @@ TEST(std_basic_observable_set_test_suite, test_erase_position)
     EXPECT_EQ(s->end(), it1);
 
     EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_erase_value)
@@ -391,19 +394,19 @@ TEST(std_basic_observable_set_test_suite, test_erase_value)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
     *s = il;
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     s->erase(4);
-    EXPECT_EQ(6, s->size());
+    EXPECT_EQ(6u, s->size());
 
     s->erase(5);
-    EXPECT_EQ(5, s->size());
+    EXPECT_EQ(5u, s->size());
 
     m::basic_observable_set<int, u::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
@@ -419,15 +422,15 @@ TEST(std_basic_observable_set_test_suite, test_erase_value)
     EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_erase_range)
@@ -436,11 +439,11 @@ TEST(std_basic_observable_set_test_suite, test_erase_range)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
     *s = il;
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
@@ -450,7 +453,7 @@ TEST(std_basic_observable_set_test_suite, test_erase_range)
     --end;
 
     s->erase(begin, end);
-    EXPECT_EQ(2, s->size());
+    EXPECT_EQ(2u, s->size());
 
     m::basic_observable_set<int, u::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
@@ -460,15 +463,15 @@ TEST(std_basic_observable_set_test_suite, test_erase_range)
     EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(1, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(2, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(5, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(5, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(1u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(2u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(5u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(5u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_swap)
@@ -479,60 +482,60 @@ TEST(std_basic_observable_set_test_suite, test_swap)
     set_observer<int> o1;
     set_observer<int> o2;
 
-    EXPECT_EQ(0, s1->size());
-    EXPECT_EQ(0, s2->size());
+    EXPECT_EQ(0u, s1->size());
+    EXPECT_EQ(0u, s2->size());
 
     const std::initializer_list<int> il1 = {1, 2, 3, 4, 5};
     const std::initializer_list<int> il2 = {10, 20, 30, 40, 50, 60, 70};
     *s1 = il1;
     *s2 = il2;
-    EXPECT_EQ(5, s1->size());
-    EXPECT_EQ(7, s2->size());
+    EXPECT_EQ(5u, s1->size());
+    EXPECT_EQ(7u, s2->size());
 
     o1.connect(s1);
     o2.connect(s2);
 
     s1->swap(*s2);
-    EXPECT_EQ(7, s1->size());
-    EXPECT_EQ(5, s2->size());
+    EXPECT_EQ(7u, s1->size());
+    EXPECT_EQ(5u, s2->size());
 
-    int count = 0;
+    unsigned int count = 0u;
     for(const int& i : *s1)
     {
         ++count;
-        EXPECT_EQ(count*10, i);
+        EXPECT_EQ(static_cast<int>(count)*10, i);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     count = 0;
     for(const int& i : *s2)
     {
         ++count;
-        EXPECT_EQ(count, i);
+        EXPECT_EQ(static_cast<int>(count), i);
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
 
     EXPECT_EQ(m::notify_container_changed_action::swap, o1.last_action());
-    EXPECT_EQ(0, o1.action_add_count());
-    EXPECT_EQ(0, o1.action_remove_count());
-    EXPECT_EQ(0, o1.action_reset_count());
-    EXPECT_EQ(1, o1.action_swap_count());
-    EXPECT_EQ(7, o1.last_change_new_size());
-    EXPECT_EQ(7, o1.last_change_added());
-    EXPECT_EQ(5, o1.last_change_removed());
-    EXPECT_EQ(7, o1.total_change_added());
-    EXPECT_EQ(5, o1.total_change_removed());
+    EXPECT_EQ(0u, o1.action_add_count());
+    EXPECT_EQ(0u, o1.action_remove_count());
+    EXPECT_EQ(0u, o1.action_reset_count());
+    EXPECT_EQ(1u, o1.action_swap_count());
+    EXPECT_EQ(7u, o1.last_change_new_size());
+    EXPECT_EQ(7u, o1.last_change_added());
+    EXPECT_EQ(5u, o1.last_change_removed());
+    EXPECT_EQ(7u, o1.total_change_added());
+    EXPECT_EQ(5u, o1.total_change_removed());
 
     EXPECT_EQ(m::notify_container_changed_action::swap, o2.last_action());
-    EXPECT_EQ(0, o2.action_add_count());
-    EXPECT_EQ(0, o2.action_remove_count());
-    EXPECT_EQ(0, o2.action_reset_count());
-    EXPECT_EQ(1, o2.action_swap_count());
-    EXPECT_EQ(5, o2.last_change_new_size());
-    EXPECT_EQ(5, o2.last_change_added());
-    EXPECT_EQ(7, o2.last_change_removed());
-    EXPECT_EQ(5, o2.total_change_added());
-    EXPECT_EQ(7, o2.total_change_removed());
+    EXPECT_EQ(0u, o2.action_add_count());
+    EXPECT_EQ(0u, o2.action_remove_count());
+    EXPECT_EQ(0u, o2.action_reset_count());
+    EXPECT_EQ(1u, o2.action_swap_count());
+    EXPECT_EQ(5u, o2.last_change_new_size());
+    EXPECT_EQ(5u, o2.last_change_added());
+    EXPECT_EQ(7u, o2.last_change_removed());
+    EXPECT_EQ(5u, o2.total_change_added());
+    EXPECT_EQ(7u, o2.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_clear)
@@ -541,27 +544,27 @@ TEST(std_basic_observable_set_test_suite, test_clear)
     m::basic_observable_set<int, u::u8string>::ptr s = m::basic_observable_set<int, u::u8string>::create();
     set_observer<int> o;
 
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     const std::initializer_list<int> il = {1, 2, 3, 4, 5, 6, 7};
     *s = il;
-    EXPECT_EQ(7, s->size());
+    EXPECT_EQ(7u, s->size());
 
     o.connect(s);
 
     s->clear();
-    EXPECT_EQ(0, s->size());
+    EXPECT_EQ(0u, s->size());
 
     EXPECT_EQ(m::notify_container_changed_action::reset, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(1, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(7, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(7, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(1u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(7u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(7u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_emplace)
@@ -572,7 +575,7 @@ TEST(std_basic_observable_set_test_suite, test_emplace)
 
     const std::initializer_list<int> il = {1, 2, 3};
     *s = il;
-    EXPECT_EQ(3, s->size());
+    EXPECT_EQ(3u, s->size());
 
     o.connect(s);
 
@@ -608,15 +611,15 @@ TEST(std_basic_observable_set_test_suite, test_emplace)
     EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(6u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(std_basic_observable_set_test_suite, test_emplace_hint)
@@ -627,7 +630,7 @@ TEST(std_basic_observable_set_test_suite, test_emplace_hint)
 
     const std::initializer_list<int> il = {1, 2, 5};
     *s = il;
-    EXPECT_EQ(3, s->size());
+    EXPECT_EQ(3u, s->size());
 
     o.connect(s);
 
@@ -659,15 +662,15 @@ TEST(std_basic_observable_set_test_suite, test_emplace_hint)
     EXPECT_EQ(s->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
-    EXPECT_EQ(3, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(6, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(3u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(6u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 }

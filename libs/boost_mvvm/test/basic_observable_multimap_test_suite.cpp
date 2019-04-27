@@ -8,8 +8,12 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
 #include <go_boost/config.hpp>
+
+GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+#include <gtest/gtest.h>
+GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+
 #include <go_boost/mvvm.hpp>
 #include <go_boost/utility.hpp>
 
@@ -30,15 +34,15 @@ public:
 
     multimap_observer()
         : _last_action(m::undefined_notify_container_changed_action)
-        , _last_change_added(0)
-        , _last_change_removed(0)
-        , _last_change_new_size(0)
-        , _total_change_added(0)
-        , _total_change_removed(0)
-        , _action_add_count(0)
-        , _action_remove_count(0)
-        , _action_reset_count(0)
-        , _action_swap_count(0)
+        , _last_change_added(0u)
+        , _last_change_removed(0u)
+        , _last_change_new_size(0u)
+        , _total_change_added(0u)
+        , _total_change_removed(0u)
+        , _action_add_count(0u)
+        , _action_remove_count(0u)
+        , _action_reset_count(0u)
+        , _action_swap_count(0u)
     {
     }
 
@@ -83,64 +87,64 @@ public:
         return _last_action;
     }
 
-    int last_change_added() const
+    unsigned int last_change_added() const
     {
         return _last_change_added;
     }
 
-    int last_change_removed() const
+    unsigned int last_change_removed() const
     {
         return _last_change_removed;
     }
 
-    int last_change_new_size() const
+    unsigned int last_change_new_size() const
     {
         return _last_change_new_size;
     }
 
-    int total_change_added() const
+    unsigned int total_change_added() const
     {
         return _total_change_added;
     }
 
-    int total_change_removed() const
+    unsigned int total_change_removed() const
     {
         return _total_change_removed;
     }
 
-    int action_add_count() const
+    unsigned int action_add_count() const
     {
         return _action_add_count;
     }
 
-    int action_remove_count() const
+    unsigned int action_remove_count() const
     {
         return _action_remove_count;
     }
 
-    int action_reset_count() const
+    unsigned int action_reset_count() const
     {
         return _action_reset_count;
     }
 
-    int action_swap_count() const
+    unsigned int action_swap_count() const
     {
         return _action_swap_count;
     }
 
 private:
     m::notify_container_changed_action _last_action;
-    int _last_change_added;
-    int _last_change_removed;
-    int _last_change_new_size;
+    unsigned int _last_change_added;
+    unsigned int _last_change_removed;
+    unsigned int _last_change_new_size;
 
-    int _total_change_added;
-    int _total_change_removed;
+    unsigned int _total_change_added;
+    unsigned int _total_change_removed;
 
-    int _action_add_count;
-    int _action_remove_count;
-    int _action_reset_count;
-    int _action_swap_count;
+    unsigned int _action_add_count;
+    unsigned int _action_remove_count;
+    unsigned int _action_reset_count;
+    unsigned int _action_swap_count;
 };
 
 TEST(boost_basic_observable_multimap_test_suite, test_insert_single_element)
@@ -150,40 +154,40 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_single_element)
     multimap_observer<int, int> o;
 
     // TODO: Find a way to test insert without using insert to prepare the test
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     o.connect(m);
 
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     typedef m::basic_observable_multimap<int, int, u::u8string> observable_multimap_type;
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_multimap_type::value_type& i, *m)
     {
         ++count;
-        EXPECT_EQ(count, i.first);
-        EXPECT_EQ(count*10, i.second);
+        EXPECT_EQ(static_cast<int>(count), i.first);
+        EXPECT_EQ(static_cast<int>(count)*10, i.second);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(1, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(1u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_insert_single_element_with_hint)
@@ -192,26 +196,26 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_single_element_with
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(4, m->size());
+    EXPECT_EQ(4u, m->size());
 
     o.connect(m);
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     it = m->insert(it, m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     it = m->insert(it, m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     it = m->insert(it, m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    EXPECT_EQ(8, m->size());
+    EXPECT_EQ(8u, m->size());
 
     it = m->begin();
     EXPECT_EQ(1, it->first);
@@ -241,15 +245,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_single_element_with
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(8, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(8u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_insert_range)
@@ -259,24 +263,24 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_range)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m2 = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m1->size());
-    EXPECT_EQ(0, m2->size());
+    EXPECT_EQ(0u, m1->size());
+    EXPECT_EQ(0u, m2->size());
 
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(4, m1->size());
+    EXPECT_EQ(4u, m1->size());
 
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    EXPECT_EQ(3, m2->size());
+    EXPECT_EQ(3u, m2->size());
 
     o.connect(m2);
 
     m2->insert(m1->begin(), m1->end());
-    EXPECT_EQ(7, m2->size());
+    EXPECT_EQ(7u, m2->size());
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it = m2->begin();
     EXPECT_EQ(1, it->first);
@@ -303,15 +307,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_range)
     EXPECT_EQ(m2->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(4, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(4u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -322,7 +326,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_initializer_list)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     const std::initializer_list<m::basic_observable_multimap<int, int, u::u8string>::value_type> il1 =
     {
@@ -332,7 +336,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_initializer_list)
         m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70)
     };
     *m = il1;
-    EXPECT_EQ(4, m->size());
+    EXPECT_EQ(4u, m->size());
 
     const std::initializer_list<m::basic_observable_multimap<int, int, u::u8string>::value_type> il2 =
     {
@@ -340,12 +344,12 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_initializer_list)
         m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40),
         m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60)
     };
-    EXPECT_EQ(3, il2.size());
+    EXPECT_EQ(3u, il2.size());
 
     o.connect(m);
 
     m->insert(il2);
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
@@ -372,15 +376,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_insert_initializer_list)
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(1, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(3, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(3, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(1u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(3u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(3u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
@@ -391,7 +395,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_position)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
@@ -400,17 +404,17 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_position)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it1 = m->begin();
     std::advance(it1, 3);
     m::basic_observable_multimap<int, int, u::u8string>::iterator it2 = m->erase(it1);
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     it1 = m->begin();
     EXPECT_EQ(1, it1->first);
@@ -431,15 +435,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_position)
     EXPECT_EQ(m->end(), it1);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_erase_value)
@@ -448,7 +452,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_value)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
@@ -457,15 +461,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_value)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m->erase(4);
-    EXPECT_EQ(6, m->size());
+    EXPECT_EQ(6u, m->size());
 
     m->erase(5);
-    EXPECT_EQ(5, m->size());
+    EXPECT_EQ(5u, m->size());
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
@@ -486,15 +490,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_value)
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(2, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(5, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(1, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(2, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(2u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(5u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(1u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(2u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_erase_range)
@@ -503,7 +507,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_range)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
@@ -512,7 +516,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_range)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
@@ -522,7 +526,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_range)
     --end;
 
     m->erase(begin, end);
-    EXPECT_EQ(2, m->size());
+    EXPECT_EQ(2u, m->size());
 
     m::basic_observable_multimap<int, int, u::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
@@ -534,15 +538,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_erase_range)
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_remove, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(1, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(2, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(5, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(5, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(1u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(2u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(5u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(5u, o.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_swap)
@@ -553,15 +557,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_swap)
     multimap_observer<int, int> o1;
     multimap_observer<int, int> o2;
 
-    EXPECT_EQ(0, m1->size());
-    EXPECT_EQ(0, m2->size());
+    EXPECT_EQ(0u, m1->size());
+    EXPECT_EQ(0u, m2->size());
 
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
     m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    EXPECT_EQ(5, m1->size());
+    EXPECT_EQ(5u, m1->size());
 
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(10, 100));
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(20, 200));
@@ -570,55 +574,55 @@ TEST(boost_basic_observable_multimap_test_suite, test_swap)
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(50, 500));
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(60, 600));
     m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(70, 700));
-    EXPECT_EQ(7, m2->size());
+    EXPECT_EQ(7u, m2->size());
 
     o1.connect(m1);
     o2.connect(m2);
 
     m1->swap(*m2);
-    EXPECT_EQ(7, m1->size());
-    EXPECT_EQ(5, m2->size());
+    EXPECT_EQ(7u, m1->size());
+    EXPECT_EQ(5u, m2->size());
 
     typedef m::basic_observable_multimap<int, int, u::u8string> observable_multimap_type;
-    int count = 0;
+    unsigned int count = 0u;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_multimap_type::value_type& i, *m1)
     {
         ++count;
-        EXPECT_EQ(count*10, i.first);
-        EXPECT_EQ(count*100, i.second);
+        EXPECT_EQ(static_cast<int>(count)*10, i.first);
+        EXPECT_EQ(static_cast<int>(count)*100, i.second);
     }
-    EXPECT_EQ(7, count);
+    EXPECT_EQ(7u, count);
 
     count = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_multimap_type::value_type& i, *m2)
     {
         ++count;
-        EXPECT_EQ(count, i.first);
-        EXPECT_EQ(count*10, i.second);
+        EXPECT_EQ(static_cast<int>(count), i.first);
+        EXPECT_EQ(static_cast<int>(count)*10, i.second);
     }
-    EXPECT_EQ(5, count);
+    EXPECT_EQ(5u, count);
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o1.last_action());
-    EXPECT_EQ(0, o1.action_add_count());
-    EXPECT_EQ(0, o1.action_remove_count());
-    EXPECT_EQ(0, o1.action_reset_count());
-    EXPECT_EQ(1, o1.action_swap_count());
-    EXPECT_EQ(7, o1.last_change_new_size());
-    EXPECT_EQ(7, o1.last_change_added());
-    EXPECT_EQ(5, o1.last_change_removed());
-    EXPECT_EQ(7, o1.total_change_added());
-    EXPECT_EQ(5, o1.total_change_removed());
+    EXPECT_EQ(0u, o1.action_add_count());
+    EXPECT_EQ(0u, o1.action_remove_count());
+    EXPECT_EQ(0u, o1.action_reset_count());
+    EXPECT_EQ(1u, o1.action_swap_count());
+    EXPECT_EQ(7u, o1.last_change_new_size());
+    EXPECT_EQ(7u, o1.last_change_added());
+    EXPECT_EQ(5u, o1.last_change_removed());
+    EXPECT_EQ(7u, o1.total_change_added());
+    EXPECT_EQ(5u, o1.total_change_removed());
 
     EXPECT_EQ(m::notify_container_changed_action_swap, o2.last_action());
-    EXPECT_EQ(0, o2.action_add_count());
-    EXPECT_EQ(0, o2.action_remove_count());
-    EXPECT_EQ(0, o2.action_reset_count());
-    EXPECT_EQ(1, o2.action_swap_count());
-    EXPECT_EQ(5, o2.last_change_new_size());
-    EXPECT_EQ(5, o2.last_change_added());
-    EXPECT_EQ(7, o2.last_change_removed());
-    EXPECT_EQ(5, o2.total_change_added());
-    EXPECT_EQ(7, o2.total_change_removed());
+    EXPECT_EQ(0u, o2.action_add_count());
+    EXPECT_EQ(0u, o2.action_remove_count());
+    EXPECT_EQ(0u, o2.action_reset_count());
+    EXPECT_EQ(1u, o2.action_swap_count());
+    EXPECT_EQ(5u, o2.last_change_new_size());
+    EXPECT_EQ(5u, o2.last_change_added());
+    EXPECT_EQ(7u, o2.last_change_removed());
+    EXPECT_EQ(5u, o2.total_change_added());
+    EXPECT_EQ(7u, o2.total_change_removed());
 }
 
 TEST(boost_basic_observable_multimap_test_suite, test_clear)
@@ -627,7 +631,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_clear)
     m::basic_observable_multimap<int, int, u::u8string>::ptr m = m::basic_observable_multimap<int, int, u::u8string>::create();
     multimap_observer<int, int> o;
 
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
@@ -636,23 +640,23 @@ TEST(boost_basic_observable_multimap_test_suite, test_clear)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
-    EXPECT_EQ(7, m->size());
+    EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
     m->clear();
-    EXPECT_EQ(0, m->size());
+    EXPECT_EQ(0u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_reset, o.last_action());
-    EXPECT_EQ(0, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(1, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(0, o.last_change_new_size());
-    EXPECT_EQ(0, o.last_change_added());
-    EXPECT_EQ(7, o.last_change_removed());
-    EXPECT_EQ(0, o.total_change_added());
-    EXPECT_EQ(7, o.total_change_removed());
+    EXPECT_EQ(0u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(1u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(0u, o.last_change_new_size());
+    EXPECT_EQ(0u, o.last_change_added());
+    EXPECT_EQ(7u, o.last_change_removed());
+    EXPECT_EQ(0u, o.total_change_added());
+    EXPECT_EQ(7u, o.total_change_removed());
 }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -666,7 +670,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_emplace)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    EXPECT_EQ(3, m->size());
+    EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
@@ -711,15 +715,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_emplace)
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
@@ -735,7 +739,7 @@ TEST(boost_basic_observable_multimap_test_suite, test_emplace_hint)
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
     m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    EXPECT_EQ(3, m->size());
+    EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
@@ -780,15 +784,15 @@ TEST(boost_basic_observable_multimap_test_suite, test_emplace_hint)
     EXPECT_EQ(m->end(), it);
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
-    EXPECT_EQ(4, o.action_add_count());
-    EXPECT_EQ(0, o.action_remove_count());
-    EXPECT_EQ(0, o.action_reset_count());
-    EXPECT_EQ(0, o.action_swap_count());
-    EXPECT_EQ(7, o.last_change_new_size());
-    EXPECT_EQ(1, o.last_change_added());
-    EXPECT_EQ(0, o.last_change_removed());
-    EXPECT_EQ(4, o.total_change_added());
-    EXPECT_EQ(0, o.total_change_removed());
+    EXPECT_EQ(4u, o.action_add_count());
+    EXPECT_EQ(0u, o.action_remove_count());
+    EXPECT_EQ(0u, o.action_reset_count());
+    EXPECT_EQ(0u, o.action_swap_count());
+    EXPECT_EQ(7u, o.last_change_new_size());
+    EXPECT_EQ(1u, o.last_change_added());
+    EXPECT_EQ(0u, o.last_change_removed());
+    EXPECT_EQ(4u, o.total_change_added());
+    EXPECT_EQ(0u, o.total_change_removed());
 }
 
 #endif  // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
