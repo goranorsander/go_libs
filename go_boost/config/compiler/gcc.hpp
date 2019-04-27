@@ -334,7 +334,8 @@
 
 #define GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS \
 _Pragma("GCC diagnostic push") \
-_Pragma("GCC diagnostic ignored \"-Wall\" \"-Wextra\"")
+_Pragma("GCC diagnostic ignored \"-Wall\"") \
+_Pragma("GCC diagnostic ignored \"-Wextra\"")
 
 #define GO_BOOST_END_SUPPRESS_ALL_WARNINGS \
 _Pragma("GCC diagnostic pop")
