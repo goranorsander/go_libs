@@ -17,8 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
-#include <go_boost/utility/recursive_spin_lock.hpp>
+#include <boost/thread.hpp>
 
 namespace go_boost
 {
@@ -26,7 +25,6 @@ namespace utility
 {
 
 class placebo_lockable
-    : noncopyable_nonmovable
 {
 public:
     virtual ~placebo_lockable();
@@ -47,7 +45,6 @@ inline placebo_lockable::~placebo_lockable()
 }
 
 inline placebo_lockable::placebo_lockable() BOOST_NOEXCEPT
-    : noncopyable_nonmovable()
 {
 }
 

@@ -32,6 +32,10 @@
 #include <boost/typeof/std/utility.hpp>
 #endif  // #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
 
+#if defined(_MSC_VER) && (_MSC_VER <= 1800)
+GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(4351)
+#endif
+
 #define GO_BOOST_DIAGNOSTICS_LOG_SUPPORTED_TYPES \
       std::string::value_type   /* 0  */ \
     , std::wstring::value_type  /* 1  */ \
@@ -591,5 +595,9 @@ inline void basic_log_line<std::wstring, std::wostream>::stringify(std::wostream
 } // namespace log
 } // namespace diagnostics
 } // namespace go_boost
+
+#if defined(_MSC_VER) && (_MSC_VER <= 1800)
+GO_BOOST_MSVC_END_SUPPRESS_WARNING
+#endif
 
 #endif  // #ifndef GO_BOOST_DIAGNOSTICS_LOG_LOG_LINE_HPP_INCLUDED

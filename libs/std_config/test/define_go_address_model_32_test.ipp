@@ -30,8 +30,7 @@ TEST(std_define_go_address_model_test_suite, test_not_define_go_address_model_64
 
 TEST(std_define_go_address_model_test_suite, test_pointer_size)
 {
-    const int* p = NULL;
-    const std::size_t p_size = sizeof(p);
+    const std::size_t p_size = sizeof(void*);
     EXPECT_EQ(p_size, 4u);
 }
 

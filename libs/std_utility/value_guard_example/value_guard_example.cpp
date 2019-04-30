@@ -16,19 +16,19 @@ int main() { return -1; }
 #else
 
 #include <iostream>
-#include <go/utility.hpp>
+#include <go/utility/value_guard.hpp>
 
 namespace u = go::utility;
 
 int main()
 {
     std::string value("First scope");
-    std::cout << value << std::endl;
+    std::cout << value.c_str() << std::endl;
     {
         const u::value_guard<std::string> guard(value, std::string("Second scope"));
-        std::cout << value << std::endl;
+        std::cout << value.c_str() << std::endl;
     }
-    std::cout << value << std::endl;
+    std::cout << value.c_str() << std::endl;
     return 0;
 }
 

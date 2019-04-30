@@ -17,8 +17,6 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/utility/noncopyable_nonmovable.hpp>
-
 #include <atomic>
 
 namespace go
@@ -27,7 +25,6 @@ namespace utility
 {
 
 struct spin_lock
-    : noncopyable_nonmovable
 {
 public:
     virtual ~spin_lock() GO_DEFAULT_DESTRUCTOR
@@ -43,11 +40,10 @@ private:
 };
 
 inline spin_lock::spin_lock() GO_NOEXCEPT
-    : noncopyable_nonmovable()
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
-    , _lock()
+    : _lock()
 #else
-    , _lock ATOMIC_FLAG_INIT
+    : _lock ATOMIC_FLAG_INIT
 #endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
 {
 #if defined (GO_NO_CXX11_INITIALIZER_LISTS)

@@ -12,7 +12,6 @@
 //
 
 #include <go/config.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -20,7 +19,6 @@ namespace utility
 {
 
 class placebo_lockable
-    : noncopyable_nonmovable
 {
 public:
     virtual ~placebo_lockable() GO_DEFAULT_DESTRUCTOR

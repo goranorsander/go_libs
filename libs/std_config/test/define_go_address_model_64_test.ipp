@@ -30,15 +30,8 @@ TEST(std_define_go_address_model_test_suite, test_define_go_address_model_64)
 
 TEST(std_define_go_address_model_test_suite, test_pointer_size)
 {
-#if defined(GO_COMP_MSVC_VC140)
-GO_MSVC_BEGIN_SUPPRESS_WARNING(4189) // Strange to get warning C4189: 'p': local variable is initialized but not referenced
-#endif  // #if defined(GO_COMP_MSVC_VC140)
-    const int* p = NULL;
-    const std::size_t p_size = sizeof(p);
+    const std::size_t p_size = sizeof(void*);
     EXPECT_EQ(p_size, 8u);
-#if defined(GO_COMP_MSVC_VC140)
-GO_MSVC_END_SUPPRESS_WARNING
-#endif  // #if defined(GO_COMP_MSVC_VC140)
 }
 
 }

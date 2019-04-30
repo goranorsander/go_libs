@@ -12,7 +12,6 @@
 //
 
 #include <go_boost/config.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 #include <cassert>
 
@@ -25,7 +24,6 @@ namespace utility
 {
 
 struct recursive_spin_lock
-    : noncopyable_nonmovable
 {
 public:
     virtual ~recursive_spin_lock() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -49,8 +47,7 @@ private:
 };
 
 inline recursive_spin_lock::recursive_spin_lock() GO_BOOST_NOEXCEPT
-    : noncopyable_nonmovable()
-    , _lock_owner(boost::thread::id())
+    : _lock_owner(boost::thread::id())
     , _lock_count(0)
 {
 }

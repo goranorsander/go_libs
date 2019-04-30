@@ -9,12 +9,11 @@
 //
 
 #include <go_boost/config.hpp>
-#include <go_boost/utility.hpp>
+#include <go_boost/utility/iterator/erase.hpp>
 #include <deque>
 #include <iostream>
 #include <boost/assign.hpp>
 
-namespace u = go_boost::utility;
 namespace ui = go_boost::utility::iterator;
 
 int main()

@@ -19,8 +19,6 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
 
-#include <go/utility/noncopyable_nonmovable.hpp>
-
 #include <atomic>
 #include <cassert>
 #include <thread>
@@ -31,7 +29,6 @@ namespace utility
 {
 
 struct recursive_spin_lock
-    : noncopyable_nonmovable
 {
 public:
     virtual ~recursive_spin_lock() GO_DEFAULT_DESTRUCTOR
@@ -52,8 +49,7 @@ private:
 };
 
 inline recursive_spin_lock::recursive_spin_lock() GO_NOEXCEPT
-    : noncopyable_nonmovable()
-    , _lock_owner(std::thread::id())
+    : _lock_owner(std::thread::id())
     , _lock_count(0)
 {
 }

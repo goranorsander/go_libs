@@ -19,6 +19,7 @@
 
 #include <go_boost/diagnostics/log/detail/queue_buffer.hpp>
 #include <go_boost/diagnostics/log/policy/logging_policy_interface.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace go_boost
 {
@@ -32,6 +33,7 @@ namespace policy
 template <class W>
 class guaranteed_logger
     : public logging_policy_interface<W>
+    , boost::noncopyable
 {
 public:
     typedef W file_writer_type;

@@ -19,7 +19,6 @@
 
 #include <boost/atomic.hpp>
 #include <boost/thread/mutex.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -27,7 +26,6 @@ namespace utility
 {
 
 struct spin_lock
-    : noncopyable_nonmovable
 {
 public:
     virtual ~spin_lock() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -46,8 +44,7 @@ private:
 };
 
 inline spin_lock::spin_lock() BOOST_NOEXCEPT
-    : noncopyable_nonmovable()
-    , _lock()
+    : _lock()
 {
 }
 

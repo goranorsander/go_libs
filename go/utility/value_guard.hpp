@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+#include <go/utility/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -19,9 +20,11 @@ namespace utility
 {
 
 template<class T> class value_guard
+    : public noncopyable_nonmovable
 {
 public:
     typedef value_guard<T> this_type;
+    typedef noncopyable_nonmovable base_type;
     typedef T value_type;
 
 public:
@@ -31,7 +34,8 @@ public:
     }
 
     value_guard(value_type& value, const value_type& new_value)
-        : _old_value(new_value)
+        : noncopyable_nonmovable()
+        , _old_value(new_value)
         , _value(value)
     {
         on_construction();
@@ -40,7 +44,8 @@ public:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     value_guard(value_type& value, value_type&& new_value)
-        : _old_value(std::forward<value_type>(new_value))
+        : noncopyable_nonmovable()
+        , _old_value(std::forward<value_type>(new_value))
         , _value(value)
     {
         on_construction();

@@ -20,6 +20,7 @@
 #include <go_boost/diagnostics/log/detail/ring_buffer.hpp>
 #include <go_boost/diagnostics/log/policy/logging_policy_interface.hpp>
 #include <go_boost/utility/min_max.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace go_boost
 {
@@ -33,6 +34,7 @@ namespace policy
 template <class W>
 class non_guaranteed_logger
     : public logging_policy_interface<W>
+    , boost::noncopyable
 {
 public:
     typedef W file_writer_type;
@@ -50,6 +52,7 @@ public:
 
     explicit non_guaranteed_logger(const boost::uint32_t ring_buffer_size_mb)
         : logging_policy_interface<W>()
+        , boost::noncopyable()
         , _ring_buffer_size_mb(ring_buffer_size_mb)
     {
     }

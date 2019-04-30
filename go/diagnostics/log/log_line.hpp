@@ -27,6 +27,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <cstring>
 #include <memory>
 
+#if defined(_MSC_VER) && (_MSC_VER <= 1800)
+GO_MSVC_BEGIN_SUPPRESS_WARNING(4351)
+#endif
+
 namespace go
 {
 namespace diagnostics
@@ -534,6 +538,10 @@ inline void basic_log_line<std::wstring, std::wostream>::stringify(std::wostream
 } // namespace log
 } // namespace diagnostics
 } // namespace go
+
+#if defined(_MSC_VER) && (_MSC_VER <= 1800)
+GO_MSVC_END_SUPPRESS_WARNING
+#endif
 
 #endif  // Required C++11 feature is not supported by this compiler
 
