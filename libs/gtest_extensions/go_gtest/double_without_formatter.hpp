@@ -12,6 +12,7 @@
 //
 
 #include <gtest/gtest.h>
+#include <go_gtest/stdint.hpp>
 
 namespace testing
 {

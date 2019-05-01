@@ -14,6 +14,8 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <gtest/gtest.h>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
+#include <go_gtest/stdint.hpp>
+
 #include <go_boost/utility/primitive_type_implicit_specializer.hpp>
 
 namespace u = go_boost::utility;

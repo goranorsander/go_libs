@@ -17,6 +17,10 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#if defined(_MSC_VER) && (_MSC_VER <= 1500)
+GO_BOOST_MSVC_BEGIN_SUPPRESS_WARNING(4189)
+#endif  // #if defined(_MSC_VER) && (_MSC_VER <= 1500)
+
 #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
 #include <boost/typeof/std/utility.hpp>
 #endif  // #if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
@@ -96,5 +100,9 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
 } // namespace log
 } // namespace diagnostics
 } // namespace go_boost
+
+#if defined(_MSC_VER) && (_MSC_VER <= 1500)
+GO_BOOST_MSVC_END_SUPPRESS_WARNING
+#endif  // #if defined(_MSC_VER) && (_MSC_VER <= 1500)
 
 #endif  // #ifndef GO_BOOST_DIAGNOSTICS_LOG_TIMESTAMP_HPP_INCLUDED

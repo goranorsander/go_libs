@@ -105,12 +105,12 @@ template<typename P> inline bool operator<(const P& lhs, const _class_name_& rhs
 template<typename P> inline bool operator<=(const P& lhs, const _class_name_& rhs) { return static_cast<_primitive_type_>(lhs)<=rhs.get(); } \
 template<typename P> inline bool operator>(const P& lhs, const _class_name_& rhs) { return static_cast<_primitive_type_>(lhs)>rhs.get(); } \
 template<typename P> inline bool operator>=(const P& lhs, const _class_name_& rhs) { return static_cast<_primitive_type_>(lhs)>=rhs.get(); } \
-template<typename P> inline bool operator==(const _class_name_&& lhs, const P& rhs) { return lhs.get()==static_cast<_primitive_type_>(rhs); } \
-template<typename P> inline bool operator!=(const _class_name_&& lhs, const P& rhs) { return lhs.get()!=static_cast<_primitive_type_>(rhs); } \
-template<typename P> inline bool operator<(const _class_name_&& lhs, const P& rhs) { return lhs.get()<static_cast<_primitive_type_>(rhs); } \
-template<typename P> inline bool operator<=(const _class_name_&& lhs, const P& rhs) { return lhs.get()<=static_cast<_primitive_type_>(rhs); } \
-template<typename P> inline bool operator>(const _class_name_&& lhs, const P& rhs) { return lhs.get()>static_cast<_primitive_type_>(rhs); } \
-template<typename P> inline bool operator>=(const _class_name_&& lhs, const P& rhs) { return lhs.get()>=static_cast<_primitive_type_>(rhs); }
+template<typename P> inline bool operator==(const _class_name_& lhs, const P& rhs) { return lhs.get()==static_cast<_primitive_type_>(rhs); } \
+template<typename P> inline bool operator!=(const _class_name_& lhs, const P& rhs) { return lhs.get()!=static_cast<_primitive_type_>(rhs); } \
+template<typename P> inline bool operator<(const _class_name_& lhs, const P& rhs) { return lhs.get()<static_cast<_primitive_type_>(rhs); } \
+template<typename P> inline bool operator<=(const _class_name_& lhs, const P& rhs) { return lhs.get()<=static_cast<_primitive_type_>(rhs); } \
+template<typename P> inline bool operator>(const _class_name_& lhs, const P& rhs) { return lhs.get()>static_cast<_primitive_type_>(rhs); } \
+template<typename P> inline bool operator>=(const _class_name_& lhs, const P& rhs) { return lhs.get()>=static_cast<_primitive_type_>(rhs); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER( _class_name_, _primitive_type_, _default_value_ ) \
 class _class_name_ \

@@ -137,7 +137,7 @@ inline void basic_file_writer<log_line, std::ofstream>::write(log_line_type& log
     GO_BOOST_TYPENAME out_file_stream_type::pos_type pos = this->_os->tellp();
     logline.stringify(*(this->_os));
     this->_bytes_written += this->_os->tellp() - pos;
-    if (this->_bytes_written > this->_log_file_roll_size_bytes)
+    if (static_cast<boost::uint32_t>(this->_bytes_written) > this->_log_file_roll_size_bytes)
     {
         this->roll_file();
     }
@@ -149,7 +149,7 @@ inline void basic_file_writer<wlog_line, std::wofstream>::write(log_line_type& l
     GO_BOOST_TYPENAME out_file_stream_type::pos_type pos = this->_os->tellp();
     logline.stringify(*(this->_os));
     this->_bytes_written += this->_os->tellp() - pos;
-    if (this->_bytes_written > this->_log_file_roll_size_bytes)
+    if (static_cast<boost::uint32_t>(this->_bytes_written) > this->_log_file_roll_size_bytes)
     {
         this->roll_file();
     }
