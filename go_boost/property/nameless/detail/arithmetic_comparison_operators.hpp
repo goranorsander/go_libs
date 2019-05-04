@@ -18,6 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/utility/placebo_lockable.hpp>
+#include <go_boost/utility/recursive_spin_lock.hpp>
 #include <go_boost/utility/u8string.hpp>
 #include <go_boost/utility/u16string.hpp>
 #include <go_boost/utility/u32string.hpp>

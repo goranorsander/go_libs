@@ -13,6 +13,10 @@
 
 #include <go/config.hpp>
 
+#include <go/utility/placebo_lockable.hpp>
+#include <go/utility/recursive_spin_lock.hpp>
+#include <go/utility/u8string.hpp>
+
 #define GO_IMPLEMENT_NAMELESS_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _value_type_, _mutex_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_, _mutex_type_>& lhs, const _value_type_& rhs) \
 { \
