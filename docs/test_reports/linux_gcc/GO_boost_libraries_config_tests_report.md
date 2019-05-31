@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2019-04-19 at 11:48:43 with result:
+Test suites *AllTests* with 32 test cases was executed 2019-05-31 at 17:48:02 with result:
 
 * 0 errors
 * 0 failures
@@ -56,7 +56,7 @@ test_not_define_go_boost_comp_msvc | 0
 test_not_define_go_boost_comp_msvc_vc90 | 0
 test_not_define_go_boost_comp_msvc_vc100 | 0
 test_not_define_go_boost_comp_msvc_vc110 | 0
-test_not_define_go_boost_comp_msvc_vc120 | 0
+test_not_define_go_boost_comp_msvc_vc120 | 0.001
 test_not_define_go_boost_comp_msvc_vc140 | 0
 test_not_define_go_boost_comp_msvc_vc141 | 0
 test_define_go_boost_gcc_version | 0
