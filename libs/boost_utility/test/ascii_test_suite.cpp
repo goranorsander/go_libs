@@ -68,7 +68,7 @@ const char* iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes =
     "\x44\x4E\x4F\x4F\x4F\x4F\x4F\x78\x4F\x55\x55\x55\x55\x59\x50\x42" \
     "\x61\x61\x61\x61\x61\x61\x61\x65\x63\x65\x65\x65\x65\x69\x69\x69\x69" \
     "\x6F\x6E\x6F\x6F\x6F\x6F\x6F\x2F\x6F\x75\x75\x75\x75\x79\x70\x79";
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
 
 // Windows 1252, see https://en.wikipedia.org/wiki/Windows-1252
 const char* windows_1252_printable_characters_from_hex_codes =
@@ -86,7 +86,7 @@ const char* windows_1252_printable_characters_from_hex_codes =
     "\xD0\xD1\xD2\xD3\xD4\xD5\xD6\xD7\xD8\xD9\xDA\xDB\xDC\xDD\xDE\xDF" \
     "\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF" \
     "\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
-const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_count = 218;
 
 const char* windows_1252_reduced_to_ascii_non_strict_from_hex_codes =
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
@@ -103,7 +103,7 @@ const char* windows_1252_reduced_to_ascii_non_strict_from_hex_codes =
     "\x44\x4E\x4F\x4F\x4F\x4F\x4F\x78\x4F\x55\x55\x55\x55\x59\x50\x42" \
     "\x61\x61\x61\x61\x61\x61\x61\x65\x63\x65\x65\x65\x65\x69\x69\x69\x69" \
     "\x6F\x6E\x6F\x6F\x6F\x6F\x6F\x2F\x6F\x75\x75\x75\x75\x79\x70\x79";
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 namespace system_wide
@@ -150,7 +150,7 @@ const wchar_t iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x65, 0x63, 0x65, 0x65, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69
     , 0x6F, 0x6E, 0x6F, 0x6F, 0x6F, 0x6F, 0x6F, 0x2F, 0x6F, 0x75, 0x75, 0x75, 0x75, 0x79, 0x70, 0x79
     , 0x00 };
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
 
 // Windows 1252
 const wchar_t windows_1252_printable_characters_from_hex_codes[] =
@@ -169,7 +169,7 @@ const wchar_t windows_1252_printable_characters_from_hex_codes[] =
     , 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF
     , 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF
     , 0x00 };
-const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_count = 218;
 
 const wchar_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     { 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F
@@ -187,7 +187,7 @@ const wchar_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x65, 0x63, 0x65, 0x65, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69
     , 0x6F, 0x6E, 0x6F, 0x6F, 0x6F, 0x6F, 0x6F, 0x2F, 0x6F, 0x75, 0x75, 0x75, 0x75, 0x79, 0x70, 0x79
     , 0x00 };
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 namespace ucs_2
@@ -234,7 +234,7 @@ const u::char2_t iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0065, 0x0063, 0x0065, 0x0065, 0x0065, 0x0065, 0x0069, 0x0069, 0x0069, 0x0069
     , 0x006F, 0x006E, 0x006F, 0x006F, 0x006F, 0x006F, 0x006F, 0x002F, 0x006F, 0x0075, 0x0075, 0x0075, 0x0075, 0x0079, 0x0070, 0x0079
     , 0x0000 };
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
 
 // Windows 1252
 const u::char2_t windows_1252_printable_characters_from_hex_codes[] =
@@ -253,7 +253,7 @@ const u::char2_t windows_1252_printable_characters_from_hex_codes[] =
     , 0x00E0, 0x00E1, 0x00E2, 0x00E3, 0x00E4, 0x00E5, 0x00E6, 0x00E7, 0x00E8, 0x00E9, 0x00EA, 0x00EB, 0x00EC, 0x00ED, 0x00EE, 0x00EF
     , 0x00F0, 0x00F1, 0x00F2, 0x00F3, 0x00F4, 0x00F5, 0x00F6, 0x00F7, 0x00F8, 0x00F9, 0x00FA, 0x00FB, 0x00FC, 0x00FD, 0x00FE, 0x00FF
     , 0x0000 };
-const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_count = 218;
 
 const u::char2_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     { 0x0020, 0x0021, 0x0022, 0x0023, 0x0024, 0x0025, 0x0026, 0x0027, 0x0028, 0x0029, 0x002A, 0x002B, 0x002C, 0x002D, 0x002E, 0x002F
@@ -271,7 +271,7 @@ const u::char2_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0065, 0x0063, 0x0065, 0x0065, 0x0065, 0x0065, 0x0069, 0x0069, 0x0069, 0x0069
     , 0x006F, 0x006E, 0x006F, 0x006F, 0x006F, 0x006F, 0x006F, 0x002F, 0x006F, 0x0075, 0x0075, 0x0075, 0x0075, 0x0079, 0x0070, 0x0079
     , 0x0000 };
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 namespace utf_8
@@ -317,7 +317,7 @@ const u::char8_t* iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes = reinte
     "\x44\x4E\x4F\x4F\x4F\x4F\x4F\x78\x4F\x55\x55\x55\x55\x59\x50\x42" \
     "\x61\x61\x61\x61\x61\x61\x61\x65\x63\x65\x65\x65\x65\x69\x69\x69\x69" \
     "\x6F\x6E\x6F\x6F\x6F\x6F\x6F\x2F\x6F\x75\x75\x75\x75\x79\x70\x79");
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
 
 // Windows 1252
 const u::char8_t* windows_1252_printable_characters_from_hex_codes = reinterpret_cast<const u::char8_t*>(
@@ -335,8 +335,8 @@ const u::char8_t* windows_1252_printable_characters_from_hex_codes = reinterpret
     "\xC3\x90\xC3\x91\xC3\x92\xC3\x93\xC3\x94\xC3\x95\xC3\x96\xC3\x97\xC3\x98\xC3\x99\xC3\x9A\xC3\x9B\xC3\x9C\xC3\x9D\xC3\x9E\xC3\x9F" \
     "\xC3\xA0\xC3\xA1\xC3\xA2\xC3\xA3\xC3\xA4\xC3\xA5\xC3\xA6\xC3\xA7\xC3\xA8\xC3\xA9\xC3\xAA\xC3\xAB\xC3\xAC\xC3\xAD\xC3\xAE\xC3\xAF" \
     "\xC3\xB0\xC3\xB1\xC3\xB2\xC3\xB3\xC3\xB4\xC3\xB5\xC3\xB6\xC3\xB7\xC3\xB8\xC3\xB9\xC3\xBA\xC3\xBB\xC3\xBC\xC3\xBD\xC3\xBE\xC3\xBF");
-const std::size_t windows_1252_printable_characters_count = 218;
-const std::size_t windows_1252_printable_characters_size = 341;
+//const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_size = 341;
 
 const u::char8_t* windows_1252_reduced_to_ascii_non_strict_from_hex_codes = reinterpret_cast<const u::char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
@@ -353,7 +353,7 @@ const u::char8_t* windows_1252_reduced_to_ascii_non_strict_from_hex_codes = rein
     "\x44\x4E\x4F\x4F\x4F\x4F\x4F\x78\x4F\x55\x55\x55\x55\x59\x50\x42" \
     "\x61\x61\x61\x61\x61\x61\x61\x65\x63\x65\x65\x65\x65\x69\x69\x69\x69" \
     "\x6F\x6E\x6F\x6F\x6F\x6F\x6F\x2F\x6F\x75\x75\x75\x75\x79\x70\x79");
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 namespace utf_16
@@ -400,7 +400,7 @@ const char16_t iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0065, 0x0063, 0x0065, 0x0065, 0x0065, 0x0065, 0x0069, 0x0069, 0x0069, 0x0069
     , 0x006F, 0x006E, 0x006F, 0x006F, 0x006F, 0x006F, 0x006F, 0x002F, 0x006F, 0x0075, 0x0075, 0x0075, 0x0075, 0x0079, 0x0070, 0x0079
     , 0x0000 };
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 210;
 
 // Windows 1252
 const char16_t windows_1252_printable_characters_from_hex_codes[] =
@@ -419,7 +419,7 @@ const char16_t windows_1252_printable_characters_from_hex_codes[] =
     , 0x00E0, 0x00E1, 0x00E2, 0x00E3, 0x00E4, 0x00E5, 0x00E6, 0x00E7, 0x00E8, 0x00E9, 0x00EA, 0x00EB, 0x00EC, 0x00ED, 0x00EE, 0x00EF
     , 0x00F0, 0x00F1, 0x00F2, 0x00F3, 0x00F4, 0x00F5, 0x00F6, 0x00F7, 0x00F8, 0x00F9, 0x00FA, 0x00FB, 0x00FC, 0x00FD, 0x00FE, 0x00FF
     , 0x0000 };
-const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_count = 218;
 
 const char16_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     { 0x0020, 0x0021, 0x0022, 0x0023, 0x0024, 0x0025, 0x0026, 0x0027, 0x0028, 0x0029, 0x002A, 0x002B, 0x002C, 0x002D, 0x002E, 0x002F
@@ -437,7 +437,7 @@ const char16_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0061, 0x0065, 0x0063, 0x0065, 0x0065, 0x0065, 0x0065, 0x0069, 0x0069, 0x0069, 0x0069
     , 0x006F, 0x006E, 0x006F, 0x006F, 0x006F, 0x006F, 0x006F, 0x002F, 0x006F, 0x0075, 0x0075, 0x0075, 0x0075, 0x0079, 0x0070, 0x0079
     , 0x0000 };
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 namespace utf_32
@@ -484,7 +484,7 @@ const char32_t iso_8859_1_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000065, 0x00000063, 0x00000065, 0x00000065, 0x00000065, 0x00000065, 0x00000069, 0x00000069, 0x00000069, 0x00000069
     , 0x0000006F, 0x0000006E, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000002F, 0x0000006F, 0x00000075, 0x00000075, 0x00000075, 0x00000075, 0x00000079, 0x00000070, 0x00000079
     , 0x00000000 };
-const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 220;
+//const std::size_t iso_8859_1_reduced_to_ascii_non_strict_characters_count = 220;
 
 // Windows 1252
 const char32_t windows_1252_printable_characters_from_hex_codes[] =
@@ -503,7 +503,7 @@ const char32_t windows_1252_printable_characters_from_hex_codes[] =
     , 0x000000E0, 0x000000E1, 0x000000E2, 0x000000E3, 0x000000E4, 0x000000E5, 0x000000E6, 0x000000E7, 0x000000E8, 0x000000E9, 0x000000EA, 0x000000EB, 0x000000EC, 0x000000ED, 0x000000EE, 0x000000EF
     , 0x000000F0, 0x000000F1, 0x000000F2, 0x000000F3, 0x000000F4, 0x000000F5, 0x000000F6, 0x000000F7, 0x000000F8, 0x000000F9, 0x000000FA, 0x000000FB, 0x000000FC, 0x000000FD, 0x000000FE, 0x000000FF
     , 0x00000000 };
-const std::size_t windows_1252_printable_characters_count = 218;
+//const std::size_t windows_1252_printable_characters_count = 218;
 
 const char32_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     { 0x00000020, 0x00000021, 0x00000022, 0x00000023, 0x00000024, 0x00000025, 0x00000026, 0x00000027, 0x00000028, 0x00000029, 0x0000002A, 0x0000002B, 0x0000002C, 0x0000002D, 0x0000002E, 0x0000002F
@@ -521,7 +521,7 @@ const char32_t windows_1252_reduced_to_ascii_non_strict_from_hex_codes[] =
     , 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000061, 0x00000065, 0x00000063, 0x00000065, 0x00000065, 0x00000065, 0x00000065, 0x00000069, 0x00000069, 0x00000069, 0x00000069
     , 0x0000006F, 0x0000006E, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000006F, 0x0000002F, 0x0000006F, 0x00000075, 0x00000075, 0x00000075, 0x00000075, 0x00000079, 0x00000070, 0x00000079
     , 0x00000000 };
-const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
+//const std::size_t windows_1252_reduced_to_ascii_non_strict_characters_count = 245;
 
 }
 

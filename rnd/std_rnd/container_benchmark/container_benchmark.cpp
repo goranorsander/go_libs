@@ -236,7 +236,7 @@ class element_4096_byte
 using test_case_number_of_elements_type = std::array<uint64_t, 10>;
 
 const test_case_number_of_elements_type tiny_test_case_number_of_elements = { 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 22500, 25000 };
-const test_case_number_of_elements_type small_test_case_number_of_elements = { 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000 };
+//const test_case_number_of_elements_type small_test_case_number_of_elements = { 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000 };
 const test_case_number_of_elements_type standard_test_case_number_of_elements = { 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000 };
 
 const std::vector<uint64_t>& key_sequence(const uint64_t number_of_keys)
