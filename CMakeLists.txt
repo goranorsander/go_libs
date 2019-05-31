@@ -85,7 +85,7 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
 	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W3")
 		# Use default warnings
 	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W4")
-		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-deprecated -Wno-unused-local-typedefs" )
+		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-class-memaccess -Wno-deprecated -Wno-unused-local-typedefs" )
 	elseif(${CXX_COMPILER_WARNING_LEVEL} STREQUAL "W5")
 		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra" )
 	endif()

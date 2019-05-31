@@ -77,14 +77,14 @@ public:
 
     virtual ~spaceship() {}
 
-    spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_)
-        : fleet_commander("fleet_commander", fleet_commander_)
+    spaceship(const fleet_commander::ptr& commander_, const std::string& name_, const std::string& captain_)
+        : commander("commander", commander_)
         , name("name", name_)
         , captain("captain", captain_)
     {
     }
 
-    rop::value_property<fleet_commander::ptr> fleet_commander;
+    rop::value_property<fleet_commander::ptr> commander;
     p::value_property<std::string> name;
     p::value_property<std::string> captain;
 
@@ -93,7 +93,7 @@ public:
         fleet_commander_changed_event::ptr fleet_commander_changed = boost::dynamic_pointer_cast<fleet_commander_changed_event>(e);
         if (fleet_commander_changed)
         {
-            std::cout << name.get() << " acknowledge " << fleet_commander.get()->commander() << " as new fleet commander" << std::endl;
+            std::cout << name.get() << " acknowledge " << commander.get()->commander() << " as new fleet commander" << std::endl;
         }
     }
 };

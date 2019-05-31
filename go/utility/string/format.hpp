@@ -39,7 +39,7 @@ inline std::string format(const std::string::value_type* fmt_str, ...)  // See i
 	}
     int n = static_cast<int>(strlen(fmt_str)) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<char[]> formatted;
-    va_list ap = nullptr;
+    va_list ap;
     for(;;)
     {
         formatted.reset(new char[n]); // Wrap the plain char array into the unique_ptr
@@ -75,7 +75,7 @@ inline std::wstring format(const std::wstring::value_type* fmt_str, ...)  // See
 	}
 	int n = static_cast<int>(wcslen(fmt_str)) * 2; // Reserve two times as much as the length of the fmt_str
     std::unique_ptr<wchar_t[]> formatted;
-    va_list ap = nullptr;
+    va_list ap;
     for(;;)
     {
         formatted.reset(new wchar_t[n]); // Wrap the plain char array into the unique_ptr

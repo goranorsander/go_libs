@@ -83,6 +83,7 @@ The CMake configurations I use:
 **BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | | | | | 
 **BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | | 
 **BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | | 
+**CXX_COMPILER_WARNING_LEVEL** | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 
 **ENABLE_SUPPRESS_WARNINGS** | X | X | X | X | X | X | X | X | X | X | X 
 **CMAKE_GNUtoMS** | N/A | N/A | | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
 **USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | | | 
@@ -95,13 +96,13 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 My development environment and toolset details:
 
 * Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
-  * cmake version 3.14.1
+  * cmake version 3.14.4
   * clang version 8.0.0 (tags/RELEASE_800/final)
-  * gcc (GCC) 8.2.1 20181127
+  * gcc (GCC) 8.3.0
   * git 2.21.0
   * GNU Make 4.2.1
   * Code::Blocks 17.12
-  * ruby 2.6.2p47 (2019-03-13 revision 67232)
+  * ruby 2.6.3p62 (2019-04-16 revision 67580)
   * Visual Studio Code 1.19.2 - with extensions:
     * C/C++ 0.22.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
@@ -109,7 +110,7 @@ My development environment and toolset details:
     * Git Lens 9.5.1 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 2.2.0 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.14.2
+  * cmake version 3.14.3
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.21.0.windows.1

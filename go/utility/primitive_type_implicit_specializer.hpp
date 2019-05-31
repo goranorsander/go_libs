@@ -106,7 +106,7 @@ template<typename P> inline _class_name_ operator>>(const P& lhs, const _class_n
 #define GO_IMPLEMENT_OUTSIDE_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
 template<typename P> inline _class_name_ operator%(const P& lhs, const _class_name_& rhs) { return _class_name_(std::fmod(static_cast<_primitive_type_>(lhs), rhs.get())); }
 
-#if defined(GO_COMP_GCC_MINGW)
+#if defined(GO_COMP_GCC) || defined(GO_COMP_GCC_MINGW)
 #define GO_IMPLEMENT_OUTSIDE_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_COMPARISON_OPERATORS( _class_name_, _primitive_type_ ) \
 template<typename P> inline bool operator==(const P& lhs, const _class_name_& rhs) { return static_cast<_primitive_type_>(lhs)==rhs.get(); } \
 template<typename P> inline bool operator!=(const P& lhs, const _class_name_& rhs) { return static_cast<_primitive_type_>(lhs)!=rhs.get(); } \
@@ -128,7 +128,7 @@ template<typename P> inline bool operator<(const _class_name_& lhs, const P& rhs
 template<typename P> inline bool operator<=(const _class_name_& lhs, const P& rhs) { return lhs.get()<=static_cast<_primitive_type_>(rhs); } \
 template<typename P> inline bool operator>(const _class_name_& lhs, const P& rhs) { return lhs.get()>static_cast<_primitive_type_>(rhs); } \
 template<typename P> inline bool operator>=(const _class_name_& lhs, const P& rhs) { return lhs.get()>=static_cast<_primitive_type_>(rhs); }
-#endif  // #if defined(GO_COMP_GCC_MINGW)
+#endif  // #if defined(GO_COMP_GCC) || defined(GO_COMP_GCC_MINGW)
 
 #define GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER( _class_name_, _primitive_type_, _default_value_ ) \
 class _class_name_ \
