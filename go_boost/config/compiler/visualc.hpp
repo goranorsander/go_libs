@@ -92,6 +92,8 @@
 #define GO_BOOST_IDE_MS_VS2019 1
 #if (_MSC_VER == 1920)
 #define GO_BOOST_IDE_MS_VS2019_16_0 1
+#elif (_MSC_VER == 1921)
+#define GO_BOOST_IDE_MS_VS2019_16_1 1
 #endif  // #if (_MSC_VER == 1920)
 #endif  // #if (_MSC_VER == 800)
 
