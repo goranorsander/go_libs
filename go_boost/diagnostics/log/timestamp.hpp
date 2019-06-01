@@ -72,7 +72,11 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
 #if defined(GO_BOOST_NO_CXX11_SNPRINTF)
     std::sprintf(microseconds, "%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
 #else
-    std::snprintf(microseconds, 7, "%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+#if defined(GO_BOOST_COMP_MSVC)
+	std::snprintf(microseconds, 7, "%06lli", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+#else
+	std::snprintf(microseconds, 7, "%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+#endif  // #if defined(GO_BOOST_COMP_MSVC)
 #endif  // #if defined(GO_BOOST_NO_CXX11_SNPRINTF)
     os << '[' << ymd_hms << microseconds << ']';
 }
@@ -93,8 +97,12 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
     wchar_t ymd_hms[32];
     std::wcsftime(ymd_hms, 32, L"%Y-%m-%d %H:%M:%S.", &result);
     wchar_t microseconds[7];
-    std::swprintf(microseconds, 32, L"%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
-    os << L'[' << ymd_hms << microseconds << L']';
+#if defined(GO_BOOST_COMP_MSVC)
+	std::swprintf(microseconds, 32, L"%06lli", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+#else
+	std::swprintf(microseconds, 32, L"%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+#endif  // #if defined(GO_BOOST_COMP_MSVC)
+	os << L'[' << ymd_hms << microseconds << L']';
 }
 
 } // namespace log
