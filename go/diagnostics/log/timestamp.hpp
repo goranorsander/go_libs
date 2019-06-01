@@ -68,11 +68,11 @@ inline void format_timestamp(std::ostream& os, const timestamp_type timestamp)
 #if defined(GO_NO_CXX11_SNPRINTF)
     std::sprintf(microseconds, "%06li", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #else
-#if defined(GO_COMP_MSVC)
+#if defined(GO_COMP_MSVC) || defined(GO_COMP_GCC_MINGW)
 	std::snprintf(microseconds, 7, "%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #else
     std::snprintf(microseconds, 7, "%06li", static_cast<int64_t>(timestamp % one_second_as_microseconds));
-#endif  // #if defined(GO_COMP_MSVC)
+#endif  // #if defined(GO_COMP_MSVC) || defined(GO_COMP_GCC_MINGW)
 #endif  // #if defined(GO_NO_CXX11_SNPRINTF)
 #if defined(GO_COMP_GCC)
     os << std::string("[") << std::string(ymd_hms) << std::string(microseconds) << std::string("]");
@@ -101,11 +101,11 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
     std::wcsftime(ymd_hms, 32, L"%Y-%m-%d %T.", &result);
 	GO_GCC_END_SUPPRESS_WARNING
     wchar_t microseconds[7];
-#if defined(GO_COMP_MSVC)
+#if defined(GO_COMP_MSVC) || defined(GO_COMP_GCC_MINGW)
 	std::swprintf(microseconds, 7, L"%06lli", static_cast<int64_t>(timestamp % one_second_as_microseconds));
 #else
 	std::swprintf(microseconds, 7, L"%06li", static_cast<int64_t>(timestamp % one_second_as_microseconds));
-#endif  // #if defined(GO_COMP_MSVC)
+#endif  // #if defined(GO_COMP_MSVC) || defined(GO_COMP_GCC_MINGW)
 #if defined(GO_COMP_GCC)
     os << std::wstring(L"[") << std::wstring(ymd_hms) << std::wstring(microseconds) << std::wstring(L"]");
 #else
