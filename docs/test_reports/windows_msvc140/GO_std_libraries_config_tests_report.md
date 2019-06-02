@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-05-07 at 19:31:11 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-06-02 at 11:23:31 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.035 seconds.
+Test suites execution took 0.026 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_define_go_add_quotes_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -40,7 +40,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.02 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
@@ -74,7 +74,7 @@ test_define_go_comp_msvc_vc110 | 0
 test_define_go_comp_msvc_vc120 | 0
 test_define_go_comp_msvc_vc140 | 0
 test_define_go_comp_msvc_vc141 | 0
-test_not_define_go_gcc_version | 0
+test_not_define_go_gcc_version | 0.001
 test_define_go_ide_ms_vs2008 | 0
 test_define_go_ide_ms_vs2010 | 0
 test_define_go_ide_ms_vs2012 | 0
@@ -96,7 +96,7 @@ Test suite *std_define_go_message_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -127,7 +127,7 @@ Test suite *std_define_go_typename_test_suite* with 1 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="72" failures="0" disabled="0" errors="0" timestamp="2019-05-07T19:30:24" time="0.884" name="AllTests">
-  <testsuite name="boost_wproperty_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.095">
-    <testcase name="value_properties" status="run" time="0.001" classname="boost_wproperty_test_suite" />
+<testsuites tests="72" failures="0" disabled="0" errors="0" timestamp="2019-06-02T11:22:47" time="0.805" name="AllTests">
+  <testsuite name="boost_wproperty_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.086">
+    <testcase name="value_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
-    <testcase name="reference_properties" status="run" time="0.001" classname="boost_wproperty_test_suite" />
+    <testcase name="reference_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" time="0.001" classname="boost_wproperty_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_wproperty_test_suite" />
   </testsuite>
-  <testsuite name="boost_u8property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.093">
-    <testcase name="value_properties" status="run" time="0" classname="boost_u8property_test_suite" />
+  <testsuite name="boost_u8property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.087">
+    <testcase name="value_properties" status="run" time="0.001" classname="boost_u8property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_u8property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_u8property_test_suite" />
-    <testcase name="reference_properties" status="run" time="0" classname="boost_u8property_test_suite" />
+    <testcase name="reference_properties" status="run" time="0.001" classname="boost_u8property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="boost_u8property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" time="0" classname="boost_u8property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" time="0.001" classname="boost_u8property_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="boost_u8property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" time="0.001" classname="boost_u8property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_u8property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_u8property_test_suite" />
   </testsuite>
-  <testsuite name="boost_u32property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.089">
+  <testsuite name="boost_u32property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.085">
     <testcase name="value_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_u32property_test_suite" />
-    <testcase name="reference_properties" status="run" time="0" classname="boost_u32property_test_suite" />
+    <testcase name="reference_properties" status="run" time="0.001" classname="boost_u32property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_u32property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_u32property_test_suite" />
   </testsuite>
-  <testsuite name="boost_u16property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.088">
-    <testcase name="value_properties" status="run" time="0.001" classname="boost_u16property_test_suite" />
+  <testsuite name="boost_u16property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.082">
+    <testcase name="value_properties" status="run" time="0" classname="boost_u16property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_u16property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_u16property_test_suite" />
     <testcase name="reference_properties" status="run" time="0" classname="boost_u16property_test_suite" />
@@ -44,7 +44,7 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_u16property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_u16property_test_suite" />
   </testsuite>
-  <testsuite name="boost_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.088">
+  <testsuite name="boost_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.082">
     <testcase name="value_properties" status="run" time="0" classname="boost_property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_property_test_suite" />
@@ -55,7 +55,7 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_property_test_suite" />
   </testsuite>
-  <testsuite name="boost_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.11">
+  <testsuite name="boost_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.097">
     <testcase name="value_properties" status="run" time="0" classname="boost_property_placebo_lockable_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_property_placebo_lockable_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_property_placebo_lockable_test_suite" />
@@ -66,9 +66,9 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_property_placebo_lockable_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.127">
+  <testsuite name="boost_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.108">
     <testcase name="value_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_value_properties" status="run" time="0.001" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_value_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
     <testcase name="reference_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
@@ -77,7 +77,7 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="boost_nameless_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_nameless_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.093">
+  <testsuite name="boost_nameless_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.09">
     <testcase name="value_properties" status="run" time="0" classname="boost_nameless_property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="boost_nameless_property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="boost_nameless_property_test_suite" />
