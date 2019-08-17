@@ -20,7 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\go\utility.hpp" />
+    <ClInclude Include="..\..\go\utility\container\circular_buffer.hpp" />
     <ClInclude Include="..\..\go\utility\exchange.hpp" />
+    <ClInclude Include="..\..\go\utility\iterator\reverse.hpp" />
+    <ClInclude Include="..\..\go\utility\monitor.hpp" />
     <ClInclude Include="..\..\go\utility\range\sequentially_increasing.hpp" />
     <ClInclude Include="..\..\go\utility\recursive_spin_lock.hpp" />
     <ClInclude Include="..\..\go\utility\spin_lock.hpp" />

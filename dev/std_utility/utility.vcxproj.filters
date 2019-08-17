@@ -140,6 +140,15 @@
     <ClInclude Include="..\..\go\utility\exchange.hpp">
       <Filter>go\utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\go\utility\container\circular_buffer.hpp">
+      <Filter>go\utility\container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\monitor.hpp">
+      <Filter>go\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\go\utility\iterator\reverse.hpp">
+      <Filter>go\utility\iterator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\enable_intellisence.cpp" />
