@@ -17,7 +17,6 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/diagnostics/log/detail/buffer.hpp>
 #include <go_boost/diagnostics/log/detail/buffer_interface.hpp>
 #include <go_boost/diagnostics/log/log_line.hpp>
 #include <go_boost/utility/spin_lock.hpp>
@@ -44,214 +43,122 @@ public:
     typedef L log_line_type;
     typedef queue_buffer<L> this_type;
 
-    typedef buffer<log_line_type> buffer_type;
     typedef typename L::string_type string_type;
     typedef typename L::out_stream_type out_stream_type;
     typedef typename L::char_type char_type;
+    typedef std::size_t size_type;
 
 public:
     virtual ~queue_buffer() GO_BOOST_DEFAULT_DESTRUCTOR
-
-    queue_buffer();
+    queue_buffer() GO_BOOST_DEFAULT_CONSTRUCTOR
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    virtual void push(L&& logline) GO_BOOST_OVERRIDE;
+    virtual void push(L&& logline) GO_BOOST_OVERRIDE
+    {
+        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        element e(std::move(logline));
+        this->_queue.push(std::move(e));
+    }
 
 #else
 
-    virtual void push(const L& logline) GO_BOOST_OVERRIDE;
+    virtual void push(const L& logline) GO_BOOST_OVERRIDE
+    {
+        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        element e(logline);
+        this->_queue.push(e);
+}
 
 #endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     virtual bool try_pop(L& logline) GO_BOOST_OVERRIDE
     {
-        if (_current_read_buffer == GO_BOOST_NULLPTR)
-        {
-            _current_read_buffer = get_next_read_buffer();
-        }
-
-        buffer_type* read_buffer = _current_read_buffer;
-
-        if (read_buffer == GO_BOOST_NULLPTR)
+        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        if (this->_queue.empty())
         {
             return false;
         }
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        logline = std::move(this->_queue.front().logline);
+#else
+        logline = this->_queue.front().logline;
+#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+        this->_queue.pop();
+        return true;
+    }
 
-        if (bool success = read_buffer->try_pop(logline, _read_index))
+private:
+    struct element
+    {
+        ~element() GO_BOOST_DEFAULT_DESTRUCTOR
+
+        element()
+            : logline(log_level::none, nullptr, nullptr, 0)
         {
-            _read_index++;
-            if (_read_index == buffer_type::size)
+        }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+        element(const element&) GO_BOOST_DELETE_FUNCTION
+
+#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+        element(element&&) = default;
+
+#else
+
+        element(element&& other)
+            : logline(std::move(other.logline))
+        {
+        }
+
+#endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+        element(log_line_type&& l)
+            : logline(std::move(l))
+        {
+        }
+
+        element& operator=(const element&) GO_BOOST_DELETE_FUNCTION
+
+#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+        element& operator=(element&&) = default;
+
+#else
+
+        element& operator=(element&& other)
+        {
+            if (&other != this)
             {
-                _read_index = 0;
-                _current_read_buffer = GO_BOOST_NULLPTR;
-                const boost::lock_guard<go_boost::utility::spin_lock> lock(_spin_lock);
-                _buffers.pop();
+                logline = std::move(other.logline);
             }
-            return true;
+            return *this;
         }
 
-        return false;
-    }
+#endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
-private:
-    void setup_next_write_buffer()
-    {
-        boost::shared_ptr<buffer_type> next_write_buffer(new buffer_type());
-        _current_write_buffer.store(next_write_buffer.get(), boost::memory_order_release);
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(_spin_lock);
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        _buffers.push(std::move(next_write_buffer));
 #else
-        _buffers.push(next_write_buffer);
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        _write_index.store(0, boost::memory_order_relaxed);
-    }
 
-    buffer_type* get_next_read_buffer()
-    {
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(_spin_lock);
-        return _buffers.empty() ? GO_BOOST_NULLPTR : _buffers.front().get();
-    }
+        element(const element&) GO_BOOST_DELETE_FUNCTION
+
+        element(const log_line_type& l)
+            : logline(l)
+        {
+        }
+
+        element& operator=(const element&) GO_BOOST_DELETE_FUNCTION
+
+#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+        log_line_type logline;
+    };
 
 private:
-    std::queue<boost::shared_ptr<buffer_type>> _buffers;
-    boost::atomic<buffer_type*> _current_write_buffer;
-    buffer_type* _current_read_buffer;
-    boost::atomic<unsigned int> _write_index;
-    go_boost::utility::spin_lock _spin_lock;
-    unsigned int _read_index;
+    std::queue<element> _queue;
+    go_boost::utility::spin_lock _lock;
 };
-
-template <>
-inline queue_buffer<log_line>::queue_buffer()
-    : buffer_interface<log_line>()
-    , go_boost::utility::noncopyable_nonmovable()
-    , _buffers()
-    , _current_write_buffer()
-    , _current_read_buffer(GO_BOOST_NULLPTR)
-    , _write_index(0)
-    , _spin_lock()
-    , _read_index(0)
-{
-    setup_next_write_buffer();
-}
-
-template <>
-inline queue_buffer<wlog_line>::queue_buffer()
-    : buffer_interface<wlog_line>()
-    , go_boost::utility::noncopyable_nonmovable()
-    , _buffers()
-    , _current_write_buffer()
-    , _current_read_buffer(GO_BOOST_NULLPTR)
-    , _write_index(0)
-    , _spin_lock()
-    , _read_index(0)
-{
-    setup_next_write_buffer();
-}
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template <>
-inline void queue_buffer<log_line>::push(log_line&& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(std::move(logline), write_index))
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(boost::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-        push(std::move(logline));
-    }
-}
-
-template <>
-inline void queue_buffer<wlog_line>::push(wlog_line&& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(std::move(logline), write_index))
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(boost::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-        push(std::move(logline));
-    }
-}
-
-#else
-
-template <>
-inline void queue_buffer<log_line>::push(const log_line& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(std::move(logline), write_index))
-#else
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(logline, write_index))
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(boost::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        push(std::move(logline));
-#else
-        push(logline);
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    }
-}
-
-template <>
-inline void queue_buffer<wlog_line>::push(const wlog_line& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(std::move(logline), write_index))
-#else
-        if (_current_write_buffer.load(boost::memory_order_acquire)->push(logline, write_index))
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(boost::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        push(std::move(logline));
-#else
-        push(logline);
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    }
-}
-
-#endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 } // namespace detail
 } // namespace log

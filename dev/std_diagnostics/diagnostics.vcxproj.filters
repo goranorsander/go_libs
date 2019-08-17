@@ -55,9 +55,6 @@
     <ClInclude Include="..\..\go\diagnostics\log\detail\types.hpp">
       <Filter>go\diagnostics\log\detail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\go\diagnostics\log\detail\buffer.hpp">
-      <Filter>go\diagnostics\log\detail</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\go\diagnostics\log\detail\queue_buffer.hpp">
       <Filter>go\diagnostics\log\detail</Filter>
     </ClInclude>

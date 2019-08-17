@@ -44,49 +44,39 @@ public:
     typedef typename L::string_type string_type;
     typedef typename L::out_stream_type out_stream_type;
     typedef typename L::char_type char_type;
+    typedef std::size_t size_type;
 
 public:
-    virtual ~ring_buffer()
-    {
-        for (std::size_t i = 0; i < _size; ++i)
-        {
-            _ring[i].~element();
-        }
-        std::free(_ring);
-    }
+    virtual ~ring_buffer() = default;
 
-    explicit ring_buffer(const std::size_t size)
+    explicit ring_buffer(const size_type size)
         : buffer_interface<L>()
         , go::utility::noncopyable_nonmovable()
         , _size(size)
-        , _ring(static_cast<element*>(std::malloc(size * sizeof(element))))
+        , _ring{ new element[size] }
         , _write_index(0)
         , _read_index(0)
     {
-        for (std::size_t i = 0; i < _size; ++i)
-        {
-            new (&_ring[i]) element();
-        }
     }
 
     virtual void push(L&& logline) override;
 
     virtual bool try_pop(L& logline) override
     {
-        element& item = _ring[_read_index % _size];
+        element& item = this->_ring[this->_read_index % this->_size];
         const std::lock_guard<go::utility::spin_lock> lock(item.lock);
-        if (item.written == 1)
+        if (item.written)
         {
             logline = std::move(item.logline);
-            item.written = 0;
-            ++_read_index;
+            item.written = false;
+            ++(this->_read_index);
             return true;
         }
         return false;
     }
 
 private:
-    struct /*alignas(64)*/ element
+    struct element
     {
         ~element() = default;
 
@@ -97,37 +87,43 @@ private:
         {
         }
 
+        element(const element&) = delete;
+        element(element&&) = default;
+
+        element& operator=(const element&) = delete;
+        element& operator=(element&&) = default;
+
         go::utility::spin_lock lock;
         bool written;
         log_line_type logline;
     };
 
 private:
-    const std::size_t _size;
-    element* _ring;
-    std::atomic<unsigned int> _write_index;
+    const size_type _size;
+    std::unique_ptr<element[]> _ring;
+    std::atomic<size_type> _write_index;
     char_type pad[64];
-    unsigned int _read_index;
+    size_type _read_index;
 };
 
 template <>
 inline void ring_buffer<log_line>::push(log_line&& logline)
 {
-    const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed) % _size;
-    element& item = _ring[write_index];
+    const size_type write_index = this->_write_index.fetch_add(1, std::memory_order_relaxed) % this->_size;
+    element& item = this->_ring[write_index];
     const std::lock_guard<go::utility::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
-    item.written = 1;
+    item.written = true;
 }
 
 template <>
 inline void ring_buffer<wlog_line>::push(wlog_line&& logline)
 {
-    const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed) % _size;
-    element& item = _ring[write_index];
+    const size_type write_index = this->_write_index.fetch_add(1, std::memory_order_relaxed) % this->_size;
+    element& item = this->_ring[write_index];
     const std::lock_guard<go::utility::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
-    item.written = 1;
+    item.written = true;
 }
 
 } // namespace detail

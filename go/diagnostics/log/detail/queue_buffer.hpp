@@ -17,7 +17,6 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/diagnostics/log/detail/buffer.hpp>
 #include <go/diagnostics/log/detail/buffer_interface.hpp>
 #include <go/diagnostics/log/log_line.hpp>
 #include <go/utility/spin_lock.hpp>
@@ -43,140 +42,62 @@ public:
     typedef L log_line_type;
     typedef queue_buffer<L> this_type;
 
-    typedef buffer<log_line_type> buffer_type;
     typedef typename L::string_type string_type;
     typedef typename L::out_stream_type out_stream_type;
     typedef typename L::char_type char_type;
+    typedef std::size_t size_type;
 
 public:
     virtual ~queue_buffer() = default;
+    queue_buffer() = default;
 
-    queue_buffer();
-
-    virtual void push(L&& logline) override;
+    virtual void push(L&& logline) override
+    {
+        const std::lock_guard<go::utility::spin_lock> lock(this->_lock);
+        element e(std::move(logline));
+        this->_queue.push(std::move(e));
+    }
 
     virtual bool try_pop(L& logline) override
     {
-        if (_current_read_buffer == nullptr)
-        {
-            _current_read_buffer = get_next_read_buffer();
-        }
-
-        buffer_type* read_buffer = _current_read_buffer;
-
-        if (read_buffer == nullptr)
+        const std::lock_guard<go::utility::spin_lock> lock(this->_lock);
+        if (this->_queue.empty())
         {
             return false;
         }
+        logline = std::move(this->_queue.front().logline);
+        this->_queue.pop();
+        return true;
+    }
 
-        if (bool success = read_buffer->try_pop(logline, _read_index))
+private:
+    struct element
+    {
+        ~element() = default;
+
+        element()
+            : logline(log_level::none, nullptr, nullptr, 0)
         {
-            _read_index++;
-            if (_read_index == buffer_type::size)
-            {
-                _read_index = 0;
-                _current_read_buffer = nullptr;
-                const std::lock_guard<go::utility::spin_lock> lock(_spin_lock);
-                _buffers.pop();
-            }
-            return true;
         }
 
-        return false;
-    }
+        element(const element&) = delete;
+        element(element&&) = default;
+
+        element(log_line_type&& l)
+            : logline(std::move(l))
+        {
+        }
+
+        element& operator=(const element&) = delete;
+        element& operator=(element&&) = default;
+
+        log_line_type logline;
+    };
 
 private:
-    void setup_next_write_buffer()
-    {
-        std::unique_ptr<buffer_type> next_write_buffer(new buffer_type());
-        _current_write_buffer.store(next_write_buffer.get(), std::memory_order_release);
-        const std::lock_guard<go::utility::spin_lock> lock(_spin_lock);
-        _buffers.push(std::move(next_write_buffer));
-        _write_index.store(0, std::memory_order_relaxed);
-    }
-
-    buffer_type* get_next_read_buffer()
-    {
-        const std::lock_guard<go::utility::spin_lock> lock(_spin_lock);
-        return _buffers.empty() ? nullptr : _buffers.front().get();
-    }
-
-private:
-    std::queue<std::unique_ptr<buffer_type>> _buffers;
-    std::atomic<buffer_type*> _current_write_buffer;
-    buffer_type* _current_read_buffer;
-    std::atomic<unsigned int> _write_index;
-    go::utility::spin_lock _spin_lock;
-    unsigned int _read_index;
+    std::queue<element> _queue;
+    go::utility::spin_lock _lock;
 };
-
-template <>
-inline queue_buffer<log_line>::queue_buffer()
-    : buffer_interface<log_line>()
-    , go::utility::noncopyable_nonmovable()
-    , _buffers()
-    , _current_write_buffer()
-    , _current_read_buffer{ nullptr }
-    , _write_index(0)
-    , _spin_lock()
-    , _read_index(0)
-{
-    setup_next_write_buffer();
-}
-
-template <>
-inline queue_buffer<wlog_line>::queue_buffer()
-    : buffer_interface<wlog_line>()
-    , go::utility::noncopyable_nonmovable()
-    , _buffers()
-    , _current_write_buffer()
-    , _current_read_buffer{ nullptr }
-    , _write_index(0)
-    , _spin_lock()
-    , _read_index(0)
-{
-    setup_next_write_buffer();
-}
-
-template <>
-inline void queue_buffer<log_line>::push(log_line&& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-        if (_current_write_buffer.load(std::memory_order_acquire)->push(std::move(logline), write_index))
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(std::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-        push(std::move(logline));
-    }
-}
-
-template <>
-inline void queue_buffer<wlog_line>::push(wlog_line&& logline)
-{
-    const unsigned int write_index = _write_index.fetch_add(1, std::memory_order_relaxed);
-    if (write_index < buffer_type::size)
-    {
-        if (_current_write_buffer.load(std::memory_order_acquire)->push(std::move(logline), write_index))
-        {
-            setup_next_write_buffer();
-        }
-    }
-    else
-    {
-        while (_write_index.load(std::memory_order_acquire) >= buffer_type::size)
-        {
-        }
-        push(std::move(logline));
-    }
-}
 
 } // namespace detail
 } // namespace log

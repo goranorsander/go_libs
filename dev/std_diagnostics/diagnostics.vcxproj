@@ -25,7 +25,6 @@
     <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch.hpp" />
     <ClInclude Include="..\..\go\diagnostics\benchmark\stopwatch_guard.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log.hpp" />
-    <ClInclude Include="..\..\go\diagnostics\log\detail\buffer.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\buffer_interface.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\decode.hpp" />
     <ClInclude Include="..\..\go\diagnostics\log\detail\logger.hpp" />
