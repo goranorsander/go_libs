@@ -19,6 +19,12 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <vector>
 
+#if defined(max)
+#define GO_UTILITY_CONTAINER_CIRCULAR_BUFFER_RESTORE_MAX 1
+#pragma push_macro("max")
+#undef max
+#endif  // #if defined(max)
+
 namespace go
 {
 namespace utility
@@ -1310,6 +1316,11 @@ private:
 }
 }
 }
+
+#if defined(GO_UTILITY_CONTAINER_CIRCULAR_BUFFER_RESTORE_MAX)
+#undef GO_UTILITY_CONTAINER_CIRCULAR_BUFFER_RESTORE_MAX
+#pragma pop_macro("max")
+#endif  // #if defined(GO_UTILITY_CONTAINER_CIRCULAR_BUFFER_RESTORE_MAX)
 
 #endif  // #if defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 
