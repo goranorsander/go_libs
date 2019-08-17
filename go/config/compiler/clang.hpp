@@ -107,9 +107,11 @@ _Pragma message _message_
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}
+#define GO_DELETE_FUNCTION ;
 #else
 #define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
+#define GO_DELETE_FUNCTION = delete;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 #if defined(GO_NO_CXX11_NOEXCEPT)

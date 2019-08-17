@@ -116,6 +116,12 @@ __warning _message_
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
+#if defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
+#define GO_BOOST_DELETE_FUNCTION ;
+#else
+#define GO_BOOST_DELETE_FUNCTION = delete;
+#endif  // #if defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
+
 #if defined(GO_BOOST_NO_CXX11_NOEXCEPT)
 #define GO_BOOST_NOEXCEPT
 #define GO_BOOST_NOEXCEPT_OR_NOTHROW throw()

@@ -94,6 +94,8 @@
 #define GO_BOOST_IDE_MS_VS2019_16_0 1
 #elif (_MSC_VER == 1921)
 #define GO_BOOST_IDE_MS_VS2019_16_1 1
+#elif (_MSC_VER == 1922)
+#define GO_BOOST_IDE_MS_VS2019_16_2 1
 #endif  // #if (_MSC_VER == 1920)
 #endif  // #if (_MSC_VER == 800)
 
@@ -200,6 +202,12 @@ __pragma(message(_message_))
 #define GO_BOOST_DEFAULT_CONSTRUCTOR = default;
 #define GO_BOOST_DEFAULT_DESTRUCTOR = default;
 #endif  // #if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+
+#if defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
+#define GO_BOOST_DELETE_FUNCTION ;
+#else
+#define GO_BOOST_DELETE_FUNCTION = delete;
+#endif  // #if defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
 #if defined(GO_BOOST_NO_CXX11_NOEXCEPT)
 #define GO_BOOST_NOEXCEPT

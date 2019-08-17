@@ -57,6 +57,7 @@ GO_COMP_MSVC_VC110 | Compiler is Microsoft Visual C++ 11.0 / Visual Studio 2012
 GO_COMP_MSVC_VC120 | Compiler is Microsoft Visual C++ 12.0 / Visual Studio 2013
 GO_COMP_MSVC_VC140 | Compiler is Microsoft Visual C++ 14.0 / Visual Studio 2015
 GO_COMP_MSVC_VC141 | Compiler is Microsoft Visual C++ 14.1 / Visual Studio 2017
+GO_COMP_MSVC_VC142 | Compiler is Microsoft Visual C++ 14.2 / Visual Studio 2019
 GO_IDE_MS_DS40 | Development environment is Developer Studio 4.0
 GO_IDE_MS_DS42 | Development environment is Developer Studio 4.2
 GO_IDE_MS_VS97 | Development environment is Visual Studio 97
@@ -77,6 +78,10 @@ GO_IDE_MS_VS2017_15_6 | Visual Studio 2017 version 15.6
 GO_IDE_MS_VS2017_15_7 | Visual Studio 2017 version 15.7
 GO_IDE_MS_VS2017_15_8 | Visual Studio 2017 version 15.8
 GO_IDE_MS_VS2017_15_9 | Visual Studio 2017 version 15.9
+GO_IDE_MS_VS2019 | Development environment is Visual Studio 2019
+GO_IDE_MS_VS2019_16_0 | Visual Studio 2019 version 16.0
+GO_IDE_MS_VS2019_16_1 | Visual Studio 2019 version 16.1
+GO_IDE_MS_VS2019_16_2 | Visual Studio 2019 version 16.2
 GO_MSVC_ATL | Using ATL
 GO_MSVC_ATL_VER | ATL version
 GO_MSVC_MFC | Using MFC
@@ -309,6 +314,7 @@ Macro | Description
 GO_CONSTEXPR | constexpr
 GO_DEFAULT_CONSTRUCTOR | = default;
 GO_DEFAULT_DESTRUCTOR | = default;
+GO_DELETE_FUNCTION | = delete;
 GO_FINAL | final
 GO_NOEXCEPT | noexcept
 GO_NOEXCEPT_EXPR(_expression_) | noexcept((_expression_))
