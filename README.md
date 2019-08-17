@@ -12,6 +12,8 @@ interesting to do both implementations. Doing the first std-based implementation
 opportunety to learn about new **C++11/14/17/2a** features. The second boost-based implementation
 broaden my knowledge of the **Boost Libraries**.
 
+Documentation for **GO C++ Libraries** is found at [goranorsander.github.io/go_libs](https://goranorsander.github.io/go_libs/).
+
 # HOW-TO BUILD
 
 ## Boost Libraries
@@ -104,16 +106,16 @@ My development environment and toolset details:
   * Code::Blocks 17.12
   * ruby 2.6.3p62 (2019-04-16 revision 67580)
   * Visual Studio Code 1.19.2 - with extensions:
-    * C/C++ 0.22.1 _(C/C++ IntelliSense, debugging, and code browsing)_
+    * C/C++ 0.23.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
     * CMake Tools 1.1.3 _(Extended CMake support)_
-    * Git Lens 9.5.1 _(Supercharge Visual Studio Code's Git capabilities)_
-    * Markdown All in One 2.2.0 _(All you need to write Markdown)_
+    * Git Lens 9.8.2 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 2.3.1 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.14.3
+  * cmake version 3.15.2
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
-  * git 2.21.0.windows.1
+  * git 2.22.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
@@ -123,9 +125,9 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.11
-  * Visual Studio 2019, Community Edition, version 16.1.1
-  * Visual Studio Code 1.32.3 - with same extensions as in Linux environment
+  * Visual Studio 2017, Community Edition, version 15.9.15
+  * Visual Studio 2019, Community Edition, version 16.2.2
+  * Visual Studio Code 1.35.1 - with same extensions as in Linux environment
 
 # GOOGLE TEST
 
