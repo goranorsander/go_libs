@@ -28,6 +28,7 @@ of components too small to be called libraries in their own right.
 
 ### Class reference
 
+* [monitor](./class_template_monitor.html)
 * [noncopyable](./class_noncopyable.html)
 * [noncopyable_nonmovable](./class_noncopyable_nonmovable.html)
 * [nonmovable](./class_nonmovable.html)
