@@ -25,4 +25,5 @@ with iterators.
 ### Function reference
 
 * [erase](./function_template_erase.html)
+* [reverse](./function_template_reverse.html)
 * [try_move_backward](./function_template_try_move_backward.html)
