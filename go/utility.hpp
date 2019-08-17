@@ -15,6 +15,7 @@
 
 #include <go/utility/exchange.hpp>
 #include <go/utility/min_max.hpp>
+#include <go/utility/monitor.hpp>
 #include <go/utility/noncopyable.hpp>
 #include <go/utility/noncopyable_nonmovable.hpp>
 #include <go/utility/nonmovable.hpp>
@@ -31,9 +32,11 @@
 #include <go/utility/u8string.hpp>
 #include <go/utility/value_guard.hpp>
 
+#include <go/utility/container/circular_buffer.hpp>
 #include <go/utility/container/size.hpp>
 
 #include <go/utility/iterator/erase.hpp>
+#include <go/utility/iterator/reverse.hpp>
 #include <go/utility/iterator/try_move_backward.hpp>
 
 #include <go/utility/string/algorithm.hpp>

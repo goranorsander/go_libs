@@ -22,6 +22,10 @@ containers.
 
 ## Reference
 
+### Class reference
+
+* [circular_buffer](./class_template_circular_buffer.html)
+
 ### Function reference
 
 * [size](./function_template_size.html)
