@@ -14,7 +14,7 @@ GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <gtest/gtest.h>
 GO_END_SUPPRESS_ALL_WARNINGS
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_circular_buffer_test_suite, cpp11_not_supported) {}
 #else
@@ -23,7 +23,10 @@ TEST(std_circular_buffer_test_suite, cpp11_not_supported) {}
 #include <go/utility/iterator/reverse.hpp>
 
 namespace uc = go::utility::container;
+
+#if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 namespace ui = go::utility::iterator;
+#endif  // #if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 
 namespace
 {
@@ -313,6 +316,7 @@ TEST(std_circular_buffer_test_suite, test_reverse_iterator)
         EXPECT_EQ(count, 5);
     }
 
+#if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
     {
         const std::initializer_list<circular_buffer_type::value_type> il = { 1, 2, 3, 4, 5 };
         circular_buffer_type buffer(il);
@@ -327,6 +331,7 @@ TEST(std_circular_buffer_test_suite, test_reverse_iterator)
         }
         EXPECT_EQ(count, 5);
     }
+#endif  // #if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 }
 
 TEST(std_circular_buffer_test_suite, test_const_reverse_iterator)
@@ -350,6 +355,7 @@ TEST(std_circular_buffer_test_suite, test_const_reverse_iterator)
         EXPECT_EQ(count, 5);
     }
 
+#if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
     {
         const std::initializer_list<circular_buffer_type::value_type> il = { 1, 2, 3, 4, 5 };
         const circular_buffer_type buffer(il);
@@ -364,6 +370,7 @@ TEST(std_circular_buffer_test_suite, test_const_reverse_iterator)
         }
         EXPECT_EQ(count, 5);
     }
+#endif  // #if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 }
 
 TEST(std_circular_buffer_test_suite, test_push_back_to_capacity_pop_front_to_empty)

@@ -14,9 +14,9 @@ GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <gtest/gtest.h>
 GO_END_SUPPRESS_ALL_WARNINGS
 
-#if defined(GO_NO_CXX11)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_reverse_test_suite, cpp11_not_supported) {}
+#if defined(GO_NO_CXX14) || defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
+GO_MESSAGE("Required C++14 feature is not supported by this compiler")
+TEST(std_reverse_test_suite, cpp14_not_supported) {}
 #else
 
 #include <go/utility/iterator/reverse.hpp>
@@ -192,4 +192,4 @@ TEST(std_reverse_test_suite, test_reverse_set)
 
 }
 
-#endif  // Required C++11 feature is not supported by this compiler
+#endif  // Required C++14 feature is not supported by this compiler

@@ -88,10 +88,42 @@ private:
         }
 
         element(const element&) = delete;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         element(element&&) = default;
 
+#else
+
+        element(element&& other)
+            : lock(std::move(other.lock))
+            , written(std::move(other.written))
+            , logline(std::move(other.logline))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         element& operator=(const element&) = delete;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         element& operator=(element&&) = default;
+
+#else
+
+        element& operator=(element&& other)
+        {
+            if(this != &other)
+            {
+                lock = std::move(other.lock);
+                written = std::move(other.written);
+                logline = std::move(other.logline);
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         go::utility::spin_lock lock;
         bool written;

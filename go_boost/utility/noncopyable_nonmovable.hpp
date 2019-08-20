@@ -35,8 +35,8 @@ private:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    noncopyable_nonmovable(noncopyable_nonmovable&&) GO_BOOST_DELETE_FUNCTION
-    noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) GO_BOOST_DELETE_FUNCTION
+    noncopyable_nonmovable(noncopyable_nonmovable&&) = delete;
+    noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) = delete;
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 

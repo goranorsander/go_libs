@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX14)
+#if defined(GO_NO_CXX14) || defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 GO_MESSAGE("Required C++14 feature is not supported by this compiler")
 #else
 

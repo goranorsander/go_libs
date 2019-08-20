@@ -99,10 +99,12 @@ private:
         }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
-        element(const element&) GO_BOOST_DELETE_FUNCTION
+        element(const element&) = delete;
 
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
+#if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR))
 
         element(element&&) = default;
 
@@ -113,16 +115,19 @@ private:
         {
         }
 
-#endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#endif  // #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) && defined(GO_BOOST_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR))
 
         element(log_line_type&& l)
             : logline(std::move(l))
         {
         }
 
-        element& operator=(const element&) GO_BOOST_DELETE_FUNCTION
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+        element& operator=(const element&) = delete;
+
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
+#if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR))
 
         element& operator=(element&&) = default;
 
@@ -137,19 +142,25 @@ private:
             return *this;
         }
 
-#endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#endif  // #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR))
 
 #else
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
-        element(const element&) GO_BOOST_DELETE_FUNCTION
+        element(const element&) = delete;
+
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
         element(const log_line_type& l)
             : logline(l)
         {
         }
 
-        element& operator=(const element&) GO_BOOST_DELETE_FUNCTION
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
+        element& operator=(const element&) = delete;
+
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #endif  // #if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
         log_line_type logline;

@@ -81,7 +81,19 @@ private:
         }
 
         element(const element&) = delete;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         element(element&&) = default;
+
+#else
+
+        element(element&& other)
+            : logline(std::move(other.logline))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         element(log_line_type&& l)
             : logline(std::move(l))
@@ -89,7 +101,23 @@ private:
         }
 
         element& operator=(const element&) = delete;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         element& operator=(element&&) = default;
+
+#else
+
+        element& operator=(element&& other)
+        {
+            if(this != &other)
+            {
+                logline = std::move(other.logline);
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         log_line_type logline;
     };

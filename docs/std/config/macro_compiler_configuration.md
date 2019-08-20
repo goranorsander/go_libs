@@ -152,6 +152,7 @@ GO_NO_CXX11_REF_QUALIFIERS | ref-qualifiers
 GO_NO_CXX11_RIGHT_ANGLE_BRACKETS | Right angle brackets
 GO_NO_CXX11_SNPRINTF | snprintf
 GO_NO_CXX11_STATIC_ASSERT | [static_assert](https://en.cppreference.com/w/cpp/language/static_assert)
+GO_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION | A static const data member of integral or enumeration type can be initialized right inside the class definition
 GO_NO_CXX11_STRONGLY_TYPED_ENUM | [Strongly-typed enum](https://en.cppreference.com/w/cpp/language/enum#Scoped_enumerations)
 GO_NO_CXX11_TEMPLATE_ALIASES | [Template aliases](https://en.cppreference.com/w/cpp/language/type_alias)
 GO_NO_CXX11_THREAD_LOCAL_STORAGE | Thread-local storage
@@ -168,6 +169,7 @@ GO_NO_CXX11_VARIADIC_TEMPLATES | Variadic templates
 Macro | The compiler does not support
 -|-
 GO_NO_CXX14 | [C++14](https://en.wikipedia.org/wiki/C%2B%2B14)
+GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP | Argument-dependent name lookup
 GO_NO_CXX14_BINARY_LITERALS | Binary literals
 GO_NO_CXX14_CLARIFYING_MEMORY_ALLOCATION | Clarifying memory allocation (avoiding/fusing allocations)
 GO_NO_CXX14_CONSTEXPR_FOR_ARRAY | constexpr for [<array>](https://en.cppreference.com/w/cpp/header/array)
@@ -314,7 +316,6 @@ Macro | Description
 GO_CONSTEXPR | constexpr
 GO_DEFAULT_CONSTRUCTOR | = default;
 GO_DEFAULT_DESTRUCTOR | = default;
-GO_DELETE_FUNCTION | = delete;
 GO_FINAL | final
 GO_NOEXCEPT | noexcept
 GO_NOEXCEPT_EXPR(_expression_) | noexcept((_expression_))

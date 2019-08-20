@@ -91,6 +91,7 @@ _Pragma message _message_
 #define GO_NO_CXX11_RAW_STRING_LITERALS 1
 #define GO_NO_CXX11_RIGHT_ANGLE_BRACKETS 1
 #define GO_NO_CXX11_R_VALUE_REFERENCES 1
+#define GO_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION 1
 #define GO_NO_CXX11 1
 #endif  // #if (GO_CLANG_VERSION < 20800)
 #if defined(GO_CLANG_VERSION)
@@ -107,11 +108,9 @@ _Pragma message _message_
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #define GO_DEFAULT_CONSTRUCTOR {}
 #define GO_DEFAULT_DESTRUCTOR {}
-#define GO_DELETE_FUNCTION ;
 #else
 #define GO_DEFAULT_CONSTRUCTOR = default;
 #define GO_DEFAULT_DESTRUCTOR = default;
-#define GO_DELETE_FUNCTION = delete;
 #endif  // #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 #if defined(GO_NO_CXX11_NOEXCEPT)
@@ -182,6 +181,7 @@ _Pragma message _message_
 #endif  // #if (GO_CLANG_VERSION < 20900)
 #if (GO_CLANG_VERSION < 20800)
 #define GO_NO_CXX14_STD_RESULT_OF_AND_SFINAE 1
+#define GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP 1
 #define GO_NO_CXX14 1
 #endif  // #if (GO_CLANG_VERSION < 20800)
 

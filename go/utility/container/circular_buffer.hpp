@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11_RANGE_FOR_LOOP)
+#if defined(GO_NO_CXX11_RANGE_FOR_LOOP) || defined(GO_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -69,7 +69,21 @@ protected:
         virtual ~iterator_base() = default;
         iterator_base() = default;
         iterator_base(const iterator_base&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         iterator_base(iterator_base&&) = default;
+
+#else
+
+        iterator_base(iterator_base&& other)
+            : base_type(std::move(other))
+            , _pos(std::move(other._pos))
+            , _container(std::move(other._container))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit iterator_base(this_type* container, size_t pos = 0)
             : base_type()
@@ -79,7 +93,25 @@ protected:
         }
 
         iterator_base& operator=(const iterator_base&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         iterator_base& operator=(iterator_base&&) = default;
+
+#else
+
+        iterator_base& operator=(iterator_base&& other)
+        {
+            if(this != &other)
+            {
+                base_type::operator=(std::move(other));
+                _pos = std::move(other._pos);
+                _container = std::move(other._container);
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         bool operator==(const iterator_base& other) const
         {
@@ -172,13 +204,13 @@ protected:
         }
 
     public:
-        constexpr bool is_at_end() const
+        GO_CONSTEXPR bool is_at_end() const
         {
             return (this->_container != nullptr)
                 && (this->_pos == this_type::_end_pos);
         }
 
-        constexpr bool is_in_valid_range() const
+        GO_CONSTEXPR bool is_in_valid_range() const
         {
             return (this->_container != nullptr)
                 && (!this->_container->empty())
@@ -189,7 +221,7 @@ protected:
                     : ((this->_pos >= this->_container->_front_pos) || (this->_pos <= this->_container->_back_pos)));
         }
 
-        constexpr bool is_valid() const
+        GO_CONSTEXPR bool is_valid() const
         {
             return (this->is_at_end())
                 || (!this->is_in_valid_range());
@@ -288,7 +320,19 @@ public:
         virtual ~iterator() = default;
         iterator() = default;
         iterator(const iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         iterator(iterator&&) = default;
+
+#else
+
+        iterator(iterator&& other)
+            : base_type(std::move(other))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit iterator(this_type* container, size_t pos = 0)
             : base_type(container, pos)
@@ -296,7 +340,23 @@ public:
         }
 
         iterator& operator=(const iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         iterator& operator=(iterator&&) = default;
+
+#else
+
+        iterator& operator=(iterator&& other)
+        {
+            if(this != &other)
+            {
+                base_type::operator=(std::move(other));
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         bool operator==(const iterator& other) const
         {
@@ -392,7 +452,19 @@ public:
         virtual ~const_iterator() = default;
         const_iterator() = default;
         const_iterator(const const_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         const_iterator(const_iterator&&) = default;
+
+#else
+
+        const_iterator(const_iterator&& other)
+            : base_type(std::move(other))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit const_iterator(this_type* container, size_t pos = 0)
             : base_type(container, pos)
@@ -400,7 +472,23 @@ public:
         }
 
         const_iterator& operator=(const const_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         const_iterator& operator=(const_iterator&&) = default;
+
+#else
+
+        const_iterator& operator=(const_iterator&& other)
+        {
+            if(this != &other)
+            {
+                base_type::operator=(std::move(other));
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         bool operator==(const const_iterator& other) const
         {
@@ -486,7 +574,19 @@ public:
         virtual ~reverse_iterator() = default;
         reverse_iterator() = default;
         reverse_iterator(const reverse_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         reverse_iterator(reverse_iterator&&) = default;
+
+#else
+
+        reverse_iterator(reverse_iterator&& other)
+            : base_type(std::move(other))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit reverse_iterator(this_type* container, size_t pos = 0)
             : base_type(container, pos)
@@ -494,7 +594,23 @@ public:
         }
 
         reverse_iterator& operator=(const reverse_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         reverse_iterator& operator=(reverse_iterator&&) = default;
+
+#else
+
+        reverse_iterator& operator=(reverse_iterator&& other)
+        {
+            if(this != &other)
+            {
+                base_type::operator=(std::move(other));
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         bool operator==(const reverse_iterator& other) const
         {
@@ -590,7 +706,19 @@ public:
         virtual ~const_reverse_iterator() = default;
         const_reverse_iterator() = default;
         const_reverse_iterator(const const_reverse_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         const_reverse_iterator(const_reverse_iterator&&) = default;
+
+#else
+
+        const_reverse_iterator(const_reverse_iterator&& other)
+            : base_type(std::move(other))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit const_reverse_iterator(this_type* container, size_t pos = 0)
             : base_type(container, pos)
@@ -598,7 +726,23 @@ public:
         }
 
         const_reverse_iterator& operator=(const const_reverse_iterator&) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         const_reverse_iterator& operator=(const_reverse_iterator&&) = default;
+
+#else
+
+        const_reverse_iterator& operator=(const_reverse_iterator&& other)
+        {
+            if(this != &other)
+            {
+                base_type::operator=(std::move(other));
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         bool operator==(const const_reverse_iterator& other) const
         {
@@ -668,7 +812,7 @@ public:
 public:
 	virtual ~circular_buffer() = default;
 
-    explicit circular_buffer(const allocator_type& alloc = allocator_type()) noexcept
+    explicit circular_buffer(const allocator_type& alloc = allocator_type()) GO_NOEXCEPT_OR_NOTHROW
         : _buffer(alloc)
         , _front_pos(0)
         , _back_pos(this_type::_end_pos)
@@ -707,7 +851,21 @@ public:
     }
 
     circular_buffer(const this_type&) = default;
-    circular_buffer(this_type&&) noexcept = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
+    circular_buffer(this_type&&) GO_NOEXCEPT = default;
+
+#else
+
+    circular_buffer(this_type&& other) GO_NOEXCEPT
+        : _buffer(std::move(other._buffer))
+        , _front_pos(std::move(other._front_pos))
+        , _back_pos(std::move(other._back_pos))
+    {
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     template<typename InputIt>
     circular_buffer(InputIt first, InputIt last, const allocator_type& alloc = allocator_type())
@@ -758,7 +916,25 @@ public:
     }
 
     this_type& operator=(const this_type&) = default;
-    this_type& operator=(this_type&&) noexcept = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
+    this_type& operator=(this_type&&) GO_NOEXCEPT = default;
+
+#else
+
+    this_type& operator=(this_type&&) GO_NOEXCEPT
+    {
+        if(this != &other)
+        {
+            _buffer = std::move(other._buffer);
+            _front_pos = std::move(other._front_pos);
+            _back_pos = std::move(other._back_pos);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     reference operator[](size_type pos)
     {
@@ -770,47 +946,47 @@ public:
         return this->at(pos);
     }
 
-    allocator_type get_allocator() const noexcept
+    allocator_type get_allocator() const GO_NOEXCEPT
     {
         return this->_buffer.get_allocator();
     }
 
-    iterator begin() noexcept
+    iterator begin() GO_NOEXCEPT
     {
         return iterator(this, (this->_back_pos != this_type::_end_pos) ? this->_front_pos : this->_end_pos);
     }
 
-    iterator end() noexcept
+    iterator end() GO_NOEXCEPT
     {
         return iterator(this, this_type::_end_pos);
     }
 
-    const_iterator begin() const noexcept
+    const_iterator begin() const GO_NOEXCEPT
     {
         return const_iterator(const_cast<this_type*>(this), (this->_back_pos != this_type::_end_pos) ? this->_front_pos : this->_end_pos);
     }
 
-    const_iterator end() const noexcept
+    const_iterator end() const GO_NOEXCEPT
     {
         return const_iterator(const_cast<this_type*>(this), this_type::_end_pos);
     }
 
-    reverse_iterator rbegin() noexcept
+    reverse_iterator rbegin() GO_NOEXCEPT
     {
         return reverse_iterator(this, this->_back_pos);
     }
 
-    reverse_iterator rend() noexcept
+    reverse_iterator rend() GO_NOEXCEPT
     {
         return reverse_iterator(this, this_type::_end_pos);
     }
 
-    const_reverse_iterator rbegin() const noexcept
+    const_reverse_iterator rbegin() const GO_NOEXCEPT
     {
         return const_reverse_iterator(const_cast<this_type*>(this), this->_back_pos);
     }
 
-    const_reverse_iterator rend() const noexcept
+    const_reverse_iterator rend() const GO_NOEXCEPT
     {
         return const_reverse_iterator(const_cast<this_type*>(this), this_type::_end_pos);
     }
@@ -881,7 +1057,7 @@ public:
         return this->_buffer.at(this->_back_pos);
     }
 
-    size_type size() const noexcept
+    size_type size() const GO_NOEXCEPT
     {
         if (this->_back_pos != this_type::_end_pos)
         {
@@ -890,23 +1066,23 @@ public:
         return 0;
     }
 
-    size_type max_size() const noexcept
+    size_type max_size() const GO_NOEXCEPT
     {
         static const size_type maxsize = (this->_buffer.max_size() < std::numeric_limits<size_type>::max()) ? this->_buffer.max_size() : (std::numeric_limits<size_type>::max() - 1);
         return maxsize;
     }
 
-    bool empty() const noexcept
+    bool empty() const GO_NOEXCEPT
     {
         return this->_back_pos == this_type::_end_pos;
     }
 
-    bool full() const noexcept
+    bool full() const GO_NOEXCEPT
     {
         return this->_buffer.capacity() == this->size();
     }
 
-    capacity_type capacity() const noexcept
+    capacity_type capacity() const GO_NOEXCEPT
     {
         return this->_buffer.capacity();
     }
@@ -1027,7 +1203,7 @@ public:
         this->assign(il);
     }
 
-    void swap(this_type& other) noexcept
+    void swap(this_type& other) GO_NOEXCEPT
     {
         std::swap(this->_buffer, other._buffer);
         std::swap(this->_front_pos, other._front_pos);
@@ -1207,7 +1383,7 @@ public:
         }
     }
 
-    void clear() noexcept
+    void clear() GO_NOEXCEPT
     {
         this->_front_pos = 0;
         this->_back_pos = this_type::_end_pos;
@@ -1216,7 +1392,7 @@ public:
     }
 
 private:
-    constexpr size_type max_pos() const noexcept
+    GO_CONSTEXPR size_type max_pos() const GO_NOEXCEPT
     {
         return this->_buffer.capacity() - 1;
     }
@@ -1307,7 +1483,7 @@ private:
     }
 
 private:
-    static constexpr size_type _end_pos = std::numeric_limits<size_type>::max();
+    static GO_CONSTEXPR size_type _end_pos = std::numeric_limits<size_type>::max();
     buffer_container_type _buffer;
     size_type _front_pos;
     size_type _back_pos;

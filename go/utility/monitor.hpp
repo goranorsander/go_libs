@@ -44,11 +44,44 @@ public:
     public:
         ~monitor_object() GO_DEFAULT_DESTRUCTOR
 
-        monitor_object() = delete;
-        monitor_object(const monitor_object&) = delete;
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
         monitor_object(monitor_object&&) = default;
 
+#else
+
+        monitor_object(monitor_object&& other)
+            : m_monitor(std::move(other->m_monitor))
+            , m_guard(std::move(other->m_lock))
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
     private:
+        monitor_object(const monitor_object&) = delete;
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#else
+
+        monitor_object(const monitor_object& other)
+            : m_monitor(other->m_monitor)
+            , m_guard(other->m_lock)
+        {
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    private:
+        monitor_object() = delete;
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
         explicit monitor_object(this_type* m)
             : m_monitor(m)
             , m_guard(m->m_lock)
@@ -56,9 +89,45 @@ public:
         }
 
     public:
-        monitor_object& operator=(const monitor_object&) = delete;
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         monitor_object& operator=(monitor_object&&) = default;
 
+#else
+
+        monitor_object& operator=(monitor_object&& other)
+        {
+            if (this != &other)
+            {
+                m_monitor = std::move(other->m_monitor);
+                m_guard = std::move(other->m_lock);
+            }
+            return *this;
+        }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+
+    private:
+        monitor_object& operator=(const monitor_object&) = delete;
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#else
+
+        monitor_object& operator=(const monitor_object& other)
+        {
+            if(this != &other)
+            {
+                m_monitor = other->m_monitor;
+                m_guard = other->m_lock;
+            }
+            return *this;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+    public:
         pointer operator->()
         {
             return &m_monitor->m_object;
@@ -97,11 +166,40 @@ public:
     };
 
 public:
-    virtual ~monitor() GO_DEFAULT_DESTRUCTOR
+#if defined(_MSC_VER) && (_MSC_VER <= 1800)
 
+    virtual ~monitor()
+    {
+    }
+
+    monitor()
+        : m_lock()
+        , m_object()
+    {
+    }
+
+#else
+
+    virtual ~monitor() GO_DEFAULT_DESTRUCTOR
     monitor() = default;
+
+#endif  // #if defined(_MSC_VER) && (_MSC_VER <= 1800)
+
     monitor(const monitor&) = delete;
-    monitor(monitor&& other) = default;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
+    monitor(monitor&&) = default;
+
+#else
+
+    monitor(monitor&& other)
+        : m_lock(std::move(other.m_lock))
+        , m_object(std::move(other.m_object))
+    {
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     template<typename ...Args>
     monitor(Args&&... args)
@@ -112,7 +210,24 @@ public:
 
 public:
     this_type& operator=(const this_type&) = delete;
+
+#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
     this_type& operator=(this_type&&) = default;
+
+#else
+
+    this_type& operator=(this_type&& other)
+    {
+        if(this != &other)
+        {
+            m_lock = std::move(other.m_lock);
+            m_object = std::move(other.m_object);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     this_type& operator=(const value_type& value)
     {

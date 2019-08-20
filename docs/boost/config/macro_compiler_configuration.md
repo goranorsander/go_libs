@@ -119,6 +119,10 @@ GO_BOOST_NO_CXX11_CONDITION_VARIABLE | [constexpr](https://en.cppreference.com/w
 GO_BOOST_NO_CXX11_CONSTEXPR | [constexpr](https://en.cppreference.com/w/cpp/language/constexpr)
 GO_BOOST_NO_CXX11_DECLTYPE | [decltype](https://en.cppreference.com/w/cpp/language/decltype)
 GO_BOOST_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS | Defaulted and deleted functions
+GO_BOOST_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR | Defaulted copy assign operator
+GO_BOOST_NO_CXX11_DEFAULTED_COPY_CONSTRUCTOR | Defaulted copy assign constructor
+GO_BOOST_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR | Defaulted move assign operator
+GO_BOOST_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR | Defaulted move assign constructor
 GO_BOOST_NO_CXX11_DELEGATING_CONSTRUCTORS | [Delegating constructors](https://en.cppreference.com/w/cpp/language/initializer_list#Delegating_constructor)
 GO_BOOST_NO_CXX11_DYNAMIC_POINTER_SAFETY | [dynamic pointer safety (GC interface)](https://en.cppreference.com/w/cpp/memory#Garbage_collector_support)
 GO_BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS | Explicit conversion operators
@@ -148,6 +152,7 @@ GO_BOOST_NO_CXX11_REF_QUALIFIERS | ref-qualifiers
 GO_BOOST_NO_CXX11_RIGHT_ANGLE_BRACKETS | Right angle brackets
 GO_BOOST_NO_CXX11_SNPRINTF | snprintf
 GO_BOOST_NO_CXX11_STATIC_ASSERT | [static_assert](https://en.cppreference.com/w/cpp/language/static_assert)
+GO_BOOST_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION | A static const data member of integral or enumeration type can be initialized right inside the class definition
 GO_BOOST_NO_CXX11_STRONGLY_TYPED_ENUM | [Strongly-typed enum](https://en.cppreference.com/w/cpp/language/enum#Scoped_enumerations)
 GO_BOOST_NO_CXX11_TEMPLATE_ALIASES | [Template aliases](https://en.cppreference.com/w/cpp/language/type_alias)
 GO_BOOST_NO_CXX11_THREAD_LOCAL_STORAGE | Thread-local storage
@@ -310,7 +315,6 @@ Macro | Description
 GO_BOOST_CONSTEXPR | constexpr
 GO_BOOST_DEFAULT_CONSTRUCTOR | = default;
 GO_BOOST_DEFAULT_DESTRUCTOR | = default;
-GO_BOOST_DELETE_FUNCTION | = delete;
 GO_BOOST_FINAL | final
 GO_BOOST_NOEXCEPT | noexcept
 GO_BOOST_NOEXCEPT_EXPR(_expression_) | noexcept((_expression_))
