@@ -34,10 +34,17 @@ public:
 private:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
     noncopyable_nonmovable(noncopyable_nonmovable&&) = delete;
     noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) = delete;
 
+#else
+
+    noncopyable_nonmovable(noncopyable_nonmovable&&) {}
+    noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) { return *this; }
+
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 protected:

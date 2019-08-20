@@ -14,7 +14,7 @@ GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <gtest/gtest.h>
 GO_END_SUPPRESS_ALL_WARNINGS
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_monitor_test_suite, cpp11_not_supported) {}
 #else

@@ -30,10 +30,17 @@ public:
 private:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 
     nonmovable(nonmovable&&) = delete;
     nonmovable& operator=(nonmovable&&) = delete;
 
+#else
+
+    nonmovable(nonmovable&&) {}
+    nonmovable& operator=(nonmovable&&) { return *this; }
+
+#endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 protected:
