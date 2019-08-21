@@ -54,7 +54,7 @@ protected:
     class iterator_base
         : public std::iterator<std::random_access_iterator_tag, value_type>
     {
-        friend class this_type;
+        friend class circular_buffer<element_type, allocator_type>;
 
     protected:
         using base_type = std::iterator<std::random_access_iterator_tag, value_type>;
@@ -85,7 +85,7 @@ protected:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        explicit iterator_base(this_type* container, size_t pos = 0)
+        explicit iterator_base(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
             : base_type()
             , _pos(pos)
             , _container(container)
@@ -105,8 +105,8 @@ protected:
             if(this != &other)
             {
                 base_type::operator=(std::move(other));
-                _pos = std::move(other._pos);
-                _container = std::move(other._container);
+                this->_pos = std::move(other._pos);
+                this->_container = std::move(other._container);
             }
             return *this;
         }
@@ -207,14 +207,14 @@ protected:
         GO_CONSTEXPR bool is_at_end() const
         {
             return (this->_container != nullptr)
-                && (this->_pos == this_type::_end_pos);
+                && (this->_pos == circular_buffer<element_type, allocator_type>::_end_pos);
         }
 
         GO_CONSTEXPR bool is_in_valid_range() const
         {
             return (this->_container != nullptr)
                 && (!this->_container->empty())
-                && (this->_pos != this_type::_end_pos)
+                && (this->_pos != circular_buffer<element_type, allocator_type>::_end_pos)
                 && (this->_pos < this->_container->capacity())
                 && ((this->_container->_front_pos < this->_container->_back_pos)
                     ? ((this->_pos >= this->_container->_front_pos) && (this->_pos <= this->_container->_back_pos))
@@ -234,17 +234,17 @@ protected:
             {
                 throw std::logic_error("increment : Invalid container reference");
             }
-            if (this->_pos != this_type::_end_pos)
+            if (this->_pos != circular_buffer<element_type, allocator_type>::_end_pos)
             {
                 if (this->_container->empty())
                 {
-                    this->_pos = this_type::_end_pos;
+                    this->_pos = circular_buffer<element_type, allocator_type>::_end_pos;
                 }
                 else
                 {
                     if (this->_pos == this->_container->_back_pos)
                     {
-                        this->_pos = this_type::_end_pos;
+                        this->_pos = circular_buffer<element_type, allocator_type>::_end_pos;
                     }
                     else if (this->_pos == this->_container->max_pos())
                     {
@@ -264,7 +264,7 @@ protected:
             {
                 throw std::logic_error("decrement : Invalid container reference");
             }
-            if (this->_pos == this_type::_end_pos)
+            if (this->_pos == circular_buffer<element_type, allocator_type>::_end_pos)
             {
                 if (!this->_container->empty())
                 {
@@ -275,13 +275,13 @@ protected:
             {
                 if (this->_container->empty())
                 {
-                    this->_pos = this_type::_end_pos;
+                    this->_pos = circular_buffer<element_type, allocator_type>::_end_pos;
                 }
                 else
                 {
                     if (this->_pos == this->_container->_front_pos)
                     {
-                        this->_pos = this_type::_end_pos;
+                        this->_pos = circular_buffer<element_type, allocator_type>::_end_pos;
                     }
                     else if (this->_pos == 0)
                     {
@@ -297,14 +297,14 @@ protected:
 
     private:
         size_t _pos = 0;
-        this_type* _container = nullptr;
+        circular_buffer<element_type, allocator_type>* _container = nullptr;
     };
 
 public:
     class iterator
         : public iterator_base
     {
-        friend class this_type;
+        friend class circular_buffer<element_type, allocator_type>;
 
     public:
         using base_type = iterator_base;
@@ -334,7 +334,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        explicit iterator(this_type* container, size_t pos = 0)
+        explicit iterator(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
             : base_type(container, pos)
         {
         }
@@ -410,7 +410,7 @@ public:
 
         iterator& operator++()
         {
-            increment();
+            this->increment();
             return *this;
         }
 
@@ -422,7 +422,7 @@ public:
 
         iterator& operator--()
         {
-            decrement();
+            this->decrement();
             return *this;
         }
 
@@ -436,7 +436,7 @@ public:
     class const_iterator
         : public iterator_base
     {
-        friend class this_type;
+        friend class circular_buffer<element_type, allocator_type>;
 
     public:
         using base_type = iterator_base;
@@ -466,7 +466,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        explicit const_iterator(this_type* container, size_t pos = 0)
+        explicit const_iterator(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
             : base_type(container, pos)
         {
         }
@@ -532,7 +532,7 @@ public:
 
         const_iterator& operator++()
         {
-            increment();
+            this->increment();
             return *this;
         }
 
@@ -544,7 +544,7 @@ public:
 
         const_iterator& operator--()
         {
-            decrement();
+            this->decrement();
             return *this;
         }
 
@@ -558,7 +558,7 @@ public:
     class reverse_iterator
         : public iterator_base
     {
-        friend class this_type;
+        friend class circular_buffer<element_type, allocator_type>;
 
     public:
         using base_type = iterator_base;
@@ -588,7 +588,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        explicit reverse_iterator(this_type* container, size_t pos = 0)
+        explicit reverse_iterator(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
             : base_type(container, pos)
         {
         }
@@ -664,7 +664,7 @@ public:
 
         reverse_iterator& operator++()
         {
-            decrement();
+            this->decrement();
             return *this;
         }
 
@@ -676,7 +676,7 @@ public:
 
         reverse_iterator& operator--()
         {
-            increment();
+            this->increment();
             return *this;
         }
 
@@ -690,7 +690,7 @@ public:
     class const_reverse_iterator
         : public iterator_base
     {
-        friend class this_type;
+        friend class circular_buffer<element_type, allocator_type>;
 
     public:
         using base_type = iterator_base;
@@ -720,7 +720,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        explicit const_reverse_iterator(this_type* container, size_t pos = 0)
+        explicit const_reverse_iterator(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
             : base_type(container, pos)
         {
         }
@@ -786,7 +786,7 @@ public:
 
         const_reverse_iterator& operator++()
         {
-            decrement();
+            this->decrement();
             return *this;
         }
 
@@ -798,7 +798,7 @@ public:
 
         const_reverse_iterator& operator--()
         {
-            increment();
+            this->increment();
             return *this;
         }
 
@@ -1184,7 +1184,7 @@ public:
         this->_buffer.clear();
         const size_type count = il.size();
         const size_type count_cap = (count < this->_buffer.capacity()) ? count : this->_buffer.capacity();
-        std::initializer_list<T>::iterator it = il.begin();
+        GO_TYPENAME std::initializer_list<T>::iterator it = il.begin();
         if (count > count_cap)
         {
             std::advance(it, count - count_cap);

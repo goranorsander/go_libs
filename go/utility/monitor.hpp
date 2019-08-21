@@ -162,7 +162,7 @@ public:
         this_type* m_monitor;
         std::unique_lock<lockable_type> m_guard;
 
-        friend class this_type;
+        friend class monitor<value_type, lockable_type>;
     };
 
 public:

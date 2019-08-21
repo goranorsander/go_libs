@@ -60,7 +60,7 @@ TEST(std_reverse_test_suite, test_reverse_deque)
         EXPECT_EQ(i, value);
         --value;
     }
-    EXPECT_EQ(count, 10);
+    EXPECT_EQ(count, 10ull);
 }
 
 TEST(std_reverse_test_suite, test_reverse_list)
@@ -91,7 +91,7 @@ TEST(std_reverse_test_suite, test_reverse_list)
         EXPECT_EQ(i, value);
         --value;
     }
-    EXPECT_EQ(count, 10);
+    EXPECT_EQ(count, 10ull);
 }
 
 TEST(std_reverse_test_suite, test_reverse_vector)
@@ -122,7 +122,7 @@ TEST(std_reverse_test_suite, test_reverse_vector)
         EXPECT_EQ(i, value);
         --value;
     }
-    EXPECT_EQ(count, 10);
+    EXPECT_EQ(count, 10ull);
 }
 
 TEST(std_reverse_test_suite, test_reverse_map)
@@ -156,7 +156,7 @@ TEST(std_reverse_test_suite, test_reverse_map)
         --key;
         --value;
     }
-    EXPECT_EQ(count, 10);
+    EXPECT_EQ(count, 10ull);
 }
 
 TEST(std_reverse_test_suite, test_reverse_set)
@@ -187,7 +187,7 @@ TEST(std_reverse_test_suite, test_reverse_set)
         EXPECT_EQ(i, value);
         --value;
     }
-    EXPECT_EQ(count, 10);
+    EXPECT_EQ(count, 10ull);
 }
 
 }

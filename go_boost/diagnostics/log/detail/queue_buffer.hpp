@@ -94,7 +94,7 @@ private:
         ~element() GO_BOOST_DEFAULT_DESTRUCTOR
 
         element()
-            : logline(log_level::none, nullptr, nullptr, 0)
+            : logline(log_level_none, nullptr, nullptr, 0)
         {
         }
 
