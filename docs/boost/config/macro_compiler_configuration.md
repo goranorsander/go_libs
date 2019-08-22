@@ -328,7 +328,7 @@ GO_BOOST_TYPENAME | typename
 
 Macro | Description
 -|-
-GO_BOOST_NO_BOOST_PHOENIX | The compiler does not support [Boost.Phoenix](https://www.boost.org/doc/libs/1_70_0/libs/phoenix/doc/html/index.html)
+GO_BOOST_NO_BOOST_PHOENIX | The compiler does not support [Boost.Phoenix](https://www.boost.org/doc/libs/1_71_0/libs/phoenix/doc/html/index.html)
 
 ## Utility macros
 

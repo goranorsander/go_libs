@@ -12,7 +12,7 @@ namespace go_boost::mvvm::utility
 <go_boost/mvvm/utility/phoenix_property_get_relay_command_functor.hpp>
 ```
 
-[Boost.Phoenix](https://www.boost.org/doc/libs/1_70_0/libs/phoenix/doc/html/index.html)
+[Boost.Phoenix](https://www.boost.org/doc/libs/1_71_0/libs/phoenix/doc/html/index.html)
 is the most important Boost library for functional programming according to
 Boris Schäling, author of [The Boost C++ Libraries](https://theboostcpplibraries.com/boost.phoenix).
 

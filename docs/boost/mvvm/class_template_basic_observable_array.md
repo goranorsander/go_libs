@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_array class**
 
 The **basic_observable_array** is a container that encapsulates static (or fixed
-size) contiguous arrays. It wraps the [**boost\::container\::static_vector**](https://www.boost.org/doc/libs/1_70_0/doc/html/boost/container/static_vector.html)
+size) contiguous arrays. It wraps the [**boost\::container\::static_vector**](https://www.boost.org/doc/libs/1_71_0/doc/html/boost/container/static_vector.html)
 and adds notifications when items get added, removed, or when the whole array is
 reset or swapped.
 

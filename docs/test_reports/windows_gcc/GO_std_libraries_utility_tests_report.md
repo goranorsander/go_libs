@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 340 test cases was executed 2019-06-02 at 11:23:05 with result:
+Test suites *AllTests* with 366 test cases was executed 2019-08-22 at 16:44:05 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 4.351 seconds.
+Test suites execution took 5.481 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_windows_1252_test_suite* with 12 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.123 seconds.
+Test suite execution took 0.141 seconds.
 
 ### Successful test cases
 
@@ -52,7 +52,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -67,7 +67,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.158 seconds.
+Test suite execution took 0.18 seconds.
 
 ### Successful test cases
 
@@ -84,7 +84,7 @@ test_try_move_backward_on_multimap | 0
 test_try_move_backward_on_multiset | 0
 test_try_move_backward_on_unordered_map | 0
 test_try_move_backward_on_unordered_set | 0
-test_try_move_backward_on_unordered_multimap | 0
+test_try_move_backward_on_unordered_multimap | 0.001
 test_try_move_backward_on_unordered_multiset | 0
 
 ## std_string_cast_test_suite
@@ -94,7 +94,7 @@ Test suite *std_string_cast_test_suite* with 81 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.872 seconds.
+Test suite execution took 1.058 seconds.
 
 ### Successful test cases
 
@@ -115,8 +115,8 @@ test_cast_ascii_from_wstring_to_string | 0
 test_cast_swedish_from_wstring_to_string | 0
 test_cast_ascii_from_u2string_to_string | 0
 test_cast_swedish_from_u2string_to_string | 0
-test_cast_ascii_from_u8string_to_string | 0
-test_cast_swedish_from_u8string_to_string | 0
+test_cast_ascii_from_u8string_to_string | 0.001
+test_cast_swedish_from_u8string_to_string | 0.001
 test_cast_ascii_from_u16string_to_string | 0
 test_cast_swedish_from_u16string_to_string | 0
 test_cast_ascii_from_u32string_to_string | 0
@@ -126,7 +126,7 @@ test_cast_swedish_from_string_to_wstring | 0
 test_cast_ascii_from_wstring_to_wstring | 0
 test_cast_swedish_from_wstring_to_wstring | 0
 test_cast_ascii_from_u2string_to_wstring | 0
-test_cast_swedish_from_u2string_to_wstring | 0.001
+test_cast_swedish_from_u2string_to_wstring | 0
 test_cast_ascii_from_u8string_to_wstring | 0
 test_cast_swedish_from_u8string_to_wstring | 0
 test_cast_ascii_from_u16string_to_wstring | 0
@@ -148,7 +148,7 @@ test_cast_swedish_from_u32string_to_u2string | 0
 test_cast_ascii_from_string_to_u8string | 0
 test_cast_swedish_from_string_to_u8string | 0
 test_cast_ascii_from_wstring_to_u8string | 0
-test_cast_swedish_from_wstring_to_u8string | 0
+test_cast_swedish_from_wstring_to_u8string | 0.001
 test_cast_ascii_from_u2string_to_u8string | 0
 test_cast_swedish_from_u2string_to_u8string | 0
 test_cast_ascii_from_u8string_to_u8string | 0
@@ -167,10 +167,10 @@ test_cast_ascii_from_u8string_to_u16string | 0
 test_cast_swedish_from_u8string_to_u16string | 0
 test_cast_ascii_from_u16string_to_u16string | 0
 test_cast_swedish_from_u16string_to_u16string | 0
-test_cast_ascii_from_u32string_to_u16string | 0.001
+test_cast_ascii_from_u32string_to_u16string | 0
 test_cast_swedish_from_u32string_to_u16string | 0
 test_cast_ascii_from_string_to_u32string | 0
-test_cast_swedish_from_string_to_u32string | 0
+test_cast_swedish_from_string_to_u32string | 0.001
 test_cast_ascii_from_wstring_to_u32string | 0
 test_cast_swedish_from_wstring_to_u32string | 0
 test_cast_ascii_from_u2string_to_u32string | 0
@@ -189,7 +189,7 @@ Test suite *std_spin_lock_test_suite* with 3 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.027 seconds.
+Test suite execution took 0.031 seconds.
 
 ### Successful test cases
 
@@ -206,7 +206,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -221,13 +221,32 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.011 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_scope_guard_new | 0
+
+## std_reverse_test_suite
+
+Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.045 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_reverse_deque | 0
+test_reverse_list | 0
+test_reverse_vector | 0
+test_reverse_map | 0
+test_reverse_set | 0
 
 ## std_recursive_spin_lock_test_suite
 
@@ -236,7 +255,7 @@ Test suite *std_recursive_spin_lock_test_suite* with 4 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.047 seconds.
+Test suite execution took 0.05 seconds.
 
 ### Successful test cases
 
@@ -245,7 +264,7 @@ Test case|Execution time
 test_recursive_spin_lock | 0
 test_recursive_spin_lock_lock_guard | 0
 test_recursive_spin_lock_two_threads | 0.001
-test_placebo_lockable_two_threads | 0.003
+test_placebo_lockable_two_threads | 0
 
 ## std_primitive_type_specializer_test_suite
 
@@ -254,7 +273,7 @@ Test suite *std_primitive_type_specializer_test_suite* with 128 test cases was e
 * 0 errors
 * 0 failures
 
-Test suite execution took 1.964 seconds.
+Test suite execution took 2.29 seconds.
 
 ### Successful test cases
 
@@ -297,7 +316,7 @@ test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
 test_integer_type_specializer_pre_decrement_operator | 0
-test_integer_type_specializer_post_decrement_operator | 0
+test_integer_type_specializer_post_decrement_operator | 0.001
 test_floating_point_type_specializer_default_value | 0
 test_floating_point_type_specializer_construction | 0
 test_floating_point_type_specializer_get_set | 0
@@ -313,7 +332,7 @@ test_floating_point_type_specializer_addition_arithmetic_operator | 0
 test_floating_point_type_specializer_subtraction_arithmetic_operator | 0
 test_floating_point_type_specializer_multiplication_arithmetic_operator | 0
 test_floating_point_type_specializer_division_arithmetic_operator | 0
-test_floating_point_type_specializer_modulo_arithmetic_operator | 0
+test_floating_point_type_specializer_modulo_arithmetic_operator | 0.001
 test_floating_point_type_specializer_equal_to_comparison_operator | 0
 test_floating_point_type_specializer_not_equal_to_comparison_operator | 0
 test_floating_point_type_specializer_less_than_to_comparison_operator | 0
@@ -349,7 +368,7 @@ test_implicit_integer_type_specializer_modulo_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator | 0
-test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_implicit_integer_type_specializer_equal_to_comparison_operator | 0
@@ -357,7 +376,7 @@ test_implicit_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_less_than_comparison_operator | 0
 test_implicit_integer_type_specializer_greater_than_comparison_operator | 0
 test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
-test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0.001
+test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_pre_increment_operator | 0
 test_implicit_integer_type_specializer_post_increment_operator | 0
 test_implicit_integer_type_specializer_pre_decrement_operator | 0
@@ -396,7 +415,7 @@ Test suite *std_placebo_lockable_test_suite* with 2 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.023 seconds.
 
 ### Successful test cases
 
@@ -405,6 +424,22 @@ Test case|Execution time
 test_placebo_lockable | 0
 test_placebo_lockable_lock_guard | 0
 
+## std_monitor_test_suite
+
+Test suite *std_monitor_test_suite* with 2 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.022 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_monitor | 0
+test_monitor_two_threads | 0.003
+
 ## std_iso_8859_1_test_suite
 
 Test suite *std_iso_8859_1_test_suite* with 12 test cases was executed with result:
@@ -412,7 +447,7 @@ Test suite *std_iso_8859_1_test_suite* with 12 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.118 seconds.
+Test suite execution took 0.143 seconds.
 
 ### Successful test cases
 
@@ -438,7 +473,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.048 seconds.
+Test suite execution took 0.056 seconds.
 
 ### Successful test cases
 
@@ -457,7 +492,7 @@ Test suite *std_create_string_test_suite* with 36 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.369 seconds.
+Test suite execution took 0.429 seconds.
 
 ### Successful test cases
 
@@ -479,12 +514,12 @@ test_create_u2string_from_char | 0
 test_create_u2string_from_wchar_t | 0
 test_create_u2string_from_char2_t | 0
 test_create_u2string_from_char8_t | 0
-test_create_u2string_from_char16_t | 0
+test_create_u2string_from_char16_t | 0.001
 test_create_u2string_from_char32_t | 0
 test_create_u8string_from_char | 0
 test_create_u8string_from_wchar_t | 0
 test_create_u8string_from_char2_t | 0
-test_create_u8string_from_char8_t | 0
+test_create_u8string_from_char8_t | 0.001
 test_create_u8string_from_char16_t | 0
 test_create_u8string_from_char32_t | 0
 test_create_u16string_from_char | 0
@@ -493,7 +528,7 @@ test_create_u16string_from_char2_t | 0
 test_create_u16string_from_char8_t | 0
 test_create_u16string_from_char16_t | 0
 test_create_u16string_from_char32_t | 0
-test_create_u32string_from_char | 0.001
+test_create_u32string_from_char | 0
 test_create_u32string_from_wchar_t | 0
 test_create_u32string_from_char2_t | 0
 test_create_u32string_from_char8_t | 0
@@ -507,7 +542,7 @@ Test suite *std_container_size_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.039 seconds.
+Test suite execution took 0.05 seconds.
 
 ### Successful test cases
 
@@ -519,6 +554,39 @@ test_size_on_vector | 0
 test_size_on_map | 0
 test_size_on_set | 0
 
+## std_circular_buffer_test_suite
+
+Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.212 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_constructor | 0
+test_assign_value | 0
+test_iterator | 0
+test_const_iterator | 0
+test_reverse_iterator | 0
+test_const_reverse_iterator | 0
+test_push_back_to_capacity_pop_front_to_empty | 0
+test_push_back_pop_front_without_overflow | 0
+test_push_back_pop_front_with_overflow | 0
+test_push_front_to_capacity_pop_back_to_empty | 0
+test_push_front_pop_back_without_overflow | 0.001
+test_push_front_pop_back_with_overflow | 0
+test_operator_at | 0
+test_at | 0
+test_front_back | 0
+test_resize | 0
+test_swap | 0
+test_insert | 0.001
+test_erase | 0
+
 ## std_ascii_test_suite
 
 Test suite *std_ascii_test_suite* with 36 test cases was executed with result:
@@ -526,7 +594,7 @@ Test suite *std_ascii_test_suite* with 36 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.388 seconds.
+Test suite execution took 0.482 seconds.
 
 ### Successful test cases
 
@@ -559,9 +627,9 @@ test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
 test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_ucs_2_reduce_windows_1252_to_7_bit_ascii_characters | 0
-test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters | 0.001
+test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters | 0
-test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters | 0.001
+test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
 test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
 test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
