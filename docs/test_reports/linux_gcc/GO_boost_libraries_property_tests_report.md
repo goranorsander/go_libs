@@ -5,45 +5,22 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 8.2.1 20181127
+* gcc (GCC) 9.1.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2019-05-31 at 17:48:03 with result:
+Test suites *AllTests* with 72 test cases was executed 2019-08-26 at 17:52:03 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.016 seconds.
+Test suites execution took 0.005 seconds.
 
 # Details
 
 ## boost_nameless_property_test_suite
 
 Test suite *boost_nameless_property_test_suite* with 9 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.001 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-value_properties | 0
-read_only_value_properties | 0
-write_only_value_properties | 0
-reference_properties | 0
-read_only_reference_properties | 0
-write_only_reference_properties | 0.001
-proxy_properties | 0
-read_only_proxy_properties | 0
-write_only_proxy_properties | 0
-
-## boost_nameless_property_placebo_lockable_test_suite
-
-Test suite *boost_nameless_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -58,6 +35,29 @@ value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
+read_only_reference_properties | 0
+write_only_reference_properties | 0
+proxy_properties | 0
+read_only_proxy_properties | 0
+write_only_proxy_properties | 0
+
+## boost_nameless_property_placebo_lockable_test_suite
+
+Test suite *boost_nameless_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.001 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+value_properties | 0
+read_only_value_properties | 0
+write_only_value_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -94,7 +94,7 @@ Test suite *boost_property_test_suite* with 9 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -117,13 +117,13 @@ Test suite *boost_u16property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-value_properties | 0.006
+value_properties | 0.002
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
@@ -140,7 +140,7 @@ Test suite *boost_u32property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -149,10 +149,10 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0.001
+proxy_properties | 0
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
@@ -163,7 +163,7 @@ Test suite *boost_u8property_test_suite* with 9 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -172,7 +172,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.001
+reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -200,4 +200,4 @@ read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
-write_only_proxy_properties | 0.001
+write_only_proxy_properties | 0

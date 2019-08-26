@@ -5,7 +5,7 @@ layout: unit_tests
 # Test environment and toolset
 
 * Manjaro Linux 18, 64 bits
-* gcc 8.2.0
+* gcc 9.1.0
 
 ## GO Boost C++ Libraries Test Reports
 

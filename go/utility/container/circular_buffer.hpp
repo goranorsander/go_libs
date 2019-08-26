@@ -59,7 +59,6 @@ protected:
     protected:
         using base_type = std::iterator<std::random_access_iterator_tag, value_type>;
         using iterator_category = typename base_type::iterator_category;
-        using value_type = typename base_type::value_type;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
         using const_reference = const typename base_type::reference;
@@ -309,7 +308,6 @@ public:
     public:
         using base_type = iterator_base;
         using iterator_category = typename base_type::iterator_category;
-        using value_type = typename base_type::value_type;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
         using const_reference = const typename base_type::reference;
@@ -441,7 +439,6 @@ public:
     public:
         using base_type = iterator_base;
         using iterator_category = typename base_type::iterator_category;
-        using value_type = typename base_type::value_type;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
         using const_reference = const typename base_type::reference;
@@ -563,7 +560,6 @@ public:
     public:
         using base_type = iterator_base;
         using iterator_category = typename base_type::iterator_category;
-        using value_type = typename base_type::value_type;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
         using const_reference = const typename base_type::reference;
@@ -695,7 +691,6 @@ public:
     public:
         using base_type = iterator_base;
         using iterator_category = typename base_type::iterator_category;
-        using value_type = typename base_type::value_type;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
         using const_reference = const typename base_type::reference;

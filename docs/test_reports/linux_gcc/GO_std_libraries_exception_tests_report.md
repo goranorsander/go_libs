@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 8.2.1 20181127
+* gcc (GCC) 9.1.0
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2019-05-31 at 17:48:04 with result:
+Test suites *AllTests* with 6 test cases was executed 2019-08-26 at 17:52:04 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0 seconds.
+Test suites execution took 0.001 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_exception_test_suite* with 6 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

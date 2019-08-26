@@ -72,7 +72,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 8.0.0|gcc 8.2.1|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 8.0.1|gcc 9.1.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 
@@ -98,10 +98,10 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 My development environment and toolset details:
 
 * Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
-  * cmake version 3.14.4
-  * clang version 8.0.0 (tags/RELEASE_800/final)
-  * gcc (GCC) 8.3.0
-  * git 2.21.0
+  * cmake version 3.15.2
+  * clang version 8.0.1 (tags/RELEASE_801/final)
+  * gcc (GCC) 9.1.0
+  * git 2.22.0
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.6.3p62 (2019-04-16 revision 67580)

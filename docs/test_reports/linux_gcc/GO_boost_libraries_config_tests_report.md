@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 8.2.1 20181127
+* gcc (GCC) 9.1.0
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2019-05-31 at 17:48:02 with result:
+Test suites *AllTests* with 32 test cases was executed 2019-08-26 at 17:52:02 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.001 seconds.
+Test suites execution took 0 seconds.
 
 # Details
 
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -56,7 +56,7 @@ test_not_define_go_boost_comp_msvc | 0
 test_not_define_go_boost_comp_msvc_vc90 | 0
 test_not_define_go_boost_comp_msvc_vc100 | 0
 test_not_define_go_boost_comp_msvc_vc110 | 0
-test_not_define_go_boost_comp_msvc_vc120 | 0.001
+test_not_define_go_boost_comp_msvc_vc120 | 0
 test_not_define_go_boost_comp_msvc_vc140 | 0
 test_not_define_go_boost_comp_msvc_vc141 | 0
 test_define_go_boost_gcc_version | 0
