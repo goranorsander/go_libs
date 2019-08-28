@@ -24,6 +24,31 @@ namespace go_boost
 namespace utility
 {
 
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+#define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
+    _class_name_() : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(_default_value_) {} \
+    _class_name_(const _class_name_& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(t) {} \
+    _class_name_(_class_name_&& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(std::move(t)) {} \
+    explicit _class_name_(const value_type& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(t) {} \
+    explicit _class_name_(value_type&& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(std::move(t)) {}
+
+#define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
+    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>::operator=(t); } return *this; } \
+    _class_name_& operator=(_class_name_&& t) { if(&t != this) { go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>::operator=(std::move(t)); } return *this; } \
+    _class_name_& operator+=(const _class_name_& t) { this->get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { this->get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { this->get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { this->get() /= t.get(); return *this; } \
+    template<typename P> _class_name_& operator=(const P& p) { this->get() = static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator=(P&& p) { this->get() = std::move(static_cast<_primitive_type_>(p)); return *this; } \
+    template<typename P> _class_name_& operator+=(const P& p) { this->get() += static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator-=(const P& p) { this->get() -= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator*=(const P& p) { this->get() *= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator/=(const P& p) { this->get() /= static_cast<_primitive_type_>(p); return *this; }
+
+#else
+
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
     _class_name_() : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(_default_value_) {} \
     _class_name_(const _class_name_& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(t) {} \
@@ -31,26 +56,28 @@ namespace utility
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) { if(&t != this) { go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>::operator=(t); } return *this; } \
-    _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
-    _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
-    _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
-    _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; } \
-    template<typename P> _class_name_& operator=(const P& p) { get() = static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator+=(const P& p) { get() += static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator-=(const P& p) { get() -= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator*=(const P& p) { get() *= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator/=(const P& p) { get() /= static_cast<_primitive_type_>(p); return *this; }
+    _class_name_& operator+=(const _class_name_& t) { this->get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { this->get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { this->get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { this->get() /= t.get(); return *this; } \
+    template<typename P> _class_name_& operator=(const P& p) { this->get() = static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator+=(const P& p) { this->get() += static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator-=(const P& p) { this->get() -= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator*=(const P& p) { this->get() *= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator/=(const P& p) { this->get() /= static_cast<_primitive_type_>(p); return *this; }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_& operator%=(const P& p) { get() %= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator&=(const P& p) { get() &= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator|=(const P& p) { get() |= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator^=(const P& p) { get() ^= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator<<=(const P& p) { get() <<= static_cast<_primitive_type_>(p); return *this; } \
-    template<typename P> _class_name_& operator>>=(const P& p) { get() >>= static_cast<_primitive_type_>(p); return *this; }
+    template<typename P> _class_name_& operator%=(const P& p) { this->get() %= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator&=(const P& p) { this->get() &= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator|=(const P& p) { this->get() |= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator^=(const P& p) { this->get() ^= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator<<=(const P& p) { this->get() <<= static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator>>=(const P& p) { this->get() >>= static_cast<_primitive_type_>(p); return *this; }
 
 #define GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> _class_name_& operator%=(const P& p) { get() = std::fmod(get(), static_cast<_primitive_type_>(p)); return *this; }
+    template<typename P> _class_name_& operator%=(const P& p) { this->get() = std::fmod(get(), static_cast<_primitive_type_>(p)); return *this; }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_, _primitive_type_ ) \
     template<typename P> _class_name_ operator+(const P& p) const { return _class_name_(get() + static_cast<_primitive_type_>(p)); } \
@@ -70,12 +97,12 @@ namespace utility
     template<typename P> _class_name_ operator%(const P& p) const { return _class_name_(std::fmod(get(), static_cast<_primitive_type_>(p))); }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_COMPARISON_OPERATORS( _class_name_, _primitive_type_ ) \
-    template<typename P> bool operator==(const P& p) const { return get() == static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator==(const P& p) const { return this->get() == static_cast<_primitive_type_>(p); } \
     template<typename P> bool operator!=(const P& p) const { return !operator==(static_cast<_primitive_type_>(p)); } \
-    template<typename P> bool operator<(const P& p) const { return get() < static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator<=(const P& p) const { return get() <= static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>(const P& p) const { return get() > static_cast<_primitive_type_>(p); } \
-    template<typename P> bool operator>=(const P& p) const { return get() >= static_cast<_primitive_type_>(p); }
+    template<typename P> bool operator<(const P& p) const { return this->get() < static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator<=(const P& p) const { return this->get() <= static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator>(const P& p) const { return this->get() > static_cast<_primitive_type_>(p); } \
+    template<typename P> bool operator>=(const P& p) const { return this->get() >= static_cast<_primitive_type_>(p); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER_LOGICAL_OPERATORS( _class_name_, _primitive_type_ ) \
     template<typename P> _class_name_ operator&&(const P& p) const { return _class_name_(get()&&static_cast<_primitive_type_>(p)); } \
@@ -206,17 +233,35 @@ public:
     virtual ~primitive_type_implicit_specializer() = 0;
 
 protected:
-    primitive_type_implicit_specializer(const primitive_type_implicit_specializer& t)
+    primitive_type_implicit_specializer(const this_type& t)
         : primitive_type_specializer<T>(t)
     {
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    primitive_type_implicit_specializer(this_type&& t)
+        : primitive_type_specializer<T>(std::move(t))
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_implicit_specializer(const value_type& t)
         : primitive_type_specializer<T>(t)
     {
     }
 
-    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t)
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    explicit primitive_type_implicit_specializer(value_type&& t)
+        : primitive_type_specializer<T>(std::move(t))
+    {
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    this_type& operator=(const this_type& t)
     {
         if (&t != this)
         {
@@ -224,6 +269,19 @@ protected:
         }
         return *this;
     }
+
+#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+
+    this_type& operator=(this_type&& t)
+    {
+        if (&t != this)
+        {
+            primitive_type_specializer<T>::operator=(std::move(t));
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 public:
     operator const value_type&() const

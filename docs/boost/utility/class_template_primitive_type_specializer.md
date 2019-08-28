@@ -28,17 +28,20 @@ public:
     virtual ~primitive_type_specializer() = 0;
 
 protected:
-    primitive_type_specializer(const primitive_type_specializer& t);
-    primitive_type_specializer(primitive_type_specializer&& t);
+    primitive_type_specializer(const this_type& t);
+    primitive_type_specializer(this_type&& t);
     explicit primitive_type_specializer(const value_type& t);
     explicit primitive_type_specializer(value_type&& t);
-    primitive_type_specializer& operator=(const primitive_type_specializer& t);
+    primitive_type_specializer& operator=(const this_type& t);
+    primitive_type_specializer& operator=(this_type&& t);
 
 public:
     const value_type& get() const;
     value_type& get();
     void set(const value_type& t);
     void set(const this_type& t);
+    void set(value_type&& t);
+    void set(this_type&& t);
 };
 ```
 
@@ -69,8 +72,8 @@ Destroys the **primitive_type_specializer** object.
 
 Constructor | Specifiers | Signature
 -|-|-
-*copy constructor (1)* | protected explicit | **primitive_type_specializer**(const **primitive_type_specializer**& t)
-*move constructor (2)* | protected explicit | **primitive_type_specializer**(**primitive_type_specializer**&& t)
+*copy constructor (1)* | protected explicit | **primitive_type_specializer**(const **this_type**& t)
+*move constructor (2)* | protected explicit | **primitive_type_specializer**(**this_type**&& t)
 *assign value, copy (3)* | protected | **primitive_type_specializer**(const **value_type**& t)
 *assign value, move (4)* | protected | **primitive_type_specializer**(**value_type**&& t)
 
@@ -83,9 +86,11 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t)
+*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **this_type**& t)
+*move copy (1)* | protected | **primitive_type_specializer**& operator=(**this_type**&& t)
 
 1. Copies an **primitive_type_specializer** object.
+2. Moves an **primitive_type_specializer** object.
 
 ### get
 
@@ -102,6 +107,8 @@ Specifiers | Signature
 -|-
 public | **void set**(const value_type& t)
 public | **void set**(const this_type& t)
+public | **void set**(value_type&& t)
+public | **void set**(this_type&& t)
 
 Set the specialized primitive type value.
 

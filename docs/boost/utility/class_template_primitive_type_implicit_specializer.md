@@ -29,11 +29,12 @@ public:
     virtual ~primitive_type_implicit_specializer() = 0;
 
 protected:
-    primitive_type_implicit_specializer(const primitive_type_implicit_specializer& t);
-    primitive_type_implicit_specializer(primitive_type_implicit_specializer&& t);
+    primitive_type_implicit_specializer(const this_type& t);
+    primitive_type_implicit_specializer(this_type&& t);
     explicit primitive_type_implicit_specializer(const value_type& t);
     explicit primitive_type_implicit_specializer(value_type&& t);
-    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t);
+    primitive_type_implicit_specializer& operator=(const this_type& t);
+    primitive_type_implicit_specializer& operator=(this_type&& t);
 
 public:
     operator const value_type&() const;
@@ -42,6 +43,8 @@ public:
     value_type& get();
     void set(const value_type& t);
     void set(const this_type& t);
+    void set(value_type&& t);
+    void set(this_type&& t);
 };
 ```
 
@@ -72,8 +75,8 @@ Destroys the **primitive_type_implicit_specializer** object.
 
 Constructor | Specifiers | Signature
 -|-|-
-*copy constructor (1)* | protected explicit | **primitive_type_implicit_specializer**(const **primitive_type_implicit_specializer**& t)
-*move constructor (2)* | protected explicit | **primitive_type_implicit_specializer**(**primitive_type_implicit_specializer**&& t)
+*copy constructor (1)* | protected explicit | **primitive_type_implicit_specializer**(const **this_type**& t)
+*move constructor (2)* | protected explicit | **primitive_type_implicit_specializer**(**this_type**&& t)
 *assign value, copy (3)* | protected | **primitive_type_implicit_specializer**(const **value_type**& t)
 *assign value, move (4)* | protected | **primitive_type_implicit_specializer**(**value_type**&& t)
 
@@ -86,9 +89,11 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(const **primitive_type_implicit_specializer**& t)
+*assign copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(const **this_type**& t)
+*move copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(**this_type**&& t)
 
 1. Copies an **primitive_type_implicit_specializer** object.
+1. Moves an **primitive_type_implicit_specializer** object.
 
 ### Cast operator
 
@@ -116,6 +121,8 @@ Specifiers | Signature
 -|-
 public | **void set**(const value_type& t)
 public | **void set**(const this_type& t)
+public | **void set**(value_type&& t)
+public | **void set**(this_type&& t)
 
 Set the specialized primitive type value.
 

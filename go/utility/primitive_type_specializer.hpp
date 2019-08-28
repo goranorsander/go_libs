@@ -12,7 +12,6 @@
 //
 
 #include <go/config.hpp>
-
 #include <cmath>
 
 namespace go
@@ -25,9 +24,17 @@ namespace utility
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_, _default_value_ ) \
     _class_name_() : go::utility::primitive_type_specializer<_primitive_type_>(_default_value_) {} \
     _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
-    _class_name_(_class_name_&& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
+    _class_name_(_class_name_&& t) : go::utility::primitive_type_specializer<_primitive_type_>(std::move(t)) {} \
     explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
-    explicit _class_name_(value_type&& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {}
+    explicit _class_name_(value_type&& t) : go::utility::primitive_type_specializer<_primitive_type_>(std::move(t)) {}
+
+#define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
+    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
+    _class_name_& operator=(_class_name_&& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(std::move(t)); } return *this; } \
+    _class_name_& operator+=(const _class_name_& t) { this->get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { this->get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { this->get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { this->get() /= t.get(); return *this; }
 
 #else
 
@@ -36,25 +43,25 @@ namespace utility
     _class_name_(const _class_name_& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     explicit _class_name_(const value_type& t) : go::utility::primitive_type_specializer<_primitive_type_>(t) {}
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
-
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
-    _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
-    _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
-    _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
-    _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; }
+    _class_name_& operator+=(const _class_name_& t) { this->get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) { this->get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) { this->get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) { this->get() /= t.get(); return *this; }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { get() %= t.get(); return *this; } \
-    _class_name_& operator&=(const _class_name_& t) { get() &= t.get(); return *this; } \
-    _class_name_& operator|=(const _class_name_& t) { get() |= t.get(); return *this; } \
-    _class_name_& operator^=(const _class_name_& t) { get() ^= t.get(); return *this; } \
-    _class_name_& operator<<=(const _class_name_& t) { get() <<= t.get(); return *this; } \
-    _class_name_& operator>>=(const _class_name_& t) { get() >>= t.get(); return *this; }
+    _class_name_& operator%=(const _class_name_& t) { this->get() %= t.get(); return *this; } \
+    _class_name_& operator&=(const _class_name_& t) { this->get() &= t.get(); return *this; } \
+    _class_name_& operator|=(const _class_name_& t) { this->get() |= t.get(); return *this; } \
+    _class_name_& operator^=(const _class_name_& t) { this->get() ^= t.get(); return *this; } \
+    _class_name_& operator<<=(const _class_name_& t) { this->get() <<= t.get(); return *this; } \
+    _class_name_& operator>>=(const _class_name_& t) { this->get() >>= t.get(); return *this; }
 
 #define GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { get() = std::fmod(get(), t.get()); return *this; }
+    _class_name_& operator%=(const _class_name_& t) { this->get() = std::fmod(get(), t.get()); return *this; }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
     _class_name_ operator+() const { return _class_name_(+get()); } \
@@ -79,17 +86,17 @@ namespace utility
     _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(get(), t.get())); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_ ) \
-    GO_CONSTEXPR bool operator==(const _class_name_& t) const { return get() == t.get(); } \
+    GO_CONSTEXPR bool operator==(const _class_name_& t) const { return this->get() == t.get(); } \
     GO_CONSTEXPR bool operator!=(const _class_name_& t) const { return !operator==(t); } \
-    GO_CONSTEXPR bool operator<(const _class_name_& t) const { return get() < t.get(); } \
-    GO_CONSTEXPR bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
-    GO_CONSTEXPR bool operator>(const _class_name_& t) const { return get() > t.get(); } \
-    GO_CONSTEXPR bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
+    GO_CONSTEXPR bool operator<(const _class_name_& t) const { return this->get() < t.get(); } \
+    GO_CONSTEXPR bool operator<=(const _class_name_& t) const { return this->get() <= t.get(); } \
+    GO_CONSTEXPR bool operator>(const _class_name_& t) const { return this->get() > t.get(); } \
+    GO_CONSTEXPR bool operator>=(const _class_name_& t) const { return this->get() >= t.get(); }
 
 #define GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_ ) \
     _class_name_ operator!() const { return _class_name_(!get()); } \
-    _class_name_ operator&&(const _class_name_& t) const { return _class_name_(get()&&t.get()); } \
-    _class_name_ operator||(const _class_name_& t) const { return _class_name_(get()||t.get()); }
+    _class_name_ operator&&(const _class_name_& t) const { return _class_name_(get() && t.get()); } \
+    _class_name_ operator||(const _class_name_& t) const { return _class_name_(get() || t.get()); }
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_INCREMENT_DECREMENT_OPERATORS( _class_name_ ) \
     _class_name_ operator++() { return _class_name_(++get()); } \
@@ -156,15 +163,15 @@ public:
     virtual ~primitive_type_specializer() = 0;
 
 protected:
-    primitive_type_specializer(const primitive_type_specializer& t)
+    primitive_type_specializer(const this_type& t)
         : _t(t._t)
     {
     }
 
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-    primitive_type_specializer(primitive_type_specializer&& t)
-        : _t(t._t)
+    primitive_type_specializer(this_type&& t)
+        : _t(std::move(t._t))
     {
     }
 
@@ -178,41 +185,68 @@ protected:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     explicit primitive_type_specializer(value_type&& t)
-        : _t(t)
+        : _t(std::move(t))
     {
     }
 
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-    primitive_type_specializer& operator=(const primitive_type_specializer& t)
+    this_type& operator=(const this_type& t)
     {
         if(&t != this)
         {
-            _t = t._t;
+            this->_t = t._t;
         }
         return *this;
     }
 
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+    this_type& operator=(this_type&& t)
+    {
+        if (&t != this)
+        {
+            this->_t = std::move(t._t);
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
 public:
     GO_CONSTEXPR const value_type& get() const
     {
-        return _t;
+        return this->_t;
     }
 
     value_type& get()
     {
-        return _t;
+        return this->_t;
     }
 
     void set(const value_type& t)
     {
-        _t = t;
+        this->_t = t;
     }
 
     void set(const this_type& t)
     {
-        _t = t._t;
+        this->_t = t._t;
     }
+
+#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+
+    void set(value_type&& t)
+    {
+        this->_t = std::move(t);
+    }
+
+    void set(this_type&& t)
+    {
+        this->_t = std::move(t._t);
+    }
+
+#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 private:
     value_type _t;
