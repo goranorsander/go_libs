@@ -24,7 +24,15 @@ namespace go_boost
 namespace mvvm
 {
 
-GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uint3264_t, 0)
+#if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+
+GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
+
+#else
+
+GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
+
+#endif  // #if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
 
 inline void reset(event_subscription_key& key)
 {

@@ -24,7 +24,15 @@ namespace go
 namespace mvvm
 {
 
-GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uint3264_t, 0)
+#if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
+
+#else
+
+GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
+
+#endif  // #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
 
 inline void reset(event_subscription_key& key)
 {

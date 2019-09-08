@@ -6,20 +6,398 @@ layout: std_lib_utility
 namespace go::utility
 ```
 
-# abstract class template primitive_type_specializer
+# class template primitive_type_specializer
 
 ```c++
 <go/utility/primitive_type_specializer.hpp>
 ```
 
-Base class for explicit specializations of objects in the **GO Std C++ Libraries**.
+Class for explicit specializations of primitive types.
 
 The reason for implementing this class is mainly experience of large code bases with
 long life. It is vital to express ideas directly in code and if possible also build in
 sanity checks in the code. Primitive types and implicit casting is an error prone
 combination.
 
-It is declared as:
+There are two implementations of this class. The first version do not require any C\++11
+features and that is the only reason to keep it. The second version require C\++11 and
+is used by compilers supporting the required C\++11 features. If the first version is
+used then **GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER** is defined.
+
+# class template primitive_type_specializer (C++11)
+
+The **primitive_type_specializer** is declared as:
+
+```c++
+template<typename PrimitiveType, class Tag> class primitive_type_specializer
+{
+public:
+    ~primitive_type_specializer() = default;
+    primitive_type_specializer();
+    primitive_type_specializer(this_const_reference t);
+    primitive_type_specializer(this_rvalue_reference t);
+    explicit primitive_type_specializer(const primitive_type& t);
+    explicit primitive_type_specializer(rvalue_reference t);
+
+public:
+    // Assignment operators
+    this_reference operator=(this_const_reference t);
+    this_reference operator=(this_rvalue_reference t);
+    this_reference operator+=(this_const_reference t);
+    this_reference operator-=(this_const_reference t);
+    this_reference operator*=(this_const_reference t);
+    this_reference operator/=(this_const_reference t);
+
+    // Integer type assignment operators
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator%=(this_const_reference t);
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator&=(this_const_reference t);
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator|=(this_const_reference t);
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator^=(this_const_reference t);
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator<<=(this_const_reference t);
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_reference>::type operator>>=(this_const_reference t);
+
+    // Floating point type assignment operators
+    template <typename F = PrimitiveType>
+    typename std::enable_if<std::is_floating_point<F>::value, this_reference>::type operator%=(this_const_reference t);
+
+    // Arithmetic operators
+    this_type operator+() const;
+    this_type operator+(this_const_reference t) const;
+    this_type operator-(this_const_reference t) const;
+    this_type operator*(this_const_reference t) const;
+    this_type operator/(this_const_reference t) const;
+
+    // Signed integer and floating point type arithmetic operators
+    template <typename S = PrimitiveType>
+    typename std::enable_if<std::is_signed<S>::value, this_type>::type operator-() const;
+
+    // Integer type arithmetic operators
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator~() const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const;
+
+    // Floating point type arithmetic operators
+    template <typename F = PrimitiveType>
+    typename std::enable_if<std::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const;
+
+    // Comparison operators
+    constexpr bool operator==(this_const_reference t) const;
+    constexpr bool operator!=(this_const_reference t) const;
+    constexpr bool operator<(this_const_reference t) const;
+    constexpr bool operator<=(this_const_reference t) const;
+    constexpr bool operator>(this_const_reference t) const;
+    constexpr bool operator>=(this_const_reference t) const;
+
+    // Integer type logical operators
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, bool>::type operator!() const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, bool>::type operator&&(this_const_reference t) const;
+    template <typename I = PrimitiveType>
+    typename std::enable_if<std::is_integral<I>::value, bool>::type operator||(this_const_reference t) const;
+
+    // Increment/decrement operators
+    this_type operator++();
+    this_type operator--();
+    this_type operator++(int);
+    this_type operator--(int);
+
+public:
+    constexpr const primitive_type& get() const;
+    primitive_type& get();
+    void set(const primitive_type& t);
+    void set(this_const_reference t);
+    void set(rvalue_reference t);
+    void set(this_rvalue_reference t);
+};
+```
+
+## Template parameters
+
+Parameter | Description
+-|-
+PrimitiveType | The primitive value type
+Tag | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
+
+## Member types
+
+Member type | Definition
+-|-
+this_type | primitive_type_specializer<PrimitiveType, Tag>
+primitive_type | PrimitiveType
+tag_type | Tag
+this_reference | this_type&
+this_const_reference | const this_type&
+rvalue_reference | primitive_type&&
+this_rvalue_reference | this_type&&
+
+## Member functions
+
+### Destructor
+
+Specifiers |
+-|
+public |
+
+Destroys the **primitive_type_specializer** object.
+
+### Constructor
+
+Constructor | Specifiers | Signature
+-|-|-
+*constructor (1)* | public | **primitive_type_specializer**()
+*copy constructor (2)* | public explicit | **primitive_type_specializer**(**this_const_reference** t)
+*move constructor (3)* | public explicit | **primitive_type_specializer**(**this_rvalue_reference** t)
+*assign value, copy (4)* | public | **primitive_type_specializer**(const **value_type**& t)
+*assign value, move (5)* | public | **primitive_type_specializer**(**value_type**&& t)
+
+1. Constructor. Constructs a **primitive_type_specializer**.
+2. Copy constructor. Constructs a **primitive_type_specializer** with the copy of the contents of t.
+3. Move constructor. Constructs a **primitive_type_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
+4. Assign value constructor. Constructs a **primitive_type_specializer** and assign it the contents of t.
+5. Assign value constructor. Constructs a **primitive_type_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
+
+### Assignment operators
+
+Operator | Specifiers | Signature
+-|-|-
+*simple copy assignment (1)* | public | **this_reference** operator=(**this_const_reference** t)
+*simple move assignment (2)* | public | **this_reference** operator=(**this_rvalue_reference** t)
+*addition assignment (3)* | public | **this_reference** operator+=(**this_const_reference** t)
+*subtraction assignment (4)* | public | **this_reference** operator-=(**this_const_reference** t)
+*multiplication assignment (5)* | public | **this_reference** operator*=(**this_const_reference** t)
+*division assignment (6)* | public | **this_reference** operator/=(**this_const_reference** t)
+*modulo assignment (7)* | public | **this_reference** operator%=(**this_const_reference** t)
+*bitwise AND assignment (8)* | public | **this_reference** operator&=(**this_const_reference** t)
+*bitwise OR assignment (9)* | public | **this_reference** operator|=(**this_const_reference** t)
+*bitwise XOR assignment (10)* | public | **this_reference** operator^=(**this_const_reference** t)
+*bitwise left shift assignment (11)* | public | **this_reference** operator<<=(**this_const_reference** t)
+*bitwise right shift assignment (12)* | public | **this_reference** operator>>=(**this_const_reference** t)
+
+Assignment operators 1 to 6 apply to all primitive types.
+
+Assignment operator 7 apply to integer and floating point types.
+
+Assignment operators 8 to 12 apply to all integer types.
+
+### Arithmetic operators
+
+Operator | Specifiers | Signature
+-|-|-
+*unary plus (1)* | public | **this_type** operator+() const
+*addition (2)* | public | **this_type** operator+(**this_const_reference** t) const
+*subtraction (3)* | public | **this_type** operator-(**this_const_reference** t) const
+*multiplication (4)* | public | **this_type** operator*(**this_const_reference** t) const
+*division (5)* | public | **this_type** operator/(**this_const_reference** t) const
+*modulo (6)* | public | **this_type** operator%(**this_const_reference** t) const
+*unary minus (7)* | public | **this_type** operator-() const
+*bitwise NOT (8)* | public | **this_type** operator~() const
+*bitwise AND (9)* | public | **this_type** operator&(**this_const_reference** t) const
+*bitwise OR (10)* | public | **this_type** operator|(**this_const_reference** t) const
+*bitwise XOR (11)* | public | **this_type** operator^(**this_const_reference** t) const
+*bitwise left shift (12)* | public | **this_type** operator<<(**this_const_reference** t) const
+*bitwise right shift (13)* | public | **this_type** operator>>(**this_const_reference** t) const
+
+Arithmetic operators 1 to 6 apply to all arithmetic types.
+
+Arithmetic operator 7 apply to signed integer and floating point types.
+
+Arithmetic operators 8 to 13 apply to all integer types.
+
+### Comparison operators
+
+Operator | Specifiers | Signature
+-|-|-
+*equal to (1)* | public | constexpr bool operator==(**this_const_reference** t) const
+*not equal to (2)* | public | constexpr bool operator!=(**this_const_reference** t) const
+*less than (3)* | public | constexpr bool operator<(**this_const_reference** t) const
+*less than or equal to (4)* | public | constexpr bool operator<=(**this_const_reference** t) const
+*greater than (5)* | public | constexpr bool operator>(**this_const_reference** t) const
+*greater than or equal to (6)* | public | constexpr bool operator>=(**this_const_reference** t) const
+
+Comparison operators 1 to 6 apply to all primitive types.
+
+### Logical operators
+
+Operator | Specifiers | Signature
+-|-|-
+*negation (1)* | public | bool operator!() const
+*AND (2)* | public | bool operator&&(this_const_reference t) const
+*inclusive OR (3)* | public | bool operator||(this_const_reference t) const
+
+Logical operators 1 to 3 apply to all integer types.
+
+### Increment/decrement operators
+
+Operator | Specifiers | Signature
+-|-|-
+*pre-increment (1)* | public | **this_type** operator++()
+*pre-decrement (2)* | public | **this_type** operator--()
+*post-increment (3)* | public | **this_type** operator++(int)
+*post-decrement (4)* | public | **this_type** operator--(int)
+
+Increment/decrement operators 1 to 3 apply to all arithmetic types.
+
+### get
+
+Specifiers | Signature
+-|-
+public | **constexpr const primitive_type**& **get**() const
+public | **primitive_type**& **get**()
+
+Return the specialized primitive type value.
+
+### set
+
+Specifiers | Signature
+-|-
+public | **void set**(const primitive_type& t)
+public | **void set**(this_const_reference t)
+public | **void set**(primitive_type&& t)
+public | **void set**(this_rvalue_reference t)
+
+Set the specialized primitive type value.
+
+## Macro
+
+For convenience a macro is available to implement specialized primitive type
+classes. The macros will implement a dispatching tag **struct** and declare
+the specialized primitive type with a **using** statement.
+
+### GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(class_name, primitive_type)
+
+The **GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER** macro implements a specialized
+primitive type class, e.g:
+
+```c++
+GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(my_integer_type, long)
+```
+
+Will implement a class declared as:
+
+```c++
+struct my_integer_type_tag {};
+using my_integer_type = go::utility::primitive_type_specializer<long, my_integer_type_tag>;
+```
+
+## Example
+
+This example is intended to show how specialized primitive types can be used to
+avoid errors by using explicit types that provide vital information about what
+is expected.
+
+```c++
+#include <iostream>
+#include <go/utility.hpp>
+
+namespace u = go::utility;
+
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(radian_type, double)
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(degree_type, double)
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(meter_type, double)
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(square_meter_type, double)
+
+namespace bad
+{
+
+double circular_sector_area(const double& central_angle, const double& radius)
+{
+    return radius*radius*central_angle/2.0;
+}
+
+}
+
+namespace better
+{
+
+square_meter_type circular_sector_area(const radian_type& central_angle, const meter_type& radius)
+{
+    return square_meter_type(((radius*radius).get()*central_angle.get())/2.0);
+}
+
+square_meter_type circular_sector_area(const degree_type& central_angle, const meter_type& radius)
+{
+    static const double pi = std::acos(-1.0);
+    return square_meter_type(((radius*radius).get()*central_angle.get())*pi/360.0);
+}
+
+}
+
+int main()
+{
+    {
+        // Bad, but right
+        const double central_angle_rad = std::acos(-1.0)/3.0;
+        const double radius = 1.0;
+        const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Area 1 = " << area_1 << std::endl;
+        // Bad, and wrong (parameter order)
+        const double area_2 = bad::circular_sector_area(radius, central_angle_rad);
+        std::cout << "Area 2 = " << area_2 << " (wrong)" << std::endl;
+        // Bad, and wrong again (unit of measurment)
+        const double central_angle_deg = 60.0;
+        const double area_3 = bad::circular_sector_area(central_angle_deg, radius);
+        std::cout << "Area 3 = " << area_3 << " (wrong)" << std::endl;
+    }
+    {
+        // Better, and right
+        const radian_type central_angle_rad(std::acos(-1.0)/3.0);
+        const meter_type radius(1.0);
+        const square_meter_type area_4 = better::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Area 4 = " << area_4.get() << " square meter" << std::endl;
+        // Also better and right
+        const degree_type central_angle_deg(60.0);
+        const square_meter_type area_5 = better::circular_sector_area(central_angle_deg, radius);
+        std::cout << "Area 5 = " << area_5.get() << " square meter" << std::endl;
+    }
+    return 0;
+}
+```
+
+Output
+
+```
+Area 1 = 0.523599
+Area 2 = 0.548311 (wrong)
+Area 3 = 30 (wrong)
+Area 4 = 0.523599 square meter
+Area 5 = 0.523599 square meter
+```
+
+The function **bad::circular_sector_area(const double& central_angle, const double& radius)**
+rely on anonymous quantities. The parameter **central_angle** is most error prone. There is
+no information about what unit of measurement the function expects. The fact that it
+expect radians can only be determined by inspecting the implementation and requires
+knowledge of geometry to recognise the formula. The relationship between the parameter
+**radius** and the returned result is probably less error prone but it still lack
+clarity.
+
+The functions in namespace **better** provide information about expected units of
+measurement by use of specialized types. The information is there for anyone who care
+to read the function signature. The specialized types are explicit, e.g. you cannot pass
+an anonymous **double** or **degree_type** value to the function that expect a
+**radian_type** parameter (or worse, get the parameter order mixed up).
+
+# class template primitive_type_specializer (C++03)
+
+The **primitive_type_specializer** is declared as:
 
 ```c++
 template<typename T> class primitive_type_specializer
@@ -28,20 +406,17 @@ public:
     virtual ~primitive_type_specializer() = 0;
 
 protected:
-    primitive_type_specializer(const this_type& t);
-    primitive_type_specializer(this_type&& t);
+    primitive_type_specializer(const primitive_type_specializer& t);
+    primitive_type_specializer(primitive_type_specializer&& t);
     explicit primitive_type_specializer(const value_type& t);
     explicit primitive_type_specializer(value_type&& t);
-    primitive_type_specializer& operator=(const this_type& t);
-    primitive_type_specializer& operator=(this_type&& t);
+    primitive_type_specializer& operator=(const primitive_type_specializer& t);
 
 public:
     constexpr const value_type& get() const;
     value_type& get();
     void set(const value_type& t);
     void set(const this_type& t);
-    void set(value_type&& t);
-    void set(this_type&& t);
 };
 ```
 
@@ -72,8 +447,8 @@ Destroys the **primitive_type_specializer** object.
 
 Constructor | Specifiers | Signature
 -|-|-
-*copy constructor (1)* | protected explicit | **primitive_type_specializer**(const **this_type**& t)
-*move constructor (2)* | protected explicit | **primitive_type_specializer**(**this_type**&& t)
+*copy constructor (1)* | protected explicit | **primitive_type_specializer**(const **primitive_type_specializer**& t)
+*move constructor (2)* | protected explicit | **primitive_type_specializer**(**primitive_type_specializer**&& t)
 *assign value, copy (3)* | protected | **primitive_type_specializer**(const **value_type**& t)
 *assign value, move (4)* | protected | **primitive_type_specializer**(**value_type**&& t)
 
@@ -86,11 +461,9 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **this_type**& t)
-*move copy (2)* | protected | **primitive_type_specializer**& operator=(**this_type**&& t)
+*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t)
 
 1. Copies an **primitive_type_specializer** object.
-2. Moves an **primitive_type_specializer** object.
 
 ### get
 
@@ -107,8 +480,6 @@ Specifiers | Signature
 -|-
 public | **void set**(const value_type& t)
 public | **void set**(const this_type& t)
-public | **void set**(value_type&& t)
-public | **void set**(this_type&& t)
 
 Set the specialized primitive type value.
 
@@ -124,13 +495,13 @@ specialized primitive type with same funtionallity.
 * [Logical operators](http://en.cppreference.com/w/cpp/language/operator_logical)
 * [Increment/decrement operators](http://en.cppreference.com/w/cpp/language/operator_incdec)
 
-### GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(class_name, primitive_type, default_value)
+### GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(class_name, primitive_type)
 
 The **GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER** macro implements a specialized integer
 type class, e.g:
 
 ```c++
-GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(my_integer_type, long, 0)
+GO_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(my_integer_type, long)
 ```
 
 Will implement a class declared as:
@@ -142,7 +513,7 @@ class my_integer_type
 public:
     // Destructor and constructors
     virtual ~my_integer_type();
-    my_integer_type();
+    my_integer_type(static_cast<long>(0));
     my_integer_type(const my_integer_type& t);
     my_integer_type(my_integer_type&& t);
     explicit my_integer_type(const value_type& t);
@@ -197,14 +568,14 @@ public:
 };
 ```
 
-### GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(class_name, primitive_type, default_value)
+### GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(class_name, primitive_type)
 
 The **GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER** macro implements a specialized
 unsigned integer
 type class, e.g:
 
 ```c++
-GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(my_integer_type, unsigned long, 0)
+GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(my_integer_type, unsigned long)
 ```
 
 Will implement a class declared as:
@@ -216,7 +587,7 @@ class my_integer_type
 public:
     // Destructor and constructors
     virtual ~my_integer_type();
-    my_integer_type();
+    my_integer_type(static_cast<unsigned long>(0));
     my_integer_type(const my_integer_type& t);
     my_integer_type(my_integer_type&& t);
     explicit my_integer_type(const value_type& t);
@@ -270,13 +641,13 @@ public:
 };
 ```
 
-### GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(class_name, primitive_type, default_value)
+### GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(class_name, primitive_type)
 
 The **GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER** macro implements a specialized
 floating point type class, e.g:
 
 ```c++
-GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(my_floating_point_type, double, 0.0)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(my_floating_point_type, double)
 ```
 
 Will implement a class declared as:
@@ -288,7 +659,7 @@ class my_floating_point_type
 public:
     // Destructor and constructors
     virtual ~my_floating_point_type();
-    my_floating_point_type();
+    my_floating_point_type(static_cast<double>(0));
     my_floating_point_type(const my_floating_point_type& t);
     my_floating_point_type(my_floating_point_type&& t);
     explicit my_floating_point_type(const value_type& t);
