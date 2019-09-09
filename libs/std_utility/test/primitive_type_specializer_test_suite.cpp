@@ -964,7 +964,7 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_default_value)
 {
     const implicit_integer_type v;
-    EXPECT_EQ(42u, v);
+    EXPECT_EQ(0u, v);
 }
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_construction)
@@ -1103,7 +1103,7 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
         EXPECT_NE(v1, v2);
     }
     {
-        implicit_integer_type v;
+        implicit_integer_type v(42);
         EXPECT_EQ(42u, v);
         v %= 10;
         EXPECT_EQ(2u, v);
