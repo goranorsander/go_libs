@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 1 test cases was executed 2019-08-22 at 16:44:16 with result:
+Test suites *AllTests* with 1 test cases was executed 2019-09-09 at 20:11:30 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.009 seconds.
+Test suites execution took 0.002 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_diagnostics_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.2.3
+* Visual Studio 2019, Community Edition, version 16.2.4
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-08-22 at 16:44:44 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-09-09 at 20:11:58 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.02 seconds.
+Test suites execution took 0.019 seconds.
 
 # Details
 
@@ -40,7 +40,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.015 seconds.
+Test suite execution took 0.013 seconds.
 
 ### Successful test cases
 

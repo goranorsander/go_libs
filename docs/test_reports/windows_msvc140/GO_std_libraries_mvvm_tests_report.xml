@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="724" failures="0" disabled="0" errors="0" timestamp="2019-08-22T16:44:37" time="0.618" name="AllTests">
-  <testsuite name="std_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+<testsuites tests="724" failures="0" disabled="0" errors="0" timestamp="2019-09-09T20:11:50" time="0.563" name="AllTests">
+  <testsuite name="std_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_execute_command" status="run" time="0" classname="std_basic_command_execution_observer_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="std_basic_command_execution_observer_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_basic_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_command_manager" status="run" time="0.003" classname="std_basic_command_manager_lambda_test_suite" />
-    <testcase name="test_spaceship_observer" status="run" time="0.006" classname="std_basic_command_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0.005" classname="std_basic_command_manager_lambda_test_suite" />
   </testsuite>
   <testsuite name="std_basic_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_command_manager" status="run" time="0.003" classname="std_basic_command_manager_test_suite" />
-    <testcase name="test_spaceship_observer" status="run" time="0.005" classname="std_basic_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0.006" classname="std_basic_command_manager_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_basic_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_command" status="run" time="0" classname="std_basic_command_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.006">
     <testcase name="test_command_manager" status="run" time="0.005" classname="std_basic_event_manager_test_suite" />
   </testsuite>
   <testsuite name="std_basic_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_create" status="run" time="0" classname="std_basic_observable_array_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="std_basic_observable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.007">
     <testcase name="test_assign_range" status="run" time="0" classname="std_basic_observable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_basic_observable_deque_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_basic_observable_deque_test_suite" />
@@ -40,7 +40,7 @@
     <testcase name="test_emplace_back" status="run" time="0" classname="std_basic_observable_deque_test_suite" />
     <testcase name="test_emplace_front" status="run" time="0" classname="std_basic_observable_deque_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.016">
+  <testsuite name="std_basic_observable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.021">
     <testcase name="test_assign_range" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
@@ -50,7 +50,7 @@
     <testcase name="test_insert_after_fill" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_range" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_emplace_after" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
@@ -66,17 +66,17 @@
     <testcase name="test_merge" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_basic_observable_forward_list_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_list_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.025">
+  <testsuite name="std_basic_observable_list_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.018">
     <testcase name="test_assign_range" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_basic_observable_list_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0.001" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="std_basic_observable_list_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_basic_observable_list_test_suite" />
@@ -94,11 +94,11 @@
     <testcase name="test_merge" status="run" time="0" classname="std_basic_observable_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_basic_observable_list_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_map_test_suite" />
+  <testsuite name="std_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.008">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_map_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_basic_observable_map_test_suite" />
@@ -107,11 +107,11 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_map_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
@@ -120,7 +120,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_multiset_test_suite" />
@@ -133,13 +133,13 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_multiset_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.007">
-    <testcase name="test_observable_object" status="run" time="0" classname="std_basic_observable_object_lambda_test_suite" />
+  <testsuite name="std_basic_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="test_observable_object" status="run" time="0.001" classname="std_basic_observable_object_lambda_test_suite" />
   </testsuite>
   <testsuite name="std_basic_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_observable_object" status="run" time="0.001" classname="std_basic_observable_object_test_suite" />
+    <testcase name="test_observable_object" status="run" time="0" classname="std_basic_observable_object_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_set_test_suite" />
@@ -152,7 +152,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_set_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_unordered_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_unordered_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_unordered_map_test_suite" />
@@ -169,7 +169,7 @@
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
@@ -178,7 +178,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_unordered_multiset_test_suite" />
@@ -191,7 +191,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_unordered_multiset_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_unordered_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_basic_observable_unordered_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_basic_observable_unordered_set_test_suite" />
@@ -204,11 +204,11 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_basic_observable_unordered_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_basic_observable_unordered_set_test_suite" />
   </testsuite>
-  <testsuite name="std_basic_observable_vector_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.013">
+  <testsuite name="std_basic_observable_vector_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_assign_range" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
-    <testcase name="test_push_back" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" time="0.001" classname="std_basic_observable_vector_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="std_basic_observable_vector_test_suite" />
@@ -227,24 +227,24 @@
     <testcase name="test_execute_command" status="run" time="0" classname="std_command_execution_observer_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="std_command_execution_observer_test_suite" />
   </testsuite>
-  <testsuite name="std_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command_manager" status="run" time="0" classname="std_command_manager_lambda_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_lambda_test_suite" />
   </testsuite>
-  <testsuite name="std_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.006">
     <testcase name="test_command_manager" status="run" time="0" classname="std_command_manager_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_test_suite" />
   </testsuite>
-  <testsuite name="std_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command" status="run" time="0" classname="std_command_test_suite" />
   </testsuite>
-  <testsuite name="std_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command_manager" status="run" time="0" classname="std_event_manager_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_create" status="run" time="0" classname="std_observable_array_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.014">
+  <testsuite name="std_observable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.012">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_deque_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_deque_test_suite" />
@@ -263,7 +263,7 @@
     <testcase name="test_emplace_back" status="run" time="0" classname="std_observable_deque_test_suite" />
     <testcase name="test_emplace_front" status="run" time="0" classname="std_observable_deque_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.023">
+  <testsuite name="std_observable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.015">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_forward_list_test_suite" />
@@ -271,10 +271,10 @@
     <testcase name="test_pop_front" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_single_element" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_fill" status="run" time="0" classname="std_observable_forward_list_test_suite" />
-    <testcase name="test_insert_after_range" status="run" time="0" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" time="0.001" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_forward_list_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_emplace_after" status="run" time="0" classname="std_observable_forward_list_test_suite" />
     <testcase name="test_emplace_back" status="run" time="0" classname="std_observable_forward_list_test_suite" />
@@ -296,7 +296,7 @@
     <testcase name="test_push_back" status="run" time="0" classname="std_observable_list_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="std_observable_list_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="std_observable_list_test_suite" />
-    <testcase name="test_pop_front" status="run" time="0" classname="std_observable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" time="0.001" classname="std_observable_list_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_list_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="std_observable_list_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_list_test_suite" />
@@ -317,7 +317,7 @@
     <testcase name="test_merge" status="run" time="0" classname="std_observable_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_observable_list_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.008">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_map_test_suite" />
@@ -335,7 +335,7 @@
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_observable_multimap_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_observable_multimap_test_suite" />
@@ -343,7 +343,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="std_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_multiset_test_suite" />
@@ -356,14 +356,14 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_multiset_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_observable_object" status="run" time="0" classname="std_observable_object_lambda_test_suite" />
   </testsuite>
   <testsuite name="std_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_observable_object" status="run" time="0" classname="std_observable_object_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.012">
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="std_observable_set_test_suite" />
+  <testsuite name="std_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+    <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_set_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_observable_set_test_suite" />
@@ -388,7 +388,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_map_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
@@ -401,7 +401,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
@@ -409,7 +409,7 @@
     <testcase name="test_erase_position" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_multiset_test_suite" />
@@ -447,24 +447,24 @@
     <testcase name="test_execute_command" status="run" time="0" classname="std_command_execution_observer_placebo_lockable_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="std_command_execution_observer_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_command_manager_lambda_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_command_manager_lambda_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command_manager" status="run" time="0" classname="std_command_manager_lambda_placebo_lockable_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_lambda_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.006">
+  <testsuite name="std_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command_manager" status="run" time="0" classname="std_command_manager_placebo_lockable_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_command_manager_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_command" status="run" time="0" classname="std_command_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_command_manager" status="run" time="0" classname="std_event_manager_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_create" status="run" time="0" classname="std_observable_array_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_deque_placebo_lockable_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.014">
+  <testsuite name="std_observable_deque_placebo_lockable_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.006">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_deque_placebo_lockable_test_suite" />
@@ -483,7 +483,7 @@
     <testcase name="test_emplace_back" status="run" time="0" classname="std_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_emplace_front" status="run" time="0" classname="std_observable_deque_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_forward_list_placebo_lockable_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.018">
+  <testsuite name="std_observable_forward_list_placebo_lockable_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.022">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
@@ -498,9 +498,9 @@
     <testcase name="test_clear" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_emplace_after" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_emplace_back" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_emplace_front" status="run" time="0.001" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_front" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_splice_after_entire_forward_list" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_splice_after_single_element" status="run" time="0.001" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_splice_after_element_range" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_remove" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
@@ -509,7 +509,7 @@
     <testcase name="test_merge" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_observable_forward_list_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_list_placebo_lockable_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.018">
+  <testsuite name="std_observable_list_placebo_lockable_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.016">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_list_placebo_lockable_test_suite" />
@@ -537,20 +537,20 @@
     <testcase name="test_merge" status="run" time="0" classname="std_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_observable_list_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.014">
+  <testsuite name="std_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_map_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
@@ -560,10 +560,10 @@
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="std_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_multimap_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_multiset_placebo_lockable_test_suite" />
@@ -582,7 +582,7 @@
   <testsuite name="std_observable_object_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_observable_object" status="run" time="0" classname="std_observable_object_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_set_placebo_lockable_test_suite" />
@@ -595,20 +595,20 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_set_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
@@ -616,12 +616,12 @@
     <testcase name="test_erase_position" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
@@ -634,7 +634,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
@@ -644,10 +644,10 @@
     <testcase name="test_erase_range" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_observable_vector_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="std_observable_vector_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_assign_range" status="run" time="0" classname="std_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_observable_vector_placebo_lockable_test_suite" />
@@ -669,31 +669,31 @@
   <testsuite name="std_relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_relay_command" status="run" time="0" classname="std_relay_command_test_suite" />
   </testsuite>
-  <testsuite name="std_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_relay_wcommand" status="run" time="0" classname="std_relay_wcommand_test_suite" />
   </testsuite>
-  <testsuite name="std_wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.006">
+  <testsuite name="std_wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_execute_wcommand" status="run" time="0" classname="std_wcommand_execution_observer_test_suite" />
     <testcase name="test_post_wcommand" status="run" time="0" classname="std_wcommand_execution_observer_test_suite" />
   </testsuite>
   <testsuite name="std_wcommand_manager_lambda_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_command_manager" status="run" time="0.001" classname="std_wcommand_manager_lambda_test_suite" />
+    <testcase name="test_command_manager" status="run" time="0" classname="std_wcommand_manager_lambda_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_wcommand_manager_lambda_test_suite" />
   </testsuite>
   <testsuite name="std_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_command_manager" status="run" time="0" classname="std_wcommand_manager_test_suite" />
+    <testcase name="test_command_manager" status="run" time="0.001" classname="std_wcommand_manager_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="std_wcommand_manager_test_suite" />
   </testsuite>
-  <testsuite name="std_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_wcommand" status="run" time="0" classname="std_wcommand_test_suite" />
   </testsuite>
   <testsuite name="std_wevent_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_command_manager" status="run" time="0.001" classname="std_wevent_manager_test_suite" />
+    <testcase name="test_command_manager" status="run" time="0" classname="std_wevent_manager_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_wobservable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_create" status="run" time="0" classname="std_wobservable_array_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="std_wobservable_deque_test_suite" tests="17" failures="0" disabled="0" errors="0" time="0.013">
     <testcase name="test_assign_range" status="run" time="0" classname="std_wobservable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_wobservable_deque_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_wobservable_deque_test_suite" />
@@ -712,7 +712,7 @@
     <testcase name="test_emplace_back" status="run" time="0" classname="std_wobservable_deque_test_suite" />
     <testcase name="test_emplace_front" status="run" time="0" classname="std_wobservable_deque_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.018">
+  <testsuite name="std_wobservable_forward_list_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.015">
     <testcase name="test_assign_range" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
@@ -734,11 +734,11 @@
     <testcase name="test_remove" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
-    <testcase name="test_unique_binary_predicate" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" time="0.001" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_merge" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_wobservable_forward_list_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_list_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.024">
+  <testsuite name="std_wobservable_list_test_suite" tests="26" failures="0" disabled="0" errors="0" time="0.02">
     <testcase name="test_assign_range" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_wobservable_list_test_suite" />
@@ -760,14 +760,14 @@
     <testcase name="test_splice_single_element" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_splice_element_range" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_remove" status="run" time="0" classname="std_wobservable_list_test_suite" />
-    <testcase name="test_remove_if" status="run" time="0.001" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_unique_binary_predicate" status="run" time="0" classname="std_wobservable_list_test_suite" />
     <testcase name="test_merge" status="run" time="0" classname="std_wobservable_list_test_suite" />
-    <testcase name="test_merge_compare_predicate" status="run" time="0.001" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" time="0" classname="std_wobservable_list_test_suite" />
   </testsuite>
   <testsuite name="std_wobservable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_map_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_wobservable_map_test_suite" />
@@ -779,7 +779,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_map_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
@@ -792,7 +792,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="std_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_multiset_test_suite" />
@@ -806,12 +806,12 @@
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_multiset_test_suite" />
   </testsuite>
   <testsuite name="std_wobservable_object_lambda_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_observable_object" status="run" time="0" classname="std_wobservable_object_lambda_test_suite" />
+    <testcase name="test_observable_object" status="run" time="0.001" classname="std_wobservable_object_lambda_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_wobservable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_observable_object" status="run" time="0" classname="std_wobservable_object_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_wobservable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_set_test_suite" />
@@ -824,10 +824,10 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_set_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
+  <testsuite name="std_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
@@ -837,7 +837,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_unordered_map_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="std_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
@@ -850,7 +850,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
     <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
@@ -863,8 +863,8 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_unordered_multiset_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.005">
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="std_wobservable_unordered_set_test_suite" />
+  <testsuite name="std_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.011">
+    <testcase name="test_insert_single_element" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
@@ -876,7 +876,7 @@
     <testcase name="test_emplace" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="std_wobservable_unordered_set_test_suite" />
   </testsuite>
-  <testsuite name="std_wobservable_vector_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_wobservable_vector_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_assign_range" status="run" time="0" classname="std_wobservable_vector_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="std_wobservable_vector_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="std_wobservable_vector_test_suite" />
