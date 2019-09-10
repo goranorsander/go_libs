@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-08-26 at 17:52:03 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-09-10 at 16:33:41 with result:
 
 * 0 errors
 * 0 failures
@@ -40,13 +40,13 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_not_define_go_address_model_32 | 0.001
+test_not_define_go_address_model_32 | 0
 test_define_go_address_model_64 | 0
 test_pointer_size | 0
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
