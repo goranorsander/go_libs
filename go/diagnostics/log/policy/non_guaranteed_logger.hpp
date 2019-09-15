@@ -50,7 +50,7 @@ public:
 public:
     virtual ~non_guaranteed_logger() = default;
 
-    explicit non_guaranteed_logger(const uint32_t ring_buffer_size_mb)
+    explicit non_guaranteed_logger(const std::size_t ring_buffer_size_mb)
         : logging_policy_interface<W>()
         , go::utility::noncopyable()
         , _ring_buffer_size_mb(ring_buffer_size_mb)
@@ -60,11 +60,11 @@ public:
 private:
     virtual buffer_interface_pointer create_buffer() const override
     {
-        return dynamic_cast<buffer_interface_pointer>(new go::diagnostics::log::detail::ring_buffer<log_line_type>(static_cast<std::size_t>(go::utility::max_of(1u, _ring_buffer_size_mb) * 1024 * 4)));
+        return dynamic_cast<buffer_interface_pointer>(new go::diagnostics::log::detail::ring_buffer<log_line_type>(static_cast<std::size_t>(go::utility::max_of(static_cast<std::size_t>(GO_UL(1)), static_cast<std::size_t>(_ring_buffer_size_mb * GO_UL(1024) * GO_UL(4))))));
     }
 
 private:
-    const uint32_t _ring_buffer_size_mb;
+    const std::size_t _ring_buffer_size_mb;
 };
 
 } // namespace policy
