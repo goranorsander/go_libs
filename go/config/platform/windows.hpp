@@ -39,6 +39,8 @@ typedef unsigned __int64 uint64_t;
 #if defined(_WIN64)
 
 #define GO_ADDRESS_MODEL_64 1
+#define GO_L(i) i ## ll
+#define GO_UL(i) i ## ull
 
 namespace go
 {
@@ -51,6 +53,8 @@ typedef uint64_t uint3264_t;
 #else
 
 #define GO_ADDRESS_MODEL_32 1
+#define GO_L(i) i ## l
+#define GO_UL(i) i ## ul
 
 namespace go
 {

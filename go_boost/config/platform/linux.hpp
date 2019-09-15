@@ -28,6 +28,8 @@
 #if defined(__x86_64__) || defined(__ppc64__)
 
 #define GO_BOOST_ADDRESS_MODEL_64 1
+#define GO_BOOST_L(i) i ## ll
+#define GO_BOOST_UL(i) i ## ull
 
 namespace go_boost
 {
@@ -40,6 +42,8 @@ typedef boost::uint64_t uint3264_t;
 #else
 
 #define GO_BOOST_ADDRESS_MODEL_32 1
+#define GO_BOOST_L(i) i ## l
+#define GO_BOOST_UL(i) i ## ul
 
 namespace go_boost
 {

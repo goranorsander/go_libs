@@ -29,3 +29,5 @@ Macro | Description
 -|-
 GO_BOOST_ADDRESS_MODEL_32 | Address model is 32 bits
 GO_BOOST_ADDRESS_MODEL_64 | Address model is 64 bits
+GO_BOOST_L(i) | Append **l** or **ll** to integer number *i* depending on address model, **l** for 32 bits and **ll** for 64 bits
+GO_BOOST_UL(i) | Append **ul** or **ull** to unsigned integer number *i* depending on address model, **ul** for 32 bits and **ull** for 64 bits
