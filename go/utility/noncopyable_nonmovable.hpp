@@ -50,11 +50,11 @@ private:
 #if !defined(GO_NO_CXX11_AUTO)
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& = delete;
+    auto operator=(const noncopyable_nonmovable&) ->noncopyable_nonmovable& = delete;
 
 #else
 
-    auto operator=(const noncopyable_nonmovable&)->noncopyable_nonmovable& {}
+    auto operator=(const noncopyable_nonmovable&) ->noncopyable_nonmovable& {}
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #endif  // #if !defined(GO_NO_CXX11_AUTO)
@@ -62,11 +62,11 @@ private:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& = delete;
+    auto operator=(noncopyable_nonmovable&&) ->noncopyable_nonmovable& = delete;
 
 #else
 
-    auto operator=(noncopyable_nonmovable&&)->noncopyable_nonmovable& {}
+    auto operator=(noncopyable_nonmovable&&) ->noncopyable_nonmovable& {}
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)

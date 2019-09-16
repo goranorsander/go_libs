@@ -29,12 +29,12 @@ private:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     nonmovable(nonmovable&&) = delete;
-    auto operator=(nonmovable&&)->nonmovable& = delete;
+    auto operator=(nonmovable&&) ->nonmovable& = delete;
 
 #else
 
     nonmovable(nonmovable&&) {}
-    auto operator=(nonmovable&&)->nonmovable& {}
+    auto operator=(nonmovable&&) ->nonmovable& {}
 
 #endif  // #!defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
@@ -42,7 +42,7 @@ private:
 protected:
     nonmovable() GO_DEFAULT_CONSTRUCTOR
     nonmovable(const nonmovable&) GO_DEFAULT_CONSTRUCTOR
-    auto operator=(const nonmovable&)->nonmovable& GO_DEFAULT_CONSTRUCTOR
+    auto operator=(const nonmovable&) ->nonmovable& GO_DEFAULT_CONSTRUCTOR
 };
 
 inline nonmovable::~nonmovable()

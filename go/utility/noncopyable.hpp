@@ -28,12 +28,12 @@ private:
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     noncopyable(const noncopyable&) = delete;
-    auto operator=(const noncopyable&)->noncopyable& = delete;
+    auto operator=(const noncopyable&) ->noncopyable& = delete;
 
 #else
 
     noncopyable(const noncopyable&) {}
-    auto operator=(const noncopyable&)->noncopyable& {}
+    auto operator=(const noncopyable&) ->noncopyable& {}
 
 #endif  // !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
@@ -43,7 +43,7 @@ protected:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
     noncopyable(noncopyable&&) GO_DEFAULT_CONSTRUCTOR
-    auto operator=(noncopyable&&)->noncopyable& GO_DEFAULT_CONSTRUCTOR
+    auto operator=(noncopyable&&) ->noncopyable& GO_DEFAULT_CONSTRUCTOR
 
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
