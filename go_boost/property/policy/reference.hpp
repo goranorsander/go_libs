@@ -56,7 +56,7 @@ public:
     {
     }
 
-    reference& operator=(const reference& v)
+    reference& operator=(const reference& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (&v != this)
         {
@@ -65,7 +65,7 @@ public:
         return *this;
     }
 
-    reference& operator=(const value_type& v)
+    reference& operator=(const value_type& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         set(v);
         return *this;

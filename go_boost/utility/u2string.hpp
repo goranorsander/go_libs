@@ -108,7 +108,7 @@ public:
     u2string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
 public:
-    u2string& operator=(const u2string& other);
+    u2string& operator=(const u2string& other) BOOST_NOEXCEPT_OR_NOTHROW;
 
     bool operator==(const u2string& other) const;
 
@@ -215,7 +215,7 @@ inline u2string::u2string(const T& t, size_type pos, size_type n, const allocato
 {
 }
 
-inline u2string& u2string::operator=(const u2string& other)
+inline u2string& u2string::operator=(const u2string& other) BOOST_NOEXCEPT_OR_NOTHROW
 {
     if (&other != this)
     {

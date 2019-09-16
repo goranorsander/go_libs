@@ -129,11 +129,11 @@ private:
 #endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR))
 
-        element& operator=(element&&) = default;
+        element& operator=(element&&) noexcept = default;
 
 #else
 
-        element& operator=(element&& other)
+        element& operator=(element&& other) BOOST_NOEXCEPT_OR_NOTHROW
         {
             if (&other != this)
             {

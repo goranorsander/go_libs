@@ -51,7 +51,7 @@ public:
     }
 
 private:
-    this_type& operator=(const this_type& v); // = delete;
+    this_type& operator=(const this_type& v) GO_NOEXCEPT_OR_NOTHROW; // = delete;
 
 public:
     void set(const value_type& v)

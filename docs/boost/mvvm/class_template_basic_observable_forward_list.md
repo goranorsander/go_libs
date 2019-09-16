@@ -47,9 +47,9 @@ public:
     static ptr create(const boost::initializer_list<value_type>& il);
 
 public:
-    this_type& operator=(const this_type& x);
-    this_type& operator=(this_type&& x);
-    this_type& operator=(const boost::initializer_list<value_type>& il);
+    this_type& operator=(const this_type& x) noexcept;
+    this_type& operator=(this_type&& x) noexcept;
+    this_type& operator=(const boost::initializer_list<value_type>& il) noexcept;
 
 protected:
     virtual container_type& container();
@@ -190,9 +190,9 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | this_type& **operator=**(const this_type& x)
-*assign move (2)* | public | this_type& **operator=**(this_type&& x)
-*assign replace (2)* | public | this_type& **operator=**(const boost\::initializer_list<value_type>& il)
+*assign copy (1)* | public | this_type& **operator=**(const this_type& x) noexcept
+*assign move (2)* | public | this_type& **operator=**(this_type&& x) noexcept
+*assign replace (2)* | public | this_type& **operator=**(const boost\::initializer_list<value_type>& il) noexcept
 
 1. Copy assignment operator. Replaces the contents with a copy of the contents of **x**.
 2. Move assignment operator. Replaces the contents with those of **x** using move semantics.

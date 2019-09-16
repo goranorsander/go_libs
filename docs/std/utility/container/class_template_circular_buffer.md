@@ -43,7 +43,7 @@ public:
     circular_buffer(const std::initializer_list<T>& il, const allocator_type& alloc = allocator_type());
     circular_buffer(capacity_type cap, const std::initializer_list<T>& il, const allocator_type& alloc = allocator_type());
 
-    this_type& operator=(const this_type&) = default;
+    this_type& operator=(const this_type&) noexcept = default;
     this_type& operator=(this_type&&) noexcept = default;
     reference operator[](size_type pos);
     const_reference operator[](size_type pos) const;
@@ -157,8 +157,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | this_type& **operator=**(const this_type& x)
-*assign move (2)* | public | this_type& **operator=**(this_type&& x)
+*assign copy (1)* | public | this_type& **operator=**(const this_type& x) noexcept
+*assign move (2)* | public | this_type& **operator=**(this_type&& x) noexcept
 
 1. Copy assignment operator. Replaces the contents with a copy of the contents of **x**.
 2. Move assignment operator. Replaces the contents with those of **x** using move semantics.
@@ -398,8 +398,8 @@ protected:
     iterator_base(iterator_base&&) = default;
     explicit iterator_base(this_type* container, size_t pos = 0);
 
-    iterator_base& operator=(const iterator_base&) = default;
-    iterator_base& operator=(iterator_base&&) = default;
+    iterator_base& operator=(const iterator_base&) noexcept = default;
+    iterator_base& operator=(iterator_base&&) noexcept = default;
     bool operator==(const iterator_base& other) const;
     bool operator!=(const iterator_base& other) const;
     bool operator<(const iterator_base& other) const;
@@ -436,8 +436,8 @@ public:
     iterator(iterator&&) = default;
     explicit iterator(this_type* container, size_t pos = 0);
 
-    iterator& operator=(const iterator&) = default;
-    iterator& operator=(iterator&&) = default;
+    iterator& operator=(const iterator&) noexcept = default;
+    iterator& operator=(iterator&&) noexcept = default;
     bool operator==(const iterator& other) const;
     bool operator!=(const iterator& other) const;
     bool operator<(const iterator& other) const;
@@ -468,9 +468,9 @@ public:
     const_iterator(const const_iterator&) = default;
     const_iterator(const_iterator&&) = default;
     explicit const_iterator(this_type* container, size_t pos = 0);
-    const_iterator& operator=(const const_iterator&) = default;
-    const_iterator& operator=(const_iterator&&) = default;
 
+    const_iterator& operator=(const const_iterator&) noexcept = default;
+    const_iterator& operator=(const_iterator&&) noexcept = default;
     bool operator==(const const_iterator& other) const;
     bool operator!=(const const_iterator& other) const;
     bool operator<(const const_iterator& other) const;
@@ -499,9 +499,9 @@ public:
     reverse_iterator(const reverse_iterator&) = default;
     reverse_iterator(reverse_iterator&&) = default;
     explicit reverse_iterator(this_type* container, size_t pos = 0);
-    reverse_iterator& operator=(const reverse_iterator&) = default;
-    reverse_iterator& operator=(reverse_iterator&&) = default;
 
+    reverse_iterator& operator=(const reverse_iterator&) noexcept = default;
+    reverse_iterator& operator=(reverse_iterator&&) noexcept = default;
     bool operator==(const reverse_iterator& other) const;
     bool operator!=(const reverse_iterator& other) const;
     bool operator<(const reverse_iterator& other) const;
@@ -533,8 +533,8 @@ public:
     const_reverse_iterator(const_reverse_iterator&&) = default;
     explicit const_reverse_iterator(this_type* container, size_t pos = 0);
 
-    const_reverse_iterator& operator=(const const_reverse_iterator&) = default;
-    const_reverse_iterator& operator=(const_reverse_iterator&&) = default;
+    const_reverse_iterator& operator=(const const_reverse_iterator&) noexcept = default;
+    const_reverse_iterator& operator=(const_reverse_iterator&&) noexcept = default;
     bool operator==(const const_reverse_iterator& other) const;
     bool operator!=(const const_reverse_iterator& other) const;
     bool operator<(const const_reverse_iterator& other) const;

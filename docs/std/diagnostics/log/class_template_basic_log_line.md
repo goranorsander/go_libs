@@ -25,7 +25,7 @@ public:
     virtual ~basic_log_line() = default;
     basic_log_line(const log_level level, const char_type* file, const char_type* function, const uint32_t line);
     basic_log_line(basic_log_line&&) = default;
-    basic_log_line& operator=(basic_log_line&&) = default;
+    basic_log_line& operator=(basic_log_line&&) noexcept = default;
     void stringify(out_stream_type& os);
     basic_log_line& operator<<(const std::string::value_type arg);
     basic_log_line& operator<<(const std::wstring::value_type arg);
@@ -105,8 +105,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign move (1)* | public | basic_log_line& operator=(basic_log_line&& other)
-*assign copy (2)* | public | basic_log_line& operator=(const basic_log_line& other)
+*assign move (1)* | public | basic_log_line& operator=(basic_log_line&& other) noexcept
+*assign copy (2)* | public | basic_log_line& operator=(const basic_log_line& other) noexcept
 
 1. Copies an **basic_log_line** object using move semantics.
 2. Copies an **basic_log_line** object.

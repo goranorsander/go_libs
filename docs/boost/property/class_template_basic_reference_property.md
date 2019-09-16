@@ -27,8 +27,8 @@ public:
     virtual ~basic_reference_property();
     explicit basic_reference_property(const string_type& property_name);
     basic_reference_property(const string_type& property_name, const value_type& other);
-    this_type& operator=(const this_type& other);
-    this_type& operator=(const value_type& other);
+    this_type& operator=(const this_type& other) noexcept;
+    this_type& operator=(const value_type& other) noexcept;
     bool empty() const;
     void clear();
     explicit operator bool() const;
@@ -85,8 +85,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other)
-*assign value (2)* | public | **this_type**& operator=(const **value_type**& other)
+*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other) noexcept
+*assign value (2)* | public | **this_type**& operator=(const **value_type**& other) noexcept
 
 1. Copies an **basic_reference_property** object.
 2. Assign a value to the **basic_reference_property** object.

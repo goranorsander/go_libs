@@ -13,9 +13,9 @@ private:
 
 #if defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-    this_type& operator=(const this_type& v); // = delete;
+    this_type& operator=(const this_type& v) GO_NOEXCEPT_OR_NOTHROW; // = delete;
 
-    this_type& operator=(const value_type& v); // = delete;
+    this_type& operator=(const value_type& v) GO_NOEXCEPT_OR_NOTHROW; // = delete;
 
 #else
 

@@ -83,7 +83,7 @@ public:
 public:
     // Assignment operators
 
-    this_reference operator=(this_const_reference t)
+    this_reference operator=(this_const_reference t) GO_NOEXCEPT_OR_NOTHROW
     {
         if(&t != this)
         {
@@ -94,7 +94,7 @@ public:
 
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-    this_reference operator=(this_rvalue_reference t)
+    this_reference operator=(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
     {
         if (&t != this)
         {
@@ -417,7 +417,7 @@ namespace utility
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
+    _class_name_& operator=(const _class_name_& t) GO_NOEXCEPT_OR_NOTHROW { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
     _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
     _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
     _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
@@ -562,7 +562,7 @@ protected:
 
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-    primitive_type_specializer& operator=(const primitive_type_specializer& t)
+    primitive_type_specializer& operator=(const primitive_type_specializer& t) GO_NOEXCEPT_OR_NOTHROW
     {
         if(&t != this)
         {

@@ -493,7 +493,7 @@ protected:
     primitive_type_implicit_specializer(primitive_type_implicit_specializer&& t);
     explicit primitive_type_implicit_specializer(const value_type& t);
     explicit primitive_type_implicit_specializer(value_type&& t);
-    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t);
+    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t) noexcept;
 
 public:
     operator const value_type&() const;
@@ -546,7 +546,7 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(const **primitive_type_implicit_specializer**& t)
+*assign copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(const **primitive_type_implicit_specializer**& t) noexcept
 
 1. Copies an **primitive_type_implicit_specializer** object.
 
@@ -616,7 +616,7 @@ public:
     explicit my_integer_type(value_type&& t);
 
     // Assignment operators
-    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator=(const my_integer_type& t) noexcept;
     my_integer_type& operator+=(const my_integer_type& t);
     my_integer_type& operator-=(const my_integer_type& t);
     my_integer_type& operator*=(const my_integer_type& t);
@@ -627,7 +627,7 @@ public:
     my_integer_type& operator^=(const my_integer_type& t);
     my_integer_type& operator<<=(const my_integer_type& t);
     my_integer_type& operator>>=(const my_integer_type& t);
-    template<typename P> my_integer_type& operator=(const P& p);
+    template<typename P> my_integer_type& operator=(const P& p) noexcept;
     template<typename P> my_integer_type& operator+=(const P& p);
     template<typename P> my_integer_type& operator-=(const P& p);
     template<typename P> my_integer_type& operator*=(const P& p);
@@ -738,7 +738,7 @@ public:
     explicit my_integer_type(value_type&& t);
 
     // Assignment operators
-    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator=(const my_integer_type& t) noexcept;
     my_integer_type& operator+=(const my_integer_type& t);
     my_integer_type& operator-=(const my_integer_type& t);
     my_integer_type& operator*=(const my_integer_type& t);
@@ -749,7 +749,7 @@ public:
     my_integer_type& operator^=(const my_integer_type& t);
     my_integer_type& operator<<=(const my_integer_type& t);
     my_integer_type& operator>>=(const my_integer_type& t);
-    template<typename P> my_integer_type& operator=(const P& p);
+    template<typename P> my_integer_type& operator=(const P& p) noexcept;
     template<typename P> my_integer_type& operator+=(const P& p);
     template<typename P> my_integer_type& operator-=(const P& p);
     template<typename P> my_integer_type& operator*=(const P& p);
@@ -859,13 +859,13 @@ public:
     explicit my_floating_point_type(value_type&& t);
 
     // Assignment operators
-    my_floating_point_type& operator=(const my_floating_point_type& t);
+    my_floating_point_type& operator=(const my_floating_point_type& t) noexcept;
     my_floating_point_type& operator+=(const my_floating_point_type& t);
     my_floating_point_type& operator-=(const my_floating_point_type& t);
     my_floating_point_type& operator*=(const my_floating_point_type& t);
     my_floating_point_type& operator/=(const my_floating_point_type& t);
     my_floating_point_type& operator%=(const my_floating_point_type& t);
-    template<typename P> my_floating_point_type& operator=(const P& p);
+    template<typename P> my_floating_point_type& operator=(const P& p) noexcept;
     template<typename P> my_floating_point_type& operator+=(const P& p);
     template<typename P> my_floating_point_type& operator-=(const P& p);
     template<typename P> my_floating_point_type& operator*=(const P& p);

@@ -55,6 +55,7 @@ public:
         , _size(size)
         , _ring{ new element[size] }
         , _write_index(0)
+        , _pad()
         , _read_index(0)
     {
     }
@@ -108,11 +109,11 @@ private:
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        element& operator=(element&&) = default;
+        element& operator=(element&&) noexcept = default;
 
 #else
 
-        element& operator=(element&& other)
+        element& operator=(element&& other) GO_NOEXCEPT_OR_NOTHROW
         {
             if(this != &other)
             {
@@ -134,7 +135,7 @@ private:
     const size_type _size;
     std::unique_ptr<element[]> _ring;
     std::atomic<size_type> _write_index;
-    char_type pad[64];
+    char_type _pad[64];
     size_type _read_index;
 };
 

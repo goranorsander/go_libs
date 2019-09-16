@@ -10,13 +10,13 @@
 //
 
 public:
-    this_type& operator=(const this_type& v)
+    this_type& operator=(const this_type& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this_type::set(v.get());
         return *this;
     }
 
-    this_type& operator=(const value_type& v)
+    this_type& operator=(const value_type& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this_type::set(v);
         return *this;

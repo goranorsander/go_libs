@@ -100,7 +100,7 @@ public:
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
-    u8string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
+    explicit u8string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
 
 #endif  // #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
@@ -108,7 +108,7 @@ public:
     u8string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
 public:
-    u8string& operator=(const u8string& other);
+    u8string& operator=(const u8string& other) GO_NOEXCEPT_OR_NOTHROW;
 
     bool operator==(const u8string& other) const;
 
@@ -221,7 +221,7 @@ inline u8string::u8string(const T& t, size_type pos, size_type n, const allocato
 {
 }
 
-inline u8string& u8string::operator=(const u8string& other)
+inline u8string& u8string::operator=(const u8string& other) GO_NOEXCEPT_OR_NOTHROW
 {
     if (&other != this)
     {

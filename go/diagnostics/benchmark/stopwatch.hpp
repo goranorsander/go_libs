@@ -103,13 +103,13 @@ public:
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 #endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 
-#if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if !defined(GO_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR)
 
-    this_type& operator=(const this_type&) = default;
+    this_type& operator=(const this_type&) noexcept = default;
 
 #else
 
-    this_type& operator=(const this_type& other)
+    this_type& operator=(const this_type& other) GO_NOEXCEPT_OR_NOTHROW
     {
         if (this != &other)
         {
@@ -127,11 +127,11 @@ public:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-    this_type& operator=(this_type&&) = default;
+    this_type& operator=(this_type&&) noexcept = default;
 
 #else
 
-    this_type& operator=(this_type&&)
+    this_type& operator=(this_type&&) GO_NOEXCEPT_OR_NOTHROW
     {
         if (this != &other)
         {

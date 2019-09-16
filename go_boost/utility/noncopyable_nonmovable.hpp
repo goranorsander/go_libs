@@ -42,7 +42,7 @@ private:
 #else
 
     noncopyable_nonmovable(noncopyable_nonmovable&&) {}
-    noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) { return *this; }
+    noncopyable_nonmovable& operator=(noncopyable_nonmovable&&) BOOST_NOEXCEPT_OR_NOTHROW { return *this; }
 
 #endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)

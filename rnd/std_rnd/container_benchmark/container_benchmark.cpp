@@ -74,36 +74,36 @@ public: \
 public: \
     _class_name_(const _class_name_& other) : _key(other._key) {} \
     _class_name_(const uint64_t key) : _key(key) {} \
-    _class_name_& operator=(const _class_name_& other) { if (&other != this) { _key = other._key; } return *this; }
+    _class_name_& operator=(const _class_name_& other) noexcept { if (&other != this) { _key = other._key; } return *this; }
 
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_DATA_COPY_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(const _class_name_& other) : _key(other._key), _data(other._data) {} \
     _class_name_(const uint64_t key) : _key(key), _data() {} \
-    _class_name_& operator=(const _class_name_& other) { if (&other != this) { _key = other._key; _data = other._data; } return *this; }
+    _class_name_& operator=(const _class_name_& other) noexcept { if (&other != this) { _key = other._key; _data = other._data; } return *this; }
 
 #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(std::exchange(other._key, 0)) {} \
-    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = std::exchange(other._key, 0); } return *this; }
+    _class_name_& operator=(_class_name_&& other) noexcept { if (&other != this) { _key = std::exchange(other._key, 0); } return *this; }
 #else
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(u::exchange(other._key, 0)) {} \
-    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = u::exchange(other._key, 0); } return *this; }
+    _class_name_& operator=(_class_name_&& other) noexcept { if (&other != this) { _key = u::exchange(other._key, 0); } return *this; }
 #endif  // #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 
 #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_DATA_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(std::exchange(other._key, 0)), _data(std::move(other._data)) {} \
-    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = std::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
+    _class_name_& operator=(_class_name_&& other) noexcept { if (&other != this) { _key = std::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
 #else
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_KEY_DATA_MOVE_FUNCTIONS( _class_name_ ) \
 public: \
     _class_name_(_class_name_&& other) : _key(u::exchange(other._key, 0)), _data(std::move(other._data)) {} \
-    _class_name_& operator=(_class_name_&& other) { if (&other != this) { _key = u::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
+    _class_name_& operator=(_class_name_&& other) noexcept { if (&other != this) { _key = u::exchange(other._key, 0); _data = std::move(other._data); } return *this; }
 #endif  // #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_DELETE_MOVE_FUNCTIONS( _class_name_ ) \

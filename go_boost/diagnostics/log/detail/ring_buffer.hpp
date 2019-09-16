@@ -59,6 +59,7 @@ public:
         , _size(size)
         , _ring(static_cast<element*>(std::malloc(size * sizeof(element))))
         , _write_index(0)
+        , _pad()
         , _read_index(0)
     {
         for (std::size_t i = 0; i < _size; ++i)
@@ -116,7 +117,7 @@ private:
     const std::size_t _size;
     element* _ring;
     boost::atomic<unsigned int> _write_index;
-    char_type pad[64];
+    char_type _pad[64];
     unsigned int _read_index;
 };
 

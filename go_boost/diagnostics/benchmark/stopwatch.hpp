@@ -91,13 +91,13 @@ public:
 #endif  // #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120))
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#if !defined(GO_BOOST_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR)
 
-    this_type& operator=(const this_type&) = default;
+    this_type& operator=(const this_type&) noexcept = default;
 
 #else
 
-    this_type& operator=(const this_type& other)
+    this_type& operator=(const this_type& other) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (this != &other)
         {
@@ -115,11 +115,11 @@ public:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120))
 
-    this_type& operator=(this_type&&) = default;
+    this_type& operator=(this_type&&) noexcept = default;
 
 #else
 
-    this_type& operator=(this_type&&)
+    this_type& operator=(this_type&&) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (this != &other)
         {

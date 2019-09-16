@@ -92,11 +92,11 @@ public:
 #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        monitor_object& operator=(monitor_object&&) = default;
+        monitor_object& operator=(monitor_object&&) noexcept = default;
 
 #else
 
-        monitor_object& operator=(monitor_object&& other)
+        monitor_object& operator=(monitor_object&& other) GO_NOEXCEPT_OR_NOTHROW
         {
             if (this != &other)
             {
@@ -115,7 +115,7 @@ public:
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 #else
 
-        monitor_object& operator=(const monitor_object& other)
+        monitor_object& operator=(const monitor_object& other) noexcept
         {
             if(this != &other)
             {
@@ -213,11 +213,11 @@ public:
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-    this_type& operator=(this_type&&) = default;
+    this_type& operator=(this_type&&) noexcept = default;
 
 #else
 
-    this_type& operator=(this_type&& other)
+    this_type& operator=(this_type&& other) GO_NOEXCEPT_OR_NOTHROW
     {
         if(this != &other)
         {
@@ -229,14 +229,14 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-    this_type& operator=(const value_type& value)
+    this_type& operator=(const value_type& value) GO_NOEXCEPT_OR_NOTHROW
     {
         monitor_object m(this);
         *m = value;
         return *this;
     }
 
-    this_type& operator=(value_type&& value)
+    this_type& operator=(value_type&& value) GO_NOEXCEPT_OR_NOTHROW
     {
         monitor_object m(this);
         *m = std::move(value);

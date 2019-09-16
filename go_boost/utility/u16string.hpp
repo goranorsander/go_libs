@@ -110,7 +110,7 @@ public:
     u16string(const T& t, size_type pos, size_type n, const allocator_type& alloc = allocator_type());
 
 public:
-    u16string& operator=(const u16string& other);
+    u16string& operator=(const u16string& other) BOOST_NOEXCEPT_OR_NOTHROW;
 
     bool operator==(const u16string& other) const;
 
@@ -217,7 +217,7 @@ inline u16string::u16string(const T& t, size_type pos, size_type n, const alloca
 {
 }
 
-inline u16string& u16string::operator=(const u16string& other)
+inline u16string& u16string::operator=(const u16string& other) BOOST_NOEXCEPT_OR_NOTHROW
 {
     if (&other != this)
     {

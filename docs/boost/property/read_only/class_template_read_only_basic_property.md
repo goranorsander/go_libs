@@ -27,8 +27,8 @@ public:
     virtual ~basic_property();
     explicit basic_property(const string_type& property_name);
     basic_property(const string_type& property_name, const get_function_signature& get_function);
-    this_type& operator=(const this_type& other);
-    this_type& operator=(const value_type& other);
+    this_type& operator=(const this_type& other) noexcept;
+    this_type& operator=(const value_type& other) noexcept;
     void getter(const get_function_signature& f);
 
     // The following operators and functions are inherited from detail::property_base<T, policy::proxy<T>, S>
@@ -81,8 +81,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other)
-*assign value (2)* | public | **this_type**& operator=(const **value_type**& other)
+*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other) noexcept
+*assign value (2)* | public | **this_type**& operator=(const **value_type**& other) noexcept
 
 1. Copies an **basic_property** object.
 2. Assign a value to the **basic_property** object.

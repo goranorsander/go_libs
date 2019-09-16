@@ -98,9 +98,9 @@ inline void format_timestamp(std::wostream& os, const timestamp_type timestamp)
     std::wcsftime(ymd_hms, 32, L"%Y-%m-%d %H:%M:%S.", &result);
     wchar_t microseconds[7];
 #if defined(GO_BOOST_COMP_MSVC) || defined(GO_BOOST_COMP_GCC_MINGW)
-	std::swprintf(microseconds, 32, L"%06lli", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+	std::swprintf(microseconds, 7, L"%06lli", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
 #else
-	std::swprintf(microseconds, 32, L"%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
+	std::swprintf(microseconds, 7, L"%06li", static_cast<boost::int64_t>(timestamp % one_second_as_microseconds));
 #endif  // #if defined(GO_BOOST_COMP_MSVC) || defined(GO_BOOST_COMP_GCC_MINGW)
 	os << L'[' << ymd_hms << microseconds << L']';
 }

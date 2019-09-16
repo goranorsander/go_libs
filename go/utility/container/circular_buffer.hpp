@@ -91,15 +91,15 @@ protected:
         {
         }
 
-        iterator_base& operator=(const iterator_base&) = default;
+        iterator_base& operator=(const iterator_base&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        iterator_base& operator=(iterator_base&&) = default;
+        iterator_base& operator=(iterator_base&&) noexcept = default;
 
 #else
 
-        iterator_base& operator=(iterator_base&& other)
+        iterator_base& operator=(iterator_base&& other) noexcept
         {
             if(this != &other)
             {
@@ -337,15 +337,15 @@ public:
         {
         }
 
-        iterator& operator=(const iterator&) = default;
+        iterator& operator=(const iterator&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        iterator& operator=(iterator&&) = default;
+        iterator& operator=(iterator&&) noexcept = default;
 
 #else
 
-        iterator& operator=(iterator&& other)
+        iterator& operator=(iterator&& other) noexcept
         {
             if(this != &other)
             {
@@ -468,15 +468,15 @@ public:
         {
         }
 
-        const_iterator& operator=(const const_iterator&) = default;
+        const_iterator& operator=(const const_iterator&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        const_iterator& operator=(const_iterator&&) = default;
+        const_iterator& operator=(const_iterator&&) noexcept = default;
 
 #else
 
-        const_iterator& operator=(const_iterator&& other)
+        const_iterator& operator=(const_iterator&& other) noexcept
         {
             if(this != &other)
             {
@@ -589,15 +589,15 @@ public:
         {
         }
 
-        reverse_iterator& operator=(const reverse_iterator&) = default;
+        reverse_iterator& operator=(const reverse_iterator&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        reverse_iterator& operator=(reverse_iterator&&) = default;
+        reverse_iterator& operator=(reverse_iterator&&) noexcept = default;
 
 #else
 
-        reverse_iterator& operator=(reverse_iterator&& other)
+        reverse_iterator& operator=(reverse_iterator&& other) noexcept
         {
             if(this != &other)
             {
@@ -720,15 +720,15 @@ public:
         {
         }
 
-        const_reverse_iterator& operator=(const const_reverse_iterator&) = default;
+        const_reverse_iterator& operator=(const const_reverse_iterator&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        const_reverse_iterator& operator=(const_reverse_iterator&&) = default;
+        const_reverse_iterator& operator=(const_reverse_iterator&&) noexcept = default;
 
 #else
 
-        const_reverse_iterator& operator=(const_reverse_iterator&& other)
+        const_reverse_iterator& operator=(const_reverse_iterator&& other) noexcept
         {
             if(this != &other)
             {
@@ -910,7 +910,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    this_type& operator=(const this_type&) = default;
+    this_type& operator=(const this_type&) noexcept = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 

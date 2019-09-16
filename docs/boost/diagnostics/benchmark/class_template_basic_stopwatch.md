@@ -27,8 +27,8 @@ public:
     basic_stopwatch(const basic_stopwatch& other) = default;
     basic_stopwatch(basic_stopwatch&& other) = default;
 
-    this_type& operator=(const this_type&) = default;
-    this_type& operator=(this_type&&) = default;
+    this_type& operator=(const this_type&) noexcept = default;
+    this_type& operator=(this_type&&) noexcept = default;
 
     void start();
     void stop();
@@ -84,8 +84,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | basic_stopwatch& operator=(const basic_stopwatch& other)
-*assign move (2)* | public | basic_stopwatch& operator=(basic_stopwatch&& other)
+*assign copy (1)* | public | basic_stopwatch& operator=(const basic_stopwatch& other) noexcept
+*assign move (2)* | public | basic_stopwatch& operator=(basic_stopwatch&& other) noexcept
 
 1. Copies an **basic_stopwatch** object.
 2. Copies an **basic_stopwatch** object using move semantics.

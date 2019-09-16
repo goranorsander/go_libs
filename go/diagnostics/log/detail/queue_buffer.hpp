@@ -104,11 +104,11 @@ private:
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        element& operator=(element&&) = default;
+        element& operator=(element&&) noexcept = default;
 
 #else
 
-        element& operator=(element&& other)
+        element& operator=(element&& other) GO_NOEXCEPT_OR_NOTHROW
         {
             if(this != &other)
             {

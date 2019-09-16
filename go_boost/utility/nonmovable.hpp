@@ -38,7 +38,7 @@ private:
 #else
 
     nonmovable(nonmovable&&) {}
-    nonmovable& operator=(nonmovable&&) { return *this; }
+    nonmovable& operator=(nonmovable&&) BOOST_NOEXCEPT_OR_NOTHROW { return *this; }
 
 #endif  // #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS)
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -47,13 +47,13 @@ protected:
     nonmovable() GO_BOOST_DEFAULT_CONSTRUCTOR
     nonmovable(const nonmovable&) GO_BOOST_DEFAULT_CONSTRUCTOR
 
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
+#if !defined(GO_BOOST_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR)
 
-    nonmovable& operator=(const nonmovable&) = default;
+    nonmovable& operator=(const nonmovable&) noexcept = default;
 
 #else  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 
-    nonmovable& operator=(const nonmovable&) { return *this; }
+    nonmovable& operator=(const nonmovable&) BOOST_NOEXCEPT_OR_NOTHROW { return *this; }
 
 #endif  // #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
 };

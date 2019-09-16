@@ -134,11 +134,11 @@ public:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120))
 
-    basic_log_line& operator=(basic_log_line&&) = default;
+    basic_log_line& operator=(basic_log_line&&) noexcept = default;
 
 #else
 
-    basic_log_line& operator=(basic_log_line&& other)
+    basic_log_line& operator=(basic_log_line&& other) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &other)
         {
@@ -158,7 +158,7 @@ public:
 #endif  // #if !(defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(GO_BOOST_COMP_MSVC_VC120))
 #else
 
-    basic_log_line& operator=(const basic_log_line& other)
+    basic_log_line& operator=(const basic_log_line& other) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &other)
         {
@@ -179,22 +179,22 @@ public:
         const char_type* const end = b + _bytes_used;
 
         const boost::int64_t timestamp = *reinterpret_cast<boost::int64_t*>(b);
-        b += sizeof(boost::int64_t);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(boost::int64_t));
 
         const boost::thread::id threadid = *reinterpret_cast<boost::thread::id*>(b);
-        b += sizeof(boost::thread::id);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(boost::thread::id));
 
         const string_literal_type file = *reinterpret_cast<string_literal_type*>(b);
-        b += sizeof(string_literal_type);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(string_literal_type));
 
         const string_literal_type function = *reinterpret_cast<string_literal_type *>(b);
-        b += sizeof(string_literal_type);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(string_literal_type));
 
         const boost::uint32_t line = *reinterpret_cast<boost::uint32_t*>(b);
-        b += sizeof(boost::uint32_t);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(boost::uint32_t));
 
         const log_level loglevel = *reinterpret_cast<log_level*>(b);
-        b += sizeof(log_level);
+        b = reinterpret_cast<char_type*>(reinterpret_cast<std::size_t>(b) + sizeof(log_level));
 
         format_timestamp(os, static_cast<timestamp_type>(timestamp));
 

@@ -410,7 +410,7 @@ protected:
     primitive_type_specializer(primitive_type_specializer&& t);
     explicit primitive_type_specializer(const value_type& t);
     explicit primitive_type_specializer(value_type&& t);
-    primitive_type_specializer& operator=(const primitive_type_specializer& t);
+    primitive_type_specializer& operator=(const primitive_type_specializer& t) noexcept;
 
 public:
     const value_type& get() const;
@@ -461,7 +461,7 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t)
+*assign copy (1)* | protected | **primitive_type_specializer**& operator=(const **primitive_type_specializer**& t) noexcept
 
 1. Copies an **primitive_type_specializer** object.
 
@@ -520,7 +520,7 @@ public:
     explicit my_integer_type(value_type&& t);
 
     // Assignment operators
-    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator=(const my_integer_type& t) noexcept;
     my_integer_type& operator+=(const my_integer_type& t);
     my_integer_type& operator-=(const my_integer_type& t);
     my_integer_type& operator*=(const my_integer_type& t);
@@ -594,7 +594,7 @@ public:
     explicit my_integer_type(value_type&& t);
 
     // Assignment operators
-    my_integer_type& operator=(const my_integer_type& t);
+    my_integer_type& operator=(const my_integer_type& t) noexcept;
     my_integer_type& operator+=(const my_integer_type& t);
     my_integer_type& operator-=(const my_integer_type& t);
     my_integer_type& operator*=(const my_integer_type& t);
@@ -666,7 +666,7 @@ public:
     explicit my_floating_point_type(value_type&& t);
 
     // Assignment operators
-    my_floating_point_type& operator=(const my_floating_point_type& t);
+    my_floating_point_type& operator=(const my_floating_point_type& t) noexcept;
     my_floating_point_type& operator+=(const my_floating_point_type& t);
     my_floating_point_type& operator-=(const my_floating_point_type& t);
     my_floating_point_type& operator*=(const my_floating_point_type& t);

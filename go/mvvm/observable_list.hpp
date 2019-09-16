@@ -185,7 +185,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -194,7 +194,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -203,7 +203,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         _container.operator=(il);
         return *this;
@@ -779,7 +779,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -788,7 +788,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -797,7 +797,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         basic_observable_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;
@@ -963,7 +963,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -972,7 +972,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -981,7 +981,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         basic_observable_list<value_type, string_type, lockable_type>::operator=(il);
         return *this;

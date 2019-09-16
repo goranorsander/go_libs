@@ -34,9 +34,9 @@ public:
 
 public:
     this_type& operator=(const this_type&) = delete;
-    this_type& operator=(this_type&&) = default;
-    this_type& operator=(const value_type& value);
-    this_type& operator=(value_type&& value);
+    this_type& operator=(this_type&&) noexcept = default;
+    this_type& operator=(const value_type& value) noexcept;
+    this_type& operator=(value_type&& value) noexcept;
     monitor_object operator->();
     monitor_object operator*();
     monitor_object lock();
@@ -91,9 +91,9 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign move (1)* | public | this_type& **operator=**(this_type&& other)
-*assign move (2)* | public | this_type& **operator=**(const value_type& value)
-*assign replace (2)* | public | this_type& **operator=**(value_type&& value)
+*assign move (1)* | public | this_type& **operator=**(this_type&& other) noexcept
+*assign move (2)* | public | this_type& **operator=**(const value_type& value) noexcept
+*assign replace (2)* | public | this_type& **operator=**(value_type&& value) noexcept
 
 1. Move assignment operator. Replaces the contents with those of **other** using move semantics.
 2. Copy value assignment operator. Replaces the value with **value**.
@@ -155,7 +155,7 @@ public:
 
 public:
     monitor_object& operator=(const monitor_object&) = delete;
-    monitor_object& operator=(monitor_object&&) = default;
+    monitor_object& operator=(monitor_object&&) noexcept = default;
     pointer operator->();
     const_pointer operator->() const;
     reference operator*();

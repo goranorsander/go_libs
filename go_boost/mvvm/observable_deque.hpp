@@ -222,7 +222,7 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -233,7 +233,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -246,7 +246,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) BOOST_NOEXCEPT_OR_NOTHROW
     {
         _container.operator=(il);
         return *this;
@@ -756,7 +756,7 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -767,7 +767,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -780,7 +780,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) BOOST_NOEXCEPT_OR_NOTHROW
     {
         basic_observable_deque<value_type, string_type, lockable_type>::operator=(il);
         return *this;
@@ -984,7 +984,7 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -995,7 +995,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if(this != &x)
         {
@@ -1008,7 +1008,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) BOOST_NOEXCEPT_OR_NOTHROW
     {
         basic_observable_deque<value_type, string_type, lockable_type>::operator=(il);
         return *this;

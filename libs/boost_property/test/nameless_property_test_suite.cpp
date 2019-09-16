@@ -71,7 +71,7 @@ public:
     {
     }
 
-    spaceship& operator=(const spaceship& v)
+    spaceship& operator=(const spaceship& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         crew_complement = v.crew_complement;
         max_speed = v.max_speed;
@@ -597,7 +597,7 @@ public:
         bind_properties();
     }
 
-    armed_spaceship& operator=(const armed_spaceship& v)
+    armed_spaceship& operator=(const armed_spaceship& v) BOOST_NOEXCEPT_OR_NOTHROW
     {
         spaceship::operator=(v);
         phaser_arrays = v.phaser_arrays;

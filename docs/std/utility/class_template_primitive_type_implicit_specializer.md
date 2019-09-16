@@ -39,8 +39,8 @@ protected:
     primitive_type_implicit_specializer_base() = default;
     primitive_type_implicit_specializer_base(const primitive_type_implicit_specializer_base&) = default;
     primitive_type_implicit_specializer_base(primitive_type_implicit_specializer_base&&) = default;
-    primitive_type_implicit_specializer_base& operator=(const primitive_type_implicit_specializer_base&) = default;
-    primitive_type_implicit_specializer_base& operator=(primitive_type_implicit_specializer_base&&) = default;
+    primitive_type_implicit_specializer_base& operator=(const primitive_type_implicit_specializer_base&) noexcept = default;
+    primitive_type_implicit_specializer_base& operator=(primitive_type_implicit_specializer_base&&) noexcept = default;
 };
 
 }
@@ -62,15 +62,15 @@ public:
     operator primitive_type&();
 
     // Assignment operators
-    this_reference operator=(this_const_reference t);
-    this_reference operator=(this_rvalue_reference t);
+    this_reference operator=(this_const_reference t) noexcept;
+    this_reference operator=(this_rvalue_reference t) noexcept;
     this_reference operator+=(this_const_reference t);
     this_reference operator-=(this_const_reference t);
     this_reference operator*=(this_const_reference t);
     this_reference operator/=(this_const_reference t);
 
-    template<typename P> this_reference operator=(const P& p);
-    template<typename P> this_reference operator=(P&& p);
+    template<typename P> this_reference operator=(const P& p) noexcept;
+    template<typename P> this_reference operator=(P&& p) noexcept;
     template<typename P> this_reference operator+=(const P& p);
     template<typename P> this_reference operator-=(const P& p);
     template<typename P> this_reference operator*=(const P& p);
@@ -318,10 +318,10 @@ Operator | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-|-
-*simple copy assignment (1)* | public | **this_reference** operator=(**this_const_reference** t)
-*simple copy assignment (1)* | public | template<typename P> **this_reference** operator=(const P& p)
-*simple move assignment (2)* | public | **this_reference** operator=(**this_rvalue_reference** t)
-*simple move assignment (2)* | public | template<typename P> **this_reference** operator=(P&& p)
+*simple copy assignment (1)* | public | **this_reference** operator=(**this_const_reference** t) noexcept
+*simple copy assignment (1)* | public | template<typename P> **this_reference** operator=(const P& p) noexcept
+*simple move assignment (2)* | public | **this_reference** operator=(**this_rvalue_reference** t) noexcept
+*simple move assignment (2)* | public | template<typename P> **this_reference** operator=(P&& p) noexcept
 *addition assignment (3)* | public | **this_reference** operator+=(**this_const_reference** t)
 *addition assignment (3)* | public | template<typename P> **this_reference** operator+=(const P& p)
 *subtraction assignment (4)* | public | **this_reference** operator-=(**this_const_reference** t)

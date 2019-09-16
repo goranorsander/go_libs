@@ -113,7 +113,7 @@ public:
 
     // Assignment operators
 
-    this_reference operator=(this_const_reference t)
+    this_reference operator=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (&t != this)
         {
@@ -124,7 +124,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    this_reference operator=(this_rvalue_reference t)
+    this_reference operator=(this_rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (&t != this)
         {
@@ -160,7 +160,7 @@ public:
     }
 
     template<typename P>
-    this_reference operator=(const P& p)
+    this_reference operator=(const P& p) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = static_cast<primitive_type>(p);
         return *this;
@@ -169,7 +169,7 @@ public:
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     template<typename P>
-    this_reference operator=(P&& p)
+    this_reference operator=(P&& p) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = std::move(static_cast<primitive_type>(p));
         return *this;
@@ -759,12 +759,12 @@ namespace utility
     explicit _class_name_(const value_type& t) : go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>(t) {}
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
-    _class_name_& operator=(const _class_name_& t) { if(&t != this) { go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>::operator=(t); } return *this; } \
+    _class_name_& operator=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { if(&t != this) { go_boost::utility::primitive_type_implicit_specializer<_primitive_type_>::operator=(t); } return *this; } \
     _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
     _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
     _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
     _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; } \
-    template<typename P> _class_name_& operator=(const P& p) { get() = static_cast<_primitive_type_>(p); return *this; } \
+    template<typename P> _class_name_& operator=(const P& p) BOOST_NOEXCEPT_OR_NOTHROW { get() = static_cast<_primitive_type_>(p); return *this; } \
     template<typename P> _class_name_& operator+=(const P& p) { get() += static_cast<_primitive_type_>(p); return *this; } \
     template<typename P> _class_name_& operator-=(const P& p) { get() -= static_cast<_primitive_type_>(p); return *this; } \
     template<typename P> _class_name_& operator*=(const P& p) { get() *= static_cast<_primitive_type_>(p); return *this; } \
@@ -945,7 +945,7 @@ protected:
     {
     }
 
-    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t)
+    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         if (&t != this)
         {

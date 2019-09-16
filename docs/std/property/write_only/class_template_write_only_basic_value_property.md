@@ -27,8 +27,8 @@ public:
     virtual ~basic_value_property();
     explicit basic_value_property(const string_type& property_name);
     basic_value_property(const string_type& property_name, const value_type& other);
-    this_type& operator=(const this_type& other);
-    this_type& operator=(const value_type& other);
+    this_type& operator=(const this_type& other) noexcept;
+    this_type& operator=(const value_type& other) noexcept;
 
     // The following operators and functions are inherited from detail::property_base<T, policy::value<T>, S>
     operator value_type() const;
@@ -81,8 +81,8 @@ Constructor | Specifiers | Signature
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other)
-*assign value (2)* | public | **this_type**& operator=(const **value_type**& other)
+*assign copy (1)* | public | **this_type**& operator=(const **this_type**& other) noexcept
+*assign value (2)* | public | **this_type**& operator=(const **value_type**& other) noexcept
 
 1. Copies an **basic_value_property** object.
 2. Assign a value to the **basic_value_property** object.

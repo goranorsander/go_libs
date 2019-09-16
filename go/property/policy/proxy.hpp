@@ -62,7 +62,7 @@ public:
     {
     }
 
-    proxy& operator=(const proxy& v)
+    proxy& operator=(const proxy& v) GO_NOEXCEPT_OR_NOTHROW
     {
         if (&v != this)
         {

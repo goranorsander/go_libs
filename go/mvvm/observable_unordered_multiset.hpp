@@ -150,7 +150,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -159,7 +159,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -168,7 +168,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         this->container().operator=(il);
         return *this;
@@ -408,7 +408,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -417,7 +417,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -426,7 +426,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         this->container().operator=(il);
         return *this;
@@ -559,7 +559,7 @@ public:
     }
 
 public:
-    this_type& operator=(const this_type& x)
+    this_type& operator=(const this_type& x) noexcept
     {
         if(this != &x)
         {
@@ -568,7 +568,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(this_type&& x)
+    this_type& operator=(this_type&& x) noexcept
     {
         if(this != &x)
         {
@@ -577,7 +577,7 @@ public:
         return *this;
     }
 
-    this_type& operator=(const std::initializer_list<value_type>& il)
+    this_type& operator=(const std::initializer_list<value_type>& il) noexcept
     {
         this->container().operator=(il);
         return *this;
