@@ -23,14 +23,14 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
+#define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
+struct _class_name_##_tag {}; \
+typedef go_boost::utility::primitive_type_specializer<_primitive_type_, _class_name_##_tag> _class_name_;
+
 namespace go_boost
 {
 namespace utility
 {
-
-#define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
-struct _class_name_##_tag {}; \
-typedef go_boost::utility::primitive_type_specializer<_primitive_type_, _class_name_##_tag> _class_name_;
 
 template<typename PrimitiveType, class Tag>
 class primitive_type_specializer
@@ -50,35 +50,35 @@ public:
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
 public:
-    ~primitive_type_specializer() GO_BOOST_DEFAULT_DESTRUCTOR
+    ~primitive_type_specializer() BOOST_NOEXCEPT GO_BOOST_DEFAULT_DESTRUCTOR
 
-    primitive_type_specializer()
+    primitive_type_specializer() BOOST_NOEXCEPT_OR_NOTHROW
         : _t(static_cast<primitive_type>(0))
     {
     }
 
-    primitive_type_specializer(this_const_reference t)
+    primitive_type_specializer(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(t._t)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    primitive_type_specializer(this_rvalue_reference t)
+    primitive_type_specializer(this_rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t._t))
     {
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    explicit primitive_type_specializer(const primitive_type& t)
+    explicit primitive_type_specializer(const primitive_type& t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(t)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    explicit primitive_type_specializer(rvalue_reference t)
+    explicit primitive_type_specializer(rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t))
     {
     }
@@ -110,25 +110,25 @@ public:
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    this_reference operator+=(this_const_reference t)
+    this_reference operator+=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t += t._t;
         return *this;
     }
 
-    this_reference operator-=(this_const_reference t)
+    this_reference operator-=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t -= t._t;
         return *this;
     }
 
-    this_reference operator*=(this_const_reference t)
+    this_reference operator*=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t *= t._t;
         return *this;
     }
 
-    this_reference operator/=(this_const_reference t)
+    this_reference operator/=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t /= t._t;
         return *this;
@@ -137,42 +137,42 @@ public:
     // Integer type assignment operators
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator%=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator%=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t %= t._t;
         return *this;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator&=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator&=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t &= t._t;
         return *this;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator|=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator|=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t |= t._t;
         return *this;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator^=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator^=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t ^= t._t;
         return *this;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator<<=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator<<=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t <<= t._t;
         return *this;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator>>=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator>>=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t >>= t._t;
         return *this;
@@ -181,7 +181,7 @@ public:
     // Floating point type assignment operators
 
     template <typename F = PrimitiveType>
-    typename boost::enable_if_c<boost::is_floating_point<F>::value, this_reference>::type operator%=(this_const_reference t)
+    typename boost::enable_if_c<boost::is_floating_point<F>::value, this_reference>::type operator%=(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = std::fmod(_t, t._t);
         return *this;
@@ -189,27 +189,27 @@ public:
 
     // Arithmetic operators
 
-    this_type operator+() const
+    GO_BOOST_CONSTEXPR this_type operator+() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(+(this->_t));
     }
 
-    this_type operator+(this_const_reference t) const
+    GO_BOOST_CONSTEXPR this_type operator+(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t + t._t);
     }
 
-    this_type operator-(this_const_reference t) const
+    GO_BOOST_CONSTEXPR this_type operator-(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t - t._t);
     }
 
-    this_type operator*(this_const_reference t) const
+    GO_BOOST_CONSTEXPR this_type operator*(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t * t._t);
     }
 
-    this_type operator/(this_const_reference t) const
+    GO_BOOST_CONSTEXPR this_type operator/(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t / t._t);
     }
@@ -217,13 +217,13 @@ public:
     // Signed integer and floating point type arithmetic operators
 
     template <typename S = PrimitiveType>
-    typename boost::enable_if_c<boost::is_signed<S>::value, this_type>::type operator-() const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_signed<S>::value, this_type>::type operator-() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(-(this->_t));
     }
 
     template <typename F = PrimitiveType>
-    typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator-() const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator-() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(-(this->_t));
     }
@@ -231,43 +231,43 @@ public:
     // Integer type arithmetic operators
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator~() const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator~() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(~(this->_t));
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t % t._t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t & t._t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t | t._t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t ^ t._t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t << t._t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(this->_t >> t._t);
     }
@@ -275,39 +275,39 @@ public:
     // Floating point type arithmetic operators
 
     template <typename F = PrimitiveType>
-    typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(std::fmod(this->_t, t._t));
     }
 
     // Comparison operators
 
-    GO_BOOST_CONSTEXPR bool operator==(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator==(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t == t._t;
     }
 
-    GO_BOOST_CONSTEXPR bool operator!=(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator!=(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return !operator==(t);
     }
 
-    GO_BOOST_CONSTEXPR bool operator<(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator<(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t < t._t;
     }
 
-    GO_BOOST_CONSTEXPR bool operator<=(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator<=(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t <= t._t;
     }
 
-    GO_BOOST_CONSTEXPR bool operator>(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator>(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t > t._t;
     }
 
-    GO_BOOST_CONSTEXPR bool operator>=(this_const_reference t) const
+    GO_BOOST_CONSTEXPR bool operator>=(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t >= t._t;
     }
@@ -315,74 +315,74 @@ public:
     // Integer type logical operators
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator!() const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator!() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return !(this->_t);
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator&&(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator&&(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t && t._t;
     }
 
     template <typename I = PrimitiveType>
-    typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator||(this_const_reference t) const
+    GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator||(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t || t._t;
     }
 
     // Increment/decrement operators
 
-    this_type operator++()
+    this_type operator++() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(++(this->_t));
     }
 
-    this_type operator--()
+    this_type operator--() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type(--(this->_t));
     }
 
-    this_type operator++(int)
+    this_type operator++(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type((this->_t)++);
     }
 
-    this_type operator--(int)
+    this_type operator--(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this_type((this->_t)--);
     }
 
 public:
-    GO_BOOST_CONSTEXPR const primitive_type& get() const
+    GO_BOOST_CONSTEXPR const primitive_type& get() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t;
     }
 
-    primitive_type& get()
+    primitive_type& get() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return this->_t;
     }
 
-    void set(const primitive_type& t)
+    void set(const primitive_type& t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = t;
     }
 
-    void set(this_const_reference t)
+    void set(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = t._t;
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
-    void set(rvalue_reference t)
+    void set(rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = std::move(t);
     }
 
-    void set(this_rvalue_reference t)
+    void set(this_rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         this->_t = std::move(t._t);
     }
@@ -404,81 +404,76 @@ GO_BOOST_MESSAGE("Required C++11 feature is not supported by this compiler. Usin
 
 #include <cmath>
 
-namespace go_boost
-{
-namespace utility
-{
-
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_ ) \
-    _class_name_() : go_boost::utility::primitive_type_specializer<_primitive_type_>(static_cast<_primitive_type_>(0)) {} \
-    _class_name_(const _class_name_& t) : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {} \
-    explicit _class_name_(const value_type& t) : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {}
+    _class_name_() BOOST_NOEXCEPT_OR_NOTHROW : go_boost::utility::primitive_type_specializer<_primitive_type_>(static_cast<_primitive_type_>(0)) {} \
+    _class_name_(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {} \
+    explicit _class_name_(const value_type& t) BOOST_NOEXCEPT_OR_NOTHROW : go_boost::utility::primitive_type_specializer<_primitive_type_>(t) {}
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { if(&t != this) { go_boost::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
-    _class_name_& operator+=(const _class_name_& t) { get() += t.get(); return *this; } \
-    _class_name_& operator-=(const _class_name_& t) { get() -= t.get(); return *this; } \
-    _class_name_& operator*=(const _class_name_& t) { get() *= t.get(); return *this; } \
-    _class_name_& operator/=(const _class_name_& t) { get() /= t.get(); return *this; }
+    _class_name_& operator+=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() += t.get(); return *this; } \
+    _class_name_& operator-=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() -= t.get(); return *this; } \
+    _class_name_& operator*=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() *= t.get(); return *this; } \
+    _class_name_& operator/=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() /= t.get(); return *this; }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { get() %= t.get(); return *this; } \
-    _class_name_& operator&=(const _class_name_& t) { get() &= t.get(); return *this; } \
-    _class_name_& operator|=(const _class_name_& t) { get() |= t.get(); return *this; } \
-    _class_name_& operator^=(const _class_name_& t) { get() ^= t.get(); return *this; } \
-    _class_name_& operator<<=(const _class_name_& t) { get() <<= t.get(); return *this; } \
-    _class_name_& operator>>=(const _class_name_& t) { get() >>= t.get(); return *this; }
+    _class_name_& operator%=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() %= t.get(); return *this; } \
+    _class_name_& operator&=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() &= t.get(); return *this; } \
+    _class_name_& operator|=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() |= t.get(); return *this; } \
+    _class_name_& operator^=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() ^= t.get(); return *this; } \
+    _class_name_& operator<<=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() <<= t.get(); return *this; } \
+    _class_name_& operator>>=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() >>= t.get(); return *this; }
 
 #define GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
-    _class_name_& operator%=(const _class_name_& t) { get() = std::fmod(get(), t.get()); return *this; }
+    _class_name_& operator%=(const _class_name_& t) BOOST_NOEXCEPT_OR_NOTHROW { get() = std::fmod(get(), t.get()); return *this; }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator+() const { return _class_name_(+get()); } \
-    _class_name_ operator+(const _class_name_& t) const { return _class_name_(get() + t.get()); } \
-    _class_name_ operator-(const _class_name_& t) const { return _class_name_(get() - t.get()); } \
-    _class_name_ operator*(const _class_name_& t) const { return _class_name_(get()*t.get()); } \
-    _class_name_ operator/(const _class_name_& t) const { return _class_name_(get()/t.get()); }
+    GO_BOOST_CONSTEXPR _class_name_ operator+() const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(+get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator+(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get() + t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator-(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get() - t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator*(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()*t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator/(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()/t.get()); }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_UNARY_MINUS_OPERATOR_ARITHMETIC_OPERATOR( _class_name_ ) \
-    _class_name_ operator-() const { return _class_name_(-get()); }
+    GO_BOOST_CONSTEXPR _class_name_ operator-() const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(-get()); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator~() const { return _class_name_(~get()); } \
-    _class_name_ operator%(const _class_name_& t) const { return _class_name_(get()%t.get()); } \
-    _class_name_ operator&(const _class_name_& t) const { return _class_name_(get()&t.get()); } \
-    _class_name_ operator|(const _class_name_& t) const { return _class_name_(get()|t.get()); } \
-    _class_name_ operator^(const _class_name_& t) const { return _class_name_(get()^t.get()); } \
-    _class_name_ operator<<(const _class_name_& t) const { return _class_name_(get()<<t.get()); } \
-    _class_name_ operator>>(const _class_name_& t) const { return _class_name_(get()>>t.get()); }
+    GO_BOOST_CONSTEXPR _class_name_ operator~() const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(~get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator%(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()%t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator&(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()&t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator|(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()|t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator^(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()^t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator<<(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()<<t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator>>(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()>>t.get()); }
 
 #define GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ARITHMETIC_OPERATORS( _class_name_ ) \
-    _class_name_ operator%(const _class_name_& t) const { return _class_name_(std::fmod(get(), t.get())); }
+    GO_BOOST_CONSTEXPR _class_name_ operator%(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(std::fmod(get(), t.get())); }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_COMPARISON_OPERATORS( _class_name_ ) \
-    bool operator==(const _class_name_& t) const { return get() == t.get(); } \
-    bool operator!=(const _class_name_& t) const { return !operator==(t); } \
-    bool operator<(const _class_name_& t) const { return get() < t.get(); } \
-    bool operator<=(const _class_name_& t) const { return get() <= t.get(); } \
-    bool operator>(const _class_name_& t) const { return get() > t.get(); } \
-    bool operator>=(const _class_name_& t) const { return get() >= t.get(); }
+    GO_BOOST_CONSTEXPR bool operator==(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return get() == t.get(); } \
+    GO_BOOST_CONSTEXPR bool operator!=(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return !operator==(t); } \
+    GO_BOOST_CONSTEXPR bool operator<(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return get() < t.get(); } \
+    GO_BOOST_CONSTEXPR bool operator<=(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return get() <= t.get(); } \
+    GO_BOOST_CONSTEXPR bool operator>(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return get() > t.get(); } \
+    GO_BOOST_CONSTEXPR bool operator>=(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return get() >= t.get(); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_LOGICAL_OPERATORS( _class_name_ ) \
-    _class_name_ operator!() const { return _class_name_(!get()); } \
-    _class_name_ operator&&(const _class_name_& t) const { return _class_name_(get()&&t.get()); } \
-    _class_name_ operator||(const _class_name_& t) const { return _class_name_(get()||t.get()); }
+    GO_BOOST_CONSTEXPR _class_name_ operator!() const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(!get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator&&(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()&&t.get()); } \
+    GO_BOOST_CONSTEXPR _class_name_ operator||(const _class_name_& t) const BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()||t.get()); }
 
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_INCREMENT_DECREMENT_OPERATORS( _class_name_ ) \
-    _class_name_ operator++() { return _class_name_(++get()); } \
-    _class_name_ operator--() { return _class_name_(--get()); } \
-    _class_name_ operator++(int) { return _class_name_(get()++); } \
-    _class_name_ operator--(int) { return _class_name_(get()--); }
+    _class_name_ operator++() BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(++get()); } \
+    _class_name_ operator--() BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(--get()); } \
+    _class_name_ operator++(int) BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()++); } \
+    _class_name_ operator--(int) BOOST_NOEXCEPT_OR_NOTHROW { return _class_name_(get()--); }
 
 #define GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
 class _class_name_ \
     : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() {} \
+    virtual ~_class_name_() BOOST_NOEXCEPT_OR_NOTHROW {} \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
@@ -495,7 +490,7 @@ class _class_name_ \
     : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() {} \
+    virtual ~_class_name_() BOOST_NOEXCEPT_OR_NOTHROW {} \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
@@ -511,7 +506,7 @@ class _class_name_ \
     : public go_boost::utility::primitive_type_specializer<_primitive_type_> \
 { \
 public: \
-    virtual ~_class_name_() {} \
+    virtual ~_class_name_() BOOST_NOEXCEPT_OR_NOTHROW {} \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_ ) \
@@ -522,6 +517,11 @@ public: \
     GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_INCREMENT_DECREMENT_OPERATORS( _class_name_ ) \
 };
 
+namespace go_boost
+{
+namespace utility
+{
+
 template<typename T>
 class primitive_type_specializer
 {
@@ -529,15 +529,15 @@ public:
     typedef primitive_type_specializer<T> this_type;
     typedef T value_type;
 
-    virtual ~primitive_type_specializer() = 0;
+    virtual ~primitive_type_specializer() BOOST_NOEXCEPT = 0;
 
 protected:
-    primitive_type_specializer(const primitive_type_specializer& t)
+    primitive_type_specializer(const primitive_type_specializer& t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(t._t)
     {
     }
 
-    explicit primitive_type_specializer(const value_type& t)
+    explicit primitive_type_specializer(const value_type& t) BOOST_NOEXCEPT_OR_NOTHROW
         : _t(t)
     {
     }
@@ -552,22 +552,22 @@ protected:
     }
 
 public:
-    const value_type& get() const
+    GO_BOOST_CONSTEXPR const value_type& get() const BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _t;
     }
 
-    value_type& get()
+    value_type& get() BOOST_NOEXCEPT_OR_NOTHROW
     {
         return _t;
     }
 
-    void set(const value_type& t)
+    void set(const value_type& t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         _t = t;
     }
 
-    void set(const this_type& t)
+    void set(const this_type& t) BOOST_NOEXCEPT_OR_NOTHROW
     {
         _t = t._t;
     }
@@ -577,7 +577,7 @@ private:
 };
 
 template<typename T>
-inline primitive_type_specializer<T>::~primitive_type_specializer()
+inline primitive_type_specializer<T>::~primitive_type_specializer() BOOST_NOEXCEPT
 {
 }
 
