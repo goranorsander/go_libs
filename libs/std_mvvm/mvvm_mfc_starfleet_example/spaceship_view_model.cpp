@@ -19,20 +19,16 @@
 #include "remove_equipment_command_parameters.hpp"
 #include "select_fleet_organization_event.hpp"
 
-#include <functional>
-
 namespace
 {
 
 class matches_equipment_id
-    : std::unary_function<equipment_interface::ptr, bool>
 {
 public:
-    virtual ~matches_equipment_id() GO_DEFAULT_DESTRUCTOR
+    ~matches_equipment_id() GO_DEFAULT_DESTRUCTOR
 
     explicit matches_equipment_id(const equipment_id_type id)
-        : std::unary_function<equipment_interface::ptr, bool>()
-        , _id(id)
+        : _id(id)
     {
     }
 

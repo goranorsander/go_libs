@@ -23,14 +23,12 @@ namespace
 {
 
 class matches_equipment_id
-    : std::unary_function<equipment_interface::ptr, bool>
 {
 public:
-    virtual ~matches_equipment_id() GO_BOOST_DEFAULT_DESTRUCTOR
+    ~matches_equipment_id() GO_BOOST_DEFAULT_DESTRUCTOR
 
     explicit matches_equipment_id(const equipment_id_type id)
-        : std::unary_function<equipment_interface::ptr, bool>()
-        , _id(id)
+        : _id(id)
     {
     }
 

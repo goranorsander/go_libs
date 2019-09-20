@@ -22,6 +22,7 @@
 #include <go_boost/utility/string_cast.hpp>
 
 #include <boost/lexical_cast.hpp>
+#include <boost/scoped_ptr.hpp>
 
 #include <fstream>
 #include <string>
@@ -65,7 +66,7 @@ private:
     const string_type _name;
     boost::uint32_t _file_number;
     std::streamoff _bytes_written;
-    std::auto_ptr<out_file_stream_type> _os;
+    boost::scoped_ptr<out_file_stream_type> _os;
 };
 
 template <>
