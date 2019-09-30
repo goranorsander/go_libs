@@ -89,7 +89,7 @@ public:
         encode<log_level>(level);
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     basic_log_line(basic_log_line&&) = default;
@@ -106,10 +106,10 @@ public:
     }
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 public:
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     basic_log_line& operator=(basic_log_line&&) noexcept = default;
@@ -134,7 +134,7 @@ public:
     }
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 public:
     void stringify(out_stream_type& os)

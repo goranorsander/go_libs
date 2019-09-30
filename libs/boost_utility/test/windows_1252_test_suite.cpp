@@ -11,7 +11,7 @@
 #include <go_boost/config.hpp>
 
 GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/utility/string/windows_1252.hpp>
@@ -127,7 +127,7 @@ namespace utf_8
 {
 
 // ASCII
-const u::char8_t* ascii_printable_characters_from_hex_codes = reinterpret_cast<const u::char8_t*>(
+const char8_t* ascii_printable_characters_from_hex_codes = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -137,7 +137,7 @@ const u::char8_t* ascii_printable_characters_from_hex_codes = reinterpret_cast<c
 const std::size_t ascii_printable_characters_count = 95;
 
 // Windows 1252
-const u::char8_t* windows_1252_printable_characters_from_hex_codes = reinterpret_cast<const u::char8_t*>(
+const char8_t* windows_1252_printable_characters_from_hex_codes = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -367,7 +367,7 @@ TEST(boost_windows_1252_test_suite, test_char_is_windows_1252_character)
 TEST(boost_windows_1252_test_suite, test_char8_t_is_windows_1252_character)
 {
     {
-        u::char8_t c = 0;
+        char8_t c = 0;
         {
             const bool is_windows_1252 = us::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
@@ -391,7 +391,7 @@ TEST(boost_windows_1252_test_suite, test_char8_t_is_windows_1252_character)
         }
     }
     {
-        u::char8_t c = 128;
+        char8_t c = 128;
         {
             const bool is_windows_1252 = us::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);

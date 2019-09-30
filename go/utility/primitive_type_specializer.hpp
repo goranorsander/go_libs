@@ -37,12 +37,12 @@ public:
     using this_reference = this_type&;
     using this_const_reference = const this_type&;
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     using rvalue_reference = primitive_type&&;
     using this_rvalue_reference = this_type&&;
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 public:
     ~primitive_type_specializer() GO_NOEXCEPT = default;
@@ -57,28 +57,28 @@ public:
     {
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     primitive_type_specializer(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t._t))
     {
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(const primitive_type& t) GO_NOEXCEPT_OR_NOTHROW
         : _t(t)
     {
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t))
     {
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 public:
     // Assignment operators
@@ -92,7 +92,7 @@ public:
         return *this;
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     this_reference operator=(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
     {
@@ -103,7 +103,7 @@ public:
         return *this;
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     this_reference operator+=(this_const_reference t) GO_NOEXCEPT_OR_NOTHROW
     {
@@ -364,7 +364,7 @@ public:
         this->_t = t._t;
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     void set(rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
     {
@@ -376,7 +376,7 @@ public:
         this->_t = std::move(t._t);
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 private:
     primitive_type _t;
@@ -393,7 +393,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler. Using C++0
 
 #include <cmath>
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_CONSTRUCTORS( _class_name_, _primitive_type_ ) \
     _class_name_() GO_NOEXCEPT_OR_NOTHROW : go::utility::primitive_type_specializer<_primitive_type_>(static_cast<_primitive_type_>(0)) {} \
@@ -409,7 +409,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler. Using C++0
     _class_name_(const _class_name_& t) GO_NOEXCEPT_OR_NOTHROW : go::utility::primitive_type_specializer<_primitive_type_>(t) {} \
     explicit _class_name_(const value_type& t) GO_NOEXCEPT_OR_NOTHROW : go::utility::primitive_type_specializer<_primitive_type_>(t) {}
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER_ASSIGNMENT_OPERATORS( _class_name_, _primitive_type_ ) \
     _class_name_& operator=(const _class_name_& t) GO_NOEXCEPT_OR_NOTHROW { if(&t != this) { go::utility::primitive_type_specializer<_primitive_type_>::operator=(t); } return *this; } \
@@ -539,28 +539,28 @@ protected:
     {
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     primitive_type_specializer(primitive_type_specializer&& t) GO_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t._t))
     {
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(const value_type& t) GO_NOEXCEPT_OR_NOTHROW
         : _t(t)
     {
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(value_type&& t) GO_NOEXCEPT_OR_NOTHROW
         : _t(std::move(t))
     {
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     primitive_type_specializer& operator=(const primitive_type_specializer& t) GO_NOEXCEPT_OR_NOTHROW
     {

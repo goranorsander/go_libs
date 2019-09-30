@@ -11,7 +11,7 @@
 #include <go_boost/config.hpp>
 
 GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/bind.hpp>
@@ -19,8 +19,6 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 #include <go_boost/exception.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility/string_cast.hpp>
-
-#include <go_gtest/double_without_formatter.hpp>
 
 namespace e = go_boost::exception;
 namespace p = go_boost::property;

@@ -22,12 +22,15 @@
 #include <map>
 #include <string>
 
+#if defined(GO_BOOST_NO_CXX2A_CHAR8_T)
+typedef unsigned char char8_t;
+#endif  // #if defined(GO_BOOST_NO_CXX2A_CHAR8_T)
+
 namespace go_boost
 {
 namespace utility
 {
 
-typedef unsigned char char8_t;
 typedef std::deque<char8_t> uft8_character_type;
 typedef std::map<std::size_t, uft8_character_type> uft8_string_type;
 

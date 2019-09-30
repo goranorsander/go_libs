@@ -40,12 +40,12 @@ private:
 protected:
     noncopyable() GO_DEFAULT_CONSTRUCTOR
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     noncopyable(noncopyable&&) GO_DEFAULT_CONSTRUCTOR
     auto operator=(noncopyable&&) ->noncopyable& GO_DEFAULT_CONSTRUCTOR
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 };
 

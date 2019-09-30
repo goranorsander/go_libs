@@ -16,5 +16,11 @@
     <ClInclude Include="..\..\libs\gtest_extensions\go_gtest\stdint.hpp">
       <Filter>go_gtest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\gtest_extensions\go_gtest\char8_t_default_print_non_container_to.hpp">
+      <Filter>go_gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\gtest_extensions\go_gtest\go_test.hpp">
+      <Filter>go_gtest</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

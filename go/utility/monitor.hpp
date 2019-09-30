@@ -44,7 +44,7 @@ public:
     public:
         ~monitor_object() GO_DEFAULT_DESTRUCTOR
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         monitor_object(monitor_object&&) = default;
@@ -73,7 +73,7 @@ public:
         {
         }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
@@ -89,7 +89,7 @@ public:
         }
 
     public:
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
         monitor_object& operator=(monitor_object&&) noexcept = default;
@@ -125,7 +125,7 @@ public:
             return *this;
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     public:
         pointer operator->()

@@ -20,7 +20,7 @@ namespace go
 namespace utility
 {
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX14_STD_EXCHANGE)
 #if !defined(GO_NO_CXX2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
 
@@ -72,7 +72,7 @@ T exchange(T& obj, const U& new_value)
     return old_value;
 }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 }
 }

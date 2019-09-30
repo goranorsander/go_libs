@@ -40,15 +40,15 @@ private:
 };
 
 inline spin_lock::spin_lock() GO_NOEXCEPT
-#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS) || defined (GO_NO_CXX11_LIST_INITIALIZATION_INSIDE_MEMBER_INITIALIZER_LIST)
     : _lock()
 #else
     : _lock ATOMIC_FLAG_INIT
-#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS) || defined (GO_NO_CXX11_LIST_INITIALIZATION_INSIDE_MEMBER_INITIALIZER_LIST)
 {
-#if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+#if defined (GO_NO_CXX11_INITIALIZER_LISTS) || defined (GO_NO_CXX11_LIST_INITIALIZATION_INSIDE_MEMBER_INITIALIZER_LIST)
     _lock.clear(std::memory_order_relaxed);
-#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS)
+#endif  // #if defined (GO_NO_CXX11_INITIALIZER_LISTS) || defined (GO_NO_CXX11_LIST_INITIALIZATION_INSIDE_MEMBER_INITIALIZER_LIST)
 }
 
 inline void spin_lock::lock()

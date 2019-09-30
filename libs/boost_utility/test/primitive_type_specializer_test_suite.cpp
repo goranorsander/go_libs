@@ -11,10 +11,8 @@
 #include <go_boost/config.hpp>
 
 GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
-
-#include <go_gtest/stdint.hpp>
 
 #include <go_boost/utility/primitive_type_implicit_specializer.hpp>
 #include <go_boost/utility/primitive_type_specializer.hpp>

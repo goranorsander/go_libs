@@ -25,7 +25,7 @@ public:
 
 private:
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     nonmovable(nonmovable&&) = delete;
@@ -37,7 +37,7 @@ private:
     auto operator=(nonmovable&&) ->nonmovable& {}
 
 #endif  // #!defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 protected:
     nonmovable() GO_DEFAULT_CONSTRUCTOR

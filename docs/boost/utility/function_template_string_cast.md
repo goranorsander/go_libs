@@ -92,7 +92,7 @@ int main()
 {
     boost::wcout << boost::endl << L"Om mani padme hum (Tibetan mantra)" << boost::endl << boost::endl;
 
-    const u::u8string utf_8_source = u::u8string(reinterpret_cast<const u::char8_t*>(
+    const u::u8string utf_8_source = u::u8string(reinterpret_cast<const char8_t*>(
         "\x4F\x6D\x20\x6D\x61\x6E\x69\x20\x70\x61\x64\x6D\x65\x20\x68\x75" \
         "\x6D\x20\x28\x54\x69\x62\x65\x74\x61\x6E\x20\x6D\x61\x6E\x74\x72" \
         "\x61\x29\x3A\x20\xE0\xBD\xA8\xE0\xBD\xBC\xE0\xBD\xBE\xE0\xBC\x8B" \

@@ -18,12 +18,15 @@
 #include <map>
 #include <string>
 
+#if defined(GO_NO_CXX2A_CHAR8_T)
+typedef unsigned char char8_t;
+#endif  // #if defined(GO_NO_CXX2A_CHAR8_T)
+
 namespace go
 {
 namespace utility
 {
 
-typedef unsigned char char8_t;
 typedef std::deque<char8_t> uft8_character_type;
 typedef std::map<std::size_t, uft8_character_type> uft8_string_type;
 
@@ -86,7 +89,7 @@ public:
 
     u8string(const u8string& other, const allocator_type& alloc);
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     u8string(u8string&& other) GO_NOEXCEPT_OR_NOTHROW;
 
@@ -96,7 +99,7 @@ public:
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
@@ -188,7 +191,7 @@ inline u8string::u8string(const u8string& other, const allocator_type& alloc)
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 inline u8string::u8string(u8string&& other) GO_NOEXCEPT_OR_NOTHROW
     : std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>(other)
@@ -204,7 +207,7 @@ inline u8string::u8string(u8string&& other, const allocator_type& alloc)
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 

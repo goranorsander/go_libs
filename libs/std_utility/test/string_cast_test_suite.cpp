@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11_CODECVT)
@@ -222,7 +222,7 @@ namespace utf_8
 
 // ASCII
 #if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS)
-const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* ascii_printable_characters = reinterpret_cast<const char8_t*>(
     u8" !\"#$%&'()*+,-./" \
     u8"0123456789:;<=>?" \
     u8"@ABCDEFGHIJKLMNO" \
@@ -230,7 +230,7 @@ const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t
     u8"`abcdefghijklmno" \
     u8"pqrstuvwxyz{|}~");
 #else
-const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* ascii_printable_characters = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -241,7 +241,7 @@ const u::char8_t* ascii_printable_characters = reinterpret_cast<const u::char8_t
 
 /*// ISO/IEC 8859-1
 #if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
-const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* iso_8859_1_printable_characters = reinterpret_cast<const char8_t*>(
     u8" !\"#$%&'()*+,-./" \
     u8"0123456789:;<=>?" \
     u8"@ABCDEFGHIJKLMNO" \
@@ -255,7 +255,7 @@ const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::ch
     u8"àáâãäåæçèéêëìíîï" \
     u8"ðñòóôõö÷øùúûüýþÿ");
 #else
-const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* iso_8859_1_printable_characters = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -273,12 +273,12 @@ const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::ch
 // Seven seasick seamen on the sinking ship Shanghai cared for by seven beautiful nurses.
 #if !defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 #if !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
-const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>(u8"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.");
+const char8_t* swedish = reinterpret_cast<const char8_t*>(u8"Sju sjösjuka sjömän på sjunkande skeppet Shanghai sköttes av sju sköna sjuksköterskor.");
 #else
-const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sj\xC3\xB6sjuka sj\xC3\xB6m\xC3\xA4n p\xC3\xA5 sjunkande skeppet Shanghai sk\xC3\xB6ttes av sju sk\xC3\xB6na sjuksk\xC3\xB6terskor.");
+const char8_t* swedish = reinterpret_cast<const char8_t*>("Sju sj\xC3\xB6sjuka sj\xC3\xB6m\xC3\xA4n p\xC3\xA5 sjunkande skeppet Shanghai sk\xC3\xB6ttes av sju sk\xC3\xB6na sjuksk\xC3\xB6terskor.");
 #endif  // !defined(GO_NO_CXX17_U8_CHARACTER_LITERALS) && !defined(GO_COMP_CLANG)
 #else
-const u::char8_t* swedish = reinterpret_cast<const u::char8_t*>("Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.");
+const char8_t* swedish = reinterpret_cast<const char8_t*>("Sju sjosjuka sjoman pa sjunkande skeppet Shanghai skottes av sju skona sjukskoterskor.");
 #endif  // #if !defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 }
@@ -474,7 +474,7 @@ TEST(std_string_cast_test_suite, test_char2_t_size)
 
 TEST(std_string_cast_test_suite, test_char8_t_size)
 {
-    const std::size_t type_size = sizeof(u::char8_t);
+    const std::size_t type_size = sizeof(char8_t);
     const std::size_t expected_size = 1;
     EXPECT_EQ(type_size, expected_size);
 }

@@ -41,7 +41,7 @@ public:
         on_construction();
     }
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     value_guard(value_type& value, value_type&& new_value)
         : noncopyable_nonmovable()
@@ -51,7 +51,7 @@ public:
         on_construction();
     }
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 private:
     void on_construction()

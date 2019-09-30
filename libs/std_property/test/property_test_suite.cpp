@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
@@ -23,8 +23,6 @@ TEST(std_property_test_suite, cpp11_not_supported) {}
 
 #include <go/exception.hpp>
 #include <go/property.hpp>
-
-#include <go_gtest/double_without_formatter.hpp>
 
 namespace e = go::exception;
 namespace p = go::property;

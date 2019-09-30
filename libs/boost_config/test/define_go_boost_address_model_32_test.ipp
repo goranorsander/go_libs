@@ -8,7 +8,7 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 #include <go_boost/config.hpp>
 
 namespace

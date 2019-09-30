@@ -81,7 +81,7 @@ public:
 
     u2string(const u2string& other, const allocator_type& alloc);
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     u2string(u2string&& other) GO_NOEXCEPT_OR_NOTHROW;
 
@@ -91,7 +91,7 @@ public:
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 
@@ -177,7 +177,7 @@ inline u2string::u2string(const u2string& other, const allocator_type& alloc)
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 inline u2string::u2string(u2string&& other) GO_NOEXCEPT_OR_NOTHROW
     : std::basic_string<char2_t, std::char_traits<char2_t>, std::allocator<char2_t>>(other)
@@ -193,7 +193,7 @@ inline u2string::u2string(u2string&& other, const allocator_type& alloc)
 
 #endif  // #if !defined(GO_COMP_MSVC) || (defined(GO_COMP_MSVC) && (GO_MSVC_VER > 1600))
 
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
 

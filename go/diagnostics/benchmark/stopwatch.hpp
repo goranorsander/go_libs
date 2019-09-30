@@ -84,7 +84,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
     basic_stopwatch(basic_stopwatch&& other) = default;
@@ -101,7 +101,7 @@ public:
     }
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
 #if !defined(GO_NO_CXX11_DEFAULTED_COPY_ASSIGN_OPERATOR)
 
@@ -124,7 +124,7 @@ public:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-#if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     this_type& operator=(this_type&&) noexcept = default;
@@ -145,7 +145,7 @@ public:
     }
 
 #endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) && defined(GO_COMP_MSVC_VC120))
-#endif  // #if !defined(GO_NO_CXX11_R_VALUE_REFERENCES)
+#endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     void start()
     {

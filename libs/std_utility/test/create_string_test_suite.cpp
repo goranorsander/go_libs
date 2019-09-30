@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11_CODECVT)
@@ -145,7 +145,7 @@ namespace utf_8
 #if !defined(GO_CPP_MULTIBYTE_STRING_IS_STRICTLY_ASCII_7)
 
 // ISO/IEC 8859-1
-const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* iso_8859_1_printable_characters = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -164,7 +164,7 @@ const std::size_t iso_8859_1_printable_characters_size = 287;
 #else
 
 // Reduced to ASCII, see https://en.wikipedia.org/wiki/ASCII
-const u::char8_t* iso_8859_1_printable_characters = reinterpret_cast<const u::char8_t*>(
+const char8_t* iso_8859_1_printable_characters = reinterpret_cast<const char8_t*>(
     "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F" \
     "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F" \
     "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F" \
@@ -294,7 +294,7 @@ TEST(std_create_string_test_suite, test_create_string_from_char2_t)
 TEST(std_create_string_test_suite, test_create_string_from_char8_t)
 {
     const char* expected_result = multibyte::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const std::string created_string = us::create<std::string>(from_characters);
     const std::size_t string_memory_usage = sizeof(std::string::value_type)*multibyte::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
@@ -356,7 +356,7 @@ TEST(std_create_string_test_suite, test_create_wstring_from_char2_t)
 TEST(std_create_string_test_suite, test_create_wstring_from_char8_t)
 {
     const wchar_t* expected_result = system_wide::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const std::wstring created_string = us::create<std::wstring>(from_characters);
     const std::size_t string_memory_usage = sizeof(std::wstring::value_type)*system_wide::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
@@ -423,7 +423,7 @@ TEST(std_create_string_test_suite, test_create_u2string_from_char2_t)
 TEST(std_create_string_test_suite, test_create_u2string_from_char8_t)
 {
     const u::char2_t* expected_result = ucs_2::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const u::u2string created_string = us::create<u::u2string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u2string::value_type)*ucs_2::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
@@ -459,7 +459,7 @@ TEST(std_create_string_test_suite, test_create_u2string_from_char32_t)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_char)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
     const char* from_characters = multibyte::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
@@ -468,7 +468,7 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_wchar_t)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
     const wchar_t* from_characters = system_wide::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
@@ -477,7 +477,7 @@ TEST(std_create_string_test_suite, test_create_u8string_from_wchar_t)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_char2_t)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
     const u::char2_t* from_characters = ucs_2::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
@@ -486,8 +486,8 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char2_t)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_char8_t)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
@@ -497,7 +497,7 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char8_t)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_char16_t)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
     const char16_t* from_characters = utf_16::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
@@ -510,7 +510,7 @@ TEST(std_create_string_test_suite, test_create_u8string_from_char16_t)
 
 TEST(std_create_string_test_suite, test_create_u8string_from_char32_t)
 {
-    const u::char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
+    const char8_t* expected_result = utf_8::iso_8859_1_printable_characters;
     const char32_t* from_characters = utf_32::iso_8859_1_printable_characters;
     const u::u8string created_string = us::create<u::u8string>(from_characters);
     const std::size_t string_memory_usage = sizeof(u::u8string::value_type)*utf_8::iso_8859_1_printable_characters_size;
@@ -551,7 +551,7 @@ TEST(std_create_string_test_suite, test_create_u16string_from_char2_t)
 TEST(std_create_string_test_suite, test_create_u16string_from_char8_t)
 {
     const char16_t* expected_result = utf_16::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const std::u16string created_string = us::create<std::u16string>(from_characters);
     const std::size_t string_memory_usage = sizeof(std::u16string::value_type)*utf_16::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));
@@ -609,7 +609,7 @@ TEST(std_create_string_test_suite, test_create_u32string_from_char2_t)
 TEST(std_create_string_test_suite, test_create_u32string_from_char8_t)
 {
     const char32_t* expected_result = utf_32::iso_8859_1_printable_characters;
-    const u::char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
+    const char8_t* from_characters = utf_8::iso_8859_1_printable_characters;
     const std::u32string created_string = us::create<std::u32string>(from_characters);
     const std::size_t string_memory_usage = sizeof(std::u32string::value_type)*utf_32::iso_8859_1_printable_characters_count;
     EXPECT_EQ(0, std::memcmp(expected_result, created_string.c_str(), string_memory_usage));

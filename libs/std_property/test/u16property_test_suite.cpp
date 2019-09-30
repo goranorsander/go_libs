@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <gtest/gtest.h>
+#include <go_gtest/go_test.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_UNICODE_STRING_LITERALS)
@@ -22,8 +22,6 @@ TEST(std_u16property_test_suite, cpp11_not_supported) {}
 #include <functional>
 
 #include <go/property.hpp>
-
-#include <go_gtest/double_without_formatter.hpp>
 
 namespace p = go::property;
 namespace ph = std::placeholders;
