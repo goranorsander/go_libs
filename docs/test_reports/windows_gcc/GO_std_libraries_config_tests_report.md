@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-09-09 at 20:11:12 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-09-30 at 18:06:27 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.38 seconds.
+Test suites execution took 0.488 seconds.
 
 # Details
 
@@ -41,7 +41,7 @@ Test suite *std_define_go_platform_test_suite* with 2 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.024 seconds.
+Test suite execution took 0.025 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_message_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.011 seconds.
 
 ### Successful test cases
 
@@ -72,18 +72,18 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.237 seconds.
+Test suite execution took 0.302 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_not_define_go_clang_version | 0
-test_not_define_go_comp_clang | 0.001
+test_not_define_go_comp_clang | 0
 test_define_go_comp_gcc | 0
-test_define_go_comp_gcc_mingw | 0
+test_define_go_comp_gcc_mingw | 0.001
 test_not_define_go_comp_msvc | 0
-test_not_define_go_comp_msvc_vc90 | 0.001
+test_not_define_go_comp_msvc_vc90 | 0
 test_not_define_go_comp_msvc_vc100 | 0
 test_not_define_go_comp_msvc_vc110 | 0
 test_not_define_go_comp_msvc_vc120 | 0
@@ -91,14 +91,14 @@ test_not_define_go_comp_msvc_vc140 | 0
 test_not_define_go_comp_msvc_vc141 | 0
 test_define_go_gcc_version | 0
 test_not_define_go_ide_ms_vs2008 | 0
-test_not_define_go_ide_ms_vs2010 | 0.001
+test_not_define_go_ide_ms_vs2010 | 0
 test_not_define_go_ide_ms_vs2012 | 0
 test_not_define_go_ide_ms_vs2013 | 0
 test_not_define_go_ide_ms_vs2015 | 0
 test_not_define_go_ide_ms_vs2017 | 0
 test_not_define_go_msvc_atl | 0
 test_not_define_go_msvc_atl_ver | 0
-test_not_define_go_msvc_full_ver | 0
+test_not_define_go_msvc_full_ver | 0.001
 test_not_define_go_msvc_mfc | 0
 test_not_define_go_msvc_mfc_ver | 0
 test_not_define_go_msvc_ver | 0
@@ -111,7 +111,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.03 seconds.
+Test suite execution took 0.042 seconds.
 
 ### Successful test cases
 
@@ -128,7 +128,7 @@ Test suite *std_define_go_add_quotes_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 

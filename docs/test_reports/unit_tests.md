@@ -12,7 +12,7 @@ more information.
 
 ## Test environment and toolset
 
-* Manjaro Linux 18, 64 bit
+* Manjaro Linux 18, 64 bits
   * [clang 8.0.1](./linux_clang/unit_tests.html)
   * [gcc 9.1.0](./linux_gcc/unit_tests.html)
 * Windows 10 Professional, 64 bit
@@ -23,7 +23,7 @@ more information.
   * [MSVC++ 12.0 / Visual Studio 2013](./windows_msvc120/unit_tests.html)
   * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
   * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
-  * [MSVC++ 14.22 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
+  * [MSVC++ 14.23 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
 
 # Summary
 

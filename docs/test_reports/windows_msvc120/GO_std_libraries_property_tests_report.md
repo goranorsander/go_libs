@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 48 test cases was executed 2019-09-09 at 20:11:45 with result:
+Test suites *AllTests* with 48 test cases was executed 2019-09-30 at 18:07:05 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.051 seconds.
+Test suites execution took 0.053 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_nameless_property_test_suite* with 9 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
@@ -48,7 +48,7 @@ Test suite *std_nameless_property_placebo_lockable_test_suite* with 9 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.01 seconds.
 
 ### Successful test cases
 
@@ -71,7 +71,7 @@ Test suite *std_property_placebo_lockable_test_suite* with 9 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -117,7 +117,7 @@ Test suite *std_u16property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -132,7 +132,7 @@ Test suite *std_u32property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -147,7 +147,7 @@ Test suite *std_u8property_test_suite* with 1 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -162,7 +162,7 @@ Test suite *std_wproperty_test_suite* with 9 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.009 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 

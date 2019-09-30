@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 182 test cases was executed 2019-09-09 at 20:11:30 with result:
+Test suites *AllTests* with 182 test cases was executed 2019-09-30 at 18:06:50 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.182 seconds.
+Test suites execution took 0.502 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_ascii_test_suite* with 24 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.017 seconds.
+Test suite execution took 0.058 seconds.
 
 ### Successful test cases
 
@@ -40,7 +40,7 @@ test_char8_t_is_7_bit_ascii_character | 0
 test_wchar_t_is_7_bit_ascii_character | 0
 test_char2_t_is_7_bit_ascii_character | 0
 test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters | 0
-test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters | 0.001
+test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters | 0
 test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_characters | 0
 test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_characters | 0
 test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
@@ -63,7 +63,7 @@ Test suite *std_circular_buffer_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -78,7 +78,7 @@ Test suite *std_container_size_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -93,7 +93,7 @@ Test suite *std_create_string_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -108,7 +108,7 @@ Test suite *std_erase_iterator_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -123,7 +123,7 @@ Test suite *std_iso_8859_1_test_suite* with 8 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
@@ -145,7 +145,7 @@ Test suite *std_monitor_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -160,7 +160,7 @@ Test suite *std_placebo_lockable_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -175,7 +175,7 @@ Test suite *std_primitive_type_specializer_test_suite* with 128 test cases was e
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.12 seconds.
+Test suite execution took 0.323 seconds.
 
 ### Successful test cases
 
@@ -283,7 +283,7 @@ test_implicit_integer_type_specializer_pre_increment_operator | 0
 test_implicit_integer_type_specializer_post_increment_operator | 0
 test_implicit_integer_type_specializer_pre_decrement_operator | 0
 test_implicit_integer_type_specializer_post_decrement_operator | 0
-test_implicit_floating_point_type_specializer_default_value | 0
+test_implicit_floating_point_type_specializer_default_value | 0.001
 test_implicit_floating_point_type_specializer_construction | 0
 test_implicit_floating_point_type_specializer_get_set | 0
 test_implicit_floating_point_type_specializer_simple_assignment_operator | 0
@@ -317,7 +317,7 @@ Test suite *std_recursive_spin_lock_test_suite* with 1 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -332,7 +332,7 @@ Test suite *std_reverse_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -347,7 +347,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -362,7 +362,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -377,7 +377,7 @@ Test suite *std_spin_lock_test_suite* with 1 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -392,7 +392,7 @@ Test suite *std_string_cast_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -407,7 +407,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 1 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -422,7 +422,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -437,13 +437,13 @@ Test suite *std_windows_1252_test_suite* with 8 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.017 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_multibyte_character_count | 0
+test_multibyte_character_count | 0.001
 test_system_wide_character_count | 0
 test_ucs_2_character_count | 0
 test_utf_8_character_count | 0
