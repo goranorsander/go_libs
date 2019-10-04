@@ -70,6 +70,9 @@ GO_BOOST_IDE_MS_VS2010 | Development environment is Visual Studio 2010
 GO_BOOST_IDE_MS_VS2012 | Development environment is Visual Studio 2012
 GO_BOOST_IDE_MS_VS2013 | Development environment is Visual Studio 2013
 GO_BOOST_IDE_MS_VS2015 | Development environment is Visual Studio 2015
+GO_BOOST_IDE_MS_VS2015_U1 | Visual Studio 2015 update 1
+GO_BOOST_IDE_MS_VS2015_U2 | Visual Studio 2015 update 2
+GO_BOOST_IDE_MS_VS2015_U3 | Visual Studio 2015 update 3
 GO_BOOST_IDE_MS_VS2017 | Development environment is Visual Studio 2017
 GO_BOOST_IDE_MS_VS2017_15_0 | Visual Studio 2017 version 15.0
 GO_BOOST_IDE_MS_VS2017_15_3 | Visual Studio 2017 version 15.3

@@ -65,6 +65,13 @@
 #elif (_MSC_VER == 1900)
 #define GO_COMP_MSVC_VC140 1
 #define GO_IDE_MS_VS2015 1
+#if (_MSC_FULL_VER == 190023506)
+#define GO_IDE_MS_VS2015_U1 1
+#elif (_MSC_VER == 190023918)
+#define GO_IDE_MS_VS2015_U2 1
+#elif (_MSC_VER == 190024210)
+#define GO_IDE_MS_VS2015_U3 1
+#endif  // #if (_MSC_FULL_VER == 190023506)
 #elif (_MSC_VER >= 1910) && (_MSC_VER < 1920)
 #define GO_COMP_MSVC_VC141 1
 #define GO_IDE_MS_VS2017 1
