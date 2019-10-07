@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="680" failures="0" disabled="0" errors="0" timestamp="2019-09-30T18:06:12" time="9.085" name="AllTests">
-  <testsuite name="boost_wobservable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.132">
+<testsuites tests="680" failures="0" disabled="0" errors="0" timestamp="2019-10-07T21:58:51" time="7.802" name="AllTests">
+  <testsuite name="boost_wobservable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.105">
     <testcase name="test_assign_range" status="run" time="0.001" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
-    <testcase name="test_pop_back" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" time="0.001" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_vector_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.127">
+  <testsuite name="boost_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.112">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
@@ -27,12 +27,12 @@
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_unordered_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.138">
+  <testsuite name="boost_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.12">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
@@ -40,78 +40,78 @@
     <testcase name="test_emplace" status="run" time="0.001" classname="boost_wobservable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_unordered_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.136">
+  <testsuite name="boost_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.119">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_wobservable_unordered_multimap_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.131">
+  <testsuite name="boost_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.11">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_unordered_map_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_unordered_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.113">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_set_test_suite" />
+  <testsuite name="boost_wobservable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.091">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_set_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_set_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_set_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="boost_wobservable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_wobservable_object" status="run" time="0" classname="boost_wobservable_object_test_suite" />
   </testsuite>
   <testsuite name="boost_wobservable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.01">
-    <testcase name="test_wobservable_object" status="run" time="0.001" classname="boost_wobservable_object_phoenix_test_suite" />
+    <testcase name="test_wobservable_object" status="run" time="0" classname="boost_wobservable_object_phoenix_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.126">
+  <testsuite name="boost_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.106">
     <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_wobservable_multiset_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_wobservable_multiset_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.12">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
+  <testsuite name="boost_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.106">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.115">
+  <testsuite name="boost_wobservable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.105">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_map_test_suite" />
@@ -120,17 +120,17 @@
     <testcase name="test_erase_value" status="run" time="0" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_map_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_wobservable_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_wobservable_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.233">
-    <testcase name="test_assign_range" status="run" time="0" classname="boost_wobservable_list_test_suite" />
+  <testsuite name="boost_wobservable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.202">
+    <testcase name="test_assign_range" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_pop_back" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_wobservable_list_test_suite" />
@@ -142,14 +142,14 @@
     <testcase name="test_splice_entire_list" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_splice_element_range" status="run" time="0" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_remove" status="run" time="0" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_remove_if" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_remove" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" time="0" classname="boost_wobservable_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_unique_binary_predicate" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_merge" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
-    <testcase name="test_merge_compare_predicate" status="run" time="0.001" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_merge" status="run" time="0" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_wobservable_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.242">
+  <testsuite name="boost_wobservable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.216">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
@@ -158,11 +158,11 @@
     <testcase name="test_insert_after_single_element" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_insert_after_fill" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_insert_after_range" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
-    <testcase name="test_splice_entire_forward_list" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_entire_forward_list" status="run" time="0.001" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_splice_element_range" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_remove" status="run" time="0.001" classname="boost_wobservable_forward_list_test_suite" />
@@ -172,7 +172,7 @@
     <testcase name="test_merge" status="run" time="0.001" classname="boost_wobservable_forward_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_wobservable_forward_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.151">
+  <testsuite name="boost_wobservable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.129">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
@@ -185,41 +185,41 @@
     <testcase name="test_insert_range" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_wobservable_deque_test_suite" />
   </testsuite>
-  <testsuite name="boost_wobservable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="boost_wobservable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
     <testcase name="test_create" status="run" time="0" classname="boost_wobservable_array_test_suite" />
   </testsuite>
-  <testsuite name="boost_event_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
-    <testcase name="test_command_manager" status="run" time="0" classname="boost_event_manager_test_suite" />
+  <testsuite name="boost_event_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.022">
+    <testcase name="test_command_manager" status="run" time="0.001" classname="boost_event_manager_test_suite" />
     <testcase name="test_command_manager" status="run" time="0" classname="boost_event_manager_test_suite" />
   </testsuite>
-  <testsuite name="boost_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="boost_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.006">
     <testcase name="test_wcommand" status="run" time="0" classname="boost_wcommand_test_suite" />
   </testsuite>
-  <testsuite name="boost_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
-    <testcase name="test_wcommand_manager" status="run" time="0.001" classname="boost_wcommand_manager_test_suite" />
+  <testsuite name="boost_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.018">
+    <testcase name="test_wcommand_manager" status="run" time="0" classname="boost_wcommand_manager_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0.001" classname="boost_wcommand_manager_test_suite" />
   </testsuite>
-  <testsuite name="boost_wcommand_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.022">
-    <testcase name="test_wcommand_manager" status="run" time="0.001" classname="boost_wcommand_manager_phoenix_test_suite" />
+  <testsuite name="boost_wcommand_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
+    <testcase name="test_wcommand_manager" status="run" time="0" classname="boost_wcommand_manager_phoenix_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_wcommand_manager_phoenix_test_suite" />
   </testsuite>
   <testsuite name="boost_wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
     <testcase name="test_execute_wcommand" status="run" time="0" classname="boost_wcommand_execution_observer_test_suite" />
     <testcase name="test_post_wcommand" status="run" time="0" classname="boost_wcommand_execution_observer_test_suite" />
   </testsuite>
-  <testsuite name="boost_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="boost_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_relay_wcommand" status="run" time="0" classname="boost_relay_wcommand_test_suite" />
   </testsuite>
-  <testsuite name="boost_relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="boost_relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
     <testcase name="test_relay_command" status="run" time="0" classname="boost_relay_command_test_suite" />
   </testsuite>
-  <testsuite name="boost_relay_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="boost_relay_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_relay_command" status="run" time="0" classname="boost_relay_command_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_vector_placebo_lockable_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.148">
+  <testsuite name="boost_observable_vector_placebo_lockable_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.14">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
@@ -228,12 +228,12 @@
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_vector_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.148">
+  <testsuite name="boost_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.131">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
@@ -241,13 +241,13 @@
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.162">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+  <testsuite name="boost_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.141">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
@@ -256,23 +256,23 @@
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.158">
+  <testsuite name="boost_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.14">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.155">
+  <testsuite name="boost_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.131">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
@@ -285,11 +285,11 @@
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.14">
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_observable_set_placebo_lockable_test_suite" />
+  <testsuite name="boost_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.121">
+    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
@@ -298,52 +298,52 @@
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_set_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_object_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="boost_observable_object_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.013">
     <testcase name="test_observable_object" status="run" time="0" classname="boost_observable_object_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_object_phoenix_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.015">
-    <testcase name="test_observable_object" status="run" time="0" classname="boost_observable_object_phoenix_placebo_lockable_test_suite" />
+  <testsuite name="boost_observable_object_phoenix_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+    <testcase name="test_observable_object" status="run" time="0.001" classname="boost_observable_object_phoenix_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.142">
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+  <testsuite name="boost_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.128">
+    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_multiset_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.142">
+  <testsuite name="boost_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.124">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_multimap_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.14">
+  <testsuite name="boost_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.123">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_map_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_list_placebo_lockable_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.282">
+  <testsuite name="boost_observable_list_placebo_lockable_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.235">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
@@ -355,8 +355,8 @@
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_list_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_splice_entire_list" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
@@ -366,38 +366,38 @@
     <testcase name="test_unique" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
     <testcase name="test_merge" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
-    <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" time="0.001" classname="boost_observable_list_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_forward_list_placebo_lockable_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.3">
+  <testsuite name="boost_observable_forward_list_placebo_lockable_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.253">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_pop_front" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_insert_after_single_element" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_insert_after_fill" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_insert_after_range" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_splice_entire_forward_list" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_entire_forward_list" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_splice_element_range" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
-    <testcase name="test_remove" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_element_range" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove" status="run" time="0.001" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_merge" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_deque_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.168">
+  <testsuite name="boost_observable_deque_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.153">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
-    <testcase name="test_pop_back" status="run" time="0.001" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
@@ -407,68 +407,68 @@
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_deque_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.013">
+  <testsuite name="boost_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_create" status="run" time="0" classname="boost_observable_array_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.013">
+  <testsuite name="boost_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_command_manager" status="run" time="0" classname="boost_event_manager_placebo_lockable_test_suite" />
   </testsuite>
   <testsuite name="boost_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_command" status="run" time="0" classname="boost_command_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.027">
+  <testsuite name="boost_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.022">
     <testcase name="test_command_manager" status="run" time="0" classname="boost_command_manager_placebo_lockable_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0.001" classname="boost_command_manager_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_manager_phoenix_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.029">
-    <testcase name="test_command_manager" status="run" time="0" classname="boost_command_manager_phoenix_placebo_lockable_test_suite" />
+  <testsuite name="boost_command_manager_phoenix_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.027">
+    <testcase name="test_command_manager" status="run" time="0.001" classname="boost_command_manager_phoenix_placebo_lockable_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_command_manager_phoenix_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_execution_observer_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.026">
-    <testcase name="test_execute_command" status="run" time="0.001" classname="boost_command_execution_observer_placebo_lockable_test_suite" />
+  <testsuite name="boost_command_execution_observer_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.027">
+    <testcase name="test_execute_command" status="run" time="0" classname="boost_command_execution_observer_placebo_lockable_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="boost_command_execution_observer_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.123">
+  <testsuite name="boost_observable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.104">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_vector_test_suite" />
-    <testcase name="test_push_back" status="run" time="0.001" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="boost_observable_vector_test_suite" />
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_vector_test_suite" />
-    <testcase name="test_insert_fill" status="run" time="0.001" classname="boost_observable_vector_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_vector_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_vector_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.123">
+  <testsuite name="boost_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.117">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.142">
+  <testsuite name="boost_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.119">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_unordered_multiset_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.132">
+  <testsuite name="boost_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.119">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
@@ -479,67 +479,67 @@
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.126">
+  <testsuite name="boost_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.109">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_unordered_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.11">
+  <testsuite name="boost_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.094">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_set_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_set_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
-    <testcase name="test_observable_object" status="run" time="0" classname="boost_observable_object_test_suite" />
+  <testsuite name="boost_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.007">
+    <testcase name="test_observable_object" status="run" time="0.001" classname="boost_observable_object_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="boost_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_observable_object" status="run" time="0" classname="boost_observable_object_phoenix_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.116">
+  <testsuite name="boost_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.107">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_multiset_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_multiset_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_multiset_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.119">
+  <testsuite name="boost_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.106">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_observable_multimap_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.106">
+  <testsuite name="boost_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.097">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_observable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_map_test_suite" />
@@ -550,63 +550,63 @@
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_map_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_map_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_observable_map_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_observable_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.239">
+  <testsuite name="boost_observable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.212">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_list_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_observable_list_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_observable_list_test_suite" />
-    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_observable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_list_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_splice_entire_list" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_observable_list_test_suite" />
-    <testcase name="test_splice_element_range" status="run" time="0" classname="boost_observable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" time="0.001" classname="boost_observable_list_test_suite" />
     <testcase name="test_remove" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="boost_observable_list_test_suite" />
-    <testcase name="test_unique" status="run" time="0" classname="boost_observable_list_test_suite" />
+    <testcase name="test_unique" status="run" time="0.001" classname="boost_observable_list_test_suite" />
     <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_merge" status="run" time="0" classname="boost_observable_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_observable_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.233">
+  <testsuite name="boost_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.209">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_pop_front" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_insert_after_single_element" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_fill" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_range" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_splice_entire_forward_list" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_splice_element_range" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_remove" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
-    <testcase name="test_merge" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" time="0.001" classname="boost_observable_forward_list_test_suite" />
     <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_observable_forward_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.146">
+  <testsuite name="boost_observable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.122">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_observable_deque_test_suite" />
-    <testcase name="test_pop_back" status="run" time="0.001" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_observable_deque_test_suite" />
@@ -616,47 +616,47 @@
     <testcase name="test_swap" status="run" time="0" classname="boost_observable_deque_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_observable_deque_test_suite" />
   </testsuite>
-  <testsuite name="boost_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
-    <testcase name="test_create" status="run" time="0" classname="boost_observable_array_test_suite" />
+  <testsuite name="boost_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
+    <testcase name="test_create" status="run" time="0.001" classname="boost_observable_array_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.007">
+  <testsuite name="boost_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
     <testcase name="test_command" status="run" time="0" classname="boost_command_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
+  <testsuite name="boost_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.018">
     <testcase name="test_command_manager" status="run" time="0.001" classname="boost_command_manager_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_command_manager_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.022">
+  <testsuite name="boost_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.02">
     <testcase name="test_command_manager" status="run" time="0" classname="boost_command_manager_phoenix_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_command_manager_phoenix_test_suite" />
   </testsuite>
-  <testsuite name="boost_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.023">
+  <testsuite name="boost_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.019">
     <testcase name="test_execute_command" status="run" time="0" classname="boost_command_execution_observer_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="boost_command_execution_observer_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.01">
+  <testsuite name="boost_basic_relay_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_relay_command" status="run" time="0" classname="boost_basic_relay_command_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.134">
+  <testsuite name="boost_basic_observable_vector_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.116">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_basic_observable_vector_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_basic_observable_vector_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.134">
+  <testsuite name="boost_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.119">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_unordered_set_test_suite" />
@@ -664,185 +664,185 @@
     <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_unordered_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.142">
+  <testsuite name="boost_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.124">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_unordered_multiset_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_unordered_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.149">
+  <testsuite name="boost_basic_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.131">
     <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_basic_observable_unordered_multimap_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_basic_observable_unordered_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.13">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
+  <testsuite name="boost_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.122">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="boost_basic_observable_unordered_map_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_unordered_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.122">
+  <testsuite name="boost_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.109">
     <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
-    <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
-    <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
-    <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_clear" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_emplace" status="run" time="0.001" classname="boost_basic_observable_set_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_set_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
-    <testcase name="test_observable_object" status="run" time="0" classname="boost_basic_observable_object_test_suite" />
+  <testsuite name="boost_basic_observable_object_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.01">
+    <testcase name="test_observable_object" status="run" time="0.001" classname="boost_basic_observable_object_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="boost_basic_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.013">
     <testcase name="test_observable_object" status="run" time="0" classname="boost_basic_observable_object_phoenix_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.132">
+  <testsuite name="boost_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.111">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
-    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
-    <testcase name="test_emplace" status="run" time="0.001" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_multiset_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.133">
+  <testsuite name="boost_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.111">
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
-    <testcase name="test_insert_single_element_with_hint" status="run" time="0.001" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
-    <testcase name="test_swap" status="run" time="0.001" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
     <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_multimap_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.123">
-    <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
+  <testsuite name="boost_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" errors="0" time="0.099">
+    <testcase name="test_insert_single_element" status="run" time="0.001" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_insert_single_element_with_hint" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_insert_initializer_list" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_map_test_suite" />
-    <testcase name="test_erase_value" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" time="0.001" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
     <testcase name="test_emplace" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
-    <testcase name="test_emplace_hint" status="run" time="0" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" time="0.001" classname="boost_basic_observable_map_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.253">
+  <testsuite name="boost_basic_observable_list_test_suite" tests="23" failures="0" disabled="0" errors="0" time="0.223">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_assign_fill" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_push_back" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_push_front" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_push_back" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_push_front" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_pop_back" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_splice_entire_list" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_splice_element_range" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_remove" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_remove" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_remove_if" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_unique_binary_predicate" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_merge" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
-    <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_merge" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" time="0.001" classname="boost_basic_observable_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.253">
+  <testsuite name="boost_basic_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" errors="0" time="0.222">
     <testcase name="test_assign_range" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_push_front" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_pop_front" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_insert_after_single_element" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_insert_after_fill" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_insert_after_range" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_splice_entire_forward_list" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_entire_forward_list" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_splice_single_element" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_splice_element_range" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_remove" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_remove_if" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_unique" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
     <testcase name="test_unique_binary_predicate" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_merge" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
-    <testcase name="test_merge_compare_predicate" status="run" time="0" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" time="0.001" classname="boost_basic_observable_forward_list_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.157">
+  <testsuite name="boost_basic_observable_deque_test_suite" tests="14" failures="0" disabled="0" errors="0" time="0.139">
     <testcase name="test_assign_range" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_assign_initializer_list" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_assign_fill" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_push_back" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_push_front" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_pop_back" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_pop_front" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_insert_single_element" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_insert_fill" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_insert_range" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_erase_position" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_erase_range" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
     <testcase name="test_swap" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
-    <testcase name="test_clear" status="run" time="0.001" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_clear" status="run" time="0" classname="boost_basic_observable_deque_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.011">
-    <testcase name="test_create" status="run" time="0" classname="boost_basic_observable_array_test_suite" />
+  <testsuite name="boost_basic_observable_array_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
+    <testcase name="test_create" status="run" time="0.001" classname="boost_basic_observable_array_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.012">
+  <testsuite name="boost_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.008">
     <testcase name="test_command_manager" status="run" time="0.001" classname="boost_basic_event_manager_test_suite" />
   </testsuite>
   <testsuite name="boost_basic_command_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_command" status="run" time="0" classname="boost_basic_command_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.022">
+  <testsuite name="boost_basic_command_manager_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
     <testcase name="test_command_manager" status="run" time="0" classname="boost_basic_command_manager_test_suite" />
-    <testcase name="test_spaceship_observer" status="run" time="0.001" classname="boost_basic_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_basic_command_manager_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.027">
-    <testcase name="test_command_manager" status="run" time="0" classname="boost_basic_command_manager_phoenix_test_suite" />
+  <testsuite name="boost_basic_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.021">
+    <testcase name="test_command_manager" status="run" time="0.001" classname="boost_basic_command_manager_phoenix_test_suite" />
     <testcase name="test_spaceship_observer" status="run" time="0" classname="boost_basic_command_manager_phoenix_test_suite" />
   </testsuite>
-  <testsuite name="boost_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.023">
+  <testsuite name="boost_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.019">
     <testcase name="test_execute_command" status="run" time="0" classname="boost_basic_command_execution_observer_test_suite" />
     <testcase name="test_post_command" status="run" time="0" classname="boost_basic_command_execution_observer_test_suite" />
   </testsuite>
