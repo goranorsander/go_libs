@@ -18,6 +18,10 @@
 #include <cmath>
 #include <type_traits>
 
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#include <compare>
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
 #define GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
 struct _class_name_##_tag {}; \
 using _class_name_ = go::utility::primitive_type_specializer<_primitive_type_, _class_name_##_tag>;
@@ -300,6 +304,15 @@ public:
     {
         return this->_t >= t._t;
     }
+
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+    constexpr auto operator<=>(this_const_reference t) const noexcept
+    {
+        return this->_t <=> t._t;
+    }
+
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 

@@ -23,6 +23,10 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#include <compare>
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
 #define GO_BOOST_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
 struct _class_name_##_tag {}; \
 typedef go_boost::utility::primitive_type_implicit_specializer<_primitive_type_, _class_name_##_tag> _class_name_;
@@ -498,6 +502,15 @@ public:
         return this->_t >= t._t;
     }
 
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+    constexpr auto operator<=>(this_const_reference t) const noexcept
+    {
+        return this->_t <=> t._t;
+    }
+
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, bool>::type operator==(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
@@ -533,6 +546,22 @@ public:
     {
         return this->_t >= static_cast<primitive_type>(p);
     }
+
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+    template <typename P>
+    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<primitive_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept
+    {
+        return this->_t <=> static_cast<primitive_type>(p);
+    }
+
+    template <typename P>
+    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_floating_point<primitive_type>::value, std::partial_ordering>::type operator<=>(const P& p) const noexcept
+    {
+        return this->_t <=> static_cast<primitive_type>(p);
+    }
+
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 
@@ -736,6 +765,22 @@ inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::
 {
     return static_cast<typename PrimitiveTypeSpecializer::primitive_type>(lhs) >= rhs.get();
 }
+
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+template<class PrimitiveTypeSpecializer, typename P>
+inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename PrimitiveTypeSpecializer::primitive_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
+{
+    return static_cast<typename PrimitiveTypeSpecializer::primitive_type>(lhs) <=> rhs.get();
+}
+
+template<class PrimitiveTypeSpecializer, typename P>
+inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_floating_point<typename PrimitiveTypeSpecializer::primitive_type>::value, std::partial_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
+{
+    return static_cast<typename PrimitiveTypeSpecializer::primitive_type>(lhs) <=> rhs.get();
+}
+
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
 }
 }

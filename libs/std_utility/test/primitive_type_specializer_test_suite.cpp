@@ -45,7 +45,7 @@ GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(another_floating_point_type, double
 
 #endif  // #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
 
-# if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
 
 GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(implicit_integer_type, int)
 GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(another_implicit_integer_type, int)
@@ -61,7 +61,7 @@ GO_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(another_implicit_integer_type, in
 GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(implicit_floating_point_type, double)
 GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(another_implicit_floating_point_type, double)
 
-#endif  // # if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#endif  // #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
 
 }
 
@@ -572,6 +572,27 @@ TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_gr
     EXPECT_EQ(true, comparison_result_3);
 }
 
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_three_way_comparison_operator)
+{
+    const integer_type v1(1);
+    const integer_type v2(2);
+    const integer_type v3(3);
+    EXPECT_EQ(1, v1.get());
+    EXPECT_EQ(2, v2.get());
+    EXPECT_EQ(3, v3.get());
+    const std::strong_ordering comparison_result_1 = (v1 <=> v2);
+    const std::strong_ordering comparison_result_2 = (v2 <=> v2);
+    const std::strong_ordering comparison_result_3 = (v3 <=> v2);
+    const std::nullptr_t zero = 0;
+    EXPECT_TRUE(comparison_result_1 < zero);
+    EXPECT_TRUE(comparison_result_2 == zero);
+    EXPECT_TRUE(comparison_result_3 > zero);
+}
+
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
 TEST(std_primitive_type_specializer_test_suite, test_integer_type_specializer_pre_increment_operator)
 {
     integer_type v1(10);
@@ -911,6 +932,26 @@ TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_special
     EXPECT_EQ(true, comparison_result_2);
     EXPECT_EQ(true, comparison_result_3);
 }
+
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_three_way_comparison_operator)
+{
+    const floating_point_type v1(1.0);
+    const floating_point_type v2(2.0);
+    const floating_point_type v3(3.0);
+    EXPECT_EQ(1.0, v1.get());
+    EXPECT_EQ(2.0, v2.get());
+    EXPECT_EQ(3.0, v3.get());
+    const std::partial_ordering comparison_result_1 = (v1 <=> v2);
+    const std::partial_ordering comparison_result_2 = (v2 <=> v2);
+    const std::partial_ordering comparison_result_3 = (v3 <=> v2);
+    EXPECT_TRUE(std::is_lt(comparison_result_1));
+    EXPECT_TRUE(std::is_eq(comparison_result_2));
+    EXPECT_TRUE(std::is_gt(comparison_result_3));
+}
+
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_primitive_type_specializer_test_suite, test_floating_point_type_specializer_pre_increment_operator)
 {
@@ -1786,6 +1827,61 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_speci
     }
 }
 
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_three_way_comparison_operator)
+{
+    {
+        const implicit_integer_type v1(1);
+        const implicit_integer_type v2(2);
+        const implicit_integer_type v3(3);
+        EXPECT_EQ(1, v1.get());
+        EXPECT_EQ(2, v2.get());
+        EXPECT_EQ(3, v3.get());
+        const std::strong_ordering comparison_result_1 = (v1 <=> v2);
+        const std::strong_ordering comparison_result_2 = (v2 <=> v2);
+        const std::strong_ordering comparison_result_3 = (v3 <=> v2);
+        const std::nullptr_t zero = 0;
+        EXPECT_TRUE(comparison_result_1 < zero);
+        EXPECT_TRUE(comparison_result_2 == zero);
+        EXPECT_TRUE(comparison_result_3 > zero);
+    }
+    {
+        const int i1 = 1;
+        const implicit_integer_type v2(2);
+        const int i3 = 3;
+        EXPECT_EQ(1, i1);
+        EXPECT_EQ(2, v2);
+        EXPECT_EQ(3, i3);
+        const std::strong_ordering comparison_result_1 = (i1 <=> v2);
+        const std::strong_ordering comparison_result_2 = (v2 <=> v2);
+        const std::strong_ordering comparison_result_3 = (i3 <=> v2);
+        const std::nullptr_t zero = 0;
+        EXPECT_TRUE(comparison_result_1 < zero);
+        EXPECT_TRUE(comparison_result_2 == zero);
+        EXPECT_TRUE(comparison_result_3 > zero);
+    }
+    {
+        const implicit_integer_type v1(1);
+        const int i2 = 2;
+        const implicit_integer_type v2(2);
+        const implicit_integer_type v3(3);
+        EXPECT_EQ(1, v1);
+        EXPECT_EQ(2, i2);
+        EXPECT_EQ(2, v2);
+        EXPECT_EQ(3, v3);
+        const std::strong_ordering comparison_result_1 = (v1 <=> i2);
+        const std::strong_ordering comparison_result_2 = (v2 <=> i2);
+        const std::strong_ordering comparison_result_3 = (v3 <=> i2);
+        const std::nullptr_t zero = 0;
+        EXPECT_TRUE(comparison_result_1 < zero);
+        EXPECT_TRUE(comparison_result_2 == zero);
+        EXPECT_TRUE(comparison_result_3 > zero);
+    }
+}
+
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
 TEST(std_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_increment_operator)
 {
     implicit_integer_type v1(10);
@@ -2376,6 +2472,58 @@ TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_typ
         EXPECT_EQ(true, comparison_result_3);
     }
 }
+
+#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_three_way_comparison_operator)
+{
+    {
+        const implicit_floating_point_type v1(1.0);
+        const implicit_floating_point_type v2(2.0);
+        const implicit_floating_point_type v3(3.0);
+        EXPECT_EQ(1.0, v1);
+        EXPECT_EQ(2.0, v2);
+        EXPECT_EQ(3.0, v3);
+        const std::partial_ordering comparison_result_1 = (v1 <=> v2);
+        const std::partial_ordering comparison_result_2 = (v2 <=> v2);
+        const std::partial_ordering comparison_result_3 = (v3 <=> v2);
+        EXPECT_TRUE(std::is_lt(comparison_result_1));
+        EXPECT_TRUE(std::is_eq(comparison_result_2));
+        EXPECT_TRUE(std::is_gt(comparison_result_3));
+    }
+    {
+        const double i1 = 1.0;
+        const implicit_floating_point_type v2(2.0);
+        const double i3 = 3.0;
+        EXPECT_EQ(1.0, i1);
+        EXPECT_EQ(2.0, v2);
+        EXPECT_EQ(3.0, i3);
+        const std::partial_ordering comparison_result_1 = (i1 <=> v2);
+        const std::partial_ordering comparison_result_2 = (v2 <=> v2);
+        const std::partial_ordering comparison_result_3 = (i3 <=> v2);
+        EXPECT_TRUE(std::is_lt(comparison_result_1));
+        EXPECT_TRUE(std::is_eq(comparison_result_2));
+        EXPECT_TRUE(std::is_gt(comparison_result_3));
+    }
+    {
+        const implicit_floating_point_type v1(1.0);
+        const double i2 = 2.0;
+        const implicit_floating_point_type v2(2.0);
+        const implicit_floating_point_type v3(3.0);
+        EXPECT_EQ(1.0, v1);
+        EXPECT_EQ(2.0, i2);
+        EXPECT_EQ(2.0, v2);
+        EXPECT_EQ(3.0, v3);
+        const std::partial_ordering comparison_result_1 = (v1 <=> i2);
+        const std::partial_ordering comparison_result_2 = (v2 <=> i2);
+        const std::partial_ordering comparison_result_3 = (v3 <=> i2);
+        EXPECT_TRUE(std::is_lt(comparison_result_1));
+        EXPECT_TRUE(std::is_eq(comparison_result_2));
+        EXPECT_TRUE(std::is_gt(comparison_result_3));
+    }
+}
+
+#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_increment_operator)
 {

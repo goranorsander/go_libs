@@ -23,6 +23,10 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#include <compare>
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
 #define GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER( _class_name_, _primitive_type_ ) \
 struct _class_name_##_tag {}; \
 typedef go_boost::utility::primitive_type_specializer<_primitive_type_, _class_name_##_tag> _class_name_;
@@ -311,6 +315,15 @@ public:
     {
         return this->_t >= t._t;
     }
+
+#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+
+    constexpr auto operator<=>(this_const_reference t) const noexcept
+    {
+        return this->_t <=> t._t;
+    }
+
+#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 
