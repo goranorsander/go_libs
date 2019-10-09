@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="72" failures="0" disabled="0" errors="0" timestamp="2019-09-10T16:33:39" time="0.008" name="AllTests">
-  <testsuite name="std_nameless_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0">
+<testsuites tests="72" failures="0" disabled="0" errors="0" timestamp="2019-10-09T21:14:18" time="0.008" name="AllTests">
+  <testsuite name="std_nameless_property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="value_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="reference_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" time="0.001" classname="std_nameless_property_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_nameless_property_test_suite" />
   </testsuite>
-  <testsuite name="std_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="value_properties" status="run" time="0" classname="std_nameless_property_placebo_lockable_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_nameless_property_placebo_lockable_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="std_nameless_property_placebo_lockable_test_suite" />
@@ -22,11 +22,11 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="std_nameless_property_placebo_lockable_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_nameless_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0">
     <testcase name="value_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="reference_properties" status="run" time="0.001" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="reference_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="std_property_placebo_lockable_test_suite" />
@@ -44,11 +44,11 @@
     <testcase name="read_only_proxy_properties" status="run" time="0" classname="std_property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_property_test_suite" />
   </testsuite>
-  <testsuite name="std_u16property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_u16property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="value_properties" status="run" time="0" classname="std_u16property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_u16property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="std_u16property_test_suite" />
-    <testcase name="reference_properties" status="run" time="0" classname="std_u16property_test_suite" />
+    <testcase name="reference_properties" status="run" time="0.001" classname="std_u16property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_u16property_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="std_u16property_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="std_u16property_test_suite" />
@@ -56,10 +56,10 @@
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_u16property_test_suite" />
   </testsuite>
   <testsuite name="std_u32property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="value_properties" status="run" time="0.001" classname="std_u32property_test_suite" />
+    <testcase name="value_properties" status="run" time="0" classname="std_u32property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_u32property_test_suite" />
     <testcase name="write_only_value_properties" status="run" time="0" classname="std_u32property_test_suite" />
-    <testcase name="reference_properties" status="run" time="0" classname="std_u32property_test_suite" />
+    <testcase name="reference_properties" status="run" time="0.001" classname="std_u32property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_u32property_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="std_u32property_test_suite" />
     <testcase name="proxy_properties" status="run" time="0" classname="std_u32property_test_suite" />
@@ -67,14 +67,14 @@
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_u32property_test_suite" />
   </testsuite>
   <testsuite name="std_u8property_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.002">
-    <testcase name="value_properties" status="run" time="0.001" classname="std_u8property_test_suite" />
+    <testcase name="value_properties" status="run" time="0" classname="std_u8property_test_suite" />
     <testcase name="read_only_value_properties" status="run" time="0" classname="std_u8property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" time="0" classname="std_u8property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" time="0.001" classname="std_u8property_test_suite" />
     <testcase name="reference_properties" status="run" time="0" classname="std_u8property_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_u8property_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="std_u8property_test_suite" />
-    <testcase name="proxy_properties" status="run" time="0.001" classname="std_u8property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" time="0" classname="std_u8property_test_suite" />
+    <testcase name="proxy_properties" status="run" time="0" classname="std_u8property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" time="0.001" classname="std_u8property_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_u8property_test_suite" />
   </testsuite>
   <testsuite name="std_wproperty_test_suite" tests="9" failures="0" disabled="0" errors="0" time="0.001">
@@ -84,8 +84,8 @@
     <testcase name="reference_properties" status="run" time="0" classname="std_wproperty_test_suite" />
     <testcase name="read_only_reference_properties" status="run" time="0" classname="std_wproperty_test_suite" />
     <testcase name="write_only_reference_properties" status="run" time="0" classname="std_wproperty_test_suite" />
-    <testcase name="proxy_properties" status="run" time="0" classname="std_wproperty_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" time="0.001" classname="std_wproperty_test_suite" />
+    <testcase name="proxy_properties" status="run" time="0.001" classname="std_wproperty_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" time="0" classname="std_wproperty_test_suite" />
     <testcase name="write_only_proxy_properties" status="run" time="0" classname="std_wproperty_test_suite" />
   </testsuite>
 </testsuites>
