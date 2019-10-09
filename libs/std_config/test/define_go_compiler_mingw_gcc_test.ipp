@@ -8,8 +8,8 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go_gtest/go_test.hpp>
 #include <go/config.hpp>
+#include <go_gtest/go_test.hpp>
 
 namespace
 {
