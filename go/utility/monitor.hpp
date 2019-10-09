@@ -90,7 +90,7 @@ public:
 
     public:
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
-#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
         monitor_object& operator=(monitor_object&&) noexcept = default;
 
@@ -106,7 +106,7 @@ public:
             return *this;
         }
 
-#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 #if !defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 
     private:
@@ -211,7 +211,7 @@ public:
 public:
     this_type& operator=(const this_type&) = delete;
 
-#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
     this_type& operator=(this_type&&) noexcept = default;
 
@@ -227,7 +227,7 @@ public:
         return *this;
     }
 
-#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
     this_type& operator=(const value_type& value) GO_NOEXCEPT_OR_NOTHROW
     {

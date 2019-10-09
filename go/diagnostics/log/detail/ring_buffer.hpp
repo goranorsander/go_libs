@@ -107,7 +107,7 @@ private:
 
         element& operator=(const element&) = delete;
 
-#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
         element& operator=(element&&) noexcept = default;
 

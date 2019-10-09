@@ -910,15 +910,32 @@ public:
         this->fill_buffer_to_capacity();
     }
 
+#if !defined(GO_COMP_CLANG)
+
     this_type& operator=(const this_type&) noexcept = default;
 
-#if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#else
+
+    this_type& operator=(const this_type& other) noexcept
+    {
+        if(this != &other)
+        {
+            _buffer = other._buffer;
+            _front_pos = other._front_pos;
+            _back_pos = other._back_pos;
+        }
+        return *this;
+    }
+
+#endif  // #if !defined(GO_COMP_CLANG)
+
+#if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
     this_type& operator=(this_type&&) GO_NOEXCEPT = default;
 
 #else
 
-    this_type& operator=(this_type&&) GO_NOEXCEPT
+    this_type& operator=(this_type&& other) GO_NOEXCEPT
     {
         if(this != &other)
         {
@@ -929,7 +946,7 @@ public:
         return *this;
     }
 
-#endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+#endif  // #if !(defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR) || defined(GO_COMP_CLANG))
 
     reference operator[](size_type pos)
     {
