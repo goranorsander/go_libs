@@ -18,6 +18,7 @@ GO_BOOST_MESSAGE("Required MFC feature is not supported by this compiler or proj
 #else
 
 #include <go_boost/property.hpp>
+#include <go_boost/utility/primitive_type_specializer.hpp>
 
 namespace go_boost
 {
@@ -92,446 +93,499 @@ inline void AfxTextFloatFormat(CDataExchange* pDX, int nIDC, void* pData, double
     }
 }
 
+inline void AFXAPI DDX_Text_BYTE(CDataExchange* pDX, int nIDC, boost::function<BYTE(void)> get, boost::function<void(const BYTE&)> set)
+{
+    int n = static_cast<int>(get());
+    if (pDX->m_bSaveAndValidate)
+    {
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, &n);
+        if (n > 255)
+        {
+            AfxMessageBox(AFX_IDP_PARSE_BYTE);
+            pDX->Fail();        // throws exception
+        }
+        set(static_cast<BYTE>(n));
+    }
+    else
+    {
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
+    }
+}
+
+inline void AFXAPI DDX_Text_short(CDataExchange* pDX, int nIDC, boost::function<short(void)> get, boost::function<void(const short&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        short v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%hd"), AFX_IDP_PARSE_INT, &v);
+        set(v);
+    }
+    else
+    {
+        const short v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%hd"), AFX_IDP_PARSE_INT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_int(CDataExchange* pDX, int nIDC, boost::function<int(void)> get, boost::function<void(const int&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        int v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, &v);
+        set(v);
+    }
+    else
+    {
+        const int v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_UINT(CDataExchange* pDX, int nIDC, boost::function<UINT(void)> get, boost::function<void(const UINT&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        UINT v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, &v);
+        set(v);
+    }
+    else
+    {
+        const UINT v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_long(CDataExchange* pDX, int nIDC, boost::function<long(void)> get, boost::function<void(const long&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        long v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, &v);
+        set(v);
+    }
+    else
+    {
+        const long v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_DWORD(CDataExchange* pDX, int nIDC, boost::function<DWORD(void)> get, boost::function<void(const DWORD&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        DWORD v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, &v);
+        set(v);
+    }
+    else
+    {
+        const DWORD v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_LONGLONG(CDataExchange* pDX, int nIDC, boost::function<LONGLONG(void)> get, boost::function<void(const LONGLONG&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        LONGLONG v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, &v);
+        set(v);
+    }
+    else
+    {
+        const LONGLONG v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_ULONGLONG(CDataExchange* pDX, int nIDC, boost::function<ULONGLONG(void)> get, boost::function<void(const ULONGLONG&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        ULONGLONG v = 0;
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, &v);
+        set(v);
+    }
+    else
+    {
+        const ULONGLONG v = get();
+        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_float(CDataExchange* pDX, int nIDC, boost::function<float(void)> get, boost::function<void(const float&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        float v = 0;
+        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
+        set(v);
+    }
+    else
+    {
+        float v = get();
+        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
+    }
+}
+
+inline void AFXAPI DDX_Text_double(CDataExchange* pDX, int nIDC, boost::function<double(void)> get, boost::function<void(const double&)> set)
+{
+    if (pDX->m_bSaveAndValidate)
+    {
+        double v = 0;
+        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
+        set(v);
+    }
+    else
+    {
+        double v = get();
+        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
+    }
+}
+
+inline void AFXAPI DDX_Text_CString(CDataExchange* pDX, int nIDC, boost::function<CString(void)> get, boost::function<void(const CString&)> set)
+{
+    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
+    if (pDX->m_bSaveAndValidate)
+    {
+        const int nLen = ::GetWindowTextLength(hWndCtrl);
+        CString v;
+        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
+        v.ReleaseBuffer();
+        set(v);
+    }
+    else
+    {
+        const CString v = get();
+        AfxSetWindowText(hWndCtrl, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_std_string(CDataExchange* pDX, int nIDC, boost::function<std::string(void)> get, boost::function<void(const std::string&)> set)
+{
+    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
+    if (pDX->m_bSaveAndValidate)
+    {
+        const int nLen = ::GetWindowTextLength(hWndCtrl);
+        CString v;
+        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
+        v.ReleaseBuffer();
+#if defined(_UNICODE) || defined(UNICODE)
+        std::string t(nLen, 0);
+        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
+        set(t);
+#else
+        const std::string t(static_cast<const char*>(v));
+        set(t);
+#endif  // #if defined(_UNICODE) || defined(UNICODE)
+    }
+    else
+    {
+        const CString v(get().c_str());
+        AfxSetWindowText(hWndCtrl, v);
+    }
+}
+
+inline void AFXAPI DDX_Text_std_wstring(CDataExchange* pDX, int nIDC, boost::function<std::wstring(void)> get, boost::function<void(const std::wstring&)> set)
+{
+    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
+    if (pDX->m_bSaveAndValidate)
+    {
+        const int nLen = ::GetWindowTextLength(hWndCtrl);
+        CString v;
+        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
+        v.ReleaseBuffer();
+#if defined(_UNICODE) || defined(UNICODE)
+        const std::wstring t(static_cast<const wchar_t*>(v));
+        set(t);
+#else
+        std::wstring t(nLen, 0);
+        ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
+        set(t);
+#endif  // #if defined(_UNICODE) || defined(UNICODE)
+    }
+    else
+    {
+        const CString v(get().c_str());
+        AfxSetWindowText(hWndCtrl, v);
+    }
+}
+
+template<typename PrimitiveType, class PrimitiveTypeSpecializerProperty>
+PrimitiveType get_specialized_primitive_type(const PrimitiveTypeSpecializerProperty& p)
+{
+    return p.get().get();
+}
+
+template<class PrimitiveTypeSpecializer, typename PrimitiveType, class PrimitiveTypeSpecializerProperty>
+void set_specialized_primitive_type(PrimitiveTypeSpecializerProperty& p, const PrimitiveType& v)
+{
+    const PrimitiveTypeSpecializer s(v);
+    return p.set(s);
+}
+
 }
 
 // go_boost::property::property
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<BYTE>& value)
 {
-    int n = static_cast<int>(value);
-    if(pDX->m_bSaveAndValidate)
-    {
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, &n);
-        if(n > 255)
-        {
-            AfxMessageBox(AFX_IDP_PARSE_BYTE);
-            pDX->Fail();        // throws exception
-        }
-        value = static_cast<BYTE>(n);
-    }
-    else
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::property<BYTE>::get, &value), boost::bind(&go_boost::property::property<BYTE>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<short>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        short v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%hd"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const short v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%hd"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::property<short>::get, &value), boost::bind(&go_boost::property::property<short>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<int>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        int v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const int v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::property<int>::get, &value), boost::bind(&go_boost::property::property<int>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<UINT>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        UINT v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, &v);
-        value = v;
-    }
-    else
-    {
-        const UINT v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, v);
-    }
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::property<UINT>::get, &value), boost::bind(&go_boost::property::property<UINT>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<long>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        long v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const long v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::property<long>::get, &value), boost::bind(&go_boost::property::property<long>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<DWORD>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        DWORD v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, &v);
-        value = v;
-    }
-    else
-    {
-        const DWORD v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, v);
-    }
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::property<DWORD>::get, &value), boost::bind(&go_boost::property::property<DWORD>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<LONGLONG>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        LONGLONG v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const LONGLONG v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<LONGLONG>::get, &value), boost::bind(&go_boost::property::property<LONGLONG>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<ULONGLONG>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        ULONGLONG v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const ULONGLONG v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<ULONGLONG>::get, &value), boost::bind(&go_boost::property::property<ULONGLONG>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<float>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        float v = 0;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
-        value = v;
-    }
-    else
-    {
-        float v = value;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
-    }
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::property<float>::get, &value), boost::bind(&go_boost::property::property<float>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<double>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        double v = 0;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
-        value = v;
-    }
-    else
-    {
-        double v = value;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
-    }
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::property<double>::get, &value), boost::bind(&go_boost::property::property<double>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<CString>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-        value = v;
-    }
-    else
-    {
-        const CString v = value;
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::property<CString>::get, &value), boost::bind(&go_boost::property::property<CString>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::string>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-#if defined(GO_BOOST_MSVC_UNICODE)
-        std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
-        value = t;
-#else
-        value = static_cast<const TCHAR*>(v);
-#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
-    }
-    else
-    {
-        const CString v(value().c_str());
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::property<std::string>::get, &value), boost::bind(&go_boost::property::property<std::string>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::wstring>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-#if defined(GO_BOOST_MSVC_UNICODE)
-        value = static_cast<const TCHAR*>(v);
-#else
-        std::wstring t(nLen, 0);
-        ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
-        value = t;
-#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
-    }
-    else
-    {
-        const CString v(value().c_str());
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::property<std::wstring>::get, &value), boost::bind(&go_boost::property::property<std::wstring>::set, &value, _1));
+}
+
+// go_boost::property::property<go_boost::utility::primitive_type_specializer>
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<BYTE, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, BYTE, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<short, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, short, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<int, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, int, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<UINT, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, UINT, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<long, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, long, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<DWORD, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, DWORD, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<LONGLONG, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, LONGLONG, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<ULONGLONG, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, ULONGLONG, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<float, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, float, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<double, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, double, go_boost::property::property<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
 }
 
 // go_boost::property::wproperty
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<BYTE>& value)
 {
-    int n = static_cast<int>(value);
-    if(pDX->m_bSaveAndValidate)
-    {
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, &n);
-        if(n > 255)
-        {
-            AfxMessageBox(AFX_IDP_PARSE_BYTE);
-            pDX->Fail();        // throws exception
-        }
-        value = static_cast<BYTE>(n);
-    }
-    else
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_BYTE, n);
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::wproperty<BYTE>::get, &value), boost::bind(&go_boost::property::wproperty<BYTE>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<short>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        short v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const short v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::wproperty<short>::get, &value), boost::bind(&go_boost::property::wproperty<short>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<int>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        int v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const int v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%d"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::wproperty<int>::get, &value), boost::bind(&go_boost::property::wproperty<int>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<UINT>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        UINT v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, &v);
-        value = v;
-    }
-    else
-    {
-        const UINT v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%u"), AFX_IDP_PARSE_UINT, v);
-    }
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::wproperty<UINT>::get, &value), boost::bind(&go_boost::property::wproperty<UINT>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<long>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        long v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const long v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%ld"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::wproperty<long>::get, &value), boost::bind(&go_boost::property::wproperty<long>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<DWORD>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        DWORD v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, &v);
-        value = v;
-    }
-    else
-    {
-        const DWORD v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%lu"), AFX_IDP_PARSE_UINT, v);
-    }
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::wproperty<DWORD>::get, &value), boost::bind(&go_boost::property::wproperty<DWORD>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<LONGLONG>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        LONGLONG v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const LONGLONG v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64d"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<LONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<LONGLONG>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<ULONGLONG>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        ULONGLONG v = 0;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, &v);
-        value = v;
-    }
-    else
-    {
-        const ULONGLONG v = value;
-        detail::_Afx_DDX_TextWithFormat(pDX, nIDC, _T("%I64u"), AFX_IDP_PARSE_INT, v);
-    }
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<ULONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<ULONGLONG>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<float>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        float v = 0;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
-        value = v;
-    }
-    else
-    {
-        float v = value;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, FLT_DIG);
-    }
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::wproperty<float>::get, &value), boost::bind(&go_boost::property::wproperty<float>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<double>& value)
 {
-    if(pDX->m_bSaveAndValidate)
-    {
-        double v = 0;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
-        value = v;
-    }
-    else
-    {
-        double v = value;
-        detail::AfxTextFloatFormat(pDX, nIDC, &v, v, DBL_DIG);
-    }
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::wproperty<double>::get, &value), boost::bind(&go_boost::property::wproperty<double>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<CString>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-        value = v;
-    }
-    else
-    {
-        const CString v = value;
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::wproperty<CString>::get, &value), boost::bind(&go_boost::property::wproperty<CString>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::string>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-#if defined(GO_BOOST_MSVC_UNICODE)
-        std::string t(nLen, 0);
-        ::WideCharToMultiByte(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()), 0, NULL);
-        value = t;
-#else
-        value = static_cast<const TCHAR*>(v);
-#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
-    }
-    else
-    {
-        const CString v(value().c_str());
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::string>::get, &value), boost::bind(&go_boost::property::wproperty<std::string>::set, &value, _1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::wstring>& value)
 {
-    HWND hWndCtrl = pDX->PrepareEditCtrl(nIDC);
-    if(pDX->m_bSaveAndValidate)
-    {
-        const int nLen = ::GetWindowTextLength(hWndCtrl);
-        CString v;
-        ::GetWindowText(hWndCtrl, v.GetBufferSetLength(nLen), nLen + 1);
-        v.ReleaseBuffer();
-#if defined(GO_BOOST_MSVC_UNICODE)
-        value = static_cast<const TCHAR*>(v);
-#else
-        std::wstring t(nLen, 0);
-        ::MultiByteToWideChar(CP_ACP, 0, v.GetBuffer(), nLen, &(t[0]), static_cast<int>(t.capacity()));
-        value = t;
-#endif  // #if defined(GO_BOOST_MSVC_UNICODE)
-    }
-    else
-    {
-        const CString v(value().c_str());
-        AfxSetWindowText(hWndCtrl, v);
-    }
+    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::wstring>::get, &value), boost::bind(&go_boost::property::wproperty<std::wstring>::set, &value, _1));
+}
+
+// go_boost::property::wproperty<go_boost::utility::primitive_type_specializer>
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<BYTE, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, BYTE>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<short, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, short>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<int, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, int, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<UINT, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, UINT, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<long, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, long, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<DWORD, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, DWORD, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<LONGLONG, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, LONGLONG, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<ULONGLONG, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, ULONGLONG, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<float, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, float, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
+}
+
+template<class PrimitiveTypeSpecializer>
+typename boost::enable_if_c<boost::is_base_of<go_boost::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<PrimitiveTypeSpecializer>& value)
+{
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_primitive_type<double, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, double, go_boost::property::wproperty<PrimitiveTypeSpecializer>>, boost::ref(value), _1));
 }
 
 } // namespace utility
