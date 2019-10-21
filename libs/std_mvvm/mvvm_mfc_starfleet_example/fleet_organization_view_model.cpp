@@ -184,7 +184,7 @@ bool fleet_organization_view_model::can_execute_on_left_double_click_command(con
     fleet_organization_command_parameters::ptr params = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
     if (params)
     {
-        return params->id > 0;
+        return params->id() > fleet_organization_id_type(0);
     }
     return false;
 }

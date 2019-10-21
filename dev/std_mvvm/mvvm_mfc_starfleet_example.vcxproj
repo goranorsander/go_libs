@@ -209,7 +209,9 @@
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\close_spaceship_event.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\delete_dialog_view_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\dialog_view.hpp" />
+    <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\equipment_id_type.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\fleet_organization_command_parameters.hpp" />
+    <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\fleet_organization_id_type.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\fleet_organization_view_tool_bar.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\main_frame_view_menu_bar.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\main_frame_view_model.hpp" />
@@ -230,6 +232,7 @@
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\output_view_list.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\properties_view_grid.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\properties_view_tool_bar.hpp" />
+    <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\quantity_type.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\remove_equipment_command_parameters.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\select_fleet_organization_event.hpp" />
     <ClInclude Include="..\..\libs\std_mvvm\mvvm_mfc_starfleet_example\show_spaceship_event.hpp" />

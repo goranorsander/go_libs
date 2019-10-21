@@ -50,9 +50,9 @@ void product_view::DoDataExchange(CDataExchange* pDX)
     if(m_product_view_model)
     {
         mu::DDX_Text(pDX, IDC_EDIT_PRODUCT_ID, m_product_view_model->product_id);
-        DDV_MinMaxInt(pDX, m_product_view_model->product_id, 0, 10000);
+        DDV_MinMaxInt(pDX, m_product_view_model->product_id().get(), 0, 10000);
         mu::DDX_Text(pDX, IDC_EDIT_ID, m_product_view_model->current_product_id);
-        DDV_MinMaxInt(pDX, m_product_view_model->current_product_id, 0, 10000);
+        DDV_MinMaxInt(pDX, m_product_view_model->current_product_id().get(), 0, 10000);
         mu::DDX_Text(pDX, IDC_EDIT_NAME, m_product_view_model->current_product_name);
         mu::DDX_Text(pDX, IDC_EDIT_UNIT_PRICE, m_product_view_model->current_unit_price);
     }

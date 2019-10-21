@@ -13,13 +13,13 @@
 
 #include <boost/bind.hpp>
 
-equipment_id_type equipment_model::_next_id = 0;
+equipment_id_type equipment_model::_next_id = equipment_id_type(0);
 
 equipment_model::~equipment_model()
 {
 }
 
-equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
+equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const quantity_type& quantity_)
     : equipment_interface()
     , m::wobservable_object()
     , u::noncopyable_nonmovable()
@@ -39,21 +39,21 @@ equipment_model::equipment_model()
     , _id(_next_id++)
     , _category(L"")
     , _name(L"")
-    , _quantity(0)
+    , _quantity(quantity_type(0))
 {
 }
 
-equipment_model::ptr equipment_model::create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
+equipment_model::ptr equipment_model::create(const std::wstring& category_, const std::wstring& name_, const quantity_type& quantity_)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
         : public this_type
     {
         virtual ~make_shared_enabler() GO_BOOST_DEFAULT_DESTRUCTOR
-        make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_) : this_type(category_, name_, quantity_) {}
+        make_shared_enabler(const std::wstring& category_, const std::wstring& name_, const quantity_type& quantity_) : this_type(category_, name_, quantity_) {}
     };
 
-    equipment_model::ptr model = boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const unsigned int&>(category_, name_, quantity_);
+    equipment_model::ptr model = boost::make_shared<make_shared_enabler, const std::wstring&, const std::wstring&, const quantity_type&>(category_, name_, quantity_);
 #else
     equipment_model::ptr model = boost::shared_ptr<this_type>(new this_type(category_, name_, quantity_));
 #endif // BOOST_MSVC > 1500
@@ -66,6 +66,6 @@ void equipment_model::bind_properties()
     id.getter(boost::bind(&this_type::get_property_value<equipment_id_type>, this, boost::cref(_id)));
     category.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_category)));
     name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
-    quantity.getter(boost::bind(&this_type::get_property_value<unsigned int>, this, boost::cref(_quantity)));
-    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
+    quantity.getter(boost::bind(&this_type::get_property_value<quantity_type>, this, boost::cref(_quantity)));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
 }

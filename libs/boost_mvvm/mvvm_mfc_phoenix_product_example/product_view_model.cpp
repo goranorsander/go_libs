@@ -73,16 +73,16 @@ void product_view_model::bind_properties()
     save_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"save_product"), boost::bind(&product_view_model::save_product, this, _1), boost::bind(&product_view_model::can_save_product, this, _1), m::command_parameters::create(), bp::ref(_save_product_command)));
 }
 
-product_model::product_id_type product_view_model::get_current_product_id() const
+product_id_type product_view_model::get_current_product_id() const
 {
     if(*data_context)
     {
         return data_context()->product_id;
     }
-    return 0;
+    return product_id_type(0);
 }
 
-void product_view_model::set_current_product_id(const product_model::product_id_type& v)
+void product_view_model::set_current_product_id(const product_id_type& v)
 {
     if(*data_context)
     {
@@ -107,16 +107,16 @@ void product_view_model::set_current_product_name(const std::wstring& v)
     }
 }
 
-double product_view_model::get_current_unit_price() const
+currency_type product_view_model::get_current_unit_price() const
 {
     if(*data_context)
     {
         return data_context()->unit_price;
     }
-    return 0.0;
+    return currency_type(0.0);
 }
 
-void product_view_model::set_current_unit_price(const double& v)
+void product_view_model::set_current_unit_price(const currency_type& v)
 {
     if(*data_context)
     {
@@ -136,7 +136,7 @@ void product_view_model::get_product(const m::command_parameters::ptr& /*params*
         product_model::ptr new_product = product_model::create();
         new_product->product_id = product_id;
         new_product->product_name = L"New product";
-        new_product->unit_price = 10.0;
+        new_product->unit_price = currency_type(10.0);
         data_context = new_product;
     }
 }

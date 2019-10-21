@@ -159,7 +159,7 @@ void fleet_organization_view::on_deselect(const HTREEITEM /*hItem*/, DWORD_PTR /
 {
     if(data_context())
     {
-        data_context()->selected_fleet_organization_id = 0;
+        data_context()->selected_fleet_organization_id = fleet_organization_id_type(0);
     }
 }
 
@@ -225,7 +225,7 @@ void fleet_organization_view::add_fleet_organization(HTREEITEM parent, const fle
     const int image = child->spaceship_model() ? 1 : 0;
     const HTREEITEM item = _wndFileView->InsertItem(child->name().c_str(), image, image, parent, TVI_LAST);
     const fleet_organization_id_type id = boost::dynamic_pointer_cast<fleet_organization_model>(child)->id;
-    _wndFileView->SetItemData(item, static_cast<DWORD_PTR>(id));
+    _wndFileView->SetItemData(item, static_cast<DWORD_PTR>(id.get()));
     add_fleet_organization(item, child->first_child);
     add_fleet_organization(parent, child->next_sibling);
     _wndFileView->Expand(item, TVE_EXPAND);

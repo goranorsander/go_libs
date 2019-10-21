@@ -14,8 +14,7 @@
 #pragma once
 
 #include "dialog_view.hpp"
-
-typedef unsigned long fleet_organization_id_type;
+#include "fleet_organization_id_type.hpp"
 
 class mdi_frame_interface
 {

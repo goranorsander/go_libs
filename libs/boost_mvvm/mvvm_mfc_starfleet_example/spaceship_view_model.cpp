@@ -165,16 +165,16 @@ void spaceship_view_model::set_captain(const std::wstring& v)
     }
 }
 
-unsigned int spaceship_view_model::get_crew_complement() const
+quantity_type spaceship_view_model::get_crew_complement() const
 {
     if(data_context())
     {
         return data_context()->crew_complement;
     }
-    return 0;
+    return quantity_type(0);
 }
 
-void spaceship_view_model::set_crew_complement(const unsigned int& v)
+void spaceship_view_model::set_crew_complement(const quantity_type& v)
 {
     if(data_context() && v != data_context()->crew_complement())
     {

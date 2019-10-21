@@ -15,10 +15,14 @@
 
 #include <go/mvvm.hpp>
 #include <go/property.hpp>
+#include <go/utility.hpp>
 
 namespace m = go::mvvm;
 namespace p = go::property;
 namespace u = go::utility;
+
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
+GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object
@@ -28,7 +32,6 @@ public:
     typedef product_model this_type;
     typedef typename std::shared_ptr<this_type> ptr;
     typedef typename std::weak_ptr<this_type> wptr;
-    typedef int product_id_type;
 
 public:
     virtual ~product_model() GO_DEFAULT_DESTRUCTOR
@@ -45,12 +48,12 @@ private:
 public:
     p::wproperty<product_id_type> product_id;
     p::wproperty<std::wstring> product_name;
-    p::wproperty<double> unit_price;
+    p::wproperty<currency_type> unit_price;
 
 private:
     product_id_type _product_id;
     std::wstring _product_name;
-    double _unit_price;
+    currency_type _unit_price;
 };
 
 #endif  // #ifndef GO_PRODUCT_MODEL_HPP_INCLUDED

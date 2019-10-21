@@ -34,7 +34,7 @@ public:
     rop::wproperty<std::wstring> name;
 
     p::wproperty<std::wstring> captain;
-    p::wproperty<unsigned int> crew_complement;
+    p::wproperty<quantity_type> crew_complement;
     p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr> equipment;
 
 protected:

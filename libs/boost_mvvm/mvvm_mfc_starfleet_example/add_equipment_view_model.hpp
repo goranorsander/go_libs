@@ -47,14 +47,14 @@ private:
 public:
     p::wproperty<std::wstring> category;
     p::wproperty<std::wstring> name;
-    p::wproperty<unsigned int> quantity;
+    p::wproperty<quantity_type> quantity;
 
 private:
     m::wobservable_deque<equipment_interface::ptr>::wptr _equipment;
 
     std::wstring _category;
     std::wstring _name;
-    unsigned int _quantity;
+    quantity_type _quantity;
 };
 
 #endif  // #ifndef GO_BOOST_ADD_EQUIPMENT_VIEW_MODEL_HPP_INCLUDED

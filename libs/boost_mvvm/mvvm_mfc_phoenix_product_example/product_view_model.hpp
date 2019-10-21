@@ -44,23 +44,23 @@ private:
     void bind_properties();
 
 public:
-    p::wproperty<product_model::product_id_type> product_id;
-    p::wproperty<product_model::product_id_type> current_product_id;
+    p::wproperty<product_id_type> product_id;
+    p::wproperty<product_id_type> current_product_id;
     p::wproperty<std::wstring> current_product_name;
-    p::wproperty<double> current_unit_price;
+    p::wproperty<currency_type> current_unit_price;
 
     rop::wproperty<m::wcommand_interface::ptr> get_product_command;
     rop::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
-    product_model::product_id_type get_current_product_id() const;
-    void set_current_product_id(const product_model::product_id_type& v);
+    product_id_type get_current_product_id() const;
+    void set_current_product_id(const product_id_type& v);
 
     std::wstring get_current_product_name() const;
     void set_current_product_name(const std::wstring& v);
 
-    double get_current_unit_price() const;
-    void set_current_unit_price(const double& v);
+    currency_type get_current_unit_price() const;
+    void set_current_unit_price(const currency_type& v);
 
     void get_product(const m::command_parameters::ptr& /*params*/);
     bool can_get_product(const m::command_parameters::ptr& /*params*/) const;
@@ -69,7 +69,7 @@ private:
     bool can_save_product(const m::command_parameters::ptr& /*params*/) const;
 
 private:
-    product_model::product_id_type _product_id;
+    product_id_type _product_id;
     m::wcommand_interface::ptr _get_product_command;
     m::wcommand_interface::ptr _save_product_command;
 

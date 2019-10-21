@@ -46,16 +46,16 @@ private:
     void bind_properties();
 
 public:
-    p::wproperty<product_model::product_id_type> product_id;
-    p::wproperty<product_model::product_id_type> current_product_id;
+    p::wproperty<product_id_type> product_id;
+    p::wproperty<product_id_type> current_product_id;
     p::wproperty<std::wstring> current_product_name;
-    p::wproperty<double> current_unit_price;
+    p::wproperty<currency_type> current_unit_price;
 
     rop::wproperty<m::wcommand_interface::ptr> get_product_command;
     rop::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
-    product_model::product_id_type _product_id;
+    product_id_type _product_id;
     m::wcommand_interface::ptr _get_product_command;
     m::wcommand_interface::ptr _save_product_command;
 

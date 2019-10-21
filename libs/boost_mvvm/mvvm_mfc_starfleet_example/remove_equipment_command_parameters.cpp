@@ -24,8 +24,8 @@ remove_equipment_command_parameters::remove_equipment_command_parameters(const f
 
 remove_equipment_command_parameters::remove_equipment_command_parameters()
     : m::command_parameters()
-    , spaceship_id(0)
-    , equipment_id(0)
+    , spaceship_id(fleet_organization_id_type(0))
+    , equipment_id(equipment_id_type(0))
 {
 }
 

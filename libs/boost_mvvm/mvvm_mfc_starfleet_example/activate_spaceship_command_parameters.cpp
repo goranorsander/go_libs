@@ -23,7 +23,7 @@ activate_spaceship_command_parameters::activate_spaceship_command_parameters(con
 
 activate_spaceship_command_parameters::activate_spaceship_command_parameters()
     : m::command_parameters()
-    , id(0)
+    , id(fleet_organization_id_type(0))
 {
 }
 

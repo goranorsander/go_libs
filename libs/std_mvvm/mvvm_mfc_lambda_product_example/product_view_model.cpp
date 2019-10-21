@@ -49,14 +49,14 @@ product_view_model::ptr product_view_model::create()
 
 void product_view_model::bind_properties()
 {
-    product_id.getter([this]() -> int { return _product_id; });
-    product_id.setter([this](const product_model::product_id_type& v) { if(v != _product_id) { _product_id = v; notify_property_changed(this->shared_from_this(), product_id.name()); } });
-    current_product_id.getter([this]() -> product_model::product_id_type { if(*data_context) { return data_context()->product_id; } return 0; });
-    current_product_id.setter([this](const product_model::product_id_type& v) { if(*data_context) { data_context()->product_id = v; } });
+    product_id.getter([this]() -> product_id_type { return _product_id; });
+    product_id.setter([this](const product_id_type& v) { if(v != _product_id) { _product_id = v; notify_property_changed(this->shared_from_this(), product_id.name()); } });
+    current_product_id.getter([this]() -> product_id_type { if(*data_context) { return data_context()->product_id; } return product_id_type(0); });
+    current_product_id.setter([this](const product_id_type& v) { if(*data_context) { data_context()->product_id = v; } });
     current_product_name.getter([this]() -> std::wstring { if(*data_context) { return data_context()->product_name; } return std::wstring(); });
     current_product_name.setter([this](const std::wstring& v) { if(*data_context) { data_context()->product_name = v; } });
-    current_unit_price.getter([this]() -> double { if(*data_context) { return data_context()->unit_price; } return 0.0; });
-    current_unit_price.setter([this](const double& v) { if(*data_context) { data_context()->unit_price = v; } });
+    current_unit_price.getter([this]() -> currency_type { if(*data_context) { return data_context()->unit_price; } return currency_type(0.0); });
+    current_unit_price.setter([this](const currency_type& v) { if(*data_context) { data_context()->unit_price = v; } });
     get_product_command.getter(
         [this]()
         {
@@ -75,7 +75,7 @@ void product_view_model::bind_properties()
                             product_model::ptr new_product = product_model::create();
                             new_product->product_id = product_id;
                             new_product->product_name = L"New product";
-                            new_product->unit_price = 10.0;
+                            new_product->unit_price = currency_type(10.0);
                             data_context = new_product;
                         }
                     },

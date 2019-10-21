@@ -29,9 +29,9 @@ protected:
     product_repository_interface();
 
 public:
-    virtual product_model::ptr get(const product_model::product_id_type& product_id) const = 0;
+    virtual product_model::ptr get(const product_id_type& product_id) const = 0;
     virtual bool insert(const product_model::ptr& product) = 0;
-    virtual bool remove(const product_model::product_id_type& product_id) = 0;
+    virtual bool remove(const product_id_type& product_id) = 0;
 };
 
 inline product_repository_interface::~product_repository_interface()

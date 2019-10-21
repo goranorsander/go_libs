@@ -43,7 +43,7 @@ public:
     rop::wproperty<std::wstring> spaceship_class;
     rop::wproperty<std::wstring> name;
     p::wproperty<std::wstring> captain;
-    p::wproperty<unsigned int> crew_complement;
+    p::wproperty<quantity_type> crew_complement;
     p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr> equipment;
     p::wproperty<equipment_interface::ptr> selected_equipment;
 
@@ -67,8 +67,8 @@ private:
     std::wstring get_name() const;
     std::wstring get_captain() const;
     void set_captain(const std::wstring& v);
-    unsigned int get_crew_complement() const;
-    void set_crew_complement(const unsigned int& v);
+    quantity_type get_crew_complement() const;
+    void set_crew_complement(const quantity_type& v);
     m::wobservable_deque<equipment_interface::ptr>::ptr get_equipment() const;
     void set_equipment(const m::wobservable_deque<equipment_interface::ptr>::ptr& v);
     void set_selected_equipment(const equipment_interface::ptr& v);

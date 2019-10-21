@@ -23,7 +23,7 @@ show_spaceship_event::show_spaceship_event(const fleet_organization_id_type& id_
 
 show_spaceship_event::show_spaceship_event()
     : m::wevent(L"")
-    , id(0)
+    , id(fleet_organization_id_type(0))
 {
 }
 

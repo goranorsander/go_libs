@@ -72,7 +72,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if(csp)
         {
             return us::format(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]",
-                (csp->spaceship_vm() ? *csp->spaceship_vm()->spaceship_id : 0));
+                (csp->spaceship_vm() ? csp->spaceship_vm()->spaceship_id().get() : 0));
         }
         const delete_dialog_view_command_parameters::ptr dvp = std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
         if (dvp)
@@ -109,7 +109,7 @@ std::wstring event_information(const m::wevent::ptr& e)
     {
         return us::format(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]",
             (cs->spaceship_vm() ? reinterpret_cast<unsigned __int3264>(cs->spaceship_vm().get()) : 0),
-            (cs->spaceship_vm() ? *cs->spaceship_vm()->spaceship_id : 0));
+            (cs->spaceship_vm() ? cs->spaceship_vm()->spaceship_id().get() : 0));
     }
     const select_fleet_organization_event::ptr sfo = std::dynamic_pointer_cast<select_fleet_organization_event>(e);
     if(sfo)

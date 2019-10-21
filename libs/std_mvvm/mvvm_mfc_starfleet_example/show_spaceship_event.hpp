@@ -15,9 +15,8 @@
 
 #include <go/mvvm/event.hpp>
 #include <go/property/nameless/read_only_value_property.hpp>
+#include "fleet_organization_id_type.hpp"
 #include "spaceship_view_model.hpp"
-
-typedef unsigned long fleet_organization_id_type;
 
 class show_spaceship_event
     : public m::wevent

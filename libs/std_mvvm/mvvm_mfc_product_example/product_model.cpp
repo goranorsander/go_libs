@@ -51,12 +51,12 @@ void product_model::bind_properties()
     unit_price.setter(std::bind(&product_model::set_unit_price, this, ph::_1));
 }
 
-product_model::product_id_type product_model::get_product_id() const
+product_id_type product_model::get_product_id() const
 {
     return _product_id;
 }
 
-void product_model::set_product_id(const product_model::product_id_type& v)
+void product_model::set_product_id(const product_id_type& v)
 {
     if(v != _product_id)
     {
@@ -79,12 +79,12 @@ void product_model::set_product_name(const std::wstring& v)
     }
 }
 
-double product_model::get_unit_price() const
+currency_type product_model::get_unit_price() const
 {
     return _unit_price;
 }
 
-void product_model::set_unit_price(const double& v)
+void product_model::set_unit_price(const currency_type& v)
 {
     if(v != _unit_price)
     {

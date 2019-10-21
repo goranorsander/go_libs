@@ -23,7 +23,7 @@ product_repository::ptr product_repository::create()
     return std::make_shared<make_shared_enabler>();
 }
 
-product_model::ptr product_repository::get(const product_model::product_id_type& product_id) const
+product_model::ptr product_repository::get(const product_id_type& product_id) const
 {
     products_type::const_iterator it = _products.find(product_id);
     if(it != _products.end())
@@ -48,7 +48,7 @@ bool product_repository::insert(const product_model::ptr& product)
     return false;
 }
 
-bool product_repository::remove(const product_model::product_id_type& product_id)
+bool product_repository::remove(const product_id_type& product_id)
 {
     products_type::const_iterator it = _products.find(product_id);
     if(it != _products.end())

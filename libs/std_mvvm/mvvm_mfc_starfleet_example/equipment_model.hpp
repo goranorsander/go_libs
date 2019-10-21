@@ -14,9 +14,8 @@
 #pragma once
 
 #include <go/mvvm.hpp>
+#include "equipment_id_type.hpp"
 #include "equipment_interface.hpp"
-
-typedef unsigned long equipment_id_type;
 
 class equipment_model
     : public equipment_interface

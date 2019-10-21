@@ -277,7 +277,7 @@ void spaceship_view::clear_equipment_list()
 {
     _equipment_list_ctrl.DeleteAllItems();
     _equipment_list_data.clear();
-    _selected_equipment_id = 0;
+    _selected_equipment_id = equipment_id_type(0);
 }
 
 void spaceship_view::populate_equipment_list()
@@ -337,7 +337,7 @@ void spaceship_view::populate_equipment_list()
                 lvi.pszText = const_cast<wchar_t*>(text.c_str());
                 _equipment_list_ctrl.SetItem(&lvi);
 
-                _equipment_list_ctrl.SetItemData(item_number++, equipment_id);
+                _equipment_list_ctrl.SetItemData(item_number++, equipment_id.get());
             }
         }
     }

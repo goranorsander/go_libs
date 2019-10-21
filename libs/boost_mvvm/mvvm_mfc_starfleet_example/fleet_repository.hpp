@@ -13,9 +13,8 @@
 
 #pragma once
 
+#include "fleet_organization_id_type.hpp"
 #include "fleet_repository_interface.hpp"
-
-typedef unsigned long fleet_organization_id_type;
 
 class fleet_repository
     : public fleet_repository_interface

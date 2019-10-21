@@ -15,8 +15,7 @@
 
 #include <go/mvvm/event.hpp>
 #include <go/property/nameless/read_only_value_property.hpp>
-
-typedef unsigned long fleet_organization_id_type;
+#include "fleet_organization_id_type.hpp"
 
 class select_fleet_organization_event
     : public m::wevent

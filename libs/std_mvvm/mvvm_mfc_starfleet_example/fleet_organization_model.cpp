@@ -14,7 +14,7 @@
 
 #include <go/diagnostics/log.hpp>
 
-fleet_organization_id_type fleet_organization_model::_next_id = 0;
+fleet_organization_id_type fleet_organization_model::_next_id = fleet_organization_id_type(0);
 
 fleet_organization_model::~fleet_organization_model()
 {

@@ -34,12 +34,12 @@ protected:
 public:
     static ptr create();
 
-    virtual product_model::ptr get(const product_model::product_id_type& product_id) const override;
+    virtual product_model::ptr get(const product_id_type& product_id) const override;
     virtual bool insert(const product_model::ptr& product) override;
-    virtual bool remove(const product_model::product_id_type& product_id) override;
+    virtual bool remove(const product_id_type& product_id) override;
 
 private:
-    typedef std::map<product_model::product_id_type, product_model::ptr> products_type;
+    typedef std::map<product_id_type, product_model::ptr> products_type;
 
     products_type _products;
 };

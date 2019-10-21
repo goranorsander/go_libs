@@ -14,9 +14,8 @@
 #pragma once
 
 #include <go_boost/mvvm.hpp>
+#include "equipment_id_type.hpp"
 #include "equipment_interface.hpp"
-
-typedef unsigned long equipment_id_type;
 
 class equipment_model
     : public equipment_interface
@@ -32,7 +31,7 @@ public:
     virtual ~equipment_model();
 
 protected:
-    equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
+    equipment_model(const std::wstring& category_, const std::wstring& name_, const quantity_type& quantity_);
 
 private:
     equipment_model();
@@ -41,7 +40,7 @@ public:
     rop::wproperty<equipment_id_type> id;
 
 public:
-    static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);
+    static ptr create(const std::wstring& category_, const std::wstring& name_, const quantity_type& quantity_);
 
 protected:
     virtual void bind_properties() GO_BOOST_OVERRIDE;
@@ -52,7 +51,7 @@ private:
 
     const std::wstring _category;
     const std::wstring _name;
-    unsigned int _quantity;
+    quantity_type _quantity;
 };
 
 #endif  // #ifndef GO_BOOST_EQUIPMENT_MODEL_HPP_INCLUDED

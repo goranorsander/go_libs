@@ -15,10 +15,14 @@
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>
+#include <go_boost/utility/primitive_type_specializer.hpp>
 
 namespace m = go_boost::mvvm;
 namespace p = go_boost::property;
 namespace u = go_boost::utility;
+
+GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
+GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object
@@ -28,7 +32,6 @@ public:
     typedef product_model this_type;
     typedef GO_BOOST_TYPENAME boost::shared_ptr<this_type> ptr;
     typedef GO_BOOST_TYPENAME boost::weak_ptr<this_type> wptr;
-    typedef int product_id_type;
 
 public:
     virtual ~product_model();
@@ -45,7 +48,7 @@ private:
 public:
     p::wproperty<product_id_type> product_id;
     p::wproperty<std::wstring> product_name;
-    p::wproperty<double> unit_price;
+    p::wproperty<currency_type> unit_price;
 
 private:
     product_id_type get_product_id() const;
@@ -54,13 +57,13 @@ private:
     std::wstring get_product_name() const;
     void set_product_name(const std::wstring& v);
 
-    double get_unit_price() const;
-    void set_unit_price(const double& v);
+    currency_type get_unit_price() const;
+    void set_unit_price(const currency_type& v);
 
 private:
     product_id_type _product_id;
     std::wstring _product_name;
-    double _unit_price;
+    currency_type _unit_price;
 };
 
 #endif  // #ifndef GO_BOOST_PRODUCT_MODEL_HPP_INCLUDED

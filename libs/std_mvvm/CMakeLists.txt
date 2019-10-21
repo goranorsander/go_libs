@@ -173,15 +173,18 @@ if(WIN32 AND BUILD_STD_MFC_EXAMPLES)
         ./mvvm_mfc_starfleet_example/mvvm_mfc_starfleet_example_namespace_alias.hpp
     )
     set(STD_MVVM_MFC_STARFLEET_EXAMPLE_MVVM_MODEL_CODE
+        ./mvvm_mfc_starfleet_example/equipment_id_type.hpp
         ./mvvm_mfc_starfleet_example/equipment_interface.hpp
         ./mvvm_mfc_starfleet_example/equipment_model.cpp
         ./mvvm_mfc_starfleet_example/equipment_model.hpp
+        ./mvvm_mfc_starfleet_example/fleet_organization_id_type.hpp
         ./mvvm_mfc_starfleet_example/fleet_organization_interface.hpp
         ./mvvm_mfc_starfleet_example/fleet_organization_model.cpp
         ./mvvm_mfc_starfleet_example/fleet_organization_model.hpp
         ./mvvm_mfc_starfleet_example/fleet_repository.cpp
         ./mvvm_mfc_starfleet_example/fleet_repository.hpp
         ./mvvm_mfc_starfleet_example/fleet_repository_interface.hpp
+        ./mvvm_mfc_starfleet_example/quantity_type.hpp
         ./mvvm_mfc_starfleet_example/spaceship_interface.hpp
         ./mvvm_mfc_starfleet_example/spaceship_model.cpp
         ./mvvm_mfc_starfleet_example/spaceship_model.hpp

@@ -14,6 +14,7 @@
 #pragma once
 
 #include <go_boost/property.hpp>
+#include "quantity_type.hpp"
 
 class equipment_interface
 {
@@ -31,7 +32,7 @@ protected:
 public:
     rop::wproperty<std::wstring> category;
     rop::wproperty<std::wstring> name;
-    p::wproperty<unsigned int> quantity;
+    p::wproperty<quantity_type> quantity;
 
 protected:
     virtual void bind_properties() = 0;

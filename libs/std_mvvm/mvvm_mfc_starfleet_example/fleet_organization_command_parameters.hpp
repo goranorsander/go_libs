@@ -15,8 +15,7 @@
 
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/nameless/value_property.hpp>
-
-typedef unsigned long fleet_organization_id_type;
+#include "fleet_organization_id_type.hpp"
 
 class fleet_organization_command_parameters
     : public m::command_parameters

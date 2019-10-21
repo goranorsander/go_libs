@@ -15,8 +15,7 @@
 
 #include <go_boost/mvvm/command_parameters.hpp>
 #include <go_boost/property/nameless/value_property.hpp>
-
-typedef unsigned long fleet_organization_id_type;
+#include "fleet_organization_id_type.hpp"
 
 class activate_spaceship_command_parameters
     : public m::command_parameters

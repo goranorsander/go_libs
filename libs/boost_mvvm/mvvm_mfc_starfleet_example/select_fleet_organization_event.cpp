@@ -25,7 +25,7 @@ select_fleet_organization_event::select_fleet_organization_event(const fleet_org
 
 select_fleet_organization_event::select_fleet_organization_event()
     : m::wevent(L"")
-    , id(0)
+    , id(fleet_organization_id_type(0))
     , selected_by(L"")
 {
 }

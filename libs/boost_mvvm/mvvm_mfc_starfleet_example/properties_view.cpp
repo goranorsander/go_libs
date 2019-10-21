@@ -163,7 +163,7 @@ void properties_view::populate_with(const spaceship_interface::ptr& spaceship)
     captain_prop->AllowEdit(FALSE);
     spaceship_group->AddSubItem(captain_prop.detach());
 
-    u::scope_guard_new<CMFCPropertyGridProperty> crew_complement_prop(new CMFCPropertyGridProperty(_T("Crew complement"), boost::lexical_cast<std::wstring>(spaceship->crew_complement()).c_str(), _T("Spaceship crew complement")));
+    u::scope_guard_new<CMFCPropertyGridProperty> crew_complement_prop(new CMFCPropertyGridProperty(_T("Crew complement"), boost::lexical_cast<std::wstring>(spaceship->crew_complement().get()).c_str(), _T("Spaceship crew complement")));
     crew_complement_prop->AllowEdit(FALSE);
     spaceship_group->AddSubItem(crew_complement_prop.detach());
 
@@ -210,7 +210,7 @@ void properties_view::populate_with(const m::wobservable_deque<equipment_interfa
             name_prop->AllowEdit(FALSE);
             category_group->AddSubItem(name_prop.detach());
 
-            u::scope_guard_new<CMFCPropertyGridProperty> quantity_prop(new CMFCPropertyGridProperty(_T("Quantity"), boost::lexical_cast<std::wstring>(e->quantity()).c_str(), _T("Equipment quantity")));
+            u::scope_guard_new<CMFCPropertyGridProperty> quantity_prop(new CMFCPropertyGridProperty(_T("Quantity"), boost::lexical_cast<std::wstring>(e->quantity().get()).c_str(), _T("Equipment quantity")));
             quantity_prop->AllowEdit(FALSE);
             category_group->AddSubItem(quantity_prop.detach());
         }

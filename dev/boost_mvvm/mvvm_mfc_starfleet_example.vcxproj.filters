@@ -174,6 +174,15 @@
     <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\remove_equipment_command_parameters.hpp">
       <Filter>MVVM Example\View Model\Command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\equipment_id_type.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\fleet_organization_id_type.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\quantity_type.hpp">
+      <Filter>MVVM Example\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\boost_mvvm\mvvm_mfc_starfleet_example\mvvm_mfc_starfleet_example.cpp">

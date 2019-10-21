@@ -60,19 +60,19 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if(asp)
         {
             return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]")
-                % (*asp->id)).str();
+                % (*asp->id).get()).str();
         }
         const add_equipment_command_parameters::ptr aep = boost::dynamic_pointer_cast<add_equipment_command_parameters>(p);
         if (aep)
         {
             return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]")
-                % (*aep->spaceship_id)).str();
+                % (*aep->spaceship_id).get()).str();
         }
         const close_spaceship_command_parameters::ptr csp = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
         if(csp)
         {
             return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]")
-                % (csp->spaceship_vm() ? *csp->spaceship_vm()->spaceship_id : 0)).str();
+                % (csp->spaceship_vm() ? (*csp->spaceship_vm()->spaceship_id).get() : 0)).str();
         }
         const delete_dialog_view_command_parameters::ptr dvp = boost::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
         if (dvp)
@@ -84,7 +84,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if(fop)
         {
             return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]")
-                % (*fop->id)).str();
+                % (*fop->id).get()).str();
         }
         const open_add_equipment_view_command_parameters::ptr oep = boost::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
         if (oep)
@@ -96,7 +96,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if (rep)
         {
             return (boost::wformat(L"class go_boost::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]")
-                % rep->spaceship_id.get() % rep->equipment_id.get()).str();
+                % (*rep->spaceship_id).get() % (*rep->equipment_id).get()).str();
         }
     }
     return L"class go_boost::mvvm::wcommand_interface";
@@ -109,20 +109,20 @@ std::wstring event_information(const m::wevent::ptr& e)
     {
         return (boost::wformat(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]")
             % (cs->spaceship_vm() ? reinterpret_cast<unsigned __int3264>(cs->spaceship_vm().get()) : 0)
-            % (cs->spaceship_vm() ? *cs->spaceship_vm()->spaceship_id : 0)).str();
+            % (cs->spaceship_vm() ? (*cs->spaceship_vm()->spaceship_id).get() : 0)).str();
     }
     const select_fleet_organization_event::ptr sfo = boost::dynamic_pointer_cast<select_fleet_organization_event>(e);
     if(sfo)
     {
         return (boost::wformat(L"class select_fleet_organization_event[id=%d, selected_by=%s]")
-            % (*sfo->id)
+            % (*sfo->id).get()
             % (*sfo->selected_by).c_str()).str();
     }
     const show_spaceship_event::ptr ss = boost::dynamic_pointer_cast<show_spaceship_event>(e);
     if(ss)
     {
         return (boost::wformat(L"class show_spaceship_event[id=%d]")
-            % (*ss->id)).str();
+            % (*ss->id).get()).str();
     }
     return L"class go_boost::mvvm::wevent";
 }
@@ -135,7 +135,7 @@ std::wstring object_information(const m::object::ptr& o)
         return (boost::wformat(L"class equipment_model[category=%s, name=%s, quantity=%d]")
             % (*e->category).c_str()
             % (*e->name).c_str()
-            % (*e->quantity)).str();
+            % (*e->quantity).get()).str();
     }
     m::wobservable_deque<equipment_interface::ptr>::ptr el = boost::dynamic_pointer_cast<m::wobservable_deque<equipment_interface::ptr>>(o);
     if(el)
@@ -162,7 +162,7 @@ std::wstring object_information(const m::object::ptr& o)
             % (*s->name).c_str()
             % (*s->equipment ? (*s->equipment)->size() : 0)
             % (*s->captain).c_str()
-            % (*s->crew_complement)).str();
+            % (*s->crew_complement).get()).str();
     }
     fleet_organization_view_model::ptr fleet_org_vm = boost::dynamic_pointer_cast<fleet_organization_view_model>(o);
     if(fleet_org_vm)

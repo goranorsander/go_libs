@@ -27,7 +27,7 @@ add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<eq
     , _equipment(equipment)
     , _category(L"New category")
     , _name(L"New equipment")
-    , _quantity(0)
+    , _quantity(quantity_type(0))
 {
 }
 
@@ -74,6 +74,6 @@ void add_equipment_view_model::bind_properties()
     category.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(category), boost::ref(_category), _1));
     name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
     name.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(name), boost::ref(_name), _1));
-    quantity.getter(boost::bind(&this_type::get_property_value<unsigned int>, this, boost::cref(_quantity)));
-    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
+    quantity.getter(boost::bind(&this_type::get_property_value<quantity_type>, this, boost::cref(_quantity)));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
 }
