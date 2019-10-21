@@ -41,7 +41,7 @@ protected:
 
 }
 
-template<typename PrimitiveType, class Tag> class primitive_type_implicit_specializer
+template<typename PrimitiveType, class TypeTraits> class primitive_type_implicit_specializer
     : detail::primitive_type_implicit_specializer_base
 {
 public:
@@ -272,15 +272,15 @@ inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive
 Parameter | Description
 -|-
 PrimitiveType | The primitive value type
-Tag | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
+TypeTraits | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
 
 ## Member types
 
 Member type | Definition
 -|-
-this_type | primitive_type_implicit_specializer<PrimitiveType, Tag>
+this_type | primitive_type_implicit_specializer<PrimitiveType, TypeTraits>
 primitive_type | PrimitiveType
-tag_type | Tag
+type_traits_type | TypeTraits
 this_reference | this_type&
 this_const_reference | const this_type&
 rvalue_reference | primitive_type&&

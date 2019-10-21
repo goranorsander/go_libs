@@ -35,14 +35,26 @@ namespace go_boost
 {
 namespace utility
 {
+namespace detail
+{
 
-template<typename PrimitiveType, class Tag>
+class primitive_type_specializer_base
+{
+protected:
+    ~primitive_type_specializer_base() BOOST_NOEXCEPT GO_BOOST_DEFAULT_DESTRUCTOR
+    primitive_type_specializer_base() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_CONSTRUCTOR
+};
+
+}
+
+template<typename PrimitiveType, class TypeTraits>
 class primitive_type_specializer
+    : detail::primitive_type_specializer_base
 {
 public:
-    typedef primitive_type_specializer<PrimitiveType, Tag> this_type;
+    typedef primitive_type_specializer<PrimitiveType, TypeTraits> this_type;
     typedef PrimitiveType primitive_type;
-    typedef Tag tag_type;
+    typedef TypeTraits type_traits_type;
     typedef this_type& this_reference;
     typedef const this_type& this_const_reference;
 
@@ -57,33 +69,38 @@ public:
     ~primitive_type_specializer() BOOST_NOEXCEPT GO_BOOST_DEFAULT_DESTRUCTOR
 
     primitive_type_specializer() BOOST_NOEXCEPT_OR_NOTHROW
-        : _t(static_cast<primitive_type>(0))
+        : detail::primitive_type_specializer_base()
+        , _t(static_cast<primitive_type>(0))
     {
     }
 
     primitive_type_specializer(this_const_reference t) BOOST_NOEXCEPT_OR_NOTHROW
-        : _t(t._t)
+        : detail::primitive_type_specializer_base()
+        , _t(t._t)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     primitive_type_specializer(this_rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
-        : _t(std::move(t._t))
+        : detail::primitive_type_specializer_base()
+        , _t(std::move(t._t))
     {
     }
 
 #endif  // #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(const primitive_type& t) BOOST_NOEXCEPT_OR_NOTHROW
-        : _t(t)
+        : detail::primitive_type_specializer_base()
+        , _t(t)
     {
     }
 
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(rvalue_reference t) BOOST_NOEXCEPT_OR_NOTHROW
-        : _t(std::move(t))
+        : detail::primitive_type_specializer_base()
+        , _t(std::move(t))
     {
     }
 

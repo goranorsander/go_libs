@@ -30,14 +30,26 @@ namespace go
 {
 namespace utility
 {
+namespace detail
+{
 
-template<typename PrimitiveType, class Tag>
+class primitive_type_specializer_base
+{
+protected:
+    ~primitive_type_specializer_base() GO_NOEXCEPT GO_DEFAULT_DESTRUCTOR
+    primitive_type_specializer_base() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_CONSTRUCTOR
+};
+
+}
+
+template<typename PrimitiveType, class TypeTraits>
 class primitive_type_specializer
+    : detail::primitive_type_specializer_base
 {
 public:
-    using this_type = primitive_type_specializer<PrimitiveType, Tag>;
+    using this_type = primitive_type_specializer<PrimitiveType, TypeTraits>;
     using primitive_type = PrimitiveType;
-    using tag_type = Tag;
+    using type_traits_type = TypeTraits;
     using this_reference = this_type&;
     using this_const_reference = const this_type&;
 
@@ -52,33 +64,38 @@ public:
     ~primitive_type_specializer() GO_NOEXCEPT = default;
 
     primitive_type_specializer() GO_NOEXCEPT_OR_NOTHROW
-        : _t(static_cast<primitive_type>(0))
+        : detail::primitive_type_specializer_base()
+        , _t(static_cast<primitive_type>(0))
     {
     }
 
     primitive_type_specializer(this_const_reference t) GO_NOEXCEPT_OR_NOTHROW
-        : _t(t._t)
+        : detail::primitive_type_specializer_base()
+        , _t(t._t)
     {
     }
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     primitive_type_specializer(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
-        : _t(std::move(t._t))
+        : detail::primitive_type_specializer_base()
+        , _t(std::move(t._t))
     {
     }
 
 #endif  // #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(const primitive_type& t) GO_NOEXCEPT_OR_NOTHROW
-        : _t(t)
+        : detail::primitive_type_specializer_base()
+        , _t(t)
     {
     }
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
     explicit primitive_type_specializer(rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
-        : _t(std::move(t))
+        : detail::primitive_type_specializer_base()
+        , _t(std::move(t))
     {
     }
 

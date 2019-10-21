@@ -29,7 +29,7 @@ used then **GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER** is defined.
 The **primitive_type_specializer** is declared as:
 
 ```c++
-template<typename PrimitiveType, class Tag> class primitive_type_specializer
+template<typename PrimitiveType, class TypeTraits> class primitive_type_specializer
 {
 public:
     ~primitive_type_specializer() noexcept = default;
@@ -135,15 +135,15 @@ public:
 Parameter | Description
 -|-
 PrimitiveType | The primitive value type
-Tag | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
+TypeTraits | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
 
 ## Member types
 
 Member type | Definition
 -|-
-this_type | primitive_type_specializer<PrimitiveType, Tag>
+this_type | primitive_type_specializer<PrimitiveType, TypeTraits>
 primitive_type | PrimitiveType
-tag_type | Tag
+type_traits_type | TypeTraits
 this_reference | this_type&
 this_const_reference | const this_type&
 rvalue_reference | primitive_type&&
