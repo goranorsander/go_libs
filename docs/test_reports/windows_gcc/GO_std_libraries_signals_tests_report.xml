@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2019-10-07T21:59:15" time="0.131" name="AllTests">
-  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.032">
+<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2019-10-22T21:29:28" time="0.13" name="AllTests">
+  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.029">
     <testcase name="test_fire_lasers" status="run" time="0" classname="std_signals_wstring_test_suite" />
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_wstring_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_wstring_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_string_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.025">
+  <testsuite name="std_signals_string_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.028">
     <testcase name="test_fire_lasers" status="run" time="0" classname="std_signals_string_test_suite" />
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_string_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_string_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.037">
+  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.034">
     <testcase name="test_fire_lasers" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
     <testcase name="test_fire_proton_torpedoes" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />
     <testcase name="test_fire_all_weapons" status="run" time="0" classname="std_signals_string_placebo_lockable_test_suite" />

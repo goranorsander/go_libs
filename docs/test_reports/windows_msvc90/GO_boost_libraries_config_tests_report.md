@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2019-10-07 at 21:59:20 with result:
+Test suites *AllTests* with 32 test cases was executed 2019-10-22 at 21:29:32 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.031 seconds.
+Test suites execution took 0.055 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_define_go_boost_address_model_test_suite* with 3 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.022 seconds.
+Test suite execution took 0.036 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ Test suite *boost_define_go_boost_platform_test_suite* with 2 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 

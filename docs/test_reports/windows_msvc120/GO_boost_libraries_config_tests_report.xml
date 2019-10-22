@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="32" failures="0" disabled="0" errors="0" timestamp="2019-10-07T21:59:33" time="0.027" name="AllTests">
-  <testsuite name="boost_define_go_boost_address_model_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.001">
+<testsuites tests="32" failures="0" disabled="0" errors="0" timestamp="2019-10-22T21:29:45" time="0.026" name="AllTests">
+  <testsuite name="boost_define_go_boost_address_model_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="test_define_go_boost_address_model_32" status="run" time="0" classname="boost_define_go_boost_address_model_test_suite" />
     <testcase name="test_not_define_go_boost_address_model_64" status="run" time="0" classname="boost_define_go_boost_address_model_test_suite" />
     <testcase name="test_pointer_size" status="run" time="0" classname="boost_define_go_boost_address_model_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_compiler_test_suite" tests="25" failures="0" disabled="0" errors="0" time="0.02">
+  <testsuite name="boost_define_go_boost_compiler_test_suite" tests="25" failures="0" disabled="0" errors="0" time="0.018">
     <testcase name="test_not_define_go_boost_clang_version" status="run" time="0" classname="boost_define_go_boost_compiler_test_suite" />
     <testcase name="test_not_define_go_boost_comp_clang" status="run" time="0" classname="boost_define_go_boost_compiler_test_suite" />
     <testcase name="test_not_define_go_boost_comp_gcc" status="run" time="0" classname="boost_define_go_boost_compiler_test_suite" />
@@ -39,7 +39,7 @@
     <testcase name="test_define_go_boost_platform_windows" status="run" time="0" classname="boost_define_go_boost_platform_test_suite" />
     <testcase name="test_not_define_go_boost_platform_linux" status="run" time="0" classname="boost_define_go_boost_platform_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_typename_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="boost_define_go_boost_typename_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_define_go_boost_typename" status="run" time="0" classname="boost_define_go_boost_typename_test_suite" />
   </testsuite>
 </testsuites>

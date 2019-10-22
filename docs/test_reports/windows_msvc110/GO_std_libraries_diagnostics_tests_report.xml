@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="5" failures="0" disabled="0" errors="0" timestamp="2019-10-07T21:59:31" time="0.81" name="AllTests">
-  <testsuite name="std_stopwatch_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.808">
+<testsuites tests="5" failures="0" disabled="0" errors="0" timestamp="2019-10-22T21:29:43" time="0.812" name="AllTests">
+  <testsuite name="std_stopwatch_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.811">
     <testcase name="test_create_stopwatch" status="run" time="0" classname="std_stopwatch_test_suite" />
     <testcase name="test_stopwatch_start_stop" status="run" time="0.1" classname="std_stopwatch_test_suite" />
     <testcase name="test_stopwatch_reset" status="run" time="0.101" classname="std_stopwatch_test_suite" />
     <testcase name="test_stopwatch_guard" status="run" time="0.101" classname="std_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop_five_times" status="run" time="0.501" classname="std_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop_five_times" status="run" time="0.504" classname="std_stopwatch_test_suite" />
   </testsuite>
 </testsuites>
