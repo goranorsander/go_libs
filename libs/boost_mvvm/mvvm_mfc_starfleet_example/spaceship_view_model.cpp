@@ -34,7 +34,7 @@ public:
 
     bool operator()(const equipment_interface::ptr& v) const
     {
-        return boost::dynamic_pointer_cast<equipment_model>(v)->id == _id;
+        return boost::dynamic_pointer_cast<equipment_model>(v)->id() == _id;
     }
 
 private:
@@ -224,7 +224,7 @@ bool spaceship_view_model::can_execute_activate_spaceship_view_command(const m::
     activate_spaceship_command_parameters::ptr params = boost::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
     if(params)
     {
-        return params->id == _spaceship_id;
+        return params->id() == _spaceship_id;
     }
     return false;
 }
@@ -261,7 +261,7 @@ bool spaceship_view_model::can_execute_close_spaceship_view_command(const m::com
     close_spaceship_command_parameters::ptr params = boost::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
     if(params)
     {
-        return params->spaceship_vm()->spaceship_id == _spaceship_id;
+        return params->spaceship_vm()->spaceship_id() == _spaceship_id;
     }
     return false;
 }
@@ -297,7 +297,7 @@ bool spaceship_view_model::can_execute_add_equipment_command(const m::command_pa
     add_equipment_command_parameters::ptr params = boost::dynamic_pointer_cast<add_equipment_command_parameters>(p);
     if (params)
     {
-        return params->spaceship_id == _spaceship_id;
+        return params->spaceship_id() == _spaceship_id;
     }
     return false;
 }
@@ -331,7 +331,7 @@ bool spaceship_view_model::can_execute_remove_equipment_command(const m::command
     remove_equipment_command_parameters::ptr params = boost::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
     if (params)
     {
-        return params->spaceship_id == _spaceship_id;
+        return params->spaceship_id() == _spaceship_id;
     }
     return false;
 }
@@ -342,7 +342,7 @@ void spaceship_view_model::execute_remove_equipment_command(const m::command_par
     if (cmd_params)
     {
         const equipment_id_type equipment_id = cmd_params->equipment_id;
-        if (boost::dynamic_pointer_cast<equipment_model>(selected_equipment())->id == equipment_id)
+        if (boost::dynamic_pointer_cast<equipment_model>(selected_equipment())->id() == equipment_id)
         {
             selected_equipment = equipment_interface::ptr();
         }

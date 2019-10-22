@@ -24,7 +24,7 @@ bool is_spaceship(const fleet_organization_interface::ptr& fleet_org, const flee
     fleet_organization_model::ptr fleet_org_ = boost::dynamic_pointer_cast<fleet_organization_model>(fleet_org);
     if(fleet_org_)
     {
-        if(fleet_org_->id == id)
+        if(fleet_org_->id() == id)
         {
             return fleet_org_->spaceship_model() != NULL;
         }

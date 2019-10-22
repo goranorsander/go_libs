@@ -46,7 +46,7 @@ fleet_organization_interface::ptr find_fleet_organization(const fleet_organizati
     fleet_organization_model::ptr fleet_org_ = boost::dynamic_pointer_cast<fleet_organization_model>(fleet_org);
     if(fleet_org_)
     {
-        if(fleet_org_->id == id) { return fleet_org; }
+        if(fleet_org_->id() == id) { return fleet_org; }
         fleet_organization_interface::ptr found_org = find_fleet_organization(fleet_org->first_child(), id);
         if(found_org) { return found_org; }
         found_org = find_fleet_organization(fleet_org->next_sibling(), id);
