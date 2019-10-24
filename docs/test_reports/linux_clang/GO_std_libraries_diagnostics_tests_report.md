@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
-* clang version 8.0.1 (tags/RELEASE_801/final)
+* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
+* clang version 9.0.0 (tags/RELEASE_900/final)
 
 # Summary
 
-Test suites *AllTests* with 5 test cases was executed 2019-10-09 at 21:14:17 with result:
+Test suites *AllTests* with 5 test cases was executed 2019-10-24 at 17:48:54 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.858 seconds.
+Test suites execution took 0.886 seconds.
 
 # Details
 
@@ -25,14 +25,14 @@ Test suite *std_stopwatch_test_suite* with 5 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.858 seconds.
+Test suite execution took 0.886 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_create_stopwatch | 0
-test_stopwatch_start_stop | 0.105
-test_stopwatch_reset | 0.102
-test_stopwatch_guard | 0.103
-test_stopwatch_start_stop_five_times | 0.548
+test_stopwatch_start_stop | 0.108
+test_stopwatch_reset | 0.108
+test_stopwatch_guard | 0.11
+test_stopwatch_start_stop_five_times | 0.56

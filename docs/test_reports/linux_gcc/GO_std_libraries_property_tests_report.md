@@ -4,69 +4,23 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 9.1.0
+*  Linux 18.1.1 Juhraya, Xfce, 64 bits
+* gcc (GCC) 9.2.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2019-10-09 at 21:14:21 with result:
+Test suites *AllTests* with 72 test cases was executed 2019-10-24 at 17:48:58 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.007 seconds.
+Test suites execution took 0.008 seconds.
 
 # Details
 
 ## std_nameless_property_test_suite
 
 Test suite *std_nameless_property_test_suite* with 9 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-value_properties | 0
-read_only_value_properties | 0
-write_only_value_properties | 0
-reference_properties | 0
-read_only_reference_properties | 0
-write_only_reference_properties | 0
-proxy_properties | 0
-read_only_proxy_properties | 0
-write_only_proxy_properties | 0
-
-## std_nameless_property_placebo_lockable_test_suite
-
-Test suite *std_nameless_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-value_properties | 0
-read_only_value_properties | 0
-write_only_value_properties | 0
-reference_properties | 0
-read_only_reference_properties | 0
-write_only_reference_properties | 0
-proxy_properties | 0
-read_only_proxy_properties | 0
-write_only_proxy_properties | 0
-
-## std_property_placebo_lockable_test_suite
-
-Test suite *std_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -81,6 +35,52 @@ value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0.001
+read_only_reference_properties | 0
+write_only_reference_properties | 0
+proxy_properties | 0
+read_only_proxy_properties | 0
+write_only_proxy_properties | 0
+
+## std_nameless_property_placebo_lockable_test_suite
+
+Test suite *std_nameless_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.001 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+value_properties | 0
+read_only_value_properties | 0
+write_only_value_properties | 0
+reference_properties | 0
+read_only_reference_properties | 0
+write_only_reference_properties | 0
+proxy_properties | 0
+read_only_proxy_properties | 0.001
+write_only_proxy_properties | 0
+
+## std_property_placebo_lockable_test_suite
+
+Test suite *std_property_placebo_lockable_test_suite* with 9 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+value_properties | 0
+read_only_value_properties | 0
+write_only_value_properties | 0
+reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -103,11 +103,11 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
-read_only_proxy_properties | 0.001
+read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
 ## std_u16property_test_suite
@@ -117,7 +117,7 @@ Test suite *std_u16property_test_suite* with 9 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -127,7 +127,7 @@ value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
-read_only_reference_properties | 0
+read_only_reference_properties | 0.001
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
@@ -152,7 +152,7 @@ write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0
+proxy_properties | 0.001
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
@@ -172,12 +172,12 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
-write_only_reference_properties | 0.001
+write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
-write_only_proxy_properties | 0
+write_only_proxy_properties | 0.001
 
 ## std_wproperty_test_suite
 

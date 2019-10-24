@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.0.4 Illyria, Xfce, 64 bits
-* clang version 8.0.1 (tags/RELEASE_801/final)
+* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
+* clang version 9.0.0 (tags/RELEASE_900/final)
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2019-10-09 at 21:14:16 with result:
+Test suites *AllTests* with 32 test cases was executed 2019-10-24 at 17:48:53 with result:
 
 * 0 errors
 * 0 failures
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -64,7 +64,7 @@ test_not_define_go_boost_ide_ms_vs2008 | 0
 test_not_define_go_boost_ide_ms_vs2010 | 0
 test_not_define_go_boost_ide_ms_vs2012 | 0
 test_not_define_go_boost_ide_ms_vs2013 | 0
-test_not_define_go_boost_ide_ms_vs2015 | 0
+test_not_define_go_boost_ide_ms_vs2015 | 0.001
 test_not_define_go_boost_ide_ms_vs2017 | 0
 test_not_define_go_boost_msvc_atl | 0
 test_not_define_go_boost_msvc_atl_ver | 0
@@ -96,7 +96,7 @@ Test suite *boost_define_go_boost_platform_test_suite* with 2 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

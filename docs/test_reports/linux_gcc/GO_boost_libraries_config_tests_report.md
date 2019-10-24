@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 9.1.0
+*  Linux 18.1.1 Juhraya, Xfce, 64 bits
+* gcc (GCC) 9.2.0
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2019-10-09 at 21:14:19 with result:
+Test suites *AllTests* with 32 test cases was executed 2019-10-24 at 17:48:56 with result:
 
 * 0 errors
 * 0 failures
@@ -81,7 +81,7 @@ Test suite *boost_define_go_boost_message_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

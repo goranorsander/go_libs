@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro 18.0.4 Illyria, Xfce, 64 bits
-* gcc (GCC) 9.1.0
+*  Linux 18.1.1 Juhraya, Xfce, 64 bits
+* gcc (GCC) 9.2.0
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2019-10-09 at 21:14:21 with result:
+Test suites *AllTests* with 9 test cases was executed 2019-10-24 at 17:48:58 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.002 seconds.
+Test suites execution took 0.003 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_signals_string_placebo_lockable_test_suite* with 3 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -33,7 +33,7 @@ Test case|Execution time
 -|-
 test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
-test_fire_all_weapons | 0
+test_fire_all_weapons | 0.001
 
 ## std_signals_string_test_suite
 
@@ -48,9 +48,9 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_fire_lasers | 0.001
+test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
-test_fire_all_weapons | 0
+test_fire_all_weapons | 0.001
 
 ## std_signals_wstring_test_suite
 
@@ -65,6 +65,6 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_fire_lasers | 0.001
+test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
-test_fire_all_weapons | 0
+test_fire_all_weapons | 0.001
