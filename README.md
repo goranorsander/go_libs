@@ -72,7 +72,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 8.0.1|gcc 9.1.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 | 71 
@@ -97,14 +97,14 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 18.1.0 Juhraya, Xfce, 64 bits
-  * cmake version 3.15.2
-  * clang version 8.0.1 (tags/RELEASE_801/final)
-  * gcc (GCC) 9.1.0
+* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
+  * cmake version 3.15.4
+  * clang version 9.0.0 (tags/RELEASE_900/final)
+  * gcc (GCC) 9.2.0
   * git 2.23.0
   * GNU Make 4.2.1
   * Code::Blocks 17.12
-  * ruby 2.6.4p104 (2019-08-28 revision 67798)
+  * ruby 2.6.5p114 (2019-10-01 revision 67812)
   * Visual Studio Code 1.19.2 - with extensions:
     * C/C++ 0.26.0 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
