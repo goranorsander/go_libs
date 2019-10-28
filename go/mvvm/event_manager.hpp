@@ -45,7 +45,7 @@ typedef basic_event_manager<std::wstring, go::utility::placebo_lockable> wevent_
 template<class S, class L = go::utility::recursive_spin_lock>
 class basic_event_manager
     : public basic_notify_event_firing_interface<S, L>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -92,7 +92,7 @@ inline basic_event_manager<S, L>::~basic_event_manager()
 template<class S, class L>
 inline basic_event_manager<S, L>::basic_event_manager()
     : basic_notify_event_firing_interface<S, L>()
-    , go::utility::noncopyable_nonmovable()
+    , go::type_traits::noncopyable_nonmovable()
     , _events_guard()
     , _next_event_subscription_key(0)
     , _subscriptions()

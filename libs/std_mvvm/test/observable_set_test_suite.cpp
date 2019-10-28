@@ -20,10 +20,7 @@ TEST(std_observable_set_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+#include <go/namespace_alias.hpp>
 
 namespace
 {

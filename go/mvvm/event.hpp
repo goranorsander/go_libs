@@ -19,7 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <string>
 #include <go/property/nameless/read_only_property.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -33,7 +33,7 @@ typedef basic_event<std::wstring> wevent;
 template<class S>
 class basic_event
     : public std::enable_shared_from_this<basic_event<S>>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -61,7 +61,7 @@ private:
 template<class S>
 inline basic_event<S>::basic_event(const S& event_type_)
     : std::enable_shared_from_this<basic_event<S>>()
-    , go::utility::noncopyable_nonmovable()
+    , go::type_traits::noncopyable_nonmovable()
     , event_type(nullptr)
     , _event_type(event_type_)
 {

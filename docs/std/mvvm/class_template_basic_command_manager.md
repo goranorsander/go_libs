@@ -22,7 +22,7 @@ It is declared as:
 template<class S, class L = std::recursive_mutex>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S, L>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~basic_command_manager();

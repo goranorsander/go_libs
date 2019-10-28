@@ -24,7 +24,7 @@
 #include <go_boost/mvvm/event_subscription_key.hpp>
 #include <go_boost/mvvm/event.hpp>
 #include <go_boost/mvvm/notify_event_firing_interface.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
@@ -47,7 +47,7 @@ typedef basic_event_manager<std::wstring, go_boost::utility::placebo_lockable> w
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_event_manager
     : public basic_notify_event_firing_interface<S, L>
-    , private go_boost::utility::noncopyable_nonmovable
+    , go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -92,7 +92,7 @@ inline basic_event_manager<S, L>::~basic_event_manager()
 template<class S, class L>
 inline basic_event_manager<S, L>::basic_event_manager()
     : basic_notify_event_firing_interface<S, L>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _events_guard()
     , _next_event_subscription_key(0)
     , _subscriptions()

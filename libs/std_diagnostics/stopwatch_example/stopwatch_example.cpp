@@ -17,8 +17,7 @@ int main() { return -1; }
 
 #include <iostream>
 #include <go/diagnostics.hpp>
-
-namespace b = go::diagnostics::benchmark;
+#include <go/namespace_alias.hpp>
 
 uint64_t fibonacci_number(const uint64_t n)
 {
@@ -27,13 +26,13 @@ uint64_t fibonacci_number(const uint64_t n)
 
 int main()
 {
-    b::stopwatch sw;
+    db::stopwatch sw;
     uint64_t n = 0;
     while (n < 31)
     {
         uint64_t fn = 0;
         {
-            b::stopwatch_guard g(sw);
+            db::stopwatch_guard g(sw);
             fn = fibonacci_number(n);
         }
 

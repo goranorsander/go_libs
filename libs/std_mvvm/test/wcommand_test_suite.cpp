@@ -20,9 +20,7 @@ TEST(std_wcommand_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
+#include <go/namespace_alias.hpp>
 
 namespace
 {

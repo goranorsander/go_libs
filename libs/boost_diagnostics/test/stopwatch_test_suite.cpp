@@ -16,17 +16,16 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/thread/thread.hpp>
 #include <go_boost/diagnostics.hpp>
-
-namespace b = go_boost::diagnostics::benchmark;
+#include <go_boost/namespace_alias.hpp>
 
 namespace
 {
 
 TEST(boost_stopwatch_test_suite, test_create_stopwatch)
 {
-    const b::stopwatch::duration_type zero_duration = b::stopwatch::duration_type::zero();
+    const db::stopwatch::duration_type zero_duration = db::stopwatch::duration_type::zero();
 
-    b::stopwatch sw;
+    db::stopwatch sw;
     EXPECT_FALSE(sw.started());
     EXPECT_EQ(0u, sw.count());
     EXPECT_EQ(zero_duration, sw.average_duration());
@@ -34,9 +33,9 @@ TEST(boost_stopwatch_test_suite, test_create_stopwatch)
 
 TEST(boost_stopwatch_test_suite, test_stopwatch_start_stop)
 {
-    const b::stopwatch::duration_type zero_duration = b::stopwatch::duration_type::zero();
+    const db::stopwatch::duration_type zero_duration = db::stopwatch::duration_type::zero();
 
-    b::stopwatch sw;
+    db::stopwatch sw;
     EXPECT_FALSE(sw.started());
 
     sw.start();
@@ -58,9 +57,9 @@ TEST(boost_stopwatch_test_suite, test_stopwatch_start_stop)
 
 TEST(boost_stopwatch_test_suite, test_stopwatch_reset)
 {
-    const b::stopwatch::duration_type zero_duration = b::stopwatch::duration_type::zero();
+    const db::stopwatch::duration_type zero_duration = db::stopwatch::duration_type::zero();
 
-    b::stopwatch sw;
+    db::stopwatch sw;
     EXPECT_FALSE(sw.started());
 
     sw.start();
@@ -89,13 +88,13 @@ TEST(boost_stopwatch_test_suite, test_stopwatch_reset)
 
 TEST(boost_stopwatch_test_suite, test_stopwatch_guard)
 {
-    const b::stopwatch::duration_type zero_duration = b::stopwatch::duration_type::zero();
+    const db::stopwatch::duration_type zero_duration = db::stopwatch::duration_type::zero();
 
-    b::stopwatch sw;
+    db::stopwatch sw;
     EXPECT_FALSE(sw.started());
 
     {
-        b::stopwatch_guard g(sw);
+        db::stopwatch_guard g(sw);
         EXPECT_TRUE(sw.started());
         EXPECT_EQ(0u, sw.count());
         EXPECT_EQ(zero_duration, sw.last_duration());
@@ -114,17 +113,17 @@ TEST(boost_stopwatch_test_suite, test_stopwatch_guard)
 
 TEST(boost_stopwatch_test_suite, test_stopwatch_start_stop_five_times)
 {
-    const b::stopwatch::duration_type zero_duration = b::stopwatch::duration_type::zero();
+    const db::stopwatch::duration_type zero_duration = db::stopwatch::duration_type::zero();
 
-    b::stopwatch sw;
+    db::stopwatch sw;
     EXPECT_FALSE(sw.started());
 
-    b::stopwatch::duration_type total_duration = b::stopwatch::duration_type::zero();
-    b::stopwatch::count_type i = 0;
+    db::stopwatch::duration_type total_duration = db::stopwatch::duration_type::zero();
+    db::stopwatch::count_type i = 0;
     while (i < 5)
     {
         {
-            b::stopwatch_guard g(sw);
+            db::stopwatch_guard g(sw);
             EXPECT_TRUE(sw.started());
             EXPECT_EQ(i, sw.count());
 

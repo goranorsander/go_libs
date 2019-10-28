@@ -36,8 +36,8 @@ private:
     remove_equipment_command_parameters();
 
 public:
-    np::value_property<fleet_organization_id_type> spaceship_id;
-    np::value_property<equipment_id_type> equipment_id;
+    pn::value_property<fleet_organization_id_type> spaceship_id;
+    pn::value_property<equipment_id_type> equipment_id;
 
 public:
     static ptr create(const fleet_organization_id_type& spaceship_id_, const equipment_id_type& equipment_id_);

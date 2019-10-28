@@ -17,10 +17,8 @@ int main() { return -1; }
 
 #include <forward_list>
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/utility.hpp>
-
-namespace u = go::utility;
-namespace ui = go::utility::iterator;
 
 int main()
 {

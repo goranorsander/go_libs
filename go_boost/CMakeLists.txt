@@ -29,11 +29,14 @@ file(GLOB GO_BOOST_PROPERTY_NAMELESS_DIR_FILES ./property/nameless/*.hpp)
 file(GLOB GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./property/nameless/detail/*.hpp)
 file(GLOB GO_BOOST_PROPERTY_POLICY_DIR_FILES ./property/policy/*.hpp)
 file(GLOB GO_BOOST_DIR_SIGNALS_FILES ./signals/*.hpp)
+file(GLOB GO_BOOST_TYPE_TRAITS_DIR_FILES ./type_traits/*.hpp)
+file(GLOB GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES ./type_traits/detail/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_FILES ./utility/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_CONTAINER_FILES ./utility/container/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_ITERATOR_FILES ./utility/iterator/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_STRING_FILES ./utility/string/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_STRING_DETAIL_FILES ./utility/string/detail/*.hpp)
+file(GLOB GO_BOOST_VS_DIR_FILES ./.vs/*.cpp)
 
 add_library(${PROJECT_GO_BOOST_LIBS_NAME} STATIC
     ${GO_BOOST_DIR_FILES}
@@ -55,11 +58,14 @@ add_library(${PROJECT_GO_BOOST_LIBS_NAME} STATIC
     ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES}
     ${GO_BOOST_PROPERTY_POLICY_DIR_FILES}
     ${GO_BOOST_DIR_SIGNALS_FILES}
+    ${GO_BOOST_TYPE_TRAITS_DIR_FILES}
+    ${GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES}
     ${GO_BOOST_DIR_UTILITY_FILES}
     ${GO_BOOST_DIR_UTILITY_CONTAINER_FILES}
     ${GO_BOOST_DIR_UTILITY_ITERATOR_FILES}
     ${GO_BOOST_DIR_UTILITY_STRING_FILES}
     ${GO_BOOST_DIR_UTILITY_STRING_DETAIL_FILES}
+    ${GO_BOOST_VS_DIR_FILES}
 )
 
 set_target_properties(${PROJECT_GO_BOOST_LIBS_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/boost/libs)
@@ -83,8 +89,11 @@ source_group(go_boost\\property\\nameless FILES ${GO_BOOST_PROPERTY_NAMELESS_DIR
 source_group(go_boost\\property\\nameless\\detail FILES ${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES})
 source_group(go_boost\\property\\policy FILES ${GO_BOOST_PROPERTY_POLICY_DIR_FILES})
 source_group(go_boost\\signals FILES ${GO_BOOST_DIR_SIGNALS_FILES})
+source_group(go_boost\\type_traits FILES ${GO_BOOST_TYPE_TRAITS_DIR_FILES})
+source_group(go_boost\\type_traits\\detail FILES ${GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES})
 source_group(go_boost\\utility FILES ${GO_BOOST_DIR_UTILITY_FILES})
 source_group(go_boost\\utility\\container FILES ${GO_BOOST_DIR_UTILITY_CONTAINER_FILES})
 source_group(go_boost\\utility\\iterator FILES ${GO_BOOST_DIR_UTILITY_ITERATOR_FILES})
 source_group(go_boost\\utility\\string FILES ${GO_BOOST_DIR_UTILITY_STRING_FILES})
 source_group(go_boost\\utility\\string\\detail FILES ${GO_BOOST_DIR_UTILITY_STRING_DETAIL_FILES})
+source_group(go_boost\\.vs FILES ${GO_BOOST_VS_DIR_FILES})

@@ -21,17 +21,9 @@ TEST(boost_basic_command_manager_phoenix_test_suite, boost_phoenix_not_supported
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/mvvm/utility.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility.hpp>
-
-namespace bp = boost::phoenix;
-namespace bph = boost::phoenix::placeholders;
-namespace m = go_boost::mvvm;
-namespace mu = go_boost::mvvm::utility;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
-namespace u = go_boost::utility;
-namespace us = go_boost::utility::string;
 
 namespace
 {
@@ -39,7 +31,7 @@ namespace
 // Test command_manager
 class spaceship
     : public m::basic_observable_object<u::u8string>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -47,7 +39,7 @@ public:
 private:
     explicit spaceship(const m::basic_command_manager<u::u8string>::ptr& command_manager_)
         : m::basic_observable_object<u::u8string>()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name(us::create<u::u8string>("name"))
         , captain(us::create<u::u8string>("captain"))
         , impulse_speed_command(us::create<u::u8string>("impulse_speed_command"))
@@ -64,7 +56,7 @@ private:
 
     spaceship(const m::basic_command_manager<u::u8string>::ptr& command_manager_, const u::u8string& name_, const u::u8string& captain_)
         : m::basic_observable_object<u::u8string>()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name(us::create<u::u8string>("name"))
         , captain(us::create<u::u8string>("captain"))
         , impulse_speed_command(us::create<u::u8string>("impulse_speed_command"))
@@ -108,8 +100,8 @@ private:
 public:
     p::u8property<u::u8string> name;
     p::u8property<u::u8string> captain;
-    rop::u8property<m::basic_command_interface<u::u8string>::ptr> impulse_speed_command;
-    rop::u8property<m::basic_command_interface<u::u8string>::ptr> warp_speed_command;
+    pro::u8property<m::basic_command_interface<u::u8string>::ptr> impulse_speed_command;
+    pro::u8property<m::basic_command_interface<u::u8string>::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }

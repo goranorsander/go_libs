@@ -14,14 +14,12 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility/string/windows_1252.hpp>
 #include <go_boost/utility/u2string.hpp>
 #include <go_boost/utility/u8string.hpp>
 #include <go_boost/utility/u16string.hpp>
 #include <go_boost/utility/u32string.hpp>
-
-namespace u = go_boost::utility;
-namespace us = go_boost::utility::string;
 
 namespace
 {

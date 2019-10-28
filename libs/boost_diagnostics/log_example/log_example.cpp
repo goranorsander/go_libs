@@ -10,23 +10,22 @@
 
 #include <go_boost/config.hpp>
 #include <go_boost/diagnostics.hpp>
-
-namespace l = go_boost::diagnostics::log;
+#include <go_boost/namespace_alias.hpp>
 
 int main()
 {
     GO_BOOST_LOG_FATAL << "GO_BOOST_LOG_FATAL : uninitialized";
     GO_BOOST_LOG_TRACE << "GO_BOOST_LOG_TRACE : uninitialized";
 
-    l::initialize(l::policy::guaranteed_logger<l::file_writer>(), "./", "log_example", 10);
-    l::set_log_level(l::log_level_trace);
+    dl::initialize(dl::policy::guaranteed_logger<dl::file_writer>(), "./", "log_example", 10);
+    dl::set_log_level(dl::log_level_trace);
 
-    GO_BOOST_LOG(l::log_level_fatal) << "GO_BOOST_LOG(l::log_level_fatal) @ trace";
-    GO_BOOST_LOG(l::log_level_error) << "GO_BOOST_LOG(l::log_level_error) @ trace";
-    GO_BOOST_LOG(l::log_level_warning) << "GO_BOOST_LOG(l::log_level_warning) @ trace";
-    GO_BOOST_LOG(l::log_level_info) << "GO_BOOST_LOG(l::log_level_info) @ trace";
-    GO_BOOST_LOG(l::log_level_debug) << "GO_BOOST_LOG(l::log_level_debug) @ trace";
-    GO_BOOST_LOG(l::log_level_trace) << "GO_BOOST_LOG(l::log_level_trace) @ trace";
+    GO_BOOST_LOG(dl::log_level_fatal) << "GO_BOOST_LOG(dl::log_level_fatal) @ trace";
+    GO_BOOST_LOG(dl::log_level_error) << "GO_BOOST_LOG(dl::log_level_error) @ trace";
+    GO_BOOST_LOG(dl::log_level_warning) << "GO_BOOST_LOG(dl::log_level_warning) @ trace";
+    GO_BOOST_LOG(dl::log_level_info) << "GO_BOOST_LOG(dl::log_level_info) @ trace";
+    GO_BOOST_LOG(dl::log_level_debug) << "GO_BOOST_LOG(dl::log_level_debug) @ trace";
+    GO_BOOST_LOG(dl::log_level_trace) << "GO_BOOST_LOG(dl::log_level_trace) @ trace";
 
     GO_BOOST_LOG_FATAL << "GO_BOOST_LOG_FATAL @ trace";
     GO_BOOST_LOG_ERROR << "GO_BOOST_LOG_ERROR @ trace";
@@ -35,11 +34,11 @@ int main()
     GO_BOOST_LOG_DEBUG << "GO_BOOST_LOG_DEBUG @ trace";
     GO_BOOST_LOG_TRACE << "GO_BOOST_LOG_TRACE @ trace";
 
-    l::set_log_level(l::log_level_info);
+    dl::set_log_level(dl::log_level_info);
 
-    GO_BOOST_LOG(l::log_level_warning) << "GO_BOOST_LOG(l::log_level_warning) @ info";
-    GO_BOOST_LOG(l::log_level_info) << "GO_BOOST_LOG(l::log_level_info) @ info";
-    GO_BOOST_LOG(l::log_level_debug) << "GO_BOOST_LOG(l::log_level_debug) @ info";
+    GO_BOOST_LOG(dl::log_level_warning) << "GO_BOOST_LOG(dl::log_level_warning) @ info";
+    GO_BOOST_LOG(dl::log_level_info) << "GO_BOOST_LOG(dl::log_level_info) @ info";
+    GO_BOOST_LOG(dl::log_level_debug) << "GO_BOOST_LOG(dl::log_level_debug) @ info";
 
     GO_BOOST_LOG_WARN << "GO_BOOST_LOG_WARN @ info";
     GO_BOOST_LOG_INFO << "GO_BOOST_LOG_INFO @ info";
@@ -77,9 +76,9 @@ int main()
     GO_BOOST_LOG_INFO << "GO_BOOST_LOG_INFO : std::string  = " << std_mbs;
     GO_BOOST_LOG_INFO << "GO_BOOST_LOG_INFO : std::wstring = " << std_sws;
 
-    l::set_log_level(l::log_level_none);
+    dl::set_log_level(dl::log_level_none);
 
-    GO_BOOST_LOG(l::log_level_fatal) << "GO_BOOST_LOG(l::log_level_fatal) @ none";
+    GO_BOOST_LOG(dl::log_level_fatal) << "GO_BOOST_LOG(dl::log_level_fatal) @ none";
 
     GO_BOOST_LOG_FATAL << "GO_BOOST_LOG_WARN @ none";
 

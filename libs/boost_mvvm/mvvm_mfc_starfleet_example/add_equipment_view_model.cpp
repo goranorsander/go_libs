@@ -20,7 +20,7 @@ add_equipment_view_model::~add_equipment_view_model()
 
 add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<equipment_interface::ptr>::ptr& equipment)
     : m::wobservable_object()
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , category(L"add_equipment_view_model::category")
     , name(L"add_equipment_view_model::name")
     , quantity(L"add_equipment_view_model::quantity")

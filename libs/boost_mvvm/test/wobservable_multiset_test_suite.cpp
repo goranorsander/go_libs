@@ -15,8 +15,7 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
-
-namespace m = go_boost::mvvm;
+#include <go_boost/namespace_alias.hpp>
 
 namespace
 {

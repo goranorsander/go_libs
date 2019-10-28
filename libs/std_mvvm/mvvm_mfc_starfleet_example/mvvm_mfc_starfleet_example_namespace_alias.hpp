@@ -13,49 +13,6 @@
 
 #pragma once
 
-namespace go
-{
-namespace diagnostics
-{
-namespace log {}
-}
-namespace mvvm
-{
-namespace single_threaded {}
-namespace utility {}
-}
-namespace property
-{
-namespace nameless
-{
-namespace read_only {}
-}
-namespace read_only {}
-}
-namespace signals {}
-namespace utility 
-{
-namespace string {}
-}
-}
-
-namespace d = go::diagnostics;
-namespace l = go::diagnostics::log;
-namespace m = go::mvvm;
-namespace mu = go::mvvm::utility;
-namespace p = go::property;
-namespace np = go::property::nameless;
-namespace rop = go::property::read_only;
-namespace nrop = go::property::nameless::read_only;
-namespace s = go::signals;
-namespace u = go::utility;
-namespace us = go::utility::string;
-
-namespace std
-{
-namespace placeholders {}
-}
-
-namespace ph = std::placeholders;
+#include <go/namespace_alias.hpp>
 
 #endif  // #ifndef GO_MVVM_MFC_STARFLEET_EXAMPLE_NAMESPACE_ALIAS_HPP_INCLUDED

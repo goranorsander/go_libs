@@ -20,7 +20,7 @@
 class equipment_model
     : public equipment_interface
     , public m::wobservable_object
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef equipment_model this_type;
@@ -37,7 +37,7 @@ private:
     equipment_model() = delete;
 
 public:
-    rop::wproperty<equipment_id_type> id;
+    pro::wproperty<equipment_id_type> id;
 
 public:
     static ptr create(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_);

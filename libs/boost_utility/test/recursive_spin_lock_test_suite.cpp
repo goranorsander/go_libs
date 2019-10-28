@@ -14,9 +14,8 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility/recursive_spin_lock.hpp>
-
-namespace u = go_boost::utility;
 
 namespace
 {

@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include <go_boost/utility/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/primitive_type_specializer.hpp>
 
 GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(equipment_id_type, uint64_t);
 

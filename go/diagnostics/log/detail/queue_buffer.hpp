@@ -36,7 +36,7 @@ namespace detail
 template <class L>
 class queue_buffer
     : public buffer_interface<L>
-    , go::utility::noncopyable_nonmovable
+    , go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef L log_line_type;

@@ -23,7 +23,7 @@ class spaceship_view_model
     : public m::view_model_interface<u::placebo_lockable>
     , public m::wobservable_object
     , private m::data_context_interface<spaceship_model::ptr>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef spaceship_view_model this_type;
@@ -37,20 +37,20 @@ private:
     spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);
 
 public:
-    rop::wproperty<main_frame_view_model::ptr> main_frame_vm;
-    rop::wproperty<fleet_organization_id_type> spaceship_id;
+    pro::wproperty<main_frame_view_model::ptr> main_frame_vm;
+    pro::wproperty<fleet_organization_id_type> spaceship_id;
 
-    rop::wproperty<std::wstring> spaceship_class;
-    rop::wproperty<std::wstring> name;
+    pro::wproperty<std::wstring> spaceship_class;
+    pro::wproperty<std::wstring> name;
     p::wproperty<std::wstring> captain;
     p::wproperty<quantity_type> crew_complement;
     p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr> equipment;
     p::wproperty<equipment_interface::ptr> selected_equipment;
 
-    rop::wproperty<m::wcommand_interface::ptr> on_activate_spaceship_view_command;
-    rop::wproperty<m::wcommand_interface::ptr> on_close_spaceship_view_command;
-    rop::wproperty<m::wcommand_interface::ptr> on_add_equipment_command;
-    rop::wproperty<m::wcommand_interface::ptr> on_remove_equipment_command;
+    pro::wproperty<m::wcommand_interface::ptr> on_activate_spaceship_view_command;
+    pro::wproperty<m::wcommand_interface::ptr> on_close_spaceship_view_command;
+    pro::wproperty<m::wcommand_interface::ptr> on_add_equipment_command;
+    pro::wproperty<m::wcommand_interface::ptr> on_remove_equipment_command;
 
 public:
     static ptr create(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm);

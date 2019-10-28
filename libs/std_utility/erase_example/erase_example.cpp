@@ -17,9 +17,8 @@ int main() { return -1; }
 
 #include <deque>
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/utility/iterator/erase.hpp>
-
-namespace ui = go::utility::iterator;
 
 int main()
 {

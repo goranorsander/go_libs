@@ -35,7 +35,7 @@ private:
     close_spaceship_event();
 
 public:
-    nrop::value_property<spaceship_view_model::ptr> spaceship_vm;
+    pnro::value_property<spaceship_view_model::ptr> spaceship_vm;
 
 public:
     static ptr create(const spaceship_view_model::ptr& vm);

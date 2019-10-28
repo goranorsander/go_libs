@@ -20,13 +20,7 @@ TEST(std_observable_unordered_multiset_placebo_lockable_test_suite, cpp11_not_su
 #else
 
 #include <go/mvvm.hpp>
-
-namespace i = go::mvvm::iterator;
-namespace m = go::mvvm;
-namespace mst = go::mvvm::single_threaded;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
+#include <go/namespace_alias.hpp>
 
 namespace
 {
@@ -394,7 +388,7 @@ TEST(std_observable_unordered_multiset_placebo_lockable_test_suite, test_erase_r
     m::observable_unordered_multiset<int, u::placebo_lockable>::iterator begin = s->begin();
     ++begin;
     m::observable_unordered_multiset<int, u::placebo_lockable>::iterator end = s->end();
-    const bool moved_backward = i::try_move_backward<m::observable_unordered_multiset<int, u::placebo_lockable>::iterator>(s, end);
+    const bool moved_backward = mi::try_move_backward<m::observable_unordered_multiset<int, u::placebo_lockable>::iterator>(s, end);
     EXPECT_EQ(moved_backward, true);
 
     s->erase(begin, end);

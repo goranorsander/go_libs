@@ -18,7 +18,7 @@ It is declared as:
 
 ```c++
 class log
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~log() = default;
@@ -154,7 +154,7 @@ It is declared as:
 
 ```c++
 class wlog
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~wlog() = default;

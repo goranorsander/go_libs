@@ -13,8 +13,7 @@
 #include "product_view.hpp"
 
 #include <go_boost/mvvm/utility/mfc_dlgdata.hpp>
-
-namespace mu = go_boost::mvvm::utility;
+#include <go_boost/namespace_alias.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

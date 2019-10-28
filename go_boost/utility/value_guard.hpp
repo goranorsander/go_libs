@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -25,7 +25,7 @@ namespace utility
 {
 
 template<class T> class value_guard
-    : noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef value_guard<T> this_type;

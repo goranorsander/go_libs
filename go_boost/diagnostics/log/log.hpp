@@ -46,7 +46,7 @@ namespace log
 {
 
 class log
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~log() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -86,7 +86,7 @@ public:
 };
 
 class wlog
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~wlog() GO_BOOST_DEFAULT_DESTRUCTOR

@@ -24,7 +24,7 @@ It is declared as:
 template<class S, class L = std::recursive_mutex>
 class basic_command_interface
     : public std::enable_shared_from_this<basic_command_interface<S, L>>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~basic_command_interface() = 0;

@@ -20,10 +20,6 @@ GO_BOOST_MESSAGE("Boost.Phoenix is not supported by this compiler")
 
 #include <go_boost/mvvm/utility.hpp>
 
-namespace bp = boost::phoenix;
-namespace bph = boost::phoenix::placeholders;
-namespace mu = go_boost::mvvm::utility;
-
 product_view_model::~product_view_model()
 {
 }
@@ -31,7 +27,7 @@ product_view_model::~product_view_model()
 product_view_model::product_view_model()
     : m::wobservable_object()
     , m::data_context_interface<product_model::ptr>(product_model::create())
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , product_id(L"product_id")
     , current_product_id(L"current_product_id")
     , current_product_name(L"current_product_name")

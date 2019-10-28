@@ -30,8 +30,8 @@ protected:
     spaceship_interface();
 
 public:
-    rop::wproperty<std::wstring> spaceship_class;
-    rop::wproperty<std::wstring> name;
+    pro::wproperty<std::wstring> spaceship_class;
+    pro::wproperty<std::wstring> name;
 
     p::wproperty<std::wstring> captain;
     p::wproperty<quantity_type> crew_complement;

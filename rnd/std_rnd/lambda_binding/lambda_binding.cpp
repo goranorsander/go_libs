@@ -17,8 +17,7 @@ int main() { return -1; }
 
 #include <functional>
 #include <iostream>
-
-namespace ph = std::placeholders;
+#include <go/namespace_alias.hpp>
 
 unsigned int counter = 0;
 

@@ -20,7 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/nameless/read_only_property.hpp>
 #include <go/signals/signal.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/utility/placebo_lockable.hpp>
 #include <go/utility/recursive_spin_lock.hpp>
 
@@ -46,7 +46,7 @@ typedef basic_command_interface<std::wstring, go::utility::placebo_lockable> wco
 template<class S, class L = go::utility::recursive_spin_lock>
 class basic_command_interface
     : public std::enable_shared_from_this<basic_command_interface<S, L>>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
     friend class basic_command_manager<S, L>;
 
@@ -94,7 +94,7 @@ inline basic_command_interface<S, L>::~basic_command_interface()
 template<class S, class L>
 inline basic_command_interface<S, L>::basic_command_interface(const S& cmd_name, const command_parameters_type& params)
     : std::enable_shared_from_this<basic_command_interface<S, L>>()
-    , go::utility::noncopyable_nonmovable()
+    , go::type_traits::noncopyable_nonmovable()
     , command_name(nullptr)
     , can_execute_changed()
     , _command_name(cmd_name)

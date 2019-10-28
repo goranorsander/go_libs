@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_try_move_iterator_backward_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/container/size.hpp>
 #include <go/utility/iterator/try_move_backward.hpp>
 
@@ -33,9 +34,6 @@ TEST(std_try_move_iterator_backward_test_suite, cpp11_not_supported) {}
 
 #include <unordered_map>
 #include <unordered_set>
-
-namespace uc = go::utility::container;
-namespace ui = go::utility::iterator;
 
 namespace
 {

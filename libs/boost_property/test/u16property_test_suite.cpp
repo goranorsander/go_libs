@@ -17,14 +17,9 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 #include <boost/bind.hpp>
 
 #include <go_boost/exception.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility/string_cast.hpp>
-
-namespace e = go_boost::exception;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
-namespace wop = go_boost::property::write_only;
-namespace u = go_boost::utility;
 
 namespace testing
 {
@@ -151,9 +146,9 @@ TEST(boost_u16property_test_suite, value_properties)
 class read_only_spaceship
 {
 public:
-    rop::value_u16property<int> crew_complement;
-    rop::value_u16property<double> max_speed;
-    rop::value_u16property<std::string> name;
+    pro::value_u16property<int> crew_complement;
+    pro::value_u16property<double> max_speed;
+    pro::value_u16property<std::string> name;
 
     read_only_spaceship()
         : crew_complement(create_u16string("crew_complement"), 1012)
@@ -203,9 +198,9 @@ TEST(boost_u16property_test_suite, read_only_value_properties)
 class write_only_spaceship
 {
 public:
-    wop::value_u16property<int> crew_complement;
-    wop::value_u16property<double> max_speed;
-    wop::value_u16property<std::string> name;
+    pwo::value_u16property<int> crew_complement;
+    pwo::value_u16property<double> max_speed;
+    pwo::value_u16property<std::string> name;
 
     write_only_spaceship()
         : crew_complement(create_u16string("crew_complement"), 1012)
@@ -392,9 +387,9 @@ TEST(boost_u16property_test_suite, reference_properties)
 class read_only_reference_spaceship
 {
 public:
-    rop::reference_u16property<int> crew_complement;
-    rop::reference_u16property<double> max_speed;
-    rop::reference_u16property<std::string> name;
+    pro::reference_u16property<int> crew_complement;
+    pro::reference_u16property<double> max_speed;
+    pro::reference_u16property<std::string> name;
 
     read_only_reference_spaceship(const int& _crew_complement, const double& _max_speed, const std::string& _name)
         : crew_complement(create_u16string("crew_complement"), _crew_complement)
@@ -493,9 +488,9 @@ TEST(boost_u16property_test_suite, read_only_reference_properties)
 class write_only_reference_spaceship
 {
 public:
-    wop::reference_u16property<int> crew_complement;
-    wop::reference_u16property<double> max_speed;
-    wop::reference_u16property<std::string> name;
+    pwo::reference_u16property<int> crew_complement;
+    pwo::reference_u16property<double> max_speed;
+    pwo::reference_u16property<std::string> name;
 
     write_only_reference_spaceship()
         : crew_complement(create_u16string("crew_complement"))
@@ -765,7 +760,7 @@ class read_only_armed_spaceship
     : public read_only_spaceship
 {
 public:
-    rop::u16property<int> phaser_arrays;
+    pro::u16property<int> phaser_arrays;
 
     read_only_armed_spaceship()
         : read_only_spaceship()
@@ -867,7 +862,7 @@ class write_only_armed_spaceship
     : public write_only_spaceship
 {
 public:
-    wop::u16property<int> phaser_arrays;
+    pwo::u16property<int> phaser_arrays;
 
     write_only_armed_spaceship()
         : write_only_spaceship()

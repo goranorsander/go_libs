@@ -16,9 +16,8 @@ int main() { return -1; }
 #else
 
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
-
-namespace p = go::property;
 
 class spaceship
 {

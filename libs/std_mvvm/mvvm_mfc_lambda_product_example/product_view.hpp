@@ -13,9 +13,8 @@
 
 #pragma once
 
+#include <go/namespace_alias.hpp>
 #include "product_view_model.hpp"
-
-namespace s = go::signals;
 
 class product_view
     : public CDialogEx

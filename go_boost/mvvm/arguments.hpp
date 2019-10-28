@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -28,7 +28,7 @@ namespace mvvm
 {
 
 class arguments
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef boost::shared_ptr<arguments> ptr;
@@ -39,7 +39,7 @@ public:
 
 protected:
     arguments()
-        : go_boost::utility::noncopyable_nonmovable()
+        : go_boost::type_traits::noncopyable_nonmovable()
     {
     }
 };

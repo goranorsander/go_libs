@@ -20,8 +20,7 @@
 #include "resource.h"
 
 #include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
+#include <go/namespace_alias.hpp>
 
 class mvvm_mfc_product_example_app
     : public CWinApp

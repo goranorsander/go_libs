@@ -19,7 +19,7 @@ It is declared as:
 
 ```c++
 class command_parameters
-    : public go_boost::utility::noncopyable_nonmovable
+    : public go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~command_parameters();

@@ -29,8 +29,8 @@ protected:
     fleet_organization_interface();
 
 public:
-    rop::wproperty<std::wstring> name;
-    rop::wproperty<spaceship_interface::ptr> spaceship_model;
+    pro::wproperty<std::wstring> name;
+    pro::wproperty<spaceship_interface::ptr> spaceship_model;
 
     p::wproperty<ptr> parent;
     p::wproperty<ptr> first_child;

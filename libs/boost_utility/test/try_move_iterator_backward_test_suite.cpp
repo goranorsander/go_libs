@@ -14,6 +14,7 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility/container/size.hpp>
 #include <go_boost/utility/iterator/try_move_backward.hpp>
 
@@ -32,9 +33,6 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 #if defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 #include <boost/assign.hpp>
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
-
-namespace uc = go_boost::utility::container;
-namespace ui = go_boost::utility::iterator;
 
 namespace
 {

@@ -20,21 +20,17 @@ TEST(std_signals_string_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
 
 #include <string>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/signals.hpp>
 #include <go/utility.hpp>
-
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
 
 namespace
 {
 
 // Test signals
 class fleet_commander
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_commander this_type;
@@ -48,7 +44,7 @@ public:
 
 private:
     fleet_commander(const std::string& commander_, const std::string& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander("commander", commander_)
         , battle("battle", battle_)
         , fire_lasers()
@@ -78,7 +74,7 @@ public:
 };
 
 class spaceship
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
@@ -93,7 +89,7 @@ public:
 
 public:
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_, const int proton_torpedoes_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , name("name", name_)
         , captain("captain", captain_)
         , lasers_firing("lasers_firing", false)

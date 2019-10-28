@@ -20,16 +20,9 @@ TEST(std_basic_event_manager_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
-namespace s = go::signals;
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {
@@ -56,7 +49,7 @@ protected:
     }
 
 public:
-    rop::value_u8property<u::u8string> fleet_commander;
+    pro::value_u8property<u::u8string> fleet_commander;
 
 public:
     static ptr create(const u::u8string& fleet_commander_)
@@ -73,7 +66,7 @@ public:
 };
 
 class fleet_commander
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
@@ -84,7 +77,7 @@ public:
 
 private:
     fleet_commander(const m::basic_event_manager<u::u8string>::ptr& event_manager_, const u::u8string& commander_, const u::u8string& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander(us::create<u::u8string>("commander"))
         , battle(us::create<u::u8string>("battle"), battle_)
         , _event_manager(event_manager_)
@@ -132,14 +125,14 @@ private:
 };
 
 class spaceship
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 private:
     spaceship(const u::u8string& name_, const u::u8string& captain_, const u::u8string& fleet_commander_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , fleet_commander(us::create<u::u8string>("fleet_commander"))
         , name(us::create<u::u8string>("name"), name_)
         , captain(us::create<u::u8string>("captain"), captain_)
@@ -156,7 +149,7 @@ public:
     }
 
 public:
-    rop::u8property<u::u8string> fleet_commander;
+    pro::u8property<u::u8string> fleet_commander;
     p::value_u8property<u::u8string> name;
     p::value_u8property<u::u8string> captain;
 

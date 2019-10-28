@@ -19,11 +19,9 @@ GO_BOOST_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(boost_create_string_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility/string/create.hpp>
 #include <cstring>
-
-namespace u = go_boost::utility;
-namespace us = go_boost::utility::string;
 
 namespace
 {

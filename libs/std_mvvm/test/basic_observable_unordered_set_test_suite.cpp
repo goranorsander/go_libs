@@ -20,15 +20,9 @@ TEST(std_basic_observable_unordered_set_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/utility.hpp>
 
-
-namespace i = go::mvvm::iterator;
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {
@@ -406,7 +400,7 @@ TEST(std_basic_observable_unordered_set_test_suite, test_erase_range)
     m::basic_observable_unordered_set<int, u::u8string>::iterator begin = s->begin();
     ++begin;
     m::basic_observable_unordered_set<int, u::u8string>::iterator end = s->end();
-    const bool moved_backward = i::try_move_backward<m::basic_observable_unordered_set<int, u::u8string>::iterator>(s, end);
+    const bool moved_backward = mi::try_move_backward<m::basic_observable_unordered_set<int, u::u8string>::iterator>(s, end);
     EXPECT_EQ(moved_backward, true);
 
     s->erase(begin, end);

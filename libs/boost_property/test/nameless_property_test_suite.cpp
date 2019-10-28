@@ -16,12 +16,8 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/bind.hpp>
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-
-namespace p = go_boost::property;
-namespace np = go_boost::property::nameless;
-namespace roap = go_boost::property::nameless::read_only;
-namespace woap = go_boost::property::nameless::write_only;
 
 namespace testing
 {
@@ -29,10 +25,10 @@ namespace internal2
 {
 
 template <>
-class TypeWithoutFormatter<np::value_property<double>, kConvertibleToInteger>
+class TypeWithoutFormatter<pn::value_property<double>, kConvertibleToInteger>
 {
 public:
-	static void PrintValue(const np::value_property<double>& value, ::std::ostream* os)
+	static void PrintValue(const pn::value_property<double>& value, ::std::ostream* os)
 	{
 		const double vd = value.get();
 		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
@@ -51,9 +47,9 @@ namespace
 class spaceship
 {
 public:
-    np::value_property<int> crew_complement;
-    np::value_property<double> max_speed;
-    np::value_property<std::string> name;
+    pn::value_property<int> crew_complement;
+    pn::value_property<double> max_speed;
+    pn::value_property<std::string> name;
 
      spaceship()
         : crew_complement(1012)
@@ -137,9 +133,9 @@ TEST(boost_nameless_property_test_suite, value_properties)
 class read_only_spaceship
 {
 public:
-    roap::value_property<int> crew_complement;
-    roap::value_property<double> max_speed;
-    roap::value_property<std::string> name;
+    pnro::value_property<int> crew_complement;
+    pnro::value_property<double> max_speed;
+    pnro::value_property<std::string> name;
 
     read_only_spaceship()
         : crew_complement(1012)
@@ -184,9 +180,9 @@ TEST(boost_nameless_property_test_suite, read_only_value_properties)
 class write_only_spaceship
 {
 public:
-    woap::value_property<int> crew_complement;
-    woap::value_property<double> max_speed;
-    woap::value_property<std::string> name;
+    pnwo::value_property<int> crew_complement;
+    pnwo::value_property<double> max_speed;
+    pnwo::value_property<std::string> name;
 
     write_only_spaceship()
         : crew_complement(1012)
@@ -223,9 +219,9 @@ TEST(boost_nameless_property_test_suite, write_only_value_properties)
 class reference_spaceship
 {
 public:
-    np::reference_property<int> crew_complement;
-    np::reference_property<double> max_speed;
-    np::reference_property<std::string> name;
+    pn::reference_property<int> crew_complement;
+    pn::reference_property<double> max_speed;
+    pn::reference_property<std::string> name;
 
     reference_spaceship()
         : crew_complement()
@@ -359,9 +355,9 @@ TEST(boost_nameless_property_test_suite, reference_properties)
 class read_only_reference_spaceship
 {
 public:
-    roap::reference_property<int> crew_complement;
-    roap::reference_property<double> max_speed;
-    roap::reference_property<std::string> name;
+    pnro::reference_property<int> crew_complement;
+    pnro::reference_property<double> max_speed;
+    pnro::reference_property<std::string> name;
 
     read_only_reference_spaceship(const int& _crew_complement, const double& _max_speed, const std::string& _name)
         : crew_complement(_crew_complement)
@@ -455,9 +451,9 @@ TEST(boost_nameless_property_test_suite, read_only_reference_properties)
 class write_only_reference_spaceship
 {
 public:
-    woap::reference_property<int> crew_complement;
-    woap::reference_property<double> max_speed;
-    woap::reference_property<std::string> name;
+    pnwo::reference_property<int> crew_complement;
+    pnwo::reference_property<double> max_speed;
+    pnwo::reference_property<std::string> name;
 
     write_only_reference_spaceship()
         : crew_complement()
@@ -577,7 +573,7 @@ class armed_spaceship
     : public spaceship
 {
 public:
-    np::property<int> phaser_arrays;
+    pn::property<int> phaser_arrays;
 
     armed_spaceship()
         : spaceship()
@@ -712,7 +708,7 @@ class read_only_armed_spaceship
     : public read_only_spaceship
 {
 public:
-    roap::property<int> phaser_arrays;
+    pnro::property<int> phaser_arrays;
 
     read_only_armed_spaceship()
         : read_only_spaceship()
@@ -800,7 +796,7 @@ class write_only_armed_spaceship
     : public write_only_spaceship
 {
 public:
-    woap::property<int> phaser_arrays;
+    pnwo::property<int> phaser_arrays;
 
     write_only_armed_spaceship()
         : write_only_spaceship()

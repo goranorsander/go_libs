@@ -20,7 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <deque>
 #include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/utility/placebo_lockable.hpp>
 #include <go/utility/recursive_spin_lock.hpp>
 
@@ -44,7 +44,7 @@ typedef basic_command_manager<std::wstring, go::utility::placebo_lockable> wcomm
 template<class S, class L = go::utility::recursive_spin_lock>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S, L>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;

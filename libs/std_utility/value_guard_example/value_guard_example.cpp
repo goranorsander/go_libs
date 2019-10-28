@@ -16,9 +16,8 @@ int main() { return -1; }
 #else
 
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/utility/value_guard.hpp>
-
-namespace u = go::utility;
 
 int main()
 {

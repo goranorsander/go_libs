@@ -20,15 +20,9 @@ TEST(std_observable_object_lambda_placebo_lockable_test_suite, cpp11_not_support
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace mst = go::mvvm::single_threaded;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
 
 namespace
 {
@@ -36,7 +30,7 @@ namespace
 // Test observable_object
 class spaceship
     : public mst::observable_object
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
@@ -44,7 +38,7 @@ public:
 public:
      spaceship()
         : mst::observable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , crew_complement("crew_complement")
         , name("name")
         , max_speed("max_speed")

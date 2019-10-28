@@ -22,7 +22,7 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/weak_ptr.hpp>
 #include <go_boost/property/nameless/read_only_property.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -36,7 +36,7 @@ typedef basic_event<std::wstring> wevent;
 template<class S>
 class basic_event
     : public boost::enable_shared_from_this<basic_event<S>>
-    , private go_boost::utility::noncopyable_nonmovable
+    , go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -67,7 +67,7 @@ private:
 template<class S>
 inline basic_event<S>::basic_event(const S& event_type_)
     : boost::enable_shared_from_this<basic_event<S>>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , event_type()
     , _event_type(event_type_)
 {

@@ -32,13 +32,9 @@ int main() { return -1; }
 #include <random>
 
 #include <go/diagnostics/benchmark.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/utility/exchange.hpp>
 #include <go/utility/range/sequentially_increasing.hpp>
-
-namespace b = go::diagnostics::benchmark;
-namespace ph = std::placeholders;
-namespace u = go::utility;
-namespace ur = go::utility::range;
 
 #if !defined(GO_NO_CXX11_NON_STATIC_DATA_MEMBER_INITIALIZERS)
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_COMMON_FUNCTIONS( _class_name_ ) \
@@ -282,7 +278,7 @@ namespace movable
 {
 
 template <class C>
-void add_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> add, b::stopwatch& duration)
+void add_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> add, db::stopwatch& duration)
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
@@ -298,7 +294,7 @@ void add_elements(const uint64_t number_of_elements, std::function<void(typename
 }
 
 template <class C>
-void add_keyed_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> add, b::stopwatch& duration)
+void add_keyed_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> add, db::stopwatch& duration)
 {
     using container_type = C;
     using value_type = typename container_type::value_type;
@@ -316,7 +312,7 @@ void add_keyed_elements(const uint64_t number_of_elements, std::function<void(ty
 }
 
 template <class C>
-void emplace_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> emplace, b::stopwatch& duration)
+void emplace_elements(const uint64_t number_of_elements, std::function<void(typename C::value_type&&)> emplace, db::stopwatch& duration)
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
@@ -332,7 +328,7 @@ void emplace_elements(const uint64_t number_of_elements, std::function<void(type
 }
 
 template <class C>
-void emplace_elements_at(const uint64_t number_of_elements, std::function<typename C::iterator(typename C::const_iterator, typename C::value_type&&)> emplace, std::function<typename C::const_iterator()> begin, std::function<typename C::const_iterator()> end, b::stopwatch& duration)
+void emplace_elements_at(const uint64_t number_of_elements, std::function<typename C::iterator(typename C::const_iterator, typename C::value_type&&)> emplace, std::function<typename C::const_iterator()> begin, std::function<typename C::const_iterator()> end, db::stopwatch& duration)
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
@@ -360,7 +356,7 @@ void emplace_elements_at(const uint64_t number_of_elements, std::function<typena
 }
 
 template <class C>
-void emplace_keyed_elements_at(const uint64_t number_of_elements, std::function<std::pair<typename C::iterator, bool>(typename C::value_type&&)> emplace, b::stopwatch& duration)
+void emplace_keyed_elements_at(const uint64_t number_of_elements, std::function<std::pair<typename C::iterator, bool>(typename C::value_type&&)> emplace, db::stopwatch& duration)
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
@@ -387,7 +383,7 @@ void emplace_keyed_elements_at(const uint64_t number_of_elements, std::function<
 }
 
 template <class C>
-void emplace_mapped_elements_at(const uint64_t number_of_elements, std::function<std::pair<typename C::iterator, bool>(typename C::value_type&&)> emplace, b::stopwatch& duration)
+void emplace_mapped_elements_at(const uint64_t number_of_elements, std::function<std::pair<typename C::iterator, bool>(typename C::value_type&&)> emplace, db::stopwatch& duration)
 {
     using container_type = C;
     using value_type = typename container_type::value_type;
@@ -431,7 +427,7 @@ void std_container_push_back(const std::string& container, const std::string& el
     {
         container_type c;
         add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_back), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -454,7 +450,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
         container_type c;
         c.reserve(number_of_elements);
         add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_back), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -476,7 +472,7 @@ void std_container_push_front(const std::string& container, const std::string& e
     {
         container_type c;
         add_function add = std::bind(static_cast<void(container_type::*)(element_type&&)>(&container_type::push_front), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -499,7 +495,7 @@ void std_container_insert(const std::string& container, const std::string& eleme
     {
         container_type c;
         add_function add = std::bind(static_cast<return_type(container_type::*)(element_type&&)>(&container_type::insert), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -525,7 +521,7 @@ void std_container_keyed_insert(const std::string& container, const std::string&
     {
         container_type c;
         add_function add = std::bind(static_cast<return_type(container_type::*)(element_type&&)>(&container_type::insert), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_keyed_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -547,7 +543,7 @@ void std_container_emplace_back(const std::string& container, const std::string&
     {
         container_type c;
         emplace_function emplace = std::bind(&container_type::template emplace_back<element_type>, &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -570,7 +566,7 @@ void std_container_reserved_emplace_back(const std::string& container, const std
         container_type c;
         c.reserve(number_of_elements);
         emplace_function emplace = std::bind(&container_type::template emplace_back<element_type>, &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -592,7 +588,7 @@ void std_container_emplace_front(const std::string& container, const std::string
     {
         container_type c;
         emplace_function emplace = std::bind(&container_type::template emplace_front<element_type>, &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_elements<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -617,7 +613,7 @@ void std_container_emplace(const std::string& container, const std::string& elem
         emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1, ph::_2);
         iterator_function begin = std::bind(&container_type::cbegin, &c);
         iterator_function end = std::bind(&container_type::cend, &c);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_elements_at<container_type>(number_of_elements, emplace, begin, end, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -643,7 +639,7 @@ void std_container_reserved_emplace(const std::string& container, const std::str
         emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1, ph::_2);
         iterator_function begin = std::bind(&container_type::cbegin, &c);
         iterator_function end = std::bind(&container_type::cend, &c);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_elements_at<container_type>(number_of_elements, emplace, begin, end, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -666,7 +662,7 @@ void std_container_emplace_keyed(const std::string& container, const std::string
     {
         container_type c;
         emplace_function emplace = std::bind(&container_type::template emplace<element_type>, &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_keyed_elements_at<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -691,7 +687,7 @@ void std_container_emplace_mapped(const std::string& container, const std::strin
     {
         container_type c;
         emplace_function emplace = std::bind(&container_type::template emplace<value_type>, &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         emplace_mapped_elements_at<container_type>(number_of_elements, emplace, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -761,7 +757,7 @@ bool operator!=(const allocator<T1>&, const allocator<T2>&) GO_NOEXCEPT
 }
 
 template <class C>
-void add_elements(const uint64_t number_of_elements, std::function<void(const typename C::value_type&)> add, b::stopwatch& duration)
+void add_elements(const uint64_t number_of_elements, std::function<void(const typename C::value_type&)> add, db::stopwatch& duration)
 {
     using container_type = C;
     using element_type = typename container_type::value_type;
@@ -777,7 +773,7 @@ void add_elements(const uint64_t number_of_elements, std::function<void(const ty
 }
 
 template <class C>
-void add_keyed_elements(const uint64_t number_of_elements, std::function<void(const typename C::value_type&)> add, b::stopwatch& duration)
+void add_keyed_elements(const uint64_t number_of_elements, std::function<void(const typename C::value_type&)> add, db::stopwatch& duration)
 {
     using container_type = C;
     using value_type = typename container_type::value_type;
@@ -809,7 +805,7 @@ void std_container_push_back(const std::string& container, const std::string& el
     {
         container_type c;
         add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_back), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -832,7 +828,7 @@ void std_container_reserved_push_back(const std::string& container, const std::s
         container_type c;
         c.reserve(number_of_elements);
         add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_back), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -854,7 +850,7 @@ void std_container_push_front(const std::string& container, const std::string& e
     {
         container_type c;
         add_function add = std::bind(static_cast<void(container_type::*)(const element_type&)>(&container_type::push_front), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -877,7 +873,7 @@ void std_container_insert(const std::string& container, const std::string& eleme
     {
         container_type c;
         add_function add = std::bind(static_cast<return_type(container_type::*)(const element_type&)>(&container_type::insert), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -903,7 +899,7 @@ void std_container_keyed_insert(const std::string& container, const std::string&
     {
         container_type c;
         add_function add = std::bind(static_cast<return_type(container_type::*)(const value_type&)>(&container_type::insert), &c, ph::_1);
-        b::stopwatch duration;
+        db::stopwatch duration;
         add_keyed_elements<container_type>(number_of_elements, add, duration);
         std::cout << number_of_elements << "\t" << duration.total_duration().count() << std::endl;
     }
@@ -1134,7 +1130,7 @@ GO_IMPLEMENT_CONTAINER_ELEMENT_STD_HASH_FUNCTIONS(benchmark::nonmovable::element
 
 int main()
 {
-    b::stopwatch duration;
+    db::stopwatch duration;
 
     duration.start();
     benchmark::push_back();

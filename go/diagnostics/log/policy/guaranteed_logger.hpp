@@ -19,7 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <go/diagnostics/log/detail/queue_buffer.hpp>
 #include <go/diagnostics/log/policy/logging_policy_interface.hpp>
-#include <go/utility/noncopyable.hpp>
+#include <go/type_traits/noncopyable.hpp>
 
 namespace go
 {
@@ -33,7 +33,7 @@ namespace policy
 template <class W>
 class guaranteed_logger
     : public logging_policy_interface<W>
-    , go::utility::noncopyable
+    , go::type_traits::noncopyable
 {
 public:
     typedef W file_writer_type;

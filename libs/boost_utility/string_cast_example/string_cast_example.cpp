@@ -9,12 +9,11 @@
 //
 
 #include <go_boost/config.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility.hpp>
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
 #include <iostream>
-
-namespace u = go_boost::utility;
 
 #if !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 template<class S, typename C = unsigned int>

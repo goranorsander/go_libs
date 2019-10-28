@@ -20,15 +20,9 @@ TEST(std_basic_observable_object_lambda_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {
@@ -36,7 +30,7 @@ namespace
 // Test observable_object
 class spaceship
     : public m::basic_observable_object<u::u8string>
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
@@ -44,7 +38,7 @@ public:
 public:
      spaceship()
         : m::basic_observable_object<u::u8string>()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , crew_complement(us::create<u::u8string>("crew_complement"))
         , name(us::create<u::u8string>("name"))
         , max_speed(us::create<u::u8string>("max_speed"))

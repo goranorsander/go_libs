@@ -46,7 +46,7 @@ namespace log
 {
 
 class log
-    : go::utility::noncopyable_nonmovable
+    : go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~log() = default;
@@ -78,7 +78,7 @@ public:
 };
 
 class wlog
-    : go::utility::noncopyable_nonmovable
+    : go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~wlog() = default;

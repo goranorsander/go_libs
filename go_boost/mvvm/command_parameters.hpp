@@ -20,7 +20,7 @@
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -28,7 +28,7 @@ namespace mvvm
 {
 
 class command_parameters
-    : private go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef command_parameters this_type;
@@ -40,7 +40,7 @@ public:
 
 protected:
     command_parameters()
-        : go_boost::utility::noncopyable_nonmovable()
+        : go_boost::type_traits::noncopyable_nonmovable()
     {
     }
 

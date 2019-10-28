@@ -20,14 +20,8 @@ TEST(std_basic_observable_unordered_multimap_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/utility.hpp>
-
-namespace i = go::mvvm::iterator;
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {
@@ -458,7 +452,7 @@ TEST(std_basic_observable_unordered_multimap_test_suite, test_erase_range)
     m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator begin = m->begin();
     ++begin;
     m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator end = m->end();
-    const bool moved_backward = i::try_move_backward<m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator>(m, end);
+    const bool moved_backward = mi::try_move_backward<m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator>(m, end);
     EXPECT_EQ(moved_backward, true);
 
     m->erase(begin, end);

@@ -20,7 +20,7 @@ It is declared as:
 ```c++
 template <class L, class O>
 class basic_file_writer
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~basic_file_writer() = default;

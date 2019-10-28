@@ -21,14 +21,8 @@ TEST(boost_observable_object_phoenix_test_suite, boost_phoenix_not_supported) {}
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/mvvm/utility.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-
-namespace bp = boost::phoenix;
-namespace bph = boost::phoenix::placeholders;
-namespace m = go_boost::mvvm;
-namespace mu = go_boost::mvvm::utility;
-namespace p = go_boost::property;
-namespace u = go_boost::utility;
 
 namespace
 {
@@ -36,7 +30,7 @@ namespace
 // Test observable_object
 class spaceship
     : public m::observable_object
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -44,7 +38,7 @@ public:
 private:
     spaceship()
         : m::observable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , crew_complement("crew_complement")
         , name("name")
         , max_speed("max_speed")

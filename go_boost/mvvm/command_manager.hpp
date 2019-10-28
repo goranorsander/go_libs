@@ -43,7 +43,7 @@ typedef basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_command_manager
     : public basic_notify_command_execution_interface<S, L>
-    , private go_boost::utility::noncopyable_nonmovable
+    , private go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef S string_type;
@@ -105,7 +105,7 @@ inline basic_command_manager<S, L>::~basic_command_manager()
 template<>
 inline basic_command_manager<std::string, go_boost::utility::recursive_spin_lock>::basic_command_manager()
     : basic_notify_command_execution_interface<std::string, go_boost::utility::recursive_spin_lock>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
 {
@@ -115,7 +115,7 @@ inline basic_command_manager<std::string, go_boost::utility::recursive_spin_lock
 template<>
 inline basic_command_manager<std::wstring, go_boost::utility::recursive_spin_lock>::basic_command_manager()
     : basic_notify_command_execution_interface<std::wstring, go_boost::utility::recursive_spin_lock>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
 {
@@ -125,7 +125,7 @@ inline basic_command_manager<std::wstring, go_boost::utility::recursive_spin_loc
 template<>
 inline basic_command_manager<std::string, go_boost::utility::placebo_lockable>::basic_command_manager()
     : basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
 {
@@ -135,7 +135,7 @@ inline basic_command_manager<std::string, go_boost::utility::placebo_lockable>::
 template<>
 inline basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::basic_command_manager()
     : basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
 {
@@ -145,7 +145,7 @@ inline basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>:
 template<class S, class L>
 inline basic_command_manager<S, L>::basic_command_manager()
     : basic_notify_command_execution_interface<S, L>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
 {

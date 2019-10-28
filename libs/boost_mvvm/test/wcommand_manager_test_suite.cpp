@@ -15,12 +15,8 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
-namespace u = go_boost::utility;
 
 namespace
 {
@@ -28,7 +24,7 @@ namespace
 // Test command_manager
 class spaceship
     : public m::wobservable_object
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -36,7 +32,7 @@ public:
 private:
     explicit spaceship(const m::wcommand_manager::ptr& command_manager_)
         : m::wobservable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name(L"name")
         , captain(L"captain")
         , impulse_speed_command(L"impulse_speed_command")
@@ -53,7 +49,7 @@ private:
 
     spaceship(const m::wcommand_manager::ptr& command_manager_, const std::wstring& name_, const std::wstring& captain_)
         : m::wobservable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name(L"name")
         , captain(L"captain")
         , impulse_speed_command(L"impulse_speed_command")
@@ -97,8 +93,8 @@ private:
 public:
     p::wproperty<std::wstring> name;
     p::wproperty<std::wstring> captain;
-    rop::wproperty<m::wcommand_interface::ptr> impulse_speed_command;
-    rop::wproperty<m::wcommand_interface::ptr> warp_speed_command;
+    pro::wproperty<m::wcommand_interface::ptr> impulse_speed_command;
+    pro::wproperty<m::wcommand_interface::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }

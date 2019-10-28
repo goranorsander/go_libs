@@ -21,8 +21,7 @@ TEST(std_exception_test_suite, cpp11_not_supported) {}
 
 #include <string>
 #include <go/exception.hpp>
-
-namespace e = go::exception;
+#include <go/namespace_alias.hpp>
 
 namespace
 {

@@ -18,7 +18,7 @@
 
 class fleet_repository
     : public fleet_repository_interface
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository this_type;

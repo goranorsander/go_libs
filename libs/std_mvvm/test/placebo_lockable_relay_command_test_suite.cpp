@@ -20,12 +20,7 @@ TEST(std_relay_command_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace mst = go::mvvm::single_threaded;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
+#include <go/namespace_alias.hpp>
 
 namespace
 {

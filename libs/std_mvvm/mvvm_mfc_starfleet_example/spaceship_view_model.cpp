@@ -47,7 +47,7 @@ spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, co
     : m::view_model_interface<go::utility::recursive_spin_lock>()
     , m::wobservable_object()
     , m::data_context_interface<spaceship_model::ptr>(model)
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , main_frame_vm(L"spaceship_view_model::main_frame_vm")
     , spaceship_id(L"spaceship_view_model::spaceship_id")
     , spaceship_class(L"spaceship_view_model::spaceship_class")

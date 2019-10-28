@@ -20,16 +20,9 @@ TEST(std_command_manager_lambda_placebo_lockable_test_suite, cpp11_not_supported
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace mst = go::mvvm::single_threaded;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
-namespace s = go::signals;
-namespace u = go::utility;
 
 namespace
 {
@@ -37,7 +30,7 @@ namespace
 // Test command_manager
 class spaceship
     : public mst::observable_object
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
@@ -45,7 +38,7 @@ public:
 private:
     explicit spaceship(const mst::command_manager::ptr& command_manager_)
         : mst::observable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name("name")
         , captain("captain")
         , impulse_speed_command("impulse_speed_command")
@@ -62,7 +55,7 @@ private:
 
     spaceship(const mst::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
         : mst::observable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name("name")
         , captain("captain")
         , impulse_speed_command("impulse_speed_command")
@@ -116,8 +109,8 @@ private:
 public:
     p::property<std::string> name;
     p::property<std::string> captain;
-    rop::property<mst::command_interface::ptr> impulse_speed_command;
-    rop::property<mst::command_interface::ptr> warp_speed_command;
+    pro::property<mst::command_interface::ptr> impulse_speed_command;
+    pro::property<mst::command_interface::ptr> warp_speed_command;
 
 public:
     bool at_impulse_speed() const { return _at_impulse_speed; }

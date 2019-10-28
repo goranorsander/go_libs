@@ -16,12 +16,9 @@ int main() { return -1; }
 #else
 
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/signals.hpp>
-
-namespace p = go::property;
-namespace s = go::signals;
-namespace ph = std::placeholders;
 
 class fleet_commander
 {

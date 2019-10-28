@@ -17,14 +17,9 @@ int main() { return -1; }
 
 #include <iostream>
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/signals.hpp>
-
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace s = go::signals;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
 
 const std::string fleet_commander_changed_event_type("fleet commander changed");
 
@@ -90,7 +85,7 @@ public:
     {
     }
 
-    rop::value_property<fleet_commander::ptr> commander;
+    pro::value_property<fleet_commander::ptr> commander;
     p::value_property<std::string> name;
     p::value_property<std::string> captain;
 

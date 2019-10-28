@@ -18,7 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/diagnostics/log/log_line.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/utility/string_cast.hpp>
 
 #include <fstream>
@@ -37,7 +37,7 @@ typedef basic_file_writer<wlog_line, std::wofstream> wfile_writer;
 
 template <class L, class O>
 class basic_file_writer
-    : go::utility::noncopyable_nonmovable
+    : go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef L log_line_type;

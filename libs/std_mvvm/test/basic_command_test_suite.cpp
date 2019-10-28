@@ -20,12 +20,8 @@ TEST(std_basic_command_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {

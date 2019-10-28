@@ -18,7 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <go/diagnostics/log/detail/buffer_interface.hpp>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/utility/spin_lock.hpp>
 
 #include <mutex>
@@ -35,7 +35,7 @@ namespace detail
 template <class L>
 class ring_buffer
     : public buffer_interface<L>
-    , go::utility::noncopyable_nonmovable
+    , go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef L log_line_type;
@@ -51,7 +51,7 @@ public:
 
     explicit ring_buffer(const size_type size)
         : buffer_interface<L>()
-        , go::utility::noncopyable_nonmovable()
+        , go::type_traits::noncopyable_nonmovable()
         , _size(size)
         , _ring{ new element[size] }
         , _write_index(0)

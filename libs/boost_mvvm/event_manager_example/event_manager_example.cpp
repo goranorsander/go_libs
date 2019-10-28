@@ -11,11 +11,8 @@
 #include <go_boost/config.hpp>
 #include <go_boost/mvvm.hpp>
 #include <go_boost/property.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <iostream>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
 
 const std::string fleet_commander_changed_event_type("fleet commander changed");
 
@@ -84,7 +81,7 @@ public:
     {
     }
 
-    rop::value_property<fleet_commander::ptr> commander;
+    pro::value_property<fleet_commander::ptr> commander;
     p::value_property<std::string> name;
     p::value_property<std::string> captain;
 

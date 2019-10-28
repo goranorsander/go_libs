@@ -9,10 +9,9 @@
 //
 
 #include <go_boost/config.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 #include <iostream>
-
-namespace p = go_boost::property;
 
 class spaceship
 {

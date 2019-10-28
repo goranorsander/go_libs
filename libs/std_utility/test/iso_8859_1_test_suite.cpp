@@ -19,12 +19,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_iso_8859_1_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/string/iso_8859_1.hpp>
 #include <go/utility/u2string.hpp>
 #include <go/utility/u8string.hpp>
-
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 namespace
 {

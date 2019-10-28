@@ -20,16 +20,9 @@ TEST(std_event_manager_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace mst = go::mvvm::single_threaded;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
-namespace s = go::signals;
-namespace u = go::utility;
 
 namespace
 {
@@ -56,7 +49,7 @@ protected:
     }
 
 public:
-    rop::value_property<std::string> fleet_commander;
+    pro::value_property<std::string> fleet_commander;
 
 public:
     static ptr create(const std::string& fleet_commander_)
@@ -73,7 +66,7 @@ public:
 };
 
 class fleet_commander
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
@@ -84,7 +77,7 @@ public:
 
 private:
     fleet_commander(const mst::event_manager::ptr& event_manager_, const std::string& commander_, const std::string& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander("commander")
         , battle("battle", battle_)
         , _event_manager(event_manager_)
@@ -132,14 +125,14 @@ private:
 };
 
 class spaceship
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
 
 private:
     spaceship(const std::string& name_, const std::string& captain_, const std::string& fleet_commander_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , fleet_commander("fleet_commander")
         , name("name", name_)
         , captain("captain", captain_)
@@ -156,7 +149,7 @@ public:
     }
 
 public:
-    rop::property<std::string> fleet_commander;
+    pro::property<std::string> fleet_commander;
     p::value_property<std::string> name;
     p::value_property<std::string> captain;
 

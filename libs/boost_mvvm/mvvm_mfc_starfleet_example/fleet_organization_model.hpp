@@ -20,7 +20,7 @@ class fleet_organization_model
     : public fleet_organization_interface
     , public m::wobservable_object
     , public m::object_wobserver_interface
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_organization_model this_type;
@@ -37,7 +37,7 @@ private:
     fleet_organization_model();
 
 public:
-    rop::wproperty<fleet_organization_id_type> id;
+    pro::wproperty<fleet_organization_id_type> id;
 
 public:
     static ptr create();

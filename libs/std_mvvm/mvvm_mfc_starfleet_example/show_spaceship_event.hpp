@@ -36,7 +36,7 @@ private:
     show_spaceship_event() = delete;
 
 public:
-    nrop::value_property<fleet_organization_id_type> id;
+    pnro::value_property<fleet_organization_id_type> id;
 
 public:
     static ptr create(const fleet_organization_id_type& id_);

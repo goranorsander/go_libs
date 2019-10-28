@@ -25,7 +25,7 @@ class main_frame_view_model
     : public m::view_model_interface<go::utility::recursive_spin_lock>
     , public m::wobservable_object
     , private m::data_context_interface<fleet_repository::wptr>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef main_frame_view_model this_type;
@@ -39,15 +39,15 @@ private:
     main_frame_view_model(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);
 
 public:
-    nrop::value_property<mdi_frame_interface::pointer> mdi_frame_manager;
-    nrop::value_property<m::wcommand_manager::ptr> command_manager;
-    nrop::value_property<m::wevent_manager::ptr> event_manager;
-    nrop::value_property<fleet_repository_interface::ptr> fleet_repository;
+    pnro::value_property<mdi_frame_interface::pointer> mdi_frame_manager;
+    pnro::value_property<m::wcommand_manager::ptr> command_manager;
+    pnro::value_property<m::wevent_manager::ptr> event_manager;
+    pnro::value_property<fleet_repository_interface::ptr> fleet_repository;
 
-    np::value_property<dialog_view_container_type::ptr> dialogs;
+    pn::value_property<dialog_view_container_type::ptr> dialogs;
 
-    rop::wproperty<m::wcommand_interface::ptr> open_add_equipment_view_command;
-    rop::wproperty<m::wcommand_interface::ptr> delete_dialog_view_command;
+    pro::wproperty<m::wcommand_interface::ptr> open_add_equipment_view_command;
+    pro::wproperty<m::wcommand_interface::ptr> delete_dialog_view_command;
 
 public:
     static ptr create(mdi_frame_interface::pointer mdi_frame_mgr, const m::wcommand_manager::ptr& command_mgr, const m::wevent_manager::ptr& event_mgr, const fleet_repository::ptr& fleet_repo);

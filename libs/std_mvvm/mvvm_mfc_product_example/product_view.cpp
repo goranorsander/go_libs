@@ -14,8 +14,6 @@
 
 #include <go/mvvm/utility/mfc_dlgdata.hpp>
 
-namespace mu = go::mvvm::utility;
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif

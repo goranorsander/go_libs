@@ -535,6 +535,28 @@ set(GO_SIGNALS_DIR ${GO_DIR}/signals)
 file(GLOB GO_LIBS_SRC_GO_SIGNALS_HPP ${GO_SIGNALS_DIR}/*.hpp)
 
 ########################################################
+#  go/type_traits                                      #
+########################################################
+
+set(GO_TYPE_TRAITS_DIRNAME type_traits)
+set(GO_TYPE_TRAITS_DIR ${GO_DIR}/type_traits)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_TYPE_TRAITS_HPP ${GO_TYPE_TRAITS_DIR}/*.hpp)
+
+########################################################
+#  go/type_traits/detail                               #
+########################################################
+
+set(GO_TYPE_TRAITS_DETAIL_DIRNAME type_traits/detail)
+set(GO_TYPE_TRAITS_DETAIL_DIR ${GO_DIR}/type_traits/detail)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_TYPE_TRAITS_DETAIL_HPP ${GO_TYPE_TRAITS_DETAIL_DIR}/*.hpp)
+
+########################################################
 #  go/utility                                          #
 ########################################################
 
@@ -810,6 +832,28 @@ set(GO_BOOST_SIGNALS_DIR ${GO_BOOST_DIR}/signals)
 file(GLOB GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP ${GO_BOOST_SIGNALS_DIR}/*.hpp)
 
 ########################################################
+#  go_boost/type_traits                                #
+########################################################
+
+set(GO_BOOST_TYPE_TRAITS_DIRNAME type_traits)
+set(GO_BOOST_TYPE_TRAITS_DIR ${GO_BOOST_DIR}/type_traits)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_HPP ${GO_BOOST_TYPE_TRAITS_DIR}/*.hpp)
+
+########################################################
+#  go_boost/type_traits/detail                         #
+########################################################
+
+set(GO_BOOST_TYPE_TRAITS_DETAIL_DIRNAME type_traits/detail)
+set(GO_BOOST_TYPE_TRAITS_DETAIL_DIR ${GO_BOOST_DIR}/type_traits/detail)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_DETAIL_HPP ${GO_BOOST_TYPE_TRAITS_DETAIL_DIR}/*.hpp)
+
+########################################################
 #  go_boost/utility                                    #
 ########################################################
 
@@ -929,6 +973,8 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_HPP}          DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
@@ -955,6 +1001,8 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_HPP}          DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
@@ -1013,6 +1061,10 @@ set(GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE
     ${ROOT_DIR}/libs/boost_signals/CMakeLists.txt
 )
 
+set(GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE
+    ${ROOT_DIR}/libs/boost_type_traits/CMakeLists.txt
+)
+
 set(GO_LIBS_LIBS_BOOST_UTILITY_CMAKE
     ${ROOT_DIR}/libs/boost_utility/CMakeLists.txt
 )
@@ -1041,6 +1093,10 @@ set(GO_LIBS_LIBS_STD_SIGNALS_CMAKE
     ${ROOT_DIR}/libs/std_signals/CMakeLists.txt
 )
 
+set(GO_LIBS_LIBS_STD_TYPE_TRAITS_CMAKE
+    ${ROOT_DIR}/libs/std_type_traits/CMakeLists.txt
+)
+
 set(GO_LIBS_LIBS_STD_UTILITY_CMAKE
     ${ROOT_DIR}/libs/std_utility/CMakeLists.txt
 )
@@ -1065,12 +1121,14 @@ add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
     ${GO_LIBS_LIBS_BOOST_MVVM_CMAKE}
     ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE}
     ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE}
     ${GO_LIBS_LIBS_STD_CONFIG_CMAKE}
     ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE}
     ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE}
     ${GO_LIBS_LIBS_STD_MVVM_CMAKE}
     ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE}
+    ${GO_LIBS_LIBS_STD_TYPE_TRAITS_CMAKE}
     ${GO_LIBS_LIBS_STD_SIGNALS_CMAKE}
     ${GO_LIBS_LIBS_STD_UTILITY_CMAKE}
 )
@@ -1088,6 +1146,7 @@ source_group(CMake\\libs\\boost_exception FILES ${GO_LIBS_LIBS_BOOST_EXCEPTION_C
 source_group(CMake\\libs\\boost_mvvm FILES ${GO_LIBS_LIBS_BOOST_MVVM_CMAKE})
 source_group(CMake\\libs\\boost_property FILES ${GO_LIBS_LIBS_BOOST_PROPERTY_CMAKE})
 source_group(CMake\\libs\\boost_signals FILES ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE})
+source_group(CMake\\libs\\boost_type_traits FILES ${GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE})
 source_group(CMake\\libs\\boost_utility FILES ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE})
 source_group(CMake\\libs\\std_config FILES ${GO_LIBS_LIBS_STD_CONFIG_CMAKE})
 source_group(CMake\\libs\\std_diagnostics FILES ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE})
@@ -1095,4 +1154,5 @@ source_group(CMake\\libs\\std_exception FILES ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE
 source_group(CMake\\libs\\std_mvvm FILES ${GO_LIBS_LIBS_STD_MVVM_CMAKE})
 source_group(CMake\\libs\\std_property FILES ${GO_LIBS_LIBS_STD_PROPERTY_CMAKE})
 source_group(CMake\\libs\\std_signals FILES ${GO_LIBS_LIBS_STD_SIGNALS_CMAKE})
+source_group(CMake\\libs\\std_type_traits FILES ${GO_LIBS_LIBS_STD_TYPE_TRAITS_CMAKE})
 source_group(CMake\\libs\\std_utility FILES ${GO_LIBS_LIBS_STD_UTILITY_CMAKE})

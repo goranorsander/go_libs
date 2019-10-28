@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_erase_iterator_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/container/size.hpp>
 #include <go/utility/iterator/erase.hpp>
 
@@ -28,9 +29,6 @@ TEST(std_erase_iterator_test_suite, cpp11_not_supported) {}
 #include <vector>
 #include <map>
 #include <set>
-
-namespace uc = go::utility::container;
-namespace ui = go::utility::iterator;
 
 namespace
 {

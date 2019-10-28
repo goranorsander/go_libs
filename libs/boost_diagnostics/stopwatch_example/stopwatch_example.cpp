@@ -11,8 +11,7 @@
 #include <iostream>
 #include <go_boost/config.hpp>
 #include <go_boost/diagnostics.hpp>
-
-namespace b = go_boost::diagnostics::benchmark;
+#include <go_boost/namespace_alias.hpp>
 
 boost::uint64_t fibonacci_number(const boost::uint64_t n)
 {
@@ -21,13 +20,13 @@ boost::uint64_t fibonacci_number(const boost::uint64_t n)
 
 int main()
 {
-    b::stopwatch sw;
+    db::stopwatch sw;
     boost::uint64_t n = 0;
     while (n < 31)
     {
         boost::uint64_t fn = 0;
         {
-            b::stopwatch_guard g(sw);
+            db::stopwatch_guard g(sw);
             fn = fibonacci_number(n);
         }
 

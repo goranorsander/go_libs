@@ -20,11 +20,7 @@ TEST(std_observable_unordered_map_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-
-namespace i = go::mvvm::iterator;
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
+#include <go/namespace_alias.hpp>
 
 namespace
 {
@@ -465,7 +461,7 @@ TEST(std_observable_unordered_map_test_suite, test_erase_range)
     m::observable_unordered_map<int, int>::iterator begin = m->begin();
     ++begin;
     m::observable_unordered_map<int, int>::iterator end = m->end();
-    const bool moved_backward = i::try_move_backward<m::observable_unordered_map<int, int>::iterator>(m, end);
+    const bool moved_backward = mi::try_move_backward<m::observable_unordered_map<int, int>::iterator>(m, end);
     EXPECT_EQ(moved_backward, true);
 
     m->erase(begin, end);

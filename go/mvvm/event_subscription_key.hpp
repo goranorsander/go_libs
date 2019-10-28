@@ -17,7 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/utility/primitive_type_specializer.hpp>
+#include <go/type_traits/primitive_type_specializer.hpp>
 
 namespace go
 {

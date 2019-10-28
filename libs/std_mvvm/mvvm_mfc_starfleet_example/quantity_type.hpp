@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include <go/utility/primitive_type_specializer.hpp>
+#include <go/type_traits/primitive_type_specializer.hpp>
 
 GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(quantity_type, unsigned long);
 

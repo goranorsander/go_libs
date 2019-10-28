@@ -22,15 +22,9 @@ TEST(std_property_placebo_lockable_test_suite, cpp11_not_supported) {}
 #include <functional>
 
 #include <go/exception.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace e = go::exception;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
-namespace u = go::utility;
-namespace wop = go::property::write_only;
 
 namespace testing
 {
@@ -151,9 +145,9 @@ TEST(std_property_placebo_lockable_test_suite, value_properties)
 class read_only_spaceship
 {
 public:
-    rop::value_property<int, u::placebo_lockable> crew_complement;
-    rop::value_property<double, u::placebo_lockable> max_speed;
-    rop::value_property<std::string, u::placebo_lockable> name;
+    pro::value_property<int, u::placebo_lockable> crew_complement;
+    pro::value_property<double, u::placebo_lockable> max_speed;
+    pro::value_property<std::string, u::placebo_lockable> name;
 
     read_only_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -203,9 +197,9 @@ TEST(std_property_placebo_lockable_test_suite, read_only_value_properties)
 class write_only_spaceship
 {
 public:
-    wop::value_property<int, u::placebo_lockable> crew_complement;
-    wop::value_property<double, u::placebo_lockable> max_speed;
-    wop::value_property<std::string, u::placebo_lockable> name;
+    pwo::value_property<int, u::placebo_lockable> crew_complement;
+    pwo::value_property<double, u::placebo_lockable> max_speed;
+    pwo::value_property<std::string, u::placebo_lockable> name;
 
     write_only_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -392,9 +386,9 @@ TEST(std_property_placebo_lockable_test_suite, reference_properties)
 class read_only_reference_spaceship
 {
 public:
-    rop::reference_property<int, u::placebo_lockable> crew_complement;
-    rop::reference_property<double, u::placebo_lockable> max_speed;
-    rop::reference_property<std::string, u::placebo_lockable> name;
+    pro::reference_property<int, u::placebo_lockable> crew_complement;
+    pro::reference_property<double, u::placebo_lockable> max_speed;
+    pro::reference_property<std::string, u::placebo_lockable> name;
 
     read_only_reference_spaceship(const int& _crew_complement, const double& _max_speed, const std::string& _name)
         : crew_complement(std::string("crew_complement"), _crew_complement)
@@ -493,9 +487,9 @@ TEST(std_property_placebo_lockable_test_suite, read_only_reference_properties)
 class write_only_reference_spaceship
 {
 public:
-    wop::reference_property<int, u::placebo_lockable> crew_complement;
-    wop::reference_property<double, u::placebo_lockable> max_speed;
-    wop::reference_property<std::string, u::placebo_lockable> name;
+    pwo::reference_property<int, u::placebo_lockable> crew_complement;
+    pwo::reference_property<double, u::placebo_lockable> max_speed;
+    pwo::reference_property<std::string, u::placebo_lockable> name;
 
     write_only_reference_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -765,7 +759,7 @@ class read_only_armed_spaceship
     : public read_only_spaceship
 {
 public:
-    rop::property<int, u::placebo_lockable> phaser_arrays;
+    pro::property<int, u::placebo_lockable> phaser_arrays;
 
     read_only_armed_spaceship()
         : read_only_spaceship()
@@ -875,7 +869,7 @@ class write_only_armed_spaceship
     : public write_only_spaceship
 {
 public:
-    wop::property<int, u::placebo_lockable> phaser_arrays;
+    pwo::property<int, u::placebo_lockable> phaser_arrays;
 
     write_only_armed_spaceship()
         : write_only_spaceship()

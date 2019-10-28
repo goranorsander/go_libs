@@ -30,7 +30,7 @@ fleet_organization_model::fleet_organization_model(const std::wstring& name_, co
     : fleet_organization_interface()
     , m::wobservable_object()
     , m::object_wobserver_interface()
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , id(L"fleet_organization_model::id")
     , _id(_next_id++)
     , _name(name_)

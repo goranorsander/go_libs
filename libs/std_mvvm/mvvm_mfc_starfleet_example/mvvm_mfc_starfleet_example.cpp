@@ -67,8 +67,8 @@ mvvm_mfc_starfleet_example_app::mvvm_mfc_starfleet_example_app()
     m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
     SetAppID(_T("mvvm_mfc_starfleet_example.AppID.NoVersion"));
 
-    l::initialize(l::policy::guaranteed_logger<l::file_writer>(), "./", "mfc_starfleet_example", 10);
-    l::set_log_level(l::log_level::trace);
+    dl::initialize(dl::policy::guaranteed_logger<dl::file_writer>(), "./", "mfc_starfleet_example", 10);
+    dl::set_log_level(dl::log_level::trace);
 }
 
 BOOL mvvm_mfc_starfleet_example_app::InitInstance()

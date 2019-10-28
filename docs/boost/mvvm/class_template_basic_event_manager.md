@@ -22,7 +22,7 @@ It is declared as:
 template<class S, class L = boost::recursive_mutex>
 class basic_event_manager
     : public basic_notify_event_firing_interface<S>
-    , public go_boost::utility::noncopyable_nonmovable
+    , public go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~basic_event_manager();

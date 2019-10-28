@@ -18,7 +18,7 @@
 class spaceship_model
     : public spaceship_interface
     , public m::wobservable_object
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef spaceship_model this_type;

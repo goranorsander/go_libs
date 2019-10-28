@@ -20,21 +20,17 @@ TEST(std_signals_wstring_test_suite, cpp11_not_supported) {}
 #else
 
 #include <string>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/signals.hpp>
 #include <go/utility.hpp>
-
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
 
 namespace
 {
 
 // Test signals
 class fleet_commander
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_commander this_type;
@@ -52,7 +48,7 @@ public:
 
 private:
     fleet_commander(const std::wstring& commander_, const std::wstring& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander(L"commander", commander_)
         , battle(L"battle", battle_)
         , fire_lasers()
@@ -82,7 +78,7 @@ public:
 };
 
 class spaceship
-    : public u::noncopyable_nonmovable
+    : public tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship()
@@ -97,7 +93,7 @@ public:
 
 public:
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::wstring& name_, const std::wstring& captain_, const int proton_torpedoes_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , name(L"name", name_)
         , captain(L"captain", captain_)
         , lasers_firing(L"lasers_firing", false)

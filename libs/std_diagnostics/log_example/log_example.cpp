@@ -16,23 +16,22 @@ int main() { return -1; }
 #else
 
 #include <go/diagnostics.hpp>
-
-namespace l = go::diagnostics::log;
+#include <go/namespace_alias.hpp>
 
 int main()
 {
     GO_LOG_FATAL << "GO_LOG_FATAL : uninitialized";
     GO_LOG_TRACE << "GO_LOG_TRACE : uninitialized";
 
-    l::initialize(l::policy::guaranteed_logger<l::file_writer>(), "./", "log_example", 10);
-    l::set_log_level(l::log_level::trace);
+    dl::initialize(dl::policy::guaranteed_logger<dl::file_writer>(), "./", "log_example", 10);
+    dl::set_log_level(dl::log_level::trace);
 
-    GO_LOG(l::log_level::fatal) << "GO_LOG(l::log_level::fatal) @ trace";
-    GO_LOG(l::log_level::error) << "GO_LOG(l::log_level::error) @ trace";
-    GO_LOG(l::log_level::warning) << "GO_LOG(l::log_level::warning) @ trace";
-    GO_LOG(l::log_level::info) << "GO_LOG(l::log_level::info) @ trace";
-    GO_LOG(l::log_level::debug) << "GO_LOG(l::log_level::debug) @ trace";
-    GO_LOG(l::log_level::trace) << "GO_LOG(l::log_level::trace) @ trace";
+    GO_LOG(dl::log_level::fatal) << "GO_LOG(dl::log_level::fatal) @ trace";
+    GO_LOG(dl::log_level::error) << "GO_LOG(dl::log_level::error) @ trace";
+    GO_LOG(dl::log_level::warning) << "GO_LOG(dl::log_level::warning) @ trace";
+    GO_LOG(dl::log_level::info) << "GO_LOG(dl::log_level::info) @ trace";
+    GO_LOG(dl::log_level::debug) << "GO_LOG(dl::log_level::debug) @ trace";
+    GO_LOG(dl::log_level::trace) << "GO_LOG(dl::log_level::trace) @ trace";
 
     GO_LOG_FATAL << "GO_LOG_FATAL @ trace";
     GO_LOG_ERROR << "GO_LOG_ERROR @ trace";
@@ -41,11 +40,11 @@ int main()
     GO_LOG_DEBUG << "GO_LOG_DEBUG @ trace";
     GO_LOG_TRACE << "GO_LOG_TRACE @ trace";
 
-    l::set_log_level(l::log_level::info);
+    dl::set_log_level(dl::log_level::info);
 
-    GO_LOG(l::log_level::warning) << "GO_LOG(l::log_level::warning) @ info";
-    GO_LOG(l::log_level::info) << "GO_LOG(l::log_level::info) @ info";
-    GO_LOG(l::log_level::debug) << "GO_LOG(l::log_level::debug) @ info";
+    GO_LOG(dl::log_level::warning) << "GO_LOG(dl::log_level::warning) @ info";
+    GO_LOG(dl::log_level::info) << "GO_LOG(dl::log_level::info) @ info";
+    GO_LOG(dl::log_level::debug) << "GO_LOG(dl::log_level::debug) @ info";
 
     GO_LOG_WARN << "GO_LOG_WARN @ info";
     GO_LOG_INFO << "GO_LOG_INFO @ info";
@@ -83,9 +82,9 @@ int main()
     GO_LOG_INFO << "GO_LOG_INFO : std::string  = " << std_mbs;
     GO_LOG_INFO << "GO_LOG_INFO : std::wstring = " << std_sws;
 
-    l::set_log_level(l::log_level::none);
+    dl::set_log_level(dl::log_level::none);
 
-    GO_LOG(l::log_level::fatal) << "GO_LOG(l::log_level::fatal) @ none";
+    GO_LOG(dl::log_level::fatal) << "GO_LOG(dl::log_level::fatal) @ none";
 
     GO_LOG_FATAL << "GO_LOG_WARN @ none";
 

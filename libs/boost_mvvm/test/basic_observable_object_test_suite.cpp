@@ -15,13 +15,9 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace u = go_boost::utility;
-namespace us = go_boost::utility::string;
 
 namespace
 {
@@ -29,7 +25,7 @@ namespace
 // Test observable_object
 class spaceship
     : public m::basic_observable_object<u::u8string>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
@@ -37,7 +33,7 @@ public:
 private:
      spaceship()
         : m::basic_observable_object<u::u8string>()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , crew_complement(us::create<u::u8string>("crew_complement"))
         , name(us::create<u::u8string>("name"))
         , max_speed(us::create<u::u8string>("max_speed"))

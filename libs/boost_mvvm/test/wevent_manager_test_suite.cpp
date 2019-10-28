@@ -15,12 +15,8 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
-namespace u = go_boost::utility;
 
 namespace
 {
@@ -47,7 +43,7 @@ protected:
     }
 
 public:
-    rop::value_wproperty<std::wstring> fleet_commander;
+    pro::value_wproperty<std::wstring> fleet_commander;
 
 public:
     static ptr create(const std::wstring& fleet_commander_)
@@ -67,7 +63,7 @@ public:
 };
 
 class fleet_commander
-    : private u::noncopyable_nonmovable
+    : private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_commander this_type;
@@ -79,7 +75,7 @@ public:
 
 private:
     fleet_commander(const m::wevent_manager::ptr& event_manager_, const std::wstring& commander_, const std::wstring& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander(std::wstring(L"commander"))
         , battle(std::wstring(L"battle"), battle_)
         , _event_manager(event_manager_)
@@ -136,14 +132,14 @@ private:
 };
 
 class spaceship
-    : private u::noncopyable_nonmovable
+    : private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 private:
     spaceship(const std::wstring& name_, const std::wstring& captain_, const std::wstring& fleet_commander_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , fleet_commander(std::wstring(L"fleet_commander"))
         , name(std::wstring(L"name"), name_)
         , captain(std::wstring(L"captain"), captain_)
@@ -160,7 +156,7 @@ public:
     }
 
 public:
-    rop::wproperty<std::wstring> fleet_commander;
+    pro::wproperty<std::wstring> fleet_commander;
     p::value_wproperty<std::wstring> name;
     p::value_wproperty<std::wstring> captain;
 

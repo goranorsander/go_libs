@@ -9,13 +9,11 @@
 //
 
 #include <go_boost/config.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility.hpp>
 #include <iostream>
 #include <boost/assign.hpp>
 #include <boost/container/slist.hpp>
-
-namespace u = go_boost::utility;
-namespace ui = go_boost::utility::iterator;
 
 int main()
 {

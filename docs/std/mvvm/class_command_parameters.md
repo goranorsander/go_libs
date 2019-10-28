@@ -19,7 +19,7 @@ It is declared as:
 
 ```c++
 class command_parameters
-    : public go::utility::noncopyable_nonmovable
+    : public go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~command_parameters() = default;

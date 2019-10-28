@@ -14,19 +14,16 @@
 #pragma once
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 #include <go/utility.hpp>
-
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace u = go::utility;
 
 GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
 GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     typedef product_model this_type;

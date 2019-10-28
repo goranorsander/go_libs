@@ -20,8 +20,7 @@
 #include "resource.h"
 
 #include <go_boost/mvvm.hpp>
-
-namespace m = go_boost::mvvm;
+#include <go_boost/namespace_alias.hpp>
 
 class mvvm_mfc_phoenix_product_example_app
     : public CWinApp

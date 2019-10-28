@@ -16,10 +16,8 @@ int main() { return -1; }
 #else
 
 #include <iostream>
+#include <go/namespace_alias.hpp>
 #include <go/utility.hpp>
-
-namespace u = go::utility;
-namespace us = go::utility::string;
 
 template<class S, typename C = unsigned int>
 void print_hex(const S& s)

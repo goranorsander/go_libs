@@ -28,7 +28,7 @@ main_frame_view_model::main_frame_view_model(mdi_frame_interface::pointer mdi_fr
     : m::view_model_interface<u::placebo_lockable>()
     , m::wobservable_object()
     , m::data_context_interface<fleet_repository::wptr>(fleet_repository::wptr(fleet_repo))
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , mdi_frame_manager(mdi_frame_mgr)
     , command_manager(command_mgr)
     , event_manager(event_mgr)

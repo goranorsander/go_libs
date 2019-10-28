@@ -15,14 +15,9 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 #include <go_boost/utility.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace rop = go_boost::property::read_only;
-namespace u = go_boost::utility;
-namespace us = go_boost::utility::string;
 
 namespace
 {
@@ -49,7 +44,7 @@ protected:
     }
 
 public:
-    rop::value_u8property<u::u8string> fleet_commander;
+    pro::value_u8property<u::u8string> fleet_commander;
 
 public:
     static ptr create(const u::u8string& fleet_commander_)
@@ -69,7 +64,7 @@ public:
 };
 
 class fleet_commander
-    : private u::noncopyable_nonmovable
+    : private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_commander this_type;
@@ -81,7 +76,7 @@ public:
 
 private:
     fleet_commander(const m::basic_event_manager<u::u8string>::ptr& event_manager_, const u::u8string& commander_, const u::u8string& battle_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , commander(us::create<u::u8string>("commander"))
         , battle(us::create<u::u8string>("battle"), battle_)
         , _event_manager(event_manager_)
@@ -138,14 +133,14 @@ private:
 };
 
 class spaceship
-    : private u::noncopyable_nonmovable
+    : private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() GO_BOOST_DEFAULT_DESTRUCTOR
 
 private:
     spaceship(const u::u8string& name_, const u::u8string& captain_, const u::u8string& fleet_commander_)
-        : u::noncopyable_nonmovable()
+        : tt::noncopyable_nonmovable()
         , fleet_commander(us::create<u::u8string>("fleet_commander"))
         , name(us::create<u::u8string>("name"), name_)
         , captain(us::create<u::u8string>("captain"), captain_)
@@ -162,7 +157,7 @@ public:
     }
 
 public:
-    rop::u8property<u::u8string> fleet_commander;
+    pro::u8property<u::u8string> fleet_commander;
     p::value_u8property<u::u8string> name;
     p::value_u8property<u::u8string> captain;
 

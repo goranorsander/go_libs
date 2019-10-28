@@ -23,9 +23,8 @@ TEST(std_monitor_test_suite, cpp11_not_supported) {}
 #include <functional>
 #include <list>
 #include <thread>
+#include <go/namespace_alias.hpp>
 #include <go/utility/monitor.hpp>
-
-namespace u = go::utility;
 
 namespace
 {

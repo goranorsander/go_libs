@@ -20,11 +20,7 @@ TEST(std_observable_array_placebo_lockable_test_suite, cpp11_not_supported) {}
 #else
 
 #include <go/mvvm.hpp>
-
-namespace m = go::mvvm;
-namespace ph = std::placeholders;
-namespace s = go::signals;
-namespace u = go::utility;
+#include <go/namespace_alias.hpp>
 
 namespace
 {

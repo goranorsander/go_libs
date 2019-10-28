@@ -16,9 +16,8 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/bind.hpp>
 
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/utility/scope_guard.hpp>
-
-namespace u = go_boost::utility;
 
 namespace
 {

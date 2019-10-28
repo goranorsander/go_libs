@@ -14,17 +14,16 @@
 #pragma once
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
 
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace rop = go_boost::property::read_only;
-
 class product_view_model
     : public m::wobservable_object
     , public m::data_context_interface<product_model::ptr>
-    , u::noncopyable_nonmovable
+    , tt::noncopyable_nonmovable
 {
 public:
     typedef product_view_model this_type;
@@ -49,8 +48,8 @@ public:
     p::wproperty<std::wstring> current_product_name;
     p::wproperty<currency_type> current_unit_price;
 
-    rop::wproperty<m::wcommand_interface::ptr> get_product_command;
-    rop::wproperty<m::wcommand_interface::ptr> save_product_command;
+    pro::wproperty<m::wcommand_interface::ptr> get_product_command;
+    pro::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
     product_id_type get_product_id() const;

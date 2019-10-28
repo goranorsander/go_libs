@@ -14,19 +14,16 @@
 #pragma once
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-#include <go_boost/utility/primitive_type_specializer.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
-namespace u = go_boost::utility;
+#include <go_boost/type_traits/primitive_type_specializer.hpp>
 
 GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
 GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object
-    , u::noncopyable_nonmovable
+    , tt::noncopyable_nonmovable
 {
 public:
     typedef product_model this_type;

@@ -16,8 +16,7 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <string>
 #include <go_boost/exception.hpp>
-
-namespace e = go_boost::exception;
+#include <go_boost/namespace_alias.hpp>
 
 namespace
 {

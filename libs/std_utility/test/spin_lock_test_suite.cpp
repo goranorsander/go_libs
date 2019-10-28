@@ -23,9 +23,8 @@ TEST(std_spin_lock_test_suite, cpp11_not_supported) {}
 #include <functional>
 #include <mutex>
 #include <thread>
+#include <go/namespace_alias.hpp>
 #include <go/utility/spin_lock.hpp>
-
-namespace u = go::utility;
 
 namespace
 {

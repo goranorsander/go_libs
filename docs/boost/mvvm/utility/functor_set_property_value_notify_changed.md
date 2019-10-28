@@ -60,13 +60,13 @@ namespace m = go_boost::mvvm;
 namespace mu = go_boost::mvvm::utility;
 namespace p = go_boost::property;
 namespace rop = go_boost::property::read_only;
-namespace u = go_boost::utility;
+namespace tt = go_boost::type_traits;
 
 const std::string fleet_commander_changed_event_type("fleet commander changed");
 
 class spaceship
     : public m::observable_object
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     virtual ~spaceship() {}
@@ -74,7 +74,7 @@ public:
 public:
     spaceship(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
         : m::observable_object()
-        , u::noncopyable_nonmovable()
+        , tt::noncopyable_nonmovable()
         , name("name")
         , captain("captain")
         , speed("speed")

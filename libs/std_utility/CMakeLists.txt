@@ -13,7 +13,7 @@ if(BUILD_STD_EXAMPLES)
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
     ########################################################
-    #  libs/utility/erase_example                          #
+    #  libs/std_utility/erase_example                      #
     ########################################################
 
     set(PROJECT_STD_ERASE_EXAMPLE ${STD_PROJECT_NAME_STR}_erase_example)
@@ -25,34 +25,8 @@ if(BUILD_STD_EXAMPLES)
 
     target_link_libraries(${PROJECT_STD_ERASE_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
-    #############################################################
-    #  libs/utility/primitive_type_implicit_specializer_example #
-    #############################################################
-
-    set(PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_implicit_specializer_example)
-
-    file(GLOB STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_implicit_specializer_example/*.cpp)
-    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
-    find_package(Threads)
-
-    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
     ########################################################
-    #  libs/utility/primitive_type_specializer_example     #
-    ########################################################
-
-    set(PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_specializer_example)
-
-    file(GLOB STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_specializer_example/*.cpp)
-    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
-    find_package(Threads)
-
-    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
-
-    ########################################################
-    #  libs/utility/scope_guard_example                    #
+    #  libs/std_utility/scope_guard_example                #
     ########################################################
 
     set(PROJECT_STD_SCOPE_GUARD_EXAMPLE ${STD_PROJECT_NAME_STR}_scope_guard_example)
@@ -65,7 +39,7 @@ if(BUILD_STD_EXAMPLES)
     target_link_libraries(${PROJECT_STD_SCOPE_GUARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
     ########################################################
-    #  libs/utility/scope_guard_new_example                #
+    #  libs/std_utility/scope_guard_new_example            #
     ########################################################
 
     set(PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE ${STD_PROJECT_NAME_STR}_scope_guard_new_example)
@@ -78,7 +52,7 @@ if(BUILD_STD_EXAMPLES)
     target_link_libraries(${PROJECT_STD_SCOPE_GUARD_NEW_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
     ########################################################
-    #  libs/utility/string_cast_example                    #
+    #  libs/std_utility/string_cast_example                #
     ########################################################
 
     set(PROJECT_STD_STRING_CAST_EXAMPLE ${STD_PROJECT_NAME_STR}_string_cast_example)
@@ -91,7 +65,7 @@ if(BUILD_STD_EXAMPLES)
     target_link_libraries(${PROJECT_STD_STRING_CAST_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
     ########################################################
-    #  libs/utility/try_move_backward_example              #
+    #  libs/std_utility/try_move_backward_example          #
     ########################################################
 
     set(PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE ${STD_PROJECT_NAME_STR}_try_move_backward_example)
@@ -104,7 +78,7 @@ if(BUILD_STD_EXAMPLES)
     target_link_libraries(${PROJECT_STD_TRY_MOVE_BACKWARD_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
     ########################################################
-    #  libs/utility/value_guard_example                    #
+    #  libs/std_utility/value_guard_example                #
     ########################################################
 
     set(PROJECT_STD_VALUE_GUARD_EXAMPLE ${STD_PROJECT_NAME_STR}_value_guard_example)
@@ -123,7 +97,7 @@ if(BUILD_STD_TESTS)
     include_directories(${GO_LIBS_SOURCE_DIR} ${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
 
     ########################################################
-    #  libs/utility/test                                   #
+    #  libs/std_utility/test                               #
     ########################################################
 
     set(PROJECT_STD_TEST_UTILITY_NAME ${STD_PROJECT_NAME_STR}_utility_tests)

@@ -18,7 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/diagnostics/log/log_line.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/string_cast.hpp>
 
 #include <boost/lexical_cast.hpp>
@@ -40,7 +40,7 @@ typedef basic_file_writer<wlog_line, std::wofstream> wfile_writer;
 
 template <class L, class O>
 class basic_file_writer
-    : go_boost::utility::noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef L log_line_type;

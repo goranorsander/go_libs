@@ -23,7 +23,7 @@ class properties_view_model
     , public m::wobservable_object
     , public m::object_wobserver_interface
     , private m::data_context_interface<fleet_organization_model::ptr>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef properties_view_model this_type;
@@ -38,7 +38,7 @@ private:
 
 public:
     p::wproperty<main_frame_view_model::ptr> main_frame_vm;
-    rop::wproperty<fleet_organization_interface::ptr> fleet_organization;
+    pro::wproperty<fleet_organization_interface::ptr> fleet_organization;
 
 public:
     static ptr create();

@@ -18,7 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/diagnostics/log/detail/buffer_interface.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/spin_lock.hpp>
 
 namespace go_boost
@@ -33,7 +33,7 @@ namespace detail
 template <class L>
 class ring_buffer
     : public buffer_interface<L>
-    , go_boost::utility::noncopyable_nonmovable
+    , go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef L log_line_type;
@@ -55,7 +55,7 @@ public:
 
     explicit ring_buffer(const std::size_t size)
         : buffer_interface<L>()
-        , go_boost::utility::noncopyable_nonmovable()
+        , go_boost::type_traits::noncopyable_nonmovable()
         , _size(size)
         , _ring(static_cast<element*>(std::malloc(size * sizeof(element))))
         , _write_index(0)

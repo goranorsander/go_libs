@@ -19,7 +19,7 @@
 
 #include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go_boost
 {
@@ -27,7 +27,7 @@ namespace utility
 {
 
 class scope_guard
-    : private noncopyable_nonmovable
+    : go_boost::type_traits::noncopyable_nonmovable
 {
 public:
     typedef scope_guard this_type;

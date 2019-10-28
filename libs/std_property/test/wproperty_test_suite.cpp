@@ -22,13 +22,8 @@ TEST(std_wproperty_test_suite, cpp11_not_supported) {}
 #include <functional>
 
 #include <go/exception.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
-
-namespace e = go::exception;
-namespace p = go::property;
-namespace ph = std::placeholders;
-namespace rop = go::property::read_only;
-namespace wop = go::property::write_only;
 
 namespace testing
 {
@@ -149,9 +144,9 @@ TEST(std_wproperty_test_suite, value_properties)
 class read_only_spaceship
 {
 public:
-    rop::value_wproperty<int> crew_complement;
-    rop::value_wproperty<double> max_speed;
-    rop::value_wproperty<std::string> name;
+    pro::value_wproperty<int> crew_complement;
+    pro::value_wproperty<double> max_speed;
+    pro::value_wproperty<std::string> name;
 
     read_only_spaceship()
         : crew_complement(std::wstring(L"crew_complement"), 1012)
@@ -201,9 +196,9 @@ TEST(std_wproperty_test_suite, read_only_value_properties)
 class write_only_spaceship
 {
 public:
-    wop::value_wproperty<int> crew_complement;
-    wop::value_wproperty<double> max_speed;
-    wop::value_wproperty<std::string> name;
+    pwo::value_wproperty<int> crew_complement;
+    pwo::value_wproperty<double> max_speed;
+    pwo::value_wproperty<std::string> name;
 
     write_only_spaceship()
         : crew_complement(std::wstring(L"crew_complement"), 1012)
@@ -390,9 +385,9 @@ TEST(std_wproperty_test_suite, reference_properties)
 class read_only_reference_spaceship
 {
 public:
-    rop::reference_wproperty<int> crew_complement;
-    rop::reference_wproperty<double> max_speed;
-    rop::reference_wproperty<std::string> name;
+    pro::reference_wproperty<int> crew_complement;
+    pro::reference_wproperty<double> max_speed;
+    pro::reference_wproperty<std::string> name;
 
     read_only_reference_spaceship(const int& _crew_complement, const double& _max_speed, const std::string& _name)
         : crew_complement(std::wstring(L"crew_complement"), _crew_complement)
@@ -491,9 +486,9 @@ TEST(std_wproperty_test_suite, read_only_reference_properties)
 class write_only_reference_spaceship
 {
 public:
-    wop::reference_wproperty<int> crew_complement;
-    wop::reference_wproperty<double> max_speed;
-    wop::reference_wproperty<std::string> name;
+    pwo::reference_wproperty<int> crew_complement;
+    pwo::reference_wproperty<double> max_speed;
+    pwo::reference_wproperty<std::string> name;
 
     write_only_reference_spaceship()
         : crew_complement(std::wstring(L"crew_complement"))
@@ -763,7 +758,7 @@ class read_only_armed_spaceship
     : public read_only_spaceship
 {
 public:
-    rop::wproperty<int> phaser_arrays;
+    pro::wproperty<int> phaser_arrays;
 
     read_only_armed_spaceship()
         : read_only_spaceship()
@@ -873,7 +868,7 @@ class write_only_armed_spaceship
     : public write_only_spaceship
 {
 public:
-    wop::wproperty<int> phaser_arrays;
+    pwo::wproperty<int> phaser_arrays;
 
     write_only_armed_spaceship()
         : write_only_spaceship()

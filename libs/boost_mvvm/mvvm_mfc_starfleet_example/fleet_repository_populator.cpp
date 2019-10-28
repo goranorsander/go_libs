@@ -255,7 +255,7 @@ fleet_repository_populator::~fleet_repository_populator()
 }
 
 fleet_repository_populator::fleet_repository_populator()
-    : u::noncopyable_nonmovable()
+    : tt::noncopyable_nonmovable()
 {
 }
 

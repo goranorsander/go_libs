@@ -21,7 +21,7 @@
 #include <go_boost/mvvm/command_parameters.hpp>
 #include <go_boost/property/nameless/read_only_property.hpp>
 #include <go_boost/signals.hpp>
-#include <go_boost/utility/noncopyable_nonmovable.hpp>
+#include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
@@ -46,7 +46,7 @@ typedef basic_command_interface<std::wstring, go_boost::utility::placebo_lockabl
 template<class S, class L = go_boost::utility::recursive_spin_lock>
 class basic_command_interface
     : public boost::enable_shared_from_this<basic_command_interface<S, L>>
-    , private go_boost::utility::noncopyable_nonmovable
+    , go_boost::type_traits::noncopyable_nonmovable
 {
     friend class basic_command_manager<S, L>;
 
@@ -120,7 +120,7 @@ inline basic_command_interface<S, L>::~basic_command_interface()
 template<class S, class L>
 inline basic_command_interface<S, L>::basic_command_interface(const S& cmd_name, const command_parameters_type& params)
     : boost::enable_shared_from_this<basic_command_interface<S, L>>()
-    , go_boost::utility::noncopyable_nonmovable()
+    , go_boost::type_traits::noncopyable_nonmovable()
     , command_name()
     , can_execute_changed()
     , _command_name(cmd_name)

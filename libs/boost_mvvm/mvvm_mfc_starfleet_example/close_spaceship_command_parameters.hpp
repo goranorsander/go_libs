@@ -35,7 +35,7 @@ private:
     close_spaceship_command_parameters();
 
 public:
-    np::value_property<spaceship_view_model::ptr> spaceship_vm;
+    pn::value_property<spaceship_view_model::ptr> spaceship_vm;
 
 public:
     static ptr create(const spaceship_view_model::ptr& vm);

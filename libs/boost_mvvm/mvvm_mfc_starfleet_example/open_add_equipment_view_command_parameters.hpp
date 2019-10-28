@@ -35,7 +35,7 @@ private:
     open_add_equipment_view_command_parameters();
 
 public:
-    np::value_property<spaceship_interface::ptr> spaceship;
+    pn::value_property<spaceship_interface::ptr> spaceship;
 
 public:
     static ptr create(const spaceship_interface::ptr& spaceship_);

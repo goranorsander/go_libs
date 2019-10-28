@@ -19,9 +19,8 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_scope_guard_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/scope_guard.hpp>
-
-namespace u = go::utility;
 
 namespace
 {

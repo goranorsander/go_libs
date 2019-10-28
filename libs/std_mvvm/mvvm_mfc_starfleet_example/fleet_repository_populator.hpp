@@ -18,7 +18,7 @@
 class output_view;
 
 class fleet_repository_populator
-    : private u::noncopyable_nonmovable
+    : private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_repository_populator this_type;

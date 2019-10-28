@@ -14,19 +14,16 @@
 #pragma once
 
 #include <go/mvvm.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/property.hpp>
 
 #include "product_model.hpp"
 #include "product_repository_interface.hpp"
 
-namespace m = go::mvvm;
-namespace p = go::property;
-namespace rop = go::property::read_only;
-
 class product_view_model
     : public m::wobservable_object
     , public m::data_context_interface<product_model::ptr>
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     typedef product_view_model this_type;
@@ -51,8 +48,8 @@ public:
     p::wproperty<std::wstring> current_product_name;
     p::wproperty<currency_type> current_unit_price;
 
-    rop::wproperty<m::wcommand_interface::ptr> get_product_command;
-    rop::wproperty<m::wcommand_interface::ptr> save_product_command;
+    pro::wproperty<m::wcommand_interface::ptr> get_product_command;
+    pro::wproperty<m::wcommand_interface::ptr> save_product_command;
 
 private:
     product_id_type _product_id;

@@ -23,7 +23,7 @@ class fleet_organization_view_model
     : public m::view_model_interface<go::utility::recursive_spin_lock>
     , public m::wobservable_object
     , private m::data_context_interface<fleet_organization_interface::ptr>
-    , private u::noncopyable_nonmovable
+    , private tt::noncopyable_nonmovable
 {
 public:
     typedef fleet_organization_view_model this_type;
@@ -40,9 +40,9 @@ public:
     p::wproperty<main_frame_view_model::ptr> main_frame_vm;
     p::wproperty<fleet_organization_id_type> selected_fleet_organization_id;
 
-    rop::wproperty<m::wcommand_interface::ptr> on_left_double_click_command;
+    pro::wproperty<m::wcommand_interface::ptr> on_left_double_click_command;
 
-    nrop::property<fleet_organization_interface::ptr> fleet_organization_root;
+    pnro::property<fleet_organization_interface::ptr> fleet_organization_root;
 
 public:
     static ptr create();

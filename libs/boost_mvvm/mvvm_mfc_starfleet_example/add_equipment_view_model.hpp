@@ -20,7 +20,7 @@
 
 class add_equipment_view_model
     : public m::wobservable_object
-    , public u::noncopyable_nonmovable
+    , public tt::noncopyable_nonmovable
 {
 public:
     typedef add_equipment_view_model this_type;

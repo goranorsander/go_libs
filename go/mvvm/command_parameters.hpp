@@ -18,7 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <memory>
-#include <go/utility/noncopyable_nonmovable.hpp>
+#include <go/type_traits/noncopyable_nonmovable.hpp>
 
 namespace go
 {
@@ -26,7 +26,7 @@ namespace mvvm
 {
 
 class command_parameters
-    : public go::utility::noncopyable_nonmovable
+    : public go::type_traits::noncopyable_nonmovable
 {
 public:
     typedef command_parameters this_type;

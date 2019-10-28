@@ -24,7 +24,7 @@ It is declared as:
 template<class S>
 class basic_event
     : public std::enable_shared_from_this<basic_event<S>>
-    , public go::utility::noncopyable_nonmovable
+    , public go::type_traits::noncopyable_nonmovable
 {
 public:
     virtual ~basic_event() = default;

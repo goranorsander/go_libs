@@ -35,7 +35,7 @@ private:
     delete_dialog_view_command_parameters() = delete;
 
 public:
-    np::value_property<dialog_view::ptr> dialog;
+    pn::value_property<dialog_view::ptr> dialog;
 
 public:
     static ptr create(const dialog_view::ptr& dialog_);

@@ -13,11 +13,9 @@
 
 #include <functional>
 
-namespace ph = std::placeholders;
-
 product_model::product_model()
     : m::wobservable_object()
-    , u::noncopyable_nonmovable()
+    , tt::noncopyable_nonmovable()
     , product_id(L"product_id")
     , product_name(L"product_name")
     , unit_price(L"unit_price")

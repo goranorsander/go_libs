@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_container_size_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/container/size.hpp>
 
 #include <deque>
@@ -26,8 +27,6 @@ TEST(std_container_size_test_suite, cpp11_not_supported) {}
 #include <vector>
 #include <map>
 #include <set>
-
-namespace uc = go::utility::container;
 
 namespace
 {

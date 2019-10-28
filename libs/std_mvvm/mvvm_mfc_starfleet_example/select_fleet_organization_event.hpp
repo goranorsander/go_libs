@@ -35,8 +35,8 @@ private:
     select_fleet_organization_event() = delete;
 
 public:
-    nrop::value_property<fleet_organization_id_type> id;
-    nrop::value_property<std::wstring> selected_by;
+    pnro::value_property<fleet_organization_id_type> id;
+    pnro::value_property<std::wstring> selected_by;
 
 public:
     static ptr create(const fleet_organization_id_type& id_, const std::wstring& selected_by_);

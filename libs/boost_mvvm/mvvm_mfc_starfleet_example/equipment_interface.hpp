@@ -30,8 +30,8 @@ protected:
     equipment_interface();
 
 public:
-    rop::wproperty<std::wstring> category;
-    rop::wproperty<std::wstring> name;
+    pro::wproperty<std::wstring> category;
+    pro::wproperty<std::wstring> name;
     p::wproperty<quantity_type> quantity;
 
 protected:

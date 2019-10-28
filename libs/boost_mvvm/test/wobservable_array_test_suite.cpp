@@ -17,10 +17,8 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 #include <boost/foreach.hpp>
 
 #include <go_boost/mvvm.hpp>
+#include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-
-namespace m = go_boost::mvvm;
-namespace p = go_boost::property;
 
 namespace
 {

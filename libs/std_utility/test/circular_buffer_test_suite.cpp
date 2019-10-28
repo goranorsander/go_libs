@@ -19,14 +19,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 TEST(std_circular_buffer_test_suite, cpp11_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
+#include <go/namespace_alias.hpp>
 #include <go/utility/container/circular_buffer.hpp>
 #include <go/utility/iterator/reverse.hpp>
-
-namespace uc = go::utility::container;
-
-#if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
-namespace ui = go::utility::iterator;
-#endif  // #if !defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 
 namespace
 {

@@ -20,7 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/diagnostics/log/detail/ring_buffer.hpp>
 #include <go/diagnostics/log/policy/logging_policy_interface.hpp>
 #include <go/utility/min_max.hpp>
-#include <go/utility/noncopyable.hpp>
+#include <go/type_traits/noncopyable.hpp>
 
 namespace go
 {
@@ -34,7 +34,7 @@ namespace policy
 template <class W>
 class non_guaranteed_logger
     : public logging_policy_interface<W>
-    , go::utility::noncopyable
+    , go::type_traits::noncopyable
 {
 public:
     typedef W file_writer_type;
@@ -52,7 +52,7 @@ public:
 
     explicit non_guaranteed_logger(const std::size_t ring_buffer_size_mb)
         : logging_policy_interface<W>()
-        , go::utility::noncopyable()
+        , go::type_traits::noncopyable()
         , _ring_buffer_size_mb(ring_buffer_size_mb)
     {
     }

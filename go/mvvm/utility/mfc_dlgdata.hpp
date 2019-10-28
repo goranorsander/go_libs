@@ -18,7 +18,7 @@ GO_MESSAGE("Required MFC feature is not supported by this compiler or project co
 #else
 
 #include <go/property.hpp>
-#include <go/utility/primitive_type_specializer.hpp>
+#include <go/type_traits/primitive_type_specializer.hpp>
 
 namespace go
 {
@@ -397,64 +397,64 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property
     detail::DDX_Text_std_wstring(pDX, nIDC, std::bind(&go::property::property<std::wstring>::get, &value), std::bind(&go::property::property<std::wstring>::set, &value, std::placeholders::_1));
 }
 
-// go::property::property<go::utility::primitive_type_specializer>
+// go::property::property<go::type_traits::primitive_type_specializer>
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_BYTE(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<BYTE, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, BYTE, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_short(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<short, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, short, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_int(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<int, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, int, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_UINT(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<UINT, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, UINT, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_long(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<long, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, long, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_DWORD(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<DWORD, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, DWORD, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_LONGLONG(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<LONGLONG, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, LONGLONG, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_ULONGLONG(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<ULONGLONG, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, ULONGLONG, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_float(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<float, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, float, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_double(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<double, go::property::property<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, double, go::property::property<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
@@ -526,64 +526,64 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wpropert
     detail::DDX_Text_std_wstring(pDX, nIDC, std::bind(&go::property::wproperty<std::wstring>::get, &value), std::bind(&go::property::wproperty<std::wstring>::set, &value, std::placeholders::_1));
 }
 
-// go::property::wproperty<go::utility::primitive_type_specializer>
+// go::property::wproperty<go::type_traits::primitive_type_specializer>
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_BYTE(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<BYTE, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, BYTE>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_short(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<short, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, short>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_int(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<int, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, int, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_UINT(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<UINT, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, UINT, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_long(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<long, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, long, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_DWORD(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<DWORD, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, DWORD, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_LONGLONG(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<LONGLONG, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, LONGLONG, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_ULONGLONG(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<ULONGLONG, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, ULONGLONG, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_float(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<float, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, float, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }
 
 template<class PrimitiveTypeSpecializer>
-typename std::enable_if<std::is_base_of<go::utility::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
+typename std::enable_if<std::is_base_of<go::type_traits::detail::primitive_type_specializer_base, PrimitiveTypeSpecializer>::value && std::is_same<typename PrimitiveTypeSpecializer::primitive_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<PrimitiveTypeSpecializer>& value)
 {
     detail::DDX_Text_double(pDX, nIDC, std::bind(detail::get_specialized_primitive_type<double, go::property::wproperty<PrimitiveTypeSpecializer>>, std::cref(value)), std::bind(detail::set_specialized_primitive_type<PrimitiveTypeSpecializer, double, go::property::wproperty<PrimitiveTypeSpecializer>>, std::ref(value), std::placeholders::_1));
 }

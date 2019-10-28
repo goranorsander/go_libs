@@ -19,6 +19,7 @@ GO_MESSAGE("Required C++14 feature is not supported by this compiler")
 TEST(std_reverse_test_suite, cpp14_not_supported) {}
 #else
 
+#include <go/namespace_alias.hpp>
 #include <go/utility/iterator/reverse.hpp>
 
 #include <deque>
@@ -26,8 +27,6 @@ TEST(std_reverse_test_suite, cpp14_not_supported) {}
 #include <vector>
 #include <map>
 #include <set>
-
-namespace ui = go::utility::iterator;
 
 namespace
 {
