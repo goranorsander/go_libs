@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2019-10-22 at 21:29:39 with result:
+Test suites *AllTests* with 8 test cases was executed 2019-10-31 at 21:32:53 with result:
 
 * 0 errors
 * 0 failures
@@ -130,7 +130,7 @@ Test suite *std_wproperty_test_suite* with 1 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

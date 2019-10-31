@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 724 test cases was executed 2019-10-22 at 21:29:20 with result:
+Test suites *AllTests* with 724 test cases was executed 2019-10-31 at 21:32:32 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 7.445 seconds.
+Test suites execution took 8.076 seconds.
 
 # Details
 
@@ -26,23 +26,23 @@ Test suite *std_wobservable_vector_test_suite* with 14 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.107 seconds.
+Test suite execution took 0.128 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0.001
+test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
 test_pop_back | 0
 test_insert_single_element | 0
 test_insert_fill | 0
-test_insert_range | 0.001
+test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 test_emplace | 0
 test_emplace_back | 0
@@ -54,7 +54,7 @@ Test suite *std_wobservable_unordered_set_test_suite* with 11 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.099 seconds.
+Test suite execution took 0.114 seconds.
 
 ### Successful test cases
 
@@ -62,7 +62,7 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0
+test_insert_range | 0.001
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
@@ -79,7 +79,7 @@ Test suite *std_wobservable_unordered_multiset_test_suite* with 11 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.117 seconds.
+Test suite execution took 0.112 seconds.
 
 ### Successful test cases
 
@@ -104,7 +104,7 @@ Test suite *std_wobservable_unordered_multimap_test_suite* with 11 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.102 seconds.
+Test suite execution took 0.112 seconds.
 
 ### Successful test cases
 
@@ -129,7 +129,7 @@ Test suite *std_wobservable_unordered_map_test_suite* with 11 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.115 seconds.
+Test suite execution took 0.109 seconds.
 
 ### Successful test cases
 
@@ -143,7 +143,7 @@ test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
-test_clear | 0
+test_clear | 0.001
 test_emplace | 0
 test_emplace_hint | 0
 
@@ -154,7 +154,7 @@ Test suite *std_wobservable_set_test_suite* with 11 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.101 seconds.
+Test suite execution took 0.098 seconds.
 
 ### Successful test cases
 
@@ -179,7 +179,7 @@ Test suite *std_wobservable_object_test_suite* with 1 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.009 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -209,7 +209,7 @@ Test suite *std_wobservable_multiset_test_suite* with 11 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.11 seconds.
+Test suite execution took 0.104 seconds.
 
 ### Successful test cases
 
@@ -249,7 +249,7 @@ test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
-test_emplace | 0
+test_emplace | 0.001
 test_emplace_hint | 0
 
 ## std_wobservable_map_test_suite
@@ -259,7 +259,7 @@ Test suite *std_wobservable_map_test_suite* with 11 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.104 seconds.
+Test suite execution took 0.091 seconds.
 
 ### Successful test cases
 
@@ -268,7 +268,7 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0
+test_insert_initializer_list | 0.001
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
@@ -284,7 +284,7 @@ Test suite *std_wobservable_list_test_suite* with 26 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.221 seconds.
+Test suite execution took 0.234 seconds.
 
 ### Successful test cases
 
@@ -301,15 +301,15 @@ test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
 test_erase_position | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0
 test_emplace | 0
 test_emplace_back | 0
 test_emplace_front | 0
-test_splice_entire_list | 0
+test_splice_entire_list | 0.001
 test_splice_single_element | 0
-test_splice_element_range | 0.001
+test_splice_element_range | 0
 test_remove | 0
 test_remove_if | 0
 test_unique | 0
@@ -324,7 +324,7 @@ Test suite *std_wobservable_forward_list_test_suite* with 24 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.225 seconds.
+Test suite execution took 0.236 seconds.
 
 ### Successful test cases
 
@@ -336,7 +336,7 @@ test_assign_fill | 0
 test_push_front | 0
 test_pop_front | 0
 test_insert_after_single_element | 0
-test_insert_after_fill | 0.001
+test_insert_after_fill | 0
 test_insert_after_range | 0
 test_erase_position | 0
 test_erase_range | 0
@@ -345,7 +345,7 @@ test_clear | 0
 test_emplace_after | 0
 test_emplace_back | 0
 test_emplace_front | 0
-test_splice_after_entire_forward_list | 0
+test_splice_after_entire_forward_list | 0.001
 test_splice_after_single_element | 0
 test_splice_after_element_range | 0
 test_remove | 0
@@ -362,22 +362,22 @@ Test suite *std_wobservable_deque_test_suite* with 17 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.158 seconds.
+Test suite execution took 0.149 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_assign_range | 0
-test_assign_initializer_list | 0
+test_assign_initializer_list | 0.001
 test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
-test_insert_single_element | 0
-test_insert_fill | 0.001
-test_insert_range | 0.001
+test_insert_single_element | 0.001
+test_insert_fill | 0
+test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
@@ -423,7 +423,7 @@ Test suite *std_wcommand_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -438,14 +438,14 @@ Test suite *std_wcommand_manager_test_suite* with 2 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.019 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_command_manager | 0
-test_spaceship_observer | 0.001
+test_spaceship_observer | 0
 
 ## std_wcommand_manager_lambda_test_suite
 
@@ -454,14 +454,14 @@ Test suite *std_wcommand_manager_lambda_test_suite* with 2 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_command_manager | 0.001
-test_spaceship_observer | 0.001
+test_command_manager | 0
+test_spaceship_observer | 0
 
 ## std_wcommand_execution_observer_test_suite
 
@@ -470,7 +470,7 @@ Test suite *std_wcommand_execution_observer_test_suite* with 2 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.019 seconds.
 
 ### Successful test cases
 
@@ -492,7 +492,7 @@ Test suite execution took 0.009 seconds.
 
 Test case|Execution time
 -|-
-test_relay_wcommand | 0
+test_relay_wcommand | 0.001
 
 ## std_relay_command_test_suite
 
@@ -516,7 +516,7 @@ Test suite *std_relay_command_placebo_lockable_test_suite* with 1 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.012 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -531,17 +531,17 @@ Test suite *std_observable_vector_placebo_lockable_test_suite* with 14 test case
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.156 seconds.
+Test suite execution took 0.148 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0
-test_assign_initializer_list | 0
+test_assign_range | 0.001
+test_assign_initializer_list | 0.001
 test_assign_fill | 0
-test_push_back | 0.001
-test_pop_back | 0
+test_push_back | 0
+test_pop_back | 0.001
 test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
@@ -559,7 +559,7 @@ Test suite *std_observable_unordered_set_placebo_lockable_test_suite* with 11 te
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.116 seconds.
+Test suite execution took 0.125 seconds.
 
 ### Successful test cases
 
@@ -584,14 +584,14 @@ Test suite *std_observable_unordered_multiset_placebo_lockable_test_suite* with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.137 seconds.
+Test suite execution took 0.135 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0.001
-test_insert_single_element_with_hint | 0
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0.001
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
@@ -609,18 +609,18 @@ Test suite *std_observable_unordered_multimap_placebo_lockable_test_suite* with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.141 seconds.
+Test suite execution took 0.136 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0
+test_insert_single_element | 0.001
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0
+test_erase_value | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -634,7 +634,7 @@ Test suite *std_observable_unordered_map_placebo_lockable_test_suite* with 11 te
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.117 seconds.
+Test suite execution took 0.13 seconds.
 
 ### Successful test cases
 
@@ -659,7 +659,87 @@ Test suite *std_observable_set_placebo_lockable_test_suite* with 11 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.1 seconds.
+Test suite execution took 0.115 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0.001
+test_insert_range | 0
+test_insert_initializer_list | 0.001
+test_erase_position | 0
+test_erase_value | 0.001
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## std_observable_object_placebo_lockable_test_suite
+
+Test suite *std_observable_object_placebo_lockable_test_suite* with 1 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.012 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_observable_object | 0
+
+## std_observable_object_lambda_placebo_lockable_test_suite
+
+Test suite *std_observable_object_lambda_placebo_lockable_test_suite* with 1 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.011 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_observable_object | 0.001
+
+## std_observable_multiset_placebo_lockable_test_suite
+
+Test suite *std_observable_multiset_placebo_lockable_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.123 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0.001
+test_erase_range | 0.001
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## std_observable_multimap_placebo_lockable_test_suite
+
+Test suite *std_observable_multimap_placebo_lockable_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.128 seconds.
 
 ### Successful test cases
 
@@ -677,86 +757,6 @@ test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
 
-## std_observable_object_placebo_lockable_test_suite
-
-Test suite *std_observable_object_placebo_lockable_test_suite* with 1 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.011 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_observable_object | 0
-
-## std_observable_object_lambda_placebo_lockable_test_suite
-
-Test suite *std_observable_object_lambda_placebo_lockable_test_suite* with 1 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.01 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_observable_object | 0
-
-## std_observable_multiset_placebo_lockable_test_suite
-
-Test suite *std_observable_multiset_placebo_lockable_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.099 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0.001
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## std_observable_multimap_placebo_lockable_test_suite
-
-Test suite *std_observable_multimap_placebo_lockable_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.099 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
 ## std_observable_map_placebo_lockable_test_suite
 
 Test suite *std_observable_map_placebo_lockable_test_suite* with 11 test cases was executed with result:
@@ -764,21 +764,21 @@ Test suite *std_observable_map_placebo_lockable_test_suite* with 11 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.091 seconds.
+Test suite execution took 0.116 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0.001
+test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0
+test_insert_initializer_list | 0.001
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
-test_clear | 0
+test_clear | 0.001
 test_emplace | 0
 test_emplace_hint | 0
 
@@ -789,17 +789,17 @@ Test suite *std_observable_list_placebo_lockable_test_suite* with 26 test cases 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.22 seconds.
+Test suite execution took 0.272 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0.001
+test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
-test_push_front | 0.001
+test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
 test_insert_single_element | 0
@@ -814,7 +814,7 @@ test_emplace_back | 0
 test_emplace_front | 0
 test_splice_entire_list | 0
 test_splice_single_element | 0
-test_splice_element_range | 0
+test_splice_element_range | 0.001
 test_remove | 0
 test_remove_if | 0
 test_unique | 0
@@ -829,7 +829,7 @@ Test suite *std_observable_forward_list_placebo_lockable_test_suite* with 24 tes
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.226 seconds.
+Test suite execution took 0.282 seconds.
 
 ### Successful test cases
 
@@ -838,7 +838,7 @@ Test case|Execution time
 test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
-test_push_front | 0
+test_push_front | 0.001
 test_pop_front | 0
 test_insert_after_single_element | 0
 test_insert_after_fill | 0
@@ -848,16 +848,16 @@ test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace_after | 0
-test_emplace_back | 0
+test_emplace_back | 0.001
 test_emplace_front | 0
 test_splice_after_entire_forward_list | 0
-test_splice_after_single_element | 0.001
+test_splice_after_single_element | 0
 test_splice_after_element_range | 0
 test_remove | 0
 test_remove_if | 0
-test_unique | 0.001
+test_unique | 0
 test_unique_binary_predicate | 0
-test_merge | 0.001
+test_merge | 0
 test_merge_compare_predicate | 0
 
 ## std_observable_deque_placebo_lockable_test_suite
@@ -875,7 +875,7 @@ Test case|Execution time
 -|-
 test_assign_range | 0
 test_assign_initializer_list | 0
-test_assign_fill | 0.001
+test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
@@ -898,13 +898,13 @@ Test suite *std_observable_array_placebo_lockable_test_suite* with 1 test cases 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_create | 0.001
+test_create | 0
 
 ## std_event_manager_placebo_lockable_test_suite
 
@@ -913,7 +913,7 @@ Test suite *std_event_manager_placebo_lockable_test_suite* with 1 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.012 seconds.
+Test suite execution took 0.01 seconds.
 
 ### Successful test cases
 
@@ -943,14 +943,14 @@ Test suite *std_command_manager_placebo_lockable_test_suite* with 2 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.027 seconds.
+Test suite execution took 0.023 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_command_manager | 0
-test_spaceship_observer | 0.001
+test_spaceship_observer | 0
 
 ## std_command_manager_lambda_placebo_lockable_test_suite
 
@@ -959,13 +959,13 @@ Test suite *std_command_manager_lambda_placebo_lockable_test_suite* with 2 test 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.025 seconds.
+Test suite execution took 0.026 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_command_manager | 0
+test_command_manager | 0.001
 test_spaceship_observer | 0
 
 ## std_command_execution_observer_placebo_lockable_test_suite
@@ -982,7 +982,7 @@ Test suite execution took 0.025 seconds.
 Test case|Execution time
 -|-
 test_execute_command | 0
-test_post_command | 0
+test_post_command | 0.001
 
 ## std_observable_vector_test_suite
 
@@ -991,13 +991,13 @@ Test suite *std_observable_vector_test_suite* with 14 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.105 seconds.
+Test suite execution took 0.118 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0.001
+test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
@@ -1019,7 +1019,7 @@ Test suite *std_observable_unordered_set_test_suite* with 11 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.086 seconds.
+Test suite execution took 0.11 seconds.
 
 ### Successful test cases
 
@@ -1044,7 +1044,7 @@ Test suite *std_observable_unordered_multiset_test_suite* with 11 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.093 seconds.
+Test suite execution took 0.124 seconds.
 
 ### Successful test cases
 
@@ -1052,11 +1052,11 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
+test_insert_range | 0.001
+test_insert_initializer_list | 0.001
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1069,23 +1069,23 @@ Test suite *std_observable_unordered_multimap_test_suite* with 11 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.094 seconds.
+Test suite execution took 0.113 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0.001
+test_insert_single_element | 0
 test_insert_single_element_with_hint | 0.001
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0
-test_swap | 0.001
+test_erase_range | 0.001
+test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0
+test_emplace_hint | 0.001
 
 ## std_observable_unordered_map_test_suite
 
@@ -1094,22 +1094,22 @@ Test suite *std_observable_unordered_map_test_suite* with 11 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.091 seconds.
+Test suite execution took 0.11 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
+test_insert_single_element_with_hint | 0.001
+test_insert_range | 0.001
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
-test_emplace | 0.001
+test_emplace | 0
 test_emplace_hint | 0
 
 ## std_observable_set_test_suite
@@ -1119,7 +1119,7 @@ Test suite *std_observable_set_test_suite* with 11 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.076 seconds.
+Test suite execution took 0.1 seconds.
 
 ### Successful test cases
 
@@ -1127,11 +1127,11 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0.001
-test_insert_initializer_list | 0
+test_insert_range | 0
+test_insert_initializer_list | 0.001
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0.001
+test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1144,7 +1144,7 @@ Test suite *std_observable_object_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -1159,7 +1159,7 @@ Test suite *std_observable_object_lambda_test_suite* with 1 test cases was execu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -1174,7 +1174,57 @@ Test suite *std_observable_multiset_test_suite* with 11 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.08 seconds.
+Test suite execution took 0.101 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## std_observable_multimap_test_suite
+
+Test suite *std_observable_multimap_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.101 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0.001
+test_swap | 0
+test_clear | 0.001
+test_emplace | 0
+test_emplace_hint | 0
+
+## std_observable_map_test_suite
+
+Test suite *std_observable_map_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.098 seconds.
 
 ### Successful test cases
 
@@ -1192,56 +1242,6 @@ test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0.001
 
-## std_observable_multimap_test_suite
-
-Test suite *std_observable_multimap_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.083 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0.001
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## std_observable_map_test_suite
-
-Test suite *std_observable_map_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.093 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0.001
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0.001
-test_emplace | 0
-test_emplace_hint | 0
-
 ## std_observable_list_test_suite
 
 Test suite *std_observable_list_test_suite* with 26 test cases was executed with result:
@@ -1249,85 +1249,7 @@ Test suite *std_observable_list_test_suite* with 26 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.196 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_assign_range | 0
-test_assign_initializer_list | 0
-test_assign_fill | 0.001
-test_push_back | 0
-test_push_front | 0
-test_pop_back | 0
-test_pop_front | 0
-test_insert_single_element | 0
-test_insert_fill | 0
-test_insert_range | 0
-test_erase_position | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_back | 0
-test_emplace_front | 0
-test_splice_entire_list | 0
-test_splice_single_element | 0
-test_splice_element_range | 0
-test_remove | 0
-test_remove_if | 0
-test_unique | 0
-test_unique_binary_predicate | 0
-test_merge | 0
-test_merge_compare_predicate | 0
-
-## std_observable_forward_list_test_suite
-
-Test suite *std_observable_forward_list_test_suite* with 24 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.185 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_assign_range | 0
-test_assign_initializer_list | 0
-test_assign_fill | 0
-test_push_front | 0
-test_pop_front | 0
-test_insert_after_single_element | 0
-test_insert_after_fill | 0
-test_insert_after_range | 0
-test_erase_position | 0
-test_erase_range | 0
-test_swap | 0.001
-test_clear | 0
-test_emplace_after | 0
-test_emplace_back | 0
-test_emplace_front | 0
-test_splice_after_entire_forward_list | 0
-test_splice_after_single_element | 0.001
-test_splice_after_element_range | 0
-test_remove | 0
-test_remove_if | 0
-test_unique | 0
-test_unique_binary_predicate | 0
-test_merge | 0
-test_merge_compare_predicate | 0
-
-## std_observable_deque_test_suite
-
-Test suite *std_observable_deque_test_suite* with 17 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.122 seconds.
+Test suite execution took 0.224 seconds.
 
 ### Successful test cases
 
@@ -1350,6 +1272,84 @@ test_clear | 0
 test_emplace | 0
 test_emplace_back | 0
 test_emplace_front | 0
+test_splice_entire_list | 0
+test_splice_single_element | 0
+test_splice_element_range | 0.001
+test_remove | 0
+test_remove_if | 0
+test_unique | 0
+test_unique_binary_predicate | 0
+test_merge | 0
+test_merge_compare_predicate | 0
+
+## std_observable_forward_list_test_suite
+
+Test suite *std_observable_forward_list_test_suite* with 24 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.234 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_assign_range | 0
+test_assign_initializer_list | 0
+test_assign_fill | 0
+test_push_front | 0
+test_pop_front | 0
+test_insert_after_single_element | 0
+test_insert_after_fill | 0
+test_insert_after_range | 0
+test_erase_position | 0.001
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace_after | 0.001
+test_emplace_back | 0.001
+test_emplace_front | 0
+test_splice_after_entire_forward_list | 0
+test_splice_after_single_element | 0
+test_splice_after_element_range | 0
+test_remove | 0
+test_remove_if | 0
+test_unique | 0
+test_unique_binary_predicate | 0
+test_merge | 0
+test_merge_compare_predicate | 0.001
+
+## std_observable_deque_test_suite
+
+Test suite *std_observable_deque_test_suite* with 17 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.147 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_assign_range | 0
+test_assign_initializer_list | 0
+test_assign_fill | 0
+test_push_back | 0
+test_push_front | 0
+test_pop_back | 0.001
+test_pop_front | 0
+test_insert_single_element | 0
+test_insert_fill | 0
+test_insert_range | 0.001
+test_erase_position | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_back | 0
+test_emplace_front | 0
 
 ## std_observable_array_test_suite
 
@@ -1358,7 +1358,7 @@ Test suite *std_observable_array_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -1379,7 +1379,7 @@ Test suite execution took 0.008 seconds.
 
 Test case|Execution time
 -|-
-test_command_manager | 0
+test_command_manager | 0.001
 
 ## std_command_test_suite
 
@@ -1388,7 +1388,7 @@ Test suite *std_command_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -1403,7 +1403,7 @@ Test suite *std_command_manager_test_suite* with 2 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.019 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
@@ -1419,7 +1419,7 @@ Test suite *std_command_manager_lambda_test_suite* with 2 test cases was execute
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.019 seconds.
 
 ### Successful test cases
 
@@ -1435,7 +1435,7 @@ Test suite *std_command_execution_observer_test_suite* with 2 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.023 seconds.
+Test suite execution took 0.019 seconds.
 
 ### Successful test cases
 
@@ -1451,7 +1451,7 @@ Test suite *std_basic_relay_command_test_suite* with 1 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
@@ -1466,7 +1466,7 @@ Test suite *std_basic_observable_vector_test_suite* with 14 test cases was execu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.137 seconds.
+Test suite execution took 0.13 seconds.
 
 ### Successful test cases
 
@@ -1478,9 +1478,9 @@ test_assign_fill | 0
 test_push_back | 0
 test_pop_back | 0
 test_insert_single_element | 0
-test_insert_fill | 0
-test_insert_range | 0.001
-test_erase_position | 0
+test_insert_fill | 0.001
+test_insert_range | 0
+test_erase_position | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -1494,14 +1494,14 @@ Test suite *std_basic_observable_unordered_set_test_suite* with 11 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.121 seconds.
+Test suite execution took 0.111 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
+test_insert_single_element_with_hint | 0.001
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
@@ -1519,7 +1519,7 @@ Test suite *std_basic_observable_unordered_multiset_test_suite* with 11 test cas
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.127 seconds.
+Test suite execution took 0.123 seconds.
 
 ### Successful test cases
 
@@ -1528,14 +1528,14 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0
+test_insert_initializer_list | 0.001
 test_erase_position | 0
-test_erase_value | 0.001
+test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0
+test_emplace_hint | 0.001
 
 ## std_basic_observable_unordered_multimap_test_suite
 
@@ -1550,16 +1550,16 @@ Test suite execution took 0.118 seconds.
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0
+test_insert_single_element | 0.001
 test_insert_single_element_with_hint | 0.001
 test_insert_range | 0
-test_insert_initializer_list | 0.001
+test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0.001
-test_emplace | 0
+test_erase_range | 0.001
+test_swap | 0.001
+test_clear | 0
+test_emplace | 0.001
 test_emplace_hint | 0
 
 ## std_basic_observable_unordered_map_test_suite
@@ -1569,7 +1569,87 @@ Test suite *std_basic_observable_unordered_map_test_suite* with 11 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.094 seconds.
+Test suite execution took 0.113 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0.001
+test_erase_value | 0.001
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## std_basic_observable_set_test_suite
+
+Test suite *std_basic_observable_set_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.105 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0.001
+
+## std_basic_observable_object_test_suite
+
+Test suite *std_basic_observable_object_test_suite* with 1 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.009 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_observable_object | 0
+
+## std_basic_observable_object_lambda_test_suite
+
+Test suite *std_basic_observable_object_lambda_test_suite* with 1 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.01 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_observable_object | 0
+
+## std_basic_observable_multiset_test_suite
+
+Test suite *std_basic_observable_multiset_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.112 seconds.
 
 ### Successful test cases
 
@@ -1587,86 +1667,6 @@ test_clear | 0
 test_emplace | 0.001
 test_emplace_hint | 0
 
-## std_basic_observable_set_test_suite
-
-Test suite *std_basic_observable_set_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.076 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## std_basic_observable_object_test_suite
-
-Test suite *std_basic_observable_object_test_suite* with 1 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.008 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_observable_object | 0
-
-## std_basic_observable_object_lambda_test_suite
-
-Test suite *std_basic_observable_object_lambda_test_suite* with 1 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.008 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_observable_object | 0
-
-## std_basic_observable_multiset_test_suite
-
-Test suite *std_basic_observable_multiset_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.086 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
 ## std_basic_observable_multimap_test_suite
 
 Test suite *std_basic_observable_multimap_test_suite* with 11 test cases was executed with result:
@@ -1674,7 +1674,7 @@ Test suite *std_basic_observable_multimap_test_suite* with 11 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.098 seconds.
+Test suite execution took 0.111 seconds.
 
 ### Successful test cases
 
@@ -1699,7 +1699,7 @@ Test suite *std_basic_observable_map_test_suite* with 11 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.107 seconds.
+Test suite execution took 0.099 seconds.
 
 ### Successful test cases
 
@@ -1707,15 +1707,15 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0.001
-test_insert_initializer_list | 0
-test_erase_position | 0.001
+test_insert_range | 0
+test_insert_initializer_list | 0.001
+test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0
+test_emplace_hint | 0.001
 
 ## std_basic_observable_list_test_suite
 
@@ -1724,7 +1724,7 @@ Test suite *std_basic_observable_list_test_suite* with 26 test cases was execute
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.254 seconds.
+Test suite execution took 0.241 seconds.
 
 ### Successful test cases
 
@@ -1738,17 +1738,17 @@ test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
 test_insert_single_element | 0
-test_insert_fill | 0.001
+test_insert_fill | 0
 test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_back | 0.001
+test_emplace_back | 0
 test_emplace_front | 0
 test_splice_entire_list | 0
-test_splice_single_element | 0.001
+test_splice_single_element | 0
 test_splice_element_range | 0
 test_remove | 0
 test_remove_if | 0
@@ -1764,18 +1764,18 @@ Test suite *std_basic_observable_forward_list_test_suite* with 24 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.217 seconds.
+Test suite execution took 0.255 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0.001
+test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_front | 0
 test_pop_front | 0
-test_insert_after_single_element | 0
+test_insert_after_single_element | 0.001
 test_insert_after_fill | 0
 test_insert_after_range | 0
 test_erase_position | 0
@@ -1784,11 +1784,11 @@ test_swap | 0
 test_clear | 0
 test_emplace_after | 0
 test_emplace_back | 0
-test_emplace_front | 0.001
-test_splice_after_entire_forward_list | 0.001
+test_emplace_front | 0
+test_splice_after_entire_forward_list | 0
 test_splice_after_single_element | 0
 test_splice_after_element_range | 0
-test_remove | 0
+test_remove | 0.001
 test_remove_if | 0
 test_unique | 0
 test_unique_binary_predicate | 0
@@ -1802,7 +1802,7 @@ Test suite *std_basic_observable_deque_test_suite* with 17 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.156 seconds.
+Test suite execution took 0.162 seconds.
 
 ### Successful test cases
 
@@ -1810,7 +1810,7 @@ Test case|Execution time
 -|-
 test_assign_range | 0
 test_assign_initializer_list | 0
-test_assign_fill | 0.001
+test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
@@ -1824,7 +1824,7 @@ test_swap | 0
 test_clear | 0
 test_emplace | 0
 test_emplace_back | 0
-test_emplace_front | 0.001
+test_emplace_front | 0
 
 ## std_basic_observable_array_test_suite
 
@@ -1848,13 +1848,13 @@ Test suite *std_basic_event_manager_test_suite* with 1 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_command_manager | 0
+test_command_manager | 0.001
 
 ## std_basic_command_test_suite
 
@@ -1878,14 +1878,14 @@ Test suite *std_basic_command_manager_test_suite* with 2 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_command_manager | 0.001
-test_spaceship_observer | 0.001
+test_spaceship_observer | 0
 
 ## std_basic_command_manager_lambda_test_suite
 
@@ -1894,13 +1894,13 @@ Test suite *std_basic_command_manager_lambda_test_suite* with 2 test cases was e
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.017 seconds.
+Test suite execution took 0.022 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_command_manager | 0
+test_command_manager | 0.001
 test_spaceship_observer | 0
 
 ## std_basic_command_execution_observer_test_suite
@@ -1910,11 +1910,11 @@ Test suite *std_basic_command_execution_observer_test_suite* with 2 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.02 seconds.
+Test suite execution took 0.021 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_execute_command | 0
+test_execute_command | 0.001
 test_post_command | 0

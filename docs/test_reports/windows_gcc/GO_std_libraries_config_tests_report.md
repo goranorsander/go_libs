@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-10-22 at 21:29:18 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-10-31 at 21:32:30 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.444 seconds.
+Test suites execution took 0.41 seconds.
 
 # Details
 
@@ -41,7 +41,7 @@ Test suite *std_define_go_platform_test_suite* with 2 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.022 seconds.
+Test suite execution took 0.02 seconds.
 
 ### Successful test cases
 
@@ -72,7 +72,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.284 seconds.
+Test suite execution took 0.258 seconds.
 
 ### Successful test cases
 
@@ -111,7 +111,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.034 seconds.
+Test suite execution took 0.032 seconds.
 
 ### Successful test cases
 
@@ -128,7 +128,7 @@ Test suite *std_define_go_add_quotes_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.011 seconds.
+Test suite execution took 0.01 seconds.
 
 ### Successful test cases
 

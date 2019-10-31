@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2019-10-22 at 21:29:37 with result:
+Test suites *AllTests* with 6 test cases was executed 2019-10-31 at 21:32:51 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.011 seconds.
+Test suites execution took 0.013 seconds.
 
 # Details
 
@@ -25,15 +25,15 @@ Test suite *boost_exception_test_suite* with 6 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_catch_go_boost_exception | 0.001
+test_catch_go_boost_exception | 0
 test_catch_go_boost_exception_as_boost_exception | 0
 test_catch_derived_exception | 0
-test_catch_derived_exception_as_go_boost_exception | 0
+test_catch_derived_exception_as_go_boost_exception | 0.001
 test_catch_derived_exception_as_boost_exception | 0
 test_catch_other_exception | 0

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2019-10-22 at 21:30:01 with result:
+Test suites *AllTests* with 9 test cases was executed 2019-10-31 at 21:33:16 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.006 seconds.
+Test suites execution took 0.007 seconds.
 
 # Details
 
@@ -42,7 +42,7 @@ Test suite *std_signals_string_test_suite* with 3 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
