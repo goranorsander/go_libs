@@ -46,7 +46,7 @@ if(BUILD_STD_TESTS)
     #  libs/std_type_traits/test                           #
     ########################################################
 
-    set(PROJECT_STD_TEST_TYPE_TRAITS_NAME ${STD_PROJECT_NAME_STR}_std_type_traits_tests)
+    set(PROJECT_STD_TEST_TYPE_TRAITS_NAME ${STD_PROJECT_NAME_STR}_type_traits_tests)
 
     file(GLOB STD_TEST_TYPE_TRAITS_SRC_FILES test/*.cpp)
     add_executable(${PROJECT_STD_TEST_TYPE_TRAITS_NAME} ${STD_TEST_TYPE_TRAITS_SRC_FILES})
