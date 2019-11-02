@@ -14,6 +14,7 @@ layout: unit_tests
 * [Exception](./GO_boost_libraries_exception_tests_report.html)
 * [MVVM](./GO_boost_libraries_mvvm_tests_report.html)
 * [Property](./GO_boost_libraries_property_tests_report.html)
+* [Type Traits](./GO_boost_libraries_type_traits_tests_report.html)
 * [Utility](./GO_boost_libraries_utility_tests_report.html)
 
 ## GO Std C++ Libraries Test Reports
@@ -24,4 +25,5 @@ layout: unit_tests
 * [MVVM](./GO_std_libraries_mvvm_tests_report.html)
 * [Property](./GO_std_libraries_property_tests_report.html)
 * [Signals](./GO_std_libraries_signals_tests_report.html)
+* [Type Traits](./GO_std_libraries_type_traits_tests_report.html)
 * [Utility](./GO_std_libraries_utility_tests_report.html)

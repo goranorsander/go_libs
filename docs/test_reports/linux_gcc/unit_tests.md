@@ -5,7 +5,7 @@ layout: unit_tests
 # Test environment and toolset
 
 * Manjaro Linux 18, 64 bits
-* gcc 9.1.0
+* gcc 9.2.0
 
 ## GO Boost C++ Libraries Test Reports
 
@@ -14,6 +14,7 @@ layout: unit_tests
 * [Exception](./GO_boost_libraries_exception_tests_report.html)
 * [MVVM](./GO_boost_libraries_mvvm_tests_report.html)
 * [Property](./GO_boost_libraries_property_tests_report.html)
+* [Type Traits](./GO_boost_libraries_type_traits_tests_report.html)
 * [Utility](./GO_boost_libraries_utility_tests_report.html)
 
 ## GO Std C++ Libraries Test Reports
@@ -24,4 +25,5 @@ layout: unit_tests
 * [MVVM](./GO_std_libraries_mvvm_tests_report.html)
 * [Property](./GO_std_libraries_property_tests_report.html)
 * [Signals](./GO_std_libraries_signals_tests_report.html)
+* [Type Traits](./GO_std_libraries_type_traits_tests_report.html)
 * [Utility](./GO_std_libraries_utility_tests_report.html)
