@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="5" failures="0" disabled="0" errors="0" timestamp="2019-10-24T17:48:53" time="0.858" name="AllTests">
-  <testsuite name="boost_stopwatch_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.858">
+<testsuites tests="5" failures="0" disabled="0" errors="0" timestamp="2019-11-02T11:11:00" time="1.04" name="AllTests">
+  <testsuite name="boost_stopwatch_test_suite" tests="5" failures="0" disabled="0" errors="0" time="1.04">
     <testcase name="test_create_stopwatch" status="run" time="0" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop" status="run" time="0.101" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_reset" status="run" time="0.111" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_guard" status="run" time="0.106" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop_five_times" status="run" time="0.54" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop" status="run" time="0.112" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_reset" status="run" time="0.104" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_guard" status="run" time="0.1" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop_five_times" status="run" time="0.724" classname="boost_stopwatch_test_suite" />
   </testsuite>
 </testsuites>
