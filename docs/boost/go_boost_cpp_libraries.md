@@ -16,4 +16,5 @@ The **GO Boost C++ Libraries** uses **C++98/03** and the **Boost Libraries**.
 * [MVVM](./mvvm/mvvm.html)
 * [Property](./property/property.html)
 * [Signals](./signals/signals.html)
+* [Type Traits](./type_traits/type_traits.html)
 * [Utility](./utility/utility.html)
