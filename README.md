@@ -112,21 +112,21 @@ My development environment and toolset details:
     * Git Lens 10.1.1 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 2.5.1 _(All you need to write Markdown)_
 * Windows 10 Professional, 64 bit
-  * cmake version 3.15.4
+  * cmake version 3.15.5
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.23.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
-  * TortoiseGit 2.8.0.0
+  * TortoiseGit 2.9.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.9.17
-  * Visual Studio 2019, Community Edition, version 16.3.5
+  * Visual Studio 2019, Community Edition, version 16.3.8
   * Visual Studio Code 1.39.2 - with same extensions as in Linux environment
 
 # GOOGLE TEST
