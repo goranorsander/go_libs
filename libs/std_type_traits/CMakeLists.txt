@@ -10,6 +10,8 @@
 
 if(BUILD_STD_EXAMPLES)
 
+    include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
+
     #####################################################################
     #  libs/std_type_traits/primitive_type_implicit_specializer_example #
     #####################################################################
