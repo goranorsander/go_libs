@@ -17,7 +17,7 @@ int main() { return -1; }
 
 #include <iostream>
 #include <go/namespace_alias.hpp>
-#include <go/utility.hpp>
+#include <go/type_traits/primitive_type_implicit_specializer.hpp>
 
 #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
 
@@ -64,7 +64,7 @@ square_meter_type circular_sector_area(const degree_type& central_angle, const m
 int main()
 {
     {
-        // Bad, but right
+        // Bad, but correct
         const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
