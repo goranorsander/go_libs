@@ -1,8 +1,8 @@
-#ifndef GO_BOOST_TYPE_TRAITS_DETAIL_PRIMITIVE_TYPE_SPECIALIZER_BASE_HPP_INCLUDED
-#define GO_BOOST_TYPE_TRAITS_DETAIL_PRIMITIVE_TYPE_SPECIALIZER_BASE_HPP_INCLUDED
+#ifndef GO_BOOST_TYPE_TRAITS_DETAIL_FUNDAMENTAL_TYPE_SPECIALIZER_BASE_HPP_INCLUDED
+#define GO_BOOST_TYPE_TRAITS_DETAIL_FUNDAMENTAL_TYPE_SPECIALIZER_BASE_HPP_INCLUDED
 
 //
-//  primitive_type_specializer_base.hpp
+//  fundamental_type_specializer_base.hpp
 //
 //  Copyright 2017-2019 Göran Orsander
 //
@@ -26,11 +26,11 @@ namespace type_traits
 namespace detail
 {
 
-class primitive_type_specializer_base
+class fundamental_type_specializer_base
 {
 protected:
-    ~primitive_type_specializer_base() BOOST_NOEXCEPT GO_BOOST_DEFAULT_DESTRUCTOR
-    primitive_type_specializer_base() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_CONSTRUCTOR
+    ~fundamental_type_specializer_base() BOOST_NOEXCEPT GO_BOOST_DEFAULT_DESTRUCTOR
+    fundamental_type_specializer_base() BOOST_NOEXCEPT_OR_NOTHROW GO_BOOST_DEFAULT_CONSTRUCTOR
 };
 
 }
@@ -39,4 +39,4 @@ protected:
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_BOOST_TYPE_TRAITS_DETAIL_PRIMITIVE_TYPE_SPECIALIZER_BASE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_TYPE_TRAITS_DETAIL_FUNDAMENTAL_TYPE_SPECIALIZER_BASE_HPP_INCLUDED

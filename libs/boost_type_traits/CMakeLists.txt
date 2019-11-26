@@ -14,18 +14,18 @@ if(BUILD_BOOST_EXAMPLES)
     link_directories(${BOOST_LIBRARYDIR})
 
     #######################################################################
-    #  libs/boost_type_traits/primitive_type_implicit_specializer_example #
+    #  libs/boost_type_traits/fundamental_type_implicit_specializer_example #
     #######################################################################
 
-    set(PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_primitive_type_implicit_specializer_example)
+    set(PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_fundamental_type_implicit_specializer_example)
 
-    file(GLOB BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_implicit_specializer_example/*.cpp)
-    add_executable(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
+    file(GLOB BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES fundamental_type_implicit_specializer_example/*.cpp)
+    add_executable(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
-        target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             ${CMAKE_THREAD_LIBS_INIT}
@@ -34,7 +34,7 @@ if(BUILD_BOOST_EXAMPLES)
         if(WIN32)
             if(MSYS OR MINGW)
                 find_package(Threads)
-                target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
+                target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     ${CMAKE_THREAD_LIBS_INIT}
@@ -45,7 +45,7 @@ if(BUILD_BOOST_EXAMPLES)
             endif(MSYS OR MINGW)
         else(WIN32)
             find_package(Threads)
-            target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
+            target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 ${CMAKE_THREAD_LIBS_INIT}
@@ -58,25 +58,25 @@ if(BUILD_BOOST_EXAMPLES)
             set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
         endif(MSVC_VERSION GREATER 1900)
         find_package(Threads)
-        target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
     else(CMAKE_COMPILER_IS_CLANG)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
     ##############################################################
-    #  libs/boost_type_traits/primitive_type_specializer_example #
+    #  libs/boost_type_traits/fundamental_type_specializer_example #
     ##############################################################
 
-    set(PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_primitive_type_specializer_example)
+    set(PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE ${BOOST_PROJECT_NAME_STR}_fundamental_type_specializer_example)
 
-    file(GLOB BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_specializer_example/*.cpp)
-    add_executable(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
+    file(GLOB BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES fundamental_type_specializer_example/*.cpp)
+    add_executable(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} ${BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/boost/examples)
 
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
-        target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE}
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             ${CMAKE_THREAD_LIBS_INIT}
@@ -85,7 +85,7 @@ if(BUILD_BOOST_EXAMPLES)
         if(WIN32)
             if(MSYS OR MINGW)
                 find_package(Threads)
-                target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE}
+                target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     ${CMAKE_THREAD_LIBS_INIT}
@@ -96,7 +96,7 @@ if(BUILD_BOOST_EXAMPLES)
             endif(MSYS OR MINGW)
         else(WIN32)
             find_package(Threads)
-            target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE}
+            target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 ${CMAKE_THREAD_LIBS_INIT}
@@ -109,7 +109,7 @@ if(BUILD_BOOST_EXAMPLES)
             set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
         endif(MSVC_VERSION GREATER 1900)
         find_package(Threads)
-        target_link_libraries(${PROJECT_BOOST_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
     else(CMAKE_COMPILER_IS_CLANG)
         # Unsupported compiler
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")

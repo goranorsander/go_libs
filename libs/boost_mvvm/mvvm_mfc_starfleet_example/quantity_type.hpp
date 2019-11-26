@@ -13,8 +13,8 @@
 
 #pragma once
 
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(quantity_type, uint64_t);
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(quantity_type, uint64_t);
 
 #endif  // #ifndef GO_BOOST_MVVM_MFC_STARFLEET_EXAMPLE_QUANTITY_TYPE_HPP_INCLUDED

@@ -18,8 +18,8 @@
 #include <go/property.hpp>
 #include <go/utility.hpp>
 
-GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
-GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(currency_type, double);
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object

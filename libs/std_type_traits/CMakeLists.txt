@@ -13,30 +13,30 @@ if(BUILD_STD_EXAMPLES)
     include_directories(${GO_LIBS_SOURCE_DIR} ${COMMON_INCLUDES})
 
     #####################################################################
-    #  libs/std_type_traits/primitive_type_implicit_specializer_example #
+    #  libs/std_type_traits/fundamental_type_implicit_specializer_example #
     #####################################################################
 
-    set(PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_implicit_specializer_example)
+    set(PROJECT_STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_fundamental_type_implicit_specializer_example)
 
-    file(GLOB STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_implicit_specializer_example/*.cpp)
-    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    file(GLOB STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES fundamental_type_implicit_specializer_example/*.cpp)
+    add_executable(${PROJECT_STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
-    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(${PROJECT_STD_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
     ################################################################
-    #  libs/std_type_traits/primitive_type_specializer_example     #
+    #  libs/std_type_traits/fundamental_type_specializer_example     #
     ################################################################
 
-    set(PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_primitive_type_specializer_example)
+    set(PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE ${STD_PROJECT_NAME_STR}_fundamental_type_specializer_example)
 
-    file(GLOB STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES primitive_type_specializer_example/*.cpp)
-    add_executable(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
-    set_target_properties(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
+    file(GLOB STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES fundamental_type_specializer_example/*.cpp)
+    add_executable(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} ${STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE_SRC_FILES})
+    set_target_properties(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} PROPERTIES FOLDER go_libs/std/examples)
     find_package(Threads)
 
-    target_link_libraries(${PROJECT_STD_PRIMITIVE_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_EXAMPLE} ${CMAKE_THREAD_LIBS_INIT})
 
 endif(BUILD_STD_EXAMPLES)
 

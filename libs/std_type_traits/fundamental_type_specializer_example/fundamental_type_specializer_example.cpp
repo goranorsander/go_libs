@@ -1,5 +1,5 @@
 //
-//  primitive_type_specializer_example.cpp
+//  fundamental_type_specializer_example.cpp
 //
 //  Copyright 2018-2019 Göran Orsander
 //
@@ -8,26 +8,33 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go_boost/config.hpp>
+#include <go/config.hpp>
+
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+int main() { return -1; }
+#else
+
 #include <iostream>
-#include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility.hpp>
+#include <go/namespace_alias.hpp>
+#include <go/type_traits/fundamental_type_specializer.hpp>
 
-#if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#if !defined(GO_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(radian_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(degree_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(meter_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(square_meter_type, double)
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(radian_type, double)
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(degree_type, double)
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(meter_type, double)
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(square_meter_type, double)
 
 #else
 
-GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(radian_type, double)
-GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(degree_type, double)
-GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(meter_type, double)
-GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(square_meter_type, double)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(radian_type, double)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(degree_type, double)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(meter_type, double)
+GO_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(square_meter_type, double)
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#endif  // #if !defined(GO_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
+
 
 namespace bad
 {
@@ -58,7 +65,7 @@ square_meter_type circular_sector_area(const degree_type& central_angle, const m
 int main()
 {
     {
-        // Bad, but right
+        // Bad, but correct
         const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
@@ -84,3 +91,5 @@ int main()
     }
     return 0;
 }
+
+#endif  // Required C++11 feature is not supported by this compiler

@@ -20,7 +20,7 @@
 #include <go_boost/type_traits/noncopyable.hpp>
 #include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/type_traits/nonmovable.hpp>
-#include <go_boost/type_traits/primitive_type_implicit_specializer.hpp>
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_implicit_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 
 #endif  // #ifndef GO_BOOST_UTILITY_HPP_INCLUDED

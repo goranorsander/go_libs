@@ -17,22 +17,22 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <go/type_traits/primitive_type_specializer.hpp>
+#include <go/type_traits/fundamental_type_specializer.hpp>
 
 namespace go
 {
 namespace signals
 {
 
-#if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#if !defined(GO_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(slot_key, uint3264_t)
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(slot_key, uint3264_t)
 
 #else
 
 GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(slot_key, uint3264_t)
 
-#endif  // #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#endif  // #if !defined(GO_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
 inline void reset(slot_key& key)
 {

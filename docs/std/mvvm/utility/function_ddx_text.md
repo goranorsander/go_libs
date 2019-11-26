@@ -33,16 +33,16 @@ void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<CStrin
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::string>& value);
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<std::wstring>& value);
 
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<BYTE>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<short>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<int>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<UINT>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<long>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<DWORD>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<LONGLONG>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<ULONGLONG>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<float>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::utility::primitive_type_specializer<double>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<BYTE>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<short>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<int>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<UINT>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<long>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<DWORD>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<LONGLONG>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<ULONGLONG>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<float>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::property<go::type_traits::fundamental_type_specializer<double>>& value);
 
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<BYTE>& value);
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<short>& value);
@@ -58,16 +58,16 @@ void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<CStri
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::string>& value);
 void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<std::wstring>& value);
 
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<BYTE>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<short>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<int>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<UINT>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<long>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<DWORD>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<LONGLONG>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<ULONGLONG>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<float>>& value);
-void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::utility::primitive_type_specializer<double>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<BYTE>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<short>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<int>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<UINT>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<long>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<DWORD>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<LONGLONG>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<ULONGLONG>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<float>>& value);
+void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go::property::wproperty<go::type_traits::fundamental_type_specializer<double>>& value);
 ```
 
 ## Parameters

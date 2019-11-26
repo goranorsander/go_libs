@@ -13,8 +13,8 @@
 
 #pragma once
 
-#include <go/type_traits/primitive_type_specializer.hpp>
+#include <go/type_traits/fundamental_type_specializer.hpp>
 
-GO_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(fleet_organization_id_type, unsigned long);
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(fleet_organization_id_type, unsigned long);
 
 #endif  // #ifndef GO_MVVM_MFC_STARFLEET_EXAMPLE_FLEET_ORGANIZATION_ID_TYPE_HPP_INCLUDED

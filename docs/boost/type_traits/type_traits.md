@@ -24,5 +24,5 @@ and using type traits.
 * [noncopyable](./class_noncopyable.html)
 * [noncopyable_nonmovable](./class_noncopyable_nonmovable.html)
 * [nonmovable](./class_nonmovable.html)
-* [primitive_type_implicit_specializer](./class_template_primitive_type_implicit_specializer.html)
-* [primitive_type_specializer](./class_template_primitive_type_specializer.html)
+* [fundamental_type_implicit_specializer](./class_template_fundamental_type_implicit_specializer.html)
+* [fundamental_type_specializer](./class_template_fundamental_type_specializer.html)

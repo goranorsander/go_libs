@@ -1,5 +1,5 @@
 //
-//  primitive_type_implicit_specializer_example.cpp
+//  fundamental_type_specializer_example.cpp
 //
 //  Copyright 2018-2019 Göran Orsander
 //
@@ -8,32 +8,26 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go/config.hpp>
-
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-int main() { return -1; }
-#else
-
+#include <go_boost/config.hpp>
 #include <iostream>
-#include <go/namespace_alias.hpp>
-#include <go/type_traits/primitive_type_implicit_specializer.hpp>
+#include <go_boost/namespace_alias.hpp>
+#include <go_boost/utility.hpp>
 
-#if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(radian_type, double)
-GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(degree_type, double)
-GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(meter_type, double)
-GO_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(square_meter_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(radian_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(degree_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(meter_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(square_meter_type, double)
 
 #else
 
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(radian_type, double)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(degree_type, double)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(meter_type, double)
-GO_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(square_meter_type, double)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(radian_type, double)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(degree_type, double)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(meter_type, double)
+GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(square_meter_type, double)
 
-#endif  // #if !defined(GO_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
 namespace bad
 {
@@ -50,13 +44,13 @@ namespace better
 
 square_meter_type circular_sector_area(const radian_type& central_angle, const meter_type& radius)
 {
-    return square_meter_type(((radius*radius)*central_angle.get())/2.0);
+    return square_meter_type(((radius*radius).get()*central_angle.get())/2.0);
 }
 
 square_meter_type circular_sector_area(const degree_type& central_angle, const meter_type& radius)
 {
     static const double pi = std::acos(-1.0);
-    return square_meter_type(((radius*radius)*central_angle.get())*pi/360.0);
+    return square_meter_type(((radius*radius).get()*central_angle.get())*pi/360.0);
 }
 
 }
@@ -64,7 +58,7 @@ square_meter_type circular_sector_area(const degree_type& central_angle, const m
 int main()
 {
     {
-        // Bad, but correct
+        // Bad, but right
         const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
@@ -82,13 +76,11 @@ int main()
         const radian_type central_angle_rad(std::acos(-1.0)/3.0);
         const meter_type radius(1.0);
         const square_meter_type area_4 = better::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 4 = " << area_4 << " square meter" << std::endl;
+        std::cout << "Area 4 = " << area_4.get() << " square meter" << std::endl;
         // Also better and right
         const degree_type central_angle_deg(60.0);
         const square_meter_type area_5 = better::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 5 = " << area_5 << " square meter" << std::endl;
+        std::cout << "Area 5 = " << area_5.get() << " square meter" << std::endl;
     }
     return 0;
 }
-
-#endif  // Required C++11 feature is not supported by this compiler

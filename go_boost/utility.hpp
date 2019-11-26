@@ -22,8 +22,8 @@
 #include <go_boost/type_traits/noncopyable_nonmovable.hpp>
 #include <go_boost/type_traits/nonmovable.hpp>
 #include <go_boost/utility/placebo_lockable.hpp>
-#include <go_boost/type_traits/primitive_type_implicit_specializer.hpp>
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_implicit_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 #include <go_boost/utility/recursive_spin_lock.hpp>
 #include <go_boost/utility/sanity.hpp>
 #include <go_boost/utility/scope_guard.hpp>

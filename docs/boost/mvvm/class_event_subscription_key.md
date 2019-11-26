@@ -24,7 +24,7 @@ GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uin
 
 ## Member functions
 
-See [primitive_type_specializer](./../utility/class_template_primitive_type_specializer.html)
+See [fundamental_type_specializer](./../utility/class_template_fundamental_type_specializer.html)
 for a description of the **GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER** macro.
 
 ## Global functions

@@ -20,8 +20,8 @@
 #include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/type_traits/nonmovable.hpp>
 #include <go/utility/placebo_lockable.hpp>
-#include <go/type_traits/primitive_type_implicit_specializer.hpp>
-#include <go/type_traits/primitive_type_specializer.hpp>
+#include <go/type_traits/fundamental_type_implicit_specializer.hpp>
+#include <go/type_traits/fundamental_type_specializer.hpp>
 #include <go/utility/recursive_spin_lock.hpp>
 #include <go/utility/sanity.hpp>
 #include <go/utility/scope_guard.hpp>

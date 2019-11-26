@@ -16,10 +16,10 @@
 #include <go_boost/mvvm.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(currency_type, double);
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(product_id_type, int);
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(currency_type, double);
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(product_id_type, int);
 
 class product_model
     : public m::wobservable_object

@@ -24,7 +24,7 @@ GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(slot_key, uint3264_t, 0)
 
 ## Member functions
 
-See [primitive_type_specializer](./../utility/class_template_primitive_type_specializer.html)
+See [fundamental_type_specializer](./../utility/class_template_fundamental_type_specializer.html)
 for a description of the **GO_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER** macro.
 
 ## Global functions

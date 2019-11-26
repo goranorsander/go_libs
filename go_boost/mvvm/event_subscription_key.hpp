@@ -17,22 +17,22 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 
 namespace go_boost
 {
 namespace mvvm
 {
 
-#if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
 
 #else
 
 GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_SPECIALIZER(event_subscription_key, uint3264_t)
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
 inline void reset(event_subscription_key& key)
 {

@@ -6,56 +6,56 @@ layout: boost_lib_type_traits
 namespace go_boost::type_traits
 ```
 
-# class template primitive_type_implicit_specializer
+# class template fundamental_type_implicit_specializer
 
 ```c++
-<go_boost/type_traits/primitive_type_implicit_specializer.hpp>
+<go_boost/type_traits/fundamental_type_implicit_specializer.hpp>
 ```
 
 Base class for implicit specializations of objects in the **GO Boost C++ Libraries**.
 
 The reason for implementing this class is mainly experience of large code bases with
 long life. It is vital to express ideas directly in code and if possible also build in
-sanity checks in the code. Primitive types and implicit casting is an error prone
-combination. This class have implicit casting to the wrapped primitive type.
+sanity checks in the code. Fundamental types and implicit casting is an error prone
+combination. This class have implicit casting to the wrapped fundamental type.
 
 There are two implementations of this class. The first version do not require any C\++11
 features and that is the only reason to keep it. The second version require C\++11 and
 is used by compilers supporting the required C\++11 features. If the first version is
-used then **GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER** is defined.
+used then **GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER** is defined.
 
-# class template primitive_type_implicit_specializer (C++11)
+# class template fundamental_type_implicit_specializer (C++11)
 
-The **primitive_type_implicit_specializer** is declared as:
+The **fundamental_type_implicit_specializer** is declared as:
 
 ```c++
 namespace detail
 {
 
-class primitive_type_implicit_specializer_base
+class fundamental_type_implicit_specializer_base
 {
 protected:
-    ~primitive_type_implicit_specializer_base() noexcept = default;
-    primitive_type_implicit_specializer_base() noexcept = default;
+    ~fundamental_type_implicit_specializer_base() noexcept = default;
+    fundamental_type_implicit_specializer_base() noexcept = default;
 };
 
 }
 
-template<typename PrimitiveType, class TypeTraits> class primitive_type_implicit_specializer
-    : detail::primitive_type_implicit_specializer_base
+template<typename FundamentalType, class TypeTraits> class fundamental_type_implicit_specializer
+    : detail::fundamental_type_implicit_specializer_base
 {
 public:
-    ~primitive_type_implicit_specializer() noexcept = default;
-    primitive_type_implicit_specializer() noexcept;
-    primitive_type_implicit_specializer(this_const_reference t) noexcept;
-    primitive_type_implicit_specializer(this_rvalue_reference t) noexcept;
-    explicit primitive_type_implicit_specializer(const primitive_type& t) noexcept;
-    explicit primitive_type_implicit_specializer(rvalue_reference t) noexcept;
+    ~fundamental_type_implicit_specializer() noexcept = default;
+    fundamental_type_implicit_specializer() noexcept;
+    fundamental_type_implicit_specializer(this_const_reference t) noexcept;
+    fundamental_type_implicit_specializer(this_rvalue_reference t) noexcept;
+    explicit fundamental_type_implicit_specializer(const fundamental_type& t) noexcept;
+    explicit fundamental_type_implicit_specializer(rvalue_reference t) noexcept;
 
 public:
     // Cast operator
-    constexpr operator const primitive_type&() const noexcept;
-    operator primitive_type&() noexcept;
+    constexpr operator const fundamental_type&() const noexcept;
+    operator fundamental_type&() noexcept;
 
     // Assignment operators
     this_reference operator=(this_const_reference t) noexcept;
@@ -73,38 +73,38 @@ public:
     template<typename P> this_reference operator/=(const P& p) noexcept;
 
     // Integer type assignment operators
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator%=(this_const_reference t) noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator&=(this_const_reference t) noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator|=(this_const_reference t) noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator^=(this_const_reference t) noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator<<=(this_const_reference t) noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_reference>::type operator>>=(this_const_reference t) noexcept;
 
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator%=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator%=(const P& p) noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator&=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator&=(const P& p) noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator|=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator|=(const P& p) noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator^=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator^=(const P& p) noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator<<=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator<<=(const P& p) noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_reference>::type operator>>=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_reference>::type operator>>=(const P& p) noexcept;
 
     // Floating point type assignment operators
-    template <typename F = PrimitiveType>
+    template <typename F = FundamentalType>
     typename boost::enable_if_c<boost::is_floating_point<F>::value, this_reference>::type operator%=(this_const_reference t) noexcept;
 
     template <typename P>
-    typename boost::enable_if_c<boost::is_floating_point<primitive_type>::value && boost::is_arithmetic<P>::value, this_reference>::type operator%=(const P& p) noexcept;
+    typename boost::enable_if_c<boost::is_floating_point<fundamental_type>::value && boost::is_arithmetic<P>::value, this_reference>::type operator%=(const P& p) noexcept;
 
     // Arithmetic operators
     this_type operator+() const noexcept;
@@ -123,44 +123,44 @@ public:
     typename boost::enable_if_c<boost::is_arithmetic<P>::value, this_type>::type operator/(const P& p) const noexcept;
 
     // Signed integer and floating point type arithmetic operators
-    template <typename S = PrimitiveType>
+    template <typename S = FundamentalType>
     typename boost::enable_if_c<boost::is_signed<S>::value, this_type>::type operator-() const noexcept;
 
     // Integer type arithmetic operators
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator~() const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const noexcept;
 
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator%(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator%(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator&(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator&(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator|(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator|(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator^(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator^(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator<<(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator<<(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, this_type>::type operator>>(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator>>(const P& p) const noexcept;
 
     // Floating point type arithmetic operators
-    template <typename F = PrimitiveType>
+    template <typename F = FundamentalType>
     typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const noexcept;
 
     template <typename P>
-    typename boost::enable_if_c<boost::is_floating_point<primitive_type>::value && boost::is_arithmetic<P>::value, this_type>::type operator%(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_floating_point<fundamental_type>::value && boost::is_arithmetic<P>::value, this_type>::type operator%(const P& p) const noexcept;
 
     // Comparison operators
     constexpr bool operator==(this_const_reference t) const noexcept;
@@ -184,22 +184,22 @@ public:
     template <typename P>
     constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value, bool>::type operator>=(const P& p) const noexcept;
     template <typename P>
-    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<primitive_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept;
+    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept;
     template <typename P>
-    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_floating_point<primitive_type>::value, std::partial_ordering>::type operator<=>(const P& p) const noexcept;
+    constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_floating_point<fundamental_type>::value, std::partial_ordering>::type operator<=>(const P& p) const noexcept;
 
     // Integer type logical operators
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator!() const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator&&(this_const_reference t) const noexcept;
-    template <typename I = PrimitiveType>
+    template <typename I = FundamentalType>
     typename boost::enable_if_c<boost::is_integral<I>::value, bool>::type operator||(this_const_reference t) const noexcept;
 
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, bool>::type operator&&(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, bool>::type operator&&(const P& p) const noexcept;
     template <typename P>
-    typename boost::enable_if_c<boost::is_integral<primitive_type>::value && boost::is_integral<P>::value, bool>::type operator||(const P& p) const noexcept;
+    typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, bool>::type operator||(const P& p) const noexcept;
 
     // Increment/decrement operators
     this_type operator++() noexcept;
@@ -208,9 +208,9 @@ public:
     this_type operator--(int) noexcept;
 
 public:
-    constexpr const primitive_type& get() const noexcept;
-    primitive_type& get() noexcept;
-    void set(const primitive_type& t) noexcept;
+    constexpr const fundamental_type& get() const noexcept;
+    fundamental_type& get() noexcept;
+    void set(const fundamental_type& t) noexcept;
     void set(this_const_reference t) noexcept;
     void set(rvalue_reference t) noexcept;
     void set(this_rvalue_reference t) noexcept;
@@ -218,72 +218,72 @@ public:
 
 // Outside arithmetic operators
 
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, PrimitiveTypeSpecializer>::type operator+(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, PrimitiveTypeSpecializer>::type operator-(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, PrimitiveTypeSpecializer>::type operator*(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, PrimitiveTypeSpecializer>::type operator/(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator+(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator-(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator*(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator/(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
 
 // Outside integer arithmetic operators
 
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator%(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator&(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator|(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator^(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator<<(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_integral<P>::value, PrimitiveTypeSpecializer>::type operator>>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator%(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator&(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator|(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator^(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator<<(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator>>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
 
 // Outside floating point arithmetic operators
 
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_floating_point<P>::value, PrimitiveTypeSpecializer>::type operator%(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_floating_point<P>::value, FundamentalTypeSpecializer>::type operator%(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
 
 // Outside comparison operators
 
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator==(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator!=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator<(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator<=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator>=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename PrimitiveTypeSpecializer::primitive_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
-template<class PrimitiveTypeSpecializer, typename P>
-inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_floating_point<typename PrimitiveTypeSpecializer::primitive_type>::value, std::partial_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator==(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator!=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator<(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator<=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, bool>::type operator>=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename FundamentalTypeSpecializer::fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
+template<class FundamentalTypeSpecializer, typename P>
+inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_floating_point<typename FundamentalTypeSpecializer::fundamental_type>::value, std::partial_ordering>::type operator<=>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept;
 ```
 
 ## Template parameters
 
 Parameter | Description
 -|-
-PrimitiveType | The primitive value type
-TypeTraits | A **struct** used as a dispatching tag to uniquely identify the specialized primitive type
+FundamentalType | The fundamental value type
+TypeTraits | A **struct** used as a dispatching tag to uniquely identify the specialized fundamental type
 
 ## Member types
 
 Member type | Definition
 -|-
-this_type | primitive_type_implicit_specializer<PrimitiveType, TypeTraits>
-primitive_type | PrimitiveType
+this_type | fundamental_type_implicit_specializer<FundamentalType, TypeTraits>
+fundamental_type | FundamentalType
 type_traits_type | TypeTraits
 this_reference | this_type&
 this_const_reference | const this_type&
-rvalue_reference | primitive_type&&
+rvalue_reference | fundamental_type&&
 this_rvalue_reference | this_type&&
 
 ## Member functions
@@ -294,30 +294,30 @@ Specifiers |
 -|
 public |
 
-Destroys the **primitive_type_implicit_specializer** object.
+Destroys the **fundamental_type_implicit_specializer** object.
 
 ### Constructor
 
 Constructor | Specifiers | Signature
 -|-|-
-*constructor (1)* | public | **primitive_type_implicit_specializer**() noexcept
-*copy constructor (2)* | public explicit | **primitive_type_implicit_specializer**(**this_const_reference** t) noexcept
-*move constructor (3)* | public explicit | **primitive_type_implicit_specializer**(**this_rvalue_reference** t) noexcept
-*assign value, copy (4)* | public | **primitive_type_implicit_specializer**(const **value_type**& t) noexcept
-*assign value, move (5)* | public | **primitive_type_implicit_specializer**(**value_type**&& t) noexcept
+*constructor (1)* | public | **fundamental_type_implicit_specializer**() noexcept
+*copy constructor (2)* | public explicit | **fundamental_type_implicit_specializer**(**this_const_reference** t) noexcept
+*move constructor (3)* | public explicit | **fundamental_type_implicit_specializer**(**this_rvalue_reference** t) noexcept
+*assign value, copy (4)* | public | **fundamental_type_implicit_specializer**(const **value_type**& t) noexcept
+*assign value, move (5)* | public | **fundamental_type_implicit_specializer**(**value_type**&& t) noexcept
 
-1. Constructor. Constructs a **primitive_type_implicit_specializer**.
-2. Copy constructor. Constructs a **primitive_type_implicit_specializer** with the copy of the contents of t.
-3. Move constructor. Constructs a **primitive_type_implicit_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
-4. Assign value constructor. Constructs a **primitive_type_implicit_specializer** and assign it the contents of t.
-5. Assign value constructor. Constructs a **primitive_type_implicit_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
+1. Constructor. Constructs a **fundamental_type_implicit_specializer**.
+2. Copy constructor. Constructs a **fundamental_type_implicit_specializer** with the copy of the contents of t.
+3. Move constructor. Constructs a **fundamental_type_implicit_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
+4. Assign value constructor. Constructs a **fundamental_type_implicit_specializer** and assign it the contents of t.
+5. Assign value constructor. Constructs a **fundamental_type_implicit_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
 
 ### Cast operators
 
 Operator | Specifiers | Signature
 -|-|-
-*cast to primitive type (1)* | public | constexpr operator const **primitive_type**&() const noexcept
-*cast to primitive type (2)* | public | operator **primitive_type**&() noexcept
+*cast to fundamental type (1)* | public | constexpr operator const **fundamental_type**&() const noexcept
+*cast to fundamental type (2)* | public | operator **fundamental_type**&() noexcept
 
 ### Assignment operators
 
@@ -348,7 +348,7 @@ Operator | Specifiers | Signature
 *bitwise right shift assignment (12)* | public | **this_reference** operator>>=(**this_const_reference** t) noexcept
 *bitwise right shift assignment (12)* | public | template<typename P> **this_reference** operator>>=(const P& p) noexcept
 
-Assignment operators 1 to 6 apply to all primitive types.
+Assignment operators 1 to 6 apply to all fundamental types.
 
 Assignment operator 7 apply to integer and floating point types.
 
@@ -406,10 +406,10 @@ Operator | Specifiers | Signature
 *greater than or equal to (6)* | public | constexpr bool operator>=(**this_const_reference** t) const noexcept
 *greater than or equal to (6)* | public | template <typename P> constexpr bool operator>=(const P& p) const noexcept
 *three-way comparison (7)* | public | constexpr auto operator<=>(**this_const_reference** t) const noexcept
-*three-way comparison (7)* | public | template <typename P> constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<primitive_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept
-*three-way comparison (7)* | public | template <typename P> constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_floating_point<primitive_type>::value, std::partial_ordering>::type operator<=>(const P& p) const noexcept
+*three-way comparison (7)* | public | template <typename P> constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept
+*three-way comparison (7)* | public | template <typename P> constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_floating_point<fundamental_type>::value, std::partial_ordering>::type operator<=>(const P& p) const noexcept
 
-Comparison operators 1 to 7 apply to all primitive types.
+Comparison operators 1 to 7 apply to all fundamental types.
 
 ### Logical operators
 
@@ -438,21 +438,21 @@ Increment/decrement operators 1 to 3 apply to all arithmetic types.
 
 Specifiers | Signature
 -|-
-public | **constexpr const primitive_type**& **get**() const noexcept
-public | **primitive_type**& **get**() noexcept
+public | **constexpr const fundamental_type**& **get**() const noexcept
+public | **fundamental_type**& **get**() noexcept
 
-Return the specialized primitive type value.
+Return the specialized fundamental type value.
 
 ### set
 
 Specifiers | Signature
 -|-
-public | **void set**(const primitive_type& t) noexcept
+public | **void set**(const fundamental_type& t) noexcept
 public | **void set**(this_const_reference t) noexcept
-public | **void set**(primitive_type&& t) noexcept
+public | **void set**(fundamental_type&& t) noexcept
 public | **void set**(this_rvalue_reference t) noexcept
 
-Set the specialized primitive type value.
+Set the specialized fundamental type value.
 
 ## Outside functions
 
@@ -460,16 +460,16 @@ Set the specialized primitive type value.
 
 Operator | Signature
 -|-
-*addition (1)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator+(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*subtraction (2)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator-(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*multiplication (3)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator*(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*division (4)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator/(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*modulo (5)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator%(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*bitwise AND (6)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator&(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*bitwise OR (7)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator|(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*bitwise XOR (8)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator^(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*bitwise left shift (9)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator<<(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*bitwise right shift (10)* | template<class PrimitiveTypeSpecializer, typename P> PrimitiveTypeSpecializer operator>>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
+*addition (1)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator+(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*subtraction (2)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator-(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*multiplication (3)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator*(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*division (4)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator/(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*modulo (5)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator%(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*bitwise AND (6)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator&(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*bitwise OR (7)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator|(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*bitwise XOR (8)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator^(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*bitwise left shift (9)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator<<(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*bitwise right shift (10)* | template<class FundamentalTypeSpecializer, typename P> FundamentalTypeSpecializer operator>>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
 
 Arithmetic operators 1 to 4 apply to all arithmetic types.
 
@@ -481,27 +481,27 @@ Arithmetic operators 6 to 10 apply to all integer types.
 
 Operator | Signature
 -|-
-*equal to (1)* | template<class PrimitiveTypeSpecializer, typename P> bool operator==(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*not equal to (2)* | template<class PrimitiveTypeSpecializer, typename P> bool operator!=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*less than (3)* | template<class PrimitiveTypeSpecializer, typename P> bool operator<(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*less than or equal to (4)* | template<class PrimitiveTypeSpecializer, typename P> bool operator<=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*greater than (5)* | template<class PrimitiveTypeSpecializer, typename P> bool operator>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*greater than or equal to (6)* | template<class PrimitiveTypeSpecializer, typename P> bool operator>=(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*three-way comparison (7)* | public | template<class PrimitiveTypeSpecializer, typename P> constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename PrimitiveTypeSpecializer::primitive_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
-*three-way comparison (7)* | public | template<class PrimitiveTypeSpecializer, typename P> constexpr typename boost::enable_if_c<boost::is_base_of<detail::primitive_type_implicit_specializer_base, PrimitiveTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_floating_point<typename PrimitiveTypeSpecializer::primitive_type>::value, std::partial_ordering>::type operator<=>(const P& lhs, const PrimitiveTypeSpecializer& rhs) noexcept
+*equal to (1)* | template<class FundamentalTypeSpecializer, typename P> bool operator==(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*not equal to (2)* | template<class FundamentalTypeSpecializer, typename P> bool operator!=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*less than (3)* | template<class FundamentalTypeSpecializer, typename P> bool operator<(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*less than or equal to (4)* | template<class FundamentalTypeSpecializer, typename P> bool operator<=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*greater than (5)* | template<class FundamentalTypeSpecializer, typename P> bool operator>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*greater than or equal to (6)* | template<class FundamentalTypeSpecializer, typename P> bool operator>=(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*three-way comparison (7)* | public | template<class FundamentalTypeSpecializer, typename P> constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename FundamentalTypeSpecializer::fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
+*three-way comparison (7)* | public | template<class FundamentalTypeSpecializer, typename P> constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_floating_point<typename FundamentalTypeSpecializer::fundamental_type>::value, std::partial_ordering>::type operator<=>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
 
-Comparison operators 1 to 7 apply to all primitive types.
+Comparison operators 1 to 7 apply to all fundamental types.
 
 ## Macro
 
-For convenience a macro is available to implement specialized primitive type
+For convenience a macro is available to implement specialized fundamental type
 classes. The macros will implement a dispatching tag **struct** and declare
-the specialized primitive type with a **using** statement.
+the specialized fundamental type with a **using** statement.
 
-### GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(class_name, primitive_type)
+### GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(class_name, fundamental_type)
 
-The **GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER** macro implements a specialized
-primitive type class, e.g:
+The **GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER** macro implements a specialized
+fundamental type class, e.g:
 
 ```c++
 GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(my_integer_type, long)
@@ -511,12 +511,12 @@ Will implement a class declared as:
 
 ```c++
 struct my_integer_type_tag {};
-using my_integer_type = go_boost::type_traits::primitive_type_specializer<long, my_integer_type_tag>;
+using my_integer_type = go_boost::type_traits::fundamental_type_specializer<long, my_integer_type_tag>;
 ```
 
 ## Example
 
-This example is intended to show how specialized primitive types can be used to
+This example is intended to show how specialized fundamental types can be used to
 avoid errors by using explicit types that provide vital information about what
 is expected.
 
@@ -526,10 +526,10 @@ is expected.
 
 namespace u = go_boost::type_traits;
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(radian_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(degree_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(meter_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(square_meter_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(radian_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(degree_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(meter_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(square_meter_type, double)
 
 namespace bad
 {
@@ -612,23 +612,23 @@ to read the function signature. The specialized types are explicit, e.g. you can
 an anonymous **double** or **degree_type** value to the function that expect a
 **radian_type** parameter (or worse, get the parameter order mixed up).
 
-# class template primitive_type_implicit_specializer (C++03)
+# class template fundamental_type_implicit_specializer (C++03)
 
-The **primitive_type_implicit_specializer** is declared as:
+The **fundamental_type_implicit_specializer** is declared as:
 
 ```c++
-template<typename T> class primitive_type_implicit_specializer
-    : public primitive_type_specializer<T>
+template<typename T> class fundamental_type_implicit_specializer
+    : public fundamental_type_specializer<T>
 {
 public:
-    virtual ~primitive_type_implicit_specializer() = 0;
+    virtual ~fundamental_type_implicit_specializer() = 0;
 
 protected:
-    primitive_type_implicit_specializer(const primitive_type_implicit_specializer& t);
-    primitive_type_implicit_specializer(primitive_type_implicit_specializer&& t);
-    explicit primitive_type_implicit_specializer(const value_type& t);
-    explicit primitive_type_implicit_specializer(value_type&& t);
-    primitive_type_implicit_specializer& operator=(const primitive_type_implicit_specializer& t) noexcept;
+    fundamental_type_implicit_specializer(const fundamental_type_implicit_specializer& t);
+    fundamental_type_implicit_specializer(fundamental_type_implicit_specializer&& t);
+    explicit fundamental_type_implicit_specializer(const value_type& t);
+    explicit fundamental_type_implicit_specializer(value_type&& t);
+    fundamental_type_implicit_specializer& operator=(const fundamental_type_implicit_specializer& t) noexcept;
 
 public:
     operator const value_type&() const;
@@ -644,14 +644,14 @@ public:
 
 Parameter | Description
 -|-
-T | The primitive value type
+T | The fundamental value type
 
 ## Member types
 
 Member type | Definition
 -|-
 value_type | T
-this_type | primitive_type_implicit_specializer<value_type>
+this_type | fundamental_type_implicit_specializer<value_type>
 
 ## Member functions
 
@@ -661,29 +661,29 @@ Specifiers |
 -|
 public virtual |
 
-Destroys the **primitive_type_implicit_specializer** object.
+Destroys the **fundamental_type_implicit_specializer** object.
 
 ### Constructor
 
 Constructor | Specifiers | Signature
 -|-|-
-*copy constructor (1)* | protected explicit | **primitive_type_implicit_specializer**(const **primitive_type_implicit_specializer**& t)
-*move constructor (2)* | protected explicit | **primitive_type_implicit_specializer**(**primitive_type_implicit_specializer**&& t)
-*assign value, copy (3)* | protected | **primitive_type_implicit_specializer**(const **value_type**& t)
-*assign value, move (4)* | protected | **primitive_type_implicit_specializer**(**value_type**&& t)
+*copy constructor (1)* | protected explicit | **fundamental_type_implicit_specializer**(const **fundamental_type_implicit_specializer**& t)
+*move constructor (2)* | protected explicit | **fundamental_type_implicit_specializer**(**fundamental_type_implicit_specializer**&& t)
+*assign value, copy (3)* | protected | **fundamental_type_implicit_specializer**(const **value_type**& t)
+*assign value, move (4)* | protected | **fundamental_type_implicit_specializer**(**value_type**&& t)
 
-1. Copy constructor. Constructs the **primitive_type_implicit_specializer** with the copy of the contents of t.
-2. Move constructor. Constructs the **primitive_type_implicit_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
-3. Assign value constructor. Constructs the **primitive_type_implicit_specializer** and assign it the contents of t.
-4. Assign value constructor. Constructs the **primitive_type_implicit_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
+1. Copy constructor. Constructs the **fundamental_type_implicit_specializer** with the copy of the contents of t.
+2. Move constructor. Constructs the **fundamental_type_implicit_specializer** with the contents of t using move semantics. t is left in valid, but unspecified state.
+3. Assign value constructor. Constructs the **fundamental_type_implicit_specializer** and assign it the contents of t.
+4. Assign value constructor. Constructs the **fundamental_type_implicit_specializer** and assign it the contents of t using move semantics. t is left in valid, but unspecified state.
 
 ### Assignment operator
 
 Operator | Specifiers | Signature
 -|-
-*assign copy (1)* | protected | **primitive_type_implicit_specializer**& operator=(const **primitive_type_implicit_specializer**& t) noexcept
+*assign copy (1)* | protected | **fundamental_type_implicit_specializer**& operator=(const **fundamental_type_implicit_specializer**& t) noexcept
 
-1. Copies an **primitive_type_implicit_specializer** object.
+1. Copies an **fundamental_type_implicit_specializer** object.
 
 ### Cast operator
 
@@ -692,7 +692,7 @@ Specifiers | Signature
 public | operator const value_type&() const
 public | operator value_type&()
 
-Return the specialized primitive type value.
+Return the specialized fundamental type value.
 
 ## Inherited functions
 
@@ -703,7 +703,7 @@ Specifiers | Signature
 public | **const value_type**& **get**() const
 public | **value_type**& **get**()
 
-Return the specialized primitive type value.
+Return the specialized fundamental type value.
 
 ### set
 
@@ -712,13 +712,13 @@ Specifiers | Signature
 public | **void set**(const value_type& t)
 public | **void set**(const this_type& t)
 
-Set the specialized primitive type value.
+Set the specialized fundamental type value.
 
 ## Macros
 
 For convenience two macros are available to implement integer and floating point
 classes. The macros will implement most standard operators available for the
-specialized primitive type with same funtionallity.
+specialized fundamental type with same funtionallity.
 
 * [Assignment operators](http://en.cppreference.com/w/cpp/language/operator_assignment)
 * [Arithmetic operators](http://en.cppreference.com/w/cpp/language/operator_arithmetic)
@@ -726,7 +726,7 @@ specialized primitive type with same funtionallity.
 * [Logical operators](http://en.cppreference.com/w/cpp/language/operator_logical)
 * [Increment/decrement operators](http://en.cppreference.com/w/cpp/language/operator_incdec)
 
-### GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type)
+### GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, fundamental_type)
 
 The **GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized integer
 type class, e.g:
@@ -739,7 +739,7 @@ Will implement a class declared as:
 
 ```c++
 class my_integer_type
-    : primitive_type_implicit_specializer<long>
+    : fundamental_type_implicit_specializer<long>
 {
 public:
     // Destructor and constructors
@@ -848,7 +848,7 @@ template<typename P> inline my_integer_type operator>(const P& lhs, const my_int
 template<typename P> inline my_integer_type operator>=(const P& lhs, const my_integer_type& rhs);
 ```
 
-### GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type)
+### GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER(class_name, fundamental_type)
 
 The **GO_BOOST_IMPLEMENT_UNSIGNED_INTEGER_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized integer
 type class, e.g:
@@ -861,7 +861,7 @@ Will implement a class declared as:
 
 ```c++
 class my_integer_type
-    : primitive_type_implicit_specializer<unsigned long>
+    : fundamental_type_implicit_specializer<unsigned long>
 {
 public:
     // Destructor and constructors
@@ -969,7 +969,7 @@ template<typename P> inline my_integer_type operator>(const P& lhs, const my_int
 template<typename P> inline my_integer_type operator>=(const P& lhs, const my_integer_type& rhs);
 ```
 
-### GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(class_name, primitive_type)
+### GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(class_name, fundamental_type)
 
 The **GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER** macro implements a specialized
 floating point type class, e.g:
@@ -982,7 +982,7 @@ Will implement a class declared as:
 
 ```c++
 class my_floating_point_type
-    : primitive_type_implicit_specializer<double>
+    : fundamental_type_implicit_specializer<double>
 {
 public:
     // Destructor and constructors
@@ -1060,13 +1060,13 @@ template<typename P> inline my_floating_point_type operator>=(const P& lhs, cons
 
 ## Example
 
-This example is intended to show how specialized primitive types can be used to
+This example is intended to show how specialized fundamental types can be used to
 avoid errors by using explicit types that provide vital information about what
 is expected.
 
 ```c++
 #include <iostream>
-#include <go_boost/type_traits/primitive_type_implicit_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_implicit_specializer.hpp>
 
 namespace u = go_boost::type_traits;
 

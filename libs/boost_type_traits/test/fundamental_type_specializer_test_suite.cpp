@@ -1,5 +1,5 @@
 //
-//  primitive_type_specializer_test_suite.cpp
+//  fundamental_type_specializer_test_suite.cpp
 //
 //  Copyright 2018-2019 Göran Orsander
 //
@@ -15,19 +15,19 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/type_traits/primitive_type_implicit_specializer.hpp>
-#include <go_boost/type_traits/primitive_type_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_implicit_specializer.hpp>
+#include <go_boost/type_traits/fundamental_type_specializer.hpp>
 
 namespace
 {
 
-#if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(integer_type, int)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(another_integer_type, int)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(integer_type, int)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(another_integer_type, int)
 
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(floating_point_type, double)
-GO_BOOST_IMPLEMENT_PRIMITIVE_TYPE_SPECIALIZER(another_floating_point_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(floating_point_type, double)
+GO_BOOST_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(another_floating_point_type, double)
 
 #else
 
@@ -37,15 +37,15 @@ GO_BOOST_IMPLEMENT_INTEGER_TYPE_SPECIALIZER(another_integer_type, int)
 GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(floating_point_type, double)
 GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_SPECIALIZER(another_floating_point_type, double)
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_SPECIALIZER)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 
-#if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
 
-GO_BOOST_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(implicit_integer_type, int)
-GO_BOOST_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(another_implicit_integer_type, int)
+GO_BOOST_IMPLEMENT_IMPLICIT_FUNDAMENTAL_TYPE_SPECIALIZER(implicit_integer_type, int)
+GO_BOOST_IMPLEMENT_IMPLICIT_FUNDAMENTAL_TYPE_SPECIALIZER(another_implicit_integer_type, int)
 
-GO_BOOST_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(implicit_floating_point_type, double)
-GO_BOOST_IMPLEMENT_IMPLICIT_PRIMITIVE_TYPE_SPECIALIZER(another_implicit_floating_point_type, double)
+GO_BOOST_IMPLEMENT_IMPLICIT_FUNDAMENTAL_TYPE_SPECIALIZER(implicit_floating_point_type, double)
+GO_BOOST_IMPLEMENT_IMPLICIT_FUNDAMENTAL_TYPE_SPECIALIZER(another_implicit_floating_point_type, double)
 
 #else
 
@@ -55,7 +55,7 @@ GO_BOOST_IMPLEMENT_INTEGER_TYPE_IMPLICIT_SPECIALIZER(another_implicit_integer_ty
 GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(implicit_floating_point_type, double)
 GO_BOOST_IMPLEMENT_FLOATING_POINT_TYPE_IMPLICIT_SPECIALIZER(another_implicit_floating_point_type, double)
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11_PRIMITIVE_TYPE_IMPLICIT_SPECIALIZER)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
 
 }
 
@@ -96,7 +96,7 @@ public:
 namespace
 {
 
-TEST(boost_primitive_type_specializer_test_suite, test_explicit_integer_type_specializer)
+TEST(boost_fundamental_type_specializer_test_suite, test_explicit_integer_type_specializer)
 {
     integer_type v1;
     EXPECT_EQ(0, v1.get());
@@ -109,13 +109,13 @@ TEST(boost_primitive_type_specializer_test_suite, test_explicit_integer_type_spe
     EXPECT_EQ(0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_default_value)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_default_value)
 {
     const integer_type v;
     EXPECT_EQ(0, v.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_construction)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_construction)
 {
     {
         const integer_type v(0);
@@ -131,7 +131,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_get_set)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_get_set)
 {
     integer_type v1;
     EXPECT_EQ(0, v1.get());
@@ -147,7 +147,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(47, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_simple_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_simple_assignment_operator)
 {
     const integer_type v1(100);
     EXPECT_EQ(100, v1.get());
@@ -161,7 +161,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_addition_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_addition_assignment_operator)
 {
     const integer_type v1(100);
     EXPECT_EQ(100, v1.get());
@@ -175,7 +175,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_subtraction_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_subtraction_assignment_operator)
 {
     const integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -189,7 +189,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_multiplication_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_multiplication_assignment_operator)
 {
     const integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -203,7 +203,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_division_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_division_assignment_operator)
 {
     const integer_type v1(7);
     EXPECT_EQ(7, v1.get());
@@ -217,7 +217,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_modulo_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_modulo_assignment_operator)
 {
     const integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -231,7 +231,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_and_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_and_assignment_operator)
 {
     const integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1.get());
@@ -245,7 +245,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_or_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_or_assignment_operator)
 {
     const integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1.get());
@@ -259,7 +259,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_xor_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_xor_assignment_operator)
 {
     const integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1.get());
@@ -273,7 +273,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_left_shift_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_left_shift_assignment_operator)
 {
     const integer_type v1(2);  // == 0x02 == 00000010
     EXPECT_EQ(2, v1.get());
@@ -285,7 +285,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_right_shift_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_right_shift_assignment_operator)
 {
     const integer_type v1(2);  // == 0x02 == 00000010
     EXPECT_EQ(2, v1.get());
@@ -297,7 +297,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_unary_plus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_unary_plus_arithmetic_operator)
 {
     {
         const integer_type v1(42);
@@ -317,7 +317,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_unary_minus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_unary_minus_arithmetic_operator)
 {
     {
         const integer_type v1(42);
@@ -337,7 +337,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_addition_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_addition_arithmetic_operator)
 {
     const integer_type v1(100);
     EXPECT_EQ(100, v1.get());
@@ -349,7 +349,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(142, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_subtraction_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_subtraction_arithmetic_operator)
 {
     const integer_type v1(100);
     EXPECT_EQ(100, v1.get());
@@ -361,7 +361,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(58, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_multiplication_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_multiplication_arithmetic_operator)
 {
     const integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -373,7 +373,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(420, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_division_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_division_arithmetic_operator)
 {
     const integer_type v1(5);
     EXPECT_EQ(5, v1.get());
@@ -385,7 +385,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(2100, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_modulo_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_modulo_arithmetic_operator)
 {
     const integer_type v1(8472);
     EXPECT_EQ(8472, v1.get());
@@ -399,7 +399,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_not_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_not_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); //        10100000 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
@@ -410,7 +410,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_and_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_and_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
@@ -422,7 +422,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(static_cast<int>(0xA0A0E1E1), v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_or_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_or_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
@@ -434,7 +434,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(static_cast<int>(0xB3B3FFFF), v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_xor_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_xor_arithmetic_operator)
 {
     const integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1.get());
@@ -446,7 +446,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(static_cast<int>(0x13131E1E), v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_left_shift_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_left_shift_arithmetic_operator)
 {
     const integer_type v1(0x0AB3E7F9); // 00001010 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0x0AB3E7F9), v1.get());
@@ -458,7 +458,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(static_cast<int>(0x559F3FC8), v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_bitwise_right_shift_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_bitwise_right_shift_arithmetic_operator)
 {
     const integer_type v1(0x0AB3E7F0); // 00001010 10110011 11100111 11111000
     EXPECT_EQ(static_cast<int>(0x0AB3E7F0), v1.get());
@@ -470,7 +470,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(static_cast<int>(0x01567CFE), v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_equal_to_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -486,7 +486,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_not_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_not_equal_to_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -502,7 +502,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(true, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_less_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_less_than_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -518,7 +518,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_greater_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_greater_than_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -534,7 +534,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(true, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_less_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_less_than_or_equal_to_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -550,7 +550,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_greater_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_greater_than_or_equal_to_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -568,7 +568,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_three_way_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_three_way_comparison_operator)
 {
     const integer_type v1(1);
     const integer_type v2(2);
@@ -587,7 +587,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
 
 #endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_pre_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_pre_increment_operator)
 {
     integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -596,7 +596,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(11, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_post_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_post_increment_operator)
 {
     integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -605,7 +605,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(10, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_pre_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_pre_decrement_operator)
 {
     integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -614,7 +614,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(9, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_post_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_integer_type_specializer_post_decrement_operator)
 {
     integer_type v1(10);
     EXPECT_EQ(10, v1.get());
@@ -623,13 +623,13 @@ TEST(boost_primitive_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(10, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_default_value)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_default_value)
 {
     const floating_point_type v;
     EXPECT_EQ(0.0, v.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_construction)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_construction)
 {
     {
         const floating_point_type v(0.0);
@@ -645,7 +645,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_get_set)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_get_set)
 {
     floating_point_type v1(47.0);
     EXPECT_EQ(47.0, v1.get());
@@ -659,7 +659,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(42.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_simple_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_simple_assignment_operator)
 {
     const floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1.get());
@@ -671,7 +671,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_addition_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_addition_assignment_operator)
 {
     const floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1.get());
@@ -683,7 +683,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_subtraction_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_subtraction_assignment_operator)
 {
     const floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1.get());
@@ -695,7 +695,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_multiplication_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_multiplication_assignment_operator)
 {
     const floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -707,7 +707,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_division_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_division_assignment_operator)
 {
     const floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -719,7 +719,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_modulo_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_modulo_assignment_operator)
 {
     const floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -731,7 +731,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_unary_plus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_unary_plus_arithmetic_operator)
 {
     {
         const floating_point_type v1(47.0);
@@ -751,7 +751,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_unary_minus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_unary_minus_arithmetic_operator)
 {
     {
         const floating_point_type v1(47.0);
@@ -771,7 +771,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_addition_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_addition_arithmetic_operator)
 {
     const floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1.get());
@@ -783,7 +783,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(142.0, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_subtraction_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_subtraction_arithmetic_operator)
 {
     const floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1.get());
@@ -795,7 +795,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(58.0, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_multiplication_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_multiplication_arithmetic_operator)
 {
     const floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -807,7 +807,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(470.0, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_division_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_division_arithmetic_operator)
 {
     const floating_point_type v1(5.0);
     EXPECT_EQ(5.0, v1.get());
@@ -819,7 +819,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(2100.0, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_modulo_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_modulo_arithmetic_operator)
 {
     const floating_point_type v1(8472.0);
     EXPECT_EQ(8472.0, v1.get());
@@ -831,7 +831,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(12.0, v3.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_equal_to_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -847,7 +847,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_not_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_not_equal_to_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -863,7 +863,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(true, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_less_than_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_less_than_to_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -879,7 +879,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -895,7 +895,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(true, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -911,7 +911,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(false, comparison_result_3);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -929,7 +929,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
 
 #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_three_way_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_three_way_comparison_operator)
 {
     const floating_point_type v1(1.0);
     const floating_point_type v2(2.0);
@@ -947,7 +947,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
 
 #endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_pre_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_pre_increment_operator)
 {
     floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -956,7 +956,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(11.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_post_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_post_increment_operator)
 {
     floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -965,7 +965,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(10.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_pre_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_pre_decrement_operator)
 {
     floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -974,7 +974,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(9.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_specializer_post_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_post_decrement_operator)
 {
     floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1.get());
@@ -983,7 +983,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(10.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer)
 {
     implicit_integer_type v1;
     EXPECT_EQ(0, v1);
@@ -996,13 +996,13 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(0, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_default_value)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_default_value)
 {
     const implicit_integer_type v;
     EXPECT_EQ(0u, v);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_construction)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_construction)
 {
     {
         const implicit_integer_type v(0);
@@ -1018,7 +1018,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_get_set)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_get_set)
 {
     implicit_integer_type v1;
     EXPECT_EQ(0, v1);
@@ -1040,7 +1040,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(47, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_simple_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_simple_assignment_operator)
 {
     const implicit_integer_type v1(100);
     EXPECT_EQ(100, v1);
@@ -1057,7 +1057,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_addition_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_addition_assignment_operator)
 {
     const implicit_integer_type v1(100);
     EXPECT_EQ(100, v1);
@@ -1074,7 +1074,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_subtraction_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_subtraction_assignment_operator)
 {
     const implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1091,7 +1091,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_multiplication_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_multiplication_assignment_operator)
 {
     const implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1108,7 +1108,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_division_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_division_assignment_operator)
 {
     const implicit_integer_type v1(7);
     EXPECT_EQ(7, v1);
@@ -1125,7 +1125,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_modulo_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_modulo_assignment_operator)
 {
     {
         const implicit_integer_type v1(10);
@@ -1145,7 +1145,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_and_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_and_assignment_operator)
 {
     const implicit_integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1);
@@ -1160,7 +1160,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_or_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_or_assignment_operator)
 {
     const implicit_integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1);
@@ -1175,7 +1175,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_xor_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_xor_assignment_operator)
 {
     const implicit_integer_type v1(74); // == 0x4A == 01001010
     EXPECT_EQ(74, v1);
@@ -1190,7 +1190,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator)
 {
     const implicit_integer_type v1(2);  // == 0x02 == 00000010
     EXPECT_EQ(2, v1);
@@ -1205,7 +1205,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator)
 {
     const implicit_integer_type v1(2);  // == 0x02 == 00000010
     EXPECT_EQ(2, v1);
@@ -1220,7 +1220,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_unary_plus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_unary_plus_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(42);
@@ -1240,7 +1240,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_unary_minus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_unary_minus_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(42);
@@ -1260,7 +1260,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_addition_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_addition_arithmetic_operator)
 {
     const implicit_integer_type v1(100);
     EXPECT_EQ(100, v1);
@@ -1278,7 +1278,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(242u, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_subtraction_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_subtraction_arithmetic_operator)
 {
     const implicit_integer_type v1(100);
     EXPECT_EQ(100, v1);
@@ -1296,7 +1296,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(42u, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_multiplication_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_multiplication_arithmetic_operator)
 {
     const implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1314,7 +1314,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(10500u, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_division_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_division_arithmetic_operator)
 {
     const implicit_integer_type v1(5);
     EXPECT_EQ(5, v1);
@@ -1332,7 +1332,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(10u, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_modulo_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_modulo_arithmetic_operator)
 {
     const implicit_integer_type v1(8472);
     EXPECT_EQ(8472, v1);
@@ -1352,7 +1352,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator)
 {
     const implicit_integer_type v1(0xA0B3E7F9); //        10100000 10110011 11100111 11111001
     EXPECT_EQ(static_cast<int>(0xA0B3E7F9), v1);
@@ -1363,7 +1363,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
@@ -1397,7 +1397,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
@@ -1431,7 +1431,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0xA0B3E7F9); // 10100000 10110011 11100111 11111001
@@ -1465,7 +1465,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0x0AB3E7F9); // 00001010 10110011 11100111 11111001
@@ -1499,7 +1499,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator)
 {
     {
         const implicit_integer_type v1(0x0AB3E7F0); // 00001010 10110011 11100111 11111000
@@ -1533,7 +1533,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_equal_to_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1581,7 +1581,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_not_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_not_equal_to_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1629,7 +1629,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_less_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_less_than_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1677,7 +1677,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_greater_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_greater_than_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1725,7 +1725,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1773,7 +1773,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1823,7 +1823,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_three_way_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_three_way_comparison_operator)
 {
     {
         const implicit_integer_type v1(1);
@@ -1876,7 +1876,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
 
 #endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_increment_operator)
 {
     implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1885,7 +1885,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(11, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_post_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_post_increment_operator)
 {
     implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1894,7 +1894,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(10, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_decrement_operator)
 {
     implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1903,7 +1903,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(9, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_specializer_post_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_post_decrement_operator)
 {
     implicit_integer_type v1(10);
     EXPECT_EQ(10, v1);
@@ -1912,13 +1912,13 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_integer_type_spe
     EXPECT_EQ(10, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_default_value)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_default_value)
 {
     const implicit_floating_point_type v(47.0);
     EXPECT_EQ(47.0, v);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_construction)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_construction)
 {
     {
         const implicit_floating_point_type v(0.0);
@@ -1934,7 +1934,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_get_set)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_get_set)
 {
     implicit_floating_point_type v1(47.0);
     EXPECT_EQ(47.0, v1);
@@ -1954,7 +1954,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(42.0, v2.get());
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_simple_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_simple_assignment_operator)
 {
     const implicit_floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1);
@@ -1969,7 +1969,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_addition_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_addition_assignment_operator)
 {
     const implicit_floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1);
@@ -1984,7 +1984,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_subtraction_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_subtraction_assignment_operator)
 {
     const implicit_floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1);
@@ -1999,7 +1999,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_multiplication_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_multiplication_assignment_operator)
 {
     const implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2014,7 +2014,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_division_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_division_assignment_operator)
 {
     const implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2029,7 +2029,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_NE(v1, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_modulo_assignment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_modulo_assignment_operator)
 {
     {
         const implicit_floating_point_type v1(10.0);
@@ -2049,7 +2049,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator)
 {
     {
         const implicit_floating_point_type v1(47.0);
@@ -2069,7 +2069,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
 
 #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_unary_minus_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_unary_minus_arithmetic_operator)
 {
     {
         const implicit_floating_point_type v1(47.0);
@@ -2089,7 +2089,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
 
 #endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_addition_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_addition_arithmetic_operator)
 {
     const implicit_floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1);
@@ -2107,7 +2107,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(242.0, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator)
 {
     const implicit_floating_point_type v1(100.0);
     EXPECT_EQ(100.0, v1);
@@ -2125,7 +2125,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(42.0, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator)
 {
     const implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2143,7 +2143,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(11750.0, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_division_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_division_arithmetic_operator)
 {
     const implicit_floating_point_type v1(5.0);
     EXPECT_EQ(5.0, v1);
@@ -2161,7 +2161,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(10.0, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_modulo_arithmetic_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_modulo_arithmetic_operator)
 {
     const implicit_floating_point_type v1(8472.0);
     EXPECT_EQ(8472.0, v1);
@@ -2179,7 +2179,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(4u, v5);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_equal_to_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2227,7 +2227,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_not_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_not_equal_to_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2275,7 +2275,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_less_than_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_less_than_to_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2323,7 +2323,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_greater_than_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_greater_than_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2371,7 +2371,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2419,7 +2419,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2469,7 +2469,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
 
 #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_three_way_comparison_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_three_way_comparison_operator)
 {
     {
         const implicit_floating_point_type v1(1.0);
@@ -2519,7 +2519,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
 
 #endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_increment_operator)
 {
     implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2528,7 +2528,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(11.0, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_post_increment_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_post_increment_operator)
 {
     implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2537,7 +2537,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(10.0, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_decrement_operator)
 {
     implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
@@ -2546,7 +2546,7 @@ TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_t
     EXPECT_EQ(9.0, v2);
 }
 
-TEST(boost_primitive_type_specializer_test_suite, test_implicit_floating_point_type_specializer_post_decrement_operator)
+TEST(boost_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_post_decrement_operator)
 {
     implicit_floating_point_type v1(10.0);
     EXPECT_EQ(10.0, v1);
