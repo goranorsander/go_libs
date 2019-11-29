@@ -79,7 +79,7 @@ product_id_type product_view_model::get_current_product_id() const
     {
         return data_context()->product_id;
     }
-    return product_id_type(0);
+    return product_id_type(0ull);
 }
 
 void product_view_model::set_current_product_id(const product_id_type& v)

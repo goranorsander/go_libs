@@ -27,7 +27,7 @@ add_equipment_view_model::add_equipment_view_model(const m::wobservable_deque<eq
     , _equipment(equipment)
     , _category(L"New category")
     , _name(L"New equipment")
-    , _quantity(quantity_type(0))
+    , _quantity(quantity_type(0ull))
 {
 }
 

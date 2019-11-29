@@ -171,7 +171,7 @@ quantity_type spaceship_view_model::get_crew_complement() const
     {
         return data_context()->crew_complement;
     }
-    return quantity_type(0);
+    return quantity_type(0ull);
 }
 
 void spaceship_view_model::set_crew_complement(const quantity_type& v)

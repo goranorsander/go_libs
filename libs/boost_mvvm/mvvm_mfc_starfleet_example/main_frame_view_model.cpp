@@ -122,7 +122,7 @@ void main_frame_view_model::on_close_spaceship_event(const m::wevent::ptr& e)
 void main_frame_view_model::on_show_spaceship_event(const m::wevent::ptr& e)
 {
     show_spaceship_event::ptr show_event = boost::dynamic_pointer_cast<show_spaceship_event>(e);
-    if(show_event && show_event->id() > fleet_organization_id_type(0))
+    if(show_event && show_event->id() > fleet_organization_id_type(0ull))
     {
         mdi_frame_interface::pointer mdi_frame_mgr = mdi_frame_manager;
         if(mdi_frame_mgr != NULL)

@@ -13,7 +13,7 @@
 
 #include <go/diagnostics/log.hpp>
 
-equipment_id_type equipment_model::_next_id = equipment_id_type(0);
+equipment_id_type equipment_model::_next_id = equipment_id_type(0ull);
 
 equipment_model::equipment_model(const std::wstring& category_, const std::wstring& name_, const unsigned int& quantity_)
     : equipment_interface()

@@ -23,7 +23,7 @@ fleet_organization_command_parameters::fleet_organization_command_parameters(con
 
 fleet_organization_command_parameters::fleet_organization_command_parameters()
     : m::command_parameters()
-    , id(fleet_organization_id_type(0))
+    , id(fleet_organization_id_type(0ull))
 {
 }
 

@@ -277,7 +277,7 @@ void spaceship_view::clear_equipment_list()
 {
     _equipment_list_ctrl.DeleteAllItems();
     _equipment_list_data.clear();
-    _selected_equipment_id = equipment_id_type(0);
+    _selected_equipment_id = equipment_id_type(0ull);
 }
 
 void spaceship_view::populate_equipment_list()

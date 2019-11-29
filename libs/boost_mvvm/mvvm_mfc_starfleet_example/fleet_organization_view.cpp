@@ -159,7 +159,7 @@ void fleet_organization_view::on_deselect(const HTREEITEM /*hItem*/, DWORD_PTR /
 {
     if(data_context())
     {
-        data_context()->selected_fleet_organization_id = fleet_organization_id_type(0);
+        data_context()->selected_fleet_organization_id = fleet_organization_id_type(0ull);
     }
 }
 

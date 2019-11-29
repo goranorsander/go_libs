@@ -15,6 +15,6 @@
 
 #include <go/type_traits/fundamental_type_specializer.hpp>
 
-GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(equipment_id_type, unsigned long);
+GO_IMPLEMENT_FUNDAMENTAL_TYPE_SPECIALIZER(equipment_id_type, uint64_t);
 
 #endif  // #ifndef GO_MVVM_MFC_STARFLEET_EXAMPLE_EQUIPMENT_ID_TYPE_HPP_INCLUDED

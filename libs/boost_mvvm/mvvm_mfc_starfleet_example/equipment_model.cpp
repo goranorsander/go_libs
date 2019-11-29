@@ -13,7 +13,7 @@
 
 #include <boost/bind.hpp>
 
-equipment_id_type equipment_model::_next_id = equipment_id_type(0);
+equipment_id_type equipment_model::_next_id = equipment_id_type(0ull);
 
 equipment_model::~equipment_model()
 {
@@ -39,7 +39,7 @@ equipment_model::equipment_model()
     , _id(_next_id++)
     , _category(L"")
     , _name(L"")
-    , _quantity(quantity_type(0))
+    , _quantity(quantity_type(0ull))
 {
 }
 

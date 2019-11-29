@@ -34,7 +34,7 @@ void add_equipment_view::DoDataExchange(CDataExchange* pDX)
         mu::DDX_Text(pDX, IDC_EDIT_CATEGORY, _add_equipment_view_model->category);
         mu::DDX_Text(pDX, IDC_EDIT_NAME, _add_equipment_view_model->name);
         mu::DDX_Text(pDX, IDC_EDIT_QUANTITY, _add_equipment_view_model->quantity);
-        DDV_MinMaxInt(pDX, _add_equipment_view_model->quantity, 0, 1000000000);
+        DDV_MinMaxULongLong(pDX, _add_equipment_view_model->quantity, 0ull, 1000000000ull);
     }
 }
 

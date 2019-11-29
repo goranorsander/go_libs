@@ -23,7 +23,7 @@ add_equipment_command_parameters::add_equipment_command_parameters(const fleet_o
 
 add_equipment_command_parameters::add_equipment_command_parameters()
     : m::command_parameters()
-    , spaceship_id(fleet_organization_id_type(0))
+    , spaceship_id(fleet_organization_id_type(0ull))
 {
 }
 
