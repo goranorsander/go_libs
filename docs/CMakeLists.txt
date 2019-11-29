@@ -10,6 +10,8 @@
 
 set(PROJECT_GO_LIBS_DOCS_NAME GO_libraries_documentation)
 
+file(GLOB GO_LIBS_DIR_FILES ./../*.md)
+
 file(GLOB GO_LIBS_DOCS_LAYOUTS_DIR_FILES ./_layouts/*.html)
 file(GLOB GO_LIBS_DOCS_SASS_DIR_FILES ./_sass/*.scss)
 
@@ -62,6 +64,7 @@ file(GLOB GO_LIBS_DOCS_STD_UTILITY_RANGE_DIR_FILES ./std/utility/range/*.md)
 file(GLOB GO_LIBS_DOCS_STD_UTILITY_STRING_DIR_FILES ./std/utility/string/*.md)
 
 add_library(${PROJECT_GO_LIBS_DOCS_NAME} STATIC
+    ${GO_LIBS_DIR_FILES}
     ${GO_LIBS_DOCS_FILES}
     ${GO_LIBS_DOCS_LAYOUTS_DIR_FILES}
     ${GO_LIBS_DOCS_SASS_DIR_FILES}
