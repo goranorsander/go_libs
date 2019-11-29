@@ -45,18 +45,32 @@ double circular_sector_area(const double& central_angle, const double& radius)
 
 }
 
+namespace less_bad
+{
+
+using meter = double;
+using radian = double;
+using square_meter = double;
+
+square_meter circular_sector_area(const radian& central_angle, const meter& radius)
+{
+    return radius*radius*central_angle/2.0;
+}
+
+}
+
 namespace better
 {
 
 square_meter_type circular_sector_area(const radian_type& central_angle, const meter_type& radius)
 {
-    return square_meter_type(((radius*radius)*central_angle.get())/2.0);
+    return square_meter_type(radius*radius*central_angle/2.0);
 }
 
 square_meter_type circular_sector_area(const degree_type& central_angle, const meter_type& radius)
 {
     static const double pi = std::acos(-1.0);
-    return square_meter_type(((radius*radius)*central_angle.get())*pi/360.0);
+    return square_meter_type(radius*radius*central_angle*pi/360.0);
 }
 
 }
@@ -78,15 +92,29 @@ int main()
         std::cout << "Area 3 = " << area_3 << " (wrong)" << std::endl;
     }
     {
+        // Less bad, but correct
+        const less_bad::radian central_angle_rad = std::acos(-1.0) / 3.0;
+        const less_bad::meter radius = 1.0;
+        const less_bad::square_meter area_4 = less_bad::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Area 4 = " << area_4 << std::endl;
+        // Less bad, but wrong (parameter order)
+        const less_bad::square_meter area_5 = less_bad::circular_sector_area(radius, central_angle_rad);
+        std::cout << "Area 5 = " << area_5 << " (wrong)" << std::endl;
+        // Less bad, but wrong again (unit of measurment)
+        const double central_angle_deg = 60.0;
+        const double area_6 = less_bad::circular_sector_area(central_angle_deg, radius);
+        std::cout << "Area 6 = " << area_6 << " (wrong)" << std::endl;
+    }
+    {
         // Better, and right
         const radian_type central_angle_rad(std::acos(-1.0)/3.0);
         const meter_type radius(1.0);
-        const square_meter_type area_4 = better::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 4 = " << area_4 << " square meter" << std::endl;
+        const square_meter_type area_7 = better::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Area 7 = " << area_7 << " square meter" << std::endl;
         // Also better and right
         const degree_type central_angle_deg(60.0);
-        const square_meter_type area_5 = better::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 5 = " << area_5 << " square meter" << std::endl;
+        const square_meter_type area_8 = better::circular_sector_area(central_angle_deg, radius);
+        std::cout << "Area 8 = " << area_8 << " square meter" << std::endl;
     }
     return 0;
 }
