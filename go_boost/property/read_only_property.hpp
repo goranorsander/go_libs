@@ -28,7 +28,7 @@ namespace property
 namespace read_only
 {
 
-template<class T, class S, class L = go_boost::utility::recursive_spin_lock> class basic_property
+template<class T, class S, class L = boost::recursive_mutex> class basic_property
     : public detail::property_base<T, policy::proxy<T, L>, S>
 {
 public:
@@ -61,7 +61,7 @@ public:
     }
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock> class property
+template<class T, class L = boost::recursive_mutex> class property
     : public basic_property<T, std::string, L>
 {
 public:
@@ -87,7 +87,7 @@ public:
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock> class wproperty
+template<class T, class L = boost::recursive_mutex> class wproperty
     : public basic_property<T, std::wstring, L>
 {
 public:
@@ -113,7 +113,7 @@ public:
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock> class u8property
+template<class T, class L = boost::recursive_mutex> class u8property
     : public basic_property<T, utility::u8string, L>
 {
 public:
@@ -139,7 +139,7 @@ public:
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock> class u16property
+template<class T, class L = boost::recursive_mutex> class u16property
     : public basic_property<T, utility::u16string, L>
 {
 public:
@@ -165,7 +165,7 @@ public:
 #include <go_boost/property/detail/deleted_assignment_operator.hpp>
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock> class u32property
+template<class T, class L = boost::recursive_mutex> class u32property
     : public basic_property<T, utility::u32string, L>
 {
 public:

@@ -19,7 +19,7 @@
 
 #include <stdexcept>
 #include <boost/function.hpp>
-#include <go_boost/utility/recursive_spin_lock.hpp>
+#include <boost/thread/recursive_mutex.hpp>
 
 namespace go_boost
 {

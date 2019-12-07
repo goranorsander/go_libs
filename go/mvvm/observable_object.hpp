@@ -25,8 +25,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_observable_object;
-typedef basic_observable_object<std::string, go::utility::recursive_spin_lock> observable_object;
-typedef basic_observable_object<std::wstring, go::utility::recursive_spin_lock> wobservable_object;
+typedef basic_observable_object<std::string, std::recursive_mutex> observable_object;
+typedef basic_observable_object<std::wstring, std::recursive_mutex> wobservable_object;
 
 namespace single_threaded
 {
@@ -36,7 +36,7 @@ typedef basic_observable_object<std::wstring, go::utility::placebo_lockable> wob
 
 }
 
-template<class S, class L = go::utility::recursive_spin_lock>
+template<class S, class L = std::recursive_mutex>
 class basic_observable_object
     : public basic_notify_property_changed_interface<S, L>
     , public object

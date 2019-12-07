@@ -27,7 +27,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class S, class L = boost::recursive_mutex>
 class basic_observable_deque
     : public basic_observable_sequence_container<S, boost::container::deque<T>, L>
 {
@@ -568,7 +568,7 @@ inline const typename basic_observable_deque<T, S, L>::container_type& basic_obs
     return _container;
 }
 
-template<class T, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class L = boost::recursive_mutex>
 class observable_deque
     : public basic_observable_deque<T, std::string, L>
 {
@@ -796,7 +796,7 @@ public:
     }
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class L = boost::recursive_mutex>
 class wobservable_deque
     : public basic_observable_deque<T, std::wstring>
 {

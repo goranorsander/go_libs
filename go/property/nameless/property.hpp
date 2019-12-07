@@ -30,7 +30,7 @@ namespace property
 namespace nameless
 {
 
-template<class T, class L = go::utility::recursive_spin_lock> class property
+template<class T, class L = std::recursive_mutex> class property
     : public detail::property_base<T, policy::proxy<T, L>>
 {
 public:

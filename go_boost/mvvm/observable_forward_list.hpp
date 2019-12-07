@@ -27,7 +27,7 @@ namespace go_boost
 namespace mvvm
 {
 
-template<class T, class S, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class S, class L = boost::recursive_mutex>
 class basic_observable_forward_list
     : public basic_observable_sequence_container<S, boost::container::slist<T>, L>
 {
@@ -648,7 +648,7 @@ inline const typename basic_observable_forward_list<T, S, L>::container_type& ba
     return _container;
 }
 
-template<class T, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class L = boost::recursive_mutex>
 class observable_forward_list
     : public basic_observable_forward_list<T, std::string, L>
 {
@@ -874,7 +874,7 @@ public:
     }
 };
 
-template<class T, class L = go_boost::utility::recursive_spin_lock>
+template<class T, class L = boost::recursive_mutex>
 class wobservable_forward_list
     : public basic_observable_forward_list<T, std::wstring>
 {

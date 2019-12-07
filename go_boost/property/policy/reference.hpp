@@ -17,9 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <boost/thread/recursive_mutex.hpp>
 #include <boost/utility.hpp>
 #include <go_boost/property/exception.hpp>
-#include <go_boost/utility/recursive_spin_lock.hpp>
 
 namespace go_boost
 {

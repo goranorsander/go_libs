@@ -21,14 +21,13 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <map>
 #include <mutex>
 #include <go/signals/slot_key.hpp>
-#include <go/utility/recursive_spin_lock.hpp>
 
 namespace go
 {
 namespace signals
 {
 
-template<typename F, class L = go::utility::recursive_spin_lock>
+template<typename F, class L = std::recursive_mutex>
 class signal
 {
 public:

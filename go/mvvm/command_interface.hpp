@@ -17,12 +17,12 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <mutex>
 #include <go/mvvm/command_parameters.hpp>
 #include <go/property/nameless/read_only_property.hpp>
 #include <go/signals/signal.hpp>
 #include <go/type_traits/noncopyable_nonmovable.hpp>
 #include <go/utility/placebo_lockable.hpp>
-#include <go/utility/recursive_spin_lock.hpp>
 
 namespace go
 {
@@ -32,8 +32,8 @@ namespace mvvm
 template<class S, class L> class basic_command_manager;
 
 template<class S, class L> class basic_command_interface;
-typedef basic_command_interface<std::string, go::utility::recursive_spin_lock> command_interface;
-typedef basic_command_interface<std::wstring, go::utility::recursive_spin_lock> wcommand_interface;
+typedef basic_command_interface<std::string, std::recursive_mutex> command_interface;
+typedef basic_command_interface<std::wstring, std::recursive_mutex> wcommand_interface;
 
 namespace single_threaded
 {
@@ -43,7 +43,7 @@ typedef basic_command_interface<std::wstring, go::utility::placebo_lockable> wco
 
 }
 
-template<class S, class L = go::utility::recursive_spin_lock>
+template<class S, class L = std::recursive_mutex>
 class basic_command_interface
     : public std::enable_shared_from_this<basic_command_interface<S, L>>
     , public go::type_traits::noncopyable_nonmovable
@@ -104,13 +104,13 @@ inline basic_command_interface<S, L>::basic_command_interface(const S& cmd_name,
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command_interface<std::string, go::utility::recursive_spin_lock>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::string, std::recursive_mutex>::parameters() const
 {
     return _parameters;
 }
 
 template<>
-inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring, go::utility::recursive_spin_lock>::parameters() const
+inline std::shared_ptr<command_parameters> basic_command_interface<std::wstring, std::recursive_mutex>::parameters() const
 {
     return _parameters;
 }
@@ -134,7 +134,7 @@ inline std::shared_ptr<command_parameters> basic_command_interface<S, L>::parame
 }
 
 template<>
-inline void basic_command_interface<std::string, go::utility::recursive_spin_lock>::notify_can_execute_changed()
+inline void basic_command_interface<std::string, std::recursive_mutex>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {
@@ -143,7 +143,7 @@ inline void basic_command_interface<std::string, go::utility::recursive_spin_loc
 }
 
 template<>
-inline void basic_command_interface<std::wstring, go::utility::recursive_spin_lock>::notify_can_execute_changed()
+inline void basic_command_interface<std::wstring, std::recursive_mutex>::notify_can_execute_changed()
 {
     if(!can_execute_changed.empty())
     {

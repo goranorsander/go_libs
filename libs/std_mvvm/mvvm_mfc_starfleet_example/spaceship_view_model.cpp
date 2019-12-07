@@ -44,7 +44,7 @@ private:
 }
 
 spaceship_view_model::spaceship_view_model(const spaceship_model::ptr& model, const fleet_organization_id_type id, const main_frame_view_model::ptr& vm)
-    : m::view_model_interface<go::utility::recursive_spin_lock>()
+    : m::view_model_interface<std::recursive_mutex>()
     , m::wobservable_object()
     , m::data_context_interface<spaceship_model::ptr>(model)
     , tt::noncopyable_nonmovable()

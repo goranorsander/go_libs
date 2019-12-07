@@ -28,8 +28,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::string, go::utility::recursive_spin_lock> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, go::utility::recursive_spin_lock> notify_wcommand_execution_interface;
+typedef basic_notify_command_execution_interface<std::string, std::recursive_mutex> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mutex> notify_wcommand_execution_interface;
 
 namespace single_threaded
 {
@@ -39,7 +39,7 @@ typedef basic_notify_command_execution_interface<std::wstring, go::utility::plac
 
 }
 
-template<class S, class L = go::utility::recursive_spin_lock>
+template<class S, class L = std::recursive_mutex>
 class basic_notify_command_execution_interface
 {
 public:
@@ -65,14 +65,14 @@ protected:
 };
 
 template<>
-inline basic_notify_command_execution_interface<std::string, go::utility::recursive_spin_lock>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, std::recursive_mutex>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, go::utility::recursive_spin_lock>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, std::recursive_mutex>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -100,13 +100,13 @@ inline basic_notify_command_execution_interface<S, L>::~basic_notify_command_exe
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go::utility::recursive_spin_lock>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>& command) const
+inline void basic_notify_command_execution_interface<std::string, std::recursive_mutex>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>& command) const
 {
     this->command_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go::utility::recursive_spin_lock>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, std::recursive_mutex>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>& command) const
 {
     this->command_executed(command);
 }
@@ -130,13 +130,13 @@ inline void basic_notify_command_execution_interface<S, L>::notify_command_execu
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go::utility::recursive_spin_lock>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::string, go::utility::recursive_spin_lock>>& command) const
+inline void basic_notify_command_execution_interface<std::string, std::recursive_mutex>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::string, std::recursive_mutex>>& command) const
 {
     this->command_not_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go::utility::recursive_spin_lock>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::recursive_spin_lock>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, std::recursive_mutex>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::wstring, std::recursive_mutex>>& command) const
 {
     this->command_not_executed(command);
 }

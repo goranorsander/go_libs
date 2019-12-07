@@ -18,7 +18,7 @@ for synchronizing object access from multiple threads.
 It is declared as:
 
 ```c++
-template<class T, class L = go::utility::recursive_spin_lock>
+template<class T, class L = std::recursive_mutex>
 class monitor
 {
 public:

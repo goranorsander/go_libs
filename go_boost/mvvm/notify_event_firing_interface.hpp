@@ -26,10 +26,10 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::string, go_boost::utility::recursive_spin_lock> notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::wstring, go_boost::utility::recursive_spin_lock> notify_wevent_firing_interface;
+typedef basic_notify_event_firing_interface<std::string, boost::recursive_mutex> notify_event_firing_interface;
+typedef basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex> notify_wevent_firing_interface;
 
-template<class S, class L = go_boost::utility::recursive_spin_lock>
+template<class S, class L = boost::recursive_mutex>
 class basic_notify_event_firing_interface
 {
 public:
@@ -49,13 +49,13 @@ public:
 };
 
 template<>
-inline basic_notify_event_firing_interface<std::string, go_boost::utility::recursive_spin_lock>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::recursive_spin_lock>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
@@ -79,13 +79,13 @@ inline basic_notify_event_firing_interface<S, L>::~basic_notify_event_firing_int
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::string, go_boost::utility::recursive_spin_lock>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, boost::recursive_mutex>::basic_notify_event_firing_interface()
     : event_fired()
 {
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::recursive_spin_lock>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>::basic_notify_event_firing_interface()
     : event_fired()
 {
 }

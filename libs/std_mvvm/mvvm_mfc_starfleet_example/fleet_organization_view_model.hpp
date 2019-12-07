@@ -20,7 +20,7 @@
 #include "main_frame_view_model.hpp"
 
 class fleet_organization_view_model
-    : public m::view_model_interface<go::utility::recursive_spin_lock>
+    : public m::view_model_interface<std::recursive_mutex>
     , public m::wobservable_object
     , private m::data_context_interface<fleet_organization_interface::ptr>
     , private tt::noncopyable_nonmovable

@@ -24,7 +24,7 @@ namespace go
 namespace mvvm
 {
 
-template<class L = go::utility::recursive_spin_lock>
+template<class L = std::recursive_mutex>
 class view_model_interface
     : public notify_view_model_change_interface<L>
 {

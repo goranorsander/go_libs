@@ -19,14 +19,12 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <mutex>
 
-#include <go/utility/recursive_spin_lock.hpp>
-
 namespace go
 {
 namespace utility
 {
 
-template<class T, class L = go::utility::recursive_spin_lock>
+template<class T, class L = std::recursive_mutex>
 class monitor
 {
 public:

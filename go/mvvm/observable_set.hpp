@@ -26,7 +26,7 @@ namespace go
 namespace mvvm
 {
 
-template<class K, class S, class L = go::utility::recursive_spin_lock>
+template<class K, class S, class L = std::recursive_mutex>
 class basic_observable_set
     : public basic_observable_ordered_associative_container<S, std::set<K>, L>
 {
@@ -300,7 +300,7 @@ inline const typename basic_observable_set<K, S, L>::container_type& basic_obser
     return _container;
 }
 
-template<class K, class L = go::utility::recursive_spin_lock>
+template<class K, class L = std::recursive_mutex>
 class observable_set
     : public basic_observable_set<K, std::string, L>
 {
@@ -453,7 +453,7 @@ public:
     }
 };
 
-template<class K, class L = go::utility::recursive_spin_lock>
+template<class K, class L = std::recursive_mutex>
 class wobservable_set
     : public basic_observable_set<K, std::wstring, L>
 {

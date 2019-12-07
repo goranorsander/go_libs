@@ -25,8 +25,8 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_relay_command;
-typedef basic_relay_command<std::string, go::utility::recursive_spin_lock> relay_command;
-typedef basic_relay_command<std::wstring, go::utility::recursive_spin_lock> relay_wcommand;
+typedef basic_relay_command<std::string, std::recursive_mutex> relay_command;
+typedef basic_relay_command<std::wstring, std::recursive_mutex> relay_wcommand;
 
 namespace single_threaded
 {
@@ -36,7 +36,7 @@ typedef basic_relay_command<std::wstring, go::utility::placebo_lockable> relay_w
 
 }
 
-template<class S, class L = go::utility::recursive_spin_lock>
+template<class S, class L = std::recursive_mutex>
 class basic_relay_command
     : public basic_command_interface<S, L>
 {
@@ -70,16 +70,16 @@ private:
 };
 
 template<>
-inline basic_relay_command<std::string, go::utility::recursive_spin_lock>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
-    : basic_command_interface<std::string, go::utility::recursive_spin_lock>(cmd_name, params)
+inline basic_relay_command<std::string, std::recursive_mutex>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+    : basic_command_interface<std::string, std::recursive_mutex>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
 }
 
 template<>
-inline basic_relay_command<std::wstring, go::utility::recursive_spin_lock>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
-    : basic_command_interface<std::wstring, go::utility::recursive_spin_lock>(cmd_name, params)
+inline basic_relay_command<std::wstring, std::recursive_mutex>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+    : basic_command_interface<std::wstring, std::recursive_mutex>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
@@ -110,13 +110,13 @@ inline basic_relay_command<S, L>::basic_relay_command(const S& cmd_name, const e
 }
 
 template<>
-inline bool basic_relay_command<std::string, go::utility::recursive_spin_lock>::can_execute(const command_parameters_type& params)
+inline bool basic_relay_command<std::string, std::recursive_mutex>::can_execute(const command_parameters_type& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
 
 template<>
-inline bool basic_relay_command<std::wstring, go::utility::recursive_spin_lock>::can_execute(const command_parameters_type& params)
+inline bool basic_relay_command<std::wstring, std::recursive_mutex>::can_execute(const command_parameters_type& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
@@ -140,7 +140,7 @@ inline bool basic_relay_command<S, L>::can_execute(const command_parameters_type
 }
 
 template<>
-inline void basic_relay_command<std::string, go::utility::recursive_spin_lock>::execute(const command_parameters_type& params)
+inline void basic_relay_command<std::string, std::recursive_mutex>::execute(const command_parameters_type& params)
 {
     if(_execute)
     {
@@ -149,7 +149,7 @@ inline void basic_relay_command<std::string, go::utility::recursive_spin_lock>::
 }
 
 template<>
-inline void basic_relay_command<std::wstring, go::utility::recursive_spin_lock>::execute(const command_parameters_type& params)
+inline void basic_relay_command<std::wstring, std::recursive_mutex>::execute(const command_parameters_type& params)
 {
     if(_execute)
     {
@@ -185,7 +185,7 @@ inline void basic_relay_command<S, L>::execute(const command_parameters_type& pa
 }
 
 template<>
-inline std::shared_ptr<basic_relay_command<std::string, go::utility::recursive_spin_lock>> basic_relay_command<std::string, go::utility::recursive_spin_lock>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+inline std::shared_ptr<basic_relay_command<std::string, std::recursive_mutex>> basic_relay_command<std::string, std::recursive_mutex>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
 {
     struct make_shared_enabler
         : public this_type
@@ -198,7 +198,7 @@ inline std::shared_ptr<basic_relay_command<std::string, go::utility::recursive_s
 }
 
 template<>
-inline std::shared_ptr<basic_relay_command<std::wstring, go::utility::recursive_spin_lock>> basic_relay_command<std::wstring, go::utility::recursive_spin_lock>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+inline std::shared_ptr<basic_relay_command<std::wstring, std::recursive_mutex>> basic_relay_command<std::wstring, std::recursive_mutex>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
 {
     struct make_shared_enabler
         : public this_type
