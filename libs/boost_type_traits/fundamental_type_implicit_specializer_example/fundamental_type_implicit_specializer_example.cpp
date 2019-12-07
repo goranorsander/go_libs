@@ -58,13 +58,21 @@ namespace better
 
 square_meter_type circular_sector_area(const radian_type& central_angle, const meter_type& radius)
 {
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
     return square_meter_type(radius*radius*central_angle/2.0);
+#else
+    return square_meter_type((radius*radius).get()*central_angle/2.0);
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
 }
 
 square_meter_type circular_sector_area(const degree_type& central_angle, const meter_type& radius)
 {
     static const double pi = std::acos(-1.0);
+#if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
     return square_meter_type(radius*radius*central_angle*pi/360.0);
+#else
+    return square_meter_type((radius*radius).get()*central_angle*pi/360.0);
+#endif  // #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_IMPLICIT_SPECIALIZER)
 }
 
 }
