@@ -326,6 +326,20 @@ double circular_sector_area(const double& central_angle, const double& radius)
 
 }
 
+namespace less_bad
+{
+
+typedef double meter;
+typedef double radian;
+typedef double square_meter;
+
+square_meter circular_sector_area(const radian& central_angle, const meter& radius)
+{
+    return radius*radius*central_angle/2.0;
+}
+
+}
+
 namespace better
 {
 
@@ -345,29 +359,43 @@ square_meter_type circular_sector_area(const degree_type& central_angle, const m
 int main()
 {
     {
-        // Bad, but right
+        // Bad, but correct
         const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 1 = " << area_1 << std::endl;
+        std::cout << "Bad:" << std::endl << "  Area 1 = " << area_1 << std::endl;
         // Bad, and wrong (parameter order)
         const double area_2 = bad::circular_sector_area(radius, central_angle_rad);
-        std::cout << "Area 2 = " << area_2 << " (wrong)" << std::endl;
+        std::cout << "  Area 2 = " << area_2 << " (wrong)" << std::endl;
         // Bad, and wrong again (unit of measurment)
         const double central_angle_deg = 60.0;
         const double area_3 = bad::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 3 = " << area_3 << " (wrong)" << std::endl;
+        std::cout << "  Area 3 = " << area_3 << " (wrong)" << std::endl;
     }
     {
-        // Better, and right
+        // Less bad, but correct
+        const less_bad::radian central_angle_rad = std::acos(-1.0)/3.0;
+        const less_bad::meter radius = 1.0;
+        const less_bad::square_meter area_4 = less_bad::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Less bad:" << std::endl << "  Area 4 = " << area_4 << std::endl;
+        // Less bad, but wrong (parameter order)
+        const less_bad::square_meter area_5 = less_bad::circular_sector_area(radius, central_angle_rad);
+        std::cout << "  Area 5 = " << area_5 << " (wrong)" << std::endl;
+        // Less bad, but wrong again (unit of measurment)
+        const double central_angle_deg = 60.0;
+        const double area_6 = less_bad::circular_sector_area(central_angle_deg, radius);
+        std::cout << "  Area 6 = " << area_6 << " (wrong)" << std::endl;
+    }
+    {
+        // Better, and correct
         const radian_type central_angle_rad(std::acos(-1.0)/3.0);
         const meter_type radius(1.0);
-        const square_meter_type area_4 = better::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 4 = " << area_4.get() << " square meter" << std::endl;
-        // Also better and right
+        const square_meter_type area_7 = better::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Better:" << std::endl << "  Area 7 = " << area_7.get() << " square meter" << std::endl;
+        // Also better and correct
         const degree_type central_angle_deg(60.0);
-        const square_meter_type area_5 = better::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 5 = " << area_5.get() << " square meter" << std::endl;
+        const square_meter_type area_8 = better::circular_sector_area(central_angle_deg, radius);
+        std::cout << "  Area 8 = " << area_8.get() << " square meter" << std::endl;
     }
     return 0;
 }
@@ -376,11 +404,17 @@ int main()
 Output
 
 ```
-Area 1 = 0.523599
-Area 2 = 0.548311 (wrong)
-Area 3 = 30 (wrong)
-Area 4 = 0.523599 square meter
-Area 5 = 0.523599 square meter
+Bad:
+  Area 1 = 0.523599
+  Area 2 = 0.548311 (wrong)
+  Area 3 = 30 (wrong)
+Less bad:
+  Area 4 = 0.523599
+  Area 5 = 0.548311 (wrong)
+  Area 6 = 30 (wrong)
+Better:
+  Area 7 = 0.523599 square meter
+  Area 8 = 0.523599 square meter
 ```
 
 The function **bad::circular_sector_area(const double& central_angle, const double& radius)**
@@ -390,6 +424,11 @@ expect radians can only be determined by inspecting the implementation and requi
 knowledge of geometry to recognise the formula. The relationship between the parameter
 **radius** and the returned result is probably less error prone but it still lack
 clarity.
+
+The functions in namespace **less_bad** provide information about expected units of
+measurement by use of type definitions. The information is there for anyone who care
+to read the function signature. However, the type definitions are not explicit. You
+can get units of measurment or parameter order wrong.
 
 The functions in namespace **better** provide information about expected units of
 measurement by use of specialized types. The information is there for anyone who care
@@ -727,6 +766,20 @@ double circular_sector_area(const double& central_angle, const double& radius)
 
 }
 
+namespace less_bad
+{
+
+typedef double meter;
+typedef double radian;
+typedef double square_meter;
+
+square_meter circular_sector_area(const radian& central_angle, const meter& radius)
+{
+    return radius*radius*central_angle/2.0;
+}
+
+}
+
 namespace better
 {
 
@@ -737,7 +790,7 @@ square_meter_type circular_sector_area(const radian_type& central_angle, const m
 
 square_meter_type circular_sector_area(const degree_type& central_angle, const meter_type& radius)
 {
-    static const double pi = boost::acos(-1.0);
+    static const double pi = std::acos(-1.0);
     return square_meter_type(((radius*radius).get()*central_angle.get())*pi/360.0);
 }
 
@@ -746,29 +799,43 @@ square_meter_type circular_sector_area(const degree_type& central_angle, const m
 int main()
 {
     {
-        // Bad, but right
-        const double central_angle_rad = boost::acos(-1.0)/3.0;
+        // Bad, but correct
+        const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
-        boost::cout << "Area 1 = " << area_1 << boost::endl;
+        std::cout << "Bad:" << std::endl << "  Area 1 = " << area_1 << std::endl;
         // Bad, and wrong (parameter order)
         const double area_2 = bad::circular_sector_area(radius, central_angle_rad);
-        boost::cout << "Area 2 = " << area_2 << " (wrong)" << boost::endl;
+        std::cout << "  Area 2 = " << area_2 << " (wrong)" << std::endl;
         // Bad, and wrong again (unit of measurment)
         const double central_angle_deg = 60.0;
         const double area_3 = bad::circular_sector_area(central_angle_deg, radius);
-        boost::cout << "Area 3 = " << area_3 << " (wrong)" << boost::endl;
+        std::cout << "  Area 3 = " << area_3 << " (wrong)" << std::endl;
     }
     {
-        // Better, and right
-        const radian_type central_angle_rad(boost::acos(-1.0)/3.0);
+        // Less bad, but correct
+        const less_bad::radian central_angle_rad = std::acos(-1.0)/3.0;
+        const less_bad::meter radius = 1.0;
+        const less_bad::square_meter area_4 = less_bad::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Less bad:" << std::endl << "  Area 4 = " << area_4 << std::endl;
+        // Less bad, but wrong (parameter order)
+        const less_bad::square_meter area_5 = less_bad::circular_sector_area(radius, central_angle_rad);
+        std::cout << "  Area 5 = " << area_5 << " (wrong)" << std::endl;
+        // Less bad, but wrong again (unit of measurment)
+        const double central_angle_deg = 60.0;
+        const double area_6 = less_bad::circular_sector_area(central_angle_deg, radius);
+        std::cout << "  Area 6 = " << area_6 << " (wrong)" << std::endl;
+    }
+    {
+        // Better, and correct
+        const radian_type central_angle_rad(std::acos(-1.0)/3.0);
         const meter_type radius(1.0);
-        const square_meter_type area_4 = better::circular_sector_area(central_angle_rad, radius);
-        boost::cout << "Area 4 = " << area_4.get() << " square meter" << boost::endl;
-        // Also better and right
+        const square_meter_type area_7 = better::circular_sector_area(central_angle_rad, radius);
+        std::cout << "Better:" << std::endl << "  Area 7 = " << area_7.get() << " square meter" << std::endl;
+        // Also better and correct
         const degree_type central_angle_deg(60.0);
-        const square_meter_type area_5 = better::circular_sector_area(central_angle_deg, radius);
-        boost::cout << "Area 5 = " << area_5.get() << " square meter" << boost::endl;
+        const square_meter_type area_8 = better::circular_sector_area(central_angle_deg, radius);
+        std::cout << "  Area 8 = " << area_8.get() << " square meter" << std::endl;
     }
     return 0;
 }
@@ -777,11 +844,17 @@ int main()
 Output
 
 ```
-Area 1 = 0.523599
-Area 2 = 0.548311 (wrong)
-Area 3 = 30 (wrong)
-Area 4 = 0.523599 square meter
-Area 5 = 0.523599 square meter
+Bad:
+  Area 1 = 0.523599
+  Area 2 = 0.548311 (wrong)
+  Area 3 = 30 (wrong)
+Less bad:
+  Area 4 = 0.523599
+  Area 5 = 0.548311 (wrong)
+  Area 6 = 30 (wrong)
+Better:
+  Area 7 = 0.523599 square meter
+  Area 8 = 0.523599 square meter
 ```
 
 The function **bad::circular_sector_area(const double& central_angle, const double& radius)**
@@ -791,6 +864,11 @@ expect radians can only be determined by inspecting the implementation and requi
 knowledge of geometry to recognise the formula. The relationship between the parameter
 **radius** and the returned result is probably less error prone but it still lack
 clarity.
+
+The functions in namespace **less_bad** provide information about expected units of
+measurement by use of type definitions. The information is there for anyone who care
+to read the function signature. However, the type definitions are not explicit. You
+can get units of measurment or parameter order wrong.
 
 The functions in namespace **better** provide information about expected units of
 measurement by use of specialized types. The information is there for anyone who care

@@ -82,39 +82,39 @@ int main()
         const double central_angle_rad = std::acos(-1.0)/3.0;
         const double radius = 1.0;
         const double area_1 = bad::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 1 = " << area_1 << std::endl;
+        std::cout << "Bad:" << std::endl << "  Area 1 = " << area_1 << std::endl;
         // Bad, and wrong (parameter order)
         const double area_2 = bad::circular_sector_area(radius, central_angle_rad);
-        std::cout << "Area 2 = " << area_2 << " (wrong)" << std::endl;
+        std::cout << "  Area 2 = " << area_2 << " (wrong)" << std::endl;
         // Bad, and wrong again (unit of measurment)
         const double central_angle_deg = 60.0;
         const double area_3 = bad::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 3 = " << area_3 << " (wrong)" << std::endl;
+        std::cout << "  Area 3 = " << area_3 << " (wrong)" << std::endl;
     }
     {
         // Less bad, but correct
-        const less_bad::radian central_angle_rad = std::acos(-1.0) / 3.0;
+        const less_bad::radian central_angle_rad = std::acos(-1.0)/3.0;
         const less_bad::meter radius = 1.0;
         const less_bad::square_meter area_4 = less_bad::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 4 = " << area_4 << std::endl;
+        std::cout << "Less bad:" << std::endl << "  Area 4 = " << area_4 << std::endl;
         // Less bad, but wrong (parameter order)
         const less_bad::square_meter area_5 = less_bad::circular_sector_area(radius, central_angle_rad);
-        std::cout << "Area 5 = " << area_5 << " (wrong)" << std::endl;
+        std::cout << "  Area 5 = " << area_5 << " (wrong)" << std::endl;
         // Less bad, but wrong again (unit of measurment)
         const double central_angle_deg = 60.0;
         const double area_6 = less_bad::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 6 = " << area_6 << " (wrong)" << std::endl;
+        std::cout << "  Area 6 = " << area_6 << " (wrong)" << std::endl;
     }
     {
-        // Better, and right
+        // Better, and correct
         const radian_type central_angle_rad(std::acos(-1.0)/3.0);
         const meter_type radius(1.0);
         const square_meter_type area_7 = better::circular_sector_area(central_angle_rad, radius);
-        std::cout << "Area 7 = " << area_7.get() << " square meter" << std::endl;
-        // Also better and right
+        std::cout << "Better:" << std::endl << "  Area 7 = " << area_7.get() << " square meter" << std::endl;
+        // Also better and correct
         const degree_type central_angle_deg(60.0);
         const square_meter_type area_8 = better::circular_sector_area(central_angle_deg, radius);
-        std::cout << "Area 8 = " << area_8.get() << " square meter" << std::endl;
+        std::cout << "  Area 8 = " << area_8.get() << " square meter" << std::endl;
     }
     return 0;
 }
