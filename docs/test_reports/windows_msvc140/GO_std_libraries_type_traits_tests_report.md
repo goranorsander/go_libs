@@ -9,36 +9,36 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2019-10-31 at 21:33:08 with result:
+Test suites *AllTests* with 128 test cases was executed 2019-12-08 at 13:18:53 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.076 seconds.
+Test suites execution took 0.072 seconds.
 
 # Details
 
-## std_primitive_type_specializer_test_suite
+## std_fundamental_type_specializer_test_suite
 
-Test suite *std_primitive_type_specializer_test_suite* with 128 test cases was executed with result:
+Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was executed with result:
 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.075 seconds.
+Test suite execution took 0.07 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_explicit_integer_type_specializer | 0
+test_explicit_integer_type_specializer | 0.001
 test_integer_type_specializer_default_value | 0.001
 test_integer_type_specializer_construction | 0
 test_integer_type_specializer_get_set | 0
 test_integer_type_specializer_simple_assignment_operator | 0
 test_integer_type_specializer_addition_assignment_operator | 0
 test_integer_type_specializer_subtraction_assignment_operator | 0
-test_integer_type_specializer_multiplication_assignment_operator | 0.001
+test_integer_type_specializer_multiplication_assignment_operator | 0
 test_integer_type_specializer_division_assignment_operator | 0
 test_integer_type_specializer_modulo_assignment_operator | 0
 test_integer_type_specializer_bitwise_and_assignment_operator | 0
@@ -51,7 +51,7 @@ test_integer_type_specializer_unary_minus_arithmetic_operator | 0
 test_integer_type_specializer_addition_arithmetic_operator | 0
 test_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_integer_type_specializer_multiplication_arithmetic_operator | 0
-test_integer_type_specializer_division_arithmetic_operator | 0.001
+test_integer_type_specializer_division_arithmetic_operator | 0
 test_integer_type_specializer_modulo_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
@@ -64,7 +64,7 @@ test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
 test_integer_type_specializer_greater_than_comparison_operator | 0
 test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
-test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0.001
+test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
 test_integer_type_specializer_pre_decrement_operator | 0
@@ -80,7 +80,7 @@ test_floating_point_type_specializer_division_assignment_operator | 0
 test_floating_point_type_specializer_modulo_assignment_operator | 0
 test_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_floating_point_type_specializer_unary_minus_arithmetic_operator | 0
-test_floating_point_type_specializer_addition_arithmetic_operator | 0.001
+test_floating_point_type_specializer_addition_arithmetic_operator | 0
 test_floating_point_type_specializer_subtraction_arithmetic_operator | 0
 test_floating_point_type_specializer_multiplication_arithmetic_operator | 0
 test_floating_point_type_specializer_division_arithmetic_operator | 0
