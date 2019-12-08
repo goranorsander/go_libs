@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="212" failures="0" disabled="0" errors="0" timestamp="2019-11-02T11:11:04" time="0.036" name="AllTests">
+<testsuites tests="212" failures="0" disabled="0" errors="0" timestamp="2019-12-08T15:38:22" time="0.034" name="AllTests">
   <testsuite name="boost_ascii_test_suite" tests="36" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="boost_ascii_test_suite" />
@@ -14,9 +14,9 @@
     <testcase name="test_char16_t_is_7_bit_ascii_character" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_char32_t_is_7_bit_ascii_character" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
-    <testcase name="test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0.001" classname="boost_ascii_test_suite" />
+    <testcase name="test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
-    <testcase name="test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
+    <testcase name="test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0.001" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_multibyte_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
@@ -26,17 +26,17 @@
     <testcase name="test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
-    <testcase name="test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
+    <testcase name="test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0.001" classname="boost_ascii_test_suite" />
     <testcase name="test_ucs_2_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
-    <testcase name="test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0.001" classname="boost_ascii_test_suite" />
+    <testcase name="test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
     <testcase name="test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
-    <testcase name="test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0" classname="boost_ascii_test_suite" />
+    <testcase name="test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters" status="run" time="0.001" classname="boost_ascii_test_suite" />
   </testsuite>
   <testsuite name="boost_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_size_on_deque" status="run" time="0" classname="boost_container_size_test_suite" />
@@ -54,15 +54,15 @@
     <testcase name="test_create_string_from_char32_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_wstring_from_char" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_wstring_from_wchar_t" status="run" time="0" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_wstring_from_char2_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_wstring_from_char2_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_wstring_from_char8_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_wstring_from_char16_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_wstring_from_char32_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u2string_from_char" status="run" time="0.002" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_u2string_from_wchar_t" status="run" time="0" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_u2string_from_wchar_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u2string_from_char2_t" status="run" time="0" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_u2string_from_char8_t" status="run" time="0" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_u2string_from_char16_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_u2string_from_char8_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_u2string_from_char16_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u2string_from_char32_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u8string_from_wchar_t" status="run" time="0" classname="boost_create_string_test_suite" />
@@ -70,10 +70,10 @@
     <testcase name="test_create_u8string_from_char8_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char16_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char32_t" status="run" time="0" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_u16string_from_char" status="run" time="0" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_u16string_from_char" status="run" time="0.001" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u16string_from_wchar_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u16string_from_char2_t" status="run" time="0" classname="boost_create_string_test_suite" />
-    <testcase name="test_create_u16string_from_char8_t" status="run" time="0.001" classname="boost_create_string_test_suite" />
+    <testcase name="test_create_u16string_from_char8_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u16string_from_char16_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u16string_from_char32_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u32string_from_char" status="run" time="0" classname="boost_create_string_test_suite" />
@@ -83,14 +83,14 @@
     <testcase name="test_create_u32string_from_char16_t" status="run" time="0" classname="boost_create_string_test_suite" />
     <testcase name="test_create_u32string_from_char32_t" status="run" time="0" classname="boost_create_string_test_suite" />
   </testsuite>
-  <testsuite name="boost_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="boost_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_erase_iterator_on_deque" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_list" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_vector" status="run" time="0" classname="boost_erase_iterator_test_suite" />
-    <testcase name="test_erase_iterator_on_map" status="run" time="0.001" classname="boost_erase_iterator_test_suite" />
+    <testcase name="test_erase_iterator_on_map" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_set" status="run" time="0" classname="boost_erase_iterator_test_suite" />
   </testsuite>
-  <testsuite name="boost_iso_8859_1_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="boost_iso_8859_1_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="boost_iso_8859_1_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="boost_iso_8859_1_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="boost_iso_8859_1_test_suite" />
@@ -104,20 +104,20 @@
     <testcase name="test_char16_t_is_iso_8859_1_character" status="run" time="0" classname="boost_iso_8859_1_test_suite" />
     <testcase name="test_char32_t_is_iso_8859_1_character" status="run" time="0" classname="boost_iso_8859_1_test_suite" />
   </testsuite>
-  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_placebo_lockable" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_scoped_lock" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_two_threads" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_recursive_spin_lock" status="run" time="0" classname="boost_recursive_spin_lock_test_suite" />
     <testcase name="test_recursive_spin_lock_lock_guard" status="run" time="0" classname="boost_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_two_threads" status="run" time="0" classname="boost_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_two_threads" status="run" time="0.001" classname="boost_recursive_spin_lock_test_suite" />
   </testsuite>
   <testsuite name="boost_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_scope_guard_new" status="run" time="0" classname="boost_scope_guard_new_test_suite" />
   </testsuite>
-  <testsuite name="boost_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="boost_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="test_scope_guard" status="run" time="0" classname="boost_scope_guard_test_suite" />
   </testsuite>
   <testsuite name="boost_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0">
@@ -125,7 +125,7 @@
     <testcase name="test_spin_lock_scoped_lock" status="run" time="0" classname="boost_spin_lock_test_suite" />
     <testcase name="test_spin_lock_two_threads" status="run" time="0" classname="boost_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="boost_string_cast_test_suite" tests="81" failures="0" disabled="0" errors="0" time="0.013">
+  <testsuite name="boost_string_cast_test_suite" tests="81" failures="0" disabled="0" errors="0" time="0.012">
     <testcase name="test_char_size" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_wchar_t_size" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_char2_t_size" status="run" time="0" classname="boost_string_cast_test_suite" />
@@ -156,38 +156,38 @@
     <testcase name="test_cast_ascii_from_u8string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u16string_to_wstring" status="run" time="0.001" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u32string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u16string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u32string_to_wstring" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_wstring" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u2string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u2string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u2string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u8string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u8string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u8string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u8string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u16string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u32string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u32string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u32string_to_u2string" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u32string_to_u2string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u2string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u8string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u8string_to_u8string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u16string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u32string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_u8string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_string_to_u16string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u2string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u2string_to_u16string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u2string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u8string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_u16string" status="run" time="0" classname="boost_string_cast_test_suite" />
@@ -200,7 +200,7 @@
     <testcase name="test_cast_ascii_from_wstring_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u2string_to_u32string" status="run" time="0.001" classname="boost_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u2string_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u8string_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_u32string" status="run" time="0" classname="boost_string_cast_test_suite" />
@@ -210,13 +210,13 @@
   </testsuite>
   <testsuite name="boost_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_try_move_backward_on_array" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
-    <testcase name="test_try_move_backward_on_deque" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
+    <testcase name="test_try_move_backward_on_deque" status="run" time="0.001" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_forward_list" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_list" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_vector" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_map" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_set" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
-    <testcase name="test_try_move_backward_on_multimap" status="run" time="0.001" classname="boost_try_move_iterator_backward_test_suite" />
+    <testcase name="test_try_move_backward_on_multimap" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_multiset" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_map" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_set" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
@@ -235,7 +235,7 @@
     <testcase name="test_utf_32_character_count" status="run" time="0" classname="boost_windows_1252_test_suite" />
     <testcase name="test_char_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
     <testcase name="test_char8_t_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
-    <testcase name="test_wchar_t_is_windows_1252_character" status="run" time="0.001" classname="boost_windows_1252_test_suite" />
+    <testcase name="test_wchar_t_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
     <testcase name="test_char2_t_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
     <testcase name="test_char16_t_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
     <testcase name="test_char32_t_is_windows_1252_character" status="run" time="0" classname="boost_windows_1252_test_suite" />
