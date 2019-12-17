@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_forward_list class**
 
 The **basic_observable_forward_list** is a container that encapsulates singly-linked lists.
-It wraps the [**boost\::container\::slist**](https://www.boost.org/doc/libs/1_71_0/doc/html/boost/container/slist.html)
+It wraps the [**boost\::container\::slist**](https://www.boost.org/doc/libs/1_72_0/doc/html/boost/container/slist.html)
 and adds notifications when items get added, removed, or when the whole double-ended
 list is reset or swapped.
 

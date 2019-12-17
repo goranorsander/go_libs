@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_unordered_set class**
 
 The **basic_observable_unordered_set** is a container that encapsulates collections of unique
-keys, hashed by keys. It wraps the [**boost\::unordered_set**](https://www.boost.org/doc/libs/1_71_0/doc/html/boost/unordered_set.html)
+keys, hashed by keys. It wraps the [**boost\::unordered_set**](https://www.boost.org/doc/libs/1_72_0/doc/html/boost/unordered_set.html)
 and adds notifications when items get added, removed, or when the whole map is reset
 or swapped.
 

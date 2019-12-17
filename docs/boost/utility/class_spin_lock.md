@@ -14,7 +14,7 @@ namespace go_boost::utility
 
 The class **spin_lock** is a [lockable](https://en.cppreference.com/w/cpp/named_req/Lockable).
 It implements the *Lockable* requirements using a
-[boost::atomic_flag](https://www.boost.org/doc/libs/1_71_0/doc/html/atomic/interface.html#atomic.interface.interface_atomic_flag).
+[boost::atomic_flag](https://www.boost.org/doc/libs/1_72_0/doc/html/atomic/interface.html#atomic.interface.interface_atomic_flag).
 
 It is declared as:
 

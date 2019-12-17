@@ -15,7 +15,7 @@ namespace go_boost::mvvm
 **basic_observable_unordered_multiset class**
 
 The **basic_observable_unordered_multiset** is a container that encapsulates collections of
-keys, hashed by keys. It wraps the [**boost\::unordered_multiset**](https://www.boost.org/doc/libs/1_71_0/doc/html/boost/unordered_multiset.html)
+keys, hashed by keys. It wraps the [**boost\::unordered_multiset**](https://www.boost.org/doc/libs/1_72_0/doc/html/boost/unordered_multiset.html)
 and adds notifications when items get added, removed, or when the whole map is reset
 or swapped.
 
