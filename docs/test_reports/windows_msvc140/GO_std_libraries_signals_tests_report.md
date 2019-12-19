@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2019-12-08 at 13:18:53 with result:
+Test suites *AllTests* with 9 test cases was executed 2019-12-19 at 21:03:48 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.007 seconds.
+Test suites execution took 0.006 seconds.
 
 # Details
 
@@ -31,7 +31,7 @@ Test suite execution took 0.002 seconds.
 
 Test case|Execution time
 -|-
-test_fire_lasers | 0.001
+test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
 test_fire_all_weapons | 0
 
@@ -50,7 +50,7 @@ Test case|Execution time
 -|-
 test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
-test_fire_all_weapons | 0
+test_fire_all_weapons | 0.001
 
 ## std_signals_wstring_test_suite
 
@@ -67,4 +67,4 @@ Test case|Execution time
 -|-
 test_fire_lasers | 0
 test_fire_proton_torpedoes | 0
-test_fire_all_weapons | 0.001
+test_fire_all_weapons | 0

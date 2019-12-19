@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.17
+* Visual Studio 2017, Community Edition, version 15.9.18
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2019-12-08 at 13:19:00 with result:
+Test suites *AllTests* with 128 test cases was executed 2019-12-19 at 21:03:52 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.075 seconds.
+Test suites execution took 0.064 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.074 seconds.
+Test suite execution took 0.063 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_explicit_integer_type_specializer | 0.001
+test_explicit_integer_type_specializer | 0
 test_integer_type_specializer_default_value | 0
 test_integer_type_specializer_construction | 0
 test_integer_type_specializer_get_set | 0
@@ -64,12 +64,12 @@ test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
 test_integer_type_specializer_greater_than_comparison_operator | 0
 test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
-test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
+test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0.001
 test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
 test_integer_type_specializer_pre_decrement_operator | 0
 test_integer_type_specializer_post_decrement_operator | 0
-test_floating_point_type_specializer_default_value | 0
+test_floating_point_type_specializer_default_value | 0.001
 test_floating_point_type_specializer_construction | 0
 test_floating_point_type_specializer_get_set | 0
 test_floating_point_type_specializer_simple_assignment_operator | 0
@@ -108,7 +108,7 @@ test_implicit_integer_type_specializer_modulo_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_assignment_operator | 0
-test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_unary_minus_arithmetic_operator | 0

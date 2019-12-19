@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.4.0
+* Visual Studio 2019, Community Edition, version 16.4.1
 
 # Summary
 
-Test suites *AllTests* with 132 test cases was executed 2019-12-08 at 13:19:06 with result:
+Test suites *AllTests* with 132 test cases was executed 2019-12-19 at 21:03:56 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.085 seconds.
+Test suites execution took 0.075 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 132 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.084 seconds.
+Test suite execution took 0.074 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ test_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0.001
+test_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_integer_type_specializer_equal_to_comparison_operator | 0
 test_integer_type_specializer_not_equal_to_comparison_operator | 0
@@ -111,7 +111,7 @@ test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
-test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_unary_minus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_addition_arithmetic_operator | 0
