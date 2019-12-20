@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2019-12-08 at 15:38:19 with result:
+Test suites *AllTests* with 128 test cases was executed 2019-12-20 at 19:40:07 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.01 seconds.
+Test suites execution took 0.006 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -33,7 +33,7 @@ Test case|Execution time
 -|-
 test_explicit_integer_type_specializer | 0
 test_integer_type_specializer_default_value | 0
-test_integer_type_specializer_construction | 0.001
+test_integer_type_specializer_construction | 0
 test_integer_type_specializer_get_set | 0
 test_integer_type_specializer_simple_assignment_operator | 0
 test_integer_type_specializer_addition_assignment_operator | 0
@@ -65,7 +65,7 @@ test_integer_type_specializer_less_than_comparison_operator | 0
 test_integer_type_specializer_greater_than_comparison_operator | 0
 test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
-test_integer_type_specializer_pre_increment_operator | 0.001
+test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
 test_integer_type_specializer_pre_decrement_operator | 0
 test_integer_type_specializer_post_decrement_operator | 0
@@ -81,7 +81,7 @@ test_floating_point_type_specializer_modulo_assignment_operator | 0
 test_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_floating_point_type_specializer_unary_minus_arithmetic_operator | 0
 test_floating_point_type_specializer_addition_arithmetic_operator | 0
-test_floating_point_type_specializer_subtraction_arithmetic_operator | 0
+test_floating_point_type_specializer_subtraction_arithmetic_operator | 0.001
 test_floating_point_type_specializer_multiplication_arithmetic_operator | 0
 test_floating_point_type_specializer_division_arithmetic_operator | 0
 test_floating_point_type_specializer_modulo_arithmetic_operator | 0

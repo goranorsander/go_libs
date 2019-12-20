@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-12-08 at 15:38:22 with result:
+Test suites *AllTests* with 33 test cases was executed 2019-12-20 at 19:40:10 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.002 seconds.
+Test suites execution took 0.001 seconds.
 
 # Details
 
@@ -57,7 +57,7 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -77,7 +77,7 @@ test_not_define_go_comp_msvc_vc141 | 0
 test_define_go_gcc_version | 0
 test_not_define_go_ide_ms_vs2008 | 0
 test_not_define_go_ide_ms_vs2010 | 0
-test_not_define_go_ide_ms_vs2012 | 0
+test_not_define_go_ide_ms_vs2012 | 0.001
 test_not_define_go_ide_ms_vs2013 | 0
 test_not_define_go_ide_ms_vs2015 | 0
 test_not_define_go_ide_ms_vs2017 | 0

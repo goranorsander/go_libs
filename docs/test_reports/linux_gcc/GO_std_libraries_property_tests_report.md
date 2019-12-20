@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2019-12-08 at 15:38:23 with result:
+Test suites *AllTests* with 72 test cases was executed 2019-12-20 at 19:40:11 with result:
 
 * 0 errors
 * 0 failures
@@ -25,7 +25,7 @@ Test suite *std_nameless_property_test_suite* with 9 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -34,7 +34,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -48,7 +48,7 @@ Test suite *std_nameless_property_placebo_lockable_test_suite* with 9 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -58,7 +58,7 @@ value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
-read_only_reference_properties | 0
+read_only_reference_properties | 0.001
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
@@ -80,7 +80,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.001
+reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -94,7 +94,7 @@ Test suite *std_property_test_suite* with 9 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -105,7 +105,7 @@ read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
-write_only_reference_properties | 0.001
+write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
@@ -130,7 +130,7 @@ reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
-read_only_proxy_properties | 0.001
+read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
 ## std_u32property_test_suite
@@ -149,7 +149,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -171,13 +171,13 @@ Test case|Execution time
 -|-
 value_properties | 0
 read_only_value_properties | 0
-write_only_value_properties | 0
+write_only_value_properties | 0.001
 reference_properties | 0
-read_only_reference_properties | 0.001
+read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
-read_only_proxy_properties | 0
-write_only_proxy_properties | 0.001
+read_only_proxy_properties | 0.001
+write_only_proxy_properties | 0
 
 ## std_wproperty_test_suite
 
@@ -199,5 +199,5 @@ reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
-read_only_proxy_properties | 0
+read_only_proxy_properties | 0.001
 write_only_proxy_properties | 0
