@@ -97,8 +97,8 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
-  * cmake version 3.15.5
+* Manjaro Linux 18.1.4 Juhraya, Xfce, 64 bits
+  * cmake version 3.16.0
   * clang version 9.0.0 (tags/RELEASE_900/final)
   * gcc (GCC) 9.2.0
   * git 2.24.0
