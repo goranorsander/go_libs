@@ -126,7 +126,7 @@ My development environment and toolset details:
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.9.18
-  * Visual Studio 2019, Community Edition, version 16.4.1
+  * Visual Studio 2019, Community Edition, version 16.4.2
   * Visual Studio Code 1.39.2 - with same extensions as in Linux environment
 
 # GOOGLE TEST
