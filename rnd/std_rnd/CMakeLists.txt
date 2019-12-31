@@ -26,6 +26,19 @@ if(BUILD_STD_RND)
     target_link_libraries(${PROJECT_STD_CONTAINER_BENCHMARK} ${CMAKE_THREAD_LIBS_INIT})
 
     ########################################################
+    #  rnd/std_rnd/fundamental_type_specializer_benchmark  #
+    ########################################################
+
+    set(PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK ${STD_PROJECT_NAME_STR}_fundamental_type_specializer_benchmark)
+
+    file(GLOB STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK_SRC_FILES fundamental_type_specializer_benchmark/*.cpp)
+    add_executable(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} ${STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK_SRC_FILES})
+    set_target_properties(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} PROPERTIES FOLDER rnd/std)
+    find_package(Threads)
+
+    target_link_libraries(${PROJECT_STD_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} ${CMAKE_THREAD_LIBS_INIT})
+
+    ########################################################
     #  rnd/std_rnd/lambda_binding                          #
     ########################################################
 

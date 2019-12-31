@@ -67,6 +67,60 @@ if(BUILD_BOOST_RND)
         message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
     endif(CMAKE_COMPILER_IS_CLANG)
 
+    #########################################################
+    #  rnd/boost_rnd/fundamental_type_specializer_benchmark #
+    #########################################################
+
+    set(PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK ${BOOST_PROJECT_NAME_STR}_fundamental_type_specializer_benchmark)
+
+    file(GLOB BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK_SRC_FILES fundamental_type_specializer_benchmark/*.cpp)
+    add_executable(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} ${BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK_SRC_FILES})
+    set_target_properties(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} PROPERTIES FOLDER rnd/boost)
+
+    if(CMAKE_COMPILER_IS_CLANG)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+            ${LIBBOOST_LOCALE}
+            ${LIBBOOST_SYSTEM}
+            ${LIBBOOST_THREAD}
+            ${CMAKE_THREAD_LIBS_INIT}
+            )
+    elseif(CMAKE_COMPILER_IS_GNUCC)
+        if(WIN32)
+            if(MSYS OR MINGW)
+                find_package(Threads)
+                target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+                    ${LIBBOOST_LOCALE}
+                    ${LIBBOOST_SYSTEM}
+                    ${LIBBOOST_THREAD}
+                    ${CMAKE_THREAD_LIBS_INIT}
+                    )
+            else(MSYS OR MINGW)
+                # Unsupported compiler
+                message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported on Windows")
+            endif(MSYS OR MINGW)
+        else(WIN32)
+            find_package(Threads)
+            target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+                ${LIBBOOST_LOCALE}
+                ${LIBBOOST_SYSTEM}
+                ${LIBBOOST_THREAD}
+                ${CMAKE_THREAD_LIBS_INIT}
+                )
+        endif(WIN32)
+    elseif(CMAKE_COMPILER_IS_MSVC)
+        if(MSVC_VERSION GREATER 1900)
+            # using Visual Studio 2017 C++
+            # Boost.Config is almost always older than your compiler version, suppress Boost warning message.
+            set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /D \"BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE\"" )
+        endif(MSVC_VERSION GREATER 1900)
+        find_package(Threads)
+        target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK} ${CMAKE_THREAD_LIBS_INIT})
+    else(CMAKE_COMPILER_IS_CLANG)
+        # Unsupported compiler
+        message(SEND_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported")
+    endif(CMAKE_COMPILER_IS_CLANG)
+
     ########################################################
     #  rnd/boost_rnd/lockable_benchmark                    #
     ########################################################
