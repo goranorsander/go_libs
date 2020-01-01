@@ -203,22 +203,22 @@ public:
 
     GO_CONSTEXPR this_type operator+(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t + t._t);
+        return this_type(std::forward<fundamental_type>(this->_t + t._t));
     }
 
     GO_CONSTEXPR this_type operator-(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t - t._t);
+        return this_type(std::forward<fundamental_type>(this->_t - t._t));
     }
 
     GO_CONSTEXPR this_type operator*(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t*t._t);
+        return this_type(std::forward<fundamental_type>(this->_t*t._t));
     }
 
     GO_CONSTEXPR this_type operator/(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t/t._t);
+        return this_type(std::forward<fundamental_type>(this->_t/t._t));
     }
 
     // Signed integer and floating point type arithmetic operators
@@ -240,37 +240,37 @@ public:
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t%t._t);
+        return this_type(std::forward<fundamental_type>(this->_t%t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t&t._t);
+        return this_type(std::forward<fundamental_type>(this->_t&t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t|t._t);
+        return this_type(std::forward<fundamental_type>(this->_t|t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t^t._t);
+        return this_type(std::forward<fundamental_type>(this->_t^t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t<<t._t);
+        return this_type(std::forward<fundamental_type>(this->_t<<t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t>>t._t);
+        return this_type(std::forward<fundamental_type>(this->_t>>t._t));
     }
 
     // Floating point type arithmetic operators
@@ -278,7 +278,7 @@ public:
     template <typename F = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::fmod(this->_t, t._t));
+        return this_type(std::forward<fundamental_type>(std::fmod(this->_t, t._t)));
     }
 
     // Comparison operators
@@ -356,12 +356,12 @@ public:
 
     this_type operator++(int) GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type((this->_t)++);
+        return this_type(std::forward<fundamental_type>((this->_t)++));
     }
 
     this_type operator--(int) GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type((this->_t)--);
+        return this_type(std::forward<fundamental_type>((this->_t)--));
     }
 
 public:

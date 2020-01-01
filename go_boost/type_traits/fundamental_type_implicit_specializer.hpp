@@ -315,46 +315,46 @@ public:
 
     GO_BOOST_CONSTEXPR this_type operator+(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t + t._t);
+        return this_type(std::forward<fundamental_type>(this->_t + t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator-(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t - t._t);
+        return this_type(std::forward<fundamental_type>(this->_t - t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator*(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t * t._t);
+        return this_type(std::forward<fundamental_type>(this->_t * t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator/(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t / t._t);
+        return this_type(std::forward<fundamental_type>(this->_t / t._t));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, this_type>::type operator+(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t + static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t + static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, this_type>::type operator-(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t - static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t - static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, this_type>::type operator*(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t * static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t * static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, this_type>::type operator/(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t / static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t / static_cast<fundamental_type>(p)));
     }
 
     // Signed integer and floating point type arithmetic operators
@@ -382,73 +382,73 @@ public:
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t % t._t);
+        return this_type(std::forward<fundamental_type>(this->_t % t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t & t._t);
+        return this_type(std::forward<fundamental_type>(this->_t & t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t | t._t);
+        return this_type(std::forward<fundamental_type>(this->_t | t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t ^ t._t);
+        return this_type(std::forward<fundamental_type>(this->_t ^ t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t << t._t);
+        return this_type(std::forward<fundamental_type>(this->_t << t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t >> t._t);
+        return this_type(std::forward<fundamental_type>(this->_t >> t._t));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator%(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t % static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t % static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator&(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t & static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t & static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator|(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t | static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t | static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator^(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t ^ static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t ^ static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator<<(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t << static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t << static_cast<fundamental_type>(p)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<fundamental_type>::value && boost::is_integral<P>::value, this_type>::type operator>>(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(this->_t >> static_cast<fundamental_type>(p));
+        return this_type(std::forward<fundamental_type>(this->_t >> static_cast<fundamental_type>(p)));
     }
 
     // Floating point type arithmetic operators
@@ -456,13 +456,13 @@ public:
     template <typename F = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::fmod(this->_t, t._t));
+        return this_type(std::forward<fundamental_type>(std::fmod(this->_t, t._t)));
     }
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_floating_point<fundamental_type>::value && boost::is_arithmetic<P>::value, this_type>::type operator%(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::fmod(this->_t, static_cast<fundamental_type>(p)));
+        return this_type(std::forward<fundamental_type>(std::fmod(this->_t, static_cast<fundamental_type>(p))));
     }
 
     // Comparison operators
@@ -604,12 +604,12 @@ public:
 
     this_type operator++(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type((this->_t)++);
+        return this_type(std::forward<fundamental_type>((this->_t)++));
     }
 
     this_type operator--(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type((this->_t)--);
+        return this_type(std::forward<fundamental_type>((this->_t)--));
     }
 
 public:
@@ -656,25 +656,25 @@ private:
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator+(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) + rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) + rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator-(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) - rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) - rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator*(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) * rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) * rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value, FundamentalTypeSpecializer>::type operator/(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) / rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) / rhs.get()));
 }
 
 // Outside integer arithmetic operators
@@ -682,37 +682,37 @@ inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator%(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) % rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) % rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator&(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) & rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) & rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator|(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) | rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) | rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator^(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) ^ rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) ^ rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator<<(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) << rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) << rhs.get()));
 }
 
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_integral<P>::value, FundamentalTypeSpecializer>::type operator>>(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) >> rhs.get());
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) >> rhs.get()));
 }
 
 // Outside floating point arithmetic operators
@@ -720,7 +720,7 @@ inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::
 template<class FundamentalTypeSpecializer, typename P>
 inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_floating_point<P>::value, FundamentalTypeSpecializer>::type operator%(const P& lhs, const FundamentalTypeSpecializer& rhs) BOOST_NOEXCEPT_OR_NOTHROW
 {
-    return FundamentalTypeSpecializer(std::fmod(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs), rhs.get()));
+    return FundamentalTypeSpecializer(std::forward<typename FundamentalTypeSpecializer::fundamental_type>(std::fmod(static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs), rhs.get())));
 }
 
 // Outside comparison operators
