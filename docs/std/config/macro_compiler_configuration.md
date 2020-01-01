@@ -475,6 +475,7 @@ Macro | Description
 GO_CONSTEXPR | constexpr
 GO_DEFAULT_CONSTRUCTOR | = default;
 GO_DEFAULT_DESTRUCTOR | = default;
+GO_EXTENDED_CONSTEXPR | constexpr
 GO_FINAL | final
 GO_NOEXCEPT | noexcept
 GO_NOEXCEPT_EXPR(\_expression\_) | noexcept((\_expression\_))

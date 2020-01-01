@@ -330,6 +330,12 @@ __pragma(message(_message_))
 #define GO_NO_CXX14_LAMBDA_DEFAULT_ARGUMENTS 1
 #endif  // #if defined(_MSC_VER)
 
+#if defined(GO_NO_CXX14_EXTENDED_CONSTEXPR)
+#define GO_EXTENDED_CONSTEXPR
+#else
+#define GO_EXTENDED_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 // C++17 support
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX17 1

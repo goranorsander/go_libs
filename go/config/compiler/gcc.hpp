@@ -237,6 +237,12 @@
 #define GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP 1
 #endif  // #if (GO_GCC_VERSION < 40900)
 
+#if defined(GO_NO_CXX14_EXTENDED_CONSTEXPR)
+#define GO_EXTENDED_CONSTEXPR
+#else
+#define GO_EXTENDED_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 // C++17 support
 #if (GO_GCC_VERSION < 30000)
 #define GO_NO_CXX17 1

@@ -468,6 +468,7 @@ Macro | Description
 GO_BOOST_CONSTEXPR | constexpr
 GO_BOOST_DEFAULT_CONSTRUCTOR | = default;
 GO_BOOST_DEFAULT_DESTRUCTOR | = default;
+GO_BOOST_EXTENDED_CONSTEXPR | constexpr
 GO_BOOST_FINAL | final
 GO_BOOST_NOEXCEPT | noexcept
 GO_BOOST_NOEXCEPT_EXPR(\_expression\_) | noexcept((\_expression\_))

@@ -225,6 +225,12 @@ __warning _message_
 #define GO_BOOST_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP 1
 #endif  // #if (GO_BOOST_CLANG_VERSION < 20800)
 
+#if defined(GO_BOOST_NO_CXX14_EXTENDED_CONSTEXPR)
+#define GO_BOOST_EXTENDED_CONSTEXPR
+#else
+#define GO_BOOST_EXTENDED_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR)
+
 // C++17 support
 #if (GO_BOOST_CLANG_VERSION < 20500)
 #define GO_BOOST_NO_CXX17 1
