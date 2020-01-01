@@ -4,7 +4,7 @@
 //
 //  observable_unordered_multimap.hpp
 //
-//  Copyright 2015-2019 Göran Orsander
+//  Copyright 2015-2020 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
