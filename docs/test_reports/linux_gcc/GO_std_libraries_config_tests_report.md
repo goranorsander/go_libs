@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2019-12-20 at 19:40:10 with result:
+Test suites *AllTests* with 33 test cases was executed 2020-01-02 at 19:38:09 with result:
 
 * 0 errors
 * 0 failures
@@ -77,7 +77,7 @@ test_not_define_go_comp_msvc_vc141 | 0
 test_define_go_gcc_version | 0
 test_not_define_go_ide_ms_vs2008 | 0
 test_not_define_go_ide_ms_vs2010 | 0
-test_not_define_go_ide_ms_vs2012 | 0.001
+test_not_define_go_ide_ms_vs2012 | 0
 test_not_define_go_ide_ms_vs2013 | 0
 test_not_define_go_ide_ms_vs2015 | 0
 test_not_define_go_ide_ms_vs2017 | 0

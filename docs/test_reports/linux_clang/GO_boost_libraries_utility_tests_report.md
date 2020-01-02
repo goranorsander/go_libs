@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 212 test cases was executed 2019-12-20 at 19:40:07 with result:
+Test suites *AllTests* with 212 test cases was executed 2020-01-02 at 19:38:06 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.042 seconds.
+Test suites execution took 0.041 seconds.
 
 # Details
 
@@ -54,7 +54,7 @@ test_system_wide_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
 test_ucs_2_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
 test_utf_8_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
 test_utf_16_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
-test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0.001
+test_utf_32_reduce_iso_8859_1_to_7_bit_ascii_non_strict_characters | 0
 test_multibyte_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_system_wide_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_ucs_2_reduce_windows_1252_to_7_bit_ascii_characters | 0
@@ -62,9 +62,9 @@ test_utf_8_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_utf_16_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_utf_32_reduce_windows_1252_to_7_bit_ascii_characters | 0
 test_multibyte_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
-test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
+test_system_wide_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0.001
 test_ucs_2_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
-test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0.001
+test_utf_8_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
 test_utf_16_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
 test_utf_32_reduce_windows_1252_to_7_bit_ascii_non_strict_characters | 0
 
@@ -94,7 +94,7 @@ Test suite *boost_create_string_test_suite* with 36 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.021 seconds.
+Test suite execution took 0.019 seconds.
 
 ### Successful test cases
 
@@ -105,7 +105,7 @@ test_create_string_from_wchar_t | 0.007
 test_create_string_from_char2_t | 0
 test_create_string_from_char8_t | 0
 test_create_string_from_char16_t | 0
-test_create_string_from_char32_t | 0.001
+test_create_string_from_char32_t | 0
 test_create_wstring_from_char | 0
 test_create_wstring_from_wchar_t | 0
 test_create_wstring_from_char2_t | 0
@@ -113,24 +113,24 @@ test_create_wstring_from_char8_t | 0
 test_create_wstring_from_char16_t | 0
 test_create_wstring_from_char32_t | 0
 test_create_u2string_from_char | 0.003
-test_create_u2string_from_wchar_t | 0.001
+test_create_u2string_from_wchar_t | 0.002
 test_create_u2string_from_char2_t | 0
-test_create_u2string_from_char8_t | 0.002
+test_create_u2string_from_char8_t | 0.001
 test_create_u2string_from_char16_t | 0.001
-test_create_u2string_from_char32_t | 0.002
-test_create_u8string_from_char | 0
+test_create_u2string_from_char32_t | 0.001
+test_create_u8string_from_char | 0.001
 test_create_u8string_from_wchar_t | 0
 test_create_u8string_from_char2_t | 0
 test_create_u8string_from_char8_t | 0
 test_create_u8string_from_char16_t | 0
-test_create_u8string_from_char32_t | 0.001
+test_create_u8string_from_char32_t | 0
 test_create_u16string_from_char | 0
 test_create_u16string_from_wchar_t | 0.001
 test_create_u16string_from_char2_t | 0
 test_create_u16string_from_char8_t | 0
 test_create_u16string_from_char16_t | 0
-test_create_u16string_from_char32_t | 0.001
-test_create_u32string_from_char | 0
+test_create_u16string_from_char32_t | 0
+test_create_u32string_from_char | 0.001
 test_create_u32string_from_wchar_t | 0
 test_create_u32string_from_char2_t | 0
 test_create_u32string_from_char8_t | 0
@@ -144,13 +144,13 @@ Test suite *boost_erase_iterator_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_erase_iterator_on_deque | 0
+test_erase_iterator_on_deque | 0.001
 test_erase_iterator_on_list | 0
 test_erase_iterator_on_vector | 0
 test_erase_iterator_on_map | 0
@@ -206,7 +206,7 @@ Test suite *boost_recursive_spin_lock_test_suite* with 3 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -270,7 +270,7 @@ Test suite *boost_string_cast_test_suite* with 81 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.013 seconds.
+Test suite execution took 0.014 seconds.
 
 ### Successful test cases
 
@@ -284,16 +284,16 @@ test_char16_t_size | 0
 test_char32_t_size | 0
 test_multibyte_ascii_printable_characters | 0
 test_multibyte_iso_8859_1_printable_characters | 0
-test_cast_ascii_from_string_to_string | 0
+test_cast_ascii_from_string_to_string | 0.001
 test_cast_iso_8859_1_from_string_to_string | 0
 test_cast_swedish_from_string_to_string | 0
 test_cast_ascii_from_wstring_to_string | 0
 test_cast_swedish_from_wstring_to_string | 0
 test_cast_ascii_from_u2string_to_string | 0
 test_cast_swedish_from_u2string_to_string | 0
-test_cast_ascii_from_u8string_to_string | 0
+test_cast_ascii_from_u8string_to_string | 0.001
 test_cast_swedish_from_u8string_to_string | 0
-test_cast_ascii_from_u16string_to_string | 0.001
+test_cast_ascii_from_u16string_to_string | 0
 test_cast_swedish_from_u16string_to_string | 0
 test_cast_ascii_from_u32string_to_string | 0
 test_cast_swedish_from_u32string_to_string | 0
@@ -303,7 +303,7 @@ test_cast_ascii_from_wstring_to_wstring | 0
 test_cast_swedish_from_wstring_to_wstring | 0
 test_cast_ascii_from_u2string_to_wstring | 0
 test_cast_swedish_from_u2string_to_wstring | 0
-test_cast_ascii_from_u8string_to_wstring | 0
+test_cast_ascii_from_u8string_to_wstring | 0.001
 test_cast_swedish_from_u8string_to_wstring | 0
 test_cast_ascii_from_u16string_to_wstring | 0
 test_cast_swedish_from_u16string_to_wstring | 0
@@ -318,15 +318,15 @@ test_cast_swedish_from_u2string_to_u2string | 0
 test_cast_ascii_from_u8string_to_u2string | 0.001
 test_cast_swedish_from_u8string_to_u2string | 0
 test_cast_ascii_from_u16string_to_u2string | 0.001
-test_cast_swedish_from_u16string_to_u2string | 0
-test_cast_ascii_from_u32string_to_u2string | 0.001
+test_cast_swedish_from_u16string_to_u2string | 0.001
+test_cast_ascii_from_u32string_to_u2string | 0
 test_cast_swedish_from_u32string_to_u2string | 0.001
 test_cast_ascii_from_string_to_u8string | 0
 test_cast_swedish_from_string_to_u8string | 0
 test_cast_ascii_from_wstring_to_u8string | 0
 test_cast_swedish_from_wstring_to_u8string | 0
 test_cast_ascii_from_u2string_to_u8string | 0
-test_cast_swedish_from_u2string_to_u8string | 0
+test_cast_swedish_from_u2string_to_u8string | 0.001
 test_cast_ascii_from_u8string_to_u8string | 0
 test_cast_swedish_from_u8string_to_u8string | 0
 test_cast_ascii_from_u16string_to_u8string | 0
@@ -336,16 +336,16 @@ test_cast_swedish_from_u32string_to_u8string | 0
 test_cast_ascii_from_string_to_u16string | 0
 test_cast_swedish_from_string_to_u16string | 0
 test_cast_ascii_from_wstring_to_u16string | 0
-test_cast_swedish_from_wstring_to_u16string | 0
+test_cast_swedish_from_wstring_to_u16string | 0.001
 test_cast_ascii_from_u2string_to_u16string | 0
-test_cast_swedish_from_u2string_to_u16string | 0.001
+test_cast_swedish_from_u2string_to_u16string | 0
 test_cast_ascii_from_u8string_to_u16string | 0
 test_cast_swedish_from_u8string_to_u16string | 0
 test_cast_ascii_from_u16string_to_u16string | 0
 test_cast_swedish_from_u16string_to_u16string | 0
 test_cast_ascii_from_u32string_to_u16string | 0
 test_cast_swedish_from_u32string_to_u16string | 0
-test_cast_ascii_from_string_to_u32string | 0
+test_cast_ascii_from_string_to_u32string | 0.001
 test_cast_swedish_from_string_to_u32string | 0
 test_cast_ascii_from_wstring_to_u32string | 0
 test_cast_swedish_from_wstring_to_u32string | 0

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 680 test cases was executed 2019-12-20 at 19:40:10 with result:
+Test suites *AllTests* with 680 test cases was executed 2020-01-02 at 19:38:09 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.103 seconds.
+Test suites execution took 0.101 seconds.
 
 # Details
 
@@ -63,8 +63,8 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_command_manager | 0
-test_spaceship_observer | 0.001
+test_command_manager | 0.001
+test_spaceship_observer | 0
 
 ## boost_basic_command_test_suite
 
@@ -88,13 +88,13 @@ Test suite *boost_basic_event_manager_test_suite* with 1 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_command_manager | 0.001
+test_command_manager | 0
 
 ## boost_basic_observable_array_test_suite
 
@@ -118,7 +118,7 @@ Test suite *boost_basic_observable_deque_test_suite* with 14 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -126,7 +126,7 @@ Test case|Execution time
 -|-
 test_assign_range | 0
 test_assign_initializer_list | 0
-test_assign_fill | 0.001
+test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
@@ -134,7 +134,7 @@ test_pop_front | 0
 test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
-test_erase_position | 0.001
+test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -146,7 +146,7 @@ Test suite *boost_basic_observable_forward_list_test_suite* with 21 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.003 seconds.
 
 ### Successful test cases
 
@@ -155,24 +155,24 @@ Test case|Execution time
 test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
-test_push_front | 0
+test_push_front | 0.001
 test_pop_front | 0
 test_insert_after_single_element | 0
-test_insert_after_fill | 0.001
+test_insert_after_fill | 0
 test_insert_after_range | 0
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
-test_splice_entire_forward_list | 0
+test_splice_entire_forward_list | 0.001
 test_splice_single_element | 0
 test_splice_element_range | 0
 test_remove | 0
-test_remove_if | 0.001
+test_remove_if | 0
 test_unique | 0
 test_unique_binary_predicate | 0
 test_merge | 0
-test_merge_compare_predicate | 0
+test_merge_compare_predicate | 0.001
 
 ## boost_basic_observable_list_test_suite
 
@@ -196,17 +196,17 @@ test_pop_back | 0
 test_pop_front | 0
 test_insert_single_element | 0
 test_insert_fill | 0
-test_insert_range | 0
+test_insert_range | 0.001
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
-test_splice_entire_list | 0.001
+test_splice_entire_list | 0
 test_splice_single_element | 0
 test_splice_element_range | 0
 test_remove | 0
 test_remove_if | 0
-test_unique | 0
+test_unique | 0.001
 test_unique_binary_predicate | 0
 test_merge | 0
 test_merge_compare_predicate | 0
@@ -229,12 +229,12 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0
+test_erase_value | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_basic_observable_multimap_test_suite
 
@@ -257,7 +257,7 @@ test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
-test_clear | 0.001
+test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
 
@@ -279,7 +279,7 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0.001
+test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -323,56 +323,6 @@ Test suite *boost_basic_observable_set_test_suite* with 11 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0.001
-test_emplace_hint | 0
-
-## boost_basic_observable_unordered_map_test_suite
-
-Test suite *boost_basic_observable_unordered_map_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.001 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0.001
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## boost_basic_observable_unordered_multimap_test_suite
-
-Test suite *boost_basic_observable_unordered_multimap_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
 Test suite execution took 0.001 seconds.
 
 ### Successful test cases
@@ -391,9 +341,9 @@ test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
 
-## boost_basic_observable_unordered_multiset_test_suite
+## boost_basic_observable_unordered_map_test_suite
 
-Test suite *boost_basic_observable_unordered_multiset_test_suite* with 11 test cases was executed with result:
+Test suite *boost_basic_observable_unordered_map_test_suite* with 11 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -407,8 +357,58 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
+test_insert_initializer_list | 0.001
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## boost_basic_observable_unordered_multimap_test_suite
+
+Test suite *boost_basic_observable_unordered_multimap_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.002 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0.001
+test_insert_range | 0
 test_insert_initializer_list | 0
-test_erase_position | 0.001
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## boost_basic_observable_unordered_multiset_test_suite
+
+Test suite *boost_basic_observable_unordered_multiset_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.002 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
@@ -423,7 +423,7 @@ Test suite *boost_basic_observable_unordered_set_test_suite* with 11 test cases 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -431,15 +431,15 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0.001
+test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0
+test_erase_value | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_basic_observable_vector_test_suite
 
@@ -448,7 +448,7 @@ Test suite *boost_basic_observable_vector_test_suite* with 12 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -462,9 +462,9 @@ test_pop_back | 0
 test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
-test_erase_position | 0.001
+test_erase_position | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 
 ## boost_basic_relay_command_test_suite
@@ -527,8 +527,8 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_command_manager | 0.001
-test_spaceship_observer | 0
+test_command_manager | 0
+test_spaceship_observer | 0.001
 
 ## boost_command_test_suite
 
@@ -597,7 +597,7 @@ test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
 test_insert_single_element | 0
-test_insert_fill | 0
+test_insert_fill | 0.001
 test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
@@ -621,7 +621,7 @@ test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_front | 0
-test_pop_front | 0.001
+test_pop_front | 0
 test_insert_after_single_element | 0
 test_insert_after_fill | 0
 test_insert_after_range | 0
@@ -632,7 +632,7 @@ test_clear | 0
 test_splice_entire_forward_list | 0
 test_splice_single_element | 0
 test_splice_element_range | 0
-test_remove | 0
+test_remove | 0.001
 test_remove_if | 0
 test_unique | 0
 test_unique_binary_predicate | 0
@@ -655,7 +655,7 @@ Test case|Execution time
 test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
-test_push_back | 0
+test_push_back | 0.001
 test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
@@ -683,7 +683,7 @@ Test suite *boost_observable_map_test_suite* with 11 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -693,7 +693,7 @@ test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
-test_erase_position | 0.001
+test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
@@ -708,23 +708,23 @@ Test suite *boost_observable_multimap_test_suite* with 11 test cases was execute
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_insert_single_element | 0
-test_insert_single_element_with_hint | 0.001
+test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_observable_multiset_test_suite
 
@@ -746,7 +746,7 @@ test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
-test_swap | 0.001
+test_swap | 0
 test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
@@ -758,13 +758,13 @@ Test suite *boost_observable_object_phoenix_test_suite* with 1 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_observable_object | 0
+test_observable_object | 0.001
 
 ## boost_observable_object_test_suite
 
@@ -796,12 +796,12 @@ Test case|Execution time
 -|-
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
-test_insert_range | 0.001
+test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
@@ -813,77 +813,27 @@ Test suite *boost_observable_unordered_map_test_suite* with 11 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_insert_single_element | 0
-test_insert_single_element_with_hint | 0.001
+test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0
+test_erase_value | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_observable_unordered_multimap_test_suite
 
 Test suite *boost_observable_unordered_multimap_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.001 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0.001
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## boost_observable_unordered_multiset_test_suite
-
-Test suite *boost_observable_unordered_multiset_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.001 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0
-test_emplace_hint | 0
-
-## boost_observable_unordered_set_test_suite
-
-Test suite *boost_observable_unordered_set_test_suite* with 11 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -906,9 +856,34 @@ test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
 
-## boost_observable_vector_test_suite
+## boost_observable_unordered_multiset_test_suite
 
-Test suite *boost_observable_vector_test_suite* with 12 test cases was executed with result:
+Test suite *boost_observable_unordered_multiset_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.001 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0
+test_insert_range | 0.001
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## boost_observable_unordered_set_test_suite
+
+Test suite *boost_observable_unordered_set_test_suite* with 11 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -919,15 +894,40 @@ Test suite execution took 0.002 seconds.
 
 Test case|Execution time
 -|-
+test_insert_single_element | 0.001
+test_insert_single_element_with_hint | 0
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0.001
+
+## boost_observable_vector_test_suite
+
+Test suite *boost_observable_vector_test_suite* with 12 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.001 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
 test_assign_range | 0
 test_assign_initializer_list | 0
-test_assign_fill | 0.001
+test_assign_fill | 0
 test_push_back | 0
 test_pop_back | 0
 test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
-test_erase_position | 0
+test_erase_position | 0.001
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -961,8 +961,8 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_command_manager | 0
-test_spaceship_observer | 0.001
+test_command_manager | 0.001
+test_spaceship_observer | 0
 
 ## boost_command_manager_placebo_lockable_test_suite
 
@@ -978,7 +978,7 @@ Test suite execution took 0.001 seconds.
 Test case|Execution time
 -|-
 test_command_manager | 0
-test_spaceship_observer | 0.001
+test_spaceship_observer | 0
 
 ## boost_command_placebo_lockable_test_suite
 
@@ -1032,16 +1032,16 @@ Test suite *boost_observable_deque_placebo_lockable_test_suite* with 14 test cas
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_assign_range | 0
-test_assign_initializer_list | 0
+test_assign_initializer_list | 0.001
 test_assign_fill | 0
-test_push_back | 0.001
+test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
 test_pop_front | 0
@@ -1050,7 +1050,7 @@ test_insert_fill | 0
 test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 
 ## boost_observable_forward_list_placebo_lockable_test_suite
@@ -1060,13 +1060,13 @@ Test suite *boost_observable_forward_list_placebo_lockable_test_suite* with 21 t
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_assign_range | 0.001
+test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_front | 0
@@ -1075,18 +1075,18 @@ test_insert_after_single_element | 0
 test_insert_after_fill | 0
 test_insert_after_range | 0
 test_erase_position | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
-test_clear | 0.001
+test_clear | 0
 test_splice_entire_forward_list | 0
 test_splice_single_element | 0
 test_splice_element_range | 0
 test_remove | 0
 test_remove_if | 0
 test_unique | 0
-test_unique_binary_predicate | 0
+test_unique_binary_predicate | 0.001
 test_merge | 0
-test_merge_compare_predicate | 0.001
+test_merge_compare_predicate | 0
 
 ## boost_observable_list_placebo_lockable_test_suite
 
@@ -1107,20 +1107,20 @@ test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
 test_pop_back | 0
-test_pop_front | 0
+test_pop_front | 0.001
 test_insert_single_element | 0
 test_insert_fill | 0
-test_insert_range | 0.001
+test_insert_range | 0
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_splice_entire_list | 0
-test_splice_single_element | 0
+test_splice_single_element | 0.001
 test_splice_element_range | 0
 test_remove | 0
 test_remove_if | 0
-test_unique | 0.001
+test_unique | 0
 test_unique_binary_predicate | 0
 test_merge | 0
 test_merge_compare_predicate | 0
@@ -1143,7 +1143,7 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0.001
+test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
 test_clear | 0
@@ -1166,11 +1166,11 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0.001
+test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
@@ -1182,14 +1182,14 @@ Test suite *boost_observable_multiset_placebo_lockable_test_suite* with 11 test 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.018 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_insert_single_element | 0
-test_insert_single_element_with_hint | 0.001
+test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
@@ -1198,7 +1198,7 @@ test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_observable_object_phoenix_placebo_lockable_test_suite
 
@@ -1237,22 +1237,22 @@ Test suite *boost_observable_set_placebo_lockable_test_suite* with 11 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0
+test_insert_single_element | 0.001
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0.001
+test_erase_range | 0
 test_swap | 0
 test_clear | 0
-test_emplace | 0
+test_emplace | 0.001
 test_emplace_hint | 0
 
 ## boost_observable_unordered_map_placebo_lockable_test_suite
@@ -1273,9 +1273,9 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0.001
+test_erase_value | 0
 test_erase_range | 0
-test_swap | 0
+test_swap | 0.001
 test_clear | 0
 test_emplace | 0
 test_emplace_hint | 0
@@ -1296,10 +1296,10 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0.001
+test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1308,31 +1308,6 @@ test_emplace_hint | 0
 ## boost_observable_unordered_multiset_placebo_lockable_test_suite
 
 Test suite *boost_observable_unordered_multiset_placebo_lockable_test_suite* with 11 test cases was executed with result:
-
-* 0 errors
-* 0 failures
-
-Test suite execution took 0.002 seconds.
-
-### Successful test cases
-
-Test case|Execution time
--|-
-test_insert_single_element | 0
-test_insert_single_element_with_hint | 0
-test_insert_range | 0
-test_insert_initializer_list | 0
-test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0
-test_swap | 0
-test_clear | 0
-test_emplace | 0.001
-test_emplace_hint | 0
-
-## boost_observable_unordered_set_placebo_lockable_test_suite
-
-Test suite *boost_observable_unordered_set_placebo_lockable_test_suite* with 11 test cases was executed with result:
 
 * 0 errors
 * 0 failures
@@ -1349,7 +1324,32 @@ test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
 test_erase_value | 0
-test_erase_range | 0.001
+test_erase_range | 0
+test_swap | 0
+test_clear | 0
+test_emplace | 0
+test_emplace_hint | 0
+
+## boost_observable_unordered_set_placebo_lockable_test_suite
+
+Test suite *boost_observable_unordered_set_placebo_lockable_test_suite* with 11 test cases was executed with result:
+
+* 0 errors
+* 0 failures
+
+Test suite execution took 0.001 seconds.
+
+### Successful test cases
+
+Test case|Execution time
+-|-
+test_insert_single_element | 0
+test_insert_single_element_with_hint | 0.001
+test_insert_range | 0
+test_insert_initializer_list | 0
+test_erase_position | 0
+test_erase_value | 0
+test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1372,7 +1372,7 @@ test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
-test_pop_back | 0.001
+test_pop_back | 0
 test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
@@ -1403,13 +1403,13 @@ Test suite *boost_relay_command_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_relay_command | 0.001
+test_relay_command | 0
 
 ## boost_relay_wcommand_test_suite
 
@@ -1433,14 +1433,14 @@ Test suite *boost_wcommand_execution_observer_test_suite* with 2 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_execute_wcommand | 0
-test_post_wcommand | 0
+test_post_wcommand | 0.001
 
 ## boost_wcommand_manager_phoenix_test_suite
 
@@ -1465,14 +1465,14 @@ Test suite *boost_wcommand_manager_test_suite* with 2 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_wcommand_manager | 0
-test_spaceship_observer | 0.001
+test_spaceship_observer | 0
 
 ## boost_wcommand_test_suite
 
@@ -1522,11 +1522,11 @@ test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
-test_pop_back | 0.001
+test_pop_back | 0
 test_pop_front | 0
 test_insert_single_element | 0
 test_insert_fill | 0
-test_insert_range | 0
+test_insert_range | 0.001
 test_erase_position | 0
 test_erase_range | 0
 test_swap | 0
@@ -1539,7 +1539,7 @@ Test suite *boost_wobservable_forward_list_test_suite* with 21 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.02 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -1549,7 +1549,7 @@ test_assign_range | 0
 test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_front | 0
-test_pop_front | 0
+test_pop_front | 0.001
 test_insert_after_single_element | 0
 test_insert_after_fill | 0
 test_insert_after_range | 0
@@ -1580,8 +1580,8 @@ Test suite execution took 0.003 seconds.
 
 Test case|Execution time
 -|-
-test_assign_range | 0
-test_assign_initializer_list | 0.001
+test_assign_range | 0.001
+test_assign_initializer_list | 0
 test_assign_fill | 0
 test_push_back | 0
 test_push_front | 0
@@ -1591,8 +1591,8 @@ test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
 test_erase_position | 0
-test_erase_range | 0
-test_swap | 0.001
+test_erase_range | 0.001
+test_swap | 0
 test_clear | 0
 test_splice_entire_list | 0
 test_splice_single_element | 0
@@ -1647,8 +1647,8 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0
-test_erase_range | 0.001
+test_erase_value | 0.001
+test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1701,7 +1701,7 @@ Test suite *boost_wobservable_object_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1730,8 +1730,8 @@ test_erase_position | 0
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
-test_clear | 0.001
-test_emplace | 0
+test_clear | 0
+test_emplace | 0.001
 test_emplace_hint | 0
 
 ## boost_wobservable_unordered_map_test_suite
@@ -1777,8 +1777,8 @@ test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
 test_erase_position | 0
-test_erase_value | 0.001
-test_erase_range | 0
+test_erase_value | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0
 test_emplace | 0
@@ -1800,8 +1800,8 @@ Test case|Execution time
 test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
-test_insert_initializer_list | 0.001
-test_erase_position | 0
+test_insert_initializer_list | 0
+test_erase_position | 0.001
 test_erase_value | 0
 test_erase_range | 0
 test_swap | 0
@@ -1816,13 +1816,13 @@ Test suite *boost_wobservable_unordered_set_test_suite* with 11 test cases was e
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_insert_single_element | 0.001
+test_insert_single_element | 0
 test_insert_single_element_with_hint | 0
 test_insert_range | 0
 test_insert_initializer_list | 0
@@ -1832,7 +1832,7 @@ test_erase_range | 0
 test_swap | 0
 test_clear | 0
 test_emplace | 0
-test_emplace_hint | 0.001
+test_emplace_hint | 0
 
 ## boost_wobservable_vector_test_suite
 
@@ -1841,7 +1841,7 @@ Test suite *boost_wobservable_vector_test_suite* with 12 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -1856,6 +1856,6 @@ test_insert_single_element | 0
 test_insert_fill | 0
 test_insert_range | 0
 test_erase_position | 0
-test_erase_range | 0
+test_erase_range | 0.001
 test_swap | 0
 test_clear | 0

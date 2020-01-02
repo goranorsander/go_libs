@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="6" failures="0" disabled="0" errors="0" timestamp="2019-12-20T19:40:10" time="0.001" name="AllTests">
+<testsuites tests="6" failures="0" disabled="0" errors="0" timestamp="2020-01-02T19:38:09" time="0.001" name="AllTests">
   <testsuite name="boost_exception_test_suite" tests="6" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_catch_go_boost_exception" status="run" time="0.001" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_go_boost_exception" status="run" time="0" classname="boost_exception_test_suite" />
     <testcase name="test_catch_go_boost_exception_as_boost_exception" status="run" time="0" classname="boost_exception_test_suite" />
     <testcase name="test_catch_derived_exception" status="run" time="0" classname="boost_exception_test_suite" />
     <testcase name="test_catch_derived_exception_as_go_boost_exception" status="run" time="0" classname="boost_exception_test_suite" />
