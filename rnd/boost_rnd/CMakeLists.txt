@@ -80,6 +80,7 @@ if(BUILD_BOOST_RND)
     if(CMAKE_COMPILER_IS_CLANG)
         find_package(Threads)
         target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+            ${LIBBOOST_CHRONO}
             ${LIBBOOST_LOCALE}
             ${LIBBOOST_SYSTEM}
             ${LIBBOOST_THREAD}
@@ -90,6 +91,7 @@ if(BUILD_BOOST_RND)
             if(MSYS OR MINGW)
                 find_package(Threads)
                 target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+                    ${LIBBOOST_CHRONO}
                     ${LIBBOOST_LOCALE}
                     ${LIBBOOST_SYSTEM}
                     ${LIBBOOST_THREAD}
@@ -102,6 +104,7 @@ if(BUILD_BOOST_RND)
         else(WIN32)
             find_package(Threads)
             target_link_libraries(${PROJECT_BOOST_FUNDAMENTAL_TYPE_SPECIALIZER_BENCHMARK}
+                ${LIBBOOST_CHRONO}
                 ${LIBBOOST_LOCALE}
                 ${LIBBOOST_SYSTEM}
                 ${LIBBOOST_THREAD}
