@@ -33,6 +33,12 @@
 struct _class_name_##_tag {}; \
 typedef go_boost::type_traits::fundamental_type_specializer<_fundamental_type_, _class_name_##_tag> _class_name_;
 
+#if defined(GO_BOOST_COMP_MSVC_VC120)
+#define GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE
+#else
+#define GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE std::forward<fundamental_type>
+#endif  // #if !defined(GO_BOOST_COMP_MSVC_VC120)
+
 namespace go_boost
 {
 namespace type_traits
@@ -208,22 +214,22 @@ public:
 
     GO_BOOST_CONSTEXPR this_type operator+(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t + t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t + t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator-(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t - t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t - t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator*(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t * t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t * t._t));
     }
 
     GO_BOOST_CONSTEXPR this_type operator/(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t / t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t / t._t));
     }
 
     // Signed integer and floating point type arithmetic operators
@@ -251,37 +257,37 @@ public:
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t % t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t % t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t & t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t & t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t | t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t | t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t ^ t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t ^ t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t << t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t << t._t));
     }
 
     template <typename I = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t >> t._t));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t >> t._t));
     }
 
     // Floating point type arithmetic operators
@@ -289,7 +295,7 @@ public:
     template <typename F = FundamentalType>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(std::fmod(this->_t, t._t)));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(std::fmod(this->_t, t._t)));
     }
 
     // Comparison operators
@@ -367,12 +373,12 @@ public:
 
     this_type operator++(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>((this->_t)++));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE((this->_t)++));
     }
 
     this_type operator--(int) BOOST_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>((this->_t)--));
+        return this_type(GO_BOOST_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE((this->_t)--));
     }
 
 public:

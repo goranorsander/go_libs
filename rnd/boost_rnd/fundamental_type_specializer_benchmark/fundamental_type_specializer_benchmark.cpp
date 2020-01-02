@@ -31,13 +31,15 @@ SpecializedFundamentalType fibonacci_number(const SpecializedFundamentalType& n)
     return ((n <= one)) ? one : fibonacci_number(n - one) + fibonacci_number(n - two);
 }
 
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
+
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 auto make_fibonacci()
 {
-    static const SpecializedFundamentalType one(static_cast<FundamentalType>(1));
-    static const SpecializedFundamentalType two(static_cast<FundamentalType>(2));
     auto fib = [](const SpecializedFundamentalType& n, auto& self)
     {
+        static const SpecializedFundamentalType one(static_cast<FundamentalType>(1));
+        static const SpecializedFundamentalType two(static_cast<FundamentalType>(2));
         if (n <= one)
         {
             return one;
@@ -49,6 +51,8 @@ auto make_fibonacci()
         return fib(n, fib);
     };
 };
+
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
 
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 void benchmark_add(const std::size_t iterations, db::stopwatch& sw)
@@ -137,6 +141,8 @@ SpecializedFundamentalType benchmark_fibonacci_number(const SpecializedFundament
     return fn;
 }
 
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
+
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 SpecializedFundamentalType benchmark_fibonacci_number_lambda(const SpecializedFundamentalType& n, db::stopwatch& sw)
 {
@@ -148,6 +154,8 @@ SpecializedFundamentalType benchmark_fibonacci_number_lambda(const SpecializedFu
     }
     return fn;
 }
+
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
 
 int main()
 {
@@ -182,11 +190,13 @@ int main()
             const unsigned long long fn = benchmark_fibonacci_number(fibonacci_n, sw);
             std::cout << "Basic, Fibonacci number " << fibonacci_n << " = " << fn << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
         {
             db::stopwatch sw;
             const unsigned long long fn = benchmark_fibonacci_number_lambda(fibonacci_n, sw);
             std::cout << "Lambda, Fibonacci number " << fibonacci_n << " = " << fn << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
     }
 
     {
@@ -217,11 +227,13 @@ int main()
             const UnsignedLongLong fn = benchmark_fibonacci_number<UnsignedLongLong, unsigned long long>(UnsignedLongLong(fibonacci_n), sw);
             std::cout << "Basic, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
         {
             db::stopwatch sw;
             const UnsignedLongLong fn = benchmark_fibonacci_number_lambda<UnsignedLongLong, unsigned long long>(UnsignedLongLong(fibonacci_n), sw);
             std::cout << "Lambda, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
     }
 
     {
@@ -252,11 +264,13 @@ int main()
             const double fn = benchmark_fibonacci_number(static_cast<double>(fibonacci_n), sw);
             std::cout << "Basic, Fibonacci number " << fibonacci_n << " = " << fn << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
         {
             db::stopwatch sw;
             const double fn = benchmark_fibonacci_number_lambda(static_cast<double>(fibonacci_n), sw);
             std::cout << "Lambda, Fibonacci number " << fibonacci_n << " = " << fn << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
     }
 
     {
@@ -287,11 +301,13 @@ int main()
             const Double fn = benchmark_fibonacci_number<Double, unsigned long long>(Double(fibonacci_n), sw);
             std::cout << "Basic, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
         {
             db::stopwatch sw;
             const Double fn = benchmark_fibonacci_number_lambda<Double, unsigned long long>(Double(fibonacci_n), sw);
             std::cout << "Lambda, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
+#endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
     }
 
     std::cout << std::endl;

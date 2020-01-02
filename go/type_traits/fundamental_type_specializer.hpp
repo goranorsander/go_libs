@@ -28,6 +28,12 @@
 struct _class_name_##_tag {}; \
 using _class_name_ = go::type_traits::fundamental_type_specializer<_fundamental_type_, _class_name_##_tag>;
 
+#if defined(GO_COMP_MSVC_VC120)
+#define GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE
+#else
+#define GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE std::forward<fundamental_type>
+#endif  // #if !defined(GO_COMP_MSVC_VC120)
+
 namespace go
 {
 namespace type_traits
@@ -203,22 +209,22 @@ public:
 
     GO_CONSTEXPR this_type operator+(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t + t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t + t._t));
     }
 
     GO_CONSTEXPR this_type operator-(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t - t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t - t._t));
     }
 
     GO_CONSTEXPR this_type operator*(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t*t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t*t._t));
     }
 
     GO_CONSTEXPR this_type operator/(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t/t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t/t._t));
     }
 
     // Signed integer and floating point type arithmetic operators
@@ -240,37 +246,37 @@ public:
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator%(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t%t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t%t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator&(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t&t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t&t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator|(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t|t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t|t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator^(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t^t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t^t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator<<(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t<<t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t<<t._t));
     }
 
     template <typename I = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_integral<I>::value, this_type>::type operator>>(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(this->_t>>t._t));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(this->_t>>t._t));
     }
 
     // Floating point type arithmetic operators
@@ -278,7 +284,7 @@ public:
     template <typename F = FundamentalType>
     GO_CONSTEXPR typename std::enable_if<std::is_floating_point<F>::value, this_type>::type operator%(this_const_reference t) const GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>(std::fmod(this->_t, t._t)));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE(std::fmod(this->_t, t._t)));
     }
 
     // Comparison operators
@@ -356,12 +362,12 @@ public:
 
     this_type operator++(int) GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>((this->_t)++));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE((this->_t)++));
     }
 
     this_type operator--(int) GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(std::forward<fundamental_type>((this->_t)--));
+        return this_type(GO_FTS_USING_STD_FORWARD_FUNDAMENTAL_TYPE((this->_t)--));
     }
 
 public:
