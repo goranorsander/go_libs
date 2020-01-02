@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2019-12-19T21:03:23" time="1.681" name="AllTests">
-  <testsuite name="std_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="1.664">
+<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2020-01-02T15:56:16" time="2.399" name="AllTests">
+  <testsuite name="std_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="2.376">
     <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -15,14 +15,14 @@
     <testcase name="test_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_bitwise_xor_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_division_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_modulo_arithmetic_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -33,7 +33,7 @@
     <testcase name="test_integer_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_less_than_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_pre_increment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_post_increment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -76,7 +76,7 @@
     <testcase name="test_implicit_integer_type_specializer_division_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_modulo_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_and_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_xor_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -85,9 +85,9 @@
     <testcase name="test_implicit_integer_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_division_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_division_arithmetic_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -97,7 +97,7 @@
     <testcase name="test_implicit_integer_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_less_than_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_pre_increment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_post_increment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />

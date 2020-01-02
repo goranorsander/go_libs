@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2019-12-19 at 21:03:48 with result:
+Test suites *AllTests* with 128 test cases was executed 2020-01-02 at 15:56:46 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.073 seconds.
+Test suites execution took 0.086 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.071 seconds.
+Test suite execution took 0.085 seconds.
 
 ### Successful test cases
 
@@ -116,7 +116,7 @@ test_implicit_integer_type_specializer_addition_arithmetic_operator | 0
 test_implicit_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_implicit_integer_type_specializer_division_arithmetic_operator | 0
-test_implicit_integer_type_specializer_modulo_arithmetic_operator | 0
+test_implicit_integer_type_specializer_modulo_arithmetic_operator | 0.001
 test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator | 0

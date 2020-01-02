@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2019-12-19T21:03:37" time="0.093" name="AllTests">
-  <testsuite name="boost_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="0.092">
+<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2020-01-02T15:56:34" time="0.108" name="AllTests">
+  <testsuite name="boost_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="0.106">
     <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
@@ -47,7 +47,7 @@
     <testcase name="test_floating_point_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_modulo_assignment_operator" status="run" time="0.002" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
@@ -71,11 +71,11 @@
     <testcase name="test_implicit_integer_type_specializer_get_set" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_simple_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_addition_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_subtraction_assignment_operator" status="run" time="0.001" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_and_assignment_operator" status="run" time="0.001" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_and_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_xor_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
     <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />

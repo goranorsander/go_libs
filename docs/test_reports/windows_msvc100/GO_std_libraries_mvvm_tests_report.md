@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 84 test cases was executed 2019-12-19 at 21:03:33 with result:
+Test suites *AllTests* with 84 test cases was executed 2020-01-02 at 15:56:31 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.116 seconds.
+Test suites execution took 0.145 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_basic_command_execution_observer_test_suite* with 1 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -70,7 +70,7 @@ Test suite *std_basic_command_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -115,7 +115,7 @@ Test suite *std_basic_observable_deque_test_suite* with 1 test cases was execute
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -130,7 +130,7 @@ Test suite *std_basic_observable_forward_list_test_suite* with 1 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -175,7 +175,7 @@ Test suite *std_basic_observable_multimap_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -190,7 +190,7 @@ Test suite *std_basic_observable_multiset_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -220,7 +220,7 @@ Test suite *std_basic_observable_object_test_suite* with 1 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -265,7 +265,7 @@ Test suite *std_basic_observable_unordered_multimap_test_suite* with 1 test case
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -280,7 +280,7 @@ Test suite *std_basic_observable_unordered_multiset_test_suite* with 1 test case
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -325,7 +325,7 @@ Test suite *std_basic_relay_command_test_suite* with 1 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.003 seconds.
 
 ### Successful test cases
 
@@ -385,7 +385,7 @@ Test suite *std_command_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -400,7 +400,7 @@ Test suite *std_event_manager_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -415,7 +415,7 @@ Test suite *std_observable_array_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -430,7 +430,7 @@ Test suite *std_observable_deque_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -475,7 +475,7 @@ Test suite *std_observable_map_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -550,7 +550,7 @@ Test suite *std_observable_set_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -565,7 +565,7 @@ Test suite *std_observable_unordered_map_test_suite* with 1 test cases was execu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -610,7 +610,7 @@ Test suite *std_observable_unordered_set_test_suite* with 1 test cases was execu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -730,7 +730,7 @@ Test suite *std_observable_deque_placebo_lockable_test_suite* with 1 test cases 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -745,7 +745,7 @@ Test suite *std_observable_forward_list_placebo_lockable_test_suite* with 1 test
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -775,7 +775,7 @@ Test suite *std_observable_map_placebo_lockable_test_suite* with 1 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -820,7 +820,7 @@ Test suite *std_observable_object_lambda_placebo_lockable_test_suite* with 1 tes
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -835,7 +835,7 @@ Test suite *std_observable_object_placebo_lockable_test_suite* with 1 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -850,7 +850,7 @@ Test suite *std_observable_set_placebo_lockable_test_suite* with 1 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -895,7 +895,7 @@ Test suite *std_observable_unordered_multiset_placebo_lockable_test_suite* with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -916,7 +916,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0.001
+cpp11_not_supported | 0
 
 ## std_observable_vector_placebo_lockable_test_suite
 
@@ -925,7 +925,7 @@ Test suite *std_observable_vector_placebo_lockable_test_suite* with 1 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -955,7 +955,7 @@ Test suite *std_relay_command_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -970,7 +970,7 @@ Test suite *std_relay_wcommand_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -985,7 +985,7 @@ Test suite *std_wcommand_execution_observer_test_suite* with 1 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1015,7 +1015,7 @@ Test suite *std_wcommand_manager_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1030,7 +1030,7 @@ Test suite *std_wcommand_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -1060,7 +1060,7 @@ Test suite *std_wobservable_array_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1075,7 +1075,7 @@ Test suite *std_wobservable_deque_test_suite* with 1 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1105,7 +1105,7 @@ Test suite *std_wobservable_list_test_suite* with 1 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1120,7 +1120,7 @@ Test suite *std_wobservable_map_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1150,7 +1150,7 @@ Test suite *std_wobservable_multiset_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -1180,7 +1180,7 @@ Test suite *std_wobservable_object_test_suite* with 1 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -1195,7 +1195,7 @@ Test suite *std_wobservable_set_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -1210,7 +1210,7 @@ Test suite *std_wobservable_unordered_map_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -1225,7 +1225,7 @@ Test suite *std_wobservable_unordered_multimap_test_suite* with 1 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -1240,7 +1240,7 @@ Test suite *std_wobservable_unordered_multiset_test_suite* with 1 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -1270,7 +1270,7 @@ Test suite *std_wobservable_vector_test_suite* with 1 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

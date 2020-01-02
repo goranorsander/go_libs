@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.4.1
+* Visual Studio 2019, Community Edition, version 16.4.2
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2019-12-19 at 21:03:56 with result:
+Test suites *AllTests* with 9 test cases was executed 2020-01-02 at 15:56:55 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.006 seconds.
+Test suites execution took 0.007 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_signals_string_placebo_lockable_test_suite* with 3 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -59,12 +59,12 @@ Test suite *std_signals_wstring_test_suite* with 3 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_fire_lasers | 0
-test_fire_proton_torpedoes | 0
+test_fire_proton_torpedoes | 0.001
 test_fire_all_weapons | 0

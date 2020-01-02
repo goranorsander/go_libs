@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="207" failures="0" disabled="0" errors="0" timestamp="2019-12-19T21:03:39" time="0.151" name="AllTests">
-  <testsuite name="std_ascii_test_suite" tests="36" failures="0" disabled="0" errors="0" time="0.023">
+<testsuites tests="207" failures="0" disabled="0" errors="0" timestamp="2020-01-02T15:56:37" time="0.204" name="AllTests">
+  <testsuite name="std_ascii_test_suite" tests="36" failures="0" disabled="0" errors="0" time="0.024">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_ascii_test_suite" />
@@ -41,16 +41,16 @@
   <testsuite name="std_circular_buffer_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_circular_buffer_test_suite" />
   </testsuite>
-  <testsuite name="std_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.003">
+  <testsuite name="std_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.006">
     <testcase name="test_size_on_deque" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_list" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_vector" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_map" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_set" status="run" time="0" classname="std_container_size_test_suite" />
   </testsuite>
-  <testsuite name="std_create_string_test_suite" tests="31" failures="0" disabled="0" errors="0" time="0.026">
+  <testsuite name="std_create_string_test_suite" tests="31" failures="0" disabled="0" errors="0" time="0.033">
     <testcase name="test_create_string_from_char" status="run" time="0" classname="std_create_string_test_suite" />
-    <testcase name="test_create_string_from_wchar_t" status="run" time="0" classname="std_create_string_test_suite" />
+    <testcase name="test_create_string_from_wchar_t" status="run" time="0.001" classname="std_create_string_test_suite" />
     <testcase name="test_create_string_from_char2_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_string_from_char8_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_string_from_char16_t" status="run" time="0" classname="std_create_string_test_suite" />
@@ -63,8 +63,8 @@
     <testcase name="test_create_wstring_from_char32_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="cannot_create_u2string_issue" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char" status="run" time="0" classname="std_create_string_test_suite" />
-    <testcase name="test_create_u8string_from_wchar_t" status="run" time="0" classname="std_create_string_test_suite" />
-    <testcase name="test_create_u8string_from_char2_t" status="run" time="0.001" classname="std_create_string_test_suite" />
+    <testcase name="test_create_u8string_from_wchar_t" status="run" time="0.001" classname="std_create_string_test_suite" />
+    <testcase name="test_create_u8string_from_char2_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char8_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char16_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_u8string_from_char32_t" status="run" time="0" classname="std_create_string_test_suite" />
@@ -81,14 +81,14 @@
     <testcase name="test_create_u32string_from_char16_t" status="run" time="0" classname="std_create_string_test_suite" />
     <testcase name="test_create_u32string_from_char32_t" status="run" time="0" classname="std_create_string_test_suite" />
   </testsuite>
-  <testsuite name="std_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_erase_iterator_on_deque" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_list" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_vector" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_map" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_set" status="run" time="0" classname="std_erase_iterator_test_suite" />
   </testsuite>
-  <testsuite name="std_iso_8859_1_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.008">
+  <testsuite name="std_iso_8859_1_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.009">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
@@ -102,31 +102,31 @@
     <testcase name="test_char16_t_is_iso_8859_1_character" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_char32_t_is_iso_8859_1_character" status="run" time="0" classname="std_iso_8859_1_test_suite" />
   </testsuite>
-  <testsuite name="std_monitor_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_monitor_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_monitor_test_suite" />
   </testsuite>
-  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_placebo_lockable" status="run" time="0" classname="std_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_lock_guard" status="run" time="0" classname="std_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_recursive_spin_lock_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.004">
-    <testcase name="test_recursive_spin_lock" status="run" time="0.003" classname="std_recursive_spin_lock_test_suite" />
+  <testsuite name="std_recursive_spin_lock_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.005">
+    <testcase name="test_recursive_spin_lock" status="run" time="0.004" classname="std_recursive_spin_lock_test_suite" />
     <testcase name="test_recursive_spin_lock_lock_guard" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
     <testcase name="cpp14_not_supported" status="run" time="0" classname="std_reverse_test_suite" />
   </testsuite>
-  <testsuite name="std_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_scope_guard_new" status="run" time="0" classname="std_scope_guard_new_test_suite" />
   </testsuite>
-  <testsuite name="std_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_scope_guard" status="run" time="0" classname="std_scope_guard_test_suite" />
   </testsuite>
   <testsuite name="std_spin_lock_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_spin_lock" status="run" time="0" classname="std_spin_lock_test_suite" />
     <testcase name="test_spin_lock_lock_guard" status="run" time="0" classname="std_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="std_string_cast_test_suite" tests="81" failures="0" disabled="0" errors="0" time="0.055">
+  <testsuite name="std_string_cast_test_suite" tests="81" failures="0" disabled="0" errors="0" time="0.077">
     <testcase name="test_char_size" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_wchar_t_size" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_char2_t_size" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -139,17 +139,17 @@
     <testcase name="test_cast_iso_8859_1_from_string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_wstring_to_string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_wstring_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u2string_to_string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u2string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u8string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u16string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u16string_to_string" status="run" time="0.001" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u32string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_string_to_wstring" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -158,7 +158,7 @@
     <testcase name="test_cast_swedish_from_u8string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u16string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u32string_to_wstring" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u32string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_wstring" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_u2string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u2string" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -172,9 +172,9 @@
     <testcase name="test_cast_swedish_from_u16string_to_u2string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u32string_to_u2string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_u2string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_string_to_u8string" status="run" time="0.001" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_wstring_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_wstring_to_u8string" status="run" time="0.001" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u2string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -185,12 +185,12 @@
     <testcase name="test_cast_ascii_from_u32string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_u8string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_string_to_u16string" status="run" time="0.001" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_wstring_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_wstring_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_u2string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_u8string_to_u16string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_u2string_to_u16string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_u8string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u8string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u16string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u16string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -198,8 +198,8 @@
     <testcase name="test_cast_swedish_from_u32string_to_u16string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_ascii_from_wstring_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
-    <testcase name="test_cast_swedish_from_wstring_to_u32string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_ascii_from_wstring_to_u32string" status="run" time="0.001" classname="std_string_cast_test_suite" />
+    <testcase name="test_cast_swedish_from_wstring_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u2string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u2string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_ascii_from_u8string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
@@ -209,11 +209,11 @@
     <testcase name="test_cast_ascii_from_u32string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
     <testcase name="test_cast_swedish_from_u32string_to_u32string" status="run" time="0" classname="std_string_cast_test_suite" />
   </testsuite>
-  <testsuite name="std_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="std_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.012">
     <testcase name="test_try_move_backward_on_array" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_deque" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_forward_list" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
-    <testcase name="test_try_move_backward_on_list" status="run" time="0.001" classname="std_try_move_iterator_backward_test_suite" />
+    <testcase name="test_try_move_backward_on_list" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_vector" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_map" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_set" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
@@ -224,10 +224,10 @@
     <testcase name="test_try_move_backward_on_unordered_multimap" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_multiset" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
   </testsuite>
-  <testsuite name="std_value_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+  <testsuite name="std_value_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_value_guard" status="run" time="0" classname="std_value_guard_test_suite" />
   </testsuite>
-  <testsuite name="std_windows_1252_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.005">
+  <testsuite name="std_windows_1252_test_suite" tests="12" failures="0" disabled="0" errors="0" time="0.01">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />

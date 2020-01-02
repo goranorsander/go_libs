@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.4.1
+* Visual Studio 2019, Community Edition, version 16.4.2
 
 # Summary
 
-Test suites *AllTests* with 132 test cases was executed 2019-12-19 at 21:03:54 with result:
+Test suites *AllTests* with 132 test cases was executed 2020-01-02 at 15:56:53 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.073 seconds.
+Test suites execution took 0.095 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 132 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.073 seconds.
+Test suite execution took 0.091 seconds.
 
 ### Successful test cases
 
@@ -108,7 +108,7 @@ test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
 test_implicit_integer_type_specializer_division_assignment_operator | 0
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
-test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
