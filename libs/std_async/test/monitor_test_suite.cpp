@@ -23,15 +23,15 @@ TEST(std_monitor_test_suite, cpp11_not_supported) {}
 #include <functional>
 #include <list>
 #include <thread>
+#include <go/async/monitor.hpp>
 #include <go/namespace_alias.hpp>
-#include <go/utility/monitor.hpp>
 
 namespace
 {
 
 TEST(std_monitor_test_suite, test_monitor)
 {
-    u::monitor<std::list<int>> monitored_list;
+    a::monitor<std::list<int>> monitored_list;
 
     EXPECT_EQ(true, monitored_list->empty());
 
@@ -68,7 +68,7 @@ public:
         cv.notify_one();
     }
 
-    u::monitor<int> monitored_int;
+    a::monitor<int> monitored_int;
 
     std::mutex m;
     std::condition_variable cv;

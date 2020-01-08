@@ -1,15 +1,15 @@
 ---
-layout: std_lib_utility
+layout: std_lib_async
 ---
 
 ```c++
-namespace go::utility
+namespace go::async
 ```
 
 # class template monitor
 
 ```c++
-<go/utility/monitor.hpp>
+<go/async/monitor.hpp>
 ```
 
 The **monitor** is a class template that implement the [monitor pattern](https://en.wikipedia.org/wiki/Monitor_%28synchronization%29)

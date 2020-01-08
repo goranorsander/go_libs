@@ -1,5 +1,5 @@
-#ifndef GO_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
-#define GO_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#ifndef GO_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#define GO_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
 
 //
 //  recursive_spin_lock.hpp
@@ -25,7 +25,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 namespace go
 {
-namespace utility
+namespace async
 {
 
 struct recursive_spin_lock
@@ -109,7 +109,7 @@ inline const std::thread::id& recursive_spin_lock::this_thread_local() const
     return this_thread_local;
 }
 
-} // namespace utility
+} // namespace async
 } // namespace go
 
 #else  // #if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
@@ -118,7 +118,7 @@ inline const std::thread::id& recursive_spin_lock::this_thread_local() const
 
 namespace go
 {
-namespace utility
+namespace async
 {
 
 #if !defined(GO_NO_CXX11_TYPE_ALIASES)
@@ -131,11 +131,11 @@ typedef std::recursive_mutex recursive_spin_lock;
 
 #endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
-} // namespace utility
+} // namespace async
 } // namespace go
 
 #endif  // #if !defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#endif  // #ifndef GO_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED

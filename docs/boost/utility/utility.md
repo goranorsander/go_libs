@@ -28,16 +28,8 @@ of components too small to be called libraries in their own right.
 
 ### Class reference
 
-* [noncopyable](./class_noncopyable.html)
-* [noncopyable_nonmovable](./class_noncopyable_nonmovable.html)
-* [nonmovable](./class_nonmovable.html)
-* [placebo_lockable](./class_placebo_lockable.html)
-* [fundamental_type_implicit_specializer](./class_template_fundamental_type_implicit_specializer.html)
-* [fundamental_type_specializer](./class_template_fundamental_type_specializer.html)
-* [recursive_spin_lock](./class_recursive_spin_lock.html)
 * [scope_guard](./class_scope_guard.html)
 * [scope_guard_new](./class_template_scope_guard_new.html)
-* [spin_lock](./class_spin_lock.html)
 * [string_cast_exception](./class_string_cast_exception.html)
 * [u2string](./class_u2string.html)
 * [u8string](./class_u8string.html)

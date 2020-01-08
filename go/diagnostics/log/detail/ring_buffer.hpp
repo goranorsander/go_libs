@@ -17,9 +17,9 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/async/spin_lock.hpp>
 #include <go/diagnostics/log/detail/buffer_interface.hpp>
 #include <go/type_traits/noncopyable_nonmovable.hpp>
-#include <go/utility/spin_lock.hpp>
 
 #include <mutex>
 
@@ -65,7 +65,7 @@ public:
     virtual bool try_pop(L& logline) override
     {
         element& item = this->_ring[this->_read_index % this->_size];
-        const std::lock_guard<go::utility::spin_lock> lock(item.lock);
+        const std::lock_guard<go::async::spin_lock> lock(item.lock);
         if (item.written)
         {
             logline = std::move(item.logline);
@@ -126,7 +126,7 @@ private:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
-        go::utility::spin_lock lock;
+        go::async::spin_lock lock;
         bool written;
         log_line_type logline;
     };
@@ -144,7 +144,7 @@ inline void ring_buffer<log_line>::push(log_line&& logline)
 {
     const size_type write_index = this->_write_index.fetch_add(1, std::memory_order_relaxed) % this->_size;
     element& item = this->_ring[write_index];
-    const std::lock_guard<go::utility::spin_lock> lock(item.lock);
+    const std::lock_guard<go::async::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = true;
 }
@@ -154,7 +154,7 @@ inline void ring_buffer<wlog_line>::push(wlog_line&& logline)
 {
     const size_type write_index = this->_write_index.fetch_add(1, std::memory_order_relaxed) % this->_size;
     element& item = this->_ring[write_index];
-    const std::lock_guard<go::utility::spin_lock> lock(item.lock);
+    const std::lock_guard<go::async::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = true;
 }

@@ -10,6 +10,7 @@ The **GO Boost C++ Libraries** uses **C++98/03** and the **Boost Libraries**.
 
 ## Libraries
 
+* [Async](./async/async.html)
 * [Config](./config/config.html)
 * [Diagnostics](./diagnostics/diagnostics.html)
 * [Exception](./exception/exception.html)

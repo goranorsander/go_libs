@@ -1,7 +1,7 @@
 //
-//  recursive_spin_lock_test_suite.cpp
+//  placebo_lockable_test_suite.cpp
 //
-//  Copyright 2019-2020 Göran Orsander
+//  Copyright 2018-2020 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
@@ -14,41 +14,40 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
+#include <boost/thread.hpp>
+
+#include <go_boost/async/placebo_lockable.hpp>
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility/recursive_spin_lock.hpp>
 
 namespace
 {
 
-TEST(boost_recursive_spin_lock_test_suite, test_recursive_spin_lock)
+TEST(boost_placebo_lockable_test_suite, test_placebo_lockable)
 {
-    u::recursive_spin_lock lock;
+    a::placebo_lockable mutex;
 
-    lock.lock();
+    mutex.lock();
 
-    EXPECT_EQ(true, lock.try_lock());
+    EXPECT_EQ(true, mutex.try_lock());
 
-    lock.unlock();
-    lock.unlock();
+    mutex.unlock();
 
-    EXPECT_EQ(true, lock.try_lock());
+    EXPECT_EQ(true, mutex.try_lock());
 
-    lock.unlock();
+    mutex.unlock();
 }
 
-TEST(boost_recursive_spin_lock_test_suite, test_recursive_spin_lock_lock_guard)
+TEST(boost_placebo_lockable_test_suite, test_placebo_lockable_scoped_lock)
 {
-    u::recursive_spin_lock lock;
+    a::placebo_lockable mutex;
 
     {
-        u::recursive_spin_lock::scoped_lock guard(lock);
+        a::placebo_lockable::scoped_lock guard(mutex);
 
-        EXPECT_EQ(true, lock.try_lock());
-
-        lock.unlock();
+        EXPECT_EQ(true, mutex.try_lock());
     }
 
-    EXPECT_EQ(true, lock.try_lock());
+    EXPECT_EQ(true, mutex.try_lock());
 }
 
 class test_thread
@@ -71,7 +70,7 @@ public:
         boost::unique_lock<boost::mutex> lk(m);
         cv.wait(lk, boost::bind(&test_thread::is_step_1_completed, this));
 
-        // Step 2 - worker thread locks the recursive_spin_lock
+        // Step 2 - worker thread locks the placebo_lockable
         lock.lock();
         step_2_complete = true;
         lk.unlock();
@@ -81,7 +80,7 @@ public:
         lk.lock();
         cv.wait(lk, boost::bind(&test_thread::is_step_3_completed, this));
 
-        // Step 4 - worker thread unlocks the recursive_spin_lock
+        // Step 4 - worker thread unlocks the placebo_lockable
         lock.unlock();
         step_4_complete = true;
         lk.unlock();
@@ -93,7 +92,7 @@ public:
     bool is_step_3_completed() const { return step_3_complete; }
     bool is_step_4_completed() const { return step_4_complete; }
 
-    u::recursive_spin_lock lock;
+    a::placebo_lockable lock;
 
     boost::mutex m;
     boost::condition_variable cv;
@@ -103,12 +102,12 @@ public:
     bool step_4_complete;
 };
 
-TEST(boost_recursive_spin_lock_test_suite, test_recursive_spin_lock_two_threads)
+TEST(boost_placebo_lockable_test_suite, test_placebo_lockable_two_threads)
 {
     test_thread t;
 
     {
-        u::recursive_spin_lock::scoped_lock guard(t.lock);
+        a::placebo_lockable::scoped_lock guard(t.lock);
 
         EXPECT_EQ(true, t.lock.try_lock());
 
@@ -133,31 +132,35 @@ TEST(boost_recursive_spin_lock_test_suite, test_recursive_spin_lock_two_threads)
     }
     t.cv.notify_one();
 
-    // Step 2 - worker thread locks the recursive_spin_lock
+    // Step 2 - worker thread locks the placebo_lockable
     {
         boost::unique_lock<boost::mutex> lk(t.m);
         t.cv.wait(lk, boost::bind(&test_thread::is_step_2_completed, &t));
     }
 
+    EXPECT_EQ(true, t.lock.try_lock());
+
+    t.lock.unlock();
+
     // Step 3 - main thread try to lock 'lock' when worker thread have 'lock' locked already
     {
         boost::lock_guard<boost::mutex> lk(t.m);
 
-        EXPECT_EQ(false, t.lock.try_lock());
+        EXPECT_EQ(true, t.lock.try_lock());
 
         t.step_3_complete = true;
     }
     t.cv.notify_one();
 
-    // Step 4 - worker thread unlocks the recursive_spin_lock
+    // Step 4 - worker thread unlocks the placebo_lockable
     {
         boost::unique_lock<boost::mutex> lk(t.m);
         t.cv.wait(lk, boost::bind(&test_thread::is_step_4_completed, &t));
-
-        EXPECT_EQ(true, t.lock.try_lock());
-
-        t.lock.unlock();
     }
+
+    EXPECT_EQ(true, t.lock.try_lock());
+
+    t.lock.unlock();
 
     worker.join();
 }

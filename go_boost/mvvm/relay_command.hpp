@@ -33,8 +33,8 @@ typedef basic_relay_command<std::wstring, boost::recursive_mutex> relay_wcommand
 namespace single_threaded
 {
 
-typedef basic_relay_command<std::string, go_boost::utility::placebo_lockable> relay_command;
-typedef basic_relay_command<std::wstring, go_boost::utility::placebo_lockable> relay_wcommand;
+typedef basic_relay_command<std::string, go_boost::async::placebo_lockable> relay_command;
+typedef basic_relay_command<std::wstring, go_boost::async::placebo_lockable> relay_wcommand;
 
 }
 
@@ -88,16 +88,16 @@ inline basic_relay_command<std::wstring, boost::recursive_mutex>::basic_relay_co
 }
 
 template<>
-inline basic_relay_command<std::string, go_boost::utility::placebo_lockable>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
-    : basic_command_interface<std::string, go_boost::utility::placebo_lockable>(cmd_name, params)
+inline basic_relay_command<std::string, go_boost::async::placebo_lockable>::basic_relay_command(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+    : basic_command_interface<std::string, go_boost::async::placebo_lockable>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
 }
 
 template<>
-inline basic_relay_command<std::wstring, go_boost::utility::placebo_lockable>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
-    : basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>(cmd_name, params)
+inline basic_relay_command<std::wstring, go_boost::async::placebo_lockable>::basic_relay_command(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+    : basic_command_interface<std::wstring, go_boost::async::placebo_lockable>(cmd_name, params)
     , _can_execute(can_execute_command)
     , _execute(execute_command)
 {
@@ -124,13 +124,13 @@ inline bool basic_relay_command<std::wstring, boost::recursive_mutex>::can_execu
 }
 
 template<>
-inline bool basic_relay_command<std::string, go_boost::utility::placebo_lockable>::can_execute(const command_parameters_type& params)
+inline bool basic_relay_command<std::string, go_boost::async::placebo_lockable>::can_execute(const command_parameters_type& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
 
 template<>
-inline bool basic_relay_command<std::wstring, go_boost::utility::placebo_lockable>::can_execute(const command_parameters_type& params)
+inline bool basic_relay_command<std::wstring, go_boost::async::placebo_lockable>::can_execute(const command_parameters_type& params)
 {
     return _can_execute ? _can_execute(params) : true;
 }
@@ -160,7 +160,7 @@ inline void basic_relay_command<std::wstring, boost::recursive_mutex>::execute(c
 }
 
 template<>
-inline void basic_relay_command<std::string, go_boost::utility::placebo_lockable>::execute(const command_parameters_type& params)
+inline void basic_relay_command<std::string, go_boost::async::placebo_lockable>::execute(const command_parameters_type& params)
 {
     if (_execute)
     {
@@ -169,7 +169,7 @@ inline void basic_relay_command<std::string, go_boost::utility::placebo_lockable
 }
 
 template<>
-inline void basic_relay_command<std::wstring, go_boost::utility::placebo_lockable>::execute(const command_parameters_type& params)
+inline void basic_relay_command<std::wstring, go_boost::async::placebo_lockable>::execute(const command_parameters_type& params)
 {
     if (_execute)
     {
@@ -221,7 +221,7 @@ inline boost::shared_ptr<basic_relay_command<std::wstring, boost::recursive_mute
 }
 
 template<>
-inline boost::shared_ptr<basic_relay_command<std::string, go_boost::utility::placebo_lockable>> basic_relay_command<std::string, go_boost::utility::placebo_lockable>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+inline boost::shared_ptr<basic_relay_command<std::string, go_boost::async::placebo_lockable>> basic_relay_command<std::string, go_boost::async::placebo_lockable>::create(const std::string& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
@@ -238,7 +238,7 @@ inline boost::shared_ptr<basic_relay_command<std::string, go_boost::utility::pla
 }
 
 template<>
-inline boost::shared_ptr<basic_relay_command<std::wstring, go_boost::utility::placebo_lockable>> basic_relay_command<std::wstring, go_boost::utility::placebo_lockable>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
+inline boost::shared_ptr<basic_relay_command<std::wstring, go_boost::async::placebo_lockable>> basic_relay_command<std::wstring, go_boost::async::placebo_lockable>::create(const std::wstring& cmd_name, const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command, const command_parameters_type& params)
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler

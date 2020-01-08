@@ -21,9 +21,9 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <functional>
 #include <map>
 #include <mutex>
+#include <go/async/placebo_lockable.hpp>
 #include <go/mvvm/event_subscription_key.hpp>
 #include <go/mvvm/notify_event_firing_interface.hpp>
-#include <go/utility/placebo_lockable.hpp>
 
 namespace go
 {
@@ -37,8 +37,8 @@ typedef basic_event_manager<std::wstring, std::recursive_mutex> wevent_manager;
 namespace single_threaded
 {
 
-typedef basic_event_manager<std::string, go::utility::placebo_lockable> event_manager;
-typedef basic_event_manager<std::wstring, go::utility::placebo_lockable> wevent_manager;
+typedef basic_event_manager<std::string, go::async::placebo_lockable> event_manager;
+typedef basic_event_manager<std::wstring, go::async::placebo_lockable> wevent_manager;
 
 }
 
@@ -135,7 +135,7 @@ inline event_subscription_key basic_event_manager<std::wstring, std::recursive_m
 }
 
 template<>
-inline event_subscription_key basic_event_manager<std::string, go::utility::placebo_lockable>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
+inline event_subscription_key basic_event_manager<std::string, go::async::placebo_lockable>::subscribe(const std::string& event_type, std::function<void(const std::shared_ptr<basic_event<std::string>>&)>&& fire_event_function)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -152,7 +152,7 @@ inline event_subscription_key basic_event_manager<std::string, go::utility::plac
 }
 
 template<>
-inline event_subscription_key basic_event_manager<std::wstring, go::utility::placebo_lockable>::subscribe(const std::wstring& event_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>&& fire_event_function)
+inline event_subscription_key basic_event_manager<std::wstring, go::async::placebo_lockable>::subscribe(const std::wstring& event_type, std::function<void(const std::shared_ptr<basic_event<std::wstring>>&)>&& fire_event_function)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -208,7 +208,7 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe
 }
 
 template<>
-inline void basic_event_manager<std::string, go::utility::placebo_lockable>::unsubscribe(const std::string& event_type, const event_subscription_key& key)
+inline void basic_event_manager<std::string, go::async::placebo_lockable>::unsubscribe(const std::string& event_type, const event_subscription_key& key)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -219,7 +219,7 @@ inline void basic_event_manager<std::string, go::utility::placebo_lockable>::uns
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go::utility::placebo_lockable>::unsubscribe(const std::wstring& event_type, const event_subscription_key& key)
+inline void basic_event_manager<std::wstring, go::async::placebo_lockable>::unsubscribe(const std::wstring& event_type, const event_subscription_key& key)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -263,7 +263,7 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::unsubscribe
 }
 
 template<>
-inline void basic_event_manager<std::string, go::utility::placebo_lockable>::unsubscribe_all(const std::string& event_type)
+inline void basic_event_manager<std::string, go::async::placebo_lockable>::unsubscribe_all(const std::string& event_type)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -274,7 +274,7 @@ inline void basic_event_manager<std::string, go::utility::placebo_lockable>::uns
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go::utility::placebo_lockable>::unsubscribe_all(const std::wstring& event_type)
+inline void basic_event_manager<std::wstring, go::async::placebo_lockable>::unsubscribe_all(const std::wstring& event_type)
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     auto event_type_subscriptions = _subscriptions.find(event_type);
@@ -343,7 +343,7 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire(const 
 }
 
 template<>
-inline void basic_event_manager<std::string, go::utility::placebo_lockable>::fire(const std::shared_ptr<basic_event<std::string>>& e) const
+inline void basic_event_manager<std::string, go::async::placebo_lockable>::fire(const std::shared_ptr<basic_event<std::string>>& e) const
 {
     if (e)
     {
@@ -363,7 +363,7 @@ inline void basic_event_manager<std::string, go::utility::placebo_lockable>::fir
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go::utility::placebo_lockable>::fire(const std::shared_ptr<basic_event<std::wstring>>& e) const
+inline void basic_event_manager<std::wstring, go::async::placebo_lockable>::fire(const std::shared_ptr<basic_event<std::wstring>>& e) const
 {
     if (e)
     {
@@ -423,7 +423,7 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::post(const 
 }
 
 template<>
-inline void basic_event_manager<std::string, go::utility::placebo_lockable>::post(const std::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::string, go::async::placebo_lockable>::post(const std::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
 {
     if (e)
     {
@@ -433,7 +433,7 @@ inline void basic_event_manager<std::string, go::utility::placebo_lockable>::pos
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go::utility::placebo_lockable>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::wstring, go::async::placebo_lockable>::post(const std::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
 {
     if (e)
     {
@@ -481,7 +481,7 @@ inline void basic_event_manager<std::wstring, std::recursive_mutex>::fire_events
 }
 
 template<>
-inline void basic_event_manager<std::string, go::utility::placebo_lockable>::fire_events()
+inline void basic_event_manager<std::string, go::async::placebo_lockable>::fire_events()
 {
     std::deque<std::pair<std::weak_ptr<basic_event<std::string>>, std::shared_ptr<basic_event<std::string>>>> events;
     {
@@ -495,7 +495,7 @@ inline void basic_event_manager<std::string, go::utility::placebo_lockable>::fir
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go::utility::placebo_lockable>::fire_events()
+inline void basic_event_manager<std::wstring, go::async::placebo_lockable>::fire_events()
 {
     std::deque<std::pair<std::weak_ptr<basic_event<std::wstring>>, std::shared_ptr<basic_event<std::wstring>>>> events;
     {
@@ -537,14 +537,14 @@ inline size_t basic_event_manager<std::wstring, std::recursive_mutex>::events() 
 }
 
 template<>
-inline size_t basic_event_manager<std::string, go::utility::placebo_lockable>::events() const
+inline size_t basic_event_manager<std::string, go::async::placebo_lockable>::events() const
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     return _events.size();
 }
 
 template<>
-inline size_t basic_event_manager<std::wstring, go::utility::placebo_lockable>::events() const
+inline size_t basic_event_manager<std::wstring, go::async::placebo_lockable>::events() const
 {
     const std::lock_guard<lockable_type> lock(_events_guard);
     return _events.size();

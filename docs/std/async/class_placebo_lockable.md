@@ -1,20 +1,21 @@
 ---
-layout: boost_lib_utility
+layout: std_lib_async
 ---
 
 ```c++
-namespace go_boost::utility
+namespace go::async
 ```
 
 # class placebo_lockable
 
 ```c++
-<go_boost/utility/placebo_lockable.hpp>
+<go/async/placebo_lockable.hpp>
 ```
 
 The class **placebo_lockable** is a place holder, a
 [placebo](https://en.wikipedia.org/wiki/Placebo), for a lockable, e.g. a
-boost::mutex, when a lockable is required but not necessary.
+[std::mutex](https://en.cppreference.com/w/cpp/thread/mutex), when a lockable
+is required but not necessary.
 
 It is declared as:
 
@@ -23,20 +24,13 @@ class placebo_lockable
     : noncopyable_nonmovable
 {
 public:
-    virtual ~placebo_lockable();
-    constexpr placebo_lockable() noexcept;
+    virtual ~placebo_lockable() = default;
+    constexpr placebo_lockable() noexcept = default;
     void lock();
     bool try_lock();
     void unlock();
 };
 ```
-
-## Member types
-
-Member type | Definition
--|-
-scoped_lock | boost\::unique_lock<placebo_lockable>
-scoped_try_lock | boost\::detail\::try_lock_wrapper<placebo_lockable>
 
 ## Member functions
 
@@ -62,7 +56,7 @@ Specifiers | Signature
 -|-
 public | void lock()
 
-Placeholder for the boost::mutex lock function. Does nothing.
+Placeholder for the std::mutex lock function. Does nothing.
 
 ### try_lock
 
@@ -70,7 +64,7 @@ Specifiers | Signature
 -|-
 public | bool try_lock()
 
-Placeholder for the boost::mutex try_lock function. Does nothing. Always returns **true**.
+Placeholder for the std::mutex try_lock function. Does nothing. Always returns **true**.
 
 ### unlock
 
@@ -78,4 +72,4 @@ Specifiers | Signature
 -|-
 public | void unlock()
 
-Placeholder for the boost::mutex unlock function. Does nothing.
+Placeholder for the std::mutex unlock function. Does nothing.

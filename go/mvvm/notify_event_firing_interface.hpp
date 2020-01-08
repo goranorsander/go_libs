@@ -61,13 +61,13 @@ inline basic_notify_event_firing_interface<std::wstring, std::recursive_mutex>::
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::string, go::utility::placebo_lockable>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, go::async::placebo_lockable>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, go::utility::placebo_lockable>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, go::async::placebo_lockable>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }

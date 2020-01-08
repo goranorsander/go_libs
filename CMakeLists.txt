@@ -337,6 +337,17 @@ set(GO_DIR ${GO_LIBS_SOURCE_DIR}/go)
 file(GLOB GO_LIBS_SRC_GO_HPP ${GO_DIR}/*.hpp)
 
 ########################################################
+#  go/async                                            #
+########################################################
+
+set(GO_ASYNC_DIRNAME async)
+set(GO_ASYNC_DIR ${GO_DIR}/async)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_ASYNC_HPP ${GO_ASYNC_DIR}/*.hpp)
+
+########################################################
 #  go/config                                           #
 ########################################################
 
@@ -632,6 +643,17 @@ set(GO_BOOST_DIR ${GO_LIBS_SOURCE_DIR}/go_boost)
 # *.hpp
 
 file(GLOB GO_LIBS_SRC_GO_BOOST_HPP ${GO_BOOST_DIR}/*.hpp)
+
+########################################################
+#  go_boost/async                                      #
+########################################################
+
+set(GO_BOOST_ASYNC_DIRNAME async)
+set(GO_BOOST_ASYNC_DIR ${GO_BOOST_DIR}/async)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_ASYNC_HPP ${GO_BOOST_ASYNC_DIR}/*.hpp)
 
 ########################################################
 #  go_boost/config                                     #
@@ -955,6 +977,7 @@ ADD_SUBDIRECTORY(rnd)
 INSTALL(FILES ${GO_LIBS_MD}    DESTINATION  .)
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_HPP}                            DESTINATION  include/${GO_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_ASYNC_HPP}                      DESTINATION  include/${GO_DIRNAME}/${GO_ASYNC_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_COMPILER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_CONFIG_PLATFORM_DIRNAME})
@@ -982,6 +1005,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_RANGE_HPP}              DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DETAIL_DIRNAME})
 
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_ASYNC_HPP}                  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_ASYNC_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_COMPILER_DIRNAME})
@@ -1037,6 +1061,10 @@ set(GO_LIBS_LIBS_CMAKE
     ${ROOT_DIR}/libs/CMakeLists.txt
 )
 
+set(GO_LIBS_LIBS_BOOST_ASYNC_CMAKE
+    ${ROOT_DIR}/libs/boost_async/CMakeLists.txt
+)
+
 set(GO_LIBS_LIBS_BOOST_CONFIG_CMAKE
     ${ROOT_DIR}/libs/boost_config/CMakeLists.txt
 )
@@ -1067,6 +1095,10 @@ set(GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE
 
 set(GO_LIBS_LIBS_BOOST_UTILITY_CMAKE
     ${ROOT_DIR}/libs/boost_utility/CMakeLists.txt
+)
+
+set(GO_LIBS_LIBS_STD_ASYNC_CMAKE
+    ${ROOT_DIR}/libs/std_async/CMakeLists.txt
 )
 
 set(GO_LIBS_LIBS_STD_CONFIG_CMAKE
@@ -1115,6 +1147,7 @@ add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
     ${GO_LIBS_GO_CMAKE}
     ${GO_LIBS_GO_BOOST_CMAKE}
     ${GO_LIBS_LIBS_CMAKE}
+    ${GO_LIBS_LIBS_BOOST_ASYNC_CMAKE}
     ${GO_LIBS_LIBS_BOOST_CONFIG_CMAKE}
     ${GO_LIBS_LIBS_BOOST_DIAGNOSTICS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_EXCEPTION_CMAKE}
@@ -1123,6 +1156,7 @@ add_library(${PROJECT_GO_LIBS_CMAKE_NAME} STATIC
     ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE}
     ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE}
+    ${GO_LIBS_LIBS_STD_ASYNC_CMAKE}
     ${GO_LIBS_LIBS_STD_CONFIG_CMAKE}
     ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE}
     ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE}
@@ -1140,6 +1174,7 @@ source_group(CMake\\docs FILES ${GO_LIBS_DOCS_CMAKE})
 source_group(CMake\\go FILES ${GO_LIBS_GO_CMAKE})
 source_group(CMake\\go_boost FILES ${GO_LIBS_GO_BOOST_CMAKE})
 source_group(CMake\\libs FILES ${GO_LIBS_LIBS_CMAKE})
+source_group(CMake\\libs\\boost_async FILES ${GO_LIBS_LIBS_BOOST_ASYNC_CMAKE})
 source_group(CMake\\libs\\boost_config FILES ${GO_LIBS_LIBS_BOOST_CONFIG_CMAKE})
 source_group(CMake\\libs\\boost_diagnostics FILES ${GO_LIBS_LIBS_BOOST_DIAGNOSTICS_CMAKE})
 source_group(CMake\\libs\\boost_exception FILES ${GO_LIBS_LIBS_BOOST_EXCEPTION_CMAKE})
@@ -1148,6 +1183,7 @@ source_group(CMake\\libs\\boost_property FILES ${GO_LIBS_LIBS_BOOST_PROPERTY_CMA
 source_group(CMake\\libs\\boost_signals FILES ${GO_LIBS_LIBS_BOOST_SIGNALS_CMAKE})
 source_group(CMake\\libs\\boost_type_traits FILES ${GO_LIBS_LIBS_BOOST_TYPE_TRAITS_CMAKE})
 source_group(CMake\\libs\\boost_utility FILES ${GO_LIBS_LIBS_BOOST_UTILITY_CMAKE})
+source_group(CMake\\libs\\std_async FILES ${GO_LIBS_LIBS_STD_ASYNC_CMAKE})
 source_group(CMake\\libs\\std_config FILES ${GO_LIBS_LIBS_STD_CONFIG_CMAKE})
 source_group(CMake\\libs\\std_diagnostics FILES ${GO_LIBS_LIBS_STD_DIAGNOSTICS_CMAKE})
 source_group(CMake\\libs\\std_exception FILES ${GO_LIBS_LIBS_STD_EXCEPTION_CMAKE})

@@ -29,7 +29,7 @@ template<class T> class deque_observer
 {
 public:
     typedef deque_observer<T> this_type;
-    typedef typename m::observable_deque<T, u::placebo_lockable>::ptr observable_deque_ptr_type;
+    typedef typename m::observable_deque<T, a::placebo_lockable>::ptr observable_deque_ptr_type;
 
     virtual ~deque_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -156,7 +156,7 @@ private:
 TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_range)
 {
     // Test assign range
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -189,7 +189,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_range)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -223,8 +223,8 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_initializer_l
 TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::observable_deque<int, u::placebo_lockable>::ptr d1 = m::observable_deque<int, u::placebo_lockable>::create();
-    m::observable_deque<int, u::placebo_lockable>::ptr d2 = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d1 = m::observable_deque<int, a::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d2 = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d1->size());
@@ -237,7 +237,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_fill)
     EXPECT_EQ(7u, d1->size());
     EXPECT_EQ(0u, d2->size());
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it = d1->begin() + 1;
+    m::observable_deque<int, a::placebo_lockable>::iterator it = d1->begin() + 1;
 
     d2->assign(it, d1->end() - 1);
     EXPECT_EQ(7u, d1->size());
@@ -266,7 +266,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_assign_fill)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_push_back)
 {
     // Test push back
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -305,7 +305,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_push_back)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_push_front)
 {
     // Test push front
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -344,7 +344,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_push_front)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_pop_back)
 {
     // Test pop back
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -386,7 +386,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_pop_back)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_pop_front)
 {
     // Test pop front
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -428,7 +428,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_pop_front)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -438,7 +438,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_single_elemen
 
     o.connect(d);
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it = d->begin();
+    m::observable_deque<int, a::placebo_lockable>::iterator it = d->begin();
     d->insert(it + 2, 3);
     EXPECT_EQ(7u, d->size());
 
@@ -465,7 +465,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_single_elemen
 TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_fill)
 {
     // Test insert fill
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -475,7 +475,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_fill)
 
     o.connect(d);
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it = d->begin();
+    m::observable_deque<int, a::placebo_lockable>::iterator it = d->begin();
     d->insert(it + 3, 3, 74);
     EXPECT_EQ(10u, d->size());
 
@@ -505,8 +505,8 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_fill)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_deque<int, u::placebo_lockable>::ptr d1 = m::observable_deque<int, u::placebo_lockable>::create();
-    m::observable_deque<int, u::placebo_lockable>::ptr d2 = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d1 = m::observable_deque<int, a::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d2 = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d1->size());
@@ -520,7 +520,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_range)
 
     o.connect(d2);
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it = d2->begin();
+    m::observable_deque<int, a::placebo_lockable>::iterator it = d2->begin();
     d2->insert(it + 3, d1->begin(), d1->end());
     EXPECT_EQ(10u, d2->size());
 
@@ -550,7 +550,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_insert_range)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -561,8 +561,8 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_erase_position)
 
     o.connect(d);
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it1 = d->begin();
-    m::observable_deque<int, u::placebo_lockable>::iterator it2 = d->erase(it1 + 3);
+    m::observable_deque<int, a::placebo_lockable>::iterator it1 = d->begin();
+    m::observable_deque<int, a::placebo_lockable>::iterator it2 = d->erase(it1 + 3);
     EXPECT_EQ(6u, d->size());
 
     d->erase(it2);
@@ -589,7 +589,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_erase_position)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -621,8 +621,8 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_erase_range)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_swap)
 {
     // Test swap
-    m::observable_deque<int, u::placebo_lockable>::ptr d1 = m::observable_deque<int, u::placebo_lockable>::create();
-    m::observable_deque<int, u::placebo_lockable>::ptr d2 = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d1 = m::observable_deque<int, a::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d2 = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o1;
     deque_observer<int> o2;
 
@@ -683,7 +683,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_swap)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_clear)
 {
     // Test clear
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     EXPECT_EQ(0u, d->size());
@@ -712,7 +712,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_clear)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};
@@ -721,7 +721,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace)
 
     o.connect(d);
 
-    m::observable_deque<int, u::placebo_lockable>::iterator it = d->emplace(d->begin() + 1, 4);
+    m::observable_deque<int, a::placebo_lockable>::iterator it = d->emplace(d->begin() + 1, 4);
     EXPECT_EQ(4, *it);
 
     d->emplace(it, 5);
@@ -750,7 +750,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace_back)
 {
     // Test emplace back
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};
@@ -786,7 +786,7 @@ TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace_back)
 TEST(std_observable_deque_placebo_lockable_test_suite, test_emplace_front)
 {
     // Test emplace front
-    m::observable_deque<int, u::placebo_lockable>::ptr d = m::observable_deque<int, u::placebo_lockable>::create();
+    m::observable_deque<int, a::placebo_lockable>::ptr d = m::observable_deque<int, a::placebo_lockable>::create();
     deque_observer<int> o;
 
     const int a[] = {1, 2, 3};

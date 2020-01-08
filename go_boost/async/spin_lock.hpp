@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_UTILITY_SPIN_LOCK_HPP_INCLUDED
-#define GO_BOOST_UTILITY_SPIN_LOCK_HPP_INCLUDED
+#ifndef GO_BOOST_ASYNC_SPIN_LOCK_HPP_INCLUDED
+#define GO_BOOST_ASYNC_SPIN_LOCK_HPP_INCLUDED
 
 //
 //  spin_lock.hpp
@@ -22,7 +22,7 @@
 
 namespace go_boost
 {
-namespace utility
+namespace async
 {
 
 struct spin_lock
@@ -65,7 +65,7 @@ inline void spin_lock::unlock()
     _lock.clear(boost::memory_order_release);
 }
 
-} // namespace utility
+} // namespace async
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_UTILITY_SPIN_LOCK_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_ASYNC_SPIN_LOCK_HPP_INCLUDED

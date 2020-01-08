@@ -19,7 +19,7 @@
 #include "main_frame_view_model.hpp"
 
 class properties_view_model
-    : public m::view_model_interface<u::placebo_lockable>
+    : public m::view_model_interface<a::placebo_lockable>
     , public m::wobservable_object
     , public m::object_wobserver_interface
     , private m::data_context_interface<fleet_organization_model::ptr>

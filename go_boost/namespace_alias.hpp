@@ -13,6 +13,7 @@
 
 namespace go_boost
 {
+namespace async {}
 namespace diagnostics
 {
 namespace benchmark {}
@@ -50,6 +51,7 @@ namespace string {}
 }
 }
 
+namespace a = go_boost::async;
 namespace d = go_boost::diagnostics;
 namespace db = go_boost::diagnostics::benchmark;
 namespace dl = go_boost::diagnostics::log;

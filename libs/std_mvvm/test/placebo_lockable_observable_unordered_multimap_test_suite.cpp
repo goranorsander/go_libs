@@ -29,7 +29,7 @@ template<class K, class T> class unordered_multimap_observer
 {
 public:
     typedef unordered_multimap_observer<K, T> this_type;
-    typedef typename m::observable_unordered_multimap<K, T, u::placebo_lockable>::ptr observable_unordered_multimap_ptr_type;
+    typedef typename m::observable_unordered_multimap<K, T, a::placebo_lockable>::ptr observable_unordered_multimap_ptr_type;
 
     virtual ~unordered_multimap_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -156,30 +156,30 @@ private:
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(6u, m->size());
 
     o.connect(m);
 
-    m->insert(m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30));
+    m->insert(m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(7u, m->size());
 
     unsigned int count = 0u;
     int sum = 0;
-    for(const m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type& i : *m)
+    for(const m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type& i : *m)
     {
         sum += i.second;
         ++count;
@@ -202,32 +202,32 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(4u, m->size());
 
     o.connect(m);
 
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator it = m->insert(m->begin(), m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30));
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator it = m->insert(m->begin(), m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(5u, m->size());
 
-    it = m->insert(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->insert(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->insert(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(7u, m->size());
 
-    it = m->insert(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60));
+    it = m->insert(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(8u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action::add, o.last_action());
@@ -245,28 +245,28 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m1 = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m2 = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m1 = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m2 = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il1 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il1 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m1 = il1;
     EXPECT_EQ(4u, m1->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il2 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il2 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60)
     };
     *m2 = il2;
     EXPECT_EQ(3u, m2->size());
@@ -291,26 +291,26 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il1 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il1 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il2 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il2 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60)
     };
     EXPECT_EQ(3u, il2.size());
 
@@ -334,29 +334,29 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_insert_
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator it1 = m->begin();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator it2 = m->erase(it1);
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
@@ -377,20 +377,20 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_p
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_value)
 {
     // Test erase value
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
@@ -405,7 +405,7 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_v
 
     unsigned int count = 0u;
     int sum = 0;
-    for(const m::observable_unordered_map<int, int, u::placebo_lockable>::value_type& i : *m)
+    for(const m::observable_unordered_map<int, int, a::placebo_lockable>::value_type& i : *m)
     {
         sum += i.second;
         ++count;
@@ -428,30 +428,30 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_v
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator begin = m->begin();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator begin = m->begin();
     ++begin;
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator end = m->end();
-    const bool moved_backward = mi::try_move_backward<m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator>(m, end);
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator end = m->end();
+    const bool moved_backward = mi::try_move_backward<m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator>(m, end);
     EXPECT_EQ(moved_backward, true);
 
     m->erase(begin, end);
@@ -472,31 +472,31 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_erase_r
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_swap)
 {
     // Test swap
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m1 = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m2 = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m1 = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m2 = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o1;
     unordered_multimap_observer<int, int> o2;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il1 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il1 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50)
     };
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il2 =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il2 =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(10, 100),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(20, 200),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(30, 300),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(40, 400),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(50, 500),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(60, 600),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(70, 700)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(10, 100),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(20, 200),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(30, 300),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(40, 400),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(50, 500),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(60, 600),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(70, 700)
     };
     *m1 = il1;
     *m2 = il2;
@@ -512,7 +512,7 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_swap)
 
     unsigned int count = 0u;
     int sum = 0;
-    for(const m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type& i : *m1)
+    for(const m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type& i : *m1)
     {
         sum += i.second;
         ++count;
@@ -522,7 +522,7 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_swap)
 
     count = 0;
     sum = 0;
-    for(const m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type& i : *m2)
+    for(const m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type& i : *m2)
     {
         sum += i.second;
         ++count;
@@ -556,20 +556,20 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_swap)
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_clear)
 {
     // Test clear
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
@@ -594,39 +594,39 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_clear)
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30)
     };
     *m = il;
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator it = m->emplace(m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator it = m->emplace(m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50));
+    it = m->emplace(m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50));
     EXPECT_EQ(5, it->first);
     EXPECT_EQ(50, it->second);
 
-    it = m->emplace(m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->emplace(m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60));
+    it = m->emplace(m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 
     unsigned int count = 0u;
     int sum = 0;
-    for(const m::observable_unordered_map<int, int, u::placebo_lockable>::value_type& i : *m)
+    for(const m::observable_unordered_map<int, int, a::placebo_lockable>::value_type& i : *m)
     {
         sum += i.second;
         ++count;
@@ -649,33 +649,33 @@ TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_emplace
 TEST(std_observable_unordered_multimap_placebo_lockable_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, u::placebo_lockable>::create();
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::ptr m = m::observable_unordered_multimap<int, int, a::placebo_lockable>::create();
     unordered_multimap_observer<int, int> o;
 
-    const std::initializer_list<m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type> il =
+    const std::initializer_list<m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type> il =
     {
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(5, 50)
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(5, 50)
     };
     *m = il;
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    m::observable_unordered_multimap<int, int, u::placebo_lockable>::iterator it = m->emplace_hint(m->begin(), m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(3, 30));
+    m::observable_unordered_multimap<int, int, a::placebo_lockable>::iterator it = m->emplace_hint(m->begin(), m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, u::placebo_lockable>::value_type(6, 60));
+    it = m->emplace_hint(it, m::observable_unordered_multimap<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 

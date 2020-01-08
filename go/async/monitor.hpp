@@ -1,5 +1,5 @@
-#ifndef GO_UTILITY_MONITOR_HPP_INCLUDED
-#define GO_UTILITY_MONITOR_HPP_INCLUDED
+#ifndef GO_ASYNC_MONITOR_HPP_INCLUDED
+#define GO_ASYNC_MONITOR_HPP_INCLUDED
 
 //
 //  monitor.hpp
@@ -21,7 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 namespace go
 {
-namespace utility
+namespace async
 {
 
 template<class T, class L = std::recursive_mutex>
@@ -276,4 +276,4 @@ private:
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_UTILITY_MONITOR_HPP_INCLUDED
+#endif  // #ifndef GO_ASYNC_MONITOR_HPP_INCLUDED

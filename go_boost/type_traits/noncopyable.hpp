@@ -24,7 +24,7 @@ namespace go_boost
 namespace type_traits
 {
 
-typedef noncopyable boost::noncopyable;
+typedef boost::noncopyable noncopyable;
 
 }
 }

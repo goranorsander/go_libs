@@ -18,9 +18,9 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <string>
+#include <go_boost/async/placebo_lockable.hpp>
 #include <go_boost/mvvm/command_interface.hpp>
 #include <go_boost/signals.hpp>
-#include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
 {
@@ -34,8 +34,8 @@ typedef basic_notify_command_execution_interface<std::wstring, boost::recursive_
 namespace single_threaded
 {
 
-typedef basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable> notify_wcommand_execution_interface;
+typedef basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable> notify_wcommand_execution_interface;
 
 }
 
@@ -79,14 +79,14 @@ inline basic_notify_command_execution_interface<std::wstring, boost::recursive_m
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -114,14 +114,14 @@ inline basic_notify_command_execution_interface<std::wstring, boost::recursive_m
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>::basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable>::basic_notify_command_execution_interface()
     : command_executed()
     , command_not_executed()
 {
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable>::basic_notify_command_execution_interface()
     : command_executed()
     , command_not_executed()
 {
@@ -147,13 +147,13 @@ inline void basic_notify_command_execution_interface<std::wstring, boost::recurs
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>& command) const
 {
     this->command_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable>::notify_command_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>& command) const
 {
     this->command_executed(command);
 }
@@ -177,13 +177,13 @@ inline void basic_notify_command_execution_interface<std::wstring, boost::recurs
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>& command) const
 {
     this->command_not_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable>::notify_command_not_executed(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>& command) const
 {
     this->command_not_executed(command);
 }

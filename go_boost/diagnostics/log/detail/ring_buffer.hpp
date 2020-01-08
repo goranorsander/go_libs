@@ -17,9 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/async/spin_lock.hpp>
 #include <go_boost/diagnostics/log/detail/buffer_interface.hpp>
 #include <go_boost/type_traits/noncopyable_nonmovable.hpp>
-#include <go_boost/utility/spin_lock.hpp>
 
 namespace go_boost
 {
@@ -81,7 +81,7 @@ public:
     virtual bool try_pop(L& logline) GO_BOOST_OVERRIDE
     {
         element& item = _ring[_read_index % _size];
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(item.lock);
+        const boost::lock_guard<go_boost::async::spin_lock> lock(item.lock);
         if (item.written == 1)
         {
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
@@ -108,7 +108,7 @@ private:
         {
         }
 
-        go_boost::utility::spin_lock lock;
+        go_boost::async::spin_lock lock;
         bool written;
         log_line_type logline;
     };
@@ -128,7 +128,7 @@ inline void ring_buffer<log_line>::push(log_line&& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const boost::lock_guard<go_boost::utility::spin_lock> lock(item.lock);
+    const boost::lock_guard<go_boost::async::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = 1;
 }
@@ -138,7 +138,7 @@ inline void ring_buffer<wlog_line>::push(wlog_line&& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const boost::lock_guard<go_boost::utility::spin_lock> lock(item.lock);
+    const boost::lock_guard<go_boost::async::spin_lock> lock(item.lock);
     item.logline = std::move(logline);
     item.written = 1;
 }
@@ -150,7 +150,7 @@ inline void ring_buffer<log_line>::push(const log_line& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const boost::lock_guard<go_boost::utility::spin_lock> lock(item.lock);
+    const boost::lock_guard<go_boost::async::spin_lock> lock(item.lock);
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     item.logline = std::move(logline);
 #else
@@ -164,7 +164,7 @@ inline void ring_buffer<wlog_line>::push(const wlog_line& logline)
 {
     const unsigned int write_index = _write_index.fetch_add(1, boost::memory_order_relaxed) % _size;
     element& item = _ring[write_index];
-    const boost::lock_guard<go_boost::utility::spin_lock> lock(item.lock);
+    const boost::lock_guard<go_boost::async::spin_lock> lock(item.lock);
 #if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
     item.logline = std::move(logline);
 #else

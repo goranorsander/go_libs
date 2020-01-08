@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
-#define GO_BOOST_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#ifndef GO_BOOST_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#define GO_BOOST_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
 
 //
 //  recursive_spin_lock.hpp
@@ -20,7 +20,7 @@
 
 namespace go_boost
 {
-namespace utility
+namespace async
 {
 
 struct recursive_spin_lock
@@ -111,7 +111,7 @@ inline const boost::thread::id& recursive_spin_lock::this_thread_local() const
     return *this_thread_local;
 }
 
-} // namespace utility
+} // namespace async
 } // namespace go_boost
 
-#endif  // #ifndef GO_BOOST_UTILITY_RECURSIVE_SPIN_LOCK_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_ASYNC_RECURSIVE_SPIN_LOCK_HPP_INCLUDED

@@ -11,7 +11,7 @@
 #include <go_boost/config.hpp>
 #include <iostream>
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility.hpp>
+#include <go_boost/type_traits.hpp>
 
 #if !defined(GO_BOOST_NO_CXX11_FUNDAMENTAL_TYPE_SPECIALIZER)
 

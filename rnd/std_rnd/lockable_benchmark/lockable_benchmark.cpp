@@ -17,11 +17,11 @@ int main() { return -1; }
 
 #include <iostream>
 #include <vector>
+#include <go/async/placebo_lockable.hpp>
+#include <go/async/recursive_spin_lock.hpp>
+#include <go/async/spin_lock.hpp>
 #include <go/diagnostics/benchmark.hpp>
 #include <go/namespace_alias.hpp>
-#include <go/utility/placebo_lockable.hpp>
-#include <go/utility/recursive_spin_lock.hpp>
-#include <go/utility/spin_lock.hpp>
 
 #if defined(GO_STD_MUTEX_ASSIGNMENT_OPERATOR_IS_PRIVATE_ISSUE)
 #include <memory>
@@ -164,7 +164,7 @@ void go_utility_placebo_lockable()
 {
     db::stopwatch lock_duration;
     db::stopwatch unlock_duration;
-    lock_and_unlock<u::placebo_lockable>(100, lock_duration, unlock_duration);
+    lock_and_unlock<a::placebo_lockable>(100, lock_duration, unlock_duration);
     std::cout << "go_utility_placebo_lockable: 100M lock in " << lock_duration.total_duration().count() << " microseconds, 100M unlock in " << unlock_duration.total_duration().count() << " microseconds" << std::endl;
 }
 
@@ -172,7 +172,7 @@ void go_utility_spin_lock()
 {
     db::stopwatch lock_duration;
     db::stopwatch unlock_duration;
-    lock_and_unlock<u::spin_lock>(100, lock_duration, unlock_duration);
+    lock_and_unlock<a::spin_lock>(100, lock_duration, unlock_duration);
     std::cout << "go_utility_spin_lock: 100M lock in " << lock_duration.total_duration().count() << " microseconds, 100M unlock in " << unlock_duration.total_duration().count() << " microseconds" << std::endl;
 }
 
@@ -180,7 +180,7 @@ void go_utility_recursive_spin_lock()
 {
     db::stopwatch lock_duration;
     db::stopwatch unlock_duration;
-    lock_and_unlock<u::recursive_spin_lock>(100, lock_duration, unlock_duration);
+    lock_and_unlock<a::recursive_spin_lock>(100, lock_duration, unlock_duration);
     std::cout << "go_utility_recursive_spin_lock: 100M lock in " << lock_duration.total_duration().count() << " microseconds, 100M unlock in " << unlock_duration.total_duration().count() << " microseconds" << std::endl;
 }
 
@@ -188,7 +188,7 @@ void go_utility_recursive_spin_lock_recursive()
 {
     db::stopwatch lock_duration;
     db::stopwatch unlock_duration;
-    recursive_lock_and_unlock<u::recursive_spin_lock>(100, lock_duration, unlock_duration);
+    recursive_lock_and_unlock<a::recursive_spin_lock>(100, lock_duration, unlock_duration);
     std::cout << "go_utility_recursive_spin_lock_recursive: 100M lock in " << lock_duration.total_duration().count() << " microseconds, 100M unlock in " << unlock_duration.total_duration().count() << " microseconds" << std::endl;
 }
 

@@ -20,8 +20,8 @@
 #include <deque>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
+#include <go_boost/async/placebo_lockable.hpp>
 #include <go_boost/mvvm/notify_command_execution_interface.hpp>
-#include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
 {
@@ -35,8 +35,8 @@ typedef basic_command_manager<std::wstring, boost::recursive_mutex> wcommand_man
 namespace single_threaded
 {
 
-typedef basic_command_manager<std::string, go_boost::utility::placebo_lockable> command_manager;
-typedef basic_command_manager<std::wstring, go_boost::utility::placebo_lockable> wcommand_manager;
+typedef basic_command_manager<std::string, go_boost::async::placebo_lockable> command_manager;
+typedef basic_command_manager<std::wstring, go_boost::async::placebo_lockable> wcommand_manager;
 
 }
 
@@ -85,13 +85,13 @@ inline basic_command_manager<std::wstring, boost::recursive_mutex>::~basic_comma
 }
 
 template<>
-inline basic_command_manager<std::string, go_boost::utility::placebo_lockable>::~basic_command_manager()
+inline basic_command_manager<std::string, go_boost::async::placebo_lockable>::~basic_command_manager()
 {
     _commands.clear();
 }
 
 template<>
-inline basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::~basic_command_manager()
+inline basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::~basic_command_manager()
 {
     _commands.clear();
 }
@@ -123,8 +123,8 @@ inline basic_command_manager<std::wstring, boost::recursive_mutex>::basic_comman
 }
 
 template<>
-inline basic_command_manager<std::string, go_boost::utility::placebo_lockable>::basic_command_manager()
-    : basic_notify_command_execution_interface<std::string, go_boost::utility::placebo_lockable>()
+inline basic_command_manager<std::string, go_boost::async::placebo_lockable>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::string, go_boost::async::placebo_lockable>()
     , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
@@ -133,8 +133,8 @@ inline basic_command_manager<std::string, go_boost::utility::placebo_lockable>::
 }
 
 template<>
-inline basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::basic_command_manager()
-    : basic_notify_command_execution_interface<std::wstring, go_boost::utility::placebo_lockable>()
+inline basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::basic_command_manager()
+    : basic_notify_command_execution_interface<std::wstring, go_boost::async::placebo_lockable>()
     , go_boost::type_traits::noncopyable_nonmovable()
     , _commands_guard()
     , _commands()
@@ -189,7 +189,7 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::execute
 }
 
 template<>
-inline void basic_command_manager<std::string, go_boost::utility::placebo_lockable>::execute(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_command_manager<std::string, go_boost::async::placebo_lockable>::execute(const boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>& command) const
 {
     if (command)
     {
@@ -207,7 +207,7 @@ inline void basic_command_manager<std::string, go_boost::utility::placebo_lockab
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::execute(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>& command) const
+inline void basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::execute(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>& command) const
 {
     if (command)
     {
@@ -263,22 +263,22 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::post(co
 }
 
 template<>
-inline void basic_command_manager<std::string, go_boost::utility::placebo_lockable>::post(const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::string, go_boost::async::placebo_lockable>::post(const boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>& command, const bool keep_command_alive)
 {
     if (command)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
-        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>>(boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>()));
+        const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>>(boost::weak_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>()));
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::post(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::post(const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>& command, const bool keep_command_alive)
 {
     if (command)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
-        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>>(boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>()));
+        const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
+        _commands.push_back(std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>>(boost::weak_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>(command), keep_command_alive ? command : boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>()));
     }
 }
 
@@ -325,33 +325,33 @@ inline void basic_command_manager<std::wstring, boost::recursive_mutex>::execute
 }
 
 template<>
-inline void basic_command_manager<std::string, go_boost::utility::placebo_lockable>::execute_commands()
+inline void basic_command_manager<std::string, go_boost::async::placebo_lockable>::execute_commands()
 {
-    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>>>> command_list_type;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>>>> command_list_type;
     command_list_type commands;
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
         std::swap(commands, _commands);
     }
     BOOST_FOREACH(const GO_BOOST_TYPENAME command_list_type::value_type& wcommand, commands)
     {
-        const boost::shared_ptr<basic_command_interface<std::string, go_boost::utility::placebo_lockable>> command = wcommand.first.lock();
+        const boost::shared_ptr<basic_command_interface<std::string, go_boost::async::placebo_lockable>> command = wcommand.first.lock();
         execute(command);
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::execute_commands()
+inline void basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::execute_commands()
 {
-    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>>>> command_list_type;
+    typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>, boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>>>> command_list_type;
     command_list_type commands;
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
         std::swap(commands, _commands);
     }
     BOOST_FOREACH(const GO_BOOST_TYPENAME command_list_type::value_type& wcommand, commands)
     {
-        const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::utility::placebo_lockable>> command = wcommand.first.lock();
+        const boost::shared_ptr<basic_command_interface<std::wstring, go_boost::async::placebo_lockable>> command = wcommand.first.lock();
         execute(command);
     }
 }
@@ -387,16 +387,16 @@ inline size_t basic_command_manager<std::wstring, boost::recursive_mutex>::comma
 }
 
 template<>
-inline size_t basic_command_manager<std::string, go_boost::utility::placebo_lockable>::commands() const
+inline size_t basic_command_manager<std::string, go_boost::async::placebo_lockable>::commands() const
 {
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
     return _commands.size();
 }
 
 template<>
-inline size_t basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::commands() const
+inline size_t basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::commands() const
 {
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_commands_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_commands_guard);
     return _commands.size();
 }
 
@@ -442,7 +442,7 @@ inline boost::shared_ptr<basic_command_manager<std::wstring, boost::recursive_mu
 }
 
 template<>
-inline boost::shared_ptr<basic_command_manager<std::string, go_boost::utility::placebo_lockable>> basic_command_manager<std::string, go_boost::utility::placebo_lockable>::create()
+inline boost::shared_ptr<basic_command_manager<std::string, go_boost::async::placebo_lockable>> basic_command_manager<std::string, go_boost::async::placebo_lockable>::create()
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler
@@ -459,7 +459,7 @@ inline boost::shared_ptr<basic_command_manager<std::string, go_boost::utility::p
 }
 
 template<>
-inline boost::shared_ptr<basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>> basic_command_manager<std::wstring, go_boost::utility::placebo_lockable>::create()
+inline boost::shared_ptr<basic_command_manager<std::wstring, go_boost::async::placebo_lockable>> basic_command_manager<std::wstring, go_boost::async::placebo_lockable>::create()
 {
 #if BOOST_MSVC > 1500
     struct make_shared_enabler

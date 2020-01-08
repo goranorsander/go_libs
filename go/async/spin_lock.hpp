@@ -1,5 +1,5 @@
-#ifndef GO_UTILITY_SPIN_LOCK_HPP_INCLUDED
-#define GO_UTILITY_SPIN_LOCK_HPP_INCLUDED
+#ifndef GO_ASYNC_SPIN_LOCK_HPP_INCLUDED
+#define GO_ASYNC_SPIN_LOCK_HPP_INCLUDED
 
 //
 //  spin_lock.hpp
@@ -21,7 +21,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 namespace go
 {
-namespace utility
+namespace async
 {
 
 struct spin_lock
@@ -68,9 +68,9 @@ inline void spin_lock::unlock()
     _lock.clear(std::memory_order_release);
 }
 
-} // namespace utility
+} // namespace async
 } // namespace go
 
 #endif  // Required C++11 feature is not supported by this compiler
 
-#endif  // #ifndef GO_UTILITY_SPIN_LOCK_HPP_INCLUDED
+#endif  // #ifndef GO_ASYNC_SPIN_LOCK_HPP_INCLUDED

@@ -19,8 +19,8 @@
 
 #include <string>
 
+#include <go_boost/async/placebo_lockable.hpp>
 #include <go_boost/mvvm/command_interface.hpp>
-#include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
 {
@@ -34,8 +34,8 @@ typedef basic_command_execution_observer_interface<std::wstring, boost::recursiv
 namespace single_threaded
 {
 
-typedef basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_lockable> command_execution_observer_interface;
-typedef basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_lockable> wcommand_execution_wobserver_interface;
+typedef basic_command_execution_observer_interface<std::string, go_boost::async::placebo_lockable> command_execution_observer_interface;
+typedef basic_command_execution_observer_interface<std::wstring, go_boost::async::placebo_lockable> wcommand_execution_wobserver_interface;
 
 }
 
@@ -69,12 +69,12 @@ inline basic_command_execution_observer_interface<std::wstring, boost::recursive
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_lockable>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, go_boost::async::placebo_lockable>::~basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_lockable>::~basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, go_boost::async::placebo_lockable>::~basic_command_execution_observer_interface()
 {
 }
 
@@ -94,12 +94,12 @@ inline basic_command_execution_observer_interface<std::wstring, boost::recursive
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::string, go_boost::utility::placebo_lockable>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::string, go_boost::async::placebo_lockable>::basic_command_execution_observer_interface()
 {
 }
 
 template<>
-inline basic_command_execution_observer_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_command_execution_observer_interface()
+inline basic_command_execution_observer_interface<std::wstring, go_boost::async::placebo_lockable>::basic_command_execution_observer_interface()
 {
 }
 

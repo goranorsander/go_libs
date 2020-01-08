@@ -1,5 +1,5 @@
-#ifndef GO_BOOST_UTILITY_PLACEBO_LOCKABLE_HPP_INCLUDED
-#define GO_BOOST_UTILITY_PLACEBO_LOCKABLE_HPP_INCLUDED
+#ifndef GO_BOOST_ASYNC_PLACEBO_LOCKABLE_HPP_INCLUDED
+#define GO_BOOST_ASYNC_PLACEBO_LOCKABLE_HPP_INCLUDED
 
 //
 //  placebo_lockable.hpp
@@ -21,7 +21,7 @@
 
 namespace go_boost
 {
-namespace utility
+namespace async
 {
 
 class placebo_lockable
@@ -64,4 +64,4 @@ inline void placebo_lockable::unlock()
 }
 }
 
-#endif  // #ifndef GO_BOOST_UTILITY_PLACEBO_LOCKABLE_HPP_INCLUDED
+#endif  // #ifndef GO_BOOST_ASYNC_PLACEBO_LOCKABLE_HPP_INCLUDED

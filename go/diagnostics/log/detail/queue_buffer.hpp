@@ -17,9 +17,9 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/async/spin_lock.hpp>
 #include <go/diagnostics/log/detail/buffer_interface.hpp>
 #include <go/diagnostics/log/log_line.hpp>
-#include <go/utility/spin_lock.hpp>
 
 #include <mutex>
 #include <queue>
@@ -53,14 +53,14 @@ public:
 
     virtual void push(L&& logline) override
     {
-        const std::lock_guard<go::utility::spin_lock> lock(this->_lock);
+        const std::lock_guard<go::async::spin_lock> lock(this->_lock);
         element e(std::move(logline));
         this->_queue.push(std::move(e));
     }
 
     virtual bool try_pop(L& logline) override
     {
-        const std::lock_guard<go::utility::spin_lock> lock(this->_lock);
+        const std::lock_guard<go::async::spin_lock> lock(this->_lock);
         if (this->_queue.empty())
         {
             return false;
@@ -124,7 +124,7 @@ private:
 
 private:
     std::queue<element> _queue;
-    go::utility::spin_lock _lock;
+    go::async::spin_lock _lock;
 };
 
 } // namespace detail

@@ -15,18 +15,9 @@
 
 #include <go/utility/exchange.hpp>
 #include <go/utility/min_max.hpp>
-#include <go/utility/monitor.hpp>
-#include <go/type_traits/noncopyable.hpp>
-#include <go/type_traits/noncopyable_nonmovable.hpp>
-#include <go/type_traits/nonmovable.hpp>
-#include <go/utility/placebo_lockable.hpp>
-#include <go/type_traits/fundamental_type_implicit_specializer.hpp>
-#include <go/type_traits/fundamental_type_specializer.hpp>
-#include <go/utility/recursive_spin_lock.hpp>
 #include <go/utility/sanity.hpp>
 #include <go/utility/scope_guard.hpp>
 #include <go/utility/scope_guard_new.hpp>
-#include <go/utility/spin_lock.hpp>
 #include <go/utility/string_cast.hpp>
 #include <go/utility/u2string.hpp>
 #include <go/utility/u8string.hpp>

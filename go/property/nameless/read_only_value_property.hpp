@@ -17,10 +17,10 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <go/async/placebo_lockable.hpp>
 #include <go/property/nameless/detail/arithmetic_comparison_operators.hpp>
 #include <go/property/nameless/detail/read_only_property_base.hpp>
 #include <go/property/policy/value.hpp>
-#include <go/utility/placebo_lockable.hpp>
 #include <go/utility/u8string.hpp>
 
 namespace go

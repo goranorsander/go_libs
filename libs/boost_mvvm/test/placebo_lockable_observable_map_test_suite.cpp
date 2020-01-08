@@ -25,7 +25,7 @@ template<class K, class T> class map_observer
 {
 public:
     typedef map_observer<K, T> this_type;
-    typedef typename m::observable_map<K, T, u::placebo_lockable>::ptr observable_map_ptr_type;
+    typedef typename m::observable_map<K, T, a::placebo_lockable>::ptr observable_map_ptr_type;
 
     virtual ~map_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -157,7 +157,7 @@ private:
 TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -171,7 +171,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_elemen
 
     o.connect(m);
 
-    m->insert(m::observable_map<int, int, u::placebo_lockable>::value_type(3, 30));
+    m->insert(m::observable_map<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(7u, m->size());
 
     typedef m::observable_map<int, int> observable_map_type;
@@ -199,7 +199,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_elemen
 TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -211,16 +211,16 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_elemen
 
     o.connect(m);
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->insert(m->begin(), m::observable_map<int, int, u::placebo_lockable>::value_type(3, 30));
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->insert(m->begin(), m::observable_map<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(5u, m->size());
 
-    it = m->insert(it, m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->insert(it, m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->insert(it, m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::observable_map<int, int, u::placebo_lockable>::value_type(6, 60));
+    it = m->insert(it, m::observable_map<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(7u, m->size());
 
     typedef m::observable_map<int, int> observable_map_type;
@@ -248,8 +248,8 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_single_elemen
 TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_map<int, int, u::placebo_lockable>::ptr m1 = m::observable_map<int, int, u::placebo_lockable>::create();
-    m::observable_map<int, int, u::placebo_lockable>::ptr m2 = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m1 = m::observable_map<int, int, a::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m2 = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m1->size());
@@ -271,7 +271,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_range)
     m2->insert(m1->begin(), m1->end());
     EXPECT_EQ(7u, m2->size());
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m2->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m2->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -312,26 +312,26 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_range)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::observable_map<int, int, u::placebo_lockable>::value_type> il1 =
+    const std::initializer_list<m::observable_map<int, int, a::placebo_lockable>::value_type> il1 =
     {
-        m::observable_map<int, int, u::placebo_lockable>::value_type(1, 10),
-        m::observable_map<int, int, u::placebo_lockable>::value_type(2, 20),
-        m::observable_map<int, int, u::placebo_lockable>::value_type(5, 50),
-        m::observable_map<int, int, u::placebo_lockable>::value_type(7, 70)
+        m::observable_map<int, int, a::placebo_lockable>::value_type(1, 10),
+        m::observable_map<int, int, a::placebo_lockable>::value_type(2, 20),
+        m::observable_map<int, int, a::placebo_lockable>::value_type(5, 50),
+        m::observable_map<int, int, a::placebo_lockable>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4u, m->size());
 
-    const std::initializer_list<m::observable_map<int, int, u::placebo_lockable>::value_type> il2 =
+    const std::initializer_list<m::observable_map<int, int, a::placebo_lockable>::value_type> il2 =
     {
-        m::observable_map<int, int, u::placebo_lockable>::value_type(3, 30),
-        m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40),
-        m::observable_map<int, int, u::placebo_lockable>::value_type(6, 60)
+        m::observable_map<int, int, a::placebo_lockable>::value_type(3, 30),
+        m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40),
+        m::observable_map<int, int, a::placebo_lockable>::value_type(6, 60)
     };
     EXPECT_EQ(3u, il2.size());
 
@@ -340,7 +340,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_initializer_l
     m->insert(il2);
     EXPECT_EQ(7u, m->size());
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -381,7 +381,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_insert_initializer_l
 TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -397,9 +397,9 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_position)
 
     o.connect(m);
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it1 = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::observable_map<int, int, u::placebo_lockable>::iterator it2 = m->erase(it1);
+    m::observable_map<int, int, a::placebo_lockable>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
@@ -438,7 +438,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_position)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_value)
 {
     // Test erase value
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -460,7 +460,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5u, m->size());
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -493,7 +493,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_value)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -509,15 +509,15 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_range)
 
     o.connect(m);
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator begin = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator begin = m->begin();
     ++begin;
-    m::observable_map<int, int, u::placebo_lockable>::iterator end = m->end();
+    m::observable_map<int, int, a::placebo_lockable>::iterator end = m->end();
     --end;
 
     m->erase(begin, end);
     EXPECT_EQ(2u, m->size());
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -541,8 +541,8 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_erase_range)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_swap)
 {
     // Test swap
-    m::observable_map<int, int, u::placebo_lockable>::ptr m1 = m::observable_map<int, int, u::placebo_lockable>::create();
-    m::observable_map<int, int, u::placebo_lockable>::ptr m2 = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m1 = m::observable_map<int, int, a::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m2 = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o1;
     map_observer<int, int> o2;
 
@@ -617,7 +617,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_swap)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_clear)
 {
     // Test clear
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -653,7 +653,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_clear)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     (*m)[1] = 10;
@@ -663,27 +663,27 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_emplace)
 
     o.connect(m);
 
-    auto ret = m->emplace(m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    auto ret = m->emplace(m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::observable_map<int, int, u::placebo_lockable>::value_type(5, 50));
+    ret = m->emplace(m::observable_map<int, int, a::placebo_lockable>::value_type(5, 50));
     EXPECT_EQ(5, ret.first->first);
     EXPECT_EQ(50, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    ret = m->emplace(m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_FALSE(ret.second);
 
-    ret = m->emplace(m::observable_map<int, int, u::placebo_lockable>::value_type(6, 60));
+    ret = m->emplace(m::observable_map<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(6, ret.first->first);
     EXPECT_EQ(60, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->begin();
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -723,7 +723,7 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_emplace)
 TEST(boost_observable_map_placebo_lockable_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::observable_map<int, int, u::placebo_lockable>::ptr m = m::observable_map<int, int, u::placebo_lockable>::create();
+    m::observable_map<int, int, a::placebo_lockable>::ptr m = m::observable_map<int, int, a::placebo_lockable>::create();
     map_observer<int, int> o;
 
     (*m)[1] = 10;
@@ -733,19 +733,19 @@ TEST(boost_observable_map_placebo_lockable_test_suite, test_emplace_hint)
 
     o.connect(m);
 
-    m::observable_map<int, int, u::placebo_lockable>::iterator it = m->emplace_hint(m->begin(), m::observable_map<int, int, u::placebo_lockable>::value_type(3, 30));
+    m::observable_map<int, int, a::placebo_lockable>::iterator it = m->emplace_hint(m->begin(), m::observable_map<int, int, a::placebo_lockable>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::observable_map<int, int, u::placebo_lockable>::value_type(4, 40));
+    it = m->emplace_hint(it, m::observable_map<int, int, a::placebo_lockable>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::observable_map<int, int, u::placebo_lockable>::value_type(6, 60));
+    it = m->emplace_hint(it, m::observable_map<int, int, a::placebo_lockable>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 

@@ -13,6 +13,7 @@
 
 namespace go
 {
+namespace async {}
 namespace diagnostics
 {
 namespace benchmark {}
@@ -50,6 +51,7 @@ namespace string {}
 }
 }
 
+namespace a = go::async;
 namespace d = go::diagnostics;
 namespace db = go::diagnostics::benchmark;
 namespace dl = go::diagnostics::log;

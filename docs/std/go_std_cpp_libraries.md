@@ -10,6 +10,7 @@ The **GO Std C++ Libraries** uses **C++11/14/17/2a** and the **C++ Standard Libr
 
 ## Libraries
 
+* [Async](./async/async.html)
 * [Config](./config/config.html)
 * [Diagnostics](./diagnostics/diagnostics.html)
 * [Exception](./exception/exception.html)

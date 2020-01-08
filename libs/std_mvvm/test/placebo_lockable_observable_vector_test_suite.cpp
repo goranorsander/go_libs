@@ -29,7 +29,7 @@ template<class T> class vector_observer
 {
 public:
     typedef vector_observer<T> this_type;
-    typedef typename m::observable_vector<T, u::placebo_lockable>::ptr observable_vector_ptr_type;
+    typedef typename m::observable_vector<T, a::placebo_lockable>::ptr observable_vector_ptr_type;
 
     virtual ~vector_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -156,7 +156,7 @@ private:
 TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_range)
 {
     // Test assign range
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -189,7 +189,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_range)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -223,8 +223,8 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_initializer_
 TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::observable_vector<int, u::placebo_lockable>::ptr v1 = m::observable_vector<int, u::placebo_lockable>::create();
-    m::observable_vector<int, u::placebo_lockable>::ptr v2 = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v1 = m::observable_vector<int, a::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v2 = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v1->size());
@@ -237,7 +237,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_fill)
     EXPECT_EQ(7u, v1->size());
     EXPECT_EQ(0u, v2->size());
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it = v1->begin() + 1;
+    m::observable_vector<int, a::placebo_lockable>::iterator it = v1->begin() + 1;
 
     v2->assign(it, v1->end() - 1);
     EXPECT_EQ(7u, v1->size());
@@ -266,7 +266,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_assign_fill)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_push_back)
 {
     // Test push back
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -305,7 +305,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_push_back)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_pop_back)
 {
     // Test pop back
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -347,7 +347,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_pop_back)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -357,7 +357,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_single_eleme
 
     o.connect(v);
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it = v->begin();
+    m::observable_vector<int, a::placebo_lockable>::iterator it = v->begin();
     v->insert(it + 2, 3);
     EXPECT_EQ(7u, v->size());
 
@@ -384,7 +384,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_single_eleme
 TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_fill)
 {
     // Test insert fill
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -394,7 +394,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_fill)
 
     o.connect(v);
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it = v->begin();
+    m::observable_vector<int, a::placebo_lockable>::iterator it = v->begin();
     v->insert(it + 3, 3, 74);
     EXPECT_EQ(10u, v->size());
 
@@ -424,8 +424,8 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_fill)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_vector<int, u::placebo_lockable>::ptr v1 = m::observable_vector<int, u::placebo_lockable>::create();
-    m::observable_vector<int, u::placebo_lockable>::ptr v2 = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v1 = m::observable_vector<int, a::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v2 = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v1->size());
@@ -439,7 +439,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_range)
 
     o.connect(v2);
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it = v2->begin();
+    m::observable_vector<int, a::placebo_lockable>::iterator it = v2->begin();
     v2->insert(it + 3, v1->begin(), v1->end());
     EXPECT_EQ(10u, v2->size());
 
@@ -469,7 +469,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_insert_range)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -480,8 +480,8 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_erase_position)
 
     o.connect(v);
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it1 = v->begin();
-    m::observable_vector<int, u::placebo_lockable>::iterator it2 = v->erase(it1 + 3);
+    m::observable_vector<int, a::placebo_lockable>::iterator it1 = v->begin();
+    m::observable_vector<int, a::placebo_lockable>::iterator it2 = v->erase(it1 + 3);
     EXPECT_EQ(6u, v->size());
 
     v->erase(it2);
@@ -508,7 +508,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_erase_position)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -540,8 +540,8 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_erase_range)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_swap)
 {
     // Test swap
-    m::observable_vector<int, u::placebo_lockable>::ptr v1 = m::observable_vector<int, u::placebo_lockable>::create();
-    m::observable_vector<int, u::placebo_lockable>::ptr v2 = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v1 = m::observable_vector<int, a::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v2 = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o1;
     vector_observer<int> o2;
 
@@ -602,7 +602,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_swap)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_clear)
 {
     // Test clear
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -631,7 +631,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_clear)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     const int a[] = {1, 2, 3};
@@ -640,7 +640,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_emplace)
 
     o.connect(v);
 
-    m::observable_vector<int, u::placebo_lockable>::iterator it = v->emplace(v->begin() + 1, 4);
+    m::observable_vector<int, a::placebo_lockable>::iterator it = v->emplace(v->begin() + 1, 4);
     EXPECT_EQ(4, *it);
 
     v->emplace(it, 5);
@@ -669,7 +669,7 @@ TEST(std_observable_vector_placebo_lockable_test_suite, test_emplace)
 TEST(std_observable_vector_placebo_lockable_test_suite, test_emplace_back)
 {
     // Test emplace back
-    m::observable_vector<int, u::placebo_lockable>::ptr v = m::observable_vector<int, u::placebo_lockable>::create();
+    m::observable_vector<int, a::placebo_lockable>::ptr v = m::observable_vector<int, a::placebo_lockable>::create();
     vector_observer<int> o;
 
     const int a[] = {1, 2, 3};

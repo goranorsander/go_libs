@@ -1,20 +1,20 @@
 ---
-layout: std_lib_utility
+layout: boost_lib_async
 ---
 
 ```c++
-namespace go::utility
+namespace go_boost::async
 ```
 
 # class recursive_spin_lock
 
 ```c++
-<go/utility/recursive_spin_lock.hpp>
+<go_boost/async/recursive_spin_lock.hpp>
 ```
 
 The class **recursive_spin_lock** is a [lockable](https://en.cppreference.com/w/cpp/named_req/Lockable).
 It implements the *Lockable* requirements using
-[std::atomic](https://en.cppreference.com/w/cpp/atomic/atomic).
+[boost::atomic](https://www.boost.org/doc/libs/1_72_0/doc/html/atomic/interface.html).
 
 **recursive_spin_lock** offers exclusive, recursive ownership semantics:
 

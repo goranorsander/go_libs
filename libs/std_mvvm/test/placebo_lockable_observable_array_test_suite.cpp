@@ -29,7 +29,7 @@ template<class T, size_t N> class array_observer
 {
 public:
     typedef array_observer<T, N> this_type;
-    typedef typename m::observable_array<T, N, u::placebo_lockable>::ptr observable_array_ptr_type;
+    typedef typename m::observable_array<T, N, a::placebo_lockable>::ptr observable_array_ptr_type;
 
     virtual ~array_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -155,7 +155,7 @@ private:
 
 TEST(std_observable_array_placebo_lockable_test_suite, test_create)
 {
-    m::observable_array<int, 7, u::placebo_lockable>::ptr a = m::observable_array<int, 7, u::placebo_lockable>::create();
+    m::observable_array<int, 7, a::placebo_lockable>::ptr a = m::observable_array<int, 7, a::placebo_lockable>::create();
     array_observer<int, 7> o;
     o.connect(a);
 

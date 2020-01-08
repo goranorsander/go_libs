@@ -8,6 +8,7 @@
 #  See accompanying file LICENSE.md.
 #
 
+add_subdirectory(boost_async)
 add_subdirectory(boost_config)
 add_subdirectory(boost_diagnostics)
 add_subdirectory(boost_exception)
@@ -17,6 +18,7 @@ add_subdirectory(boost_signals)
 add_subdirectory(boost_type_traits)
 add_subdirectory(boost_utility)
 add_subdirectory(gtest_extensions)
+add_subdirectory(std_async)
 add_subdirectory(std_config)
 add_subdirectory(std_diagnostics)
 add_subdirectory(std_exception)

@@ -25,7 +25,7 @@ template<class T> class unordered_multiset_observer
 {
 public:
     typedef unordered_multiset_observer<T> this_type;
-    typedef typename m::observable_unordered_multiset<T, u::placebo_lockable>::ptr observable_unordered_multiset_ptr_type;
+    typedef typename m::observable_unordered_multiset<T, a::placebo_lockable>::ptr observable_unordered_multiset_ptr_type;
 
     virtual ~unordered_multiset_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -147,7 +147,7 @@ private:
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     // TODO: Find a way to test insert without using insert to prepare the test
@@ -190,7 +190,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_inser
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -202,7 +202,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_inser
 
     o.connect(s);
 
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator it = s->insert(s->begin(), 3);
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator it = s->insert(s->begin(), 3);
     EXPECT_EQ(5u, s->size());
 
     it = s->insert(it, 4);
@@ -229,8 +229,8 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_inser
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_insert_range)
 {
     // Test insert range
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s1 = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s2 = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s1 = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s2 = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s1->size());
@@ -269,7 +269,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_inser
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -303,7 +303,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_inser
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase_position)
 {
     // Test erase position
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -319,9 +319,9 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase
 
     o.connect(s);
 
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator it1 = s->begin();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator it1 = s->begin();
     std::advance(it1, 3);
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator it2 = s->erase(it1);
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator it2 = s->erase(it1);
     EXPECT_EQ(6u, s->size());
 
     s->erase(it2);
@@ -342,7 +342,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase_value)
 {
     // Test erase value
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -390,7 +390,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase_range)
 {
     // Test erase range
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -406,9 +406,9 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase
 
     o.connect(s);
 
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator begin = s->begin();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator begin = s->begin();
     ++begin;
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator end = begin;
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator end = begin;
     std::advance(end, 5);
 
     s->erase(begin, end);
@@ -429,8 +429,8 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_erase
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_swap)
 {
     // Test swap
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s1 = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s2 = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s1 = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s2 = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o1;
     unordered_multiset_observer<int> o2;
 
@@ -506,7 +506,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_swap)
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_clear)
 {
     // Test clear
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -542,7 +542,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_clear
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_emplace)
 {
     // Test emplace
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     s->insert(1);
@@ -552,7 +552,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_empla
 
     o.connect(s);
 
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator it = s->emplace(4);
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator it = s->emplace(4);
     EXPECT_EQ(4, *it);
 
     it = s->emplace(5);
@@ -594,7 +594,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_empla
 TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::observable_unordered_multiset<int, u::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, u::placebo_lockable>::create();
+    m::observable_unordered_multiset<int, a::placebo_lockable>::ptr s = m::observable_unordered_multiset<int, a::placebo_lockable>::create();
     unordered_multiset_observer<int> o;
 
     s->insert(1);
@@ -604,7 +604,7 @@ TEST(boost_observable_unordered_multiset_placebo_lockable_test_suite, test_empla
 
     o.connect(s);
 
-    m::observable_unordered_multiset<int, u::placebo_lockable>::iterator it = s->emplace_hint(s->begin(), 3);
+    m::observable_unordered_multiset<int, a::placebo_lockable>::iterator it = s->emplace_hint(s->begin(), 3);
     EXPECT_EQ(3, *it);
 
     it = s->emplace_hint(it, 4);

@@ -18,9 +18,9 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <string>
+#include <go/async/placebo_lockable.hpp>
 #include <go/mvvm/command_interface.hpp>
 #include <go/signals/signal.hpp>
-#include <go/utility/placebo_lockable.hpp>
 
 namespace go
 {
@@ -34,8 +34,8 @@ typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mu
 namespace single_threaded
 {
 
-typedef basic_notify_command_execution_interface<std::string, go::utility::placebo_lockable> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, go::utility::placebo_lockable> notify_wcommand_execution_interface;
+typedef basic_notify_command_execution_interface<std::string, go::async::placebo_lockable> notify_command_execution_interface;
+typedef basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable> notify_wcommand_execution_interface;
 
 }
 
@@ -79,14 +79,14 @@ inline basic_notify_command_execution_interface<std::wstring, std::recursive_mut
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::string, go::utility::placebo_lockable>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::string, go::async::placebo_lockable>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_command_execution_interface<std::wstring, go::utility::placebo_lockable>::~basic_notify_command_execution_interface()
+inline basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable>::~basic_notify_command_execution_interface()
 {
     this->command_executed.disconnect_all_slots();
     this->command_not_executed.disconnect_all_slots();
@@ -112,13 +112,13 @@ inline void basic_notify_command_execution_interface<std::wstring, std::recursiv
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go::utility::placebo_lockable>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go::async::placebo_lockable>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>& command) const
 {
     this->command_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go::utility::placebo_lockable>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable>::notify_command_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>& command) const
 {
     this->command_executed(command);
 }
@@ -142,13 +142,13 @@ inline void basic_notify_command_execution_interface<std::wstring, std::recursiv
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::string, go::utility::placebo_lockable>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::string, go::async::placebo_lockable>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>& command) const
 {
     this->command_not_executed(command);
 }
 
 template<>
-inline void basic_notify_command_execution_interface<std::wstring, go::utility::placebo_lockable>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>& command) const
+inline void basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable>::notify_command_not_executed(const std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>& command) const
 {
     this->command_not_executed(command);
 }

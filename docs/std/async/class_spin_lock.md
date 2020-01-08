@@ -1,20 +1,20 @@
 ---
-layout: boost_lib_utility
+layout: std_lib_async
 ---
 
 ```c++
-namespace go_boost::utility
+namespace go::async
 ```
 
 # class spin_lock
 
 ```c++
-<go_boost/utility/spin_lock.hpp>
+<go/async/spin_lock.hpp>
 ```
 
 The class **spin_lock** is a [lockable](https://en.cppreference.com/w/cpp/named_req/Lockable).
 It implements the *Lockable* requirements using a
-[boost::atomic_flag](https://www.boost.org/doc/libs/1_72_0/doc/html/atomic/interface.html#atomic.interface.interface_atomic_flag).
+[std::atomic_flag](https://en.cppreference.com/w/cpp/atomic/atomic_flag).
 
 It is declared as:
 

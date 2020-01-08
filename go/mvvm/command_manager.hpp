@@ -19,10 +19,10 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 
 #include <deque>
 #include <mutex>
+#include <go/async/placebo_lockable.hpp>
 #include <go/exception.hpp>
 #include <go/mvvm/notify_command_execution_interface.hpp>
 #include <go/type_traits/noncopyable_nonmovable.hpp>
-#include <go/utility/placebo_lockable.hpp>
 
 namespace go
 {
@@ -36,8 +36,8 @@ typedef basic_command_manager<std::wstring, std::recursive_mutex> wcommand_manag
 namespace single_threaded
 {
 
-typedef basic_command_manager<std::string, go::utility::placebo_lockable> command_manager;
-typedef basic_command_manager<std::wstring, go::utility::placebo_lockable> wcommand_manager;
+typedef basic_command_manager<std::string, go::async::placebo_lockable> command_manager;
+typedef basic_command_manager<std::wstring, go::async::placebo_lockable> wcommand_manager;
 
 }
 
@@ -116,7 +116,7 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute(c
 }
 
 template<>
-inline void basic_command_manager<std::string, go::utility::placebo_lockable>::execute(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>& command) const
+inline void basic_command_manager<std::string, go::async::placebo_lockable>::execute(const std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>& command) const
 {
     if (command)
     {
@@ -134,7 +134,7 @@ inline void basic_command_manager<std::string, go::utility::placebo_lockable>::e
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go::utility::placebo_lockable>::execute(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>& command) const
+inline void basic_command_manager<std::wstring, go::async::placebo_lockable>::execute(const std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>& command) const
 {
     if (command)
     {
@@ -190,22 +190,22 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::post(cons
 }
 
 template<>
-inline void basic_command_manager<std::string, go::utility::placebo_lockable>::post(const std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::string, go::async::placebo_lockable>::post(const std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>& command, const bool keep_command_alive)
 {
     if (command)
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
-        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>>(std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>(command), keep_command_alive ? command : nullptr));
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>>(std::weak_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>(command), keep_command_alive ? command : nullptr));
     }
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go::utility::placebo_lockable>::post(const std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>& command, const bool keep_command_alive)
+inline void basic_command_manager<std::wstring, go::async::placebo_lockable>::post(const std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>& command, const bool keep_command_alive)
 {
     if (command)
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
-        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>>(std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>(command), keep_command_alive ? command : nullptr));
+        _commands.push_back(std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>>(std::weak_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>(command), keep_command_alive ? command : nullptr));
     }
 }
 
@@ -250,9 +250,9 @@ inline void basic_command_manager<std::wstring, std::recursive_mutex>::execute_c
 }
 
 template<>
-inline void basic_command_manager<std::string, go::utility::placebo_lockable>::execute_commands()
+inline void basic_command_manager<std::string, go::async::placebo_lockable>::execute_commands()
 {
-    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::string, go::utility::placebo_lockable>>>> commands;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::string, go::async::placebo_lockable>>>> commands;
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
         std::swap(commands, _commands);
@@ -265,9 +265,9 @@ inline void basic_command_manager<std::string, go::utility::placebo_lockable>::e
 }
 
 template<>
-inline void basic_command_manager<std::wstring, go::utility::placebo_lockable>::execute_commands()
+inline void basic_command_manager<std::wstring, go::async::placebo_lockable>::execute_commands()
 {
-    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::wstring, go::utility::placebo_lockable>>>> commands;
+    std::deque<std::pair<std::weak_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>, std::shared_ptr<basic_command_interface<std::wstring, go::async::placebo_lockable>>>> commands;
     {
         const std::lock_guard<lockable_type> lock(_commands_guard);
         std::swap(commands, _commands);
@@ -309,14 +309,14 @@ inline size_t basic_command_manager<std::wstring, std::recursive_mutex>::command
 }
 
 template<>
-inline size_t basic_command_manager<std::string, go::utility::placebo_lockable>::commands() const
+inline size_t basic_command_manager<std::string, go::async::placebo_lockable>::commands() const
 {
     const std::lock_guard<lockable_type> lock(_commands_guard);
     return _commands.size();
 }
 
 template<>
-inline size_t basic_command_manager<std::wstring, go::utility::placebo_lockable>::commands() const
+inline size_t basic_command_manager<std::wstring, go::async::placebo_lockable>::commands() const
 {
     const std::lock_guard<lockable_type> lock(_commands_guard);
     return _commands.size();
@@ -356,7 +356,7 @@ inline std::shared_ptr<basic_command_manager<std::wstring, std::recursive_mutex>
 }
 
 template<>
-inline std::shared_ptr<basic_command_manager<std::string, go::utility::placebo_lockable>> basic_command_manager<std::string, go::utility::placebo_lockable>::create()
+inline std::shared_ptr<basic_command_manager<std::string, go::async::placebo_lockable>> basic_command_manager<std::string, go::async::placebo_lockable>::create()
 {
     struct make_shared_enabler
         : public this_type
@@ -369,7 +369,7 @@ inline std::shared_ptr<basic_command_manager<std::string, go::utility::placebo_l
 }
 
 template<>
-inline std::shared_ptr<basic_command_manager<std::wstring, go::utility::placebo_lockable>> basic_command_manager<std::wstring, go::utility::placebo_lockable>::create()
+inline std::shared_ptr<basic_command_manager<std::wstring, go::async::placebo_lockable>> basic_command_manager<std::wstring, go::async::placebo_lockable>::create()
 {
     struct make_shared_enabler
         : public this_type

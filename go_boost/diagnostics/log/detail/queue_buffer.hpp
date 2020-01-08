@@ -17,9 +17,9 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
+#include <go_boost/async/spin_lock.hpp>
 #include <go_boost/diagnostics/log/detail/buffer_interface.hpp>
 #include <go_boost/diagnostics/log/log_line.hpp>
-#include <go_boost/utility/spin_lock.hpp>
 
 #include <boost/shared_ptr.hpp>
 
@@ -56,7 +56,7 @@ public:
 
     virtual void push(L&& logline) GO_BOOST_OVERRIDE
     {
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        const boost::lock_guard<go_boost::async::spin_lock> lock(this->_lock);
         element e(std::move(logline));
         this->_queue.push(std::move(e));
     }
@@ -65,7 +65,7 @@ public:
 
     virtual void push(const L& logline) GO_BOOST_OVERRIDE
     {
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        const boost::lock_guard<go_boost::async::spin_lock> lock(this->_lock);
         element e(logline);
         this->_queue.push(e);
 }
@@ -74,7 +74,7 @@ public:
 
     virtual bool try_pop(L& logline) GO_BOOST_OVERRIDE
     {
-        const boost::lock_guard<go_boost::utility::spin_lock> lock(this->_lock);
+        const boost::lock_guard<go_boost::async::spin_lock> lock(this->_lock);
         if (this->_queue.empty())
         {
             return false;
@@ -168,7 +168,7 @@ private:
 
 private:
     std::queue<element> _queue;
-    go_boost::utility::spin_lock _lock;
+    go_boost::async::spin_lock _lock;
 };
 
 } // namespace detail

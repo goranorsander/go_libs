@@ -8,23 +8,30 @@
 //  See accompanying file LICENSE.md.
 //
 
-#include <go_boost/config.hpp>
+#include <go/config.hpp>
 
-GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
+GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
-GO_BOOST_END_SUPPRESS_ALL_WARNINGS
+GO_END_SUPPRESS_ALL_WARNINGS
 
-#include <boost/thread.hpp>
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+TEST(std_spin_lock_test_suite, cpp11_not_supported) {}
+#else
 
-#include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility/spin_lock.hpp>
+#include <condition_variable>
+#include <functional>
+#include <mutex>
+#include <thread>
+#include <go/async/spin_lock.hpp>
+#include <go/namespace_alias.hpp>
 
 namespace
 {
 
-TEST(boost_spin_lock_test_suite, test_spin_lock)
+TEST(std_spin_lock_test_suite, test_spin_lock)
 {
-    u::spin_lock lock;
+    a::spin_lock lock;
 
     lock.lock();
 
@@ -37,12 +44,12 @@ TEST(boost_spin_lock_test_suite, test_spin_lock)
     lock.unlock();
 }
 
-TEST(boost_spin_lock_test_suite, test_spin_lock_scoped_lock)
+TEST(std_spin_lock_test_suite, test_spin_lock_lock_guard)
 {
-    u::spin_lock lock;
+    a::spin_lock lock;
 
     {
-        u::spin_lock::scoped_lock guard(lock);
+        std::lock_guard<a::spin_lock> guard(lock);
 
         EXPECT_EQ(false, lock.try_lock());
     }
@@ -50,25 +57,19 @@ TEST(boost_spin_lock_test_suite, test_spin_lock_scoped_lock)
     EXPECT_EQ(true, lock.try_lock());
 }
 
+#if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
+
 class test_thread
 {
 public:
-    ~test_thread() GO_BOOST_DEFAULT_DESTRUCTOR
-    test_thread()
-        : m()
-        , cv()
-        , step_1_complete(false)
-        , step_2_complete(false)
-        , step_3_complete(false)
-        , step_4_complete(false)
-    {
-    }
+    ~test_thread() = default;
+    test_thread() = default;
 
     void run()
     {
         // Step 1 - main thread ready to start test
-        boost::unique_lock<boost::mutex> lk(m);
-        cv.wait(lk, boost::bind(&test_thread::is_step_1_completed, this));
+        std::unique_lock<std::mutex> lk(m);
+        cv.wait(lk, [this]() -> bool { return step_1_complete; });
 
         // Step 2 - worker thread locks the spin_lock
         lock.lock();
@@ -78,7 +79,7 @@ public:
 
         // Step 3 - main thread try to lock 'lock' when worker thread have 'lock' locked already
         lk.lock();
-        cv.wait(lk, boost::bind(&test_thread::is_step_3_completed, this));
+        cv.wait(lk, [this]() -> bool { return step_3_complete; });
 
         // Step 4 - worker thread unlocks the spin_lock
         lock.unlock();
@@ -87,27 +88,22 @@ public:
         cv.notify_one();
     }
 
-    bool is_step_1_completed() const { return step_1_complete; }
-    bool is_step_2_completed() const { return step_2_complete; }
-    bool is_step_3_completed() const { return step_3_complete; }
-    bool is_step_4_completed() const { return step_4_complete; }
+    a::spin_lock lock;
 
-    u::spin_lock lock;
-
-    boost::mutex m;
-    boost::condition_variable cv;
-    bool step_1_complete;
-    bool step_2_complete;
-    bool step_3_complete;
-    bool step_4_complete;
+    std::mutex m;
+    std::condition_variable cv;
+    bool step_1_complete = false;
+    bool step_2_complete = false;
+    bool step_3_complete = false;
+    bool step_4_complete = false;
 };
 
-TEST(boost_spin_lock_test_suite, test_spin_lock_two_threads)
+TEST(std_spin_lock_test_suite, test_spin_lock_two_threads)
 {
     test_thread t;
 
     {
-        u::spin_lock::scoped_lock guard(t.lock);
+        std::lock_guard<a::spin_lock> guard(t.lock);
 
         EXPECT_EQ(false, t.lock.try_lock());
     }
@@ -117,7 +113,7 @@ TEST(boost_spin_lock_test_suite, test_spin_lock_two_threads)
     t.lock.unlock();
 
     // Start worker thread
-    boost::thread worker(boost::bind(&test_thread::run, &t));
+    std::thread worker(std::bind(&test_thread::run, &t));
 
     // Step 1 - main thread ready to start test
     {
@@ -125,20 +121,20 @@ TEST(boost_spin_lock_test_suite, test_spin_lock_two_threads)
 
         t.lock.unlock();
 
-        boost::lock_guard<boost::mutex> lk(t.m);
+        std::lock_guard<std::mutex> lk(t.m);
         t.step_1_complete = true;
     }
     t.cv.notify_one();
 
     // Step 2 - worker thread locks the spin_lock
     {
-        boost::unique_lock<boost::mutex> lk(t.m);
-        t.cv.wait(lk, boost::bind(&test_thread::is_step_2_completed, &t));
+        std::unique_lock<std::mutex> lk(t.m);
+        t.cv.wait(lk, [&t]() -> bool { return t.step_2_complete; });
     }
 
     // Step 3 - main thread try to lock 'lock' when worker thread have 'lock' locked already
     {
-        boost::lock_guard<boost::mutex> lk(t.m);
+        std::lock_guard<std::mutex> lk(t.m);
 
         EXPECT_EQ(false, t.lock.try_lock());
 
@@ -148,8 +144,8 @@ TEST(boost_spin_lock_test_suite, test_spin_lock_two_threads)
 
     // Step 4 - worker thread unlocks the spin_lock
     {
-        boost::unique_lock<boost::mutex> lk(t.m);
-        t.cv.wait(lk, boost::bind(&test_thread::is_step_4_completed, &t));
+        std::unique_lock<std::mutex> lk(t.m);
+        t.cv.wait(lk, [&t]() -> bool { return t.step_4_complete; });
 
         EXPECT_EQ(true, t.lock.try_lock());
 
@@ -159,4 +155,8 @@ TEST(boost_spin_lock_test_suite, test_spin_lock_two_threads)
     worker.join();
 }
 
+#endif  // #if !defined(GO_NO_CXX11_CONDITION_VARIABLE)
+
 }
+
+#endif  // Required C++11 feature is not supported by this compiler

@@ -61,13 +61,13 @@ inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::string, go_boost::utility::placebo_lockable>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, go_boost::async::placebo_lockable>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::placebo_lockable>::~basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, go_boost::async::placebo_lockable>::~basic_notify_event_firing_interface()
 {
     this->event_fired.disconnect_all_slots();
 }
@@ -91,13 +91,13 @@ inline basic_notify_event_firing_interface<std::wstring, boost::recursive_mutex>
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::string, go_boost::utility::placebo_lockable>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::string, go_boost::async::placebo_lockable>::basic_notify_event_firing_interface()
     : event_fired()
 {
 }
 
 template<>
-inline basic_notify_event_firing_interface<std::wstring, go_boost::utility::placebo_lockable>::basic_notify_event_firing_interface()
+inline basic_notify_event_firing_interface<std::wstring, go_boost::async::placebo_lockable>::basic_notify_event_firing_interface()
     : event_fired()
 {
 }

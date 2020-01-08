@@ -11,6 +11,7 @@
 set(PROJECT_GO_STD_LIBS_NAME GO_std_libraries)
 
 file(GLOB GO_DIR_FILES ./*.hpp)
+file(GLOB GO_ASYNC_DIR_FILES ./async/*.hpp)
 file(GLOB GO_CONFIG_DIR_FILES ./config/*.hpp)
 file(GLOB GO_CONFIG_COMPILER_DIR_FILES ./config/compiler/*.hpp)
 file(GLOB GO_CONFIG_PLATFORM_DIR_FILES ./config/platform/*.hpp)
@@ -41,6 +42,7 @@ file(GLOB GO_VS_DIR_FILES ./.vs/*.cpp)
 
 add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_DIR_FILES}
+    ${GO_ASYNC_DIR_FILES}
     ${GO_CONFIG_DIR_FILES}
     ${GO_CONFIG_COMPILER_DIR_FILES}
     ${GO_CONFIG_PLATFORM_DIR_FILES}
@@ -73,6 +75,7 @@ add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
 set_target_properties(${PROJECT_GO_STD_LIBS_NAME} PROPERTIES LINKER_LANGUAGE CXX FOLDER go_libs/std/libs)
 
 source_group(go FILES ${GO_DIR_FILES})
+source_group(go\\async FILES ${GO_ASYNC_DIR_FILES})
 source_group(go\\config FILES ${GO_CONFIG_DIR_FILES})
 source_group(go\\config\\compiler FILES ${GO_CONFIG_COMPILER_DIR_FILES})
 source_group(go\\config\\platform FILES ${GO_CONFIG_PLATFORM_DIR_FILES})

@@ -13,8 +13,8 @@
 
 #pragma once
 
+#include <go/async/placebo_lockable.hpp>
 #include <go/signals.hpp>
-#include <go/utility/placebo_lockable.hpp>
 
 class dialog_view
     : public CDialogEx

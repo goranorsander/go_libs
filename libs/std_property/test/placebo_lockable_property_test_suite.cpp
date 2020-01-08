@@ -32,10 +32,10 @@ namespace internal2
 {
 
 template <>
-class TypeWithoutFormatter<p::value_property<double, u::placebo_lockable>, kConvertibleToInteger>
+class TypeWithoutFormatter<p::value_property<double, a::placebo_lockable>, kConvertibleToInteger>
 {
 public:
-	static void PrintValue(const p::value_property<double, u::placebo_lockable>& value, ::std::ostream* os)
+	static void PrintValue(const p::value_property<double, a::placebo_lockable>& value, ::std::ostream* os)
 	{
 		const double vd = value.get();
 		const int64_t vi = *(reinterpret_cast<const int64_t*>(&vd));
@@ -54,9 +54,9 @@ namespace
 class spaceship
 {
 public:
-    p::value_property<int, u::placebo_lockable> crew_complement;
-    p::value_property<double, u::placebo_lockable> max_speed;
-    p::value_property<std::string, u::placebo_lockable> name;
+    p::value_property<int, a::placebo_lockable> crew_complement;
+    p::value_property<double, a::placebo_lockable> max_speed;
+    p::value_property<std::string, a::placebo_lockable> name;
 
      spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -145,9 +145,9 @@ TEST(std_property_placebo_lockable_test_suite, value_properties)
 class read_only_spaceship
 {
 public:
-    pro::value_property<int, u::placebo_lockable> crew_complement;
-    pro::value_property<double, u::placebo_lockable> max_speed;
-    pro::value_property<std::string, u::placebo_lockable> name;
+    pro::value_property<int, a::placebo_lockable> crew_complement;
+    pro::value_property<double, a::placebo_lockable> max_speed;
+    pro::value_property<std::string, a::placebo_lockable> name;
 
     read_only_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -197,9 +197,9 @@ TEST(std_property_placebo_lockable_test_suite, read_only_value_properties)
 class write_only_spaceship
 {
 public:
-    pwo::value_property<int, u::placebo_lockable> crew_complement;
-    pwo::value_property<double, u::placebo_lockable> max_speed;
-    pwo::value_property<std::string, u::placebo_lockable> name;
+    pwo::value_property<int, a::placebo_lockable> crew_complement;
+    pwo::value_property<double, a::placebo_lockable> max_speed;
+    pwo::value_property<std::string, a::placebo_lockable> name;
 
     write_only_spaceship()
         : crew_complement(std::string("crew_complement"), 1012)
@@ -245,9 +245,9 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 class reference_spaceship
 {
 public:
-    p::reference_property<int, u::placebo_lockable> crew_complement;
-    p::reference_property<double, u::placebo_lockable> max_speed;
-    p::reference_property<std::string, u::placebo_lockable> name;
+    p::reference_property<int, a::placebo_lockable> crew_complement;
+    p::reference_property<double, a::placebo_lockable> max_speed;
+    p::reference_property<std::string, a::placebo_lockable> name;
 
     reference_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -386,9 +386,9 @@ TEST(std_property_placebo_lockable_test_suite, reference_properties)
 class read_only_reference_spaceship
 {
 public:
-    pro::reference_property<int, u::placebo_lockable> crew_complement;
-    pro::reference_property<double, u::placebo_lockable> max_speed;
-    pro::reference_property<std::string, u::placebo_lockable> name;
+    pro::reference_property<int, a::placebo_lockable> crew_complement;
+    pro::reference_property<double, a::placebo_lockable> max_speed;
+    pro::reference_property<std::string, a::placebo_lockable> name;
 
     read_only_reference_spaceship(const int& _crew_complement, const double& _max_speed, const std::string& _name)
         : crew_complement(std::string("crew_complement"), _crew_complement)
@@ -487,9 +487,9 @@ TEST(std_property_placebo_lockable_test_suite, read_only_reference_properties)
 class write_only_reference_spaceship
 {
 public:
-    pwo::reference_property<int, u::placebo_lockable> crew_complement;
-    pwo::reference_property<double, u::placebo_lockable> max_speed;
-    pwo::reference_property<std::string, u::placebo_lockable> name;
+    pwo::reference_property<int, a::placebo_lockable> crew_complement;
+    pwo::reference_property<double, a::placebo_lockable> max_speed;
+    pwo::reference_property<std::string, a::placebo_lockable> name;
 
     write_only_reference_spaceship()
         : crew_complement(std::string("crew_complement"))
@@ -616,7 +616,7 @@ class armed_spaceship
     : public spaceship
 {
 public:
-    p::property<int, u::placebo_lockable> phaser_arrays;
+    p::property<int, a::placebo_lockable> phaser_arrays;
 
     armed_spaceship()
         : spaceship()
@@ -759,7 +759,7 @@ class read_only_armed_spaceship
     : public read_only_spaceship
 {
 public:
-    pro::property<int, u::placebo_lockable> phaser_arrays;
+    pro::property<int, a::placebo_lockable> phaser_arrays;
 
     read_only_armed_spaceship()
         : read_only_spaceship()
@@ -869,7 +869,7 @@ class write_only_armed_spaceship
     : public write_only_spaceship
 {
 public:
-    pwo::property<int, u::placebo_lockable> phaser_arrays;
+    pwo::property<int, a::placebo_lockable> phaser_arrays;
 
     write_only_armed_spaceship()
         : write_only_spaceship()

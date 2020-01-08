@@ -21,11 +21,11 @@
 #include <map>
 #include <boost/foreach.hpp>
 #include <boost/function.hpp>
+#include <go_boost/async/placebo_lockable.hpp>
 #include <go_boost/mvvm/event_subscription_key.hpp>
 #include <go_boost/mvvm/event.hpp>
 #include <go_boost/mvvm/notify_event_firing_interface.hpp>
 #include <go_boost/type_traits/noncopyable_nonmovable.hpp>
-#include <go_boost/utility/placebo_lockable.hpp>
 
 namespace go_boost
 {
@@ -39,8 +39,8 @@ typedef basic_event_manager<std::wstring, boost::recursive_mutex> wevent_manager
 namespace single_threaded
 {
 
-typedef basic_event_manager<std::string, go_boost::utility::placebo_lockable> event_manager;
-typedef basic_event_manager<std::wstring, go_boost::utility::placebo_lockable> wevent_manager;
+typedef basic_event_manager<std::string, go_boost::async::placebo_lockable> event_manager;
+typedef basic_event_manager<std::wstring, go_boost::async::placebo_lockable> wevent_manager;
 
 }
 
@@ -141,12 +141,12 @@ inline event_subscription_key basic_event_manager<std::wstring, boost::recursive
 }
 
 template<>
-inline event_subscription_key basic_event_manager<std::string, go_boost::utility::placebo_lockable>::subscribe(const std::string& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)>& fire_event_function)
+inline event_subscription_key basic_event_manager<std::string, go_boost::async::placebo_lockable>::subscribe(const std::string& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)>& fire_event_function)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions == _subscriptions.end())
     {
@@ -161,12 +161,12 @@ inline event_subscription_key basic_event_manager<std::string, go_boost::utility
 }
 
 template<>
-inline event_subscription_key basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::subscribe(const std::wstring& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)>& fire_event_function)
+inline event_subscription_key basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::subscribe(const std::wstring& event_type, const boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)>& fire_event_function)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions == _subscriptions.end())
     {
@@ -229,12 +229,12 @@ inline void basic_event_manager<std::wstring, boost::recursive_mutex>::unsubscri
 }
 
 template<>
-inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable>::unsubscribe(const std::string& event_type, const event_subscription_key& key)
+inline void basic_event_manager<std::string, go_boost::async::placebo_lockable>::unsubscribe(const std::string& event_type, const event_subscription_key& key)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions != _subscriptions.end())
     {
@@ -243,12 +243,12 @@ inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::unsubscribe(const std::wstring& event_type, const event_subscription_key& key)
+inline void basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::unsubscribe(const std::wstring& event_type, const event_subscription_key& key)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions != _subscriptions.end())
     {
@@ -299,12 +299,12 @@ inline void basic_event_manager<std::wstring, boost::recursive_mutex>::unsubscri
 }
 
 template<>
-inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable>::unsubscribe_all(const std::string& event_type)
+inline void basic_event_manager<std::string, go_boost::async::placebo_lockable>::unsubscribe_all(const std::string& event_type)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions != _subscriptions.end())
     {
@@ -313,12 +313,12 @@ inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::unsubscribe_all(const std::wstring& event_type)
+inline void basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::unsubscribe_all(const std::wstring& event_type)
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(event_type);
     if (event_type_subscriptions != _subscriptions.end())
     {
@@ -390,14 +390,14 @@ inline void basic_event_manager<std::wstring, boost::recursive_mutex>::fire(cons
 }
 
 template<>
-inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable>::fire(const boost::shared_ptr<basic_event<std::string>>& e) const
+inline void basic_event_manager<std::string, go_boost::async::placebo_lockable>::fire(const boost::shared_ptr<basic_event<std::string>>& e) const
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::string>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::string, event_subscription_type> subscriptions_type;
     if (e)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if (event_type_subscriptions != _subscriptions.end())
         {
@@ -411,14 +411,14 @@ inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::fire(const boost::shared_ptr<basic_event<std::wstring>>& e) const
+inline void basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::fire(const boost::shared_ptr<basic_event<std::wstring>>& e) const
 {
     typedef GO_BOOST_TYPENAME boost::function<void(const boost::shared_ptr<basic_event<std::wstring>>&)> event_signal_signature;
     typedef GO_BOOST_TYPENAME std::map<event_subscription_key, event_signal_signature> event_subscription_type;
     typedef GO_BOOST_TYPENAME std::map<std::wstring, event_subscription_type> subscriptions_type;
     if (e)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         GO_BOOST_TYPENAME subscriptions_type::const_iterator event_type_subscriptions = _subscriptions.find(e->event_type());
         if (event_type_subscriptions != _subscriptions.end())
         {
@@ -473,21 +473,21 @@ inline void basic_event_manager<std::wstring, boost::recursive_mutex>::post(cons
 }
 
 template<>
-inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable>::post(const boost::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::string, go_boost::async::placebo_lockable>::post(const boost::shared_ptr<basic_event<std::string>>& e, const bool keep_event_alive)
 {
     if (e)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         _events.push_back(std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>(boost::weak_ptr<basic_event<std::string>>(e), keep_event_alive ? e : boost::shared_ptr<basic_event<std::string>>()));
     }
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::post(const boost::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
+inline void basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::post(const boost::shared_ptr<basic_event<std::wstring>>& e, const bool keep_event_alive)
 {
     if (e)
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         _events.push_back(std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>(boost::weak_ptr<basic_event<std::wstring>>(e), keep_event_alive ? e : boost::shared_ptr<basic_event<std::wstring>>()));
     }
 }
@@ -533,12 +533,12 @@ inline void basic_event_manager<std::wstring, boost::recursive_mutex>::fire_even
 }
 
 template<>
-inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable>::fire_events()
+inline void basic_event_manager<std::string, go_boost::async::placebo_lockable>::fire_events()
 {
     typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<std::string>>, boost::shared_ptr<basic_event<std::string>>>> events_type;
     events_type events;
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
     BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
@@ -548,12 +548,12 @@ inline void basic_event_manager<std::string, go_boost::utility::placebo_lockable
 }
 
 template<>
-inline void basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::fire_events()
+inline void basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::fire_events()
 {
     typedef GO_BOOST_TYPENAME std::deque<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events_type;
     std::deque<std::pair<boost::weak_ptr<basic_event<std::wstring>>, boost::shared_ptr<basic_event<std::wstring>>>> events;
     {
-        const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+        const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
         std::swap(events, _events);
     }
     BOOST_FOREACH(const GO_BOOST_TYPENAME events_type::value_type& e, events)
@@ -592,16 +592,16 @@ inline size_t basic_event_manager<std::wstring, boost::recursive_mutex>::events(
 }
 
 template<>
-inline size_t basic_event_manager<std::string, go_boost::utility::placebo_lockable>::events() const
+inline size_t basic_event_manager<std::string, go_boost::async::placebo_lockable>::events() const
 {
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     return _events.size();
 }
 
 template<>
-inline size_t basic_event_manager<std::wstring, go_boost::utility::placebo_lockable>::events() const
+inline size_t basic_event_manager<std::wstring, go_boost::async::placebo_lockable>::events() const
 {
-    const go_boost::utility::placebo_lockable::scoped_lock lock(_events_guard);
+    const go_boost::async::placebo_lockable::scoped_lock lock(_events_guard);
     return _events.size();
 }
 
