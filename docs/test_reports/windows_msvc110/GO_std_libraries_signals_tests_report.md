@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 3 test cases was executed 2020-01-02 at 15:56:36 with result:
+Test suites *AllTests* with 3 test cases was executed 2020-01-08 at 19:03:00 with result:
 
 * 0 errors
 * 0 failures
@@ -25,7 +25,7 @@ Test suite *std_signals_string_placebo_lockable_test_suite* with 1 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -55,7 +55,7 @@ Test suite *std_signals_wstring_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

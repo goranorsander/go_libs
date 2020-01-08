@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="122" failures="0" disabled="0" errors="0" timestamp="2020-01-02T15:56:42" time="0.107" name="AllTests">
-  <testsuite name="std_fundamental_type_specializer_test_suite" tests="122" failures="0" disabled="0" errors="0" time="0.105">
+<testsuites tests="122" failures="0" disabled="0" errors="0" timestamp="2020-01-08T19:03:06" time="0.102" name="AllTests">
+  <testsuite name="std_fundamental_type_specializer_test_suite" tests="122" failures="0" disabled="0" errors="0" time="0.1">
     <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />

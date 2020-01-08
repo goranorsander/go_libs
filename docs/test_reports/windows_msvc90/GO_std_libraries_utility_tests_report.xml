@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="54" failures="0" disabled="0" errors="0" timestamp="2020-01-02T15:56:27" time="0.14" name="AllTests">
-  <testsuite name="std_ascii_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.048">
+<testsuites tests="50" failures="0" disabled="0" errors="0" timestamp="2020-01-08T19:02:51" time="0.118" name="AllTests">
+  <testsuite name="std_ascii_test_suite" tests="24" failures="0" disabled="0" errors="0" time="0.044">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_ascii_test_suite" />
-    <testcase name="test_utf_8_character_count" status="run" time="0" classname="std_ascii_test_suite" />
+    <testcase name="test_utf_8_character_count" status="run" time="0.001" classname="std_ascii_test_suite" />
     <testcase name="test_char_is_7_bit_ascii_character" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_char8_t_is_7_bit_ascii_character" status="run" time="0" classname="std_ascii_test_suite" />
     <testcase name="test_wchar_t_is_7_bit_ascii_character" status="run" time="0" classname="std_ascii_test_suite" />
@@ -29,17 +29,17 @@
   <testsuite name="std_circular_buffer_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_circular_buffer_test_suite" />
   </testsuite>
-  <testsuite name="std_container_size_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_container_size_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_container_size_test_suite" />
   </testsuite>
   <testsuite name="std_create_string_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_create_string_test_suite" />
   </testsuite>
-  <testsuite name="std_erase_iterator_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_erase_iterator_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_erase_iterator_test_suite" />
   </testsuite>
-  <testsuite name="std_iso_8859_1_test_suite" tests="8" failures="0" disabled="0" errors="0" time="0.013">
-    <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
+  <testsuite name="std_iso_8859_1_test_suite" tests="8" failures="0" disabled="0" errors="0" time="0.014">
+    <testcase name="test_multibyte_character_count" status="run" time="0.001" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_utf_8_character_count" status="run" time="0" classname="std_iso_8859_1_test_suite" />
@@ -48,39 +48,27 @@
     <testcase name="test_wchar_t_is_iso_8859_1_character" status="run" time="0" classname="std_iso_8859_1_test_suite" />
     <testcase name="test_char2_t_is_iso_8859_1_character" status="run" time="0" classname="std_iso_8859_1_test_suite" />
   </testsuite>
-  <testsuite name="std_monitor_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_monitor_test_suite" />
-  </testsuite>
-  <testsuite name="std_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
-    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_placebo_lockable_test_suite" />
-  </testsuite>
-  <testsuite name="std_recursive_spin_lock_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
-  </testsuite>
-  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="cpp14_not_supported" status="run" time="0" classname="std_reverse_test_suite" />
   </testsuite>
-  <testsuite name="std_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_scope_guard_new" status="run" time="0" classname="std_scope_guard_new_test_suite" />
   </testsuite>
-  <testsuite name="std_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_scope_guard" status="run" time="0" classname="std_scope_guard_test_suite" />
   </testsuite>
-  <testsuite name="std_spin_lock_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.004">
-    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_spin_lock_test_suite" />
-  </testsuite>
-  <testsuite name="std_string_cast_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
+  <testsuite name="std_string_cast_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_string_cast_test_suite" />
   </testsuite>
-  <testsuite name="std_try_move_iterator_backward_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+  <testsuite name="std_try_move_iterator_backward_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="cpp11_not_supported" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
   </testsuite>
-  <testsuite name="std_value_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.004">
+  <testsuite name="std_value_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="test_value_guard" status="run" time="0" classname="std_value_guard_test_suite" />
   </testsuite>
-  <testsuite name="std_windows_1252_test_suite" tests="8" failures="0" disabled="0" errors="0" time="0.02">
+  <testsuite name="std_windows_1252_test_suite" tests="8" failures="0" disabled="0" errors="0" time="0.015">
     <testcase name="test_multibyte_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
-    <testcase name="test_system_wide_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
+    <testcase name="test_system_wide_character_count" status="run" time="0.001" classname="std_windows_1252_test_suite" />
     <testcase name="test_ucs_2_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
     <testcase name="test_utf_8_character_count" status="run" time="0" classname="std_windows_1252_test_suite" />
     <testcase name="test_char_is_windows_1252_character" status="run" time="0" classname="std_windows_1252_test_suite" />

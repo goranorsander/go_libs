@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-02 at 15:56:16 with result:
+Test suites *AllTests* with 128 test cases was executed 2020-01-08 at 19:02:41 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 2.399 seconds.
+Test suites execution took 2.307 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 2.376 seconds.
+Test suite execution took 2.285 seconds.
 
 ### Successful test cases
 
@@ -46,7 +46,7 @@ test_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
-test_integer_type_specializer_bitwise_right_shift_assignment_operator | 0.001
+test_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_integer_type_specializer_unary_minus_arithmetic_operator | 0
 test_integer_type_specializer_addition_arithmetic_operator | 0
@@ -65,7 +65,7 @@ test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
 test_integer_type_specializer_greater_than_comparison_operator | 0
 test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
-test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
+test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0.001
 test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
 test_integer_type_specializer_pre_decrement_operator | 0
@@ -106,7 +106,7 @@ test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
 test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
 test_implicit_integer_type_specializer_division_assignment_operator | 0
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
-test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
+test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0.001
 test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
@@ -116,7 +116,7 @@ test_implicit_integer_type_specializer_unary_minus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_addition_arithmetic_operator | 0
 test_implicit_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_integer_type_specializer_multiplication_arithmetic_operator | 0
-test_implicit_integer_type_specializer_division_arithmetic_operator | 0.001
+test_implicit_integer_type_specializer_division_arithmetic_operator | 0
 test_implicit_integer_type_specializer_modulo_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator | 0
@@ -126,9 +126,9 @@ test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 
 test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_implicit_integer_type_specializer_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_not_equal_to_comparison_operator | 0
-test_implicit_integer_type_specializer_less_than_comparison_operator | 0
+test_implicit_integer_type_specializer_less_than_comparison_operator | 0.001
 test_implicit_integer_type_specializer_greater_than_comparison_operator | 0
-test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0.001
+test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_pre_increment_operator | 0
 test_implicit_integer_type_specializer_post_increment_operator | 0
