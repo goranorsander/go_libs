@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2020-01-02 at 19:38:06 with result:
+Test suites *AllTests* with 33 test cases was executed 2020-01-15 at 18:16:04 with result:
 
 * 0 errors
 * 0 failures
@@ -87,7 +87,7 @@ test_not_define_go_msvc_full_ver | 0
 test_not_define_go_msvc_mfc | 0
 test_not_define_go_msvc_mfc_ver | 0
 test_not_define_go_msvc_ver | 0
-test_not_define_go_unicode | 0
+test_not_define_go_unicode | 0.001
 
 ## std_define_go_message_test_suite
 

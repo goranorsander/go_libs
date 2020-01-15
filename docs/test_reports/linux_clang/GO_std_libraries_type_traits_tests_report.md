@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-02 at 19:38:08 with result:
+Test suites *AllTests* with 128 test cases was executed 2020-01-15 at 18:16:05 with result:
 
 * 0 errors
 * 0 failures
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -53,9 +53,9 @@ test_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_integer_type_specializer_division_arithmetic_operator | 0
 test_integer_type_specializer_modulo_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_not_arithmetic_operator | 0
+test_integer_type_specializer_bitwise_not_arithmetic_operator | 0.001
 test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_or_arithmetic_operator | 0.001
+test_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
@@ -133,7 +133,7 @@ test_implicit_integer_type_specializer_pre_increment_operator | 0
 test_implicit_integer_type_specializer_post_increment_operator | 0
 test_implicit_integer_type_specializer_pre_decrement_operator | 0
 test_implicit_integer_type_specializer_post_decrement_operator | 0
-test_implicit_floating_point_type_specializer_default_value | 0
+test_implicit_floating_point_type_specializer_default_value | 0.001
 test_implicit_floating_point_type_specializer_construction | 0
 test_implicit_floating_point_type_specializer_get_set | 0
 test_implicit_floating_point_type_specializer_simple_assignment_operator | 0
