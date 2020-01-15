@@ -36,11 +36,11 @@ public:
     typedef fleet_commander this_type;
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef s::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef si::signal<std::function<void(const bool&)>> fire_lasers_signal;
 #if !defined(GO_COMP_MSVC)
-    typedef s::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef si::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 #else
-    typedef s::signal<std::function<bool()>> fire_proton_torpedoes_signal;
+    typedef si::signal<std::function<bool()>> fire_proton_torpedoes_signal;
 #endif  // #if !defined(GO_COMP_MSVC)
 
 public:
@@ -125,8 +125,8 @@ public:
 
 private:
     fleet_commander::wptr _fleet_commander;
-    s::slot_key _fire_lasers_slot_key;
-    s::slot_key _fire_proton_torpedoes_slot_key;
+    si::slot_key _fire_lasers_slot_key;
+    si::slot_key _fire_proton_torpedoes_slot_key;
 };
 
 #define TEST_CASE_SHIPYARD \

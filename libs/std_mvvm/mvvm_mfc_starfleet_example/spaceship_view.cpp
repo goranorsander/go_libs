@@ -194,9 +194,9 @@ void spaceship_view::on_data_context_will_change()
     if(data_context())
     {
         data_context()->equipment()->container_changed.disconnect(_on_data_context_container_changed_slot_key);
-        s::reset(_on_data_context_container_changed_slot_key);
+        si::reset(_on_data_context_container_changed_slot_key);
         data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
-        s::reset(_on_data_context_property_changed_slot_key);
+        si::reset(_on_data_context_property_changed_slot_key);
     }
     m::data_context_interface<spaceship_view_model::ptr>::on_data_context_will_change();
 }

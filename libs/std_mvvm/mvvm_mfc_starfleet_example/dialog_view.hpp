@@ -25,7 +25,7 @@ public:
     typedef dialog_view this_type;
     typedef this_type* pointer;
     typedef std::shared_ptr<this_type> ptr;
-    typedef s::signal<std::function<void(const pointer)>> on_close_signal;
+    typedef si::signal<std::function<void(const pointer)>> on_close_signal;
 
 public:
     virtual ~dialog_view() = 0;

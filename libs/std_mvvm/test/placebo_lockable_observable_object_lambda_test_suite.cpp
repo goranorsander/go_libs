@@ -103,7 +103,7 @@ public:
     unsigned int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
-    s::slot_key _on_property_changed_slot_key;
+    si::slot_key _on_property_changed_slot_key;
     unsigned int _crew_complement_change_count;
     unsigned int _name_change_count;
     unsigned int _max_speed_change_count;

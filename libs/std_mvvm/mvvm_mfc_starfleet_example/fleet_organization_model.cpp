@@ -22,7 +22,7 @@ fleet_organization_model::~fleet_organization_model()
     if(spaceship)
     {
         spaceship->property_changed.disconnect(_on_spaceship_property_changed_slot_key);
-        s::reset(_on_spaceship_property_changed_slot_key);
+        si::reset(_on_spaceship_property_changed_slot_key);
     }
 }
 

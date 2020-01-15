@@ -46,7 +46,7 @@ protected:
 private:
     m::wcommand_manager::wptr m_command_manager;
     product_view_model::ptr m_product_view_model;
-    s::slot_key m_on_data_context_changed_slot_key;
+    si::slot_key m_on_data_context_changed_slot_key;
 };
 
 #endif  // #ifndef GO_PRODUCT_VIEW_HPP_INCLUDED

@@ -65,7 +65,7 @@ private:
     const std::wstring _name;
     spaceship_interface::ptr _spaceship;
 
-    s::slot_key _on_spaceship_property_changed_slot_key;
+    si::slot_key _on_spaceship_property_changed_slot_key;
 
     fleet_organization_interface::ptr _parent;
     fleet_organization_interface::ptr _first_child;

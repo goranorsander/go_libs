@@ -138,8 +138,8 @@ public:
     }
 
 private:
-    s::slot_key _on_container_changed_slot_key;
-    s::slot_key _on_property_changed_slot_key;
+    si::slot_key _on_container_changed_slot_key;
+    si::slot_key _on_property_changed_slot_key;
 
     m::notify_container_changed_action _last_action;
     unsigned int _last_change_added;

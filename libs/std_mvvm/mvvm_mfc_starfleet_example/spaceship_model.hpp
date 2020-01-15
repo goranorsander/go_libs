@@ -46,7 +46,7 @@ private:
     m::wobservable_deque<equipment_interface::ptr>::ptr _equipment;
     std::wstring _captain;
     unsigned int _crew_complement;
-    s::slot_key _on_equipment_list_changed_slot_key;
+    si::slot_key _on_equipment_list_changed_slot_key;
 };
 
 #endif  // #ifndef GO_SPACESHIP_MODEL_HPP_INCLUDED

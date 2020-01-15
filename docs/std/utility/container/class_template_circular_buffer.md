@@ -92,7 +92,6 @@ public:
 
 ## Template parameters
 
-template<class T, class A = std::allocator<T>> class circular_buffer
 Parameter | Description
 -|-
 T | The element type

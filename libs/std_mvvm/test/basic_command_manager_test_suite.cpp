@@ -256,7 +256,7 @@ private:
     typedef std::pair<u::u8string, u::u8string> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
-    s::slot_key _on_property_changed_slot_key;
+    si::slot_key _on_property_changed_slot_key;
     on_property_changed_counter_type _on_property_changed_count;
 };
 
