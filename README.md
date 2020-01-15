@@ -105,17 +105,12 @@ My development environment and toolset details:
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.6.5p114 (2019-10-01 revision 67812)
-  * Visual Studio Code 1.19.2 - with extensions:
-    * C/C++ 0.26.0 _(C/C++ IntelliSense, debugging, and code browsing)_
-    * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.1.3 _(Extended CMake support)_
-    * Git Lens 10.1.1 _(Supercharge Visual Studio Code's Git capabilities)_
-    * Markdown All in One 2.5.1 _(All you need to write Markdown)_
+  * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
   * cmake version 3.16.1
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
-  * git 2.24.1.windows.2
+  * git 2.25.0.windows.2
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
@@ -126,8 +121,13 @@ My development environment and toolset details:
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.9.18
-  * Visual Studio 2019, Community Edition, version 16.4.2
-  * Visual Studio Code 1.39.2 - with same extensions as in Linux environment
+  * Visual Studio 2019, Community Edition, version 16.4.3
+  * Visual Studio Code 1.41.1 - with extensions:
+    * C/C++ 0.26.2 _(C/C++ IntelliSense, debugging, and code browsing)_
+    * CMake 0.0.17 _(CMake language support)_
+    * CMake Tools 1.2.3 _(Extended CMake support)_
+    * Git Lens 10.2.0 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 2.7.0 _(All you need to write Markdown)_
 
 # GOOGLE TEST
 
