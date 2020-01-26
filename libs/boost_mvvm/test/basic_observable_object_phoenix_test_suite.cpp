@@ -23,14 +23,14 @@ TEST(boost_basic_observable_object_phoenix_test_suite, boost_phoenix_not_support
 #include <go_boost/mvvm/utility.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-#include <go_boost/utility.hpp>
+#include <go_boost/string.hpp>
 
 namespace
 {
 
 // Test observable_object
 class spaceship
-    : public m::basic_observable_object<u::u8string>
+    : public m::basic_observable_object<s::u8string>
     , private tt::noncopyable_nonmovable
 {
 public:
@@ -38,11 +38,11 @@ public:
 
 private:
     spaceship()
-        : m::basic_observable_object<u::u8string>()
+        : m::basic_observable_object<s::u8string>()
         , tt::noncopyable_nonmovable()
-        , crew_complement(us::create<u::u8string>("crew_complement"))
-        , name(us::create<u::u8string>("name"))
-        , max_speed(us::create<u::u8string>("max_speed"))
+        , crew_complement(s::create<s::u8string>("crew_complement"))
+        , name(s::create<s::u8string>("name"))
+        , max_speed(s::create<s::u8string>("max_speed"))
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
@@ -70,12 +70,12 @@ private:
 
 public:
     p::u8property<int> crew_complement;
-    p::u8property<u::u8string> name;
+    p::u8property<s::u8string> name;
     p::u8property<double> max_speed;
 
 private:
     int _crew_complement;
-    u::u8string _name;
+    s::u8string _name;
     double _max_speed;
 };
 
@@ -101,13 +101,13 @@ public:
         m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
-            if(a->property_name() == us::create<u::u8string>("crew_complement")) { ++_crew_complement_change_count; }
-            else if(a->property_name() == us::create<u::u8string>("name")) { ++_name_change_count; }
-            else if(a->property_name() == us::create<u::u8string>("max_speed")) { ++_max_speed_change_count; }
+            if(a->property_name() == s::create<s::u8string>("crew_complement")) { ++_crew_complement_change_count; }
+            else if(a->property_name() == s::create<s::u8string>("name")) { ++_name_change_count; }
+            else if(a->property_name() == s::create<s::u8string>("max_speed")) { ++_max_speed_change_count; }
         }
     }
 

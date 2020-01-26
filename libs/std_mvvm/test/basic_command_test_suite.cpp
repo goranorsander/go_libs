@@ -21,21 +21,21 @@ TEST(std_basic_command_test_suite, cpp11_not_supported) {}
 
 #include <go/mvvm.hpp>
 #include <go/namespace_alias.hpp>
-#include <go/utility.hpp>
+#include <go/string.hpp>
 
 namespace
 {
 
-const u::u8string TEST_COMMAND_NAME(us::create<u::u8string>("test command"));
+const s::u8string TEST_COMMAND_NAME(s::create<s::u8string>("test command"));
 
 class test_command
-    : public m::basic_command_interface<u::u8string>
+    : public m::basic_command_interface<s::u8string>
 {
 public:
     virtual ~test_command() GO_DEFAULT_DESTRUCTOR
 
     test_command()
-        : m::basic_command_interface<u::u8string>(TEST_COMMAND_NAME, nullptr)
+        : m::basic_command_interface<s::u8string>(TEST_COMMAND_NAME, nullptr)
         , _allow_execute(false)
         , _executed(false)
     {
@@ -87,7 +87,7 @@ public:
     {
     }
 
-    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
     {
         ++_number_of_can_execute_changes;
     }

@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 #include <go/async/placebo_lockable.hpp>
-#include <go/utility/u8string.hpp>
+#include <go/string/u8string.hpp>
 
 #define GO_IMPLEMENT_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _property_name_type_, _value_type_, _mutex_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_, _property_name_type_, _mutex_type_>& lhs, const _value_type_& rhs) \
@@ -90,61 +90,61 @@ GO_IMPLEMENT_PROPERTY_NOT_EQUAL_TO_OPERATOR(_basic_property_type_, _property_nam
 #define GO_IMPLEMENT_DEFAULT_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, string::u8string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::u16string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::u32string, std::recursive_mutex) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, string::u8string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::u16string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::u32string, std::recursive_mutex) \
 \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::string, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u8string, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::u16string, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::u32string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::wstring, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, string::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::u16string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::u32string, std::recursive_mutex) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, utility::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, string::u8string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::u16string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::u32string, std::recursive_mutex) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, utility::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, string::u8string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::u16string, std::recursive_mutex) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::u32string, std::recursive_mutex) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, utility::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, string::u8string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::u16string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::u32string, async::placebo_lockable) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, utility::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, string::u8string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::u16string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::u32string, async::placebo_lockable) \
 \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::string, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, utility::u8string, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::u16string, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::u32string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::wstring, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, string::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::u16string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::u32string, async::placebo_lockable) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, utility::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, string::u8string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::u16string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::u32string, async::placebo_lockable) \
 \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, utility::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, string::u8string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::u16string, async::placebo_lockable) \
 GO_IMPLEMENT_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::u32string, async::placebo_lockable)
 

@@ -23,7 +23,7 @@ TEST(std_u8property_test_suite, cpp11_not_supported) {}
 
 #include <go/namespace_alias.hpp>
 #include <go/property.hpp>
-#include <go/utility/string_cast.hpp>
+#include <go/string/string_cast.hpp>
 
 namespace testing
 {
@@ -50,9 +50,9 @@ namespace
 {
 
 // create_u8string
-u::u8string create_u8string(const std::string& s)
+s::u8string create_u8string(const std::string& s)
 {
-    return u::string_cast<u::u8string>(s);
+    return s::string_cast<s::u8string>(s);
 }
 
 // Test value_u8property

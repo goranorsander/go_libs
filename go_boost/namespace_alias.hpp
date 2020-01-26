@@ -41,13 +41,13 @@ namespace read_only {}
 namespace write_only {}
 }
 namespace signals {}
+namespace string {}
 namespace type_traits {}
 namespace utility
 {
 namespace container {}
 namespace iterator {}
 namespace range {}
-namespace string {}
 }
 }
 
@@ -67,13 +67,13 @@ namespace pnro = go_boost::property::nameless::read_only;
 namespace pnwo = go_boost::property::nameless::write_only;
 namespace pro = go_boost::property::read_only;
 namespace pwo = go_boost::property::write_only;
+namespace s = go_boost::string;
 namespace si = go_boost::signals;
 namespace tt = go_boost::type_traits;
 namespace u = go_boost::utility;
 namespace uc = go_boost::utility::container;
 namespace ui = go_boost::utility::iterator;
 namespace ur = go_boost::utility::range;
-namespace us = go_boost::utility::string;
 
 namespace boost
 {

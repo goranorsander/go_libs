@@ -21,39 +21,39 @@ TEST(std_basic_relay_command_test_suite, cpp11_not_supported) {}
 
 #include <go/mvvm.hpp>
 #include <go/namespace_alias.hpp>
-#include <go/utility.hpp>
+#include <go/string.hpp>
 
 namespace
 {
 
-const u::u8string TEST_RELAY_COMMAND_NAME(us::create<u::u8string>("test relay command"));
+const s::u8string TEST_RELAY_COMMAND_NAME(s::create<s::u8string>("test relay command"));
 
 class test_relay_command
-    : public m::basic_relay_command<u::u8string>
+    : public m::basic_relay_command<s::u8string>
 {
 public:
     virtual ~test_relay_command() GO_DEFAULT_DESTRUCTOR
 
         test_relay_command(const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command)
-        : m::basic_relay_command<u::u8string>(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, nullptr)
+        : m::basic_relay_command<s::u8string>(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, nullptr)
     {
     }
 
     virtual bool can_execute(const std::shared_ptr<m::command_parameters>& params) override
     {
-        return m::basic_relay_command<u::u8string>::can_execute(params);
+        return m::basic_relay_command<s::u8string>::can_execute(params);
     }
 
     virtual void execute(const std::shared_ptr<m::command_parameters>& params) override
     {
-        m::basic_relay_command<u::u8string>::execute(params);
+        m::basic_relay_command<s::u8string>::execute(params);
     }
 };
 
 class test_relay_command_exection_context
 {
 public:
-    typedef GO_TYPENAME si::signal<std::function<void(const std::shared_ptr<m::basic_command_interface<u::u8string>>&)>> can_execute_changed_signal;
+    typedef GO_TYPENAME si::signal<std::function<void(const std::shared_ptr<m::basic_command_interface<s::u8string>>&)>> can_execute_changed_signal;
 
     virtual ~test_relay_command_exection_context() GO_DEFAULT_DESTRUCTOR
 
@@ -111,7 +111,7 @@ public:
     {
     }
 
-    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
     {
         ++_number_of_can_execute_changes;
     }

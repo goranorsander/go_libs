@@ -25,7 +25,7 @@ template<class K, class T> class unordered_multimap_observer
 {
 public:
     typedef unordered_multimap_observer<K, T> this_type;
-    typedef typename m::basic_observable_unordered_multimap<K, T, u::u8string>::ptr observable_unordered_multimap_ptr_type;
+    typedef typename m::basic_observable_unordered_multimap<K, T, s::u8string>::ptr observable_unordered_multimap_ptr_type;
 
     virtual ~unordered_multimap_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -72,7 +72,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -147,25 +147,25 @@ private:
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     // TODO: Find a way to test insert without using insert to prepare the test
     EXPECT_EQ(0u, m->size());
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(6u, m->size());
 
     o.connect(m);
 
-    m->insert(m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(7u, m->size());
 
-    typedef m::basic_observable_unordered_multimap<int, int, u::u8string> observable_unordered_multimap_type;
+    typedef m::basic_observable_unordered_multimap<int, int, s::u8string> observable_unordered_multimap_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multimap_type::value_type& i, *m)
@@ -191,28 +191,28 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_single_el
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(4u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(5u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(7u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(6, 60));
+    it = m->insert(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(8u, m->size());
 
     EXPECT_EQ(m::notify_container_changed_action_add, o.last_action());
@@ -230,22 +230,22 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_single_el
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m1 = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m2 = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m1 = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m2 = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(4u, m1->size());
 
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(3u, m2->size());
 
     o.connect(m2);
@@ -270,26 +270,26 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_range)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type> il1 =
+    const std::initializer_list<m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type> il1 =
     {
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4u, m->size());
 
-    const std::initializer_list<m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type> il2 =
+    const std::initializer_list<m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type> il2 =
     {
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(6, 60)
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(6, 60)
     };
     EXPECT_EQ(3u, il2.size());
 
@@ -315,25 +315,25 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_insert_initializ
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator it1 = m->begin();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator it2 = m->erase(it1);
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
@@ -354,18 +354,18 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_position)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_value)
 {
     // Test erase value
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
@@ -376,7 +376,7 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5u, m->size());
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -402,25 +402,25 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_value)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator begin = m->begin();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator begin = m->begin();
     ++begin;
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator end = begin;
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator end = begin;
     std::advance(end, 5);
 
     m->erase(begin, end);
@@ -441,28 +441,28 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_erase_range)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m1 = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m2 = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m1 = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m2 = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o1;
     unordered_multimap_observer<int, int> o2;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m1->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m1->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
     EXPECT_EQ(5u, m1->size());
 
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(10, 100));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(20, 200));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(30, 300));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(40, 400));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(50, 500));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(60, 600));
-    m2->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(70, 700));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(10, 100));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(20, 200));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(30, 300));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(40, 400));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(50, 500));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(60, 600));
+    m2->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(70, 700));
     EXPECT_EQ(7u, m2->size());
 
     o1.connect(m1);
@@ -472,7 +472,7 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_swap)
     EXPECT_EQ(7u, m1->size());
     EXPECT_EQ(5u, m2->size());
 
-    typedef m::basic_observable_unordered_multimap<int, int, u::u8string> observable_unordered_multimap_type;
+    typedef m::basic_observable_unordered_multimap<int, int, s::u8string> observable_unordered_multimap_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_multimap_type::value_type& i, *m1)
@@ -519,18 +519,18 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_swap)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(4, 40));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(6, 60));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(7, 70));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(4, 40));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(6, 60));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(7, 70));
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
@@ -555,33 +555,33 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_clear)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator it = m->emplace(m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator it = m->emplace(m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(5, 50));
+    it = m->emplace(m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(5, 50));
     EXPECT_EQ(5, it->first);
     EXPECT_EQ(50, it->second);
 
-    it = m->emplace(m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace(m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace(m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(6, 60));
+    it = m->emplace(m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -611,29 +611,29 @@ TEST(boost_basic_observable_unordered_multimap_test_suite, test_emplace)
 TEST(boost_basic_observable_unordered_multimap_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, u::u8string>::create();
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::ptr m = m::basic_observable_unordered_multimap<int, int, s::u8string>::create();
     unordered_multimap_observer<int, int> o;
 
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(1, 10));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(2, 20));
-    m->insert(m::basic_observable_multimap<int, int, u::u8string>::value_type(5, 50));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(1, 10));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(2, 20));
+    m->insert(m::basic_observable_multimap<int, int, s::u8string>::value_type(5, 50));
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_unordered_multimap<int, int, u::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_unordered_multimap<int, int, s::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, u::u8string>::value_type(6, 60));
+    it = m->emplace_hint(it, m::basic_observable_unordered_multimap<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 

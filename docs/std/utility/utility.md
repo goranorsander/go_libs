@@ -24,15 +24,11 @@ of components too small to be called libraries in their own right.
 * [container](./container/container.html)
 * [iterator](./iterator/iterator.html)
 * [range](./range/range.html)
-* [string](./string/string.html)
 
 ### Class reference
 
 * [scope_guard](./class_scope_guard.html)
 * [scope_guard_new](./class_template_scope_guard_new.html)
-* [string_cast_exception](./class_string_cast_exception.html)
-* [u2string](./class_u2string.html)
-* [u8string](./class_u8string.html)
 * [value_guard](./class_template_value_guard.html)
 
 ### Function reference
@@ -40,4 +36,3 @@ of components too small to be called libraries in their own right.
 * [exchange](./function_template_exchange.html)
 * [max_of](./function_template_min_max.html)
 * [min_of](./function_template_min_max.html)
-* [string_cast](./function_template_string_cast.html)

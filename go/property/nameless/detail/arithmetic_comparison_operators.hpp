@@ -15,7 +15,7 @@
 
 #include <mutex>
 #include <go/async/placebo_lockable.hpp>
-#include <go/utility/u8string.hpp>
+#include <go/string/u8string.hpp>
 
 #define GO_IMPLEMENT_NAMELESS_PROPERTY_EQUAL_TO_OPERATOR(_basic_property_type_, _value_type_, _mutex_type_) \
 inline bool operator==(const _basic_property_type_<_value_type_, _mutex_type_>& lhs, const _value_type_& rhs) \
@@ -92,13 +92,13 @@ GO_IMPLEMENT_NAMELESS_PROPERTY_NOT_EQUAL_TO_OPERATOR(_basic_property_type_, _val
 #define GO_IMPLEMENT_DEFAULT_NAMELESS_PROPERTY_TYPES_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, std::recursive_mutex) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, std::recursive_mutex) \
-GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, std::recursive_mutex) \
+GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, std::recursive_mutex) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, std::recursive_mutex) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, std::recursive_mutex) \
 \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::string, async::placebo_lockable) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::wstring, async::placebo_lockable) \
-GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, utility::u8string, async::placebo_lockable) \
+GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, string::u8string, async::placebo_lockable) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u16string, async::placebo_lockable) \
 GO_IMPLEMENT_NAMELESS_PROPERTY_ARITHMETIC_EQUALITY_OPERATORS(_basic_property_type_, std::u32string, async::placebo_lockable)
 

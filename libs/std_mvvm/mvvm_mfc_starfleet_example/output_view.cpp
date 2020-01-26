@@ -14,7 +14,7 @@
 #include <locale>
 #include <time.h>
 
-#include <go/utility/string/format.hpp>
+#include <go/string/format.hpp>
 
 #include "output_view.hpp"
 #include "Resource.h"
@@ -59,43 +59,43 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         const activate_spaceship_command_parameters::ptr asp = std::dynamic_pointer_cast<activate_spaceship_command_parameters>(p);
         if(asp)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]",
                 *asp->id);
         }
         const add_equipment_command_parameters::ptr aep = std::dynamic_pointer_cast<add_equipment_command_parameters>(p);
         if (aep)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]",
                 *aep->spaceship_id);
         }
         const close_spaceship_command_parameters::ptr csp = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
         if(csp)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class close_spaceship_command_parameters[spaceship_vm->(id=%d)]}]",
                 (csp->spaceship_vm() ? csp->spaceship_vm()->spaceship_id().get() : 0));
         }
         const delete_dialog_view_command_parameters::ptr dvp = std::dynamic_pointer_cast<delete_dialog_view_command_parameters>(p);
         if (dvp)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class delete_dialog_view_command_parameters[dialog=0x%X]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class delete_dialog_view_command_parameters[dialog=0x%X]}]",
                 reinterpret_cast<unsigned __int3264>(dvp->dialog().get()));
         }
         const fleet_organization_command_parameters::ptr fop = std::dynamic_pointer_cast<fleet_organization_command_parameters>(p);
         if(fop)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]",
                 *fop->id);
         }
         const open_add_equipment_view_command_parameters::ptr oep = std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
         if (oep)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class open_add_equipment_view_command_parameters[spaceship=0x%X]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class open_add_equipment_view_command_parameters[spaceship=0x%X]}]",
                 reinterpret_cast<unsigned __int3264>(oep->spaceship().get()));
         }
         const remove_equipment_command_parameters::ptr rep = std::dynamic_pointer_cast<remove_equipment_command_parameters>(p);
         if (rep)
         {
-            return us::format(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]",
+            return s::format(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]",
                 rep->spaceship_id.get(), rep->equipment_id.get());
         }
     }
@@ -107,21 +107,21 @@ std::wstring event_information(const m::wevent::ptr& e)
     const close_spaceship_event::ptr cs = std::dynamic_pointer_cast<close_spaceship_event>(e);
     if(cs)
     {
-        return us::format(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]",
+        return s::format(L"class close_spaceship_event[spaceship_vm=0x%08X, spaceship_vm->id=%d]",
             (cs->spaceship_vm() ? reinterpret_cast<unsigned __int3264>(cs->spaceship_vm().get()) : 0),
             (cs->spaceship_vm() ? cs->spaceship_vm()->spaceship_id().get() : 0));
     }
     const select_fleet_organization_event::ptr sfo = std::dynamic_pointer_cast<select_fleet_organization_event>(e);
     if(sfo)
     {
-        return us::format(L"class select_fleet_organization_event[id=%d, selected_by=%s]",
+        return s::format(L"class select_fleet_organization_event[id=%d, selected_by=%s]",
             *sfo->id,
             (*sfo->selected_by).c_str());
     }
     const show_spaceship_event::ptr ss = std::dynamic_pointer_cast<show_spaceship_event>(e);
     if(ss)
     {
-        return us::format(L"class show_spaceship_event[id=%d]",
+        return s::format(L"class show_spaceship_event[id=%d]",
             *ss->id);
     }
     return L"class go::mvvm::wevent";
@@ -132,7 +132,7 @@ std::wstring object_information(const m::object::ptr& o)
     const equipment_interface::ptr e = std::dynamic_pointer_cast<equipment_interface>(o);
     if(e)
     {
-        return us::format(L"class equipment_model[category=%s, name=%s, quantity=%d]",
+        return s::format(L"class equipment_model[category=%s, name=%s, quantity=%d]",
             (*e->category).c_str(),
             (*e->name).c_str(),
             *e->quantity);
@@ -140,13 +140,13 @@ std::wstring object_information(const m::object::ptr& o)
     const m::wobservable_deque<equipment_interface::ptr>::ptr el = std::dynamic_pointer_cast<m::wobservable_deque<equipment_interface::ptr>>(o);
     if(el)
     {
-        return us::format(L"class go::mvvm::wobservable_deque<equipment_model>[size=%d]",
+        return s::format(L"class go::mvvm::wobservable_deque<equipment_model>[size=%d]",
             el->size());
     }
     const fleet_organization_interface::ptr f = std::dynamic_pointer_cast<fleet_organization_interface>(o);
     if(f)
     {
-        return us::format(L"class fleet_organization_model[name=%s, spaceship_model.name=%s, parent.name=%s, first_child.name=%s, previous_sibling.name=%s, next_sibling.name=%s]",
+        return s::format(L"class fleet_organization_model[name=%s, spaceship_model.name=%s, parent.name=%s, first_child.name=%s, previous_sibling.name=%s, next_sibling.name=%s]",
             (*f->name).c_str(),
             *f->spaceship_model ? (*(*f->spaceship_model)->name).c_str() : L"<null>",
             *f->parent ? (*(*f->parent)->name).c_str() : L"<null>",
@@ -157,7 +157,7 @@ std::wstring object_information(const m::object::ptr& o)
     const spaceship_interface::ptr s = std::dynamic_pointer_cast<spaceship_interface>(o);
     if(s)
     {
-        return us::format(L"class fleet_organization_model[spaceship_class=%s, name=%s, equipment_model={size=%d}, captain=%s, crew_complement=%d]",
+        return s::format(L"class fleet_organization_model[spaceship_class=%s, name=%s, equipment_model={size=%d}, captain=%s, crew_complement=%d]",
             (*s->spaceship_class).c_str(),
             (*s->name).c_str(),
             *s->equipment ? (*s->equipment)->size() : 0,
@@ -283,7 +283,7 @@ void output_view::on_command_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = us::format(L"%s: Executed command %s, %s", current_date_and_time().c_str(), c->command_name().c_str(), command_information(c).c_str());
+        const std::wstring msg = s::format(L"%s: Executed command %s, %s", current_date_and_time().c_str(), c->command_name().c_str(), command_information(c).c_str());
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
     }
@@ -293,7 +293,7 @@ void output_view::on_command_not_executed(const m::wcommand_interface::ptr& c)
 {
     if(c)
     {
-        const std::wstring msg = us::format(L"%s: Command %s was not executed, %s", current_date_and_time().c_str(), c->command_name().c_str(), command_information(c).c_str());
+        const std::wstring msg = s::format(L"%s: Command %s was not executed, %s", current_date_and_time().c_str(), c->command_name().c_str(), command_information(c).c_str());
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputCommandEvents.AddString(msg.c_str());
     }
@@ -303,7 +303,7 @@ void output_view::on_event_fired(const m::wevent::ptr& e)
 {
     if(e)
     {
-        const std::wstring msg = us::format(L"%s: Fired event %s, %s", current_date_and_time().c_str(), e->event_type().c_str(), event_information(e).c_str());
+        const std::wstring msg = s::format(L"%s: Fired event %s, %s", current_date_and_time().c_str(), e->event_type().c_str(), event_information(e).c_str());
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputEventEvents.AddString(msg.c_str());
     }
@@ -317,19 +317,19 @@ void output_view::on_container_changed(const m::object::ptr& o, const m::contain
         switch(a->action())
         {
         case m::notify_container_changed_action::add:
-            msg = us::format(L"%s: Added %zu elements to container, %s", current_date_and_time().c_str(), a->added_elements(), object_information(o).c_str());
+            msg = s::format(L"%s: Added %zu elements to container, %s", current_date_and_time().c_str(), a->added_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action::remove:
-            msg = us::format(L"%s: Removed %zu elements from container, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
+            msg = s::format(L"%s: Removed %zu elements from container, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action::reset:
-            msg = us::format(L"%s: Reset container, removed all %zu elements, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
+            msg = s::format(L"%s: Reset container, removed all %zu elements, %s", current_date_and_time().c_str(), a->removed_elements(), object_information(o).c_str());
             break;
         case m::notify_container_changed_action::swap:
-            msg = us::format(L"%s: Swapped container elements, had %zu, now got %zu, %s", current_date_and_time().c_str(), a->removed_elements(), a->added_elements(), object_information(o).c_str());
+            msg = s::format(L"%s: Swapped container elements, had %zu, now got %zu, %s", current_date_and_time().c_str(), a->removed_elements(), a->added_elements(), object_information(o).c_str());
             break;
         default:
-            msg = us::format(L"%s: Unknown container action, %s", current_date_and_time().c_str(), object_information(o).c_str());
+            msg = s::format(L"%s: Unknown container action, %s", current_date_and_time().c_str(), object_information(o).c_str());
             break;
         }
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
@@ -341,7 +341,7 @@ void output_view::on_property_changed(const m::object::ptr& o, const m::wpropert
 {
     if(o && a)
     {
-        const std::wstring msg = us::format(L"%s: Changed property %s, %s", current_date_and_time().c_str(), a->property_name().c_str(), object_information(o).c_str());
+        const std::wstring msg = s::format(L"%s: Changed property %s, %s", current_date_and_time().c_str(), a->property_name().c_str(), object_information(o).c_str());
         _wndOutputAllMvvmEvents.AddString(msg.c_str());
         _wndOutputObservableObjectEvents.AddString(msg.c_str());
     }

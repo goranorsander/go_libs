@@ -114,24 +114,24 @@ public:
 };
 
 template<class T, class L = boost::recursive_mutex> class u8property
-    : public basic_property<T, utility::u8string, L>
+    : public basic_property<T, string::u8string, L>
 {
 public:
     typedef T value_type;
     typedef L lockable_type;
     typedef u8property<value_type, lockable_type> this_type;
-    typedef typename utility::u8string string_type;
+    typedef typename string::u8string string_type;
     typedef typename boost::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~u8property() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit u8property(const utility::u8string& property_name)
+    explicit u8property(const string::u8string& property_name)
         : basic_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
-    u8property(const utility::u8string& property_name, const get_function_signature& get_function)
+    u8property(const string::u8string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type, lockable_type>(property_name, get_function)
     {
     }
@@ -140,24 +140,24 @@ public:
 };
 
 template<class T, class L = boost::recursive_mutex> class u16property
-    : public basic_property<T, utility::u16string, L>
+    : public basic_property<T, string::u16string, L>
 {
 public:
     typedef T value_type;
     typedef L lockable_type;
     typedef u16property<value_type, lockable_type> this_type;
-    typedef typename utility::u16string string_type;
+    typedef typename string::u16string string_type;
     typedef typename boost::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~u16property() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit u16property(const utility::u16string& property_name)
+    explicit u16property(const string::u16string& property_name)
         : basic_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
-    u16property(const utility::u16string& property_name, const get_function_signature& get_function)
+    u16property(const string::u16string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type, lockable_type>(property_name, get_function)
     {
     }
@@ -166,24 +166,24 @@ public:
 };
 
 template<class T, class L = boost::recursive_mutex> class u32property
-    : public basic_property<T, utility::u32string, L>
+    : public basic_property<T, string::u32string, L>
 {
 public:
     typedef T value_type;
     typedef L lockable_type;
     typedef u32property<value_type, lockable_type> this_type;
-    typedef typename utility::u32string string_type;
+    typedef typename string::u32string string_type;
     typedef typename boost::function<value_type(void)> get_function_signature;
 
 public:
     virtual ~u32property() GO_BOOST_DEFAULT_DESTRUCTOR
 
-    explicit u32property(const utility::u32string& property_name)
+    explicit u32property(const string::u32string& property_name)
         : basic_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
-    u32property(const utility::u32string& property_name, const get_function_signature& get_function)
+    u32property(const string::u32string& property_name, const get_function_signature& get_function)
         : basic_property<value_type, string_type, lockable_type>(property_name, get_function)
     {
     }

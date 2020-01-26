@@ -18,7 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/diagnostics/log/detail/string_literal.hpp>
-#include <go_boost/utility/string_cast.hpp>
+#include <go_boost/string/string_cast.hpp>
 
 #include <string>
 
@@ -46,7 +46,7 @@ template <>
 inline std::string::value_type* decode(std::ostream& os, std::string::value_type* b, string_literal_t<std::wstring::value_type>* /*a*/)
 {
     string_literal_t<std::wstring::value_type> s = *reinterpret_cast<string_literal_t<std::wstring::value_type>*>(b);
-    const std::string mbs = go_boost::utility::string_cast<std::string>(std::wstring(s._s));
+    const std::string mbs = go_boost::string::string_cast<std::string>(std::wstring(s._s));
     os << mbs.c_str();
     return reinterpret_cast<std::string::value_type*>(reinterpret_cast<std::size_t>(b) + sizeof(string_literal_t<std::string::value_type>));
 }
@@ -66,7 +66,7 @@ template <>
 inline std::string::value_type* decode(std::ostream & os, std::string::value_type* b, std::wstring::value_type** /*a*/)
 {
     string_literal_t<std::wstring::value_type> s = *reinterpret_cast<string_literal_t<std::wstring::value_type>*>(b);
-    const std::string mbs = go_boost::utility::string_cast<std::string>(std::wstring(s._s));
+    const std::string mbs = go_boost::string::string_cast<std::string>(std::wstring(s._s));
     const std::string::const_iterator end = mbs.end();
     for (std::string::const_iterator c = mbs.begin(); c != end; ++b, ++c)
     {
@@ -91,7 +91,7 @@ template <>
 inline std::wstring::value_type* decode(std::wostream& os, std::wstring::value_type* b, string_literal_t<std::string::value_type>* /*a*/)
 {
     string_literal_t<std::string::value_type> s = *reinterpret_cast<string_literal_t<std::string::value_type>*>(b);
-    const std::wstring sws = go_boost::utility::string_cast<std::wstring>(std::string(s._s));
+    const std::wstring sws = go_boost::string::string_cast<std::wstring>(std::string(s._s));
     os << sws.c_str();
     return reinterpret_cast<std::wstring::value_type*>(reinterpret_cast<std::size_t>(b) + sizeof(string_literal_t<std::wstring::value_type>));
 }
@@ -111,7 +111,7 @@ template <>
 inline std::wstring::value_type* decode(std::wostream & os, std::wstring::value_type* b, std::string::value_type** /*a*/)
 {
     string_literal_t<std::string::value_type> s = *reinterpret_cast<string_literal_t<std::string::value_type>*>(b);
-    const std::wstring sws = go_boost::utility::string_cast<std::wstring>(std::string(s._s));
+    const std::wstring sws = go_boost::string::string_cast<std::wstring>(std::string(s._s));
     const std::wstring::const_iterator end = sws.end();
     for (std::wstring::const_iterator c = sws.begin(); c != end; ++b, ++c)
     {

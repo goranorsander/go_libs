@@ -30,7 +30,7 @@ template<class T> class multiset_observer
 {
 public:
     typedef multiset_observer<T> this_type;
-    typedef typename m::basic_observable_multiset<T, u::u8string>::ptr observable_multiset_ptr_type;
+    typedef typename m::basic_observable_multiset<T, s::u8string>::ptr observable_multiset_ptr_type;
 
     virtual ~multiset_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -157,7 +157,7 @@ private:
 TEST(std_basic_observable_multiset_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -193,7 +193,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_single_element)
 TEST(std_basic_observable_multiset_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -203,7 +203,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_single_element_with_h
 
     o.connect(s);
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->insert(s->begin(), 3);
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->insert(s->begin(), 3);
     EXPECT_EQ(5u, s->size());
 
     it = s->insert(it, 4);
@@ -249,8 +249,8 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_single_element_with_h
 TEST(std_basic_observable_multiset_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_multiset<int, u::u8string>::ptr s1 = m::basic_observable_multiset<int, u::u8string>::create();
-    m::basic_observable_multiset<int, u::u8string>::ptr s2 = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s1 = m::basic_observable_multiset<int, s::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s2 = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s1->size());
@@ -269,7 +269,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_range)
     s2->insert(s1->begin(), s1->end());
     EXPECT_EQ(7u, s2->size());
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s2->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s2->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(2, *it);
@@ -301,7 +301,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_range)
 TEST(std_basic_observable_multiset_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -318,7 +318,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_initializer_list)
     s->insert(il2);
     EXPECT_EQ(7u, s->size());
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(2, *it);
@@ -350,7 +350,7 @@ TEST(std_basic_observable_multiset_test_suite, test_insert_initializer_list)
 TEST(std_basic_observable_multiset_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -361,9 +361,9 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_position)
 
     o.connect(s);
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it1 = s->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator it1 = s->begin();
     std::advance(it1, 3);
-    m::basic_observable_multiset<int, u::u8string>::iterator it2 = s->erase(it1);
+    m::basic_observable_multiset<int, s::u8string>::iterator it2 = s->erase(it1);
     EXPECT_EQ(6u, s->size());
 
     s->erase(it2);
@@ -397,7 +397,7 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_position)
 TEST(std_basic_observable_multiset_test_suite, test_erase_value)
 {
     // Test erase value
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -414,7 +414,7 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_value)
     s->erase(5);
     EXPECT_EQ(5u, s->size());
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(2, *it);
@@ -442,7 +442,7 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_value)
 TEST(std_basic_observable_multiset_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -453,15 +453,15 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_range)
 
     o.connect(s);
 
-    m::basic_observable_multiset<int, u::u8string>::iterator begin = s->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator begin = s->begin();
     ++begin;
-    m::basic_observable_multiset<int, u::u8string>::iterator end = s->end();
+    m::basic_observable_multiset<int, s::u8string>::iterator end = s->end();
     --end;
 
     s->erase(begin, end);
     EXPECT_EQ(2u, s->size());
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->begin();
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(7, *it);
@@ -483,8 +483,8 @@ TEST(std_basic_observable_multiset_test_suite, test_erase_range)
 TEST(std_basic_observable_multiset_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_multiset<int, u::u8string>::ptr s1 = m::basic_observable_multiset<int, u::u8string>::create();
-    m::basic_observable_multiset<int, u::u8string>::ptr s2 = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s1 = m::basic_observable_multiset<int, s::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s2 = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o1;
     multiset_observer<int> o2;
 
@@ -547,7 +547,7 @@ TEST(std_basic_observable_multiset_test_suite, test_swap)
 TEST(std_basic_observable_multiset_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -576,7 +576,7 @@ TEST(std_basic_observable_multiset_test_suite, test_clear)
 TEST(std_basic_observable_multiset_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     const std::initializer_list<int> il = {1, 2, 3};
@@ -585,7 +585,7 @@ TEST(std_basic_observable_multiset_test_suite, test_emplace)
 
     o.connect(s);
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->emplace(4);
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->emplace(4);
     EXPECT_EQ(4, *it);
 
     it = s->emplace(5);
@@ -629,7 +629,7 @@ TEST(std_basic_observable_multiset_test_suite, test_emplace)
 TEST(std_basic_observable_multiset_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::basic_observable_multiset<int, u::u8string>::ptr s = m::basic_observable_multiset<int, u::u8string>::create();
+    m::basic_observable_multiset<int, s::u8string>::ptr s = m::basic_observable_multiset<int, s::u8string>::create();
     multiset_observer<int> o;
 
     const std::initializer_list<int> il = {1, 2, 5};
@@ -638,7 +638,7 @@ TEST(std_basic_observable_multiset_test_suite, test_emplace_hint)
 
     o.connect(s);
 
-    m::basic_observable_multiset<int, u::u8string>::iterator it = s->emplace_hint(s->begin(), 3);
+    m::basic_observable_multiset<int, s::u8string>::iterator it = s->emplace_hint(s->begin(), 3);
     EXPECT_EQ(3, *it);
 
     it = s->emplace_hint(it, 4);

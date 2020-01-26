@@ -130,23 +130,23 @@ public:
 };
 
 template<class T, class L = std::recursive_mutex> class reference_u8property
-    : public basic_reference_property<T, utility::u8string, L>
+    : public basic_reference_property<T, string::u8string, L>
 {
 public:
     typedef T value_type;
-    typedef utility::u8string string_type;
+    typedef string::u8string string_type;
     typedef L lockable_type;
     typedef reference_u8property<value_type, lockable_type> this_type;
 
 public:
     virtual ~reference_u8property() GO_DEFAULT_DESTRUCTOR
 
-    explicit reference_u8property(const utility::u8string& property_name)
+    explicit reference_u8property(const string::u8string& property_name)
         : basic_reference_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
-    reference_u8property(const utility::u8string& property_name, const value_type& v)
+    reference_u8property(const string::u8string& property_name, const value_type& v)
         : basic_reference_property<value_type, string_type, lockable_type>(property_name, v)
     {
     }

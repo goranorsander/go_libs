@@ -16,39 +16,39 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility.hpp>
+#include <go_boost/string.hpp>
 
 namespace
 {
 
-const u::u8string TEST_RELAY_COMMAND_NAME(us::create<u::u8string>("test relay command"));
+const s::u8string TEST_RELAY_COMMAND_NAME(s::create<s::u8string>("test relay command"));
 
 class test_relay_command
-    : public m::basic_relay_command<u::u8string>
+    : public m::basic_relay_command<s::u8string>
 {
 public:
     virtual ~test_relay_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
         test_relay_command(const execute_command_signature& execute_command, const can_execute_command_signature& can_execute_command)
-        : m::basic_relay_command<u::u8string>(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, m::basic_relay_command<u::u8string>::command_parameters_type())
+        : m::basic_relay_command<s::u8string>(TEST_RELAY_COMMAND_NAME, execute_command, can_execute_command, m::basic_relay_command<s::u8string>::command_parameters_type())
     {
     }
 
     virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
-        return m::basic_relay_command<u::u8string>::can_execute(params);
+        return m::basic_relay_command<s::u8string>::can_execute(params);
     }
 
     virtual void execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
     {
-        m::basic_relay_command<u::u8string>::execute(params);
+        m::basic_relay_command<s::u8string>::execute(params);
     }
 };
 
 class test_relay_command_exection_context
 {
 public:
-    typedef GO_BOOST_TYPENAME boost::signals2::signal<void(const boost::shared_ptr<m::basic_command_interface<u::u8string>>&)> can_execute_changed_signal;
+    typedef GO_BOOST_TYPENAME boost::signals2::signal<void(const boost::shared_ptr<m::basic_command_interface<s::u8string>>&)> can_execute_changed_signal;
 
     virtual ~test_relay_command_exection_context() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -70,7 +70,7 @@ public:
             _executed = true;
             if(!can_execute(params))
             {
-                can_execute_changed(m::basic_relay_command<u::u8string>::ptr());
+                can_execute_changed(m::basic_relay_command<s::u8string>::ptr());
             }
         }
     }
@@ -79,11 +79,11 @@ public:
 
     void allow_execute(const bool v)
     {
-        const bool can_execute_ = can_execute(m::basic_relay_command<u::u8string>::command_parameters_type());
+        const bool can_execute_ = can_execute(m::basic_relay_command<s::u8string>::command_parameters_type());
         _allow_execute = v;
-        if(can_execute_ != can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()))
+        if(can_execute_ != can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()))
         {
-            can_execute_changed(m::basic_relay_command<u::u8string>::ptr());
+            can_execute_changed(m::basic_relay_command<s::u8string>::ptr());
         }
     }
 
@@ -106,7 +106,7 @@ public:
     {
     }
 
-    void on_can_execute_changed(const boost::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    void on_can_execute_changed(const boost::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
     {
         ++_number_of_can_execute_changes;
     }
@@ -123,7 +123,7 @@ TEST(boost_basic_relay_command_test_suite, test_relay_command)
 
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
 
     boost::shared_ptr<test_relay_command> command(new test_relay_command(boost::bind(&test_relay_command_exection_context::execute, &command_exection_context, _1),
         boost::bind(&test_relay_command_exection_context::can_execute, &command_exection_context, _1)));
@@ -132,8 +132,8 @@ TEST(boost_basic_relay_command_test_suite, test_relay_command)
     EXPECT_EQ(TEST_RELAY_COMMAND_NAME, command->command_name());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_FALSE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
     EXPECT_TRUE(command->can_execute_changed.empty());
 
     test_relay_command_observer command_observer;
@@ -146,17 +146,17 @@ TEST(boost_basic_relay_command_test_suite, test_relay_command)
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_FALSE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
 
-    command->execute(m::basic_relay_command<u::u8string>::command_parameters_type());
+    command->execute(m::basic_relay_command<s::u8string>::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_FALSE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
 
     command_exection_context.allow_execute(true);
 
@@ -164,26 +164,26 @@ TEST(boost_basic_relay_command_test_suite, test_relay_command)
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_FALSE(command_exection_context.executed());
-    EXPECT_TRUE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_TRUE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_TRUE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_TRUE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
 
-    command->execute(m::basic_relay_command<u::u8string>::command_parameters_type());
-
-    EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
-    EXPECT_TRUE(command_exection_context.allow_execute());
-    EXPECT_TRUE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_FALSE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-
-    command->execute(m::basic_relay_command<u::u8string>::command_parameters_type());
+    command->execute(m::basic_relay_command<s::u8string>::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command_exection_context.allow_execute());
     EXPECT_TRUE(command_exection_context.executed());
-    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
-    EXPECT_FALSE(command->can_execute(m::basic_relay_command<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+
+    command->execute(m::basic_relay_command<s::u8string>::command_parameters_type());
+
+    EXPECT_FALSE(command->can_execute_changed.empty());
+    EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
+    EXPECT_TRUE(command_exection_context.allow_execute());
+    EXPECT_TRUE(command_exection_context.executed());
+    EXPECT_FALSE(command_exection_context.can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_relay_command<s::u8string>::command_parameters_type()));
 }
 
 }

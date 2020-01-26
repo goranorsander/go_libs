@@ -28,7 +28,7 @@ template<class T> class list_observer
 {
 public:
     typedef list_observer<T> this_type;
-    typedef typename m::basic_observable_list<T, u::u8string>::ptr observable_list_ptr_type;
+    typedef typename m::basic_observable_list<T, s::u8string>::ptr observable_list_ptr_type;
 
     virtual ~list_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -75,7 +75,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -150,7 +150,7 @@ private:
 TEST(boost_basic_observable_list_test_suite, test_assign_range)
 {
     // Test assign range
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -183,7 +183,7 @@ TEST(boost_basic_observable_list_test_suite, test_assign_range)
 TEST(boost_basic_observable_list_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -217,8 +217,8 @@ TEST(boost_basic_observable_list_test_suite, test_assign_initializer_list)
 TEST(boost_basic_observable_list_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l1->size());
@@ -231,9 +231,9 @@ TEST(boost_basic_observable_list_test_suite, test_assign_fill)
     EXPECT_EQ(7u, l1->size());
     EXPECT_EQ(0u, l2->size());
 
-    m::basic_observable_list<int, u::u8string>::iterator begin = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator begin = l1->begin();
     ++begin;
-    m::basic_observable_list<int, u::u8string>::iterator end = l1->end();
+    m::basic_observable_list<int, s::u8string>::iterator end = l1->end();
     --end;
 
     l2->assign(begin, end);
@@ -263,7 +263,7 @@ TEST(boost_basic_observable_list_test_suite, test_assign_fill)
 TEST(boost_basic_observable_list_test_suite, test_push_back)
 {
     // Test push back
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -302,7 +302,7 @@ TEST(boost_basic_observable_list_test_suite, test_push_back)
 TEST(boost_basic_observable_list_test_suite, test_push_front)
 {
     // Test push front
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -341,7 +341,7 @@ TEST(boost_basic_observable_list_test_suite, test_push_front)
 TEST(boost_basic_observable_list_test_suite, test_pop_back)
 {
     // Test pop back
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -383,7 +383,7 @@ TEST(boost_basic_observable_list_test_suite, test_pop_back)
 TEST(boost_basic_observable_list_test_suite, test_pop_front)
 {
     // Test pop front
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -425,7 +425,7 @@ TEST(boost_basic_observable_list_test_suite, test_pop_front)
 TEST(boost_basic_observable_list_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -435,7 +435,7 @@ TEST(boost_basic_observable_list_test_suite, test_insert_single_element)
 
     o.connect(l);
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     std::advance(it, 2);
     l->insert(it, 3);
     EXPECT_EQ(7u, l->size());
@@ -463,7 +463,7 @@ TEST(boost_basic_observable_list_test_suite, test_insert_single_element)
 TEST(boost_basic_observable_list_test_suite, test_insert_fill)
 {
     // Test insert fill
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -473,7 +473,7 @@ TEST(boost_basic_observable_list_test_suite, test_insert_fill)
 
     o.connect(l);
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     std::advance(it, 3);
     l->insert(it, 3, 74);
     EXPECT_EQ(10u, l->size());
@@ -516,8 +516,8 @@ TEST(boost_basic_observable_list_test_suite, test_insert_fill)
 TEST(boost_basic_observable_list_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l1->size());
@@ -531,7 +531,7 @@ TEST(boost_basic_observable_list_test_suite, test_insert_range)
 
     o.connect(l2);
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l2->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l2->begin();
     std::advance(it, 3);
     l2->insert(it, l1->begin(), l1->end());
     EXPECT_EQ(10u, l2->size());
@@ -574,7 +574,7 @@ TEST(boost_basic_observable_list_test_suite, test_insert_range)
 TEST(boost_basic_observable_list_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -585,9 +585,9 @@ TEST(boost_basic_observable_list_test_suite, test_erase_position)
 
     o.connect(l);
 
-    m::basic_observable_list<int, u::u8string>::iterator it1 = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it1 = l->begin();
     std::advance(it1, 3);
-    m::basic_observable_list<int, u::u8string>::iterator it2 = l->erase(it1);
+    m::basic_observable_list<int, s::u8string>::iterator it2 = l->erase(it1);
     EXPECT_EQ(6u, l->size());
 
     l->erase(it2);
@@ -621,7 +621,7 @@ TEST(boost_basic_observable_list_test_suite, test_erase_position)
 TEST(boost_basic_observable_list_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -632,15 +632,15 @@ TEST(boost_basic_observable_list_test_suite, test_erase_range)
 
     o.connect(l);
 
-    m::basic_observable_list<int, u::u8string>::iterator begin = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator begin = l->begin();
     ++begin;
-    m::basic_observable_list<int, u::u8string>::iterator end = l->end();
+    m::basic_observable_list<int, s::u8string>::iterator end = l->end();
     --end;
 
     l->erase(begin, end);
     EXPECT_EQ(2u, l->size());
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(7, *it);
@@ -662,8 +662,8 @@ TEST(boost_basic_observable_list_test_suite, test_erase_range)
 TEST(boost_basic_observable_list_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o1;
     list_observer<int> o2;
 
@@ -724,7 +724,7 @@ TEST(boost_basic_observable_list_test_suite, test_swap)
 TEST(boost_basic_observable_list_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -753,8 +753,8 @@ TEST(boost_basic_observable_list_test_suite, test_clear)
 TEST(boost_basic_observable_list_test_suite, test_splice_entire_list)
 {
     // Test splice entire list
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o1;
     list_observer<int> o2;
 
@@ -772,7 +772,7 @@ TEST(boost_basic_observable_list_test_suite, test_splice_entire_list)
     o1.connect(l1);
     o2.connect(l2);
 
-    m::basic_observable_list<int, u::u8string>::iterator it1 = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it1 = l1->begin();
     ++it1;
     EXPECT_EQ(2, *it1);
 
@@ -781,7 +781,7 @@ TEST(boost_basic_observable_list_test_suite, test_splice_entire_list)
     EXPECT_EQ(0u, l2->size());
     EXPECT_EQ(2, *it1);
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l1->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(10, *it);
@@ -824,8 +824,8 @@ TEST(boost_basic_observable_list_test_suite, test_splice_entire_list)
 TEST(boost_basic_observable_list_test_suite, test_splice_single_element)
 {
     // Test splice single element
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o1;
     list_observer<int> o2;
 
@@ -839,11 +839,11 @@ TEST(boost_basic_observable_list_test_suite, test_splice_single_element)
     o1.connect(l1);
     o2.connect(l2);
 
-    m::basic_observable_list<int, u::u8string>::iterator it2 = l2->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it2 = l2->begin();
     std::advance(it2, 4);
     EXPECT_EQ(2, *it2);
 
-    m::basic_observable_list<int, u::u8string>::iterator it1 = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it1 = l1->begin();
     l1->splice(it1, *l2, it2);
     EXPECT_EQ(1u, l1->size());
     EXPECT_EQ(6u, l2->size());
@@ -896,8 +896,8 @@ TEST(boost_basic_observable_list_test_suite, test_splice_single_element)
 TEST(boost_basic_observable_list_test_suite, test_splice_element_range)
 {
     // Test splice element range
-    m::basic_observable_list<int, u::u8string>::ptr l1 = m::basic_observable_list<int, u::u8string>::create();
-    m::basic_observable_list<int, u::u8string>::ptr l2 = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l1 = m::basic_observable_list<int, s::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l2 = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o1;
     list_observer<int> o2;
 
@@ -915,15 +915,15 @@ TEST(boost_basic_observable_list_test_suite, test_splice_element_range)
     o1.connect(l1);
     o2.connect(l2);
 
-    m::basic_observable_list<int, u::u8string>::iterator it1 = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it1 = l1->begin();
     ++it1;
     EXPECT_EQ(2, *it1);
 
-    m::basic_observable_list<int, u::u8string>::iterator it2first = l2->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it2first = l2->begin();
     ++it2first;
     EXPECT_EQ(20, *it2first);
 
-    m::basic_observable_list<int, u::u8string>::iterator it2last = l2->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it2last = l2->begin();
     std::advance(it2last, 3);
     EXPECT_EQ(40, *it2last);
 
@@ -934,7 +934,7 @@ TEST(boost_basic_observable_list_test_suite, test_splice_element_range)
     // it2first is invalid?
     // it2last is invalid?
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l1->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l1->begin();
     EXPECT_EQ(1, *it);
     ++it;
     EXPECT_EQ(20, *it);
@@ -984,7 +984,7 @@ TEST(boost_basic_observable_list_test_suite, test_splice_element_range)
 TEST(boost_basic_observable_list_test_suite, test_remove)
 {
     // Test remove
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -998,7 +998,7 @@ TEST(boost_basic_observable_list_test_suite, test_remove)
     l->remove(47);
     EXPECT_EQ(4u, l->size());
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     EXPECT_EQ(10, *it);
     ++it;
     EXPECT_EQ(20, *it);
@@ -1032,7 +1032,7 @@ struct is_odd
 TEST(boost_basic_observable_list_test_suite, test_remove_if)
 {
     // Test remove if
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -1046,7 +1046,7 @@ TEST(boost_basic_observable_list_test_suite, test_remove_if)
     l->remove_if(is_odd());
     EXPECT_EQ(4u, l->size());
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     EXPECT_EQ(10, *it);
     ++it;
     EXPECT_EQ(20, *it);
@@ -1072,7 +1072,7 @@ TEST(boost_basic_observable_list_test_suite, test_remove_if)
 TEST(boost_basic_observable_list_test_suite, test_unique)
 {
     // Test unique
-    m::basic_observable_list<int, u::u8string>::ptr l = m::basic_observable_list<int, u::u8string>::create();
+    m::basic_observable_list<int, s::u8string>::ptr l = m::basic_observable_list<int, s::u8string>::create();
     list_observer<int> o;
 
     EXPECT_EQ(0u, l->size());
@@ -1086,7 +1086,7 @@ TEST(boost_basic_observable_list_test_suite, test_unique)
     l->unique();
     EXPECT_EQ(6u, l->size());
 
-    m::basic_observable_list<int, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<int, s::u8string>::iterator it = l->begin();
     EXPECT_EQ(10, *it);
     ++it;
     EXPECT_EQ(20, *it);
@@ -1141,7 +1141,7 @@ struct same_integral_part
 TEST(boost_basic_observable_list_test_suite, test_unique_binary_predicate)
 {
     // Test unique binary predicate
-    m::basic_observable_list<double, u::u8string>::ptr l = m::basic_observable_list<double, u::u8string>::create();
+    m::basic_observable_list<double, s::u8string>::ptr l = m::basic_observable_list<double, s::u8string>::create();
     list_observer<double> o;
 
     EXPECT_EQ(0u, l->size());
@@ -1159,7 +1159,7 @@ TEST(boost_basic_observable_list_test_suite, test_unique_binary_predicate)
     l->unique(same_integral_part());
     EXPECT_EQ(6u, l->size());
 
-    m::basic_observable_list<double, u::u8string>::iterator it = l->begin();
+    m::basic_observable_list<double, s::u8string>::iterator it = l->begin();
     EXPECT_EQ(2.72, *it);
     ++it;
     EXPECT_EQ(3.14, *it);
@@ -1189,8 +1189,8 @@ TEST(boost_basic_observable_list_test_suite, test_unique_binary_predicate)
 TEST(boost_basic_observable_list_test_suite, test_merge)
 {
     // Test merge
-    m::basic_observable_list<double, u::u8string>::ptr l1 = m::basic_observable_list<double, u::u8string>::create();
-    m::basic_observable_list<double, u::u8string>::ptr l2 = m::basic_observable_list<double, u::u8string>::create();
+    m::basic_observable_list<double, s::u8string>::ptr l1 = m::basic_observable_list<double, s::u8string>::create();
+    m::basic_observable_list<double, s::u8string>::ptr l2 = m::basic_observable_list<double, s::u8string>::create();
     list_observer<double> o1;
     list_observer<double> o2;
 
@@ -1215,7 +1215,7 @@ TEST(boost_basic_observable_list_test_suite, test_merge)
     EXPECT_EQ(6u, l1->size());
     EXPECT_EQ(0u, l2->size());
 
-    m::basic_observable_list<double, u::u8string>::iterator it = l1->begin();
+    m::basic_observable_list<double, s::u8string>::iterator it = l1->begin();
     EXPECT_EQ(1.4, *it);
     ++it;
     EXPECT_EQ(2.2, *it);
@@ -1264,8 +1264,8 @@ struct less_integral_part
 TEST(boost_basic_observable_list_test_suite, test_merge_compare_predicate)
 {
     // Test merge compare predicate
-    m::basic_observable_list<double, u::u8string>::ptr l1 = m::basic_observable_list<double, u::u8string>::create();
-    m::basic_observable_list<double, u::u8string>::ptr l2 = m::basic_observable_list<double, u::u8string>::create();
+    m::basic_observable_list<double, s::u8string>::ptr l1 = m::basic_observable_list<double, s::u8string>::create();
+    m::basic_observable_list<double, s::u8string>::ptr l2 = m::basic_observable_list<double, s::u8string>::create();
     list_observer<double> o1;
     list_observer<double> o2;
 
@@ -1289,7 +1289,7 @@ TEST(boost_basic_observable_list_test_suite, test_merge_compare_predicate)
     EXPECT_EQ(7u, l1->size());
     EXPECT_EQ(0u, l2->size());
 
-    m::basic_observable_list<double, u::u8string>::iterator it = l1->begin();
+    m::basic_observable_list<double, s::u8string>::iterator it = l1->begin();
     EXPECT_EQ(1.4, *it);
     ++it;
     EXPECT_EQ(2.2, *it);

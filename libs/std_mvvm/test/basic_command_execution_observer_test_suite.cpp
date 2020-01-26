@@ -21,22 +21,22 @@ TEST(std_basic_command_execution_observer_test_suite, cpp11_not_supported) {}
 
 #include <go/mvvm.hpp>
 #include <go/namespace_alias.hpp>
-#include <go/utility/string/create.hpp>
-#include <go/utility/u8string.hpp>
+#include <go/string/create.hpp>
+#include <go/string/u8string.hpp>
 
 namespace
 {
 
-const u::u8string TEST_COMMAND_NAME(us::create<u::u8string>("test command"));
+const s::u8string TEST_COMMAND_NAME(s::create<s::u8string>("test command"));
 
 class test_command
-    : public m::basic_command_interface<u::u8string>
+    : public m::basic_command_interface<s::u8string>
 {
 public:
     virtual ~test_command() GO_DEFAULT_DESTRUCTOR
 
     test_command()
-        : m::basic_command_interface<u::u8string>(TEST_COMMAND_NAME, nullptr)
+        : m::basic_command_interface<s::u8string>(TEST_COMMAND_NAME, nullptr)
         , _allow_execute(false)
         , _executed(false)
     {
@@ -79,7 +79,7 @@ private:
 };
 
 class test_command_execution_observer
-    : public m::basic_command_execution_observer_interface<u::u8string>
+    : public m::basic_command_execution_observer_interface<s::u8string>
 {
 public:
     virtual ~test_command_execution_observer() GO_DEFAULT_DESTRUCTOR
@@ -90,12 +90,12 @@ public:
     {
     }
 
-    virtual void on_command_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/) override
+    virtual void on_command_executed(const std::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/) override
     {
         ++_number_of_executed_commands;
     }
 
-    virtual void on_command_not_executed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/) override
+    virtual void on_command_not_executed(const std::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/) override
     {
         ++_number_of_not_executed_commands;
     }
@@ -118,7 +118,7 @@ public:
     {
     }
 
-    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    void on_can_execute_changed(const std::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
     {
         ++_number_of_can_execute_changes;
     }
@@ -131,7 +131,7 @@ private:
 
 TEST(std_basic_command_execution_observer_test_suite, test_execute_command)
 {
-    m::basic_command_manager<u::u8string>::ptr command_mgr = m::basic_command_manager<u::u8string>::create();
+    m::basic_command_manager<s::u8string>::ptr command_mgr = m::basic_command_manager<s::u8string>::create();
 
     EXPECT_TRUE(command_mgr != nullptr);
     EXPECT_EQ(0u, command_mgr->commands());
@@ -216,7 +216,7 @@ TEST(std_basic_command_execution_observer_test_suite, test_execute_command)
 
 TEST(std_basic_command_execution_observer_test_suite, test_post_command)
 {
-    m::basic_command_manager<u::u8string>::ptr command_mgr = m::basic_command_manager<u::u8string>::create();
+    m::basic_command_manager<s::u8string>::ptr command_mgr = m::basic_command_manager<s::u8string>::create();
 
     EXPECT_TRUE(command_mgr != nullptr);
     EXPECT_EQ(0u, command_mgr->commands());

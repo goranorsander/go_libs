@@ -25,7 +25,7 @@ template<class K, class T> class unordered_map_observer
 {
 public:
     typedef unordered_map_observer<K, T> this_type;
-    typedef typename m::basic_observable_unordered_map<K, T, u::u8string>::ptr observable_unordered_map_ptr_type;
+    typedef typename m::basic_observable_unordered_map<K, T, s::u8string>::ptr observable_unordered_map_ptr_type;
 
     virtual ~unordered_map_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -72,7 +72,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -147,7 +147,7 @@ private:
 TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -161,10 +161,10 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element
 
     o.connect(m);
 
-    m->insert(m::basic_observable_unordered_map<int, int, u::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_unordered_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(7u, m->size());
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -190,7 +190,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element
 TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -202,19 +202,19 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element
 
     o.connect(m);
 
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_unordered_map<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_unordered_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(5u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(6, 60));
+    it = m->insert(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(7u, m->size());
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -240,8 +240,8 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_single_element
 TEST(boost_basic_observable_unordered_map_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m1 = m::basic_observable_unordered_map<int, int, u::u8string>::create();
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m2 = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m1 = m::basic_observable_unordered_map<int, int, s::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m2 = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m1->size());
@@ -280,26 +280,26 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_range)
 TEST(boost_basic_observable_unordered_map_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_unordered_map<int, int, u::u8string>::value_type> il1 =
+    const std::initializer_list<m::basic_observable_unordered_map<int, int, s::u8string>::value_type> il1 =
     {
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4u, m->size());
 
-    const std::initializer_list<m::basic_observable_unordered_map<int, int, u::u8string>::value_type> il2 =
+    const std::initializer_list<m::basic_observable_unordered_map<int, int, s::u8string>::value_type> il2 =
     {
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_unordered_map<int, int, u::u8string>::value_type(6, 60)
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_unordered_map<int, int, s::u8string>::value_type(6, 60)
     };
     EXPECT_EQ(3u, il2.size());
 
@@ -325,7 +325,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_insert_initializer_li
 TEST(boost_basic_observable_unordered_map_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -341,9 +341,9 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_position)
 
     o.connect(m);
 
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator it1 = m->begin();
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator it2 = m->erase(it1);
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
@@ -364,7 +364,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_position)
 TEST(boost_basic_observable_unordered_map_test_suite, test_erase_value)
 {
     // Test erase value
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -386,7 +386,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5u, m->size());
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -412,7 +412,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_value)
 TEST(boost_basic_observable_unordered_map_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -428,9 +428,9 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_range)
 
     o.connect(m);
 
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator begin = m->begin();
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator begin = m->begin();
     ++begin;
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator end = begin;
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator end = begin;
     std::advance(end, 5);
 
     m->erase(begin, end);
@@ -451,8 +451,8 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_erase_range)
 TEST(boost_basic_observable_unordered_map_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m1 = m::basic_observable_unordered_map<int, int, u::u8string>::create();
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m2 = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m1 = m::basic_observable_unordered_map<int, int, s::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m2 = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o1;
     unordered_map_observer<int, int> o2;
 
@@ -482,7 +482,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_swap)
     EXPECT_EQ(7u, m1->size());
     EXPECT_EQ(5u, m2->size());
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m1)
@@ -529,7 +529,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_swap)
 TEST(boost_basic_observable_unordered_map_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
@@ -565,7 +565,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_clear)
 TEST(boost_basic_observable_unordered_map_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     (*m)[1] = 10;
@@ -575,27 +575,27 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_emplace)
 
     o.connect(m);
 
-    auto ret = m->emplace(m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    auto ret = m->emplace(m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::basic_observable_unordered_map<int, int, u::u8string>::value_type(5, 50));
+    ret = m->emplace(m::basic_observable_unordered_map<int, int, s::u8string>::value_type(5, 50));
     EXPECT_EQ(5, ret.first->first);
     EXPECT_EQ(50, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    ret = m->emplace(m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_FALSE(ret.second);
 
-    ret = m->emplace(m::basic_observable_unordered_map<int, int, u::u8string>::value_type(6, 60));
+    ret = m->emplace(m::basic_observable_unordered_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, ret.first->first);
     EXPECT_EQ(60, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    typedef m::basic_observable_unordered_map<int, int, u::u8string> observable_unordered_map_type;
+    typedef m::basic_observable_unordered_map<int, int, s::u8string> observable_unordered_map_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_map_type::value_type& i, *m)
@@ -625,7 +625,7 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_emplace)
 TEST(boost_basic_observable_unordered_map_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::basic_observable_unordered_map<int, int, u::u8string>::ptr m = m::basic_observable_unordered_map<int, int, u::u8string>::create();
+    m::basic_observable_unordered_map<int, int, s::u8string>::ptr m = m::basic_observable_unordered_map<int, int, s::u8string>::create();
     unordered_map_observer<int, int> o;
 
     (*m)[1] = 10;
@@ -635,19 +635,19 @@ TEST(boost_basic_observable_unordered_map_test_suite, test_emplace_hint)
 
     o.connect(m);
 
-    m::basic_observable_unordered_map<int, int, u::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_unordered_map<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_unordered_map<int, int, s::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_unordered_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, u::u8string>::value_type(6, 60));
+    it = m->emplace_hint(it, m::basic_observable_unordered_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 

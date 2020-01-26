@@ -30,7 +30,7 @@ template<class K, class T> class map_observer
 {
 public:
     typedef map_observer<K, T> this_type;
-    typedef typename m::basic_observable_map<K, T, u::u8string>::ptr observable_map_ptr_type;
+    typedef typename m::basic_observable_map<K, T, s::u8string>::ptr observable_map_ptr_type;
 
     virtual ~map_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -157,29 +157,29 @@ private:
 TEST(std_basic_observable_map_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(6u, m->size());
 
     o.connect(m);
 
-    m->insert(m::basic_observable_map<int, int, u::u8string>::value_type(3, 30));
+    m->insert(m::basic_observable_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(7u, m->size());
 
     unsigned int count = 0u;
-    for(const m::basic_observable_map<int, int, u::u8string>::value_type& i : *m)
+    for(const m::basic_observable_map<int, int, s::u8string>::value_type& i : *m)
     {
         ++count;
         EXPECT_EQ(static_cast<int>(count), i.first);
@@ -202,36 +202,36 @@ TEST(std_basic_observable_map_test_suite, test_insert_single_element)
 TEST(std_basic_observable_map_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(4u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_map<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->insert(m->begin(), m::basic_observable_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(5u, m->size());
 
-    it = m->insert(it, m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->insert(it, m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(6u, m->size());
 
-    it = m->insert(it, m::basic_observable_map<int, int, u::u8string>::value_type(6, 60));
+    it = m->insert(it, m::basic_observable_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(7u, m->size());
 
     unsigned int count = 0u;
-    for(const m::basic_observable_map<int, int, u::u8string>::value_type& i : *m)
+    for(const m::basic_observable_map<int, int, s::u8string>::value_type& i : *m)
     {
         ++count;
         EXPECT_EQ(static_cast<int>(count), i.first);
@@ -254,28 +254,28 @@ TEST(std_basic_observable_map_test_suite, test_insert_single_element_with_hint)
 TEST(std_basic_observable_map_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_map<int, int, u::u8string>::ptr m1 = m::basic_observable_map<int, int, u::u8string>::create();
-    m::basic_observable_map<int, int, u::u8string>::ptr m2 = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m1 = m::basic_observable_map<int, int, s::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m2 = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il1 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il1 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m1 = il1;
     EXPECT_EQ(4u, m1->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il2 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il2 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60)
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60)
     };
     *m2 = il2;
     EXPECT_EQ(3u, m2->size());
@@ -285,7 +285,7 @@ TEST(std_basic_observable_map_test_suite, test_insert_range)
     m2->insert(m1->begin(), m1->end());
     EXPECT_EQ(7u, m2->size());
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m2->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m2->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -324,26 +324,26 @@ TEST(std_basic_observable_map_test_suite, test_insert_range)
 TEST(std_basic_observable_map_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il1 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il1 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il1;
     EXPECT_EQ(4u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il2 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il2 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60)
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60)
     };
     EXPECT_EQ(3u, il2.size());
 
@@ -352,7 +352,7 @@ TEST(std_basic_observable_map_test_suite, test_insert_initializer_list)
     m->insert(il2);
     EXPECT_EQ(7u, m->size());
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -391,29 +391,29 @@ TEST(std_basic_observable_map_test_suite, test_insert_initializer_list)
 TEST(std_basic_observable_map_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it1 = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it1 = m->begin();
     std::advance(it1, 3);
-    m::basic_observable_map<int, int, u::u8string>::iterator it2 = m->erase(it1);
+    m::basic_observable_map<int, int, s::u8string>::iterator it2 = m->erase(it1);
     EXPECT_EQ(6u, m->size());
 
     m->erase(it2);
@@ -452,20 +452,20 @@ TEST(std_basic_observable_map_test_suite, test_erase_position)
 TEST(std_basic_observable_map_test_suite, test_erase_value)
 {
     // Test erase value
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
@@ -478,7 +478,7 @@ TEST(std_basic_observable_map_test_suite, test_erase_value)
     m->erase(5);
     EXPECT_EQ(5u, m->size());
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -511,35 +511,35 @@ TEST(std_basic_observable_map_test_suite, test_erase_value)
 TEST(std_basic_observable_map_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_map<int, int, u::u8string>::iterator begin = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator begin = m->begin();
     ++begin;
-    m::basic_observable_map<int, int, u::u8string>::iterator end = m->end();
+    m::basic_observable_map<int, int, s::u8string>::iterator end = m->end();
     --end;
 
     m->erase(begin, end);
     EXPECT_EQ(2u, m->size());
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -563,31 +563,31 @@ TEST(std_basic_observable_map_test_suite, test_erase_range)
 TEST(std_basic_observable_map_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_map<int, int, u::u8string>::ptr m1 = m::basic_observable_map<int, int, u::u8string>::create();
-    m::basic_observable_map<int, int, u::u8string>::ptr m2 = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m1 = m::basic_observable_map<int, int, s::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m2 = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o1;
     map_observer<int, int> o2;
 
     EXPECT_EQ(0u, m1->size());
     EXPECT_EQ(0u, m2->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il1 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il1 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50)
     };
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il2 =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il2 =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(10, 100),
-        m::basic_observable_map<int, int, u::u8string>::value_type(20, 200),
-        m::basic_observable_map<int, int, u::u8string>::value_type(30, 300),
-        m::basic_observable_map<int, int, u::u8string>::value_type(40, 400),
-        m::basic_observable_map<int, int, u::u8string>::value_type(50, 500),
-        m::basic_observable_map<int, int, u::u8string>::value_type(60, 600),
-        m::basic_observable_map<int, int, u::u8string>::value_type(70, 700)
+        m::basic_observable_map<int, int, s::u8string>::value_type(10, 100),
+        m::basic_observable_map<int, int, s::u8string>::value_type(20, 200),
+        m::basic_observable_map<int, int, s::u8string>::value_type(30, 300),
+        m::basic_observable_map<int, int, s::u8string>::value_type(40, 400),
+        m::basic_observable_map<int, int, s::u8string>::value_type(50, 500),
+        m::basic_observable_map<int, int, s::u8string>::value_type(60, 600),
+        m::basic_observable_map<int, int, s::u8string>::value_type(70, 700)
     };
     *m1 = il1;
     *m2 = il2;
@@ -602,7 +602,7 @@ TEST(std_basic_observable_map_test_suite, test_swap)
     EXPECT_EQ(5u, m2->size());
 
     unsigned int count = 0u;
-    for(const m::basic_observable_map<int, int, u::u8string>::value_type& i : *m1)
+    for(const m::basic_observable_map<int, int, s::u8string>::value_type& i : *m1)
     {
         ++count;
         EXPECT_EQ(static_cast<int>(count)*10, i.first);
@@ -611,7 +611,7 @@ TEST(std_basic_observable_map_test_suite, test_swap)
     EXPECT_EQ(7u, count);
 
     count = 0;
-    for(const m::basic_observable_map<int, int, u::u8string>::value_type& i : *m2)
+    for(const m::basic_observable_map<int, int, s::u8string>::value_type& i : *m2)
     {
         ++count;
         EXPECT_EQ(static_cast<int>(count), i.first);
@@ -645,20 +645,20 @@ TEST(std_basic_observable_map_test_suite, test_swap)
 TEST(std_basic_observable_map_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
     EXPECT_EQ(0u, m->size());
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30),
-        m::basic_observable_map<int, int, u::u8string>::value_type(4, 40),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50),
-        m::basic_observable_map<int, int, u::u8string>::value_type(6, 60),
-        m::basic_observable_map<int, int, u::u8string>::value_type(7, 70)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30),
+        m::basic_observable_map<int, int, s::u8string>::value_type(4, 40),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50),
+        m::basic_observable_map<int, int, s::u8string>::value_type(6, 60),
+        m::basic_observable_map<int, int, s::u8string>::value_type(7, 70)
     };
     *m = il;
     EXPECT_EQ(7u, m->size());
@@ -683,41 +683,41 @@ TEST(std_basic_observable_map_test_suite, test_clear)
 TEST(std_basic_observable_map_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(3, 30)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(3, 30)
     };
     *m = il;
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    auto ret = m->emplace(m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    auto ret = m->emplace(m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::basic_observable_map<int, int, u::u8string>::value_type(5, 50));
+    ret = m->emplace(m::basic_observable_map<int, int, s::u8string>::value_type(5, 50));
     EXPECT_EQ(5, ret.first->first);
     EXPECT_EQ(50, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    ret = m->emplace(m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    ret = m->emplace(m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, ret.first->first);
     EXPECT_EQ(40, ret.first->second);
     EXPECT_FALSE(ret.second);
 
-    ret = m->emplace(m::basic_observable_map<int, int, u::u8string>::value_type(6, 60));
+    ret = m->emplace(m::basic_observable_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, ret.first->first);
     EXPECT_EQ(60, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->begin();
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->begin();
     EXPECT_EQ(1, it->first);
     EXPECT_EQ(10, it->second);
     ++it;
@@ -753,33 +753,33 @@ TEST(std_basic_observable_map_test_suite, test_emplace)
 TEST(std_basic_observable_map_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::basic_observable_map<int, int, u::u8string>::ptr m = m::basic_observable_map<int, int, u::u8string>::create();
+    m::basic_observable_map<int, int, s::u8string>::ptr m = m::basic_observable_map<int, int, s::u8string>::create();
     map_observer<int, int> o;
 
-    const std::initializer_list<m::basic_observable_map<int, int, u::u8string>::value_type> il =
+    const std::initializer_list<m::basic_observable_map<int, int, s::u8string>::value_type> il =
     {
-        m::basic_observable_map<int, int, u::u8string>::value_type(1, 10),
-        m::basic_observable_map<int, int, u::u8string>::value_type(2, 20),
-        m::basic_observable_map<int, int, u::u8string>::value_type(5, 50)
+        m::basic_observable_map<int, int, s::u8string>::value_type(1, 10),
+        m::basic_observable_map<int, int, s::u8string>::value_type(2, 20),
+        m::basic_observable_map<int, int, s::u8string>::value_type(5, 50)
     };
     *m = il;
     EXPECT_EQ(3u, m->size());
 
     o.connect(m);
 
-    m::basic_observable_map<int, int, u::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_map<int, int, u::u8string>::value_type(3, 30));
+    m::basic_observable_map<int, int, s::u8string>::iterator it = m->emplace_hint(m->begin(), m::basic_observable_map<int, int, s::u8string>::value_type(3, 30));
     EXPECT_EQ(3, it->first);
     EXPECT_EQ(30, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_map<int, int, u::u8string>::value_type(4, 40));
+    it = m->emplace_hint(it, m::basic_observable_map<int, int, s::u8string>::value_type(4, 40));
     EXPECT_EQ(4, it->first);
     EXPECT_EQ(40, it->second);
 
-    it = m->emplace_hint(it, m::basic_observable_map<int, int, u::u8string>::value_type(6, 60));
+    it = m->emplace_hint(it, m::basic_observable_map<int, int, s::u8string>::value_type(6, 60));
     EXPECT_EQ(6, it->first);
     EXPECT_EQ(60, it->second);
 

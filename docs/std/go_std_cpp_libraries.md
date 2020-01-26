@@ -17,5 +17,6 @@ The **GO Std C++ Libraries** uses **C++11/14/17/2a** and the **C++ Standard Libr
 * [MVVM](./mvvm/mvvm.html)
 * [Property](./property/property.html)
 * [Signals](./signals/signals.html)
+* [String](./string/string.html)
 * [Type Traits](./type_traits/type_traits.html)
 * [Utility](./utility/utility.html)

@@ -121,11 +121,11 @@ public:
 };
 
 template<class T, class L = std::recursive_mutex> class u8property
-    : public basic_property<T, utility::u8string, L>
+    : public basic_property<T, string::u8string, L>
 {
 public:
     typedef T value_type;
-    typedef utility::u8string string_type;
+    typedef string::u8string string_type;
     typedef L lockable_type;
     typedef u8property<value_type, lockable_type> this_type;
     typedef typename std::function<value_type(void)> get_function_signature;
@@ -134,12 +134,12 @@ public:
 public:
     virtual ~u8property() GO_DEFAULT_DESTRUCTOR
 
-    explicit u8property(const utility::u8string& property_name)
+    explicit u8property(const string::u8string& property_name)
         : basic_property<value_type, string_type, lockable_type>(property_name)
     {
     }
 
-    u8property(const utility::u8string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
+    u8property(const string::u8string& property_name, const get_function_signature& get_function, const set_function_signature& set_function)
         : basic_property<value_type, string_type, lockable_type>(property_name, get_function, set_function)
     {
     }

@@ -30,7 +30,7 @@ template<class T> class vector_observer
 {
 public:
     typedef vector_observer<T> this_type;
-    typedef typename m::basic_observable_vector<T, u::u8string>::ptr observable_vector_ptr_type;
+    typedef typename m::basic_observable_vector<T, s::u8string>::ptr observable_vector_ptr_type;
 
     virtual ~vector_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -157,7 +157,7 @@ private:
 TEST(std_basic_observable_vector_test_suite, test_assign_range)
 {
     // Test assign range
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -190,7 +190,7 @@ TEST(std_basic_observable_vector_test_suite, test_assign_range)
 TEST(std_basic_observable_vector_test_suite, test_assign_initializer_list)
 {
     // Test assign initializer list
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -224,8 +224,8 @@ TEST(std_basic_observable_vector_test_suite, test_assign_initializer_list)
 TEST(std_basic_observable_vector_test_suite, test_assign_fill)
 {
     // Test assign fill
-    m::basic_observable_vector<int, u::u8string>::ptr v1 = m::basic_observable_vector<int, u::u8string>::create();
-    m::basic_observable_vector<int, u::u8string>::ptr v2 = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v1 = m::basic_observable_vector<int, s::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v2 = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v1->size());
@@ -238,7 +238,7 @@ TEST(std_basic_observable_vector_test_suite, test_assign_fill)
     EXPECT_EQ(7u, v1->size());
     EXPECT_EQ(0u, v2->size());
 
-    m::basic_observable_vector<int, u::u8string>::iterator it = v1->begin() + 1;
+    m::basic_observable_vector<int, s::u8string>::iterator it = v1->begin() + 1;
 
     v2->assign(it, v1->end() - 1);
     EXPECT_EQ(7u, v1->size());
@@ -267,7 +267,7 @@ TEST(std_basic_observable_vector_test_suite, test_assign_fill)
 TEST(std_basic_observable_vector_test_suite, test_push_back)
 {
     // Test push back
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -306,7 +306,7 @@ TEST(std_basic_observable_vector_test_suite, test_push_back)
 TEST(std_basic_observable_vector_test_suite, test_pop_back)
 {
     // Test pop back
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -348,7 +348,7 @@ TEST(std_basic_observable_vector_test_suite, test_pop_back)
 TEST(std_basic_observable_vector_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -358,7 +358,7 @@ TEST(std_basic_observable_vector_test_suite, test_insert_single_element)
 
     o.connect(v);
 
-    m::basic_observable_vector<int, u::u8string>::iterator it = v->begin();
+    m::basic_observable_vector<int, s::u8string>::iterator it = v->begin();
     v->insert(it + 2, 3);
     EXPECT_EQ(7u, v->size());
 
@@ -385,7 +385,7 @@ TEST(std_basic_observable_vector_test_suite, test_insert_single_element)
 TEST(std_basic_observable_vector_test_suite, test_insert_fill)
 {
     // Test insert fill
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -395,7 +395,7 @@ TEST(std_basic_observable_vector_test_suite, test_insert_fill)
 
     o.connect(v);
 
-    m::basic_observable_vector<int, u::u8string>::iterator it = v->begin();
+    m::basic_observable_vector<int, s::u8string>::iterator it = v->begin();
     v->insert(it + 3, 3, 74);
     EXPECT_EQ(10u, v->size());
 
@@ -425,8 +425,8 @@ TEST(std_basic_observable_vector_test_suite, test_insert_fill)
 TEST(std_basic_observable_vector_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_vector<int, u::u8string>::ptr v1 = m::basic_observable_vector<int, u::u8string>::create();
-    m::basic_observable_vector<int, u::u8string>::ptr v2 = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v1 = m::basic_observable_vector<int, s::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v2 = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v1->size());
@@ -440,7 +440,7 @@ TEST(std_basic_observable_vector_test_suite, test_insert_range)
 
     o.connect(v2);
 
-    m::basic_observable_vector<int, u::u8string>::iterator it = v2->begin();
+    m::basic_observable_vector<int, s::u8string>::iterator it = v2->begin();
     v2->insert(it + 3, v1->begin(), v1->end());
     EXPECT_EQ(10u, v2->size());
 
@@ -470,7 +470,7 @@ TEST(std_basic_observable_vector_test_suite, test_insert_range)
 TEST(std_basic_observable_vector_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -481,8 +481,8 @@ TEST(std_basic_observable_vector_test_suite, test_erase_position)
 
     o.connect(v);
 
-    m::basic_observable_vector<int, u::u8string>::iterator it1 = v->begin();
-    m::basic_observable_vector<int, u::u8string>::iterator it2 = v->erase(it1 + 3);
+    m::basic_observable_vector<int, s::u8string>::iterator it1 = v->begin();
+    m::basic_observable_vector<int, s::u8string>::iterator it2 = v->erase(it1 + 3);
     EXPECT_EQ(6u, v->size());
 
     v->erase(it2);
@@ -509,7 +509,7 @@ TEST(std_basic_observable_vector_test_suite, test_erase_position)
 TEST(std_basic_observable_vector_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -541,8 +541,8 @@ TEST(std_basic_observable_vector_test_suite, test_erase_range)
 TEST(std_basic_observable_vector_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_vector<int, u::u8string>::ptr v1 = m::basic_observable_vector<int, u::u8string>::create();
-    m::basic_observable_vector<int, u::u8string>::ptr v2 = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v1 = m::basic_observable_vector<int, s::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v2 = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o1;
     vector_observer<int> o2;
 
@@ -603,7 +603,7 @@ TEST(std_basic_observable_vector_test_suite, test_swap)
 TEST(std_basic_observable_vector_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     EXPECT_EQ(0u, v->size());
@@ -632,7 +632,7 @@ TEST(std_basic_observable_vector_test_suite, test_clear)
 TEST(std_basic_observable_vector_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     const int a[] = {1, 2, 3};
@@ -641,7 +641,7 @@ TEST(std_basic_observable_vector_test_suite, test_emplace)
 
     o.connect(v);
 
-    m::basic_observable_vector<int, u::u8string>::iterator it = v->emplace(v->begin() + 1, 4);
+    m::basic_observable_vector<int, s::u8string>::iterator it = v->emplace(v->begin() + 1, 4);
     EXPECT_EQ(4, *it);
 
     v->emplace(it, 5);
@@ -670,7 +670,7 @@ TEST(std_basic_observable_vector_test_suite, test_emplace)
 TEST(std_basic_observable_vector_test_suite, test_emplace_back)
 {
     // Test emplace back
-    m::basic_observable_vector<int, u::u8string>::ptr v = m::basic_observable_vector<int, u::u8string>::create();
+    m::basic_observable_vector<int, s::u8string>::ptr v = m::basic_observable_vector<int, s::u8string>::create();
     vector_observer<int> o;
 
     const int a[] = {1, 2, 3};

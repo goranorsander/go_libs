@@ -41,13 +41,13 @@ namespace read_only {}
 namespace write_only {}
 }
 namespace signals {}
+namespace string {}
 namespace type_traits {}
 namespace utility
 {
 namespace container {}
 namespace iterator {}
 namespace range {}
-namespace string {}
 }
 }
 
@@ -67,13 +67,13 @@ namespace pnro = go::property::nameless::read_only;
 namespace pnwo = go::property::nameless::write_only;
 namespace pro = go::property::read_only;
 namespace pwo = go::property::write_only;
+namespace s = go::string;
 namespace si = go::signals;
 namespace tt = go::type_traits;
 namespace u = go::utility;
 namespace uc = go::utility::container;
 namespace ui = go::utility::iterator;
 namespace ur = go::utility::range;
-namespace us = go::utility::string;
 
 namespace std
 {

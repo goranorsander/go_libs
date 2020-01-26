@@ -30,14 +30,14 @@ file(GLOB GO_PROPERTY_NAMELESS_DIR_FILES ./property/nameless/*.hpp)
 file(GLOB GO_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./property/nameless/detail/*.hpp)
 file(GLOB GO_PROPERTY_POLICY_DIR_FILES ./property/policy/*.hpp)
 file(GLOB GO_SIGNALS_DIR_FILES ./signals/*.hpp)
+file(GLOB GO_STRING_DIR_FILES ./string/*.hpp)
+file(GLOB GO_STRING_DETAIL_DIR_FILES ./string/detail/*.hpp)
 file(GLOB GO_TYPE_TRAITS_DIR_FILES ./type_traits/*.hpp)
 file(GLOB GO_TYPE_TRAITS_DETAIL_DIR_FILES ./type_traits/detail/*.hpp)
 file(GLOB GO_UTILITY_DIR_FILES ./utility/*.hpp)
 file(GLOB GO_UTILITY_CONTAINER_DIR_FILES ./utility/container/*.hpp)
 file(GLOB GO_UTILITY_ITERATOR_DIR_FILES ./utility/iterator/*.hpp)
 file(GLOB GO_UTILITY_RANGE_DIR_FILES ./utility/range/*.hpp)
-file(GLOB GO_UTILITY_STRING_DIR_FILES ./utility/string/*.hpp)
-file(GLOB GO_UTILITY_STRING_DETAIL_DIR_FILES ./utility/string/detail/*.hpp)
 file(GLOB GO_VS_DIR_FILES ./.vs/*.cpp)
 
 add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
@@ -61,14 +61,14 @@ add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_PROPERTY_NAMELESS_DETAIL_DIR_FILES}
     ${GO_PROPERTY_POLICY_DIR_FILES}
     ${GO_SIGNALS_DIR_FILES}
+    ${GO_STRING_DIR_FILES}
+    ${GO_STRING_DETAIL_DIR_FILES}
     ${GO_TYPE_TRAITS_DIR_FILES}
     ${GO_TYPE_TRAITS_DETAIL_DIR_FILES}
     ${GO_UTILITY_DIR_FILES}
     ${GO_UTILITY_CONTAINER_DIR_FILES}
     ${GO_UTILITY_ITERATOR_DIR_FILES}
     ${GO_UTILITY_RANGE_DIR_FILES}
-    ${GO_UTILITY_STRING_DIR_FILES}
-    ${GO_UTILITY_STRING_DETAIL_DIR_FILES}
     ${GO_VS_DIR_FILES}
 )
 
@@ -94,12 +94,12 @@ source_group(go\\property\\nameless FILES ${GO_PROPERTY_NAMELESS_DIR_FILES})
 source_group(go\\property\\nameless\\detail FILES ${GO_PROPERTY_NAMELESS_DETAIL_DIR_FILES})
 source_group(go\\property\\policy FILES ${GO_PROPERTY_POLICY_DIR_FILES})
 source_group(go\\signals FILES ${GO_SIGNALS_DIR_FILES})
+source_group(go\\string FILES ${GO_STRING_DIR_FILES})
+source_group(go\\string\\detail FILES ${GO_STRING_DETAIL_DIR_FILES})
 source_group(go\\type_traits FILES ${GO_TYPE_TRAITS_DIR_FILES})
 source_group(go\\type_traits\\detail FILES ${GO_TYPE_TRAITS_DETAIL_DIR_FILES})
 source_group(go\\utility FILES ${GO_UTILITY_DIR_FILES})
 source_group(go\\utility\\container FILES ${GO_UTILITY_CONTAINER_DIR_FILES})
 source_group(go\\utility\\iterator FILES ${GO_UTILITY_ITERATOR_DIR_FILES})
 source_group(go\\utility\\range FILES ${GO_UTILITY_RANGE_DIR_FILES})
-source_group(go\\utility\\string FILES ${GO_UTILITY_STRING_DIR_FILES})
-source_group(go\\utility\\string\\detail FILES ${GO_UTILITY_STRING_DETAIL_DIR_FILES})
 source_group(go\\.vs FILES ${GO_VS_DIR_FILES})

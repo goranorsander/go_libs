@@ -22,14 +22,14 @@ TEST(std_basic_observable_object_lambda_test_suite, cpp11_not_supported) {}
 #include <go/mvvm.hpp>
 #include <go/namespace_alias.hpp>
 #include <go/property.hpp>
-#include <go/utility.hpp>
+#include <go/string.hpp>
 
 namespace
 {
 
 // Test observable_object
 class spaceship
-    : public m::basic_observable_object<u::u8string>
+    : public m::basic_observable_object<s::u8string>
     , public tt::noncopyable_nonmovable
 {
 public:
@@ -37,11 +37,11 @@ public:
 
 public:
      spaceship()
-        : m::basic_observable_object<u::u8string>()
+        : m::basic_observable_object<s::u8string>()
         , tt::noncopyable_nonmovable()
-        , crew_complement(us::create<u::u8string>("crew_complement"))
-        , name(us::create<u::u8string>("name"))
-        , max_speed(us::create<u::u8string>("max_speed"))
+        , crew_complement(s::create<s::u8string>("crew_complement"))
+        , name(s::create<s::u8string>("name"))
+        , max_speed(s::create<s::u8string>("max_speed"))
         , _crew_complement(0)
         , _name()
         , _max_speed(0.0)
@@ -49,19 +49,19 @@ public:
 		 crew_complement.getter([this]() { return _crew_complement; });
 		 crew_complement.setter([this](const int& v) { if (v != _crew_complement) { _crew_complement = v; notify_property_changed(this->shared_from_this(), crew_complement.name()); } });
 		 name.getter([this]() { return _name; });
-		 name.setter([this](const u::u8string & v) { if (v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
+		 name.setter([this](const s::u8string & v) { if (v != _name) { _name = v; notify_property_changed(this->shared_from_this(), name.name()); } });
 		 max_speed.getter([this]() { return _max_speed; });
 		 max_speed.setter([this](const double& v) { if (v != _max_speed) { _max_speed = v; notify_property_changed(this->shared_from_this(), max_speed.name()); } });
 	 }
 
 public:
     p::u8property<int> crew_complement;
-    p::u8property<u::u8string> name;
+    p::u8property<s::u8string> name;
     p::u8property<double> max_speed;
 
 private:
     int _crew_complement;
-    u::u8string _name;
+    s::u8string _name;
     double _max_speed;
 };
 
@@ -88,13 +88,13 @@ public:
         m.property_changed.disconnect(_on_property_changed_slot_key);
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
-            if(a->property_name() == us::create<u::u8string>("crew_complement")) { ++_crew_complement_change_count; }
-            else if(a->property_name() == us::create<u::u8string>("name")) { ++_name_change_count; }
-            else if(a->property_name() == us::create<u::u8string>("max_speed")) { ++_max_speed_change_count; }
+            if(a->property_name() == s::create<s::u8string>("crew_complement")) { ++_crew_complement_change_count; }
+            else if(a->property_name() == s::create<s::u8string>("name")) { ++_name_change_count; }
+            else if(a->property_name() == s::create<s::u8string>("max_speed")) { ++_max_speed_change_count; }
         }
     }
 

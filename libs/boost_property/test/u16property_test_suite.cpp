@@ -19,7 +19,7 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 #include <go_boost/exception.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-#include <go_boost/utility/string_cast.hpp>
+#include <go_boost/string/string_cast.hpp>
 
 namespace testing
 {
@@ -46,9 +46,9 @@ namespace
 {
 
 // create_u16string
-u::u16string create_u16string(const std::string& s)
+s::u16string create_u16string(const std::string& s)
 {
-    return u::string_cast<u::u16string>(s);
+    return s::string_cast<s::u16string>(s);
 }
 
 // Test value_u16property

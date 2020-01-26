@@ -18,8 +18,8 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/diagnostics/log/log_line.hpp>
+#include <go_boost/string/string_cast.hpp>
 #include <go_boost/type_traits/noncopyable_nonmovable.hpp>
-#include <go_boost/utility/string_cast.hpp>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -98,7 +98,7 @@ inline void basic_file_writer<wlog_line, std::wofstream>::roll_file()
 
     this->_bytes_written = 0;
     this->_os.reset(new std::wofstream());
-    std::string log_file_name = go_boost::utility::string_cast<std::string>(this->_name);
+    std::string log_file_name = go_boost::string::string_cast<std::string>(this->_name);
     log_file_name.append(".");
     log_file_name.append(boost::lexical_cast<std::string>(++(this->_file_number)));
     log_file_name.append(".txt");

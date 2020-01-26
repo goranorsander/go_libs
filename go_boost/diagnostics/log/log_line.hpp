@@ -378,7 +378,7 @@ private:
     {
         if (length == 0)
             return;
-        const std::wstring sws = go_boost::utility::string_cast<std::wstring>(std::string(arg));
+        const std::wstring sws = go_boost::string::string_cast<std::wstring>(std::string(arg));
         encode_c_string(sws.c_str(), sws.size(), stream_selector);
     }
 
@@ -389,7 +389,7 @@ private:
     {
         if (length == 0)
             return;
-        const std::string mbs = go_boost::utility::string_cast<std::string>(std::wstring(arg));
+        const std::string mbs = go_boost::string::string_cast<std::string>(std::wstring(arg));
         encode_c_string(mbs.c_str(), mbs.size(), stream_selector);
     }
 

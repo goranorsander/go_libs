@@ -546,6 +546,28 @@ set(GO_SIGNALS_DIR ${GO_DIR}/signals)
 file(GLOB GO_LIBS_SRC_GO_SIGNALS_HPP ${GO_SIGNALS_DIR}/*.hpp)
 
 ########################################################
+#  go/string                                           #
+########################################################
+
+set(GO_STRING_DIRNAME string)
+set(GO_STRING_DIR ${GO_DIR}/string)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_STRING_HPP ${GO_STRING_DIR}/*.hpp)
+
+########################################################
+#  go/string/detail                                    #
+########################################################
+
+set(GO_STRING_DETAIL_DIRNAME string/detail)
+set(GO_STRING_DETAIL_DIR ${GO_DIR}/string/detail)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_STRING_DETAIL_HPP ${GO_STRING_DETAIL_DIR}/*.hpp)
+
+########################################################
 #  go/type_traits                                      #
 ########################################################
 
@@ -610,28 +632,6 @@ set(GO_UTILITY_RANGE_DIR ${GO_DIR}/utility/range)
 # *.hpp
 
 file(GLOB GO_LIBS_SRC_GO_UTILITY_RANGE_HPP ${GO_UTILITY_RANGE_DIR}/*.hpp)
-
-########################################################
-#  go/utility/string                                   #
-########################################################
-
-set(GO_UTILITY_STRING_DIRNAME utility/string)
-set(GO_UTILITY_STRING_DIR ${GO_DIR}/utility/string)
-
-# *.hpp
-
-file(GLOB GO_LIBS_SRC_GO_UTILITY_STRING_HPP ${GO_UTILITY_STRING_DIR}/*.hpp)
-
-########################################################
-#  go/utility/string/detail                            #
-########################################################
-
-set(GO_UTILITY_STRING_DETAIL_DIRNAME utility/string/detail)
-set(GO_UTILITY_STRING_DETAIL_DIR ${GO_DIR}/utility/string/detail)
-
-# *.hpp
-
-file(GLOB GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP ${GO_UTILITY_STRING_DETAIL_DIR}/*.hpp)
 
 ########################################################
 #  go_boost                                            #
@@ -854,6 +854,28 @@ set(GO_BOOST_SIGNALS_DIR ${GO_BOOST_DIR}/signals)
 file(GLOB GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP ${GO_BOOST_SIGNALS_DIR}/*.hpp)
 
 ########################################################
+#  go_boost/string                                     #
+########################################################
+
+set(GO_BOOST_STRING_DIRNAME string)
+set(GO_BOOST_STRING_DIR ${GO_BOOST_DIR}/string)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_HPP ${GO_BOOST_STRING_DIR}/*.hpp)
+
+########################################################
+#  go_boost/string/detail                              #
+########################################################
+
+set(GO_BOOST_STRING_DETAIL_DIRNAME string/detail)
+set(GO_BOOST_STRING_DETAIL_DIR ${GO_BOOST_DIR}/string/detail)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_DETAIL_HPP ${GO_BOOST_STRING_DETAIL_DIR}/*.hpp)
+
+########################################################
 #  go_boost/type_traits                                #
 ########################################################
 
@@ -920,28 +942,6 @@ set(GO_BOOST_UTILITY_RANGE_DIR ${GO_BOOST_DIR}/utility/range)
 file(GLOB GO_LIBS_SRC_GO_BOOST_UTILITY_RANGE_HPP ${GO_BOOST_UTILITY_RANGE_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/utility/string                             #
-########################################################
-
-set(GO_BOOST_UTILITY_STRING_DIRNAME utility/string)
-set(GO_BOOST_UTILITY_STRING_DIR ${GO_BOOST_DIR}/utility/string)
-
-# *.hpp
-
-file(GLOB GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP ${GO_BOOST_UTILITY_STRING_DIR}/*.hpp)
-
-########################################################
-#  go_boost/utility/string/detail                      #
-########################################################
-
-set(GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME utility/string/detail)
-set(GO_BOOST_UTILITY_STRING_DETAIL_DIR ${GO_BOOST_DIR}/utility/string/detail)
-
-# *.hpp
-
-file(GLOB GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP ${GO_BOOST_UTILITY_STRING_DETAIL_DIR}/*.hpp)
-
-########################################################
 #  docs                                                #
 ########################################################
 
@@ -996,17 +996,17 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_HPP}          DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_STRING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_DETAIL_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_STRING_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_RANGE_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_RANGE_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_STRING_DETAIL_DIRNAME})
 
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_ASYNC_HPP}                  DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_ASYNC_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_ASYNC_HPP}                      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_ASYNC_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_COMPILER_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_COMPILER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_CONFIG_PLATFORM_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_CONFIG_PLATFORM_DIRNAME})
@@ -1025,14 +1025,14 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_HPP}          DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_DETAIL_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_RANGE_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_RANGE_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_HPP}             DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_STRING_DETAIL_HPP}      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_STRING_DETAIL_DIRNAME})
 
 ########################################################
 #  CMake Configuration                                 #

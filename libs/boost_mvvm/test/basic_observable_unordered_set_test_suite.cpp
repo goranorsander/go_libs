@@ -25,7 +25,7 @@ template<class T> class set_observer
 {
 public:
     typedef set_observer<T> this_type;
-    typedef typename m::basic_observable_unordered_set<T, u::u8string>::ptr observable_unordered_set_ptr_type;
+    typedef typename m::basic_observable_unordered_set<T, s::u8string>::ptr observable_unordered_set_ptr_type;
 
     virtual ~set_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
@@ -72,7 +72,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -147,7 +147,7 @@ private:
 TEST(boost_basic_observable_unordered_set_test_suite, test_insert_single_element)
 {
     // Test insert single element
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     // TODO: Find a way to test insert without using insert to prepare the test
@@ -190,7 +190,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_insert_single_element
 TEST(boost_basic_observable_unordered_set_test_suite, test_insert_single_element_with_hint)
 {
     // Test insert single element with hint
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -202,7 +202,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_insert_single_element
 
     o.connect(s);
 
-    m::basic_observable_unordered_set<int, u::u8string>::iterator it = s->insert(s->begin(), 3);
+    m::basic_observable_unordered_set<int, s::u8string>::iterator it = s->insert(s->begin(), 3);
     EXPECT_EQ(5u, s->size());
 
     it = s->insert(it, 4);
@@ -239,8 +239,8 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_insert_single_element
 TEST(boost_basic_observable_unordered_set_test_suite, test_insert_range)
 {
     // Test insert range
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s1 = m::basic_observable_unordered_set<int, u::u8string>::create();
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s2 = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s1 = m::basic_observable_unordered_set<int, s::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s2 = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s1->size());
@@ -279,7 +279,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_insert_range)
 TEST(boost_basic_observable_unordered_set_test_suite, test_insert_initializer_list)
 {
     // Test insert initializer list
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -313,7 +313,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_insert_initializer_li
 TEST(boost_basic_observable_unordered_set_test_suite, test_erase_position)
 {
     // Test erase position
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -329,9 +329,9 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_position)
 
     o.connect(s);
 
-    m::basic_observable_unordered_set<int, u::u8string>::iterator it1 = s->begin();
+    m::basic_observable_unordered_set<int, s::u8string>::iterator it1 = s->begin();
     std::advance(it1, 3);
-    m::basic_observable_unordered_set<int, u::u8string>::iterator it2 = s->erase(it1);
+    m::basic_observable_unordered_set<int, s::u8string>::iterator it2 = s->erase(it1);
     EXPECT_EQ(6u, s->size());
 
     s->erase(it2);
@@ -352,7 +352,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_position)
 TEST(boost_basic_observable_unordered_set_test_suite, test_erase_value)
 {
     // Test erase value
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -374,7 +374,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_value)
     s->erase(5);
     EXPECT_EQ(5u, s->size());
 
-    typedef m::basic_observable_unordered_set<int, u::u8string> observable_unordered_set_type;
+    typedef m::basic_observable_unordered_set<int, s::u8string> observable_unordered_set_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_set_type::value_type& i, *s)
@@ -400,7 +400,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_value)
 TEST(boost_basic_observable_unordered_set_test_suite, test_erase_range)
 {
     // Test erase range
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -416,9 +416,9 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_range)
 
     o.connect(s);
 
-    m::basic_observable_unordered_set<int, u::u8string>::iterator begin = s->begin();
+    m::basic_observable_unordered_set<int, s::u8string>::iterator begin = s->begin();
     ++begin;
-    m::basic_observable_unordered_set<int, u::u8string>::iterator end = begin;
+    m::basic_observable_unordered_set<int, s::u8string>::iterator end = begin;
     std::advance(end, 5);
 
     s->erase(begin, end);
@@ -439,8 +439,8 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_erase_range)
 TEST(boost_basic_observable_unordered_set_test_suite, test_swap)
 {
     // Test swap
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s1 = m::basic_observable_unordered_set<int, u::u8string>::create();
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s2 = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s1 = m::basic_observable_unordered_set<int, s::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s2 = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o1;
     set_observer<int> o2;
 
@@ -516,7 +516,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_swap)
 TEST(boost_basic_observable_unordered_set_test_suite, test_clear)
 {
     // Test clear
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     EXPECT_EQ(0u, s->size());
@@ -552,7 +552,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_clear)
 TEST(boost_basic_observable_unordered_set_test_suite, test_emplace)
 {
     // Test emplace
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     s->insert(1);
@@ -578,7 +578,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_emplace)
     EXPECT_EQ(6, *(ret.first));
     EXPECT_TRUE(ret.second);
 
-    typedef m::basic_observable_unordered_set<int, u::u8string> observable_unordered_set_type;
+    typedef m::basic_observable_unordered_set<int, s::u8string> observable_unordered_set_type;
     unsigned int count = 0u;
     int sum = 0;
     BOOST_FOREACH(const GO_BOOST_TYPENAME observable_unordered_set_type::value_type& i, *s)
@@ -608,7 +608,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_emplace)
 TEST(boost_basic_observable_unordered_set_test_suite, test_emplace_hint)
 {
     // Test emplace hint
-    m::basic_observable_unordered_set<int, u::u8string>::ptr s = m::basic_observable_unordered_set<int, u::u8string>::create();
+    m::basic_observable_unordered_set<int, s::u8string>::ptr s = m::basic_observable_unordered_set<int, s::u8string>::create();
     set_observer<int> o;
 
     s->insert(1);
@@ -618,7 +618,7 @@ TEST(boost_basic_observable_unordered_set_test_suite, test_emplace_hint)
 
     o.connect(s);
 
-    m::basic_observable_unordered_set<int, u::u8string>::iterator it = s->emplace_hint(s->begin(), 3);
+    m::basic_observable_unordered_set<int, s::u8string>::iterator it = s->emplace_hint(s->begin(), 3);
     EXPECT_EQ(3, *it);
 
     it = s->emplace_hint(it, 4);

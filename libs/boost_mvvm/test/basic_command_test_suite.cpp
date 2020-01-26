@@ -16,21 +16,21 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/mvvm.hpp>
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/utility.hpp>
+#include <go_boost/string.hpp>
 
 namespace
 {
 
-const u::u8string TEST_COMMAND_NAME(us::create<u::u8string>("test command"));
+const s::u8string TEST_COMMAND_NAME(s::create<s::u8string>("test command"));
 
 class test_command
-    : public m::basic_command_interface<u::u8string>
+    : public m::basic_command_interface<s::u8string>
 {
 public:
     virtual ~test_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
     test_command()
-        : m::basic_command_interface<u::u8string>(TEST_COMMAND_NAME, m::basic_command_interface<u::u8string>::command_parameters_type())
+        : m::basic_command_interface<s::u8string>(TEST_COMMAND_NAME, m::basic_command_interface<s::u8string>::command_parameters_type())
         , _allow_execute(false)
         , _executed(false)
     {
@@ -57,9 +57,9 @@ public:
 
     void allow_execute(const bool v)
     {
-        const bool can_execute_ = can_execute(m::basic_command_interface<u::u8string>::command_parameters_type());
+        const bool can_execute_ = can_execute(m::basic_command_interface<s::u8string>::command_parameters_type());
         _allow_execute = v;
-        if(can_execute_ != can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()))
+        if(can_execute_ != can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()))
         {
             can_execute_changed(this->shared_from_this());
         }
@@ -82,7 +82,7 @@ public:
     {
     }
 
-    void on_can_execute_changed(const boost::shared_ptr<m::basic_command_interface<u::u8string>>& /*c*/)
+    void on_can_execute_changed(const boost::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
     {
         ++_number_of_can_execute_changes;
     }
@@ -101,7 +101,7 @@ TEST(boost_basic_command_test_suite, test_command)
     EXPECT_EQ(TEST_COMMAND_NAME, command->command_name());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
     EXPECT_TRUE(command->can_execute_changed.empty());
 
     test_command_observer command_observer;
@@ -114,15 +114,15 @@ TEST(boost_basic_command_test_suite, test_command)
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
 
-    command->execute(m::basic_command_interface<u::u8string>::command_parameters_type());
+    command->execute(m::basic_command_interface<s::u8string>::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
     EXPECT_FALSE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_FALSE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
 
     command->allow_execute(true);
 
@@ -130,23 +130,23 @@ TEST(boost_basic_command_test_suite, test_command)
     EXPECT_EQ(1u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_FALSE(command->executed());
-    EXPECT_TRUE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
+    EXPECT_TRUE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
 
-    command->execute(m::basic_command_interface<u::u8string>::command_parameters_type());
-
-    EXPECT_FALSE(command->can_execute_changed.empty());
-    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
-    EXPECT_TRUE(command->allow_execute());
-    EXPECT_TRUE(command->executed());
-    EXPECT_FALSE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
-
-    command->execute(m::basic_command_interface<u::u8string>::command_parameters_type());
+    command->execute(m::basic_command_interface<s::u8string>::command_parameters_type());
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
     EXPECT_TRUE(command->allow_execute());
     EXPECT_TRUE(command->executed());
-    EXPECT_FALSE(command->can_execute(m::basic_command_interface<u::u8string>::command_parameters_type()));
+    EXPECT_FALSE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
+
+    command->execute(m::basic_command_interface<s::u8string>::command_parameters_type());
+
+    EXPECT_FALSE(command->can_execute_changed.empty());
+    EXPECT_EQ(2u, command_observer.number_of_can_execute_changes());
+    EXPECT_TRUE(command->allow_execute());
+    EXPECT_TRUE(command->executed());
+    EXPECT_FALSE(command->can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()));
 }
 
 }

@@ -20,7 +20,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #include <go/mvvm/object.hpp>
 #include <go/mvvm/property_changed_arguments.hpp>
 #include <go/signals/signal.hpp>
-#include <go/utility/u8string.hpp>
+#include <go/string/u8string.hpp>
 
 namespace go
 {
@@ -74,7 +74,7 @@ inline basic_notify_property_changed_interface<std::wstring, std::recursive_mute
 }
 
 template<>
-inline basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go::string::u8string, std::recursive_mutex>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -104,7 +104,7 @@ inline basic_notify_property_changed_interface<std::wstring, go::async::placebo_
 }
 
 template<>
-inline basic_notify_property_changed_interface<go::utility::u8string, go::async::placebo_lockable>::~basic_notify_property_changed_interface()
+inline basic_notify_property_changed_interface<go::string::u8string, go::async::placebo_lockable>::~basic_notify_property_changed_interface()
 {
     this->property_changed.disconnect_all_slots();
 }
@@ -146,7 +146,7 @@ inline void basic_notify_property_changed_interface<std::wstring, std::recursive
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go::utility::u8string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
+inline void basic_notify_property_changed_interface<go::string::u8string, std::recursive_mutex>::notify_property_changed(const std::shared_ptr<object>& object, const go::string::u8string& property_name)
 {
     if (!this->property_changed.empty())
     {
@@ -191,7 +191,7 @@ inline void basic_notify_property_changed_interface<std::wstring, go::async::pla
 }
 
 template<>
-inline void basic_notify_property_changed_interface<go::utility::u8string, go::async::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const go::utility::u8string& property_name)
+inline void basic_notify_property_changed_interface<go::string::u8string, go::async::placebo_lockable>::notify_property_changed(const std::shared_ptr<object>& object, const go::string::u8string& property_name)
 {
     if (!this->property_changed.empty())
     {

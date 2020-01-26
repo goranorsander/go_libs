@@ -20,9 +20,9 @@
 #include <string>
 #include <boost/phoenix/phoenix.hpp>
 #include <go_boost/async/placebo_lockable.hpp>
-#include <go_boost/utility/u8string.hpp>
-#include <go_boost/utility/u16string.hpp>
-#include <go_boost/utility/u32string.hpp>
+#include <go_boost/string/u8string.hpp>
+#include <go_boost/string/u16string.hpp>
+#include <go_boost/string/u32string.hpp>
 
 namespace go_boost
 {
@@ -83,7 +83,7 @@ struct get_wproperty_relay_wcommand_functor
 
 struct get_u8property_relay_u8command_functor
 {
-    typedef go_boost::utility::u8string string_type;
+    typedef go_boost::string::u8string string_type;
     typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
@@ -108,7 +108,7 @@ struct get_u8property_relay_u8command_functor
 
 struct get_u16property_relay_u16command_functor
 {
-    typedef go_boost::utility::u16string string_type;
+    typedef go_boost::string::u16string string_type;
     typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
@@ -133,7 +133,7 @@ struct get_u16property_relay_u16command_functor
 
 struct get_u32property_relay_u32command_functor
 {
-    typedef go_boost::utility::u32string string_type;
+    typedef go_boost::string::u32string string_type;
     typedef boost::recursive_mutex lockable_type;
 
     template <typename Sig>
@@ -217,7 +217,7 @@ struct get_wproperty_relay_wcommand_functor
 
 struct get_u8property_relay_u8command_functor
 {
-    typedef go_boost::utility::u8string string_type;
+    typedef go_boost::string::u8string string_type;
     typedef go_boost::async::placebo_lockable lockable_type;
 
     template <typename Sig>
@@ -242,7 +242,7 @@ struct get_u8property_relay_u8command_functor
 
 struct get_u16property_relay_u16command_functor
 {
-    typedef go_boost::utility::u16string string_type;
+    typedef go_boost::string::u16string string_type;
     typedef go_boost::async::placebo_lockable lockable_type;
 
     template <typename Sig>
@@ -267,7 +267,7 @@ struct get_u16property_relay_u16command_functor
 
 struct get_u32property_relay_u32command_functor
 {
-    typedef go_boost::utility::u32string string_type;
+    typedef go_boost::string::u32string string_type;
     typedef go_boost::async::placebo_lockable lockable_type;
 
     template <typename Sig>

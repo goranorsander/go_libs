@@ -30,7 +30,7 @@ template<class T, size_t N> class array_observer
 {
 public:
     typedef array_observer<T, N> this_type;
-    typedef typename m::basic_observable_array<T, u::u8string, N>::ptr observable_array_ptr_type;
+    typedef typename m::basic_observable_array<T, s::u8string, N>::ptr observable_array_ptr_type;
 
     virtual ~array_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<u::u8string>::ptr& a)
+    void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
@@ -156,7 +156,7 @@ private:
 
 TEST(std_basic_observable_array_test_suite, test_create)
 {
-    m::basic_observable_array<int, u::u8string, 7>::ptr a = m::basic_observable_array<int, u::u8string, 7>::create();
+    m::basic_observable_array<int, s::u8string, 7>::ptr a = m::basic_observable_array<int, s::u8string, 7>::create();
     array_observer<int, 7> o;
     o.connect(a);
 
