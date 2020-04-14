@@ -17,210 +17,36 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <functional>
-#include <go/string/detail/string_cast.hpp>
+#include <go/string/string_cast_exception.hpp>
+#include <go/string/traits/traits.hpp>
 
 namespace go
 {
 namespace string
 {
 
-// to std::string
-
-inline convert_wstring_to_string_function_signature& convert_wstring_to_string()
+template <typename to_string, typename from_string>
+inline GO_CONSTEXPR typename std::enable_if<std::is_same<to_string, from_string>::value, from_string>::type string_cast(const from_string& from)
 {
-    static convert_wstring_to_string_function_signature f = std::bind(detail::convert_wstring_to_string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u2string_to_string_function_signature& convert_u2string_to_string()
-{
-    static convert_u2string_to_string_function_signature f = std::bind(detail::convert_u2string_to_string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u8string_to_string_function_signature& convert_u8string_to_string()
-{
-    static convert_u8string_to_string_function_signature f = std::bind(detail::convert_u8string_to_string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u16string_to_string_function_signature& convert_u16string_to_string()
-{
-    static convert_u16string_to_string_function_signature f = std::bind(detail::convert_u16string_to_string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u32string_to_string_function_signature& convert_u32string_to_string()
-{
-    static convert_u32string_to_string_function_signature f = std::bind(detail::convert_u32string_to_string, std::placeholders::_1);
-    return f;
-}
-
-// to std::wstring
-
-inline convert_string_to_wstring_function_signature& convert_string_to_wstring()
-{
-    static convert_string_to_wstring_function_signature f = std::bind(detail::convert_string_to_wstring, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u2string_to_wstring_function_signature& convert_u2string_to_wstring()
-{
-    static convert_u2string_to_wstring_function_signature f = std::bind(detail::convert_u2string_to_wstring, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u8string_to_wstring_function_signature& convert_u8string_to_wstring()
-{
-    static convert_u8string_to_wstring_function_signature f = std::bind(detail::convert_u8string_to_wstring, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u16string_to_wstring_function_signature& convert_u16string_to_wstring()
-{
-    static convert_u16string_to_wstring_function_signature f = std::bind(detail::convert_u16string_to_wstring, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u32string_to_wstring_function_signature& convert_u32string_to_wstring()
-{
-    static convert_u32string_to_wstring_function_signature f = std::bind(detail::convert_u32string_to_wstring, std::placeholders::_1);
-    return f;
-}
-
-// to go::string::u2string
-
-inline convert_string_to_u2string_function_signature& convert_string_to_u2string()
-{
-    static convert_string_to_u2string_function_signature f = std::bind(detail::convert_string_to_u2string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_wstring_to_u2string_function_signature& convert_wstring_to_u2string()
-{
-    static convert_wstring_to_u2string_function_signature f = std::bind(detail::convert_wstring_to_u2string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u8string_to_u2string_function_signature& convert_u8string_to_u2string()
-{
-    static convert_u8string_to_u2string_function_signature f = std::bind(detail::convert_u8string_to_u2string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u16string_to_u2string_function_signature& convert_u16string_to_u2string()
-{
-    static convert_u16string_to_u2string_function_signature f = std::bind(detail::convert_u16string_to_u2string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u32string_to_u2string_function_signature& convert_u32string_to_u2string()
-{
-    static convert_u32string_to_u2string_function_signature f = std::bind(detail::convert_u32string_to_u2string, std::placeholders::_1);
-    return f;
-}
-
-// to go::string::u8string
-
-inline convert_string_to_u8string_function_signature& convert_string_to_u8string()
-{
-    static convert_string_to_u8string_function_signature f = std::bind(detail::convert_string_to_u8string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_wstring_to_u8string_function_signature& convert_wstring_to_u8string()
-{
-    static convert_wstring_to_u8string_function_signature f = std::bind(detail::convert_wstring_to_u8string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u2string_to_u8string_function_signature& convert_u2string_to_u8string()
-{
-    static convert_u2string_to_u8string_function_signature f = std::bind(detail::convert_u2string_to_u8string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u16string_to_u8string_function_signature& convert_u16string_to_u8string()
-{
-    static convert_u16string_to_u8string_function_signature f = std::bind(detail::convert_u16string_to_u8string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u32string_to_u8string_function_signature& convert_u32string_to_u8string()
-{
-    static convert_u32string_to_u8string_function_signature f = std::bind(detail::convert_u32string_to_u8string, std::placeholders::_1);
-    return f;
-}
-
-// to std::u16string
-
-inline convert_string_to_u16string_function_signature& convert_string_to_u16string()
-{
-    static convert_string_to_u16string_function_signature f = std::bind(detail::convert_string_to_u16string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_wstring_to_u16string_function_signature& convert_wstring_to_u16string()
-{
-    static convert_wstring_to_u16string_function_signature f = std::bind(detail::convert_wstring_to_u16string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u2string_to_u16string_function_signature& convert_u2string_to_u16string()
-{
-    static convert_u2string_to_u16string_function_signature f = std::bind(detail::convert_u2string_to_u16string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u8string_to_u16string_function_signature& convert_u8string_to_u16string()
-{
-    static convert_u8string_to_u16string_function_signature f = std::bind(detail::convert_u8string_to_u16string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u32string_to_u16string_function_signature& convert_u32string_to_u16string()
-{
-    static convert_u32string_to_u16string_function_signature f = std::bind(detail::convert_u32string_to_u16string, std::placeholders::_1);
-    return f;
-}
-
-// to std::u32string
-
-inline convert_string_to_u32string_function_signature& convert_string_to_u32string()
-{
-    static convert_string_to_u32string_function_signature f = std::bind(detail::convert_string_to_u32string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_wstring_to_u32string_function_signature& convert_wstring_to_u32string()
-{
-    static convert_wstring_to_u32string_function_signature f = std::bind(detail::convert_wstring_to_u32string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u2string_to_u32string_function_signature& convert_u2string_to_u32string()
-{
-    static convert_u2string_to_u32string_function_signature f = std::bind(detail::convert_u2string_to_u32string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u8string_to_u32string_function_signature& convert_u8string_to_u32string()
-{
-    static convert_u8string_to_u32string_function_signature f = std::bind(detail::convert_u8string_to_u32string, std::placeholders::_1);
-    return f;
-}
-
-inline convert_u16string_to_u32string_function_signature& convert_u16string_to_u32string()
-{
-    static convert_u16string_to_u32string_function_signature f = std::bind(detail::convert_u16string_to_u32string, std::placeholders::_1);
-    return f;
+    return from;
 }
 
 template <typename to_string, typename from_string>
-GO_CONSTEXPR to_string string_cast(const from_string& from)
+inline GO_CONSTEXPR typename std::enable_if<!std::is_same<to_string, from_string>::value, to_string>::type string_cast(const from_string& from)
 {
-    return detail::string_cast<to_string, from_string>::cast(from);
+    u8string intermediate;
+    if (!traits::conversion_traits<from_string>::try_convert(from, intermediate))
+    {
+        const std::string message = std::string("Cannot cast from ") + std::string(typeid(from_string).name()) + std::string(" to intermediate ") + std::string(typeid(u8string).name());
+        throw string_cast_exception(message);
+    }
+    to_string to;
+    if (!traits::conversion_traits<to_string>::try_convert(intermediate, to))
+    {
+        const std::string message = std::string("Cannot cast intermediate ") + std::string(typeid(u8string).name()) + std::string(" to ") + std::string(typeid(to_string).name());
+        throw string_cast_exception(message);
+    }
+    return to;
 }
 
 }

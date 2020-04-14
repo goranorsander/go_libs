@@ -27,6 +27,7 @@ of components too small to be called libraries in their own right.
 
 ### Class reference
 
+* [deletable_facet](./class_template_deletable_facet.html)
 * [scope_guard](./class_scope_guard.html)
 * [scope_guard_new](./class_template_scope_guard_new.html)
 * [value_guard](./class_template_value_guard.html)
@@ -34,5 +35,6 @@ of components too small to be called libraries in their own right.
 ### Function reference
 
 * [exchange](./function_template_exchange.html)
+* [is_little_endian_system](./function_is_little_endian_system.html)
 * [max_of](./function_template_min_max.html)
 * [min_of](./function_template_min_max.html)

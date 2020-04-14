@@ -13,6 +13,7 @@
 
 #include <go/config.hpp>
 
+#include <go/utility/deletable_facet.hpp>
 #include <go/utility/exchange.hpp>
 #include <go/utility/min_max.hpp>
 #include <go/utility/sanity.hpp>

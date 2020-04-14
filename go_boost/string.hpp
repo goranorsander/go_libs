@@ -18,15 +18,19 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <go_boost/string/algorithm.hpp>
-#include <go_boost/string/ascii.hpp>
 #include <go_boost/string/create.hpp>
-#include <go_boost/string/iso_8859_1.hpp>
 #include <go_boost/string/string_cast.hpp>
 #include <go_boost/string/u2string.hpp>
 #include <go_boost/string/u8string.hpp>
 #include <go_boost/string/u16string.hpp>
 #include <go_boost/string/u32string.hpp>
-#include <go_boost/string/ucs2.hpp>
-#include <go_boost/string/windows_1252.hpp>
+
+#include <go_boost/string/encoding/ascii.hpp>
+#include <go_boost/string/encoding/iso_8859_1.hpp>
+#include <go_boost/string/encoding/ucs2.hpp>
+#include <go_boost/string/encoding/utf8.hpp>
+#include <go_boost/string/encoding/utf16.hpp>
+#include <go_boost/string/encoding/utf32.hpp>
+#include <go_boost/string/encoding/windows_1252.hpp>
 
 #endif  // #ifndef GO_BOOST_STRING_HPP_INCLUDED

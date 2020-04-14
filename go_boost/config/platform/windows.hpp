@@ -23,6 +23,8 @@
 
 #define GO_BOOST_PLATFORM_WINDOWS 1
 
+#define GO_BOOST_SIZE_OF_WCHAR_T 2
+
 #endif  // #if defined(_WIN32) || defined(WIN32)
 
 #if defined(_WIN32) || defined(_WIN64)

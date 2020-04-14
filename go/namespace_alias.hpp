@@ -41,7 +41,9 @@ namespace read_only {}
 namespace write_only {}
 }
 namespace signals {}
-namespace string {}
+namespace string {
+namespace encoding {}
+}
 namespace type_traits {}
 namespace utility
 {
@@ -68,6 +70,7 @@ namespace pnwo = go::property::nameless::write_only;
 namespace pro = go::property::read_only;
 namespace pwo = go::property::write_only;
 namespace s = go::string;
+namespace se = go::string::encoding;
 namespace si = go::signals;
 namespace tt = go::type_traits;
 namespace u = go::utility;

@@ -557,15 +557,37 @@ set(GO_STRING_DIR ${GO_DIR}/string)
 file(GLOB GO_LIBS_SRC_GO_STRING_HPP ${GO_STRING_DIR}/*.hpp)
 
 ########################################################
-#  go/string/detail                                    #
+#  go/string/convert                                   #
 ########################################################
 
-set(GO_STRING_DETAIL_DIRNAME string/detail)
-set(GO_STRING_DETAIL_DIR ${GO_DIR}/string/detail)
+set(GO_STRING_CONVERT_DIRNAME string/convert)
+set(GO_STRING_CONVERT_DIR ${GO_DIR}/string/convert)
 
 # *.hpp
 
-file(GLOB GO_LIBS_SRC_GO_STRING_DETAIL_HPP ${GO_STRING_DETAIL_DIR}/*.hpp)
+file(GLOB GO_LIBS_SRC_GO_STRING_CONVERT_HPP ${GO_STRING_CONVERT_DIR}/*.hpp)
+
+########################################################
+#  go/string/encoding                                  #
+########################################################
+
+set(GO_STRING_ENCODING_DIRNAME string/encoding)
+set(GO_STRING_ENCODING_DIR ${GO_DIR}/string/encoding)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_STRING_ENCODING_HPP ${GO_STRING_ENCODING_DIR}/*.hpp)
+
+########################################################
+#  go/string/traits                                    #
+########################################################
+
+set(GO_STRING_TRAITS_DIRNAME string/traits)
+set(GO_STRING_TRAITS_DIR ${GO_DIR}/string/traits)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_STRING_TRAITS_HPP ${GO_STRING_TRAITS_DIR}/*.hpp)
 
 ########################################################
 #  go/type_traits                                      #
@@ -865,15 +887,37 @@ set(GO_BOOST_STRING_DIR ${GO_BOOST_DIR}/string)
 file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_HPP ${GO_BOOST_STRING_DIR}/*.hpp)
 
 ########################################################
-#  go_boost/string/detail                              #
+#  go_boost/string/convert                             #
 ########################################################
 
-set(GO_BOOST_STRING_DETAIL_DIRNAME string/detail)
-set(GO_BOOST_STRING_DETAIL_DIR ${GO_BOOST_DIR}/string/detail)
+set(GO_BOOST_STRING_CONVERT_DIRNAME string/convert)
+set(GO_BOOST_STRING_CONVERT_DIR ${GO_BOOST_DIR}/string/convert)
 
 # *.hpp
 
-file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_DETAIL_HPP ${GO_BOOST_STRING_DETAIL_DIR}/*.hpp)
+file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_CONVERT_HPP ${GO_BOOST_STRING_CONVERT_DIR}/*.hpp)
+
+########################################################
+#  go_boost/string/encoding                            #
+########################################################
+
+set(GO_BOOST_STRING_ENCODING_DIRNAME string/encoding)
+set(GO_BOOST_STRING_ENCODING_DIR ${GO_BOOST_DIR}/string/encoding)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_ENCODING_HPP ${GO_BOOST_STRING_ENCODING_DIR}/*.hpp)
+
+########################################################
+#  go_boost/string/traits                              #
+########################################################
+
+set(GO_BOOST_STRING_TRAITS_DIRNAME string/traits)
+set(GO_BOOST_STRING_TRAITS_DIR ${GO_BOOST_DIR}/string/traits)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_STRING_TRAITS_HPP ${GO_BOOST_STRING_TRAITS_DIR}/*.hpp)
 
 ########################################################
 #  go_boost/type_traits                                #
@@ -997,7 +1041,9 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_SIGNALS_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_HPP}                     DESTINATION  include/${GO_DIRNAME}/${GO_STRING_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_DETAIL_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_STRING_DETAIL_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_CONVERT_HPP}             DESTINATION  include/${GO_DIRNAME}/${GO_STRING_CONVERT_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_ENCODING_HPP}            DESTINATION  include/${GO_DIRNAME}/${GO_STRING_ENCODING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_STRING_TRAITS_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_STRING_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_DIRNAME}/${GO_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_DIRNAME})
@@ -1026,7 +1072,9 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_NAMELESS_DETAIL_HPP}   DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_PROPERTY_POLICY_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_PROPERTY_POLICY_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_SIGNALS_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_SIGNALS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_HPP}                     DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_DIRNAME})
-INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_DETAIL_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_DETAIL_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_CONVERT_HPP}             DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_CONVERT_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_ENCODING_HPP}            DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_ENCODING_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_STRING_TRAITS_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_STRING_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_HPP}                DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_TYPE_TRAITS_DETAIL_HPP}         DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_TYPE_TRAITS_DETAIL_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_DIRNAME})

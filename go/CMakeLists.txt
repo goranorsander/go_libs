@@ -31,7 +31,9 @@ file(GLOB GO_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./property/nameless/detail/*.hpp
 file(GLOB GO_PROPERTY_POLICY_DIR_FILES ./property/policy/*.hpp)
 file(GLOB GO_SIGNALS_DIR_FILES ./signals/*.hpp)
 file(GLOB GO_STRING_DIR_FILES ./string/*.hpp)
-file(GLOB GO_STRING_DETAIL_DIR_FILES ./string/detail/*.hpp)
+file(GLOB GO_STRING_CONVERT_DIR_FILES ./string/convert/*.hpp)
+file(GLOB GO_STRING_ENCODING_DIR_FILES ./string/encoding/*.hpp)
+file(GLOB GO_STRING_TRAITS_DIR_FILES ./string/traits/*.hpp)
 file(GLOB GO_TYPE_TRAITS_DIR_FILES ./type_traits/*.hpp)
 file(GLOB GO_TYPE_TRAITS_DETAIL_DIR_FILES ./type_traits/detail/*.hpp)
 file(GLOB GO_UTILITY_DIR_FILES ./utility/*.hpp)
@@ -62,7 +64,9 @@ add_library(${PROJECT_GO_STD_LIBS_NAME} STATIC
     ${GO_PROPERTY_POLICY_DIR_FILES}
     ${GO_SIGNALS_DIR_FILES}
     ${GO_STRING_DIR_FILES}
-    ${GO_STRING_DETAIL_DIR_FILES}
+    ${GO_STRING_CONVERT_DIR_FILES}
+    ${GO_STRING_ENCODING_DIR_FILES}
+    ${GO_STRING_TRAITS_DIR_FILES}
     ${GO_TYPE_TRAITS_DIR_FILES}
     ${GO_TYPE_TRAITS_DETAIL_DIR_FILES}
     ${GO_UTILITY_DIR_FILES}
@@ -95,7 +99,9 @@ source_group(go\\property\\nameless\\detail FILES ${GO_PROPERTY_NAMELESS_DETAIL_
 source_group(go\\property\\policy FILES ${GO_PROPERTY_POLICY_DIR_FILES})
 source_group(go\\signals FILES ${GO_SIGNALS_DIR_FILES})
 source_group(go\\string FILES ${GO_STRING_DIR_FILES})
-source_group(go\\string\\detail FILES ${GO_STRING_DETAIL_DIR_FILES})
+source_group(go\\string\\convert FILES ${GO_STRING_CONVERT_DIR_FILES})
+source_group(go\\string\\encoding FILES ${GO_STRING_ENCODING_DIR_FILES})
+source_group(go\\string\\traits FILES ${GO_STRING_TRAITS_DIR_FILES})
 source_group(go\\type_traits FILES ${GO_TYPE_TRAITS_DIR_FILES})
 source_group(go\\type_traits\\detail FILES ${GO_TYPE_TRAITS_DETAIL_DIR_FILES})
 source_group(go\\utility FILES ${GO_UTILITY_DIR_FILES})

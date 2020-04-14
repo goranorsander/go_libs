@@ -16,7 +16,7 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/string/algorithm.hpp>
-#include <go_boost/string/iso_8859_1.hpp>
+#include <go_boost/string/encoding/iso_8859_1.hpp>
 #include <go_boost/string/u2string.hpp>
 #include <go_boost/string/u8string.hpp>
 #include <go_boost/string/u16string.hpp>
@@ -279,18 +279,18 @@ TEST(boost_iso_8859_1_test_suite, test_char_is_iso_8859_1_character)
         while (c < 31)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -298,13 +298,13 @@ TEST(boost_iso_8859_1_test_suite, test_char_is_iso_8859_1_character)
         char c = -128;
         while (c < -96)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 0)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
@@ -316,24 +316,24 @@ TEST(boost_iso_8859_1_test_suite, test_char8_t_is_iso_8859_1_character)
     {
         char8_t c = 0;
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -342,13 +342,13 @@ TEST(boost_iso_8859_1_test_suite, test_char8_t_is_iso_8859_1_character)
         while (c < 159)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 255)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
     }
@@ -360,18 +360,18 @@ TEST(boost_iso_8859_1_test_suite, test_wchar_t_is_iso_8859_1_character)
         wchar_t c = 0;
         while (c < 32)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 127)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -383,7 +383,7 @@ TEST(boost_iso_8859_1_test_suite, test_wchar_t_is_iso_8859_1_character)
 #endif  // #if defined(GO_BOOST_PLATFORM_WINDOWS)
         while (c < 0)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(static_cast<wchar_t>(c));
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(static_cast<wchar_t>(c));
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
@@ -392,13 +392,13 @@ TEST(boost_iso_8859_1_test_suite, test_wchar_t_is_iso_8859_1_character)
         wchar_t c = 128;
         while (c < 160)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 256)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
@@ -410,24 +410,24 @@ TEST(boost_iso_8859_1_test_suite, test_char2_t_is_iso_8859_1_character)
     {
         s::char2_t c = 0;
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -435,13 +435,13 @@ TEST(boost_iso_8859_1_test_suite, test_char2_t_is_iso_8859_1_character)
         s::char2_t c = 128;
         while (c < 160)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 256)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
@@ -453,24 +453,24 @@ TEST(boost_iso_8859_1_test_suite, test_char16_t_is_iso_8859_1_character)
     {
         char16_t c = 0;
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -478,7 +478,7 @@ TEST(boost_iso_8859_1_test_suite, test_char16_t_is_iso_8859_1_character)
         short c = -256;
         while (c < 0)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(static_cast<char16_t>(c));
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(static_cast<char16_t>(c));
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
@@ -487,13 +487,13 @@ TEST(boost_iso_8859_1_test_suite, test_char16_t_is_iso_8859_1_character)
         char16_t c = 128;
         while (c < 160)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 256)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
@@ -505,24 +505,24 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
     {
         char32_t c = 0;
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
         }
         {
             ++c;
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
         }
     }
@@ -530,7 +530,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
         long c = -256;
         while (c < 0)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(static_cast<char32_t>(c));
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(static_cast<char32_t>(c));
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
@@ -539,13 +539,13 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
         char32_t c = 128;
         while (c < 160)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, false);
             ++c;
         }
         while (c < 256)
         {
-            const bool is_iso_8859_1 = s::is_iso_8859_1_character(c);
+            const bool is_iso_8859_1 = se::is_iso_8859_1_character(c);
             EXPECT_EQ(is_iso_8859_1, true);
             ++c;
         }
@@ -556,7 +556,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
 //    const std::string iso_8859_1_printable_characters(multibyte::iso_8859_1_printable_characters_from_hex_codes);
-//    const std::string iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const std::string iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 //
@@ -564,7 +564,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters_from_hex_codes);
 //    const std::wstring iso_8859_1_printable_characters(system_wide::iso_8859_1_printable_characters_from_hex_codes);
-//    const std::wstring iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const std::wstring iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 //
@@ -572,7 +572,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const s::u2string ascii_printable_characters(ucs_2::ascii_printable_characters_from_hex_codes);
 //    const s::u2string iso_8859_1_printable_characters(ucs_2::iso_8859_1_printable_characters_from_hex_codes);
-//    const s::u2string iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const s::u2string iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 //
@@ -580,7 +580,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const s::u8string ascii_printable_characters(utf_8::ascii_printable_characters_from_hex_codes);
 //    const s::u8string iso_8859_1_printable_characters(utf_8::iso_8859_1_printable_characters_from_hex_codes);
-//    const s::u8string iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const s::u8string iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 //
@@ -588,7 +588,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const s::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
 //    const s::u16string iso_8859_1_printable_characters(utf_16::iso_8859_1_printable_characters_from_hex_codes);
-//    const s::u16string iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const s::u16string iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 //
@@ -596,7 +596,7 @@ TEST(boost_iso_8859_1_test_suite, test_char32_t_is_iso_8859_1_character)
 //{
 //    const s::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
 //    const s::u32string iso_8859_1_printable_characters(utf_32::iso_8859_1_printable_characters_from_hex_codes);
-//    const s::u32string iso_8859_1_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
+//    const s::u32string iso_8859_1_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(iso_8859_1_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, iso_8859_1_reduced_to_7_bit_ascii);
 //}
 

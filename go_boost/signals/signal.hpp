@@ -15,11 +15,11 @@
 
 #include <boost/signals2.hpp>
 
-namespace go
+namespace go_boost
 {
 namespace signals
 {
 } // namespace signals
-} // namespace go
+} // namespace go_boost
 
 #endif  // #ifndef GO_BOOST_SIGNALS_SIGNAL_HPP_INCLUDED

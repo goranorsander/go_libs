@@ -1,9 +1,9 @@
 ---
-layout: boost_lib_utility
+layout: boost_lib_string
 ---
 
 ```c++
-namespace go_boost::utility
+namespace go_boost::string
 ```
 
 # class u8string

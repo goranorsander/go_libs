@@ -41,7 +41,9 @@ namespace read_only {}
 namespace write_only {}
 }
 namespace signals {}
-namespace string {}
+namespace string {
+namespace encoding {}
+}
 namespace type_traits {}
 namespace utility
 {
@@ -68,6 +70,7 @@ namespace pnwo = go_boost::property::nameless::write_only;
 namespace pro = go_boost::property::read_only;
 namespace pwo = go_boost::property::write_only;
 namespace s = go_boost::string;
+namespace se = go_boost::string::encoding;
 namespace si = go_boost::signals;
 namespace tt = go_boost::type_traits;
 namespace u = go_boost::utility;

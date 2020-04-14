@@ -31,7 +31,9 @@ file(GLOB GO_BOOST_PROPERTY_NAMELESS_DETAIL_DIR_FILES ./property/nameless/detail
 file(GLOB GO_BOOST_PROPERTY_POLICY_DIR_FILES ./property/policy/*.hpp)
 file(GLOB GO_BOOST_DIR_SIGNALS_FILES ./signals/*.hpp)
 file(GLOB GO_BOOST_DIR_STRING_FILES ./string/*.hpp)
-file(GLOB GO_BOOST_DIR_STRING_DETAIL_FILES ./string/detail/*.hpp)
+file(GLOB GO_BOOST_DIR_STRING_CONVERT_FILES ./string/convert/*.hpp)
+file(GLOB GO_BOOST_DIR_STRING_ENCODING_FILES ./string/encoding/*.hpp)
+file(GLOB GO_BOOST_DIR_STRING_TRAITS_FILES ./string/traits/*.hpp)
 file(GLOB GO_BOOST_TYPE_TRAITS_DIR_FILES ./type_traits/*.hpp)
 file(GLOB GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES ./type_traits/detail/*.hpp)
 file(GLOB GO_BOOST_DIR_UTILITY_FILES ./utility/*.hpp)
@@ -62,7 +64,9 @@ add_library(${PROJECT_GO_BOOST_LIBS_NAME} STATIC
     ${GO_BOOST_PROPERTY_POLICY_DIR_FILES}
     ${GO_BOOST_DIR_SIGNALS_FILES}
     ${GO_BOOST_DIR_STRING_FILES}
-    ${GO_BOOST_DIR_STRING_DETAIL_FILES}
+    ${GO_BOOST_DIR_STRING_CONVERT_FILES}
+    ${GO_BOOST_DIR_STRING_ENCODING_FILES}
+    ${GO_BOOST_DIR_STRING_TRAITS_FILES}
     ${GO_BOOST_TYPE_TRAITS_DIR_FILES}
     ${GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES}
     ${GO_BOOST_DIR_UTILITY_FILES}
@@ -95,7 +99,9 @@ source_group(go_boost\\property\\nameless\\detail FILES ${GO_BOOST_PROPERTY_NAME
 source_group(go_boost\\property\\policy FILES ${GO_BOOST_PROPERTY_POLICY_DIR_FILES})
 source_group(go_boost\\signals FILES ${GO_BOOST_DIR_SIGNALS_FILES})
 source_group(go_boost\\string FILES ${GO_BOOST_DIR_STRING_FILES})
-source_group(go_boost\\string\\detail FILES ${GO_BOOST_DIR_STRING_DETAIL_FILES})
+source_group(go_boost\\string\\convert FILES ${GO_BOOST_DIR_STRING_CONVERT_FILES})
+source_group(go_boost\\string\\encoding FILES ${GO_BOOST_DIR_STRING_ENCODING_FILES})
+source_group(go_boost\\string\\traits FILES ${GO_BOOST_DIR_STRING_TRAITS_FILES})
 source_group(go_boost\\type_traits FILES ${GO_BOOST_TYPE_TRAITS_DIR_FILES})
 source_group(go_boost\\type_traits\\detail FILES ${GO_BOOST_TYPE_TRAITS_DETAIL_DIR_FILES})
 source_group(go_boost\\utility FILES ${GO_BOOST_DIR_UTILITY_FILES})

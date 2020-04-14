@@ -36,6 +36,8 @@ typedef unsigned __int64 uint64_t;
 
 #define GO_PLATFORM_WINDOWS 1
 
+#define GO_SIZE_OF_WCHAR_T 2
+
 #if defined(_WIN64)
 
 #define GO_ADDRESS_MODEL_64 1

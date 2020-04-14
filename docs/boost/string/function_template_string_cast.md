@@ -1,9 +1,9 @@
 ---
-layout: boost_lib_utility
+layout: boost_lib_string
 ---
 
 ```c++
-namespace go_boost::utility
+namespace go_boost::string
 ```
 
 # function template string_cast
@@ -19,10 +19,10 @@ Class|Expected encoding
 -|-
 std\::string|ASCII, ISO/IEC 8859-1, or Windows 1252
 std\::wstring|UCS-2 or UCS-4
-go_boost\::utility\::u2string|UCS-2
-go_boost\::utility\::u8string|UTF-8
-go_boost\::utility\::u16string|UTF-16
-go_boost\::utility\::u32string|UTF-32
+go_boost\::string\::u2string|UCS-2
+go_boost\::string\::u8string|UTF-8
+go_boost\::string\::u16string|UTF-16
+go_boost\::string\::u32string|UTF-32
 
 The **string_cast** function will try to encode the string using the expected
 encoding for the destination string class.
@@ -53,7 +53,7 @@ A string object of the **to_string** class.
 
 # Example
 
-Casting a **go_boost\::utility\::u8string** object to each of the other supported string
+Casting a **go_boost\::string\::u8string** object to each of the other supported string
 classes. The sample string contains the Tibetan mantra
 *[Om mani padme hum](https://en.wikipedia.org/wiki/Om_mani_padme_hum)* with both
 latin and Tibetan transcriptions. Note that the Tibetan part of the string is stripped
@@ -62,7 +62,7 @@ Tibetan characters/symbols.
 
 ```c++
 #include <iostream>
-#include <go_boost/utility.hpp>
+#include <go_boost/string.hpp>
 
 namespace u = go_boost::utility;
 namespace us = go_boost::string;

@@ -15,7 +15,7 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <go_boost/namespace_alias.hpp>
-#include <go_boost/string/windows_1252.hpp>
+#include <go_boost/string/encoding/windows_1252.hpp>
 #include <go_boost/string/u2string.hpp>
 #include <go_boost/string/u8string.hpp>
 #include <go_boost/string/u16string.hpp>
@@ -290,72 +290,72 @@ TEST(boost_windows_1252_test_suite, test_char_is_windows_1252_character)
         while (c < 31)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
     {
         char c = -128; // 128
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = -127; // 129
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = -126; // 130
         while (c < -115) // 141
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = -115; // 141
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = -114; // 142
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = -113; // 143
         while (c < -111) // 145
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = -111; // 145
         while (c < -99) // 157
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = -99; // 157
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = -98; // 158
         while (c < 0)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
@@ -367,79 +367,79 @@ TEST(boost_windows_1252_test_suite, test_char8_t_is_windows_1252_character)
     {
         char8_t c = 0;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
     {
         char8_t c = 128;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 129;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 130;
         while (c < 141)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 141;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 142;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 143;
         while (c < 145)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = 145;
         while (c < 157)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 157;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 158;
         while (c < 255)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
     }
@@ -451,18 +451,18 @@ TEST(boost_windows_1252_test_suite, test_wchar_t_is_windows_1252_character)
         wchar_t c = 0;
         while (c < 32)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         while (c < 127)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
@@ -474,7 +474,7 @@ TEST(boost_windows_1252_test_suite, test_wchar_t_is_windows_1252_character)
 #endif  // #if defined(GO_BOOST_PLATFORM_WINDOWS)
         while (c < 0)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(static_cast<wchar_t>(c));
+            const bool is_windows_1252 = se::is_windows_1252_character(static_cast<wchar_t>(c));
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
@@ -482,54 +482,54 @@ TEST(boost_windows_1252_test_suite, test_wchar_t_is_windows_1252_character)
     {
         wchar_t c = 128;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 129;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 130;
         while (c < 141)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 141;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 142;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 143;
         while (c < 145)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = 145;
         while (c < 157)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 157;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 158;
         while (c < 256)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
@@ -541,78 +541,78 @@ TEST(boost_windows_1252_test_suite, test_char2_t_is_windows_1252_character)
     {
         s::char2_t c = 0;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
     {
         s::char2_t c = 128;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 129;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 130;
         while (c < 141)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 141;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 142;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 143;
         while (c < 145)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = 145;
         while (c < 157)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 157;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 158;
         while (c < 256)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
@@ -624,24 +624,24 @@ TEST(boost_windows_1252_test_suite, test_char16_t_is_windows_1252_character)
     {
         char16_t c = 0;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
@@ -649,7 +649,7 @@ TEST(boost_windows_1252_test_suite, test_char16_t_is_windows_1252_character)
         short c = -256;
         while (c < 0)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(static_cast<char16_t>(c));
+            const bool is_windows_1252 = se::is_windows_1252_character(static_cast<char16_t>(c));
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
@@ -657,54 +657,54 @@ TEST(boost_windows_1252_test_suite, test_char16_t_is_windows_1252_character)
     {
         char16_t c = 128;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 129;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 130;
         while (c < 141)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 141;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 142;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 143;
         while (c < 145)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = 145;
         while (c < 157)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 157;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 158;
         while (c < 256)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
@@ -716,24 +716,24 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
     {
         char32_t c = 0;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 31)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         while (c < 126)
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         {
             ++c;
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
     }
@@ -741,7 +741,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
         long c = -256;
         while (c < 0)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(static_cast<char32_t>(c));
+            const bool is_windows_1252 = se::is_windows_1252_character(static_cast<char32_t>(c));
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
@@ -749,54 +749,54 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
     {
         char32_t c = 128;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 129;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 130;
         while (c < 141)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 141;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 142;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
         }
         c = 143;
         while (c < 145)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
             ++c;
         }
         c = 145;
         while (c < 157)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
         c = 157;
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, false);
         }
         c = 158;
         while (c < 256)
         {
-            const bool is_windows_1252 = s::is_windows_1252_character(c);
+            const bool is_windows_1252 = se::is_windows_1252_character(c);
             EXPECT_EQ(is_windows_1252, true);
             ++c;
         }
@@ -807,7 +807,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const std::string ascii_printable_characters(multibyte::ascii_printable_characters_from_hex_codes);
 //    const std::string windows_1252_printable_characters(multibyte::windows_1252_printable_characters_from_hex_codes);
-//    const std::string windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const std::string windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 //
@@ -815,7 +815,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const std::wstring ascii_printable_characters(system_wide::ascii_printable_characters_from_hex_codes);
 //    const std::wstring windows_1252_printable_characters(system_wide::windows_1252_printable_characters_from_hex_codes);
-//    const std::wstring windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const std::wstring windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 //
@@ -823,7 +823,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const s::u2string ascii_printable_characters(ucs_2::ascii_printable_characters_from_hex_codes);
 //    const s::u2string windows_1252_printable_characters(ucs_2::windows_1252_printable_characters_from_hex_codes);
-//    const s::u2string windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const s::u2string windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 //
@@ -831,7 +831,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const s::u8string ascii_printable_characters(utf_8::ascii_printable_characters_from_hex_codes);
 //    const s::u8string windows_1252_printable_characters(utf_8::windows_1252_printable_characters_from_hex_codes);
-//    const s::u8string windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const s::u8string windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 //
@@ -839,7 +839,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const s::u16string ascii_printable_characters(utf_16::ascii_printable_characters_from_hex_codes);
 //    const s::u16string windows_1252_printable_characters(utf_16::windows_1252_printable_characters_from_hex_codes);
-//    const s::u16string windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const s::u16string windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 //
@@ -847,7 +847,7 @@ TEST(boost_windows_1252_test_suite, test_char32_t_is_windows_1252_character)
 //{
 //    const s::u32string ascii_printable_characters(utf_32::ascii_printable_characters_from_hex_codes);
 //    const s::u32string windows_1252_printable_characters(utf_32::windows_1252_printable_characters_from_hex_codes);
-//    const s::u32string windows_1252_reduced_to_7_bit_ascii = s::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
+//    const s::u32string windows_1252_reduced_to_7_bit_ascii = se::reduce_to_7_bit_ascii_copy(windows_1252_printable_characters);
 //    EXPECT_EQ(ascii_printable_characters, windows_1252_reduced_to_7_bit_ascii);
 //}
 

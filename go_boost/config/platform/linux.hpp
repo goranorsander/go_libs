@@ -23,6 +23,8 @@
 
 #define GO_BOOST_PLATFORM_LINUX 1
 
+#define GO_BOOST_SIZE_OF_WCHAR_T 4
+
 #endif  // defined(__linux__)
 
 #if defined(__x86_64__) || defined(__ppc64__)
