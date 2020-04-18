@@ -39,7 +39,7 @@ struct encoding_traits<std::string>
 {
     using this_type = encoding_traits<std::string>;
     using string_type = std::string;
-    using char_type = typename std::string::value_type;
+    using char_type = GO_BOOST_TYPENAME std::string::value_type;
 
 #if defined(GO_BOOST_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
     using encoding = go_boost::string::encoding::ascii_tag;

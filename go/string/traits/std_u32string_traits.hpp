@@ -29,7 +29,7 @@ struct encoding_traits<std::u32string>
 {
     using this_type = encoding_traits<std::u32string>;
     using string_type = std::u32string;
-    using char_type = typename std::u32string::value_type;
+    using char_type = GO_TYPENAME std::u32string::value_type;
     using encoding = go::string::encoding::utf32_tag;
 };
 

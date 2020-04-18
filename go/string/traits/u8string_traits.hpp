@@ -29,7 +29,7 @@ struct encoding_traits<go::string::u8string>
 {
     using this_type = encoding_traits<go::string::u8string>;
     using string_type = go::string::u8string;
-    using char_type = typename go::string::u8string::value_type;
+    using char_type = GO_TYPENAME go::string::u8string::value_type;
     using encoding = go::string::encoding::utf8_tag;
 };
 

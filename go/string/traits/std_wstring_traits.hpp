@@ -34,7 +34,7 @@ struct encoding_traits<std::wstring>
 {
     using this_type = encoding_traits<std::wstring>;
     using string_type = std::wstring;
-    using char_type = typename std::wstring::value_type;
+    using char_type = GO_TYPENAME std::wstring::value_type;
 
 #if defined(GO_SIZE_OF_WCHAR_T) && (GO_SIZE_OF_WCHAR_T == 2)
     using encoding = go::string::encoding::ucs2_tag;

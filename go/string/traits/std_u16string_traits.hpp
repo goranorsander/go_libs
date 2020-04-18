@@ -29,7 +29,7 @@ struct encoding_traits<std::u16string>
 {
     using this_type = encoding_traits<std::u16string>;
     using string_type = std::u16string;
-    using char_type = typename std::u16string::value_type;
+    using char_type = GO_TYPENAME std::u16string::value_type;
     using encoding = go::string::encoding::utf16_tag;
 };
 

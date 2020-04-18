@@ -29,7 +29,7 @@ struct encoding_traits<go_boost::string::u2string>
 {
     using this_type = encoding_traits<go_boost::string::u2string>;
     using string_type = go_boost::string::u2string;
-    using char_type = typename go_boost::string::u2string::value_type;
+    using char_type = GO_BOOST_TYPENAME go_boost::string::u2string::value_type;
     using encoding = go_boost::string::encoding::ucs2_tag;
 };
 
