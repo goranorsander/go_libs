@@ -29,13 +29,13 @@ namespace string
 {
 
 template <typename to_string, typename from_string>
-inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_same<to_string, from_string>::value, from_string>::type string_cast(const from_string& from)
+inline GO_BOOST_EXTENDED_CONSTEXPR typename boost::enable_if_c<boost::is_same<to_string, from_string>::value, from_string>::type string_cast(const from_string& from)
 {
     return from;
 }
 
 template <typename to_string, typename from_string>
-inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<!boost::is_same<to_string, from_string>::value, to_string>::type string_cast(const from_string& from)
+inline GO_BOOST_EXTENDED_CONSTEXPR typename boost::enable_if_c<!boost::is_same<to_string, from_string>::value, to_string>::type string_cast(const from_string& from)
 {
     u8string intermediate;
     if (!traits::conversion_traits<from_string>::try_convert(from, intermediate))
