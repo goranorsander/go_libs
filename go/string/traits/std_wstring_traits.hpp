@@ -32,22 +32,22 @@ namespace traits
 template <>
 struct encoding_traits<std::wstring>
 {
-    using this_type = encoding_traits<std::wstring>;
-    using string_type = std::wstring;
-    using char_type = GO_TYPENAME std::wstring::value_type;
+    GO_USING(this_type, encoding_traits<std::wstring>);
+    GO_USING(string_type, std::wstring);
+    GO_USING(char_type, GO_TYPENAME std::wstring::value_type);
 
 #if defined(GO_SIZE_OF_WCHAR_T) && (GO_SIZE_OF_WCHAR_T == 2)
-    using encoding = go::string::encoding::ucs2_tag;
+    GO_USING(encoding, go::string::encoding::ucs2_tag);
 #else
-    using encoding = go::string::encoding::ucs4_tag;
+    GO_USING(encoding, go::string::encoding::ucs4_tag);
 #endif  // #if defined(GO_SIZE_OF_WCHAR_T) && (GO_SIZE_OF_WCHAR_T == 2)
 };
 
 template <>
 struct conversion_traits<std::wstring>
 {
-    using this_type = conversion_traits<std::wstring>;
-    using string_type = std::wstring;
+    GO_USING(this_type, conversion_traits<std::wstring>);
+    GO_USING(string_type, std::wstring);
 
     static bool try_convert(const std::wstring& from, std::wstring& to)
     {

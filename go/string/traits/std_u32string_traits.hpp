@@ -27,17 +27,17 @@ namespace traits
 template <>
 struct encoding_traits<std::u32string>
 {
-    using this_type = encoding_traits<std::u32string>;
-    using string_type = std::u32string;
-    using char_type = GO_TYPENAME std::u32string::value_type;
-    using encoding = go::string::encoding::utf32_tag;
+    GO_USING(this_type, encoding_traits<std::u32string>);
+    GO_USING(string_type, std::u32string);
+    GO_USING(char_type, GO_TYPENAME std::u32string::value_type);
+    GO_USING(encoding, go::string::encoding::utf32_tag);
 };
 
 template <>
 struct conversion_traits<std::u32string>
 {
-    using this_type = conversion_traits<std::u32string>;
-    using string_type = std::u32string;
+    GO_USING(this_type, conversion_traits<std::u32string>);
+    GO_USING(string_type, std::u32string);
 
     static bool try_convert(const std::u32string& from, std::u32string& to)
     {

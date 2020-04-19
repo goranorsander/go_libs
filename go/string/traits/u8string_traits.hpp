@@ -27,17 +27,17 @@ namespace traits
 template <>
 struct encoding_traits<go::string::u8string>
 {
-    using this_type = encoding_traits<go::string::u8string>;
-    using string_type = go::string::u8string;
-    using char_type = GO_TYPENAME go::string::u8string::value_type;
-    using encoding = go::string::encoding::utf8_tag;
+    GO_USING(this_type, encoding_traits<go::string::u8string>);
+    GO_USING(string_type, go::string::u8string);
+    GO_USING(char_type, GO_TYPENAME go::string::u8string::value_type);
+    GO_USING(encoding, go::string::encoding::utf8_tag);
 };
 
 template <>
 struct conversion_traits<go::string::u8string>
 {
-    using this_type = conversion_traits<go::string::u8string>;
-    using string_type = go::string::u8string;
+    GO_USING(this_type, conversion_traits<go::string::u8string>);
+    GO_USING(string_type, go::string::u8string);
 
     static bool try_convert(const go::string::u8string& from, go::string::u8string& to)
     {

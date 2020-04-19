@@ -36,17 +36,17 @@ namespace traits
 template <>
 struct encoding_traits<std::string>
 {
-    using this_type = encoding_traits<std::string>;
-    using string_type = std::string;
-    using char_type = GO_TYPENAME std::string::value_type;
+    GO_USING(this_type, encoding_traits<std::string>);
+    GO_USING(string_type, std::string);
+    GO_USING(char_type, GO_TYPENAME std::string::value_type);
 
 #if defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
-    using encoding = go::string::encoding::ascii_tag;
+    GO_USING(encoding, go::string::encoding::ascii_tag);
 #else
 #if defined(GO_PLATFORM_WINDOWS)
-    using encoding = go::string::encoding::windows_1252_tag;
+    GO_USING(encoding, go::string::encoding::windows_1252_tag);
 #else
-    using encoding = go::string::encoding::iso_8859_1_tag;
+    GO_USING(encoding, go::string::encoding::iso_8859_1_tag);
 #endif  // #if defined(GO_PLATFORM_WINDOWS)
 #endif  // #if defined(GO_CHAR_ILLEGAL_BYTE_SEQUENCE_ISSUE)
 };
@@ -54,8 +54,8 @@ struct encoding_traits<std::string>
 template <>
 struct conversion_traits<std::string>
 {
-    using this_type = conversion_traits<std::string>;
-    using string_type = std::string;
+    GO_USING(this_type, conversion_traits<std::string>);
+    GO_USING(string_type, std::string);
 
     static bool try_convert(const std::string& from, std::string& to)
     {

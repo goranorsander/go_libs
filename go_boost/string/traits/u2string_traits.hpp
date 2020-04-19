@@ -27,17 +27,17 @@ namespace traits
 template <>
 struct encoding_traits<go_boost::string::u2string>
 {
-    using this_type = encoding_traits<go_boost::string::u2string>;
-    using string_type = go_boost::string::u2string;
-    using char_type = GO_BOOST_TYPENAME go_boost::string::u2string::value_type;
-    using encoding = go_boost::string::encoding::ucs2_tag;
+    GO_BOOST_USING(this_type, encoding_traits<go_boost::string::u2string>);
+    GO_BOOST_USING(string_type, go_boost::string::u2string);
+    GO_BOOST_USING(char_type, GO_BOOST_TYPENAME go_boost::string::u2string::value_type);
+    GO_BOOST_USING(encoding, go_boost::string::encoding::ucs2_tag);
 };
 
 template <>
 struct conversion_traits<go_boost::string::u2string>
 {
-    using this_type = conversion_traits<go_boost::string::u2string>;
-    using string_type = go_boost::string::u2string;
+    GO_BOOST_USING(this_type, conversion_traits<go_boost::string::u2string>);
+    GO_BOOST_USING(string_type, go_boost::string::u2string);
 
     static bool try_convert(const go_boost::string::u2string& from, go_boost::string::u2string& to)
     {
