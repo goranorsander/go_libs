@@ -53,7 +53,9 @@ struct conversion_traits<go_boost::string::u2string>
             return true;
         }
         catch (const std::exception&) {}
+#if defined(GO_BOOST_MSVC_VER) && (GO_BOOST_MSVC_VER > 1500)
         catch (const std::exception_ptr&) {}
+#endif
         catch (...) {}
         return false;
     }
@@ -66,7 +68,9 @@ struct conversion_traits<go_boost::string::u2string>
             return true;
         }
         catch (const std::exception&) {}
+#if defined(GO_BOOST_MSVC_VER) && (GO_BOOST_MSVC_VER > 1500)
         catch (const std::exception_ptr&) {}
+#endif
         catch (...) {}
         return false;
     }
