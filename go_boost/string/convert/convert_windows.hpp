@@ -20,9 +20,9 @@
 #if defined(GO_BOOST_PLATFORM_WINDOWS) && !defined(GO_BOOST_COMP_GCC_MINGW)
 
 #include <go_boost/string/convert/convert_fwd.hpp>
+#include <go_boost/string/encoding/ascii.hpp>
 #include <go_boost/string/encoding/windows_1252.hpp>
 #include <go_boost/utility/setup_global_locale.hpp>
-#include <go_boost/string/encoding/ascii.hpp>
 #include <windows.h>
 
 namespace go_boost

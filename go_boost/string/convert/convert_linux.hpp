@@ -40,9 +40,9 @@ inline std::string convert_u8string_to_string(const u8string& s)
     }
 #if defined(GO_BOOST_COMP_CLANG)
     std::string mbs;
-    reduce_to_iso_8859_1(s, mbs);
+    go_boost::string::encoding::reduce_to_iso_8859_1(s, mbs);
 #else
-    const u8string u8s = reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
+    const u8string u8s = go_boost::string::encoding::reduce_iso_8859_1_to_7_bit_ascii_copy(s, false);
     const std::string mbs(s.begin(), s.end());
 #endif  // #if defined(GO_BOOST_COMP_CLANG)
     return mbs;
