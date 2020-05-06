@@ -44,11 +44,11 @@ product_model::ptr product_model::create()
 void product_model::bind_properties()
 {
     product_id.getter(boost::bind(&product_model::get_product_id, this));
-    product_id.setter(boost::bind(&product_model::set_product_id, this, _1));
+    product_id.setter(boost::bind(&product_model::set_product_id, this, boost::placeholders::_1));
     product_name.getter(boost::bind(&product_model::get_product_name, this));
-    product_name.setter(boost::bind(&product_model::set_product_name, this, _1));
+    product_name.setter(boost::bind(&product_model::set_product_name, this, boost::placeholders::_1));
     unit_price.getter(boost::bind(&product_model::get_unit_price, this));
-    unit_price.setter(boost::bind(&product_model::set_unit_price, this, _1));
+    unit_price.setter(boost::bind(&product_model::set_unit_price, this, boost::placeholders::_1));
 }
 
 product_id_type product_model::get_product_id() const

@@ -60,11 +60,11 @@ private:
     void bind_properties()
     {
         crew_complement.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_crew_complement)));
-        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), crew_complement.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_crew_complement), bph::arg1, bph::arg2));
+        crew_complement.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), crew_complement.name(), boost::bind(&spaceship::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_crew_complement), bph::arg1, bph::arg2));
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_name), bph::arg1, bph::arg2));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_name), bph::arg1, bph::arg2));
         max_speed.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_max_speed)));
-        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), max_speed.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_max_speed), bph::arg1, bph::arg2));
+        max_speed.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), max_speed.name(), boost::bind(&spaceship::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_max_speed), bph::arg1, bph::arg2));
     }
 
 public:
@@ -92,12 +92,12 @@ public:
 
     void connect(spaceship& m)
     {
-        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void disconnect(spaceship& m)
     {
-        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)

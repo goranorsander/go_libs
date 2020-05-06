@@ -111,13 +111,13 @@ void spaceship_view_model::bind_properties()
     spaceship_class.getter(boost::bind(&this_type::get_spaceship_class, this));
     name.getter(boost::bind(&this_type::get_name, this));
     captain.getter(boost::bind(&this_type::get_captain, this));
-    captain.setter(boost::bind(&this_type::set_captain, this, _1));
+    captain.setter(boost::bind(&this_type::set_captain, this, boost::placeholders::_1));
     crew_complement.getter(boost::bind(&this_type::get_crew_complement, this));
-    crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, _1));
+    crew_complement.setter(boost::bind(&this_type::set_crew_complement, this, boost::placeholders::_1));
     equipment.getter(boost::bind(&this_type::get_equipment, this));
-    equipment.setter(boost::bind(&this_type::set_equipment, this, _1));
+    equipment.setter(boost::bind(&this_type::set_equipment, this, boost::placeholders::_1));
     selected_equipment.getter(boost::bind(&this_type::get_property_value<equipment_interface::ptr>, this, boost::cref(_selected_equipment)));
-    selected_equipment.setter(boost::bind(&this_type::set_selected_equipment, this, _1));
+    selected_equipment.setter(boost::bind(&this_type::set_selected_equipment, this, boost::placeholders::_1));
     on_activate_spaceship_view_command.getter(boost::bind(&this_type::get_activate_spaceship_view_command, this));
     on_close_spaceship_view_command.getter(boost::bind(&this_type::get_close_spaceship_view_command, this));
     on_add_equipment_command.getter(boost::bind(&this_type::get_add_equipment_command, this));
@@ -213,8 +213,8 @@ void spaceship_view_model::set_selected_equipment(const equipment_interface::ptr
 m::wcommand_interface::ptr spaceship_view_model::get_activate_spaceship_view_command()
 {
     _on_activate_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_activate_spaceship_view",
-        boost::bind(&this_type::execute_activate_spaceship_view_command, this, _1),
-        boost::bind(&this_type::can_execute_activate_spaceship_view_command, this, _1),
+        boost::bind(&this_type::execute_activate_spaceship_view_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_activate_spaceship_view_command, this, boost::placeholders::_1),
         activate_spaceship_command_parameters::create(_spaceship_id));
     return _on_activate_spaceship_view_command;
 }
@@ -250,8 +250,8 @@ m::wcommand_interface::ptr spaceship_view_model::get_close_spaceship_view_comman
 {
     ptr this_vm = boost::dynamic_pointer_cast<this_type, m::object>(this->shared_from_this());
     _on_close_spaceship_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-        boost::bind(&this_type::execute_close_spaceship_view_command, this, _1),
-        boost::bind(&this_type::can_execute_close_spaceship_view_command, this, _1),
+        boost::bind(&this_type::execute_close_spaceship_view_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_close_spaceship_view_command, this, boost::placeholders::_1),
         close_spaceship_command_parameters::create(this_vm));
     return _on_close_spaceship_view_command;
 }
@@ -286,8 +286,8 @@ void spaceship_view_model::execute_close_spaceship_view_command(const m::command
 m::wcommand_interface::ptr spaceship_view_model::get_add_equipment_command()
 {
     _on_add_equipment_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-        boost::bind(&this_type::execute_add_equipment_command, this, _1),
-        boost::bind(&this_type::can_execute_add_equipment_command, this, _1),
+        boost::bind(&this_type::execute_add_equipment_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_add_equipment_command, this, boost::placeholders::_1),
         add_equipment_command_parameters::create(_spaceship_id));
     return _on_add_equipment_command;
 }
@@ -320,8 +320,8 @@ void spaceship_view_model::execute_add_equipment_command(const m::command_parame
 m::wcommand_interface::ptr spaceship_view_model::get_remove_equipment_command()
 {
     _on_remove_equipment_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-        boost::bind(&this_type::execute_remove_equipment_command, this, _1),
-        boost::bind(&this_type::can_execute_remove_equipment_command, this, _1),
+        boost::bind(&this_type::execute_remove_equipment_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_remove_equipment_command, this, boost::placeholders::_1),
         remove_equipment_command_parameters::create(_spaceship_id, boost::dynamic_pointer_cast<equipment_model>(selected_equipment())->id));
     return _on_remove_equipment_command;
 }

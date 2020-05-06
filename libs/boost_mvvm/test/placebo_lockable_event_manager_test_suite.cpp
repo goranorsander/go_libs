@@ -124,7 +124,7 @@ private:
     void bind_properties()
     {
         commander.getter(boost::bind(&fleet_commander::get_commander, this));
-        commander.setter(boost::bind(&fleet_commander::set_commander, this, _1));
+        commander.setter(boost::bind(&fleet_commander::set_commander, this, boost::placeholders::_1));
     }
 
 private:
@@ -200,14 +200,14 @@ private:
     boost::shared_ptr<spaceship> ship7 = spaceship::create("Y-Wing Gold Leader", "Jon 'Dutch' Vander", "General Jan Dodonna"); \
     boost::shared_ptr<spaceship> ship8 = spaceship::create("Y-Wing Gold Two", "Dex Tiree", "General Jan Dodonna"); \
 \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship3, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship4, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship5, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship6, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship7, _1)); \
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship8, _1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship3, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship4, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship5, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship6, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship7, boost::placeholders::_1)); \
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship8, boost::placeholders::_1));
 
 TEST(boost_event_manager_placebo_lockable_test_suite, test_command_manager)
 {

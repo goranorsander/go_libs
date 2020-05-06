@@ -107,7 +107,7 @@ TEST(boost_wcommand_test_suite, test_wcommand)
 
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
-    command->can_execute_changed.connect(boost::bind(&test_wcommand_observer::on_can_execute_changed, &command_observer, _1));
+    command->can_execute_changed.connect(boost::bind(&test_wcommand_observer::on_can_execute_changed, &command_observer, boost::placeholders::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());

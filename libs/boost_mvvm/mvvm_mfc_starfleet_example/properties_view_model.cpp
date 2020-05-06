@@ -53,7 +53,7 @@ void properties_view_model::on_data_context_will_change()
 {
     if(data_context())
     {
-        data_context()->property_changed.disconnect(boost::bind(&properties_view_model::on_property_changed, this, _1, _2));
+        data_context()->property_changed.disconnect(boost::bind(&properties_view_model::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_will_change();
     on_view_model_will_change();
@@ -63,7 +63,7 @@ void properties_view_model::on_data_context_changed()
 {
     if(data_context())
     {
-        data_context()->property_changed.connect(boost::bind(&properties_view_model::on_property_changed, this, _1, _2));
+        data_context()->property_changed.connect(boost::bind(&properties_view_model::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_changed();
     on_view_model_changed();
@@ -84,7 +84,7 @@ void properties_view_model::on_property_changed(const m::object::ptr& o, const m
 void properties_view_model::bind_properties()
 {
     main_frame_vm.getter(boost::bind(&this_type::get_main_frame_vm, this));
-    main_frame_vm.setter(boost::bind(&this_type::set_main_frame_vm, this, _1));
+    main_frame_vm.setter(boost::bind(&this_type::set_main_frame_vm, this, boost::placeholders::_1));
     fleet_organization.getter(boost::bind(&this_type::get_fleet_organization, this));
 }
 
@@ -96,7 +96,7 @@ void properties_view_model::subscribe_events()
         m::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
-            _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event", boost::bind(&this_type::on_select_fleet_organization_event, this, _1));
+            _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event", boost::bind(&this_type::on_select_fleet_organization_event, this, boost::placeholders::_1));
         }
     }
 }

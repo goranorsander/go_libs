@@ -89,8 +89,8 @@ void main_frame_view_model::subscribe_events()
     m::wevent_manager::ptr event_mgr = event_manager();
     if(event_mgr)
     {
-        _close_spaceship_event_key = event_mgr->subscribe(L"close spaceship event", boost::bind(&this_type::on_close_spaceship_event, this, _1));
-        _show_spaceship_event_key = event_mgr->subscribe(L"show spaceship event", boost::bind(&this_type::on_show_spaceship_event, this, _1));
+        _close_spaceship_event_key = event_mgr->subscribe(L"close spaceship event", boost::bind(&this_type::on_close_spaceship_event, this, boost::placeholders::_1));
+        _show_spaceship_event_key = event_mgr->subscribe(L"show spaceship event", boost::bind(&this_type::on_show_spaceship_event, this, boost::placeholders::_1));
     }
 }
 
@@ -135,8 +135,8 @@ void main_frame_view_model::on_show_spaceship_event(const m::wevent::ptr& e)
 m::wcommand_interface::ptr main_frame_view_model::get_open_add_equipment_view_command()
 {
     _open_add_equipment_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-        boost::bind(&this_type::execute_open_add_equipment_view_command, this, _1),
-        boost::bind(&this_type::can_execute_open_add_equipment_view_command, this, _1),
+        boost::bind(&this_type::execute_open_add_equipment_view_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_open_add_equipment_view_command, this, boost::placeholders::_1),
         open_add_equipment_view_command_parameters::create(spaceship_interface::ptr()));
     return _open_add_equipment_view_command;
 }
@@ -168,8 +168,8 @@ void main_frame_view_model::execute_open_add_equipment_view_command(const m::com
 m::wcommand_interface::ptr main_frame_view_model::get_delete_dialog_view_command()
 {
     _delete_dialog_view_command = m::relay_wcommand::create(L"spaceship_view_model::on_close_spaceship_view",
-        boost::bind(&this_type::execute_delete_dialog_view_command, this, _1),
-        boost::bind(&this_type::can_execute_delete_dialog_view_command, this, _1),
+        boost::bind(&this_type::execute_delete_dialog_view_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_delete_dialog_view_command, this, boost::placeholders::_1),
         delete_dialog_view_command_parameters::create(dialog_view::ptr()));
     return _delete_dialog_view_command;
 }

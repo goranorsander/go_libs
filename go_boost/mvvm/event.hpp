@@ -18,7 +18,7 @@
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
 #include <string>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/weak_ptr.hpp>
 #include <go_boost/property/nameless/read_only_property.hpp>

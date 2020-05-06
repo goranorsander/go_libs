@@ -83,9 +83,9 @@ private:
     void bind_properties()
     {
         name.getter(boost::bind(&spaceship::get_name, this));
-        name.setter(boost::bind(&spaceship::set_name, this, _1));
+        name.setter(boost::bind(&spaceship::set_name, this, boost::placeholders::_1));
         captain.getter(boost::bind(&spaceship::get_captain, this));
-        captain.setter(boost::bind(&spaceship::set_captain, this, _1));
+        captain.setter(boost::bind(&spaceship::set_captain, this, boost::placeholders::_1));
         impulse_speed_command.getter(boost::bind(&spaceship::get_impulse_speed_command, this));
         warp_speed_command.getter(boost::bind(&spaceship::get_warp_speed_command, this));
     }
@@ -136,7 +136,7 @@ private:
     {
         if(!_impulse_speed_command)
         {
-            _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed", boost::bind(&spaceship::go_to_impulse, this, _1), boost::bind(&spaceship::can_go_to_impulse, this, _1), m::command_parameters::create());
+            _impulse_speed_command = m::relay_wcommand::create(L"impulse_speed", boost::bind(&spaceship::go_to_impulse, this, boost::placeholders::_1), boost::bind(&spaceship::can_go_to_impulse, this, boost::placeholders::_1), m::command_parameters::create());
         }
         return _impulse_speed_command;
     }
@@ -159,7 +159,7 @@ private:
     {
         if(!_warp_speed_command)
         {
-            _warp_speed_command = m::relay_wcommand::create(L"warp_speed", boost::bind(&spaceship::go_to_warp, this, _1), boost::bind(&spaceship::can_go_to_warp, this, _1), m::command_parameters::create());
+            _warp_speed_command = m::relay_wcommand::create(L"warp_speed", boost::bind(&spaceship::go_to_warp, this, boost::placeholders::_1), boost::bind(&spaceship::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create());
         }
         return _warp_speed_command;
     }
@@ -201,7 +201,7 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 
@@ -209,7 +209,7 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 

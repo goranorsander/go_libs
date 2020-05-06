@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/locale.hpp>
 
 #if defined(GO_BOOST_PLATFORM_LINUX) || defined(GO_BOOST_COMP_GCC_MINGW)
@@ -79,7 +79,7 @@ inline std::string convert_wstring_to_string(const std::wstring& s)
         // Fallback
         const std::wstring s2 = go_boost::string::encoding::reduce_to_7_bit_ascii_copy(s);
         std::string mbs;
-        std::transform(s2.begin(), s2.end(), std::back_inserter(mbs), boost::bind(to_char, _1));
+        std::transform(s2.begin(), s2.end(), std::back_inserter(mbs), boost::bind(to_char, boost::placeholders::_1));
         return mbs;
     }
 }
@@ -108,7 +108,7 @@ inline std::wstring convert_string_to_wstring(const std::string& s)
         return std::wstring();
     }
     std::wstring sws;
-    std::transform(s.begin(), s.end(), std::back_inserter(sws), boost::bind(to_wchar_t, _1));
+    std::transform(s.begin(), s.end(), std::back_inserter(sws), boost::bind(to_wchar_t, boost::placeholders::_1));
     return sws;
 }
 

@@ -90,11 +90,11 @@ private:
     void bind_properties()
     {
         name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_name)));
-        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_name), bph::arg1, bph::arg2));
+        name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), name.name(), boost::bind(&spaceship::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_name), bph::arg1, bph::arg2));
         captain.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_captain)));
-        captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), captain.name(), boost::bind(&spaceship::notify_property_changed, this, _1, _2), bp::ref(_captain), bph::arg1, bph::arg2));
-        impulse_speed_command.getter(bp::bind(must::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::string("impulse_speed"), boost::bind(&spaceship::go_to_impulse, this, _1), boost::bind(&spaceship::can_go_to_impulse, this, _1), m::command_parameters::create(), bp::ref(_impulse_speed_command)));
-        warp_speed_command.getter(bp::bind(must::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::string("warp_speed"), boost::bind(&spaceship::go_to_warp, this, _1), boost::bind(&spaceship::can_go_to_warp, this, _1), m::command_parameters::create(), bp::ref(_warp_speed_command)));
+        captain.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), captain.name(), boost::bind(&spaceship::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_captain), bph::arg1, bph::arg2));
+        impulse_speed_command.getter(bp::bind(must::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::string("impulse_speed"), boost::bind(&spaceship::go_to_impulse, this, boost::placeholders::_1), boost::bind(&spaceship::can_go_to_impulse, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(_impulse_speed_command)));
+        warp_speed_command.getter(bp::bind(must::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::string("warp_speed"), boost::bind(&spaceship::go_to_warp, this, boost::placeholders::_1), boost::bind(&spaceship::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(_warp_speed_command)));
     }
 
 public:
@@ -160,7 +160,7 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 
@@ -168,7 +168,7 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 

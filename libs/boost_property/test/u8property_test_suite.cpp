@@ -14,7 +14,7 @@ GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_test.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 #include <go_boost/exception.hpp>
 #include <go_boost/namespace_alias.hpp>
@@ -648,7 +648,7 @@ private:
     void update_bindings()
     {
         phaser_arrays.getter(boost::bind(&armament::get_phaser_arrays, &_armament));
-        phaser_arrays.setter(boost::bind(&armament::set_phaser_arrays, &_armament, _1));
+        phaser_arrays.setter(boost::bind(&armament::set_phaser_arrays, &_armament, boost::placeholders::_1));
     }
 
 private:
@@ -889,7 +889,7 @@ private:
 private:
     void update_bindings()
     {
-        phaser_arrays.setter(boost::bind(&armament::set_phaser_arrays, &_armament, _1));
+        phaser_arrays.setter(boost::bind(&armament::set_phaser_arrays, &_armament, boost::placeholders::_1));
     }
 
 private:

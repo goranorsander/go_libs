@@ -45,7 +45,7 @@ public:
         , _commander(commander_)
     {
         commander.getter(boost::bind(&fleet_commander::get_commander, this));
-        commander.setter(boost::bind(&fleet_commander::set_commander, this, _1));
+        commander.setter(boost::bind(&fleet_commander::set_commander, this, boost::placeholders::_1));
     }
 
     p::property<std::string> commander;
@@ -105,9 +105,9 @@ int main()
     spaceship::ptr ship2(new spaceship(commander, "X-Wing Red Two", "Wedge Antilles"));
     spaceship::ptr ship3(new spaceship(commander, "X-Wing Red Five", "Luke Skywalker"));
 
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, _1));
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, _1));
-    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship3, _1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship1, boost::placeholders::_1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship2, boost::placeholders::_1));
+    event_mgr->subscribe(fleet_commander_changed_event_type, boost::bind(&spaceship::on_fleet_commander_changed, ship3, boost::placeholders::_1));
 
     commander->commander("General Jan Dodonna");
     event_mgr->fire_events();

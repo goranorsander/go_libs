@@ -71,9 +71,9 @@ void add_equipment_view_model::on_close() const
 void add_equipment_view_model::bind_properties()
 {
     category.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_category)));
-    category.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(category), boost::ref(_category), _1));
+    category.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(category), boost::ref(_category), boost::placeholders::_1));
     name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
-    name.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(name), boost::ref(_name), _1));
+    name.setter(boost::bind(&this_type::set_property_value<p::wproperty<std::wstring>>, this, boost::cref(name), boost::ref(_name), boost::placeholders::_1));
     quantity.getter(boost::bind(&this_type::get_property_value<quantity_type>, this, boost::cref(_quantity)));
-    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), boost::placeholders::_1));
 }

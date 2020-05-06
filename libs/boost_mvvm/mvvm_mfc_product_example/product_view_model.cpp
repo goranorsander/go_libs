@@ -50,13 +50,13 @@ product_view_model::ptr product_view_model::create()
 void product_view_model::bind_properties()
 {
     product_id.getter(boost::bind(&product_view_model::get_product_id, this));
-    product_id.setter(boost::bind(&product_view_model::set_product_id, this, _1));
+    product_id.setter(boost::bind(&product_view_model::set_product_id, this, boost::placeholders::_1));
     current_product_id.getter(boost::bind(&product_view_model::get_current_product_id, this));
-    current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, _1));
+    current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, boost::placeholders::_1));
     current_product_name.getter(boost::bind(&product_view_model::get_current_product_name, this));
-    current_product_name.setter(boost::bind(&product_view_model::set_current_product_name, this, _1));
+    current_product_name.setter(boost::bind(&product_view_model::set_current_product_name, this, boost::placeholders::_1));
     current_unit_price.getter(boost::bind(&product_view_model::get_current_unit_price, this));
-    current_unit_price.setter(boost::bind(&product_view_model::set_current_unit_price, this, _1));
+    current_unit_price.setter(boost::bind(&product_view_model::set_current_unit_price, this, boost::placeholders::_1));
     get_product_command.getter(boost::bind(&product_view_model::get_get_product_command, this));
     save_product_command.getter(boost::bind(&product_view_model::get_save_product_command, this));
 }
@@ -130,7 +130,7 @@ m::wcommand_interface::ptr product_view_model::get_get_product_command()
 {
     if(!_get_product_command)
     {
-        _get_product_command = m::relay_wcommand::create(L"get_product", boost::bind(&product_view_model::get_product, this, _1), boost::bind(&product_view_model::can_get_product, this, _1), m::command_parameters::create());
+        _get_product_command = m::relay_wcommand::create(L"get_product", boost::bind(&product_view_model::get_product, this, boost::placeholders::_1), boost::bind(&product_view_model::can_get_product, this, boost::placeholders::_1), m::command_parameters::create());
     }
     return _get_product_command;
 }
@@ -161,7 +161,7 @@ m::wcommand_interface::ptr product_view_model::get_save_product_command()
 {
     if(!_save_product_command)
     {
-        _save_product_command = m::relay_wcommand::create(L"save_product", boost::bind(&product_view_model::save_product, this, _1), boost::bind(&product_view_model::can_save_product, this, _1), m::command_parameters::create());
+        _save_product_command = m::relay_wcommand::create(L"save_product", boost::bind(&product_view_model::save_product, this, boost::placeholders::_1), boost::bind(&product_view_model::can_save_product, this, boost::placeholders::_1), m::command_parameters::create());
     }
     return _save_product_command;
 }

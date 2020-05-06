@@ -82,7 +82,7 @@ void main_frame_view::on_show_dialog(const dialog_view::ptr& dialog, const UINT 
         if (dialog->Create(template_id, this) != FALSE)
         {
             data_context()->dialogs()->insert(dialog);
-            dialog->on_close.connect(boost::bind(&main_frame_view::on_close_dialog, this, _1));
+            dialog->on_close.connect(boost::bind(&main_frame_view::on_close_dialog, this, boost::placeholders::_1));
             dialog->ShowWindow(SW_SHOW);
         }
     }
@@ -334,14 +334,14 @@ BOOL main_frame_view::CreateDockingWindows()
     m::wcommand_manager::ptr command_manager = _command_manager.lock();
     if(command_manager)
     {
-        command_manager->command_executed.connect(boost::bind(&output_view::on_command_executed, &_output_view, _1));
-        command_manager->command_not_executed.connect(boost::bind(&output_view::on_command_not_executed, &_output_view, _1));
+        command_manager->command_executed.connect(boost::bind(&output_view::on_command_executed, &_output_view, boost::placeholders::_1));
+        command_manager->command_not_executed.connect(boost::bind(&output_view::on_command_not_executed, &_output_view, boost::placeholders::_1));
     }
 
     m::wevent_manager::ptr event_manager = _event_manager.lock();
     if(event_manager)
     {
-        event_manager->event_fired.connect(boost::bind(&output_view::on_event_fired, &_output_view, _1));
+        event_manager->event_fired.connect(boost::bind(&output_view::on_event_fired, &_output_view, boost::placeholders::_1));
     }
 
     CString strPropertiesWnd;
@@ -384,17 +384,17 @@ void main_frame_view::initialize()
             populator->populate(fleet_repo, &_output_view);
 
             data_context = main_frame_view_model::create(this, command_manager, event_manager, fleet_repo);
-            data_context()->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
+            data_context()->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, boost::placeholders::_1, boost::placeholders::_2));
 
             fleet_organization_view_model::ptr fleet_org_vm = fleet_organization_view_model::create();
-            fleet_org_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
-            fleet_org_vm->view_model_will_change.connect(boost::bind(&fleet_organization_view::on_view_model_will_change, &_fleet_organization_view, _1));
-            fleet_org_vm->view_model_changed.connect(boost::bind(&fleet_organization_view::on_view_model_changed, &_fleet_organization_view, _1));
+            fleet_org_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, boost::placeholders::_1, boost::placeholders::_2));
+            fleet_org_vm->view_model_will_change.connect(boost::bind(&fleet_organization_view::on_view_model_will_change, &_fleet_organization_view, boost::placeholders::_1));
+            fleet_org_vm->view_model_changed.connect(boost::bind(&fleet_organization_view::on_view_model_changed, &_fleet_organization_view, boost::placeholders::_1));
 
             properties_view_model::ptr prop_vm = properties_view_model::create();
-            prop_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, _1, _2));
-            prop_vm->view_model_will_change.connect(boost::bind(&properties_view::on_view_model_will_change, &_properties_view, _1));
-            prop_vm->view_model_changed.connect(boost::bind(&properties_view::on_view_model_changed, &_properties_view, _1));
+            prop_vm->property_changed.connect(boost::bind(&output_view::on_property_changed, &_output_view, boost::placeholders::_1, boost::placeholders::_2));
+            prop_vm->view_model_will_change.connect(boost::bind(&properties_view::on_view_model_will_change, &_properties_view, boost::placeholders::_1));
+            prop_vm->view_model_changed.connect(boost::bind(&properties_view::on_view_model_changed, &_properties_view, boost::placeholders::_1));
             prop_vm->main_frame_vm = data_context();
             _properties_view.data_context = prop_vm;
 

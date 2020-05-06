@@ -44,14 +44,14 @@ public:
 
     void connect(wobservable_multimap_ptr_type& c)
     {
-        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, _1, _2));
-        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
+        c->container_changed.connect(boost::bind(&this_type::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        c->property_changed.connect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void disconnect(wobservable_multimap_ptr_type& c)
     {
-        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, _1, _2));
-        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
+        c->container_changed.disconnect(boost::bind(&this_type::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        c->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)

@@ -124,8 +124,8 @@ TEST(boost_relay_wcommand_test_suite, test_relay_wcommand)
     EXPECT_FALSE(command_exection_context.executed());
     EXPECT_FALSE(command_exection_context.can_execute(m::relay_wcommand::command_parameters_type()));
 
-    boost::shared_ptr<test_relay_wcommand> command(new test_relay_wcommand(boost::bind(&test_relay_wcommand_exection_context::execute, &command_exection_context, _1),
-        boost::bind(&test_relay_wcommand_exection_context::can_execute, &command_exection_context, _1)));
+    boost::shared_ptr<test_relay_wcommand> command(new test_relay_wcommand(boost::bind(&test_relay_wcommand_exection_context::execute, &command_exection_context, boost::placeholders::_1),
+        boost::bind(&test_relay_wcommand_exection_context::can_execute, &command_exection_context, boost::placeholders::_1)));
 
     EXPECT_TRUE(command != NULL);
     EXPECT_EQ(TEST_RELAY_COMMAND_NAME, command->command_name());
@@ -139,7 +139,7 @@ TEST(boost_relay_wcommand_test_suite, test_relay_wcommand)
 
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
-    command->can_execute_changed.connect(boost::bind(&test_relay_wcommand_observer::on_can_execute_changed, &command_observer, _1));
+    command->can_execute_changed.connect(boost::bind(&test_relay_wcommand_observer::on_can_execute_changed, &command_observer, boost::placeholders::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());

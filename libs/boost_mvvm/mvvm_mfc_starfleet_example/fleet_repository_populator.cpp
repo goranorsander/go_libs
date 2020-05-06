@@ -24,7 +24,7 @@ boost::shared_ptr<T> create(output_view* object_observer, const A1& a1, const A2
     boost::shared_ptr<T> t = T::create(a1, a2);
     if(t != NULL)
     {
-        t->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, _1, _2));
+        t->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     }
     return t;
 }
@@ -35,7 +35,7 @@ boost::shared_ptr<T> create(output_view* object_observer, const A1& a1, const A2
     boost::shared_ptr<T> t = T::create(a1, a2, a3);
     if(t != NULL)
     {
-        t->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, _1, _2));
+        t->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     }
     return t;
 }
@@ -48,7 +48,7 @@ void add_colonial_fleet(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_battlestar_galactica = create<spaceship_model>(object_observer, L"Galactica class", L"Battlestar Galactica");
     ship_battlestar_galactica->captain = L"Admiral William Adama";
     ship_battlestar_galactica->crew_complement = quantity_type(5000ull);
-    ship_battlestar_galactica->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_battlestar_galactica->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_battlestar_galactica->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"FTL drive", quantity_type(2ull)));
     ship_battlestar_galactica->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Sublight engine", quantity_type(6ull)));
     ship_battlestar_galactica->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Maneuvering engine", quantity_type(40ull)));
@@ -61,7 +61,7 @@ void add_colonial_fleet(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_raptor_312 = create<spaceship_model>(object_observer, L"Raptor", L"Raptor 312");
     ship_raptor_312->captain = L"Sharon \"Boomer\" Valerii";
     ship_raptor_312->crew_complement = quantity_type(2ull);
-    ship_raptor_312->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_raptor_312->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_raptor_312->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Movable sublight engine pods", quantity_type(2ull)));
     ship_raptor_312->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"RCS thruster", quantity_type(4ull)));
     ship_raptor_312->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Ship to ship missile", quantity_type(10ull)));
@@ -73,7 +73,7 @@ void add_colonial_fleet(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_viper_8757 = create<spaceship_model>(object_observer, L"Viper Mark VII", L"Viper 8757");
     ship_viper_8757->captain = L"Kara \"Starbuck\" Thrace";
     ship_viper_8757->crew_complement = quantity_type(1ull);
-    ship_viper_8757->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_viper_8757->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_viper_8757->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Turbo-thrust engine", quantity_type(3ull)));
     ship_viper_8757->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"RCS thruster", quantity_type(4ull)));
     ship_viper_8757->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Kinetic Energy Weapon", quantity_type(3ull)));
@@ -90,7 +90,7 @@ void add_rebel_alliance(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_millennium_falcon = create<spaceship_model>(object_observer, L"Corellian YT-1300 light freighter", L"Millennium Falcon");
     ship_millennium_falcon->captain = L"Han Solo";
     ship_millennium_falcon->crew_complement = quantity_type(2ull);
-    ship_millennium_falcon->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_millennium_falcon->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_millennium_falcon->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive, Class 0.5", quantity_type(1ull)));
     ship_millennium_falcon->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Girodyne SRB42 sublight engine (heavily modified)", quantity_type(2ull)));
     ship_millennium_falcon->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Modified Corellian Engineering Corporation AG-2G quad laser cannon", quantity_type(2ull)));
@@ -105,7 +105,7 @@ void add_rebel_alliance(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_xwing_red_two = create<spaceship_model>(object_observer, L"T-65B X-wing starfighter", L"X-Wing Red Two");
     ship_xwing_red_two->captain = L"Wedge Antilles";
     ship_xwing_red_two->crew_complement = quantity_type(1ull);
-    ship_xwing_red_two->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_xwing_red_two->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_xwing_red_two->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive", quantity_type(1ull)));
     ship_xwing_red_two->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Incom 4L4 fusial thrust engine", quantity_type(4ull)));
     ship_xwing_red_two->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Taim & Bak KX9 laser cannon", quantity_type(2ull)));
@@ -118,7 +118,7 @@ void add_rebel_alliance(const fleet_organization_model::ptr& good_guys, output_v
     spaceship_model::ptr ship_xwing_red_five = create<spaceship_model>(object_observer, L"T-65B X-wing starfighter", L"X-Wing Red Five");
     ship_xwing_red_five->captain = L"Luke Skywalker";
     ship_xwing_red_five->crew_complement = quantity_type(1ull);
-    ship_xwing_red_five->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_xwing_red_five->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_xwing_red_five->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive", quantity_type(1ull)));
     ship_xwing_red_five->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Incom 4L4 fusial thrust engine", quantity_type(4ull)));
     ship_xwing_red_five->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Taim & Bak KX9 laser cannon", quantity_type(2ull)));
@@ -137,7 +137,7 @@ void add_starfleet(const fleet_organization_model::ptr& good_guys, output_view* 
     spaceship_model::ptr ship_uss_enterprise = create<spaceship_model>(object_observer, L"Constitution class", L"USS Enterprise");
     ship_uss_enterprise->captain = L"Captain James T Kirk";
     ship_uss_enterprise->crew_complement = quantity_type(205ull);
-    ship_uss_enterprise->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_uss_enterprise->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_uss_enterprise->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Warp drive", quantity_type(1ull)));
     ship_uss_enterprise->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Impulse drive", quantity_type(1ull)));
     ship_uss_enterprise->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Phaser emitter", quantity_type(18ull)));
@@ -155,7 +155,7 @@ void add_galactic_empire(const fleet_organization_model::ptr& evil_menace, outpu
     spaceship_model::ptr ship_death_star_i = create<spaceship_model>(object_observer, L"DS-1 Orbital Battle Station", L"Death Star I");
     ship_death_star_i->captain = L"Grand Moff Tarkin";
     ship_death_star_i->crew_complement = quantity_type(1556296ull);
-    ship_death_star_i->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_death_star_i->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_death_star_i->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive", quantity_type(1ull)));
     ship_death_star_i->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Concave Dish Composite Beam Superlaser", quantity_type(1ull)));
     ship_death_star_i->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"D6 turbolaser battery", quantity_type(5000ull)));
@@ -175,7 +175,7 @@ void add_galactic_empire(const fleet_organization_model::ptr& evil_menace, outpu
     spaceship_model::ptr ship_executor = create<spaceship_model>(object_observer, L"Executor-class Star Dreadnought", L"Executor");
     ship_executor->captain = L"Darth Vader";
     ship_executor->crew_complement = quantity_type(280734ull);
-    ship_executor->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_executor->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_executor->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive, Class 2.0", quantity_type(1ull)));
     ship_executor->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Executor-50.x engine", quantity_type(13ull)));
     ship_executor->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Turbolaser cannon", quantity_type(2000ull)));
@@ -199,7 +199,7 @@ void add_spaceball_fleet(const fleet_organization_model::ptr& evil_menace, outpu
     spaceship_model::ptr ship_spaceball_one = create<spaceship_model>(object_observer, L"Custom Transforming Battle Ship", L"Spaceball One");
     ship_spaceball_one->captain = L"Dark Helmet";
     ship_spaceball_one->crew_complement = quantity_type(50645ull);
-    ship_spaceball_one->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_spaceball_one->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_spaceball_one->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Hyperdrive Multiplier", quantity_type(1ull)));
     ship_spaceball_one->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Turbolaser cannon", quantity_type(200ull)));
     ship_spaceball_one->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Ion cannon", quantity_type(200ull)));
@@ -219,7 +219,7 @@ void add_the_borg(const fleet_organization_model::ptr& evil_menace, output_view*
     spaceship_model::ptr ship_tactical_cube_138 = create<spaceship_model>(object_observer, L"Class-4 tactical cube", L"Tactical Cube 138");
     ship_tactical_cube_138->captain = L"The Collective";
     ship_tactical_cube_138->crew_complement = quantity_type(129000ull);
-    ship_tactical_cube_138->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, _1, _2));
+    ship_tactical_cube_138->equipment()->container_changed.connect(boost::bind(&output_view::on_container_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
     ship_tactical_cube_138->equipment()->push_back(create<equipment_model>(object_observer, L"Propulsion", L"Transwarp drive", quantity_type(1ull)));
     ship_tactical_cube_138->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Torpedo", quantity_type(10000ull)));
     ship_tactical_cube_138->equipment()->push_back(create<equipment_model>(object_observer, L"Armament", L"Beam weapon", quantity_type(100ull)));
@@ -278,7 +278,7 @@ void fleet_repository_populator::populate(const fleet_repository_interface::ptr&
         fleet_organization_model::ptr fleet = boost::dynamic_pointer_cast<fleet_organization_model>(fleet_repo->fleet_organization_model());
         if(fleet)
         {
-            fleet->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, _1, _2));
+            fleet->property_changed.connect(boost::bind(&output_view::on_property_changed, object_observer, boost::placeholders::_1, boost::placeholders::_2));
             add_good_guys(fleet_repo, object_observer);
             add_evil_menace(fleet_repo, object_observer);
         }

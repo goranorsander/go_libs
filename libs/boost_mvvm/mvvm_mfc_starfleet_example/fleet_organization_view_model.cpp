@@ -93,9 +93,9 @@ void fleet_organization_view_model::on_data_context_changed()
 void fleet_organization_view_model::bind_properties()
 {
     main_frame_vm.getter(boost::bind(&this_type::get_main_frame_vm, this));
-    main_frame_vm.setter(boost::bind(&this_type::set_main_frame_vm, this, _1));
+    main_frame_vm.setter(boost::bind(&this_type::set_main_frame_vm, this, boost::placeholders::_1));
     selected_fleet_organization_id.getter(boost::bind(&this_type::get_property_value<fleet_organization_id_type>, this, boost::cref(_selected_fleet_organization_id)));
-    selected_fleet_organization_id.setter(boost::bind(&this_type::set_selected_fleet_organization_id, this, _1));
+    selected_fleet_organization_id.setter(boost::bind(&this_type::set_selected_fleet_organization_id, this, boost::placeholders::_1));
     on_left_double_click_command.getter(boost::bind(&this_type::get_on_left_double_click_command, this));
     fleet_organization_root.getter(boost::bind(&this_type::get_fleet_organization_root, this));
 }
@@ -108,7 +108,7 @@ void fleet_organization_view_model::subscribe_events()
         m::wevent_manager::ptr event_mgr = vm->event_manager();
         if(event_mgr)
         {
-            _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event", boost::bind(&this_type::on_select_fleet_organization_event, this, _1));
+            _select_fleet_organization_event_key = event_mgr->subscribe(L"select fleet organization event", boost::bind(&this_type::on_select_fleet_organization_event, this, boost::placeholders::_1));
         }
     }
 }
@@ -186,8 +186,8 @@ fleet_organization_interface::ptr fleet_organization_view_model::get_fleet_organ
 m::wcommand_interface::ptr fleet_organization_view_model::get_on_left_double_click_command()
 {
     _on_left_double_click_command = m::relay_wcommand::create(L"fleet_organization_view_model::on_left_double_click",
-        boost::bind(&this_type::execute_on_left_double_click_command, this, _1),
-        boost::bind(&this_type::can_execute_on_left_double_click_command, this, _1),
+        boost::bind(&this_type::execute_on_left_double_click_command, this, boost::placeholders::_1),
+        boost::bind(&this_type::can_execute_on_left_double_click_command, this, boost::placeholders::_1),
         fleet_organization_command_parameters::create(_selected_fleet_organization_id));
     return _on_left_double_click_command;
 }

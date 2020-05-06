@@ -55,11 +55,11 @@ private:
     void bind_properties()
     {
         crew_complement.getter(boost::bind(&spaceship::get_crew_complement, this));
-        crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, _1));
+        crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, boost::placeholders::_1));
         name.getter(boost::bind(&spaceship::get_name, this));
-        name.setter(boost::bind(&spaceship::set_name, this, _1));
+        name.setter(boost::bind(&spaceship::set_name, this, boost::placeholders::_1));
         max_speed.getter(boost::bind(&spaceship::get_max_speed, this));
-        max_speed.setter(boost::bind(&spaceship::set_max_speed, this, _1));
+        max_speed.setter(boost::bind(&spaceship::set_max_speed, this, boost::placeholders::_1));
     }
 
 public:
@@ -130,12 +130,12 @@ public:
 
     void connect(spaceship& m)
     {
-        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void disconnect(spaceship& m)
     {
-        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, _1, _2));
+        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)

@@ -108,7 +108,7 @@ TEST(boost_command_placebo_lockable_test_suite, test_command)
 
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());
 
-    command->can_execute_changed.connect(boost::bind(&test_command_observer::on_can_execute_changed, &command_observer, _1));
+    command->can_execute_changed.connect(boost::bind(&test_command_observer::on_can_execute_changed, &command_observer, boost::placeholders::_1));
 
     EXPECT_FALSE(command->can_execute_changed.empty());
     EXPECT_EQ(0u, command_observer.number_of_can_execute_changes());

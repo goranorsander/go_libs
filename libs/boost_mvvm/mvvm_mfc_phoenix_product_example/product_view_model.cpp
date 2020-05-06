@@ -58,15 +58,15 @@ product_view_model::ptr product_view_model::create()
 void product_view_model::bind_properties()
 {
     product_id.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_product_id)));
-    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_id.name(), boost::bind(&product_view_model::notify_property_changed, this, _1, _2), bp::ref(_product_id), bph::arg1, bph::arg2));
+    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_id.name(), boost::bind(&product_view_model::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_product_id), bph::arg1, bph::arg2));
     current_product_id.getter(boost::bind(&product_view_model::get_current_product_id, this));
-    current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, _1));
+    current_product_id.setter(boost::bind(&product_view_model::set_current_product_id, this, boost::placeholders::_1));
     current_product_name.getter(boost::bind(&product_view_model::get_current_product_name, this));
-    current_product_name.setter(boost::bind(&product_view_model::set_current_product_name, this, _1));
+    current_product_name.setter(boost::bind(&product_view_model::set_current_product_name, this, boost::placeholders::_1));
     current_unit_price.getter(boost::bind(&product_view_model::get_current_unit_price, this));
-    current_unit_price.setter(boost::bind(&product_view_model::set_current_unit_price, this, _1));
-    get_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"get_product"), boost::bind(&product_view_model::get_product, this, _1), boost::bind(&product_view_model::can_get_product, this, _1), m::command_parameters::create(), bp::ref(_get_product_command)));
-    save_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"save_product"), boost::bind(&product_view_model::save_product, this, _1), boost::bind(&product_view_model::can_save_product, this, _1), m::command_parameters::create(), bp::ref(_save_product_command)));
+    current_unit_price.setter(boost::bind(&product_view_model::set_current_unit_price, this, boost::placeholders::_1));
+    get_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"get_product"), boost::bind(&product_view_model::get_product, this, boost::placeholders::_1), boost::bind(&product_view_model::can_get_product, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(_get_product_command)));
+    save_product_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(std::wstring(L"save_product"), boost::bind(&product_view_model::save_product, this, boost::placeholders::_1), boost::bind(&product_view_model::can_save_product, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(_save_product_command)));
 }
 
 product_id_type product_view_model::get_current_product_id() const

@@ -11,7 +11,7 @@
 #include <go_boost/config.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <iostream>
 
 class spaceship
@@ -28,11 +28,11 @@ public:
         , _name("USS Enterprise (NCC-1701-D)")
     {
         crew_complement.getter(boost::bind(&spaceship::get_crew_complement, this));
-        crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, _1));
+        crew_complement.setter(boost::bind(&spaceship::set_crew_complement, this, boost::placeholders::_1));
         max_speed.getter(boost::bind(&spaceship::get_max_speed, this));
-        max_speed.setter(boost::bind(&spaceship::set_max_speed, this, _1));
+        max_speed.setter(boost::bind(&spaceship::set_max_speed, this, boost::placeholders::_1));
         name.getter(boost::bind(&spaceship::get_name, this));
-        name.setter(boost::bind(&spaceship::set_name, this, _1));
+        name.setter(boost::bind(&spaceship::set_name, this, boost::placeholders::_1));
     }
 
     p::property<int> crew_complement;

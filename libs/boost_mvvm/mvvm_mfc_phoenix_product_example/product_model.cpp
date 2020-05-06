@@ -46,9 +46,9 @@ product_model::ptr product_model::create()
 void product_model::bind_properties()
 {
     product_id.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_product_id)));
-    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_id.name(), boost::bind(&product_model::notify_property_changed, this, _1, _2), bp::ref(_product_id), bph::arg1, bph::arg2));
+    product_id.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_id.name(), boost::bind(&product_model::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_product_id), bph::arg1, bph::arg2));
     product_name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_product_name)));
-    product_name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_name.name(), boost::bind(&product_model::notify_property_changed, this, _1, _2), bp::ref(_product_name), bph::arg1, bph::arg2));
+    product_name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), product_name.name(), boost::bind(&product_model::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_product_name), bph::arg1, bph::arg2));
     unit_price.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(_unit_price)));
-    unit_price.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), unit_price.name(), boost::bind(&product_model::notify_property_changed, this, _1, _2), bp::ref(_unit_price), bph::arg1, bph::arg2));
+    unit_price.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), unit_price.name(), boost::bind(&product_model::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(_unit_price), bph::arg1, bph::arg2));
 }

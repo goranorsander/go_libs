@@ -12,7 +12,7 @@
 #include "fleet_organization_model.hpp"
 #include "spaceship_model.hpp"
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 fleet_organization_id_type fleet_organization_model::_next_id = fleet_organization_id_type(0ull);
 
@@ -21,7 +21,7 @@ fleet_organization_model::~fleet_organization_model()
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, _1, _2));
+        spaceship->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 }
 
@@ -141,17 +141,17 @@ void fleet_organization_model::bind_properties()
     name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
     spaceship_model.getter(boost::bind(&this_type::get_property_value<spaceship_interface::ptr>, this, boost::cref(_spaceship)));
     parent.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_parent)));
-    parent.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(parent), boost::ref(_parent), _1));
+    parent.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(parent), boost::ref(_parent), boost::placeholders::_1));
     first_child.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_first_child)));
-    first_child.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(first_child), boost::ref(_first_child), _1));
+    first_child.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(first_child), boost::ref(_first_child), boost::placeholders::_1));
     previous_sibling.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_previous_sibling)));
-    previous_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(previous_sibling), boost::ref(_previous_sibling), _1));
+    previous_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(previous_sibling), boost::ref(_previous_sibling), boost::placeholders::_1));
     next_sibling.getter(boost::bind(&this_type::get_property_value<fleet_organization_interface::ptr>, this, boost::cref(_next_sibling)));
-    next_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(next_sibling), boost::ref(_next_sibling), _1));
+    next_sibling.setter(boost::bind(&this_type::set_property_value<p::wproperty<fleet_organization_interface::ptr>>, this, boost::cref(next_sibling), boost::ref(_next_sibling), boost::placeholders::_1));
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.connect(boost::bind(&this_type::on_property_changed, this, _1, _2));
+        spaceship->property_changed.connect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 }
 

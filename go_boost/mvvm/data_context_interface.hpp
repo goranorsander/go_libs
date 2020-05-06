@@ -78,7 +78,7 @@ private:
     void bind_data_context_properties()
     {
         data_context.getter(boost::bind(&this_type::get_data_context, this));
-        data_context.setter(boost::bind(&this_type::set_data_context, this, _1));
+        data_context.setter(boost::bind(&this_type::set_data_context, this, boost::placeholders::_1));
     }
 
 private:

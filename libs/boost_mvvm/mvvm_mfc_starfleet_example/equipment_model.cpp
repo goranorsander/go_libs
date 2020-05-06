@@ -11,7 +11,7 @@
 #include "stdafx.h"
 #include "equipment_model.hpp"
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 equipment_id_type equipment_model::_next_id = equipment_id_type(0ull);
 
@@ -67,5 +67,5 @@ void equipment_model::bind_properties()
     category.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_category)));
     name.getter(boost::bind(&this_type::get_property_value<std::wstring>, this, boost::cref(_name)));
     quantity.getter(boost::bind(&this_type::get_property_value<quantity_type>, this, boost::cref(_quantity)));
-    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), _1));
+    quantity.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(quantity), boost::ref(_quantity), boost::placeholders::_1));
 }

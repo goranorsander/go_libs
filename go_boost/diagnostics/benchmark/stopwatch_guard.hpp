@@ -17,7 +17,7 @@
 #pragma once
 #endif  // #ifdef BOOST_HAS_PRAGMA_ONCE
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <go_boost/utility/scope_guard.hpp>
 
 namespace go_boost

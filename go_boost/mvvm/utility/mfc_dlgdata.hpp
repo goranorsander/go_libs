@@ -334,67 +334,67 @@ void set_specialized_fundamental_type(FundamentalTypeSpecializerProperty& p, con
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<BYTE>& value)
 {
-    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::property<BYTE>::get, &value), boost::bind(&go_boost::property::property<BYTE>::set, &value, _1));
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::property<BYTE>::get, &value), boost::bind(&go_boost::property::property<BYTE>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<short>& value)
 {
-    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::property<short>::get, &value), boost::bind(&go_boost::property::property<short>::set, &value, _1));
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::property<short>::get, &value), boost::bind(&go_boost::property::property<short>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<int>& value)
 {
-    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::property<int>::get, &value), boost::bind(&go_boost::property::property<int>::set, &value, _1));
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::property<int>::get, &value), boost::bind(&go_boost::property::property<int>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<UINT>& value)
 {
-    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::property<UINT>::get, &value), boost::bind(&go_boost::property::property<UINT>::set, &value, _1));
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::property<UINT>::get, &value), boost::bind(&go_boost::property::property<UINT>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<long>& value)
 {
-    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::property<long>::get, &value), boost::bind(&go_boost::property::property<long>::set, &value, _1));
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::property<long>::get, &value), boost::bind(&go_boost::property::property<long>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<DWORD>& value)
 {
-    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::property<DWORD>::get, &value), boost::bind(&go_boost::property::property<DWORD>::set, &value, _1));
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::property<DWORD>::get, &value), boost::bind(&go_boost::property::property<DWORD>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<LONGLONG>& value)
 {
-    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<LONGLONG>::get, &value), boost::bind(&go_boost::property::property<LONGLONG>::set, &value, _1));
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<LONGLONG>::get, &value), boost::bind(&go_boost::property::property<LONGLONG>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<ULONGLONG>& value)
 {
-    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<ULONGLONG>::get, &value), boost::bind(&go_boost::property::property<ULONGLONG>::set, &value, _1));
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::property<ULONGLONG>::get, &value), boost::bind(&go_boost::property::property<ULONGLONG>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<float>& value)
 {
-    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::property<float>::get, &value), boost::bind(&go_boost::property::property<float>::set, &value, _1));
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::property<float>::get, &value), boost::bind(&go_boost::property::property<float>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<double>& value)
 {
-    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::property<double>::get, &value), boost::bind(&go_boost::property::property<double>::set, &value, _1));
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::property<double>::get, &value), boost::bind(&go_boost::property::property<double>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<CString>& value)
 {
-    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::property<CString>::get, &value), boost::bind(&go_boost::property::property<CString>::set, &value, _1));
+    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::property<CString>::get, &value), boost::bind(&go_boost::property::property<CString>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::string>& value)
 {
-    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::property<std::string>::get, &value), boost::bind(&go_boost::property::property<std::string>::set, &value, _1));
+    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::property<std::string>::get, &value), boost::bind(&go_boost::property::property<std::string>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<std::wstring>& value)
 {
-    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::property<std::wstring>::get, &value), boost::bind(&go_boost::property::property<std::wstring>::set, &value, _1));
+    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::property<std::wstring>::get, &value), boost::bind(&go_boost::property::property<std::wstring>::set, &value, boost::placeholders::_1));
 }
 
 // go_boost::property::property<go_boost::type_traits::fundamental_type_specializer>
@@ -402,128 +402,128 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::pr
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<BYTE, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, BYTE, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<BYTE, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, BYTE, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<short, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, short, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<short, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, short, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<int, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, int, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<int, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, int, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<UINT, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, UINT, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<UINT, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, UINT, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<long, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, long, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<long, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, long, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<DWORD, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, DWORD, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<DWORD, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, DWORD, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<LONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, LONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<LONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, LONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<ULONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, ULONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<ULONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, ULONGLONG, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<float, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, float, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<float, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, float, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::property<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<double, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, double, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<double, go_boost::property::property<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, double, go_boost::property::property<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 // go_boost::property::wproperty
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<BYTE>& value)
 {
-    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::wproperty<BYTE>::get, &value), boost::bind(&go_boost::property::wproperty<BYTE>::set, &value, _1));
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(&go_boost::property::wproperty<BYTE>::get, &value), boost::bind(&go_boost::property::wproperty<BYTE>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<short>& value)
 {
-    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::wproperty<short>::get, &value), boost::bind(&go_boost::property::wproperty<short>::set, &value, _1));
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(&go_boost::property::wproperty<short>::get, &value), boost::bind(&go_boost::property::wproperty<short>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<int>& value)
 {
-    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::wproperty<int>::get, &value), boost::bind(&go_boost::property::wproperty<int>::set, &value, _1));
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(&go_boost::property::wproperty<int>::get, &value), boost::bind(&go_boost::property::wproperty<int>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<UINT>& value)
 {
-    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::wproperty<UINT>::get, &value), boost::bind(&go_boost::property::wproperty<UINT>::set, &value, _1));
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(&go_boost::property::wproperty<UINT>::get, &value), boost::bind(&go_boost::property::wproperty<UINT>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<long>& value)
 {
-    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::wproperty<long>::get, &value), boost::bind(&go_boost::property::wproperty<long>::set, &value, _1));
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(&go_boost::property::wproperty<long>::get, &value), boost::bind(&go_boost::property::wproperty<long>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<DWORD>& value)
 {
-    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::wproperty<DWORD>::get, &value), boost::bind(&go_boost::property::wproperty<DWORD>::set, &value, _1));
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(&go_boost::property::wproperty<DWORD>::get, &value), boost::bind(&go_boost::property::wproperty<DWORD>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<LONGLONG>& value)
 {
-    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<LONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<LONGLONG>::set, &value, _1));
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<LONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<LONGLONG>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<ULONGLONG>& value)
 {
-    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<ULONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<ULONGLONG>::set, &value, _1));
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(&go_boost::property::wproperty<ULONGLONG>::get, &value), boost::bind(&go_boost::property::wproperty<ULONGLONG>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<float>& value)
 {
-    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::wproperty<float>::get, &value), boost::bind(&go_boost::property::wproperty<float>::set, &value, _1));
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(&go_boost::property::wproperty<float>::get, &value), boost::bind(&go_boost::property::wproperty<float>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<double>& value)
 {
-    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::wproperty<double>::get, &value), boost::bind(&go_boost::property::wproperty<double>::set, &value, _1));
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(&go_boost::property::wproperty<double>::get, &value), boost::bind(&go_boost::property::wproperty<double>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<CString>& value)
 {
-    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::wproperty<CString>::get, &value), boost::bind(&go_boost::property::wproperty<CString>::set, &value, _1));
+    detail::DDX_Text_CString(pDX, nIDC, boost::bind(&go_boost::property::wproperty<CString>::get, &value), boost::bind(&go_boost::property::wproperty<CString>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::string>& value)
 {
-    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::string>::get, &value), boost::bind(&go_boost::property::wproperty<std::string>::set, &value, _1));
+    detail::DDX_Text_std_string(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::string>::get, &value), boost::bind(&go_boost::property::wproperty<std::string>::set, &value, boost::placeholders::_1));
 }
 
 inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<std::wstring>& value)
 {
-    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::wstring>::get, &value), boost::bind(&go_boost::property::wproperty<std::wstring>::set, &value, _1));
+    detail::DDX_Text_std_wstring(pDX, nIDC, boost::bind(&go_boost::property::wproperty<std::wstring>::get, &value), boost::bind(&go_boost::property::wproperty<std::wstring>::set, &value, boost::placeholders::_1));
 }
 
 // go_boost::property::wproperty<go_boost::type_traits::fundamental_type_specializer>
@@ -531,61 +531,61 @@ inline void AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wp
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, BYTE>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<BYTE, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, BYTE>, boost::ref(value), _1));
+    detail::DDX_Text_BYTE(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<BYTE, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, BYTE>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, short>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<short, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, short>, boost::ref(value), _1));
+    detail::DDX_Text_short(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<short, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, short>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, int>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<int, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, int, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_int(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<int, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, int, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, UINT>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<UINT, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, UINT, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_UINT(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<UINT, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, UINT, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, long>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<long, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, long, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_long(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<long, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, long, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, DWORD>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<DWORD, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, DWORD, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_DWORD(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<DWORD, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, DWORD, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, LONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<LONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, LONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_LONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<LONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, LONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, ULONGLONG>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<ULONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, ULONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_ULONGLONG(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<ULONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, ULONGLONG, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, float>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<float, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, float, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_float(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<float, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, float, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 template<class FundamentalTypeSpecializer>
 typename boost::enable_if_c<boost::is_base_of<go_boost::type_traits::detail::fundamental_type_specializer_base, FundamentalTypeSpecializer>::value && boost::is_same<typename FundamentalTypeSpecializer::fundamental_type, double>::value, void>::type AFXAPI DDX_Text(CDataExchange* pDX, int nIDC, go_boost::property::wproperty<FundamentalTypeSpecializer>& value)
 {
-    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<double, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, double, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), _1));
+    detail::DDX_Text_double(pDX, nIDC, boost::bind(detail::get_specialized_fundamental_type<double, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::cref(value)), boost::bind(detail::set_specialized_fundamental_type<FundamentalTypeSpecializer, double, go_boost::property::wproperty<FundamentalTypeSpecializer>>, boost::ref(value), boost::placeholders::_1));
 }
 
 } // namespace utility

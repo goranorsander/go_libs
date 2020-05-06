@@ -82,9 +82,9 @@ void properties_view::on_data_context_will_change()
     {
         if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
         {
-            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(boost::bind(&properties_view::on_container_changed, this, _1, _2));
+            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(boost::bind(&properties_view::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
-        data_context()->property_changed.disconnect(boost::bind(&properties_view::on_property_changed, this, _1, _2));
+        data_context()->property_changed.disconnect(boost::bind(&properties_view::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     m::data_context_interface<properties_view_model::ptr>::on_data_context_will_change();
 }
@@ -95,9 +95,9 @@ void properties_view::on_data_context_changed()
     {
         if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
         {
-            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.connect(boost::bind(&properties_view::on_container_changed, this, _1, _2));
+            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.connect(boost::bind(&properties_view::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
-        data_context()->property_changed.connect(boost::bind(&properties_view::on_property_changed, this, _1, _2));
+        data_context()->property_changed.connect(boost::bind(&properties_view::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     _wndPropList.RemoveAll();
     populate();
