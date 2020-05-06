@@ -37,7 +37,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.72.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.73.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -46,10 +46,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_72_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_72_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_73_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_73_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 72
+ * **BOOST_MINOR_VERSION** = 73
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -75,7 +75,7 @@ The CMake configurations I use:
 **SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 72 | 72 | 72 | 72 | 72 | 72 | 72 | 72 | 72 | 72 | 72 
+**BOOST_MINOR_VERSION** | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | | | | X | 
@@ -107,10 +107,10 @@ My development environment and toolset details:
   * ruby 2.6.5p114 (2019-10-01 revision 67812)
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.17.1
+  * cmake version 3.17.2
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
-  * git 2.26.0.windows.1
+  * git 2.26.2.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
@@ -120,14 +120,14 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.21
-  * Visual Studio 2019, Community Edition, version 16.5.3
-  * Visual Studio Code 1.41.1 - with extensions:
-    * C/C++ 0.26.2 _(C/C++ IntelliSense, debugging, and code browsing)_
+  * Visual Studio 2017, Community Edition, version 15.9.22
+  * Visual Studio 2019, Community Edition, version 16.5.4
+  * Visual Studio Code 1.44.2 - with extensions:
+    * C/C++ 0.27.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.2.3 _(Extended CMake support)_
-    * Git Lens 10.2.0 _(Supercharge Visual Studio Code's Git capabilities)_
-    * Markdown All in One 2.7.0 _(All you need to write Markdown)_
+    * CMake Tools 1.3.1 _(Extended CMake support)_
+    * Git Lens 10.2.1 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 2.8.0 _(All you need to write Markdown)_
 
 # GOOGLE TEST
 
