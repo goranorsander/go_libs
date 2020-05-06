@@ -154,5 +154,5 @@ TEST(std_stopwatch_test_suite, test_stopwatch_start_stop_five_times)
 }
 
 }
- 
+
 #endif  // Required C++11 feature is not supported by this compiler
