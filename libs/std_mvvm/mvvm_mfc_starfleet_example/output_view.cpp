@@ -60,13 +60,13 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if(asp)
         {
             return s::format(L"class go::mvvm::relay_wcommand[parameters={class activate_spaceship_command_parameters[id=%d]}]",
-                *asp->id);
+                asp->id.get().get());
         }
         const add_equipment_command_parameters::ptr aep = std::dynamic_pointer_cast<add_equipment_command_parameters>(p);
         if (aep)
         {
             return s::format(L"class go::mvvm::relay_wcommand[parameters={class add_equipment_command_parameters[spaceship_id=%d]}]",
-                *aep->spaceship_id);
+                aep->spaceship_id.get().get());
         }
         const close_spaceship_command_parameters::ptr csp = std::dynamic_pointer_cast<close_spaceship_command_parameters>(p);
         if(csp)
@@ -84,7 +84,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if(fop)
         {
             return s::format(L"class go::mvvm::relay_wcommand[parameters={class fleet_organization_command_parameters[id=%d]}]",
-                *fop->id);
+                fop->id.get().get());
         }
         const open_add_equipment_view_command_parameters::ptr oep = std::dynamic_pointer_cast<open_add_equipment_view_command_parameters>(p);
         if (oep)
@@ -96,7 +96,7 @@ std::wstring command_information(const m::wcommand_interface::ptr& c)
         if (rep)
         {
             return s::format(L"class go::mvvm::relay_wcommand[parameters={class remove_equipment_command_parameters[spaceship_id=%d, equipment_id=%d]}]",
-                rep->spaceship_id.get(), rep->equipment_id.get());
+                rep->spaceship_id.get().get(), rep->equipment_id.get().get());
         }
     }
     return L"class go::mvvm::wcommand_interface";
@@ -115,14 +115,14 @@ std::wstring event_information(const m::wevent::ptr& e)
     if(sfo)
     {
         return s::format(L"class select_fleet_organization_event[id=%d, selected_by=%s]",
-            *sfo->id,
+            sfo->id.get().get(),
             (*sfo->selected_by).c_str());
     }
     const show_spaceship_event::ptr ss = std::dynamic_pointer_cast<show_spaceship_event>(e);
     if(ss)
     {
         return s::format(L"class show_spaceship_event[id=%d]",
-            *ss->id);
+            ss->id.get().get());
     }
     return L"class go::mvvm::wevent";
 }
