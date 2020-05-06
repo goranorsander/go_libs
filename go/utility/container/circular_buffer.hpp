@@ -52,11 +52,14 @@ public:
 
 protected:
     class iterator_base
+#if defined(GO_NO_CXX17)
         : public std::iterator<std::random_access_iterator_tag, value_type>
+#endif  // #if defined(GO_NO_CXX17)
     {
         friend class circular_buffer<element_type, allocator_type>;
 
     protected:
+#if defined(GO_NO_CXX17)
         using base_type = std::iterator<std::random_access_iterator_tag, value_type>;
         using iterator_category = typename base_type::iterator_category;
         using difference_type = typename base_type::difference_type;
@@ -64,6 +67,15 @@ protected:
         using const_reference = const typename base_type::reference;
         using pointer = typename base_type::pointer;
         using const_pointer = const typename base_type::pointer;
+#else
+        using value_type = typename buffer_container_type::value_type;
+        using iterator_category = std::random_access_iterator_tag;
+        using difference_type = std::ptrdiff_t;
+        using reference = value_type&;
+        using const_reference = const value_type&;
+        using pointer = value_type*;
+        using const_pointer = const value_type*;
+#endif  // #if defined(GO_NO_CXX17)
 
         virtual ~iterator_base() = default;
         iterator_base() = default;
@@ -85,8 +97,12 @@ protected:
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
         explicit iterator_base(circular_buffer<element_type, allocator_type>* container, size_t pos = 0)
+#if defined(GO_NO_CXX17)
             : base_type()
             , _pos(pos)
+#else
+            : _pos(pos)
+#endif  // #if defined(GO_NO_CXX17)
             , _container(container)
         {
         }
@@ -310,7 +326,7 @@ public:
         using iterator_category = typename base_type::iterator_category;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
-        using const_reference = const typename base_type::reference;
+        using const_reference = typename base_type::const_reference;
         using pointer = typename base_type::pointer;
         using const_pointer = const typename base_type::pointer;
 
@@ -441,7 +457,7 @@ public:
         using iterator_category = typename base_type::iterator_category;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
-        using const_reference = const typename base_type::reference;
+        using const_reference = typename base_type::const_reference;
         using pointer = typename base_type::pointer;
         using const_pointer = const typename base_type::pointer;
 
@@ -562,7 +578,7 @@ public:
         using iterator_category = typename base_type::iterator_category;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
-        using const_reference = const typename base_type::reference;
+        using const_reference = typename base_type::const_reference;
         using pointer = typename base_type::pointer;
         using const_pointer = const typename base_type::pointer;
 
@@ -693,7 +709,7 @@ public:
         using iterator_category = typename base_type::iterator_category;
         using difference_type = typename base_type::difference_type;
         using reference = typename base_type::reference;
-        using const_reference = const typename base_type::reference;
+        using const_reference = typename base_type::const_reference;
         using pointer = typename base_type::pointer;
         using const_pointer = const typename base_type::pointer;
 
