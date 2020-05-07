@@ -298,13 +298,13 @@ int main()
         }
         {
             db::stopwatch sw;
-            const Double fn = benchmark_fibonacci_number<Double, unsigned long long>(Double(fibonacci_n), sw);
+            const Double fn = benchmark_fibonacci_number<Double, unsigned long long>(Double(static_cast<Double::fundamental_type>(fibonacci_n)), sw);
             std::cout << "Basic, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
 #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
         {
             db::stopwatch sw;
-            const Double fn = benchmark_fibonacci_number_lambda<Double, unsigned long long>(Double(fibonacci_n), sw);
+            const Double fn = benchmark_fibonacci_number_lambda<Double, unsigned long long>(Double(static_cast<Double::fundamental_type>(fibonacci_n)), sw);
             std::cout << "Lambda, Fibonacci number " << fibonacci_n << " = " << fn.get() << " (total time = " << sw.total_duration().count() << " microseconds)" << std::endl;
         }
 #endif  // #if !defined(GO_BOOST_NO_CXX14_GENERIC_POLYMORPHIC_LAMBDA_EXPRESSIONS)
