@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2020-01-08 at 19:02:55 with result:
+Test suites *AllTests* with 8 test cases was executed 2020-05-10 at 17:53:27 with result:
 
 * 0 errors
 * 0 failures
@@ -40,7 +40,7 @@ Test suite *std_nameless_property_placebo_lockable_test_suite* with 1 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -55,7 +55,7 @@ Test suite *std_property_placebo_lockable_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -70,7 +70,7 @@ Test suite *std_property_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -85,7 +85,7 @@ Test suite *std_u16property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -100,7 +100,7 @@ Test suite *std_u32property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -115,7 +115,7 @@ Test suite *std_u8property_test_suite* with 1 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

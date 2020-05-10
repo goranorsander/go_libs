@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.18
+* Visual Studio 2017, Community Edition, version 15.9.22
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-08 at 19:03:14 with result:
+Test suites *AllTests* with 128 test cases was executed 2020-05-10 at 17:53:43 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.085 seconds.
+Test suites execution took 0.081 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.083 seconds.
+Test suite execution took 0.08 seconds.
 
 ### Successful test cases
 
@@ -48,7 +48,7 @@ test_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
 test_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_integer_type_specializer_unary_minus_arithmetic_operator | 0
-test_integer_type_specializer_addition_arithmetic_operator | 0.001
+test_integer_type_specializer_addition_arithmetic_operator | 0
 test_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_integer_type_specializer_division_arithmetic_operator | 0
@@ -74,9 +74,9 @@ test_floating_point_type_specializer_construction | 0
 test_floating_point_type_specializer_get_set | 0
 test_floating_point_type_specializer_simple_assignment_operator | 0
 test_floating_point_type_specializer_addition_assignment_operator | 0
-test_floating_point_type_specializer_subtraction_assignment_operator | 0
+test_floating_point_type_specializer_subtraction_assignment_operator | 0.001
 test_floating_point_type_specializer_multiplication_assignment_operator | 0
-test_floating_point_type_specializer_division_assignment_operator | 0
+test_floating_point_type_specializer_division_assignment_operator | 0.001
 test_floating_point_type_specializer_modulo_assignment_operator | 0
 test_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_floating_point_type_specializer_unary_minus_arithmetic_operator | 0

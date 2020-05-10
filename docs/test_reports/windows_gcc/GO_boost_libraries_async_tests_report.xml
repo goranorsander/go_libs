@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2020-01-08T19:02:11" time="0.153" name="AllTests">
-  <testsuite name="boost_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.035">
+<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2020-05-10T17:52:50" time="0.139" name="AllTests">
+  <testsuite name="boost_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.028">
     <testcase name="test_spin_lock" status="run" time="0" classname="boost_spin_lock_test_suite" />
     <testcase name="test_spin_lock_scoped_lock" status="run" time="0" classname="boost_spin_lock_test_suite" />
     <testcase name="test_spin_lock_two_threads" status="run" time="0.001" classname="boost_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.038">
+  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.036">
     <testcase name="test_recursive_spin_lock" status="run" time="0" classname="boost_recursive_spin_lock_test_suite" />
     <testcase name="test_recursive_spin_lock_lock_guard" status="run" time="0" classname="boost_recursive_spin_lock_test_suite" />
     <testcase name="test_recursive_spin_lock_two_threads" status="run" time="0.001" classname="boost_recursive_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.037">
+  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.033">
     <testcase name="test_placebo_lockable" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_scoped_lock" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_two_threads" status="run" time="0" classname="boost_placebo_lockable_test_suite" />

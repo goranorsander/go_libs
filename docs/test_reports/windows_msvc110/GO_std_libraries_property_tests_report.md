@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2020-01-08 at 19:03:00 with result:
+Test suites *AllTests* with 33 test cases was executed 2020-05-10 at 17:53:31 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.037 seconds.
+Test suites execution took 0.033 seconds.
 
 # Details
 
@@ -45,7 +45,7 @@ Test suite *std_nameless_property_placebo_lockable_test_suite* with 6 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -85,7 +85,7 @@ Test suite *std_property_test_suite* with 6 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ read_only_value_properties | 0
 write_only_value_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
-write_only_proxy_properties | 0.001
+write_only_proxy_properties | 0
 
 ## std_u16property_test_suite
 
@@ -105,7 +105,7 @@ Test suite *std_u16property_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -150,13 +150,13 @@ Test suite *std_wproperty_test_suite* with 6 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-value_properties | 0.001
+value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
 proxy_properties | 0

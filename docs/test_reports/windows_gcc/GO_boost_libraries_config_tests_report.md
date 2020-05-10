@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2020-01-08 at 19:02:11 with result:
+Test suites *AllTests* with 32 test cases was executed 2020-05-10 at 17:52:50 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.5 seconds.
+Test suites execution took 0.479 seconds.
 
 # Details
 
@@ -41,7 +41,7 @@ Test suite *boost_define_go_boost_platform_test_suite* with 2 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.026 seconds.
+Test suite execution took 0.024 seconds.
 
 ### Successful test cases
 
@@ -57,7 +57,7 @@ Test suite *boost_define_go_boost_message_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.013 seconds.
+Test suite execution took 0.011 seconds.
 
 ### Successful test cases
 
@@ -72,7 +72,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.343 seconds.
+Test suite execution took 0.331 seconds.
 
 ### Successful test cases
 
@@ -85,7 +85,7 @@ test_define_go_boost_comp_gcc_mingw | 0
 test_not_define_go_boost_comp_msvc | 0
 test_not_define_go_boost_comp_msvc_vc90 | 0
 test_not_define_go_boost_comp_msvc_vc100 | 0
-test_not_define_go_boost_comp_msvc_vc110 | 0
+test_not_define_go_boost_comp_msvc_vc110 | 0.001
 test_not_define_go_boost_comp_msvc_vc120 | 0
 test_not_define_go_boost_comp_msvc_vc140 | 0
 test_not_define_go_boost_comp_msvc_vc141 | 0
@@ -111,7 +111,7 @@ Test suite *boost_define_go_boost_address_model_test_suite* with 3 test cases wa
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.039 seconds.
+Test suite execution took 0.038 seconds.
 
 ### Successful test cases
 

@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.18
+* Visual Studio 2017, Community Edition, version 15.9.22
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2020-01-08 at 19:03:10 with result:
+Test suites *AllTests* with 9 test cases was executed 2020-05-10 at 17:53:40 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.008 seconds.
+Test suites execution took 0.007 seconds.
 
 # Details
 
@@ -48,7 +48,7 @@ Test suite execution took 0.002 seconds.
 
 Test case|Execution time
 -|-
-test_recursive_spin_lock | 0
+test_recursive_spin_lock | 0.001
 test_recursive_spin_lock_lock_guard | 0
 test_recursive_spin_lock_two_threads | 0.001
 
@@ -67,4 +67,4 @@ Test case|Execution time
 -|-
 test_spin_lock | 0
 test_spin_lock_scoped_lock | 0
-test_spin_lock_two_threads | 0.001
+test_spin_lock_two_threads | 0

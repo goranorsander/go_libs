@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-08 at 19:02:58 with result:
+Test suites *AllTests* with 128 test cases was executed 2020-05-10 at 17:53:29 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.105 seconds.
+Test suites execution took 0.096 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.104 seconds.
+Test suite execution took 0.094 seconds.
 
 ### Successful test cases
 
@@ -88,18 +88,18 @@ test_floating_point_type_specializer_modulo_arithmetic_operator | 0
 test_floating_point_type_specializer_equal_to_comparison_operator | 0
 test_floating_point_type_specializer_not_equal_to_comparison_operator | 0
 test_floating_point_type_specializer_less_than_to_comparison_operator | 0
-test_floating_point_type_specializer_greater_than_comparison_operator | 0
+test_floating_point_type_specializer_greater_than_comparison_operator | 0.001
 test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator | 0
 test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_floating_point_type_specializer_pre_increment_operator | 0
 test_floating_point_type_specializer_post_increment_operator | 0
 test_floating_point_type_specializer_pre_decrement_operator | 0
 test_floating_point_type_specializer_post_decrement_operator | 0
-test_implicit_integer_type_specializer | 0.001
+test_implicit_integer_type_specializer | 0
 test_implicit_integer_type_specializer_default_value | 0
 test_implicit_integer_type_specializer_construction | 0
 test_implicit_integer_type_specializer_get_set | 0
-test_implicit_integer_type_specializer_simple_assignment_operator | 0.001
+test_implicit_integer_type_specializer_simple_assignment_operator | 0
 test_implicit_integer_type_specializer_addition_assignment_operator | 0
 test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
 test_implicit_integer_type_specializer_multiplication_assignment_operator | 0

@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 5 test cases was executed 2020-01-08 at 19:03:04 with result:
+Test suites *AllTests* with 5 test cases was executed 2020-05-10 at 17:53:34 with result:
 
 * 0 errors
 * 0 failures
@@ -33,6 +33,6 @@ Test case|Execution time
 -|-
 test_create_stopwatch | 0
 test_stopwatch_start_stop | 0.102
-test_stopwatch_reset | 0.102
-test_stopwatch_guard | 0.101
-test_stopwatch_start_stop_five_times | 0.502
+test_stopwatch_reset | 0.101
+test_stopwatch_guard | 0.1
+test_stopwatch_start_stop_five_times | 0.505
