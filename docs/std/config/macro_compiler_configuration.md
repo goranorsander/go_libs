@@ -87,6 +87,8 @@ GO_IDE_MS_VS2019_16_1 | Visual Studio 2019 version 16.1
 GO_IDE_MS_VS2019_16_2 | Visual Studio 2019 version 16.2
 GO_IDE_MS_VS2019_16_3 | Visual Studio 2019 version 16.3
 GO_IDE_MS_VS2019_16_4 | Visual Studio 2019 version 16.4
+GO_IDE_MS_VS2019_16_5 | Visual Studio 2019 version 16.5
+GO_IDE_MS_VS2019_16_6 | Visual Studio 2019 version 16.6
 GO_MSVC_ATL | Using ATL
 GO_MSVC_ATL_VER | ATL version
 GO_MSVC_MFC | Using MFC
