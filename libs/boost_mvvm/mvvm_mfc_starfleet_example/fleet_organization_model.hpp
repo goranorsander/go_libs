@@ -68,6 +68,8 @@ private:
     fleet_organization_interface::ptr _first_child;
     fleet_organization_interface::ptr _previous_sibling;
     fleet_organization_interface::ptr _next_sibling;
+
+    boost::signals2::connection _on_property_changed_connection;
 };
 
 #endif  // #ifndef GO_BOOST_FLEET_ORGANIZATION_MODEL_HPP_INCLUDED

@@ -21,7 +21,7 @@
 
 product_view::~product_view()
 {
-    m_product_view_model->data_context_changed.disconnect(boost::bind(&product_view::on_data_context_changed, this));
+    m_product_view_model->data_context_changed.disconnect(m_data_context_changed_connection);
 }
 
 product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent)
@@ -29,9 +29,10 @@ product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd
     , m_hIcon(0)
     , m_command_manager(command_manager)
     , m_product_view_model(product_view_model::create())
+    , m_data_context_changed_connection()
 {
     m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-    m_product_view_model->data_context_changed.connect(boost::bind(&product_view::on_data_context_changed, this));
+    m_data_context_changed_connection = m_product_view_model->data_context_changed.connect(boost::bind(&product_view::on_data_context_changed, this));
 }
 
 void product_view::on_data_context_changed()

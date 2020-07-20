@@ -121,6 +121,7 @@ public:
     virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     spaceship_observer()
+        : _spaceship_connections()
     {
     }
 
@@ -128,7 +129,7 @@ public:
     {
         if (ship)
         {
-            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            _spaceship_connections[ship] = ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 
@@ -136,7 +137,18 @@ public:
     {
         if (ship)
         {
-            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            spaceship_connections_type::iterator it = _spaceship_connections.begin();
+            while (it != _spaceship_connections.end())
+            {
+                boost::shared_ptr<spaceship> it_ship = it->first.lock();
+                if (it_ship == ship)
+                {
+                    ship->property_changed.disconnect(it->second);
+                    _spaceship_connections.erase(it);
+                    break;
+                }
+                ++it;
+            }
         }
     }
 
@@ -151,6 +163,11 @@ public:
             }
         }
     }
+
+private:
+    typedef std::map<boost::weak_ptr<spaceship>, boost::signals2::connection> spaceship_connections_type;
+
+    spaceship_connections_type _spaceship_connections;
 };
 
 int main()

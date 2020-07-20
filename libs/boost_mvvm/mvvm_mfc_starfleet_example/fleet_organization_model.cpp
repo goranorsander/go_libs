@@ -21,7 +21,7 @@ fleet_organization_model::~fleet_organization_model()
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.disconnect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        spaceship->property_changed.disconnect(_on_property_changed_connection);
     }
 }
 
@@ -54,6 +54,7 @@ fleet_organization_model::fleet_organization_model()
     , _first_child()
     , _previous_sibling()
     , _next_sibling()
+    , _on_property_changed_connection()
 {
 }
 
@@ -151,7 +152,7 @@ void fleet_organization_model::bind_properties()
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.connect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        _on_property_changed_connection = spaceship->property_changed.connect(boost::bind(&this_type::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 }
 

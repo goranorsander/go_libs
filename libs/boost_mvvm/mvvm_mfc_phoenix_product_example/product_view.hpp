@@ -45,6 +45,7 @@ protected:
 private:
     m::wcommand_manager::wptr m_command_manager;
     product_view_model::ptr m_product_view_model;
+    boost::signals2::connection m_data_context_changed_connection;
 };
 
 #endif  // #ifndef GO_BOOST_PRODUCT_VIEW_HPP_INCLUDED
