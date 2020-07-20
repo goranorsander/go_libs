@@ -452,49 +452,49 @@ private:
 
         switch (type_id)
         {
-        case 0:
+        case 0:  // std::string::value_type
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<0, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 1:
+        case 1:  // std::wstring::value_type
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<1, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 2:
+        case 2:  // boost::uint16_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<2, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 3:
+        case 3:  // boost::uint32_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<3, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 4:
+        case 4:  // boost::uint64_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<4, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 5:
+        case 5:  // boost::int16_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<5, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 6:
+        case 6:  // boost::int32_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<6, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 7:
+        case 7:  // boost::int64_t
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<7, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 8:
+        case 8:  // float
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<8, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 9:
+        case 9:  // double
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<9, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 10:
+        case 10: // bool
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<10, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 11:
+        case 11: // std_string_literal_type
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<11, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 12:
+        case 12: // std_wstring_literal_type
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<12, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 13:
+        case 13: // std::string::value_type*
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<13, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
-        case 14:
+        case 14: // std::wstring::value_type*
             stringify(os, detail::decode(os, start, static_cast<GO_BOOST_TUPLE_ELEMENT_TYPE<14, supported_types_type>::type*>(GO_BOOST_NULLPTR)), end);
             return;
         }
