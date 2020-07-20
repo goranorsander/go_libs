@@ -29,7 +29,7 @@
 
 // Compiler message
 #define GO_BOOST_MESSAGE(_message_) \
-__warning _message_
+GO_BOOST_DO_PRAGMA_EX(GCC warning BOOST_PP_STRINGIZE(_message_))
 
 // C++ keyword typename support
 #define GO_BOOST_TYPENAME typename
