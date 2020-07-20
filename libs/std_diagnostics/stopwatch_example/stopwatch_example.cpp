@@ -16,7 +16,7 @@ int main() { return -1; }
 #else
 
 #include <iostream>
-#include <go/diagnostics.hpp>
+#include <go/diagnostics/benchmark.hpp>
 #include <go/namespace_alias.hpp>
 
 uint64_t fibonacci_number(const uint64_t n)
