@@ -13,6 +13,8 @@
 
 #include <gtest/gtest.h>
 #include <go_gtest/char8_t_default_print_non_container_to.hpp>
+#include <go_gtest/char16_t_default_print_non_container_to.hpp>
+#include <go_gtest/char32_t_default_print_non_container_to.hpp>
 #include <go_gtest/double_without_formatter.hpp>
 #include <go_gtest/stdint.hpp>
 
