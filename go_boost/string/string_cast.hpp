@@ -23,19 +23,25 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/core/is_same.hpp>
 
+#if defined(GO_BOOST_NO_CXX14_EXTENDED_CONSTEXPR) || defined(GO_BOOST_COMP_CLANG)
+#define GO_BOOST_STRING_CAST_CONSTEXPR
+#else
+#define GO_BOOST_STRING_CAST_CONSTEXPR constexpr
+#endif  // #if defined(GO_NO_CXX11_CONSTEXPR) || defined(GO_BOOST_COMP_CLANG)
+
 namespace go_boost
 {
 namespace string
 {
 
 template <typename to_string, typename from_string>
-inline GO_BOOST_EXTENDED_CONSTEXPR typename boost::enable_if_c<boost::is_same<to_string, from_string>::value, from_string>::type string_cast(const from_string& from)
+inline GO_BOOST_STRING_CAST_CONSTEXPR typename boost::enable_if_c<boost::is_same<to_string, from_string>::value, from_string>::type string_cast(const from_string& from)
 {
     return from;
 }
 
 template <typename to_string, typename from_string>
-inline GO_BOOST_EXTENDED_CONSTEXPR typename boost::enable_if_c<!boost::is_same<to_string, from_string>::value, to_string>::type string_cast(const from_string& from)
+inline GO_BOOST_STRING_CAST_CONSTEXPR typename boost::enable_if_c<!boost::is_same<to_string, from_string>::value, to_string>::type string_cast(const from_string& from)
 {
     u8string intermediate;
     if (!traits::conversion_traits<from_string>::try_convert(from, intermediate))

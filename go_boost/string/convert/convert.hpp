@@ -68,7 +68,7 @@ inline std::string convert_wstring_to_string(const std::wstring& s)
 #if defined(GO_BOOST_COMP_CLANG)
         const u8string u8s(mbs.begin(), mbs.end());
         std::string mbs_reduced;
-        reduce_to_iso_8859_1(u8s, mbs_reduced);
+        go_boost::string::encoding::reduce_to_iso_8859_1(u8s, mbs_reduced);
         return mbs_reduced;
 #else
         return mbs;
