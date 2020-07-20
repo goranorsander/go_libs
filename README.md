@@ -97,31 +97,31 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 18.1.4 Juhraya, Xfce, 64 bits
-  * cmake version 3.16.2
-  * clang version 9.0.0 (tags/RELEASE_900/final)
-  * gcc (GCC) 9.2.0
-  * git 2.24.1
-  * GNU Make 4.2.1
+* Manjaro Linux 20.0.3 Lysia, Xfce, 64 bits
+  * cmake version 3.17.3
+  * clang version 10.0.0
+  * gcc (GCC) 10.1.0
+  * git 2.27.0
+  * GNU Make 4.3
   * Code::Blocks 17.12
-  * ruby 2.6.5p114 (2019-10-01 revision 67812)
+  * ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.17.2
+  * cmake version 3.18.0
   * MSYS2 64bit 20161025
   * gcc (Rev2, Built by MSYS2 project) 7.3.0
   * git 2.26.2.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
-  * TortoiseGit 2.10.0.0
+  * TortoiseGit 2.10.0.2
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.22
-  * Visual Studio 2019, Community Edition, version 16.5.4
+  * Visual Studio 2017, Community Edition, version 15.9.25
+  * Visual Studio 2019, Community Edition, version 16.6.4
   * Visual Studio Code 1.44.2 - with extensions:
     * C/C++ 0.27.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
