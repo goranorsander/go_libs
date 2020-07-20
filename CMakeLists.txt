@@ -653,6 +653,17 @@ set(GO_UTILITY_RANGE_DIR ${GO_DIR}/utility/range)
 file(GLOB GO_LIBS_SRC_GO_UTILITY_RANGE_HPP ${GO_UTILITY_RANGE_DIR}/*.hpp)
 
 ########################################################
+#  go/utility/smart_ptr                                #
+########################################################
+
+set(GO_UTILITY_SMART_PTR_DIRNAME utility/smart_ptr)
+set(GO_UTILITY_SMART_PTR_DIR ${GO_DIR}/utility/smart_ptr)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_UTILITY_SMART_PTR_HPP ${GO_UTILITY_SMART_PTR_DIR}/*.hpp)
+
+########################################################
 #  go_boost                                            #
 ########################################################
 
@@ -983,6 +994,17 @@ set(GO_BOOST_UTILITY_RANGE_DIR ${GO_BOOST_DIR}/utility/range)
 file(GLOB GO_LIBS_SRC_GO_BOOST_UTILITY_RANGE_HPP ${GO_BOOST_UTILITY_RANGE_DIR}/*.hpp)
 
 ########################################################
+#  go_boost/utility/smart_ptr                          #
+########################################################
+
+set(GO_BOOST_UTILITY_SMART_PTR_DIRNAME utility/smart_ptr)
+set(GO_BOOST_UTILITY_SMART_PTR_DIR ${GO_BOOST_DIR}/utility/smart_ptr)
+
+# *.hpp
+
+file(GLOB GO_LIBS_SRC_GO_BOOST_UTILITY_SMART_PTR_HPP ${GO_BOOST_UTILITY_SMART_PTR_DIR}/*.hpp)
+
+########################################################
 #  docs                                                #
 ########################################################
 
@@ -1047,6 +1069,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_HPP}                    DESTINATION  incl
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_RANGE_HPP}              DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_RANGE_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_UTILITY_SMART_PTR_HPP}          DESTINATION  include/${GO_DIRNAME}/${GO_UTILITY_SMART_PTR_DIRNAME})
 
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_HPP}                            DESTINATION  include/${GO_BOOST_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_ASYNC_HPP}                      DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_ASYNC_DIRNAME})
@@ -1078,6 +1101,7 @@ INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_HPP}                    DESTINATION
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_CONTAINER_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_CONTAINER_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_ITERATOR_HPP}           DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_ITERATOR_DIRNAME})
 INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_RANGE_HPP}              DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_RANGE_DIRNAME})
+INSTALL(FILES ${GO_LIBS_SRC_GO_BOOST_UTILITY_SMART_PTR_HPP}          DESTINATION  include/${GO_BOOST_DIRNAME}/${GO_BOOST_UTILITY_SMART_PTR_DIRNAME})
 
 ########################################################
 #  CMake Configuration                                 #
