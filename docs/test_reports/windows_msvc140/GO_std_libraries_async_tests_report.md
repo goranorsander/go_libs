@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 11 test cases was executed 2020-05-10 at 17:53:38 with result:
+Test suites *AllTests* with 11 test cases was executed 2020-07-21 at 17:06:56 with result:
 
 * 0 errors
 * 0 failures
@@ -57,7 +57,7 @@ Test suite *std_recursive_spin_lock_test_suite* with 4 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -83,4 +83,4 @@ Test case|Execution time
 -|-
 test_spin_lock | 0
 test_spin_lock_lock_guard | 0
-test_spin_lock_two_threads | 0
+test_spin_lock_two_threads | 0.004

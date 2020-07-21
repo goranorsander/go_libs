@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.5.4
+* Visual Studio 2019, Community Edition, version 16.6.1
 
 # Summary
 
-Test suites *AllTests* with 132 test cases was executed 2020-05-10 at 17:53:45 with result:
+Test suites *AllTests* with 132 test cases was executed 2020-07-21 at 17:07:03 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.078 seconds.
+Test suites execution took 0.072 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 132 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.076 seconds.
+Test suite execution took 0.069 seconds.
 
 ### Successful test cases
 
@@ -63,7 +63,7 @@ test_integer_type_specializer_equal_to_comparison_operator | 0
 test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
 test_integer_type_specializer_greater_than_comparison_operator | 0
-test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0.001
+test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_three_way_comparison_operator | 0
 test_integer_type_specializer_pre_increment_operator | 0
@@ -107,7 +107,7 @@ test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
 test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
 test_implicit_integer_type_specializer_division_assignment_operator | 0
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
-test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 0

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 28 test cases was executed 2020-05-10 at 17:53:36 with result:
+Test suites *AllTests* with 28 test cases was executed 2020-07-21 at 17:06:54 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.028 seconds.
+Test suites execution took 0.024 seconds.
 
 # Details
 
@@ -65,7 +65,7 @@ Test suite execution took 0.003 seconds.
 
 Test case|Execution time
 -|-
-test_erase_iterator_on_deque | 0
+test_erase_iterator_on_deque | 0.001
 test_erase_iterator_on_list | 0
 test_erase_iterator_on_vector | 0
 test_erase_iterator_on_map | 0
@@ -78,7 +78,7 @@ Test suite *std_reverse_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -93,7 +93,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -108,7 +108,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -123,7 +123,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.012 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
@@ -133,7 +133,7 @@ test_try_move_backward_on_array | 0
 test_try_move_backward_on_deque | 0
 test_try_move_backward_on_forward_list | 0
 test_try_move_backward_on_list | 0
-test_try_move_backward_on_vector | 0.001
+test_try_move_backward_on_vector | 0
 test_try_move_backward_on_map | 0
 test_try_move_backward_on_set | 0
 test_try_move_backward_on_multimap | 0

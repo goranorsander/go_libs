@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 7 test cases was executed 2020-05-10 at 17:53:34 with result:
+Test suites *AllTests* with 7 test cases was executed 2020-07-21 at 17:06:52 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.013 seconds.
+Test suites execution took 0.017 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *std_monitor_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_monitor | 0.003
+test_monitor | 0.007
 
 ## std_placebo_lockable_test_suite
 
@@ -56,13 +56,13 @@ Test suite *std_recursive_spin_lock_test_suite* with 2 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_recursive_spin_lock | 0.003
+test_recursive_spin_lock | 0.001
 test_recursive_spin_lock_lock_guard | 0
 
 ## std_spin_lock_test_suite
@@ -72,7 +72,7 @@ Test suite *std_spin_lock_test_suite* with 2 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

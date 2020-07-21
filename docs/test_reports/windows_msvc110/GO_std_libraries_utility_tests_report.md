@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 28 test cases was executed 2020-05-10 at 17:53:31 with result:
+Test suites *AllTests* with 28 test cases was executed 2020-07-21 at 17:06:49 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.026 seconds.
+Test suites execution took 0.025 seconds.
 
 # Details
 
@@ -93,7 +93,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -123,7 +123,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -140,7 +140,7 @@ test_try_move_backward_on_multimap | 0
 test_try_move_backward_on_multiset | 0
 test_try_move_backward_on_unordered_map | 0
 test_try_move_backward_on_unordered_set | 0
-test_try_move_backward_on_unordered_multimap | 0
+test_try_move_backward_on_unordered_multimap | 0.001
 test_try_move_backward_on_unordered_multiset | 0
 
 ## std_value_guard_test_suite
@@ -150,7 +150,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

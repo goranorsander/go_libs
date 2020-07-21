@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.5.4
+* Visual Studio 2019, Community Edition, version 16.6.1
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2020-05-10 at 17:53:44 with result:
+Test suites *AllTests* with 6 test cases was executed 2020-07-21 at 17:07:03 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.004 seconds.
+Test suites execution took 0.008 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *boost_exception_test_suite* with 6 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_catch_go_boost_exception | 0.001
+test_catch_go_boost_exception | 0.003
 test_catch_go_boost_exception_as_boost_exception | 0
 test_catch_derived_exception | 0
 test_catch_derived_exception_as_go_boost_exception | 0

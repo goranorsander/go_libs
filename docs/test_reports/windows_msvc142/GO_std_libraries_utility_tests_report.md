@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.5.4
+* Visual Studio 2019, Community Edition, version 16.6.1
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2020-05-10 at 17:53:47 with result:
+Test suites *AllTests* with 50 test cases was executed 2020-07-21 at 17:07:06 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.034 seconds.
+Test suites execution took 0.035 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -45,9 +45,9 @@ test_push_front_pop_back_without_overflow | 0
 test_push_front_pop_back_with_overflow | 0
 test_operator_at | 0
 test_at | 0
-test_front_back | 0.001
+test_front_back | 0
 test_resize | 0
-test_swap | 0
+test_swap | 0.001
 test_insert | 0
 test_erase | 0
 
@@ -58,7 +58,7 @@ Test suite *std_container_size_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
@@ -68,7 +68,7 @@ test_size_on_deque | 0
 test_size_on_list | 0
 test_size_on_vector | 0
 test_size_on_map | 0
-test_size_on_set | 0.001
+test_size_on_set | 0
 
 ## std_erase_iterator_test_suite
 
@@ -96,7 +96,7 @@ Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -145,7 +145,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.006 seconds.
+Test suite execution took 0.011 seconds.
 
 ### Successful test cases
 
@@ -172,7 +172,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

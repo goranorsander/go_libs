@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2020-05-10T17:53:43" time="0.081" name="AllTests">
-  <testsuite name="std_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="0.08">
+<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2020-07-21T17:07:01" time="0.064" name="AllTests">
+  <testsuite name="std_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="0.063">
     <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -44,9 +44,9 @@
     <testcase name="test_floating_point_type_specializer_get_set" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_simple_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_addition_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_subtraction_assignment_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_division_assignment_operator" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_division_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_modulo_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />

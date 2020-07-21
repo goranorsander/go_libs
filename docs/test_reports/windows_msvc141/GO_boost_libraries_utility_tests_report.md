@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.22
+* Visual Studio 2017, Community Edition, version 15.9.23
 
 # Summary
 
-Test suites *AllTests* with 26 test cases was executed 2020-05-10 at 17:53:41 with result:
+Test suites *AllTests* with 26 test cases was executed 2020-07-21 at 17:07:00 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.017 seconds.
+Test suites execution took 0.01 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_container_size_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -44,7 +44,7 @@ Test suite *boost_erase_iterator_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -93,7 +93,7 @@ Test suite *boost_try_move_iterator_backward_test_suite* with 13 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.009 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -120,7 +120,7 @@ Test suite *boost_value_guard_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
