@@ -5,7 +5,7 @@ layout: unit_tests
 # Test environment and toolset
 
 * Windows 10 Professional, 64 bit
-* MSYS2/MinGW/gcc 7.3.0
+* MSYS2/MinGW/gcc 9.3.0
 
 ## GO Boost C++ Libraries Test Reports
 

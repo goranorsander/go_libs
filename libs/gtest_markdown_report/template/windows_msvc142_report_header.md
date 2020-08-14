@@ -5,4 +5,4 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.6.1
+* Visual Studio 2019, Community Edition, version 16.7.1

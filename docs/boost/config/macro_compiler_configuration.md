@@ -89,6 +89,7 @@ GO_BOOST_IDE_MS_VS2019_16_3 | Visual Studio 2019 version 16.3
 GO_BOOST_IDE_MS_VS2019_16_4 | Visual Studio 2019 version 16.4
 GO_BOOST_IDE_MS_VS2019_16_5 | Visual Studio 2019 version 16.5
 GO_BOOST_IDE_MS_VS2019_16_6 | Visual Studio 2019 version 16.6
+GO_BOOST_IDE_MS_VS2019_16_7 | Visual Studio 2019 version 16.7
 GO_BOOST_MSVC_ATL | Using ATL
 GO_BOOST_MSVC_ATL_VER | ATL version
 GO_BOOST_MSVC_MFC | Using MFC

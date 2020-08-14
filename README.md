@@ -37,7 +37,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.73.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.74.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -46,10 +46,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_73_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_73_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_74_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_74_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 73
+ * **BOOST_MINOR_VERSION** = 74
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -72,10 +72,10 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 7.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 9.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 | 73 
+**BOOST_MINOR_VERSION** | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | | | | X | 
@@ -107,9 +107,9 @@ My development environment and toolset details:
   * ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.18.0
-  * MSYS2 64bit 20161025
-  * gcc (Rev2, Built by MSYS2 project) 7.3.0
+  * cmake version 3.18.1
+  * MSYS2 64bit 20200720
+  * gcc (GCC) 9.3.0
   * git 2.26.2.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
@@ -121,7 +121,7 @@ My development environment and toolset details:
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
   * Visual Studio 2017, Community Edition, version 15.9.25
-  * Visual Studio 2019, Community Edition, version 16.6.4
+  * Visual Studio 2019, Community Edition, version 16.7.1
   * Visual Studio Code 1.44.2 - with extensions:
     * C/C++ 0.27.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_

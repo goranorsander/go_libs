@@ -16,11 +16,11 @@ more information.
   * [clang 9.0.0](./linux_clang/unit_tests.html)
   * [gcc 9.2.0](./linux_gcc/unit_tests.html)
 * Windows 10 Professional, 64 bit
-  * [MSYS2/MinGW/gcc 7.3.0](./windows_gcc/unit_tests.html)
+  * [MSYS2/MinGW/gcc 9.3.0](./windows_gcc/unit_tests.html)
   * [MSVC++ 9.0 / Visual Studio 2008](./windows_msvc90/unit_tests.html)
   * [MSVC++ 10.0 / Visual Studio 2010](./windows_msvc100/unit_tests.html)
   * [MSVC++ 11.0 / Visual Studio 2012](./windows_msvc110/unit_tests.html)
   * [MSVC++ 12.0 / Visual Studio 2013](./windows_msvc120/unit_tests.html)
   * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
   * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
-  * [MSVC++ 14.26 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
+  * [MSVC++ 14.27 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
