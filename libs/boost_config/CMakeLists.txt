@@ -19,7 +19,7 @@ if(BUILD_BOOST_TESTS)
 
     set(PROJECT_BOOST_TEST_CONFIG_NAME ${BOOST_PROJECT_NAME_STR}_config_tests)
 
-    file(GLOB BOOST_TEST_CONFIG_SRC_FILES test/*.cpp)
+    file(GLOB BOOST_TEST_CONFIG_SRC_FILES test/*.[chi]pp)
     add_executable(${PROJECT_BOOST_TEST_CONFIG_NAME} ${BOOST_TEST_CONFIG_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_TEST_CONFIG_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 

@@ -413,7 +413,7 @@ if(BUILD_BOOST_TESTS)
 
     set(PROJECT_BOOST_TEST_MVVM_NAME ${BOOST_PROJECT_NAME_STR}_mvvm_tests)
 
-    file(GLOB BOOST_TEST_MVVM_SRC_FILES test/*.cpp)
+    file(GLOB BOOST_TEST_MVVM_SRC_FILES test/*.[chi]pp)
     add_executable(${PROJECT_BOOST_TEST_MVVM_NAME} ${BOOST_TEST_MVVM_SRC_FILES})
     set_target_properties(${PROJECT_BOOST_TEST_MVVM_NAME} PROPERTIES FOLDER go_libs/boost/tests)
 

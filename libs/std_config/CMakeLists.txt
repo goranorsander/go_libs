@@ -18,7 +18,7 @@ if(BUILD_STD_TESTS)
 
     set(PROJECT_STD_TEST_CONFIG_NAME ${STD_PROJECT_NAME_STR}_config_tests)
 
-    file(GLOB STD_TEST_CONFIG_SRC_FILES test/*.cpp)
+    file(GLOB STD_TEST_CONFIG_SRC_FILES test/*.[chi]pp)
     add_executable(${PROJECT_STD_TEST_CONFIG_NAME} ${STD_TEST_CONFIG_SRC_FILES})
     set_target_properties(${PROJECT_STD_TEST_CONFIG_NAME} PROPERTIES FOLDER go_libs/std/tests)
 
