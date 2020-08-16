@@ -72,7 +72,7 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 9.3.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
+**SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 10.2.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
 **BOOST_MINOR_VERSION** | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 
@@ -109,7 +109,7 @@ My development environment and toolset details:
 * Windows 10 Professional, 64 bit
   * cmake version 3.18.1
   * MSYS2 64bit 20200720
-  * gcc (GCC) 9.3.0
+  * gcc (GCC) 10.2.0
   * git 2.26.2.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
@@ -120,7 +120,7 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.25
+  * Visual Studio 2017, Community Edition, version 15.9.26
   * Visual Studio 2019, Community Edition, version 16.7.1
   * Visual Studio Code 1.44.2 - with extensions:
     * C/C++ 0.27.1 _(C/C++ IntelliSense, debugging, and code browsing)_
