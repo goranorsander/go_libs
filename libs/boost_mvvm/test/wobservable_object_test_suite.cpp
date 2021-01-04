@@ -121,7 +121,8 @@ public:
     virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _crew_complement_change_count(0u)
+        : _on_property_changed_connections()
+        , _crew_complement_change_count(0u)
         , _name_change_count(0u)
         , _max_speed_change_count(0u)
     {
@@ -129,12 +130,17 @@ public:
 
     void connect(spaceship& m)
     {
-        m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        _on_property_changed_connections[&m] = m.property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
     void disconnect(spaceship& m)
     {
-        m.property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        spaceship_connection_map_type::iterator it = _on_property_changed_connections.find(&m);
+        if (it != _on_property_changed_connections.end())
+        {
+            m.property_changed.disconnect(it->second);
+            _on_property_changed_connections.erase(it);
+        }
     }
 
     void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
@@ -152,6 +158,9 @@ public:
     unsigned int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
+    typedef std::map<boost::shared_ptr<spaceship>::element_type*, boost::signals2::connection> spaceship_connection_map_type;
+
+    spaceship_connection_map_type _on_property_changed_connections;
     unsigned int _crew_complement_change_count;
     unsigned int _name_change_count;
     unsigned int _max_speed_change_count;

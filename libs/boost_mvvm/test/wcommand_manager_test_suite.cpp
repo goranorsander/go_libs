@@ -193,7 +193,8 @@ public:
     virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_count()
+        : _on_property_changed_connections()
+        , _on_property_changed_count()
     {
     }
 
@@ -201,7 +202,7 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            _on_property_changed_connections[ship.get()] = ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 
@@ -209,7 +210,12 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            spaceship_connection_map_type::iterator it = _on_property_changed_connections.find(ship.get());
+            if (it != _on_property_changed_connections.end())
+            {
+                ship->property_changed.disconnect(it->second);
+                _on_property_changed_connections.erase(it);
+            }
         }
     }
 
@@ -246,9 +252,11 @@ public:
     }
 
 private:
+    typedef std::map<boost::shared_ptr<spaceship>::element_type*, boost::signals2::connection> spaceship_connection_map_type;
     typedef std::pair<std::wstring, std::wstring> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
+    spaceship_connection_map_type _on_property_changed_connections;
     on_property_changed_counter_type _on_property_changed_count;
 };
 

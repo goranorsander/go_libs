@@ -23,12 +23,17 @@ TEST(boost_basic_command_manager_phoenix_test_suite, boost_phoenix_not_supported
 #include <go_boost/mvvm/utility.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
+#include <go_boost/signals/connections.hpp>
 #include <go_boost/string.hpp>
 
 namespace
 {
 
 // Test command_manager
+class spaceship;
+typedef boost::shared_ptr<spaceship> spaceship_ptr;
+typedef boost::weak_ptr<spaceship> spaceship_wptr;
+
 class spaceship
     : public m::basic_observable_object<s::u8string>
     , private tt::noncopyable_nonmovable
@@ -72,16 +77,16 @@ private:
     }
 
 public:
-    static boost::shared_ptr<spaceship> create(m::basic_command_manager<s::u8string>::ptr& command_manager_)
+    static spaceship_ptr create(m::basic_command_manager<s::u8string>::ptr& command_manager_)
     {
-        boost::shared_ptr<spaceship> ship(new spaceship(command_manager_));
+        spaceship_ptr ship(new spaceship(command_manager_));
         ship->bind_properties();
         return ship;
     }
 
-    static boost::shared_ptr<spaceship> create(const m::basic_command_manager<s::u8string>::ptr& command_manager_, const s::u8string& name_, const s::u8string& captain_)
+    static spaceship_ptr create(const m::basic_command_manager<s::u8string>::ptr& command_manager_, const s::u8string& name_, const s::u8string& captain_)
     {
-        boost::shared_ptr<spaceship> ship(new spaceship(command_manager_, name_, captain_));
+        spaceship_ptr ship(new spaceship(command_manager_, name_, captain_));
         ship->bind_properties();
         return ship;
     }
@@ -152,38 +157,33 @@ public:
     virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_count()
+        : _property_changed_connections()
+        , _property_changed_count()
     {
     }
 
-    void connect(const boost::shared_ptr<spaceship>& ship)
+    void connect(const spaceship_ptr& ship)
     {
-        if(ship)
-        {
-            ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
-        }
+        _property_changed_connections.connect(ship, ship->property_changed, boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
 
-    void disconnect(const boost::shared_ptr<spaceship>& ship)
+    void disconnect(const spaceship_ptr& ship)
     {
-        if(ship)
-        {
-            ship->property_changed.disconnect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
-        }
+        _property_changed_connections.disconnect(ship, ship->property_changed);
     }
 
     void on_property_changed(const m::object::ptr& o, const m::basic_property_changed_arguments<s::u8string>::ptr& a)
     {
         if(o && a)
         {
-            boost::shared_ptr<spaceship> ship = boost::dynamic_pointer_cast<spaceship>(o);
+            spaceship_ptr ship = boost::dynamic_pointer_cast<spaceship>(o);
             if(ship)
             {
                 const ship_and_property_type ship_and_property(ship->name(), a->property_name());
-                const on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
-                if(it == _on_property_changed_count.end())
+                const on_property_changed_counter_type::iterator it = _property_changed_count.find(ship_and_property);
+                if(it == _property_changed_count.end())
                 {
-                    _on_property_changed_count[ship_and_property] = 1;
+                    _property_changed_count[ship_and_property] = 1;
                 }
                 else
                 {
@@ -193,11 +193,11 @@ public:
         }
     }
 
-    unsigned int get_on_property_changed_count(const s::u8string& ship_name, const s::u8string& property_name) const
+    unsigned int get_property_changed_count(const s::u8string& ship_name, const s::u8string& property_name) const
     {
         const ship_and_property_type ship_and_property(ship_name, property_name);
-        const on_property_changed_counter_type::const_iterator it = _on_property_changed_count.find(ship_and_property);
-        if(it == _on_property_changed_count.end())
+        const on_property_changed_counter_type::const_iterator it = _property_changed_count.find(ship_and_property);
+        if(it == _property_changed_count.end())
         {
             return 0;
         }
@@ -205,20 +205,22 @@ public:
     }
 
 private:
+    typedef si::connections<spaceship_ptr, void(const m::object::ptr&, const m::basic_property_changed_arguments<s::u8string>::ptr&)> property_changed_connections_type;
     typedef std::pair<s::u8string, s::u8string> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
-    on_property_changed_counter_type _on_property_changed_count;
+    property_changed_connections_type _property_changed_connections;
+    on_property_changed_counter_type _property_changed_count;
 };
 
 #define TEST_CASE_SHIPYARD \
     m::basic_command_manager<s::u8string>::ptr command_mgr = m::basic_command_manager<s::u8string>::create(); \
 \
-    boost::shared_ptr<spaceship> ship1 = spaceship::create(command_mgr, s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("Captain James T Kirk")); \
-    boost::shared_ptr<spaceship> ship2 = spaceship::create(command_mgr, s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("Han Solo")); \
-    boost::shared_ptr<spaceship> ship3 = spaceship::create(command_mgr, s::create<s::u8string>("Executor"), s::create<s::u8string>("Lord Darth Vader")); \
-    boost::shared_ptr<spaceship> ship4 = spaceship::create(command_mgr, s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("Admiral William Adama")); \
-    boost::shared_ptr<spaceship> ship5 = spaceship::create(command_mgr, s::create<s::u8string>("Serenity"), s::create<s::u8string>("Captain Malcolm 'Mal' Reynolds")); \
+    spaceship_ptr ship1 = spaceship::create(command_mgr, s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("Captain James T Kirk")); \
+    spaceship_ptr ship2 = spaceship::create(command_mgr, s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("Han Solo")); \
+    spaceship_ptr ship3 = spaceship::create(command_mgr, s::create<s::u8string>("Executor"), s::create<s::u8string>("Lord Darth Vader")); \
+    spaceship_ptr ship4 = spaceship::create(command_mgr, s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("Admiral William Adama")); \
+    spaceship_ptr ship5 = spaceship::create(command_mgr, s::create<s::u8string>("Serenity"), s::create<s::u8string>("Captain Malcolm 'Mal' Reynolds")); \
 \
     boost::shared_ptr<spaceship_observer> observer = boost::make_shared<spaceship_observer>(); \
 \
@@ -306,11 +308,11 @@ TEST(boost_basic_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship5->captain() == s::create<s::u8string>("Captain Malcolm 'Mal' Reynolds"));
 
     // Verify initial 'on property changed' count
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
 
     // Give Mr Spock command of USS Enterprise
     ship1->captain = s::create<s::u8string>("Mr Spock");
@@ -321,11 +323,11 @@ TEST(boost_basic_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == s::create<s::u8string>("Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == s::create<s::u8string>("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(1u, observer->get_on_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(1u, observer->get_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
 
     // Return command of USS Enterprise to Captain Kirk
     ship1->captain = s::create<s::u8string>("Captain James T Kirk");
@@ -336,11 +338,11 @@ TEST(boost_basic_command_manager_phoenix_test_suite, test_spaceship_observer)
     EXPECT_EQ(true, ship4->captain() == s::create<s::u8string>("Admiral William Adama"));
     EXPECT_EQ(true, ship5->captain() == s::create<s::u8string>("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(2u, observer->get_on_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(2u, observer->get_property_changed_count(s::create<s::u8string>("USS Enterprise"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Millennium Falcon"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Executor"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Battlestar Galactica"), s::create<s::u8string>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<s::u8string>("Serenity"), s::create<s::u8string>("captain")));
 }
 
 }
