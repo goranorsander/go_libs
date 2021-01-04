@@ -127,7 +127,7 @@ public:
     virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_slot_key()
+        : _on_property_changed_connections()
         , _crew_complement_change_count(0u)
         , _name_change_count(0u)
         , _max_speed_change_count(0u)
@@ -136,12 +136,17 @@ public:
 
     void connect(spaceship& m)
     {
-        _on_property_changed_slot_key = m.property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
+        _on_property_changed_connections[&m] = m.property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(spaceship& m)
     {
-        m.property_changed.disconnect(_on_property_changed_slot_key);
+        spaceship_connection_map_type::iterator it = _on_property_changed_connections.find(&m);
+        if (it != _on_property_changed_connections.end())
+        {
+            m.property_changed.disconnect(it->second);
+            _on_property_changed_connections.erase(it);
+        }
     }
 
     void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a)
@@ -159,7 +164,9 @@ public:
     unsigned int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
-    si::slot_key _on_property_changed_slot_key;
+    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::slot_key> spaceship_connection_map_type;
+
+    spaceship_connection_map_type _on_property_changed_connections;
     unsigned int _crew_complement_change_count;
     unsigned int _name_change_count;
     unsigned int _max_speed_change_count;

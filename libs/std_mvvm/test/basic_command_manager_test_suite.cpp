@@ -199,7 +199,7 @@ public:
     virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
 
      spaceship_observer()
-        : _on_property_changed_slot_key()
+        : _on_property_changed_connections()
         , _on_property_changed_count()
     {
     }
@@ -208,7 +208,7 @@ public:
     {
         if(ship)
         {
-            _on_property_changed_slot_key = ship->property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
+            _on_property_changed_connections[ship.get()] = ship->property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
         }
     }
 
@@ -216,7 +216,12 @@ public:
     {
         if(ship)
         {
-            ship->property_changed.disconnect(_on_property_changed_slot_key);
+            spaceship_connection_map_type::iterator it = _on_property_changed_connections.find(ship.get());
+            if (it != _on_property_changed_connections.end())
+            {
+                ship->property_changed.disconnect(it->second);
+                _on_property_changed_connections.erase(it);
+            }
         }
     }
 
@@ -253,10 +258,11 @@ public:
     }
 
 private:
+    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::slot_key> spaceship_connection_map_type;
     typedef std::pair<s::u8string, s::u8string> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 
-    si::slot_key _on_property_changed_slot_key;
+    spaceship_connection_map_type _on_property_changed_connections;
     on_property_changed_counter_type _on_property_changed_count;
 };
 
