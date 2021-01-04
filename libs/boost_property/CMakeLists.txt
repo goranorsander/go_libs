@@ -257,4 +257,6 @@ if(BUILD_BOOST_TESTS)
 
     add_test(test_property ${PROJECT_BOOST_TEST_PROPERTY_NAME})
 
+    source_group(Test_Suites FILES ${BOOST_TEST_PROPERTY_SRC_FILES})
+
 endif(BUILD_BOOST_TESTS)

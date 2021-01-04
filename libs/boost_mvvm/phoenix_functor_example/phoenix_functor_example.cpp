@@ -25,8 +25,13 @@ int main()
 #include <go_boost/mvvm/utility.hpp>
 #include <go_boost/namespace_alias.hpp>
 #include <go_boost/property.hpp>
+#include <go_boost/signals/connections.hpp>
 
 const std::string fleet_commander_changed_event_type("fleet commander changed");
+
+class spaceship;
+typedef boost::shared_ptr<spaceship> spaceship_ptr;
+typedef boost::weak_ptr<spaceship> spaceship_wptr;
 
 class spaceship
     : public m::observable_object
@@ -54,9 +59,9 @@ private:
     }
 
 public:
-    static boost::shared_ptr<spaceship> create(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
+    static spaceship_ptr create(const m::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
     {
-        boost::shared_ptr<spaceship> ship(new spaceship(command_manager_, name_, captain_));
+        spaceship_ptr ship(new spaceship(command_manager_, name_, captain_));
         ship->bind_properties();
         return ship;
     }
@@ -121,34 +126,23 @@ public:
     virtual ~spaceship_observer() GO_BOOST_DEFAULT_DESTRUCTOR
 
     spaceship_observer()
-        : _spaceship_connections()
+        : _property_changed_connections()
     {
     }
 
-    void connect(const boost::shared_ptr<spaceship>& ship)
+    void connect(const spaceship_ptr& ship)
     {
         if (ship)
         {
-            _spaceship_connections[ship] = ship->property_changed.connect(boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            _property_changed_connections.connect(ship, ship->property_changed, boost::bind(&spaceship_observer::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
     }
 
-    void disconnect(const boost::shared_ptr<spaceship>& ship)
+    void disconnect(const spaceship_ptr& ship)
     {
         if (ship)
         {
-            spaceship_connections_type::iterator it = _spaceship_connections.begin();
-            while (it != _spaceship_connections.end())
-            {
-                boost::shared_ptr<spaceship> it_ship = it->first.lock();
-                if (it_ship == ship)
-                {
-                    ship->property_changed.disconnect(it->second);
-                    _spaceship_connections.erase(it);
-                    break;
-                }
-                ++it;
-            }
+            _property_changed_connections.disconnect(ship, ship->property_changed);
         }
     }
 
@@ -156,7 +150,7 @@ public:
     {
         if (o && a)
         {
-            boost::shared_ptr<spaceship> ship = boost::dynamic_pointer_cast<spaceship>(o);
+            spaceship_ptr ship = boost::dynamic_pointer_cast<spaceship>(o);
             if (ship && a->property_name() == "speed")
             {
                 std::cout << ship->name() << " changed speed to " << ship->speed() << std::endl;
@@ -165,17 +159,17 @@ public:
     }
 
 private:
-    typedef std::map<boost::weak_ptr<spaceship>, boost::signals2::connection> spaceship_connections_type;
+    typedef si::connections<spaceship_ptr, void(const m::object::ptr&, const m::property_changed_arguments::ptr&)> property_changed_connections_type;
 
-    spaceship_connections_type _spaceship_connections;
+    property_changed_connections_type _property_changed_connections;
 };
 
 int main()
 {
     m::command_manager::ptr command_mgr = m::command_manager::create();
 
-    boost::shared_ptr<spaceship> ship1 = spaceship::create(command_mgr, "USS Enterprise", "Captain James T Kirk");
-    boost::shared_ptr<spaceship> ship2 = spaceship::create(command_mgr, "Executor", "Lord Darth Vader");
+    spaceship_ptr ship1 = spaceship::create(command_mgr, "USS Enterprise", "Captain James T Kirk");
+    spaceship_ptr ship2 = spaceship::create(command_mgr, "Executor", "Lord Darth Vader");
 
     boost::shared_ptr<spaceship_observer> observer = boost::make_shared<spaceship_observer>();
     observer->connect(ship1);

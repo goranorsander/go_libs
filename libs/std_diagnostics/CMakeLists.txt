@@ -126,4 +126,6 @@ if(BUILD_STD_TESTS)
 
     add_test(test_diagnostics ${PROJECT_STD_TEST_DIAGNOSTICS_NAME})
 
+    source_group(Test_Suites FILES ${STD_TEST_DIAGNOSTICS_SRC_FILES})
+
 endif(BUILD_STD_TESTS)

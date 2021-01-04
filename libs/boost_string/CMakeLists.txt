@@ -153,4 +153,6 @@ if(BUILD_BOOST_TESTS)
 
     add_test(test_string ${PROJECT_BOOST_TEST_STRING_NAME})
 
+    source_group(Test_Suites FILES ${BOOST_TEST_STRING_SRC_FILES})
+
 endif(BUILD_BOOST_TESTS)

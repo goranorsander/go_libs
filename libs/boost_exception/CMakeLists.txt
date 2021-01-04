@@ -82,4 +82,6 @@ if(BUILD_BOOST_TESTS)
 
     add_test(test_exception ${PROJECT_BOOST_TEST_EXCEPTION_NAME})
 
+    source_group(Test_Suites FILES ${BOOST_TEST_EXCEPTION_SRC_FILES})
+
 endif(BUILD_BOOST_TESTS)

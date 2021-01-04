@@ -346,4 +346,6 @@ if(BUILD_STD_TESTS)
 
     add_test(test_mvvm ${PROJECT_STD_TEST_MVVM_NAME})
 
+    source_group(Test_Suites FILES ${STD_TEST_MVVM_SRC_FILES})
+
 endif(BUILD_STD_TESTS)
