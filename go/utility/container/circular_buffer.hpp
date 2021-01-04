@@ -17,6 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <stdexcept>
 #include <vector>
 
 #if defined(max)
