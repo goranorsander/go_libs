@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+include <go / config / preprocessor.hpp>
 
 #if defined(__clang__)
 
@@ -24,8 +25,7 @@
 #define GO_DO_PRAGMA_EX(x) GO_DO_PRAGMA(x)
 
 // Compiler message
-#define GO_MESSAGE(_message_) \
-_Pragma message _message_
+#define GO_MESSAGE(_message_) GO_DO_PRAGMA_EX(GCC warning GO_TO_STRING(_message_))
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
@@ -230,6 +230,10 @@ _Pragma message _message_
 // C++17 support
 #if (GO_CLANG_VERSION < 20500)
 #define GO_NO_CXX17 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (GO_CLANG_VERSION < 20500)
 
 // C++17 language support
@@ -346,6 +350,10 @@ _Pragma message _message_
 // C++2a support
 #if (GO_CLANG_VERSION < 30400)
 #define GO_NO_CXX2A 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (GO_CLANG_VERSION < 30400)
 
 // C++2a language support

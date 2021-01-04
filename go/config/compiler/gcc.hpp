@@ -12,6 +12,7 @@
 //
 
 #include <go/config.hpp>
+#include <go/config/preprocessor.hpp>
 
 #if defined(__GNUC__)
 
@@ -29,7 +30,7 @@
 #define GO_DO_PRAGMA_EX(x) GO_DO_PRAGMA(x)
 
 // Compiler message
-#define GO_MESSAGE(_message_) GO_DO_PRAGMA(message (#_message_))
+#define GO_MESSAGE(_message_) GO_DO_PRAGMA_EX(GCC warning GO_TO_STRING(_message_))
 
 // C++ keyword typename support
 #define GO_TYPENAME typename
@@ -246,6 +247,10 @@
 // C++17 support
 #if (GO_GCC_VERSION < 30000)
 #define GO_NO_CXX17 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (GO_GCC_VERSION < 30000)
 
 // C++17 language support
@@ -344,6 +349,10 @@
 // C++2a support
 #if (GO_GCC_VERSION < 50000)
 #define GO_NO_CXX2A 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (GO_GCC_VERSION < 50000)
 
 // C++2a language support

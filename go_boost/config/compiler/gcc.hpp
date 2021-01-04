@@ -12,6 +12,7 @@
 //
 
 #include <go_boost/config.hpp>
+#include <boost/config/helper_macros.hpp>
 
 #ifdef BOOST_HAS_PRAGMA_ONCE
 #pragma once
@@ -33,7 +34,7 @@
 #define GO_BOOST_DO_PRAGMA_EX(x) GO_BOOST_DO_PRAGMA(x)
 
 // Compiler message
-#define GO_BOOST_MESSAGE(_message_) GO_BOOST_DO_PRAGMA(message (#_message_))
+#define GO_BOOST_MESSAGE(_message_) GO_BOOST_DO_PRAGMA_EX(GCC warning BOOST_PP_STRINGIZE(_message_))
 
 // C++ keyword typename support
 #define GO_BOOST_TYPENAME typename
@@ -245,6 +246,10 @@
 // C++17 support
 #if (GO_BOOST_GCC_VERSION < 30000)
 #define GO_BOOST_NO_CXX17 1
+#else
+#ifndef GO_BOOST_NO_STD_AUTO_PTR
+#define GO_BOOST_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_BOOST_NO_STD_AUTO_PTR
 #endif  // #if (GO_BOOST_GCC_VERSION < 30000)
 
 // C++17 language support
@@ -343,6 +348,10 @@
 // C++2a support
 #if (GO_BOOST_GCC_VERSION < 50000)
 #define GO_BOOST_NO_CXX2A 1
+#else
+#ifndef GO_BOOST_NO_STD_AUTO_PTR
+#define GO_BOOST_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_BOOST_NO_STD_AUTO_PTR
 #endif  // #if (GO_BOOST_GCC_VERSION < 50000)
 
 // C++2a language support
