@@ -107,6 +107,10 @@
 #define GO_IDE_MS_VS2019_16_5 1
 #elif (_MSC_VER == 1926)
 #define GO_IDE_MS_VS2019_16_6 1
+#elif (_MSC_VER == 1927)
+#define GO_IDE_MS_VS2019_16_7 1
+#elif (_MSC_VER == 1928)
+#define GO_IDE_MS_VS2019_16_8 1
 #endif  // #if (_MSC_VER == 1920)
 #endif  // #if (_MSC_VER == 800)
 
@@ -343,6 +347,10 @@ __pragma(message(_message_))
 // C++17 support
 #if (_MSC_VER < 1600)
 #define GO_NO_CXX17 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (_MSC_VER < 1600)
 
 // C++17 language support
@@ -453,6 +461,10 @@ __pragma(message(_message_))
 // C++2a support
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX2A 1
+#else
+#ifndef GO_NO_STD_AUTO_PTR
+#define GO_NO_STD_AUTO_PTR 1
+#endif  // #ifndef GO_NO_STD_AUTO_PTR
 #endif  // #if (_MSC_VER < 1900)
 
 // C++2a language support
