@@ -67,6 +67,10 @@ protected:
     DECLARE_MESSAGE_MAP()
 
     void InitPropList();
+
+private:
+    boost::signals2::connection _on_data_context_container_changed_connection;
+    boost::signals2::connection _on_data_context_property_changed_connection;
 };
 
 #endif  // #ifndef GO_BOOST_MVVM_MFC_STARFLEET_EXAMPLE_PROPERTIES_VIEW_HPP_INCLUDED

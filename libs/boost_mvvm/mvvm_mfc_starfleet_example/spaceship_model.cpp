@@ -15,7 +15,7 @@
 
 spaceship_model::~spaceship_model()
 {
-    _equipment->container_changed.disconnect(boost::bind(&this_type::on_equipment_list_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+    _equipment->container_changed.disconnect(_on_equipment_container_changed_connection);
 }
 
 spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_)
@@ -70,7 +70,7 @@ void spaceship_model::bind_properties()
     crew_complement.setter(boost::bind(&this_type::set_property_value<p::wproperty<quantity_type>>, this, boost::cref(crew_complement), boost::ref(_crew_complement), boost::placeholders::_1));
     equipment.getter(boost::bind(&this_type::get_property_value<m::wobservable_deque<equipment_interface::ptr>::ptr>, this, boost::cref(_equipment)));
     equipment.setter(boost::bind(&this_type::set_property_value<p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr>>, this, boost::cref(equipment), boost::ref(_equipment), boost::placeholders::_1));
-    _equipment->container_changed.connect(boost::bind(&this_type::on_equipment_list_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+    _on_equipment_container_changed_connection = _equipment->container_changed.connect(boost::bind(&this_type::on_equipment_list_changed, this, boost::placeholders::_1, boost::placeholders::_2));
 }
 
 void spaceship_model::on_equipment_list_changed(const m::object::ptr& /*o*/, const m::container_changed_arguments::ptr& /*a*/)

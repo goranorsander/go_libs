@@ -36,6 +36,8 @@ properties_view::properties_view()
     , m::object_wobserver_interface()
     , _wndToolBar()
     , _wndPropList()
+    , _on_data_context_container_changed_connection()
+    , _on_data_context_property_changed_connection()
 {
 }
 
@@ -82,9 +84,9 @@ void properties_view::on_data_context_will_change()
     {
         if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
         {
-            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(boost::bind(&properties_view::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(_on_data_context_container_changed_connection);
         }
-        data_context()->property_changed.disconnect(boost::bind(&properties_view::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
     }
     m::data_context_interface<properties_view_model::ptr>::on_data_context_will_change();
 }
@@ -95,9 +97,9 @@ void properties_view::on_data_context_changed()
     {
         if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
         {
-            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.connect(boost::bind(&properties_view::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+            _on_data_context_container_changed_connection = data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.connect(boost::bind(&properties_view::on_container_changed, this, boost::placeholders::_1, boost::placeholders::_2));
         }
-        data_context()->property_changed.connect(boost::bind(&properties_view::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        _on_data_context_property_changed_connection = data_context()->property_changed.connect(boost::bind(&properties_view::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     _wndPropList.RemoveAll();
     populate();

@@ -27,6 +27,7 @@ properties_view_model::properties_view_model()
     , fleet_organization(L"properties_view_model::fleet_organization")
     , _main_frame_vm()
     , _select_fleet_organization_event_key(0)
+    , _on_data_context_property_changed_connection()
 {
 }
 
@@ -53,7 +54,7 @@ void properties_view_model::on_data_context_will_change()
 {
     if(data_context())
     {
-        data_context()->property_changed.disconnect(boost::bind(&properties_view_model::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_will_change();
     on_view_model_will_change();
@@ -63,7 +64,7 @@ void properties_view_model::on_data_context_changed()
 {
     if(data_context())
     {
-        data_context()->property_changed.connect(boost::bind(&properties_view_model::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
+        _on_data_context_property_changed_connection = data_context()->property_changed.connect(boost::bind(&properties_view_model::on_property_changed, this, boost::placeholders::_1, boost::placeholders::_2));
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_changed();
     on_view_model_changed();

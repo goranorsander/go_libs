@@ -65,6 +65,7 @@ private:
 private:
     main_frame_view_model::wptr _main_frame_vm;
     m::event_subscription_key _select_fleet_organization_event_key;
+    boost::signals2::connection _on_data_context_property_changed_connection;
 };
 
 #endif  // #ifndef GO_BOOST_PROPERTIES_VIEW_MODEL_HPP_INCLUDED

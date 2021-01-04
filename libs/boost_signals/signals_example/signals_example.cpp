@@ -43,19 +43,20 @@ public:
     {
         fleet_commander::ptr commander = _fleet_commander.lock();
         if (commander)
-            commander->fire_lasers.disconnect(boost::bind(&p::property<bool>::set, &lasers_firing, boost::placeholders::_1));
+            commander->fire_lasers.disconnect(_fire_lasers_connection);
     }
 
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_)
         : name("name", name_)
         , captain("captain", captain_)
         , lasers_firing("lasers_firing")
+        , _fire_lasers_connection()
         , _lasers_firing(false)
         , _fleet_commander(fleet_commander_)
     {
         lasers_firing.getter(boost::bind(&spaceship::get_lasers_firing, this));
         lasers_firing.setter(boost::bind(&spaceship::set_lasers_firing, this, boost::placeholders::_1));
-        fleet_commander_->fire_lasers.connect(boost::bind(&p::property<bool>::set, &lasers_firing, boost::placeholders::_1));
+        _fire_lasers_connection = fleet_commander_->fire_lasers.connect(boost::bind(&p::property<bool>::set, &lasers_firing, boost::placeholders::_1));
     }
 
     p::value_property<std::string> name;
@@ -75,6 +76,7 @@ private:
     }
 
 private:
+    boost::signals2::connection _fire_lasers_connection;
     bool _lasers_firing;
     fleet_commander::wptr _fleet_commander;
 };

@@ -49,6 +49,7 @@ private:
     m::wobservable_deque<equipment_interface::ptr>::ptr _equipment;
     std::wstring _captain;
     quantity_type _crew_complement;
+    boost::signals2::connection _on_equipment_container_changed_connection;
 };
 
 #endif  // #ifndef GO_BOOST_SPACESHIP_MODEL_HPP_INCLUDED
