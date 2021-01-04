@@ -107,27 +107,27 @@ My development environment and toolset details:
   * ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.18.1
+  * cmake version 3.19.2
   * MSYS2 64bit 20200720
   * gcc (GCC) 10.2.0
-  * git 2.26.2.windows.1
+  * git 2.30.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 2.4.4p296 (2018-03-28 revision 63013)
-  * TortoiseGit 2.10.0.2
+  * TortoiseGit 2.11.0.0
   * Visual Studio 2008 Express Edition with SP1
   * Visual Studio 2010 Express
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.26
-  * Visual Studio 2019, Community Edition, version 16.7.1
-  * Visual Studio Code 1.44.2 - with extensions:
-    * C/C++ 0.27.1 _(C/C++ IntelliSense, debugging, and code browsing)_
+  * Visual Studio 2017, Community Edition, version 15.9.30
+  * Visual Studio 2019, Community Edition, version 16.8.3
+  * Visual Studio Code 1.52.1 - with extensions:
+    * C/C++ 1.1.3 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.3.1 _(Extended CMake support)_
-    * Git Lens 10.2.1 _(Supercharge Visual Studio Code's Git capabilities)_
-    * Markdown All in One 2.8.0 _(All you need to write Markdown)_
+    * CMake Tools 1.5.3 _(Extended CMake support)_
+    * Git Lens 11.1.2 _(Supercharge Visual Studio Code's Git capabilities)_
+    * Markdown All in One 3.4.0 _(All you need to write Markdown)_
 
 # GOOGLE TEST
 
