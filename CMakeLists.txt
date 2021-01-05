@@ -32,7 +32,7 @@ set(CMAKE_CXX_COMPILER_WARNING_LEVELS "W0;W1;W2;W3;W4;W5")
 set_property(CACHE CXX_COMPILER_WARNING_LEVEL PROPERTY STRINGS ${CMAKE_CXX_COMPILER_WARNING_LEVELS})
 
 set(BOOST_MAJOR_VERSION "1" CACHE STRING "Boost libraries major version.")
-set(BOOST_MINOR_VERSION "73" CACHE STRING "Boost libraries minor version.")
+set(BOOST_MINOR_VERSION "75" CACHE STRING "Boost libraries minor version.")
 set(BOOST_PATCH_LEVEL "0" CACHE STRING "Boost libraries patch level.")
 set(BOOST_INCLUDEDIR $ENV{BOOST_LIBS_INCLUDE} CACHE STRING "Boost libraries include directory.")
 set(BOOST_LIBRARYDIR $ENV{BOOST_LIBS_STATIC_LINK} CACHE STRING "Boost libraries library directory.")

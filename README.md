@@ -37,7 +37,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.74.0** when developing the **GO C++ Libraries**.
+I currently use **Boost Libraries** version **1.75.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -46,10 +46,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_74_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_74_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_75_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_75_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 74
+ * **BOOST_MINOR_VERSION** = 75
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -75,7 +75,7 @@ The CMake configurations I use:
 **SETTING \ TOOLSET**      |clang 9.0.0|gcc 9.2.0|MSYS2 MinGW gcc 10.2.0|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
 ---------------------------|-----------|---------|---------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 | 74 
+**BOOST_MINOR_VERSION** | 75 | 75 | 75 | 75 | 75 | 75 | 75 | 75 | 75 | 75 | 75 
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | | | | X | 
