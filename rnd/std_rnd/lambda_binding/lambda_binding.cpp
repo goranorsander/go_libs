@@ -1,7 +1,7 @@
 //
 //  lambda_binding.cpp
 //
-//  Copyright 2019-2020 Göran Orsander
+//  Copyright 2019-2021 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.

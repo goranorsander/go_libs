@@ -1,7 +1,7 @@
 //
 //  iso_8859_1_test_suite.cpp
 //
-//  Copyright 2017-2020 Göran Orsander
+//  Copyright 2017-2021 Göran Orsander
 //
 //  This file is part of the GO.libraries.
 //  Distributed under the GO Software License, Version 2.0.
