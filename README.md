@@ -6,10 +6,10 @@ simply to big a task. I wanted a reasonably challenging idea for a hobby project
 implement an **MFC**-based application using the **MVVM** (Model–View–ViewModel) architecture pattern.
 This was the start of the **GO C++ Libraries**.
 
-The **GO C++ Libraries** have two main implementations. The first uses **C++11/14/17/2a** and the
+The **GO C++ Libraries** have two main implementations. The first uses **C++11/14/17/20** and the
 **C++ Standard Library**. The second uses **C++98/03** and the **Boost Libraries**. I find it
 interesting to do both implementations. Doing the first std-based implementation gives me the
-opportunety to learn about new **C++11/14/17/2a** features. The second boost-based implementation
+opportunety to learn about new **C++11/14/17/20** features. The second boost-based implementation
 broaden my knowledge of the **Boost Libraries**.
 
 Documentation for **GO C++ Libraries** is found at [goranorsander.github.io/go_libs](https://goranorsander.github.io/go_libs/).

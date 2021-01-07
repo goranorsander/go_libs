@@ -17,13 +17,13 @@ project(GO_LIBS)
 #Options-------------------------------------------------
 
 option(USE_SOLUTION_FOLDERS "Organise all projects into folders in your solution." ON)
-option(BUILD_STD_EXAMPLES "Build the GO libraries examples for std-implementation. Requires C++11/14/17/2a.")
-option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires MFC and C++11/14/17/2a.")
+option(BUILD_STD_EXAMPLES "Build the GO libraries examples for std-implementation. Requires C++11/14/17/20.")
+option(BUILD_STD_MFC_EXAMPLES "Build the GO libraries MFC examples for std-implementation. Requires MFC and C++11/14/17/20.")
 option(BUILD_BOOST_EXAMPLES "Build the GO libraries examples for boost-implementation. Requires the Boost libraries.")
 option(BUILD_BOOST_MFC_EXAMPLES "Build the GO libraries MFC examples for boost-implementation. Requires MFC and the Boost libraries.")
-option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++11/14/17/2a.")
+option(BUILD_STD_TESTS "Build the GO libraries unit tests for std-implementation. Uses the google test framework. Requires C++11/14/17/20.")
 option(BUILD_BOOST_TESTS "Build the GO libraries unit tests for boost-implementation. Uses the google test framework. Requires the Boost libraries.")
-option(BUILD_STD_RND "Build RnD applications for std-implementation. Uses the GO Std libraries. Requires C++11/14/17/2a.")
+option(BUILD_STD_RND "Build RnD applications for std-implementation. Uses the GO Std libraries. Requires C++11/14/17/20.")
 option(BUILD_BOOST_RND "Build RnD applications for boost-implementation. Uses the GO Boost libraries. Requires the Boost libraries.")
 option(ENABLE_SUPPRESS_WARNINGS "Enable the GO libraries macros to suppress warnings selectively" ON)
 
