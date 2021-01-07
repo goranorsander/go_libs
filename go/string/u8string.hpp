@@ -18,9 +18,9 @@
 #include <map>
 #include <string>
 
-#if defined(GO_NO_CXX2A_CHAR8_T)
+#if defined(GO_NO_CXX20_CHAR8_T)
 typedef unsigned char char8_t;
-#endif  // #if defined(GO_NO_CXX2A_CHAR8_T)
+#endif  // #if defined(GO_NO_CXX20_CHAR8_T)
 
 namespace go
 {

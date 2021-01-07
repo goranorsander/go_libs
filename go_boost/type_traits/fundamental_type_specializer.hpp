@@ -23,9 +23,9 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 #include <compare>
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 #include <go_boost/type_traits/detail/fundamental_type_specializer_base.hpp>
 
@@ -330,14 +330,14 @@ public:
         return this->_t >= t._t;
     }
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     constexpr auto operator<=>(this_const_reference t) const noexcept
     {
         return this->_t <=> t._t;
     }
 
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 

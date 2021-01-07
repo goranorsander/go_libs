@@ -18,9 +18,9 @@
 #include <cmath>
 #include <type_traits>
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 #include <compare>
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 #include <go/type_traits/detail/fundamental_type_specializer_base.hpp>
 
@@ -319,14 +319,14 @@ public:
         return this->_t >= t._t;
     }
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     constexpr auto operator<=>(this_const_reference t) const noexcept
     {
         return this->_t <=> t._t;
     }
 
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 

@@ -23,9 +23,9 @@
 #include <boost/core/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 #include <compare>
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 #include <go_boost/type_traits/detail/fundamental_type_implicit_specializer_base.hpp>
 
@@ -505,14 +505,14 @@ public:
         return this->_t >= t._t;
     }
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     constexpr auto operator<=>(this_const_reference t) const noexcept
     {
         return this->_t <=> t._t;
     }
 
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     template <typename P>
     GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_arithmetic<P>::value, bool>::type operator==(const P& p) const BOOST_NOEXCEPT_OR_NOTHROW
@@ -550,7 +550,7 @@ public:
         return this->_t >= static_cast<fundamental_type>(p);
     }
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     template <typename P>
     constexpr typename boost::enable_if_c<boost::is_arithmetic<P>::value && boost::is_integral<fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& p) const noexcept
@@ -564,7 +564,7 @@ public:
         return this->_t <=> static_cast<fundamental_type>(p);
     }
 
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
     // Integer type logical operators
 
@@ -769,7 +769,7 @@ inline GO_BOOST_CONSTEXPR typename boost::enable_if_c<boost::is_base_of<detail::
     return static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) >= rhs.get();
 }
 
-#if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 template<class FundamentalTypeSpecializer, typename P>
 inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundamental_type_implicit_specializer_base, FundamentalTypeSpecializer>::value && boost::is_arithmetic<P>::value && boost::is_integral<typename FundamentalTypeSpecializer::fundamental_type>::value, std::strong_ordering>::type operator<=>(const P& lhs, const FundamentalTypeSpecializer& rhs) noexcept
@@ -783,7 +783,7 @@ inline constexpr typename boost::enable_if_c<boost::is_base_of<detail::fundament
     return static_cast<typename FundamentalTypeSpecializer::fundamental_type>(lhs) <=> rhs.get();
 }
 
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 }
 }

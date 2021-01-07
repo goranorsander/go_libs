@@ -22,7 +22,7 @@ namespace utility
 
 #if !defined(GO_BOOST_NO_CXX11_RVALUE_REFERENCES)
 #if !defined(GO_BOOST_NO_CXX14_STD_EXCHANGE)
-#if !defined(GO_BOOST_NO_CXX2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
+#if !defined(GO_BOOST_NO_CXX20_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
 
 template<class T, class U = T>
 T exchange(T& obj, U&& new_value)
@@ -38,7 +38,7 @@ constexpr T exchange(T& obj, U&& new_value)
     return std::exchange<T, U>(obj, new_value);
 }
 
-#endif  // #if !defined(GO_BOOST_NO_CXX2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
+#endif  // #if !defined(GO_BOOST_NO_CXX20_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
 #else
 #if !defined(GO_BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
 

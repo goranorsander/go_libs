@@ -570,7 +570,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_EQ(true, comparison_result_3);
 }
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_integer_type_specializer_three_way_comparison_operator)
 {
@@ -589,7 +589,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_integer_type_specializer_
     EXPECT_TRUE(comparison_result_3 > zero);
 }
 
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_integer_type_specializer_pre_increment_operator)
 {
@@ -931,7 +931,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_EQ(true, comparison_result_3);
 }
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_three_way_comparison_operator)
 {
@@ -949,7 +949,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_floating_point_type_speci
     EXPECT_TRUE(std::is_gt(comparison_result_3));
 }
 
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_floating_point_type_specializer_pre_increment_operator)
 {
@@ -1825,7 +1825,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_three_way_comparison_operator)
 {
@@ -1878,7 +1878,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_implicit_integer_type_spe
     }
 }
 
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_implicit_integer_type_specializer_pre_increment_operator)
 {
@@ -2471,7 +2471,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-#if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_three_way_comparison_operator)
 {
@@ -2521,7 +2521,7 @@ TEST(std_fundamental_type_specializer_test_suite, test_implicit_floating_point_t
     }
 }
 
-#endif  // #if !defined(GO_NO_CXX2A_THREE_WAY_COMPARISON_OPERATOR)
+#endif  // #if !defined(GO_NO_CXX20_THREE_WAY_COMPARISON_OPERATOR)
 
 TEST(std_fundamental_type_specializer_test_suite, test_implicit_floating_point_type_specializer_pre_increment_operator)
 {
