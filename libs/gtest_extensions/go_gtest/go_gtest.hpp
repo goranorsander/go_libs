@@ -2,7 +2,7 @@
 #define GO_GTEST_GO_GTEST_HPP_INCLUDED
 
 //
-//  go_test.hpp
+//  go_gtest.hpp
 //
 //  Copyright 2019-2021 Göran Orsander
 //
