@@ -84,9 +84,9 @@ void properties_view::on_data_context_will_change()
     {
         if (data_context()->fleet_organization() && data_context()->fleet_organization()->spaceship_model())
         {
-            data_context()->fleet_organization()->spaceship_model()->equipment()->container_changed.disconnect(_on_data_context_container_changed_connection);
+            _on_data_context_container_changed_connection.disconnect();
         }
-        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
+        _on_data_context_property_changed_connection.disconnect();
     }
     m::data_context_interface<properties_view_model::ptr>::on_data_context_will_change();
 }

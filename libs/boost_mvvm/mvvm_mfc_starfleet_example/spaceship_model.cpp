@@ -15,7 +15,7 @@
 
 spaceship_model::~spaceship_model()
 {
-    _equipment->container_changed.disconnect(_on_equipment_container_changed_connection);
+    _on_equipment_container_changed_connection.disconnect();
 }
 
 spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_)

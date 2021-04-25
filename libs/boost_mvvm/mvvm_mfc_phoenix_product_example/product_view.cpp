@@ -21,7 +21,7 @@
 
 product_view::~product_view()
 {
-    m_product_view_model->data_context_changed.disconnect(m_data_context_changed_connection);
+    m_data_context_changed_connection.disconnect();
 }
 
 product_view::product_view(const m::wcommand_manager::ptr& command_manager, CWnd* pParent)

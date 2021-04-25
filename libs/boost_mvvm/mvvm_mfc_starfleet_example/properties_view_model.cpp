@@ -54,7 +54,7 @@ void properties_view_model::on_data_context_will_change()
 {
     if(data_context())
     {
-        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
+        _on_data_context_property_changed_connection.disconnect();
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_will_change();
     on_view_model_will_change();

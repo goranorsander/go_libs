@@ -21,7 +21,7 @@ fleet_organization_model::~fleet_organization_model()
     spaceship_model::ptr spaceship = boost::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.disconnect(_on_property_changed_connection);
+        _on_property_changed_connection.disconnect();
     }
 }
 
