@@ -11,7 +11,7 @@
 #include <go_boost/config.hpp>
 
 GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <go_gtest/go_test.hpp>
+#include <go_gtest/go_gtest.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #include <boost/thread/thread.hpp>

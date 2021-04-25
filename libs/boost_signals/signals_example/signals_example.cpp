@@ -43,7 +43,7 @@ public:
     {
         fleet_commander::ptr commander = _fleet_commander.lock();
         if (commander)
-            commander->fire_lasers.disconnect(_fire_lasers_connection);
+            _fire_lasers_connection.disconnect();
     }
 
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_)

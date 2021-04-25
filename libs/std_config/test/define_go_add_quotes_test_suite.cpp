@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <go_gtest/go_test.hpp>
+#include <go_gtest/go_gtest.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #define GO_TEST_DEFINE_VALUE abc123

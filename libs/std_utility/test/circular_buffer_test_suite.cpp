@@ -11,7 +11,7 @@
 #include <go/config.hpp>
 
 GO_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <go_gtest/go_test.hpp>
+#include <go_gtest/go_gtest.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_STATIC_CONST_DATA_MEMBER_INSIDE_CLASS_DEFINITION)
