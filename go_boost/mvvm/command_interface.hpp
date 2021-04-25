@@ -126,88 +126,88 @@ inline basic_command_interface<S, L>::basic_command_interface(const S& cmd_name,
     , _command_name(cmd_name)
     , _parameters(params)
 {
-    command_name.getter(boost::bind(&this_type::get_command_name, this));
+    this->command_name.getter(boost::bind(&this_type::get_command_name, this));
 }
 
 template<>
 inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, boost::recursive_mutex>::parameters() const
 {
-    return _parameters;
+    return this->_parameters;
 }
 
 template<>
 inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, boost::recursive_mutex>::parameters() const
 {
-    return _parameters;
+    return this->_parameters;
 }
 
 template<>
 inline boost::shared_ptr<command_parameters> basic_command_interface<std::string, go_boost::async::placebo_lockable>::parameters() const
 {
-    return _parameters;
+    return this->_parameters;
 }
 
 template<>
 inline boost::shared_ptr<command_parameters> basic_command_interface<std::wstring, go_boost::async::placebo_lockable>::parameters() const
 {
-    return _parameters;
+    return this->_parameters;
 }
 
 template<class S, class L>
 inline boost::shared_ptr<command_parameters> basic_command_interface<S, L>::parameters() const
 {
-    return _parameters;
+    return this->_parameters;
 }
 
 template<>
 inline void basic_command_interface<std::string, boost::recursive_mutex>::notify_can_execute_changed()
 {
-    if(!can_execute_changed.empty())
+    if(!this->can_execute_changed.empty())
     {
-        can_execute_changed(this->shared_from_this());
+        this->can_execute_changed(this->shared_from_this());
     }
 }
 
 template<>
 inline void basic_command_interface<std::wstring, boost::recursive_mutex>::notify_can_execute_changed()
 {
-    if(!can_execute_changed.empty())
+    if(!this->can_execute_changed.empty())
     {
-        can_execute_changed(this->shared_from_this());
+        this->can_execute_changed(this->shared_from_this());
     }
 }
 
 template<>
 inline void basic_command_interface<std::string, go_boost::async::placebo_lockable>::notify_can_execute_changed()
 {
-    if (!can_execute_changed.empty())
+    if (!this->can_execute_changed.empty())
     {
-        can_execute_changed(this->shared_from_this());
+        this->can_execute_changed(this->shared_from_this());
     }
 }
 
 template<>
 inline void basic_command_interface<std::wstring, go_boost::async::placebo_lockable>::notify_can_execute_changed()
 {
-    if (!can_execute_changed.empty())
+    if (!this->can_execute_changed.empty())
     {
-        can_execute_changed(this->shared_from_this());
+        this->can_execute_changed(this->shared_from_this());
     }
 }
 
 template<class S, class L>
 inline void basic_command_interface<S, L>::notify_can_execute_changed()
 {
-    if(!can_execute_changed.empty())
+    if(!this->can_execute_changed.empty())
     {
-        can_execute_changed(this->shared_from_this());
+        this->can_execute_changed(this->shared_from_this());
     }
 }
 
 template<class S, class L>
 inline S basic_command_interface<S, L>::get_command_name() const
 {
-    return _command_name;
+    return this->_command_name;
 }
 
 } // namespace mvvm
