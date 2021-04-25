@@ -20,6 +20,7 @@
 #include <string>
 #include <boost/phoenix/phoenix.hpp>
 #include <go_boost/async/placebo_lockable.hpp>
+#include <go_boost/mvvm/relay_command.hpp>
 #include <go_boost/string/u8string.hpp>
 #include <go_boost/string/u16string.hpp>
 #include <go_boost/string/u32string.hpp>
