@@ -183,7 +183,7 @@
 #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 #define GO_USING(_alias_, _type_) typedef _type_ _alias_
 #else
-#define GO_USING(_alias_, _type_) using _alias_ = _type_;
+#define GO_USING(_alias_, _type_) using _alias_ = _type_
 #endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 
 // C++14 support
