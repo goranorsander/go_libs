@@ -281,7 +281,7 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
         set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     endif(MSVC)
 
-    # Properly disable phtreads when compiling with
+    # Properly disable pthreads when compiling with
     # MSYS/MinGW on Windows
     if(MSYS OR MINGW)
         set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
@@ -296,12 +296,14 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
     set(GTEST_EXTENSIONS_INCLUDE_DIR ${GO_LIBS_SOURCE_DIR}/libs/gtest_extensions)
 
+    set(TEST_FRAMEWORK_INCLUDE_DIR ${GO_LIBS_SOURCE_DIR}/libs/test_framework)
+
     # Add googletest directly to our build. This adds
     # the following targets: gtest, gtest_main, gmock
     # and gmock_main
     add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src ${CMAKE_BINARY_DIR}/googletest-build)
 
-    include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR} ${GTEST_EXTENSIONS_INCLUDE_DIR})
+    include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR} ${GTEST_EXTENSIONS_INCLUDE_DIR} ${TEST_FRAMEWORK_INCLUDE_DIR})
     link_directories(${GTEST_LIBS_DIR} ${GMOCK_LIBS_DIR})
 
 endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)

@@ -11,87 +11,22 @@
 #include <go_boost/config.hpp>
 
 GO_BOOST_BEGIN_SUPPRESS_ALL_WARNINGS
-#include <go_gtest/go_test.hpp>
+#include <go_gtest/go_gtest.hpp>
 GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
-#include <go_boost/mvvm.hpp>
-#include <go_boost/namespace_alias.hpp>
-#include <go_boost/string.hpp>
+#include <go_boost_test/test_command.hpp>
+#include <go_boost_test/test_command_observer.hpp>
+#include <go_boost_test/test_command_traits.hpp>
 
 namespace
 {
 
-const s::u8string TEST_COMMAND_NAME(s::create<s::u8string>("test command"));
+using string_type = s::u8string;
+using test_command_traits = go_boost_test::u8test_command_traits<string_type>;
+using test_command = go_boost_test::test_command<test_command_traits>;
+using test_command_observer = go_boost_test::test_command_observer<test_command_traits>;
 
-class test_command
-    : public m::basic_command_interface<s::u8string>
-{
-public:
-    virtual ~test_command() GO_BOOST_DEFAULT_DESTRUCTOR
-
-    test_command()
-        : m::basic_command_interface<s::u8string>(TEST_COMMAND_NAME, m::basic_command_interface<s::u8string>::command_parameters_type())
-        , _allow_execute(false)
-        , _executed(false)
-    {
-    }
-
-    virtual bool can_execute(const boost::shared_ptr<m::command_parameters>& /*params*/) GO_BOOST_OVERRIDE
-    {
-        return _allow_execute && !_executed;
-    }
-
-    virtual void execute(const boost::shared_ptr<m::command_parameters>& params) GO_BOOST_OVERRIDE
-    {
-        if(can_execute(params))
-        {
-            _executed = true;
-            if(!can_execute(params))
-            {
-                can_execute_changed(this->shared_from_this());
-            }
-        }
-    }
-
-    bool allow_execute() const { return _allow_execute; }
-
-    void allow_execute(const bool v)
-    {
-        const bool can_execute_ = can_execute(m::basic_command_interface<s::u8string>::command_parameters_type());
-        _allow_execute = v;
-        if(can_execute_ != can_execute(m::basic_command_interface<s::u8string>::command_parameters_type()))
-        {
-            can_execute_changed(this->shared_from_this());
-        }
-    }
-
-    bool executed() const { return _executed; }
-
-private:
-    bool _allow_execute;
-    bool _executed;
-};
-
-class test_command_observer
-{
-public:
-    virtual ~test_command_observer() GO_BOOST_DEFAULT_DESTRUCTOR
-
-    test_command_observer()
-        : _number_of_can_execute_changes(0)
-    {
-    }
-
-    void on_can_execute_changed(const boost::shared_ptr<m::basic_command_interface<s::u8string>>& /*c*/)
-    {
-        ++_number_of_can_execute_changes;
-    }
-
-    unsigned int number_of_can_execute_changes() const { return _number_of_can_execute_changes; }
-
-private:
-    unsigned int _number_of_can_execute_changes;
-};
+const s::u8string TEST_COMMAND_NAME(s::create<string_type>("test command"));
 
 TEST(boost_basic_command_test_suite, test_command)
 {
