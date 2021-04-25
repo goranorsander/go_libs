@@ -25,7 +25,7 @@ struct spaceship_event_type
     typedef spaceship_event_type<S> this_type;
     typedef S string_identifier_type;
 
-    static constexpr const string_identifier_type& fleet_commander_changed()
+    static GO_BOOST_EXTENDED_CONSTEXPR const string_identifier_type& fleet_commander_changed()
     {
         static const string_identifier_type e = s::create<string_identifier_type>("fleet commander changed");
         return e;
