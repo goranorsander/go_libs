@@ -481,7 +481,7 @@ GO_BOOST_NOEXCEPT_OR_NOTHROW | noexcept
 GO_BOOST_NULLPTR | nullptr
 GO_BOOST_OVERRIDE | override
 GO_BOOST_TYPENAME | typename
-GO_BOOST_USING(\_alias\_, \_type\_) | using \_alias\_ = \_type\_;
+GO_BOOST_USING(\_alias\_, \_type\_) | using \_alias\_ = \_type\_
 
 ## Utility macros
 

@@ -488,7 +488,7 @@ GO_NOEXCEPT_OR_NOTHROW | noexcept
 GO_NULLPTR | nullptr
 GO_OVERRIDE | override
 GO_TYPENAME | typename
-GO_USING(\_alias\_, \_type\_) | using \_alias\_ = \_type\_;
+GO_USING(\_alias\_, \_type\_) | using \_alias\_ = \_type\_
 
 ## Utility macros
 
