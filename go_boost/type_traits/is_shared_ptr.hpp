@@ -36,7 +36,7 @@ template <typename T> struct is_shared_ptr<boost::shared_ptr<T>>
 {
 };
 
-#if !defined(GO_BOOST_NO_CXX11)
+#if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 template <typename T> struct is_std_shared_ptr
     : public boost::false_type
@@ -48,7 +48,7 @@ template <typename T> struct is_std_shared_ptr<std::shared_ptr<T>>
 {
 };
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 }
 }

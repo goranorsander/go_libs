@@ -30,14 +30,14 @@ template <typename T> struct is_unique_ptr
 {
 };
 
-#if !defined(GO_BOOST_NO_CXX11)
+#if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 template <typename T> struct is_unique_ptr<std::unique_ptr<T>>
     : public boost::true_type
 {
 };
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 }
 }

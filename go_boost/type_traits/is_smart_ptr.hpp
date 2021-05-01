@@ -75,7 +75,7 @@ template <typename T> struct is_smart_ptr<std::auto_ptr<T>>
 
 #endif  // #if !defined(GO_BOOST_NO_STD_AUTO_PTR)
 
-#if !defined(GO_BOOST_NO_CXX11)
+#if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 template <typename T> struct is_smart_ptr<std::shared_ptr<T>>
     : public boost::true_type
@@ -92,7 +92,7 @@ template <typename T> struct is_smart_ptr<std::weak_ptr<T>>
 {
 };
 
-#endif  // #if !defined(GO_BOOST_NO_CXX11)
+#endif  // #if !defined(GO_BOOST_NO_CXX11_NULLPTR)
 
 }
 }

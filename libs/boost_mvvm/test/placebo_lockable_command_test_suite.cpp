@@ -21,10 +21,14 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
-using string_type = std::string;
+GO_BOOST_USING(string_type, std::string);
+#if defined(GO_BOOST_NO_CXX11_TEMPLATE_ALIASES)
+typedef go_boost_test::test_command_traits<string_type, a::placebo_lockable> test_command_traits;
+#else
 using test_command_traits = go_boost_test::test_command_traits<string_type, a::placebo_lockable>;
-using test_command = go_boost_test::test_command<test_command_traits>;
-using test_command_observer = go_boost_test::test_command_observer<test_command_traits>;
+#endif  // #if defined(GO_BOOST_NO_CXX11_TEMPLATE_ALIASES)
+GO_BOOST_USING(test_command, go_boost_test::test_command<test_command_traits>);
+GO_BOOST_USING(test_command_observer, go_boost_test::test_command_observer<test_command_traits>);
 
 const std::string TEST_COMMAND_NAME(s::create<string_type>("test command"));
 
