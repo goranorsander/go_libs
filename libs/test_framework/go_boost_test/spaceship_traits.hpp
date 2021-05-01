@@ -43,7 +43,7 @@ struct spaceship_traits
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef read_only_command_property_type::value_type command_value_type;
+    typedef typename read_only_command_property_type::value_type command_value_type;
     typedef command_value_type command_ptr;
 
     // Event types
@@ -80,7 +80,7 @@ struct wspaceship_traits
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef read_only_command_property_type::value_type command_value_type;
+    typedef typename read_only_command_property_type::value_type command_value_type;
     typedef command_value_type command_ptr;
 
     // Event types
@@ -117,7 +117,7 @@ struct u8spaceship_traits
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef read_only_command_property_type::value_type command_value_type;
+    typedef typename read_only_command_property_type::value_type command_value_type;
     typedef command_value_type command_ptr;
 
     // Event types
