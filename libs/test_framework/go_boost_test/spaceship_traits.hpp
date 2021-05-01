@@ -38,13 +38,13 @@ struct spaceship_traits
     typedef pro::value_property<string_value_type, lockable_type> read_only_string_value_property_type;
 
     // Observable object types
-    typedef m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
+    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
     typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef typename command_value_type command_ptr;
+    typedef read_only_command_property_type::value_type command_value_type;
+    typedef command_value_type command_ptr;
 
     // Event types
     typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;
@@ -75,13 +75,13 @@ struct wspaceship_traits
     typedef pro::value_wproperty<string_value_type, lockable_type> read_only_string_value_property_type;
 
     // Observable object types
-    typedef m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
+    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
     typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef typename command_value_type command_ptr;
+    typedef read_only_command_property_type::value_type command_value_type;
+    typedef command_value_type command_ptr;
 
     // Event types
     typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;
@@ -112,13 +112,13 @@ struct u8spaceship_traits
     typedef pro::value_u8property<string_value_type, lockable_type> read_only_string_value_property_type;
 
     // Observable object types
-    typedef m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
+    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
     typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
     typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef typename command_value_type command_ptr;
+    typedef read_only_command_property_type::value_type command_value_type;
+    typedef command_value_type command_ptr;
 
     // Event types
     typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;

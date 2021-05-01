@@ -26,7 +26,7 @@ class test_command_execution_observer
 {
 public:
     typedef test_command_execution_observer<Traits> this_type;
-    typedef m::basic_command_execution_observer_interface<typename Traits::string_identifier_type, typename Traits::lockable_type> base_type;
+    typedef typename m::basic_command_execution_observer_interface<typename Traits::string_identifier_type, typename Traits::lockable_type> base_type;
 
     typedef Traits traits_type;
     typedef typename traits_type::string_value_type string_value_type;

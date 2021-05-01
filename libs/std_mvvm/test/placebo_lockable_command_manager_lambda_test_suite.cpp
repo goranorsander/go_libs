@@ -166,7 +166,7 @@ public:
             if(ship)
             {
                 const ship_and_property_type ship_and_property(ship->name(), a->property_name());
-                const on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
+                const typename on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
                 if(it == _on_property_changed_count.end())
                 {
                     _on_property_changed_count[ship_and_property] = 1;
@@ -182,7 +182,7 @@ public:
     unsigned int get_on_property_changed_count(const std::string& ship_name, const std::string& property_name) const
     {
         const ship_and_property_type ship_and_property(ship_name, property_name);
-        const on_property_changed_counter_type::const_iterator it = _on_property_changed_count.find(ship_and_property);
+        const typename on_property_changed_counter_type::const_iterator it = _on_property_changed_count.find(ship_and_property);
         if(it == _on_property_changed_count.end())
         {
             return 0;

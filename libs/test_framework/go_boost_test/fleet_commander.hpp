@@ -34,7 +34,7 @@ public:
     typedef typename event_manager_type::ptr event_manager_ptr;
     typedef typename event_manager_type::wptr event_manager_wptr;
     typedef typename event_manager_type::string_type string_identifier_type;
-    typedef typename fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
+    typedef fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
     typedef typename fleet_commander_changed_event_type::ptr fleet_commander_changed_event_ptr;
 
 public:

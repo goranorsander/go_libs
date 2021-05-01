@@ -14,6 +14,7 @@
 #include <go_boost/config.hpp>
 
 #include <go_boost/mvvm/utility.hpp>
+#include <go_boost/type_traits/identity.hpp>
 #include <go_boost_test/spaceship.hpp>
 
 namespace go_boost_test
@@ -310,10 +311,19 @@ public:
 
 protected:
     template <class S>
-    void bind_properties(const S&);
+    void bind_properties(const S&)
+    {
+        this->bind_properties(tt::identity<S>());
+    }
 
-    template <>
-    void bind_properties(const std::string&)
+private:
+    template <class S>
+    void bind_properties(const tt::identity<S>)
+    {
+        throw std::domain_error("Unsupported string class");
+    }
+
+    void bind_properties(const tt::identity<std::string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -328,8 +338,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(must::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const std::wstring&)
+    void bind_properties(const tt::identity<std::wstring>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -344,8 +353,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(must::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u8string&)
+    void bind_properties(const tt::identity<s::u8string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -360,8 +368,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(must::get_u8property_relay_u8command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u16string&)
+    void bind_properties(const tt::identity<s::u16string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -376,8 +383,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(must::get_u16property_relay_u16command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u32string&)
+    void bind_properties(const tt::identity<s::u32string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -470,10 +476,19 @@ public:
 
 protected:
     template <class S>
-    void bind_properties(const S&);
+    void bind_properties(const S&)
+    {
+        this->bind_properties(tt::identity<S>());
+    }
 
-    template <>
-    void bind_properties(const std::string&)
+private:
+    template <class S>
+    void bind_properties(const tt::identity<S>)
+    {
+        throw std::domain_error("Unsupported string class");
+    }
+
+    void bind_properties(const tt::identity<std::string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -488,8 +503,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(mu::get_property_relay_command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const std::wstring&)
+    void bind_properties(const tt::identity<std::wstring>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -504,8 +518,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(mu::get_wproperty_relay_wcommand, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u8string&)
+    void bind_properties(const tt::identity<s::u8string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -520,8 +533,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(mu::get_u8property_relay_u8command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u16string&)
+    void bind_properties(const tt::identity<s::u16string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));
@@ -536,8 +548,7 @@ protected:
         this->warp_speed_command.getter(bp::bind(mu::get_u16property_relay_u16command, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(s::create<string_identifier_type>("warp_speed"), boost::bind(&this_type::go_to_warp, this, boost::placeholders::_1), boost::bind(&this_type::can_go_to_warp, this, boost::placeholders::_1), m::command_parameters::create(), bp::ref(this->_warp_speed_command)));
     }
 
-    template <>
-    void bind_properties(const s::u32string&)
+    void bind_properties(const tt::identity<s::u32string>)
     {
         this->name.getter(bp::bind(mu::get_property_value, bph::arg1)(bp::cref(this->_name)));
         this->name.setter(bp::bind(mu::set_property_value_notify_changed, bph::arg1, bph::arg2, bph::arg3, bph::arg4, bph::arg5)(this->shared_from_this(), this->name.name(), boost::bind(&this_type::notify_property_changed, this, boost::placeholders::_1, boost::placeholders::_2), bp::ref(this->_name), bph::arg1, bph::arg2));

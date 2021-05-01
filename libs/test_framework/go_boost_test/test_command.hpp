@@ -26,7 +26,7 @@ class test_command
 {
 public:
     typedef test_command<Traits> this_type;
-    typedef m::basic_command_interface<typename Traits::string_identifier_type, typename Traits::lockable_type> base_type;
+    typedef typename m::basic_command_interface<typename Traits::string_identifier_type, typename Traits::lockable_type> base_type;
     typedef typename boost::shared_ptr<this_type> ptr;
     typedef typename boost::weak_ptr<this_type> wptr;
 
@@ -46,7 +46,7 @@ public:
     virtual ~test_command() GO_BOOST_DEFAULT_DESTRUCTOR
 
     test_command()
-        : base_type(this_type::name(), base_type::command_parameters_type())
+        : base_type(this_type::name(), typename base_type::command_parameters_type())
         , _allow_execute(false)
         , _executed(false)
     {
@@ -73,9 +73,9 @@ public:
 
     void allow_execute(const bool v)
     {
-        const bool can_execute_ = this->can_execute(base_type::command_parameters_type());
+        const bool can_execute_ = this->can_execute(typename base_type::command_parameters_type());
         this->_allow_execute = v;
-        if (can_execute_ != this->can_execute(base_type::command_parameters_type()))
+        if (can_execute_ != this->can_execute(typename base_type::command_parameters_type()))
         {
             this->can_execute_changed(this->shared_from_this());
         }

@@ -39,7 +39,7 @@ public:
     typedef typename traits_type::read_only_string_property_type read_only_string_property_type;
     typedef typename traits_type::read_only_string_value_property_type read_only_string_value_property_type;
     typedef typename traits_type::command_value_type command_value_type;
-    typedef typename command_value_type command_ptr;
+    typedef typename traits_type::command_ptr command_ptr;
     typedef typename traits_type::fleet_commander_changed_event_type fleet_commander_changed_event_type;
     typedef typename traits_type::fleet_commander_changed_event_ptr fleet_commander_changed_event_ptr;
     typedef typename traits_type::event_type event_type;

@@ -65,7 +65,7 @@ public:
             if(ship)
             {
                 const ship_and_property_type ship_and_property(ship->name(), a->property_name());
-                const on_property_changed_counter_type::iterator it = this->_property_changed_count.find(ship_and_property);
+                const typename on_property_changed_counter_type::iterator it = this->_property_changed_count.find(ship_and_property);
                 if(it == this->_property_changed_count.end())
                 {
                     this->_property_changed_count[ship_and_property] = 1;
@@ -81,7 +81,7 @@ public:
     unsigned int get_property_changed_count(const string_identifier_type& ship_name, const string_identifier_type& property_name) const
     {
         const ship_and_property_type ship_and_property(ship_name, property_name);
-        const on_property_changed_counter_type::const_iterator it = this->_property_changed_count.find(ship_and_property);
+        const typename on_property_changed_counter_type::const_iterator it = this->_property_changed_count.find(ship_and_property);
         if(it == this->_property_changed_count.end())
         {
             return 0;
