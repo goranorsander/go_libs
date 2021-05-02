@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2020-07-21 at 17:06:58 with result:
+Test suites *AllTests* with 32 test cases was executed 2021-05-02 at 17:07:36 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.017 seconds.
+Test suites execution took 0.023 seconds.
 
 # Details
 
@@ -31,7 +31,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_not_define_go_boost_address_model_32 | 0.001
+test_not_define_go_boost_address_model_32 | 0
 test_define_go_boost_address_model_64 | 0
 test_pointer_size | 0
 
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.01 seconds.
+Test suite execution took 0.014 seconds.
 
 ### Successful test cases
 
@@ -81,7 +81,7 @@ Test suite *boost_define_go_boost_message_test_suite* with 1 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -118,4 +118,4 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_define_go_boost_typename | 0
+test_define_go_boost_typename | 0.001

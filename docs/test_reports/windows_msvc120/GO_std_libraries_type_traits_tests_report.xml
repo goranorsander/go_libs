@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="122" failures="0" disabled="0" errors="0" timestamp="2020-07-21T17:06:54" time="0.093" name="AllTests">
-  <testsuite name="std_fundamental_type_specializer_test_suite" tests="122" failures="0" disabled="0" errors="0" time="0.091">
+<testsuites tests="122" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:32" time="0.101" name="AllTests">
+  <testsuite name="std_fundamental_type_specializer_test_suite" tests="122" failures="0" disabled="0" errors="0" time="0.099">
     <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
@@ -37,7 +37,7 @@
     <testcase name="test_integer_type_specializer_post_increment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_pre_decrement_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_integer_type_specializer_post_decrement_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_default_value" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_default_value" status="run" time="0.001" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_construction" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_get_set" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />
     <testcase name="test_floating_point_type_specializer_simple_assignment_operator" status="run" time="0" classname="std_fundamental_type_specializer_test_suite" />

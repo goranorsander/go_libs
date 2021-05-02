@@ -5,17 +5,17 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* MSYS2 64bit 20161025
-* gcc (Rev2, Built by MSYS2 project) 7.3.0
+* MSYS2 64bit 20200720
+* gcc (Rev2, Built by MSYS2 project) 9.3.0
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2020-07-21 at 17:06:25 with result:
+Test suites *AllTests* with 6 test cases was executed 2021-05-02 at 17:07:05 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.079 seconds.
+Test suites execution took 0.07 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_exception_test_suite* with 6 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.062 seconds.
+Test suite execution took 0.055 seconds.
 
 ### Successful test cases
 

@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 11 test cases was executed 2020-07-21 at 17:06:56 with result:
+Test suites *AllTests* with 11 test cases was executed 2021-05-02 at 17:07:34 with result:
 
 * 0 errors
 * 0 failures
@@ -83,4 +83,4 @@ Test case|Execution time
 -|-
 test_spin_lock | 0
 test_spin_lock_lock_guard | 0
-test_spin_lock_two_threads | 0.004
+test_spin_lock_two_threads | 0

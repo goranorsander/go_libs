@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-07-21 at 17:07:00 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-05-02 at 17:07:38 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.075 seconds.
+Test suites execution took 0.077 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.075 seconds.
+Test suite execution took 0.074 seconds.
 
 ### Successful test cases
 
@@ -79,7 +79,7 @@ test_floating_point_type_specializer_multiplication_assignment_operator | 0
 test_floating_point_type_specializer_division_assignment_operator | 0
 test_floating_point_type_specializer_modulo_assignment_operator | 0
 test_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
-test_floating_point_type_specializer_unary_minus_arithmetic_operator | 0
+test_floating_point_type_specializer_unary_minus_arithmetic_operator | 0.001
 test_floating_point_type_specializer_addition_arithmetic_operator | 0
 test_floating_point_type_specializer_subtraction_arithmetic_operator | 0
 test_floating_point_type_specializer_multiplication_arithmetic_operator | 0

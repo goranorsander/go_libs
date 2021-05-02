@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2020-07-21 at 17:06:45 with result:
+Test suites *AllTests* with 8 test cases was executed 2021-05-02 at 17:07:23 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.01 seconds.
+Test suites execution took 0.014 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_circular_buffer_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -40,7 +40,7 @@ Test suite *std_container_size_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -91,7 +91,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_scope_guard_new | 0.001
+test_scope_guard_new | 0
 
 ## std_scope_guard_test_suite
 
@@ -100,7 +100,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -115,7 +115,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 1 test cases was exe
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

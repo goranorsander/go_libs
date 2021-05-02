@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 122 test cases was executed 2020-07-21 at 17:06:52 with result:
+Test suites *AllTests* with 122 test cases was executed 2021-05-02 at 17:07:30 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.092 seconds.
+Test suites execution took 0.099 seconds.
 
 # Details
 
@@ -25,18 +25,18 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 122 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.091 seconds.
+Test suite execution took 0.098 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_explicit_integer_type_specializer | 0
+test_explicit_integer_type_specializer | 0.001
 test_integer_type_specializer_default_value | 0
 test_integer_type_specializer_construction | 0
 test_integer_type_specializer_get_set | 0
 test_integer_type_specializer_simple_assignment_operator | 0
-test_integer_type_specializer_addition_assignment_operator | 0.001
+test_integer_type_specializer_addition_assignment_operator | 0
 test_integer_type_specializer_subtraction_assignment_operator | 0
 test_integer_type_specializer_multiplication_assignment_operator | 0
 test_integer_type_specializer_division_assignment_operator | 0
@@ -98,7 +98,7 @@ test_implicit_integer_type_specializer_construction | 0
 test_implicit_integer_type_specializer_get_set | 0
 test_implicit_integer_type_specializer_simple_assignment_operator | 0
 test_implicit_integer_type_specializer_addition_assignment_operator | 0
-test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
+test_implicit_integer_type_specializer_subtraction_assignment_operator | 0.001
 test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
 test_implicit_integer_type_specializer_division_assignment_operator | 0
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
@@ -137,7 +137,7 @@ test_implicit_floating_point_type_specializer_subtraction_assignment_operator | 
 test_implicit_floating_point_type_specializer_multiplication_assignment_operator | 0
 test_implicit_floating_point_type_specializer_division_assignment_operator | 0
 test_implicit_floating_point_type_specializer_modulo_assignment_operator | 0
-test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator | 0.001
+test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_addition_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator | 0

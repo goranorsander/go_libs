@@ -5,17 +5,17 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* MSYS2 64bit 20161025
-* gcc (Rev2, Built by MSYS2 project) 7.3.0
+* MSYS2 64bit 20200720
+* gcc (Rev2, Built by MSYS2 project) 9.3.0
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-07-21 at 17:06:34 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-05-02 at 17:07:14 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 1.963 seconds.
+Test suites execution took 1.974 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 1.941 seconds.
+Test suite execution took 1.959 seconds.
 
 ### Successful test cases
 
@@ -47,7 +47,7 @@ test_integer_type_specializer_bitwise_or_assignment_operator | 0
 test_integer_type_specializer_bitwise_xor_assignment_operator | 0
 test_integer_type_specializer_bitwise_left_shift_assignment_operator | 0
 test_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
-test_integer_type_specializer_unary_plus_arithmetic_operator | 0
+test_integer_type_specializer_unary_plus_arithmetic_operator | 0.001
 test_integer_type_specializer_unary_minus_arithmetic_operator | 0
 test_integer_type_specializer_addition_arithmetic_operator | 0
 test_integer_type_specializer_subtraction_arithmetic_operator | 0
@@ -59,7 +59,7 @@ test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0.001
+test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_integer_type_specializer_equal_to_comparison_operator | 0
 test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
@@ -119,10 +119,10 @@ test_implicit_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_implicit_integer_type_specializer_division_arithmetic_operator | 0
 test_implicit_integer_type_specializer_modulo_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator | 0
-test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
-test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0.001
+test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
 test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_implicit_integer_type_specializer_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_not_equal_to_comparison_operator | 0
@@ -131,13 +131,13 @@ test_implicit_integer_type_specializer_greater_than_comparison_operator | 0
 test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_implicit_integer_type_specializer_pre_increment_operator | 0
-test_implicit_integer_type_specializer_post_increment_operator | 0
+test_implicit_integer_type_specializer_post_increment_operator | 0.001
 test_implicit_integer_type_specializer_pre_decrement_operator | 0
 test_implicit_integer_type_specializer_post_decrement_operator | 0
 test_implicit_floating_point_type_specializer_default_value | 0
 test_implicit_floating_point_type_specializer_construction | 0
 test_implicit_floating_point_type_specializer_get_set | 0
-test_implicit_floating_point_type_specializer_simple_assignment_operator | 0.001
+test_implicit_floating_point_type_specializer_simple_assignment_operator | 0
 test_implicit_floating_point_type_specializer_addition_assignment_operator | 0
 test_implicit_floating_point_type_specializer_subtraction_assignment_operator | 0
 test_implicit_floating_point_type_specializer_multiplication_assignment_operator | 0
@@ -146,7 +146,7 @@ test_implicit_floating_point_type_specializer_modulo_assignment_operator | 0
 test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_unary_minus_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_addition_arithmetic_operator | 0
-test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator | 0.001
+test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_division_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_modulo_arithmetic_operator | 0

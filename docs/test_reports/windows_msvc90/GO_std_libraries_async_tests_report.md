@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 4 test cases was executed 2020-07-21 at 17:06:39 with result:
+Test suites *AllTests* with 4 test cases was executed 2021-05-02 at 17:07:19 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.015 seconds.
+Test suites execution took 0.006 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_monitor_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -55,7 +55,7 @@ Test suite *std_recursive_spin_lock_test_suite* with 1 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2020-07-21 at 17:06:40 with result:
+Test suites *AllTests* with 33 test cases was executed 2021-05-02 at 17:07:19 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.066 seconds.
+Test suites execution took 0.028 seconds.
 
 # Details
 
@@ -40,7 +40,7 @@ Test suite *std_define_go_address_model_test_suite* with 3 test cases was execut
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -57,14 +57,14 @@ Test suite *std_define_go_compiler_test_suite* with 25 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.041 seconds.
+Test suite execution took 0.02 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_not_define_go_clang_version | 0
-test_not_define_go_comp_clang | 0.001
+test_not_define_go_comp_clang | 0
 test_not_define_go_comp_gcc | 0
 test_not_define_go_comp_gcc_mingw | 0
 test_define_go_comp_msvc | 0
@@ -111,13 +111,13 @@ Test suite *std_define_go_platform_test_suite* with 2 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_define_go_platform_windows | 0.001
+test_define_go_platform_windows | 0
 test_not_define_go_platform_linux | 0
 
 ## std_define_go_typename_test_suite

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="26" failures="0" disabled="0" errors="0" timestamp="2020-07-21T17:06:39" time="0.055" name="AllTests">
-  <testsuite name="boost_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.008">
+<testsuites tests="26" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:19" time="0.025" name="AllTests">
+  <testsuite name="boost_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_size_on_deque" status="run" time="0" classname="boost_container_size_test_suite" />
     <testcase name="test_size_on_list" status="run" time="0" classname="boost_container_size_test_suite" />
     <testcase name="test_size_on_vector" status="run" time="0" classname="boost_container_size_test_suite" />
     <testcase name="test_size_on_map" status="run" time="0" classname="boost_container_size_test_suite" />
     <testcase name="test_size_on_set" status="run" time="0" classname="boost_container_size_test_suite" />
   </testsuite>
-  <testsuite name="boost_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.009">
+  <testsuite name="boost_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.004">
     <testcase name="test_erase_iterator_on_deque" status="run" time="0" classname="boost_erase_iterator_test_suite" />
-    <testcase name="test_erase_iterator_on_list" status="run" time="0.001" classname="boost_erase_iterator_test_suite" />
+    <testcase name="test_erase_iterator_on_list" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_vector" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_map" status="run" time="0" classname="boost_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_set" status="run" time="0" classname="boost_erase_iterator_test_suite" />
@@ -20,7 +20,7 @@
   <testsuite name="boost_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_scope_guard" status="run" time="0" classname="boost_scope_guard_test_suite" />
   </testsuite>
-  <testsuite name="boost_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.024">
+  <testsuite name="boost_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.011">
     <testcase name="test_try_move_backward_on_array" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_deque" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_forward_list" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
@@ -29,7 +29,7 @@
     <testcase name="test_try_move_backward_on_map" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_set" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_multimap" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
-    <testcase name="test_try_move_backward_on_multiset" status="run" time="0.001" classname="boost_try_move_iterator_backward_test_suite" />
+    <testcase name="test_try_move_backward_on_multiset" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_map" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_set" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_unordered_multimap" status="run" time="0" classname="boost_try_move_iterator_backward_test_suite" />

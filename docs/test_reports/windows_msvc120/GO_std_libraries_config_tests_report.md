@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2020-07-21 at 17:06:52 with result:
+Test suites *AllTests* with 33 test cases was executed 2021-05-02 at 17:07:31 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.024 seconds.
+Test suites execution took 0.026 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_define_go_add_quotes_test_suite* with 1 test cases was executed 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -127,7 +127,7 @@ Test suite *std_define_go_typename_test_suite* with 1 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
