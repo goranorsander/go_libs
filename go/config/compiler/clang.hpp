@@ -12,7 +12,7 @@
 //
 
 #include <go/config.hpp>
-include <go / config / preprocessor.hpp>
+#include <go/config/preprocessor.hpp>
 
 #if defined(__clang__)
 
