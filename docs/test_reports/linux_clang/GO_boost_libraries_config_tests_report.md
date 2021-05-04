@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
-* clang version 9.0.0 (tags/RELEASE_900/final)
+* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* clang version 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 32 test cases was executed 2020-01-15 at 18:16:02 with result:
+Test suites *AllTests* with 32 test cases was executed 2021-05-03 at 21:55:49 with result:
 
 * 0 errors
 * 0 failures
@@ -42,7 +42,7 @@ Test suite *boost_define_go_boost_compiler_test_suite* with 25 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 

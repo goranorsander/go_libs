@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Linux 18.1.1 Juhraya, Xfce, 64 bits
-* gcc (GCC) 9.2.0
+*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* gcc (GCC) 10.2.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2020-01-15 at 18:16:06 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-05-03 at 21:55:53 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.014 seconds.
+Test suites execution took 0.015 seconds.
 
 # Details
 
@@ -71,7 +71,7 @@ Test suite *boost_property_placebo_lockable_test_suite* with 9 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -80,7 +80,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.001
+reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -103,8 +103,8 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
-read_only_reference_properties | 0.001
+reference_properties | 0.001
+read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
@@ -117,19 +117,19 @@ Test suite *boost_u16property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 value_properties | 0.006
-read_only_value_properties | 0
+read_only_value_properties | 0.001
 write_only_value_properties | 0
 reference_properties | 0
-read_only_reference_properties | 0.001
+read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0
+proxy_properties | 0.001
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
@@ -146,14 +146,14 @@ Test suite execution took 0.002 seconds.
 
 Test case|Execution time
 -|-
-value_properties | 0.001
+value_properties | 0
 read_only_value_properties | 0
-write_only_value_properties | 0
+write_only_value_properties | 0.001
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0.001
-read_only_proxy_properties | 0
+proxy_properties | 0
+read_only_proxy_properties | 0.001
 write_only_proxy_properties | 0
 
 ## boost_u8property_test_suite
@@ -172,8 +172,8 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.001
-read_only_reference_properties | 0
+reference_properties | 0
+read_only_reference_properties | 0.001
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0

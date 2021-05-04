@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
-* clang version 9.0.0 (tags/RELEASE_900/final)
+* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* clang version 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-15 at 18:16:04 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-05-03 at 21:55:50 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.004 seconds.
+Test suites execution took 0.005 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -39,7 +39,7 @@ test_integer_type_specializer_simple_assignment_operator | 0
 test_integer_type_specializer_addition_assignment_operator | 0
 test_integer_type_specializer_subtraction_assignment_operator | 0
 test_integer_type_specializer_multiplication_assignment_operator | 0
-test_integer_type_specializer_division_assignment_operator | 0.001
+test_integer_type_specializer_division_assignment_operator | 0
 test_integer_type_specializer_modulo_assignment_operator | 0
 test_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_integer_type_specializer_bitwise_or_assignment_operator | 0
@@ -136,7 +136,7 @@ test_implicit_integer_type_specializer_post_decrement_operator | 0
 test_implicit_floating_point_type_specializer_default_value | 0
 test_implicit_floating_point_type_specializer_construction | 0
 test_implicit_floating_point_type_specializer_get_set | 0
-test_implicit_floating_point_type_specializer_simple_assignment_operator | 0.001
+test_implicit_floating_point_type_specializer_simple_assignment_operator | 0
 test_implicit_floating_point_type_specializer_addition_assignment_operator | 0
 test_implicit_floating_point_type_specializer_subtraction_assignment_operator | 0
 test_implicit_floating_point_type_specializer_multiplication_assignment_operator | 0

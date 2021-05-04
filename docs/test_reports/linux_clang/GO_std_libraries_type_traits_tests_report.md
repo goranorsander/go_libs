@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
-* clang version 9.0.0 (tags/RELEASE_900/final)
+* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* clang version 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2020-01-15 at 18:16:05 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-05-03 at 21:55:51 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.005 seconds.
+Test suites execution took 0.004 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
@@ -53,7 +53,7 @@ test_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_integer_type_specializer_division_arithmetic_operator | 0
 test_integer_type_specializer_modulo_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_not_arithmetic_operator | 0.001
+test_integer_type_specializer_bitwise_not_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
@@ -112,7 +112,7 @@ test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 
 test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_unary_minus_arithmetic_operator | 0
-test_implicit_integer_type_specializer_addition_arithmetic_operator | 0
+test_implicit_integer_type_specializer_addition_arithmetic_operator | 0.001
 test_implicit_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_implicit_integer_type_specializer_division_arithmetic_operator | 0
@@ -133,7 +133,7 @@ test_implicit_integer_type_specializer_pre_increment_operator | 0
 test_implicit_integer_type_specializer_post_increment_operator | 0
 test_implicit_integer_type_specializer_pre_decrement_operator | 0
 test_implicit_integer_type_specializer_post_decrement_operator | 0
-test_implicit_floating_point_type_specializer_default_value | 0.001
+test_implicit_floating_point_type_specializer_default_value | 0
 test_implicit_floating_point_type_specializer_construction | 0
 test_implicit_floating_point_type_specializer_get_set | 0
 test_implicit_floating_point_type_specializer_simple_assignment_operator | 0

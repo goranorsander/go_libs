@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Linux 18.1.1 Juhraya, Xfce, 64 bits
-* gcc (GCC) 9.2.0
+*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* gcc (GCC) 10.2.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2020-01-15 at 18:16:07 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-05-03 at 21:55:54 with result:
 
 * 0 errors
 * 0 failures
@@ -37,7 +37,7 @@ write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
-proxy_properties | 0.001
+proxy_properties | 0
 read_only_proxy_properties | 0
 write_only_proxy_properties | 0
 
@@ -79,7 +79,7 @@ Test case|Execution time
 -|-
 value_properties | 0
 read_only_value_properties | 0
-write_only_value_properties | 0
+write_only_value_properties | 0.001
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
@@ -103,8 +103,8 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.001
-read_only_reference_properties | 0
+reference_properties | 0
+read_only_reference_properties | 0.001
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
@@ -154,7 +154,7 @@ read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
 read_only_proxy_properties | 0
-write_only_proxy_properties | 0.001
+write_only_proxy_properties | 0
 
 ## std_u8property_test_suite
 
@@ -186,7 +186,7 @@ Test suite *std_wproperty_test_suite* with 9 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -194,7 +194,7 @@ Test case|Execution time
 -|-
 value_properties | 0
 read_only_value_properties | 0
-write_only_value_properties | 0.001
+write_only_value_properties | 0
 reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0

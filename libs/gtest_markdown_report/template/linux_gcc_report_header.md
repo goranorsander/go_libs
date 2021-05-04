@@ -4,5 +4,5 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Linux 18.1.1 Juhraya, Xfce, 64 bits
-* gcc (GCC) 9.2.0
+*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* gcc (GCC) 10.2.0

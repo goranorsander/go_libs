@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* Manjaro Linux 18.1.1 Juhraya, Xfce, 64 bits
-* clang version 9.0.0 (tags/RELEASE_900/final)
+* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
+* clang version 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2020-01-15 at 18:16:04 with result:
+Test suites *AllTests* with 33 test cases was executed 2021-05-03 at 21:55:50 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.001 seconds.
+Test suites execution took 0.002 seconds.
 
 # Details
 
@@ -87,7 +87,7 @@ test_not_define_go_msvc_full_ver | 0
 test_not_define_go_msvc_mfc | 0
 test_not_define_go_msvc_mfc_ver | 0
 test_not_define_go_msvc_ver | 0
-test_not_define_go_unicode | 0.001
+test_not_define_go_unicode | 0
 
 ## std_define_go_message_test_suite
 
