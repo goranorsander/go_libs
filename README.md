@@ -107,7 +107,7 @@ My development environment and toolset details:
   * ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.20.2
+  * cmake version 3.20.3
   * MSYS2 64bit 20200720
   * gcc (GCC) 10.2.0
   * git 2.31.1.windows.1
@@ -120,8 +120,8 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.35
-  * Visual Studio 2019, Community Edition, version 16.9.4
+  * Visual Studio 2017, Community Edition, version 15.9.36
+  * Visual Studio 2019, Community Edition, version 16.10.1
   * Visual Studio Code 1.55.2 - with extensions:
     * C/C++ 1.3.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_

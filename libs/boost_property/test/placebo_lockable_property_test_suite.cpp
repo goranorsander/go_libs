@@ -25,6 +25,8 @@ namespace testing
 namespace internal2
 {
 
+#if defined(GO_GTEST_FOR_CPP03)
+
 template <>
 class TypeWithoutFormatter<p::value_property<double, a::placebo_lockable>, kConvertibleToInteger>
 {
@@ -37,6 +39,8 @@ public:
 		*os << kBigInt;
 	}
 };
+
+#endif  // #if defined(GO_GTEST_FOR_CPP03)
 
 }
 }

@@ -1,7 +1,7 @@
 #
 #  CMakeLists.txt
 #
-#  Copyright 2016-2021 Göran Orsander
+#  Copyright 2021 Göran Orsander
 #
 #  This file is part of the GO.libraries.
 #  Distributed under the GO Software License, Version 2.0.
@@ -14,8 +14,7 @@ project(googletest-download NONE)
  
 include(ExternalProject)
 ExternalProject_Add(googletest
-    GIT_REPOSITORY    https://github.com/google/googletest.git
-    GIT_TAG           release-1.11.0
+    URL               "${CMAKE_SOURCE_DIR}/.external_source/googletest-release-1.8.1.zip"
     PREFIX            "${CMAKE_BINARY_DIR}"
     SOURCE_DIR        "${CMAKE_BINARY_DIR}/googletest-src"
     BINARY_DIR        "${CMAKE_BINARY_DIR}/googletest-build"

@@ -16,7 +16,7 @@
 namespace testing_internal
 {
 
-#if !(defined(GO_NO_CXX11_CHAR16_T) || defined(GO_BOOST_NO_CXX11_CHAR16_T))
+#if defined(GO_GTEST_FOR_CPP03) && !(defined(GO_NO_CXX11_CHAR16_T) || defined(GO_BOOST_NO_CXX11_CHAR16_T))
 
 template <>
 inline void DefaultPrintNonContainerTo(const char16_t& value, ::std::ostream* os)
@@ -38,7 +38,7 @@ inline void DefaultPrintNonContainerTo(const char16_t& value, ::std::ostream* os
     }
 }
 
-#endif  // #if !(defined(GO_NO_CXX11_CHAR16_T) || defined(GO_BOOST_NO_CXX11_CHAR16_T))
+#endif  // #if defined(GO_GTEST_FOR_CPP03) && !(defined(GO_NO_CXX11_CHAR16_T) || defined(GO_BOOST_NO_CXX11_CHAR16_T))
 
 }
 

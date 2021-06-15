@@ -270,7 +270,17 @@ endif(CMAKE_COMPILER_IS_CLANG)
 if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
     # Download and unpack googletest at configure time
-    configure_file(CMakeLists.googletest.txt.in googletest-download/CMakeLists.txt)
+    if(MSVC AND (MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1900))
+	    message(STATUS "Using Google Test 1.8.1 for C++98/03")
+		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGO_GTEST_FOR_CPP03 -DGO_GTEST_VERSION=10801" )
+		set( GO_GTEST_CMAKELISTS_TXT_FILE CMakeLists.googletest_v1.8.1.txt.in )
+    else()
+	    message(STATUS "Using Google Test 1.11.0 for C++11/14/17/20")
+		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGO_GTEST_FOR_CPP11 -DGO_GTEST_VERSION=11100" )
+		set( GO_GTEST_CMAKELISTS_TXT_FILE CMakeLists.googletest.txt.in )
+    endif(MSVC AND (MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1900))
+	
+	configure_file(${GO_GTEST_CMAKELISTS_TXT_FILE} googletest-download/CMakeLists.txt)
     execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
     execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
 
@@ -293,6 +303,7 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
     set(GMOCK_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock)
     set(GTEST_LIBS_DIR ${CMAKE_BINARY_DIR}/googletest-build/googlemock/gtest)
+    set(GMOCK_GTEST_COMMON_LIBS_DIR ${CMAKE_BINARY_DIR}/lib)
 
     set(GTEST_EXTENSIONS_INCLUDE_DIR ${GO_LIBS_SOURCE_DIR}/libs/gtest_extensions)
 
@@ -304,7 +315,11 @@ if(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
     add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src ${CMAKE_BINARY_DIR}/googletest-build)
 
     include_directories(${GTEST_INCLUDE_DIR} ${GMOCK_INCLUDE_DIR} ${GTEST_EXTENSIONS_INCLUDE_DIR} ${TEST_FRAMEWORK_INCLUDE_DIR})
-    link_directories(${GTEST_LIBS_DIR} ${GMOCK_LIBS_DIR})
+    if(MSVC AND (MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1900))
+        link_directories(${GTEST_LIBS_DIR} ${GMOCK_LIBS_DIR})
+    else()
+        link_directories(${GMOCK_GTEST_COMMON_LIBS_DIR})
+    endif(MSVC AND (MSVC_VERSION GREATER_EQUAL 1500) AND (MSVC_VERSION LESS 1900))
 
 endif(BUILD_STD_TESTS OR BUILD_BOOST_TESTS)
 
