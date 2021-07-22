@@ -72,8 +72,8 @@ struct conversion_traits<std::u32string>
     }
 
 private:
-    template <typename T1, typename T2>
-    static bool try_convert(const T1&, T2&)
+    // cppcheck-suppress unusedPrivateFunction
+    template <typename T1, typename T2> static bool try_convert(const T1&, T2&)
     {
         // Make public try_convert functions explicit
         return false;

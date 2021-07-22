@@ -589,14 +589,16 @@ public:
 
     // Increment/decrement operators
 
-    this_type operator++() GO_NOEXCEPT_OR_NOTHROW
+    this_reference operator++() GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(++(this->_t));
+        ++(this->_t);
+        return *this;
     }
 
-    this_type operator--() GO_NOEXCEPT_OR_NOTHROW
+    this_reference operator--() GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(--(this->_t));
+        --(this->_t);
+        return *this;
     }
 
     this_type operator++(int) GO_NOEXCEPT_OR_NOTHROW

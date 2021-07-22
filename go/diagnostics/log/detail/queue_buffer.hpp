@@ -95,7 +95,7 @@ private:
 
 #endif  // #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-        element(log_line_type&& l)
+        explicit element(log_line_type&& l)
             : logline(std::move(l))
         {
         }

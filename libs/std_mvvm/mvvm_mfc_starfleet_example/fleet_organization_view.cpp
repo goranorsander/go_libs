@@ -31,6 +31,7 @@ fleet_organization_view::fleet_organization_view()
     _wndFileView.reset(new tree_control(this));
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(fleet_organization_view, CDockablePane)
     ON_WM_CREATE()
     ON_WM_SIZE()

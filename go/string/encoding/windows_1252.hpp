@@ -87,7 +87,7 @@ inline std::string& reduce_to_windows_1252(const u8string& s, std::string& windo
             windows1252s.push_back(*it);
             ++it;
         }
-        else if ((c >= 0x7F) && (c <= 0xC1))
+        else if (/*(c >= 0x7F) &&*/ (c <= 0xC1))
         {
             ++it;
         }
@@ -119,19 +119,19 @@ inline std::string& reduce_to_windows_1252(const u8string& s, std::string& windo
                 ++it;
             }
         }
-        else if ((c >= 0xC4) && (c < 0xE0))
+        else if (/*(c >= 0xC4) &&*/ (c < 0xE0))
         {
             std::advance(it, 2);
         }
-        else if ((c >= 0xE0) && (c < 0xF0))
+        else if (/*(c >= 0xE0) &&*/ (c < 0xF0))
         {
             std::advance(it, 3);
         }
-        else if ((c >= 0xF0) && (c < 0xFC))
+        else if (/*(c >= 0xF0) &&*/ (c < 0xFC))
         {
             std::advance(it, 4);
         }
-        else if ((c >= 0xFC) && (c < 0xFE))
+        else if (/*(c >= 0xFC) &&*/ (c < 0xFE))
         {
             std::advance(it, 5);
         }

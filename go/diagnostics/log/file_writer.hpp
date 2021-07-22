@@ -56,6 +56,7 @@ public:
     void write(log_line_type& logline);
 
 private:
+    // cppcheck-suppress functionStatic
     void roll_file();
 
 private:

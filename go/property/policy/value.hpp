@@ -50,6 +50,7 @@ public:
     {
     }
 
+    // cppcheck-suppress operatorEqVarError
     value& operator=(const value& v) GO_NOEXCEPT_OR_NOTHROW
     {
         if (&v != this)

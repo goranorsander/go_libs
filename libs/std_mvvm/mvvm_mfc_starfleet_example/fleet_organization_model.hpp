@@ -44,15 +44,15 @@ public:
     static ptr create(const std::wstring& name_, const spaceship_interface::ptr& spaceship_);
 
 public:
-    bool add_child(const fleet_organization_interface::ptr& child);
-    bool remove_child(const fleet_organization_interface::ptr& child);
+    virtual bool add_child(const fleet_organization_interface::ptr& child) override;
+    virtual bool remove_child(const fleet_organization_interface::ptr& child) override;
 
 protected:
     virtual void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a) override;
     virtual void on_property_changed(const m::object::ptr& o, const m::wproperty_changed_arguments::ptr& a) override;
 
 private:
-    void bind_properties();
+    virtual void bind_properties() override;
 
 private:
     bool is_parent_to(const fleet_organization_interface::ptr& child) const;

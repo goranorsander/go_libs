@@ -88,7 +88,7 @@ inline u8string& reduce_to_7_bit_ascii(u8string& s)
         {
             ++it;
         }
-        else if ((c >= 0x7F) && (c < 0xC2))
+        else if (/*(c >= 0x7F) &&*/ (c < 0xC2))
         {
             it = s.erase(it);
         }

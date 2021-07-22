@@ -40,8 +40,17 @@ public:
     void unlock();
 
 private:
-    const std::thread::id& lock_is_free() const;
-    const std::thread::id& this_thread_local() const;
+    static const std::thread::id& lock_is_free()
+    {
+        static const std::thread::id lock_is_free_thread_id;
+        return lock_is_free_thread_id;
+    }
+    
+    static const std::thread::id& this_thread_local()
+    {
+        static thread_local std::thread::id this_thread_local = std::this_thread::get_id();
+        return this_thread_local;
+    }
 
 private:
     std::atomic<std::thread::id> _lock_owner;
@@ -95,18 +104,6 @@ inline void recursive_spin_lock::unlock()
     {
         _lock_owner.store(lock_is_free(), std::memory_order_release);
     }
-}
-
-inline const std::thread::id& recursive_spin_lock::lock_is_free() const
-{
-    static const std::thread::id lock_is_free_thread_id;
-    return lock_is_free_thread_id;
-}
-
-inline const std::thread::id& recursive_spin_lock::this_thread_local() const
-{
-    static thread_local std::thread::id this_thread_local = std::this_thread::get_id();
-    return this_thread_local;
 }
 
 } // namespace async

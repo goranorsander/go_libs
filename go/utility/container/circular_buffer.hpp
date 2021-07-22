@@ -841,7 +841,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    circular_buffer(size_type count, param_value_type value, const allocator_type& alloc = allocator_type())
+    circular_buffer(size_type count, const param_value_type& value, const allocator_type& alloc = allocator_type())
         : _buffer(count, value, alloc)
         , _front_pos(0)
         , _back_pos(this_type::_end_pos)
@@ -851,7 +851,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    circular_buffer(capacity_type cap, size_type count, param_value_type value, const allocator_type& alloc = allocator_type())
+    circular_buffer(capacity_type cap, size_type count, const param_value_type& value, const allocator_type& alloc = allocator_type())
         : _buffer(count, value, alloc)
         , _front_pos(0)
         , _back_pos(this_type::_end_pos)
@@ -862,11 +862,11 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    circular_buffer(const this_type&) = default;
+    explicit circular_buffer(const this_type&) = default;
 
 #if !defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
-    circular_buffer(this_type&&) GO_NOEXCEPT = default;
+    explicit circular_buffer(this_type&&) GO_NOEXCEPT = default;
 
 #else
 
@@ -904,7 +904,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    circular_buffer(const std::initializer_list<T>& il, const allocator_type& alloc = allocator_type())
+    explicit circular_buffer(const std::initializer_list<T>& il, const allocator_type& alloc = allocator_type())
         : _buffer(il, alloc)
         , _front_pos(0)
         , _back_pos(this_type::_end_pos)
@@ -1020,7 +1020,7 @@ public:
         return const_reverse_iterator(const_cast<this_type*>(this), this_type::_end_pos);
     }
 
-    reference at(size_type pos)
+    reference at(const size_type& pos)
     {
         if (pos >= this->size())
         {
@@ -1035,7 +1035,7 @@ public:
         return this->_buffer.at(buffer_pos);
     }
 
-    const_reference at(size_type pos) const
+    const_reference at(const size_type& pos) const
     {
         if (pos >= this->size())
         {
@@ -1148,7 +1148,7 @@ public:
             {
                 const difference_type diff = this->size() - new_cap;
                 back_pos = new_cap - 1;
-                for (difference_type i = 0; i < diff; i++)
+                for (difference_type i = 0; i < diff; ++i)
                 {
                     ++it;
                 }
@@ -1165,7 +1165,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    void assign(size_type count, param_value_type value)
+    void assign(size_type count, const param_value_type& value)
     {
         this->_buffer.clear();
         const size_type count_cap = (count < this->_buffer.capacity()) ? count : this->_buffer.capacity();
@@ -1178,7 +1178,7 @@ public:
         this->fill_buffer_to_capacity();
     }
 
-    void assign(capacity_type cap, size_type count, param_value_type value)
+    void assign(capacity_type cap, size_type count, const param_value_type& value)
     {
         this->_buffer.reserve(cap);
         this->assign(count, value);
@@ -1239,7 +1239,7 @@ public:
         std::swap(this->_back_pos, other._back_pos);
     }
 
-    void push_back(param_value_type value)
+    void push_back(const param_value_type& value)
     {
         this->update_pos_for_push_back();
         this->_buffer[this->_back_pos] = value;
@@ -1251,7 +1251,7 @@ public:
         this->_buffer[this->_back_pos] = std::move(value);
     }
 
-    void push_front(param_value_type value)
+    void push_front(const param_value_type& value)
     {
         this->update_pos_for_push_front();
         this->_buffer[this->_front_pos] = value;
@@ -1307,7 +1307,7 @@ public:
         }
     }
 
-    iterator insert(iterator it, param_value_type value)
+    iterator insert(iterator it, const param_value_type& value)
     {
         value_type v = value;
         return insert(it, std::forward<value_type>(v));

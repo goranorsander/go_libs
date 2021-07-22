@@ -80,7 +80,7 @@ public:
 
     u8string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
 
-    u8string(const value_type* s, const allocator_type& alloc = allocator_type());
+    explicit u8string(const value_type* s, const allocator_type& alloc = allocator_type());
 
     template<class InputIt>
     u8string(InputIt first, InputIt last, const allocator_type& alloc = allocator_type());

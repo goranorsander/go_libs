@@ -57,6 +57,7 @@ auto make_fibonacci()
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 void benchmark_add(const std::size_t iterations, db::stopwatch& sw)
 {
+    // cppcheck-suppress unreadVariable
     SpecializedFundamentalType c(static_cast<FundamentalType>(0));
     std::size_t i = 0;
     while (i < iterations)
@@ -65,6 +66,7 @@ void benchmark_add(const std::size_t iterations, db::stopwatch& sw)
         const SpecializedFundamentalType b(static_cast<FundamentalType>(rand()));
         {
             db::stopwatch_guard g(sw);
+            // cppcheck-suppress unreadVariable
             c = a + b;
         }
         ++i;
@@ -74,6 +76,7 @@ void benchmark_add(const std::size_t iterations, db::stopwatch& sw)
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 void benchmark_subtract(const std::size_t iterations, db::stopwatch& sw)
 {
+    // cppcheck-suppress unreadVariable
     SpecializedFundamentalType c(static_cast<FundamentalType>(0));
     std::size_t i = 0;
     while (i < iterations)
@@ -86,6 +89,7 @@ void benchmark_subtract(const std::size_t iterations, db::stopwatch& sw)
         }
         {
             db::stopwatch_guard g(sw);
+            // cppcheck-suppress unreadVariable
             c = a - b;
         }
         ++i;
@@ -95,6 +99,7 @@ void benchmark_subtract(const std::size_t iterations, db::stopwatch& sw)
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 void benchmark_multiply(const std::size_t iterations, db::stopwatch& sw)
 {
+    // cppcheck-suppress unreadVariable
     SpecializedFundamentalType c(static_cast<FundamentalType>(0));
     std::size_t i = 0;
     while (i < iterations)
@@ -103,6 +108,7 @@ void benchmark_multiply(const std::size_t iterations, db::stopwatch& sw)
         const SpecializedFundamentalType b(static_cast<FundamentalType>(rand()));
         {
             db::stopwatch_guard g(sw);
+            // cppcheck-suppress unreadVariable
             c = a * b;
         }
         ++i;
@@ -112,6 +118,7 @@ void benchmark_multiply(const std::size_t iterations, db::stopwatch& sw)
 template <typename SpecializedFundamentalType, typename FundamentalType = SpecializedFundamentalType>
 void benchmark_divide(const std::size_t iterations, db::stopwatch& sw)
 {
+    // cppcheck-suppress unreadVariable
     SpecializedFundamentalType c(static_cast<FundamentalType>(0));
     std::size_t i = 0;
     while (i < iterations)
@@ -124,6 +131,7 @@ void benchmark_divide(const std::size_t iterations, db::stopwatch& sw)
         }
         {
             db::stopwatch_guard g(sw);
+            // cppcheck-suppress unreadVariable
             c = a / b;
         }
         ++i;

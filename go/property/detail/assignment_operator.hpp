@@ -10,14 +10,24 @@
 //
 
 public:
+    // cppcheck-suppress operatorEqVarError
     this_type& operator=(const this_type& v) GO_NOEXCEPT_OR_NOTHROW
     {
-        this_type::set(v.get());
+        try
+        {
+            this_type::set(v.get());
+        }
+        catch (const std::exception&) {}
         return *this;
     }
 
+    // cppcheck-suppress operatorEqVarError
     this_type& operator=(const value_type& v) GO_NOEXCEPT_OR_NOTHROW
     {
-        this_type::set(v);
+        try
+        {
+            this_type::set(v);
+        }
+        catch (const std::exception&) {}
         return *this;
     }

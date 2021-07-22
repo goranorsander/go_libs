@@ -30,8 +30,8 @@ template<class I, class C>
 inline bool try_move_backward(const C& container, I& it)
 {
     I at = const_cast<C&>(container).begin();
-    const I end = const_cast<C&>(container).end();
-    while(at != end)
+    const I end_ = const_cast<C&>(container).end();
+    while(at != end_)
     {
         I look_ahead = at;
         ++look_ahead;

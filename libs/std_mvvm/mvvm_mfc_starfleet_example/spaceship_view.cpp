@@ -100,6 +100,7 @@ void spaceship_view::PostNcDestroy()
     // Disable CFormView::PostNcDestroy() from doing 'delete this;' causing '~spaceship_view()' to be called twice 
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(spaceship_view, CFormView)
     ON_BN_CLICKED(IDC_BUTTON_ADD, &spaceship_view::OnBnClickedButtonAdd)
     ON_BN_CLICKED(IDC_BUTTON_REMOVE, &spaceship_view::OnBnClickedButtonRemove)

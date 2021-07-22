@@ -25,23 +25,19 @@ public:
     placebo_lockable() GO_NOEXCEPT GO_DEFAULT_CONSTRUCTOR
 
 public:
-    void lock();
-    bool try_lock();
-    void unlock();
+    static void lock()
+    {
+    }
+
+    static bool try_lock()
+    {
+        return true;
+    }
+
+    static void unlock()
+    {
+    }
 };
-
-inline void placebo_lockable::lock()
-{
-}
-
-inline bool placebo_lockable::try_lock()
-{
-    return true;
-}
-
-inline void placebo_lockable::unlock()
-{
-}
 
 }
 }

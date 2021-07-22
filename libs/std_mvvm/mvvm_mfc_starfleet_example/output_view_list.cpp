@@ -19,6 +19,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(output_view_list, CListBox)
     ON_WM_CONTEXTMENU()
     ON_COMMAND(ID_EDIT_COPY, OnEditCopy)

@@ -84,23 +84,23 @@ inline u8string& reduce_to_7_bit_ascii(u8string& s)
         {
             ++it;
         }
-        else if ((c >= 0x7F) && (c < 0xC2))
+        else if (/*(c >= 0x7F) &&*/ (c < 0xC2))
         {
             it = s.erase(it);
         }
-        else if ((c >= 0xC2) && (c < 0xE0))
+        else if (/*(c >= 0xC2) &&*/ (c < 0xE0))
         {
             it = go::utility::iterator::erase(s, it, 2);
         }
-        else if ((c >= 0xE0) && (c < 0xF0))
+        else if (/*(c >= 0xE0) &&*/ (c < 0xF0))
         {
             it = go::utility::iterator::erase(s, it, 3);
         }
-        else if ((c >= 0xF0) && (c < 0xFC))
+        else if (/*(c >= 0xF0) &&*/ (c < 0xFC))
         {
             it = go::utility::iterator::erase(s, it, 4);
         }
-        else if ((c >= 0xFC) && (c < 0xFE))
+        else if (/*(c >= 0xFC) &&*/ (c < 0xFE))
         {
             it = go::utility::iterator::erase(s, it, 5);
         }

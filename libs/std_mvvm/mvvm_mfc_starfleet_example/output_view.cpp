@@ -194,6 +194,7 @@ output_view::output_view()
 {
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(output_view, CDockablePane)
     ON_WM_CREATE()
     ON_WM_SIZE()

@@ -24,6 +24,7 @@ tree_control::tree_control(tree_control_observer* observer)
 {
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(tree_control, CTreeCtrl)
     ON_NOTIFY_REFLECT(NM_CLICK, OnClick)
     ON_NOTIFY_REFLECT(NM_DBLCLK, OnDblclk)

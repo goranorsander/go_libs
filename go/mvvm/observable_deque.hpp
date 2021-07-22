@@ -220,9 +220,9 @@ public:
     }
 
 protected:
-    virtual container_type& container();
+    virtual container_type& container() override;
 
-    virtual const container_type& container() const;
+    virtual const container_type& container() const override;
 
 public:
     reverse_iterator rbegin() noexcept

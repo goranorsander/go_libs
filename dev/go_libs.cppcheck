@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="1">
-    <importproject>go_libs.sln</importproject>
+    <platform>win64</platform>
+    <importproject>../../../../build/go_libs/vc142/GO_LIBS.sln</importproject>
+    <analyze-all-vs-configs>false</analyze-all-vs-configs>
+    <check-headers>true</check-headers>
+    <check-unused-templates>true</check-unused-templates>
+    <max-ctu-depth>2</max-ctu-depth>
+    <max-template-recursion>100</max-template-recursion>
+    <vs-configurations>
+        <config>Debug</config>
+        <config>Release</config>
+    </vs-configurations>
     <libraries>
+        <library>boost</library>
+        <library>googletest</library>
         <library>windows</library>
     </libraries>
+    <suppressions>
+        <suppression>templateRecursion</suppression>
+    </suppressions>
+    <safe-checks>
+        <class-public/>
+    </safe-checks>
+    <addons>
+        <addon>threadsafety</addon>
+    </addons>
 </project>

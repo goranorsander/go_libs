@@ -66,6 +66,7 @@ public:
     {
     }
 
+    // cppcheck-suppress noExplicitConstructor
     fundamental_type_specializer(this_const_reference t) GO_NOEXCEPT_OR_NOTHROW
         : detail::fundamental_type_specializer_base()
         , _t(t._t)
@@ -74,7 +75,7 @@ public:
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES)
 
-    fundamental_type_specializer(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
+    explicit fundamental_type_specializer(this_rvalue_reference t) GO_NOEXCEPT_OR_NOTHROW
         : detail::fundamental_type_specializer_base()
         , _t(std::move(t._t))
     {
@@ -350,14 +351,18 @@ public:
 
     // Increment/decrement operators
 
-    this_type operator++() GO_NOEXCEPT_OR_NOTHROW
+    // cppcheck-suppress functionConst
+    this_reference operator++() GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(++(this->_t));
+        ++(this->_t);
+        return *this;
     }
 
-    this_type operator--() GO_NOEXCEPT_OR_NOTHROW
+    // cppcheck-suppress functionConst
+    this_reference operator--() GO_NOEXCEPT_OR_NOTHROW
     {
-        return this_type(--(this->_t));
+        --(this->_t);
+        return *this;
     }
 
     this_type operator++(int) GO_NOEXCEPT_OR_NOTHROW

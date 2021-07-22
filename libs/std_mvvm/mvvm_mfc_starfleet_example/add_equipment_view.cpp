@@ -38,6 +38,7 @@ void add_equipment_view::DoDataExchange(CDataExchange* pDX)
     }
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(add_equipment_view, dialog_view)
 END_MESSAGE_MAP()
 

@@ -52,7 +52,7 @@ public:
     virtual ~log() = default;
     log() = default;
 
-    bool operator==(log_line& logline)
+    bool operator==(log_line& logline) const
     {
         logger_atom().load(std::memory_order_acquire)->add(std::move(logline));
         return true;
@@ -84,7 +84,7 @@ public:
     virtual ~wlog() = default;
     wlog() = default;
 
-    bool operator==(wlog_line& logline)
+    bool operator==(wlog_line& logline) const
     {
         logger_atom().load(std::memory_order_acquire)->add(std::move(logline));
         return true;

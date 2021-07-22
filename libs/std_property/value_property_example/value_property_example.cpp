@@ -43,6 +43,7 @@ int main()
 
     s.crew_complement = 430;
     s.max_speed = 9.0;
+    // cppcheck-suppress unreadVariable
     s.name = "USS Enterprise (NCC-1701)";
     std::cout << "Name: " << s.name().c_str() << ", crew: " << s.crew_complement << ", speed: " << s.max_speed << std::endl;
 

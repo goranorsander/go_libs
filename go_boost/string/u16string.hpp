@@ -79,7 +79,7 @@ public:
 
     u16string(const value_type* s, size_type count, const allocator_type& alloc = allocator_type());
 
-    u16string(const value_type* s, const allocator_type& alloc = allocator_type());
+    explicit u16string(const value_type* s, const allocator_type& alloc = allocator_type());
 
     template<class InputIt>
     u16string(InputIt first, InputIt last, const allocator_type& alloc = allocator_type());
@@ -102,7 +102,7 @@ public:
 
 #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 
-    u16string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
+    explicit u16string(std::initializer_list<value_type> init, const allocator_type& alloc = allocator_type());
 
 #endif  // #if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
 

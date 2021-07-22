@@ -41,7 +41,7 @@ inline void reset(slot_key& key)
 
 inline bool is_null_key(const slot_key& key)
 {
-    static slot_key null_key;
+    static thread_local slot_key null_key = slot_key();
     return key == null_key;
 }
 

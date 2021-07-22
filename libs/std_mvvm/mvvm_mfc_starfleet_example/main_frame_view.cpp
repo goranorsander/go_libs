@@ -273,6 +273,7 @@ void main_frame_view::OnUpdateControlBarMenu(CCmdUI* pCmdUI)
     }
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(main_frame_view, CMDIFrameWndEx)
     ON_WM_CREATE()
     ON_COMMAND(ID_WINDOW_MANAGER, &main_frame_view::OnWindowManager)

@@ -56,6 +56,7 @@ void product_view::DoDataExchange(CDataExchange* pDX)
     }
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(product_view, CDialogEx)
     ON_BN_CLICKED(IDC_BUTTON_GET_PRODUCT, &product_view::OnBnClickedButtonGetProduct)
     ON_BN_CLICKED(IDC_BUTTON_SAVE_PRODUCT, &product_view::OnBnClickedButtonSaveProduct)

@@ -117,6 +117,7 @@ int child_frame_view::OnMouseActivate(CWnd* pDesktopWnd, UINT nHitTest, UINT mes
     return CMDIChildWndEx::OnMouseActivate(pDesktopWnd, nHitTest, message);
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(child_frame_view, CMDIChildWndEx)
     ON_COMMAND(ID_FILE_CLOSE, &child_frame_view::OnFileClose)
     ON_WM_SETFOCUS()

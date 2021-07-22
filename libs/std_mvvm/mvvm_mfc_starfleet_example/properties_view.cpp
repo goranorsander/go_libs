@@ -34,6 +34,7 @@ properties_view::properties_view()
 {
 }
 
+// cppcheck-suppress unknownMacro
 BEGIN_MESSAGE_MAP(properties_view, CDockablePane)
     ON_WM_CREATE()
     ON_WM_SIZE()

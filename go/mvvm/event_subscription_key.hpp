@@ -41,7 +41,7 @@ inline void reset(event_subscription_key& key)
 
 inline bool is_null_key(const event_subscription_key& key)
 {
-    static event_subscription_key null_key;
+    static thread_local event_subscription_key null_key = event_subscription_key();
     return key == null_key;
 }
 

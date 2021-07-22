@@ -56,6 +56,7 @@ public:
     {
     }
 
+    // cppcheck-suppress operatorEqVarError
     reference& operator=(const reference& v) GO_NOEXCEPT_OR_NOTHROW
     {
         if (&v != this)
@@ -67,7 +68,11 @@ public:
 
     reference& operator=(const value_type& v) GO_NOEXCEPT_OR_NOTHROW
     {
-        set(v);
+        try
+        {
+            this->set(v);
+        }
+        catch (const exception&) {}
         return *this;
     }
 
