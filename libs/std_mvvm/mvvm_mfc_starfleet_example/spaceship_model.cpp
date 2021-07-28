@@ -15,7 +15,7 @@
 
 spaceship_model::~spaceship_model()
 {
-    _equipment->container_changed.disconnect(_on_equipment_list_changed_slot_key);
+    _equipment->container_changed.disconnect(_on_equipment_list_changed_connection);
 }
 
 spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std::wstring& name_)
@@ -27,7 +27,7 @@ spaceship_model::spaceship_model(const std::wstring& spaceship_class_, const std
     , _equipment(m::wobservable_deque<equipment_interface::ptr>::create())
     , _captain()
     , _crew_complement(0)
-    , _on_equipment_list_changed_slot_key()
+    , _on_equipment_list_changed_connection()
 {
 }
 
@@ -60,5 +60,5 @@ void spaceship_model::bind_properties()
     crew_complement.setter(std::bind(&this_type::set_property_value<p::wproperty<unsigned int>>, this, std::cref(crew_complement), std::ref(_crew_complement), ph::_1));
     equipment.getter([this]() -> m::wobservable_deque<equipment_interface::ptr>::ptr { return _equipment; });
     equipment.setter(std::bind(&this_type::set_property_value<p::wproperty<m::wobservable_deque<equipment_interface::ptr>::ptr>>, this, std::cref(equipment), std::ref(_equipment), ph::_1));
-    _on_equipment_list_changed_slot_key = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { notify_property_changed(this->shared_from_this(), equipment.name()); });
+    _on_equipment_list_changed_connection = _equipment->container_changed.connect([this](const m::object::ptr&, const m::container_changed_arguments::ptr&) { notify_property_changed(this->shared_from_this(), equipment.name()); });
 }

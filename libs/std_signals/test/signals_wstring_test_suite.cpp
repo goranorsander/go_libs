@@ -36,12 +36,8 @@ public:
     typedef fleet_commander this_type;
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef si::signal<std::function<void(const bool&)>> fire_lasers_signal;
-#if !defined(GO_COMP_MSVC)
-    typedef si::signal<std::function<bool()>> fire_proton_torpedoes_signal;
-#else
-    typedef si::signal<std::function<bool()>> fire_proton_torpedoes_signal;
-#endif  // #if !defined(GO_COMP_MSVC)
+    typedef si::signal<void(const bool&)> fire_lasers_signal;
+    typedef si::signal<bool()> fire_proton_torpedoes_signal;
 
 public:
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
@@ -86,8 +82,8 @@ public:
         fleet_commander::ptr fleet_commander_ = _fleet_commander.lock();
         if(fleet_commander_)
         {
-            fleet_commander_->fire_lasers.disconnect(_fire_lasers_slot_key);
-            fleet_commander_->fire_proton_torpedoes.disconnect(_fire_proton_torpedoes_slot_key);
+            fleet_commander_->fire_lasers.disconnect(_fire_lasers_connection);
+            fleet_commander_->fire_proton_torpedoes.disconnect(_fire_proton_torpedoes_connection);
         }
     }
 
@@ -99,11 +95,11 @@ public:
         , lasers_firing(L"lasers_firing", false)
         , proton_torpedoes(L"proton_torpedoes", proton_torpedoes_)
         , _fleet_commander(fleet_commander_)
-        , _fire_lasers_slot_key()
-        , _fire_proton_torpedoes_slot_key()
+        , _fire_lasers_connection()
+        , _fire_proton_torpedoes_connection()
     {
-        _fire_lasers_slot_key = fleet_commander_->fire_lasers.connect(std::bind(&p::value_wproperty<bool>::set, &lasers_firing, ph::_1));
-        _fire_proton_torpedoes_slot_key = fleet_commander_->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
+        _fire_lasers_connection = fleet_commander_->fire_lasers.connect(std::bind(&p::value_wproperty<bool>::set, &lasers_firing, ph::_1));
+        _fire_proton_torpedoes_connection = fleet_commander_->fire_proton_torpedoes.connect(std::bind(&spaceship::fire_proton_torpedo, this));
     }
 
 public:
@@ -125,8 +121,8 @@ public:
 
 private:
     fleet_commander::wptr _fleet_commander;
-    si::slot_key _fire_lasers_slot_key;
-    si::slot_key _fire_proton_torpedoes_slot_key;
+    si::connection _fire_lasers_connection;
+    si::connection _fire_proton_torpedoes_connection;
 };
 
 #define TEST_CASE_SHIPYARD \

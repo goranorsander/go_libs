@@ -34,8 +34,8 @@ public:
     virtual ~unordered_set_observer() GO_DEFAULT_DESTRUCTOR
 
     unordered_set_observer()
-        : _on_container_changed_slot_key()
-        , _on_property_changed_slot_key()
+        : _on_container_changed_connection()
+        , _on_property_changed_connection()
         , _last_action(m::notify_container_changed_action::undefined)
         , _last_change_added(0u)
         , _last_change_removed(0u)
@@ -51,14 +51,14 @@ public:
 
     void connect(observable_unordered_set_ptr_type& c)
     {
-        _on_container_changed_slot_key = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
-        _on_property_changed_slot_key = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
+        _on_container_changed_connection = c->container_changed.connect(std::bind(&this_type::on_container_changed, this, ph::_1, ph::_2));
+        _on_property_changed_connection = c->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 
     void disconnect(observable_unordered_set_ptr_type& c)
     {
-        c->container_changed.disconnect(_on_container_changed_slot_key);
-        c->property_changed.disconnect(_on_property_changed_slot_key);
+        c->container_changed.disconnect(_on_container_changed_connection);
+        c->property_changed.disconnect(_on_property_changed_connection);
     }
 
     void on_container_changed(const m::object::ptr& o, const m::container_changed_arguments::ptr& a)
@@ -136,8 +136,8 @@ public:
     }
 
 private:
-    si::slot_key _on_container_changed_slot_key;
-    si::slot_key _on_property_changed_slot_key;
+    si::connection _on_container_changed_connection;
+    si::connection _on_property_changed_connection;
 
     m::notify_container_changed_action _last_action;
     unsigned int _last_change_added;

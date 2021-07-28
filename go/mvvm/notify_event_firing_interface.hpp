@@ -36,7 +36,7 @@ public:
     typedef S string_type;
     typedef L lockable_type;
     typedef basic_notify_event_firing_interface<S, L> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_event<string_type>>&)>, L> event_fired_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_event<string_type>>&)> event_fired_signal;
 
 public:
     virtual ~basic_notify_event_firing_interface() = 0;

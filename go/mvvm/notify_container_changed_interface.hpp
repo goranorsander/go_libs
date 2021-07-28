@@ -33,7 +33,7 @@ public:
     typedef L lockable_type;
     typedef notify_container_changed_interface<L> this_type;
     typedef container_changed_arguments container_changed_arguments_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)>, L> container_changed_signal;
+    typedef go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)> container_changed_signal;
 
 public:
     virtual ~notify_container_changed_interface() = 0;

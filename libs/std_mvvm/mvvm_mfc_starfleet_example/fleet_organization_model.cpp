@@ -21,8 +21,7 @@ fleet_organization_model::~fleet_organization_model()
     spaceship_model::ptr spaceship = std::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        spaceship->property_changed.disconnect(_on_spaceship_property_changed_slot_key);
-        si::reset(_on_spaceship_property_changed_slot_key);
+        spaceship->property_changed.disconnect(_on_spaceship_property_changed_connection);
     }
 }
 
@@ -35,7 +34,7 @@ fleet_organization_model::fleet_organization_model(const std::wstring& name_, co
     , _id(_next_id++)
     , _name(name_)
     , _spaceship(spaceship_)
-    , _on_spaceship_property_changed_slot_key()
+    , _on_spaceship_property_changed_connection()
     , _parent()
     , _first_child()
     , _previous_sibling()
@@ -138,7 +137,7 @@ void fleet_organization_model::bind_properties()
     spaceship_model::ptr spaceship = std::dynamic_pointer_cast<::spaceship_model>(_spaceship);
     if(spaceship)
     {
-        _on_spaceship_property_changed_slot_key = spaceship->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
+        _on_spaceship_property_changed_connection = spaceship->property_changed.connect(std::bind(&this_type::on_property_changed, this, ph::_1, ph::_2));
     }
 }
 

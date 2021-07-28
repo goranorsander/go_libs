@@ -28,7 +28,7 @@ properties_view_model::properties_view_model()
     , main_frame_vm(L"properties_view_model::main_frame_vm")
     , fleet_organization(L"properties_view_model::fleet_organization")
     , _main_frame_vm()
-    , _on_data_context_property_changed_slot_key()
+    , _on_data_context_property_changed_connection()
     , _select_fleet_organization_event_key(0)
 {
 }
@@ -56,8 +56,7 @@ void properties_view_model::on_data_context_will_change()
 {
     if(data_context())
     {
-        data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
-        si::reset(_on_data_context_property_changed_slot_key);
+        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_will_change();
     on_view_model_will_change();
@@ -67,7 +66,7 @@ void properties_view_model::on_data_context_changed()
 {
     if(data_context())
     {
-        _on_data_context_property_changed_slot_key = data_context()->property_changed.connect(std::bind(&properties_view_model::on_property_changed, this, ph::_1, ph::_2));
+        _on_data_context_property_changed_connection = data_context()->property_changed.connect(std::bind(&properties_view_model::on_property_changed, this, ph::_1, ph::_2));
     }
     m::data_context_interface<fleet_organization_model::ptr>::on_data_context_changed();
     on_view_model_changed();

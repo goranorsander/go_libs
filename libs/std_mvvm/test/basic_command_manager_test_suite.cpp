@@ -258,7 +258,7 @@ public:
     }
 
 private:
-    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::slot_key> spaceship_connection_map_type;
+    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::connection> spaceship_connection_map_type;
     typedef std::pair<s::u8string, s::u8string> ship_and_property_type;
     typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
 

@@ -12,6 +12,8 @@ and ideas that contribute to my design and implementation.
 
 * [Defining a custom iterator in C++](https://lorenzotoso.wordpress.com/2016/01/13/defining-a-custom-iterator-in-c/)
 
+* [lsignal: C++ signal/slot system](https://github.com/cpp11nullptr/lsignal)
+
 * [MVVM articles on Rachel Lim's Blog](https://rachel53461.wordpress.com/category/mvvm/)
 
 * [NanoLog - Low Latency C++11 Logging Library](https://github.com/Iyengar111/NanoLog)

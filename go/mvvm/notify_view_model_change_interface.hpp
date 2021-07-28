@@ -32,8 +32,8 @@ class notify_view_model_change_interface
 public:
     typedef L lockable_type;
     typedef notify_view_model_change_interface<L> this_type;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_changed_arguments>&)>, L> view_model_changed_signal;
-    typedef go::signals::signal<std::function<void(const std::shared_ptr<view_model_will_change_arguments>&)>, L> view_model_will_change_signal;
+    typedef go::signals::signal<void(const std::shared_ptr<view_model_changed_arguments>&)> view_model_changed_signal;
+    typedef go::signals::signal<void(const std::shared_ptr<view_model_will_change_arguments>&)> view_model_will_change_signal;
 
 public:
     virtual ~notify_view_model_change_interface() = 0;

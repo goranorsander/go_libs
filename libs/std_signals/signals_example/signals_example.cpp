@@ -25,7 +25,7 @@ class fleet_commander
 public:
     typedef std::shared_ptr<fleet_commander> ptr;
     typedef std::weak_ptr<fleet_commander> wptr;
-    typedef si::signal<std::function<void(const bool&)>> fire_lasers_signal;
+    typedef si::signal<void(const bool&)> fire_lasers_signal;
 
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
@@ -49,7 +49,7 @@ public:
     {
         fleet_commander::ptr commander = _fleet_commander.lock();
         if (commander)
-            commander->fire_lasers.disconnect(_fire_lasers_slot_key);
+            commander->fire_lasers.disconnect(_fire_lasers_connection);
     }
 
     spaceship(const fleet_commander::ptr& fleet_commander_, const std::string& name_, const std::string& captain_)
@@ -58,11 +58,11 @@ public:
         , lasers_firing("lasers_firing")
         , _lasers_firing(false)
         , _fleet_commander(fleet_commander_)
-        , _fire_lasers_slot_key()
+        , _fire_lasers_connection()
     {
         lasers_firing.getter([this]() -> bool { return _lasers_firing; });
         lasers_firing.setter(std::bind(&spaceship::set_lasers_firing, this, ph::_1));
-        _fire_lasers_slot_key = fleet_commander_->fire_lasers.connect(std::bind(&p::property<bool>::set, &lasers_firing, ph::_1));
+        _fire_lasers_connection = fleet_commander_->fire_lasers.connect(std::bind(&p::property<bool>::set, &lasers_firing, ph::_1));
     }
 
     p::value_property<std::string> name;
@@ -82,7 +82,7 @@ private:
 private:
     bool _lasers_firing;
     fleet_commander::wptr _fleet_commander;
-    si::slot_key _fire_lasers_slot_key;
+    si::connection _fire_lasers_connection;
 };
 
 int main()

@@ -108,7 +108,7 @@ public:
     unsigned int max_speed_change_count() const { return _max_speed_change_count; }
 
 private:
-    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::slot_key> spaceship_connection_map_type;
+    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::connection> spaceship_connection_map_type;
 
     spaceship_connection_map_type _on_property_changed_connections;
     unsigned int _crew_complement_change_count;

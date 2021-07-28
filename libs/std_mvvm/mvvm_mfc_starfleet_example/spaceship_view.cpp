@@ -34,8 +34,8 @@ spaceship_view::spaceship_view()
     , _equipment_list_ctrl()
     , _selected_equipment_id(0)
     , _equipment_list_data()
-    , _on_data_context_container_changed_slot_key()
-    , _on_data_context_property_changed_slot_key()
+    , _on_data_context_container_changed_connection()
+    , _on_data_context_property_changed_connection()
 {
 }
 
@@ -194,10 +194,8 @@ void spaceship_view::on_data_context_will_change()
 {
     if(data_context())
     {
-        data_context()->equipment()->container_changed.disconnect(_on_data_context_container_changed_slot_key);
-        si::reset(_on_data_context_container_changed_slot_key);
-        data_context()->property_changed.disconnect(_on_data_context_property_changed_slot_key);
-        si::reset(_on_data_context_property_changed_slot_key);
+        data_context()->equipment()->container_changed.disconnect(_on_data_context_container_changed_connection);
+        data_context()->property_changed.disconnect(_on_data_context_property_changed_connection);
     }
     m::data_context_interface<spaceship_view_model::ptr>::on_data_context_will_change();
 }
@@ -206,8 +204,8 @@ void spaceship_view::on_data_context_changed()
 {
     if (data_context())
     {
-        _on_data_context_container_changed_slot_key = data_context()->equipment()->container_changed.connect(std::bind(&spaceship_view::on_container_changed, this, ph::_1, ph::_2));
-        _on_data_context_property_changed_slot_key = data_context()->property_changed.connect(std::bind(&spaceship_view::on_property_changed, this, ph::_1, ph::_2));
+        _on_data_context_container_changed_connection = data_context()->equipment()->container_changed.connect(std::bind(&spaceship_view::on_container_changed, this, ph::_1, ph::_2));
+        _on_data_context_property_changed_connection = data_context()->property_changed.connect(std::bind(&spaceship_view::on_property_changed, this, ph::_1, ph::_2));
     }
     m::data_context_interface<spaceship_view_model::ptr>::on_data_context_changed();
     on_view_model_changed();

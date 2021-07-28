@@ -46,8 +46,8 @@ public:
     typedef S string_type;
     typedef L lockable_type;
     typedef basic_notify_command_execution_interface<S, L> this_type;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_executed_signal;
-    typedef typename go::signals::signal<std::function<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>, L> command_not_executed_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)> command_executed_signal;
+    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)> command_not_executed_signal;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

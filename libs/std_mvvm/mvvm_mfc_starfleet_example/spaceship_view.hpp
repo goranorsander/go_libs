@@ -97,8 +97,8 @@ private:
     CListCtrl _equipment_list_ctrl;
     equipment_id_type _selected_equipment_id;
     equipment_list_item_data_type _equipment_list_data;
-    si::slot_key _on_data_context_container_changed_slot_key;
-    si::slot_key _on_data_context_property_changed_slot_key;
+    si::connection _on_data_context_container_changed_connection;
+    si::connection _on_data_context_property_changed_connection;
 };
 
 #endif  // #ifndef GO_SPACESHIP_VIEW_HPP_INCLUDED

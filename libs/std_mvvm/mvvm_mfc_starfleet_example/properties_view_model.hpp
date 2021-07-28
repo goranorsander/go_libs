@@ -60,7 +60,7 @@ private:
 
 private:
     main_frame_view_model::wptr _main_frame_vm;
-    si::slot_key _on_data_context_property_changed_slot_key;
+    si::connection _on_data_context_property_changed_connection;
     m::event_subscription_key _select_fleet_organization_event_key;
 };
 
