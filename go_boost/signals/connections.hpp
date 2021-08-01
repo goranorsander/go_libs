@@ -72,7 +72,7 @@ public:
         const typename slot_owner_connection_type::const_iterator it = this->_connections.find(slot_owner_connection_key_type(this->addressof(slot_owner), this->addressof(signal)));
         if (it != this->_connections.end())
         {
-            it->second.disconnect();
+            it->first.second->disconnect(it->second);
             this->_connections.erase(it);
             return true;
         }
