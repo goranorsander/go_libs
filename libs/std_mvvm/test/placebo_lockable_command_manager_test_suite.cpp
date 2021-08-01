@@ -14,274 +14,38 @@ GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_gtest.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_command_manager_placebo_lockable_test_suite, cpp11_not_supported) {}
-#else
-
-#include <go/mvvm.hpp>
-#include <go/namespace_alias.hpp>
-#include <go/property.hpp>
-#include <go/utility.hpp>
+#include <go/async/placebo_lockable.hpp>
+#include <go_test/spaceship_observer.hpp>
+#include <go_test/spaceship_traits.hpp>
 
 namespace
 {
 
 // Test command_manager
-class spaceship
-    : public mst::observable_object
-    , public tt::noncopyable_nonmovable
-{
-public:
-    virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
+typedef std::string string_type;
+typedef a::placebo_lockable lockable_type;
+typedef go_test::bind_function::observable_spaceship<go_test::spaceship_traits<string_type, lockable_type>> spaceship_type;
+typedef std::shared_ptr<spaceship_type> spaceship_ptr;
+typedef std::weak_ptr<spaceship_type> spaceship_wptr;
 
-private:
-    explicit spaceship(const mst::command_manager::ptr& command_manager_)
-        : mst::observable_object()
-        , tt::noncopyable_nonmovable()
-        , name("name")
-        , captain("captain")
-        , impulse_speed_command("impulse_speed_command")
-        , warp_speed_command("warp_speed_command")
-        , _command_manager(command_manager_)
-        , _at_impulse_speed(false)
-        , _at_warp_speed(false)
-        , _name()
-        , _captain()
-        , _impulse_speed_command()
-        , _warp_speed_command()
-    {
-    }
-
-    spaceship(const mst::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
-        : mst::observable_object()
-        , tt::noncopyable_nonmovable()
-        , name("name")
-        , captain("captain")
-        , impulse_speed_command("impulse_speed_command")
-        , warp_speed_command("warp_speed_command")
-        , _command_manager(command_manager_)
-        , _at_impulse_speed(false)
-        , _at_warp_speed(false)
-        , _name(name_)
-        , _captain(captain_)
-        , _impulse_speed_command()
-        , _warp_speed_command()
-    {
-    }
-
-public:
-    static std::shared_ptr<spaceship> create(mst::command_manager::ptr& command_manager_)
-    {
-        std::shared_ptr<spaceship> ship(new spaceship(command_manager_));
-        ship->bind_properties();
-        return ship;
-    }
-
-    static std::shared_ptr<spaceship> create(const mst::command_manager::ptr& command_manager_, const std::string& name_, const std::string& captain_)
-    {
-        std::shared_ptr<spaceship> ship(new spaceship(command_manager_, name_, captain_));
-        ship->bind_properties();
-        return ship;
-    }
-
-private:
-    void bind_properties()
-    {
-        name.getter(std::bind(&spaceship::get_name, this));
-        name.setter(std::bind(&spaceship::set_name, this, ph::_1));
-        captain.getter(std::bind(&spaceship::get_captain, this));
-        captain.setter(std::bind(&spaceship::set_captain, this, ph::_1));
-        impulse_speed_command.getter(std::bind(&spaceship::get_impulse_speed_command, this));
-        warp_speed_command.getter(std::bind(&spaceship::get_warp_speed_command, this));
-    }
-
-public:
-    p::property<std::string> name;
-    p::property<std::string> captain;
-    pro::property<mst::command_interface::ptr> impulse_speed_command;
-    pro::property<mst::command_interface::ptr> warp_speed_command;
-
-public:
-    bool at_impulse_speed() const { return _at_impulse_speed; }
-    bool at_warp_speed() const { return _at_warp_speed; }
-
-private:
-    // name property
-    std::string get_name() const
-    {
-        return _name;
-    }
-
-    void set_name(const std::string& v)
-    {
-        if(v != _name)
-        {
-            _name = v;
-            notify_property_changed(this->shared_from_this(), name.name());
-        }
-    }
-
-    // captain property
-    std::string get_captain() const
-    {
-        return _captain;
-    }
-
-    void set_captain(const std::string& v)
-    {
-        if(v != _captain)
-        {
-            _captain = v;
-            notify_property_changed(this->shared_from_this(), captain.name());
-        }
-    }
-
-    // impulse_speed_command property
-    mst::command_interface::ptr get_impulse_speed_command()
-    {
-        if(!_impulse_speed_command)
-        {
-            _impulse_speed_command = mst::relay_command::create("impulse_speed", std::bind(&spaceship::go_to_impulse, this, ph::_1), std::bind(&spaceship::can_go_to_impulse, this, ph::_1), m::command_parameters::create());
-        }
-        return _impulse_speed_command;
-    }
-
-    void go_to_impulse(const m::command_parameters::ptr& /*params*/)
-    {
-        _at_impulse_speed = true;
-        _at_warp_speed = false;
-        if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); }
-        if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
-    }
-
-    bool can_go_to_impulse(const m::command_parameters::ptr& /*params*/)
-    {
-        return _at_warp_speed;
-    }
-
-    // warp_speed_command property
-    mst::command_interface::ptr get_warp_speed_command()
-    {
-        if(!_warp_speed_command)
-        {
-            _warp_speed_command = mst::relay_command::create("warp_speed", std::bind(&spaceship::go_to_warp, this, ph::_1), std::bind(&spaceship::can_go_to_warp, this, ph::_1), m::command_parameters::create());
-        }
-        return _warp_speed_command;
-    }
-
-    void go_to_warp(const m::command_parameters::ptr& /*params*/)
-    {
-        _at_impulse_speed = false;
-        _at_warp_speed = true;
-        if(_impulse_speed_command) { _impulse_speed_command->notify_can_execute_changed(); }
-        if(_warp_speed_command) { _warp_speed_command->notify_can_execute_changed(); }
-    }
-
-    bool can_go_to_warp(const m::command_parameters::ptr& /*params*/)
-    {
-        return !_at_warp_speed;
-    }
-
-private:
-    mst::command_manager::ptr _command_manager;
-    bool _at_impulse_speed;
-    bool _at_warp_speed;
-    std::string _name;
-    std::string _captain;
-    mst::command_interface::ptr _impulse_speed_command;
-    mst::command_interface::ptr _warp_speed_command;
-};
-
-class spaceship_observer
-{
-public:
-    virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
-
-     spaceship_observer()
-        : _on_property_changed_connections()
-        , _on_property_changed_count()
-    {
-    }
-
-    void connect(const std::shared_ptr<spaceship>& ship)
-    {
-        if(ship)
-        {
-            _on_property_changed_connections[ship.get()] = ship->property_changed.connect(std::bind(&spaceship_observer::on_property_changed, this, ph::_1, ph::_2));
-        }
-    }
-
-    void disconnect(const std::shared_ptr<spaceship>& ship)
-    {
-        if(ship)
-        {
-            spaceship_connection_map_type::iterator it = _on_property_changed_connections.find(ship.get());
-            if (it != _on_property_changed_connections.end())
-            {
-                ship->property_changed.disconnect(it->second);
-                _on_property_changed_connections.erase(it);
-            }
-        }
-    }
-
-    void on_property_changed(const m::object::ptr& o, const m::property_changed_arguments::ptr& a)
-    {
-        if(o && a)
-        {
-            std::shared_ptr<spaceship> ship = std::dynamic_pointer_cast<spaceship>(o);
-            if(ship)
-            {
-                const ship_and_property_type ship_and_property(ship->name(), a->property_name());
-                const GO_TYPENAME on_property_changed_counter_type::iterator it = _on_property_changed_count.find(ship_and_property);
-                if(it == _on_property_changed_count.end())
-                {
-                    _on_property_changed_count[ship_and_property] = 1;
-                }
-                else
-                {
-                    ++(it->second);
-                }
-            }
-        }
-    }
-
-    unsigned int get_on_property_changed_count(const std::string& ship_name, const std::string& property_name) const
-    {
-        const ship_and_property_type ship_and_property(ship_name, property_name);
-        const GO_TYPENAME on_property_changed_counter_type::const_iterator it = _on_property_changed_count.find(ship_and_property);
-        if(it == _on_property_changed_count.end())
-        {
-            return 0;
-        }
-        return it->second;
-    }
-
-private:
-    typedef std::map<std::shared_ptr<spaceship>::element_type*, si::connection> spaceship_connection_map_type;
-    typedef std::pair<std::string, std::string> ship_and_property_type;
-    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
-
-    spaceship_connection_map_type _on_property_changed_connections;
-    on_property_changed_counter_type _on_property_changed_count;
-};
+typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
 
 #define TEST_CASE_SHIPYARD \
-    mst::command_manager::ptr command_mgr = mst::command_manager::create(); \
+    m::basic_command_manager<string_type, lockable_type>::ptr command_mgr = m::basic_command_manager<string_type, lockable_type>::create(); \
 \
-    std::shared_ptr<spaceship> ship1 = spaceship::create(command_mgr, "USS Enterprise", "Captain James T Kirk"); \
-    std::shared_ptr<spaceship> ship2 = spaceship::create(command_mgr, "Millennium Falcon", "Han Solo"); \
-    std::shared_ptr<spaceship> ship3 = spaceship::create(command_mgr, "Executor", "Lord Darth Vader"); \
-    std::shared_ptr<spaceship> ship4 = spaceship::create(command_mgr, "Battlestar Galactica", "Admiral William Adama"); \
-    std::shared_ptr<spaceship> ship5 = spaceship::create(command_mgr, "Serenity", "Captain Malcolm 'Mal' Reynolds"); \
+    spaceship_ptr ship1 = spaceship_type::create(s::create<string_type>("USS Enterprise"), s::create<string_type>("Captain James T Kirk")); \
+    spaceship_ptr ship2 = spaceship_type::create(s::create<string_type>("Millennium Falcon"), s::create<string_type>("Han Solo")); \
+    spaceship_ptr ship3 = spaceship_type::create(s::create<string_type>("Executor"), s::create<string_type>("Lord Darth Vader")); \
+    spaceship_ptr ship4 = spaceship_type::create(s::create<string_type>("Battlestar Galactica"), s::create<string_type>("Admiral William Adama")); \
+    spaceship_ptr ship5 = spaceship_type::create(s::create<string_type>("Serenity"), s::create<string_type>("Captain Malcolm 'Mal' Reynolds")); \
 \
     std::shared_ptr<spaceship_observer> observer = std::make_shared<spaceship_observer>(); \
 \
-    observer->connect(ship1); \
-    observer->connect(ship2); \
-    observer->connect(ship3); \
-    observer->connect(ship4); \
-    observer->connect(ship5);
+    observer->try_connect(ship1); \
+    observer->try_connect(ship2); \
+    observer->try_connect(ship3); \
+    observer->try_connect(ship4); \
+    observer->try_connect(ship5);
 
 TEST(std_command_manager_placebo_lockable_test_suite, test_command_manager)
 {
@@ -354,50 +118,48 @@ TEST(std_command_manager_placebo_lockable_test_suite, test_spaceship_observer)
     TEST_CASE_SHIPYARD
 
     // Verify first captain
-    EXPECT_EQ(true, ship1->captain() == std::string("Captain James T Kirk"));
-    EXPECT_EQ(true, ship2->captain() == std::string("Han Solo"));
-    EXPECT_EQ(true, ship3->captain() == std::string("Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain() == std::string("Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == s::create<string_type>("Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain() == s::create<string_type>("Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == s::create<string_type>("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == s::create<string_type>("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == s::create<string_type>("Captain Malcolm 'Mal' Reynolds"));
 
     // Verify initial 'on property changed' count
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("USS Enterprise"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Millennium Falcon"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Executor"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Battlestar Galactica"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Serenity"), s::create<string_type>("captain")));
 
     // Give Mr Spock command of USS Enterprise
-    ship1->captain = "Mr Spock";
+    ship1->captain = s::create<string_type>("Mr Spock");
 
-    EXPECT_EQ(true, ship1->captain() == std::string("Mr Spock"));
-    EXPECT_EQ(true, ship2->captain() == std::string("Han Solo"));
-    EXPECT_EQ(true, ship3->captain() == std::string("Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain() == std::string("Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == s::create<string_type>("Mr Spock"));
+    EXPECT_EQ(true, ship2->captain() == s::create<string_type>("Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == s::create<string_type>("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == s::create<string_type>("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == s::create<string_type>("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(1u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(1u, observer->get_property_changed_count(s::create<string_type>("USS Enterprise"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Millennium Falcon"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Executor"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Battlestar Galactica"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Serenity"), s::create<string_type>("captain")));
 
     // Return command of USS Enterprise to Captain Kirk
-    ship1->captain = "Captain James T Kirk";
+    ship1->captain = s::create<string_type>("Captain James T Kirk");
 
-    EXPECT_EQ(true, ship1->captain() == std::string("Captain James T Kirk"));
-    EXPECT_EQ(true, ship2->captain() == std::string("Han Solo"));
-    EXPECT_EQ(true, ship3->captain() == std::string("Lord Darth Vader"));
-    EXPECT_EQ(true, ship4->captain() == std::string("Admiral William Adama"));
-    EXPECT_EQ(true, ship5->captain() == std::string("Captain Malcolm 'Mal' Reynolds"));
+    EXPECT_EQ(true, ship1->captain() == s::create<string_type>("Captain James T Kirk"));
+    EXPECT_EQ(true, ship2->captain() == s::create<string_type>("Han Solo"));
+    EXPECT_EQ(true, ship3->captain() == s::create<string_type>("Lord Darth Vader"));
+    EXPECT_EQ(true, ship4->captain() == s::create<string_type>("Admiral William Adama"));
+    EXPECT_EQ(true, ship5->captain() == s::create<string_type>("Captain Malcolm 'Mal' Reynolds"));
 
-    EXPECT_EQ(2u, observer->get_on_property_changed_count("USS Enterprise", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Millennium Falcon", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Executor", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Battlestar Galactica", "captain"));
-    EXPECT_EQ(0u, observer->get_on_property_changed_count("Serenity", "captain"));
+    EXPECT_EQ(2u, observer->get_property_changed_count(s::create<string_type>("USS Enterprise"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Millennium Falcon"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Executor"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Battlestar Galactica"), s::create<string_type>("captain")));
+    EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Serenity"), s::create<string_type>("captain")));
 }
 
 }
-
-#endif  // Required C++11 feature is not supported by this compiler
