@@ -21,12 +21,16 @@ namespace go
 {
 namespace signals
 {
+
+using connection_id_type = uint64_t;
+
 namespace detail
 {
 
 struct connection_data
 {
-    bool locked;
+    bool locked = false;
+    connection_id_type id = 0;
 };
 
 } // namespace detail

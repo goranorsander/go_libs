@@ -42,6 +42,8 @@ public:
     connection& operator=(connection&&) = default;
 
 public:
+    connection_id_type id() const;
+
     bool is_locked() const;
     void set_lock(const bool lock);
 
@@ -56,6 +58,15 @@ inline connection::connection(std::shared_ptr<detail::connection_data>&& data)
     : _data(std::move(data))
     , _cleaners()
 {
+    if (_data)
+    {
+        _data->id = id();
+    }
+}
+
+inline connection_id_type connection::id() const
+{
+    return reinterpret_cast<connection_id_type>(this);
 }
 
 inline bool connection::is_locked() const

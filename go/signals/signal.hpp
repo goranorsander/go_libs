@@ -18,6 +18,7 @@ GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
 #include <list>
+#include <map>
 #include <mutex>
 
 #include <go/signals/connection.hpp>
@@ -76,7 +77,7 @@ public:
     template<typename T, typename U>
     connection connect(T *p, const U& fn, slot_pointer owner = nullptr);
 
-    void disconnect(const connection& connection);
+    void disconnect(const connection& connection_);
     void disconnect(slot_pointer owner);
 
     void disconnect_all_slots();
@@ -86,15 +87,25 @@ public:
 
 private:
     using connection_data_ptr = std::shared_ptr<detail::connection_data>;
+    using signal_pointer_list = std::list<signal_pointer>;
 
     struct callback_data
     {
         function_type callback;
-        connection_data_ptr connection;
+        connection_data_ptr connection_data;
         slot_pointer owner;
     };
 
     using callback_list_type = std::list<callback_data>;
+
+    struct default_slot
+        : public slot
+    {
+        virtual ~default_slot() override = default;
+    };
+
+    using default_slot_ptr = std::shared_ptr<default_slot>;
+    using connection_id_default_slot_map = std::map<connection_id_type, default_slot_ptr>;
 
 private:
     template<typename T, typename U, int... Ns>
@@ -102,13 +113,15 @@ private:
 
     void copy_callbacks(const callback_list_type& callbacks);
 
-    connection_data_ptr create_connection(function_type&& fn, slot_pointer owner);
-    void destroy_connection(const connection_data_ptr& connection);
+    connection create_connection(function_type&& fn, slot_pointer owner);
+    void create_connection_cleaner(const connection_data_ptr& connection_data, slot_pointer owner);
+    void destroy_connection(const connection_data_ptr& connection_data);
 
 private:
     callback_list_type _callbacks;
     signal_pointer _parent;
-    std::list<signal_pointer> _children;
+    connection_id_default_slot_map _default_owners;
+    signal_pointer_list _children;
 };
 
 template<typename R, typename... Args>
@@ -138,6 +151,7 @@ signal<R(Args...)>::signal()
     : detail::signal_lock<std::recursive_mutex>()
     , _callbacks{}
     , _parent{ nullptr }
+    , _default_owners{}
     , _children{}
 {
 }
@@ -147,6 +161,7 @@ signal<R(Args...)>::signal(const this_type& other)
     : detail::signal_lock<std::recursive_mutex>(other)
     , _callbacks{}
     , _parent{ nullptr }
+    , _default_owners{}
     , _children{}
 {
     std::unique_lock<std::recursive_mutex> lock_this(this->_mutex, std::defer_lock);
@@ -163,6 +178,7 @@ signal<R(Args...)>::this_type& signal<R(Args...)>::operator=(const this_type& ot
     std::unique_lock<std::recursive_mutex> lock_other(other._mutex, std::defer_lock);
     std::lock(lock_this, lock_other);
     this->copy_callbacks(other._callbacks);
+    this->_default_owners = other._default_owners;
     return *this;
 }
 
@@ -192,7 +208,7 @@ R signal<R(Args...)>::call(Args... args) const
         for (auto it = this->_callbacks.cbegin(); it != this->_callbacks.cend(); ++it)
         {
             const callback_data& callback = *it;
-            if (!callback.connection->locked)
+            if (!callback.connection_data->locked)
             {
                 if (std::next(it, 1) == this->_callbacks.cend())
                 {
@@ -220,7 +236,7 @@ R signal<R(Args...)>::call(Args... args, const T& agg) const
         result.reserve(this->_callbacks.size());
         for (const auto& callback : this->_callbacks)
         {
-            if (!callback.connection->locked)
+            if (!callback.connection_data->locked)
             {
                 result.push_back(std::move(callback.callback(std::forward<Args>(args)...)));
             }
@@ -275,9 +291,9 @@ connection signal<R(Args...)>::connect(T* p, const U& fn, slot_pointer owner)
 }
 
 template<typename R, typename... Args>
-void signal<R(Args...)>::disconnect(const connection& connection)
+void signal<R(Args...)>::disconnect(const connection& connection_)
 {
-    this->destroy_connection(connection._data);
+    this->destroy_connection(connection_._data);
 }
 
 template<typename R, typename... Args>
@@ -342,8 +358,8 @@ void signal<R(Args...)>::copy_callbacks(const callback_list_type& callbacks)
         if (callback.owner == nullptr)
         {
             callback_data data;
-            data.callback = jn.callback;
-            data.connection = jn.connection;
+            data.callback = callback.callback;
+            data.connection = callback.connection;
             data.owner = nullptr;
             this->_callbacks.push_back(std::move(data));
         }
@@ -351,43 +367,59 @@ void signal<R(Args...)>::copy_callbacks(const callback_list_type& callbacks)
 }
 
 template<typename R, typename... Args>
-signal<R(Args...)>::connection_data_ptr signal<R(Args...)>::create_connection(function_type&& fn, slot_pointer owner)
+connection signal<R(Args...)>::create_connection(function_type&& fn, slot_pointer owner)
 {
-    connection_data_ptr connection = std::make_shared<detail::connection_data>();
-    if (owner != nullptr)
+    connection_data_ptr connection_data = std::make_shared<detail::connection_data>();
+    default_slot_ptr default_owner;
+    if (owner == nullptr)
     {
-        auto deleter = [this](connection_data_ptr connection)
-        {
-            this->destroy_connection(connection);
-        };
-        detail::connection_cleaner cleaner;
-        cleaner.deleter = deleter;
-        cleaner.data = connection;
-        owner->_data = connection;
-        owner->_cleaners.emplace_back(cleaner);
+        default_owner = std::make_shared<default_slot>();
+        owner = default_owner.get();
     }
+    create_connection_cleaner(connection_data, owner);
     callback_data callback;
     callback.callback = std::move(fn);
-    callback.connection = connection;
+    callback.connection_data = connection_data;
     callback.owner = owner;
     const std::lock_guard<std::recursive_mutex> lock(this->_mutex);
     this->_callbacks.push_back(std::move(callback));
-    return connection;
+    connection connection_(std::move(connection_data));
+    if (default_owner)
+    {
+        _default_owners[connection_.id()] = default_owner;
+    }
+    return connection_;
 }
 
 template<typename R, typename... Args>
-void signal<R(Args...)>::destroy_connection(const connection_data_ptr& connection)
+void signal<R(Args...)>::create_connection_cleaner(const connection_data_ptr& connection_data, slot_pointer owner)
+{
+    auto deleter = [this](connection_data_ptr connection_data) { this->destroy_connection(connection_data); };
+    detail::connection_cleaner cleaner;
+    cleaner.deleter = deleter;
+    cleaner.data = connection_data;
+    owner->_data = connection_data;
+    owner->_cleaners.emplace_back(cleaner);
+}
+
+template<typename R, typename... Args>
+void signal<R(Args...)>::destroy_connection(const connection_data_ptr& connection_data)
 {
     const std::lock_guard<std::recursive_mutex> lock(this->_mutex);
     for (auto it = this->_callbacks.begin(); it != this->_callbacks.end(); ++it)
     {
         const callback_data& callback = *it;
-        if (callback.connection == connection)
+        if (callback.connection_data == connection_data)
         {
             if (callback.owner != nullptr)
             {
-                callback.owner->_data = nullptr;
+                callback.owner->_data.reset();
                 callback.owner->_cleaners.clear();
+                auto it2 = this->_default_owners.find(connection_data->id);
+                if (it2 != this->_default_owners.end())
+                {
+                    this->_default_owners.erase(it2);
+                }
             }
             this->_callbacks.erase(it);
             break;

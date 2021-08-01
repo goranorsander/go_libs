@@ -28,7 +28,7 @@ class slot
     : public connection
 {
 public:
-    ~slot() final;
+    virtual ~slot() override;
     slot() = default;
 };
 
