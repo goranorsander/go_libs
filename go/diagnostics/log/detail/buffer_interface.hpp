@@ -30,8 +30,8 @@ template <class L>
 class buffer_interface
 {
 public:
-    typedef L log_line_type;
-    typedef buffer_interface<L> this_type;
+    using log_line_type = L;
+    using this_type = buffer_interface<L>;
 
 public:
     virtual ~buffer_interface() = default;

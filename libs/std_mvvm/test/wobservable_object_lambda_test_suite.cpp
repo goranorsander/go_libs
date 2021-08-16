@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_wobservable_object_lambda_test_suite, cpp11_not_supported) {}
+TEST(std_wobservable_object_lambda_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <go_test/spaceship_observer.hpp>
@@ -25,13 +25,17 @@ TEST(std_wobservable_object_lambda_test_suite, cpp11_not_supported) {}
 namespace
 {
 
-// Test observable_object
-typedef std::wstring string_type;
-typedef go_test::lambda::observable_spaceship<go_test::wspaceship_traits<string_type>> spaceship_type;
-typedef std::shared_ptr<spaceship_type> spaceship_ptr;
-typedef std::weak_ptr<spaceship_type> spaceship_wptr;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_wobservable_object_lambda_test_suite, required_cpp11_feature_not_supported) {}
+#else
 
-typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
+// Test observable_object
+using string_type = std::wstring;
+using spaceship_type = go_test::lambda::observable_spaceship<go_test::wspaceship_traits<string_type>>;
+using spaceship_ptr = std::shared_ptr<spaceship_type>;
+using spaceship_wptr = std::weak_ptr<spaceship_type>;
+
+using spaceship_observer = go_test::spaceship_observer<spaceship_type>;
 
 TEST(std_wobservable_object_lambda_test_suite, test_wobservable_object)
 {
@@ -86,6 +90,8 @@ TEST(std_wobservable_object_lambda_test_suite, test_wobservable_object)
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->name.name()));
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->max_speed.name()));
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }
 

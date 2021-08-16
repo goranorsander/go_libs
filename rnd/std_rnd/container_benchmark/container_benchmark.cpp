@@ -110,8 +110,8 @@ private: \
 #define GO_IMPLEMENT_CONTAINER_ELEMENT_STD_HASH_FUNCTIONS( _class_name_ ) \
 template<> struct hash<_class_name_> \
 { \
-    typedef _class_name_ argument_type; \
-    typedef std::size_t result_type; \
+    using argument_type = _class_name_; \
+    using result_type = std::size_t; \
     result_type operator()(const argument_type& e) const GO_NOEXCEPT \
     { \
         return std::hash<uint64_t>{}(e._key); \

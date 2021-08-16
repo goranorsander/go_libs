@@ -10,7 +10,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_ATOMIC_OPERATIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 int main() { return -1; }
 #else

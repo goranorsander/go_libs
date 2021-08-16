@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -29,22 +29,22 @@ class basic_observable_sequence_container
     : public basic_observable_container<S, C, L>
 {
 public:
-    typedef S string_type;
-    typedef C container_type;
-    typedef L lockable_type;
-    typedef basic_observable_sequence_container<string_type, container_type, lockable_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = S;
+    using container_type = C;
+    using lockable_type = L;
+    using this_type = basic_observable_sequence_container<string_type, container_type, lockable_type>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef typename container_type::value_type value_type;
-    typedef typename container_type::reference reference;
-    typedef typename container_type::const_reference const_reference;
-    typedef typename container_type::pointer pointer;
-    typedef typename container_type::const_pointer const_pointer;
-    typedef typename container_type::iterator iterator;
-    typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::difference_type difference_type;
-    typedef typename container_type::size_type size_type;
+    using value_type = typename container_type::value_type;
+    using reference = typename container_type::reference;
+    using const_reference = typename container_type::const_reference;
+    using pointer = typename container_type::pointer;
+    using const_pointer = typename container_type::const_pointer;
+    using iterator = typename container_type::iterator;
+    using const_iterator = typename container_type::const_iterator;
+    using difference_type = typename container_type::difference_type;
+    using size_type = typename container_type::size_type;
 
 public:
     virtual ~basic_observable_sequence_container() = 0;

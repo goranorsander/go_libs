@@ -23,9 +23,9 @@ int main() { return -1; }
 class fleet_commander
 {
 public:
-    typedef std::shared_ptr<fleet_commander> ptr;
-    typedef std::weak_ptr<fleet_commander> wptr;
-    typedef si::signal<void(const bool&)> fire_lasers_signal;
+    using ptr = std::shared_ptr<fleet_commander>;
+    using wptr = std::weak_ptr<fleet_commander>;
+    using fire_lasers_signal = si::signal<void(const bool&)>;
 
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
 
@@ -43,7 +43,7 @@ public:
 class spaceship
 {
 public:
-    typedef std::shared_ptr<spaceship> ptr;
+    using ptr = std::shared_ptr<spaceship>;
 
     virtual ~spaceship()
     {

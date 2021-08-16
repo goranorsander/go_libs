@@ -26,7 +26,11 @@
 namespace
 {
 
-typedef m::wobservable_deque<int> container_type;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_wobservable_deque_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
+using container_type = m::wobservable_deque<int>;
 
 TEST(std_wobservable_deque_test_suite, test_assign_range)
 {
@@ -97,5 +101,7 @@ TEST(std_wobservable_deque_test_suite, test_clear)
 {
     go_test::sequence::test_clear<container_type>();
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

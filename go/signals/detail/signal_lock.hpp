@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -37,11 +37,31 @@ public:
 protected:
     signal_lock();
     signal_lock(const this_type& other);
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+    signal_lock(this_type&& other)
+        : _mutex(std::move(other._mutex))
+        , _locked(std::move(other._locked))
+    {
+    }
+#else
     signal_lock(this_type&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
 protected:
-    this_type& operator=(const this_type& other);
-    this_type& operator=(this_type&&) = default;
+    signal_lock<L>& operator=(const this_type& other);
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+    signal_lock<L>& operator=(this_type&& other)
+    {
+        if(&other != this)
+        {
+            this->_mutex = std::move(other._mutex);
+            this->_locked = std::move(other._locked);
+        }
+        return *this;
+    }
+#else
+    signal_lock<L>& operator=(this_type&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
 public:
     bool is_locked() const;
@@ -67,7 +87,7 @@ signal_lock<L>::signal_lock(const this_type& other)
 }
 
 template<class L>
-signal_lock<L>::this_type& signal_lock<L>::operator=(const this_type& other)
+signal_lock<L>& signal_lock<L>::operator=(const this_type& other)
 {
     std::unique_lock<std::recursive_mutex> lock_this(this->_mutex, std::defer_lock);
     std::unique_lock<std::recursive_mutex> lock_other(other._mutex, std::defer_lock);

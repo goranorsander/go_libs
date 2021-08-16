@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -32,14 +32,24 @@ namespace mvvm
 template<class S, class L> class basic_command_manager;
 
 template<class S, class L> class basic_command_interface;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_command_interface<std::string, std::recursive_mutex> command_interface;
 typedef basic_command_interface<std::wstring, std::recursive_mutex> wcommand_interface;
+#else
+using command_interface = basic_command_interface<std::string, std::recursive_mutex>;
+using wcommand_interface = basic_command_interface<std::wstring, std::recursive_mutex>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 namespace single_threaded
 {
 
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_command_interface<std::string, go::async::placebo_lockable> command_interface;
 typedef basic_command_interface<std::wstring, go::async::placebo_lockable> wcommand_interface;
+#else
+using command_interface = basic_command_interface<std::string, go::async::placebo_lockable>;
+using wcommand_interface = basic_command_interface<std::wstring, go::async::placebo_lockable>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 }
 
@@ -51,14 +61,23 @@ class basic_command_interface
     friend class basic_command_manager<S, L>;
 
 public:
-    typedef S string_type;
-    typedef L lockable_type;
+    GO_USING(string_type, S);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef basic_command_interface<S, L> this_type;
     typedef typename std::shared_ptr<basic_command_interface<S, L>> ptr;
     typedef typename std::weak_ptr<basic_command_interface<S, L>> wptr;
     typedef typename std::shared_ptr<command_parameters> command_parameters_type;
     typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<S, L>>&)> can_execute_changed_signal;
     typedef typename go::property::nameless::read_only::property<S> command_name_type;
+#else
+    using this_type = basic_command_interface<S, L>;
+    using ptr = typename std::shared_ptr<basic_command_interface<S, L>>;
+    using wptr = typename std::weak_ptr<basic_command_interface<S, L>>;
+    using command_parameters_type = typename std::shared_ptr<command_parameters>;
+    using can_execute_changed_signal = typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<S, L>>&)>;
+    using command_name_type = typename go::property::nameless::read_only::property<S>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~basic_command_interface() = 0;

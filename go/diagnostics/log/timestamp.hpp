@@ -28,7 +28,7 @@ namespace diagnostics
 namespace log
 {
 
-typedef std::chrono::microseconds::rep timestamp_type;
+using timestamp_type = std::chrono::microseconds::rep;
 
 const timestamp_type one_second_as_microseconds = static_cast<timestamp_type>(1000000ll);
 

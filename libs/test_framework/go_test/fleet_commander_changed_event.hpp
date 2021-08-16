@@ -16,6 +16,8 @@
 #include <go/mvvm.hpp>
 #include <go_test/spaceship_event_type.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -24,11 +26,15 @@ class fleet_commander_changed_event
     : public m::basic_event<S>
 {
 public:
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef fleet_commander_changed_event<S, ROSVP> this_type;
-    typedef S string_identifier_type;
-    typedef ROSVP read_only_string_value_property_type;
-    typedef GO_TYPENAME std::shared_ptr<fleet_commander_changed_event> ptr;
-    typedef GO_TYPENAME std::weak_ptr<fleet_commander_changed_event> wptr;
+#else
+    using this_type = fleet_commander_changed_event<S, ROSVP>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
+    GO_USING(string_identifier_type, S);
+    GO_USING(read_only_string_value_property_type, ROSVP);
+    GO_USING(ptr, GO_TYPENAME std::shared_ptr<fleet_commander_changed_event>);
+    GO_USING(wptr, GO_TYPENAME std::weak_ptr<fleet_commander_changed_event>);
 
 public:
     virtual ~fleet_commander_changed_event() GO_DEFAULT_DESTRUCTOR
@@ -61,5 +67,7 @@ public:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_FLEET_COMMANDER_CHANGED_EVENT_HPP_INCLUDED

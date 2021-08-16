@@ -21,9 +21,9 @@ class fleet_organization_command_parameters
     : public m::command_parameters
 {
 public:
-    typedef fleet_organization_command_parameters this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = fleet_organization_command_parameters;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~fleet_organization_command_parameters() GO_DEFAULT_DESTRUCTOR

@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -31,25 +31,25 @@ class basic_observable_deque
     : public basic_observable_sequence_container<S, std::deque<T>, L>
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef typename std::deque<T> container_type;
-    typedef basic_observable_deque<T, S, L> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = S;
+    using lockable_type = L;
+    using container_type = typename std::deque<T>;
+    using this_type = basic_observable_deque<T, S, L>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef typename container_type::value_type value_type;
-    typedef typename container_type::allocator_type allocator_type;
-    typedef typename container_type::reference reference;
-    typedef typename container_type::const_reference const_reference;
-    typedef typename container_type::pointer pointer;
-    typedef typename container_type::const_pointer const_pointer;
-    typedef typename container_type::iterator iterator;
-    typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
-    typedef typename container_type::difference_type difference_type;
-    typedef typename container_type::size_type size_type;
+    using value_type = typename container_type::value_type;
+    using allocator_type = typename container_type::allocator_type;
+    using reference = typename container_type::reference;
+    using const_reference = typename container_type::const_reference;
+    using pointer = typename container_type::pointer;
+    using const_pointer = typename container_type::const_pointer;
+    using iterator = typename container_type::iterator;
+    using const_iterator = typename container_type::const_iterator;
+    using reverse_iterator = typename container_type::reverse_iterator;
+    using const_reverse_iterator = typename container_type::const_reverse_iterator;
+    using difference_type = typename container_type::difference_type;
+    using size_type = typename container_type::size_type;
 
 public:
     virtual ~basic_observable_deque() GO_DEFAULT_DESTRUCTOR
@@ -504,25 +504,25 @@ class observable_deque
     : public basic_observable_deque<T, std::string, L>
 {
 public:
-    typedef std::string string_type;
-    typedef L lockable_type;
-    typedef typename std::deque<T> container_type;
-    typedef observable_deque<T, L> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = std::string;
+    using lockable_type = L;
+    using container_type = typename std::deque<T>;
+    using this_type = observable_deque<T, L>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef typename container_type::value_type value_type;
-    typedef typename container_type::allocator_type allocator_type;
-    typedef typename container_type::reference reference;
-    typedef typename container_type::const_reference const_reference;
-    typedef typename container_type::pointer pointer;
-    typedef typename container_type::const_pointer const_pointer;
-    typedef typename container_type::iterator iterator;
-    typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
-    typedef typename container_type::difference_type difference_type;
-    typedef typename container_type::size_type size_type;
+    using value_type = typename container_type::value_type;
+    using allocator_type = typename container_type::allocator_type;
+    using reference = typename container_type::reference;
+    using const_reference = typename container_type::const_reference;
+    using pointer = typename container_type::pointer;
+    using const_pointer = typename container_type::const_pointer;
+    using iterator = typename container_type::iterator;
+    using const_iterator = typename container_type::const_iterator;
+    using reverse_iterator = typename container_type::reverse_iterator;
+    using const_reverse_iterator = typename container_type::const_reverse_iterator;
+    using difference_type = typename container_type::difference_type;
+    using size_type = typename container_type::size_type;
 
 public:
     virtual ~observable_deque() GO_DEFAULT_DESTRUCTOR
@@ -688,25 +688,25 @@ class wobservable_deque
     : public basic_observable_deque<T, std::wstring, L>
 {
 public:
-    typedef std::wstring string_type;
-    typedef L lockable_type;
-    typedef typename std::deque<T> container_type;
-    typedef wobservable_deque<T, L> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = std::wstring;
+    using lockable_type = L;
+    using container_type = typename std::deque<T>;
+    using this_type = wobservable_deque<T, L>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef typename container_type::value_type value_type;
-    typedef typename container_type::allocator_type allocator_type;
-    typedef typename container_type::reference reference;
-    typedef typename container_type::const_reference const_reference;
-    typedef typename container_type::pointer pointer;
-    typedef typename container_type::const_pointer const_pointer;
-    typedef typename container_type::iterator iterator;
-    typedef typename container_type::const_iterator const_iterator;
-    typedef typename container_type::reverse_iterator reverse_iterator;
-    typedef typename container_type::const_reverse_iterator const_reverse_iterator;
-    typedef typename container_type::difference_type difference_type;
-    typedef typename container_type::size_type size_type;
+    using value_type = typename container_type::value_type;
+    using allocator_type = typename container_type::allocator_type;
+    using reference = typename container_type::reference;
+    using const_reference = typename container_type::const_reference;
+    using pointer = typename container_type::pointer;
+    using const_pointer = typename container_type::const_pointer;
+    using iterator = typename container_type::iterator;
+    using const_iterator = typename container_type::const_iterator;
+    using reverse_iterator = typename container_type::reverse_iterator;
+    using const_reverse_iterator = typename container_type::const_reverse_iterator;
+    using difference_type = typename container_type::difference_type;
+    using size_type = typename container_type::size_type;
 
 public:
     virtual ~wobservable_deque() GO_DEFAULT_DESTRUCTOR

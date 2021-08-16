@@ -19,7 +19,7 @@
 #include "fleet_repository.hpp"
 #include "mdi_frame_interface.hpp"
 
-typedef m::observable_set<dialog_view::ptr> dialog_view_container_type;
+using dialog_view_container_type = m::observable_set<dialog_view::ptr>;
 
 class main_frame_view_model
     : public m::view_model_interface<std::recursive_mutex>
@@ -28,9 +28,9 @@ class main_frame_view_model
     , private tt::noncopyable_nonmovable
 {
 public:
-    typedef main_frame_view_model this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = main_frame_view_model;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~main_frame_view_model();

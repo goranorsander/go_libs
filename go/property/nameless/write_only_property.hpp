@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -33,11 +33,16 @@ template<class T, class L = std::recursive_mutex> class property
     : public detail::property_base<T, policy::proxy<T, L>>
 {
 public:
-    typedef T value_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef property<value_type, lockable_type> this_type;
     typedef typename policy::proxy<value_type, lockable_type> policy_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = property<value_type, lockable_type>;
+    using policy_type = typename policy::proxy<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~property() GO_DEFAULT_DESTRUCTOR

@@ -118,15 +118,7 @@ namespace go
 namespace async
 {
 
-#if !defined(GO_NO_CXX11_TYPE_ALIASES)
-
-using recursive_spin_lock = std::recursive_mutex;
-
-#else
-
-typedef std::recursive_mutex recursive_spin_lock;
-
-#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
+GO_USING(recursive_spin_lock, std::recursive_mutex);
 
 } // namespace async
 } // namespace go

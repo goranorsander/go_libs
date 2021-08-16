@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -28,14 +28,14 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::string, std::recursive_mutex> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, std::recursive_mutex> notify_wcommand_execution_interface;
+using notify_command_execution_interface = basic_notify_command_execution_interface<std::string, std::recursive_mutex>;
+using notify_wcommand_execution_interface = basic_notify_command_execution_interface<std::wstring, std::recursive_mutex>;
 
 namespace single_threaded
 {
 
-typedef basic_notify_command_execution_interface<std::string, go::async::placebo_lockable> notify_command_execution_interface;
-typedef basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable> notify_wcommand_execution_interface;
+using notify_command_execution_interface = basic_notify_command_execution_interface<std::string, go::async::placebo_lockable>;
+using notify_wcommand_execution_interface = basic_notify_command_execution_interface<std::wstring, go::async::placebo_lockable>;
 
 }
 
@@ -43,11 +43,11 @@ template<class S, class L = std::recursive_mutex>
 class basic_notify_command_execution_interface
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_notify_command_execution_interface<S, L> this_type;
-    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)> command_executed_signal;
-    typedef typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)> command_not_executed_signal;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_notify_command_execution_interface<S, L>;
+    using command_executed_signal = typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>;
+    using command_not_executed_signal = typename go::signals::signal<void(const std::shared_ptr<basic_command_interface<string_type, lockable_type>>&)>;
 
 public:
     virtual ~basic_notify_command_execution_interface() = 0;

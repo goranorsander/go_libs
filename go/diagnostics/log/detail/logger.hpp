@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_STRONGLY_TYPED_ENUM) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -32,28 +32,28 @@ namespace detail
 {
 
 template <class W> class basic_logger;
-typedef basic_logger<file_writer> logger;
-typedef basic_logger<wfile_writer> wlogger;
+using logger = basic_logger<file_writer>;
+using wlogger = basic_logger<wfile_writer>;
 
-typedef std::atomic<logger*> logger_atm;
-typedef std::atomic<wlogger*> wlogger_atm;
+using logger_atm = std::atomic<logger*>;
+using wlogger_atm = std::atomic<wlogger*>;
 
-typedef std::unique_ptr<logger> logger_uptr;
-typedef std::unique_ptr<wlogger> wlogger_uptr;
+using logger_uptr = std::unique_ptr<logger>;
+using wlogger_uptr = std::unique_ptr<wlogger>;
 
 template <class W>
 class basic_logger
 {
 public:
-    typedef W file_writer_type;
-    typedef basic_logger<W> this_type;
+    using file_writer_type = W;
+    using this_type = basic_logger<W>;
 
-    typedef typename W::log_line_type log_line_type;
-    typedef typename W::out_file_stream_type out_file_stream_type;
-    typedef typename W::string_type string_type;
-    typedef typename W::out_stream_type out_stream_type;
-    typedef typename W::char_type char_type;
-    typedef typename go::diagnostics::log::policy::logging_policy_interface<file_writer_type> logging_policy_interface_type;
+    using log_line_type = typename W::log_line_type;
+    using out_file_stream_type = typename W::out_file_stream_type;
+    using string_type = typename W::string_type;
+    using out_stream_type = typename W::out_stream_type;
+    using char_type = typename W::char_type;
+    using logging_policy_interface_type = typename go::diagnostics::log::policy::logging_policy_interface<file_writer_type>;
 
 public:
     ~basic_logger()

@@ -36,7 +36,11 @@ namespace convert
 
 inline std::string convert_wstring_to_string(const std::wstring& s)
 {
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef go::utility::deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>> facet_type;
+#else
+    using facet_type = go::utility::deletable_facet<std::codecvt<wchar_t, char, std::mbstate_t>>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     std::wstring_convert<facet_type> converter;
     return converter.to_bytes(s);
 }
@@ -67,7 +71,11 @@ inline std::string convert_u32string_to_string(const std::u32string& s)
 
 inline std::wstring convert_string_to_wstring(const std::string& s)
 {
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef go::utility::deletable_facet<std::codecvt<wchar_t, char, mbstate_t>> facet_type;
+#else
+    using facet_type = go::utility::deletable_facet<std::codecvt<wchar_t, char, mbstate_t>>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     std::wstring_convert<facet_type> converter;
     return converter.from_bytes(s);
 }
@@ -81,7 +89,11 @@ inline std::wstring convert_u2string_to_wstring(const u2string& s)
 inline std::wstring convert_u16string_to_wstring(const std::u16string& s)
 {
     // Windows VC++ wide strings are UCS-2
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef go::utility::deletable_facet<std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>> facet_type;
+#else
+    using facet_type = go::utility::deletable_facet<std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     std::wstring_convert<facet_type, wchar_t> converter;
     return converter.from_bytes(reinterpret_cast<const char*> (&s[0]), reinterpret_cast<const char*>(&s[0] + s.size()));
 }

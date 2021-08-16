@@ -271,6 +271,24 @@ __pragma(message(_message_))
 #define GO_NULLPTR nullptr
 #endif  // #if defined(GO_NO_CXX11_NULLPTR)
 
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+namespace std
+{
+namespace tr1
+{
+template<class> class enable_shared_from_this;
+template<class> class shared_ptr;
+template<class> class weak_ptr;
+}
+using tr1::enable_shared_from_this;
+using tr1::shared_ptr;
+using tr1::weak_ptr;
+}
+//#define GO_SHARED_PTR std::tr1::shared_ptr
+//#else
+//#define GO_SHARED_PTR std::shared_ptr
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+
 #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 #define GO_FINAL
 #define GO_OVERRIDE
@@ -278,6 +296,12 @@ __pragma(message(_message_))
 #define GO_FINAL final
 #define GO_OVERRIDE override
 #endif  // #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
+
+#if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+#define GO_THREAD_LOCAL
+#else
+#define GO_THREAD_LOCAL thread_local
+#endif  // #if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
 
 #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 #define GO_USING(_alias_, _type_) typedef _type_ _alias_

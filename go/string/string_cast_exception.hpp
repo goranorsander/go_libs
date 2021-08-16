@@ -23,7 +23,7 @@ class string_cast_exception
     : public go::exception::exception
 {
 public:
-    typedef exception this_type;
+    GO_USING(this_type, string_cast_exception);
 
 public:
     virtual ~string_cast_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR

@@ -17,120 +17,124 @@
 #include <go/property.hpp>
 #include <go_test/fleet_commander_changed_event.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
 template <class StrVal, class Lock = std::recursive_mutex>
 struct spaceship_traits
 {
-    typedef spaceship_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef std::string string_identifier_type;
+    using this_type = spaceship_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = std::string;
 
     // Property types
-    typedef p::property<double, lockable_type> double_property_type;
-    typedef p::property<int, lockable_type> int_property_type;
-    typedef p::property<string_value_type, lockable_type> string_property_type;
-    typedef p::value_property<string_value_type, lockable_type> string_value_property_type;
-    typedef pro::property<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type> read_only_command_property_type;
-    typedef pro::property<string_value_type, lockable_type> read_only_string_property_type;
-    typedef pro::value_property<string_value_type, lockable_type> read_only_string_value_property_type;
+    using double_property_type = p::property<double, lockable_type>;
+    using int_property_type = p::property<int, lockable_type>;
+    using string_property_type = p::property<string_value_type, lockable_type>;
+    using string_value_property_type = p::value_property<string_value_type, lockable_type>;
+    using read_only_command_property_type = pro::property<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type>;
+    using read_only_string_property_type = pro::property<string_value_type, lockable_type>;
+    using read_only_string_value_property_type = pro::value_property<string_value_type, lockable_type>;
 
     // Observable object types
-    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
-    typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
-    typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
+    using observable_object_base_type = typename m::basic_observable_object<string_identifier_type, lockable_type>;
+    using property_changed_arguments_type = typename m::basic_property_changed_arguments<string_identifier_type>;
+    using property_changed_arguments_ptr = typename property_changed_arguments_type::ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef command_value_type command_ptr;
+    using command_value_type = typename read_only_command_property_type::value_type;
+    using command_ptr = command_value_type;
 
     // Event types
-    typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;
-    typedef typename event_manager_type::ptr event_manager_ptr;
-    typedef typename event_manager_type::wptr event_manager_wptr;
-    typedef m::basic_event<string_identifier_type> event_type;
-    typedef typename event_type::ptr event_ptr;
-    typedef typename event_type::wptr event_wptr;
-    typedef fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
-    typedef typename fleet_commander_changed_event_type::ptr fleet_commander_changed_event_ptr;
+    using event_manager_type = m::basic_event_manager<string_identifier_type, lockable_type>;
+    using event_manager_ptr = typename event_manager_type::ptr;
+    using event_manager_wptr = typename event_manager_type::wptr;
+    using event_type = m::basic_event<string_identifier_type>;
+    using event_ptr = typename event_type::ptr;
+    using event_wptr = typename event_type::wptr;
+    using fleet_commander_changed_event_type = fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type>;
+    using fleet_commander_changed_event_ptr = typename fleet_commander_changed_event_type::ptr;
 };
 
 template <class StrVal, class Lock = std::recursive_mutex>
 struct wspaceship_traits
 {
-    typedef wspaceship_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef std::wstring string_identifier_type;
+    using this_type = wspaceship_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = std::wstring;
 
     // Property types
-    typedef p::wproperty<double, lockable_type> double_property_type;
-    typedef p::wproperty<int, lockable_type> int_property_type;
-    typedef p::wproperty<string_value_type, lockable_type> string_property_type;
-    typedef p::value_wproperty<string_value_type, lockable_type> string_value_property_type;
-    typedef pro::wproperty<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type> read_only_command_property_type;
-    typedef pro::wproperty<string_value_type, lockable_type> read_only_string_property_type;
-    typedef pro::value_wproperty<string_value_type, lockable_type> read_only_string_value_property_type;
+    using double_property_type = p::wproperty<double, lockable_type>;
+    using int_property_type = p::wproperty<int, lockable_type>;
+    using string_property_type = p::wproperty<string_value_type, lockable_type>;
+    using string_value_property_type = p::value_wproperty<string_value_type, lockable_type>;
+    using read_only_command_property_type = pro::wproperty<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type>;
+    using read_only_string_property_type = pro::wproperty<string_value_type, lockable_type>;
+    using read_only_string_value_property_type = pro::value_wproperty<string_value_type, lockable_type>;
 
     // Observable object types
-    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
-    typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
-    typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
+    using observable_object_base_type = typename m::basic_observable_object<string_identifier_type, lockable_type>;
+    using property_changed_arguments_type = typename m::basic_property_changed_arguments<string_identifier_type>;
+    using property_changed_arguments_ptr = typename property_changed_arguments_type::ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef command_value_type command_ptr;
+    using command_value_type = typename read_only_command_property_type::value_type;
+    using command_ptr = command_value_type;
 
     // Event types
-    typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;
-    typedef typename event_manager_type::ptr event_manager_ptr;
-    typedef typename event_manager_type::wptr event_manager_wptr;
-    typedef m::basic_event<string_identifier_type> event_type;
-    typedef typename event_type::ptr event_ptr;
-    typedef typename event_type::wptr event_wptr;
-    typedef fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
-    typedef typename fleet_commander_changed_event_type::ptr fleet_commander_changed_event_ptr;
+    using event_manager_type = m::basic_event_manager<string_identifier_type, lockable_type>;
+    using event_manager_ptr = typename event_manager_type::ptr;
+    using event_manager_wptr = typename event_manager_type::wptr;
+    using event_type = m::basic_event<string_identifier_type>;
+    using event_ptr = typename event_type::ptr;
+    using event_wptr = typename event_type::wptr;
+    using fleet_commander_changed_event_type = fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type>;
+    using fleet_commander_changed_event_ptr = typename fleet_commander_changed_event_type::ptr;
 };
 
 template <class StrVal, class Lock = std::recursive_mutex>
 struct u8spaceship_traits
 {
-    typedef u8spaceship_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef s::u8string string_identifier_type;
+    using this_type = u8spaceship_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = s::u8string;
 
     // Property types
-    typedef p::u8property<double, lockable_type> double_property_type;
-    typedef p::u8property<int, lockable_type> int_property_type;
-    typedef p::u8property<string_value_type, lockable_type> string_property_type;
-    typedef p::value_u8property<string_value_type, lockable_type> string_value_property_type;
-    typedef pro::u8property<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type> read_only_command_property_type;
-    typedef pro::u8property<string_value_type, lockable_type> read_only_string_property_type;
-    typedef pro::value_u8property<string_value_type, lockable_type> read_only_string_value_property_type;
+    using double_property_type = p::u8property<double, lockable_type>;
+    using int_property_type = p::u8property<int, lockable_type>;
+    using string_property_type = p::u8property<string_value_type, lockable_type>;
+    using string_value_property_type = p::value_u8property<string_value_type, lockable_type>;
+    using read_only_command_property_type = pro::u8property<typename m::basic_command_interface<string_identifier_type, lockable_type>::ptr, lockable_type>;
+    using read_only_string_property_type = pro::u8property<string_value_type, lockable_type>;
+    using read_only_string_value_property_type = pro::value_u8property<string_value_type, lockable_type>;
 
     // Observable object types
-    typedef typename m::basic_observable_object<string_identifier_type, lockable_type> observable_object_base_type;
-    typedef typename m::basic_property_changed_arguments<string_identifier_type> property_changed_arguments_type;
-    typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
+    using observable_object_base_type = typename m::basic_observable_object<string_identifier_type, lockable_type>;
+    using property_changed_arguments_type = typename m::basic_property_changed_arguments<string_identifier_type>;
+    using property_changed_arguments_ptr = typename property_changed_arguments_type::ptr;
 
     // Command types
-    typedef typename read_only_command_property_type::value_type command_value_type;
-    typedef command_value_type command_ptr;
+    using command_value_type = typename read_only_command_property_type::value_type;
+    using command_ptr = command_value_type;
 
     // Event types
-    typedef m::basic_event_manager<string_identifier_type, lockable_type> event_manager_type;
-    typedef typename event_manager_type::ptr event_manager_ptr;
-    typedef typename event_manager_type::wptr event_manager_wptr;
-    typedef m::basic_event<string_identifier_type> event_type;
-    typedef typename event_type::ptr event_ptr;
-    typedef typename event_type::wptr event_wptr;
-    typedef fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
-    typedef typename fleet_commander_changed_event_type::ptr fleet_commander_changed_event_ptr;
+    using event_manager_type = m::basic_event_manager<string_identifier_type, lockable_type>;
+    using event_manager_ptr = typename event_manager_type::ptr;
+    using event_manager_wptr = typename event_manager_type::wptr;
+    using event_type = m::basic_event<string_identifier_type>;
+    using event_ptr = typename event_type::ptr;
+    using event_wptr = typename event_type::wptr;
+    using fleet_commander_changed_event_type = fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type>;
+    using fleet_commander_changed_event_ptr = typename fleet_commander_changed_event_type::ptr;
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_SPACESHIP_TRAITS_HPP_INCLUDED

@@ -21,9 +21,9 @@ class product_repository
     , public tt::noncopyable_nonmovable
 {
 public:
-    typedef product_repository this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = product_repository;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~product_repository() GO_DEFAULT_DESTRUCTOR
@@ -39,7 +39,7 @@ public:
     virtual bool remove(const product_id_type& product_id) override;
 
 private:
-    typedef std::map<product_id_type, product_model::ptr> products_type;
+    using products_type = std::map<product_id_type, product_model::ptr>;
 
     products_type _products;
 };

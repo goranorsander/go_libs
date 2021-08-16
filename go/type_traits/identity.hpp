@@ -24,7 +24,7 @@ namespace type_traits
 
 template <typename T> struct identity
 {
-    using type = T;
+    GO_USING(type, T);
 };
 
 }

@@ -180,6 +180,12 @@
 #define GO_OVERRIDE override
 #endif  // #if defined(GO_NO_CXX11_OVERRIDE_AND_FINAL)
 
+#if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+#define GO_THREAD_LOCAL
+#else
+#define GO_THREAD_LOCAL thread_local
+#endif  // #if defined(GO_NO_CXX11_THREAD_LOCAL_STORAGE)
+
 #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 #define GO_USING(_alias_, _type_) typedef _type_ _alias_
 #else

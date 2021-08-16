@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_observable_object_lambda_placebo_lockable_test_suite, cpp11_not_supported) {}
+TEST(std_observable_object_lambda_placebo_lockable_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 GO_MESSAGE("std_observable_object_lambda_placebo_lockable_test_suite is disabled")
@@ -30,13 +30,13 @@ TEST(std_observable_object_lambda_placebo_lockable_test_suite, test_suite_disabl
 //{
 //
 //// Test observable_object
-//typedef std::string string_type;
-//typedef a::placebo_lockable lockable_type;
-//typedef go_test::lambda::single_threaded::observable_spaceship<go_test::spaceship_traits<string_type, lockable_type>> spaceship_type;
-//typedef std::shared_ptr<spaceship_type> spaceship_ptr;
-//typedef std::weak_ptr<spaceship_type> spaceship_wptr;
+//using string_type = std::string;
+//using lockable_type = a::placebo_lockable;
+//using spaceship_type = go_test::lambda::single_threaded::observable_spaceship<go_test::spaceship_traits<string_type, lockable_type>>;
+//using spaceship_ptr = std::shared_ptr<spaceship_type>;
+//using spaceship_wptr = std::weak_ptr<spaceship_type>;
 //
-//typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
+//using spaceship_observer = go_test::spaceship_observer<spaceship_type>;
 //
 //TEST(std_observable_object_lambda_placebo_lockable_test_suite, test_observable_object)
 //{

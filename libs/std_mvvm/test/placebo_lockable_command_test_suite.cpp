@@ -21,6 +21,10 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_command_placebo_lockable_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
 GO_USING(string_type, std::string);
 #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 typedef go_test::test_command_traits<string_type, a::placebo_lockable> test_command_traits;
@@ -87,5 +91,7 @@ TEST(std_command_placebo_lockable_test_suite, test_command)
     EXPECT_TRUE(command->executed());
     EXPECT_FALSE(command->can_execute(mst::command_interface::command_parameters_type()));
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

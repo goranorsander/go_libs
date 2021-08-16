@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11_CODECVT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_create_string_test_suite, cpp11_not_supported) {}
+TEST(std_create_string_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <go/namespace_alias.hpp>

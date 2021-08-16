@@ -27,8 +27,8 @@ namespace mvvm
 {
 
 template<class S> class basic_event;
-typedef basic_event<std::string> event;
-typedef basic_event<std::wstring> wevent;
+using event = basic_event<std::string>;
+using wevent = basic_event<std::wstring>;
 
 template<class S>
 class basic_event
@@ -36,11 +36,11 @@ class basic_event
     , public go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef S string_type;
-    typedef basic_event<S> this_type;
-    typedef typename std::shared_ptr<basic_event<S>> ptr;
-    typedef typename std::weak_ptr<basic_event<S>> wptr;
-    typedef typename go::property::nameless::read_only::property<S> event_type_type;
+    using string_type = S;
+    using this_type = basic_event<S>;
+    using ptr = typename std::shared_ptr<basic_event<S>>;
+    using wptr = typename std::weak_ptr<basic_event<S>>;
+    using event_type_type = typename go::property::nameless::read_only::property<S>;
 
 public:
     virtual ~basic_event() GO_DEFAULT_DESTRUCTOR

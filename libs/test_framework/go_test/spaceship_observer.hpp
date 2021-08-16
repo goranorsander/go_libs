@@ -16,6 +16,8 @@
 #include <go/signals/connections.hpp>
 #include <go_test/observable_spaceship.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -23,16 +25,16 @@ template <class Spaceship>
 class spaceship_observer
 {
 public:
-    typedef spaceship_observer<Spaceship> this_type;
-    typedef Spaceship spaceship_type;
-    typedef typename Spaceship::ptr spaceship_ptr;
+    using this_type = spaceship_observer<Spaceship>;
+    using spaceship_type = Spaceship;
+    using spaceship_ptr = typename Spaceship::ptr;
 
-    typedef typename spaceship_type::traits_type traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::property_changed_arguments_type property_changed_arguments_type;
-    typedef typename traits_type::property_changed_arguments_ptr property_changed_arguments_ptr;
+    using traits_type = typename spaceship_type::traits_type;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
+    using property_changed_arguments_type = typename traits_type::property_changed_arguments_type;
+    using property_changed_arguments_ptr = typename traits_type::property_changed_arguments_ptr;
 
 public:
     virtual ~spaceship_observer() GO_DEFAULT_DESTRUCTOR
@@ -90,14 +92,16 @@ public:
     }
 
 private:
-    typedef si::connections<spaceship_ptr, void(const m::object::ptr&, const property_changed_arguments_ptr&)> property_changed_connections_type;
-    typedef std::pair<string_identifier_type, string_identifier_type> ship_and_property_type;
-    typedef std::map<ship_and_property_type, unsigned int> on_property_changed_counter_type;
+    using property_changed_connections_type = si::connections<spaceship_ptr, void(const m::object::ptr&, const property_changed_arguments_ptr&)>;
+    using ship_and_property_type = std::pair<string_identifier_type, string_identifier_type>;
+    using on_property_changed_counter_type = std::map<ship_and_property_type, unsigned int>;
 
     property_changed_connections_type _property_changed_connections;
     on_property_changed_counter_type _property_changed_count;
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_SPACESHIP_OBSERVER_HPP_INCLUDED

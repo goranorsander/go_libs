@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -30,10 +30,10 @@ template<class L = std::recursive_mutex>
 class notify_container_changed_interface
 {
 public:
-    typedef L lockable_type;
-    typedef notify_container_changed_interface<L> this_type;
-    typedef container_changed_arguments container_changed_arguments_type;
-    typedef go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)> container_changed_signal;
+    using lockable_type = L;
+    using this_type = notify_container_changed_interface<L>;
+    using container_changed_arguments_type = container_changed_arguments;
+    using container_changed_signal = go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<container_changed_arguments_type>&)>;
 
 public:
     virtual ~notify_container_changed_interface() = 0;

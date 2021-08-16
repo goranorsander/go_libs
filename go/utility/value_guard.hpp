@@ -23,9 +23,9 @@ template<class T> class value_guard
     : go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef value_guard<T> this_type;
-    typedef go::type_traits::noncopyable_nonmovable base_type;
-    typedef T value_type;
+    GO_USING(this_type, value_guard<T>);
+    GO_USING(base_type, go::type_traits::noncopyable_nonmovable);
+    GO_USING(value_type, T);
 
 public:
     virtual ~value_guard()

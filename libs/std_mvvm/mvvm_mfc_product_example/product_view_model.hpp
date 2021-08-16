@@ -26,9 +26,9 @@ class product_view_model
     , public tt::noncopyable_nonmovable
 {
 public:
-    typedef product_view_model this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = product_view_model;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~product_view_model() GO_DEFAULT_DESTRUCTOR

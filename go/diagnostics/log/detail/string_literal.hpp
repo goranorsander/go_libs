@@ -29,8 +29,8 @@ namespace detail
 template <typename C>
 struct string_literal_t
 {
-    typedef C char_type;
-    typedef string_literal_t<C> this_type;
+    using char_type = C;
+    using this_type = string_literal_t<C>;
 
     ~string_literal_t() GO_DEFAULT_DESTRUCTOR
 

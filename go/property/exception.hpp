@@ -23,7 +23,7 @@ class exception
     : public go::exception::exception
 {
 public:
-    typedef exception this_type;
+    using this_type = exception;
 
 public:
     virtual ~exception() GO_NOEXCEPT_OR_NOTHROW override GO_DEFAULT_DESTRUCTOR

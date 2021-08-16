@@ -560,8 +560,13 @@ template<typename T>
 class fundamental_type_specializer
 {
 public:
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef fundamental_type_specializer<T> this_type;
     typedef T value_type;
+#else
+    using this_type = fundamental_type_specializer<T>;
+    using value_type = T;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 
     virtual ~fundamental_type_specializer() GO_NOEXCEPT = 0;
 

@@ -23,11 +23,11 @@ template<class T> class scope_guard_new
     : public scope_guard
 {
 public:
-    typedef scope_guard_new<T> this_type;
-    typedef scope_guard base_type;
-    typedef T value_type;
-    typedef T& reference;
-    typedef T* pointer;
+    GO_USING(this_type, scope_guard_new);
+    GO_USING(base_type, scope_guard);
+    GO_USING(value_type, T);
+    GO_USING(reference, T&);
+    GO_USING(pointer, T*);
 
 public:
     virtual ~scope_guard_new() GO_DEFAULT_DESTRUCTOR

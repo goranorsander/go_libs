@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_exception_test_suite, cpp11_not_supported) {}
+TEST(std_exception_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <string>
@@ -30,7 +30,7 @@ class derived_exception
     : public e::exception
 {
 public:
-    typedef exception this_type;
+    GO_USING(this_type, exception);
 
 public:
     virtual ~derived_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR
@@ -44,7 +44,7 @@ public:
 class other_exception
 {
 public:
-    typedef other_exception this_type;
+    GO_USING(this_type, other_exception);
 
 public:
     virtual ~other_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR

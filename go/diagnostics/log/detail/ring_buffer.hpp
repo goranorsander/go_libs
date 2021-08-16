@@ -38,13 +38,13 @@ class ring_buffer
     , go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef L log_line_type;
-    typedef ring_buffer<L> this_type;
+    using log_line_type = L;
+    using this_type = ring_buffer<L>;
 
-    typedef typename L::string_type string_type;
-    typedef typename L::out_stream_type out_stream_type;
-    typedef typename L::char_type char_type;
-    typedef std::size_t size_type;
+    using string_type = typename L::string_type;
+    using out_stream_type = typename L::out_stream_type;
+    using char_type = typename L::char_type;
+    using size_type = std::size_t;
 
 public:
     virtual ~ring_buffer() = default;

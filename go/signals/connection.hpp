@@ -34,12 +34,32 @@ public:
     virtual ~connection() = default;
     connection() = default;
     connection(const connection&) = delete;
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+    connection(connection&& other)
+        : _data(std::move(other._data))
+        , _cleaners(std::move(other._cleaners))
+    {
+    }
+#else
     connection(connection&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
     connection(std::shared_ptr<detail::connection_data>&& data);
 
 public:
     connection& operator=(const connection&) = delete;
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+    connection& operator=(connection&& other)
+    {
+        if (&other != this)
+        {
+            _data = std::move(other._data);
+            _cleaners = std::move(other._cleaners);
+        }
+        return *this;
+    }
+#else
     connection& operator=(connection&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
 public:
     connection_id_type id() const;

@@ -25,8 +25,8 @@ namespace utility
 template<class Facet> struct deletable_facet
     : Facet
 {
-    typedef Facet facet_type;
-    typedef deletable_facet<facet_type> this_type;
+    GO_USING(facet_type, Facet);
+    GO_USING(this_type, deletable_facet<facet_type>);
 
 #if !defined(GO_FACET_IS_NOT_A_MEMBER_OF_STD_CODECVT_ISSUE)
     using Facet::Facet; // Inherit constructors

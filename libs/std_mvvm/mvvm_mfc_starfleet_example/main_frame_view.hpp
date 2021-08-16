@@ -34,7 +34,7 @@ class main_frame_view
     DECLARE_DYNAMIC(main_frame_view)
 
 private:
-    typedef std::map<fleet_organization_id_type, child_frame_view*> fleet_organization_child_frame_view_type;
+    using fleet_organization_child_frame_view_type = std::map<fleet_organization_id_type, child_frame_view*>;
 
 public:
     virtual ~main_frame_view() GO_DEFAULT_DESTRUCTOR

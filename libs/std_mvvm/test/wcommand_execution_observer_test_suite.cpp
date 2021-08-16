@@ -20,6 +20,10 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
+TEST(std_wcommand_execution_observer_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
 const std::wstring TEST_COMMAND_NAME(L"test wcommand");
 
 class test_wcommand
@@ -327,5 +331,7 @@ TEST(std_wcommand_execution_observer_test_suite, test_post_wcommand)
     EXPECT_EQ(1u, command_execution_observer.number_of_executed_commands());
     EXPECT_EQ(2u, command_execution_observer.number_of_not_executed_commands());
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

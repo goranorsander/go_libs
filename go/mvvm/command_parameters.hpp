@@ -29,9 +29,9 @@ class command_parameters
     : public go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef command_parameters this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    using this_type = command_parameters;
+    using ptr = std::shared_ptr<this_type>;
+    using wptr = std::weak_ptr<this_type>;
 
 public:
     virtual ~command_parameters() GO_DEFAULT_DESTRUCTOR

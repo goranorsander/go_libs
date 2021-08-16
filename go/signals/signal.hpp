@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -33,6 +33,8 @@ namespace go
 namespace signals
 {
 
+using size_type = size_t;
+
 template<typename R, typename... Args>
 class signal<R(Args...)>
     : public detail::signal_lock<std::recursive_mutex>
@@ -45,17 +47,40 @@ public:
     using function_type = std::function<R(Args...)>;
     using signal_pointer = this_type*;
     using slot_pointer = slot*;
-    using size_type = size_t;
 
 public:
     ~signal();
     signal();
     signal(const this_type& other);
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+    signal(this_type&& other)
+        : _callbacks(std::move(other._callbacks))
+        , _parent(std::move(other._parent))
+        , _default_owners(std::move(other._default_owners))
+        , _children(std::move(other._children))
+    {
+    }
+#else
     signal(this_type&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
 
 public:
-    this_type& operator=(const this_type& other);
-    this_type& operator=(this_type&&) = default;
+    signal<R(Args...)>& operator=(const this_type& other);
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+    signal<R(Args...)>& operator=(this_type&& other)
+    {
+        if(&other != this)
+        {
+            this->_callbacks = std::move(other._callbacks);
+            this->_parent = std::move(other._parent);
+            this->_default_owners = std::move(other._default_owners);
+            this->_children = std::move(other._children);
+        }
+        return *this;
+}
+#else
+    signal<R(Args...)>& operator=(this_type&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
     R operator()(Args... args) const;
 
@@ -171,7 +196,7 @@ signal<R(Args...)>::signal(const this_type& other)
 }
 
 template<typename R, typename... Args>
-signal<R(Args...)>::this_type& signal<R(Args...)>::operator=(const this_type& other)
+signal<R(Args...)>& signal<R(Args...)>::operator=(const this_type& other)
 {
     detail::signal_lock<std::recursive_mutex>::operator=(other);
     std::unique_lock<std::recursive_mutex> lock_this(this->_mutex, std::defer_lock);
@@ -336,7 +361,7 @@ bool signal<R(Args...)>::empty() const
 }
 
 template<typename R, typename... Args>
-signal<R(Args...)>::size_type signal<R(Args...)>::size() const
+size_type signal<R(Args...)>::size() const
 {
     const std::lock_guard<std::recursive_mutex> lock(this->_mutex);
     return this->_callbacks.size();

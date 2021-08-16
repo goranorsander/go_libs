@@ -13,6 +13,10 @@
 
 #include <go/config.hpp>
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_STRONGLY_TYPED_ENUM)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 namespace go
 {
 namespace diagnostics
@@ -115,5 +119,7 @@ inline const std::wstring::value_type* to_wstring(const log_level& loglevel)
 } // namespace log
 } // namespace diagnostics
 } // namespace go
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_DIAGNOSTICS_LOG_LOG_LEVEL_HPP_INCLUDED

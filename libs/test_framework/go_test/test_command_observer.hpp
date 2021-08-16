@@ -17,6 +17,8 @@
 #include <go/namespace_alias.hpp>
 #include <go/string.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -24,13 +26,13 @@ template <class Traits>
 class test_command_observer
 {
 public:
-    typedef test_command_observer<Traits> this_type;
+    using this_type = test_command_observer<Traits>;
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::command_interface_type command_interface_type;
+    using traits_type = Traits;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
+    using command_interface_type = typename traits_type::command_interface_type;
 
 public:
     virtual ~test_command_observer() GO_DEFAULT_DESTRUCTOR
@@ -52,5 +54,7 @@ private:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_TEST_COMMAND_OBSERVER_HPP_INCLUDED

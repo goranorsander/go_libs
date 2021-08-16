@@ -25,9 +25,13 @@ namespace detail
 template<class V, class P> class property_base
 {
 public:
-    typedef V value_type;
-    typedef P storage_policy;
+    GO_USING(value_type, V);
+    GO_USING(storage_policy, P);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef property_base<value_type, storage_policy> this_type;
+#else
+    using this_type = property_base<value_type, storage_policy>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
     virtual ~property_base() = 0;
 

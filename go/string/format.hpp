@@ -18,6 +18,10 @@
 #include <memory>
 #include <string>
 
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+#include <go/utility/scope_guard_new_array.hpp>
+#endif
+
 //
 // IMPLEMENTATION NOTE #1
 //
@@ -31,16 +35,24 @@ namespace string
 
 inline std::string format(const std::string::value_type* fmt_str, ...)  // See implementation note #1
 {
-	if (fmt_str == nullptr)
+	if (fmt_str == GO_NULLPTR)
 	{
 		return std::string();
 	}
     int n = static_cast<int>(strlen(fmt_str)) * 2; // Reserve two times as much as the length of the fmt_str
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+    go::utility::scope_guard_new_array<char> formatted(GO_NULLPTR, 0);
+#else
     std::unique_ptr<char[]> formatted;
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
     va_list ap;
     for(;;)
     {
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+        formatted.reset(new char[n], n); // Wrap the plain char array into the scope_guard_new_array
+#else
         formatted.reset(new char[n]); // Wrap the plain char array into the unique_ptr
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
 #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         strcpy_s(&formatted[0], n, fmt_str);
 #else
@@ -67,16 +79,24 @@ inline std::string format(const std::string::value_type* fmt_str, ...)  // See i
 
 inline std::wstring format(const std::wstring::value_type* fmt_str, ...)  // See implementation note #1
 {
-	if (fmt_str == nullptr)
+	if (fmt_str == GO_NULLPTR)
 	{
 		return std::wstring();
 	}
 	int n = static_cast<int>(wcslen(fmt_str)) * 2; // Reserve two times as much as the length of the fmt_str
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+    go::utility::scope_guard_new_array<wchar_t> formatted(GO_NULLPTR, 0);
+#else
     std::unique_ptr<wchar_t[]> formatted;
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
     va_list ap;
     for(;;)
     {
+#if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
+        formatted.reset(new wchar_t[n], n); // Wrap the plain char array into the scope_guard_new_array
+#else
         formatted.reset(new wchar_t[n]); // Wrap the plain char array into the unique_ptr
+#endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
 #if !defined(GO_COMP_GCC) && !defined(GO_COMP_CLANG)
         wcscpy_s(&formatted[0], n, fmt_str);
 #else

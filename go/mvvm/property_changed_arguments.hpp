@@ -26,18 +26,18 @@ namespace mvvm
 {
 
 template<class S> class basic_property_changed_arguments;
-typedef basic_property_changed_arguments<std::string> property_changed_arguments;
-typedef basic_property_changed_arguments<std::wstring> wproperty_changed_arguments;
+using property_changed_arguments = basic_property_changed_arguments<std::string>;
+using wproperty_changed_arguments = basic_property_changed_arguments<std::wstring>;
 
 template<class S>
 class basic_property_changed_arguments
     : public arguments
 {
 public:
-    typedef S string_type;
-    typedef basic_property_changed_arguments<string_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = S;
+    using this_type = basic_property_changed_arguments<string_type>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~basic_property_changed_arguments() GO_DEFAULT_DESTRUCTOR

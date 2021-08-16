@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -33,11 +33,16 @@ template<class T, class S, class L = std::recursive_mutex> class basic_value_pro
     : public detail::property_base<T, policy::value<T, L>, S>
 {
 public:
-    typedef T value_type;
-    typedef S string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, S);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef basic_value_property<value_type, string_type, lockable_type> this_type;
     typedef typename policy::value<value_type, lockable_type> policy_type;
+#else
+    using this_type = basic_value_property<value_type, string_type, lockable_type>;
+    using policy_type = typename policy::value<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~basic_value_property() GO_DEFAULT_DESTRUCTOR
@@ -59,10 +64,14 @@ template<class T, class L = std::recursive_mutex> class value_property
     : public basic_value_property<T, std::string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value_property<value_type, lockable_type> this_type;
+#else
+    using this_type = value_property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value_property() GO_DEFAULT_DESTRUCTOR
@@ -84,10 +93,14 @@ template<class T, class L = std::recursive_mutex> class value_wproperty
     : public basic_value_property<T, std::wstring, L>
 {
 public:
-    typedef T value_type;
-    typedef std::wstring string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::wstring);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value_wproperty<value_type, lockable_type> this_type;
+#else
+    using this_type = value_wproperty<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value_wproperty() GO_DEFAULT_DESTRUCTOR
@@ -109,10 +122,14 @@ template<class T, class L = std::recursive_mutex> class value_u8property
     : public basic_value_property<T, string::u8string, L>
 {
 public:
-    typedef T value_type;
-    typedef string::u8string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, string::u8string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value_u8property<value_type, lockable_type> this_type;
+#else
+    using this_type = value_u8property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value_u8property() GO_DEFAULT_DESTRUCTOR
@@ -134,10 +151,14 @@ template<class T, class L = std::recursive_mutex> class value_u16property
     : public basic_value_property<T, std::u16string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u16string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::u16string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value_u16property<value_type, lockable_type> this_type;
+#else
+    using this_type = value_u16property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value_u16property() GO_DEFAULT_DESTRUCTOR
@@ -159,10 +180,14 @@ template<class T, class L = std::recursive_mutex> class value_u32property
     : public basic_value_property<T, std::u32string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u32string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::u32string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value_u32property<value_type, lockable_type> this_type;
+#else
+    using this_type = value_u32property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value_u32property() GO_DEFAULT_DESTRUCTOR

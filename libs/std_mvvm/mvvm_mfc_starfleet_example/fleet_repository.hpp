@@ -21,9 +21,9 @@ class fleet_repository
     , private tt::noncopyable_nonmovable
 {
 public:
-    typedef fleet_repository this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = fleet_repository;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~fleet_repository() GO_DEFAULT_DESTRUCTOR

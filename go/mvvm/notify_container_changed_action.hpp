@@ -13,6 +13,10 @@
 
 #include <go/config.hpp>
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_STRONGLY_TYPED_ENUM)
+GO_MESSAGE("Required C++11 feature is not supported by this compiler")
+#else
+
 namespace go
 {
 namespace mvvm
@@ -30,5 +34,7 @@ enum class notify_container_changed_action
 
 } // namespace mvvm
 } // namespace go
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 #endif  // #ifndef GO_MVVM_NOTIFY_CONTAINER_CHANGED_INTERFACE_ACTION_HPP_INCLUDED

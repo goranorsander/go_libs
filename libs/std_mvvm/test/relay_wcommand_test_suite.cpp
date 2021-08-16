@@ -20,6 +20,10 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
+TEST(std_relay_wcommand_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
 const std::wstring TEST_RELAY_COMMAND_NAME(L"test relay wcommand");
 
 class test_relay_wcommand
@@ -47,7 +51,7 @@ public:
 class test_relay_wcommand_exection_context
 {
 public:
-    typedef GO_TYPENAME go::signals::signal<void(const std::shared_ptr<m::wcommand_interface>&)> can_execute_changed_signal;
+    using can_execute_changed_signal = GO_TYPENAME go::signals::signal<void(const std::shared_ptr<m::wcommand_interface>&)>;
 
     virtual ~test_relay_wcommand_exection_context() GO_DEFAULT_DESTRUCTOR
 
@@ -184,5 +188,7 @@ TEST(std_relay_wcommand_test_suite, test_relay_wcommand)
     EXPECT_FALSE(command_exection_context.can_execute(m::relay_wcommand::command_parameters_type()));
     EXPECT_FALSE(command->can_execute(m::relay_wcommand::command_parameters_type()));
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

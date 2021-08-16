@@ -22,10 +22,10 @@ class dialog_view
     DECLARE_DYNAMIC(dialog_view)
 
 public:
-    typedef dialog_view this_type;
-    typedef this_type* pointer;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef si::signal<void(const pointer)> on_close_signal;
+    using this_type = dialog_view;
+    using pointer = this_type*;
+    using ptr = std::shared_ptr<this_type>;
+    using on_close_signal = si::signal<void(const pointer)>;
 
 public:
     virtual ~dialog_view() = 0;

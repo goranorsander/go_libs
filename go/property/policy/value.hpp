@@ -29,9 +29,13 @@ namespace policy
 template<class T, class L> class value
 {
 public:
-    typedef T value_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef value<value_type, lockable_type> this_type;
+#else
+    using this_type = value<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~value() GO_DEFAULT_DESTRUCTOR

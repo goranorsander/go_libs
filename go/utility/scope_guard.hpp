@@ -25,13 +25,13 @@ class scope_guard
     : go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef scope_guard this_type;
-    typedef go::type_traits::noncopyable_nonmovable base_type;
+    GO_USING(this_type, scope_guard);
+    GO_USING(base_type, go::type_traits::noncopyable_nonmovable);
 
 #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
     typedef std::tr1::function<void()> on_scope_exit_function_type;
 #else
-    typedef std::function<void()> on_scope_exit_function_type;
+    GO_USING(on_scope_exit_function_type, std::function<void()>);
 #endif  // #if defined(GO_COMP_MSVC) && (GO_MSVC_VER < 1600)
 
 public:

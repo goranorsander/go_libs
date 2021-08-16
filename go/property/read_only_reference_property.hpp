@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -34,11 +34,11 @@ template<class T, class S, class L = std::recursive_mutex> class basic_reference
     : public detail::property_base<T, policy::reference<T, L>, S>
 {
 public:
-    typedef T value_type;
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_reference_property<value_type, string_type, lockable_type> this_type;
-    typedef typename policy::reference<value_type, lockable_type> policy_type;
+    using value_type = T;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_reference_property<value_type, string_type, lockable_type>;
+    using policy_type = typename policy::reference<value_type, lockable_type>;
 
 public:
     virtual ~basic_reference_property() GO_DEFAULT_DESTRUCTOR
@@ -81,10 +81,10 @@ template<class T, class L = std::recursive_mutex> class reference_property
     : public basic_reference_property<T, std::string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::string string_type;
-    typedef L lockable_type;
-    typedef reference_property<value_type, lockable_type> this_type;
+    using value_type = T;
+    using string_type = std::string;
+    using lockable_type = L;
+    using this_type = reference_property<value_type, lockable_type>;
 
 public:
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR
@@ -101,10 +101,10 @@ template<class T, class L = std::recursive_mutex> class reference_wproperty
     : public basic_reference_property<T, std::wstring, L>
 {
 public:
-    typedef T value_type;
-    typedef std::wstring string_type;
-    typedef L lockable_type;
-    typedef reference_wproperty<value_type, lockable_type> this_type;
+    using value_type = T;
+    using string_type = std::wstring;
+    using lockable_type = L;
+    using this_type = reference_wproperty<value_type, lockable_type>;
 
 public:
     virtual ~reference_wproperty() GO_DEFAULT_DESTRUCTOR
@@ -121,10 +121,10 @@ template<class T, class L = std::recursive_mutex> class reference_u8property
     : public basic_reference_property<T, string::u8string, L>
 {
 public:
-    typedef T value_type;
-    typedef string::u8string string_type;
-    typedef L lockable_type;
-    typedef reference_u8property<value_type, lockable_type> this_type;
+    using value_type = T;
+    using string_type = string::u8string;
+    using lockable_type = L;
+    using this_type = reference_u8property<value_type, lockable_type>;
 
 public:
     virtual ~reference_u8property() GO_DEFAULT_DESTRUCTOR
@@ -141,10 +141,10 @@ template<class T, class L = std::recursive_mutex> class reference_u16property
     : public basic_reference_property<T, std::u16string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u16string string_type;
-    typedef L lockable_type;
-    typedef reference_u16property<value_type, lockable_type> this_type;
+    using value_type = T;
+    using string_type = std::u16string;
+    using lockable_type = L;
+    using this_type = reference_u16property<value_type, lockable_type>;
 
 public:
     virtual ~reference_u16property() GO_DEFAULT_DESTRUCTOR
@@ -161,10 +161,10 @@ template<class T, class L = std::recursive_mutex> class reference_u32property
     : public basic_reference_property<T, std::u32string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u32string string_type;
-    typedef L lockable_type;
-    typedef reference_u32property<value_type, lockable_type> this_type;
+    using value_type = T;
+    using string_type = std::u32string;
+    using lockable_type = L;
+    using this_type = reference_u32property<value_type, lockable_type>;
 
 public:
     virtual ~reference_u32property() GO_DEFAULT_DESTRUCTOR

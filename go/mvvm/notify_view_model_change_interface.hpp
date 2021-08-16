@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -30,10 +30,10 @@ template<class L = std::recursive_mutex>
 class notify_view_model_change_interface
 {
 public:
-    typedef L lockable_type;
-    typedef notify_view_model_change_interface<L> this_type;
-    typedef go::signals::signal<void(const std::shared_ptr<view_model_changed_arguments>&)> view_model_changed_signal;
-    typedef go::signals::signal<void(const std::shared_ptr<view_model_will_change_arguments>&)> view_model_will_change_signal;
+    GO_USING(lockable_type, L);
+    GO_USING(this_type, notify_view_model_change_interface<L>);
+    GO_USING(view_model_changed_signal, go::signals::signal<void(const std::shared_ptr<view_model_changed_arguments>&)>);
+    GO_USING(view_model_will_change_signal, go::signals::signal<void(const std::shared_ptr<view_model_will_change_arguments>&)>);
 
 public:
     virtual ~notify_view_model_change_interface() = 0;

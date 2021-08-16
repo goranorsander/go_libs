@@ -17,6 +17,8 @@
 #include <go/type_traits/identity.hpp>
 #include <go_test/spaceship.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -29,28 +31,28 @@ class observable_spaceship
     , public m::basic_observable_object<typename Traits::string_identifier_type, typename Traits::lockable_type>
 {
 public:
-    typedef observable_spaceship<Traits> this_type;
-    typedef spaceship<Traits> spaceship_base_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = observable_spaceship<Traits>;
+    using spaceship_base_type = spaceship<Traits>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::double_property_type double_property_type;
-    typedef typename traits_type::int_property_type int_property_type;
-    typedef typename traits_type::string_property_type string_property_type;
-    typedef typename traits_type::read_only_command_property_type read_only_command_property_type;
-    typedef typename traits_type::read_only_string_property_type read_only_string_property_type;
-    typedef typename traits_type::read_only_string_value_property_type read_only_string_value_property_type;
-    typedef typename traits_type::observable_object_base_type observable_object_base_type;
-    typedef typename traits_type::command_value_type command_value_type;
-    typedef typename traits_type::command_value_type command_ptr;
-    typedef typename traits_type::fleet_commander_changed_event_type fleet_commander_changed_event_type;
-    typedef typename traits_type::fleet_commander_changed_event_ptr fleet_commander_changed_event_ptr;
-    typedef typename traits_type::event_type event_type;
-    typedef typename traits_type::event_ptr event_ptr;
+    using traits_type = Traits;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
+    using double_property_type = typename traits_type::double_property_type;
+    using int_property_type = typename traits_type::int_property_type;
+    using string_property_type = typename traits_type::string_property_type;
+    using read_only_command_property_type = typename traits_type::read_only_command_property_type;
+    using read_only_string_property_type = typename traits_type::read_only_string_property_type;
+    using read_only_string_value_property_type = typename traits_type::read_only_string_value_property_type;
+    using observable_object_base_type = typename traits_type::observable_object_base_type;
+    using command_value_type = typename traits_type::command_value_type;
+    using command_ptr = typename traits_type::command_value_type;
+    using fleet_commander_changed_event_type = typename traits_type::fleet_commander_changed_event_type;
+    using fleet_commander_changed_event_ptr = typename traits_type::fleet_commander_changed_event_ptr;
+    using event_type = typename traits_type::event_type;
+    using event_ptr = typename traits_type::event_ptr;
 
 public:
     virtual ~observable_spaceship() GO_DEFAULT_DESTRUCTOR
@@ -227,10 +229,6 @@ protected:
 
 }
 
-#if defined(GO_NO_CXX11)
-GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-#else
-
 namespace lambda
 {
 namespace single_threaded
@@ -242,28 +240,28 @@ class observable_spaceship
     , public m::basic_observable_object<typename Traits::string_identifier_type, typename Traits::lockable_type>
 {
 public:
-    typedef observable_spaceship<Traits> this_type;
-    typedef spaceship<Traits> spaceship_base_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = observable_spaceship<Traits>;
+    using spaceship_base_type = spaceship<Traits>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::double_property_type double_property_type;
-    typedef typename traits_type::int_property_type int_property_type;
-    typedef typename traits_type::string_property_type string_property_type;
-    typedef typename traits_type::read_only_command_property_type read_only_command_property_type;
-    typedef typename traits_type::read_only_string_property_type read_only_string_property_type;
-    typedef typename traits_type::read_only_string_value_property_type read_only_string_value_property_type;
-    typedef typename traits_type::observable_object_base_type observable_object_base_type;
-    typedef typename traits_type::command_value_type command_value_type;
-    typedef typename traits_type::command_value_type command_ptr;
-    typedef typename traits_type::fleet_commander_changed_event_type fleet_commander_changed_event_type;
-    typedef typename traits_type::fleet_commander_changed_event_ptr fleet_commander_changed_event_ptr;
-    typedef typename traits_type::event_type event_type;
-    typedef typename traits_type::event_ptr event_ptr;
+    using traits_type = Traits;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
+    using double_property_type = typename traits_type::double_property_type;
+    using int_property_type = typename traits_type::int_property_type;
+    using string_property_type = typename traits_type::string_property_type;
+    using read_only_command_property_type = typename traits_type::read_only_command_property_type;
+    using read_only_string_property_type = typename traits_type::read_only_string_property_type;
+    using read_only_string_value_property_type = typename traits_type::read_only_string_value_property_type;
+    using observable_object_base_type = typename traits_type::observable_object_base_type;
+    using command_value_type = typename traits_type::command_value_type;
+    using command_ptr = typename traits_type::command_value_type;
+    using fleet_commander_changed_event_type = typename traits_type::fleet_commander_changed_event_type;
+    using fleet_commander_changed_event_ptr = typename traits_type::fleet_commander_changed_event_ptr;
+    using event_type = typename traits_type::event_type;
+    using event_ptr = typename traits_type::event_ptr;
 
 public:
     virtual ~observable_spaceship() GO_DEFAULT_DESTRUCTOR
@@ -358,28 +356,28 @@ class observable_spaceship
     , public m::basic_observable_object<typename Traits::string_identifier_type, typename Traits::lockable_type>
 {
 public:
-    typedef observable_spaceship<Traits> this_type;
-    typedef spaceship<Traits> spaceship_base_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = observable_spaceship<Traits>;
+    using spaceship_base_type = spaceship<Traits>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::double_property_type double_property_type;
-    typedef typename traits_type::int_property_type int_property_type;
-    typedef typename traits_type::string_property_type string_property_type;
-    typedef typename traits_type::read_only_command_property_type read_only_command_property_type;
-    typedef typename traits_type::read_only_string_property_type read_only_string_property_type;
-    typedef typename traits_type::read_only_string_value_property_type read_only_string_value_property_type;
-    typedef typename traits_type::observable_object_base_type observable_object_base_type;
-    typedef typename traits_type::command_value_type command_value_type;
-    typedef typename traits_type::command_value_type command_ptr;
-    typedef typename traits_type::fleet_commander_changed_event_type fleet_commander_changed_event_type;
-    typedef typename traits_type::fleet_commander_changed_event_ptr fleet_commander_changed_event_ptr;
-    typedef typename traits_type::event_type event_type;
-    typedef typename traits_type::event_ptr event_ptr;
+    using traits_type = Traits;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
+    using double_property_type = typename traits_type::double_property_type;
+    using int_property_type = typename traits_type::int_property_type;
+    using string_property_type = typename traits_type::string_property_type;
+    using read_only_command_property_type = typename traits_type::read_only_command_property_type;
+    using read_only_string_property_type = typename traits_type::read_only_string_property_type;
+    using read_only_string_value_property_type = typename traits_type::read_only_string_value_property_type;
+    using observable_object_base_type = typename traits_type::observable_object_base_type;
+    using command_value_type = typename traits_type::command_value_type;
+    using command_ptr = typename traits_type::command_value_type;
+    using fleet_commander_changed_event_type = typename traits_type::fleet_commander_changed_event_type;
+    using fleet_commander_changed_event_ptr = typename traits_type::fleet_commander_changed_event_ptr;
+    using event_type = typename traits_type::event_type;
+    using event_ptr = typename traits_type::event_ptr;
 
 public:
     virtual ~observable_spaceship() GO_DEFAULT_DESTRUCTOR
@@ -467,9 +465,8 @@ private:
 };
 
 }
-
-#endif  // #if defined(GO_NO_CXX11)
-
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_OBSERVABLE_SPACESHIP_HPP_INCLUDED

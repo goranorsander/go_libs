@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_RANGE_FOR_LOOP)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_try_move_iterator_backward_test_suite, cpp11_not_supported) {}
+TEST(std_try_move_iterator_backward_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <go/namespace_alias.hpp>
@@ -40,7 +40,11 @@ namespace
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_array)
 {
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef std::array<int, 10> test_container_type;
+#else
+    using test_container_type = std::array<int, 10>;
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
     test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     EXPECT_EQ(10u, uc::size(container));
@@ -70,7 +74,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_array)
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_deque)
 {
-    typedef std::deque<int> test_container_type;
+    GO_USING(test_container_type, std::deque<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -115,7 +119,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_deque)
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_forward_list)
 {
-    typedef std::forward_list<int> test_container_type;
+    GO_USING(test_container_type, std::forward_list<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -161,7 +165,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_forwar
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_list)
 {
-    typedef std::list<int> test_container_type;
+    GO_USING(test_container_type, std::list<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -206,7 +210,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_list)
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_vector)
 {
-    typedef std::vector<int> test_container_type;
+    GO_USING(test_container_type, std::vector<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -251,7 +255,11 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_vector
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_map)
 {
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef std::map<int, int> test_container_type;
+#else
+    using test_container_type = std::map<int, int>;
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
@@ -301,7 +309,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_map)
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_set)
 {
-    typedef std::set<int> test_container_type;
+    GO_USING(test_container_type, std::set<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -346,7 +354,11 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_set)
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_multimap)
 {
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef std::multimap<int, int> test_container_type;
+#else
+    using test_container_type = std::multimap<int, int>;
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
@@ -396,7 +408,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_multim
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_multiset)
 {
-    typedef std::multiset<int> test_container_type;
+    GO_USING(test_container_type, std::multiset<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -441,7 +453,11 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_multis
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unordered_map)
 {
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef std::unordered_map<int, int> test_container_type;
+#else
+    using test_container_type = std::unordered_map<int, int>;
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
@@ -482,7 +498,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unorde
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unordered_set)
 {
-    typedef std::unordered_set<int> test_container_type;
+    GO_USING(test_container_type, std::unordered_set<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -523,7 +539,11 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unorde
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unordered_multimap)
 {
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef std::unordered_multimap<int, int> test_container_type;
+#else
+    using test_container_type = std::unordered_multimap<int, int>;
+#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
@@ -564,7 +584,7 @@ TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unorde
 
 TEST(std_try_move_iterator_backward_test_suite, test_try_move_backward_on_unordered_multiset)
 {
-    typedef std::unordered_multiset<int> test_container_type;
+    GO_USING(test_container_type, std::unordered_multiset<int>);
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

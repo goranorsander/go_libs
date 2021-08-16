@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_signals_wstring_test_suite, cpp11_not_supported) {}
+TEST(std_signals_wstring_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <string>
@@ -33,11 +33,11 @@ class fleet_commander
     : public tt::noncopyable_nonmovable
 {
 public:
-    typedef fleet_commander this_type;
-    typedef std::shared_ptr<fleet_commander> ptr;
-    typedef std::weak_ptr<fleet_commander> wptr;
-    typedef si::signal<void(const bool&)> fire_lasers_signal;
-    typedef si::signal<bool()> fire_proton_torpedoes_signal;
+    using this_type = fleet_commander;
+    using ptr = std::shared_ptr<fleet_commander>;
+    using wptr = std::weak_ptr<fleet_commander>;
+    using fire_lasers_signal = si::signal<void(const bool&)>;
+    using fire_proton_torpedoes_signal = si::signal<bool()>;
 
 public:
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR

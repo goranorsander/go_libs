@@ -22,6 +22,8 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #include "test_container_observer.ipp"
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 namespace sequence
@@ -30,12 +32,12 @@ namespace sequence
 template<class C>
 inline void test_merge()
 {
-    typedef C test_container_type;
-    typedef typename test_container_type::string_type string_type;
-    typedef typename test_container_type::lockable_type lockable_type;
-    typedef container_observer<test_container_type, string_type, lockable_type> container_observer_type;
-    typedef typename test_container_type::iterator container_iterator;
-    typedef typename test_container_type::ptr container_ptr;
+    using test_container_type = C;
+    using string_type = typename test_container_type::string_type;
+    using lockable_type = typename test_container_type::lockable_type;
+    using container_observer_type = container_observer<test_container_type, string_type, lockable_type>;
+    using container_iterator = typename test_container_type::iterator;
+    using container_ptr = typename test_container_type::ptr;
 
     // Test merge
     container_ptr container1 = test_container_type::create();
@@ -104,5 +106,7 @@ inline void test_merge()
 
 }
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_MVVM_TEST_MERGE_IPP_INCLUDED

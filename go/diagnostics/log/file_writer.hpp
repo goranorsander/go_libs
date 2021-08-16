@@ -32,21 +32,21 @@ namespace log
 {
 
 template <class L, class O> class basic_file_writer;
-typedef basic_file_writer<log_line, std::ofstream> file_writer;
-typedef basic_file_writer<wlog_line, std::wofstream> wfile_writer;
+using file_writer = basic_file_writer<log_line, std::ofstream>;
+using wfile_writer = basic_file_writer<wlog_line, std::wofstream>;
 
 template <class L, class O>
 class basic_file_writer
     : go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef L log_line_type;
-    typedef O out_file_stream_type;
-    typedef basic_file_writer<L, O> this_type;
+    using log_line_type = L;
+    using out_file_stream_type = O;
+    using this_type = basic_file_writer<L, O>;
 
-    typedef typename L::string_type string_type;
-    typedef typename L::out_stream_type out_stream_type;
-    typedef typename L::char_type char_type;
+    using string_type = typename L::string_type;
+    using out_stream_type = typename L::out_stream_type;
+    using char_type = typename L::char_type;
 
 public:
     virtual ~basic_file_writer() = default;

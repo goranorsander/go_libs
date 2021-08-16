@@ -22,6 +22,8 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #include "test_container_observer.ipp"
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 namespace associative
@@ -34,13 +36,13 @@ namespace multi
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -113,13 +115,13 @@ namespace unique
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -178,13 +180,13 @@ namespace multi
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -249,13 +251,13 @@ namespace unique
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -312,13 +314,13 @@ namespace multi
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -364,13 +366,13 @@ namespace unique
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -429,13 +431,13 @@ namespace multi
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -481,13 +483,13 @@ namespace unique
 template<class C>
 inline void test_insert_single_element_with_hint()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
     // Test insert single element with hint
     container_ptr container = container_type::create();
@@ -540,5 +542,7 @@ inline void test_insert_single_element_with_hint()
 }
 }
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_MVVM_TEST_INSERT_SINGLE_ELEMENT_WITH_HINT_IPP_INCLUDED

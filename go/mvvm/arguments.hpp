@@ -29,9 +29,9 @@ class arguments
     : public go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef arguments this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    using this_type = arguments;
+    using ptr = std::shared_ptr<this_type>;
+    using wptr = std::weak_ptr<this_type>;
 
 public:
     virtual ~arguments() = 0;

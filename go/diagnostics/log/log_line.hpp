@@ -39,21 +39,21 @@ namespace log
 {
 
 template<class S, class O> class basic_log_line;
-typedef basic_log_line<std::string, std::ostream> log_line;
-typedef basic_log_line<std::wstring, std::wostream> wlog_line;
+using log_line = basic_log_line<std::string, std::ostream>;
+using wlog_line = basic_log_line<std::wstring, std::wostream>;
 
 template<class S, class O>
 class basic_log_line
 {
 public:
-    typedef S string_type;
-    typedef O out_stream_type;
-    typedef basic_log_line<S, O> this_type;
-    typedef typename S::value_type char_type;
+    using string_type = S;
+    using out_stream_type = O;
+    using this_type = basic_log_line<S, O>;
+    using char_type = typename S::value_type;
 
-    typedef detail::string_literal_t<char_type> string_literal_type;
-    typedef detail::string_literal_t<std::string::value_type> std_string_literal_type;
-    typedef detail::string_literal_t<std::wstring::value_type> std_wstring_literal_type;
+    using string_literal_type = detail::string_literal_t<char_type>;
+    using std_string_literal_type = detail::string_literal_t<std::string::value_type>;
+    using std_wstring_literal_type = detail::string_literal_t<std::wstring::value_type>;
     typedef std::tuple<
               std::string::value_type   // 0
             , std::wstring::value_type  // 1

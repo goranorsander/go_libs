@@ -23,7 +23,7 @@ class create_exception
     : public go::exception::exception
 {
 public:
-    typedef exception this_type;
+    GO_USING(this_type, create_exception);
 
 public:
     virtual ~create_exception() GO_NOEXCEPT_OR_NOTHROW GO_DEFAULT_DESTRUCTOR

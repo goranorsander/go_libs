@@ -16,7 +16,7 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_NO_CXX14) || defined(GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP)
 GO_MESSAGE("Required C++14 feature is not supported by this compiler")
-TEST(std_reverse_test_suite, cpp14_not_supported) {}
+TEST(std_reverse_test_suite, required_cpp14_feature_not_supported) {}
 #else
 
 #include <go/namespace_alias.hpp>
@@ -33,7 +33,7 @@ namespace
 
 TEST(std_reverse_test_suite, test_reverse_deque)
 {
-    typedef std::deque<int> test_container_type;
+    using test_container_type = std::deque<int>;
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -64,7 +64,7 @@ TEST(std_reverse_test_suite, test_reverse_deque)
 
 TEST(std_reverse_test_suite, test_reverse_list)
 {
-    typedef std::list<int> test_container_type;
+    using test_container_type = std::list<int>;
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -95,7 +95,7 @@ TEST(std_reverse_test_suite, test_reverse_list)
 
 TEST(std_reverse_test_suite, test_reverse_vector)
 {
-    typedef std::vector<int> test_container_type;
+    using test_container_type = std::vector<int>;
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -126,7 +126,7 @@ TEST(std_reverse_test_suite, test_reverse_vector)
 
 TEST(std_reverse_test_suite, test_reverse_map)
 {
-    typedef std::map<int, int> test_container_type;
+    using test_container_type = std::map<int, int>;
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { { 1, 11 }, { 2, 12 }, { 3, 13 }, { 4, 14 }, { 5, 15 }, { 6, 16 }, { 7, 17 }, { 8, 18 }, { 9, 19 }, { 10, 20 } };
@@ -160,7 +160,7 @@ TEST(std_reverse_test_suite, test_reverse_map)
 
 TEST(std_reverse_test_suite, test_reverse_set)
 {
-    typedef std::set<int> test_container_type;
+    using test_container_type = std::set<int>;
 
 #if !defined(GO_NO_CXX11_INITIALIZER_LISTS)
     test_container_type container = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

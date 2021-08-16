@@ -22,9 +22,9 @@ class show_spaceship_event
     : public m::wevent
 {
 public:
-    typedef show_spaceship_event this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = show_spaceship_event;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~show_spaceship_event() GO_DEFAULT_DESTRUCTOR

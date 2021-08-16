@@ -28,9 +28,9 @@ class data_context_will_change_arguments
     : public arguments
 {
 public:
-    typedef data_context_will_change_arguments this_type;
-    typedef std::shared_ptr<this_type> ptr;
-    typedef std::weak_ptr<this_type> wptr;
+    using this_type = data_context_will_change_arguments;
+    using ptr = std::shared_ptr<this_type>;
+    using wptr = std::weak_ptr<this_type>;
 
 public:
     virtual ~data_context_will_change_arguments() GO_DEFAULT_DESTRUCTOR

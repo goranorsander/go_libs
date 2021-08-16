@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -31,12 +31,12 @@ class basic_observable_container
     , public basic_observable_object<S, L>
 {
 public:
-    typedef S string_type;
-    typedef C container_type;
-    typedef L lockable_type;
-    typedef basic_observable_container<string_type, container_type, lockable_type> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using string_type = S;
+    using container_type = C;
+    using lockable_type = L;
+    using this_type = basic_observable_container<string_type, container_type, lockable_type>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
 public:
     virtual ~basic_observable_container() = 0;

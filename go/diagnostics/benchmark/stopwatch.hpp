@@ -29,31 +29,28 @@ namespace benchmark
 {
 
 template<class C, class D> class basic_stopwatch;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_stopwatch<std::chrono::high_resolution_clock, std::chrono::microseconds> stopwatch;
+#else
+using stopwatch = basic_stopwatch<std::chrono::high_resolution_clock, std::chrono::microseconds>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
-typedef basic_stopwatch_guard<stopwatch> stopwatch_guard;
+GO_USING(stopwatch_guard, basic_stopwatch_guard<stopwatch>);
 
 template<class C, class D>
 class basic_stopwatch
 {
 public:
-#if !defined(GO_NO_CXX11_TYPE_ALIASES)
-
-    using clock_type = C;
-    using duration_type = D;
-    using this_type = basic_stopwatch<C, D>;
-    using time_point_type = std::chrono::time_point<C>;
-    using count_type = std::size_t;
-
-#else
-
-    typedef C clock_type;
-    typedef D duration_type;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef basic_stopwatch<C, D> this_type;
-    typedef std::chrono::time_point<C> time_point_type;
-    typedef std::size_t count_type;
+#else
+    using this_type = basic_stopwatch<C, D>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(clock_type, C);
+    GO_USING(duration_type, D);
+    GO_USING(time_point_type, std::chrono::time_point<C>);
+    GO_USING(count_type, std::size_t);
 
-#endif  // #if !defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~basic_stopwatch() GO_DEFAULT_DESTRUCTOR

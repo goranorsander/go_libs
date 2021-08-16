@@ -37,15 +37,15 @@ class non_guaranteed_logger
     , go::type_traits::noncopyable
 {
 public:
-    typedef W file_writer_type;
-    typedef non_guaranteed_logger<W> this_type;
+    using file_writer_type = W;
+    using this_type = non_guaranteed_logger<W>;
 
-    typedef typename W::log_line_type log_line_type;
-    typedef typename W::out_file_stream_type out_file_stream_type;
-    typedef typename W::string_type string_type;
-    typedef typename W::out_stream_type out_stream_type;
-    typedef typename W::char_type char_type;
-    typedef typename logging_policy_interface<file_writer_type>::buffer_interface_pointer buffer_interface_pointer;
+    using log_line_type = typename W::log_line_type;
+    using out_file_stream_type = typename W::out_file_stream_type;
+    using string_type = typename W::string_type;
+    using out_stream_type = typename W::out_stream_type;
+    using char_type = typename W::char_type;
+    using buffer_interface_pointer = typename logging_policy_interface<file_writer_type>::buffer_interface_pointer;
 
 public:
     virtual ~non_guaranteed_logger() = default;

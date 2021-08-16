@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -28,14 +28,14 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::string, std::recursive_mutex> notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::wstring, std::recursive_mutex> notify_wproperty_changed_interface;
+using notify_property_changed_interface = basic_notify_property_changed_interface<std::string, std::recursive_mutex>;
+using notify_wproperty_changed_interface = basic_notify_property_changed_interface<std::wstring, std::recursive_mutex>;
 
 namespace single_threaded
 {
 
-typedef basic_notify_property_changed_interface<std::string, go::async::placebo_lockable> notify_property_changed_interface;
-typedef basic_notify_property_changed_interface<std::wstring, go::async::placebo_lockable> notify_wproperty_changed_interface;
+using notify_property_changed_interface = basic_notify_property_changed_interface<std::string, go::async::placebo_lockable>;
+using notify_wproperty_changed_interface = basic_notify_property_changed_interface<std::wstring, go::async::placebo_lockable>;
 
 }
 
@@ -43,10 +43,10 @@ template<class S, class L = std::recursive_mutex>
 class basic_notify_property_changed_interface
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_notify_property_changed_interface<S, L> this_type;
-    typedef typename go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)> property_changed_signal;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_notify_property_changed_interface<S, L>;
+    using property_changed_signal = typename go::signals::signal<void(const std::shared_ptr<object>&, const std::shared_ptr<basic_property_changed_arguments<S>>&)>;
 
 public:
     virtual ~basic_notify_property_changed_interface() = 0;

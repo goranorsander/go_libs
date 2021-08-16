@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -31,14 +31,14 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_event_manager;
-typedef basic_event_manager<std::string, std::recursive_mutex> event_manager;
-typedef basic_event_manager<std::wstring, std::recursive_mutex> wevent_manager;
+using event_manager = basic_event_manager<std::string, std::recursive_mutex>;
+using wevent_manager = basic_event_manager<std::wstring, std::recursive_mutex>;
 
 namespace single_threaded
 {
 
-typedef basic_event_manager<std::string, go::async::placebo_lockable> event_manager;
-typedef basic_event_manager<std::wstring, go::async::placebo_lockable> wevent_manager;
+using event_manager = basic_event_manager<std::string, go::async::placebo_lockable>;
+using wevent_manager = basic_event_manager<std::wstring, go::async::placebo_lockable>;
 
 }
 
@@ -48,13 +48,13 @@ class basic_event_manager
     , public go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_event_manager<S, L> this_type;
-    typedef typename std::shared_ptr<basic_event_manager<S, L>> ptr;
-    typedef typename std::weak_ptr<basic_event_manager<S, L>> wptr;
-    typedef typename std::shared_ptr<basic_event<S>> basic_event_ptr;
-    typedef typename std::function<void(const std::shared_ptr<basic_event<S>>&)> basic_event_function_type;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_event_manager<S, L>;
+    using ptr = typename std::shared_ptr<basic_event_manager<S, L>>;
+    using wptr = typename std::weak_ptr<basic_event_manager<S, L>>;
+    using basic_event_ptr = typename std::shared_ptr<basic_event<S>>;
+    using basic_event_function_type = typename std::function<void(const std::shared_ptr<basic_event<S>>&)>;
 
 public:
     virtual ~basic_event_manager();

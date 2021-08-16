@@ -35,8 +35,12 @@
 namespace
 {
 
-typedef m::observable_list<int> container_type;
-typedef m::observable_list<double> double_container_type;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_observable_list_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
+using container_type = m::observable_list<int>;
+using double_container_type = m::observable_list<double>;
 
 TEST(std_observable_list_test_suite, test_assign_range)
 {
@@ -152,5 +156,7 @@ TEST(std_observable_list_test_suite, test_merge_compare_predicate)
 {
     go_test::sequence::test_merge_compare_predicate<double_container_type>();
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

@@ -14,9 +14,9 @@ GO_BEGIN_SUPPRESS_ALL_WARNINGS
 #include <go_gtest/go_gtest.hpp>
 GO_END_SUPPRESS_ALL_WARNINGS
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(std_wcommand_manager_lambda_test_suite, cpp11_not_supported) {}
+TEST(std_wcommand_manager_lambda_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <go_test/spaceship_observer.hpp>
@@ -26,12 +26,12 @@ namespace
 {
 
 // Test command_manager
-typedef std::wstring string_type;
-typedef go_test::lambda::observable_spaceship<go_test::wspaceship_traits<string_type>> spaceship_type;
-typedef std::shared_ptr<spaceship_type> spaceship_ptr;
-typedef std::weak_ptr<spaceship_type> spaceship_wptr;
+using string_type = std::wstring;
+using spaceship_type = go_test::lambda::observable_spaceship<go_test::wspaceship_traits<string_type>>;
+using spaceship_ptr = std::shared_ptr<spaceship_type>;
+using spaceship_wptr = std::weak_ptr<spaceship_type>;
 
-typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
+using spaceship_observer = go_test::spaceship_observer<spaceship_type>;
 
 #define TEST_CASE_SHIPYARD \
     m::basic_command_manager<string_type>::ptr command_mgr = m::basic_command_manager<string_type>::create(); \
@@ -167,4 +167,4 @@ TEST(std_wcommand_manager_lambda_test_suite, test_spaceship_observer)
 
 }
 
-#endif  // #if defined(GO_NO_CXX11)
+#endif  // #if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)

@@ -21,10 +21,14 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_event_manager_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
 // Test event_manager
-typedef std::string string_type;
-typedef go_test::fleet_commander<m::basic_event_manager<string_type>, p::property<string_type>, p::value_property<string_type>, pro::value_property<string_type>> fleet_commander_type;
-typedef go_test::bind_function::observable_spaceship<go_test::spaceship_traits<string_type>> spaceship_type;
+using string_type = std::string;
+using fleet_commander_type = go_test::fleet_commander<m::basic_event_manager<string_type>, p::property<string_type>, p::value_property<string_type>, pro::value_property<string_type>>;
+using spaceship_type = go_test::bind_function::observable_spaceship<go_test::spaceship_traits<string_type>>;
 
 const string_type fleet_commander_changed_event_type = go_test::spaceship_event_type<string_type>::fleet_commander_changed();
 
@@ -88,5 +92,7 @@ TEST(std_event_manager_test_suite, test_command_manager)
     EXPECT_EQ(std::string("Admiral Gial Ackbar"), ship7->fleet_commander());
     EXPECT_EQ(std::string("Admiral Gial Ackbar"), ship8->fleet_commander());
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

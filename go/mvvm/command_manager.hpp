@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -30,14 +30,14 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_command_manager;
-typedef basic_command_manager<std::string, std::recursive_mutex> command_manager;
-typedef basic_command_manager<std::wstring, std::recursive_mutex> wcommand_manager;
+using command_manager = basic_command_manager<std::string, std::recursive_mutex>;
+using wcommand_manager = basic_command_manager<std::wstring, std::recursive_mutex>;
 
 namespace single_threaded
 {
 
-typedef basic_command_manager<std::string, go::async::placebo_lockable> command_manager;
-typedef basic_command_manager<std::wstring, go::async::placebo_lockable> wcommand_manager;
+using command_manager = basic_command_manager<std::string, go::async::placebo_lockable>;
+using wcommand_manager = basic_command_manager<std::wstring, go::async::placebo_lockable>;
 
 }
 
@@ -47,11 +47,11 @@ class basic_command_manager
     , public go::type_traits::noncopyable_nonmovable
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_command_manager<S, L> this_type;
-    typedef typename std::shared_ptr<basic_command_manager<S, L>> ptr;
-    typedef typename std::weak_ptr<basic_command_manager<S, L>> wptr;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_command_manager<S, L>;
+    using ptr = typename std::shared_ptr<basic_command_manager<S, L>>;
+    using wptr = typename std::weak_ptr<basic_command_manager<S, L>>;
 
 public:
     virtual ~basic_command_manager();

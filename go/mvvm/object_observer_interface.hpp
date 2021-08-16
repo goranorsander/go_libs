@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -29,15 +29,15 @@ namespace mvvm
 {
 
 template<class S> class basic_object_observer_interface;
-typedef basic_object_observer_interface<std::string> object_observer_interface;
-typedef basic_object_observer_interface<std::wstring> object_wobserver_interface;
+GO_USING(object_observer_interface, basic_object_observer_interface<std::string>);
+GO_USING(object_wobserver_interface, basic_object_observer_interface<std::wstring>);
 
 template<class S>
 class basic_object_observer_interface
 {
 public:
-    typedef S string_type;
-    typedef basic_object_observer_interface<S> this_type;
+    GO_USING(string_type, S);
+    GO_USING(this_type, basic_object_observer_interface<S>);
 
 public:
     virtual ~basic_object_observer_interface() = 0;

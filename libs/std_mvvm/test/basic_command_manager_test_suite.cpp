@@ -20,13 +20,17 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
-// Test command_manager
-typedef s::u8string string_type;
-typedef go_test::bind_function::observable_spaceship<go_test::u8spaceship_traits<string_type>> spaceship_type;
-typedef std::shared_ptr<spaceship_type> spaceship_ptr;
-typedef std::weak_ptr<spaceship_type> spaceship_wptr;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_basic_command_manager_test_suite, required_cpp11_feature_not_supported) {}
+#else
 
-typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
+// Test command_manager
+using string_type = s::u8string;
+using spaceship_type = go_test::bind_function::observable_spaceship<go_test::u8spaceship_traits<string_type>>;
+using spaceship_ptr = std::shared_ptr<spaceship_type>;
+using spaceship_wptr = std::weak_ptr<spaceship_type>;
+
+using spaceship_observer = go_test::spaceship_observer<spaceship_type>;
 
 #define TEST_CASE_SHIPYARD \
     m::basic_command_manager<string_type>::ptr command_mgr = m::basic_command_manager<string_type>::create(); \
@@ -159,5 +163,7 @@ TEST(std_basic_command_manager_test_suite, test_spaceship_observer)
     EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Battlestar Galactica"), s::create<string_type>("captain")));
     EXPECT_EQ(0u, observer->get_property_changed_count(s::create<string_type>("Serenity"), s::create<string_type>("captain")));
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

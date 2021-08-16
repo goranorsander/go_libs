@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -30,10 +30,10 @@ class data_context_interface
     : public notify_data_context_change_interface<L>
 {
 public:
-    typedef T data_type;
-    typedef L lockable_type;
-    typedef data_context_interface<T, L> this_type;
-    typedef go::property::nameless::property<data_type> data_context_type;
+    using data_type = T;
+    using lockable_type = L;
+    using this_type = data_context_interface<T, L>;
+    using data_context_type = go::property::nameless::property<data_type>;
 
 public:
     virtual ~data_context_interface() = 0;

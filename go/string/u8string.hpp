@@ -19,7 +19,7 @@
 #include <string>
 
 #if defined(GO_NO_CXX20_CHAR8_T)
-typedef unsigned char char8_t;
+GO_USING(char8_t, unsigned char);
 #endif  // #if defined(GO_NO_CXX20_CHAR8_T)
 
 namespace go
@@ -27,31 +27,39 @@ namespace go
 namespace string
 {
 
-typedef std::deque<char8_t> uft8_character_type;
+GO_USING(uft8_character_type, std::deque<char8_t>);
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 typedef std::map<std::size_t, uft8_character_type> uft8_string_type;
+#else
+using uft8_string_type = std::map<std::size_t, uft8_character_type>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
 
 class u8string
     : public std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>
 {
 public:
-    typedef u8string this_type;
+    GO_USING(this_type, u8string);
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>> base_type;
-    typedef std::char_traits<char8_t> traits_type;
-    typedef std::allocator<char8_t> allocator_type;
+#else
+    using base_type = std::basic_string<char8_t, std::char_traits<char8_t>, std::allocator<char8_t>>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
+    GO_USING(traits_type, std::char_traits<char8_t>);
+    GO_USING(allocator_type, std::allocator<char8_t>);
 
-    typedef GO_TYPENAME base_type::value_type value_type;
-    typedef GO_TYPENAME base_type::size_type size_type;
-    typedef GO_TYPENAME base_type::difference_type difference_type;
-    typedef GO_TYPENAME base_type::pointer pointer;
-    typedef GO_TYPENAME base_type::const_pointer const_pointer;
-    typedef GO_TYPENAME base_type::reference reference;
-    typedef GO_TYPENAME base_type::const_reference const_reference;
+    GO_USING(value_type, GO_TYPENAME base_type::value_type);
+    GO_USING(size_type, GO_TYPENAME base_type::size_type);
+    GO_USING(difference_type, GO_TYPENAME base_type::difference_type);
+    GO_USING(pointer, GO_TYPENAME base_type::pointer);
+    GO_USING(const_pointer, GO_TYPENAME base_type::const_pointer);
+    GO_USING(reference, GO_TYPENAME base_type::reference);
+    GO_USING(const_reference, GO_TYPENAME base_type::const_reference);
 
-    typedef GO_TYPENAME base_type::iterator iterator;
-    typedef GO_TYPENAME base_type::const_iterator const_iterator;
+    GO_USING(iterator, GO_TYPENAME base_type::iterator);
+    GO_USING(const_iterator, GO_TYPENAME base_type::const_iterator);
 
-    typedef base_type::reverse_iterator reverse_iterator;
-    typedef base_type::const_reverse_iterator const_reverse_iterator;
+    GO_USING(reverse_iterator, base_type::reverse_iterator);
+    GO_USING(const_reverse_iterator, base_type::const_reverse_iterator);
 
 public:
     virtual ~u8string() GO_DEFAULT_DESTRUCTOR

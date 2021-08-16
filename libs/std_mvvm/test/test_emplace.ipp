@@ -22,6 +22,8 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #include "test_container_observer.ipp"
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 namespace associative
@@ -34,13 +36,13 @@ namespace multi
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -116,13 +118,13 @@ namespace unique
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -202,13 +204,13 @@ namespace multi
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -273,13 +275,13 @@ namespace unique
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -349,13 +351,13 @@ namespace multi
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -417,13 +419,13 @@ namespace unique
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -458,7 +460,7 @@ inline void test_emplace()
     EXPECT_EQ(60, ret.first->second);
     EXPECT_TRUE(ret.second);
 
-    typedef container_type observable_unordered_map_type;
+    using observable_unordered_map_type = container_type;
     unsigned int count = 0u;
     int sum = 0;
     for (const container_value_type & i : *container)
@@ -493,13 +495,13 @@ namespace multi
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -557,13 +559,13 @@ namespace unique
 template<class C>
 inline void test_emplace()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename container_type::value_type container_value_type;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
+    using container_value_type = typename container_type::value_type;
 
 #if !defined(GO_NO_CXX11_RVALUE_REFERENCES) && !defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 
@@ -594,7 +596,7 @@ inline void test_emplace()
     EXPECT_EQ(6, *(ret.first));
     EXPECT_TRUE(ret.second);
 
-    typedef container_type observable_unordered_set_type;
+    using observable_unordered_set_type = container_type;
     unsigned int count = 0u;
     int sum = 0;
     for (const GO_TYPENAME observable_unordered_set_type::value_type & i : *container)
@@ -623,5 +625,7 @@ inline void test_emplace()
 }
 }
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_MVVM_TEST_EMPLACE_IPP_INCLUDED

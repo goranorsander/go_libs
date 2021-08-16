@@ -17,6 +17,8 @@
 #include <go/namespace_alias.hpp>
 #include <go/string.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -25,15 +27,15 @@ class test_command
     : public m::basic_command_interface<typename Traits::string_identifier_type, typename Traits::lockable_type>
 {
 public:
-    typedef test_command<Traits> this_type;
-    typedef typename m::basic_command_interface<typename Traits::string_identifier_type, typename Traits::lockable_type> base_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    using this_type = test_command<Traits>;
+    using base_type = typename m::basic_command_interface<typename Traits::string_identifier_type, typename Traits::lockable_type>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
+    using traits_type = Traits;
+    using string_value_type = typename traits_type::string_value_type;
+    using lockable_type = typename traits_type::lockable_type;
+    using string_identifier_type = typename traits_type::string_identifier_type;
 
 public:
     static const string_identifier_type& name()
@@ -89,5 +91,7 @@ private:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_TEST_COMMAND_HPP_INCLUDED

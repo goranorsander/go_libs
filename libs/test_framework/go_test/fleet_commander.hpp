@@ -16,6 +16,8 @@
 #include <go/mvvm.hpp>
 #include <go_test/fleet_commander_changed_event.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -24,18 +26,22 @@ class fleet_commander
     : private tt::noncopyable_nonmovable
 {
 public:
+#if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
     typedef fleet_commander<E, SP, SVP, ROSVP> this_type;
-    typedef E event_manager_type;
-    typedef SP string_property_type;
-    typedef SVP string_value_property_type;
-    typedef ROSVP read_only_string_value_property_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
-    typedef typename event_manager_type::ptr event_manager_ptr;
-    typedef typename event_manager_type::wptr event_manager_wptr;
-    typedef typename event_manager_type::string_type string_identifier_type;
-    typedef fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type> fleet_commander_changed_event_type;
-    typedef typename fleet_commander_changed_event_type::ptr fleet_commander_changed_event_ptr;
+#else
+    using this_type = fleet_commander<E, SP, SVP, ROSVP>;
+#endif  // #if defined(GO_NO_CXX11_TEMPLATE_ALIASES)
+    GO_USING(event_manager_type, E);
+    GO_USING(string_property_type, SP);
+    GO_USING(string_value_property_type, SVP);
+    GO_USING(read_only_string_value_property_type, ROSVP);
+    GO_USING(ptr, typename std::shared_ptr<this_type>);
+    GO_USING(wptr, typename std::weak_ptr<this_type>);
+    GO_USING(event_manager_ptr, typename event_manager_type::ptr);
+    GO_USING(event_manager_wptr, typename event_manager_type::wptr);
+    GO_USING(string_identifier_type, typename event_manager_type::string_type);
+    using fleet_commander_changed_event_type = fleet_commander_changed_event<string_identifier_type, read_only_string_value_property_type>;
+    GO_USING(fleet_commander_changed_event_ptr, typename fleet_commander_changed_event_type::ptr);
 
 public:
     virtual ~fleet_commander() GO_DEFAULT_DESTRUCTOR
@@ -99,5 +105,7 @@ private:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_FLEET_COMMANDER_HPP_INCLUDED

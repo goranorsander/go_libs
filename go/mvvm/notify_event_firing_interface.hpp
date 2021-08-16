@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -26,17 +26,17 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::string, std::recursive_mutex> notify_event_firing_interface;
-typedef basic_notify_event_firing_interface<std::wstring, std::recursive_mutex> notify_wevent_firing_interface;
+using notify_event_firing_interface = basic_notify_event_firing_interface<std::string, std::recursive_mutex>;
+using notify_wevent_firing_interface = basic_notify_event_firing_interface<std::wstring, std::recursive_mutex>;
 
 template<class S, class L = std::recursive_mutex>
 class basic_notify_event_firing_interface
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_notify_event_firing_interface<S, L> this_type;
-    typedef typename go::signals::signal<void(const std::shared_ptr<basic_event<string_type>>&)> event_fired_signal;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_notify_event_firing_interface<S, L>;
+    using event_fired_signal = typename go::signals::signal<void(const std::shared_ptr<basic_event<string_type>>&)>;
 
 public:
     virtual ~basic_notify_event_firing_interface() = 0;

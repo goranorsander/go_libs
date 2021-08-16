@@ -31,11 +31,15 @@ namespace policy
 template<class T, class L> class proxy
 {
 public:
-    typedef T value_type;
-    typedef L lockable_type;
-    typedef proxy<value_type, lockable_type> this_type;
-    typedef typename std::function<value_type(void)> get_function_signature;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
+    typedef proxy<T, L> this_type;
+#else
+    using this_type = proxy<T, L>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(value_type, T);
+    GO_USING(lockable_type, L);
+    GO_USING(get_function_signature, typename std::function<value_type(void)>);
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~proxy() GO_DEFAULT_DESTRUCTOR

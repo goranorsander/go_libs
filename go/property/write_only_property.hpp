@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -33,12 +33,17 @@ template<class T, class S, class L = std::recursive_mutex> class basic_property
     : public detail::property_base<T, policy::proxy<T, L>, S>
 {
 public:
-    typedef T value_type;
-    typedef S string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, S);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef basic_property<value_type, string_type, lockable_type> this_type;
     typedef typename policy::proxy<value_type, lockable_type> policy_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = basic_property<value_type, string_type, lockable_type>;
+    using policy_type = typename policy::proxy<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~basic_property() GO_DEFAULT_DESTRUCTOR
@@ -66,11 +71,15 @@ template<class T, class L = std::recursive_mutex> class property
     : public basic_property<T, std::string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef property<value_type, lockable_type> this_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~property() GO_DEFAULT_DESTRUCTOR
@@ -92,11 +101,15 @@ template<class T, class L = std::recursive_mutex> class wproperty
     : public basic_property<T, std::wstring, L>
 {
 public:
-    typedef T value_type;
-    typedef std::wstring string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::wstring);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef wproperty<value_type, lockable_type> this_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = wproperty<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~wproperty() GO_DEFAULT_DESTRUCTOR
@@ -118,11 +131,15 @@ template<class T, class L = std::recursive_mutex> class u8property
     : public basic_property<T, string::u8string, L>
 {
 public:
-    typedef T value_type;
-    typedef string::u8string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, string::u8string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef u8property<value_type, lockable_type> this_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = u8property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~u8property() GO_DEFAULT_DESTRUCTOR
@@ -144,11 +161,15 @@ template<class T, class L = std::recursive_mutex> class u16property
     : public basic_property<T, std::u16string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u16string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::u16string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef u16property<value_type, lockable_type> this_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = u16property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~u16property() GO_DEFAULT_DESTRUCTOR
@@ -170,11 +191,15 @@ template<class T, class L = std::recursive_mutex> class u32property
     : public basic_property<T, std::u32string, L>
 {
 public:
-    typedef T value_type;
-    typedef std::u32string string_type;
-    typedef L lockable_type;
+    GO_USING(value_type, T);
+    GO_USING(string_type, std::u32string);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef u32property<value_type, lockable_type> this_type;
-    typedef typename std::function<void(const value_type&)> set_function_signature;
+#else
+    using this_type = u32property<value_type, lockable_type>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(set_function_signature, typename std::function<void(const value_type&)>);
 
 public:
     virtual ~u32property() GO_DEFAULT_DESTRUCTOR

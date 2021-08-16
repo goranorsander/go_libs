@@ -22,6 +22,8 @@ GO_END_SUPPRESS_ALL_WARNINGS
 
 #include "test_container_observer.ipp"
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 namespace sequence
@@ -38,12 +40,12 @@ struct is_odd
 template<class C>
 inline void test_remove_if()
 {
-    typedef C container_type;
-    typedef typename container_type::string_type string_type;
-    typedef typename container_type::lockable_type lockable_type;
-    typedef container_observer<container_type, string_type, lockable_type> container_observer_type;
-    typedef typename container_type::iterator container_iterator;
-    typedef typename container_type::ptr container_ptr;
+    using container_type = C;
+    using string_type = typename container_type::string_type;
+    using lockable_type = typename container_type::lockable_type;
+    using container_observer_type = container_observer<container_type, string_type, lockable_type>;
+    using container_iterator = typename container_type::iterator;
+    using container_ptr = typename container_type::ptr;
 
     // Test nnn
     container_ptr container = container_type::create();
@@ -85,5 +87,7 @@ inline void test_remove_if()
 
 }
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_MVVM_TEST_REMOVE_IF_IPP_INCLUDED

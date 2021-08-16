@@ -18,6 +18,8 @@
 #include <go/property.hpp>
 #include <go/signals/connections.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -25,15 +27,15 @@ template<class C, class S, class L = std::recursive_mutex>
 class container_observer
 {
 public:
-    typedef container_observer<C, S, L> this_type;
-    typedef C container_type;
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef typename container_type::ptr container_ptr;
-    typedef typename m::container_changed_arguments container_changed_arguments_type;
-    typedef typename container_changed_arguments_type::ptr container_changed_arguments_ptr;
-    typedef typename m::basic_property_changed_arguments<string_type> property_changed_arguments_type;
-    typedef typename property_changed_arguments_type::ptr property_changed_arguments_ptr;
+    using this_type = container_observer<C, S, L>;
+    using container_type = C;
+    using string_type = S;
+    using lockable_type = L;
+    using container_ptr = typename container_type::ptr;
+    using container_changed_arguments_type = typename m::container_changed_arguments;
+    using container_changed_arguments_ptr = typename container_changed_arguments_type::ptr;
+    using property_changed_arguments_type = typename m::basic_property_changed_arguments<string_type>;
+    using property_changed_arguments_ptr = typename property_changed_arguments_type::ptr;
 
     virtual ~container_observer() GO_DEFAULT_DESTRUCTOR
 
@@ -146,8 +148,8 @@ public:
     }
 
 private:
-    typedef si::connections<container_ptr, void(const m::object::ptr&, const container_changed_arguments_ptr&)> container_changed_connections_type;
-    typedef si::connections<container_ptr, void(const m::object::ptr&, const property_changed_arguments_ptr&)> property_changed_connections_type;
+    using container_changed_connections_type = si::connections<container_ptr, void(const m::object::ptr&, const container_changed_arguments_ptr&)>;
+    using property_changed_connections_type = si::connections<container_ptr, void(const m::object::ptr&, const property_changed_arguments_ptr&)>;
 
     container_changed_connections_type _container_changed_connections;
     property_changed_connections_type _property_changed_connections;
@@ -167,5 +169,7 @@ private:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_MVVM_TEST_CONTAINER_OBSERVER_IPP_INCLUDED

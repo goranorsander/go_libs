@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -29,8 +29,8 @@ class view_model_interface
     : public notify_view_model_change_interface<L>
 {
 public:
-    typedef L lockable_type;
-    typedef view_model_interface<L> this_type;
+    GO_USING(lockable_type, L);
+    GO_USING(this_type, view_model_interface<L>);
 
 public:
     virtual ~view_model_interface() = 0;

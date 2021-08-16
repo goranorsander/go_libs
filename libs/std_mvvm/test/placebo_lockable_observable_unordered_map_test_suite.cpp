@@ -23,7 +23,11 @@
 namespace
 {
 
-typedef m::observable_unordered_map<int, int, a::placebo_lockable> container_type;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_observable_unordered_map_placebo_lockable_test_suite, required_cpp11_feature_not_supported) {}
+#else
+
+using container_type = m::observable_unordered_map<int, int, a::placebo_lockable>;
 
 TEST(std_observable_unordered_map_placebo_lockable_test_suite, test_insert_single_element)
 {
@@ -79,5 +83,7 @@ TEST(std_observable_unordered_map_placebo_lockable_test_suite, test_emplace_hint
 {
     go_test::associative::unordered_map::unique::test_emplace_hint<container_type>();
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

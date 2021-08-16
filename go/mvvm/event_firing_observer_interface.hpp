@@ -25,15 +25,15 @@ namespace mvvm
 {
 
 template<class S> class basic_event_firing_observer_interface;
-typedef basic_event_firing_observer_interface<std::string> event_firing_observer_interface;
-typedef basic_event_firing_observer_interface<std::wstring> wevent_firing_wobserver_interface;
+using event_firing_observer_interface = basic_event_firing_observer_interface<std::string>;
+using wevent_firing_wobserver_interface = basic_event_firing_observer_interface<std::wstring>;
 
 template<class S>
 class basic_event_firing_observer_interface
 {
 public:
-    typedef S string_type;
-    typedef basic_event_firing_observer_interface<S> this_type;
+    using string_type = S;
+    using this_type = basic_event_firing_observer_interface<S>;
 
 public:
     virtual ~basic_event_firing_observer_interface() = 0;

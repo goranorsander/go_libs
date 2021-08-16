@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -32,15 +32,15 @@ template <typename S, typename F>
 class connections<std::shared_ptr<S>, F>
 {
 public:
-    typedef connections<std::shared_ptr<S>, F> this_type;
-    typedef std::shared_ptr<S> slot_owner_type;
-    typedef std::function<F> function_type;
-    typedef signal<F> signal_type;
-    typedef connection connection_type;
-    typedef signal_type* const signal_pointer;
-    typedef typename slot_owner_type::element_type* const slot_owner_pointer;
-    typedef std::pair<slot_owner_pointer, signal_pointer> slot_owner_connection_key_type;
-    typedef std::map<slot_owner_connection_key_type, connection_type> slot_owner_connection_type;
+    using this_type = connections<std::shared_ptr<S>, F>;
+    using slot_owner_type = std::shared_ptr<S>;
+    using function_type = std::function<F>;
+    using signal_type = signal<F>;
+    using connection_type = connection;
+    using signal_pointer = signal_type* const;
+    using slot_owner_pointer = typename slot_owner_type::element_type* const;
+    using slot_owner_connection_key_type = std::pair<slot_owner_pointer, signal_pointer>;
+    using slot_owner_connection_type = std::map<slot_owner_connection_key_type, connection_type>;
 
 public:
     ~connections()
@@ -122,16 +122,16 @@ template <typename S, typename F>
 class connections<std::weak_ptr<S>, F>
 {
 public:
-    typedef connections<std::shared_ptr<S>, F> this_type;
-    typedef std::weak_ptr<S> slot_owner_type;
-    typedef std::function<F> function_type;
-    typedef signal<F> signal_type;
-    typedef connection connection_type;
-    typedef signal_type* const signal_pointer;
-    typedef std::shared_ptr<S> slot_owner_ptr;
-    typedef typename slot_owner_type::element_type* const slot_owner_pointer;
-    typedef std::pair<slot_owner_pointer, signal_pointer> slot_owner_connection_key_type;
-    typedef std::map<slot_owner_connection_key_type, connection_type> slot_owner_connection_type;
+    using this_type = connections<std::shared_ptr<S>, F>;
+    using slot_owner_type = std::weak_ptr<S>;
+    using function_type = std::function<F>;
+    using signal_type = signal<F>;
+    using connection_type = connection;
+    using signal_pointer = signal_type* const;
+    using slot_owner_ptr = std::shared_ptr<S>;
+    using slot_owner_pointer = typename slot_owner_type::element_type* const;
+    using slot_owner_connection_key_type = std::pair<slot_owner_pointer, signal_pointer>;
+    using slot_owner_connection_type = std::map<slot_owner_connection_key_type, connection_type>;
 
 public:
     ~connections()
@@ -233,15 +233,15 @@ template <typename S, typename F>
 class connections
 {
 public:
-    typedef connections<S, F> this_type;
-    typedef S slot_owner_type;
-    typedef std::function<F> function_type;
-    typedef signal<F> signal_type;
-    typedef connection connection_type;
-    typedef signal_type* const signal_pointer;
-    typedef slot_owner_type* const slot_owner_pointer;
-    typedef std::pair<slot_owner_pointer, signal_pointer> slot_owner_connection_key_type;
-    typedef std::map<slot_owner_connection_key_type, connection_type> slot_owner_connection_type;
+    using this_type = connections<S, F>;
+    using slot_owner_type = S;
+    using function_type = std::function<F>;
+    using signal_type = signal<F>;
+    using connection_type = connection;
+    using signal_pointer = signal_type* const;
+    using slot_owner_pointer = slot_owner_type* const;
+    using slot_owner_connection_key_type = std::pair<slot_owner_pointer, signal_pointer>;
+    using slot_owner_connection_type = std::map<slot_owner_connection_key_type, connection_type>;
 
 public:
     ~connections()

@@ -89,7 +89,7 @@ private:
     void clear_equipment_list();
 
 private:
-    typedef std::map<equipment_id_type, equipment_interface::ptr> equipment_list_item_data_type;
+    using equipment_list_item_data_type = std::map<equipment_id_type, equipment_interface::ptr>;
 
     bool _initialization_complete;
     CStatic _spaceship_class_static;

@@ -16,7 +16,7 @@ GO_BOOST_END_SUPPRESS_ALL_WARNINGS
 
 #if defined(GO_BOOST_NO_CXX11)
 GO_BOOST_MESSAGE("Required C++11 feature is not supported by this compiler")
-TEST(boost_create_string_test_suite, cpp11_not_supported) {}
+TEST(boost_create_string_test_suite, required_cpp11_feature_not_supported) {}
 #else
 
 #include <go_boost/namespace_alias.hpp>

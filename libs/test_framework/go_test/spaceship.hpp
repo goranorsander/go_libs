@@ -16,6 +16,8 @@
 #include <go/property.hpp>
 #include <go_test/fleet_commander_changed_event.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 namespace go_test
 {
 
@@ -24,26 +26,26 @@ class spaceship
     : private tt::noncopyable_nonmovable
 {
 public:
-    typedef spaceship<Traits> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    GO_USING(this_type, spaceship<Traits>);
+    GO_USING(ptr, typename std::shared_ptr<this_type>);
+    GO_USING(wptr, typename std::weak_ptr<this_type>);
 
-    typedef Traits traits_type;
-    typedef typename traits_type::string_value_type string_value_type;
-    typedef typename traits_type::lockable_type lockable_type;
-    typedef typename traits_type::string_identifier_type string_identifier_type;
-    typedef typename traits_type::double_property_type double_property_type;
-    typedef typename traits_type::int_property_type int_property_type;
-    typedef typename traits_type::string_property_type string_property_type;
-    typedef typename traits_type::read_only_command_property_type read_only_command_property_type;
-    typedef typename traits_type::read_only_string_property_type read_only_string_property_type;
-    typedef typename traits_type::read_only_string_value_property_type read_only_string_value_property_type;
-    typedef typename traits_type::command_value_type command_value_type;
-    typedef typename traits_type::command_ptr command_ptr;
-    typedef typename traits_type::fleet_commander_changed_event_type fleet_commander_changed_event_type;
-    typedef typename traits_type::fleet_commander_changed_event_ptr fleet_commander_changed_event_ptr;
-    typedef typename traits_type::event_type event_type;
-    typedef typename traits_type::event_ptr event_ptr;
+    GO_USING(traits_type, Traits);
+    GO_USING(string_value_type, typename traits_type::string_value_type);
+    GO_USING(lockable_type, typename traits_type::lockable_type);
+    GO_USING(string_identifier_type, typename traits_type::string_identifier_type);
+    GO_USING(double_property_type, typename traits_type::double_property_type);
+    GO_USING(int_property_type, typename traits_type::int_property_type);
+    GO_USING(string_property_type, typename traits_type::string_property_type);
+    GO_USING(read_only_command_property_type, typename traits_type::read_only_command_property_type);
+    GO_USING(read_only_string_property_type, typename traits_type::read_only_string_property_type);
+    GO_USING(read_only_string_value_property_type, typename traits_type::read_only_string_value_property_type);
+    GO_USING(command_value_type, typename traits_type::command_value_type);
+    GO_USING(command_ptr, typename traits_type::command_ptr);
+    GO_USING(fleet_commander_changed_event_type, typename traits_type::fleet_commander_changed_event_type);
+    GO_USING(fleet_commander_changed_event_ptr, typename traits_type::fleet_commander_changed_event_ptr);
+    GO_USING(event_type, typename traits_type::event_type);
+    GO_USING(event_ptr, typename traits_type::event_ptr);
 
 public:
     virtual ~spaceship() GO_DEFAULT_DESTRUCTOR
@@ -195,5 +197,7 @@ protected:
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_SPACESHIP_HPP_INCLUDED

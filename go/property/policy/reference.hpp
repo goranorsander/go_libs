@@ -31,9 +31,9 @@ namespace policy
 template<class T, class L> class reference
 {
 public:
-    typedef T value_type;
-    typedef L lockable_type;
-    typedef reference<value_type, lockable_type> this_type;
+    using value_type = T;
+    using lockable_type = L;
+    using this_type = reference<value_type, lockable_type>;
 
 public:
     virtual ~reference() GO_DEFAULT_DESTRUCTOR

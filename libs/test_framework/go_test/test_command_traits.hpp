@@ -13,6 +13,8 @@
 
 #include <go/config.hpp>
 
+#if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
+
 #include <mutex>
 
 #include <go/string/u8string.hpp>
@@ -23,33 +25,35 @@ namespace go_test
 template <class StrVal, class Lock = std::recursive_mutex>
 struct test_command_traits
 {
-    typedef test_command_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef std::string string_identifier_type;
-    typedef m::basic_command_interface<string_identifier_type, lockable_type> command_interface_type;
+    using this_type = test_command_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = std::string;
+    using command_interface_type = m::basic_command_interface<string_identifier_type, lockable_type>;
 };
 
 template <class StrVal, class Lock = std::recursive_mutex>
 struct wtest_command_traits
 {
-    typedef wtest_command_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef std::wstring string_identifier_type;
-    typedef m::basic_command_interface<string_identifier_type, lockable_type> command_interface_type;
+    using this_type = wtest_command_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = std::wstring;
+    using command_interface_type = m::basic_command_interface<string_identifier_type, lockable_type>;
 };
 
 template <class StrVal, class Lock = std::recursive_mutex>
 struct u8test_command_traits
 {
-    typedef u8test_command_traits<StrVal, Lock> this_type;
-    typedef StrVal string_value_type;
-    typedef Lock lockable_type;
-    typedef s::u8string string_identifier_type;
-    typedef m::basic_command_interface<string_identifier_type, lockable_type> command_interface_type;
+    using this_type = u8test_command_traits<StrVal, Lock>;
+    using string_value_type = StrVal;
+    using lockable_type = Lock;
+    using string_identifier_type = s::u8string;
+    using command_interface_type = m::basic_command_interface<string_identifier_type, lockable_type>;
 };
 
 }
+
+#endif  // #if !(defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX))
 
 #endif  // #ifndef GO_TEST_FRAMEWORK_GO_TEST_TEST_COMMAND_TRAITS_HPP_INCLUDED

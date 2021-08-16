@@ -20,13 +20,17 @@ GO_END_SUPPRESS_ALL_WARNINGS
 namespace
 {
 
-// Test observable_object
-typedef std::string string_type;
-typedef go_test::bind_function::observable_spaceship<go_test::spaceship_traits<string_type>> spaceship_type;
-typedef std::shared_ptr<spaceship_type> spaceship_ptr;
-typedef std::weak_ptr<spaceship_type> spaceship_wptr;
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_NOEXCEPT)
+TEST(std_observable_object_test_suite, required_cpp11_feature_not_supported) {}
+#else
 
-typedef go_test::spaceship_observer<spaceship_type> spaceship_observer;
+// Test observable_object
+using string_type = std::string;
+using spaceship_type = go_test::bind_function::observable_spaceship<go_test::spaceship_traits<string_type>>;
+using spaceship_ptr = std::shared_ptr<spaceship_type>;
+using spaceship_wptr = std::weak_ptr<spaceship_type>;
+
+using spaceship_observer = go_test::spaceship_observer<spaceship_type>;
 
 TEST(std_observable_object_test_suite, test_observable_object)
 {
@@ -81,5 +85,7 @@ TEST(std_observable_object_test_suite, test_observable_object)
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->name.name()));
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->max_speed.name()));
 }
+
+#endif  // Required C++11 feature is not supported by this compiler
 
 }

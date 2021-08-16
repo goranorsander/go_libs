@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -25,14 +25,14 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_relay_command;
-typedef basic_relay_command<std::string, std::recursive_mutex> relay_command;
-typedef basic_relay_command<std::wstring, std::recursive_mutex> relay_wcommand;
+using relay_command = basic_relay_command<std::string, std::recursive_mutex>;
+using relay_wcommand = basic_relay_command<std::wstring, std::recursive_mutex>;
 
 namespace single_threaded
 {
 
-typedef basic_relay_command<std::string, go::async::placebo_lockable> relay_command;
-typedef basic_relay_command<std::wstring, go::async::placebo_lockable> relay_wcommand;
+using relay_command = basic_relay_command<std::string, go::async::placebo_lockable>;
+using relay_wcommand = basic_relay_command<std::wstring, go::async::placebo_lockable>;
 
 }
 
@@ -41,14 +41,14 @@ class basic_relay_command
     : public basic_command_interface<S, L>
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_relay_command<S, L> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
-    typedef typename std::shared_ptr<command_parameters> command_parameters_type;
-    typedef typename std::function<bool(const command_parameters_type&)> can_execute_command_signature;
-    typedef typename std::function<void(const command_parameters_type&)> execute_command_signature;
+    using string_type = S;
+    using lockable_type = L;
+    using this_type = basic_relay_command<S, L>;
+    using ptr = typename std::shared_ptr<this_type>;
+    using wptr = typename std::weak_ptr<this_type>;
+    using command_parameters_type = typename std::shared_ptr<command_parameters>;
+    using can_execute_command_signature = typename std::function<bool(const command_parameters_type&)>;
+    using execute_command_signature = typename std::function<void(const command_parameters_type&)>;
 
 public:
     virtual ~basic_relay_command() GO_DEFAULT_DESTRUCTOR

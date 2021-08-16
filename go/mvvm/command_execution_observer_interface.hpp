@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_DEFAULTED_AND_DELETED_FUNCTIONS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -29,14 +29,24 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_command_execution_observer_interface;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_command_execution_observer_interface<std::string, std::recursive_mutex> command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::wstring, std::recursive_mutex> wcommand_execution_wobserver_interface;
+#else
+using command_execution_observer_interface = basic_command_execution_observer_interface<std::string, std::recursive_mutex>;
+using wcommand_execution_wobserver_interface = basic_command_execution_observer_interface<std::wstring, std::recursive_mutex>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 namespace single_threaded
 {
 
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_command_execution_observer_interface<std::string, go::async::placebo_lockable> command_execution_observer_interface;
 typedef basic_command_execution_observer_interface<std::wstring, go::async::placebo_lockable> wcommand_execution_wobserver_interface;
+#else
+using command_execution_observer_interface = basic_command_execution_observer_interface<std::string, go::async::placebo_lockable>;
+using wcommand_execution_wobserver_interface = basic_command_execution_observer_interface<std::wstring, go::async::placebo_lockable>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 }
 
@@ -44,9 +54,13 @@ template<class S, class L = std::recursive_mutex>
 class basic_command_execution_observer_interface
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
+    GO_USING(string_type, S);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
     typedef basic_command_execution_observer_interface<S, L> this_type;
+#else
+    using this_type = basic_command_execution_observer_interface<S, L>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 public:
     virtual ~basic_command_execution_observer_interface() = 0;

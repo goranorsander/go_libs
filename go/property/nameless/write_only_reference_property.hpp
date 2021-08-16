@@ -13,7 +13,7 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS) || defined(GO_NO_CXX11_MUTEX)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
@@ -33,10 +33,10 @@ template<class T, class L = std::recursive_mutex> class reference_property
     : public detail::property_base<T, policy::reference<T, L>>
 {
 public:
-    typedef T value_type;
-    typedef L lockable_type;
-    typedef reference_property<value_type, lockable_type> this_type;
-    typedef typename policy::reference<value_type, lockable_type> policy_type;
+    using value_type = T;
+    using lockable_type = L;
+    using this_type = reference_property<value_type, lockable_type>;
+    using policy_type = typename policy::reference<value_type, lockable_type>;
 
 public:
     virtual ~reference_property() GO_DEFAULT_DESTRUCTOR

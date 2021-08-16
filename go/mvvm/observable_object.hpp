@@ -13,10 +13,12 @@
 
 #include <go/config.hpp>
 
-#if defined(GO_NO_CXX11)
+#if defined(GO_NO_CXX11) || defined(GO_NO_CXX11_CONCURRENCY_SUPPORT) || defined(GO_NO_CXX11_MUTEX) || defined(GO_NO_CXX11_VARIADIC_TEMPLATES)
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
+#include <mutex>
+#include <go/async/placebo_lockable.hpp>
 #include <go/mvvm/notify_property_changed_interface.hpp>
 
 namespace go
@@ -25,14 +27,24 @@ namespace mvvm
 {
 
 template<class S, class L> class basic_observable_object;
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_observable_object<std::string, std::recursive_mutex> observable_object;
 typedef basic_observable_object<std::wstring, std::recursive_mutex> wobservable_object;
+#else
+using observable_object = basic_observable_object<std::string, std::recursive_mutex>;
+using wobservable_object = basic_observable_object<std::wstring, std::recursive_mutex>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 namespace single_threaded
 {
 
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
 typedef basic_observable_object<std::string, go::async::placebo_lockable> observable_object;
 typedef basic_observable_object<std::wstring, go::async::placebo_lockable> wobservable_object;
+#else
+using observable_object = basic_observable_object<std::string, go::async::placebo_lockable>;
+using wobservable_object = basic_observable_object<std::wstring, go::async::placebo_lockable>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
 
 }
 
@@ -42,11 +54,15 @@ class basic_observable_object
     , public object
 {
 public:
-    typedef S string_type;
-    typedef L lockable_type;
-    typedef basic_observable_object<S, L> this_type;
-    typedef typename std::shared_ptr<this_type> ptr;
-    typedef typename std::weak_ptr<this_type> wptr;
+    GO_USING(string_type, S);
+    GO_USING(lockable_type, L);
+#if defined(GO_NO_CXX11_TYPE_ALIASES)
+    typedef this_type basic_observable_object<S, L>;
+#else
+    using this_type = basic_observable_object<S, L>;
+#endif  // #if defined(GO_NO_CXX11_TYPE_ALIASES)
+    GO_USING(ptr, typename std::shared_ptr<this_type>);
+    GO_USING(wptr, typename std::shared_ptr<this_type>);
 
 public:
     virtual ~basic_observable_object() = 0;
