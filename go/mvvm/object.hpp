@@ -25,12 +25,12 @@ namespace mvvm
 {
 
 class object
-    : public std::tr1::enable_shared_from_this<object>
+    : public std::enable_shared_from_this<object>
 {
 public:
     GO_USING(this_type, object);
     GO_USING(ptr, std::shared_ptr<this_type>);
-    GO_USING(wptr, std::tr1::weak_ptr<this_type>);
+    GO_USING(wptr, std::weak_ptr<this_type>);
 
 public:
     virtual ~object() = 0;
