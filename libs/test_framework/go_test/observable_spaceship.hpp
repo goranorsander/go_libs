@@ -289,40 +289,26 @@ public:
     static ptr create(const string_value_type& name_)
     {
         ptr ship(new this_type(name_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
     static ptr create(const string_value_type& name_, const string_value_type& captain_)
     {
         ptr ship(new observable_spaceship(name_, captain_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
     static ptr create(const string_value_type& name_, const string_value_type& captain_, const string_value_type& fleet_commander_)
     {
         ptr ship(new observable_spaceship(name_, captain_, fleet_commander_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
-protected:
-    template <class S>
-    void bind_properties(const S&)
-    {
-        this->bind_properties(tt::identity<S>());
-    }
-
 private:
-    template <class S>
-    void bind_properties(const tt::identity<S>)
-    {
-        throw std::domain_error("Unsupported string class");
-    }
-
-    template <>
-    void bind_properties(const tt::identity<string_identifier_type>)
+    void bind_properties(const tt::identity<traits_type>)
     {
         this->name.getter([this]() { return this->_name; });
         this->name.setter([this](const string_identifier_type& v) { if (v != this->_name) { this->_name = v; this->notify_property_changed(this->shared_from_this(), this->name.name()); } });
@@ -405,40 +391,26 @@ public:
     static ptr create(const string_value_type& name_)
     {
         ptr ship(new this_type(name_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
     static ptr create(const string_value_type& name_, const string_value_type& captain_)
     {
         ptr ship(new observable_spaceship(name_, captain_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
     static ptr create(const string_value_type& name_, const string_value_type& captain_, const string_value_type& fleet_commander_)
     {
         ptr ship(new observable_spaceship(name_, captain_, fleet_commander_));
-        ship->bind_properties(string_identifier_type());
+        ship->bind_properties(tt::identity<traits_type>());
         return ship;
     }
 
-protected:
-    template <class S>
-    void bind_properties(const S&)
-    {
-        this->bind_properties(tt::identity<S>());
-    }
-
 private:
-    template <class S>
-    void bind_properties(const tt::identity<S>)
-    {
-        throw std::domain_error("Unsupported string class");
-    }
-
-    template <>
-    void bind_properties(const tt::identity<string_identifier_type>)
+    void bind_properties(const tt::identity<traits_type>)
     {
         this->name.getter([this]() { return this->_name; });
         this->name.setter([this](const string_identifier_type& v) { if (v != this->_name) { this->_name = v; this->notify_property_changed(this->shared_from_this(), this->name.name()); } });

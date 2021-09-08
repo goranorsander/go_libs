@@ -35,12 +35,12 @@ namespace signals
 
 using size_type = size_t;
 
-template<typename R, typename... Args>
-class signal<R(Args...)>
+template<typename R, typename ...Args>
+class signal<auto(Args...)->R>
     : public detail::signal_lock<std::recursive_mutex>
 {
 public:
-    using this_type = signal<R(Args...)>;
+    using this_type = signal<auto(Args...)->R>;
     using base_type = detail::signal_lock<std::recursive_mutex>;
     using lockable_type = typename base_type::lockable_type;
     using result_type = R;

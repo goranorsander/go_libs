@@ -25,9 +25,12 @@ namespace go
 namespace signals
 {
 
+template<typename, typename ...>
+class signal;
+
 class connection
 {
-    template<typename>
+    template<typename, typename ...>
     friend class signal;
 
 public:
