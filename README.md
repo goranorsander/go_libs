@@ -120,13 +120,13 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.38
-  * Visual Studio 2019, Community Edition, version 16.11.2
-  * Visual Studio Code 1.55.2 - with extensions:
-    * C/C++ 1.3.1 _(C/C++ IntelliSense, debugging, and code browsing)_
+  * Visual Studio 2017, Community Edition, version 15.9.39
+  * Visual Studio 2019, Community Edition, version 16.11.3
+  * Visual Studio Code 1.60.2 - with extensions:
+    * C/C++ 1.6.0 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.7.1 _(Extended CMake support)_
-    * Git Lens 11.4.1 _(Supercharge Visual Studio Code's Git capabilities)_
+    * CMake Tools 1.8.1 _(Extended CMake support)_
+    * Git Lens 11.6.0 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 3.4.0 _(All you need to write Markdown)_
 
 # GOOGLE TEST
