@@ -360,9 +360,9 @@ using tr1::weak_ptr;
 #if (_MSC_VER < 1900)
 #define GO_NO_CXX14_ARGUMENT_DEPENDENT_LOOKUP 1
 #endif  // #if (_MSC_VER < 1900)
-#if defined(_MSC_VER)
+#if (_MSC_VER < 1920)
 #define GO_NO_CXX14_LAMBDA_DEFAULT_ARGUMENTS 1
-#endif  // #if defined(_MSC_VER)
+#endif  // #if (_MSC_VER < 1920)
 
 #if defined(GO_NO_CXX14_EXTENDED_CONSTEXPR)
 #define GO_EXTENDED_CONSTEXPR

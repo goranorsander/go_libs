@@ -17,7 +17,7 @@
 GO_MESSAGE("Required C++11 feature is not supported by this compiler")
 #else
 
-#include <vector>
+#include <list>
 #include <go/signals/detail/connection_cleaner.hpp>
 
 namespace go
@@ -37,32 +37,29 @@ public:
     virtual ~connection() = default;
     connection() = default;
     connection(const connection&) = delete;
-#if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
     connection(connection&& other)
-        : _data(std::move(other._data))
+        : _id(other._id)
+        , _data(std::move(other._data))
         , _cleaners(std::move(other._cleaners))
     {
     }
-#else
-    connection(connection&&) = default;
-#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
     connection(std::shared_ptr<detail::connection_data>&& data);
 
 public:
     connection& operator=(const connection&) = delete;
-#if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
     connection& operator=(connection&& other)
     {
         if (&other != this)
         {
+            const_cast<connection_id_type&>(_id) = other._id;
             _data = std::move(other._data);
             _cleaners = std::move(other._cleaners);
         }
         return *this;
     }
-#else
-    connection& operator=(connection&&) = default;
-#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
 
 public:
     connection_id_type id() const;
@@ -73,9 +70,19 @@ public:
     void disconnect();
 
 private:
+    static connection_id_type next_id();
+
+private:
+    const connection_id_type _id = next_id();
     std::shared_ptr<detail::connection_data> _data;
-    std::vector<detail::connection_cleaner> _cleaners;
+    std::list<detail::connection_cleaner_ptr> _cleaners;
 };
+
+inline connection_id_type connection::next_id()
+{
+    static connection_id_type id = 0;
+    return ++id;
+}
 
 inline connection::connection(std::shared_ptr<detail::connection_data>&& data)
     : _data(std::move(data))
@@ -89,7 +96,7 @@ inline connection::connection(std::shared_ptr<detail::connection_data>&& data)
 
 inline connection_id_type connection::id() const
 {
-    return reinterpret_cast<connection_id_type>(this);
+    return _id;
 }
 
 inline bool connection::is_locked() const
@@ -108,8 +115,9 @@ inline void connection::disconnect()
 
     for (auto it = cleaners.cbegin(); it != cleaners.cend(); ++it)
     {
-        const detail::connection_cleaner& cleaner = *it;
-
+        if (*it == nullptr)
+            continue;
+        const detail::connection_cleaner& cleaner = **it;
         cleaner.deleter(cleaner.data);
     }
 }

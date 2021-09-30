@@ -116,6 +116,36 @@ private:
 
     struct callback_data
     {
+        ~callback_data() = default;
+        callback_data() = default;
+        callback_data(const callback_data&) = delete;
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+        callback_data(callback_data&& other)
+            : callback(std::move(other.callback))
+            , connection_data(std::move(other.connection_data))
+            , owner(std::move(other.owner))
+        {
+        }
+#else
+        callback_data(callback_data&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_CONSTRUCTOR)
+
+        callback_data& operator=(const callback_data&) = delete;
+#if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+        callback_data& operator=(callback_data&& other)
+        {
+            if (this != &other)
+            {
+                callback = std::move(other.callback);
+                connection_data = std::move(other.connection_data);
+                owner = std::move(other.owner);
+            }
+            return *this;
+        }
+#else
+        callback_data& operator=(callback_data&&) = default;
+#endif  // #if defined(GO_NO_CXX11_DEFAULTED_MOVE_ASSIGN_OPERATOR)
+
         function_type callback;
         connection_data_ptr connection_data;
         slot_pointer owner;
@@ -250,7 +280,7 @@ template<typename R, typename... Args>
 template<typename T>
 R signal<R(Args...)>::call(Args... args, const T& agg) const
 {
-    std::vector<R> result;
+    std::list<R> result;
     const std::lock_guard<std::recursive_mutex> lock(this->_mutex);
     if (!this->_locked)
     {
@@ -411,7 +441,7 @@ connection signal<R(Args...)>::create_connection(function_type&& fn, slot_pointe
     connection connection_(std::move(connection_data));
     if (default_owner)
     {
-        _default_owners[connection_.id()] = default_owner;
+        _default_owners[connection_.id()] = std::move(default_owner);
     }
     return connection_;
 }
@@ -420,11 +450,11 @@ template<typename R, typename... Args>
 void signal<R(Args...)>::create_connection_cleaner(const connection_data_ptr& connection_data, slot_pointer owner)
 {
     auto deleter = [this](connection_data_ptr connection_data) { this->destroy_connection(connection_data); };
-    detail::connection_cleaner cleaner;
-    cleaner.deleter = deleter;
-    cleaner.data = connection_data;
+    detail::connection_cleaner_ptr cleaner = std::make_shared<detail::connection_cleaner>();
+    cleaner->deleter = std::move(deleter);
+    cleaner->data = connection_data;
     owner->_data = connection_data;
-    owner->_cleaners.emplace_back(cleaner);
+    owner->_cleaners.push_back(std::move(cleaner));
 }
 
 template<typename R, typename... Args>
