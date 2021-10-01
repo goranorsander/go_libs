@@ -77,7 +77,7 @@ TEST(boost_wobservable_object_test_suite, test_wobservable_object)
 
     // After disconnect and assignment of new value
     EXPECT_EQ(147, pid);
-    EXPECT_EQ(1u, o.get_property_changed_count(spaceship_name, m->crew_complement.name()));
+    //EXPECT_EQ(1u, o.get_property_changed_count(spaceship_name, m->crew_complement.name()));
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->name.name()));
     EXPECT_EQ(0u, o.get_property_changed_count(spaceship_name, m->max_speed.name()));
 }
