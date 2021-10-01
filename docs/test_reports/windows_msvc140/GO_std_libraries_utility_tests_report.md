@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2021-05-02 at 17:07:36 with result:
+Test suites *AllTests* with 50 test cases was executed 2021-10-01 at 16:41:56.023 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.036 seconds.
+Test suites execution took 0.037 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.012 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -37,7 +37,7 @@ test_iterator | 0
 test_const_iterator | 0
 test_reverse_iterator | 0
 test_const_reverse_iterator | 0
-test_push_back_to_capacity_pop_front_to_empty | 0.001
+test_push_back_to_capacity_pop_front_to_empty | 0
 test_push_back_pop_front_without_overflow | 0
 test_push_back_pop_front_with_overflow | 0
 test_push_front_to_capacity_pop_back_to_empty | 0
@@ -58,7 +58,7 @@ Test suite *std_container_size_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -77,7 +77,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
@@ -145,7 +145,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.009 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -172,7 +172,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

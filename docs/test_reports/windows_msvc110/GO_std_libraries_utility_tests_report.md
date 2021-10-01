@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 28 test cases was executed 2021-05-02 at 17:07:28 with result:
+Test suites *AllTests* with 28 test cases was executed 2021-10-01 at 16:41:46 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.027 seconds.
+Test suites execution took 0.031 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *std_circular_buffer_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_container_size_test_suite
 
@@ -50,7 +50,7 @@ test_size_on_deque | 0
 test_size_on_list | 0
 test_size_on_vector | 0
 test_size_on_map | 0
-test_size_on_set | 0.001
+test_size_on_set | 0
 
 ## std_erase_iterator_test_suite
 
@@ -59,7 +59,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.003 seconds.
 
 ### Successful test cases
 
@@ -78,13 +78,13 @@ Test suite *std_reverse_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp14_not_supported | 0
+required_cpp14_feature_not_supported | 0
 
 ## std_scope_guard_new_test_suite
 
@@ -114,7 +114,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_scope_guard | 0
+test_scope_guard | 0.001
 
 ## std_try_move_iterator_backward_test_suite
 
@@ -123,7 +123,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.011 seconds.
+Test suite execution took 0.017 seconds.
 
 ### Successful test cases
 
@@ -132,7 +132,7 @@ Test case|Execution time
 test_try_move_backward_on_array | 0
 test_try_move_backward_on_deque | 0
 test_try_move_backward_on_forward_list | 0
-test_try_move_backward_on_list | 0.001
+test_try_move_backward_on_list | 0
 test_try_move_backward_on_vector | 0
 test_try_move_backward_on_map | 0
 test_try_move_backward_on_set | 0

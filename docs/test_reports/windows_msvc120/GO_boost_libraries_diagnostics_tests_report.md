@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 5 test cases was executed 2021-05-02 at 17:07:28 with result:
+Test suites *AllTests* with 5 test cases was executed 2021-10-01 at 16:41:46 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.811 seconds.
+Test suites execution took 0.871 seconds.
 
 # Details
 
@@ -25,14 +25,14 @@ Test suite *boost_stopwatch_test_suite* with 5 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.808 seconds.
+Test suite execution took 0.869 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_create_stopwatch | 0
-test_stopwatch_start_stop | 0.101
-test_stopwatch_reset | 0.102
-test_stopwatch_guard | 0.1
-test_stopwatch_start_stop_five_times | 0.502
+test_stopwatch_start_stop | 0.104
+test_stopwatch_reset | 0.108
+test_stopwatch_guard | 0.107
+test_stopwatch_start_stop_five_times | 0.545

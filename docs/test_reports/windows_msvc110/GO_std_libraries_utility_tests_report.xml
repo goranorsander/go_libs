@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="28" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:28" time="0.027" name="AllTests">
-  <testsuite name="std_circular_buffer_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="cpp11_not_supported" status="run" time="0" classname="std_circular_buffer_test_suite" />
+<testsuites tests="28" failures="0" disabled="0" errors="0" timestamp="2021-10-01T16:41:46" time="0.031" name="AllTests">
+  <testsuite name="std_circular_buffer_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+    <testcase name="required_cpp11_feature_not_supported" status="run" time="0" classname="std_circular_buffer_test_suite" />
   </testsuite>
   <testsuite name="std_container_size_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_size_on_deque" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_list" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_vector" status="run" time="0" classname="std_container_size_test_suite" />
     <testcase name="test_size_on_map" status="run" time="0" classname="std_container_size_test_suite" />
-    <testcase name="test_size_on_set" status="run" time="0.001" classname="std_container_size_test_suite" />
+    <testcase name="test_size_on_set" status="run" time="0" classname="std_container_size_test_suite" />
   </testsuite>
-  <testsuite name="std_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.005">
+  <testsuite name="std_erase_iterator_test_suite" tests="5" failures="0" disabled="0" errors="0" time="0.003">
     <testcase name="test_erase_iterator_on_deque" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_list" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_vector" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_map" status="run" time="0" classname="std_erase_iterator_test_suite" />
     <testcase name="test_erase_iterator_on_set" status="run" time="0" classname="std_erase_iterator_test_suite" />
   </testsuite>
-  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
-    <testcase name="cpp14_not_supported" status="run" time="0" classname="std_reverse_test_suite" />
+  <testsuite name="std_reverse_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
+    <testcase name="required_cpp14_feature_not_supported" status="run" time="0" classname="std_reverse_test_suite" />
   </testsuite>
   <testsuite name="std_scope_guard_new_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="test_scope_guard_new" status="run" time="0" classname="std_scope_guard_new_test_suite" />
   </testsuite>
   <testsuite name="std_scope_guard_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_scope_guard" status="run" time="0" classname="std_scope_guard_test_suite" />
+    <testcase name="test_scope_guard" status="run" time="0.001" classname="std_scope_guard_test_suite" />
   </testsuite>
-  <testsuite name="std_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.011">
+  <testsuite name="std_try_move_iterator_backward_test_suite" tests="13" failures="0" disabled="0" errors="0" time="0.017">
     <testcase name="test_try_move_backward_on_array" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_deque" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_forward_list" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
-    <testcase name="test_try_move_backward_on_list" status="run" time="0.001" classname="std_try_move_iterator_backward_test_suite" />
+    <testcase name="test_try_move_backward_on_list" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_vector" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_map" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />
     <testcase name="test_try_move_backward_on_set" status="run" time="0" classname="std_try_move_iterator_backward_test_suite" />

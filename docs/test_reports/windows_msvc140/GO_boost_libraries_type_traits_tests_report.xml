@@ -1,133 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="128" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:34" time="0.081" name="AllTests">
-  <testsuite name="boost_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" errors="0" time="0.079">
-    <testcase name="test_explicit_integer_type_specializer" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_default_value" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_construction" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_get_set" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_simple_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_addition_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_and_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_xor_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_division_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_xor_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_left_shift_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_bitwise_right_shift_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_less_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_pre_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_post_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_pre_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_integer_type_specializer_post_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_default_value" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_construction" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_get_set" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_simple_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_addition_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_division_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_less_than_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_pre_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_post_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_pre_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_floating_point_type_specializer_post_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_default_value" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_construction" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_get_set" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_simple_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_addition_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_and_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_or_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_xor_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_division_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_less_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_pre_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_post_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_pre_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_integer_type_specializer_post_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_default_value" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_construction" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_get_set" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_simple_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_addition_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_subtraction_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_multiplication_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_division_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_modulo_assignment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_addition_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_division_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_modulo_arithmetic_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_not_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_less_than_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_greater_than_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_pre_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_post_increment_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_pre_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
-    <testcase name="test_implicit_floating_point_type_specializer_post_decrement_operator" status="run" time="0" classname="boost_fundamental_type_specializer_test_suite" />
+<testsuites tests="128" failures="0" disabled="0" errors="0" time="0.07" timestamp="2021-10-01T16:41:53.826" name="AllTests">
+  <testsuite name="boost_fundamental_type_specializer_test_suite" tests="128" failures="0" disabled="0" skipped="0" errors="0" time="0.069" timestamp="2021-10-01T16:41:53.828">
+    <testcase name="test_explicit_integer_type_specializer" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.828" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_default_value" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.828" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_construction" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.829" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_get_set" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.829" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_simple_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.830" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_addition_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.830" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_subtraction_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.830" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_multiplication_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.831" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_division_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.831" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_modulo_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.832" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_and_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.832" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_or_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.832" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_xor_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.833" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.833" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.833" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_unary_plus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.834" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_unary_minus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.834" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_addition_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.834" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_subtraction_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.835" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_multiplication_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.835" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_division_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.835" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_modulo_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.836" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.836" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.836" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.837" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_xor_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.837" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_left_shift_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.837" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_bitwise_right_shift_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.838" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.838" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_not_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.838" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_less_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.839" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_greater_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.839" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.839" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.840" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_pre_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.840" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_post_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.840" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_pre_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.841" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_integer_type_specializer_post_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.841" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_default_value" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.841" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_construction" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.842" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_get_set" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.842" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_simple_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.842" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_addition_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.843" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_subtraction_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.843" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_multiplication_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.843" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_division_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.844" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_modulo_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.844" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.844" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.845" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_addition_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.845" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_subtraction_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.845" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_multiplication_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.855" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_division_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.855" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_modulo_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.856" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.856" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_not_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.857" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_less_than_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.857" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_greater_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.857" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.858" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.858" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_pre_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.859" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_post_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.859" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_pre_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.859" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_floating_point_type_specializer_post_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.860" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.860" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_default_value" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.861" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_construction" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.861" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_get_set" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.862" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_simple_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.863" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_addition_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.863" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_subtraction_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.864" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_multiplication_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.864" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_division_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.865" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_modulo_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.865" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_and_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.865" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_or_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.866" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_xor_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.866" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.867" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.867" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_unary_plus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.868" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_unary_minus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.868" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_addition_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.869" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_subtraction_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.869" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_multiplication_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.869" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_division_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.870" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_modulo_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.870" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_not_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.871" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_and_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.871" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_or_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.872" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_xor_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.872" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_left_shift_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.873" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_bitwise_right_shift_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.873" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.873" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_not_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.874" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_less_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.874" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_greater_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.874" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_less_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.875" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.875" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_pre_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.875" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_post_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.876" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_pre_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.876" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_integer_type_specializer_post_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.876" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_default_value" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.877" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_construction" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.887" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_get_set" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.887" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_simple_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.888" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_addition_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.888" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_subtraction_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.888" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_multiplication_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.889" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_division_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.889" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_modulo_assignment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.890" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.890" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_unary_minus_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.890" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_addition_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.891" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_subtraction_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.891" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_multiplication_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.892" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_division_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.892" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_modulo_arithmetic_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.892" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.893" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_not_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.893" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_less_than_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.894" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_greater_than_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.894" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_less_than_or_equal_to_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.895" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_greater_than_or_equal_to_comparison_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.895" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_pre_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.895" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_post_increment_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.896" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_pre_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.896" classname="boost_fundamental_type_specializer_test_suite" />
+    <testcase name="test_implicit_floating_point_type_specializer_post_decrement_operator" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.897" classname="boost_fundamental_type_specializer_test_suite" />
   </testsuite>
 </testsuites>

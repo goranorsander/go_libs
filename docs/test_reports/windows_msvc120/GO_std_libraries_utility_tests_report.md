@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 28 test cases was executed 2021-05-02 at 17:07:32 with result:
+Test suites *AllTests* with 28 test cases was executed 2021-10-01 at 16:41:51 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.027 seconds.
+Test suites execution took 0.032 seconds.
 
 # Details
 
@@ -31,7 +31,7 @@ Test suite execution took 0 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_container_size_test_suite
 
@@ -78,13 +78,13 @@ Test suite *std_reverse_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp14_not_supported | 0
+required_cpp14_feature_not_supported | 0
 
 ## std_scope_guard_new_test_suite
 
@@ -93,7 +93,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -108,7 +108,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -123,7 +123,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.012 seconds.
+Test suite execution took 0.017 seconds.
 
 ### Successful test cases
 

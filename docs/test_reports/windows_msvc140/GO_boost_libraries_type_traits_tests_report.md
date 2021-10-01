@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2021-05-02 at 17:07:34 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-10-01 at 16:41:53.826 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.081 seconds.
+Test suites execution took 0.07 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.079 seconds.
+Test suite execution took 0.069 seconds.
 
 ### Successful test cases
 

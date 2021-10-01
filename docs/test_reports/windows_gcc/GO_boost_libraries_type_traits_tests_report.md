@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2021-05-02 at 17:07:01 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-10-01 at 16:41:18.315 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 2.039 seconds.
+Test suites execution took 2.19 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 2.02 seconds.
+Test suite execution took 2.17 seconds.
 
 ### Successful test cases
 
@@ -68,7 +68,7 @@ test_integer_type_specializer_less_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_greater_than_or_equal_to_comparison_operator | 0
 test_integer_type_specializer_pre_increment_operator | 0
 test_integer_type_specializer_post_increment_operator | 0
-test_integer_type_specializer_pre_decrement_operator | 0.001
+test_integer_type_specializer_pre_decrement_operator | 0
 test_integer_type_specializer_post_decrement_operator | 0
 test_floating_point_type_specializer_default_value | 0
 test_floating_point_type_specializer_construction | 0

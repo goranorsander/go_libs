@@ -23,13 +23,13 @@ more information.
   * [MSVC++ 12.0 / Visual Studio 2013](./windows_msvc120/unit_tests.html)
   * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
   * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
-  * [MSVC++ 14.28 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
+  * [MSVC++ 14.29 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
 
 # Summary
 
 * 170 unit test applications executed, 17 for each toolset
 * 2250 unit test suites, on average 225 for each toolset
-* 17001 unit test cases, on average 1700 for each toolset
+* 16810 unit test cases, on average 1681 for each toolset
 * 0 errors
 * 0 failures
 * 0 disabled test cases

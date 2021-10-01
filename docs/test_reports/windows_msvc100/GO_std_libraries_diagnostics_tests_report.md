@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 1 test cases was executed 2021-05-02 at 17:07:23 with result:
+Test suites *AllTests* with 1 test cases was executed 2021-10-01 at 16:41:40 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.002 seconds.
+Test suites execution took 0.004 seconds.
 
 # Details
 
@@ -31,4 +31,4 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0

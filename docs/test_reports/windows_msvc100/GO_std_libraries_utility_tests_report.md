@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2021-05-02 at 17:07:23 with result:
+Test suites *AllTests* with 8 test cases was executed 2021-10-01 at 16:41:41 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.014 seconds.
+Test suites execution took 0.013 seconds.
 
 # Details
 
@@ -31,7 +31,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_container_size_test_suite
 
@@ -40,13 +40,13 @@ Test suite *std_container_size_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.003 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_erase_iterator_test_suite
 
@@ -55,13 +55,13 @@ Test suite *std_erase_iterator_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_reverse_test_suite
 
@@ -70,13 +70,13 @@ Test suite *std_reverse_test_suite* with 1 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-cpp14_not_supported | 0
+required_cpp14_feature_not_supported | 0
 
 ## std_scope_guard_new_test_suite
 
@@ -121,7 +121,7 @@ Test suite execution took 0 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_value_guard_test_suite
 

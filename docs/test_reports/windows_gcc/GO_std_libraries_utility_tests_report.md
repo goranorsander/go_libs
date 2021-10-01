@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2021-05-02 at 17:07:16 with result:
+Test suites *AllTests* with 50 test cases was executed 2021-10-01 at 16:41:33.973 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.528 seconds.
+Test suites execution took 0.585 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -41,7 +41,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.147 seconds.
+Test suite execution took 0.168 seconds.
 
 ### Successful test cases
 
@@ -51,7 +51,7 @@ test_try_move_backward_on_array | 0
 test_try_move_backward_on_deque | 0
 test_try_move_backward_on_forward_list | 0
 test_try_move_backward_on_list | 0
-test_try_move_backward_on_vector | 0.001
+test_try_move_backward_on_vector | 0
 test_try_move_backward_on_map | 0
 test_try_move_backward_on_set | 0
 test_try_move_backward_on_multimap | 0
@@ -68,7 +68,7 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
@@ -83,7 +83,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.008 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
@@ -98,7 +98,7 @@ Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.036 seconds.
+Test suite execution took 0.033 seconds.
 
 ### Successful test cases
 
@@ -117,7 +117,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.046 seconds.
+Test suite execution took 0.049 seconds.
 
 ### Successful test cases
 
@@ -136,7 +136,7 @@ Test suite *std_container_size_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.038 seconds.
+Test suite execution took 0.044 seconds.
 
 ### Successful test cases
 
@@ -155,7 +155,7 @@ Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.165 seconds.
+Test suite execution took 0.186 seconds.
 
 ### Successful test cases
 

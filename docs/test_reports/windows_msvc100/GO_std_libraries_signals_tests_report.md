@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 3 test cases was executed 2021-05-02 at 17:07:23 with result:
+Test suites *AllTests* with 3 test cases was executed 2021-10-01 at 16:41:41 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.005 seconds.
+Test suites execution took 0.004 seconds.
 
 # Details
 
@@ -31,7 +31,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_signals_string_test_suite
 
@@ -46,7 +46,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0
 
 ## std_signals_wstring_test_suite
 
@@ -61,4 +61,4 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-cpp11_not_supported | 0
+required_cpp11_feature_not_supported | 0

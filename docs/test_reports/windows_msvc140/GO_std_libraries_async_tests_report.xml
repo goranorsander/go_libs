@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="11" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:34" time="0.012" name="AllTests">
-  <testsuite name="std_monitor_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.002">
-    <testcase name="test_monitor" status="run" time="0" classname="std_monitor_test_suite" />
-    <testcase name="test_monitor_two_threads" status="run" time="0.001" classname="std_monitor_test_suite" />
+<testsuites tests="11" failures="0" disabled="0" errors="0" time="0.009" timestamp="2021-10-01T16:41:54.002" name="AllTests">
+  <testsuite name="std_monitor_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-10-01T16:41:54.003">
+    <testcase name="test_monitor" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.004" classname="std_monitor_test_suite" />
+    <testcase name="test_monitor_two_threads" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:54.004" classname="std_monitor_test_suite" />
   </testsuite>
-  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" errors="0" time="0.001">
-    <testcase name="test_placebo_lockable" status="run" time="0" classname="std_placebo_lockable_test_suite" />
-    <testcase name="test_placebo_lockable_lock_guard" status="run" time="0" classname="std_placebo_lockable_test_suite" />
+  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-10-01T16:41:54.006">
+    <testcase name="test_placebo_lockable" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.006" classname="std_placebo_lockable_test_suite" />
+    <testcase name="test_placebo_lockable_lock_guard" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.006" classname="std_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_recursive_spin_lock_test_suite" tests="4" failures="0" disabled="0" errors="0" time="0.002">
-    <testcase name="test_placebo_lockable_two_threads" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_lock_guard" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_two_threads" status="run" time="0" classname="std_recursive_spin_lock_test_suite" />
+  <testsuite name="std_recursive_spin_lock_test_suite" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-10-01T16:41:54.007">
+    <testcase name="test_placebo_lockable_two_threads" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.007" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.008" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.008" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.009" classname="std_recursive_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="std_spin_lock_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.004">
-    <testcase name="test_spin_lock" status="run" time="0" classname="std_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_lock_guard" status="run" time="0" classname="std_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_two_threads" status="run" time="0" classname="std_spin_lock_test_suite" />
+  <testsuite name="std_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-10-01T16:41:54.010">
+    <testcase name="test_spin_lock" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.010" classname="std_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.010" classname="std_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:54.011" classname="std_spin_lock_test_suite" />
   </testsuite>
 </testsuites>

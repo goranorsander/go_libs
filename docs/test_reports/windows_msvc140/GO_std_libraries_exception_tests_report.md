@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2021-05-02 at 17:07:35 with result:
+Test suites *AllTests* with 6 test cases was executed 2021-10-01 at 16:41:55.027 with result:
 
 * 0 errors
 * 0 failures
@@ -36,4 +36,4 @@ test_catch_go_exception_as_std_exception | 0
 test_catch_derived_exception | 0
 test_catch_derived_exception_as_go_exception | 0
 test_catch_derived_exception_as_std_exception | 0
-test_catch_other_exception | 0.001
+test_catch_other_exception | 0

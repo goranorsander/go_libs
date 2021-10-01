@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="6" failures="0" disabled="0" errors="0" timestamp="2021-05-02T17:07:05" time="0.07" name="AllTests">
-  <testsuite name="std_exception_test_suite" tests="6" failures="0" disabled="0" errors="0" time="0.055">
-    <testcase name="test_catch_go_exception" status="run" time="0" classname="std_exception_test_suite" />
-    <testcase name="test_catch_go_exception_as_std_exception" status="run" time="0" classname="std_exception_test_suite" />
-    <testcase name="test_catch_derived_exception" status="run" time="0" classname="std_exception_test_suite" />
-    <testcase name="test_catch_derived_exception_as_go_exception" status="run" time="0" classname="std_exception_test_suite" />
-    <testcase name="test_catch_derived_exception_as_std_exception" status="run" time="0" classname="std_exception_test_suite" />
-    <testcase name="test_catch_other_exception" status="run" time="0" classname="std_exception_test_suite" />
+<testsuites tests="6" failures="0" disabled="0" errors="0" time="0.079" timestamp="2021-10-01T16:41:22.640" name="AllTests">
+  <testsuite name="std_exception_test_suite" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0.061" timestamp="2021-10-01T16:41:22.648">
+    <testcase name="test_catch_go_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.652" classname="std_exception_test_suite" />
+    <testcase name="test_catch_go_exception_as_std_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.663" classname="std_exception_test_suite" />
+    <testcase name="test_catch_derived_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.673" classname="std_exception_test_suite" />
+    <testcase name="test_catch_derived_exception_as_go_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.683" classname="std_exception_test_suite" />
+    <testcase name="test_catch_derived_exception_as_std_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.695" classname="std_exception_test_suite" />
+    <testcase name="test_catch_other_exception" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:22.706" classname="std_exception_test_suite" />
   </testsuite>
 </testsuites>
