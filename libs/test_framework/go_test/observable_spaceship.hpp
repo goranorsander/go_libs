@@ -320,13 +320,13 @@ private:
         this->max_speed.setter([this](const double& v) { if (v != this->_max_speed) { this->_max_speed = v; this->notify_property_changed(this->shared_from_this(), this->max_speed.name()); } });
         this->fleet_commander.getter([this]() -> string_identifier_type { return this->_fleet_commander; });
         this->impulse_speed_command.getter(
-            [this]() -> m::basic_command_interface<string_identifier_type>::ptr { if (!this->_impulse_speed_command) {
+            [this]() -> typename m::basic_command_interface<string_identifier_type>::ptr { if (!this->_impulse_speed_command) {
             this->_impulse_speed_command = m::basic_relay_command<string_identifier_type>::create(s::create<string_identifier_type>("impulse_speed"),
                 [this](const m::command_parameters::ptr&) { this->_at_impulse_speed = true; this->_at_warp_speed = false; if (this->_impulse_speed_command) { this->_impulse_speed_command->notify_can_execute_changed(); } if (this->_warp_speed_command) { this->_warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return this->_at_warp_speed; }, m::command_parameters::create());
         } return this->_impulse_speed_command; });
         this->warp_speed_command.getter(
-            [this]() -> m::basic_command_interface<string_identifier_type>::ptr { if (!this->_warp_speed_command) {
+            [this]() -> typename m::basic_command_interface<string_identifier_type>::ptr { if (!this->_warp_speed_command) {
             this->_warp_speed_command = m::basic_relay_command<string_identifier_type>::create(s::create<string_identifier_type>("warp_speed"),
                 [this](const m::command_parameters::ptr&) { this->_at_impulse_speed = false; this->_at_warp_speed = true; if (this->_impulse_speed_command) { this->_impulse_speed_command->notify_can_execute_changed(); } if (this->_warp_speed_command) { this->_warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return !this->_at_warp_speed; }, m::command_parameters::create());
@@ -422,13 +422,13 @@ private:
         this->max_speed.setter([this](const double& v) { if (v != this->_max_speed) { this->_max_speed = v; this->notify_property_changed(this->shared_from_this(), this->max_speed.name()); } });
         this->fleet_commander.getter([this]() -> string_identifier_type { return this->_fleet_commander; });
         this->impulse_speed_command.getter(
-            [this]() -> m::basic_command_interface<string_identifier_type>::ptr { if (!this->_impulse_speed_command) {
+            [this]() -> typename m::basic_command_interface<string_identifier_type>::ptr { if (!this->_impulse_speed_command) {
             this->_impulse_speed_command = m::basic_relay_command<string_identifier_type>::create(s::create<string_identifier_type>("impulse_speed"),
                 [this](const m::command_parameters::ptr&) { this->_at_impulse_speed = true; this->_at_warp_speed = false; if (this->_impulse_speed_command) { this->_impulse_speed_command->notify_can_execute_changed(); } if (this->_warp_speed_command) { this->_warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return this->_at_warp_speed; }, m::command_parameters::create());
         } return this->_impulse_speed_command; });
         this->warp_speed_command.getter(
-            [this]() -> m::basic_command_interface<string_identifier_type>::ptr { if (!this->_warp_speed_command) {
+            [this]() -> typename m::basic_command_interface<string_identifier_type>::ptr { if (!this->_warp_speed_command) {
             this->_warp_speed_command = m::basic_relay_command<string_identifier_type>::create(s::create<string_identifier_type>("warp_speed"),
                 [this](const m::command_parameters::ptr&) { this->_at_impulse_speed = false; this->_at_warp_speed = true; if (this->_impulse_speed_command) { this->_impulse_speed_command->notify_can_execute_changed(); } if (this->_warp_speed_command) { this->_warp_speed_command->notify_can_execute_changed(); } },
                 [this](const m::command_parameters::ptr&) { return !this->_at_warp_speed; }, m::command_parameters::create());
