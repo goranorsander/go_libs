@@ -4,5 +4,5 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* gcc (GCC) 10.2.0
+*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* gcc (GCC) 11.1.0

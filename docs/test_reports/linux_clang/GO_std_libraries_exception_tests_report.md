@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* clang version 11.1.0
+* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* clang version 12.0.1
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2021-05-03 at 21:55:51 with result:
+Test suites *AllTests* with 6 test cases was executed 2021-10-04 at 18:37:07.416 with result:
 
 * 0 errors
 * 0 failures

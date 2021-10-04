@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* gcc (GCC) 10.2.0
+*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2021-05-03 at 21:55:54 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-10-04 at 18:37:11.431 with result:
 
 * 0 errors
 * 0 failures
@@ -102,7 +102,7 @@ test_implicit_integer_type_specializer_get_set | 0
 test_implicit_integer_type_specializer_simple_assignment_operator | 0
 test_implicit_integer_type_specializer_addition_assignment_operator | 0
 test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
-test_implicit_integer_type_specializer_multiplication_assignment_operator | 0.001
+test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
 test_implicit_integer_type_specializer_division_assignment_operator | 0
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0

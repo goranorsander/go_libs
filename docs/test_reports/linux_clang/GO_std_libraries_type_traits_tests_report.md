@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* clang version 11.1.0
+* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* clang version 12.0.1
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2021-05-03 at 21:55:51 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-10-04 at 18:37:07.837 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.004 seconds.
+Test suites execution took 0.005 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_fundamental_type_specializer_test_suite* with 128 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -112,7 +112,7 @@ test_implicit_integer_type_specializer_bitwise_left_shift_assignment_operator | 
 test_implicit_integer_type_specializer_bitwise_right_shift_assignment_operator | 0
 test_implicit_integer_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_integer_type_specializer_unary_minus_arithmetic_operator | 0
-test_implicit_integer_type_specializer_addition_arithmetic_operator | 0.001
+test_implicit_integer_type_specializer_addition_arithmetic_operator | 0
 test_implicit_integer_type_specializer_subtraction_arithmetic_operator | 0
 test_implicit_integer_type_specializer_multiplication_arithmetic_operator | 0
 test_implicit_integer_type_specializer_division_arithmetic_operator | 0

@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* clang version 11.1.0
+* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* clang version 12.0.1
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2021-05-03 at 21:55:51 with result:
+Test suites *AllTests* with 50 test cases was executed 2021-10-04 at 18:37:07.881 with result:
 
 * 0 errors
 * 0 failures
@@ -46,7 +46,7 @@ test_push_front_pop_back_with_overflow | 0
 test_operator_at | 0
 test_at | 0
 test_front_back | 0
-test_resize | 0.001
+test_resize | 0
 test_swap | 0
 test_insert | 0
 test_erase | 0
@@ -130,13 +130,13 @@ Test suite *std_scope_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_scope_guard | 0.001
+test_scope_guard | 0
 
 ## std_try_move_iterator_backward_test_suite
 

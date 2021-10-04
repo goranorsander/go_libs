@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-* gcc (GCC) 10.2.0
+*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2021-05-03 at 21:55:53 with result:
+Test suites *AllTests* with 33 test cases was executed 2021-10-04 at 18:37:09.824 with result:
 
 * 0 errors
 * 0 failures
@@ -76,7 +76,7 @@ test_not_define_go_comp_msvc_vc140 | 0
 test_not_define_go_comp_msvc_vc141 | 0
 test_define_go_gcc_version | 0
 test_not_define_go_ide_ms_vs2008 | 0
-test_not_define_go_ide_ms_vs2010 | 0.001
+test_not_define_go_ide_ms_vs2010 | 0
 test_not_define_go_ide_ms_vs2012 | 0
 test_not_define_go_ide_ms_vs2013 | 0
 test_not_define_go_ide_ms_vs2015 | 0
