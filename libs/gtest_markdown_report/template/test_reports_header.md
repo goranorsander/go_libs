@@ -24,3 +24,4 @@ more information.
   * [MSVC++ 14.0 / Visual Studio 2015](./windows_msvc140/unit_tests.html)
   * [MSVC++ 14.16 / Visual Studio 2017](./windows_msvc141/unit_tests.html)
   * [MSVC++ 14.29 / Visual Studio 2019](./windows_msvc142/unit_tests.html)
+  * [MSVC++ 14.30 / Visual Studio 2022](./windows_msvc143/unit_tests.html)

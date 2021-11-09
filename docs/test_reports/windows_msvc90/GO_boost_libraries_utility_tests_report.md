@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 26 test cases was executed 2021-10-01 at 16:41:37 with result:
+Test suites *AllTests* with 26 test cases was executed 2021-11-09 at 19:59:42 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.035 seconds.
+Test suites execution took 0.021 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *boost_container_size_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_size_on_deque | 0
+test_size_on_deque | 0.001
 test_size_on_list | 0
 test_size_on_vector | 0
 test_size_on_map | 0
@@ -93,7 +93,7 @@ Test suite *boost_try_move_iterator_backward_test_suite* with 13 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.016 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
@@ -106,9 +106,9 @@ test_try_move_backward_on_list | 0
 test_try_move_backward_on_vector | 0
 test_try_move_backward_on_map | 0
 test_try_move_backward_on_set | 0
-test_try_move_backward_on_multimap | 0
+test_try_move_backward_on_multimap | 0.001
 test_try_move_backward_on_multiset | 0
-test_try_move_backward_on_unordered_map | 0.001
+test_try_move_backward_on_unordered_map | 0
 test_try_move_backward_on_unordered_set | 0
 test_try_move_backward_on_unordered_multimap | 0
 test_try_move_backward_on_unordered_multiset | 0
@@ -120,7 +120,7 @@ Test suite *boost_value_guard_test_suite* with 1 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

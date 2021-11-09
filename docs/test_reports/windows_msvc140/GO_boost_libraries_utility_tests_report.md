@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 26 test cases was executed 2021-10-01 at 16:41:53.938 with result:
+Test suites *AllTests* with 26 test cases was executed 2021-11-09 at 20:00:06.116 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.018 seconds.
+Test suites execution took 0.017 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_container_size_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -44,7 +44,7 @@ Test suite *boost_erase_iterator_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -93,7 +93,7 @@ Test suite *boost_try_move_iterator_backward_test_suite* with 13 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 

@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="680" failures="0" disabled="0" errors="0" time="0.685" timestamp="2021-11-09T20:00:22.263" name="AllTests">
+  <testsuite name="boost_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.264">
+    <testcase name="test_execute_command" status="run" result="completed" time="0.007" timestamp="2021-11-09T20:00:22.264" classname="boost_basic_command_execution_observer_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.272" classname="boost_basic_command_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.043" timestamp="2021-11-09T20:00:22.273">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.014" timestamp="2021-11-09T20:00:22.273" classname="boost_basic_command_manager_phoenix_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.027" timestamp="2021-11-09T20:00:22.289" classname="boost_basic_command_manager_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_command_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.042" timestamp="2021-11-09T20:00:22.317">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.013" timestamp="2021-11-09T20:00:22.319" classname="boost_basic_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.024" timestamp="2021-11-09T20:00:22.334" classname="boost_basic_command_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.360">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.360" classname="boost_basic_command_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.03" timestamp="2021-11-09T20:00:22.360">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.029" timestamp="2021-11-09T20:00:22.361" classname="boost_basic_event_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.392">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.392" classname="boost_basic_observable_array_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.006" timestamp="2021-11-09T20:00:22.393">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.393" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.394" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.394" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.394" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.395" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.395" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.396" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.396" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.396" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.397" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.397" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.398" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.398" classname="boost_basic_observable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.399" classname="boost_basic_observable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.007" timestamp="2021-11-09T20:00:22.399">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.400" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.400" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.400" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.401" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.401" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.402" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.402" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.402" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.403" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.403" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.404" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.404" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.404" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.405" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.405" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.405" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.406" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.406" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.406" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.407" classname="boost_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.407" classname="boost_basic_observable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-11-09T20:00:22.407">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.408" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.408" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.408" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.409" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.409" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.410" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.410" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.411" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.411" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.412" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.412" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.416" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.417" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.417" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.417" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.418" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.418" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.419" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.419" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.419" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.420" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.420" classname="boost_basic_observable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.421" classname="boost_basic_observable_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.422">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.422" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.423" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.423" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.423" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.424" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.424" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.425" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.425" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.425" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.426" classname="boost_basic_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.426" classname="boost_basic_observable_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.427">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.427" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.427" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.428" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.428" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.433" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.433" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.434" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.434" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.435" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.435" classname="boost_basic_observable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.436" classname="boost_basic_observable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.436">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.436" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.437" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.437" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.438" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.438" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.438" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.439" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.439" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.440" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.440" classname="boost_basic_observable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.440" classname="boost_basic_observable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.007" timestamp="2021-11-09T20:00:22.441">
+    <testcase name="test_observable_object" status="run" result="completed" time="0.003" timestamp="2021-11-09T20:00:22.441" classname="boost_basic_observable_object_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-11-09T20:00:22.449">
+    <testcase name="test_observable_object" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:22.449" classname="boost_basic_observable_object_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.453">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.453" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.453" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.454" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.454" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.455" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.455" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.455" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.456" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.456" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.457" classname="boost_basic_observable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.457" classname="boost_basic_observable_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:22.458">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.458" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.458" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.459" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.459" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.459" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.460" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.465" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.465" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.466" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.467" classname="boost_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.467" classname="boost_basic_observable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.468">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.468" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.469" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.469" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.469" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.470" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.470" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.471" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.471" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.471" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.472" classname="boost_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.472" classname="boost_basic_observable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.473">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.473" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.473" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.474" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.474" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.475" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.475" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.481" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.481" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.481" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.482" classname="boost_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.482" classname="boost_basic_observable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.483">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.483" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.484" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.484" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.485" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.485" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.485" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.486" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.486" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.487" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.487" classname="boost_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.487" classname="boost_basic_observable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_observable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.488">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.488" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.488" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.489" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.489" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.489" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.490" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.490" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.490" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.495" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.496" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.497" classname="boost_basic_observable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.497" classname="boost_basic_observable_vector_test_suite" />
+  </testsuite>
+  <testsuite name="boost_basic_relay_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.497">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.498" classname="boost_basic_relay_command_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.498">
+    <testcase name="test_execute_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.498" classname="boost_command_execution_observer_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.499" classname="boost_command_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.499">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.500" classname="boost_command_manager_phoenix_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.500" classname="boost_command_manager_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.501">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.501" classname="boost_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.501" classname="boost_command_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.502">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.502" classname="boost_command_test_suite" />
+  </testsuite>
+  <testsuite name="boost_event_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.503">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.503" classname="boost_event_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.503">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.504" classname="boost_observable_array_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:22.504">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.505" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.505" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.506" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.511" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.511" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.512" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.512" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.513" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.513" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.513" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.514" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.514" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.515" classname="boost_observable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.515" classname="boost_observable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.012" timestamp="2021-11-09T20:00:22.516">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.516" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.516" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.517" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.517" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.517" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.518" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.518" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.518" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.519" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.519" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.519" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.520" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.520" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.520" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.521" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.521" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.522" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.527" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.527" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.528" classname="boost_observable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.528" classname="boost_observable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:22.529">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.529" classname="boost_observable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.529" classname="boost_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.530" classname="boost_observable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.530" classname="boost_observable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.530" classname="boost_observable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.531" classname="boost_observable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.531" classname="boost_observable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.532" classname="boost_observable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.532" classname="boost_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.532" classname="boost_observable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.533" classname="boost_observable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.533" classname="boost_observable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.534" classname="boost_observable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.534" classname="boost_observable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.534" classname="boost_observable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.535" classname="boost_observable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.535" classname="boost_observable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.535" classname="boost_observable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.536" classname="boost_observable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.536" classname="boost_observable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.537" classname="boost_observable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.537" classname="boost_observable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.542" classname="boost_observable_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.542">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.542" classname="boost_observable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.543" classname="boost_observable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.544" classname="boost_observable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.544" classname="boost_observable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.545" classname="boost_observable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.545" classname="boost_observable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.545" classname="boost_observable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.546" classname="boost_observable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.546" classname="boost_observable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.547" classname="boost_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.547" classname="boost_observable_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.548">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.548" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.548" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.549" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.549" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.549" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.550" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.550" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.550" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.551" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.551" classname="boost_observable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.552" classname="boost_observable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.552">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.552" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.557" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.558" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.558" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.559" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.559" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.560" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.560" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.561" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.561" classname="boost_observable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.562" classname="boost_observable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.563">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.563" classname="boost_observable_object_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.563">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.564" classname="boost_observable_object_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-11-09T20:00:22.564">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.564" classname="boost_observable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.565" classname="boost_observable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.565" classname="boost_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.565" classname="boost_observable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.566" classname="boost_observable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.566" classname="boost_observable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.566" classname="boost_observable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.567" classname="boost_observable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.567" classname="boost_observable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.567" classname="boost_observable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.568" classname="boost_observable_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.568">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.569" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.573" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.573" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.574" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.575" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.575" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.576" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.576" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.577" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.577" classname="boost_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.578" classname="boost_observable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.578">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.578" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.579" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.579" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.580" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.580" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.580" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.581" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.581" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.582" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.582" classname="boost_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.582" classname="boost_observable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.583">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.583" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.583" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.583" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.584" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.584" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.589" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.589" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.590" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.590" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.591" classname="boost_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.591" classname="boost_observable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.592">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.592" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.593" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.593" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.594" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.594" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.595" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.595" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.595" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.596" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.596" classname="boost_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.597" classname="boost_observable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:22.597">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.597" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.598" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.598" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.598" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.599" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.599" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.600" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.605" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.605" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.606" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.606" classname="boost_observable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.607" classname="boost_observable_vector_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_execution_observer_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.608">
+    <testcase name="test_execute_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.608" classname="boost_command_execution_observer_placebo_lockable_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.608" classname="boost_command_execution_observer_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_manager_phoenix_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:22.609">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.609" classname="boost_command_manager_phoenix_placebo_lockable_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.610" classname="boost_command_manager_phoenix_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:22.610">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.611" classname="boost_command_manager_placebo_lockable_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.611" classname="boost_command_manager_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.612">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.612" classname="boost_command_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.613">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.613" classname="boost_event_manager_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.614">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.614" classname="boost_observable_array_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_deque_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:22.614">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.614" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.615" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.615" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.620" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.621" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.621" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.622" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.622" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.623" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.623" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.624" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.624" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.624" classname="boost_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.625" classname="boost_observable_deque_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_forward_list_placebo_lockable_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-11-09T20:00:22.625">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.625" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.626" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.627" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.627" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.628" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.628" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.629" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.629" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.629" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.630" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.630" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.630" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.631" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.631" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.636" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.636" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.637" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.638" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.638" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.639" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.639" classname="boost_observable_forward_list_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_list_placebo_lockable_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-11-09T20:00:22.640">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.640" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.640" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.641" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.641" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.642" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.642" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.642" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.643" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.643" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.644" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.644" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.645" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.645" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.646" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.646" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.646" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.651" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.652" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.652" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.653" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.653" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.654" classname="boost_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.654" classname="boost_observable_list_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-11-09T20:00:22.655">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.655" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.656" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.656" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.657" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.657" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.657" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.657" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.658" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.658" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.658" classname="boost_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.659" classname="boost_observable_map_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.659">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.659" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.660" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.660" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.661" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.661" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.662" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.662" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.662" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.667" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.667" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.667" classname="boost_observable_multimap_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.669">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.669" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.670" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.670" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.670" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.671" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.671" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.672" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.672" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.673" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.673" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.674" classname="boost_observable_multiset_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_object_phoenix_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.674">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.674" classname="boost_observable_object_phoenix_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_object_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.675">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.675" classname="boost_observable_object_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.676">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.676" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.677" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.677" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.678" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.678" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.682" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.683" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.683" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.684" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.684" classname="boost_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.685" classname="boost_observable_set_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.685">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.686" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.686" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.687" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.687" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.687" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.688" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.688" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.689" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.689" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.689" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.690" classname="boost_observable_unordered_map_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.690">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.691" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.691" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.691" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.692" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.692" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.692" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.693" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.693" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.694" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.698" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.698" classname="boost_observable_unordered_multimap_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:22.699">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.699" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.700" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.701" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.702" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.702" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.703" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.703" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.704" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.704" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.704" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.705" classname="boost_observable_unordered_multiset_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.705">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.705" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.706" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.706" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.706" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.707" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.707" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.707" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.708" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.708" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.709" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.709" classname="boost_observable_unordered_set_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_observable_vector_placebo_lockable_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:22.710">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.710" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.715" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.715" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.716" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.716" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.717" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.717" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.718" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.718" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.719" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.719" classname="boost_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.719" classname="boost_observable_vector_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_relay_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.720">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.720" classname="boost_relay_command_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="boost_relay_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.720">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.720" classname="boost_relay_command_test_suite" />
+  </testsuite>
+  <testsuite name="boost_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.721">
+    <testcase name="test_relay_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.721" classname="boost_relay_wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.722">
+    <testcase name="test_execute_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.722" classname="boost_wcommand_execution_observer_test_suite" />
+    <testcase name="test_post_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.723" classname="boost_wcommand_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wcommand_manager_phoenix_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.045" timestamp="2021-11-09T20:00:22.723">
+    <testcase name="test_wcommand_manager" status="run" result="completed" time="0.014" timestamp="2021-11-09T20:00:22.723" classname="boost_wcommand_manager_phoenix_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.028" timestamp="2021-11-09T20:00:22.739" classname="boost_wcommand_manager_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.04" timestamp="2021-11-09T20:00:22.770">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.013" timestamp="2021-11-09T20:00:22.770" classname="boost_wcommand_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.024" timestamp="2021-11-09T20:00:22.785" classname="boost_wcommand_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wcommand_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.811">
+    <testcase name="test_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.811" classname="boost_wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wevent_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.03" timestamp="2021-11-09T20:00:22.812">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.029" timestamp="2021-11-09T20:00:22.812" classname="boost_wevent_manager_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:22.843">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.843" classname="boost_wobservable_array_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:22.844">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.844" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.845" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.845" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.846" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.846" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.846" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.847" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.847" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.848" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.848" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.848" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.849" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.849" classname="boost_wobservable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.849" classname="boost_wobservable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:22.850">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.850" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.851" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.851" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.855" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.856" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.856" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.857" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.857" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.858" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.858" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.859" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.859" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.860" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.860" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.861" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.861" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.862" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.862" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.862" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.863" classname="boost_wobservable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.863" classname="boost_wobservable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:22.864">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.864" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.864" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.865" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.865" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.866" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.866" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.866" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.867" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.871" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.872" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.872" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.873" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.873" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.873" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.874" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.874" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.874" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.875" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.875" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.876" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.876" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.877" classname="boost_wobservable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.877" classname="boost_wobservable_list_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.878">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.878" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.878" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.879" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.879" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.880" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.880" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.881" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.881" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.881" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.882" classname="boost_wobservable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.882" classname="boost_wobservable_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.887">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.887" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.887" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.888" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.889" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.889" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.889" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.890" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.890" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.890" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.891" classname="boost_wobservable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.891" classname="boost_wobservable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:22.892">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.892" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.892" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.893" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.893" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.894" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.894" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.895" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.895" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.896" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.896" classname="boost_wobservable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.896" classname="boost_wobservable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_object_phoenix_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:22.897">
+    <testcase name="test_wobservable_object" status="run" result="completed" time="0.003" timestamp="2021-11-09T20:00:22.897" classname="boost_wobservable_object_phoenix_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-11-09T20:00:22.903">
+    <testcase name="test_wobservable_object" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:22.904" classname="boost_wobservable_object_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.907">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.907" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.907" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.907" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.908" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.908" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.908" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.909" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.909" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.910" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.910" classname="boost_wobservable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.911" classname="boost_wobservable_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.911">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.912" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.912" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.912" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.913" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.913" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.917" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.918" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.918" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.919" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.919" classname="boost_wobservable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.920" classname="boost_wobservable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.920">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.921" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.921" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.921" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.922" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.922" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.923" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.923" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.923" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.924" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.924" classname="boost_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.925" classname="boost_wobservable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:22.925">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.925" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.926" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.926" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.927" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.927" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.927" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.928" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.928" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.928" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.929" classname="boost_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.933" classname="boost_wobservable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:22.934">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.934" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.935" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.935" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.936" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.936" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.937" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.937" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.938" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.938" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.939" classname="boost_wobservable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.939" classname="boost_wobservable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="boost_wobservable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:22.939">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.940" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.940" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.940" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.941" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.941" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.942" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.942" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.942" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.943" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.943" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.943" classname="boost_wobservable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:22.944" classname="boost_wobservable_vector_test_suite" />
+  </testsuite>
+</testsuites>

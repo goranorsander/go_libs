@@ -94,7 +94,7 @@
 #elif (_MSC_VER == 1916)
 #define GO_BOOST_IDE_MS_VS2017_15_9 1
 #endif  // #if (_MSC_VER == 1910)
-#elif (_MSC_VER >= 1920)
+#elif (_MSC_VER >= 1920) && (_MSC_VER < 1930)
 #define GO_BOOST_COMP_MSVC_VC142 1
 #define GO_BOOST_IDE_MS_VS2019 1
 #if (_MSC_VER == 1920)
@@ -118,6 +118,12 @@
 #elif (_MSC_VER == 1929)
 #define GO_BOOST_IDE_MS_VS2019_16_10 1
 #endif  // #if (_MSC_VER == 1920)
+#elif (_MSC_VER >= 1930)
+#define GO_BOOST_COMP_MSVC_VC143 1
+#define GO_BOOST_IDE_MS_VS2022 1
+#if (_MSC_VER == 1930)
+#define GO_BOOST_IDE_MS_VS2022_17_0 1
+#endif  // #if (_MSC_VER == 1930)
 #endif  // #if (_MSC_VER == 800)
 
 // Compiler message

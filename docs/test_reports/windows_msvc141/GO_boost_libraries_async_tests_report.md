@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.23
+* Visual Studio 2017, Community Edition, version 15.9.40
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2021-10-01 at 16:41:56.099 with result:
+Test suites *AllTests* with 9 test cases was executed 2021-11-09 at 20:00:09.262 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.009 seconds.
+Test suites execution took 0.008 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_placebo_lockable_test_suite* with 3 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -42,7 +42,7 @@ Test suite *boost_recursive_spin_lock_test_suite* with 3 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

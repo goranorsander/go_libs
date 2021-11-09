@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="72" failures="0" disabled="0" errors="0" time="0.14" timestamp="2021-10-01T16:41:53.632" name="AllTests">
-  <testsuite name="boost_nameless_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-10-01T16:41:53.633">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.633" classname="boost_nameless_property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.633" classname="boost_nameless_property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.634" classname="boost_nameless_property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.634" classname="boost_nameless_property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.634" classname="boost_nameless_property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.635" classname="boost_nameless_property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.635" classname="boost_nameless_property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.636" classname="boost_nameless_property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.636" classname="boost_nameless_property_test_suite" />
+<testsuites tests="72" failures="0" disabled="0" errors="0" time="0.126" timestamp="2021-11-09T20:00:05.419" name="AllTests">
+  <testsuite name="boost_nameless_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.006" timestamp="2021-11-09T20:00:05.421">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.421" classname="boost_nameless_property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.422" classname="boost_nameless_property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.422" classname="boost_nameless_property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.423" classname="boost_nameless_property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.425" classname="boost_nameless_property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.425" classname="boost_nameless_property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.426" classname="boost_nameless_property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.427" classname="boost_nameless_property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.427" classname="boost_nameless_property_test_suite" />
   </testsuite>
-  <testsuite name="boost_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-10-01T16:41:53.637">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.637" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.638" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.638" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.639" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.639" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.640" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.640" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.640" classname="boost_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.641" classname="boost_nameless_property_placebo_lockable_test_suite" />
+  <testsuite name="boost_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:05.428">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.428" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.429" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.430" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.430" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.430" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.431" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.431" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.431" classname="boost_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.432" classname="boost_nameless_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-10-01T16:41:53.648">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.648" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.648" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.649" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.649" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.650" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.650" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.651" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.651" classname="boost_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.652" classname="boost_property_placebo_lockable_test_suite" />
+  <testsuite name="boost_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.006" timestamp="2021-11-09T20:00:05.432">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.433" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.433" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.434" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.435" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.436" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.437" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.437" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.438" classname="boost_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.438" classname="boost_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="boost_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-10-01T16:41:53.653">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.653" classname="boost_property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.653" classname="boost_property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.654" classname="boost_property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.654" classname="boost_property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.655" classname="boost_property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.655" classname="boost_property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.656" classname="boost_property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.656" classname="boost_property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.656" classname="boost_property_test_suite" />
+  <testsuite name="boost_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:05.439">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.439" classname="boost_property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.440" classname="boost_property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.440" classname="boost_property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.441" classname="boost_property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.441" classname="boost_property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.442" classname="boost_property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.447" classname="boost_property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.447" classname="boost_property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.448" classname="boost_property_test_suite" />
   </testsuite>
-  <testsuite name="boost_u16property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.044" timestamp="2021-10-01T16:41:53.664">
-    <testcase name="value_properties" status="run" result="completed" time="0.009" timestamp="2021-10-01T16:41:53.664" classname="boost_u16property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.678" classname="boost_u16property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.681" classname="boost_u16property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.685" classname="boost_u16property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.690" classname="boost_u16property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.693" classname="boost_u16property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.697" classname="boost_u16property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.700" classname="boost_u16property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.706" classname="boost_u16property_test_suite" />
+  <testsuite name="boost_u16property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.035" timestamp="2021-11-09T20:00:05.448">
+    <testcase name="value_properties" status="run" result="completed" time="0.011" timestamp="2021-11-09T20:00:05.448" classname="boost_u16property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.461" classname="boost_u16property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.464" classname="boost_u16property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.466" classname="boost_u16property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.468" classname="boost_u16property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.471" classname="boost_u16property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.475" classname="boost_u16property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.478" classname="boost_u16property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.481" classname="boost_u16property_test_suite" />
   </testsuite>
-  <testsuite name="boost_u32property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.024" timestamp="2021-10-01T16:41:53.709">
-    <testcase name="value_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.709" classname="boost_u32property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.712" classname="boost_u32property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.715" classname="boost_u32property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.717" classname="boost_u32property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.721" classname="boost_u32property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.724" classname="boost_u32property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.726" classname="boost_u32property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.728" classname="boost_u32property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.731" classname="boost_u32property_test_suite" />
+  <testsuite name="boost_u32property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.025" timestamp="2021-11-09T20:00:05.484">
+    <testcase name="value_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.484" classname="boost_u32property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.486" classname="boost_u32property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.491" classname="boost_u32property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.493" classname="boost_u32property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.495" classname="boost_u32property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.498" classname="boost_u32property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.500" classname="boost_u32property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.503" classname="boost_u32property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.507" classname="boost_u32property_test_suite" />
   </testsuite>
-  <testsuite name="boost_u8property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.029" timestamp="2021-10-01T16:41:53.733">
-    <testcase name="value_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.734" classname="boost_u8property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.738" classname="boost_u8property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.740" classname="boost_u8property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.742" classname="boost_u8property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-10-01T16:41:53.744" classname="boost_u8property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.748" classname="boost_u8property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.753" classname="boost_u8property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.757" classname="boost_u8property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-10-01T16:41:53.760" classname="boost_u8property_test_suite" />
+  <testsuite name="boost_u8property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.025" timestamp="2021-11-09T20:00:05.510">
+    <testcase name="value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.510" classname="boost_u8property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.512" classname="boost_u8property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.514" classname="boost_u8property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.517" classname="boost_u8property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.522" classname="boost_u8property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.525" classname="boost_u8property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.527" classname="boost_u8property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.529" classname="boost_u8property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0.002" timestamp="2021-11-09T20:00:05.532" classname="boost_u8property_test_suite" />
   </testsuite>
-  <testsuite name="boost_wproperty_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.007" timestamp="2021-10-01T16:41:53.764">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.764" classname="boost_wproperty_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.765" classname="boost_wproperty_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.768" classname="boost_wproperty_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.769" classname="boost_wproperty_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.770" classname="boost_wproperty_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.770" classname="boost_wproperty_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.770" classname="boost_wproperty_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.771" classname="boost_wproperty_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:53.771" classname="boost_wproperty_test_suite" />
+  <testsuite name="boost_wproperty_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.007" timestamp="2021-11-09T20:00:05.537">
+    <testcase name="value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.538" classname="boost_wproperty_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.539" classname="boost_wproperty_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.540" classname="boost_wproperty_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.540" classname="boost_wproperty_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:05.541" classname="boost_wproperty_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.543" classname="boost_wproperty_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.544" classname="boost_wproperty_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.544" classname="boost_wproperty_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:05.545" classname="boost_wproperty_test_suite" />
   </testsuite>
 </testsuites>

@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2021-10-01 at 16:41:30.872 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-11-09 at 19:59:33.540 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.687 seconds.
+Test suites execution took 0.721 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *std_wproperty_test_suite* with 9 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.065 seconds.
+Test suite execution took 0.078 seconds.
 
 ### Successful test cases
 
@@ -35,7 +35,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.002
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -49,7 +49,7 @@ Test suite *std_u8property_test_suite* with 9 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.077 seconds.
+Test suite execution took 0.074 seconds.
 
 ### Successful test cases
 
@@ -72,7 +72,7 @@ Test suite *std_u32property_test_suite* with 9 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.084 seconds.
+Test suite execution took 0.079 seconds.
 
 ### Successful test cases
 
@@ -81,7 +81,7 @@ Test case|Execution time
 value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0
+reference_properties | 0.001
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -95,7 +95,7 @@ Test suite *std_u16property_test_suite* with 9 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.075 seconds.
+Test suite execution took 0.072 seconds.
 
 ### Successful test cases
 
@@ -118,7 +118,7 @@ Test suite *std_property_test_suite* with 9 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.073 seconds.
+Test suite execution took 0.074 seconds.
 
 ### Successful test cases
 
@@ -141,7 +141,7 @@ Test suite *std_property_placebo_lockable_test_suite* with 9 test cases was exec
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.078 seconds.
+Test suite execution took 0.089 seconds.
 
 ### Successful test cases
 
@@ -164,7 +164,7 @@ Test suite *std_nameless_property_placebo_lockable_test_suite* with 9 test cases
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.093 seconds.
+Test suite execution took 0.1 seconds.
 
 ### Successful test cases
 
@@ -187,7 +187,7 @@ Test suite *std_nameless_property_test_suite* with 9 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.07 seconds.
+Test suite execution took 0.083 seconds.
 
 ### Successful test cases
 

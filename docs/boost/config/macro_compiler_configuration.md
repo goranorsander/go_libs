@@ -58,6 +58,7 @@ GO_BOOST_COMP_MSVC_VC120 | Compiler is Microsoft Visual C++ 12.0 / Visual Studio
 GO_BOOST_COMP_MSVC_VC140 | Compiler is Microsoft Visual C++ 14.0 / Visual Studio 2015
 GO_BOOST_COMP_MSVC_VC141 | Compiler is Microsoft Visual C++ 14.1 / Visual Studio 2017
 GO_BOOST_COMP_MSVC_VC142 | Compiler is Microsoft Visual C++ 14.2 / Visual Studio 2019
+GO_BOOST_COMP_MSVC_VC143 | Compiler is Microsoft Visual C++ 14.3 / Visual Studio 2022
 GO_BOOST_IDE_MS_DS40 | Development environment is Developer Studio 4.0
 GO_BOOST_IDE_MS_DS42 | Development environment is Developer Studio 4.2
 GO_BOOST_IDE_MS_VS97 | Development environment is Visual Studio 97
@@ -92,6 +93,8 @@ GO_BOOST_IDE_MS_VS2019_16_6 | Visual Studio 2019 version 16.6
 GO_BOOST_IDE_MS_VS2019_16_7 | Visual Studio 2019 version 16.7
 GO_BOOST_IDE_MS_VS2019_16_8 | Visual Studio 2019 version 16.8
 GO_BOOST_IDE_MS_VS2019_16_10 | Visual Studio 2019 version 16.10
+GO_BOOST_IDE_MS_VS2022 | Development environment is Visual Studio 2022
+GO_BOOST_IDE_MS_VS2022_17_0 | Visual Studio 2022 version 17.0
 GO_BOOST_MSVC_ATL | Using ATL
 GO_BOOST_MSVC_ATL_VER | ATL version
 GO_BOOST_MSVC_MFC | Using MFC

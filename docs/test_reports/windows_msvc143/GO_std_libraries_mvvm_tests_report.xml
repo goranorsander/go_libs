@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="679" failures="0" disabled="0" errors="0" time="0.53" timestamp="2021-11-09T20:00:24.513" name="AllTests">
+  <testsuite name="std_basic_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.514">
+    <testcase name="test_execute_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.515" classname="std_basic_command_execution_observer_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.515" classname="std_basic_command_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:24.516">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.003" timestamp="2021-11-09T20:00:24.518" classname="std_basic_command_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.006" timestamp="2021-11-09T20:00:24.523" classname="std_basic_command_manager_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_command_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:24.530">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.003" timestamp="2021-11-09T20:00:24.531" classname="std_basic_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.005" timestamp="2021-11-09T20:00:24.535" classname="std_basic_command_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.542">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.542" classname="std_basic_command_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_event_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:24.543">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.007" timestamp="2021-11-09T20:00:24.543" classname="std_basic_event_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.552">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.553" classname="std_basic_observable_array_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.006" timestamp="2021-11-09T20:00:24.553">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.553" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.554" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.554" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.555" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.555" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.556" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.556" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.556" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.557" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.557" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.558" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.558" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.559" classname="std_basic_observable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.559" classname="std_basic_observable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:24.560">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.560" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.560" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.561" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.561" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.562" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.562" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.562" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.567" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.568" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.568" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.568" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.569" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.569" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.570" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.570" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.571" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.571" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.571" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.572" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.572" classname="std_basic_observable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.573" classname="std_basic_observable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-11-09T20:00:24.573">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.573" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.574" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.574" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.575" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.575" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.575" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.576" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.576" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.577" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.577" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.578" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.578" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.583" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.583" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.584" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.584" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.585" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.585" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.585" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.586" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.586" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.587" classname="std_basic_observable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.587" classname="std_basic_observable_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.588">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.588" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.588" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.589" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.589" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.589" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.590" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.590" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.591" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.591" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.591" classname="std_basic_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.592" classname="std_basic_observable_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:24.592">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.592" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.593" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.594" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.598" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.599" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.599" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.599" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.600" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.600" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.601" classname="std_basic_observable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.601" classname="std_basic_observable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.602">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.602" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.603" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.603" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.603" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.604" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.604" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.605" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.605" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.605" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.606" classname="std_basic_observable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.606" classname="std_basic_observable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:24.607">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.607" classname="std_basic_observable_object_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:24.608">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.608" classname="std_basic_observable_object_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:24.610">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.614" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.615" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.615" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.616" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.616" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.617" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.617" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.618" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.618" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.619" classname="std_basic_observable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.619" classname="std_basic_observable_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.619">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.620" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.620" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.620" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.621" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.621" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.622" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.622" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.622" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.623" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.623" classname="std_basic_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.624" classname="std_basic_observable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:24.624">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.624" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.625" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.625" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.626" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.631" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.632" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.633" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.633" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.634" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.634" classname="std_basic_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.634" classname="std_basic_observable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.635">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.635" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.636" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.636" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.636" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.637" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.637" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.638" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.638" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.638" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.639" classname="std_basic_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.639" classname="std_basic_observable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:24.640">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.640" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.640" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.641" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.646" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.647" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.647" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.648" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.648" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.649" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.649" classname="std_basic_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.650" classname="std_basic_observable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_observable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.651">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.651" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.651" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.652" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.652" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.652" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.653" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.653" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.653" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.654" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.654" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.654" classname="std_basic_observable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.655" classname="std_basic_observable_vector_test_suite" />
+  </testsuite>
+  <testsuite name="std_basic_relay_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.655">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.655" classname="std_basic_relay_command_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.656">
+    <testcase name="test_execute_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.656" classname="std_command_execution_observer_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.660" classname="std_command_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_lambda_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.661">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.662" classname="std_command_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.662" classname="std_command_manager_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.663">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.663" classname="std_command_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.663" classname="std_command_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.664">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.664" classname="std_command_test_suite" />
+  </testsuite>
+  <testsuite name="std_event_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.664">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.665" classname="std_event_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.665">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.665" classname="std_observable_array_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.666">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.666" classname="std_observable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.667" classname="std_observable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.667" classname="std_observable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.667" classname="std_observable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.668" classname="std_observable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.668" classname="std_observable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.669" classname="std_observable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.669" classname="std_observable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.669" classname="std_observable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.670" classname="std_observable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.670" classname="std_observable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.670" classname="std_observable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.671" classname="std_observable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.671" classname="std_observable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.012" timestamp="2021-11-09T20:00:24.672">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.672" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.677" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.678" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.678" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.678" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.678" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.679" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.679" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.679" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.680" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.680" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.681" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.681" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.681" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.682" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.682" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.683" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.683" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.683" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.684" classname="std_observable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.684" classname="std_observable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.015" timestamp="2021-11-09T20:00:24.685">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.685" classname="std_observable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.685" classname="std_observable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.686" classname="std_observable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.686" classname="std_observable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.687" classname="std_observable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.687" classname="std_observable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.687" classname="std_observable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.688" classname="std_observable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.693" classname="std_observable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.693" classname="std_observable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.694" classname="std_observable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.695" classname="std_observable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.696" classname="std_observable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.696" classname="std_observable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.697" classname="std_observable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.697" classname="std_observable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.697" classname="std_observable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.698" classname="std_observable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.698" classname="std_observable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.699" classname="std_observable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.699" classname="std_observable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.700" classname="std_observable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.700" classname="std_observable_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:24.701">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.701" classname="std_observable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.701" classname="std_observable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.702" classname="std_observable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.702" classname="std_observable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.703" classname="std_observable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.703" classname="std_observable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.703" classname="std_observable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.708" classname="std_observable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.708" classname="std_observable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.708" classname="std_observable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.709" classname="std_observable_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.710">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.710" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.711" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.711" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.712" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.712" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.712" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.713" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.713" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.714" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.714" classname="std_observable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.714" classname="std_observable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.715">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.715" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.715" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.716" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.716" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.717" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.717" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.717" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.718" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.718" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.719" classname="std_observable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.719" classname="std_observable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_lambda_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.724">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.724" classname="std_observable_object_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.724">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.725" classname="std_observable_object_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.725">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.726" classname="std_observable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.727" classname="std_observable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.727" classname="std_observable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.728" classname="std_observable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.728" classname="std_observable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.729" classname="std_observable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.729" classname="std_observable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.730" classname="std_observable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.730" classname="std_observable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.730" classname="std_observable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.731" classname="std_observable_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-11-09T20:00:24.731">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.731" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.732" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.732" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.732" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.733" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.733" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.733" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.734" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.734" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.735" classname="std_observable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.735" classname="std_observable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.740">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.740" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.741" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.741" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.742" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.742" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.743" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.743" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.744" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.744" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.745" classname="std_observable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.745" classname="std_observable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.746">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.746" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.746" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.747" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.747" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.747" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.748" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.748" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.749" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.749" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.749" classname="std_observable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.750" classname="std_observable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:24.750">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.751" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.751" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.751" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.756" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.757" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.757" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.758" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.758" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.759" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.759" classname="std_observable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.760" classname="std_observable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.760">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.760" classname="std_observable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.761" classname="std_observable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.761" classname="std_observable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.762" classname="std_observable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.762" classname="std_observable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.763" classname="std_observable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.763" classname="std_observable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.763" classname="std_observable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.764" classname="std_observable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.765" classname="std_observable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.765" classname="std_observable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.765" classname="std_observable_vector_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_execution_observer_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.766">
+    <testcase name="test_execute_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.766" classname="std_command_execution_observer_placebo_lockable_test_suite" />
+    <testcase name="test_post_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.766" classname="std_command_execution_observer_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_lambda_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.771">
+    <testcase name="test_suite_disabled" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.771" classname="std_command_manager_lambda_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_manager_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:24.772">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.772" classname="std_command_manager_placebo_lockable_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.773" classname="std_command_manager_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.774">
+    <testcase name="test_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.774" classname="std_command_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_event_manager_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.775">
+    <testcase name="test_command_manager" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.775" classname="std_event_manager_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_array_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.775">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.776" classname="std_observable_array_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_deque_placebo_lockable_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.776">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.777" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.777" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.777" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.778" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.778" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.779" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.779" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.779" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.780" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.780" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.781" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.781" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.781" classname="std_observable_deque_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.782" classname="std_observable_deque_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_forward_list_placebo_lockable_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.012" timestamp="2021-11-09T20:00:24.782">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.787" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.787" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.788" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.788" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.789" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.789" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.789" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.790" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.790" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.791" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.791" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.791" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.792" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.792" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.793" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.793" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.794" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.794" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.794" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.795" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.795" classname="std_observable_forward_list_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_list_placebo_lockable_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:24.795">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.796" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.796" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.796" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.797" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.797" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.798" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.802" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.803" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.803" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.803" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.804" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.804" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.805" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.805" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.806" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.806" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.807" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.807" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.808" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.808" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.808" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.809" classname="std_observable_list_placebo_lockable_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.809" classname="std_observable_list_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:24.810">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.810" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.811" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.811" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.811" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.812" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.812" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.812" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.813" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.813" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.818" classname="std_observable_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.818" classname="std_observable_map_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.819">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.819" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.819" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.820" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.820" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.821" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.821" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.821" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.822" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.822" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.823" classname="std_observable_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.823" classname="std_observable_multimap_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.824">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.824" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.824" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.825" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.825" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.825" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.826" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.826" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.827" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.827" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.827" classname="std_observable_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.828" classname="std_observable_multiset_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_lambda_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.829">
+    <testcase name="test_suite_disabled" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.829" classname="std_observable_object_lambda_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_object_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.834">
+    <testcase name="test_observable_object" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.834" classname="std_observable_object_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.835">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.835" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.835" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.836" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.836" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.837" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.837" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.838" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.838" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.839" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.839" classname="std_observable_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.840" classname="std_observable_set_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_map_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:24.840">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.840" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.841" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.841" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.842" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.842" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.842" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.843" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.844" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.844" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.844" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.845" classname="std_observable_unordered_map_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multimap_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.849">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.850" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.850" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.850" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.851" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.851" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.852" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.852" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.853" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.853" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.853" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.854" classname="std_observable_unordered_multimap_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_multiset_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.854">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.855" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.855" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.855" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.856" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.856" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.857" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.857" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.857" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.858" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.858" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.859" classname="std_observable_unordered_multiset_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_unordered_set_placebo_lockable_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T20:00:24.859">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.859" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.860" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.865" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.866" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.866" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.867" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.867" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.868" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.868" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.869" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.869" classname="std_observable_unordered_set_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_observable_vector_placebo_lockable_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:24.870">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.870" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.870" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.871" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.871" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.871" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.872" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.872" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.873" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.873" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.873" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.874" classname="std_observable_vector_placebo_lockable_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.874" classname="std_observable_vector_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_relay_command_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.875">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.875" classname="std_relay_command_placebo_lockable_test_suite" />
+  </testsuite>
+  <testsuite name="std_relay_command_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.880">
+    <testcase name="test_relay_command" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.880" classname="std_relay_command_test_suite" />
+  </testsuite>
+  <testsuite name="std_relay_wcommand_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.881">
+    <testcase name="test_relay_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.881" classname="std_relay_wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_execution_observer_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.881">
+    <testcase name="test_execute_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.881" classname="std_wcommand_execution_observer_test_suite" />
+    <testcase name="test_post_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.882" classname="std_wcommand_execution_observer_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_manager_lambda_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.02" timestamp="2021-11-09T20:00:24.882">
+    <testcase name="test_wcommand_manager" status="run" result="completed" time="0.005" timestamp="2021-11-09T20:00:24.883" classname="std_wcommand_manager_lambda_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.012" timestamp="2021-11-09T20:00:24.890" classname="std_wcommand_manager_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_manager_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.02" timestamp="2021-11-09T20:00:24.903">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.006" timestamp="2021-11-09T20:00:24.904" classname="std_wcommand_manager_test_suite" />
+    <testcase name="test_spaceship_observer" status="run" result="completed" time="0.011" timestamp="2021-11-09T20:00:24.912" classname="std_wcommand_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_wcommand_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.924">
+    <testcase name="test_wcommand" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.924" classname="std_wcommand_test_suite" />
+  </testsuite>
+  <testsuite name="std_wevent_manager_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-11-09T20:00:24.925">
+    <testcase name="test_command_manager" status="run" result="completed" time="0.013" timestamp="2021-11-09T20:00:24.925" classname="std_wevent_manager_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_array_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:24.940">
+    <testcase name="test_create" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.940" classname="std_wobservable_array_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_deque_test_suite" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.941">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.941" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.941" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.942" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.942" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.942" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.943" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.944" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.944" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.945" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.945" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.945" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.946" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.946" classname="std_wobservable_deque_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.946" classname="std_wobservable_deque_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_forward_list_test_suite" tests="21" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:24.947">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.947" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.948" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.948" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.948" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.949" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.949" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.950" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_insert_after_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.950" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_erase_after_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.951" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.951" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.952" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.952" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.952" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.953" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_splice_after_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.953" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.958" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.958" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.959" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.959" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.960" classname="std_wobservable_forward_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.961" classname="std_wobservable_forward_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_list_test_suite" tests="23" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-11-09T20:00:24.961">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.961" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.962" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.962" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.963" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_push_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.963" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.963" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_pop_front" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.964" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.964" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.965" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.965" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.966" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.966" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.967" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.967" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_splice_entire_container" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.967" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_splice_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.968" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_splice_element_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.968" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_remove" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.969" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_remove_if" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.969" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_unique" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.974" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_unique_binary_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.974" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_merge" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.974" classname="std_wobservable_list_test_suite" />
+    <testcase name="test_merge_compare_predicate" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.975" classname="std_wobservable_list_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.975">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.976" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.976" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.977" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.977" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.978" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.978" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.979" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.979" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.980" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.980" classname="std_wobservable_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.980" classname="std_wobservable_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:24.981">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.981" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.981" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.982" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.982" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.982" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.983" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.983" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.984" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.984" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.984" classname="std_wobservable_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.985" classname="std_wobservable_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:24.990">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.990" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.991" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.991" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.991" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.992" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.992" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.993" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.994" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.994" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.995" classname="std_wobservable_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:24.995" classname="std_wobservable_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_object_lambda_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:24.996">
+    <testcase name="test_wobservable_object" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:24.996" classname="std_wobservable_object_lambda_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_object_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:24.998">
+    <testcase name="test_wobservable_object" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:24.998" classname="std_wobservable_object_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:24.999">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.000" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.000" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.000" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.001" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.001" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.006" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.006" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.007" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.008" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.008" classname="std_wobservable_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.008" classname="std_wobservable_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_map_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:25.009">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.009" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.010" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.010" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.011" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.011" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.012" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.012" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.012" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.013" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.013" classname="std_wobservable_unordered_map_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.014" classname="std_wobservable_unordered_map_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_multimap_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:25.014">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.014" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.015" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.015" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.016" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.016" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.020" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.021" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.021" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.022" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.022" classname="std_wobservable_unordered_multimap_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.023" classname="std_wobservable_unordered_multimap_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_multiset_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:25.023">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.024" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.024" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.024" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.025" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.025" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.026" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.026" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.027" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.027" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.027" classname="std_wobservable_unordered_multiset_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.028" classname="std_wobservable_unordered_multiset_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_unordered_set_test_suite" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:25.028">
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.029" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_single_element_with_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.029" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.029" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_insert_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.030" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.030" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_value" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.031" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.031" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.031" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.036" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_emplace" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.037" classname="std_wobservable_unordered_set_test_suite" />
+    <testcase name="test_emplace_hint" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.037" classname="std_wobservable_unordered_set_test_suite" />
+  </testsuite>
+  <testsuite name="std_wobservable_vector_test_suite" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:25.038">
+    <testcase name="test_assign_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.038" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_assign_initializer_list" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.039" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_assign_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.039" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_push_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.040" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_pop_back" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.040" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_insert_single_element" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.040" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_insert_fill" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.041" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_insert_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.041" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_erase_position" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.042" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_erase_range" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.042" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_swap" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.042" classname="std_wobservable_vector_test_suite" />
+    <testcase name="test_clear" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:25.043" classname="std_wobservable_vector_test_suite" />
+  </testsuite>
+</testsuites>

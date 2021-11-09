@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2017, Community Edition, version 15.9.23
+* Visual Studio 2017, Community Edition, version 15.9.40
 
 # Summary
 
-Test suites *AllTests* with 5 test cases was executed 2021-10-01 at 16:41:58.501 with result:
+Test suites *AllTests* with 5 test cases was executed 2021-11-09 at 20:00:12.574 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.876 seconds.
+Test suites execution took 0.877 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_stopwatch_test_suite* with 5 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.874 seconds.
+Test suite execution took 0.875 seconds.
 
 ### Successful test cases
 
@@ -33,6 +33,6 @@ Test case|Execution time
 -|-
 test_create_stopwatch | 0
 test_stopwatch_start_stop | 0.114
-test_stopwatch_reset | 0.108
+test_stopwatch_reset | 0.107
 test_stopwatch_guard | 0.107
-test_stopwatch_start_stop_five_times | 0.539
+test_stopwatch_start_stop_five_times | 0.54

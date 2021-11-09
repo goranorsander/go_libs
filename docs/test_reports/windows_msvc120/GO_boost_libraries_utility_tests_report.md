@@ -9,7 +9,7 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 25 test cases was executed 2021-10-01 at 16:41:49 with result:
+Test suites *AllTests* with 25 test cases was executed 2021-11-09 at 19:59:59 with result:
 
 * 0 errors
 * 0 failures
@@ -25,13 +25,13 @@ Test suite *boost_container_size_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.002 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_size_on_deque | 0
+test_size_on_deque | 0.005
 test_size_on_list | 0
 test_size_on_vector | 0
 test_size_on_map | 0
@@ -44,7 +44,7 @@ Test suite *boost_erase_iterator_test_suite* with 5 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 
@@ -69,7 +69,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_scope_guard_new | 0
+test_scope_guard_new | 0.001
 
 ## boost_scope_guard_test_suite
 
@@ -93,13 +93,13 @@ Test suite *boost_try_move_iterator_backward_test_suite* with 12 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.015 seconds.
+Test suite execution took 0.008 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_try_move_backward_on_array | 0
+test_try_move_backward_on_array | 0.001
 test_try_move_backward_on_deque | 0
 test_try_move_backward_on_list | 0
 test_try_move_backward_on_vector | 0
@@ -125,4 +125,4 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_value_guard | 0.001
+test_value_guard | 0

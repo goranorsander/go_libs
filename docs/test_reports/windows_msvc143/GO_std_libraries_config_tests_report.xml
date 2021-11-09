@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="33" failures="0" disabled="0" errors="0" time="0.018" timestamp="2021-11-09T20:00:23.535" name="AllTests">
+  <testsuite name="std_define_go_add_quotes_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:23.536">
+    <testcase name="test_define_go_add_quotes" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.536" classname="std_define_go_add_quotes_test_suite" />
+  </testsuite>
+  <testsuite name="std_define_go_address_model_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:23.537">
+    <testcase name="test_not_define_go_address_model_32" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.537" classname="std_define_go_address_model_test_suite" />
+    <testcase name="test_define_go_address_model_64" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.538" classname="std_define_go_address_model_test_suite" />
+    <testcase name="test_pointer_size" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.538" classname="std_define_go_address_model_test_suite" />
+  </testsuite>
+  <testsuite name="std_define_go_compiler_test_suite" tests="25" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:23.541">
+    <testcase name="test_not_define_go_clang_version" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.541" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_not_define_go_comp_clang" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.542" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_not_define_go_comp_gcc" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.542" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_not_define_go_comp_gcc_mingw" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.542" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.543" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc90" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.543" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc100" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.543" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc110" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.544" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc120" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.544" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc140" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.545" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_comp_msvc_vc141" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.545" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_not_define_go_gcc_version" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.546" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2008" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.546" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2010" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.546" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2012" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.547" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2013" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.547" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2015" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.547" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_ide_ms_vs2017" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.548" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_atl" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.548" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_atl_ver" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.549" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_full_ver" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.549" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_mfc" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.549" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_mfc_ver" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.550" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_msvc_ver" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.550" classname="std_define_go_compiler_test_suite" />
+    <testcase name="test_define_go_unicode" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.550" classname="std_define_go_compiler_test_suite" />
+  </testsuite>
+  <testsuite name="std_define_go_message_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:23.551">
+    <testcase name="test_define_go_message" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.551" classname="std_define_go_message_test_suite" />
+  </testsuite>
+  <testsuite name="std_define_go_platform_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:23.552">
+    <testcase name="test_define_go_platform_windows" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.552" classname="std_define_go_platform_test_suite" />
+    <testcase name="test_not_define_go_platform_linux" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.552" classname="std_define_go_platform_test_suite" />
+  </testsuite>
+  <testsuite name="std_define_go_typename_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:23.553">
+    <testcase name="test_define_go_typename" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:23.553" classname="std_define_go_typename_test_suite" />
+  </testsuite>
+</testsuites>

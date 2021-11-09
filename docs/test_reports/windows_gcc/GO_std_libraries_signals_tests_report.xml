@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" time="0.111" timestamp="2021-10-01T16:41:31.610" name="AllTests">
-  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.026" timestamp="2021-10-01T16:41:31.619">
-    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.624" classname="std_signals_wstring_test_suite" />
-    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.633" classname="std_signals_wstring_test_suite" />
-    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.642" classname="std_signals_wstring_test_suite" />
+<testsuites tests="9" failures="0" disabled="0" errors="0" time="0.114" timestamp="2021-11-09T19:59:34.347" name="AllTests">
+  <testsuite name="std_signals_wstring_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.026" timestamp="2021-11-09T19:59:34.355">
+    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.358" classname="std_signals_wstring_test_suite" />
+    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.368" classname="std_signals_wstring_test_suite" />
+    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.376" classname="std_signals_wstring_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_string_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.023" timestamp="2021-10-01T16:41:31.651">
-    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.656" classname="std_signals_string_test_suite" />
-    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.663" classname="std_signals_string_test_suite" />
-    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.672" classname="std_signals_string_test_suite" />
+  <testsuite name="std_signals_string_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.024" timestamp="2021-11-09T19:59:34.389">
+    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.392" classname="std_signals_string_test_suite" />
+    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.401" classname="std_signals_string_test_suite" />
+    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.408" classname="std_signals_string_test_suite" />
   </testsuite>
-  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.029" timestamp="2021-10-01T16:41:31.683">
-    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.689" classname="std_signals_string_placebo_lockable_test_suite" />
-    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.697" classname="std_signals_string_placebo_lockable_test_suite" />
-    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-10-01T16:41:31.707" classname="std_signals_string_placebo_lockable_test_suite" />
+  <testsuite name="std_signals_string_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.03" timestamp="2021-11-09T19:59:34.422">
+    <testcase name="test_fire_lasers" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.428" classname="std_signals_string_placebo_lockable_test_suite" />
+    <testcase name="test_fire_proton_torpedoes" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.437" classname="std_signals_string_placebo_lockable_test_suite" />
+    <testcase name="test_fire_all_weapons" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:34.448" classname="std_signals_string_placebo_lockable_test_suite" />
   </testsuite>
 </testsuites>

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 8 test cases was executed 2021-10-01 at 16:41:41 with result:
+Test suites *AllTests* with 8 test cases was executed 2021-11-09 at 19:59:49 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.013 seconds.
+Test suites execution took 0.014 seconds.
 
 # Details
 
@@ -40,7 +40,7 @@ Test suite *std_container_size_test_suite* with 1 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -85,7 +85,7 @@ Test suite *std_scope_guard_new_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -130,7 +130,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

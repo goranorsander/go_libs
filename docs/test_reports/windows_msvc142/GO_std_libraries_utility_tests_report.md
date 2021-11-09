@@ -5,16 +5,16 @@ layout: unit_tests
 # Test environment and toolset 
 
 * Windows 10 Professional, 64 bit
-* Visual Studio 2019, Community Edition, version 16.7.1
+* Visual Studio 2019, Community Edition, version 16.11.5
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2021-10-01 at 16:42:04.861 with result:
+Test suites *AllTests* with 50 test cases was executed 2021-11-09 at 20:00:21.168 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.033 seconds.
+Test suites execution took 0.031 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.009 seconds.
 
 ### Successful test cases
 
@@ -77,7 +77,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -145,7 +145,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.006 seconds.
 
 ### Successful test cases
 

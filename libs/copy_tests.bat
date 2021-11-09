@@ -159,3 +159,23 @@ copy /B /V /Y .\vc142\libs\std_signals\Release\GO_std_libraries_signals_tests.ex
 copy /B /V /Y .\vc142\libs\std_string\Release\GO_std_libraries_string_tests.exe .\bin\vc142\.
 copy /B /V /Y .\vc142\libs\std_type_traits\Release\GO_std_libraries_type_traits_tests.exe .\bin\vc142\.
 copy /B /V /Y .\vc142\libs\std_utility\Release\GO_std_libraries_utility_tests.exe .\bin\vc142\.
+
+copy /B /V /Y .\vc143\libs\boost_async\Release\GO_boost_libraries_async_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_config\Release\GO_boost_libraries_config_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_diagnostics\Release\GO_boost_libraries_diagnostics_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_exception\Release\GO_boost_libraries_exception_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_mvvm\Release\GO_boost_libraries_mvvm_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_property\Release\GO_boost_libraries_property_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_string\Release\GO_boost_libraries_string_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_type_traits\Release\GO_boost_libraries_type_traits_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\boost_utility\Release\GO_boost_libraries_utility_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_async\Release\GO_std_libraries_async_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_config\Release\GO_std_libraries_config_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_diagnostics\Release\GO_std_libraries_diagnostics_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_exception\Release\GO_std_libraries_exception_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_mvvm\Release\GO_std_libraries_mvvm_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_property\Release\GO_std_libraries_property_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_signals\Release\GO_std_libraries_signals_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_string\Release\GO_std_libraries_string_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_type_traits\Release\GO_std_libraries_type_traits_tests.exe .\bin\vc143\.
+copy /B /V /Y .\vc143\libs\std_utility\Release\GO_std_libraries_utility_tests.exe .\bin\vc143\.

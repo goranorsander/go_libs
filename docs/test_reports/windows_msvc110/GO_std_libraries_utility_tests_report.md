@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 28 test cases was executed 2021-10-01 at 16:41:46 with result:
+Test suites *AllTests* with 28 test cases was executed 2021-11-09 at 19:59:55 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.031 seconds.
+Test suites execution took 0.027 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_circular_buffer_test_suite* with 1 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 
@@ -40,13 +40,13 @@ Test suite *std_container_size_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_size_on_deque | 0
+test_size_on_deque | 0.001
 test_size_on_list | 0
 test_size_on_vector | 0
 test_size_on_map | 0
@@ -114,7 +114,7 @@ Test suite execution took 0.001 seconds.
 
 Test case|Execution time
 -|-
-test_scope_guard | 0.001
+test_scope_guard | 0
 
 ## std_try_move_iterator_backward_test_suite
 
@@ -123,7 +123,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.017 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
@@ -137,7 +137,7 @@ test_try_move_backward_on_vector | 0
 test_try_move_backward_on_map | 0
 test_try_move_backward_on_set | 0
 test_try_move_backward_on_multimap | 0
-test_try_move_backward_on_multiset | 0
+test_try_move_backward_on_multiset | 0.001
 test_try_move_backward_on_unordered_map | 0
 test_try_move_backward_on_unordered_set | 0
 test_try_move_backward_on_unordered_multimap | 0
