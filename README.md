@@ -78,24 +78,24 @@ Use CMake to configure and generate a build solution for your toolset.
 
 The CMake configurations I use:
 
-**SETTING \ TOOLSET**      |clang 12.0.1|gcc 11.1.0|MSYS2 MinGW gcc 10.2.0|Visual Studio 2022 Community|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Professional|Visual Studio 2008 Express
----------------------------|------------|----------|----------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|-------------------------------|--------------------------
-**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 
-**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
-**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | X | | | | X | 
-**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X | X | X 
-**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X | X 
-**BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | X | | | | | 
-**BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | X | | 
-**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | X | | 
-**CXX_COMPILER_WARNING_LEVEL** | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 
-**ENABLE_SUPPRESS_WARNINGS** | X | X | X | X | X | X | X | X | X | X | X | X 
-**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | X | | | 
-**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X | X 
-**INSTALL_GTEST** | X | X | X | X | X | X | X | X | X | X | X | X 
+**SETTING \ TOOLSET**      |clang 12.0.1|gcc 11.1.0|MSYS2 MinGW gcc 10.2.0|Visual Studio 2022 Community|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Express
+---------------------------|------------|----------|----------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|--------------------------
+**BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
+**BOOST_MINOR_VERSION** | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 
+**BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
+**BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | X | | | | 
+**BUILD_BOOST_RND** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_BOOST_TESTS** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
+**BUILD_STD_MFC_EXAMPLES** | | | | X | X | X | X | | | | 
+**BUILD_STD_RND** | X | X | X | X | X | X | X | X | X | X | 
+**BUILD_STD_TESTS** | X | X | X | X | X | X | X | X | X | X | 
+**CXX_COMPILER_WARNING_LEVEL** | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 | W4 
+**ENABLE_SUPPRESS_WARNINGS** | X | X | X | X | X | X | X | X | X | X | X 
+**USE_SOLUTION_FOLDERS** | X | X | X | X | X | X | X | X | X | | 
+**BUILD_GMOCK** | X | X | X | X | X | X | X | X | X | X | X 
+**INSTALL_GTEST** | X | X | X | X | X | X | X | X | X | X | X 
 
 The settings BOOST_INCLUDEDIR, BOOST_LIBRARYDIR, CMAKE_CONFIGURATION_TYPES, and
 CMAKE_INSTALL_PREFIX must be set to match your development environment and toolset.
