@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 177 test cases was executed 2021-11-09 at 20:00:08.748 with result:
+Test suites *AllTests* with 177 test cases was executed 2021-12-30 at 22:00:50.274 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.113 seconds.
+Test suites execution took 0.142 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_ascii_test_suite* with 36 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.015 seconds.
+Test suite execution took 0.025 seconds.
 
 ### Successful test cases
 
@@ -75,13 +75,13 @@ Test suite *std_create_string_test_suite* with 36 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.027 seconds.
+Test suite execution took 0.029 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_create_string_from_char | 0.001
+test_create_string_from_char | 0
 test_create_string_from_wchar_t | 0
 test_create_string_from_char2_t | 0
 test_create_string_from_char8_t | 0
@@ -125,7 +125,7 @@ Test suite *std_iso_8859_1_test_suite* with 12 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.003 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 
@@ -151,7 +151,7 @@ Test suite *std_string_cast_test_suite* with 81 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.059 seconds.
+Test suite execution took 0.072 seconds.
 
 ### Successful test cases
 
@@ -246,7 +246,7 @@ Test suite *std_windows_1252_test_suite* with 12 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.005 seconds.
 
 ### Successful test cases
 

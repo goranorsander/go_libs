@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" time="0.203" timestamp="2021-11-09T19:59:06.093" name="AllTests">
-  <testsuite name="boost_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.024" timestamp="2021-11-09T19:59:06.189">
-    <testcase name="test_spin_lock" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.192" classname="boost_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_scoped_lock" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.200" classname="boost_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.207" classname="boost_spin_lock_test_suite" />
+<testsuites tests="9" failures="0" disabled="0" errors="0" time="0.148" timestamp="2021-12-30T21:59:51.061" name="AllTests">
+  <testsuite name="boost_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.029" timestamp="2021-12-30T21:59:51.074">
+    <testcase name="test_spin_lock" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.079" classname="boost_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_scoped_lock" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.088" classname="boost_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.098" classname="boost_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.029" timestamp="2021-11-09T19:59:06.222">
-    <testcase name="test_recursive_spin_lock" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.226" classname="boost_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.234" classname="boost_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.246" classname="boost_recursive_spin_lock_test_suite" />
+  <testsuite name="boost_recursive_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.037" timestamp="2021-12-30T21:59:51.114">
+    <testcase name="test_recursive_spin_lock" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.118" classname="boost_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.129" classname="boost_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.144" classname="boost_recursive_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.029" timestamp="2021-11-09T19:59:06.261">
-    <testcase name="test_placebo_lockable" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.265" classname="boost_placebo_lockable_test_suite" />
-    <testcase name="test_placebo_lockable_scoped_lock" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.276" classname="boost_placebo_lockable_test_suite" />
-    <testcase name="test_placebo_lockable_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.283" classname="boost_placebo_lockable_test_suite" />
+  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.038" timestamp="2021-12-30T21:59:51.163">
+    <testcase name="test_placebo_lockable" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.168" classname="boost_placebo_lockable_test_suite" />
+    <testcase name="test_placebo_lockable_scoped_lock" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.181" classname="boost_placebo_lockable_test_suite" />
+    <testcase name="test_placebo_lockable_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.193" classname="boost_placebo_lockable_test_suite" />
   </testsuite>
 </testsuites>

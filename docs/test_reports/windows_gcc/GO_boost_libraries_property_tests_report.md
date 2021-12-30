@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2021-11-09 at 19:59:17.636 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-12-30 at 22:00:02.021 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.722 seconds.
+Test suites execution took 0.911 seconds.
 
 # Details
 
@@ -26,16 +26,16 @@ Test suite *boost_wproperty_test_suite* with 9 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.077 seconds.
+Test suite execution took 0.085 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-value_properties | 0.001
+value_properties | 0
 read_only_value_properties | 0
 write_only_value_properties | 0
-reference_properties | 0.002
+reference_properties | 0
 read_only_reference_properties | 0
 write_only_reference_properties | 0
 proxy_properties | 0
@@ -49,7 +49,7 @@ Test suite *boost_u8property_test_suite* with 9 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.074 seconds.
+Test suite execution took 0.094 seconds.
 
 ### Successful test cases
 
@@ -72,7 +72,7 @@ Test suite *boost_u32property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.076 seconds.
+Test suite execution took 0.1 seconds.
 
 ### Successful test cases
 
@@ -95,7 +95,7 @@ Test suite *boost_u16property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.076 seconds.
+Test suite execution took 0.099 seconds.
 
 ### Successful test cases
 
@@ -118,7 +118,7 @@ Test suite *boost_property_test_suite* with 9 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.077 seconds.
+Test suite execution took 0.099 seconds.
 
 ### Successful test cases
 
@@ -141,7 +141,7 @@ Test suite *boost_property_placebo_lockable_test_suite* with 9 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.085 seconds.
+Test suite execution took 0.12 seconds.
 
 ### Successful test cases
 
@@ -164,7 +164,7 @@ Test suite *boost_nameless_property_placebo_lockable_test_suite* with 9 test cas
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.1 seconds.
+Test suite execution took 0.121 seconds.
 
 ### Successful test cases
 
@@ -187,7 +187,7 @@ Test suite *boost_nameless_property_test_suite* with 9 test cases was executed w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.083 seconds.
+Test suite execution took 0.1 seconds.
 
 ### Successful test cases
 

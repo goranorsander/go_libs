@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="5" failures="0" disabled="0" errors="0" time="0.876" timestamp="2021-11-09T20:00:15.537" name="AllTests">
-  <testsuite name="boost_stopwatch_test_suite" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0.875" timestamp="2021-11-09T20:00:15.538">
-    <testcase name="test_create_stopwatch" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:15.538" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop" status="run" result="completed" time="0.113" timestamp="2021-11-09T20:00:15.539" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_reset" status="run" result="completed" time="0.108" timestamp="2021-11-09T20:00:15.653" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_guard" status="run" result="completed" time="0.107" timestamp="2021-11-09T20:00:15.762" classname="boost_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop_five_times" status="run" result="completed" time="0.542" timestamp="2021-11-09T20:00:15.871" classname="boost_stopwatch_test_suite" />
+<testsuites tests="5" failures="0" disabled="0" errors="0" time="0.879" timestamp="2021-12-30T22:00:55.887" name="AllTests">
+  <testsuite name="boost_stopwatch_test_suite" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0.877" timestamp="2021-12-30T22:00:55.889">
+    <testcase name="test_create_stopwatch" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:55.889" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop" status="run" result="completed" time="0.111" timestamp="2021-12-30T22:00:55.889" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_reset" status="run" result="completed" time="0.107" timestamp="2021-12-30T22:00:56.002" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_guard" status="run" result="completed" time="0.106" timestamp="2021-12-30T22:00:56.111" classname="boost_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop_five_times" status="run" result="completed" time="0.545" timestamp="2021-12-30T22:00:56.219" classname="boost_stopwatch_test_suite" />
   </testsuite>
 </testsuites>

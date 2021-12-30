@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="4" failures="0" disabled="0" errors="0" timestamp="2021-11-09T19:59:47" time="0.005" name="AllTests">
-  <testsuite name="std_monitor_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0">
+<testsuites tests="4" failures="0" disabled="0" errors="0" timestamp="2021-12-30T22:00:32" time="0.006" name="AllTests">
+  <testsuite name="std_monitor_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">
     <testcase name="required_cpp11_feature_not_supported" status="run" time="0" classname="std_monitor_test_suite" />
   </testsuite>
   <testsuite name="std_placebo_lockable_test_suite" tests="1" failures="0" disabled="0" errors="0" time="0.001">

@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="72" failures="0" disabled="0" errors="0" time="0.073" timestamp="2021-11-09T20:00:20.574" name="AllTests">
-  <testsuite name="std_nameless_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:20.576">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.576" classname="std_nameless_property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.577" classname="std_nameless_property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.577" classname="std_nameless_property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.578" classname="std_nameless_property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.579" classname="std_nameless_property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.580" classname="std_nameless_property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.580" classname="std_nameless_property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.581" classname="std_nameless_property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.581" classname="std_nameless_property_test_suite" />
+<testsuites tests="72" failures="0" disabled="0" errors="0" time="0.056" timestamp="2021-12-30T22:01:00.173" name="AllTests">
+  <testsuite name="std_nameless_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:01:00.174">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.174" classname="std_nameless_property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.175" classname="std_nameless_property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.175" classname="std_nameless_property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.175" classname="std_nameless_property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.176" classname="std_nameless_property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.176" classname="std_nameless_property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.177" classname="std_nameless_property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.177" classname="std_nameless_property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.177" classname="std_nameless_property_test_suite" />
   </testsuite>
-  <testsuite name="std_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:20.582">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.582" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.582" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.583" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.584" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.584" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.585" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.585" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.585" classname="std_nameless_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.586" classname="std_nameless_property_placebo_lockable_test_suite" />
+  <testsuite name="std_nameless_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:01:00.178">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.178" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.178" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.179" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.179" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.180" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.180" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.180" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.181" classname="std_nameless_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.181" classname="std_nameless_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.02" timestamp="2021-11-09T20:00:20.586">
-    <testcase name="value_properties" status="run" result="completed" time="0.005" timestamp="2021-11-09T20:00:20.587" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.596" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.597" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0.005" timestamp="2021-11-09T20:00:20.597" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.605" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.605" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.606" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.606" classname="std_property_placebo_lockable_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.606" classname="std_property_placebo_lockable_test_suite" />
+  <testsuite name="std_property_placebo_lockable_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:01:00.182">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.182" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.182" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.183" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.183" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.184" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.184" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.185" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.185" classname="std_property_placebo_lockable_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.185" classname="std_property_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:20.609">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.610" classname="std_property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.611" classname="std_property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.612" classname="std_property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.612" classname="std_property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.613" classname="std_property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.613" classname="std_property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.614" classname="std_property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.614" classname="std_property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.614" classname="std_property_test_suite" />
+  <testsuite name="std_property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.011" timestamp="2021-12-30T22:01:00.186">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.193" classname="std_property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.194" classname="std_property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.194" classname="std_property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.195" classname="std_property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.196" classname="std_property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.196" classname="std_property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.196" classname="std_property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.197" classname="std_property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.197" classname="std_property_test_suite" />
   </testsuite>
-  <testsuite name="std_u16property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:20.615">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.615" classname="std_u16property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.616" classname="std_u16property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.616" classname="std_u16property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.617" classname="std_u16property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.618" classname="std_u16property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.618" classname="std_u16property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.619" classname="std_u16property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.619" classname="std_u16property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.619" classname="std_u16property_test_suite" />
+  <testsuite name="std_u16property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2021-12-30T22:01:00.198">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.198" classname="std_u16property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.199" classname="std_u16property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.199" classname="std_u16property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.200" classname="std_u16property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.201" classname="std_u16property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.201" classname="std_u16property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.201" classname="std_u16property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.202" classname="std_u16property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.207" classname="std_u16property_test_suite" />
   </testsuite>
-  <testsuite name="std_u32property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.009" timestamp="2021-11-09T20:00:20.620">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.620" classname="std_u32property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.621" classname="std_u32property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.621" classname="std_u32property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.622" classname="std_u32property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.623" classname="std_u32property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.628" classname="std_u32property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.628" classname="std_u32property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.629" classname="std_u32property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.629" classname="std_u32property_test_suite" />
+  <testsuite name="std_u32property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:01:00.207">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.208" classname="std_u32property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.208" classname="std_u32property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.208" classname="std_u32property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.209" classname="std_u32property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.209" classname="std_u32property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.210" classname="std_u32property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.210" classname="std_u32property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.210" classname="std_u32property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.211" classname="std_u32property_test_suite" />
   </testsuite>
-  <testsuite name="std_u8property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.012" timestamp="2021-11-09T20:00:20.630">
-    <testcase name="value_properties" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:20.630" classname="std_u8property_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.632" classname="std_u8property_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.633" classname="std_u8property_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.634" classname="std_u8property_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.635" classname="std_u8property_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.636" classname="std_u8property_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.637" classname="std_u8property_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.638" classname="std_u8property_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.641" classname="std_u8property_test_suite" />
+  <testsuite name="std_u8property_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.014" timestamp="2021-12-30T22:01:00.211">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.211" classname="std_u8property_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.212" classname="std_u8property_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.213" classname="std_u8property_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.214" classname="std_u8property_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.215" classname="std_u8property_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.216" classname="std_u8property_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.217" classname="std_u8property_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.223" classname="std_u8property_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.225" classname="std_u8property_test_suite" />
   </testsuite>
-  <testsuite name="std_wproperty_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-11-09T20:00:20.642">
-    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.643" classname="std_wproperty_test_suite" />
-    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.644" classname="std_wproperty_test_suite" />
-    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.644" classname="std_wproperty_test_suite" />
-    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.645" classname="std_wproperty_test_suite" />
-    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.646" classname="std_wproperty_test_suite" />
-    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.646" classname="std_wproperty_test_suite" />
-    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.647" classname="std_wproperty_test_suite" />
-    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.647" classname="std_wproperty_test_suite" />
-    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:20.648" classname="std_wproperty_test_suite" />
+  <testsuite name="std_wproperty_test_suite" tests="9" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:01:00.226">
+    <testcase name="value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.226" classname="std_wproperty_test_suite" />
+    <testcase name="read_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.226" classname="std_wproperty_test_suite" />
+    <testcase name="write_only_value_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.227" classname="std_wproperty_test_suite" />
+    <testcase name="reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.227" classname="std_wproperty_test_suite" />
+    <testcase name="read_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.228" classname="std_wproperty_test_suite" />
+    <testcase name="write_only_reference_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.228" classname="std_wproperty_test_suite" />
+    <testcase name="proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.228" classname="std_wproperty_test_suite" />
+    <testcase name="read_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.229" classname="std_wproperty_test_suite" />
+    <testcase name="write_only_proxy_properties" status="run" result="completed" time="0" timestamp="2021-12-30T22:01:00.229" classname="std_wproperty_test_suite" />
   </testsuite>
 </testsuites>

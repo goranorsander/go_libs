@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 26 test cases was executed 2021-11-09 at 20:00:18.362 with result:
+Test suites *AllTests* with 26 test cases was executed 2021-12-30 at 22:00:58.281 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.015 seconds.
+Test suites execution took 0.022 seconds.
 
 # Details
 
@@ -93,7 +93,7 @@ Test suite *boost_try_move_iterator_backward_test_suite* with 13 test cases was 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 

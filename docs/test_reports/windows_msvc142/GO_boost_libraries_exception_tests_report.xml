@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="6" failures="0" disabled="0" errors="0" time="0.004" timestamp="2021-11-09T20:00:16.547" name="AllTests">
-  <testsuite name="boost_exception_test_suite" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-11-09T20:00:16.549">
-    <testcase name="test_catch_go_boost_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.549" classname="boost_exception_test_suite" />
-    <testcase name="test_catch_go_boost_exception_as_boost_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.549" classname="boost_exception_test_suite" />
-    <testcase name="test_catch_derived_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.550" classname="boost_exception_test_suite" />
-    <testcase name="test_catch_derived_exception_as_go_boost_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.550" classname="boost_exception_test_suite" />
-    <testcase name="test_catch_derived_exception_as_boost_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.550" classname="boost_exception_test_suite" />
-    <testcase name="test_catch_other_exception" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:16.551" classname="boost_exception_test_suite" />
+<testsuites tests="6" failures="0" disabled="0" errors="0" time="0.006" timestamp="2021-12-30T22:00:56.809" name="AllTests">
+  <testsuite name="boost_exception_test_suite" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0.005" timestamp="2021-12-30T22:00:56.810">
+    <testcase name="test_catch_go_boost_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.810" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_go_boost_exception_as_boost_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.811" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_derived_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.811" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_derived_exception_as_go_boost_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.812" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_derived_exception_as_boost_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.814" classname="boost_exception_test_suite" />
+    <testcase name="test_catch_other_exception" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:56.815" classname="boost_exception_test_suite" />
   </testsuite>
 </testsuites>

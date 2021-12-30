@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 177 test cases was executed 2021-11-09 at 20:00:05.695 with result:
+Test suites *AllTests* with 177 test cases was executed 2021-12-30 at 22:00:47.852 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.128 seconds.
+Test suites execution took 0.154 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_ascii_test_suite* with 36 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.018 seconds.
+Test suite execution took 0.023 seconds.
 
 ### Successful test cases
 
@@ -75,19 +75,19 @@ Test suite *boost_create_string_test_suite* with 36 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.034 seconds.
+Test suite execution took 0.037 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_create_string_from_char | 0.001
+test_create_string_from_char | 0
 test_create_string_from_wchar_t | 0
 test_create_string_from_char2_t | 0
 test_create_string_from_char8_t | 0
 test_create_string_from_char16_t | 0
 test_create_string_from_char32_t | 0
-test_create_wstring_from_char | 0.01
+test_create_wstring_from_char | 0.009
 test_create_wstring_from_wchar_t | 0
 test_create_wstring_from_char2_t | 0
 test_create_wstring_from_char8_t | 0
@@ -125,7 +125,7 @@ Test suite *boost_iso_8859_1_test_suite* with 12 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.004 seconds.
+Test suite execution took 0.012 seconds.
 
 ### Successful test cases
 
@@ -151,7 +151,7 @@ Test suite *boost_string_cast_test_suite* with 81 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.058 seconds.
+Test suite execution took 0.066 seconds.
 
 ### Successful test cases
 
@@ -246,7 +246,7 @@ Test suite *boost_windows_1252_test_suite* with 12 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.009 seconds.
+Test suite execution took 0.011 seconds.
 
 ### Successful test cases
 

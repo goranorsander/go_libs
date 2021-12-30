@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="32" failures="0" disabled="0" errors="0" time="0.423" timestamp="2021-11-09T19:59:06.421" name="AllTests">
-  <testsuite name="boost_define_go_boost_typename_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-11-09T19:59:06.431">
-    <testcase name="test_define_go_boost_typename" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.437" classname="boost_define_go_boost_typename_test_suite" />
+<testsuites tests="32" failures="0" disabled="0" errors="0" time="0.5" timestamp="2021-12-30T21:59:51.264" name="AllTests">
+  <testsuite name="boost_define_go_boost_typename_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.013" timestamp="2021-12-30T21:59:51.276">
+    <testcase name="test_define_go_boost_typename" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.284" classname="boost_define_go_boost_typename_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_platform_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.022" timestamp="2021-11-09T19:59:06.451">
-    <testcase name="test_define_go_boost_platform_windows" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.456" classname="boost_define_go_boost_platform_test_suite" />
-    <testcase name="test_not_define_go_boost_platform_linux" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.467" classname="boost_define_go_boost_platform_test_suite" />
+  <testsuite name="boost_define_go_boost_platform_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.03" timestamp="2021-12-30T21:59:51.299">
+    <testcase name="test_define_go_boost_platform_windows" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.306" classname="boost_define_go_boost_platform_test_suite" />
+    <testcase name="test_not_define_go_boost_platform_linux" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.321" classname="boost_define_go_boost_platform_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_message_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.011" timestamp="2021-11-09T19:59:06.483">
-    <testcase name="test_define_go_boost_message" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.488" classname="boost_define_go_boost_message_test_suite" />
+  <testsuite name="boost_define_go_boost_message_test_suite" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.01" timestamp="2021-12-30T21:59:51.338">
+    <testcase name="test_define_go_boost_message" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.344" classname="boost_define_go_boost_message_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_compiler_test_suite" tests="25" failures="0" disabled="0" skipped="0" errors="0" time="0.29" timestamp="2021-11-09T19:59:06.503">
-    <testcase name="test_not_define_go_boost_clang_version" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.509" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_clang" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.519" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_define_go_boost_comp_gcc" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.530" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_define_go_boost_comp_gcc_mingw" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.541" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.551" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc90" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.562" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc100" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.573" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc110" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.583" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc120" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.595" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc140" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.608" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_comp_msvc_vc141" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.621" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_define_go_boost_gcc_version" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.633" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2008" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.644" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2010" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.656" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2012" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.668" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2013" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.681" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2015" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.692" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_ide_ms_vs2017" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.706" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_atl" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.716" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_atl_ver" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.726" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_full_ver" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.739" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_mfc" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.750" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_mfc_ver" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.763" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_msvc_ver" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.775" classname="boost_define_go_boost_compiler_test_suite" />
-    <testcase name="test_not_define_go_boost_unicode" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.787" classname="boost_define_go_boost_compiler_test_suite" />
+  <testsuite name="boost_define_go_boost_compiler_test_suite" tests="25" failures="0" disabled="0" skipped="0" errors="0" time="0.344" timestamp="2021-12-30T21:59:51.361">
+    <testcase name="test_not_define_go_boost_clang_version" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.366" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_clang" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.381" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_define_go_boost_comp_gcc" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.393" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_define_go_boost_comp_gcc_mingw" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.405" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.417" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc90" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.430" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc100" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.443" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc110" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.457" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc120" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.474" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc140" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.489" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_comp_msvc_vc141" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.502" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_define_go_boost_gcc_version" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.516" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2008" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.531" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2010" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.545" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2012" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.561" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2013" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.576" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2015" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.591" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_ide_ms_vs2017" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.603" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_atl" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.617" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_atl_ver" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.631" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_full_ver" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.646" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_mfc" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.662" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_mfc_ver" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.674" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_msvc_ver" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.685" classname="boost_define_go_boost_compiler_test_suite" />
+    <testcase name="test_not_define_go_boost_unicode" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.700" classname="boost_define_go_boost_compiler_test_suite" />
   </testsuite>
-  <testsuite name="boost_define_go_boost_address_model_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.033" timestamp="2021-11-09T19:59:06.801">
-    <testcase name="test_not_define_go_boost_address_model_32" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.808" classname="boost_define_go_boost_address_model_test_suite" />
-    <testcase name="test_define_go_boost_address_model_64" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.818" classname="boost_define_go_boost_address_model_test_suite" />
-    <testcase name="test_pointer_size" status="run" result="completed" time="0" timestamp="2021-11-09T19:59:06.829" classname="boost_define_go_boost_address_model_test_suite" />
+  <testsuite name="boost_define_go_boost_address_model_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.037" timestamp="2021-12-30T21:59:51.716">
+    <testcase name="test_not_define_go_boost_address_model_32" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.722" classname="boost_define_go_boost_address_model_test_suite" />
+    <testcase name="test_define_go_boost_address_model_64" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.735" classname="boost_define_go_boost_address_model_test_suite" />
+    <testcase name="test_pointer_size" status="run" result="completed" time="0" timestamp="2021-12-30T21:59:51.748" classname="boost_define_go_boost_address_model_test_suite" />
   </testsuite>
 </testsuites>

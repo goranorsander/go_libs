@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2021-11-09T19:59:43" time="0.008" name="AllTests">
-  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.003">
+<testsuites tests="9" failures="0" disabled="0" errors="0" timestamp="2021-12-30T22:00:28" time="0.009" name="AllTests">
+  <testsuite name="boost_placebo_lockable_test_suite" tests="3" failures="0" disabled="0" errors="0" time="0.002">
     <testcase name="test_placebo_lockable" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_scoped_lock" status="run" time="0" classname="boost_placebo_lockable_test_suite" />
     <testcase name="test_placebo_lockable_two_threads" status="run" time="0" classname="boost_placebo_lockable_test_suite" />

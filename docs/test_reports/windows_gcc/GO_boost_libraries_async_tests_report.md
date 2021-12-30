@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 9 test cases was executed 2021-11-09 at 19:59:06.093 with result:
+Test suites *AllTests* with 9 test cases was executed 2021-12-30 at 21:59:51.061 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.203 seconds.
+Test suites execution took 0.148 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *boost_spin_lock_test_suite* with 3 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.024 seconds.
+Test suite execution took 0.029 seconds.
 
 ### Successful test cases
 
@@ -43,7 +43,7 @@ Test suite *boost_recursive_spin_lock_test_suite* with 3 test cases was executed
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.029 seconds.
+Test suite execution took 0.037 seconds.
 
 ### Successful test cases
 
@@ -60,7 +60,7 @@ Test suite *boost_placebo_lockable_test_suite* with 3 test cases was executed wi
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.029 seconds.
+Test suite execution took 0.038 seconds.
 
 ### Successful test cases
 

@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 50 test cases was executed 2021-11-09 at 20:00:15.214 with result:
+Test suites *AllTests* with 50 test cases was executed 2021-12-30 at 22:00:55.663 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.091 seconds.
+Test suites execution took 0.044 seconds.
 
 # Details
 
@@ -25,13 +25,13 @@ Test suite *std_circular_buffer_test_suite* with 19 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.07 seconds.
+Test suite execution took 0.01 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-test_constructor | 0.044
+test_constructor | 0
 test_assign_value | 0
 test_iterator | 0
 test_const_iterator | 0
@@ -39,7 +39,7 @@ test_reverse_iterator | 0
 test_const_reverse_iterator | 0
 test_push_back_to_capacity_pop_front_to_empty | 0
 test_push_back_pop_front_without_overflow | 0
-test_push_back_pop_front_with_overflow | 0.015
+test_push_back_pop_front_with_overflow | 0
 test_push_front_to_capacity_pop_back_to_empty | 0
 test_push_front_pop_back_without_overflow | 0
 test_push_front_pop_back_with_overflow | 0
@@ -77,7 +77,7 @@ Test suite *std_erase_iterator_test_suite* with 5 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -96,7 +96,7 @@ Test suite *std_reverse_test_suite* with 5 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.006 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
@@ -145,7 +145,7 @@ Test suite *std_try_move_iterator_backward_test_suite* with 13 test cases was ex
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.007 seconds.
 
 ### Successful test cases
 
@@ -172,7 +172,7 @@ Test suite *std_value_guard_test_suite* with 1 test cases was executed with resu
 * 0 errors
 * 0 failures
 
-Test suite execution took 0 seconds.
+Test suite execution took 0.004 seconds.
 
 ### Successful test cases
 

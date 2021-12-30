@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="11" failures="0" disabled="0" errors="0" time="0.008" timestamp="2021-11-09T20:00:18.443" name="AllTests">
-  <testsuite name="std_monitor_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:18.445">
-    <testcase name="test_monitor" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.445" classname="std_monitor_test_suite" />
-    <testcase name="test_monitor_two_threads" status="run" result="completed" time="0.001" timestamp="2021-11-09T20:00:18.445" classname="std_monitor_test_suite" />
+<testsuites tests="11" failures="0" disabled="0" errors="0" time="0.011" timestamp="2021-12-30T22:00:58.344" name="AllTests">
+  <testsuite name="std_monitor_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2021-12-30T22:00:58.346">
+    <testcase name="test_monitor" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.346" classname="std_monitor_test_suite" />
+    <testcase name="test_monitor_two_threads" status="run" result="completed" time="0.001" timestamp="2021-12-30T22:00:58.347" classname="std_monitor_test_suite" />
   </testsuite>
-  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-11-09T20:00:18.447">
-    <testcase name="test_placebo_lockable" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.447" classname="std_placebo_lockable_test_suite" />
-    <testcase name="test_placebo_lockable_lock_guard" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.447" classname="std_placebo_lockable_test_suite" />
+  <testsuite name="std_placebo_lockable_test_suite" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-12-30T22:00:58.349">
+    <testcase name="test_placebo_lockable" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.349" classname="std_placebo_lockable_test_suite" />
+    <testcase name="test_placebo_lockable_lock_guard" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.349" classname="std_placebo_lockable_test_suite" />
   </testsuite>
-  <testsuite name="std_recursive_spin_lock_test_suite" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:18.448">
-    <testcase name="test_placebo_lockable_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.448" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.448" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.449" classname="std_recursive_spin_lock_test_suite" />
-    <testcase name="test_recursive_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.449" classname="std_recursive_spin_lock_test_suite" />
+  <testsuite name="std_recursive_spin_lock_test_suite" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0.003" timestamp="2021-12-30T22:00:58.350">
+    <testcase name="test_placebo_lockable_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.350" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.351" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_lock_guard" status="run" result="completed" time="0.001" timestamp="2021-12-30T22:00:58.351" classname="std_recursive_spin_lock_test_suite" />
+    <testcase name="test_recursive_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.353" classname="std_recursive_spin_lock_test_suite" />
   </testsuite>
-  <testsuite name="std_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-11-09T20:00:18.450">
-    <testcase name="test_spin_lock" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.450" classname="std_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.451" classname="std_spin_lock_test_suite" />
-    <testcase name="test_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-11-09T20:00:18.451" classname="std_spin_lock_test_suite" />
+  <testsuite name="std_spin_lock_test_suite" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.001" timestamp="2021-12-30T22:00:58.354">
+    <testcase name="test_spin_lock" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.354" classname="std_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_lock_guard" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.355" classname="std_spin_lock_test_suite" />
+    <testcase name="test_spin_lock_two_threads" status="run" result="completed" time="0" timestamp="2021-12-30T22:00:58.355" classname="std_spin_lock_test_suite" />
   </testsuite>
 </testsuites>

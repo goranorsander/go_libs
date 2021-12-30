@@ -9,12 +9,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 122 test cases was executed 2021-11-09 at 20:00:02 with result:
+Test suites *AllTests* with 122 test cases was executed 2021-12-30 at 22:00:45 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.1 seconds.
+Test suites execution took 0.115 seconds.
 
 # Details
 
@@ -25,14 +25,14 @@ Test suite *std_fundamental_type_specializer_test_suite* with 122 test cases was
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.099 seconds.
+Test suite execution took 0.112 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_explicit_integer_type_specializer | 0
-test_integer_type_specializer_default_value | 0.001
+test_integer_type_specializer_default_value | 0
 test_integer_type_specializer_construction | 0
 test_integer_type_specializer_get_set | 0
 test_integer_type_specializer_simple_assignment_operator | 0
@@ -56,7 +56,7 @@ test_integer_type_specializer_bitwise_and_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_or_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_xor_arithmetic_operator | 0
 test_integer_type_specializer_bitwise_left_shift_arithmetic_operator | 0
-test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0.001
+test_integer_type_specializer_bitwise_right_shift_arithmetic_operator | 0
 test_integer_type_specializer_equal_to_comparison_operator | 0
 test_integer_type_specializer_not_equal_to_comparison_operator | 0
 test_integer_type_specializer_less_than_comparison_operator | 0
@@ -92,15 +92,15 @@ test_floating_point_type_specializer_pre_increment_operator | 0
 test_floating_point_type_specializer_post_increment_operator | 0
 test_floating_point_type_specializer_pre_decrement_operator | 0
 test_floating_point_type_specializer_post_decrement_operator | 0
-test_implicit_integer_type_specializer | 0.001
+test_implicit_integer_type_specializer | 0
 test_implicit_integer_type_specializer_default_value | 0
-test_implicit_integer_type_specializer_construction | 0.001
-test_implicit_integer_type_specializer_get_set | 0
+test_implicit_integer_type_specializer_construction | 0
+test_implicit_integer_type_specializer_get_set | 0.001
 test_implicit_integer_type_specializer_simple_assignment_operator | 0
 test_implicit_integer_type_specializer_addition_assignment_operator | 0
 test_implicit_integer_type_specializer_subtraction_assignment_operator | 0
-test_implicit_integer_type_specializer_multiplication_assignment_operator | 0.001
-test_implicit_integer_type_specializer_division_assignment_operator | 0
+test_implicit_integer_type_specializer_multiplication_assignment_operator | 0
+test_implicit_integer_type_specializer_division_assignment_operator | 0.001
 test_implicit_integer_type_specializer_modulo_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_and_assignment_operator | 0
 test_implicit_integer_type_specializer_bitwise_or_assignment_operator | 0
@@ -130,12 +130,12 @@ test_implicit_integer_type_specializer_pre_decrement_operator | 0
 test_implicit_integer_type_specializer_post_decrement_operator | 0
 test_implicit_floating_point_type_specializer_default_value | 0
 test_implicit_floating_point_type_specializer_construction | 0
-test_implicit_floating_point_type_specializer_get_set | 0.001
-test_implicit_floating_point_type_specializer_simple_assignment_operator | 0.001
+test_implicit_floating_point_type_specializer_get_set | 0
+test_implicit_floating_point_type_specializer_simple_assignment_operator | 0
 test_implicit_floating_point_type_specializer_addition_assignment_operator | 0
 test_implicit_floating_point_type_specializer_subtraction_assignment_operator | 0
 test_implicit_floating_point_type_specializer_multiplication_assignment_operator | 0
-test_implicit_floating_point_type_specializer_division_assignment_operator | 0.001
+test_implicit_floating_point_type_specializer_division_assignment_operator | 0
 test_implicit_floating_point_type_specializer_modulo_assignment_operator | 0
 test_implicit_floating_point_type_specializer_unary_plus_arithmetic_operator | 0
 test_implicit_floating_point_type_specializer_addition_arithmetic_operator | 0

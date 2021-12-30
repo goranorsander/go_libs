@@ -10,12 +10,12 @@ layout: unit_tests
 
 # Summary
 
-Test suites *AllTests* with 177 test cases was executed 2021-11-09 at 19:59:18.476 with result:
+Test suites *AllTests* with 177 test cases was executed 2021-12-30 at 22:00:02.990 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 1.832 seconds.
+Test suites execution took 2.224 seconds.
 
 # Details
 
@@ -26,7 +26,7 @@ Test suite *boost_windows_1252_test_suite* with 12 test cases was executed with 
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.115 seconds.
+Test suite execution took 0.143 seconds.
 
 ### Successful test cases
 
@@ -52,7 +52,7 @@ Test suite *boost_string_cast_test_suite* with 81 test cases was executed with r
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.825 seconds.
+Test suite execution took 1.025 seconds.
 
 ### Successful test cases
 
@@ -147,7 +147,7 @@ Test suite *boost_iso_8859_1_test_suite* with 12 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.106 seconds.
+Test suite execution took 0.135 seconds.
 
 ### Successful test cases
 
@@ -173,7 +173,7 @@ Test suite *boost_create_string_test_suite* with 36 test cases was executed with
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.34 seconds.
+Test suite execution took 0.415 seconds.
 
 ### Successful test cases
 
@@ -223,7 +223,7 @@ Test suite *boost_ascii_test_suite* with 36 test cases was executed with result:
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.397 seconds.
+Test suite execution took 0.455 seconds.
 
 ### Successful test cases
 
