@@ -37,13 +37,7 @@ If you want to use the boost-based implementation of the **GO C++ Libraries** yo
 
 For more information see the [Boost.Build Tutorial](http://www.boost.org/build/tutorial.html).
 
-I currently use **Boost Libraries** version **1.77.0** when developing the **GO C++ Libraries**.
-
-### Boost Libraries 1.77.0 and Visual Studio 2022
-
-Boost Libraries 1.77.0 do not build using Visual Studio 2022 / MSVC 14.30. I found the 
-solution described in article [Building Boost 1.77 using Visual Studio 2022 preview (working solution) #735](https://github.com/boostorg/build/issues/735)
-working well.
+I currently use **Boost Libraries** version **1.78.0** when developing the **GO C++ Libraries**.
 
 ## GO C++ Libraries
 
@@ -52,10 +46,10 @@ The **GO C++ Libraries** use CMake to manage the build process. CMake can be dow
 
 CMake configuration:
 
- * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_76_0)*
- * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_76_0\stage\x64\lib)*
+ * **BOOST_INCLUDEDIR** = path to boost *(e.g. C:\path\to\boost_1_78_0)*
+ * **BOOST_LIBRARYDIR** = path to boost link libraries *(e.g. C:\path\to\boost_1_78_0\stage\x64\lib)*
  * **BOOST_MAJOR_VERSION** = 1
- * **BOOST_MINOR_VERSION** = 77
+ * **BOOST_MINOR_VERSION** = 78
  * **BOOST_PATCH_LEVEL** = 0
  * **BUILD_BOOST_EXAMPLES** = TRUE|FALSE
  * **BUILD_BOOST_MFC_EXAMPLES** = TRUE|FALSE
@@ -81,7 +75,7 @@ The CMake configurations I use:
 **SETTING \ TOOLSET**      |clang 12.0.1|gcc 11.1.0|MSYS2 MinGW gcc 10.2.0|Visual Studio 2022 Community|Visual Studio 2019 Community|Visual Studio 2017 Community|Visual Studio 2015 Community|Visual Studio 2013 Express|Visual Studio 2012 Express|Visual Studio 2010 Express|Visual Studio 2008 Express
 ---------------------------|------------|----------|----------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------------|--------------------------|--------------------------|--------------------------
 **BOOST_MAJOR_VERSION** | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 
-**BOOST_MINOR_VERSION** | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 
+**BOOST_MINOR_VERSION** | 78 | 78 | 78 | 78 | 78 | 78 | 78 | 78 | 78 | 78 | 78 
 **BOOST_PATCH_LEVEL** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 
 **BUILD_BOOST_EXAMPLES** | X | X | X | X | X | X | X | X | X | X | X 
 **BUILD_BOOST_MFC_EXAMPLES** | | | | X | X | X | X | | | | 
@@ -112,10 +106,10 @@ My development environment and toolset details:
   * ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
-  * cmake version 3.21.3
+  * cmake version 3.22.1
   * MSYS2 64bit 20200720
   * gcc (GCC) 10.2.0-1
-  * git 2.31.1.windows.1
+  * git 2.34.0.windows.1
   * GNU Make 4.2.1
   * Code::Blocks 17.12
   * ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x64-mingw32]
@@ -125,14 +119,14 @@ My development environment and toolset details:
   * Visual Studio Express 2012 for Windows Desktop
   * Visual Studio Express 2013 for Windows Desktop
   * Visual Studio Community 2015
-  * Visual Studio 2017, Community Edition, version 15.9.40
-  * Visual Studio 2019, Community Edition, version 16.11.5
-  * Visual Studio 2022, Community Edition, version 17.0.0
-  * Visual Studio Code 1.62.0 - with extensions:
+  * Visual Studio 2017, Community Edition, version 15.9.42
+  * Visual Studio 2019, Community Edition, version 16.11.8
+  * Visual Studio 2022, Community Edition, version 17.0.4
+  * Visual Studio Code 1.63.2 - with extensions:
     * C/C++ 1.7.1 _(C/C++ IntelliSense, debugging, and code browsing)_
     * CMake 0.0.17 _(CMake language support)_
-    * CMake Tools 1.9.1 _(Extended CMake support)_
-    * Git Lens 11.6.1 _(Supercharge Visual Studio Code's Git capabilities)_
+    * CMake Tools 1.9.2 _(Extended CMake support)_
+    * Git Lens 11.7.0 _(Supercharge Visual Studio Code's Git capabilities)_
     * Markdown All in One 3.4.0 _(All you need to write Markdown)_
 
 # GOOGLE TEST
