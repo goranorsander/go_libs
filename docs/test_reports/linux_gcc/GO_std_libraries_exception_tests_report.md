@@ -4,12 +4,12 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
 * gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 6 test cases was executed 2021-10-04 at 18:37:11.090 with result:
+Test suites *AllTests* with 6 test cases was executed 2021-12-31 at 12:11:50.249 with result:
 
 * 0 errors
 * 0 failures

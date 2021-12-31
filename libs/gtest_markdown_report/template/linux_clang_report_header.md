@@ -4,5 +4,5 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
-* clang version 12.0.1
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
+* clang version 13.0.0

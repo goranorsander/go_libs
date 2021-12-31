@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
 * gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 128 test cases was executed 2021-10-04 at 18:37:09.754 with result:
+Test suites *AllTests* with 128 test cases was executed 2021-12-31 at 12:11:49.096 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.005 seconds.
+Test suites execution took 0.001 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *boost_fundamental_type_specializer_test_suite* with 128 test cases w
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.005 seconds.
+Test suite execution took 0.001 seconds.
 
 ### Successful test cases
 

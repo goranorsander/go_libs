@@ -12,9 +12,9 @@ more information.
 
 ## Test environment and toolset
 
-* Manjaro Linux 21.0.3 Ornara, Xfce, 64 bits
-  * [clang 11.1.0](./linux_clang/unit_tests.html)
-  * [gcc 10.2.0](./linux_gcc/unit_tests.html)
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
+  * [clang 13.0.0](./linux_clang/unit_tests.html)
+  * [gcc 11.1.0](./linux_gcc/unit_tests.html)
 * Windows 10 Professional, 64 bit
   * [MSYS2/MinGW/gcc 10.2.0](./windows_gcc/unit_tests.html)
   * [MSVC++ 9.0 / Visual Studio 2008](./windows_msvc90/unit_tests.html)
@@ -28,9 +28,9 @@ more information.
 
 # Summary
 
-* 205 unit test applications executed, 18 for each toolset
-* 2565 unit test suites, on average 233 for each toolset
-* 21695 unit test cases, on average 1972 for each toolset
+* 209 unit test applications executed, 19 for each toolset
+* 2585 unit test suites, on average 235 for each toolset
+* 22403 unit test cases, on average 2036 for each toolset
 * 0 errors
 * 0 failures
 * 0 disabled test cases

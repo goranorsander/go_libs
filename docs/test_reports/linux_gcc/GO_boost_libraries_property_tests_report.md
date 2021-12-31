@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
 * gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2021-10-04 at 18:37:09.713 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-12-31 at 12:11:49.058 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.015 seconds.
+Test suites execution took 0.005 seconds.
 
 # Details
 
@@ -117,13 +117,13 @@ Test suite *boost_u16property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.007 seconds.
+Test suite execution took 0.002 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
-value_properties | 0.006
+value_properties | 0.001
 read_only_value_properties | 0
 write_only_value_properties | 0
 reference_properties | 0
@@ -140,7 +140,7 @@ Test suite *boost_u32property_test_suite* with 9 test cases was executed with re
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -163,7 +163,7 @@ Test suite *boost_u8property_test_suite* with 9 test cases was executed with res
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

@@ -96,14 +96,14 @@ CMAKE_INSTALL_PREFIX must be set to match your development environment and tools
 
 My development environment and toolset details:
 
-* Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
-  * cmake version 3.21.3
-  * clang version 12.0.1
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
+  * cmake version 3.22.1
+  * clang version 13.0.0
   * gcc (GCC) 11.1.0
-  * git 2.33.0
+  * git 2.34.1
   * GNU Make 4.3
   * Code::Blocks 20.03
-  * ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
+  * ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x86_64-linux]
   * Visual Studio Code 1.19.2 - with same extensions as in Windows environment
 * Windows 10 Professional, 64 bit
   * cmake version 3.22.1

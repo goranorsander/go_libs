@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
-* clang version 12.0.1
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
+* clang version 13.0.0
 
 # Summary
 
-Test suites *AllTests* with 33 test cases was executed 2021-10-04 at 18:37:06.308 with result:
+Test suites *AllTests* with 33 test cases was executed 2021-12-31 at 12:11:47.000 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.001 seconds.
+Test suites execution took 0 seconds.
 
 # Details
 

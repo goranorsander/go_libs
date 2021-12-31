@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-* MManjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
-* clang version 12.0.1
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
+* clang version 13.0.0
 
 # Summary
 
-Test suites *AllTests* with 5 test cases was executed 2021-10-04 at 18:37:06.324 with result:
+Test suites *AllTests* with 5 test cases was executed 2021-12-31 at 12:11:47.007 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 1.085 seconds.
+Test suites execution took 0.865 seconds.
 
 # Details
 
@@ -25,14 +25,14 @@ Test suite *std_stopwatch_test_suite* with 5 test cases was executed with result
 * 0 errors
 * 0 failures
 
-Test suite execution took 1.084 seconds.
+Test suite execution took 0.864 seconds.
 
 ### Successful test cases
 
 Test case|Execution time
 -|-
 test_create_stopwatch | 0
-test_stopwatch_start_stop | 0.294
-test_stopwatch_reset | 0.101
-test_stopwatch_guard | 0.116
-test_stopwatch_start_stop_five_times | 0.572
+test_stopwatch_start_stop | 0.112
+test_stopwatch_reset | 0.102
+test_stopwatch_guard | 0.1
+test_stopwatch_start_stop_five_times | 0.549

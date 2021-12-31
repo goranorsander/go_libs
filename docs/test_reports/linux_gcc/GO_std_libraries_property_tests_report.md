@@ -4,17 +4,17 @@ layout: unit_tests
 
 # Test environment and toolset 
 
-*  Manjaro Linux 21.1.4 Pahvo, Xfce, 64 bits
+* Manjaro Linux Qonos 21.2.0, Xfce, 64 bits
 * gcc (GCC) 11.1.0
 
 # Summary
 
-Test suites *AllTests* with 72 test cases was executed 2021-10-04 at 18:37:11.384 with result:
+Test suites *AllTests* with 72 test cases was executed 2021-12-31 at 12:11:50.356 with result:
 
 * 0 errors
 * 0 failures
 
-Test suites execution took 0.008 seconds.
+Test suites execution took 0.002 seconds.
 
 # Details
 
@@ -25,7 +25,7 @@ Test suite *std_nameless_property_test_suite* with 9 test cases was executed wit
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 
@@ -163,7 +163,7 @@ Test suite *std_u8property_test_suite* with 9 test cases was executed with resul
 * 0 errors
 * 0 failures
 
-Test suite execution took 0.001 seconds.
+Test suite execution took 0 seconds.
 
 ### Successful test cases
 

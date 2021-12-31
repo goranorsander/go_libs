@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="5" failures="0" disabled="0" errors="0" time="1.085" timestamp="2021-10-04T18:37:06.324" name="AllTests">
-  <testsuite name="std_stopwatch_test_suite" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="1.084" timestamp="2021-10-04T18:37:06.325">
-    <testcase name="test_create_stopwatch" status="run" result="completed" time="0" timestamp="2021-10-04T18:37:06.325" classname="std_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop" status="run" result="completed" time="0.294" timestamp="2021-10-04T18:37:06.325" classname="std_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_reset" status="run" result="completed" time="0.101" timestamp="2021-10-04T18:37:06.619" classname="std_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_guard" status="run" result="completed" time="0.116" timestamp="2021-10-04T18:37:06.720" classname="std_stopwatch_test_suite" />
-    <testcase name="test_stopwatch_start_stop_five_times" status="run" result="completed" time="0.572" timestamp="2021-10-04T18:37:06.837" classname="std_stopwatch_test_suite" />
+<testsuites tests="5" failures="0" disabled="0" errors="0" time="0.865" timestamp="2021-12-31T12:11:47.007" name="AllTests">
+  <testsuite name="std_stopwatch_test_suite" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0.864" timestamp="2021-12-31T12:11:47.007">
+    <testcase name="test_create_stopwatch" status="run" result="completed" time="0" timestamp="2021-12-31T12:11:47.007" classname="std_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop" status="run" result="completed" time="0.112" timestamp="2021-12-31T12:11:47.007" classname="std_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_reset" status="run" result="completed" time="0.102" timestamp="2021-12-31T12:11:47.120" classname="std_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_guard" status="run" result="completed" time="0.1" timestamp="2021-12-31T12:11:47.222" classname="std_stopwatch_test_suite" />
+    <testcase name="test_stopwatch_start_stop_five_times" status="run" result="completed" time="0.549" timestamp="2021-12-31T12:11:47.323" classname="std_stopwatch_test_suite" />
   </testsuite>
 </testsuites>
